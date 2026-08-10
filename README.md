@@ -1,4 +1,4 @@
-# LeanOpenProblems results
+# OEIS Open results
 
 Per-sample outputs for the evaluation runs reported in *OEIS Open: How many
 conjectures can language models turn into theorems?* (Adamczewski, 2026).
