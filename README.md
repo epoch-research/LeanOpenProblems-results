@@ -14,11 +14,12 @@ conjectures can language models turn into theorems?* (Adamczewski, 2026).
 | `oeis-lite-200usd-oai-…` | Lite (100) | GPT-5.5 | base | $200 |
 | `oeis-lite-200usd-gdm-…` | Lite (100) | Gemini 3.5 Flash | base | $200 |
 | `oeis-lite-200usd-fable-…` | Lite (100) | Claude Fable 5 | base | $200 |
-| `oeis-lite-200usd-deep-…` | Lite (100) | (per suffix) | DeepAgent | $200 |
-| `oeis-lite-200usd-lit-…` | Lite (100) | (per suffix) | literature | $200 |
-
-Model suffixes: `ant` = Claude Opus 4.8, `oai` = GPT-5.5, `gdm` = Gemini 3.5
-Flash, `fable` = Claude Fable 5.
+| `oeis-lite-200usd-deep-ant-…` | Lite (100) | Claude Opus 4.8 | DeepAgent | $200 |
+| `oeis-lite-200usd-deep-oai-…` | Lite (100) | GPT-5.5 | DeepAgent | $200 |
+| `oeis-lite-200usd-deep-gdm-…` | Lite (100) | Gemini 3.5 Flash | DeepAgent | $200 |
+| `oeis-lite-200usd-lit-ant-…` | Lite (100) | Claude Opus 4.8 | literature | $200 |
+| `oeis-lite-200usd-lit-oai-…` | Lite (100) | GPT-5.5 | literature | $200 |
+| `oeis-lite-200usd-lit-gdm-…` | Lite (100) | Gemini 3.5 Flash | literature | $200 |
 
 ## Contents
 
