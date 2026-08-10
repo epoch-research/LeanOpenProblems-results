@@ -31,6 +31,5 @@ aggregate `scores.json`:
 - `scores.json`, `scores.txt` — the SafeVerify verdict, including the failure
   stage and checker output for rejected submissions
 
-Agent transcripts (`messages.txt`, `compactions.txt`) are omitted for size.
 The full-set runs contain a directory only for samples where the agent
 produced a submission.
