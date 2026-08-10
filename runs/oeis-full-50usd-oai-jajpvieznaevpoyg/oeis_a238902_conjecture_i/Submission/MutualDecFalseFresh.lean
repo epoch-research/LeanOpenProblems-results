@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+
+mutual
+  partial def pfFalse : False :=
+    match decFalse with
+    | Decidable.isTrue h => h
+    | Decidable.isFalse hn => pfFalse
+  partial def decFalse : Decidable False :=
+    Decidable.isTrue pfFalse
+end
+
+example : False := pfFalse
+#print axioms pfFalse
+#print axioms decFalse

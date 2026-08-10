@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_four_squares
+#check Nat.sum_three_squares
+#check Int.sum_three_squares
+#check Nat.three_squares
+#check Nat.exists_sum_three_squares
+#check Nat.exists_sq_add_sq_add_sq
+#check Nat.gauss_eureka
+#check Nat.legendre_three_square
+#check Nat.fermat_polygonal_number_theorem
+#check Nat.sum_triangular
+#check Nat.eq_triangular_add_triangular_add_triangular

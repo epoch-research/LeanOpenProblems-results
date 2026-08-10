@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:120:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  List.map g1 ?m.19\nin the target expression\n  (Multiset.map g1 f.val).sum = (Multiset.map g2 f.val).sum\n\nf : Finset ℕ\ng1 g2 : ℕ → ℕ\nh : ∀ x ∈ f.val, g1 x = g2 x\n⊢ (Multiset.map g1 f.val).sum = (Multiset.map g2 f.val).sum\nSubmission/Spec.lean:158:28: error: unsolved goals\nh_conj : ∀ (p r : ℕ), Nat.Prime p → p ≥ 3 → r ≥ 2 → A357565 (p ^ r) ≡ A357565 (p ^ (r - 1)) [MOD p ^ (3 * r + 3)]\n⊢ Irreducible 12",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

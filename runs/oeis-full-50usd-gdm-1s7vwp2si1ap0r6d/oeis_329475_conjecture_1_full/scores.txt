@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:64:27: error: unexpected token '@['; expected 'lemma'
+  Submission/Spec.lean:66:8: warning: declaration uses 'sorry'
+

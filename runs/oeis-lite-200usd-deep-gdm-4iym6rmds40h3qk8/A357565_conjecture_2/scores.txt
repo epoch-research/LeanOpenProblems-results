@@ -1,0 +1,16 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:120:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    List.map g1 ?m.19
+  in the target expression
+    (Multiset.map g1 f.val).sum = (Multiset.map g2 f.val).sum
+  
+  f : Finset ℕ
+  g1 g2 : ℕ → ℕ
+  h : ∀ x ∈ f.val, g1 x = g2 x
+  ⊢ (Multiset.map g1 f.val).sum = (Multiset.map g2 f.val).sum
+  Submission/Spec.lean:158:28: error: unsolved goals
+  h_conj : ∀ (p r : ℕ), Nat.Prime p → p ≥ 3 → r ≥ 2 → A357565 (p ^ r) ≡ A357565 (p ^ (r - 1)) [MOD p ^ (3 * r + 3)]
+  ⊢ Irreducible 12
+

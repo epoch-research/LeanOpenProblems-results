@@ -1,0 +1,196 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+/-- The triangular number $T(x) = x(x+1)/2$. -/
+def triangular (x : ℕ) : ℕ := x * (x + 1) / 2
+
+/--
+The set of values $V = \{ \lfloor T(x)/3 \rfloor : x \ge 1 \}$ that are less than or equal to $n$.
+We generate values for $x \ge 1$ using $x \mapsto x.succ$ over a range, and rely on the filter $v \le n$ to constrain the set.
+-/
+def A256544_elements (n : ℕ) : Finset ℕ :=
+  -- A liberal safe bound for $x$: $4n+2$ is sufficient since $T(x)/3$ grows quadratically.
+  let max_range : ℕ := 4 * n + 2
+  -- Use x.succ to ensure $x \ge 1$ generators.
+  (range max_range).image (fun x : ℕ => (triangular x.succ) / 3)
+    |> Finset.filter (fun v => v ≤ n)
+
+/--
+A256544: Number of ways to write $n$ as the sum of three unordered elements of the set $\{ \lfloor T(x)/3 \rfloor : x = 1, 2, 3, \dots \}$, where $T(x)$ denotes the triangular number $x(x+1)/2$.
+This is computed by counting the number of ordered triples $(a, b, c)$ from the set $V$ such that $a \le b \le c$ and $a + b + c = n$.
+-/
+def A256544 (n : ℕ) : ℕ :=
+  let Vs := A256544_elements n
+
+  -- Iterate over all $a, b, c \in Vs$ and count those that satisfy the ordered sum.
+  Vs.sum fun a =>
+    Vs.sum fun b =>
+      -- The constraint a + b + c = n means we only need to check c.
+      (Vs.filter fun c =>
+        a ≤ b ∧ b ≤ c ∧ a + b + c = n
+      ).card
+
+lemma triangular_even (x : ℕ) : 2 ∣ x * (x + 1) := by
+  rcases Nat.even_or_odd x with h | h
+  · obtain ⟨k, hk⟩ := h
+    use k * (x + 1)
+    rw [hk]
+    ring
+  · obtain ⟨k, hk⟩ := h
+    use x * (k + 1)
+    rw [hk]
+    ring
+
+lemma triangular_diff (x : ℕ) : triangular (x + 1) = triangular x + (x + 1) := by
+  unfold triangular
+  have h1 : 2 ∣ x * (x + 1) := triangular_even x
+  have h2 : 2 ∣ (x + 1) * (x + 2) := triangular_even (x + 1)
+  obtain ⟨k1, hk1⟩ := h1
+  obtain ⟨k2, hk2⟩ := h2
+  rw [hk1, hk2]
+  rw [Nat.mul_div_cancel_left _ (by decide)]
+  rw [Nat.mul_div_cancel_left _ (by decide)]
+  have h3 : 2 * k2 = 2 * (k1 + (x + 1)) := by
+    calc
+      2 * k2 = (x + 1) * (x + 2) := hk2.symm
+      _ = x * (x + 1) + 2 * (x + 1) := by ring
+      _ = 2 * k1 + 2 * (x + 1) := by rw [hk1]
+      _ = 2 * (k1 + x + 1) := by ring
+  omega
+
+lemma div_add_lt (A k m : ℕ) (hm : m > 0) (hk : k < m) : (A + k) / m ≤ A / m + 1 := by
+  have h1 : A + k ≤ A + m := by omega
+  have h2 := Nat.div_le_div_right h1 (c := m)
+  have h3 : (A + m) / m = A / m + 1 := Nat.add_div_right A hm
+  omega
+
+lemma gap_le_one (m : ℕ) (hm : m ≥ 2) (x : ℕ) (hx : x < m - 1) :
+    triangular (x + 1) / m ≤ triangular x / m + 1 := by
+  rw [triangular_diff]
+  apply div_add_lt
+  · omega
+  · omega
+
+lemma triangular_zero : triangular 0 = 0 := by
+  unfold triangular
+  rfl
+
+
+lemma triangular_shift (m x j : ℕ) :
+    triangular (x + 2 * j * m) = triangular x + m * (2 * x * j + 2 * (j ^ 2) * m + j) := by
+  unfold triangular
+  have h_mul : (x + 2 * j * m) * (x + 2 * j * m + 1) = 2 * ((x + 2 * j * m) * (x + 2 * j * m + 1) / 2) := by
+    exact (Nat.mul_div_cancel' (triangular_even (x + 2 * j * m))).symm
+  have h_mul2 : x * (x + 1) = 2 * (x * (x + 1) / 2) := by
+    exact (Nat.mul_div_cancel' (triangular_even x)).symm
+  have h_ring : (x + 2 * j * m) * (x + 2 * j * m + 1) = x * (x + 1) + 2 * (m * (2 * x * j + 2 * (j ^ 2) * m + j)) := by
+    ring
+  rw [h_mul, h_mul2] at h_ring
+  omega
+
+lemma triangular_shift_div (m x j : ℕ) (hm : m > 0) :
+    triangular (x + 2 * j * m) / m = triangular x / m + 2 * x * j + 2 * (j ^ 2) * m + j := by
+  rw [triangular_shift]
+  have h_comm : m * (2 * x * j + 2 * (j ^ 2) * m + j) = (2 * x * j + 2 * (j ^ 2) * m + j) * m := by ring
+  rw [h_comm]
+  rw [Nat.add_mul_div_right _ _ hm]
+  omega
+
+
+lemma triangular_div_range_filling_helper (m : ℕ) (hm : m ≥ 2) (B : ℕ) (hB : B < m) :
+    ∀ v, v ≤ triangular B / m → ∃ x, x ≤ B ∧ triangular x / m = v := by
+  induction B with
+  | zero =>
+    intro v hv
+    use 0
+    rw [triangular_zero] at hv
+    have h_zero : 0 / m = 0 := Nat.zero_div m
+    rw [h_zero] at hv
+    have hv_zero : v = 0 := by omega
+    refine ⟨by omega, ?_⟩
+    rw [triangular_zero, h_zero, hv_zero]
+  | succ B ih =>
+    have hB_succ : B < m := by omega
+    intro v hv
+    by_cases h : v ≤ triangular B / m
+    · obtain ⟨x, hx_le, hx_eq⟩ := ih hB_succ v h
+      use x
+      refine ⟨by omega, hx_eq⟩
+    · use B + 1
+      refine ⟨by omega, ?_⟩
+      have h_gap := gap_le_one m hm B (by omega)
+      omega
+
+lemma partition_three (n K : ℕ) (hn : n ≤ 3 * K) :
+    ∃ a b c : ℕ, a ≤ K ∧ b ≤ K ∧ c ≤ K ∧ a + b + c = n := by
+  by_cases h1 : n ≤ K
+  · use n, 0, 0
+    omega
+  · by_cases h2 : n ≤ 2 * K
+    · use K, n - K, 0
+      omega
+    · use K, K, n - 2 * K
+      omega
+
+lemma oeis_256544_conjecture_0_bounded (m : ℕ) (hm : m ≥ 2) (n : ℕ) (hn : n ≤ 3 * (triangular (m - 1) / m)) :
+    ∃ x y z : ℕ, n = triangular x / m + triangular y / m + triangular z / m := by
+  have h_part := partition_three n (triangular (m - 1) / m) hn
+  obtain ⟨a, b, c, ha, hb, hc, habc⟩ := h_part
+  have h_fill := triangular_div_range_filling_helper m hm (m - 1) (by omega)
+  obtain ⟨x, hx_le, hx_eq⟩ := h_fill a ha
+  obtain ⟨y, hy_le, hy_eq⟩ := h_fill b hb
+  obtain ⟨z, hz_le, hz_eq⟩ := h_fill c hc
+  use x, y, z
+  omega
+
+lemma triangular_div_self (m : ℕ) (hm : m ≥ 2) :
+    triangular (m - 1) / m = (m - 1) / 2 := by
+  unfold triangular
+  have h_m : m - 1 + 1 = m := by omega
+  rw [h_m]
+  rw [Nat.div_div_eq_div_mul]
+  have h_comm : 2 * m = m * 2 := by ring
+  rw [h_comm]
+  have hm0 : m > 0 := by omega
+  rw [Nat.mul_comm (m - 1) m]
+  rw [Nat.mul_div_mul_left (m - 1) 2 hm0]
+
+lemma oeis_256544_conjecture_0_large_m (m : ℕ) (hm : m ≥ 2) (n : ℕ) (h_large : m ≥ 2 * n + 1) :
+    ∃ x y z : ℕ, n = triangular x / m + triangular y / m + triangular z / m := by
+  have hK : n ≤ triangular (m - 1) / m := by
+    rw [triangular_div_self m hm]
+    omega
+  have h_fill := triangular_div_range_filling_helper m hm (m - 1) (by omega)
+  obtain ⟨x, hx_le, hx_eq⟩ := h_fill n hK
+  use x, 0, 0
+  rw [hx_eq, triangular_zero]
+  have h_zero : 0 / m = 0 := Nat.zero_div m
+  rw [h_zero]
+  omega
+
+/--
+Conjecture: For any positive integer m, every nonnegative integer n can be written as
+floor(T(x)/m) + floor(T(y)/m) + floor(T(z)/m) with x,y,z nonnegative integers.
+-/
+theorem oeis_256544_conjecture_0 (m : ℕ) (hm : m > 0) (n : ℕ) :
+    ∃ x y z : ℕ, n = triangular x / m + triangular y / m + triangular z / m := by
+  by_cases hm2 : m ≥ 2
+  · by_cases hn : n ≤ 3 * (triangular (m - 1) / m)
+    · exact oeis_256544_conjecture_0_bounded m hm2 n hn
+    · by_cases h_large : m ≥ 2 * n + 1
+      · exact oeis_256544_conjecture_0_large_m m hm2 n h_large
+      · sorry
+  · have hm1 : m = 1 := by omega
+    subst hm1
+    by_cases hn0 : n = 0
+    · use 0, 0, 0
+      rw [hn0, triangular_zero]
+    · sorry
+
+
+#check Nat.sum_four_squares
+
+
+
+

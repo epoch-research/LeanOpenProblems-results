@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check IsAlgebraic.add
+#check IsAlgebraic.sum
+#check IsAlgebraic.tsum
+#check isAlgebraic_sum
+#check isAlgebraic_tsum
+#check Subalgebra.supr
+#check Subalgebra.closure
+#check Subalgebra.topologicalClosure
+#check Subalgebra.isClosed
+#check IntermediateField.adjoin.finiteDimensional
+#check IntermediateField.finiteDimensional_adjoin
+#check adjoin.finiteDimensional

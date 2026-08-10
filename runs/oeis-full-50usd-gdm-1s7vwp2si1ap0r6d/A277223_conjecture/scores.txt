@@ -1,0 +1,181 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:904:22: warning: This simp argument is unused:
+    sum_digits_10
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵s̵u̵m̵_̵d̵i̵g̵i̵t̵s̵_̵1̵0̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1168:12: error: 'change' tactic failed, pattern
+    2 + s = s + 2
+  is not definitionally equal to target
+    (2 :: digits 10 (250 * (p / 10))).sum = s + 2
+  Submission/Spec.lean:1209:12: error: 'change' tactic failed, pattern
+    6 + s = s + 6
+  is not definitionally equal to target
+    (6 :: digits 10 (250 * (p / 10) + 2)).sum = s + 6
+  Submission/Spec.lean:1303:14: error: 'change' tactic failed, pattern
+    1 + s = s + 1
+  is not definitionally equal to target
+    (1 :: digits 10 (25 * (q / 10))).sum = s + 1
+  Submission/Spec.lean:1483:14: error: 'change' tactic failed, pattern
+    1 + s = s + 1
+  is not definitionally equal to target
+    (1 :: digits 10 (6 * (X / 10) + 4)).sum = s + 1
+  Submission/Spec.lean:1497:14: error: 'change' tactic failed, pattern
+    3 + s = s + 3
+  is not definitionally equal to target
+    (3 :: digits 10 (18 * (X / 10) + 12)).sum = s + 3
+  Submission/Spec.lean:1511:12: error: 'change' tactic failed, pattern
+    2 + s = s + 2
+  is not definitionally equal to target
+    (2 :: digits 10 (15 * (X / 10) + 10)).sum = s + 2
+  Submission/Spec.lean:1567:12: error: No goals to be solved
+  Submission/Spec.lean:1568:22: error: Tactic `rfl` failed: The left-hand side
+    sum_digits_10 0
+  is not definitionally equal to the right-hand side
+    0
+  
+  case inr
+  q : ℕ
+  ih : ∀ m < q, sum_digits_10 (6 * m + 3) = 6 → sum_digits_10 (18 * m + 9) = 9 → sum_digits_10 (15 * m + 7) = 10
+  h6 : 5 + sum_digits_10 (6 * (q / 10) + 1) = 6
+  h18 : (18 * q + 9) % 10 + sum_digits_10 ((18 * q + 9) / 10) = 9
+  hq0 : ¬q = 0
+  h_sum1 : sum_digits_10 (6 * q + 3) = (6 * q + 3) % 10 + sum_digits_10 ((6 * q + 3) / 10)
+  h_sum2 : sum_digits_10 (18 * q + 9) = (18 * q + 9) % 10 + sum_digits_10 ((18 * q + 9) / 10)
+  r2 : q % 10 = 2
+  h_6div : (6 * q + 3) / 10 = 6 * (q / 10) + 1
+  h_mod6 : (6 * q + 3) % 10 = 5
+  h_6div_sum : 1 + sum_digits_10 (6 * (q / 10) / 10) = 1
+  h_sum_exp : sum_digits_10 (6 * (q / 10) + 1) = (6 * (q / 10) + 1) % 10 + sum_digits_10 ((6 * (q / 10) + 1) / 10)
+  h_mod : (6 * (q / 10) + 1) % 10 = 1
+  h_div : (6 * (q / 10) + 1) / 10 = 6 * (q / 10) / 10
+  h_zero' : sum_digits_10 (6 * (q / 10) / 10) = 0
+  h_mod_zero : 6 * (q / 10) % 10 = 0
+  h_6 : 6 * (q / 10) = 0
+  ⊢ sum_digits_10 0 = 0
+  Submission/Spec.lean:1577:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    0 ≤ b ≤ 9
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(sum_digits_10 (15 * q + 7))
+  Submission/Spec.lean:1579:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    0 ≤ b ≤ 9
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(sum_digits_10 (15 * q + 7))
+  Submission/Spec.lean:1581:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    0 ≤ b ≤ 9
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(sum_digits_10 (15 * q + 7))
+  Submission/Spec.lean:1600:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    d ≥ 0
+    d - e ≥ -6
+    c ≥ 0
+    b ≥ 0
+    b ≥ -3
+    a ≥ 0
+    a ≥ -1
+  where
+   a := ↑(sum_digits_10 ((6 * q + 3) / 10))
+   b := ↑(sum_digits_10 ((18 * q + 9) / 10))
+   c := ↑q / 10
+   d := ↑(digits 10 (15 * (q / 10) + 12)).sum
+   e := ↑(7 :: digits 10 (15 * (q / 10) + 12)).sum
+  Submission/Spec.lean:1648:12: error: No goals to be solved
+  Submission/Spec.lean:1649:22: error: Tactic `rfl` failed: The left-hand side
+    sum_digits_10 0
+  is not definitionally equal to the right-hand side
+    0
+  
+  case inr
+  X : ℕ
+  ih : ∀ m < X, sum_digits_10 (6 * m + 4) = 1 → sum_digits_10 (18 * m + 12) = 3 → sum_digits_10 (9 * m + 6) = 6
+  h1 : 0 + sum_digits_10 (6 * (X / 10) + 1) = 1
+  h2 : (18 * X + 12) % 10 + sum_digits_10 ((18 * X + 12) / 10) = 3
+  hX0 : ¬X = 0
+  h_sum1 : sum_digits_10 (6 * X + 4) = (6 * X + 4) % 10 + sum_digits_10 ((6 * X + 4) / 10)
+  h_sum2 : sum_digits_10 (18 * X + 12) = (18 * X + 12) % 10 + sum_digits_10 ((18 * X + 12) / 10)
+  r1 : X % 10 = 1
+  hX_div_lt : X / 10 < X
+  h_6div : (6 * X + 4) / 10 = 6 * (X / 10) + 1
+  h_mod6 : (6 * X + 4) % 10 = 0
+  h_6div_sum : 1 + sum_digits_10 (6 * (X / 10) / 10) = 1
+  h_sum_exp : sum_digits_10 (6 * (X / 10) + 1) = (6 * (X / 10) + 1) % 10 + sum_digits_10 ((6 * (X / 10) + 1) / 10)
+  h_mod : (6 * (X / 10) + 1) % 10 = 1
+  h_div : (6 * (X / 10) + 1) / 10 = 6 * (X / 10) / 10
+  h_zero' : sum_digits_10 (6 * (X / 10) / 10) = 0
+  h_mod_zero : 6 * (X / 10) % 10 = 0
+  h_6 : 6 * (X / 10) = 0
+  ⊢ sum_digits_10 0 = 0
+  Submission/Spec.lean:1724:12: error: No goals to be solved
+  Submission/Spec.lean:1725:22: error: Tactic `rfl` failed: The left-hand side
+    sum_digits_10 0
+  is not definitionally equal to the right-hand side
+    0
+  
+  case inr
+  q : ℕ
+  ih : ∀ m < q, sum_digits_10 (6 * m + 5) = 2 → sum_digits_10 (18 * m + 16) = 7 → sum_digits_10 (9 * m + 8) = 8
+  h2 : 1 + sum_digits_10 (6 * (q / 10) + 1) = 2
+  h7 : (18 * q + 16) % 10 + sum_digits_10 ((18 * q + 16) / 10) = 7
+  hq0 : ¬q = 0
+  h_sum1 : sum_digits_10 (6 * q + 5) = (6 * q + 5) % 10 + sum_digits_10 ((6 * q + 5) / 10)
+  h_sum2 : sum_digits_10 (18 * q + 16) = (18 * q + 16) % 10 + sum_digits_10 ((18 * q + 16) / 10)
+  r1 : q % 10 = 1
+  hq_div_lt : q / 10 < q
+  h_6div : (6 * q + 5) / 10 = 6 * (q / 10) + 1
+  h_mod6 : (6 * q + 5) % 10 = 1
+  h_6div_sum : 1 + sum_digits_10 (6 * (q / 10) / 10) = 1
+  h_sum_exp : sum_digits_10 (6 * (q / 10) + 1) = (6 * (q / 10) + 1) % 10 + sum_digits_10 ((6 * (q / 10) + 1) / 10)
+  h_mod : (6 * (q / 10) + 1) % 10 = 1
+  h_div : (6 * (q / 10) + 1) / 10 = 6 * (q / 10) / 10
+  h_zero' : sum_digits_10 (6 * (q / 10) / 10) = 0
+  h_mod_zero : 6 * (q / 10) % 10 = 0
+  h_6 : 6 * (q / 10) = 0
+  ⊢ sum_digits_10 0 = 0
+  Submission/Spec.lean:1749:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ 0
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(digits 10 (6 * (q / 10) + 4)).sum
+   c := ↑(1 :: digits 10 (6 * (q / 10) + 4)).sum
+  Submission/Spec.lean:1762:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ -3
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(digits 10 (18 * (q / 10) + 12)).sum
+   c := ↑(4 :: digits 10 (18 * (q / 10) + 12)).sum
+  Submission/Spec.lean:1775:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ -1
+    a ≥ 0
+  where
+   a := ↑q / 10
+   b := ↑(digits 10 (9 * (q / 10) + 6)).sum
+   c := ↑(2 :: digits 10 (9 * (q / 10) + 6)).sum
+  Submission/Spec.lean:1783:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:1894:8: warning: declaration uses 'sorry'
+

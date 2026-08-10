@@ -1,0 +1,33 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 15 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 144 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.match_1._arg_pusher: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.match_1.eq_1: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A381358: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.match_1.eq_2: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.match_1: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T.match_1: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T._sunfold: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.eq_def: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat.match_1.splitter: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.run_lengths_nat._proof_1: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A381358_limit_exists: theorem type mismatch
+    Expected type: Exists.{1} Real (fun (L : Real) => Filter.Tendsto.{0, 0} Nat Real (fun (n : Nat) => HPow.hPow.{0, 0, 0} Real Real Real (instHPow.{0, 0} Real Real Real.instPow) (Nat.cast.{0} Real Real.instNatCast (A381358 n)) (Inv.inv.{0} Real Real.instInv (Nat.cast.{0} Real Real.instNatCast n))) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) L))
+    Got type:      Exists.{1} Real (fun (L : Real) => Filter.Tendsto.{0, 0} Nat Real (fun (n : Nat) => HPow.hPow.{0, 0, 0} Real Real Real (instHPow.{0, 0} Real Real Real.instPow) (Nat.cast.{0} Real Real.instNatCast (Submission.Spec.A381358 n)) (Inv.inv.{0} Real Real.instInv (Nat.cast.{0} Real Real.instNatCast n))) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) L))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

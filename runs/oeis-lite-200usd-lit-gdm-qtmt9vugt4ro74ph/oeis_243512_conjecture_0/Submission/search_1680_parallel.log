@@ -1,0 +1,5 @@
+Superfast parallel search up to 100000000000 using 32 threads...
+FOUND for 4488: g = 8225996800, p = 2239, i = 18418006835200
+Thread 0 processed up to 12000000001
+Thread 0 processed up to 22000000001
+Thread 0 processed up to 32000000001

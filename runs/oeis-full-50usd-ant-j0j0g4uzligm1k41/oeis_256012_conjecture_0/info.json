@@ -1,0 +1,20 @@
+{
+  "id": "oeis_256012_conjecture_0",
+  "epoch": 1,
+  "uuid": "EktRmqjP7bbUbA4uafo6qU",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 35,
+      "output_tokens": 21474,
+      "total_tokens": 362907,
+      "input_tokens_cache_write": 26179,
+      "input_tokens_cache_read": 315219,
+      "reasoning_tokens": 2637,
+      "total_cost": 0.85825325
+    }
+  },
+  "oeis_id": "A256012"
+}

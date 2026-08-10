@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+
+#define LIMIT 1000000000
+#define MAX_VAL 2000000000LL
+
+// Use a bitset for prime sieve to save memory and cache
+unsigned char *is_prime;
+
+void sieve() {
+    is_prime = malloc(MAX_VAL / 8 + 1);
+    for (long long i = 0; i < MAX_VAL / 8 + 1; i++) is_prime[i] = 0xFF;
+    // 0 and 1 are not prime
+    is_prime[0] &= ~3; // clear bit 0 and 1
+    for (long long i = 2; i * i < MAX_VAL; i++) {
+        if (is_prime[i / 8] & (1 << (i % 8))) {
+            for (long long j = i * i; j < MAX_VAL; j += i) {
+                is_prime[j / 8] &= ~(1 << (j % 8));
+            }
+        }
+    }
+}
+
+inline bool is_p(long long x) {
+    if (x < 0 || x >= MAX_VAL) return false;
+    return (is_prime[x / 8] & (1 << (x % 8))) != 0;
+}
+
+int main() {
+    printf("Starting sieve up to 2 billion...\n");
+    sieve();
+    printf("Sieve completed.\n");
+    
+    // We can check each n
+    for (int n = 3; n <= LIMIT; n++) {
+        bool found = false;
+        int r_start = (int)sqrt(n + 2);
+        int r_end = (int)sqrt(2 * n - 1);
+        for (int r = r_start; r <= r_end; r++) {
+            if (is_p(r)) {
+                int low = r * r - n;
+                int high = (r + 1) * (r + 1) - 1 - n;
+                if (high >= n) high = n - 1;
+                // Check if there is any prime in [low, high]
+                for (int p = low; p <= high; p++) {
+                    if (is_p(p)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+        }
+        if (!found) {
+            printf("COUNTEREXAMPLE FOUND: n = %d\n", n);
+            return 0;
+        }
+        if (n % 100000000 == 0) {
+            printf("Checked up to %d\n", n);
+        }
+    }
+    printf("Checked all n up to 1 billion. No counterexamples found!\n");
+    return 0;
+}

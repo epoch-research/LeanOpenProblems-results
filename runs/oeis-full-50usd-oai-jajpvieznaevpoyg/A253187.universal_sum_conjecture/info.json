@@ -1,0 +1,23 @@
+{
+  "id": "A253187.universal_sum_conjecture",
+  "epoch": 1,
+  "uuid": "PyEzERViRv2f92tZyddEJD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2232859,
+      "output_tokens": 435856,
+      "total_tokens": 54293163,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 51624448,
+      "reasoning_tokens": 308692,
+      "total_cost": 50.05219899999997
+    }
+  },
+  "oeis_id": "A253187"
+}

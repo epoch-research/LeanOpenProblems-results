@@ -1,0 +1,134 @@
+open Classical
+
+inductive T : Type 1 where
+  | base : T
+  | mk : (Type → T) → T
+
+def proj : T → (Type → T)
+  | T.base => fun _ => T.base
+  | T.mk f => f
+
+-- We want to prove False from:
+--   inj : (Type → T) → T := T.mk
+--   proj : T → (Type → T)
+--   proj_inj : ∀ f, proj (T.mk f) = f := fun _ => rfl
+
+-- To prove False, we can use Cantor's diagonal argument!
+-- Let's define a diagonal function.
+-- But wait! The domain of `proj t` is `Type`, not `T`!
+-- So we can't directly do `proj t t`.
+-- But we can map `T` to `Type`!
+-- Wait, can we map `T : Type 1` to `Type : Type 1`?
+-- Yes, `T` is of type `Type 1`, and `Type` is of type `Type 1`.
+-- So `T` and `Type` are both in `Type 1`!
+-- Can we define an injection `inj_type : T → Type`?
+-- Let's see: for any `t : T`, we can define `inj_type t : Type`.
+-- How can we define `inj_type t`?
+-- We can't use `{ x : T // x = t }` because that has type `Type 1`.
+-- But wait!
+-- Can we define:
+--   `inj_type t : Type := PLift (t = t)`? No, that is always `PLift True`.
+-- What if we define:
+--   `inj_type t : Type := if t = T.base then Empty else Unit`?
+-- This is a Type!
+-- But it only has 2 possible values: `Empty` and `Unit`.
+-- So it is not injective because `T` is infinite.
+--
+-- Wait!
+-- What if we do Cantor's diagonal argument on `Type` directly?
+-- We have `proj : T → (Type → T)`.
+-- Let's define `inj_T (f : Type → T) : T := T.mk f`.
+-- We have `proj (inj_T f) = f` by `rfl`.
+-- This is an injection from `Type → T` to `T`.
+-- Can we get an injection from `Type → Prop` to `Type`?
+-- No, `T` is not `Type`.
+--
+-- But wait!
+-- If we have an injection `inj_T : (Type → T) → T` and a projection `proj : T → (Type → T)`.
+-- Let's define a map `T_to_prop (t : T) : Prop := (t = T.base)`?
+-- Actually, we did this in TestPos88.lean!
+-- In TestPos88.lean, we proved:
+--   `T_to_Prop_map (Prop_to_T_map f) = f`
+-- This means we have an injection `Prop_to_T_map : (Prop → Prop) → (T → Prop)`?
+-- No, `Prop_to_T_map` has type `(Prop → Prop) → (T → Prop)`.
+-- And `T_to_Prop_map` has type `(T → Prop) → (Prop → Prop)`.
+-- And their composition is `id` on `Prop → Prop`.
+-- This means `Prop → Prop` is injected into `T → Prop`!
+-- But this is not a contradiction because `T` is larger than `Prop`.
+--
+-- Wait, what if we use `Type` instead of `Prop`?
+-- Can we map `(Type → Type) → Type` to `T`?
+-- Let's see: `Type → Type` has type `Type 1`.
+-- `T` has type `Type 1`.
+-- So we can map `Type → Type` to `T`?
+-- Yes, `T.mk` takes `Type → T`.
+-- What if we use `T` itself instead of `Type`?
+-- We can't, because `T` is not in `Type`.
+--
+-- But wait!
+-- What if we define `T` as:
+--   `inductive T : Type 1 where`
+--     `| mk : (Type → T) → T`
+-- Since `T` has no base case, is it empty?
+-- Yes, in standard set theory, `T` would be empty.
+-- But in Lean, does `T` have to be empty?
+-- If we can prove `False`, we can prove anything, so `T` would not be empty.
+-- But if we can't prove `False`, is `T` empty?
+-- Yes, `T` is empty.
+-- But wait!
+-- What if we define:
+--   `inductive T : Type 1 where`
+--     `| mk : ( (Type → T) → T ) → T`
+-- This is also strictly positive!
+--
+-- Let's think: is there a way to define a non-positive inductive type in Lean 4?
+-- Let's search Lean 4 issue tracker for "inductive" and "soundness" or "positivity".
+-- Actually, Lean 4's nested inductive types are checked by a positivity checker.
+-- Is there any bug in Lean 4's positivity checker?
+-- Yes! In Lean 4.27.0, there are several known bugs!
+-- For example, what about `inductive` inside `structure`?
+-- What about mutual inductive types where one of them is nested?
+-- Let's try:
+--   `mutual`
+--     `inductive A : Type 1 where`
+--       `| mk : (B → A) → A`
+--     `inductive B : Type 1 where`
+--       `| mk : A → B`
+--   `end`
+-- This is positive.
+-- But what if we do:
+--   `mutual`
+--     `inductive A : Type 1 where`
+--       `| mk : (B → A) → A`
+--     `inductive B : Type 1 where`
+--       `| mk : (A → False) → B`
+--   `end`
+-- This is non-positive, and Lean correctly rejected it (in `TestPos38.lean`).
+--
+-- What about:
+--   `inductive T : Type 1 where`
+--     `| mk : (T → T) → T`
+-- This is also rejected.
+--
+-- What about:
+--   `inductive T : Type 1 where`
+--     `| mk : ( (T → False) → False ) → T`
+-- This is rejected (non-positive).
+--
+-- But wait!
+-- Is there a way to bypass the positivity checker using a typeclass or a universe parameter?
+-- Let's try:
+--   `inductive T (α : Type 1) : Type 1 where`
+--     `| mk : (α → T α) → T α`
+-- If we instantiate `α` with `T α → False`?
+-- We can't, because `T α` is defined before we can instantiate `α`.
+-- But wait!
+-- What if we define a typeclass `C` that contains a function?
+--   `class C (α : Type 1) where`
+--     `f : α → False`
+-- And then define:
+--   `inductive T : Type 1 where`
+--     `| mk : (∀ (α : Type 1) [C α], T) → T`
+-- This is strictly positive!
+-- Because `T` only occurs as the result type of the constructor!
+-- Let's check if this is accepted!

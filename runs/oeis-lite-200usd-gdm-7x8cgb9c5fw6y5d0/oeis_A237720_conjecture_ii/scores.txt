@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_decode
+  'utf-8' codec can't decode byte 0xe2 in position 24575: unexpected end of data
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_100800_conjecture_0",
+  "epoch": 1,
+  "uuid": "BjUAkgnAiX4QbnaZ3TMeMC",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 21123029,
+      "output_tokens": 238296,
+      "total_tokens": 131247287,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 107986979,
+      "reasoning_tokens": 1898983,
+      "total_cost": 50.027254349999936
+    }
+  },
+  "oeis_id": "A100800"
+}

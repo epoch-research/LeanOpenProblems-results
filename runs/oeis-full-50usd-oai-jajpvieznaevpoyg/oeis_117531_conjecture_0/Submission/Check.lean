@@ -1,0 +1,17 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.exists_prime_and_dvd
+#check Nat.exists_prime_factor
+#check Nat.minFac
+#check Nat.minFac_prime
+#check Nat.minFac_dvd
+#check Nat.Prime.not_dvd_one
+#check Nat.Prime.eq_one_or_self_of_dvd
+#check Nat.not_prime_iff_exists_dvd
+#check Nat.Prime.dvd_of_dvd_pow
+#check Nat.Prime.dvd_mul
+#check Finset.card_lt_card
+#check Finset.ssubset_iff_of_subset
+#check Finset.filter_subset
+#check Finset.mem_filter
+#check Finset.card_Icc
+#check Nat.Prime.eq_two_or_odd

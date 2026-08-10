@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:9:2: error: Tactic `rfl` failed: The left-hand side
+    IsSquare n
+  is not definitionally equal to the right-hand side
+    IsSquare_eval n = true
+  
+  n : ℕ
+  ⊢ IsSquare n ↔ IsSquare_eval n = true
+

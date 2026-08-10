@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check List.getD
+#check List.getD_drop
+#check List.drop_succ_cons
+#check List.drop_eq_nil_iff_le
+#check List.drop_append
+#check List.sum_cons
+#check List.sum_map_add
+#check List.sum_append
+#check List.map_zipWith
+#check List.zipWith_cons_cons
+#check List.zipWith_nil_left
+#check List.zipWith_nil_right
+#check Nat.add_div_right
+#check Nat.add_mul_div_left

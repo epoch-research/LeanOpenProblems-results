@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.smoothNumbers
+#check Nat.smoothNumbersUpTo
+#check Nat.smoothNumbersUpTo_card_le
+#check Nat.roughNumbersUpTo
+#check Nat.roughNumbersUpTo_card_le
+#check Nat.smoothNumbers_eq_factoredNumbers_primesBelow
+#check Nat.smoothNumbersUpTo_eq_filter
+#check Nat.mem_smoothNumbers
+#check Nat.mem_smoothNumbersUpTo

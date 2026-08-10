@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.mod_lt
+#check Nat.mod_le
+#check Nat.mod_mul_right_mod
+#check Nat.mul_mod
+#check Nat.add_mod
+#check Nat.mod_eq_sub_mod
+#check Nat.mod_eq_sub_mod_of_le
+#check Nat.mod_eq_of_lt
+#check Nat.mod_eq_of_lt
+#check Nat.le_div_iff_mul_le
+#check Nat.div_le_iff_le_mul
+#check Finset.sum_le_sum
+#check Finset.sum_image
+#check Finset.sum_bij
+#check Finset.sum_bij'

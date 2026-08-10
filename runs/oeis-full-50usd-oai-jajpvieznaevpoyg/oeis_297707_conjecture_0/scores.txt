@@ -1,0 +1,18 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_resource
+  killed (exit 134)
+  libc++abi: terminating due to uncaught exception of type lean::throwable: deep recursion was detected at 'interpreter' (potential solution: increase stack space in your system)
+  interpreter stacktrace:
+  #1 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg._lam_0
+  #2 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg._lam_0._boxed
+  #3 List.foldrTR._redArg
+  #4 Finset.fold._redArg
+  #5 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg
+  #6 Finset.max._at_.Nat.prevPrimeC.spec_0
+  #7 Nat.prevPrimeC
+  #8 oeis_297707_conjecture_0._nativeDecide_1_4._closed_1
+  #9 oeis_297707_conjecture_0._nativeDecide_1_4._closed_2
+  #10 oeis_297707_conjecture_0._nativeDecide_1_4._closed_3
+  #11 oeis_297707_conjecture_0._nativeDecide_1_4
+

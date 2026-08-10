@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:648:4: warning: 'push_cast' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nSubmission/Spec.lean:993:33: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\nSubmission/Spec.lean:997:36: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\nSubmission/Spec.lean:999:10: error: unsolved goals\ncase neg\nn : ℕ\nh : n > 0\nha : a n = 1\nhp : ¬Nat.Prime (n + 1)\nhn3 : ¬n = 3\nhn216 : ¬n = 216\nhn1476 : ¬n = 1476\nhn4 : n ≥ 4\n⊢ Nat.Prime (n + 1)\nSubmission/Spec.lean:1012:8: error: No goals to be solved\n31\n211",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

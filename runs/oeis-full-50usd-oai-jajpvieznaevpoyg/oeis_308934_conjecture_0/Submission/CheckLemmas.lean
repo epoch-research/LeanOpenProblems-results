@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.log_mul_base
+#check Nat.log_pow
+#check Nat.log_mono_right
+#check Nat.pow_le_pow_of_le_right
+#check Nat.mul_le_mul
+#check Nat.sqrt_le'
+#check Nat.le_sqrt'
+#check Nat.sqrt_eq'
+#check Finset.sum_pos'
+#check Finset.card_pos

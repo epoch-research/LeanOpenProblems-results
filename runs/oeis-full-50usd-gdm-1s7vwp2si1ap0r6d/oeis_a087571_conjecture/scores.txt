@@ -1,0 +1,13 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:415:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:470:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:525:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:580:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:635:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:690:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:745:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:800:6: error: (kernel) deep recursion detected
+  Submission/Spec.lean:862:8: warning: declaration uses 'sorry'
+

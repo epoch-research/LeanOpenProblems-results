@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Finset.card_Ioc
+#check Finset.card_Ico
+#check Finset.card_Icc
+#check Finset.Ioc_subset_Ico_self
+#check Finset.mem_Ioc
+#check Finset.mem_Ico
+#check Finset.sum_le_sum
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.single_le_sum
+#check Finset.card_le_sum
+#check Finset.card_eq_sum_ones
+#check Finset.sum_subset

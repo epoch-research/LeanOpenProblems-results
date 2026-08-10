@@ -1,0 +1,23 @@
+{
+  "id": "oeis_145355_conjecture_0",
+  "epoch": 1,
+  "uuid": "SD5xDLB99hLsTC3r3WVEEn",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2695592,
+      "output_tokens": 514920,
+      "total_tokens": 45479696,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 42269184,
+      "reasoning_tokens": 397918,
+      "total_cost": 50.06015199999991
+    }
+  },
+  "oeis_id": "A145355"
+}

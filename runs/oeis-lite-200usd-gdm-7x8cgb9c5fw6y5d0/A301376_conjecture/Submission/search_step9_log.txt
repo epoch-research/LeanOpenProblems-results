@@ -1,0 +1,11 @@
+Step 1: Finding the 10 base primes and residues...
+Base solved: N0 = 4566889721225821, prod = 3364615997695491 (digits: 16)
+Step 2: Searching for true counterexample N...
+k = 1000: checked 992 elements (401 required factor) in 6.78s
+k = 2000: checked 1024 elements (432 required factor) in 14.65s
+k = 3000: checked 1054 elements (382 required factor) in 23.40s
+k = 4000: checked 1056 elements (451 required factor) in 32.08s
+k = 5000: checked 1056 elements (452 required factor) in 41.04s
+k = 6000: checked 1087 elements (398 required factor) in 50.38s
+k = 7000: checked 1089 elements (469 required factor) in 60.71s
+k = 8000: checked 1089 elements (456 required factor) in 70.75s

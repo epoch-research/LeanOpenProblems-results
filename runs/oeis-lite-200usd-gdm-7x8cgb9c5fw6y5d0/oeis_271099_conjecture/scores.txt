@@ -1,0 +1,59 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:90:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 0
+    a ≥ 3
+    a ≥ 1
+    a ≥ 1
+    2*a - b ≥ 2
+  where
+   a := ↑k
+   b := ↑↑⟨0, h_pos⟩
+  Submission/Spec.lean:90:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 0
+    a ≥ 3
+    a ≥ 1
+    2*a - b ≥ 2
+  where
+   a := ↑k
+   b := ↑↑⟨0, h_pos⟩
+  Submission/Spec.lean:91:6: error: unsolved goals
+  case h.h₀
+  k : ℕ
+  hk : k > 2
+  n : ℕ
+  h_pos : 2 * k - 1 > 0
+  zero : Fin (2 * k - 1) := ⟨0, h_pos⟩
+  b : Fin (2 * k - 1)
+  a✝ : b ∈ univ
+  hb : b ≠ zero
+  ⊢ (1 * if 0 = 2 then 2 * k + 1 else if 0 = 3 then 0 else 0) = 0
+  Submission/Spec.lean:101:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 0
+    b + c ≥ 2
+    a ≥ 3
+    a ≥ 1
+    2*a - b - c ≤ -2
+  where
+   a := ↑k
+   b := ↑(Monoid.npow k 2)
+   c := ↑(Monoid.npow k 3) / ↑(Monoid.npow k 2)
+  Submission/Spec.lean:66:21: warning: This simp argument is unused:
+    iff_true
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hn,̵ ̵i̵f̵f̵_̵t̵r̵u̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:93:35: warning: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hb, ↓reduceIte,̵ ̵m̵u̵l̵_̵z̵e̵r̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+

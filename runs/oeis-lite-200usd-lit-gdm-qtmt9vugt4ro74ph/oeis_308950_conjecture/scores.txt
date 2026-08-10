@@ -1,0 +1,20 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:3111:36: error: Tactic `decide` proved that the proposition
+    ∀ a < 69,
+      ∀ b < 44,
+        2 ^ a * 3 ^ b ≤ 299889760893881640982 →
+          let val := 6 * (299889760893881640982 - 2 ^ a * 3 ^ b) + 1;
+          let f := factor_p1 a b;
+          f ∣ val ∧ 2 ≤ f ∧ f < val
+  is false
+  Submission/Spec.lean:3117:36: error: Tactic `decide` proved that the proposition
+    ∀ a < 69,
+      ∀ b < 44,
+        2 ^ a * 3 ^ b < 299889760893881640982 →
+          let val := 6 * (299889760893881640982 - 2 ^ a * 3 ^ b) - 1;
+          let f := factor_p2 a b;
+          f ∣ val ∧ 2 ≤ f ∧ f < val
+  is false
+

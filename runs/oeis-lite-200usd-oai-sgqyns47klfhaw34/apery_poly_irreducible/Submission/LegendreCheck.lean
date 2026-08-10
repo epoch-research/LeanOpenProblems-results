@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Polynomial.legendre
+#check Polynomial.legendre_coeff
+#check Polynomial.legendre_eq_sum
+#check legendre
+#check Polynomial.jacobi
+#check Polynomial.chebyshevT
+#check Polynomial.hermite
+#print Polynomial.legendre

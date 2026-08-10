@@ -1,0 +1,141 @@
+{
+  "proof_scorer": {
+    "value": "C",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 6 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 6 declarations.\n------------------\n------------------\n------------------\nSafeVerify check passed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "poincare_series_conjecture",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "poincare_series_genus2_odd_unimodular_lattices",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A097913",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A097913.generating_function",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A097913.generating_function.eq_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.PQS",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

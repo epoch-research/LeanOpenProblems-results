@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.dvd_sub
+#check Nat.dvd_sub'
+#check dvd_sub
+#check dvd_sub'
+#check dvd_mul_of_dvd_left
+#check dvd_mul_of_dvd_right
+#check pow_dvd_pow
+#check Nat.dvd_trans
+#check Nat.dvd_mul_right
+#check Nat.dvd_mul_left

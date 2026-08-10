@@ -1,0 +1,20 @@
+{
+  "id": "oeis_62567_conjecture_0",
+  "epoch": 1,
+  "uuid": "iFCJJT4x6AXZE3EYuuCSEv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 4301426,
+      "output_tokens": 195519,
+      "total_tokens": 33402236,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 28562732,
+      "reasoning_tokens": 342559,
+      "total_cost": 12.496219799999993
+    }
+  },
+  "oeis_id": "A062567"
+}

@@ -1,0 +1,2 @@
+import Submission.TestProof2
+#print axioms prime_of_prime_factor_step_weak

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nuncaught exception: (kernel) declaration type mismatch, 'helper_nonempty_A237720' has type\n  ∀ (n : Nat), GT.gt n 2 → True\nbut it is expected to have type\n  ∀ (n : Nat),\n    GT.gt n 2 →\n      Nonempty (Exists fun p => And (Nat.Prime p) (And (instLTNat.lt p n) (Nat.Prime (instHAdd.hAdd n p).sqrt)))",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": null
+    }
+  }
+}

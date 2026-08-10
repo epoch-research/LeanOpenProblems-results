@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.odd_iff
+#check Nat.even_iff
+#check odd_iff_not_even
+#check Nat.odd_iff_not_even
+#check Nat.not_odd_iff_even
+#check Nat.even_iff_not_odd
+#check Odd.pow
+#check Odd.mul
+#check Even.mul_left
+#check Nat.Prime.dvd_iff_not_coprime

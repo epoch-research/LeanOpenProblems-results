@@ -1,0 +1,23 @@
+{
+  "id": "apery_poly_irreducible",
+  "epoch": 1,
+  "uuid": "7co2SHnkqCkXr8VMqVw2qw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 6629845,
+      "output_tokens": 1603153,
+      "total_tokens": 245877286,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 237644288,
+      "reasoning_tokens": 1021884,
+      "total_cost": 200.0659589999999
+    }
+  },
+  "oeis_id": "A005258"
+}

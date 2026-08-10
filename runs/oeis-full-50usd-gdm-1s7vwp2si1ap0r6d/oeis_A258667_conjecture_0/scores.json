@@ -1,0 +1,216 @@
+{
+  "proof_scorer": {
+    "value": "C",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 8 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 144 declarations.\n------------------\n------------------\n------------------\nSafeVerify check passed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "A258667",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.A258667_inner_sum",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A258667_asymptotic_sum_part",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "oeis_A258667_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A258667_asymptotic_term._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "nat_fac_to_real",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "menage_denom_term",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A258667_asymptotic_term",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:309:8: error(lean.unknownIdentifier): Unknown identifier `B_A279056_scale`\nSubmission/Spec.lean:1102:4: error: Type mismatch\n  h_yes\nhas type\n  ¬0 < B_A279056 n\nbut is expected to have type\n  B_A279056 n > 0",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

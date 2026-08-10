@@ -1,0 +1,60 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 54 declarations.\n------------------\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_277060_conjecture_0: theorem type mismatch\n  Expected type: And (forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)) p) -> (Nat.ModEq (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))) (A277060 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) p) -> (Nat.ModEq (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))) (A277060 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))\n  Got type:      True\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "oeis_277060_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "failureMode": "thmType"
+          }
+        ],
+        [
+          "A277060",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

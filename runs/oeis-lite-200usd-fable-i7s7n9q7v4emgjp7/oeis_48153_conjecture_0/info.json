@@ -1,0 +1,20 @@
+{
+  "id": "oeis_48153_conjecture_0",
+  "epoch": 1,
+  "uuid": "ZRDr6kQ5PqXiQFZrxkoqkQ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 339,
+      "output_tokens": 697697,
+      "total_tokens": 31060296,
+      "input_tokens_cache_write": 1838823,
+      "input_tokens_cache_read": 28523437,
+      "reasoning_tokens": 163150,
+      "total_cost": 86.3969645
+    }
+  },
+  "oeis_id": "A048153"
+}

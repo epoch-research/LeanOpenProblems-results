@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a211417_conjecture_specific",
+  "epoch": 1,
+  "uuid": "62LhcyUfYwVNbrZUjKu94H",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 105,
+      "output_tokens": 92187,
+      "total_tokens": 3713494,
+      "input_tokens_cache_write": 119282,
+      "input_tokens_cache_read": 3501920,
+      "reasoning_tokens": 18479,
+      "total_cost": 4.8016725000000005
+    }
+  },
+  "oeis_id": "A211417"
+}

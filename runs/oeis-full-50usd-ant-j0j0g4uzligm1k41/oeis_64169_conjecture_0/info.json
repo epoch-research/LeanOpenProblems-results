@@ -1,0 +1,20 @@
+{
+  "id": "oeis_64169_conjecture_0",
+  "epoch": 1,
+  "uuid": "bTw2ucSnfeEZ5ASeBAbpUF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 259,
+      "output_tokens": 240858,
+      "total_tokens": 22001694,
+      "input_tokens_cache_write": 296067,
+      "input_tokens_cache_read": 21464510,
+      "reasoning_tokens": 42420,
+      "total_cost": 18.60541875
+    }
+  },
+  "oeis_id": "A064169"
+}

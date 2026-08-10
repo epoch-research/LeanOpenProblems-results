@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+open Finset
+#check Finset.sum_range_add
+#check Finset.sum_range_sub
+#check Finset.sum_Icc_eq_sum_range
+#check Finset.sum_range_reflect
+#check Finset.sum_range_succ'
+#check Finset.sum_range_succ
+#check Finset.range_eq_Ico
+#check Finset.Ico_filter_lt

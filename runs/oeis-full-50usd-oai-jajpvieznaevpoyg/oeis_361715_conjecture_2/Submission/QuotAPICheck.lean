@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Quot.sound
+#check Quot.exact
+#check Quotient.exact
+#check Quot.ind
+#check Quot.lift
+#check Quot.rec
+#print Quot.exact
+#print Quotient.exact

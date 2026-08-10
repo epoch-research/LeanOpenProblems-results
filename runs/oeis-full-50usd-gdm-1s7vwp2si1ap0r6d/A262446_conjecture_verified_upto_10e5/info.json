@@ -1,0 +1,23 @@
+{
+  "id": "A262446_conjecture_verified_upto_10e5",
+  "epoch": 1,
+  "uuid": "2sfvFxEbxYx4asn6FYcfi8",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 17256865,
+      "output_tokens": 271837,
+      "total_tokens": 163355393,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 144852952,
+      "reasoning_tokens": 973739,
+      "total_cost": 50.05977330000004
+    }
+  },
+  "oeis_id": "A262446"
+}

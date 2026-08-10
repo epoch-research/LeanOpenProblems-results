@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Int.Linear.Context
+#check Int.Linear.Poly
+#check Int.Linear.eq_unsat
+#check Int.Linear.le_unsat
+#check Int.Linear.Poly.isUnsatEq
+#check Int.Linear.Poly.denote'
+#print Int.Linear.Context
+#print Int.Linear.Poly

@@ -1,0 +1,20 @@
+{
+  "id": "a091669_conjecture_primitive_root",
+  "epoch": 1,
+  "uuid": "QsB6nbvfSAtqSaNNFfifbC",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 377050,
+      "output_tokens": 71257,
+      "total_tokens": 11303731,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 10855424,
+      "reasoning_tokens": 37031,
+      "total_cost": 9.450672
+    }
+  },
+  "oeis_id": "A091669"
+}

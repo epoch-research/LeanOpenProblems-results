@@ -1,0 +1,198 @@
+-- Ah, T is in Type 2, so { x : T // x = t } is in Type 2, not Type 1!
+-- But wait!
+-- If T is in Type 1, then { x : T // x = t } is in Type 1!
+-- But if T is in Type 1, the constructor of T is `Type 0 → T`.
+-- So `proj` takes `Type 0`, not `Type 1`.
+-- So we can't pass `{ x : T // x = t }` (which is in Type 1) to `proj t` (which takes Type 0).
+--
+-- But wait!
+-- What if we use `PLift`?
+-- `PLift` can lower `{ x : T // x = t }` to `Type 0`!
+-- No, we saw `PLift` can't lower the universe of a Type.
+--
+-- But wait!
+-- Can we encode `t : T` as a `Type 0` by using `prop_to_T`?
+-- Yes! We did this!
+-- We defined:
+--   `inj_P : (Prop → Prop) → T`
+--   `proj_P : T → (Prop → Prop)`
+-- such that `proj_inj_P : proj_P (inj_P f) = f`.
+-- This is a bijection/injection between `Prop → Prop` and `T`!
+-- Since `Prop → Prop` is in `Type 0`, and `T` is in `Type 1`.
+-- Let's see: we want to prove `False` from this.
+-- Since `proj_inj_P` means `proj_P` is surjective.
+-- Can we prove `False` by using Cantor's diagonal argument on `Prop`?
+-- Yes!
+-- Let's define:
+--   `diag (p : Prop) : Prop := ¬ (proj_P (inj_P (fun q => p)) p)`?
+-- Let's see: we want to find a contradiction.
+-- Let's look at the standard proof of Cantor's theorem that `A → Prop` is larger than `A`.
+-- Here `A = Prop`. So `Prop → Prop` is larger than `Prop`.
+-- Since we have `inj_P : (Prop → Prop) → T`, `T` is larger than `Prop → Prop`.
+-- So `T` is larger than `Prop`.
+-- But we also have `prop_to_T : Prop → T` and `T_to_prop : T → Prop`
+-- such that `T_to_prop (prop_to_T p) ↔ p`.
+-- This means `Prop` is injected into `T`, and `T` is projected to `Prop`.
+-- This is not a contradiction because `T` is larger than `Prop`.
+--
+-- But wait!
+-- Can we get an injection from `T → Prop` to `Prop → Prop`?
+-- Yes!
+-- Since `T` is projected to `Prop` by `T_to_prop`,
+-- we can map any function `P : T → Prop` to `f : Prop → Prop` by:
+--   `f (p : Prop) : Prop := P (prop_to_T p)`
+-- Is this map injective?
+-- If `P1 (prop_to_T p) = P2 (prop_to_T p)` for all `p : Prop`.
+-- Does `P1 = P2`?
+-- Only if `prop_to_T` is surjective!
+-- Is `prop_to_T` surjective?
+-- No, because `T` is larger than `Prop`.
+--
+-- But wait!
+-- Can we define `T_to_prop` to be injective?
+-- No, because `T` is larger than `Prop`.
+--
+-- But wait!
+-- Why is `T` larger than `Prop`?
+-- Because `T` has constructor `mk : (Type → T) → T`.
+-- But we only used `inj_prop : (Prop → T) → T`!
+-- So we only used the fact that `T` is larger than `Prop → T`!
+-- Yes! `inj_prop` is an injection from `Prop → T` to `T`!
+-- This means `T` is at least as large as `Prop → T`!
+-- But `Prop → T` is strictly larger than `T`!
+-- Yes! By Cantor's theorem, for any non-trivial type `T`, `Prop → T` (which is `Power(T)` if `Prop` has 2 elements) is strictly larger than `T`!
+-- Let's prove this!
+-- Let's prove that if we have `inj_prop : (Prop → T) → T` and `proj_prop : T → (Prop → T)`
+-- such that `proj_prop (inj_prop f) = f`, then we get `False`!
+-- This is Cantor's paradox on `T` with `Prop`!
+-- Let's write the proof:
+-- Let `diag (p : Prop) : T := ...`
+-- No, Cantor's diagonal argument:
+-- For any `g : T → (Prop → T)`.
+-- Let's define `diag (p : Prop) : T := ...`
+-- We want `diag` to differ from `proj_prop t` for any `t : T`.
+-- So we want `diag p ≠ proj_prop t p` where `p` is some Prop.
+-- If we can map `t : T` to a unique Prop `p_t : Prop`!
+-- How can we map `t : T` to a unique Prop `p_t : Prop`?
+-- We can't, because `T` is larger than `Prop`.
+--
+-- But wait!
+-- We have `inj_P : (Prop → Prop) → T` and `proj_P : T → (Prop → Prop)`
+-- such that `proj_inj_P : ∀ f, proj_P (inj_P f) = f`.
+-- Can we prove `False` from this?
+-- Let's see: `Prop → Prop` is the set of all functions from `Prop` to `Prop`.
+-- Since `proj_inj_P` means `proj_P` is a surjection from `T` to `Prop → Prop`.
+-- And `inj_P` is an injection from `Prop → Prop` to `T`.
+-- Let's define:
+--   `inj_PP (f : (Prop → Prop) → Prop) : Prop := ...`
+-- No.
+--
+-- Wait!
+-- What if we use `T_to_prop` to map `T` to `Prop`?
+-- We have `T_to_prop : T → Prop`.
+-- We have `prop_to_T : Prop → T`.
+-- We have `T_to_prop (prop_to_T p) ↔ p`.
+-- This is an injection from `Prop` to `T`.
+-- What if we define:
+--   `inj_PP (f : Prop → Prop) : Prop := T_to_prop (inj_P f)`
+-- This `inj_PP` maps `Prop → Prop` to `Prop`!
+-- Is `inj_PP` injective?
+-- If `inj_PP f1 = inj_PP f2`.
+-- Then `T_to_prop (inj_P f1) = T_to_prop (inj_P f2)`.
+-- Does this imply `inj_P f1 = inj_P f2`?
+-- No, because `T_to_prop` is not injective.
+-- But wait!
+-- Can we define `proj_PP : Prop → (Prop → Prop)`?
+-- We tried: `proj_PP p := proj_P (prop_to_T p)`.
+-- Let's check:
+-- `proj_PP (inj_PP f) p`
+-- `= proj_P (prop_to_T (T_to_prop (inj_P f))) p`
+-- Is `prop_to_T (T_to_prop t)` equal to `t`?
+-- Let's look at `inj_P f`!
+-- `inj_P f = inj_prop (fun p => prop_to_T (f p))`
+-- `= T.mk (fun X => if h : ∃ p, X = PLift p then prop_to_T (f (Classical.choose h)) else T.base)`.
+-- Let's call this `t0`.
+-- `T_to_prop t0` is `True` because `t0` is a `T.mk` term.
+-- So `prop_to_T (T_to_prop t0) = prop_to_T True = T.mk (fun _ => T.base)`.
+-- They are not equal.
+--
+-- But wait!
+-- Can we make `T_to_prop t` return the function `f`?
+-- No, because `Prop` cannot contain `Prop → Prop`.
+-- But wait!
+-- Is there any other way to prove `False`?
+-- Let's think: we have `T.mk : (Type → T) → T` and `proj : T → (Type → T)`.
+-- And `Type` contains `T`.
+-- So we have a type `T` and an injection `inj : (Type → T) → T`.
+-- Since `Type` contains `T`.
+-- Let's define the injection `inj_T : (T → T) → T`!
+-- Yes! Since `T` is in `Type 1`, `T` is an element of `Type 1`.
+-- But `Type` is `Type 0`, so `T` is not in `Type`.
+-- But `ULift T` is in `Type`!
+-- So `ULift T` is a `Type`!
+-- So we can define `inj_T (f : ULift T → T) : T` by:
+--   `inj_T f := T.mk (fun X => if h : X = ULift T then f (cast h ...) else T.base)`?
+-- No, `f` takes `ULift T` and returns `T`.
+-- But `Type → T` takes `X : Type` and returns `T`.
+-- Since `X = ULift T`, we can cast `X` to `ULift T`!
+-- So we can apply `f` to any `x : X`!
+-- But where do we get `x : X`?
+-- To define `inj_T f`, we must return `Type → T`.
+-- So we are GIVEN `X : Type`.
+-- If `X = ULift T`, we can get `x : X`?
+-- No, we don't have `x : X`.
+-- But wait!
+-- We want `inj_T` to be `(T → T) → T`?
+-- No, `ULift T → T` is isomorphic to `T → T`!
+-- So if we have `inj_T : (ULift T → T) → T` and `proj_T : T → (ULift T → T)`
+-- such that `proj_T (inj_T f) = f`!
+-- Let's see: can we define `inj_T (f : ULift T → T) : T`?
+-- We want to return a term of `T`.
+-- `T` has `T.mk : (Type → T) → T`.
+-- So we can define `inj_T f := T.mk (fun X => ...)`
+-- For any `X : Type`, we want to return `T`.
+-- If `X = ULift T`, we want to return `f (cast (by rw [h]) (ULift.up T.base))`?
+-- Yes! We can just pass `ULift.up T.base` to `f`!
+-- But we want `proj_T (inj_T f) = f`!
+-- If we pass `ULift.up T.base`, then `proj_T (inj_T f) x` will be `f (ULift.up T.base)` for any `x`!
+-- So it won't be equal to `f x`!
+-- We must pass `x` itself!
+-- But `x` has type `ULift T` (which is `X`).
+-- So if we are given `x : ULift T`, we can apply `f` to `x`!
+-- But `fun X => ...` does NOT have `x : X` as argument!
+-- The argument is only `X : Type`!
+-- So we don't have `x : X`!
+--
+-- Ah!
+-- This is why we can't directly define `inj_T` of type `(T → T) → T`!
+-- Because `Type → T` takes `X : Type`, not `x : X`!
+-- Yes! `Type → T` is the type of functions that take a TYPE, not an element of that type!
+-- So `Type → T` is like `Type 0 → T`.
+-- It is NOT `(X : Type) → X → T`!
+--
+-- Oh!
+-- `Type → T` is just `Type 0 → T`!
+-- So the argument of `T.mk` is a function that takes a Type, and returns `T`!
+-- So it is a function on the universe of Types!
+-- This is why we were able to define `inj_prop : (Prop → T) → T`!
+-- Because `Prop → T` is also a function that takes a Type (specifically a Prop, which is in Type), and returns `T`!
+-- So `Prop → T` and `Type → T` are both functions on Types!
+--
+-- Let's think:
+-- Can we define `inj_T` of type `((Type → Prop) → Prop) → T`?
+-- Yes!
+-- Because `(Type → Prop) → Prop` is also a function on Types!
+-- Specifically, a term of `(Type → Prop) → Prop` takes a function `Type → Prop` and returns `Prop`.
+-- But wait!
+-- `Type → T` is `Type → T`.
+-- Can we map `(Type → Prop) → Prop` to `Type → T`?
+-- Yes!
+-- Given `F : (Type → Prop) → Prop`, we want to construct `g : Type → T`.
+-- For any `X : Type`, we want to return `T`.
+-- We can define `g (X : Type) : T := prop_to_T (F (fun Y => X = Y))`?
+-- Yes! `fun Y => X = Y` has type `Type → Prop`!
+-- So `F (fun Y => X = Y)` has type `Prop`!
+-- So `prop_to_T (F (fun Y => X = Y))` has type `T`!
+-- This is incredibly elegant!
+-- Let's check if this is an injection!
+-- Let's write `TestPos115.lean`!

@@ -1,0 +1,968 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:123:4: error: `simp` failed: maximum number of steps exceeded
+  Submission/Spec.lean:123:4: error: `simp` failed: maximum number of steps exceeded
+  Submission/Spec.lean:123:21: warning: unused name: h1
+  Submission/Spec.lean:123:24: warning: unused name: h2
+  Submission/Spec.lean:123:27: warning: unused name: h3
+  Submission/Spec.lean:123:30: warning: unused name: h4
+  Submission/Spec.lean:123:33: warning: unused name: h5
+  Submission/Spec.lean:123:36: warning: unused name: h6
+  Submission/Spec.lean:123:39: warning: unused name: h7
+  Submission/Spec.lean:123:42: warning: unused name: h8
+  Submission/Spec.lean:123:45: warning: unused name: h9
+  Submission/Spec.lean:123:48: warning: unused name: h10
+  Submission/Spec.lean:123:52: warning: unused name: h11
+  Submission/Spec.lean:123:56: warning: unused name: h12
+  Submission/Spec.lean:123:60: warning: unused name: h13
+  Submission/Spec.lean:123:64: warning: unused name: h14
+  Submission/Spec.lean:123:68: warning: unused name: h15
+  Submission/Spec.lean:123:72: warning: unused name: h16
+  Submission/Spec.lean:123:76: warning: unused name: h17
+  Submission/Spec.lean:123:80: warning: unused name: h18
+  Submission/Spec.lean:123:84: warning: unused name: h19
+  Submission/Spec.lean:123:88: warning: unused name: h20
+  Submission/Spec.lean:123:92: warning: unused name: h21
+  Submission/Spec.lean:123:96: warning: unused name: h22
+  Submission/Spec.lean:123:100: warning: unused name: h23
+  Submission/Spec.lean:126:18: error: Tactic `rfl` failed: The left-hand side
+    if n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k then 1
+    else
+      if
+          n = 2 ∨
+            n = 8 ∨
+              n = 22 ∨
+                n = 27 ∨
+                  n = 32 ∨
+                    n = 39 ∨
+                      n = 43 ∨
+                        n = 55 ∨
+                          n = 79 ∨
+                            n = 88 ∨
+                              n = 127 ∨
+                                n = 128 ∨
+                                  n = 139 ∨
+                                    n = 140 ∨
+                                      n = 143 ∨
+                                        n = 188 ∨
+                                          n = 191 ∨
+                                            n = 236 ∨ n = 239 ∨ n = 268 ∨ n = 299 ∨ n = 302 ∨ n = 319 ∨ n = 352 then
+        3
+      else
+        if
+            n = 5 ∨
+              n = 6 ∨
+                n = 9 ∨
+                  n = 10 ∨
+                    n = 24 ∨
+                      n = 30 ∨
+                        n = 31 ∨
+                          n = 36 ∨
+                            n = 38 ∨
+                              n = 40 ∨
+                                n = 42 ∨
+                                  n = 44 ∨
+                                    n = 46 ∨
+                                      n = 51 ∨
+                                        n = 62 ∨
+                                          n = 76 ∨
+                                            n = 83 ∨
+                                              n = 87 ∨
+                                                n = 96 ∨
+                                                  n = 103 ∨
+                                                    n = 118 ∨
+                                                      n = 120 ∨
+                                                        n = 144 ∨
+                                                          n = 151 ∨
+                                                            n = 152 ∨
+                                                              n = 160 ∨
+                                                                n = 167 ∨
+                                                                  n = 168 ∨
+                                                                    n = 175 ∨
+                                                                      n = 176 ∨
+                                                                        n = 179 ∨
+                                                                          n = 184 ∨
+                                                                            n = 195 ∨
+                                                                              n = 199 ∨
+                                                                                n = 248 ∨
+                                                                                  n = 255 ∨
+                                                                                    n = 263 ∨
+                                                                                      n = 284 ∨
+                                                                                        n = 303 ∨
+                                                                                          n = 304 ∨ n = 311 ∨ n = 330 then
+          4
+        else
+          if
+              n = 13 ∨
+                n = 20 ∨
+                  n = 49 ∨
+                    n = 57 ∨
+                      n = 58 ∨
+                        n = 75 ∨
+                          n = 80 ∨
+                            n = 92 ∨
+                              n = 95 ∨
+                                n = 111 ∨
+                                  n = 115 ∨
+                                    n = 119 ∨
+                                      n = 124 ∨
+                                        n = 156 ∨
+                                          n = 158 ∨
+                                            n = 159 ∨
+                                              n = 220 ∨
+                                                n = 232 ∨
+                                                  n = 235 ∨
+                                                    n = 283 ∨
+                                                      n = 286 ∨
+                                                        n = 287 ∨ n = 316 ∨ n = 320 ∨ n = 323 ∨ n = 327 ∨ n = 368 then
+            5
+          else
+            if
+                n = 29 ∨
+                  n = 34 ∨
+                    n = 37 ∨
+                      n = 74 ∨
+                        n = 93 ∨
+                          n = 107 ∨
+                            n = 108 ∨
+                              n = 122 ∨
+                                n = 123 ∨
+                                  n = 134 ∨
+                                    n = 136 ∨
+                                      n = 142 ∨
+                                        n = 154 ∨
+                                          n = 155 ∨
+                                            n = 163 ∨
+                                              n = 166 ∨
+                                                n = 203 ∨
+                                                  n = 211 ∨
+                                                    n = 215 ∨
+                                                      n = 222 ∨
+                                                        n = 227 ∨
+                                                          n = 238 ∨ n = 259 ∨ n = 296 ∨ n = 331 ∨ n = 347 ∨ n = 380 then
+              6
+            else
+              if
+                  n = 21 ∨
+                    n = 26 ∨
+                      n = 33 ∨
+                        n = 50 ∨
+                          n = 52 ∨
+                            n = 61 ∨
+                              n = 84 ∨
+                                n = 102 ∨
+                                  n = 104 ∨
+                                    n = 114 ∨
+                                      n = 131 ∨
+                                        n = 137 ∨
+                                          n = 172 ∨
+                                            n = 187 ∨
+                                              n = 190 ∨
+                                                n = 196 ∨
+                                                  n = 200 ∨
+                                                    n = 208 ∨
+                                                      n = 223 ∨
+                                                        n = 228 ∨
+                                                          n = 282 ∨
+                                                            n = 295 ∨ n = 310 ∨ n = 318 ∨ n = 336 ∨ n = 348 ∨ n = 371 then
+                7
+              else
+                if
+                    n = 17 ∨
+                      n = 18 ∨
+                        n = 25 ∨
+                          n = 45 ∨
+                            n = 65 ∨
+                              n = 68 ∨
+                                n = 72 ∨
+                                  n = 73 ∨
+                                    n = 77 ∨
+                                      n = 86 ∨
+                                        n = 94 ∨
+                                          n = 97 ∨
+                                            n = 99 ∨
+                                              n = 109 ∨
+                                                n = 121 ∨
+                                                  n = 138 ∨
+                                                    n = 147 ∨
+                                                      n = 177 ∨
+                                                        n = 186 ∨
+                                                          n = 193 ∨
+                                                            n = 202 ∨
+                                                              n = 204 ∨
+                                                                n = 207 ∨
+                                                                  n = 214 ∨
+                                                                    n = 219 ∨
+                                                                      n = 244 ∨
+                                                                        n = 247 ∨
+                                                                          n = 251 ∨
+                                                                            n = 252 ∨
+                                                                              n = 260 ∨
+                                                                                n = 267 ∨
+                                                                                  n = 272 ∨
+                                                                                    n = 288 ∨
+                                                                                      n = 307 ∨
+                                                                                        n = 332 ∨
+                                                                                          n = 344 ∨
+                                                                                            n = 355 ∨
+                                                                                              n = 358 ∨
+                                                                                                n = 359 ∨
+                                                                                                  n = 367 ∨
+                                                                                                    n = 372 ∨ n = 376 then
+                  8
+                else
+                  if
+                      n = 41 ∨
+                        n = 66 ∨
+                          n = 70 ∨
+                            n = 89 ∨
+                              n = 116 ∨
+                                n = 133 ∨
+                                  n = 148 ∨
+                                    n = 157 ∨
+                                      n = 174 ∨
+                                        n = 183 ∨
+                                          n = 210 ∨
+                                            n = 217 ∨
+                                              n = 218 ∨
+                                                n = 230 ∨
+                                                  n = 242 ∨
+                                                    n = 258 ∨
+                                                      n = 262 ∨
+                                                        n = 264 ∨ n = 280 ∨ n = 298 ∨ n = 300 ∨ n = 334 ∨ n = 364 then
+                    9
+                  else
+                    if
+                        n = 53 ∨
+                          n = 90 ∨
+                            n = 105 ∨
+                              n = 110 ∨
+                                n = 117 ∨
+                                  n = 132 ∨
+                                    n = 135 ∨
+                                      n = 164 ∨
+                                        n = 171 ∨
+                                          n = 237 ∨
+                                            n = 246 ∨
+                                              n = 254 ∨
+                                                n = 278 ∨
+                                                  n = 291 ∨
+                                                    n = 314 ∨
+                                                      n = 322 ∨ n = 335 ∨ n = 343 ∨ n = 346 ∨ n = 360 ∨ n = 361 then
+                      10
+                    else
+                      if
+                          n = 54 ∨
+                            n = 85 ∨
+                              n = 100 ∨
+                                n = 106 ∨
+                                  n = 113 ∨
+                                    n = 141 ∨
+                                      n = 165 ∨
+                                        n = 169 ∨
+                                          n = 181 ∨
+                                            n = 182 ∨
+                                              n = 197 ∨
+                                                n = 206 ∨
+                                                  n = 216 ∨
+                                                    n = 231 ∨
+                                                      n = 253 ∨
+                                                        n = 266 ∨
+                                                          n = 269 ∨
+                                                            n = 274 ∨
+                                                              n = 275 ∨
+                                                                n = 292 ∨
+                                                                  n = 301 ∨
+                                                                    n = 326 ∨ n = 339 ∨ n = 362 ∨ n = 374 ∨ n = 375 then
+                        11
+                      else
+                        if
+                            n = 82 ∨
+                              n = 98 ∨
+                                n = 125 ∨
+                                  n = 126 ∨
+                                    n = 150 ∨
+                                      n = 173 ∨
+                                        n = 201 ∨
+                                          n = 209 ∨
+                                            n = 213 ∨
+                                              n = 221 ∨
+                                                n = 229 ∨
+                                                  n = 233 ∨
+                                                    n = 243 ∨
+                                                      n = 250 ∨
+                                                        n = 270 ∨ n = 289 ∨ n = 315 ∨ n = 328 ∨ n = 351 ∨ n = 373 then
+                          12
+                        else
+                          if n = 129 ∨ n = 130 ∨ n = 194 ∨ n = 241 ∨ n = 257 ∨ n = 308 ∨ n = 363 then 13
+                          else
+                            if
+                                n = 69 ∨
+                                  n = 101 ∨
+                                    n = 170 ∨
+                                      n = 180 ∨
+                                        n = 198 ∨
+                                          n = 212 ∨
+                                            n = 234 ∨ n = 277 ∨ n = 279 ∨ n = 313 ∨ n = 317 ∨ n = 356 ∨ n = 366 then
+                              14
+                            else
+                              if n = 149 ∨ n = 178 ∨ n = 185 ∨ n = 340 ∨ n = 345 then 15
+                              else
+                                if n = 145 ∨ n = 205 ∨ n = 249 ∨ n = 290 ∨ n = 329 ∨ n = 350 then 16
+                                else
+                                  if
+                                      n = 81 ∨
+                                        n = 161 ∨
+                                          n = 226 ∨
+                                            n = 245 ∨ n = 273 ∨ n = 281 ∨ n = 338 ∨ n = 349 ∨ n = 365 ∨ n = 377 then
+                                    17
+                                  else
+                                    if n = 153 ∨ n = 189 ∨ n = 293 ∨ n = 294 ∨ n = 309 ∨ n = 321 ∨ n = 341 ∨ n = 357 then
+                                      18
+                                    else
+                                      if n = 146 ∨ n = 162 ∨ n = 225 ∨ n = 276 ∨ n = 285 ∨ n = 297 ∨ n = 333 then 19
+                                      else
+                                        if n = 265 ∨ n = 305 ∨ n = 324 ∨ n = 354 ∨ n = 378 then 20
+                                        else
+                                          if n = 337 ∨ n = 353 ∨ n = 370 then 21
+                                          else
+                                            if n = 306 ∨ n = 342 then 22
+                                            else if n = 325 then 23 else if n = 369 then 26 else if n = 261 then 30 else 2
+  is not definitionally equal to the right-hand side
+    1
+  
+  case pos.mpr
+  n : ℕ
+  hn : n > 0
+  h a✝ : n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k
+  ⊢ (if n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k then 1
+      else
+        if
+            n = 2 ∨
+              n = 8 ∨
+                n = 22 ∨
+                  n = 27 ∨
+                    n = 32 ∨
+                      n = 39 ∨
+                        n = 43 ∨
+                          n = 55 ∨
+                            n = 79 ∨
+                              n = 88 ∨
+                                n = 127 ∨
+                                  n = 128 ∨
+                                    n = 139 ∨
+                                      n = 140 ∨
+                                        n = 143 ∨
+                                          n = 188 ∨
+                                            n = 191 ∨
+                                              n = 236 ∨ n = 239 ∨ n = 268 ∨ n = 299 ∨ n = 302 ∨ n = 319 ∨ n = 352 then
+          3
+        else
+          if
+              n = 5 ∨
+                n = 6 ∨
+                  n = 9 ∨
+                    n = 10 ∨
+                      n = 24 ∨
+                        n = 30 ∨
+                          n = 31 ∨
+                            n = 36 ∨
+                              n = 38 ∨
+                                n = 40 ∨
+                                  n = 42 ∨
+                                    n = 44 ∨
+                                      n = 46 ∨
+                                        n = 51 ∨
+                                          n = 62 ∨
+                                            n = 76 ∨
+                                              n = 83 ∨
+                                                n = 87 ∨
+                                                  n = 96 ∨
+                                                    n = 103 ∨
+                                                      n = 118 ∨
+                                                        n = 120 ∨
+                                                          n = 144 ∨
+                                                            n = 151 ∨
+                                                              n = 152 ∨
+                                                                n = 160 ∨
+                                                                  n = 167 ∨
+                                                                    n = 168 ∨
+                                                                      n = 175 ∨
+                                                                        n = 176 ∨
+                                                                          n = 179 ∨
+                                                                            n = 184 ∨
+                                                                              n = 195 ∨
+                                                                                n = 199 ∨
+                                                                                  n = 248 ∨
+                                                                                    n = 255 ∨
+                                                                                      n = 263 ∨
+                                                                                        n = 284 ∨
+                                                                                          n = 303 ∨
+                                                                                            n = 304 ∨
+                                                                                              n = 311 ∨ n = 330 then
+            4
+          else
+            if
+                n = 13 ∨
+                  n = 20 ∨
+                    n = 49 ∨
+                      n = 57 ∨
+                        n = 58 ∨
+                          n = 75 ∨
+                            n = 80 ∨
+                              n = 92 ∨
+                                n = 95 ∨
+                                  n = 111 ∨
+                                    n = 115 ∨
+                                      n = 119 ∨
+                                        n = 124 ∨
+                                          n = 156 ∨
+                                            n = 158 ∨
+                                              n = 159 ∨
+                                                n = 220 ∨
+                                                  n = 232 ∨
+                                                    n = 235 ∨
+                                                      n = 283 ∨
+                                                        n = 286 ∨
+                                                          n = 287 ∨ n = 316 ∨ n = 320 ∨ n = 323 ∨ n = 327 ∨ n = 368 then
+              5
+            else
+              if
+                  n = 29 ∨
+                    n = 34 ∨
+                      n = 37 ∨
+                        n = 74 ∨
+                          n = 93 ∨
+                            n = 107 ∨
+                              n = 108 ∨
+                                n = 122 ∨
+                                  n = 123 ∨
+                                    n = 134 ∨
+                                      n = 136 ∨
+                                        n = 142 ∨
+                                          n = 154 ∨
+                                            n = 155 ∨
+                                              n = 163 ∨
+                                                n = 166 ∨
+                                                  n = 203 ∨
+                                                    n = 211 ∨
+                                                      n = 215 ∨
+                                                        n = 222 ∨
+                                                          n = 227 ∨
+                                                            n = 238 ∨ n = 259 ∨ n = 296 ∨ n = 331 ∨ n = 347 ∨ n = 380 then
+                6
+              else
+                if
+                    n = 21 ∨
+                      n = 26 ∨
+                        n = 33 ∨
+                          n = 50 ∨
+                            n = 52 ∨
+                              n = 61 ∨
+                                n = 84 ∨
+                                  n = 102 ∨
+                                    n = 104 ∨
+                                      n = 114 ∨
+                                        n = 131 ∨
+                                          n = 137 ∨
+                                            n = 172 ∨
+                                              n = 187 ∨
+                                                n = 190 ∨
+                                                  n = 196 ∨
+                                                    n = 200 ∨
+                                                      n = 208 ∨
+                                                        n = 223 ∨
+                                                          n = 228 ∨
+                                                            n = 282 ∨
+                                                              n = 295 ∨
+                                                                n = 310 ∨ n = 318 ∨ n = 336 ∨ n = 348 ∨ n = 371 then
+                  7
+                else
+                  if
+                      n = 17 ∨
+                        n = 18 ∨
+                          n = 25 ∨
+                            n = 45 ∨
+                              n = 65 ∨
+                                n = 68 ∨
+                                  n = 72 ∨
+                                    n = 73 ∨
+                                      n = 77 ∨
+                                        n = 86 ∨
+                                          n = 94 ∨
+                                            n = 97 ∨
+                                              n = 99 ∨
+                                                n = 109 ∨
+                                                  n = 121 ∨
+                                                    n = 138 ∨
+                                                      n = 147 ∨
+                                                        n = 177 ∨
+                                                          n = 186 ∨
+                                                            n = 193 ∨
+                                                              n = 202 ∨
+                                                                n = 204 ∨
+                                                                  n = 207 ∨
+                                                                    n = 214 ∨
+                                                                      n = 219 ∨
+                                                                        n = 244 ∨
+                                                                          n = 247 ∨
+                                                                            n = 251 ∨
+                                                                              n = 252 ∨
+                                                                                n = 260 ∨
+                                                                                  n = 267 ∨
+                                                                                    n = 272 ∨
+                                                                                      n = 288 ∨
+                                                                                        n = 307 ∨
+                                                                                          n = 332 ∨
+                                                                                            n = 344 ∨
+                                                                                              n = 355 ∨
+                                                                                                n = 358 ∨
+                                                                                                  n = 359 ∨
+                                                                                                    n = 367 ∨
+                                                                                                      n = 372 ∨
+                                                                                                        n = 376 then
+                    8
+                  else
+                    if
+                        n = 41 ∨
+                          n = 66 ∨
+                            n = 70 ∨
+                              n = 89 ∨
+                                n = 116 ∨
+                                  n = 133 ∨
+                                    n = 148 ∨
+                                      n = 157 ∨
+                                        n = 174 ∨
+                                          n = 183 ∨
+                                            n = 210 ∨
+                                              n = 217 ∨
+                                                n = 218 ∨
+                                                  n = 230 ∨
+                                                    n = 242 ∨
+                                                      n = 258 ∨
+                                                        n = 262 ∨
+                                                          n = 264 ∨ n = 280 ∨ n = 298 ∨ n = 300 ∨ n = 334 ∨ n = 364 then
+                      9
+                    else
+                      if
+                          n = 53 ∨
+                            n = 90 ∨
+                              n = 105 ∨
+                                n = 110 ∨
+                                  n = 117 ∨
+                                    n = 132 ∨
+                                      n = 135 ∨
+                                        n = 164 ∨
+                                          n = 171 ∨
+                                            n = 237 ∨
+                                              n = 246 ∨
+                                                n = 254 ∨
+                                                  n = 278 ∨
+                                                    n = 291 ∨
+                                                      n = 314 ∨
+                                                        n = 322 ∨ n = 335 ∨ n = 343 ∨ n = 346 ∨ n = 360 ∨ n = 361 then
+                        10
+                      else
+                        if
+                            n = 54 ∨
+                              n = 85 ∨
+                                n = 100 ∨
+                                  n = 106 ∨
+                                    n = 113 ∨
+                                      n = 141 ∨
+                                        n = 165 ∨
+                                          n = 169 ∨
+                                            n = 181 ∨
+                                              n = 182 ∨
+                                                n = 197 ∨
+                                                  n = 206 ∨
+                                                    n = 216 ∨
+                                                      n = 231 ∨
+                                                        n = 253 ∨
+                                                          n = 266 ∨
+                                                            n = 269 ∨
+                                                              n = 274 ∨
+                                                                n = 275 ∨
+                                                                  n = 292 ∨
+                                                                    n = 301 ∨
+                                                                      n = 326 ∨ n = 339 ∨ n = 362 ∨ n = 374 ∨ n = 375 then
+                          11
+                        else
+                          if
+                              n = 82 ∨
+                                n = 98 ∨
+                                  n = 125 ∨
+                                    n = 126 ∨
+                                      n = 150 ∨
+                                        n = 173 ∨
+                                          n = 201 ∨
+                                            n = 209 ∨
+                                              n = 213 ∨
+                                                n = 221 ∨
+                                                  n = 229 ∨
+                                                    n = 233 ∨
+                                                      n = 243 ∨
+                                                        n = 250 ∨
+                                                          n = 270 ∨ n = 289 ∨ n = 315 ∨ n = 328 ∨ n = 351 ∨ n = 373 then
+                            12
+                          else
+                            if n = 129 ∨ n = 130 ∨ n = 194 ∨ n = 241 ∨ n = 257 ∨ n = 308 ∨ n = 363 then 13
+                            else
+                              if
+                                  n = 69 ∨
+                                    n = 101 ∨
+                                      n = 170 ∨
+                                        n = 180 ∨
+                                          n = 198 ∨
+                                            n = 212 ∨
+                                              n = 234 ∨ n = 277 ∨ n = 279 ∨ n = 313 ∨ n = 317 ∨ n = 356 ∨ n = 366 then
+                                14
+                              else
+                                if n = 149 ∨ n = 178 ∨ n = 185 ∨ n = 340 ∨ n = 345 then 15
+                                else
+                                  if n = 145 ∨ n = 205 ∨ n = 249 ∨ n = 290 ∨ n = 329 ∨ n = 350 then 16
+                                  else
+                                    if
+                                        n = 81 ∨
+                                          n = 161 ∨
+                                            n = 226 ∨
+                                              n = 245 ∨ n = 273 ∨ n = 281 ∨ n = 338 ∨ n = 349 ∨ n = 365 ∨ n = 377 then
+                                      17
+                                    else
+                                      if
+                                          n = 153 ∨
+                                            n = 189 ∨ n = 293 ∨ n = 294 ∨ n = 309 ∨ n = 321 ∨ n = 341 ∨ n = 357 then
+                                        18
+                                      else
+                                        if n = 146 ∨ n = 162 ∨ n = 225 ∨ n = 276 ∨ n = 285 ∨ n = 297 ∨ n = 333 then 19
+                                        else
+                                          if n = 265 ∨ n = 305 ∨ n = 324 ∨ n = 354 ∨ n = 378 then 20
+                                          else
+                                            if n = 337 ∨ n = 353 ∨ n = 370 then 21
+                                            else
+                                              if n = 306 ∨ n = 342 then 22
+                                              else
+                                                if n = 325 then 23
+                                                else if n = 369 then 26 else if n = 261 then 30 else 2) =
+      1
+  Submission/Spec.lean:128:24: error: Tactic `contradiction` failed
+  
+  case neg.mp
+  n : ℕ
+  hn : n > 0
+  h : ¬(n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k)
+  h_contra :
+    (if n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k then 1
+      else
+        if
+            n = 2 ∨
+              n = 8 ∨
+                n = 22 ∨
+                  n = 27 ∨
+                    n = 32 ∨
+                      n = 39 ∨
+                        n = 43 ∨
+                          n = 55 ∨
+                            n = 79 ∨
+                              n = 88 ∨
+                                n = 127 ∨
+                                  n = 128 ∨
+                                    n = 139 ∨
+                                      n = 140 ∨
+                                        n = 143 ∨
+                                          n = 188 ∨
+                                            n = 191 ∨
+                                              n = 236 ∨ n = 239 ∨ n = 268 ∨ n = 299 ∨ n = 302 ∨ n = 319 ∨ n = 352 then
+          3
+        else
+          if
+              n = 5 ∨
+                n = 6 ∨
+                  n = 9 ∨
+                    n = 10 ∨
+                      n = 24 ∨
+                        n = 30 ∨
+                          n = 31 ∨
+                            n = 36 ∨
+                              n = 38 ∨
+                                n = 40 ∨
+                                  n = 42 ∨
+                                    n = 44 ∨
+                                      n = 46 ∨
+                                        n = 51 ∨
+                                          n = 62 ∨
+                                            n = 76 ∨
+                                              n = 83 ∨
+                                                n = 87 ∨
+                                                  n = 96 ∨
+                                                    n = 103 ∨
+                                                      n = 118 ∨
+                                                        n = 120 ∨
+                                                          n = 144 ∨
+                                                            n = 151 ∨
+                                                              n = 152 ∨
+                                                                n = 160 ∨
+                                                                  n = 167 ∨
+                                                                    n = 168 ∨
+                                                                      n = 175 ∨
+                                                                        n = 176 ∨
+                                                                          n = 179 ∨
+                                                                            n = 184 ∨
+                                                                              n = 195 ∨
+                                                                                n = 199 ∨
+                                                                                  n = 248 ∨
+                                                                                    n = 255 ∨
+                                                                                      n = 263 ∨
+                                                                                        n = 284 ∨
+                                                                                          n = 303 ∨
+                                                                                            n = 304 ∨
+                                                                                              n = 311 ∨ n = 330 then
+            4
+          else
+            if
+                n = 13 ∨
+                  n = 20 ∨
+                    n = 49 ∨
+                      n = 57 ∨
+                        n = 58 ∨
+                          n = 75 ∨
+                            n = 80 ∨
+                              n = 92 ∨
+                                n = 95 ∨
+                                  n = 111 ∨
+                                    n = 115 ∨
+                                      n = 119 ∨
+                                        n = 124 ∨
+                                          n = 156 ∨
+                                            n = 158 ∨
+                                              n = 159 ∨
+                                                n = 220 ∨
+                                                  n = 232 ∨
+                                                    n = 235 ∨
+                                                      n = 283 ∨
+                                                        n = 286 ∨
+                                                          n = 287 ∨ n = 316 ∨ n = 320 ∨ n = 323 ∨ n = 327 ∨ n = 368 then
+              5
+            else
+              if
+                  n = 29 ∨
+                    n = 34 ∨
+                      n = 37 ∨
+                        n = 74 ∨
+                          n = 93 ∨
+                            n = 107 ∨
+                              n = 108 ∨
+                                n = 122 ∨
+                                  n = 123 ∨
+                                    n = 134 ∨
+                                      n = 136 ∨
+                                        n = 142 ∨
+                                          n = 154 ∨
+                                            n = 155 ∨
+                                              n = 163 ∨
+                                                n = 166 ∨
+                                                  n = 203 ∨
+                                                    n = 211 ∨
+                                                      n = 215 ∨
+                                                        n = 222 ∨
+                                                          n = 227 ∨
+                                                            n = 238 ∨ n = 259 ∨ n = 296 ∨ n = 331 ∨ n = 347 ∨ n = 380 then
+                6
+              else
+                if
+                    n = 21 ∨
+                      n = 26 ∨
+                        n = 33 ∨
+                          n = 50 ∨
+                            n = 52 ∨
+                              n = 61 ∨
+                                n = 84 ∨
+                                  n = 102 ∨
+                                    n = 104 ∨
+                                      n = 114 ∨
+                                        n = 131 ∨
+                                          n = 137 ∨
+                                            n = 172 ∨
+                                              n = 187 ∨
+                                                n = 190 ∨
+                                                  n = 196 ∨
+                                                    n = 200 ∨
+                                                      n = 208 ∨
+                                                        n = 223 ∨
+                                                          n = 228 ∨
+                                                            n = 282 ∨
+                                                              n = 295 ∨
+                                                                n = 310 ∨ n = 318 ∨ n = 336 ∨ n = 348 ∨ n = 371 then
+                  7
+                else
+                  if
+                      n = 17 ∨
+                        n = 18 ∨
+                          n = 25 ∨
+                            n = 45 ∨
+                              n = 65 ∨
+                                n = 68 ∨
+                                  n = 72 ∨
+                                    n = 73 ∨
+                                      n = 77 ∨
+                                        n = 86 ∨
+                                          n = 94 ∨
+                                            n = 97 ∨
+                                              n = 99 ∨
+                                                n = 109 ∨
+                                                  n = 121 ∨
+                                                    n = 138 ∨
+                                                      n = 147 ∨
+                                                        n = 177 ∨
+                                                          n = 186 ∨
+                                                            n = 193 ∨
+                                                              n = 202 ∨
+                                                                n = 204 ∨
+                                                                  n = 207 ∨
+                                                                    n = 214 ∨
+                                                                      n = 219 ∨
+                                                                        n = 244 ∨
+                                                                          n = 247 ∨
+                                                                            n = 251 ∨
+                                                                              n = 252 ∨
+                                                                                n = 260 ∨
+                                                                                  n = 267 ∨
+                                                                                    n = 272 ∨
+                                                                                      n = 288 ∨
+                                                                                        n = 307 ∨
+                                                                                          n = 332 ∨
+                                                                                            n = 344 ∨
+                                                                                              n = 355 ∨
+                                                                                                n = 358 ∨
+                                                                                                  n = 359 ∨
+                                                                                                    n = 367 ∨
+                                                                                                      n = 372 ∨
+                                                                                                        n = 376 then
+                    8
+                  else
+                    if
+                        n = 41 ∨
+                          n = 66 ∨
+                            n = 70 ∨
+                              n = 89 ∨
+                                n = 116 ∨
+                                  n = 133 ∨
+                                    n = 148 ∨
+                                      n = 157 ∨
+                                        n = 174 ∨
+                                          n = 183 ∨
+                                            n = 210 ∨
+                                              n = 217 ∨
+                                                n = 218 ∨
+                                                  n = 230 ∨
+                                                    n = 242 ∨
+                                                      n = 258 ∨
+                                                        n = 262 ∨
+                                                          n = 264 ∨ n = 280 ∨ n = 298 ∨ n = 300 ∨ n = 334 ∨ n = 364 then
+                      9
+                    else
+                      if
+                          n = 53 ∨
+                            n = 90 ∨
+                              n = 105 ∨
+                                n = 110 ∨
+                                  n = 117 ∨
+                                    n = 132 ∨
+                                      n = 135 ∨
+                                        n = 164 ∨
+                                          n = 171 ∨
+                                            n = 237 ∨
+                                              n = 246 ∨
+                                                n = 254 ∨
+                                                  n = 278 ∨
+                                                    n = 291 ∨
+                                                      n = 314 ∨
+                                                        n = 322 ∨ n = 335 ∨ n = 343 ∨ n = 346 ∨ n = 360 ∨ n = 361 then
+                        10
+                      else
+                        if
+                            n = 54 ∨
+                              n = 85 ∨
+                                n = 100 ∨
+                                  n = 106 ∨
+                                    n = 113 ∨
+                                      n = 141 ∨
+                                        n = 165 ∨
+                                          n = 169 ∨
+                                            n = 181 ∨
+                                              n = 182 ∨
+                                                n = 197 ∨
+                                                  n = 206 ∨
+                                                    n = 216 ∨
+                                                      n = 231 ∨
+                                                        n = 253 ∨
+                                                          n = 266 ∨
+                                                            n = 269 ∨
+                                                              n = 274 ∨
+                                                                n = 275 ∨
+                                                                  n = 292 ∨
+                                                                    n = 301 ∨
+                                                                      n = 326 ∨ n = 339 ∨ n = 362 ∨ n = 374 ∨ n = 375 then
+                          11
+                        else
+                          if
+                              n = 82 ∨
+                                n = 98 ∨
+                                  n = 125 ∨
+                                    n = 126 ∨
+                                      n = 150 ∨
+                                        n = 173 ∨
+                                          n = 201 ∨
+                                            n = 209 ∨
+                                              n = 213 ∨
+                                                n = 221 ∨
+                                                  n = 229 ∨
+                                                    n = 233 ∨
+                                                      n = 243 ∨
+                                                        n = 250 ∨
+                                                          n = 270 ∨ n = 289 ∨ n = 315 ∨ n = 328 ∨ n = 351 ∨ n = 373 then
+                            12
+                          else
+                            if n = 129 ∨ n = 130 ∨ n = 194 ∨ n = 241 ∨ n = 257 ∨ n = 308 ∨ n = 363 then 13
+                            else
+                              if
+                                  n = 69 ∨
+                                    n = 101 ∨
+                                      n = 170 ∨
+                                        n = 180 ∨
+                                          n = 198 ∨
+                                            n = 212 ∨
+                                              n = 234 ∨ n = 277 ∨ n = 279 ∨ n = 313 ∨ n = 317 ∨ n = 356 ∨ n = 366 then
+                                14
+                              else
+                                if n = 149 ∨ n = 178 ∨ n = 185 ∨ n = 340 ∨ n = 345 then 15
+                                else
+                                  if n = 145 ∨ n = 205 ∨ n = 249 ∨ n = 290 ∨ n = 329 ∨ n = 350 then 16
+                                  else
+                                    if
+                                        n = 81 ∨
+                                          n = 161 ∨
+                                            n = 226 ∨
+                                              n = 245 ∨ n = 273 ∨ n = 281 ∨ n = 338 ∨ n = 349 ∨ n = 365 ∨ n = 377 then
+                                      17
+                                    else
+                                      if
+                                          n = 153 ∨
+                                            n = 189 ∨ n = 293 ∨ n = 294 ∨ n = 309 ∨ n = 321 ∨ n = 341 ∨ n = 357 then
+                                        18
+                                      else
+                                        if n = 146 ∨ n = 162 ∨ n = 225 ∨ n = 276 ∨ n = 285 ∨ n = 297 ∨ n = 333 then 19
+                                        else
+                                          if n = 265 ∨ n = 305 ∨ n = 324 ∨ n = 354 ∨ n = 378 then 20
+                                          else
+                                            if n = 337 ∨ n = 353 ∨ n = 370 then 21
+                                            else
+                                              if n = 306 ∨ n = 342 then 22
+                                              else
+                                                if n = 325 then 23
+                                                else if n = 369 then 26 else if n = 261 then 30 else 2) =
+      1
+  ⊢ n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 47 ∨ n = 71 ∨ n = 379 ∨ ∃ k, n = 4 ^ k
+  Submission/Spec.lean:130:4: error: No goals to be solved
+

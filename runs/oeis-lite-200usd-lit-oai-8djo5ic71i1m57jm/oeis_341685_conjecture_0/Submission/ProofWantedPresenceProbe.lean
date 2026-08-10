@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+
+#check chudnovskySum_eq_pi_inv
+#print axioms chudnovskySum_eq_pi_inv
+#check ContinuousMap.HomotopyEquiv.nonempty_homeomorph_sphere
+#print axioms ContinuousMap.HomotopyEquiv.nonempty_homeomorph_sphere
+#check exists_homeomorph_isEmpty_diffeomorph_sphere_seven
+#print axioms exists_homeomorph_isEmpty_diffeomorph_sphere_seven
+#check Matrix.det_map'
+#print axioms Matrix.det_map'

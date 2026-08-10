@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+open ArithmeticFunction
+#check ArithmeticFunction
+#check ArithmeticFunction.IsMultiplicative.mul
+#check ArithmeticFunction.IsMultiplicative.map_mul_of_coprime
+#check ArithmeticFunction.IsMultiplicative.multiplicative_factorization
+#check ArithmeticFunction.mul_apply
+#check Nat.divisorsAntidiagonal
+#check Nat.mem_divisorsAntidiagonal
+#check Nat.map_div_left_divisors
+#check Nat.map_div_right_divisors
+#check ArithmeticFunction.isMultiplicative_id
+#check Nat.totient_mul

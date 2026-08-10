@@ -1,0 +1,20 @@
+{
+  "id": "a_n_is_defined_for_all_n",
+  "epoch": 1,
+  "uuid": "T5DeFrwFSrEU9S27N4v6rK",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 29,
+      "output_tokens": 7443,
+      "total_tokens": 232313,
+      "input_tokens_cache_write": 13988,
+      "input_tokens_cache_read": 210853,
+      "reasoning_tokens": 1068,
+      "total_cost": 0.3790715
+    }
+  },
+  "oeis_id": "A117545"
+}

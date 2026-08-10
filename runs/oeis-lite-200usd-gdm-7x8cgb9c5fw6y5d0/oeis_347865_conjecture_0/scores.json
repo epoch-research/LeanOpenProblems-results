@@ -1,0 +1,64 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 68 declarations.\n------------------\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: definition type or value mismatch\n  Value mismatch (values differ)\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": "defnCheck"
+          }
+        ],
+        [
+          "oeis_347865_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

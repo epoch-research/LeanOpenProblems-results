@@ -1,0 +1,110 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+/--
+A275768: $a(n)$ is the number of ways to express $n = \frac{\operatorname{prime}(i) + \operatorname{prime}(j)}{2}$ when $\frac{|\operatorname{prime}(i) - \operatorname{prime}(j)|}{2}$ also is prime.
+This is equivalent to counting the number of primes $q$ such that $n - q$ and $n + q$ are also prime.
+-/
+def a (n : ℕ) : ℕ :=
+  Finset.card (Finset.filter (fun q : ℕ =>
+    Nat.Prime q ∧ Nat.Prime (n - q) ∧ Nat.Prime (n + q)
+  ) (Finset.range n))
+
+lemma q_eq_two_of_odd (n q : ℕ) (hn : n % 2 = 1) (hq : Nat.Prime q) (h_sub : Nat.Prime (n - q)) (h_add : Nat.Prime (n + q)) : q = 2 := by
+  rcases Nat.Prime.eq_two_or_odd hq with rfl | h_odd
+  · rfl
+  · have h_two_le_sub := h_sub.two_le
+    have hdvd : 2 ∣ n - q := by omega
+    rcases Nat.Prime.eq_one_or_self_of_dvd h_sub 2 hdvd with h1 | h2
+    · contradiction
+    · have h_add_eq : n + q = 2 * (n - 1) := by omega
+      have h_add' : Nat.Prime (2 * (n - 1)) := by rwa [← h_add_eq]
+      have hdvd_add : 2 ∣ 2 * (n - 1) := dvd_mul_right 2 (n - 1)
+      rcases Nat.Prime.eq_one_or_self_of_dvd h_add' 2 hdvd_add with h3 | h4
+      · contradiction
+      · omega
+
+lemma q_mem_three_of_not_div_three (n q : ℕ) (hn : n % 3 ≠ 0) (hq : Nat.Prime q) (h_sub : Nat.Prime (n - q)) (h_add : Nat.Prime (n + q)) : q = 3 ∨ q = n - 3 := by
+  have hq_cases : q = 3 ∨ q % 3 = 1 ∨ q % 3 = 2 := by
+    have h_cases : q % 3 = 0 ∨ q % 3 = 1 ∨ q % 3 = 2 := by omega
+    rcases h_cases with h0 | h1 | h2
+    · have hdvd : 3 ∣ q := by omega
+      rcases Nat.Prime.eq_one_or_self_of_dvd hq 3 hdvd with h | h
+      · contradiction
+      · exact Or.inl h.symm
+    · exact Or.inr (Or.inl h1)
+    · exact Or.inr (Or.inr h2)
+  have h_sub_cases : n - q = 3 ∨ (n - q) % 3 = 1 ∨ (n - q) % 3 = 2 := by
+    have h_cases : (n - q) % 3 = 0 ∨ (n - q) % 3 = 1 ∨ (n - q) % 3 = 2 := by omega
+    rcases h_cases with h0 | h1 | h2
+    · have hdvd : 3 ∣ (n - q) := by omega
+      rcases Nat.Prime.eq_one_or_self_of_dvd h_sub 3 hdvd with h | h
+      · contradiction
+      · exact Or.inl h.symm
+    · exact Or.inr (Or.inl h1)
+    · exact Or.inr (Or.inr h2)
+  have h_add_cases : (n + q) % 3 = 1 ∨ (n + q) % 3 = 2 := by
+    have h_cases : (n + q) % 3 = 0 ∨ (n + q) % 3 = 1 ∨ (n + q) % 3 = 2 := by omega
+    rcases h_cases with h0 | h1 | h2
+    · have hdvd : 3 ∣ (n + q) := by omega
+      rcases Nat.Prime.eq_one_or_self_of_dvd h_add 3 hdvd with h | h
+      · contradiction
+      · have hq_ge_two := hq.two_le
+        have h_sub_ge_two := h_sub.two_le
+        omega
+    · exact Or.inl h1
+    · exact Or.inr h2
+  rcases hq_cases with rfl | hq_rem
+  · exact Or.inl rfl
+  · rcases h_sub_cases with h_sub_eq | h_sub_rem
+    · exact Or.inr (by omega)
+    · have hq_ge_two := hq.two_le
+      have h_sub_ge_two := h_sub.two_le
+      exfalso
+      omega
+
+lemma a_odd_le_one (n : ℕ) (hn : n % 2 = 1) : a n ≤ 1 := by
+  unfold a
+  have h_sub : filter (fun q => Nat.Prime q ∧ Nat.Prime (n - q) ∧ Nat.Prime (n + q)) (range n) ⊆ {2} := by
+    intro q hq
+    rw [mem_filter, mem_range] at hq
+    rw [Finset.mem_singleton]
+    exact q_eq_two_of_odd n q hn hq.2.1 hq.2.2.1 hq.2.2.2
+  have h_card := Finset.card_le_card h_sub
+  have h_card_two : ({2} : Finset ℕ).card = 1 := rfl
+  omega
+
+lemma a_not_div_three_le_two (n : ℕ) (hn : n % 3 ≠ 0) : a n ≤ 2 := by
+  unfold a
+  have h_sub : filter (fun q => Nat.Prime q ∧ Nat.Prime (n - q) ∧ Nat.Prime (n + q)) (range n) ⊆ {3, n - 3} := by
+    intro q hq
+    rw [mem_filter, mem_range] at hq
+    rw [Finset.mem_insert, Finset.mem_singleton]
+    exact q_mem_three_of_not_div_three n q hn hq.2.1 hq.2.2.1 hq.2.2.2
+  have h_card := Finset.card_le_card h_sub
+  have h_card_set : ({3, n - 3} : Finset ℕ).card ≤ 2 := by
+    have h := card_insert_le 3 ({n - 3} : Finset ℕ)
+    have h2 : ({n - 3} : Finset ℕ).card = 1 := rfl
+    omega
+  omega
+
+lemma a_le_two_of_not_div_six (n : ℕ) (h : ¬ (6 ∣ n)) : a n ≤ 2 := by
+  rcases (by omega : n % 2 = 1 ∨ n % 3 ≠ 0) with h1 | h2
+  · have h_le := a_odd_le_one n h1
+    omega
+  · exact a_not_div_three_le_two n h2
+
+lemma a_neq_four_of_lt_24 (n : ℕ) (h : n < 24) : a n ≠ 4 := by
+  interval_cases n <;> decide
+
+/-- OEIS A275768 conjecture 0: Does a(n) = 4 occur for any n? -/
+theorem oeis_275768_conjecture_0 : ¬ ∃ n : ℕ, a n = 4 := by
+  rintro ⟨n, hn⟩
+  have h1 : n < 24 ∨ ¬ (6 ∣ n) ∨ (n ≥ 24 ∧ 6 ∣ n) := by omega
+  rcases h1 with h_lt | h_div | ⟨h_ge, h_6⟩
+  · exact a_neq_four_of_lt_24 n h_lt hn
+  · have h_le := a_le_two_of_not_div_six n h_div
+    omega
+  · sorry
+

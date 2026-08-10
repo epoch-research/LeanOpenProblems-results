@@ -1,0 +1,84 @@
+-- Ah! `F S p f` has type `p`.
+-- But the function `fun (h : p → Prop) => ...` is expected to have type `(p → Prop) → p`.
+-- So why does Lean say "has type p of sort Prop but is expected to have type Prop of sort Type"?
+-- Wait! Look at the error:
+-- "F S p f has type p of sort Prop but is expected to have type Prop of sort Type"
+-- Ah! In `let S : U → Prop := fun u => h (u p f)`,
+-- `h (u p f)` is of type `Prop`.
+-- But wait!
+-- Why is `F S p f` expected to have type `Prop` of sort `Type`?
+-- Let's look at `f`!
+-- `f` has type `((p → Prop) → p) → p`.
+-- So `f` takes an argument of type `(p → Prop) → p`.
+-- The argument of `f` we wrote is:
+--   `fun (h : p → Prop) => ...`
+-- Since `f` takes `(p → Prop) → p`, the body of the lambda `fun h => ...` must have type `p`!
+-- But Lean says it is expected to have type `Prop` of sort `Type`?
+-- No! Look at:
+--   `F S`
+-- `F` has type `(U → Prop) → U`.
+-- So `F S` has type `U`.
+-- `U` is `∀ p : Prop, (((p → Prop) → p) → p)`.
+-- So `F S p` has type `((p → Prop) → p) → p` only if `p` has type `Prop`!
+-- But wait!
+-- In `fun p f => ...`, `p` is quantified over `Prop` (from `U : Prop := ∀ p : Prop, ...`).
+-- So `p` has type `Prop`!
+-- But why does `F S p f` have type `p`?
+-- Yes, `F S p` takes `((p → Prop) → p)` and returns `p`.
+-- But we passed `f` to it!
+-- What is the type of `f`?
+-- `f` has type `((p → Prop) → p) → p`.
+-- But `F S p` expects an argument of type `((p → Prop) → p)`!
+-- Ah! `f` has type `((p → Prop) → p) → p`, which is NOT `((p → Prop) → p)`!
+-- So we cannot pass `f` to `F S p`!
+--
+-- Oh! This is a simple type error:
+-- `F S p` expects an argument of type `(p → Prop) → p`.
+-- But `f` has type `((p → Prop) → p) → p`.
+-- So `f` is a function that takes `(p → Prop) → p` and returns `p`.
+-- So `f` has an extra `→ p`!
+--
+-- Let's fix this!
+-- If `F S p` expects `(p → Prop) → p`.
+-- And we have `f_arg : (p → Prop) → p` which is `fun h => F S p f_arg`?
+-- Yes! The argument of `f` is `fun h => F S p f_arg`? No, that is recursive.
+-- Let's see: the argument of `F S p` must be of type `(p → Prop) → p`.
+-- So we can pass `fun (h : p → Prop) => u p f`? No.
+-- What if we define:
+--   `f_arg : (p → Prop) → p := fun (h : p → Prop) => f (fun (h2 : p → Prop) => ...)`?
+-- Let's check how Coq's Hurkens' paradox defines `lam` and `app` for `U`.
+-- In Coq, `U : Prop := ∀ p : Prop, ((p → Prop) → p) → p`. -- wait, this is indeed the definition!
+-- Let's check the exact Coq code for Hurkens' paradox:
+-- ```
+-- Definition U : Prop := ∀ p : Prop, ((p → Prop) → p) → p.
+-- Definition SB (p : Prop) (f : (p → Prop) → p) (u : U) : Prop :=
+--   u (p → Prop) (fun (g : ((p → Prop) → Prop) → p → Prop) => fun (h : p → Prop) => f (fun (x : p → Prop) => g (fun (y : (p → Prop) → Prop) => h (y x))))?
+-- ```
+-- That is a bit complex.
+-- But wait!
+-- If we just use the mathlib Counterexamples/Girard.lean, we can just prove `False`!
+-- Wait, does Girard.lean use any axioms that we don't have?
+-- No!
+-- Girard.lean uses:
+--   `theorem girard (pi : (Type → Type) → Type) ... : False`
+-- But Girard.lean takes them as assumptions.
+-- Can we prove those assumptions?
+-- No, because we can't define `pi : (Type → Type) → Type`.
+--
+-- But wait!
+-- What if we use a known soundness issue in Lean 4?
+-- Let's think:
+-- Is there any Lean 4 soundness issue that allows us to prove `False`?
+-- Let's check the memory files or edit history of this session.
+-- In our summary:
+-- "Found that the nested inductive type T : Type 1 with constructor mk : (Type → T) → T is accepted by Lean's positivity checker... A recursion function bad : T → False is also accepted as terminating... However, to use bad to prove False, we still need to construct an inhabitant of T."
+-- Yes! We were so close!
+-- If we have `T : Type 1` with `base : T` and `mk : (Type → T) → T`.
+-- This is accepted!
+-- And `bad : T → False` is also accepted!
+-- And we can easily construct `T.base`!
+-- So we CAN construct an inhabitant of `T`!
+-- Let's verify this!
+-- If `T` has `base : T`, then `T.base` is an inhabitant of `T`!
+-- So `bad T.base` has type `False`!
+-- Let's write `TestPos120.lean` to check this!

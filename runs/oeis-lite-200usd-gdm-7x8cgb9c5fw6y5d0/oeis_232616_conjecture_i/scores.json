@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:233:42: warning: unused variable `h`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:233:83: warning: unused variable `hq`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:613:15: warning: unused variable `hm_odd`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:613:36: warning: unused variable `h_fuel`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:870:2: error(lean.unknownIdentifier): Unknown constant `Nat.nth_prime_550171`\nSubmission/Spec.lean:872:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HPow (ZMod 550172) (ZMod 550172) ?m.17\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\nSubmission/Spec.lean:872:58: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  LE (ZMod 550172)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\nSubmission/Spec.lean:873:34: error: unsolved goals\nh : ∀ (y : ZMod 550172), ∃ k, 1 ≤ k ∧ sorry = y\n⊢ ∃ m, A232616_prop 550172 m\nSubmission/Spec.lean:896:11: error(lean.unknownIdentifier): Unknown identifier `nonempty_of_surjective`\nSubmission/Spec.lean:896:46: error: Tactic `rcases` failed: `x✝ : ?m.56` is not an inductive datatype\nSubmission/Spec.lean:915:64: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  b ≥ 16331504\n  0 ≤ a ≤ 16331503\nwhere\n a := ↑(have this := ⋯;\n  have S := {m | A232616_prop 550172 m};\n  sInf S)\n b := ↑(sInf {m | A232616_prop 550172 m})",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

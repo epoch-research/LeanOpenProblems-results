@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.choose_odd_iff
+#check Nat.odd_choose_iff
+#check choose_odd_iff
+#check Nat.choose_modEq_prod_range_choose_nat
+#check choose_modEq_prod_range_choose_nat
+#check lucas_theorem_nat
+#check Nat.digits
+#check Nat.bits
+#check Nat.testBit_two_pow
+#check Nat.eq_two_pow_or_exists_odd_prime_and_dvd

@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.div_le_iff_le_mul_add_pred
+#check Nat.div_le_iff_le_mul_pred
+#check Nat.div_le_iff_le_mul_add_pred
+#check Nat.le_div_iff_mul_le
+#check Nat.div_le_iff_le_mul_add_pred
+#check Nat.div_le_of_le_mul
+#check Nat.div_le_iff_le_mul_add_pred
+#check Nat.div_le_div_right
+#check Nat.div_le_div
+#check Nat.div_lt_iff_lt_mul
+#check Nat.lt_div_iff_mul_lt
+#check Nat.le_div_iff_mul_le

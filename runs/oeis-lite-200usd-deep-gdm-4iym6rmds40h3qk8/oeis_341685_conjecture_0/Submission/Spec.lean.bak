@@ -1,0 +1,726 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat BigOperators Filter Topology Algebra Polynomial
+
+instance : Fact (Nat.Prime 3) := by
+  constructor
+  norm_num
+
+def approx_3_adic_sum_factorial (m : ℕ) : ℕ :=
+  let p := 3
+  if m = 0 then 0
+  else
+    let upper_k := p * m
+    (Finset.range upper_k).sum Nat.factorial % (p ^ m)
+
+noncomputable def a (n : ℕ) : ℕ :=
+  let p := 3
+  let X_n_plus_1 := approx_3_adic_sum_factorial (n + 1)
+  let X_n := approx_3_adic_sum_factorial n
+  (X_n_plus_1 - X_n) / (p ^ n)
+
+lemma pow_prime_dvd_factorial_mul_self (p : ℕ) [hp : Fact p.Prime] (r : ℕ) : p ^ r ∣ (p * r).factorial := by
+  induction r with
+  | zero =>
+    simp
+  | succ r ih =>
+    have h1 : p * r + p = p * (r + 1) := by ring
+    rw [← h1]
+    have h2 : (p * r).factorial * p.factorial ∣ (p * r + p).factorial := factorial_mul_factorial_dvd_factorial_add (p * r) p
+    have h3 : p ∣ p.factorial := by
+      cases p with
+      | zero =>
+        exfalso
+        exact Nat.Prime.ne_zero hp.out rfl
+      | succ p =>
+        rw [factorial_succ]
+        exact ⟨p.factorial, rfl⟩
+    have h4 : p ^ r * p ∣ (p * r).factorial * p.factorial := mul_dvd_mul ih h3
+    rw [← pow_succ] at h4
+    exact dvd_trans h4 h2
+
+lemma pow_prime_dvd_factorial_of_mul_le (p : ℕ) [hp : Fact p.Prime] (r : ℕ) (n : ℕ) (h : p * r ≤ n) : p ^ r ∣ n.factorial := by
+  exact dvd_trans (pow_prime_dvd_factorial_mul_self p r) (factorial_dvd_factorial h)
+
+lemma norm_factorial_le (r : ℕ) (x : ℕ) (h : 3 * r ≤ x) : ‖(x.factorial : Padic 3)‖ ≤ (3 : ℝ) ^ (-(r : ℤ)) := by
+  have h_dvd : 3 ^ r ∣ x.factorial := pow_prime_dvd_factorial_of_mul_le 3 r x h
+  have h_dvd_int : (3 ^ r : ℤ) ∣ (x.factorial : ℤ) := by
+    exact_mod_cast h_dvd
+  have h_norm : ‖((x.factorial : ℤ) : Padic 3)‖ ≤ (3 : ℝ) ^ (-(r : ℤ)) ↔ (3 ^ r : ℤ) ∣ (x.factorial : ℤ) := by
+    exact_mod_cast Padic.norm_int_le_pow_iff_dvd (p := 3) (x.factorial : ℤ) r
+  have h_cast : (x.factorial : Padic 3) = ((x.factorial : ℤ) : Padic 3) := by norm_cast
+  rw [h_cast, h_norm]
+  exact h_dvd_int
+
+lemma tendsto_norm_factorial_zero : Tendsto (fun x : ℕ => ‖(x.factorial : Padic 3)‖) atTop (𝓝 0) := by
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  obtain ⟨r, hr⟩ : ∃ r : ℕ, (1 / 3 : ℝ) ^ r < ε := by
+    apply exists_pow_lt_of_lt_one hε
+    norm_num
+  use 3 * r
+  intro x hx
+  rw [_root_.dist_zero_right]
+  have h_lt : (3 : ℝ) ^ (-(r : ℤ)) = (1 / 3 : ℝ) ^ r := by
+    rw [zpow_neg, zpow_natCast, ← inv_pow]
+    norm_num
+  have h_le := norm_factorial_le r x hx
+  rw [h_lt] at h_le
+  rw [Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)]
+  exact lt_of_le_of_lt h_le hr
+
+theorem summable_factorial : Summable (fun k : ℕ => (Nat.factorial k : Padic 3)) := by
+  rw [NonarchimedeanAddGroup.summable_iff_tendsto_cofinite_zero]
+  rw [Nat.cofinite_eq_atTop]
+  rw [tendsto_zero_iff_norm_tendsto_zero]
+  exact tendsto_norm_factorial_zero
+
+noncomputable def xi_3 : Padic 3 :=
+  tsum (fun k : ℕ => (Nat.factorial k : Padic 3))
+
+noncomputable def S (n : ℕ) : Padic 3 :=
+  (Finset.range n).sum (fun k : ℕ => (Nat.factorial k : Padic 3))
+
+lemma tendsto_S : Tendsto S atTop (nhds xi_3) := by
+  have h_sum : HasSum (fun k : ℕ => (Nat.factorial k : Padic 3)) xi_3 := by
+    exact summable_factorial.hasSum
+  exact h_sum.tendsto_sum_nat
+
+lemma S_succ (n : ℕ) : S (n + 1) = (n.factorial : Padic 3) + S n := by
+  dsimp [S]
+  rw [Finset.sum_range_succ, add_comm]
+
+lemma S_eq_algebraMap (n : ℕ) : S n = algebraMap ℚ (Padic 3) (∑ k ∈ Finset.range n, (Nat.factorial k : ℚ)) := by
+  dsimp [S]
+  simp
+
+lemma S_mono : StrictMono (fun n : ℕ => (∑ k ∈ Finset.range n, (Nat.factorial k : ℚ))) := by
+  apply strictMono_nat_of_lt_succ
+  intro n
+  rw [Finset.sum_range_succ]
+  simp only [lt_add_iff_pos_right]
+  positivity
+
+lemma S_injective : Function.Injective S := by
+  have h_inj : Function.Injective (algebraMap ℚ (Padic 3)) := FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+  have h_mono_inj := S_mono.injective
+  intro x y h
+  rw [S_eq_algebraMap x, S_eq_algebraMap y] at h
+  have h2 := h_inj h
+  exact h_mono_inj h2
+
+lemma exists_ne_zero_of_injective {K : Type*} [Field K] [DecidableEq K] (p : K[X]) (hp : p ≠ 0) {f : ℕ → K} (hf : Function.Injective f) : ∃ n, p.eval (f n) ≠ 0 := by
+  by_contra! h
+  have h_roots : ∀ n, f n ∈ p.roots := by
+    intro n
+    rw [mem_roots hp]
+    exact h n
+  let s := (Finset.range (p.natDegree + 2)).map ⟨f, hf⟩
+  have h_sub : s ⊆ p.roots.toFinset := by
+    intro x hx
+    rcases Finset.mem_map.mp hx with ⟨y, _, rfl⟩
+    rw [Multiset.mem_toFinset]
+    exact h_roots y
+  have h_card := Finset.card_le_card h_sub
+  rw [Finset.card_map, Finset.card_range] at h_card
+  have h_roots_card := p.roots.toFinset_card_le.trans p.card_roots'
+  linarith
+
+lemma exists_S_ne_zero_ge (p : (Padic 3)[X]) (hp : p ≠ 0) (M : ℕ) : ∃ n ≥ M, p.eval (S n) ≠ 0 := by
+  classical
+  let g : ℕ → Padic 3 := fun n => S (n + M)
+  have hg : Function.Injective g := by
+    intro x y h
+    have h_inj := S_injective h
+    exact Nat.add_right_cancel h_inj
+  obtain ⟨n, hn⟩ := exists_ne_zero_of_injective p hp hg
+  use n + M
+  refine ⟨by linarith, hn⟩
+
+lemma norm_add_eq_left_of_norm_lt {S : Type*} [NormedAddCommGroup S] [IsUltrametricDist S] {x y : S} (h : ‖y‖ < ‖x‖) : ‖x + y‖ = ‖x‖ := by
+  have hne : ‖x‖ ≠ ‖y‖ := ne_of_gt h
+  rw [IsUltrametricDist.norm_add_eq_max_of_norm_ne_norm hne]
+  exact max_eq_left (le_of_lt h)
+
+lemma norm_sub_le_of_diff_lt {S : Type*} [NormedAddCommGroup S] [IsUltrametricDist S] {x : ℕ → S} {K : ℕ} {V : ℝ} (hV : V > 0) (h_diff : ∀ n ≥ K, ‖x (n + 1) - x n‖ < V) :
+  ∀ a ≥ K, ∀ b ≥ a, ‖x b - x a‖ < V := by
+  intro a ha b hab
+  induction b, hab using Nat.le_induction with
+  | base =>
+    simp only [sub_self, _root_.norm_zero]
+    exact hV
+  | succ m hm ih =>
+    have h_eq : x (m + 1) - x a = (x m - x a) + (x (m + 1) - x m) := by abel
+    rw [h_eq]
+    have h1 : ‖x (m + 1) - x m‖ < V := h_diff m (by linarith)
+    have h2 : ‖x m - x a‖ < V := ih
+    have h_max := IsUltrametricDist.norm_add_le_max (x m - x a) (x (m + 1) - x m)
+    exact lt_of_le_of_lt h_max (max_lt h2 h1)
+
+lemma norm_eq_of_diff_lt {S : Type*} [NormedAddCommGroup S] [IsUltrametricDist S] {x : ℕ → S} {K : ℕ} {V : ℝ} (hV : V > 0) (h_diff : ∀ n ≥ K, ‖x (n + 1) - x n‖ < V) :
+  ∀ a ≥ K, ∀ b ≥ K, ‖x a‖ ≥ V → ‖x b‖ = ‖x a‖ := by
+  intro a ha b hb h_ge
+  rcases le_total a b with hab | hab
+  · have h_lt : ‖x b - x a‖ < ‖x a‖ := by
+      have h_sub := norm_sub_le_of_diff_lt hV h_diff a ha b hab
+      exact lt_of_lt_of_le h_sub h_ge
+    have h_eq : x b = x a + (x b - x a) := by abel
+    rw [h_eq]
+    exact norm_add_eq_left_of_norm_lt h_lt
+  · have h_lt : ‖x a - x b‖ < ‖x a‖ := by
+      have h_sub := norm_sub_le_of_diff_lt hV h_diff b hb a hab
+      exact lt_of_lt_of_le h_sub h_ge
+    have h_eq : x b = x a + (x b - x a) := by abel
+    rw [h_eq]
+    have h_lt' : ‖x b - x a‖ < ‖x a‖ := by
+      rw [norm_sub_rev]
+      exact h_lt
+    exact norm_add_eq_left_of_norm_lt h_lt'
+
+lemma norm_add_sum_eq_first {S : Type*} [NormedAddCommGroup S] [IsUltrametricDist S] {A : S} {ι : Type*} [DecidableEq ι] (s : Finset ι) (f : ι → S) (h : ∀ i ∈ s, ‖f i‖ < ‖A‖) : ‖A + ∑ i ∈ s, f i‖ = ‖A‖ := by
+  induction s using Finset.induction with
+  | empty =>
+    simp
+  | insert hx ht h_not_in ih =>
+    simp only [Finset.mem_insert] at h
+    have h_x := h _ (Or.inl rfl)
+    have h_t : ∀ i ∈ ht, ‖f i‖ < ‖A‖ := fun i hi => h i (Or.inr hi)
+    have ih_t := ih h_t
+    rw [Finset.sum_insert h_not_in]
+    have h_assoc : A + (f hx + ∑ x ∈ ht, f x) = (A + ∑ x ∈ ht, f x) + f hx := by abel
+    rw [h_assoc]
+    have h_lt : ‖f hx‖ < ‖A + ∑ x ∈ ht, f x‖ := by
+      rw [ih_t]
+      exact h_x
+    rw [norm_add_eq_left_of_norm_lt h_lt]
+    exact ih_t
+
+lemma taylor_expansion_exact {R : Type*} [CommRing R] (f : R[X]) (r s : R) :
+  f.eval (s + r) = f.eval r + ∑ i ∈ Finset.range f.natDegree, ((hasseDeriv (i + 1) f).eval r) * s ^ (i + 1) := by
+  rw [← taylor_eval]
+  rw [eval_eq_sum_range]
+  rw [natDegree_taylor]
+  rw [Finset.sum_range_succ']
+  simp only [taylor_coeff_zero, pow_zero, mul_one]
+  rw [add_comm]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [taylor_coeff]
+
+lemma hasseDeriv_map_local {R S : Type*} [CommRing R] [CommRing S] (f : R →+* S) (p : R[X]) (k : ℕ) :
+  hasseDeriv k (p.map f) = (hasseDeriv k p).map f := by
+  ext n
+  simp [hasseDeriv_coeff]
+
+lemma taylor_expansion_aeval (p : ℚ[X]) (r s : Padic 3) :
+  aeval (s + r) p = aeval r p + ∑ i ∈ Finset.range p.natDegree, aeval r (hasseDeriv (i + 1) p) * s ^ (i + 1) := by
+  simp_rw [aeval_def, ← eval_map]
+  have h_inj : Function.Injective (algebraMap ℚ (Padic 3)) := FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+  rw [taylor_expansion_exact (p.map (algebraMap ℚ (Padic 3))) r s]
+  rw [natDegree_map_eq_of_injective h_inj]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [hasseDeriv_map_local]
+
+def max_of_fn (f : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | n + 1 => max (f n) (max_of_fn f n)
+
+lemma le_max_of_fn (f : ℕ → ℕ) (d : ℕ) {i : ℕ} (hi : i < d) : f i ≤ max_of_fn f d := by
+  induction d with
+  | zero => omega
+  | succ d ih =>
+    rw [max_of_fn]
+    rcases Nat.eq_or_lt_of_le (Nat.le_of_lt_succ hi) with h | h
+    · subst h
+      exact le_max_left _ _
+    · have := ih h
+      exact le_trans this (le_max_right _ _)
+
+lemma pow_le_self_of_le_one {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x ≤ 1) (i : ℕ) (hi : i ≥ 1) : x ^ i ≤ x := by
+  induction i with
+  | zero => omega
+  | succ i ih =>
+    by_cases hi0 : i = 0
+    · subst hi0
+      simp
+    · have h_pos : i ≥ 1 := by omega
+      have ih_val := ih h_pos
+      rw [pow_succ]
+      have : x ^ i * x ≤ x ^ i * 1 := mul_le_mul_of_nonneg_left hx1 (by positivity)
+      rw [mul_one] at this
+      exact le_trans this ih_val
+
+
+lemma valuation_eventually_constant_of_deg_zero (p : ℚ[X]) (hp : p ≠ 0) (hdeg : p.natDegree = 0) (S : ℕ → Padic 3) :
+  ∃ V : ℤ, ∃ N : ℕ, ∀ n ≥ N, ‖(aeval (S n) p : Padic 3)‖ = (3 : ℝ) ^ V := by
+  have h_eq : p = C (p.coeff 0) := eq_C_of_natDegree_eq_zero hdeg
+  generalize p.coeff 0 = c at *
+  subst h_eq
+  have h_coeff : c ≠ 0 := by
+    intro hc
+    subst hc
+    exact hp C_0
+  have h_padic : algebraMap ℚ (Padic 3) c ≠ 0 := by
+    have h_inj : Function.Injective (algebraMap ℚ (Padic 3)) := FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+    exact (map_ne_zero_iff (algebraMap ℚ (Padic 3)) h_inj).mpr h_coeff
+  use - (algebraMap ℚ (Padic 3) c).valuation
+  use 0
+  intro n _
+  simp only [aeval_C]
+  exact Padic.norm_eq_zpow_neg_valuation h_padic
+
+lemma antitone_eventually_constant (f : ℕ → ℤ) (hf : ∀ m, f (m + 1) ≤ f m) (b : ℤ) (hb : ∀ m, b ≤ f m) :
+  ∃ V, ∃ M_0, ∀ M ≥ M_0, f M = V := by
+  have h_mono : ∀ x y, x ≤ y → f y ≤ f x := by
+    intro x y h
+    induction y, h using Nat.le_induction with
+    | base => rfl
+    | succ m hm ih =>
+      exact le_trans (hf m) ih
+  let d := (f 0 - b).toNat
+  induction' hd : d using Nat.strong_induction_on with n ih generalizing f
+  by_cases h_const : ∀ m, f m = f 0
+  · use f 0, 0
+    intro M _
+    exact h_const M
+  · push_neg at h_const
+    obtain ⟨m_0, hm_0⟩ := h_const
+    have h_lt : f m_0 < f 0 := by
+      rcases lt_or_gt_of_ne hm_0 with h | h
+      · exact h
+      · have : f m_0 ≤ f 0 := h_mono 0 m_0 (by omega)
+        omega
+    let g := fun x => f (x + m_0)
+    have hg_mono : ∀ m, g (m + 1) ≤ g m := by
+      intro m
+      dsimp [g]
+      have h1 : m + 1 + m_0 = m + m_0 + 1 := by omega
+      rw [h1]
+      exact hf (m + m_0)
+    have hg_b : ∀ m, b ≤ g m := fun m => hb (m + m_0)
+    have h_g0 : g 0 = f m_0 := by
+      dsimp [g]
+      rw [zero_add]
+    let d_g := (g 0 - b).toNat
+    have h_dg_lt : d_g < n := by
+      have hb_m0 : b ≤ f m_0 := hb m_0
+      have hb_0 : b ≤ f 0 := hb 0
+      dsimp [d_g, d] at *
+      rw [h_g0]
+      omega
+    have hg_mono_gen : ∀ x y, x ≤ y → g y ≤ g x := by
+      intro x y hxy
+      dsimp [g]
+      apply h_mono
+      omega
+    obtain ⟨V, M_g, hM_g⟩ := ih d_g h_dg_lt g hg_mono hg_b hg_mono_gen rfl
+    use V, M_g + m_0
+    intro M hM
+    have h_ge : M - m_0 ≥ M_g := by omega
+    have h_eq : M = (M - m_0) + m_0 := by omega
+    have h_g_val := hM_g (M - m_0) h_ge
+    dsimp [g] at h_g_val
+    rw [← h_eq] at h_g_val
+    exact h_g_val
+
+
+
+lemma norm_S_le (n : ℕ) : ‖S n‖ ≤ 1 := by
+  induction n with
+  | zero =>
+    dsimp [S]
+    simp
+  | succ n ih =>
+    rw [S_succ]
+    have h_max := IsUltrametricDist.norm_add_le_max ((n.factorial : Padic 3)) (S n)
+    have h_fac : ‖(n.factorial : Padic 3)‖ ≤ 1 := by
+      have h1 : (n.factorial : Padic 3) = ((n.factorial : ℤ) : Padic 3) := by norm_cast
+      rw [h1]
+      have h2 : ‖((n.factorial : ℤ) : Padic 3)‖ ≤ (3 : ℝ) ^ (-(0 : ℤ)) ↔ (3 ^ 0 : ℤ) ∣ (n.factorial : ℤ) := by
+        exact_mod_cast Padic.norm_int_le_pow_iff_dvd (p := 3) (n.factorial : ℤ) 0
+      have h_pow : (3 : ℝ) ^ (-(0 : ℤ)) = 1 := by norm_num
+      rw [h_pow] at h2
+      rw [h2]
+      simp
+    exact le_trans h_max (max_le h_fac ih)
+
+lemma lt_three_pow (v : ℕ) : v < 3 ^ v := by
+  induction v with
+  | zero => simp
+  | succ v ih =>
+    have h1 : 3 ^ (v + 1) = 3 ^ v * 3 := rfl
+    have h2 : 3 ^ v * 3 = 3 ^ v + 3 ^ v * 2 := by ring
+    rw [h1, h2]
+    have ih_le : v + 1 ≤ 3 ^ v := ih
+    have h_pos : 3 ^ v * 2 > 0 := by positivity
+    omega
+
+lemma zpow_three_ge_self (v : ℤ) : (3 : ℝ) ^ v ≥ v := by
+  rcases le_or_gt 0 v with hv | hv
+  · lift v to ℕ using hv
+    simp only [zpow_natCast]
+    have h_lt := lt_three_pow v
+    have h_le : (v : ℝ) ≤ (3 : ℝ) ^ v := by
+      exact_mod_cast (Nat.le_of_lt h_lt)
+    exact h_le
+  · have h_pos : (3 : ℝ) ^ v > 0 := by positivity
+    have h_v : (v : ℝ) < 0 := by exact_mod_cast hv
+    linarith
+
+lemma exists_int_bound_of_zpow_le (C : ℝ) : ∃ B : ℤ, ∀ v : ℤ, (3 : ℝ) ^ v ≤ C → v ≤ B := by
+  obtain ⟨B, hB⟩ := exists_int_ge C
+  use max 0 B
+  intro v hv
+  have h_ge := zpow_three_ge_self v
+  have h_trans : (v : ℝ) ≤ C := le_trans h_ge hv
+  have h_le_B : (v : ℝ) ≤ B := le_trans h_trans hB
+  have h_v_le_B : v ≤ B := by exact_mod_cast h_le_B
+  exact le_trans h_v_le_B (le_max_right 0 B)
+
+lemma norm_aeval_S_le (p : ℚ[X]) : ∃ C : ℝ, ∀ n : ℕ, ‖aeval (S n) p‖ ≤ C := by
+  let p_padic := p.map (algebraMap ℚ (Padic 3))
+  use ∑ i ∈ p_padic.support, ‖p_padic.coeff i‖
+  intro n
+  rw [aeval_def, ← eval_map]
+  rw [eval_eq_sum]
+  have h_le := norm_sum_le p_padic.support (fun i => p_padic.coeff i * S n ^ i)
+  apply le_trans h_le
+  apply Finset.sum_le_sum
+  intro i hi
+  rw [norm_mul, norm_pow]
+  have h_Sn := norm_S_le n
+  have h_Sn_pow : ‖S n‖ ^ i ≤ 1 := by
+    apply pow_le_one₀ (norm_nonneg _) h_Sn
+  have h_coeff_nonneg : 0 ≤ ‖p_padic.coeff i‖ := norm_nonneg _
+  have h_mul : ‖p_padic.coeff i‖ * ‖S n‖ ^ i ≤ ‖p_padic.coeff i‖ := by
+    nlinarith
+  exact h_mul
+
+lemma exists_max_valuation_ge (p : ℚ[X]) (hp : p ≠ 0) (M : ℕ) :
+  ∃ V_max : ℤ, ∃ N_max ≥ M, aeval (S N_max) p ≠ 0 ∧
+  (∀ n ≥ M, aeval (S n) p ≠ 0 → - (aeval (S n) p : Padic 3).valuation ≤ V_max) ∧
+  - (aeval (S N_max) p : Padic 3).valuation = V_max := by
+  let P := fun V => ∃ n ≥ M, aeval (S n) p ≠ 0 ∧ - (aeval (S n) p : Padic 3).valuation = V
+  have h_dec : DecidablePred P := fun V => Classical.dec (P V)
+  have h_bdd : ∃ b, ∀ x, P x → x ≤ b := by
+    obtain ⟨C, hC⟩ := norm_aeval_S_le p
+    obtain ⟨B, hB⟩ := exists_int_bound_of_zpow_le C
+    use B
+    intro V hV
+    rcases hV with ⟨n, hn, h_ne, rfl⟩
+    have h_norm := hC n
+    rw [Padic.norm_eq_zpow_neg_valuation h_ne] at h_norm
+    exact hB _ h_norm
+  have h_nonempty : ∃ V, P V := by
+    have p_padic_ne : p.map (algebraMap ℚ (Padic 3)) ≠ 0 := by
+      have h_inj : Function.Injective (algebraMap ℚ (Padic 3)) := FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+      exact (Polynomial.map_ne_zero_iff h_inj).mpr hp
+    obtain ⟨n, hn_ge, hn_val⟩ := exists_S_ne_zero_ge (p.map (algebraMap ℚ (Padic 3))) p_padic_ne M
+    have h_ne_aeval : aeval (S n) p ≠ 0 := by
+      rwa [aeval_def, ← eval_map]
+    use - (aeval (S n) p).valuation
+    use n, hn_ge, h_ne_aeval
+  obtain ⟨V_max, h_P, h_max⟩ := Int.exists_greatest_of_bdd h_bdd h_nonempty
+  use V_max
+  rcases h_P with ⟨N_max, hN_max_ge, h_ne, rfl⟩
+  use N_max, hN_max_ge
+  refine ⟨h_ne, ?_, rfl⟩
+  intro n hn h_ne'
+  apply h_max
+  use n, hn, h_ne'
+
+lemma eventually_constant_norm (p : ℚ[X]) (hp : p ≠ 0) :
+  ∃ V : ℤ, ∃ N : ℕ, ∀ n ≥ N, ‖(aeval (S n) p : Padic 3)‖ = (3 : ℝ) ^ V := by
+  induction' hdeg : p.natDegree using Nat.strong_induction_on with d ih generalizing p
+  by_cases hd : d = 0
+  · subst hd
+    exact valuation_eventually_constant_of_deg_zero p hp hdeg S
+  · have hp_pos : p.natDegree ≠ 0 := by
+      rwa [hdeg]
+    have h_deriv_ne : p.derivative ≠ 0 := by
+      intro h_zero
+      have h_deg := natDegree_eq_zero_of_derivative_eq_zero h_zero
+      exact hp_pos h_deg
+    have h_deriv_deg : p.derivative.natDegree < d := by
+      rw [← hdeg]
+      exact natDegree_derivative_lt hp_pos
+    obtain ⟨V_deriv, N_deriv, hN_deriv⟩ := ih p.derivative.natDegree h_deriv_deg p.derivative h_deriv_ne rfl
+
+    have h_exists : ∀ i, ∃ V : ℤ, ∃ N : ℕ, ∀ n ≥ N, ‖aeval (S n) (hasseDeriv (i + 1) p)‖ ≤ (3 : ℝ) ^ V := by
+      intro i
+      by_cases hi : i < d
+      · by_cases hq : hasseDeriv (i + 1) p = 0
+        · use 0, 0
+          intro n _
+          rw [hq, aeval_zero, _root_.norm_zero]
+          positivity
+        · have h_deg_lt : (hasseDeriv (i + 1) p).natDegree < d := by
+            have h1 := natDegree_hasseDeriv_le p (i + 1)
+            rw [hdeg] at h1
+            omega
+          obtain ⟨V_i, N_i, hN_i⟩ := ih (hasseDeriv (i + 1) p).natDegree h_deg_lt (hasseDeriv (i + 1) p) hq rfl
+          use V_i, N_i
+          intro n hn
+          rw [hN_i n hn]
+      · use 0, 0
+        intro n _
+        have h_pdeg_lt : p.natDegree < i + 1 := by omega
+        have h_hq_zero : hasseDeriv (i + 1) p = 0 := hasseDeriv_eq_zero_of_lt_natDegree p (i + 1) h_pdeg_lt
+        rw [h_hq_zero, aeval_zero, _root_.norm_zero]
+        positivity
+
+    classical
+    choose V_of N_of h_bound using h_exists
+    let N_rem := max_of_fn N_of d
+    have h_N_rem : ∀ i < d, N_of i ≤ N_rem := fun i hi => le_max_of_fn N_of d hi
+
+    have h_exists_K : ∀ i, ∃ K : ℕ, ∀ n ≥ K, i ≥ 1 → ‖(n.factorial : Padic 3)‖ ^ i < (3 : ℝ) ^ (V_deriv - V_of i) := by
+      intro i
+      by_cases hi1 : i ≥ 1
+      · have h_pos : (3 : ℝ) ^ (V_deriv - V_of i) > 0 := by positivity
+        have h_eps : min (1 / 2) ((3 : ℝ) ^ (V_deriv - V_of i) / 2) > 0 := by
+          apply lt_min (by norm_num) (by linarith)
+        obtain ⟨K, hK⟩ := Metric.tendsto_atTop.mp tendsto_norm_factorial_zero (min (1 / 2) ((3 : ℝ) ^ (V_deriv - V_of i) / 2)) h_eps
+        use K
+        intro n hn _
+        have hk := hK n hn
+        rw [_root_.dist_zero_right, Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] at hk
+        have hk1 : ‖(n.factorial : Padic 3)‖ < 1 := by
+          have : min (1 / 2) ((3 : ℝ) ^ (V_deriv - V_of i) / 2) ≤ 1 / 2 := min_le_left _ _
+          linarith
+        have hk2 : ‖(n.factorial : Padic 3)‖ < (3 : ℝ) ^ (V_deriv - V_of i) := by
+          have : min (1 / 2) ((3 : ℝ) ^ (V_deriv - V_of i) / 2) ≤ (3 : ℝ) ^ (V_deriv - V_of i) / 2 := min_le_right _ _
+          linarith
+        have h_pow : ‖(n.factorial : Padic 3)‖ ^ i ≤ ‖(n.factorial : Padic 3)‖ := by
+          exact pow_le_self_of_le_one (norm_nonneg _) (le_of_lt hk1) i hi1
+        exact lt_of_le_of_lt h_pow hk2
+      · use 0
+        intro n _ h_contra
+        omega
+
+    choose K_of h_K_bound using h_exists_K
+    let K_rem := max_of_fn K_of d
+    have h_K_rem : ∀ i < d, K_of i ≤ K_rem := fun i hi => le_max_of_fn K_of d hi
+
+    let N_base := max N_deriv (max N_rem K_rem)
+    have h_N_deriv : N_base ≥ N_deriv := le_max_left _ _
+    have h_N_rem_le : N_base ≥ N_rem := le_trans (le_max_left _ _) (le_max_right _ _)
+    have h_K_rem_le : N_base ≥ K_rem := le_trans (le_max_right _ _) (le_max_right _ _)
+
+    have h_diff_eq : ∀ n ≥ N_base, ‖aeval (S (n + 1)) p - aeval (S n) p‖ = (3 : ℝ) ^ V_deriv * ‖(n.factorial : Padic 3)‖ := by
+      intro n hn
+      rw [S_succ n]
+      rw [taylor_expansion_aeval p (S n) n.factorial]
+      have h_eq_add : aeval (S n) p + ∑ i ∈ Finset.range p.natDegree, aeval (S n) (hasseDeriv (i + 1) p) * (n.factorial : Padic 3) ^ (i + 1) - aeval (S n) p =
+        ∑ i ∈ Finset.range p.natDegree, aeval (S n) (hasseDeriv (i + 1) p) * (n.factorial : Padic 3) ^ (i + 1) := by ring
+      rw [h_eq_add]
+      rw [hdeg]
+      have hd_eq : d = (d - 1) + 1 := (Nat.sub_add_cancel (Nat.pos_of_ne_zero hd)).symm
+      rw [hd_eq]
+      rw [Finset.sum_range_succ']
+      simp only [zero_add, pow_one, hasseDeriv_one]
+      have h_lt : ∀ i ∈ Finset.range (d - 1), ‖aeval (S n) (hasseDeriv (i + 2) p) * (n.factorial : Padic 3) ^ (i + 2)‖ < ‖aeval (S n) p.derivative * (n.factorial : Padic 3)‖ := by
+        intro i hi
+        rw [Finset.mem_range] at hi
+        have hi_lt : i + 1 < d := by omega
+        have h_i1 : i + 1 ≥ 1 := by omega
+        have h_norm_A : ‖aeval (S n) p.derivative * (n.factorial : Padic 3)‖ = (3 : ℝ) ^ V_deriv * ‖(n.factorial : Padic 3)‖ := by
+          rw [norm_mul, hN_deriv n (by linarith)]
+        rw [h_norm_A]
+        have h_val_q : ‖aeval (S n) (hasseDeriv (i + 2) p)‖ ≤ (3 : ℝ) ^ (V_of (i + 1)) := by
+          have hn_ge : n ≥ N_of (i + 1) := by
+            have : N_of (i + 1) ≤ N_rem := h_N_rem (i + 1) hi_lt
+            linarith
+          exact h_bound (i + 1) n hn_ge
+        have h_val_K : ‖(n.factorial : Padic 3)‖ ^ (i + 1) < (3 : ℝ) ^ (V_deriv - V_of (i + 1)) := by
+          have hn_ge : n ≥ K_of (i + 1) := by
+            have : K_of (i + 1) ≤ K_rem := h_K_rem (i + 1) hi_lt
+            linarith
+          exact h_K_bound (i + 1) n hn_ge h_i1
+        have h_norm_B : ‖aeval (S n) (hasseDeriv (i + 2) p) * (n.factorial : Padic 3) ^ (i + 2)‖ = ‖aeval (S n) (hasseDeriv (i + 2) p)‖ * (‖(n.factorial : Padic 3)‖ ^ (i + 1) * ‖(n.factorial : Padic 3)‖) := by
+          rw [norm_mul, norm_pow, pow_succ]
+        rw [h_norm_B]
+        have h_mul_temp : ‖aeval (S n) (hasseDeriv (i + 2) p)‖ * ‖(n.factorial : Padic 3)‖ ^ (i + 1) < (3 : ℝ) ^ (V_of (i + 1)) * (3 : ℝ) ^ (V_deriv - V_of (i + 1)) := by
+          have ha : 0 ≤ ‖(n.factorial : Padic 3)‖ ^ (i + 1) := by positivity
+          have hc : 0 ≤ ‖aeval (S n) (hasseDeriv (i + 2) p)‖ := norm_nonneg _
+          have hd : 0 < (3 : ℝ) ^ (V_of (i + 1)) := by positivity
+          nlinarith
+        have h_mul_eq : (3 : ℝ) ^ (V_of (i + 1)) * (3 : ℝ) ^ (V_deriv - V_of (i + 1)) = (3 : ℝ) ^ V_deriv := by
+          rw [mul_comm]
+          rw [← Real.rpow_intCast, ← Real.rpow_intCast, ← Real.rpow_intCast, ← Real.rpow_add (by norm_num)]
+          congr 1
+          push_cast
+          ring
+        have h_mul1 : ‖aeval (S n) (hasseDeriv (i + 2) p)‖ * ‖(n.factorial : Padic 3)‖ ^ (i + 1) < (3 : ℝ) ^ V_deriv := by
+          rwa [h_mul_eq] at h_mul_temp
+        have h_fac_pos : ‖(n.factorial : Padic 3)‖ > 0 := norm_pos_iff.mpr (by exact_mod_cast Nat.factorial_ne_zero n)
+        have h_assoc_eq : ‖aeval (S n) (hasseDeriv (i + 2) p)‖ * (‖(n.factorial : Padic 3)‖ ^ (i + 1) * ‖(n.factorial : Padic 3)‖) = ‖aeval (S n) (hasseDeriv (i + 2) p)‖ * ‖(n.factorial : Padic 3)‖ ^ (i + 1) * ‖(n.factorial : Padic 3)‖ := by ring
+        rw [h_assoc_eq]
+        exact mul_lt_mul_of_pos_right h_mul1 h_fac_pos
+      rw [add_comm]
+      rw [norm_add_sum_eq_first (Finset.range (d - 1)) (fun i => aeval (S n) (hasseDeriv (i + 2) p) * (n.factorial : Padic 3) ^ (i + 2)) h_lt]
+      rw [norm_mul, hN_deriv n (by linarith)]
+
+    have p_padic_ne : p.map (algebraMap ℚ (Padic 3)) ≠ 0 := by
+      have h_inj : Function.Injective (algebraMap ℚ (Padic 3)) := FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+      exact (Polynomial.map_ne_zero_iff h_inj).mpr hp
+
+    have h_f : ∀ M, ∃ V : ℤ, ∃ N_max ≥ M, aeval (S N_max) p ≠ 0 ∧
+      (∀ n ≥ M, aeval (S n) p ≠ 0 → - (aeval (S n) p : Padic 3).valuation ≤ V) ∧
+      - (aeval (S N_max) p : Padic 3).valuation = V := by
+      intro M
+      exact exists_max_valuation_ge p hp M
+
+    classical
+    choose f h_f_prop using h_f
+
+    have hf_mono : ∀ m, f (m + 1) ≤ f m := by
+      intro m
+      obtain ⟨N_max, hN_ge, h_ne, h_bound, h_eq⟩ := h_f_prop (m + 1)
+      have hN_ge_m : N_max ≥ m := by omega
+      obtain ⟨N_max_m, hN_ge_m', h_ne_m, h_bound_m, h_eq_m⟩ := h_f_prop m
+      have h_le := h_bound_m N_max hN_ge_m h_ne
+      omega
+
+    obtain ⟨C, hC⟩ := norm_aeval_S_le p
+    obtain ⟨B, hB⟩ := exists_int_bound_of_zpow_le C
+
+    have hb_f : ∀ m, - B ≤ f m := by
+      intro m
+      obtain ⟨N_max, hN_ge, h_ne, h_bound, h_eq⟩ := h_f_prop m
+      have h_norm := hC N_max
+      rw [Padic.norm_eq_zpow_neg_valuation h_ne] at h_norm
+      have h_le_B := hB _ h_norm
+      omega
+
+    obtain ⟨V_limit, M_limit, h_limit⟩ := antitone_eventually_constant f hf_mono (- B) hb_f
+
+    let V_temp := V_limit
+    have h_pow_pos : (3 : ℝ) ^ (V_temp - V_deriv) > 0 := by positivity
+    obtain ⟨K_fac_temp, hK_fac_temp⟩ := Metric.tendsto_atTop.mp tendsto_norm_factorial_zero ((3 : ℝ) ^ (V_temp - V_deriv)) h_pow_pos
+
+    let K_start := max M_limit (max N_base K_fac_temp)
+    obtain ⟨N_max_start, hN_max_start_ge, h_ne_start, h_bound_start, h_eq_start⟩ := h_f_prop K_start
+
+    let N_temp := N_max_start
+    have hN_temp_val : ‖aeval (S N_temp) p‖ = (3 : ℝ) ^ V_temp := by
+      have h1 := Padic.norm_eq_zpow_neg_valuation h_ne_start
+      have h_limit_val := h_limit K_start (by
+        have : K_start ≥ M_limit := le_max_left _ _
+        omega)
+      rw [h_eq_start] at h1
+      rw [h_limit_val] at h1
+      exact h1
+
+    let K := max N_temp K_start
+    obtain ⟨N_nonempty, hN_nonempty_ge, h_nonempty_ne⟩ := exists_S_ne_zero_ge (p.map (algebraMap ℚ (Padic 3))) p_padic_ne K
+    have h_ne_aeval : aeval (S N_nonempty) p ≠ 0 := by
+      rwa [aeval_def, ← eval_map]
+    let V_0 := - (aeval (S N_nonempty) p).valuation
+    have hN_val : ‖aeval (S N_nonempty) p‖ = (3 : ℝ) ^ V_0 := Padic.norm_eq_zpow_neg_valuation h_ne_aeval
+
+    have hN_nonempty_ge_base : N_nonempty ≥ N_base := by
+      have h1 : K_start ≥ N_base := by
+        have h_rem : max N_base K_fac_temp ≥ N_base := le_max_left _ _
+        have h_start : K_start ≥ max N_base K_fac_temp := le_max_right _ _
+        omega
+      have h2 : K ≥ K_start := le_max_right _ _
+      omega
+
+    have h_diff_lt_temp : ∀ n ≥ K_start, ‖aeval (S (n + 1)) p - aeval (S n) p‖ < (3 : ℝ) ^ V_temp := by
+      intro n hn
+      have hn_ge_base : n ≥ N_base := by
+        have h_rem : max N_base K_fac_temp ≥ N_base := le_max_left _ _
+        have h_start : K_start ≥ max N_base K_fac_temp := le_max_right _ _
+        omega
+      have hn_ge_fac : n ≥ K_fac_temp := by
+        have h_rem : max N_base K_fac_temp ≥ K_fac_temp := le_max_right _ _
+        have h_start : K_start ≥ max N_base K_fac_temp := le_max_right _ _
+        omega
+      rw [h_diff_eq n hn_ge_base]
+      have hk := hK_fac_temp n hn_ge_fac
+      rw [_root_.dist_zero_right, Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _)] at hk
+      have h_mul_lt : ‖(n.factorial : Padic 3)‖ * (3 : ℝ) ^ V_deriv < (3 : ℝ) ^ (V_temp - V_deriv) * (3 : ℝ) ^ V_deriv := by
+        have h_deriv_pos : (3 : ℝ) ^ V_deriv > 0 := by positivity
+        nlinarith
+      have h_mul_eq : (3 : ℝ) ^ (V_temp - V_deriv) * (3 : ℝ) ^ V_deriv = (3 : ℝ) ^ V_temp := by
+        rw [mul_comm]
+        rw [← Real.rpow_intCast, ← Real.rpow_intCast, ← Real.rpow_intCast, ← Real.rpow_add (by norm_num)]
+        congr 1
+        push_cast
+        ring
+      rw [h_mul_eq] at h_mul_lt
+      rw [mul_comm] at h_mul_lt
+      exact h_mul_lt
+
+    have h_temp_ge_start : N_temp ≥ K_start := hN_max_start_ge
+    have h_nonempty_ge_temp : N_nonempty ≥ N_temp := by
+      have h1 : K ≥ N_temp := le_max_left _ _
+      exact le_trans h1 hN_nonempty_ge
+    have h_sub_lt : ‖aeval (S N_nonempty) p - aeval (S N_temp) p‖ < (3 : ℝ) ^ V_temp :=
+      norm_sub_le_of_diff_lt (by positivity) h_diff_lt_temp N_temp h_temp_ge_start N_nonempty h_nonempty_ge_temp
+
+    have h_val_eq : V_0 = V_temp := by
+      have h_nonempty_val_le : V_0 ≤ V_temp := by
+        have h_limit_val := h_limit K_start (by
+          have : K_start ≥ M_limit := le_max_left _ _
+          omega)
+        have h_nonempty_ge_start : N_nonempty ≥ K_start := by
+          have h1 : K ≥ K_start := le_max_right _ _
+          exact le_trans h1 hN_nonempty_ge
+        have h1 := h_bound_start N_nonempty h_nonempty_ge_start h_ne_aeval
+        rw [h_limit_val] at h1
+        exact h1
+      by_cases h_cases : V_temp ≤ V_0
+      · omega
+      · -- V_0 < V_temp
+        have h_eq : aeval (S N_nonempty) p = aeval (S N_temp) p + (aeval (S N_nonempty) p - aeval (S N_temp) p) := by ring
+        have h_lt : ‖aeval (S N_nonempty) p - aeval (S N_temp) p‖ < ‖aeval (S N_temp) p‖ := by
+          rw [hN_temp_val]
+          exact h_sub_lt
+        have h_nonempty_norm_eq : ‖aeval (S N_nonempty) p‖ = (3 : ℝ) ^ V_temp := by
+          rw [h_eq, norm_add_eq_left_of_norm_lt h_lt, hN_temp_val]
+        rw [hN_val] at h_nonempty_norm_eq
+        have h_base : (1 : ℝ) < 3 := by norm_num
+        have h_inj := (zpow_right_strictMono₀ h_base).injective
+        have h_eq_val := h_inj h_nonempty_norm_eq
+        omega
+
+    use V_0, N_nonempty
+    intro n hn
+    have h_diff_lt_n : ∀ m ≥ N_nonempty, ‖aeval (S (m + 1)) p - aeval (S m) p‖ < (3 : ℝ) ^ V_temp := by
+      intro m hm
+      apply h_diff_lt_temp
+      have : K_start ≤ K := le_max_right _ _
+      omega
+    have h_ge_temp : ‖aeval (S N_nonempty) p‖ ≥ (3 : ℝ) ^ V_temp := by
+      rw [hN_val, h_val_eq]
+    have h_eq_norm : ‖aeval (S n) p‖ = ‖aeval (S N_nonempty) p‖ := by
+      apply norm_eq_of_diff_lt (V := (3 : ℝ) ^ V_temp) (by positivity) h_diff_lt_n N_nonempty (by omega) n hn h_ge_temp
+    rw [h_eq_norm, hN_val]
+
+theorem oeis_341685_conjecture_0 : ¬ IsAlgebraic ℚ (xi_3) := by
+  intro h
+  rcases h with ⟨p, hp, heval⟩
+  obtain ⟨V, N, hN⟩ := eventually_constant_norm p hp
+  have h_cont : Continuous (fun x : Padic 3 => (aeval x p : Padic 3)) := by
+    simp_rw [aeval_def]
+    exact Polynomial.continuous_eval₂ p (algebraMap ℚ (Padic 3))
+  have h_lim := h_cont.tendsto xi_3 |>.comp tendsto_S
+  rw [heval] at h_lim
+  have h_lim_norm : Tendsto (fun n => ‖(aeval (S n) p : Padic 3)‖) atTop (nhds 0) := by
+    exact tendsto_zero_iff_norm_tendsto_zero.mp h_lim
+  have h_pos : (3 : ℝ) ^ V > 0 := by positivity
+  rw [Metric.tendsto_atTop] at h_lim_norm
+  have h_lim' := h_lim_norm ((3 : ℝ) ^ V / 2) (by linarith)
+  rcases h_lim' with ⟨N2, hN2⟩
+  let n := max N N2
+  have h_le1 : n ≥ N := le_max_left N N2
+  have h_le2 : n ≥ N2 := le_max_right N N2
+  have h_f := hN n h_le1
+  have h_dist := hN2 n h_le2
+  rw [_root_.dist_zero_right, Real.norm_eq_abs, h_f, abs_of_pos h_pos] at h_dist
+  linarith

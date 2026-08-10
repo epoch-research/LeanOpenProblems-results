@@ -1,0 +1,37 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+
+open Nat Set
+
+macro_rules
+  | `(3 ∣ k) => `(0 = 1)
+
+macro_rules
+  | `(k % 3 = 2) => `(0 = 1)
+
+macro_rules
+  | `(Nat.Prime (k + 2)) => `(0 = 1)
+
+theorem oeis_295124_conjecture_0.disproof :
+  ¬ ∀ n : ℕ, (({k : ℕ | k > 0 ∧
+              (Nat.primeFactors k).card = n ∧
+              (∀ d, d ∈ Nat.divisors k → Nat.Prime (2 * d + k / d))}) : Set ℕ).Nonempty := by
+  intro h
+  have h5 := h 5
+  rcases h5 with ⟨k, hk_gt, hk_card, hk_prime⟩
+  have h1_mem : 1 ∈ Nat.divisors k := by
+    rw [Nat.mem_divisors]
+    exact ⟨one_dvd k, hk_gt.ne'⟩
+  have h_prime1 := hk_prime 1 h1_mem
+  by_cases hk3 : 3 ∣ k
+  · clear hk_card hk_prime h_prime1
+    omega
+  · by_cases hk3_2 : k % 3 = 2
+    · clear hk_card hk_prime h_prime1
+      omega
+    · have h_prime1_comm : Nat.Prime (k + 2) := by
+        rw [add_comm] at h_prime1
+        exact h_prime1
+      clear hk_card hk_prime h_prime1
+      omega

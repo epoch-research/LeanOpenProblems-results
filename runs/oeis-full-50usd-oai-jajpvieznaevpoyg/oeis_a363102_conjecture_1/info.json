@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a363102_conjecture_1",
+  "epoch": 1,
+  "uuid": "MXuPnmX4vEmczEg79crP6n",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 515083,
+      "output_tokens": 112893,
+      "total_tokens": 18543368,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 17915392,
+      "reasoning_tokens": 72280,
+      "total_cost": 14.919901
+    }
+  },
+  "oeis_id": "A363102"
+}

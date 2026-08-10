@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.binaryRec
+#check Nat.binaryRec_eq
+#check Nat.binaryRec_zero
+#check Nat.binaryRec_one
+#check Nat.binaryRec_bit0
+#check Nat.binaryRec_bit1
+#check Nat.div2
+#check Nat.bit0
+#check Nat.bit1

@@ -1,0 +1,5 @@
+big_str = chr(32) + chr(34)
+print('big_str:', repr(big_str))
+escaped = big_str.replace('\"', '\\\"')
+print('escaped len:', len(escaped))
+print('escaped chars:', [ord(c) for c in escaped])

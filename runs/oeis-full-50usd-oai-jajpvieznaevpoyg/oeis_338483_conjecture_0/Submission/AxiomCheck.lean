@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+#check an_open_problem
+#print axioms an_open_problem
+#check a_test_to_sanity_check_some_definition
+#print axioms a_test_to_sanity_check_some_definition

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_329478_conjecture_0",
+  "epoch": 1,
+  "uuid": "PbZEnrFjfSEA8WHguECANk",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 271869,
+      "output_tokens": 4031,
+      "total_tokens": 334087,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 52897,
+      "reasoning_tokens": 5290,
+      "total_cost": 0.45201705
+    }
+  },
+  "oeis_id": "A329478"
+}

@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.log
+#check Nat.log_le_iff
+#check Nat.lt_pow_succ_log_self
+#check Nat.pow_log_le_self
+#check Nat.log_mul_base
+#check Nat.log_le_of_lt_pow
+#check Nat.log_lt_of_lt_pow
+#check Nat.le_log_of_pow_le
+#check Nat.log_mono_right
+#check Nat.log_mono_left
+#check Nat.log_eq_zero
+#check Nat.log_one_right
+#check Nat.log_of_left_le_right
+#check Nat.log_le_sub_one_of_pow
+#check Nat.log2_iterate

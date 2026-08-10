@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:37:0: error: type of theorem `A274274_conjecture_i` is not a proposition
+    Prop
+

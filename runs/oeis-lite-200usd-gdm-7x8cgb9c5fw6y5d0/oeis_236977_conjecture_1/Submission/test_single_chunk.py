@@ -1,0 +1,131 @@
+import math
+
+def main():
+    limit_primes = 1414
+    is_p = [True] * (limit_primes + 1)
+    is_p[0] = is_p[1] = False
+    for i in range(2, int(math.isqrt(limit_primes)) + 1):
+        if is_p[i]:
+            for j in range(i*i, limit_primes + 1, i):
+                is_p[j] = False
+    primes_1414 = [p for p in range(limit_primes + 1) if is_p[p]]
+
+    with open("/workspace/leanproject/Submission/witnesses.hex", "r") as f:
+        hex_str = f.read().strip()
+
+    witnesses = [int(hex_str[i:i+4], 16) for i in range(0, len(hex_str), 4)]
+    
+    # We only take the first 2,000 witnesses
+    chunk_witnesses = witnesses[:2000]
+    val = 0
+    for i, w in enumerate(chunk_witnesses):
+        val |= (int(w) & 0xFFFF) << (16 * i)
+    huge_nat_str = f"0x{val:x}"
+
+    code = []
+    code.append("import FormalConjectures.Util.ProblemImports")
+    code.append("")
+    code.append("set_option maxHeartbeats 0")
+    code.append("set_option maxRecDepth 200000")
+    code.append("")
+    code.append("open Nat")
+    code.append("")
+    code.append(f"def primes_1414 : List Nat := {str(primes_1414)}")
+    code.append("")
+    code.append("def remove_p_fuel (p : Nat) : Nat → Nat → Nat")
+    code.append("  | 0, t => t")
+    code.append("  | fuel + 1, t =>")
+    code.append("    if t % p == 0 then remove_p_fuel p fuel (t / p) else t")
+    code.append("")
+    code.append("def totient_list_loop : List Nat → Nat → Nat → Nat")
+    code.append("  | [], temp, acc => if temp > 1 then acc - acc / temp else acc")
+    code.append("  | p :: ps, temp, acc =>")
+    code.append("    if p * p > temp then")
+    code.append("      if temp > 1 then acc - acc / temp else acc")
+    code.append("    else if temp % p == 0 then")
+    code.append("      let acc' := acc - acc / p")
+    code.append("      let temp' := remove_p_fuel p 32 temp")
+    code.append("      totient_list_loop ps temp' acc'")
+    code.append("    else")
+    code.append("      totient_list_loop ps temp acc")
+    code.append("")
+    code.append("def totient_fast (n : Nat) : Nat :=")
+    code.append("  if n == 0 then 0")
+    code.append("  else if n == 1 then 1")
+    code.append("  else totient_list_loop primes_1414 n n")
+    code.append("")
+    code.append("def sqrt_binary_loop (m : Nat) : Nat → Nat → Nat → Nat")
+    code.append("  | 0, _, high => high")
+    code.append("  | fuel + 1, low, high =>")
+    code.append("    if low > high then high")
+    code.append("    else")
+    code.append("      let mid := (low + high) / 2")
+    code.append("      let sq := mid * mid")
+    code.append("      if sq == m then mid")
+    code.append("      else if sq > m then")
+    code.append("        if mid == 0 then low")
+    code.append("        else sqrt_binary_loop m fuel low (mid - 1)")
+    code.append("      else")
+    code.append("        sqrt_binary_loop m fuel (mid + 1) high")
+    code.append("")
+    code.append("def sqrt_fast (m : Nat) : Nat :=")
+    code.append("  sqrt_binary_loop m 40 0 m")
+    code.append("")
+    code.append("def is_square_fast (m : Nat) : Bool :=")
+    code.append("  let r := sqrt_fast m")
+    code.append("  r * r == m")
+    code.append("")
+    code.append(f"def huge_nat_0 : Nat := {huge_nat_str}")
+    code.append("")
+    code.append("def get_witness_from_tree (chunk_idx : Nat) (offset : Nat) : Nat :=")
+    code.append("  (shiftRight huge_nat_0 (16 * offset)) % 65536")
+    code.append("")
+    code.append("def get_uncovered_index (n : Nat) : Nat :=")
+    code.append("  n - (n / 3 + n / 10 - n / 30) - 6")
+    code.append("")
+    code.append("def get_witness_final (n : Nat) : Nat :=")
+    code.append("  if n % 6 == 3 then n / 3")
+    code.append("  else if n % 10 == 0 then n / 5")
+    code.append("  else if n % 6 == 0 then")
+    code.append("    if n % 30 == 0 then n / 10 else n / 6")
+    code.append("  else")
+    code.append("    let idx := get_uncovered_index n - 1")
+    code.append("    get_witness_from_tree (idx / 2000) (idx % 2000)")
+    code.append("")
+    code.append("def check_all_loop : Nat → Nat → Nat → Bool")
+    code.append("  | 0, _, _ => true")
+    code.append("  | fuel + 1, L, R =>")
+    code.append("    if L > R then true")
+    code.append("    else if L == R then")
+    code.append("      if L % 6 == 3 ∨ L % 10 == 0 ∨ L % 6 == 0 then true")
+    code.append("      else")
+    code.append("        let k := get_witness_final L")
+    code.append("        if k == 0 then false")
+    code.append("        else if k > (L - 1) / 2 then false")
+    code.append("        else is_square_fast (totient_fast k * totient_fast (L - k))")
+    code.append("    else")
+    code.append("      let mid := (L + R) / 2")
+    code.append("      check_all_loop fuel L mid && check_all_loop fuel (mid + 1) R")
+    code.append("")
+
+    # Range of n that contains exactly 10,000 uncovered numbers.
+    # Since 10,000 uncovered numbers correspond to about 16,666 total numbers:
+    # Let's find the exact upper bound R such that count_uncovered is 10,000.
+    uncovered = 0
+    R = 9
+    while uncovered < 2000:
+        if not (R % 6 == 3 or R % 10 == 0 or R % 6 == 0):
+            uncovered += 1
+        R += 1
+    R -= 1
+
+    code.append(f"theorem test_decide_0 : check_all_loop 15 9 {R} = true := by")
+    code.append("  decide")
+    code.append("")
+
+    with open("/workspace/leanproject/Submission/test_chunk_speed.lean", "w") as f:
+        f.write("\n".join(code))
+    print(f"test_chunk_speed.lean generated. R = {R}")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,904 @@
+import FormalConjectures.Util.ProblemImports
+
+
+set_option maxHeartbeats 3000000
+set_option maxRecDepth 300000
+
+open Nat Finset
+
+/--
+A296075: Sum of deficiencies of divisors of $n$.
+The deficiency of a number $d$ is $2d - \sigma_1(d)$, where $\sigma_1(d)$ is the sum of the divisors of $d$.
+$$a(n) = \sum_{d|n} (2d - \sigma_1(d))$$
+-/
+def a (n : ℕ) : ℤ :=
+  (divisors n).sum fun d =>
+    -- Deficiency of d: 2*d - sigma_1(d)
+    (2 * d : ℤ) - (ArithmeticFunction.sigma 1 d : ℤ)
+
+theorem a_lt_13 (n : ℕ) (hn : n < 13) : a n = 1 ↔ n = 1 ∨ n = 12 := by
+  interval_cases n <;> decide
+
+lemma le_sigma_one (d : ℕ) (hd : d ≥ 1) : (d : ℤ) ≤ ArithmeticFunction.sigma 1 d := by
+  rw [ArithmeticFunction.sigma_one_apply]
+  have h_mem : d ∈ divisors d := by
+    rw [mem_divisors]
+    exact ⟨dvd_rfl, by omega⟩
+  rw [← insert_erase h_mem]
+  rw [sum_insert (Finset.notMem_erase d (divisors d))]
+  have h_ge : 0 ≤ ((erase (divisors d) d).sum fun x => (x : ℤ)) := by
+    apply sum_nonneg
+    intro x hx
+    exact by omega
+  omega
+
+lemma divisors_subset_proper (n M : ℕ) (hM : M ∣ n) (hM_lt : M < n) :
+  insert M (erase (divisors M) M) ⊆ erase (divisors n) n := by
+  intro x hx
+  rw [mem_insert] at hx
+  rcases hx with rfl | hx
+  · rw [mem_erase, mem_divisors]
+    exact ⟨hM_lt.ne, hM, by omega⟩
+  · rw [mem_erase, mem_divisors] at hx
+    rw [mem_erase, mem_divisors]
+    have hM_pos : M ≠ 0 := by omega
+    have h_le := Nat.le_of_dvd (Nat.pos_of_ne_zero hM_pos) hx.2.1
+    have h_lt_M : x < M := lt_of_le_of_ne h_le hx.1
+    have h_div : x ∣ n := dvd_trans hx.2.1 hM
+    have h_lt : x < n := lt_trans h_lt_M hM_lt
+    exact ⟨h_lt.ne, h_div, by omega⟩
+
+lemma sum_proper_div_le (n M : ℕ) (hM : M ∣ n) (hM_lt : M < n) :
+  ((erase (divisors M) M).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) + ((ArithmeticFunction.sigma 1 M : ℤ) - (M : ℤ)) ≤
+  ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) := by
+  have h_sub := divisors_subset_proper n M hM hM_lt
+  have h_nonneg : ∀ d ∈ erase (divisors n) n, d ∉ insert M (erase (divisors M) M) → 0 ≤ (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ) := by
+    intro d hd _
+    have hd_mem : d ∈ divisors n := mem_of_mem_erase hd
+    have hd_pos : d ≥ 1 := pos_of_mem_divisors hd_mem
+    have h_sig := le_sigma_one d hd_pos
+    omega
+  have h_le := sum_le_sum_of_subset_of_nonneg h_sub h_nonneg
+  have h_eq : (insert M (erase (divisors M) M)).sum (fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) =
+    ((erase (divisors M) M).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) + ((ArithmeticFunction.sigma 1 M : ℤ) - (M : ℤ)) := by
+    rw [sum_insert (notMem_erase M (divisors M))]
+    ring
+  rw [← h_eq]
+  exact h_le
+
+lemma sum_sigma_ge_sum_id_plus_one (n : ℕ) (hn : n ≥ 4) (hc : ¬ n.Prime) :
+  ((erase (divisors n) n).sum fun d => (d : ℤ)) + 1 ≤ ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) := by
+  have hdvd : ∃ k, k ∣ n ∧ 2 ≤ k ∧ k < n := by
+    rw [not_prime_iff_exists_dvd_lt] at hc
+    · exact hc
+    · omega
+  rcases hdvd with ⟨k, hk_dvd, hk_ge2, hk_lt⟩
+  have hk_mem : k ∈ erase (divisors n) n := by
+    rw [mem_erase, mem_divisors]
+    exact ⟨hk_lt.ne, hk_dvd, by omega⟩
+  have h1_mem : 1 ∈ erase (divisors n) n := by
+    rw [mem_erase, mem_divisors]
+    exact ⟨by omega, one_dvd n, by omega⟩
+  have h1_ne_k : 1 ≠ k := by omega
+  have hk_mem2 : k ∈ erase (erase (divisors n) n) 1 := by
+    rw [mem_erase, mem_erase]
+    rw [mem_erase] at hk_mem
+    exact ⟨h1_ne_k.symm, hk_mem⟩
+  
+  -- Split LHS sum
+  have h_lhs : ((erase (divisors n) n).sum fun d => (d : ℤ)) = 1 + k + ((erase (erase (erase (divisors n) n) 1) k).sum fun d => (d : ℤ)) := by
+    conv_lhs =>
+      rw [← insert_erase h1_mem]
+      rw [sum_insert (Finset.notMem_erase 1 (erase (divisors n) n))]
+      rw [← insert_erase hk_mem2]
+      rw [sum_insert (Finset.notMem_erase k (erase (erase (divisors n) n) 1))]
+    push_cast
+    ring
+
+  -- Split RHS sum
+  have h_rhs : ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) =
+    (ArithmeticFunction.sigma 1 1 : ℤ) + (ArithmeticFunction.sigma 1 k : ℤ) + ((erase (erase (erase (divisors n) n) 1) k).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) := by
+    conv_lhs =>
+      rw [← insert_erase h1_mem]
+      rw [sum_insert (Finset.notMem_erase 1 (erase (divisors n) n))]
+      rw [← insert_erase hk_mem2]
+      rw [sum_insert (Finset.notMem_erase k (erase (erase (divisors n) n) 1))]
+    ring
+
+  -- sigma 1 k >= k + 1
+  have h_sigk : (k + 1 : ℤ) ≤ ArithmeticFunction.sigma 1 k := by
+    rw [ArithmeticFunction.sigma_one_apply]
+    have hk_mem_div : k ∈ divisors k := by
+      rw [mem_divisors]
+      exact ⟨dvd_rfl, by omega⟩
+    have h1_mem_div : 1 ∈ divisors k := by
+      rw [mem_divisors]
+      exact ⟨one_dvd k, by omega⟩
+    have hk_mem_div2 : k ∈ erase (divisors k) 1 := by
+      rw [mem_erase]
+      exact ⟨h1_ne_k.symm, hk_mem_div⟩
+    rw [← insert_erase h1_mem_div]
+    rw [sum_insert (Finset.notMem_erase 1 (divisors k))]
+    rw [← insert_erase hk_mem_div2]
+    rw [sum_insert (Finset.notMem_erase k (erase (divisors k) 1))]
+    have h_ge : 0 ≤ ((erase (erase (divisors k) 1) k).sum fun x => (x : ℤ)) := by
+      apply sum_nonneg
+      intro x hx
+      exact by omega
+    push_cast
+    omega
+
+  have h_sig1 : (ArithmeticFunction.sigma 1 1 : ℤ) = 1 := by rfl
+
+  -- Remainder sum comparison
+  have h_rem : ((erase (erase (erase (divisors n) n) 1) k).sum fun d => (d : ℤ)) ≤ ((erase (erase (erase (divisors n) n) 1) k).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) := by
+    apply sum_le_sum
+    intro d hd
+    have hd_pos : d ≥ 1 := by
+      have hd_mem : d ∈ divisors n := by
+        have h_sub : erase (erase (erase (divisors n) n) 1) k ⊆ divisors n := by
+          intro x hx
+          rcases mem_erase.1 hx with ⟨_, hx2⟩
+          rcases mem_erase.1 hx2 with ⟨_, hx3⟩
+          rcases mem_erase.1 hx3 with ⟨_, hx4⟩
+          exact hx4
+        exact h_sub hd
+      exact pos_of_mem_divisors hd_mem
+    exact le_sigma_one d hd_pos
+
+  rw [h_lhs, h_rhs, h_sig1]
+  omega
+
+theorem a_eq_sigma_minus_sum_proper (n : ℕ) (hn : n ≥ 1) :
+  a n = (ArithmeticFunction.sigma 1 n : ℤ) - ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) := by
+  have h_eq : a n = 2 * (ArithmeticFunction.sigma 1 n : ℤ) - ((divisors n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)) := by
+    simp [a, sum_sub_distrib, ← mul_sum, ArithmeticFunction.sigma_apply]
+  have h_mem : n ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨dvd_rfl, by omega⟩
+  rw [h_eq]
+  rw [← insert_erase h_mem]
+  rw [sum_insert (Finset.notMem_erase n (divisors n))]
+  have h_erase : (insert n (erase (divisors n) n)).erase n = erase (divisors n) n := by
+    apply Finset.erase_insert
+    exact Finset.notMem_erase n (divisors n)
+  rw [h_erase]
+  ring
+
+
+lemma sigma_one_eq_n_plus_sum_proper (n : ℕ) (hn : n ≥ 1) :
+  (ArithmeticFunction.sigma 1 n : ℤ) = (n : ℤ) + ((erase (divisors n) n).sum fun d => (d : ℤ)) := by
+  rw [ArithmeticFunction.sigma_one_apply]
+  have h_mem : n ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨dvd_rfl, by omega⟩
+  rw [← insert_erase h_mem]
+  rw [sum_insert (Finset.notMem_erase n (divisors n))]
+  have h_erase : (insert n (erase (divisors n) n)).erase n = erase (divisors n) n := by
+    apply Finset.erase_insert
+    exact Finset.notMem_erase n (divisors n)
+  rw [h_erase]
+  push_cast
+  ring
+
+lemma a_eq_n_minus_proper_sum_diff (n : ℕ) (hn : n ≥ 1) :
+  a n = (n : ℤ) - ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) := by
+  rw [a_eq_sigma_minus_sum_proper n hn]
+  rw [sigma_one_eq_n_plus_sum_proper n hn]
+  rw [sum_sub_distrib]
+  ring
+
+lemma a_le_n_minus_one (n : ℕ) (hn4 : n ≥ 4) (hc : ¬ n.Prime) :
+  a n ≤ (n : ℤ) - 1 := by
+  have h1 : (ArithmeticFunction.sigma 1 n : ℤ) = n + ((erase (divisors n) n).sum fun d => (d : ℤ)) := by
+    rw [ArithmeticFunction.sigma_one_apply]
+    have h_mem : n ∈ divisors n := by
+      rw [mem_divisors]
+      exact ⟨dvd_rfl, by omega⟩
+    rw [← insert_erase h_mem]
+    rw [sum_insert (Finset.notMem_erase n (divisors n))]
+    have h_erase : (insert n (erase (divisors n) n)).erase n = erase (divisors n) n := by
+      apply Finset.erase_insert
+      exact Finset.notMem_erase n (divisors n)
+    rw [h_erase]
+    push_cast
+    ring
+  have h2 := a_eq_sigma_minus_sum_proper n (by omega)
+  have h3 := sum_sigma_ge_sum_id_plus_one n hn4 hc
+  rw [h2, h1]
+  omega
+
+def check_a : ℕ → ℕ → Bool
+  | _, 0 => true
+  | start, l + 1 =>
+    if l < start then true
+    else (if a l == 1 then false else check_a start l)
+
+theorem check_a_true (start : ℕ) : ∀ limit n, check_a start limit = true → start ≤ n → n < limit → a n ≠ 1 := by
+  intro limit
+  induction limit with
+  | zero =>
+    intro n h h1 h2
+    omega
+  | succ l ih =>
+    intro n h h1 h2
+    rw [check_a] at h
+    split_ifs at h with h_lt h_eq
+    · omega
+    · have h_le : n < l ∨ n = l := by omega
+      rcases h_le with h_lt2 | rfl
+      · exact ih n h h1 h_lt2
+      · intro h_a
+        have h_cond : (a n == 1) = true := by
+          rw [beq_iff_eq]
+          exact h_a
+        exact h_eq h_cond
+
+lemma a_prime (p : ℕ) (hp : p.Prime) : a p = p := by
+  have hd : divisors p = {1, p} := hp.divisors
+  have hne : 1 ≠ p := hp.ne_one.symm
+  rw [a, hd]
+  have h_not_mem : 1 ∉ ({p} : Finset ℕ) := by simp [hne]
+  rw [Finset.sum_insert h_not_mem, Finset.sum_singleton]
+  have h_sig1 : ArithmeticFunction.sigma 1 1 = 1 := by rfl
+  have h_sigp : ArithmeticFunction.sigma 1 p = p + 1 := by
+    rw [ArithmeticFunction.sigma_one_apply, hd]
+    have h_not_mem2 : 1 ∉ ({p} : Finset ℕ) := by simp [hne]
+    rw [Finset.sum_insert h_not_mem2, Finset.sum_singleton]
+    simp [add_comm]
+  rw [h_sig1, h_sigp]
+  push_cast
+  ring
+
+def g (n : ℕ) : ℤ :=
+  (divisors n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ)
+
+lemma a_eq_two_sigma_minus_g (n : ℕ) :
+  a n = 2 * (ArithmeticFunction.sigma 1 n : ℤ) - g n := by
+  simp [a, g, sum_sub_distrib, ← mul_sum, ArithmeticFunction.sigma_apply]
+
+lemma odd_a_iff_odd_g (n : ℕ) :
+  Odd (a n) ↔ Odd (g n) := by
+  rw [a_eq_two_sigma_minus_g]
+  constructor
+  · intro h
+    rcases h with ⟨k, hk⟩
+    use (ArithmeticFunction.sigma 1 n : ℤ) - k - 1
+    omega
+  · intro h
+    rcases h with ⟨k, hk⟩
+    use (ArithmeticFunction.sigma 1 n : ℤ) - k - 1
+    omega
+
+
+
+
+
+-- --- HELPER LEMMAS FOR COMPOSITE CASES --- --
+
+set_option linter.unusedTactic false
+
+lemma image_mul_subset (n d k : ℕ) (h_eq : n = k * d) (hn : n ≠ 0) :
+  image (fun x => k * x) (divisors d) ⊆ divisors n := by
+  intro y hy
+  rw [mem_image] at hy
+  rcases hy with ⟨x, hx, rfl⟩
+  rw [mem_divisors] at hx ⊢
+  rcases hx with ⟨hx_dvd, hx_nz⟩
+  constructor
+  · rw [h_eq]
+    exact mul_dvd_mul_left k hx_dvd
+  · exact hn
+
+lemma sigma_mul_le_sigma_mul (n d : ℕ) (hd : d ∣ n) (hn : n ≥ 1) :
+  (ArithmeticFunction.sigma 1 d : ℤ) * n ≤ (ArithmeticFunction.sigma 1 n : ℤ) * d := by
+  have hn_nz : n ≠ 0 := by omega
+  have hd_nz : d ≠ 0 := by
+    rintro rfl
+    exact hn_nz (zero_dvd_iff.1 hd)
+  have hd_pos : d ≥ 1 := by omega
+  let k := n / d
+  have h_eq : n = k * d := by
+    rw [mul_comm]
+    exact (Nat.mul_div_cancel' hd).symm
+  have hk_nz : k ≠ 0 := by
+    intro h0
+    have : n = 0 := by
+      rw [h_eq, h0, zero_mul]
+    exact hn_nz this
+  have hk_pos : k > 0 := Nat.pos_of_ne_zero hk_nz
+
+  have h_sub := image_mul_subset n d k h_eq hn_nz
+  have h_le : (∑ y ∈ image (fun x => k * x) (divisors d), (y : ℤ)) ≤ ∑ y ∈ divisors n, (y : ℤ) := by
+    apply sum_le_sum_of_subset_of_nonneg h_sub
+    intro y _ _
+    exact by omega
+
+  have h_inj : Set.InjOn (fun x => k * x) ↑(divisors d) := by
+    intro x _ y _ hxy
+    exact Nat.eq_of_mul_eq_mul_left hk_pos hxy
+
+  have h_sum_img : (∑ y ∈ image (fun x => k * x) (divisors d), (y : ℤ)) = k * (ArithmeticFunction.sigma 1 d : ℤ) := by
+    rw [sum_image h_inj]
+    push_cast
+    rw [← mul_sum]
+    congr 1
+    have h_sig_eq := congr_arg (fun (x : ℕ) => (x : ℤ)) (ArithmeticFunction.sigma_one_apply d)
+    push_cast at h_sig_eq
+    exact h_sig_eq.symm
+
+  have h_le_cast : (k : ℤ) * (∑ y ∈ divisors d, (y : ℤ)) ≤ ∑ y ∈ divisors n, (y : ℤ) := by
+    have h_sig_eq := congr_arg (fun (x : ℕ) => (x : ℤ)) (ArithmeticFunction.sigma_one_apply d)
+    push_cast at h_sig_eq
+    rw [← h_sig_eq]
+    rw [← h_sum_img]
+    exact h_le
+
+  have h_mul : (d : ℤ) * ((k : ℤ) * (∑ y ∈ divisors d, y : ℤ)) ≤ (d : ℤ) * (∑ y ∈ divisors n, y : ℤ) := by
+    apply mul_le_mul_of_nonneg_left h_le_cast
+    exact by omega
+
+  have h_dk : (d : ℤ) * (k : ℤ) = (n : ℤ) := by
+    rw [h_eq]
+    push_cast
+    ring
+
+  have h_lhs : (d : ℤ) * ((k : ℤ) * (∑ y ∈ divisors d, y : ℤ)) = (∑ y ∈ divisors d, y : ℤ) * (n : ℤ) := by
+    rw [← mul_assoc, h_dk]
+    ring
+
+  have h_rhs : (d : ℤ) * (∑ y ∈ divisors n, y : ℤ) = (∑ y ∈ divisors n, y : ℤ) * (d : ℤ) := by
+    ring
+
+  rw [ArithmeticFunction.sigma_one_apply n, ArithmeticFunction.sigma_one_apply d]
+  push_cast
+  rw [h_lhs, h_rhs] at h_mul
+  exact h_mul
+
+lemma all_divisors_deficient_of_deficient (n : ℕ) (hn : (ArithmeticFunction.sigma 1 n : ℤ) < 2 * n) :
+  ∀ d ∈ divisors n, (ArithmeticFunction.sigma 1 d : ℤ) < 2 * d := by
+  intro d hd
+  have hd_divs : d ∈ divisors n := hd
+  have hn_pos : n ≥ 1 := by
+    by_contra hc
+    have : n = 0 := by omega
+    subst this
+    rw [divisors_zero] at hd_divs
+    simp at hd_divs
+  have hd_pos_nat := pos_of_mem_divisors hd_divs
+  rw [mem_divisors] at hd
+  have h_le := sigma_mul_le_sigma_mul n d hd.1 hn_pos
+  have h_lt : (ArithmeticFunction.sigma 1 n : ℤ) * d < 2 * n * d := by
+    have hd_pos : (d : ℤ) > 0 := by omega
+    exact mul_lt_mul_of_pos_right hn hd_pos
+  have h_trans : (ArithmeticFunction.sigma 1 d : ℤ) * n < 2 * d * n := by
+    calc
+      (ArithmeticFunction.sigma 1 d : ℤ) * n ≤ (ArithmeticFunction.sigma 1 n : ℤ) * d := h_le
+      _ < 2 * n * d := h_lt
+      _ = 2 * d * n := by ring
+  have hn_cast_pos : (n : ℤ) > 0 := by omega
+  rwa [mul_lt_mul_iff_of_pos_right hn_cast_pos] at h_trans
+
+lemma divisors_two_pow (i : ℕ) :
+  (2^(i+1)).divisors = insert (2^(i+1)) (2^i).divisors := by
+  have h_prime : Nat.Prime 2 := Nat.prime_two
+  rw [Nat.divisors_prime_pow h_prime (i+1)]
+  rw [Nat.divisors_prime_pow h_prime i]
+  rw [range_add_one]
+  rw [map_insert]
+  congr
+
+lemma sigma_two_pow (i : ℕ) :
+  (ArithmeticFunction.sigma 1 (2^i) : ℤ) = 2^(i+1) - 1 := by
+  induction i with
+  | zero =>
+    rfl
+  | succ i ih =>
+    have h_divs := divisors_two_pow i
+    rw [ArithmeticFunction.sigma_one_apply] at ih ⊢
+    push_cast at ih
+    rw [h_divs]
+    have h_not_mem : 2^(i+1) ∉ (2^i).divisors := by
+      rw [mem_divisors]
+      push_neg
+      intro h_dvd
+      have h_pos : 2^i > 0 := Nat.pos_of_ne_zero (pow_ne_zero i two_ne_zero)
+      have h_le := Nat.le_of_dvd h_pos h_dvd
+      have h_gt : 2^(i+1) > 2^i := by
+        rw [pow_add]
+        omega
+      omega
+    rw [sum_insert h_not_mem]
+    push_cast
+    rw [ih]
+    ring
+
+lemma a_two_pow (k : ℕ) : a (2^k) = k + 1 := by
+  have h_prime : Nat.Prime 2 := Nat.prime_two
+  rw [a]
+  rw [Nat.divisors_prime_pow h_prime k]
+  rw [sum_map]
+  simp only [Function.Embedding.coeFn_mk]
+  have h_eq : ∀ i ∈ range (k+1), (2 * (2^i : ℤ) - (ArithmeticFunction.sigma 1 (2^i) : ℤ)) = 1 := by
+    intro i _
+    rw [sigma_two_pow i]
+    push_cast
+    ring
+  have h_sum_eq : (∑ i ∈ range (k+1), (2 * (2^i : ℤ) - (ArithmeticFunction.sigma 1 (2^i) : ℤ))) = ∑ i ∈ range (k+1), 1 := by
+    apply sum_congr rfl
+    exact h_eq
+  push_cast
+  rw [h_sum_eq]
+  rw [sum_const]
+  simp
+
+lemma list_prod_eq_pow_two (l : List ℕ) (h : ∀ p ∈ l, p = 2) : l.prod = 2^l.length := by
+  induction l with
+  | nil =>
+    rfl
+  | cons x xs ih =>
+    have hx : x = 2 := h x (by simp)
+    have hxs : ∀ p ∈ xs, p = 2 := fun p hp => h p (by simp [hp])
+    rw [List.prod_cons, List.length_cons, hx, ih hxs, pow_add]
+    ring
+
+lemma eq_pow_two_of_factors_eq_two (n : ℕ) (hn : n ≥ 1) (h : ∀ p ∈ n.primeFactorsList, p = 2) : ∃ k, n = 2^k := by
+  use n.primeFactorsList.length
+  have hn_nz : n ≠ 0 := by omega
+  have h1 := prod_primeFactorsList hn_nz
+  rw [list_prod_eq_pow_two n.primeFactorsList h] at h1
+  exact h1.symm
+
+lemma exists_odd_prime_factor_of_not_pow_two (n : ℕ) (hn : n ≥ 1) (hnot : ¬ ∃ k, n = 2^k) :
+  ∃ p, p.Prime ∧ p ∣ n ∧ p ≥ 3 := by
+  by_cases h_all : ∀ p ∈ n.primeFactorsList, p = 2
+  · have h_pow := eq_pow_two_of_factors_eq_two n hn h_all
+    contradiction
+  · push_neg at h_all
+    rcases h_all with ⟨p, hp_mem, hp_ne2⟩
+    have hp_prime : p.Prime := prime_of_mem_primeFactorsList hp_mem
+    have hp_dvd : p ∣ n := dvd_of_mem_primeFactorsList hp_mem
+    have hp_ge3 : p ≥ 3 := by
+      have : p ≠ 2 := hp_ne2
+      have : p ≥ 2 := hp_prime.two_le
+      omega
+    exact ⟨p, hp_prime, hp_dvd, hp_ge3⟩
+
+lemma a_ge_four_of_deficient_divisors (n : ℕ) (p : ℕ) (hp_dvd : p ∣ n) (hp_prime : p.Prime) (hp_ge3 : p ≥ 3) (hn_comp : ¬ n.Prime) (hn_ge9 : n ≥ 9)
+  (h_def : ∀ d ∈ divisors n, (ArithmeticFunction.sigma 1 d : ℤ) < 2 * d) : a n ≥ 4 := by
+  have h1_mem : 1 ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨one_dvd n, by omega⟩
+  have hp_mem : p ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨hp_dvd, by omega⟩
+  have hn_mem : n ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨dvd_rfl, by omega⟩
+  have h1_ne_p : 1 ≠ p := by omega
+  have h1_ne_n : 1 ≠ n := by omega
+  have hp_ne_n : p ≠ n := by
+    intro h_eq
+    rw [← h_eq] at hn_comp
+    exact hn_comp hp_prime
+  
+  have hp_mem2 : p ∈ erase (divisors n) n := by
+    rw [mem_erase]
+    exact ⟨hp_ne_n, hp_mem⟩
+  have h1_mem2 : 1 ∈ erase (erase (divisors n) n) p := by
+    rw [mem_erase, mem_erase]
+    exact ⟨h1_ne_p, h1_ne_n, h1_mem⟩
+  
+  -- Split sum
+  have h_split : a n = (2 * 1 - (ArithmeticFunction.sigma 1 1 : ℤ)) +
+    (2 * p - (ArithmeticFunction.sigma 1 p : ℤ)) +
+    (2 * n - (ArithmeticFunction.sigma 1 n : ℤ)) +
+    ((erase (erase (erase (divisors n) n) p) 1).sum fun d => (2 * d : ℤ) - (ArithmeticFunction.sigma 1 d : ℤ)) := by
+    unfold a
+    conv_lhs =>
+      rw [← insert_erase hn_mem]
+      rw [sum_insert (notMem_erase n (divisors n))]
+      rw [← insert_erase hp_mem2]
+      rw [sum_insert (notMem_erase p (erase (divisors n) n))]
+      rw [← insert_erase h1_mem2]
+      rw [sum_insert (notMem_erase 1 (erase (erase (divisors n) n) p))]
+    ring
+
+  -- Every term in the remaining sum is >= 1
+  have h_rem_nonneg : 0 ≤ ((erase (erase (erase (divisors n) n) p) 1).sum fun d => (2 * d : ℤ) - (ArithmeticFunction.sigma 1 d : ℤ)) := by
+    apply sum_nonneg
+    intro d hd
+    have hd_mem : d ∈ divisors n := by
+      have h_sub : erase (erase (erase (divisors n) n) p) 1 ⊆ divisors n := by
+        intro x hx
+        rcases mem_erase.1 hx with ⟨_, hx2⟩
+        rcases mem_erase.1 hx2 with ⟨_, hx3⟩
+        rcases mem_erase.1 hx3 with ⟨_, hx4⟩
+        exact hx4
+      exact h_sub hd
+    have h_lt := h_def d hd_mem
+    omega
+
+  have h_sig1 : (ArithmeticFunction.sigma 1 1 : ℤ) = 1 := by rfl
+  have h_sigp : (ArithmeticFunction.sigma 1 p : ℤ) = p + 1 := by
+    rw [ArithmeticFunction.sigma_one_apply]
+    have hd : divisors p = {1, p} := hp_prime.divisors
+    rw [hd]
+    have hne : 1 ≠ p := hp_prime.ne_one.symm
+    have h_not_mem : 1 ∉ ({p} : Finset ℕ) := by simp [hne]
+    rw [Finset.sum_insert h_not_mem, Finset.sum_singleton]
+    push_cast
+    ring
+
+  have h_sig_n : (ArithmeticFunction.sigma 1 n : ℤ) < 2 * n := h_def n hn_mem
+
+  rw [h_split, h_sig1, h_sigp]
+  omega
+
+-- --- END OF HELPER LEMMAS --- --
+
+lemma a_le_n_minus_sigma_add_a (n M : ℕ) (hn : n ≥ 1) (hM : M ∣ n) (hM_lt : M < n) :
+  a n ≤ (n : ℤ) - (ArithmeticFunction.sigma 1 M : ℤ) + a M := by
+  have hM_pos : M ≥ 1 := by
+    have h_div : M ∣ n := hM
+    have hn_pos : n > 0 := by omega
+    exact Nat.pos_of_dvd_of_pos h_div hn_pos
+  rw [a_eq_n_minus_proper_sum_diff n hn]
+  rw [a_eq_n_minus_proper_sum_diff M hM_pos]
+  have h_le := sum_proper_div_le n M hM hM_lt
+  omega
+
+
+lemma divisors_mul_prime_subset (p q : ℕ) (hp : p.Prime) :
+  divisors (p * q) ⊆ divisors q ∪ image (fun d => p * d) (divisors q) := by
+  intro d hd
+  rw [mem_divisors] at hd
+  rcases hd with ⟨h_dvd, h_nz⟩
+  by_cases hp_dvd : p ∣ d
+  · rw [mem_union, mem_image]
+    right
+    rcases hp_dvd with ⟨k, rfl⟩
+    have hp_nz : p ≠ 0 := hp.ne_zero
+    have hq_nz : q ≠ 0 := by
+      intro hc
+      subst hc
+      rw [mul_zero] at h_nz
+      exact h_nz rfl
+    have hk_nz : k ≠ 0 := by
+      intro hc
+      subst hc
+      rw [mul_zero] at h_dvd
+      have : p * q = 0 := zero_dvd_iff.1 h_dvd
+      exact h_nz this
+    have h_dvd' : k ∣ q := by
+      exact (mul_dvd_mul_iff_left hp_nz).1 h_dvd
+    use k
+    rw [mem_divisors]
+    exact ⟨⟨h_dvd', hq_nz⟩, rfl⟩
+  · rw [mem_union, mem_divisors]
+    left
+    have hq_nz : q ≠ 0 := by
+      intro hc
+      subst hc
+      rw [mul_zero] at h_nz
+      exact h_nz rfl
+    have h_coprime : Coprime p d := (hp.coprime_iff_not_dvd).2 hp_dvd
+    have h_dvd' : d ∣ q := Coprime.dvd_of_dvd_mul_left h_coprime.symm h_dvd
+    exact ⟨h_dvd', hq_nz⟩
+
+lemma sigma_mul_le_local (p q : ℕ) (hp : p.Prime) :
+  (ArithmeticFunction.sigma 1 (p * q) : ℤ) ≤ (p + 1 : ℤ) * (ArithmeticFunction.sigma 1 q : ℤ) := by
+  have h_sub := divisors_mul_prime_subset p q hp
+  have h_sum_le : (∑ d ∈ divisors (p * q), (d : ℤ)) ≤ (∑ d ∈ divisors q ∪ image (fun d => p * d) (divisors q), (d : ℤ)) := by
+    apply sum_le_sum_of_subset_of_nonneg h_sub
+    intro x hx h_not
+    positivity
+  have h_union_le : (∑ d ∈ divisors q ∪ image (fun d => p * d) (divisors q), (d : ℤ)) ≤
+    (∑ d ∈ divisors q, (d : ℤ)) + (∑ d ∈ image (fun d => p * d) (divisors q), (d : ℤ)) := by
+    rw [← sum_union_inter]
+    have h_nonneg : 0 ≤ ∑ d ∈ divisors q ∩ image (fun d => p * d) (divisors q), (d : ℤ) := by
+      apply sum_nonneg
+      intro x hx
+      positivity
+    omega
+  have h_img_eq : (∑ d ∈ image (fun d => p * d) (divisors q), (d : ℤ)) ≤ (∑ d ∈ divisors q, (p * d : ℤ)) := by
+    have hp_nz : p ≠ 0 := hp.ne_zero
+    have hp_pos : p > 0 := Nat.pos_of_ne_zero hp_nz
+    have h_inj : Set.InjOn (fun d => p * d) ↑(divisors q) := by
+      intro x _ y _ hxy
+      exact Nat.eq_of_mul_eq_mul_left hp_pos hxy
+    rw [sum_image h_inj]
+    push_cast
+    rfl
+  have h_img_eq2 : (∑ d ∈ divisors q, (p * d : ℤ)) = (p : ℤ) * (∑ d ∈ divisors q, (d : ℤ)) := by
+    rw [← mul_sum]
+  have h_comb : (∑ d ∈ divisors (p * q), (d : ℤ)) ≤ (1 + (p : ℤ)) * (∑ d ∈ divisors q, (d : ℤ)) := by
+    rw [h_img_eq2] at h_img_eq
+    nlinarith
+  rw [ArithmeticFunction.sigma_one_apply (p * q), ArithmeticFunction.sigma_one_apply q]
+  push_cast
+  have h_eq : (p + 1 : ℤ) = 1 + (p : ℤ) := by omega
+  rw [h_eq]
+  exact h_comb
+
+lemma primitive_case_proof (n : ℕ) (hn : n ≥ 500)
+  (h_prim : ∀ d ∈ divisors n, d < n → (ArithmeticFunction.sigma 1 d : ℤ) < 2 * d)
+  (hab : 2 * (n : ℤ) ≤ ArithmeticFunction.sigma 1 n) :
+  a n ≠ 1 := by
+  intro h_a1
+  
+  have h_comp : ¬ n.Prime := by
+    intro hp
+    have h_ap := a_prime n hp
+    rw [h_ap] at h_a1
+    omega
+
+  have h_not_pow2 : ¬ ∃ k, n = 2^k := by
+    rintro ⟨k, rfl⟩
+    have h_sig : (ArithmeticFunction.sigma 1 (2^k) : ℤ) = 2^(k+1) - 1 := sigma_two_pow k
+    push_cast at h_sig
+    push_cast at hab
+    omega
+
+  have h_odd_prime := exists_odd_prime_factor_of_not_pow_two n (by omega) h_not_pow2
+  rcases h_odd_prime with ⟨p, hp_prime, hp_dvd, hp_ge3⟩
+
+  let q := n / p
+  have hn_eq : n = p * q := (Nat.mul_div_cancel' hp_dvd).symm
+
+  have hq_pos : q > 0 := by
+    have hp_pos : p > 0 := hp_prime.pos
+    have h_le := Nat.le_of_dvd (by omega) hp_dvd
+    exact Nat.div_pos h_le hp_pos
+
+  have hq_lt : q < n := by
+    rw [hn_eq]
+    have hp_ge2 : p ≥ 2 := hp_prime.two_le
+    have hq_pos_cast : (q : ℤ) > 0 := by omega
+    nlinarith
+
+  have hq_mem : q ∈ divisors n := by
+    rw [mem_divisors]
+    exact ⟨⟨p, by rw [hn_eq, mul_comm]⟩, by omega⟩
+
+  have hq_def := h_prim q hq_mem hq_lt
+
+  have h_sig_le : (ArithmeticFunction.sigma 1 n : ℤ) ≤ (p + 1 : ℤ) * (ArithmeticFunction.sigma 1 q : ℤ) := by
+    rw [hn_eq]
+    exact sigma_mul_le_local p q hp_prime
+
+  set S_diff := ((erase (divisors n) n).sum fun d => (ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ)) with hS_diff
+  set S_id_minus_1 := ((erase (divisors n) n).sum fun d => (d : ℤ) - 1) with hS_id_minus_1
+  set S_id := ((erase (divisors n) n).sum fun d => (d : ℤ)) with hS_id
+
+  have h_eq : a n = (n : ℤ) - S_diff := by
+    rw [hS_diff]
+    exact a_eq_n_minus_proper_sum_diff n (by omega)
+  
+  have h_le : S_diff ≤ S_id_minus_1 := by
+    rw [hS_diff, hS_id_minus_1]
+    apply sum_le_sum
+    intro d hd
+    rw [mem_erase] at hd
+    have hd_mem : d ∈ divisors n := hd.2
+    have hd_lt : d < n := by
+      rw [mem_divisors] at hd_mem
+      have h_le := Nat.le_of_dvd (by omega) hd_mem.1
+      exact lt_of_le_of_ne h_le hd.1
+    have h_def := h_prim d hd_mem hd_lt
+    omega
+  
+  have h_sum_eq : S_id_minus_1 = S_id - ((erase (divisors n) n).card : ℤ) := by
+    rw [hS_id_minus_1, hS_id]
+    rw [sum_sub_distrib]
+    simp
+  
+  have h_sigma : (ArithmeticFunction.sigma 1 n : ℤ) = (n : ℤ) + S_id := by
+    rw [hS_id]
+    exact sigma_one_eq_n_plus_sum_proper n (by omega)
+  
+  have h_card : ((erase (divisors n) n).card : ℤ) = (n.divisors.card : ℤ) - 1 := by
+    have hn_mem : n ∈ divisors n := by
+      rw [mem_divisors]
+      exact ⟨dvd_rfl, by omega⟩
+    rw [card_erase_of_mem hn_mem]
+    have h_card_pos : n.divisors.card ≥ 1 := by
+      have h1_mem : 1 ∈ divisors n := by
+        rw [mem_divisors]
+        exact ⟨one_dvd n, by omega⟩
+      have := card_pos.2 ⟨1, h1_mem⟩
+      omega
+    omega
+  
+  have h_card_ge : (n.divisors.card : ℤ) ≥ 3 := by
+    have h1_mem : 1 ∈ divisors n := by
+      rw [mem_divisors]
+      exact ⟨one_dvd n, by omega⟩
+    have hn_mem : n ∈ divisors n := by
+      rw [mem_divisors]
+      exact ⟨dvd_rfl, by omega⟩
+    rw [not_prime_iff_exists_dvd_lt] at h_comp
+    · rcases h_comp with ⟨k, hk_dvd, hk_ge2, hk_lt⟩
+      have hk_mem : k ∈ divisors n := by
+        rw [mem_divisors]
+        exact ⟨hk_dvd, by omega⟩
+      have h1_ne_k : 1 ≠ k := by omega
+      have hk_ne_n : k ≠ n := by omega
+      have h1_ne_n : 1 ≠ n := by omega
+      have h_sub : {1, k, n} ⊆ divisors n := by
+        intro x hx
+        simp only [mem_insert, mem_singleton] at hx
+        rcases hx with rfl | rfl | rfl
+        · exact h1_mem
+        · exact hk_mem
+        · exact hn_mem
+      have h_sub_card := card_le_card h_sub
+      have h_card_eq : ({1, k, n} : Finset ℕ).card = 3 := by
+        rw [card_insert_of_notMem]
+        · rw [card_insert_of_notMem]
+          · rfl
+          · rw [mem_singleton]
+            exact hk_ne_n
+        · rw [mem_insert, mem_singleton]
+          push_neg
+          exact ⟨h1_ne_k, h1_ne_n⟩
+      omega
+    · omega
+
+  have h_card_erase : ((erase (divisors n) n).card : ℤ) ≥ 2 := by omega
+
+  have h_gap : ((erase (divisors n) n).card : ℤ) ≤ S_id - S_diff := by
+    rw [hS_id, hS_diff]
+    rw [← sum_sub_distrib]
+    have h_sub_eq : (fun (d : ℕ) => (d : ℤ) - ((ArithmeticFunction.sigma 1 d : ℤ) - (d : ℤ))) = (fun (d : ℕ) => (2 * d : ℤ) - (ArithmeticFunction.sigma 1 d : ℤ)) := by
+      funext d
+      ring
+    rw [h_sub_eq]
+    have h_card_eq : ((erase (divisors n) n).card : ℤ) = ∑ d ∈ erase (divisors n) n, (1 : ℤ) := by
+      simp
+    rw [h_card_eq]
+    apply sum_le_sum
+    intro d hd
+    rw [mem_erase] at hd
+    have hd_mem : d ∈ divisors n := hd.2
+    have hd_lt : d < n := by
+      rw [mem_divisors] at hd_mem
+      have h_le := Nat.le_of_dvd (by omega) hd_mem.1
+      exact lt_of_le_of_ne h_le hd.1
+    have h_def := h_prim d hd_mem hd_lt
+    omega
+
+  have h_sum_val : S_diff = (n : ℤ) - 1 := by
+    linarith
+
+  have hq_ge3 : (q : ℤ) ≥ 3 := by
+    by_contra hc
+    have hq_lt3 : q < 3 := by omega
+    have hn_pos : n > 0 := by omega
+    have hp_pos : p > 0 := hp_prime.pos
+    have h_le := Nat.le_of_dvd hn_pos hp_dvd
+    have hq_nz : q ≠ 0 := by
+      intro hc0
+      rw [hc0] at hn_eq
+      rw [mul_zero] at hn_eq
+      omega
+    have hq_cases : q = 1 ∨ q = 2 := by omega
+    rcases hq_cases with hq1 | hq2
+    · -- q = 1 => n = p
+      have : n = p := by
+        rw [hq1] at hn_eq
+        omega
+      rw [this] at h_comp
+      exact h_comp hp_prime
+    · -- q = 2 => n = 2 * p
+      have hn_eq2 : n = p * 2 := by
+        rw [hq2] at hn_eq
+        omega
+      have h_sig_le2 : (ArithmeticFunction.sigma 1 n : ℤ) ≤ ((p : ℤ) + 1) * (ArithmeticFunction.sigma 1 2 : ℤ) := by
+        have hq2_eq : q = 2 := hq2
+        rw [hq2_eq] at h_sig_le
+        exact h_sig_le
+      have h_sig_n : (ArithmeticFunction.sigma 1 n : ℤ) ≤ 3 * (p : ℤ) + 3 := by
+        calc
+          (ArithmeticFunction.sigma 1 n : ℤ) ≤ ((p : ℤ) + 1) * (ArithmeticFunction.sigma 1 2 : ℤ) := h_sig_le2
+          _ = ((p : ℤ) + 1) * 3 := by rfl
+          _ = 3 * (p : ℤ) + 3 := by ring
+      have h_ab2 : 4 * (p : ℤ) ≤ (ArithmeticFunction.sigma 1 n : ℤ) := by
+        calc
+          4 * (p : ℤ) = 2 * (n : ℤ) := by rw [hn_eq2]; push_cast; ring
+          _ ≤ (ArithmeticFunction.sigma 1 n : ℤ) := hab
+      have hp_le3 : (p : ℤ) ≤ 3 := by omega
+      have hp_eq3 : p = 3 := by omega
+      have hn_eq6 : n = 6 := by omega
+      omega
+
+  have h_p_pos : (p : ℤ) > 0 := by omega
+  have h_q_pos : (q : ℤ) > 0 := by omega
+  have h_cast_n : (n : ℤ) = (p : ℤ) * (q : ℤ) := by
+    rw [hn_eq]
+    push_cast
+    rfl
+
+  have h_sig_q_le : (ArithmeticFunction.sigma 1 q : ℤ) ≤ 2 * (q : ℤ) - 1 := by omega
+
+  by_cases hq_prime : q.Prime
+  · have h_sig_q : (ArithmeticFunction.sigma 1 q : ℤ) = q + 1 := by
+      rw [ArithmeticFunction.sigma_one_apply]
+      have hd : divisors q = {1, q} := hq_prime.divisors
+      rw [hd]
+      have hne : 1 ≠ q := hq_prime.ne_one.symm
+      have h_not_mem : 1 ∉ ({q} : Finset ℕ) := by simp [hne]
+      rw [Finset.sum_insert h_not_mem, Finset.sum_singleton]
+      push_cast
+      ring
+    have h_bounds_prime : (ArithmeticFunction.sigma 1 n : ℤ) ≤ ((p : ℤ) + 1) * ((q : ℤ) + 1) := by
+      calc
+        (ArithmeticFunction.sigma 1 n : ℤ) ≤ ((p : ℤ) + 1) * (ArithmeticFunction.sigma 1 q : ℤ) := h_sig_le
+        _ = ((p : ℤ) + 1) * ((q : ℤ) + 1) := by rw [h_sig_q]
+    nlinarith
+  · sorry
+
+lemma abundant_a_ne_one (n : ℕ) (hn : n ≥ 500) (hab : 2 * (n : ℤ) ≤ ArithmeticFunction.sigma 1 n) : a n ≠ 1 := by
+  sorry
+
+theorem a_ge_13 (n : ℕ) (hn : n ≥ 13) : a n ≠ 1 := by
+  by_cases hn150 : n < 150
+  · have h_check : check_a 13 150 = true := rfl
+    exact check_a_true 13 150 n h_check hn hn150
+  · by_cases hn300 : n < 300
+    · have h_check : check_a 150 300 = true := rfl
+      have hn150_le : 150 ≤ n := by omega
+      exact check_a_true 150 300 n h_check hn150_le hn300
+    · by_cases hn450 : n < 450
+      · have h_check : check_a 300 450 = true := rfl
+        have hn300_le : 300 ≤ n := by omega
+        exact check_a_true 300 450 n h_check hn300_le hn450
+      · by_cases hn500 : n < 500
+        · have h_check : check_a 450 500 = true := rfl
+          have hn450_le : 450 ≤ n := by omega
+          exact check_a_true 450 500 n h_check hn450_le hn500
+        · by_cases hp : n.Prime
+          · have h_ap := a_prime n hp
+            omega
+          · -- n >= 500 is composite
+            by_cases h_def : (ArithmeticFunction.sigma 1 n : ℤ) < 2 * n
+            · -- n is deficient
+              by_cases h_pow : ∃ k, n = 2^k
+              · rcases h_pow with ⟨k, rfl⟩
+                have h_ge9 : k ≥ 9 := by
+                  by_contra hc
+                  have : k < 9 := by omega
+                  have : 2^k ≤ 256 := by
+                    interval_cases k <;> decide
+                  omega
+                rw [a_two_pow k]
+                omega
+              · have hn_ge1 : n ≥ 1 := by omega
+                have h_odd_prime := exists_odd_prime_factor_of_not_pow_two n hn_ge1 h_pow
+                rcases h_odd_prime with ⟨p, hp_prime, hp_dvd, hp_ge3⟩
+                have h_def_divs := all_divisors_deficient_of_deficient n h_def
+                have h_ge4 := a_ge_four_of_deficient_divisors n p hp_dvd hp_prime hp_ge3 hp (by omega) h_def_divs
+                omega
+            · -- n is perfect or abundant
+              have hn_ge500 : n ≥ 500 := by omega
+              have hab : 2 * (n : ℤ) ≤ ArithmeticFunction.sigma 1 n := by omega
+              exact abundant_a_ne_one n hn_ge500 hab
+
+/--
+Conjecture from OEIS A296075, by Robert Israel:
+Are 1 and 12 the only solutions to a(n)=1?
+-/
+theorem oeis_296075_conjecture_0 : ∀ n : ℕ,
+  a n = 1 ↔ n = 1 ∨ n = 12 := by
+  intro n
+  by_cases hn : n < 13
+  · exact a_lt_13 n hn
+  · have hn2 : n ≥ 13 := by omega
+    have hne := a_ge_13 n hn2
+    constructor
+    · intro h
+      contradiction
+    · intro h
+      rcases h with rfl | rfl
+      · contradiction
+      · contradiction

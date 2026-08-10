@@ -1,0 +1,37 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:29:102: warning: exponent 512 exceeds the threshold 256, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+  Submission/Spec.lean:29:40: error: unsolved goals
+  n : ℕ
+  hp : Nat.Prime (10 ^ 2 ^ 9 + 1)
+  hn : 9 ≤ 12
+  ⊢ 1514497 ∣ 10 ^ 512 + 1
+  Submission/Spec.lean:29:94: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:31:40: error: unsolved goals
+  n : ℕ
+  hp : Nat.Prime (10 ^ 2 ^ 10 + 1)
+  hn : 10 ≤ 12
+  ⊢ 1856104284667693057 ∣ 10 ^ 1024 + 1
+  Submission/Spec.lean:31:107: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:33:40: error: unsolved goals
+  n : ℕ
+  hp : Nat.Prime (10 ^ 2 ^ 11 + 1)
+  hn : 11 ≤ 12
+  ⊢ 106907803649 ∣ 10 ^ 2048 + 1
+  Submission/Spec.lean:33:100: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:35:40: error: unsolved goals
+  n : ℕ
+  hp : Nat.Prime (10 ^ 2 ^ 12 + 1)
+  hn : 12 ≤ 12
+  ⊢ 458924033 ∣ 10 ^ 4096 + 1
+  Submission/Spec.lean:35:97: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+

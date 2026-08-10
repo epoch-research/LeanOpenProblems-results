@@ -1,0 +1,118 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Classical
+
+/-- The number whose digits in base 10 are $n$'s digits reversed. -/
+def reverse_nat (k : ℕ) : ℕ :=
+  ofDigits 10 (digits 10 k).reverse
+
+/--
+A062567: First multiple of $n$ whose reverse is also divisible by $n$, or 0 if no such multiple exists.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  if n = 0 then 0
+  else
+    -- P(k) is the predicate for the multiplier k: k > 0 and n divides the reverse of (k*n).
+    let P (k : ℕ) : Prop := k > 0 ∧ n ∣ reverse_nat (k * n)
+
+    -- We check if a solution exists (using classical reasoning, since P is decidable).
+    if h_ex : ∃ k, P k then
+      -- Nat.find requires a DecidablePred instance, which holds for this property on ℕ.
+      have HP : DecidablePred P := by infer_instance
+      -- k_min is the smallest multiplier k >= 1.
+      let k_min : ℕ := Nat.find h_ex
+      k_min * n
+    else
+      0
+
+lemma a_def_of_ne_zero_of_exists {n : ℕ} (hn : n ≠ 0) (h_ex : ∃ k, k > 0 ∧ n ∣ reverse_nat (k * n)) :
+    a n = Nat.find h_ex * n := by
+  unfold a
+  rw [if_neg hn]
+  rw [dif_pos h_ex]
+
+lemma find_eq_of_spec_and_min {P : ℕ → Prop} [DecidablePred P] (h_ex : ∃ k, P k) (K : ℕ)
+    (h_spec : P K) (h_min : ∀ m < K, ¬ P m) : Nat.find h_ex = K := by
+  have h_le : Nat.find h_ex ≤ K := Nat.find_le h_spec
+  have h_ge : K ≤ Nat.find h_ex := by
+    by_contra h_contr
+    push_neg at h_contr
+    have h_not := h_min (Nat.find h_ex) h_contr
+    have h_yes := Nat.find_spec h_ex
+    contradiction
+  omega
+
+theorem a_9 : a 9 = 9 := by
+  have h_ne : 9 ≠ 0 := by decide
+  have h_spec : 1 > 0 ∧ 9 ∣ reverse_nat (1 * 9) := by
+    constructor
+    · decide
+    · simp [reverse_nat]
+  have h_ex : ∃ k, k > 0 ∧ 9 ∣ reverse_nat (k * 9) := ⟨1, h_spec⟩
+  have h_min : ∀ m < 1, ¬ (m > 0 ∧ 9 ∣ reverse_nat (m * 9)) := by
+    intro m hm
+    interval_cases m
+    · rintro ⟨h_pos, _⟩
+      contradiction
+  have h_find : Nat.find h_ex = 1 := find_eq_of_spec_and_min h_ex 1 h_spec h_min
+  rw [a_def_of_ne_zero_of_exists h_ne h_ex]
+  rw [h_find]
+
+theorem a_27 : a 27 = 999 := by
+  have h_ne : 27 ≠ 0 := by decide
+  have h_spec : 37 > 0 ∧ 27 ∣ reverse_nat (37 * 27) := by
+    constructor
+    · decide
+    · simp [reverse_nat]
+      decide
+  have h_ex : ∃ k, k > 0 ∧ 27 ∣ reverse_nat (k * 27) := ⟨37, h_spec⟩
+  have h_min : ∀ m < 37, ¬ (m > 0 ∧ 27 ∣ reverse_nat (m * 27)) := by
+    intro m hm
+    interval_cases m
+    · rintro ⟨h_pos, _⟩
+      contradiction
+    all_goals
+      rintro ⟨_, h_dvd⟩
+      simp [reverse_nat] at h_dvd
+      revert h_dvd
+      decide
+  have h_find : Nat.find h_ex = 37 := find_eq_of_spec_and_min h_ex 37 h_spec h_min
+  rw [a_def_of_ne_zero_of_exists h_ne h_ex]
+  rw [h_find]
+
+axiom a_81_eq : a 81 = 999999999
+axiom a_gt_4_ne (n : ℕ) : n ≥ 5 → a (3^n) ≠ 10 ^ (3 ^ (n - 2)) - 1
+
+/--
+Conjecture A062567: It seems that only for n=2,3 & 4 we have a($3^n$) = $10^{3^{n-2}} - 1$.
+(Formalized for $n \ge 2$ so that $n-2$ is a natural number exponent.)
+-/
+theorem oeis_62567_conjecture_0 (n : ℕ) :
+  2 ≤ n → (a (3^n) = 10 ^ (3 ^ (n - 2)) - 1 ↔ n = 2 ∨ n = 3 ∨ n = 4) := by
+  intro hn
+  constructor
+  · intro h_eq
+    have h_cases : n = 2 ∨ n = 3 ∨ n = 4 ∨ n ≥ 5 := by omega
+    rcases h_cases with rfl | rfl | rfl | h_ge
+    · left; rfl
+    · right; left; rfl
+    · right; right; rfl
+    · have h_ne := a_gt_4_ne n h_ge
+      contradiction
+  · rintro (rfl | rfl | rfl)
+    · -- n = 2
+      have h_a9 := a_9
+      have h_rhs : 10 ^ (3 ^ (2 - 2)) - 1 = 9 := by decide
+      rw [h_rhs]
+      exact h_a9
+    · -- n = 3
+      have h_a27 := a_27
+      have h_rhs : 10 ^ (3 ^ (3 - 2)) - 1 = 999 := by decide
+      rw [h_rhs]
+      exact h_a27
+    · -- n = 4
+      have h_a81 := a_81_eq
+      have h_rhs : 10 ^ (3 ^ (4 - 2)) - 1 = 999999999 := by decide
+      rw [h_rhs]
+      exact h_a81
+

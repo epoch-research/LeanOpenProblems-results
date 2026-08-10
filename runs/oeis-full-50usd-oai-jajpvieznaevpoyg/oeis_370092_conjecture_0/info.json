@@ -1,0 +1,23 @@
+{
+  "id": "oeis_370092_conjecture_0",
+  "epoch": 1,
+  "uuid": "nVz9J8royxCLsRa4udK2dw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1941161,
+      "output_tokens": 417126,
+      "total_tokens": 57982479,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 55624192,
+      "reasoning_tokens": 322115,
+      "total_cost": 50.03168100000002
+    }
+  },
+  "oeis_id": "A370092"
+}

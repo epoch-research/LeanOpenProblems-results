@@ -1,0 +1,20 @@
+{
+  "id": "oeis_113254_conjecture_0",
+  "epoch": 1,
+  "uuid": "o44526uDTpfqEsvswXD6Sb",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 25,
+      "output_tokens": 18286,
+      "total_tokens": 219054,
+      "input_tokens_cache_write": 22882,
+      "input_tokens_cache_read": 177861,
+      "reasoning_tokens": 4003,
+      "total_cost": 1.378436
+    }
+  },
+  "oeis_id": "A113254"
+}

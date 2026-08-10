@@ -1,0 +1,12 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:29:72: error: Application type mismatch: The argument
+    Prop
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    (of fun i j => if Nat.Prime (↑i + ↑j + 2) then 1 else 0).det ≠ 0 ↔ Prop
+

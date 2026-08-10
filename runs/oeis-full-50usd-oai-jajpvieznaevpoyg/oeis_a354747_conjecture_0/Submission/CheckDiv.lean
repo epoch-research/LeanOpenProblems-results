@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.mul_div_right
+#check Nat.mul_div_left
+#check Nat.mul_div_cancel'
+#check Nat.dvd_iff_mod_eq_zero
+#check Nat.modEq_iff_dvd
+#check Nat.ModEq.pow
+#check Nat.ModEq.mul
+#check Nat.ModEq.sub

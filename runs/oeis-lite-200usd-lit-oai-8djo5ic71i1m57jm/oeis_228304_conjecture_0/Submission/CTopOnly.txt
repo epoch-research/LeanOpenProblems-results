@@ -1,0 +1,53 @@
+lemma cZ_top (p m : ℕ) (hp : Nat.Prime p) (hp_eq : p = 2*m+1) :
+    cZ p (p-1) = (-1 : ZMod p) ^ m := by
+  subst p
+  unfold cZ
+  rw [show 2*m+1 - 1 + 1 = 2*m+1 by omega]
+  let term : ℕ → ZMod (2*m+1) := fun k =>
+    (-1 : ZMod (2*m+1)) ^ k * ((choose (2*m+1-1) k : ZMod (2*m+1)) ^ 2) *
+      (choose (2*k) k : ZMod (2*m+1)) *
+      (choose (2*(2*m+1-1-k)) (2*m+1-1-k) : ZMod (2*m+1))
+  change (∑ k ∈ range (2*m+1), term k) = (-1 : ZMod (2*m+1)) ^ m
+  have hsum : (∑ k ∈ range (2*m+1), term k) = term m := by
+    apply Finset.sum_eq_single
+    · intro k hk hkm
+      have hklt : k < 2*m+1 := by simpa using hk
+      by_cases hlt : k < m
+      · have hslt : 2*m - k < 2*m+1 := by omega
+        have hsmall := central_small_cast_zmod (2*m+1) (2*m-k) hp hslt
+        have hnsmall : ¬ 2*(2*m-k) < 2*m+1 := by omega
+        simp [hnsmall] at hsmall
+        dsimp [term]
+        rw [hsmall]
+        ring
+      · have hgt : m < k := by omega
+        have hsmall := central_small_cast_zmod (2*m+1) k hp hklt
+        have hnsmall : ¬ 2*k < 2*m+1 := by omega
+        simp [hnsmall] at hsmall
+        dsimp [term]
+        rw [hsmall]
+        ring
+    · intro hmnot
+      exfalso
+      apply hmnot
+      simp
+      omega
+  rw [hsum]
+  dsimp [term]
+  have hchoose := choose_p_sub_one_zmod (2*m+1) m hp (by omega)
+  have hcent : ((Nat.choose (2*m) m : ℕ) : ZMod (2*m+1)) = (-1 : ZMod (2*m+1)) ^ m := by
+    simpa [show 2*m+1-1 = 2*m by omega] using hchoose
+  have hchoose_sq : (((Nat.choose (2*m) m : ℕ) : ZMod (2*m+1)) ^ 2) = 1 := by
+    rw [hcent, ← pow_mul]
+    have he : Even (m*2) := ⟨m, by omega⟩
+    simpa using (Even.neg_one_pow (α := ZMod (2*m+1)) he)
+  have hlast : 2*m - m = m := by omega
+  rw [hlast, hchoose_sq, hcent]
+  ring_nf
+  apply neg_one_pow_congr
+  rw [Nat.even_mul]
+  constructor
+  · intro h
+    exact h.resolve_right (by norm_num : ¬ Even 3)
+  · intro hm
+    exact Or.inl hm

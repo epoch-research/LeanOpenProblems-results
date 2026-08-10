@@ -1,0 +1,23 @@
+{
+  "id": "oeis_271099_conjecture",
+  "epoch": 1,
+  "uuid": "jstun7FG3wAqGUhDRe5RQA",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 7722561,
+      "output_tokens": 1631940,
+      "total_tokens": 234235141,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 224880640,
+      "reasoning_tokens": 1043973,
+      "total_cost": 200.01132500000008
+    }
+  },
+  "oeis_id": "A271099"
+}

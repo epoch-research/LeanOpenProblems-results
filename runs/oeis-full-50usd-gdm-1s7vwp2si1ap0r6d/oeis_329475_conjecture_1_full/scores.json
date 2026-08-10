@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:64:27: error: unexpected token '@['; expected 'lemma'\nSubmission/Spec.lean:66:8: warning: declaration uses 'sorry'",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

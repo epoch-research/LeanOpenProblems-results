@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.find
+#check Nat.find_spec
+#check Nat.find_min
+#check Nat.find_min'
+#check WellFoundedLT
+#check Set.infinite_iff_exists_gt
+#check Nat.infinite_setOf_prime
+#check Nat.exists_infinite_primes
+#check Nat.forall_exists_prime_gt_and_modEq
+#check Nat.ModEq
+#check Nat.modEq_iff_dvd

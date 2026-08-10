@@ -1,0 +1,20 @@
+{
+  "id": "oeis_385391_conjecture_0",
+  "epoch": 1,
+  "uuid": "QJg5TBRsYG9kyYLYGZ3iWQ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 113,
+      "output_tokens": 102237,
+      "total_tokens": 3424669,
+      "input_tokens_cache_write": 139505,
+      "input_tokens_cache_read": 3182814,
+      "reasoning_tokens": 16990,
+      "total_cost": 5.01980325
+    }
+  },
+  "oeis_id": "A385391"
+}

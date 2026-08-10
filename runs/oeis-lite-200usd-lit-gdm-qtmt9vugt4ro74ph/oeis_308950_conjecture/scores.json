@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:3111:36: error: Tactic `decide` proved that the proposition\n  ∀ a < 69,\n    ∀ b < 44,\n      2 ^ a * 3 ^ b ≤ 299889760893881640982 →\n        let val := 6 * (299889760893881640982 - 2 ^ a * 3 ^ b) + 1;\n        let f := factor_p1 a b;\n        f ∣ val ∧ 2 ≤ f ∧ f < val\nis false\nSubmission/Spec.lean:3117:36: error: Tactic `decide` proved that the proposition\n  ∀ a < 69,\n    ∀ b < 44,\n      2 ^ a * 3 ^ b < 299889760893881640982 →\n        let val := 6 * (299889760893881640982 - 2 ^ a * 3 ^ b) - 1;\n        let f := factor_p2 a b;\n        f ∣ val ∧ 2 ≤ f ∧ f < val\nis false",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

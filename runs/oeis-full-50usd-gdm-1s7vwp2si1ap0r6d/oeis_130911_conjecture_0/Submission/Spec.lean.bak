@@ -1,0 +1,871 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option maxRecDepth 10000
+
+open Nat Finset
+
+/--
+A130911: $a(n)$ is the number of primes with odd binary weight among the first $n$ primes minus the number with an even binary weight.
+Primes with odd binary weight are called odious primes (A027697); primes with even binary weight are called evil primes (A027699).
+$$a(n) = \sum_{k=1}^n \left( \mathbf{1}_{\{\operatorname{popcount}(p_k) \text{ is odd}\}} - \mathbf{1}_{\{\operatorname{popcount}(p_k) \text{ is even}\}} \right)$$
+where $p_k$ is the $k$-th prime number.
+-/
+noncomputable def A130911 (n : ℕ) : ℤ :=
+  let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ :=
+    if (binary_weight p).bodd then 1 else -1
+  Finset.sum (Finset.range n) fun i =>
+    let p_i := Nat.nth Nat.Prime i
+    weight_parity_sign p_i
+
+theorem A130911_step (n : ℕ) : A130911 (n+1) = A130911 n +
+  (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+   let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+   weight_parity_sign (Nat.nth Nat.Prime n)) := by
+  dsimp [A130911]
+  rw [sum_range_succ]
+
+theorem nth_prime_num_5 : nth Nat.Prime 5 = 13 := by
+  have h : count Nat.Prime 13 = 5 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 13)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_6 : nth Nat.Prime 6 = 17 := by
+  have h : count Nat.Prime 17 = 6 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 17)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_7 : nth Nat.Prime 7 = 19 := by
+  have h : count Nat.Prime 19 = 7 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 19)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_8 : nth Nat.Prime 8 = 23 := by
+  have h : count Nat.Prime 23 = 8 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 23)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_9 : nth Nat.Prime 9 = 29 := by
+  have h : count Nat.Prime 29 = 9 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 29)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_10 : nth Nat.Prime 10 = 31 := by
+  have h : count Nat.Prime 31 = 10 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 31)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_11 : nth Nat.Prime 11 = 37 := by
+  have h : count Nat.Prime 37 = 11 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 37)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_12 : nth Nat.Prime 12 = 41 := by
+  have h : count Nat.Prime 41 = 12 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 41)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_13 : nth Nat.Prime 13 = 43 := by
+  have h : count Nat.Prime 43 = 13 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 43)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_14 : nth Nat.Prime 14 = 47 := by
+  have h : count Nat.Prime 47 = 14 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 47)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_15 : nth Nat.Prime 15 = 53 := by
+  have h : count Nat.Prime 53 = 15 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 53)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_16 : nth Nat.Prime 16 = 59 := by
+  have h : count Nat.Prime 59 = 16 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 59)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_17 : nth Nat.Prime 17 = 61 := by
+  have h : count Nat.Prime 61 = 17 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 61)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_18 : nth Nat.Prime 18 = 67 := by
+  have h : count Nat.Prime 67 = 18 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 67)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_19 : nth Nat.Prime 19 = 71 := by
+  have h : count Nat.Prime 71 = 19 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 71)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_20 : nth Nat.Prime 20 = 73 := by
+  have h : count Nat.Prime 73 = 20 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 73)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_21 : nth Nat.Prime 21 = 79 := by
+  have h : count Nat.Prime 79 = 21 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 79)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_22 : nth Nat.Prime 22 = 83 := by
+  have h : count Nat.Prime 83 = 22 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 83)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_23 : nth Nat.Prime 23 = 89 := by
+  have h : count Nat.Prime 89 = 23 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 89)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_24 : nth Nat.Prime 24 = 97 := by
+  have h : count Nat.Prime 97 = 24 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 97)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_25 : nth Nat.Prime 25 = 101 := by
+  have h : count Nat.Prime 101 = 25 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 101)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_26 : nth Nat.Prime 26 = 103 := by
+  have h : count Nat.Prime 103 = 26 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 103)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_27 : nth Nat.Prime 27 = 107 := by
+  have h : count Nat.Prime 107 = 27 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 107)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_28 : nth Nat.Prime 28 = 109 := by
+  have h : count Nat.Prime 109 = 28 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 109)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_29 : nth Nat.Prime 29 = 113 := by
+  have h : count Nat.Prime 113 = 29 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 113)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_30 : nth Nat.Prime 30 = 127 := by
+  have h : count Nat.Prime 127 = 30 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 127)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_31 : nth Nat.Prime 31 = 131 := by
+  have h : count Nat.Prime 131 = 31 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 131)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_32 : nth Nat.Prime 32 = 137 := by
+  have h : count Nat.Prime 137 = 32 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 137)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_33 : nth Nat.Prime 33 = 139 := by
+  have h : count Nat.Prime 139 = 33 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 139)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_34 : nth Nat.Prime 34 = 149 := by
+  have h : count Nat.Prime 149 = 34 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 149)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_35 : nth Nat.Prime 35 = 151 := by
+  have h : count Nat.Prime 151 = 35 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 151)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_36 : nth Nat.Prime 36 = 157 := by
+  have h : count Nat.Prime 157 = 36 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 157)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_37 : nth Nat.Prime 37 = 163 := by
+  have h : count Nat.Prime 163 = 37 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 163)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_38 : nth Nat.Prime 38 = 167 := by
+  have h : count Nat.Prime 167 = 38 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 167)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_39 : nth Nat.Prime 39 = 173 := by
+  have h : count Nat.Prime 173 = 39 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 173)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_40 : nth Nat.Prime 40 = 179 := by
+  have h : count Nat.Prime 179 = 40 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 179)
+  rw [h] at h2; exact h2
+
+theorem nth_prime_num_41 : nth Nat.Prime 41 = 181 := by
+  have h : count Nat.Prime 181 = 41 := by decide
+  have h2 := nth_count (by decide : Nat.Prime 181)
+  rw [h] at h2; exact h2
+
+theorem A130911_0 : A130911 0 = 0 := by rfl
+
+theorem A130911_1 : A130911 1 = 1 := by
+  rw [A130911_step 0, A130911_0, nth_prime_zero_eq_two]
+  decide
+
+theorem A130911_2 : A130911 2 = 0 := by
+  rw [A130911_step 1, A130911_1, nth_prime_one_eq_three]
+  decide
+
+theorem A130911_3 : A130911 3 = -1 := by
+  rw [A130911_step 2, A130911_2, nth_prime_two_eq_five]
+  decide
+
+theorem A130911_4 : A130911 4 = 0 := by
+  rw [A130911_step 3, A130911_3, nth_prime_three_eq_seven]
+  decide
+
+theorem A130911_5 : A130911 5 = 1 := by
+  rw [A130911_step 4, A130911_4, nth_prime_four_eq_eleven]
+  decide
+
+theorem A130911_6 : A130911 6 = 2 := by
+  rw [A130911_step 5, A130911_5, nth_prime_num_5]
+  decide
+
+theorem A130911_7 : A130911 7 = 1 := by
+  rw [A130911_step 6, A130911_6, nth_prime_num_6]
+  decide
+
+theorem A130911_8 : A130911 8 = 2 := by
+  rw [A130911_step 7, A130911_7, nth_prime_num_7]
+  decide
+
+theorem A130911_9 : A130911 9 = 1 := by
+  rw [A130911_step 8, A130911_8, nth_prime_num_8]
+  decide
+
+theorem A130911_10 : A130911 10 = 0 := by
+  rw [A130911_step 9, A130911_9, nth_prime_num_9]
+  decide
+
+theorem A130911_11 : A130911 11 = 1 := by
+  rw [A130911_step 10, A130911_10, nth_prime_num_10]
+  decide
+
+theorem A130911_12 : A130911 12 = 2 := by
+  rw [A130911_step 11, A130911_11, nth_prime_num_11]
+  decide
+
+theorem A130911_13 : A130911 13 = 3 := by
+  rw [A130911_step 12, A130911_12, nth_prime_num_12]
+  decide
+
+theorem A130911_14 : A130911 14 = 2 := by
+  rw [A130911_step 13, A130911_13, nth_prime_num_13]
+  decide
+
+theorem A130911_15 : A130911 15 = 3 := by
+  rw [A130911_step 14, A130911_14, nth_prime_num_14]
+  decide
+
+theorem A130911_16 : A130911 16 = 2 := by
+  rw [A130911_step 15, A130911_15, nth_prime_num_15]
+  decide
+
+theorem A130911_17 : A130911 17 = 3 := by
+  rw [A130911_step 16, A130911_16, nth_prime_num_16]
+  decide
+
+theorem A130911_18 : A130911 18 = 4 := by
+  rw [A130911_step 17, A130911_17, nth_prime_num_17]
+  decide
+
+theorem A130911_19 : A130911 19 = 5 := by
+  rw [A130911_step 18, A130911_18, nth_prime_num_18]
+  decide
+
+theorem A130911_20 : A130911 20 = 4 := by
+  rw [A130911_step 19, A130911_19, nth_prime_num_19]
+  decide
+
+theorem A130911_21 : A130911 21 = 5 := by
+  rw [A130911_step 20, A130911_20, nth_prime_num_20]
+  decide
+
+theorem A130911_22 : A130911 22 = 6 := by
+  rw [A130911_step 21, A130911_21, nth_prime_num_21]
+  decide
+
+theorem A130911_23 : A130911 23 = 5 := by
+  rw [A130911_step 22, A130911_22, nth_prime_num_22]
+  decide
+
+theorem A130911_24 : A130911 24 = 4 := by
+  rw [A130911_step 23, A130911_23, nth_prime_num_23]
+  decide
+
+theorem A130911_25 : A130911 25 = 5 := by
+  rw [A130911_step 24, A130911_24, nth_prime_num_24]
+  decide
+
+theorem A130911_26 : A130911 26 = 4 := by
+  rw [A130911_step 25, A130911_25, nth_prime_num_25]
+  decide
+
+theorem A130911_27 : A130911 27 = 5 := by
+  rw [A130911_step 26, A130911_26, nth_prime_num_26]
+  decide
+
+theorem A130911_28 : A130911 28 = 6 := by
+  rw [A130911_step 27, A130911_27, nth_prime_num_27]
+  decide
+
+theorem A130911_29 : A130911 29 = 7 := by
+  rw [A130911_step 28, A130911_28, nth_prime_num_28]
+  decide
+
+theorem A130911_30 : A130911 30 = 6 := by
+  rw [A130911_step 29, A130911_29, nth_prime_num_29]
+  decide
+
+theorem A130911_31 : A130911 31 = 7 := by
+  rw [A130911_step 30, A130911_30, nth_prime_num_30]
+  decide
+
+theorem A130911_32 : A130911 32 = 8 := by
+  rw [A130911_step 31, A130911_31, nth_prime_num_31]
+  decide
+
+theorem A130911_33 : A130911 33 = 9 := by
+  rw [A130911_step 32, A130911_32, nth_prime_num_32]
+  decide
+
+theorem A130911_34 : A130911 34 = 8 := by
+  rw [A130911_step 33, A130911_33, nth_prime_num_33]
+  decide
+
+theorem A130911_35 : A130911 35 = 7 := by
+  rw [A130911_step 34, A130911_34, nth_prime_num_34]
+  decide
+
+theorem A130911_36 : A130911 36 = 8 := by
+  rw [A130911_step 35, A130911_35, nth_prime_num_35]
+  decide
+
+theorem A130911_37 : A130911 37 = 9 := by
+  rw [A130911_step 36, A130911_36, nth_prime_num_36]
+  decide
+
+theorem A130911_38 : A130911 38 = 8 := by
+  rw [A130911_step 37, A130911_37, nth_prime_num_37]
+  decide
+
+theorem A130911_39 : A130911 39 = 9 := by
+  rw [A130911_step 38, A130911_38, nth_prime_num_38]
+  decide
+
+theorem A130911_40 : A130911 40 = 10 := by
+  rw [A130911_step 39, A130911_39, nth_prime_num_39]
+  decide
+
+theorem A130911_41 : A130911 41 = 11 := by
+  rw [A130911_step 40, A130911_40, nth_prime_num_40]
+  decide
+
+theorem A130911_le_8_of_le_25 (n : ℕ) (h1 : n ≥ 11) (h2 : n ≤ 25) : A130911 n ≤ 8 := by
+  interval_cases n
+  · rw [A130911_11]; decide
+  · rw [A130911_12]; decide
+  · rw [A130911_13]; decide
+  · rw [A130911_14]; decide
+  · rw [A130911_15]; decide
+  · rw [A130911_16]; decide
+  · rw [A130911_17]; decide
+  · rw [A130911_18]; decide
+  · rw [A130911_19]; decide
+  · rw [A130911_20]; decide
+  · rw [A130911_21]; decide
+  · rw [A130911_22]; decide
+  · rw [A130911_23]; decide
+  · rw [A130911_24]; decide
+  · rw [A130911_25]; decide
+
+theorem A130911_le_8_of_le_37 (n : ℕ) (h1 : n ≥ 26) (h2 : n ≤ 37) : A130911 n ≤ 8 := by
+  interval_cases n
+  · rw [A130911_26]; decide
+  · rw [A130911_27]; decide
+  · rw [A130911_28]; decide
+  · rw [A130911_29]; decide
+  · rw [A130911_30]; decide
+  · rw [A130911_31]; decide
+  · rw [A130911_32]; decide
+  · rw [A130911_33]; decide
+  · rw [A130911_34]; decide
+  · rw [A130911_35]; decide
+  · rw [A130911_36]; decide
+  · rw [A130911_37]; decide
+
+theorem A130911_le_8_of_le_37_all (n : ℕ) (h1 : n ≥ 11) (h2 : n ≤ 37) : A130911 n ≤ 8 := by
+  by_cases h3 : n ≤ 25
+  · exact A130911_le_8_of_le_25 n h1 h3
+  · have : n ≥ 26 := by omega
+    exact A130911_le_8_of_le_37 n this h2
+
+theorem sgn_not_minus_11 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 11 := by
+  intro hn11; subst hn11
+  have h_sgn11 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 11)) = 1 := by
+    rw [nth_prime_num_11]; simp [digits_zero]
+  rw [h_sgn11] at h_sgn; contradiction
+
+theorem sgn_not_minus_12 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 12 := by
+  intro hn12; subst hn12
+  have h_sgn12 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 12)) = 1 := by
+    rw [nth_prime_num_12]; simp [digits_zero]
+  rw [h_sgn12] at h_sgn; contradiction
+
+theorem sgn_not_minus_14 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 14 := by
+  intro hn14; subst hn14
+  have h_sgn14 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 14)) = 1 := by
+    rw [nth_prime_num_14]; simp [digits_zero]
+  rw [h_sgn14] at h_sgn; contradiction
+
+theorem sgn_not_minus_16 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 16 := by
+  intro hn16; subst hn16
+  have h_sgn16 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 16)) = 1 := by
+    rw [nth_prime_num_16]; simp [digits_zero]
+  rw [h_sgn16] at h_sgn; contradiction
+
+theorem sgn_not_minus_17 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 17 := by
+  intro hn17; subst hn17
+  have h_sgn17 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 17)) = 1 := by
+    rw [nth_prime_num_17]; simp [digits_zero]
+  rw [h_sgn17] at h_sgn; contradiction
+
+theorem sgn_not_minus_18 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 18 := by
+  intro hn18; subst hn18
+  have h_sgn18 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 18)) = 1 := by
+    rw [nth_prime_num_18]; simp [digits_zero]
+  rw [h_sgn18] at h_sgn; contradiction
+
+theorem sgn_not_minus_20 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 20 := by
+  intro hn20; subst hn20
+  have h_sgn20 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 20)) = 1 := by
+    rw [nth_prime_num_20]; simp [digits_zero]
+  rw [h_sgn20] at h_sgn; contradiction
+
+theorem sgn_not_minus_21 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 21 := by
+  intro hn21; subst hn21
+  have h_sgn21 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 21)) = 1 := by
+    rw [nth_prime_num_21]; simp [digits_zero]
+  rw [h_sgn21] at h_sgn; contradiction
+
+theorem sgn_not_minus_24 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 24 := by
+  intro hn24; subst hn24
+  have h_sgn24 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 24)) = 1 := by
+    rw [nth_prime_num_24]; simp [digits_zero]
+  rw [h_sgn24] at h_sgn; contradiction
+
+theorem sgn_not_minus_26 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 26 := by
+  intro hn26; subst hn26
+  have h_sgn26 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 26)) = 1 := by
+    rw [nth_prime_num_26]; simp [digits_zero]
+  rw [h_sgn26] at h_sgn; contradiction
+
+theorem sgn_not_minus_27 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 27 := by
+  intro hn27; subst hn27
+  have h_sgn27 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 27)) = 1 := by
+    rw [nth_prime_num_27]; simp [digits_zero]
+  rw [h_sgn27] at h_sgn; contradiction
+
+theorem sgn_not_minus_28 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 28 := by
+  intro hn28; subst hn28
+  have h_sgn28 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 28)) = 1 := by
+    rw [nth_prime_num_28]; simp [digits_zero]
+  rw [h_sgn28] at h_sgn; contradiction
+
+theorem sgn_not_minus_30 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 30 := by
+  intro hn30; subst hn30
+  have h_sgn30 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 30)) = 1 := by
+    rw [nth_prime_num_30]; simp [digits_zero]
+  rw [h_sgn30] at h_sgn; contradiction
+
+theorem sgn_not_minus_31 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 31 := by
+  intro hn31; subst hn31
+  have h_sgn31 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 31)) = 1 := by
+    rw [nth_prime_num_31]; simp [digits_zero]
+  rw [h_sgn31] at h_sgn; contradiction
+
+theorem sgn_not_minus_32 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 32 := by
+  intro hn32; subst hn32
+  have h_sgn32 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 32)) = 1 := by
+    rw [nth_prime_num_32]; simp [digits_zero]
+  rw [h_sgn32] at h_sgn; contradiction
+
+theorem sgn_not_minus_35 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 35 := by
+  intro hn35; subst hn35
+  have h_sgn35 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 35)) = 1 := by
+    rw [nth_prime_num_35]; simp [digits_zero]
+  rw [h_sgn35] at h_sgn; contradiction
+
+theorem sgn_not_minus_36 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 36 := by
+  intro hn36; subst hn36
+  have h_sgn36 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 36)) = 1 := by
+    rw [nth_prime_num_36]; simp [digits_zero]
+  rw [h_sgn36] at h_sgn; contradiction
+
+theorem sgn_not_minus_38 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = -1) : n ≠ 38 := by
+  intro hn38; subst hn38
+  have h_sgn38 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 38)) = 1 := by
+    rw [nth_prime_num_38]; simp [digits_zero]
+  rw [h_sgn38] at h_sgn; contradiction
+
+theorem sgn_not_plus_13 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 13 := by
+  intro hn13; subst hn13
+  have h_sgn13 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 13)) = -1 := by
+    rw [nth_prime_num_13]; simp [digits_zero]
+  rw [h_sgn13] at h_sgn; contradiction
+
+theorem sgn_not_plus_15 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 15 := by
+  intro hn15; subst hn15
+  have h_sgn15 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 15)) = -1 := by
+    rw [nth_prime_num_15]; simp [digits_zero]
+  rw [h_sgn15] at h_sgn; contradiction
+
+theorem sgn_not_plus_19 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 19 := by
+  intro hn19; subst hn19
+  have h_sgn19 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 19)) = -1 := by
+    rw [nth_prime_num_19]; simp [digits_zero]
+  rw [h_sgn19] at h_sgn; contradiction
+
+theorem sgn_not_plus_22 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 22 := by
+  intro hn22; subst hn22
+  have h_sgn22 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 22)) = -1 := by
+    rw [nth_prime_num_22]; simp [digits_zero]
+  rw [h_sgn22] at h_sgn; contradiction
+
+theorem sgn_not_plus_23 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 23 := by
+  intro hn23; subst hn23
+  have h_sgn23 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 23)) = -1 := by
+    rw [nth_prime_num_23]; simp [digits_zero]
+  rw [h_sgn23] at h_sgn; contradiction
+
+theorem sgn_not_plus_25 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 25 := by
+  intro hn25; subst hn25
+  have h_sgn25 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 25)) = -1 := by
+    rw [nth_prime_num_25]; simp [digits_zero]
+  rw [h_sgn25] at h_sgn; contradiction
+
+theorem sgn_not_plus_29 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 29 := by
+  intro hn29; subst hn29
+  have h_sgn29 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 29)) = -1 := by
+    rw [nth_prime_num_29]; simp [digits_zero]
+  rw [h_sgn29] at h_sgn; contradiction
+
+theorem sgn_not_plus_34 (n : ℕ) (h_sgn : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+  let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+  weight_parity_sign (Nat.nth Nat.Prime n)) = 1) : n ≠ 34 := by
+  intro hn34; subst hn34
+  have h_sgn34 : (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+    let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+    weight_parity_sign (Nat.nth Nat.Prime 34)) = -1 := by
+    rw [nth_prime_num_34]; simp [digits_zero]
+  rw [h_sgn34] at h_sgn; contradiction
+
+def P (n : ℕ) : Prop :=
+  A130911 n ≥ 1 ∧
+  (A130911 n = 1 → n = 11) ∧
+  (A130911 n = 2 → n = 12 ∨ n = 14 ∨ n = 16) ∧
+  (A130911 n = 3 → n = 13 ∨ n = 15 ∨ n = 17) ∧
+  (A130911 n = 4 → n = 18 ∨ n = 20 ∨ n = 24 ∨ n = 26) ∧
+  (A130911 n = 5 → n = 19 ∨ n = 21 ∨ n = 23 ∨ n = 25 ∨ n = 27) ∧
+  (A130911 n = 6 → n = 22 ∨ n = 28 ∨ n = 30) ∧
+  (A130911 n = 7 → n = 29 ∨ n = 31 ∨ n = 35) ∧
+  (A130911 n = 8 → n = 32 ∨ n = 34 ∨ n = 36 ∨ n = 38) ∧
+  (A130911 n ≤ 8 → n ≤ 38)
+
+theorem A130911_ge_one (n : ℕ) : n ≥ 11 → P n := by
+  induction' n with n ih
+  · intro h; omega
+  · intro h
+    by_cases hn : n ≥ 11
+    · have h_ih := ih hn
+      have h_ih_1 := h_ih.1
+      have h_ih_2 := h_ih.2.1
+      have h_ih_3 := h_ih.2.2.1
+      have h_ih_4 := h_ih.2.2.2.1
+      have h_ih_5 := h_ih.2.2.2.2.1
+      have h_ih_6 := h_ih.2.2.2.2.2.1
+      have h_ih_7 := h_ih.2.2.2.2.2.2.1
+      have h_ih_8 := h_ih.2.2.2.2.2.2.2.1
+      have h_ih_9 := h_ih.2.2.2.2.2.2.2.2.1
+      have h_ih_10 := h_ih.2.2.2.2.2.2.2.2.2
+
+      have h_step : A130911 (n + 1) = A130911 n +
+        (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+         let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+         weight_parity_sign (Nat.nth Nat.Prime n)) := by
+        dsimp [A130911]
+        rw [sum_range_succ]
+      have sgn_values :
+        (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+         let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+         weight_parity_sign (Nat.nth Nat.Prime n)) = 1 ∨
+        (let binary_weight (k : ℕ) : ℕ := (Nat.digits 2 k).sum
+         let weight_parity_sign (p : ℕ) : ℤ := if (binary_weight p).bodd then 1 else -1
+         weight_parity_sign (Nat.nth Nat.Prime n)) = -1 := by
+        dsimp; split <;> omega
+      rcases sgn_values with h_sgn | h_sgn
+      · -- sgn = 1
+        refine ⟨by omega, ?_⟩
+        intro h_eq_1; omega
+        intro h_eq_2; have : A130911 n = 1 := by omega
+        have hn11 := h_ih_2 this; omega
+        intro h_eq_3; have : A130911 n = 2 := by omega
+        have hn_or := h_ih_3 this; omega
+        intro h_eq_4; have : A130911 n = 3 := by omega
+        have hn_or := h_ih_4 this
+        rcases hn_or with rfl|rfl|rfl
+        · have := sgn_not_plus_13 n h_sgn; contradiction
+        · have := sgn_not_plus_15 n h_sgn; contradiction
+        · right; right; right; rfl
+        intro h_eq_5; have : A130911 n = 4 := by omega
+        have hn_or := h_ih_5 this; omega
+        intro h_eq_6; have : A130911 n = 5 := by omega
+        have hn_or := h_ih_6 this
+        rcases hn_or with rfl|rfl|rfl|rfl|rfl
+        · have := sgn_not_plus_19 n h_sgn; contradiction
+        · left; rfl
+        · have := sgn_not_plus_23 n h_sgn; contradiction
+        · have := sgn_not_plus_25 n h_sgn; contradiction
+        · right; left; rfl
+        intro h_eq_7; have : A130911 n = 6 := by omega
+        have hn_or := h_ih_7 this
+        rcases hn_or with rfl|rfl|rfl
+        · have := sgn_not_plus_22 n h_sgn; contradiction
+        · left; rfl
+        · right; left; rfl
+        intro h_eq_8; have : A130911 n = 7 := by omega
+        have hn_or := h_ih_8 this
+        rcases hn_or with rfl|rfl|rfl
+        · have := sgn_not_plus_29 n h_sgn; contradiction
+        · left; rfl
+        · right; left; rfl
+        intro h_le8
+        by_cases hn14 : n ≤ 13
+        · omega
+        · by_cases hn14_eq : n = 14
+          · subst hn14_eq
+            have h_a15 : A130911 15 = 3 := by rw [A130911_15]
+            omega
+          · have hn15 : n ≥ 15 := by omega
+            have hn_le38 : n ≤ 38 := by
+              apply h_ih_10
+              omega
+            omega
+      · -- sgn = -1
+        have h_ge2 : A130911 n ≥ 2 := by
+          by_cases hn11 : n = 11
+          · have := sgn_not_minus_11 n h_sgn; contradiction
+          · have : A130911 n ≠ 1 := by
+              intro h_eq1
+              have := h_ih_2 h_eq1
+              contradiction
+            omega
+        refine ⟨by omega, ?_⟩
+        intro h_eq_1; have : A130911 n = 2 := by omega
+        have hn_or := h_ih_3 this; omega
+        intro h_eq_2; have : A130911 n = 3 := by omega
+        have hn_or := h_ih_4 this
+        rcases hn_or with rfl|rfl|rfl
+        · have := sgn_not_minus_12 n h_sgn; contradiction
+        · have := sgn_not_minus_14 n h_sgn; contradiction
+        · have := sgn_not_minus_16 n h_sgn; contradiction
+        intro h_eq_3; have : A130911 n = 4 := by omega
+        have hn_or := h_ih_5 this
+        rcases hn_or with rfl|rfl|rfl|rfl
+        · have := sgn_not_minus_18 n h_sgn; contradiction
+        · have := sgn_not_minus_20 n h_sgn; contradiction
+        · have := sgn_not_minus_24 n h_sgn; contradiction
+        · have := sgn_not_minus_26 n h_sgn; contradiction
+        intro h_eq_4; have : A130911 n = 5 := by omega
+        have hn_or := h_ih_6 this
+        rcases hn_or with rfl|rfl|rfl|rfl|rfl
+        · left; rfl
+        · have := sgn_not_minus_21 n h_sgn; contradiction
+        · right; left; rfl
+        · right; right; left; rfl
+        · have := sgn_not_minus_27 n h_sgn; contradiction
+        intro h_eq_5; have : A130911 n = 6 := by omega
+        have hn_or := h_ih_7 this
+        rcases hn_or with rfl|rfl|rfl
+        · right; right; left; rfl
+        · have := sgn_not_minus_28 n h_sgn; contradiction
+        · have := sgn_not_minus_30 n h_sgn; contradiction
+        intro h_eq_6; have : A130911 n = 7 := by omega
+        have hn_or := h_ih_8 this
+        rcases hn_or with rfl|rfl|rfl
+        · right; right; rfl
+        · have := sgn_not_minus_31 n h_sgn; contradiction
+        · have := sgn_not_minus_35 n h_sgn; contradiction
+        intro h_eq_7; have : A130911 n = 8 := by omega
+        have hn_or := h_ih_9 this
+        rcases hn_or with rfl|rfl|rfl|rfl
+        · have := sgn_not_minus_32 n h_sgn; contradiction
+        · left; rfl
+        · have := sgn_not_minus_36 n h_sgn; contradiction
+        · have := sgn_not_minus_38 n h_sgn; contradiction
+        intro h_eq_8; have : A130911 n = 9 := by omega
+        have hn_le8 : A130911 n ≤ 8 := by
+          have hn_le38 : n ≤ 38 := by
+            apply h_ih_10
+            omega
+          by_cases hn_le37 : n ≤ 37
+          · exact A130911_le_8_of_le_37_all n h_ih_1 hn_le37
+          · have : n = 38 := by omega
+            rw [this, A130911_38]; decide
+        omega
+        intro h_le8
+        have hn_le38 : n ≤ 38 := by
+          apply h_ih_10
+          omega
+        omega
+    · -- n < 11, so n+1 is one of the small concrete values
+      have h_eq : n + 1 = 11 := by omega
+      subst h_eq
+      refine ⟨by rw [A130911_11]; decide, ?_⟩
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      refine ⟨?_, ?_⟩
+      · rw [A130911_11]; decide
+      · ?_
+      · rw [A130911_11]; decide
+
+theorem oeis_130911_conjecture_0 (n : ℕ) (h : n > 3) : A130911 n ≥ 0 := by
+  by_cases hn : n ≥ 11
+  · have h_ge := (A130911_ge_one n hn).1
+    omega
+  · have h_lt : n < 11 := by omega
+    interval_cases n
+    · rw [A130911_4]; decide
+    · rw [A130911_5]; decide
+    · rw [A130911_6]; decide
+    · rw [A130911_7]; decide
+    · rw [A130911_8]; decide
+    · rw [A130911_9]; decide
+    · rw [A130911_10]; decide

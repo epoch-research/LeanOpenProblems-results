@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:55:16: error: Application type mismatch: The argument\n  h_int\nhas type\n  ∀ (m : ℕ), a m ∈ Set.range fun x => ↑x\nbut is expected to have type\n  ∀ (m : ℕ), 1 ∈ Set.range fun x => ↑x\nin the application\n  choose_eq h_int\nSubmission/Spec.lean:53:32: error: unsolved goals\nh_int : ∀ (m : ℕ), a m ∈ Set.range fun x => ↑x\np : ℕ\nhp : Nat.Prime p\nh_p_ge_5 : 5 ≤ p\nn r : ℕ\nhn : n > 0\nhr : r > 0\n⊢ Classical.choose ⋯ ≡ Classical.choose ⋯ [ZMOD ↑p ^ (3 * r)]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

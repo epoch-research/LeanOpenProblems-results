@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.Prime
+#check Nat.prime_two
+#check Nat.prime_three
+#check Nat.prime_iff
+#check Nat.Prime.eq_two_or_odd
+#check Nat.Prime.dvd_mul
+#check Nat.Prime.dvd_of_dvd_pow
+#check Nat.Prime.not_dvd_one
+#check Nat.Prime.ne_zero
+#check Nat.Prime.ne_one
+#check Nat.prime_def_lt
+#check Nat.not_prime_zero
+#check Nat.not_prime_one
+#check norm_num

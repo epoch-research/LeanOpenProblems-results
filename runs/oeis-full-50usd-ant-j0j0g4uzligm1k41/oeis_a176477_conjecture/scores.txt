@@ -1,0 +1,32 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 5 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 73 declarations.
+  ------------------
+  Aint_nonneg used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  oeis_a176477_conjecture used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  key_dvd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_a176477_conjecture._proof_1_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  a_Q_int used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  Aint_rec used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  a_eq used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  Aint_pos used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  Aint_eq used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_a176477_conjecture._proof_1_2 used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  Aint_parity used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  Aint used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a176477_conjecture: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

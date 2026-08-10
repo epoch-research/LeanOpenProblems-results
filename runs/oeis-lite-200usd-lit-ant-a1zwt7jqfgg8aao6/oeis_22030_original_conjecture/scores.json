@@ -1,0 +1,246 @@
+{
+  "proof_scorer": {
+    "value": "C",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 9 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 63 declarations.\n------------------\n------------------\n------------------\nSafeVerify check passed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "A022030_original._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030_original._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "oeis_22030_original_conjecture",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030_original.eq_def",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030_original",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A022030.eq_def",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

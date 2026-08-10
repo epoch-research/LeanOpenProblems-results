@@ -1,0 +1,14 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1380:8: error: unsolved goals
+  case neg
+  n : ℕ
+  ih : ∀ m < n, A335624 m = 0 → ∃ k, ∃ m_1 ∈ {1, 3, 5, 43}, m = 2 ^ (4 * k + 3) * m_1
+  h : A335624 n = 0
+  hn0 : ¬n = 0
+  h16 : ¬16 ∣ n
+  hn_lt : ¬n < 345
+  h_goal : False
+  ⊢ ∃ k, ∃ m ∈ {1, 3, 5, 43}, n = 2 ^ (4 * k + 3) * m
+

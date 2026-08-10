@@ -1,0 +1,20 @@
+{
+  "id": "oeis_103311_conjecture_0",
+  "epoch": 1,
+  "uuid": "TUxfL764dRgCSPancFPetY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 741581,
+      "output_tokens": 26605,
+      "total_tokens": 4124579,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3306497,
+      "reasoning_tokens": 49896,
+      "total_cost": 1.8477910499999999
+    }
+  },
+  "oeis_id": "A103311"
+}

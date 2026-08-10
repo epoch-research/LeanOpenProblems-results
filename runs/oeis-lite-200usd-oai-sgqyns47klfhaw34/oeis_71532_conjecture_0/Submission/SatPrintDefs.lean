@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#print Sat.Literal
+#print Sat.Literal.negate
+#print Sat.Valuation
+#print Sat.Valuation.neg
+#print Sat.Valuation.mk
+#print Sat.Valuation.implies
+#print Sat.Valuation.satisfies
+#print Sat.Valuation.satisfies_clause
+#print Sat.Valuation.satisfies_fmla
+#print Sat.Fmla.reify

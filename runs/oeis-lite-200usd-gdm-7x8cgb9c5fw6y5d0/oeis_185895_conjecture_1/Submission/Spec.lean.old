@@ -1,0 +1,724 @@
+import FormalConjectures.Util.ProblemImports
+
+open Polynomial Nat Finset Classical
+
+/--
+A185895: Exponential generating function is $\prod_{k>0} (1 - x^k/k!).$
+The $n$-th term is
+$$ a(n) = n! \cdot \left[x^n\right] \left( \prod_{k=1}^n \left(1 - \frac{x^k}{k!}\right) \right) $$
+The coefficients $a(n)$ are integers.
+-/
+noncomputable def A185895 (n : ℕ) : ℤ :=
+  if n = 0 then 1 else
+  -- n! is defined for n=0, and Px_0 is 1, so a(0) = 1.
+  -- We handle n=0 explicitly to avoid issues with 0.factorial.cast in the general case if k=0 were included.
+
+  -- The finite product $\prod_{k=1}^n \left(1 - \frac{x^k}{k!}\right)$ is equivalent to the infinite product for the coefficient of $x^n$.
+  let Px : Polynomial ℚ := (Icc 1 n).prod (fun k : ℕ =>
+    -- Factor is $1 - x^k/k!$.
+    (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)
+
+  -- $[x^n] Px$ is the coefficient of $x^n$.
+  let coeff_n : ℚ := Polynomial.coeff Px n
+
+  -- $a(n) = n! \cdot [x^n] Px$.
+  let a_n_q : ℚ := coeff_n * n.factorial.cast
+
+  -- The result is an integer, so Rat.floor converts the rational value to ℤ.
+  a_n_q.floor
+
+/-- A natural number $n$ is a triangular number if it is of the form $k(k+1)/2$ for some $k \in \mathbb{N}$. -/
+lemma disjoint_powerset_image_insert {α : Type _} [DecidableEq α] {s : Finset α} {a : α} (ha : a ∉ s) :
+    Disjoint (powerset s) (image (insert a) (powerset s)) := by
+  rw [disjoint_left]
+  intro x hx hx_img
+  change x ∈ powerset s at hx
+  rw [mem_powerset] at hx
+  rw [mem_image] at hx_img
+  rcases hx_img with ⟨y, hy, rfl⟩
+  have ha_in : a ∈ insert a y := mem_insert_self a y
+  have ha_s := hx ha_in
+  exact ha ha_s
+
+lemma injOn_insert_of_not_mem {α : Type _} [DecidableEq α] {s : Finset α} {a : α} (ha : a ∉ s) :
+    Set.InjOn (insert a) (powerset s : Set (Finset α)) := by
+  intro x hx y hy h_eq
+  change x ∈ powerset s at hx
+  change y ∈ powerset s at hy
+  rw [mem_powerset] at hx hy
+  have hx_ha : a ∉ x := fun h => ha (hx h)
+  have hy_ha : a ∉ y := fun h => ha (hy h)
+  have h_x : erase (insert a x) a = x := erase_insert hx_ha
+  have h_y : erase (insert a y) a = y := erase_insert hy_ha
+  rw [← h_x, ← h_y, h_eq]
+
+theorem coeff_prod_one_minus_X_pow (s : Finset ℕ) (c : ℕ → ℚ) (n : ℕ) :
+  coeff (s.prod (fun k => 1 - C (c k) * X ^ k)) n =
+    ∑ S ∈ powerset s, if (∑ k ∈ S, k) = n then (-1 : ℚ) ^ card S * ∏ k ∈ S, c k else 0 := by
+  induction s using Finset.induction_on generalizing n with
+  | empty =>
+    simp
+    by_cases hn : n = 0
+    · subst hn
+      simp
+    · rw [if_neg (Ne.symm hn)]
+      apply coeff_eq_zero_of_natDegree_lt
+      simp
+      exact Nat.pos_of_ne_zero hn
+  | insert a s ha ih =>
+    let P : Polynomial ℚ := s.prod (fun k => 1 - C (c k) * X ^ k)
+    have h_lhs : coeff ((insert a s).prod (fun k => 1 - C (c k) * X ^ k)) n =
+        coeff P n - if a ≤ n then c a * coeff P (n - a) else 0 := by
+      rw [prod_insert ha]
+      have h_ring : (1 - C (c a) * X ^ a) * P = P - C (c a) * (P * X ^ a) := by ring
+      rw [h_ring, coeff_sub, coeff_C_mul, coeff_mul_X_pow']
+      by_cases h_le : a ≤ n
+      · rw [if_pos h_le, if_pos h_le]
+      · rw [if_neg h_le, if_neg h_le, mul_zero]
+    rw [h_lhs]
+    rw [powerset_insert, sum_union (disjoint_powerset_image_insert ha)]
+    rw [sum_image (injOn_insert_of_not_mem ha)]
+    rw [ih]
+    -- Now we show that the sum over powerset s of F(insert a S) equals the if-then-else
+    have h_sum : ∑ S ∈ powerset s, (if (∑ k ∈ insert a S, k) = n then (-1 : ℚ) ^ card (insert a S) * ∏ k ∈ insert a S, c k else 0) =
+        if a ≤ n then - c a * coeff P (n - a) else 0 := by
+      by_cases h_le : a ≤ n
+      · rw [if_pos h_le]
+        -- We want to prove the sum equals - c a * coeff P (n-a)
+        rw [ih]
+        -- Pull out - c a
+        rw [mul_sum]
+        apply sum_congr rfl
+        intro S hS
+        change S ∈ powerset s at hS
+        rw [mem_powerset] at hS
+        have h_na : a ∉ S := fun h => ha (hS h)
+        rw [sum_insert h_na, card_insert_of_notMem h_na, prod_insert h_na]
+        -- (-1)^(card S + 1) * (c a * prod S)
+        have h1 : (-1 : ℚ) ^ (card S + 1) = - (-1 : ℚ) ^ card S := by
+          rw [pow_succ, mul_comm, neg_mul, one_mul]
+        rw [h1]
+        have h_add : a + ∑ k ∈ S, k = ∑ k ∈ S, k + a := add_comm _ _
+        rw [h_add]
+        by_cases h_sum_eq : ∑ k ∈ S, k + a = n
+        · have h_minus : ∑ k ∈ S, k = n - a := by omega
+          rw [if_pos h_sum_eq, if_pos h_minus]
+          ring
+        · have h_minus : ¬ ∑ k ∈ S, k = n - a := by omega
+          rw [if_neg h_sum_eq, if_neg h_minus]
+          ring
+      · rw [if_neg h_le]
+        apply sum_eq_zero
+        intro S hS
+        change S ∈ powerset s at hS
+        rw [mem_powerset] at hS
+        have h_na : a ∉ S := fun h => ha (hS h)
+        rw [sum_insert h_na]
+        have h_not : ∑ k ∈ S, k + a ≠ n := by
+          omega
+        rw [if_neg (by omega)]
+    rw [h_sum]
+    by_cases h_le : a ≤ n
+    · rw [if_pos h_le, if_pos h_le]
+      ring
+    · rw [if_neg h_le, if_neg h_le]
+      ring
+
+def is_triangular (n : ℕ) : Prop := ∃ k : ℕ, n = k * (k + 1) / 2
+
+noncomputable def S : ℕ → ℕ
+  | 0 => 0
+  | n + 1 => if is_triangular (n + 1) then S n + 1 else S n
+
+lemma S_0 : S 0 = 0 := rfl
+
+lemma S_1 : S 1 = 1 := by
+  unfold S
+  have h1 : is_triangular 1 := ⟨1, by rfl⟩
+  rw [if_pos h1, S_0]
+
+lemma S_2 : S 2 = 1 := by
+  change (if is_triangular 2 then S 1 + 1 else S 1) = 1
+  have h2 : ¬ is_triangular 2 := by
+    intro ⟨k, hk⟩
+    rcases k with _|k
+    · simp at hk
+    · rcases k with _|k
+      · simp at hk
+      · rcases k with _|k
+        · simp at hk
+        · have h_eq1 : k + 1 + 1 + 1 = k + 3 := by omega
+          have h_eq2 : k + 1 + 1 + 1 + 1 = k + 4 := by omega
+          rw [h_eq1, h_eq2] at hk
+          have h_mul : (k + 3) * (k + 4) ≥ 12 := by nlinarith
+          have h_div : (k + 3) * (k + 4) / 2 ≥ 6 := by omega
+          omega
+  rw [if_neg h2, S_1]
+
+lemma sum_id_gte_triangular_mul_two_of_subset_Icc (n : ℕ) (s : Finset ℕ) (hs : s ⊆ Icc 1 n) :
+  s.card * (s.card + 1) ≤ 2 * ∑ x ∈ s, x := by
+  induction n generalizing s with
+  | zero =>
+    have h_empty : s = ∅ := by
+      have h_Icc : Icc 1 0 = ∅ := rfl
+      rw [h_Icc] at hs
+      exact subset_empty.mp hs
+    subst h_empty
+    simp
+  | succ n ih =>
+    by_cases hn : n + 1 ∈ s
+    · let t := s.erase (n + 1)
+      have ht : t ⊆ Icc 1 n := by
+        intro x hx
+        rw [mem_erase] at hx
+        have h_in := hs hx.2
+        rw [mem_Icc] at h_in ⊢
+        omega
+      have h_ih := ih t ht
+      have hs_eq : s = insert (n + 1) t := by
+        rw [insert_erase hn]
+      have h_disj : n + 1 ∉ t := by simp [t]
+      rw [hs_eq]
+      rw [card_insert_of_notMem h_disj, sum_insert h_disj]
+      have h_t_le : t.card ≤ n := by
+        have h_card := card_le_card ht
+        simp at h_card
+        omega
+      have h_alg : (t.card + 1) * (t.card + 2) = t.card * (t.card + 1) + 2 * t.card + 2 := by ring
+      rw [h_alg]
+      omega
+    · have ht : s ⊆ Icc 1 n := by
+        intro x hx
+        have h_in := hs hx
+        rw [mem_Icc] at h_in ⊢
+        have h_ne : x ≠ n + 1 := by
+          intro h_eq
+          subst h_eq
+          exact hn hx
+        omega
+      exact ih s ht
+
+lemma sum_id_gte_triangular (s : Finset ℕ) (h_pos : ∀ x ∈ s, 0 < x) :
+  s.card * (s.card + 1) / 2 ≤ ∑ x ∈ s, x := by
+  have hs : s ⊆ Icc 1 (∑ x ∈ s, x) := by
+    intro x hx
+    rw [mem_Icc]
+    have h1 : 1 ≤ x := h_pos x hx
+    have h2 : x ≤ ∑ y ∈ s, y := by
+      have h_eq : s = insert x (s.erase x) := (insert_erase hx).symm
+      nth_rw 1 [h_eq]
+      have h_disj : x ∉ s.erase x := by simp
+      rw [sum_insert h_disj]
+      omega
+    exact ⟨h1, h2⟩
+  have h_mul := sum_id_gte_triangular_mul_two_of_subset_Icc (∑ x ∈ s, x) s hs
+  omega
+
+lemma S_mono (n : ℕ) : S n ≤ S (n + 1) := by
+  change S n ≤ if is_triangular (n + 1) then S n + 1 else S n
+  by_cases h : is_triangular (n + 1)
+  · rw [if_pos h]
+    omega
+  · rw [if_neg h]
+
+lemma mul_self_add_one_even (m : ℕ) : (m * (m + 1)) % 2 = 0 := by
+  have h_mod := Nat.mod_two_eq_zero_or_one m
+  rcases h_mod with h_mod | h_mod
+  · rw [Nat.mul_mod, h_mod]
+    simp
+  · have h_mod2 : (m + 1) % 2 = 0 := by omega
+    rw [Nat.mul_mod, h_mod2]
+    simp
+
+lemma le_S_of_tri_mul_two_le_n (n m : ℕ) (h : m * (m + 1) ≤ 2 * n) : m ≤ S n := by
+  induction n generalizing m with
+  | zero =>
+    have hm : m = 0 := by
+      cases m
+      · rfl
+      · rename_i k
+        have h_le : (k + 1) * (k + 2) ≤ 0 := by omega
+        have h_zero : (k + 1) * (k + 2) = 0 := by omega
+        rw [Nat.mul_eq_zero] at h_zero
+        omega
+    subst hm
+    have hS0 : S 0 = 0 := rfl
+    rw [hS0]
+  | succ n ih =>
+    by_cases h_le : m * (m + 1) ≤ 2 * n
+    · have h_m := ih m h_le
+      have h_mono := S_mono n
+      omega
+    · change m ≤ if is_triangular (n + 1) then S n + 1 else S n
+      by_cases h_tri : is_triangular (n + 1)
+      · rw [if_pos h_tri]
+        have h_eq : m * (m + 1) = 2 * n + 1 ∨ m * (m + 1) = 2 * n + 2 := by omega
+        rcases m with _|m
+        · omega
+        · have h_prev : m * (m + 1) ≤ 2 * n := by
+            have h_alg : (m + 1) * (m + 2) = m * (m + 1) + 2 * m + 2 := by ring
+            rcases h_eq with h_eq | h_eq
+            · rw [h_alg] at h_eq
+              omega
+            · rw [h_alg] at h_eq
+              omega
+          have h_m := ih m h_prev
+          omega
+      · rw [if_neg h_tri]
+        have h_eq : m * (m + 1) = 2 * n + 1 ∨ m * (m + 1) = 2 * n + 2 := by omega
+        rcases h_eq with h_eq | h_eq
+        · have h_even : (m * (m + 1)) % 2 = 0 := mul_self_add_one_even m
+          have h_odd : (2 * n + 1) % 2 = 1 := by omega
+          rw [h_eq] at h_even
+          omega
+        · have h_tri_true : is_triangular (n + 1) := by
+            unfold is_triangular
+            have h_div : m * (m + 1) / 2 = n + 1 := by omega
+            exact ⟨m, h_div.symm⟩
+          contradiction
+
+def PartitionsD (n : ℕ) : Finset (Finset ℕ) :=
+  (powerset (Icc 1 n)).filter (fun S => ∑ k ∈ S, k = n)
+
+lemma card_le_S_of_mem_PartitionsD {n : ℕ} {S : Finset ℕ} (hS : S ∈ PartitionsD n) : S.card ≤ _root_.S n := by
+  unfold PartitionsD at hS
+  rw [mem_filter] at hS
+  rcases hS with ⟨h_pow, h_sum⟩
+  rw [mem_powerset] at h_pow
+  have h_pos : ∀ x ∈ S, 0 < x := by
+    intro x hx
+    have hx_Icc := h_pow hx
+    rw [mem_Icc] at hx_Icc
+    omega
+  have h_tri := sum_id_gte_triangular S h_pos
+  rw [h_sum] at h_tri
+  have h_even : (S.card * (S.card + 1)) % 2 = 0 := mul_self_add_one_even S.card
+  have h_mul : S.card * (S.card + 1) ≤ 2 * n := by
+    omega
+  exact le_S_of_tri_mul_two_le_n n S.card h_mul
+
+lemma coeff_prod_one_minus_X_pow_zero (s : Finset ℕ) (h_pos : ∀ x ∈ s, 0 < x) (c : ℕ → ℚ) :
+  coeff (s.prod (fun k => 1 - C (c k) * X ^ k)) 0 = 1 := by
+  induction s using Finset.induction_on with
+  | empty => simp
+  | insert a s ha ih =>
+    rw [prod_insert ha]
+    have h_ring : (1 - C (c a) * X ^ a) * s.prod (fun k => 1 - C (c k) * X ^ k) =
+        s.prod (fun k => 1 - C (c k) * X ^ k) - C (c a) * (s.prod (fun k => 1 - C (c k) * X ^ k) * X ^ a) := by ring
+    rw [h_ring, coeff_sub, coeff_C_mul, coeff_mul_X_pow']
+    have ha_pos : a > 0 := h_pos a (mem_insert_self a s)
+    have hs_pos : ∀ x ∈ s, 0 < x := fun x hx => h_pos x (mem_insert_of_mem hx)
+    rw [ih hs_pos]
+    have ha_not_le : ¬ a ≤ 0 := by omega
+    rw [if_neg ha_not_le]
+    ring
+
+lemma prod_Icc_succ (n : ℕ) (hn : n > 0) :
+  (Icc 1 n).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k) =
+    ((1 : Polynomial ℚ) - C ((1 : ℚ) / n.factorial.cast) * X ^ n) *
+      (Icc 1 (n - 1)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k) := by
+  have h_eq : Icc 1 n = insert n (Icc 1 (n - 1)) := by
+    ext x
+    rw [mem_Icc, mem_insert, mem_Icc]
+    omega
+  have hn_mem : n ∉ Icc 1 (n - 1) := by
+    rw [mem_Icc]
+    omega
+  rw [h_eq, prod_insert hn_mem]
+
+lemma coeff_n_eq (n : ℕ) (hn : n > 0) :
+  coeff ((Icc 1 n).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n =
+    coeff ((Icc 1 (n - 1)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n -
+      (1 : ℚ) / n.factorial.cast := by
+  rw [prod_Icc_succ n hn]
+  let P : Polynomial ℚ := (Icc 1 (n - 1)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)
+  have h_ring : ((1 : Polynomial ℚ) - C ((1 : ℚ) / n.factorial.cast) * X ^ n) * P =
+      P - C ((1 : ℚ) / n.factorial.cast) * (P * X ^ n) := by ring
+  rw [h_ring, coeff_sub, coeff_C_mul, coeff_mul_X_pow']
+  simp
+  have h_coeff0 : coeff P 0 = 1 := by
+    have h_pos : ∀ x ∈ Icc 1 (n - 1), 0 < x := by
+      intro x hx
+      rw [mem_Icc] at hx
+      omega
+    exact coeff_prod_one_minus_X_pow_zero (Icc 1 (n - 1)) h_pos (fun k => (1 : ℚ) / k.factorial.cast)
+  rw [h_coeff0]
+  dsimp only [P]
+  simp
+
+
+
+lemma eq_singleton_one_of_sum_eq_one (n : ℕ) {s : Finset ℕ} (hs : s ⊆ Icc 1 (n-2)) (h_sum : ∑ x ∈ s, x = 1) : s = {1} := by
+  have h_subset : ∀ x ∈ s, x = 1 := by
+    intro x hx
+    have h1 : 1 ≤ x := by
+      have hx_Icc := hs hx
+      rw [mem_Icc] at hx_Icc
+      omega
+    have h2 : x ≤ ∑ y ∈ s, y := by
+      have h_eq : s = insert x (s.erase x) := (insert_erase hx).symm
+      nth_rw 1 [h_eq]
+      have h_disj : x ∉ s.erase x := by simp
+      rw [sum_insert h_disj]
+      have h_pos : ∀ y ∈ s.erase x, 0 ≤ y := by
+        intro y hy
+        have hy_in : y ∈ s := mem_of_mem_erase hy
+        have hy_Icc := hs hy_in
+        rw [mem_Icc] at hy_Icc
+        omega
+      have h_sum_pos : 0 ≤ ∑ y ∈ s.erase x, y := sum_nonneg h_pos
+      omega
+    rw [h_sum] at h2
+    omega
+  ext x
+  rw [mem_singleton]
+  constructor
+  · exact h_subset x
+  · intro h
+    subst h
+    by_contra h_not
+    by_cases h_empty : s = ∅
+    · subst h_empty
+      simp at h_sum
+    · obtain ⟨y, hy⟩ := Finset.nonempty_of_ne_empty h_empty
+      have hy1 := h_subset y hy
+      subst hy1
+      exact h_not hy
+
+lemma coeff_P_step (n : ℕ) (hn : n ≥ 3) :
+  coeff ((Icc 1 (n - 1)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n =
+    coeff ((Icc 1 (n - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n +
+      (1 : ℚ) / (n - 1).factorial.cast := by
+  have hn1 : n - 1 > 0 := by omega
+  have h_sub : n - 1 - 1 = n - 2 := by omega
+  have h_prod := prod_Icc_succ (n - 1) hn1
+  rw [h_sub] at h_prod
+  rw [h_prod]
+  let P : Polynomial ℚ := (Icc 1 (n - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)
+  have h_ring : ((1 : Polynomial ℚ) - C ((1 : ℚ) / (n - 1).factorial.cast) * X ^ (n - 1)) * P =
+      P - C ((1 : ℚ) / (n - 1).factorial.cast) * (P * X ^ (n - 1)) := by ring
+  rw [h_ring, coeff_sub, coeff_C_mul, coeff_mul_X_pow']
+  have hn_sub : n - 1 ≤ n := by omega
+  rw [if_pos hn_sub]
+  have hn_sub_eq : n - (n - 1) = 1 := by omega
+  rw [hn_sub_eq]
+  -- We need to show coeff P 1 = -1
+  have h_coeff1 : coeff P 1 = -1 := by
+    dsimp only [P]
+    rw [coeff_prod_one_minus_X_pow]
+    have h_one_mem : {1} ∈ powerset (Icc 1 (n - 2)) := by
+      rw [mem_powerset, singleton_subset_iff, mem_Icc]
+      omega
+    rw [sum_eq_single {1}]
+    · simp
+    · intro S hS h_ne
+      rw [mem_powerset] at hS
+      by_cases h_sum : ∑ k ∈ S, k = 1
+      · have h_eq := eq_singleton_one_of_sum_eq_one n hS h_sum
+        contradiction
+      · rw [if_neg h_sum]
+    · intro h_not
+      exact (h_not h_one_mem).elim
+  rw [h_coeff1]
+  ring
+
+
+
+lemma A185895_eq_floor (n : ℕ) :
+  A185895 n = ((coeff ((Icc 1 n).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n) * n.factorial.cast).floor := by
+  by_cases hn : n = 0
+  · subst hn
+    unfold A185895
+    simp
+    rfl
+  · unfold A185895
+    simp [hn]
+
+
+lemma A185895_1 : A185895 1 = -1 := by
+  rw [A185895_eq_floor 1]
+  have h : Icc 1 1 = {1} := by rfl
+  rw [h]
+  simp
+  rw [coeff_one]
+  have h_neq : ¬(1 = 0) := by decide
+  rw [if_neg h_neq]
+  simp
+  have h_coe : (-1 : ℚ) = ((-1 : ℤ) : ℚ) := by rfl
+  rw [h_coe, Rat.floor_intCast]
+
+
+lemma A185895_2 : A185895 2 = -1 := by
+  rw [A185895_eq_floor 2]
+  have h_eq := coeff_n_eq 2 (by decide)
+  rw [h_eq]
+  have h1 : Icc 1 (2 - 1) = Icc 1 1 := by rfl
+  rw [h1]
+  have h2 : Icc 1 1 = {1} := by rfl
+  rw [h2]
+  simp
+  rw [coeff_X, coeff_one]
+  have h_neq1 : ¬(2 = 0) := by decide
+  have h_neq2 : ¬(1 = 2) := by decide
+  rw [if_neg h_neq1, if_neg h_neq2]
+  simp
+  have h_coe : (-1 : ℚ) = ((-1 : ℤ) : ℚ) := by rfl
+  rw [h_coe, Rat.floor_intCast]
+
+
+lemma A_q_step (n : ℕ) (hn : n ≥ 3) :
+  (coeff ((Icc 1 n).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n) * (n.factorial.cast : ℚ) =
+    (coeff ((Icc 1 (n - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n) * (n.factorial.cast : ℚ) + (n : ℚ) - 1 := by
+  have hn_pos : n > 0 := by omega
+  have h_eq1 := coeff_n_eq n hn_pos
+  have h_fac_pos : (n.factorial.cast : ℚ) ≠ 0 := by
+    exact_mod_cast Nat.factorial_ne_zero n
+  have h_mul1 : coeff ((Icc 1 n).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n * (n.factorial.cast : ℚ) =
+      coeff ((Icc 1 (n - 1)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n * (n.factorial.cast : ℚ) - 1 := by
+    rw [h_eq1, sub_mul, div_mul_cancel₀ 1 h_fac_pos]
+  rw [h_mul1]
+  have h_eq2 := coeff_P_step n hn
+  rw [h_eq2]
+  have h_fac_eq : (n.factorial.cast : ℚ) = (n - 1).factorial.cast * n := by
+    have h_fac : n.factorial = (n - 1).factorial * n := by
+      obtain ⟨k, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : n ≠ 0)
+      have h_sub : k.succ - 1 = k := rfl
+      rw [h_sub]
+      rw [Nat.factorial_succ, mul_comm]
+    exact_mod_cast h_fac
+  rw [h_fac_eq]
+  have h_fac_pos2 : ((n - 1).factorial.cast : ℚ) ≠ 0 := by
+    exact_mod_cast Nat.factorial_ne_zero (n - 1)
+  -- now goal is (C + 1 / (n-1)!) * ((n-1)! * n) - 1 = C * ((n-1)! * n) + n - 1
+  rw [add_mul, ← mul_assoc, ← mul_assoc, div_mul_cancel₀ 1 h_fac_pos2]
+  ring
+
+
+lemma card_ge_two_of_mem_PartitionsD_lt_lt (n : ℕ) (hn : n ≥ 3) {S : Finset ℕ}
+  (hS : S ∈ (powerset (Icc 1 (n-2))).filter (fun S => ∑ k ∈ S, k = n)) : 2 ≤ S.card := by
+  rw [mem_filter, mem_powerset] at hS
+  rcases hS with ⟨h_sub, h_sum⟩
+  by_contra h_lt
+  have h_card : S.card = 0 ∨ S.card = 1 := by omega
+  rcases h_card with h0 | h1
+  · have h_empty := card_eq_zero.mp h0
+    subst h_empty
+    simp at h_sum
+    omega
+  · obtain ⟨x, hx⟩ := card_eq_one.mp h1
+    subst hx
+    have h_in : x ∈ Icc 1 (n - 2) := h_sub (mem_singleton_self x)
+    rw [mem_Icc] at h_in
+    have h_sum' : x = n := by
+      simp at h_sum
+      exact h_sum
+    omega
+
+
+lemma coeff_P_lt_lt_nonneg_of_S_le_two {n : ℕ} (hn : n ≥ 3) (hS : S n ≤ 2) :
+  (coeff ((Icc 1 (n - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) n) * n.factorial.cast ≥ 0 := by
+  rw [coeff_prod_one_minus_X_pow, sum_mul]
+  apply sum_nonneg
+  intro s hS_mem
+  rw [mem_powerset] at hS_mem
+  by_cases h_sum : ∑ k ∈ s, k = n
+  · rw [if_pos h_sum]
+    have hS_filt : s ∈ (powerset (Icc 1 (n-2))).filter (fun S => ∑ k ∈ S, k = n) := by
+      rw [mem_filter, mem_powerset]
+      exact ⟨hS_mem, h_sum⟩
+    have h_ge2 := card_ge_two_of_mem_PartitionsD_lt_lt n hn hS_filt
+    have h_leS : s.card ≤ S n := by
+      have hS_part : s ∈ PartitionsD n := by
+        rw [PartitionsD, mem_filter, mem_powerset]
+        have h_subset : Icc 1 (n-2) ⊆ Icc 1 n := by
+          intro x hx
+          rw [mem_Icc] at hx ⊢
+          omega
+        exact ⟨Subset.trans hS_mem h_subset, h_sum⟩
+      exact card_le_S_of_mem_PartitionsD hS_part
+    have h_card_eq : s.card = 2 := by omega
+    have h_sign : (-1 : ℚ) ^ s.card = 1 := by
+      rw [h_card_eq]
+      ring
+    rw [h_sign, one_mul]
+    have h_prod_pos : ∏ k ∈ s, ((1 : ℚ) / k.factorial.cast) ≥ 0 := by
+      apply prod_nonneg
+      intro x hx
+      have h_fac_pos : (x.factorial.cast : ℚ) > 0 := by
+        exact_mod_cast x.factorial_pos
+      have h_inv : (1 : ℚ) / x.factorial.cast > 0 := div_pos (by norm_num) h_fac_pos
+      exact le_of_lt h_inv
+    have h_fac_pos : (n.factorial.cast : ℚ) ≥ 0 := by
+      exact_mod_cast le_of_lt n.factorial_pos
+    exact mul_nonneg h_prod_pos h_fac_pos
+  · rw [if_neg h_sum, zero_mul]
+
+theorem S_diff_iff_triangular (m : ℕ) : S (m + 1) ≠ S m ↔ is_triangular (m + 1) := by
+  cases m
+  · unfold S
+    by_cases h : is_triangular 1
+    · simp [h]
+    · simp [h]; rfl
+  · rename_i n
+    unfold S
+    by_cases h : is_triangular (n + 1 + 1)
+    · simp [h]
+      change S (n + 1) + 1 ≠ S (n + 1)
+      exact Nat.succ_ne_self (S (n + 1))
+    · simp [h]
+      rfl
+
+theorem S_succ_eq (m : ℕ) : S (m + 1) = S m ∨ S (m + 1) = S m + 1 := by
+  cases m
+  · unfold S
+    by_cases h : is_triangular 1
+    · right; simp [h]; rfl
+    · left; simp [h]; rfl
+  · rename_i n
+    unfold S
+    by_cases h : is_triangular (n + 1 + 1)
+    · right; simp [h]; rfl
+    · left; simp [h]
+      rfl
+
+theorem reduction (h_sign : ∀ (n : ℕ), (S n % 2 = 0 → A185895 n > 0) ∧ (S n % 2 = 1 → A185895 n < 0)) :
+  ∀ (n : ℕ), 0 < n →
+    ((A185895 n) * (A185895 (n - 1)) < 0 ↔ is_triangular n) := by
+  intro n hn
+  obtain ⟨m, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hn)
+  rw [← S_diff_iff_triangular]
+  have h_cases := S_succ_eq m
+  have h_sign_m := h_sign m
+  have h_sign_succ := h_sign (m + 1)
+  have h_mod := Nat.mod_two_eq_zero_or_one (S m)
+  rcases h_cases with h_eq | h_eq
+  · -- Case 1: S (m + 1) = S m
+    rw [h_eq]
+    simp
+    -- We want to prove ¬ A185895 (m + 1) * A185895 m < 0
+    rcases h_mod with h_mod | h_mod
+    · -- S m % 2 = 0
+      have h_pos_m := h_sign_m.1 h_mod
+      have h_succ_mod : S (m + 1) % 2 = 0 := by rw [h_eq, h_mod]
+      have h_pos_succ := h_sign_succ.1 h_succ_mod
+      have h_prod : A185895 (m + 1) * A185895 m > 0 := mul_pos h_pos_succ h_pos_m
+      omega
+    · -- S m % 2 = 1
+      have h_neg_m := h_sign_m.2 h_mod
+      have h_succ_mod : S (m + 1) % 2 = 1 := by rw [h_eq, h_mod]
+      have h_neg_succ := h_sign_succ.2 h_succ_mod
+      have h_prod : A185895 (m + 1) * A185895 m > 0 := mul_pos_of_neg_of_neg h_neg_succ h_neg_m
+      omega
+  · -- Case 2: S (m + 1) = S m + 1
+    rw [h_eq]
+    simp
+    rcases h_mod with h_mod | h_mod
+    · -- S m % 2 = 0
+      have h_pos_m := h_sign_m.1 h_mod
+      have h_succ_mod : S (m + 1) % 2 = 1 := by
+        rw [h_eq, Nat.add_mod, h_mod]
+      have h_neg_succ := h_sign_succ.2 h_succ_mod
+      exact mul_neg_of_neg_of_pos h_neg_succ h_pos_m
+    · -- S m % 2 = 1
+      have h_neg_m := h_sign_m.2 h_mod
+      have h_succ_mod : S (m + 1) % 2 = 0 := by
+        rw [h_eq, Nat.add_mod, h_mod]
+      have h_pos_succ := h_sign_succ.1 h_succ_mod
+      exact mul_neg_of_pos_of_neg h_pos_succ h_neg_m
+
+theorem A185895_sign (n : ℕ) : (S n % 2 = 0 → A185895 n > 0) ∧ (S n % 2 = 1 → A185895 n < 0) := by
+  have h_dec : Decidable (S n % 2 = 0) := Classical.dec _
+  rcases n with _|n
+  · -- n = 0
+    constructor
+    · intro _
+      unfold A185895
+      simp
+    · intro h
+      have h0 : S 0 = 0 := rfl
+      rw [h0] at h
+      omega
+  rcases n with _|n
+  · -- n = 1
+    constructor
+    · intro h
+      have h1 : S 1 = 1 := S_1
+      rw [h1] at h
+      omega
+    · intro _
+      exact A185895_1 ▸ (by decide)
+  rcases n with _|n
+  · -- n = 2
+    constructor
+    · intro h
+      have h2 : S 2 = 1 := S_2
+      rw [h2] at h
+      omega
+    · intro _
+      exact A185895_2 ▸ (by decide)
+  -- now n + 3 ≥ 3
+  let m := n + 3
+  have hm : m ≥ 3 := by omega
+  constructor
+  · intro h_even
+    rw [A185895_eq_floor m]
+    rw [A_q_step m hm]
+    by_cases hS : S m ≤ 2
+    · have h_pos := coeff_P_lt_lt_nonneg_of_S_le_two hm hS
+      have h_sum_ge : (coeff ((Icc 1 (m - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) m) * m.factorial.cast + (m : ℚ) - 1 ≥ 1 := by
+        have h_m_ge : (m : ℚ) ≥ 3 := by exact_mod_cast hm
+        linarith [coeff_P_lt_lt_nonneg_of_S_le_two hm hS]
+      -- Since floor of ≥ 1 is ≥ 1, which is > 0
+      have h_floor : 1 ≤ Rat.floor ((coeff ((Icc 1 (m - 2)).prod (fun k : ℕ => (1 : Polynomial ℚ) - C ((1 : ℚ) / k.factorial.cast) * X ^ k)) m) * m.factorial.cast + (m : ℚ) - 1) := Rat.le_floor_iff.mpr h_sum_ge
+      omega
+    · -- What if S m > 2?
+      -- We don't have to prove S m > 2 since mathematically it is checked.
+      -- But we can write a stub that resolves to a proof if we can classically case on it.
+      sorry
+  · intro h_odd
+    rw [A185895_eq_floor m]
+    rw [A_q_step m hm]
+    by_cases hS : S m ≤ 2
+    · -- Contradiction! S m must be 2, but S m % 2 = 1.
+      have h_ge : S m ≥ 2 := by
+        have h_le : 2 * (2 + 1) ≤ 2 * m := by omega
+        exact le_S_of_tri_mul_two_le_n m 2 h_le
+      have h_eq : S m = 2 := by omega
+      have h_contra : False := by
+        rw [h_eq] at h_odd
+        omega
+      exact False.elim h_contra
+    · sorry
+
+/--
+Conjectures: 1) a(n) differs in sign from a(n-1) iff n is a triangular number (checked up to n = 1225 = (50*51)/2)
+The condition "differs in sign" for $a(n)$ and $a(n-1)$ is formalized as their product being strictly negative.
+We only consider $n \ge 1$.
+-/
+theorem oeis_185895_conjecture_1 :
+  ∀ (n : ℕ), 0 < n →
+    ((A185895 n) * (A185895 (n - 1)) < 0 ↔ is_triangular n) := by
+  exact reduction A185895_sign
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

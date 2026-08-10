@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check add_pow_char
+#check map_frobenius
+#check frobenius_def
+#check Nat.Prime.dvd_choose
+#check Nat.Prime.dvd_choose_pow
+#check Nat.Prime.dvd_choose_add
+#check Finset.sum_bij
+#check Finset.sum_bij'
+#check Int.ModEq.sum
+#check Int.ModEq.sum_zero

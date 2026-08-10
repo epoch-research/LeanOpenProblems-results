@@ -1,0 +1,226 @@
+{
+  "proof_scorer": {
+    "value": "C",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 9 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 122 declarations.\n------------------\n------------------\n------------------\nSafeVerify check passed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "A046644",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A005187",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f_nonnegative",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f._proof_3",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f._proof_4",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A317940_f._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

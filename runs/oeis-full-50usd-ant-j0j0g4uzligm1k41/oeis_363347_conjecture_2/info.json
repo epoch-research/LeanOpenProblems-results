@@ -1,0 +1,20 @@
+{
+  "id": "oeis_363347_conjecture_2",
+  "epoch": 1,
+  "uuid": "XFz5se5QB2Nn3nYSVidwNc",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 171,
+      "output_tokens": 235373,
+      "total_tokens": 16070096,
+      "input_tokens_cache_write": 288875,
+      "input_tokens_cache_read": 15545677,
+      "reasoning_tokens": 44638,
+      "total_cost": 15.46348725
+    }
+  },
+  "oeis_id": "A363347"
+}

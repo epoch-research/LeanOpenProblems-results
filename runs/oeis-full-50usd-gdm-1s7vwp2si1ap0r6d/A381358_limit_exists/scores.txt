@@ -1,0 +1,35 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 15 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 208 declarations.
+  ------------------
+  _private.Submission.Spec.0.L_growth used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  _private.Submission.Spec.0.A381358_mul_le used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  _private.Submission.Spec.0.L_mul_le_growth used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  _private.Submission.Spec.0.u_seq_subadditive used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  A381358_limit_exists_draft used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  _private.Submission.Spec.0.L_le_two_R used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  _private.Submission.Spec.0.R_growth used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  _private.Submission.Spec.0.Fact2 used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  A381358_limit_exists used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  _private.Submission.Spec.0.Fact1_fixed used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T.match_1: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.A381587_T._sunfold: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A381358_limit_exists: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,835 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+set_option exponentiation.threshold 2000
+set_option max_memory 64424509440
+set_option interpreter.prefer_native true
+
+open Finset ZMod Nat Set Classical
+
+/--
+The predicate that $\{2^k - k: k = 1,\dots,m\}$ contains a complete system of residues modulo $n$.
+This is equivalent to the image of $k \mapsto 2^k - k \pmod n$ for $k \in \{1, \dots, m\}$ being the entire $\mathbb{Z}_n$.
+-/
+def A232616_prop (n m : ℕ) [NeZero n] : Prop :=
+  (univ : Finset (ZMod n)) = (Finset.Icc 1 m).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n)
+
+/--
+A232616: Least positive integer $m$ such that $\{2^k - k: k = 1,\dots,m\}$
+contains a complete system of residues modulo $n$.
+-/
+noncomputable def A232616 (n : ℕ) : ℕ :=
+  if h : n = 0 then 0
+  else
+    -- Since n is non-zero, the NeZero n instance is available for ZMod n operations.
+    have : NeZero n := NeZero.mk h
+
+    -- The set $S$ of all $m$ which satisfy the complete residue system condition.
+    -- The set $S$ is non-empty based on the external theorem $a(n) \le n^2$.
+    let S : Set ℕ := { m : ℕ | A232616_prop n m }
+
+    -- The least element of a non-empty set of natural numbers is its infimum, sInf.
+    sInf S
+
+def g (k : ℕ) : ZMod 49 := ((2 ^ k - k : ℕ) : ZMod 49)
+
+theorem period_49 (k : ℕ) : g (k + 1029) = g k := by
+  have h1 : k + 1029 ≤ 2 ^ (k + 1029) := le_of_lt (Nat.lt_pow_self (by decide))
+  have h2 : k ≤ 2 ^ k := le_of_lt (Nat.lt_pow_self (by decide))
+  change ((2 ^ (k + 1029) - (k + 1029) : ℕ) : ZMod 49) = ((2 ^ k - k : ℕ) : ZMod 49)
+  rw [Nat.cast_sub h1, Nat.cast_sub h2]
+  rw [pow_add, Nat.cast_mul, Nat.cast_pow, Nat.cast_pow]
+  have h3 : (Nat.cast 2 : ZMod 49) ^ 1029 = 1 := by decide
+  rw [h3, mul_one]
+  rw [Nat.cast_add]
+  have h4 : (Nat.cast 1029 : ZMod 49) = 0 := rfl
+  rw [h4, add_zero]
+
+theorem g_eq (q r : ℕ) : g (1029 * q + r) = g r := by
+  induction q with
+  | zero =>
+    simp
+  | succ q ih =>
+    have h1 : 1029 * (q + 1) + r = (1029 * q + r) + 1029 := by omega
+    rw [h1, period_49]
+    exact ih
+
+theorem g_eq_mod (k : ℕ) : g k = g (k % 1029) := by
+  have h : k = 1029 * (k / 1029) + (k % 1029) := (Nat.div_add_mod k 1029).symm
+  nth_rw 1 [h]
+  exact g_eq (k / 1029) (k % 1029)
+
+theorem g_sol_dec : ∀ r < 1029, g r = 0 → r % 147 = 36 ∨ r % 147 = 121 ∨ r % 147 = 137 := by
+  decide
+
+theorem sol_49_cond (k : ℕ) (h_sol : g k = 0) : k % 147 = 36 ∨ k % 147 = 121 ∨ k % 147 = 137 := by
+  have h1 : g (k % 1029) = 0 := by rwa [← g_eq_mod]
+  have h2 : k % 1029 < 1029 := Nat.mod_lt k (by decide)
+  have h3 := g_sol_dec (k % 1029) h2 h1
+  have h4 : (k % 1029) % 147 = k % 147 := Nat.mod_mod_of_dvd k (by decide)
+  rwa [h4] at h3
+
+def f4 (k : ℕ) : ZMod 4 := ((2 ^ k - k : ℕ) : ZMod 4)
+
+theorem period_4 (k : ℕ) : f4 (k + 2 + 4) = f4 (k + 2) := by
+  have h1 : k + 2 + 4 ≤ 2 ^ (k + 2 + 4) := le_of_lt (Nat.lt_pow_self (by decide))
+  have h2 : k + 2 ≤ 2 ^ (k + 2) := le_of_lt (Nat.lt_pow_self (by decide))
+  change ((2 ^ (k + 2 + 4) - (k + 2 + 4) : ℕ) : ZMod 4) = ((2 ^ (k + 2) - (k + 2) : ℕ) : ZMod 4)
+  rw [Nat.cast_sub h1, Nat.cast_sub h2]
+  rw [Nat.cast_pow, Nat.cast_pow]
+  have h_pow (x : ℕ) : (Nat.cast 2 : ZMod 4) ^ (x + 2) = 0 := by
+    rw [pow_add]
+    have h_two : (Nat.cast 2 : ZMod 4) ^ 2 = 0 := by decide
+    rw [h_two, mul_zero]
+  rw [h_pow (k + 4), h_pow k]
+  rw [zero_sub, zero_sub]
+  rw [show k + 2 + 4 = k + 2 + 4 by rfl]
+  rw [Nat.cast_add, Nat.cast_add]
+  have h4 : (Nat.cast 4 : ZMod 4) = 0 := rfl
+  rw [h4, add_zero]
+
+theorem f4_eq (q r : ℕ) : f4 (4 * q + (r + 2)) = f4 (r + 2) := by
+  induction q with
+  | zero =>
+    simp
+  | succ q ih =>
+    have h1 : 4 * (q + 1) + (r + 2) = (4 * q + r) + 2 + 4 := by omega
+    rw [h1, period_4]
+    exact ih
+
+theorem f4_eq_mod (k : ℕ) (hk : 2 ≤ k) : f4 k = f4 (2 + (k - 2) % 4) := by
+  have h : k = 4 * ((k - 2) / 4) + (((k - 2) % 4) + 2) := by omega
+  nth_rw 1 [h]
+  have h_eq : f4 (4 * ((k - 2) / 4) + (((k - 2) % 4) + 2)) = f4 (((k - 2) % 4) + 2) := f4_eq ((k - 2) / 4) ((k - 2) % 4)
+  rw [h_eq]
+  rw [add_comm]
+
+theorem f4_sol_dec : ∀ r < 4, f4 (2 + r) = 1 → r = 1 := by
+  decide
+
+theorem sol_4_cond (k : ℕ) (hk1 : 1 ≤ k) (h_sol : f4 k = 1) : k % 4 = 3 ∨ k = 1 := by
+  by_cases hk2 : 2 ≤ k
+  · have h1 : f4 (2 + (k - 2) % 4) = 1 := by rwa [← f4_eq_mod k hk2]
+    have h2 : (k - 2) % 4 < 4 := Nat.mod_lt _ (by decide)
+    have h3 := f4_sol_dec ((k - 2) % 4) h2 h1
+    left
+    omega
+  · right
+    omega
+
+theorem sol_588_cond (k : ℕ) (hk1 : 1 ≤ k) (h49 : g k = 0) (h4 : f4 k = 1) : k % 588 = 183 ∨ k % 588 = 415 ∨ k % 588 = 431 := by
+  have h_49 := sol_49_cond k h49
+  have h_4 := sol_4_cond k hk1 h4
+  rcases h_49 with h | h | h
+  · rcases h_4 with hc | hc
+    · left; omega
+    · omega
+  · rcases h_4 with hc | hc
+    · right; left; omega
+    · omega
+  · rcases h_4 with hc | hc
+    · right; right; omega
+    · omega
+
+def powMod588 : ℕ → ZMod 550172
+  | 0 => 1
+  | j + 1 => powMod588 j * 433896
+
+theorem lemma_pow (j : ℕ) : ((2 ^ (588 * j) : ℕ) : ZMod 550172) = powMod588 j := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+    have h1 : 588 * (j + 1) = 588 * j + 588 := by omega
+    rw [h1, pow_add, Nat.cast_mul, ih, Nat.cast_pow]
+    have h2 : (Nat.cast 2 : ZMod 550172) ^ 588 = 433896 := by decide
+    rw [h2]
+    rfl
+
+lemma dvd_of_zmod_eq_zero_spec {g a : ℕ} [NeZero g] (h : (a : ZMod g) = 0) : g ∣ a := by
+  have h_val : (a : ZMod g).val = 0 := by rw [h, ZMod.val_zero]
+  rw [ZMod.val_natCast] at h_val
+  exact Nat.dvd_of_mod_eq_zero h_val
+
+lemma dvd_of_eq_spec {g a b : ℕ} [NeZero g] (ha : b ≤ a) (h : (a : ZMod g) = (b : ZMod g)) : g ∣ a - b := by
+  have h_eq : ((a - b : ℕ) : ZMod g) = 0 := by
+    rw [Nat.cast_sub ha, h, sub_self]
+  exact dvd_of_zmod_eq_zero_spec h_eq
+
+lemma two_pow_le (a : ℕ) : 2 * a ≤ 2 ^ a := by
+  induction a with
+  | zero => omega
+  | succ a ih =>
+    rcases a with _ | a'
+    · simp
+    · have h_pow : 2 ^ (a' + 2) = 2 ^ (a' + 1) + 2 ^ (a' + 1) := by ring
+      rw [h_pow]
+      have h_two : 2 ≤ 2 ^ (a' + 1) := by
+        have : 2 ^ 1 ≤ 2 ^ (a' + 1) := Nat.pow_le_pow_right (by decide) (by omega)
+        exact this
+      omega
+
+theorem step_down (n g T : ℕ) [NeZero n] [NeZero g] (hg : g = Nat.gcd T n)
+    (pow_congr : ∀ a b, n ≤ a → ((2 ^ (a + b * T) : ℕ) : ZMod n) = ((2 ^ a : ℕ) : ZMod n))
+    (h_prev : ∀ y : ZMod g, ∃ a : ℕ, n ≤ a ∧ ((2^a - a : ℕ) : ZMod g) = y) :
+    ∀ y : ZMod n, ∃ k : ℕ, n ≤ k ∧ ((2^k - k : ℕ) : ZMod n) = y := by
+  intro y
+  let y_g : ZMod g := (y.val : ZMod g)
+  rcases h_prev y_g with ⟨a, ha, ha_eq⟩
+  have hy_lt : y.val < n := val_lt y
+  have ha1 : 1 ≤ a := by omega
+  have h_exp_le : a - 1 ≤ 2 ^ a - a := by
+    have h_two_a := two_pow_le a
+    omega
+  have hy_le : y.val ≤ 2 ^ a - a := by omega
+  have h_dvd : g ∣ 2 ^ a - a - y.val := dvd_of_eq_spec hy_le ha_eq
+  rcases h_dvd with ⟨q, h_q⟩
+  let B : ℤ := q * T.gcdA n
+  let b_zmod : ZMod n := (B : ZMod n)
+  let b := b_zmod.val
+  have hb_eq : (b : ZMod n) = (B : ZMod n) := natCast_zmod_val b_zmod
+  have h_bezout : (g : ZMod n) = (T : ZMod n) * (T.gcdA n : ZMod n) := by
+    have h_comm : g = Nat.gcd T n := hg
+    have h_bezout_int := Nat.gcd_eq_gcd_ab T n
+    rw [← h_comm] at h_bezout_int
+    have h_cast : ((g : ℤ) : ZMod n) = (((T : ℤ) * T.gcdA n + (n : ℤ) * T.gcdB n : ℤ) : ZMod n) := by rw [h_bezout_int]
+    push_cast at h_cast
+    have hn0 : (n : ZMod n) = 0 := natCast_self n
+    rw [hn0] at h_cast
+    simp at h_cast
+    rw [h_cast]
+  have h_prod : (T : ZMod n) * (b : ZMod n) = (g : ZMod n) * (q : ZMod n) := by
+    rw [hb_eq]
+    dsimp only [B]
+    push_cast
+    rw [show (T : ZMod n) * ((q : ZMod n) * (T.gcdA n : ZMod n)) = ((T : ZMod n) * (T.gcdA n : ZMod n)) * (q : ZMod n) by ring]
+    rw [← h_bezout]
+  have h_nat_eq : g * q = 2 ^ a - a - y.val := h_q.symm
+  have h_cast_nat : ((g * q : ℕ) : ZMod n) = ((2 ^ a - a - y.val : ℕ) : ZMod n) := by
+    rw [← h_q]
+  rw [Nat.cast_mul] at h_cast_nat
+  rw [h_cast_nat] at h_prod
+  let k := a + b * T
+  use k
+  constructor
+  · have h_le_k : a ≤ k := by omega
+    omega
+  · have hk_le : k ≤ 2 ^ k := le_of_lt (Nat.lt_pow_self (by decide : 1 < 2))
+    rw [Nat.cast_sub hk_le]
+    have h_pow : ((2 ^ k : ℕ) : ZMod n) = ((2 ^ a : ℕ) : ZMod n) := by
+      exact pow_congr a b ha
+    rw [h_pow]
+    have h_nat_sub : 2 ^ a - a = (2 ^ a - a - y.val) + y.val := by omega
+    have h_cast_sub2 : ((2 ^ a - a : ℕ) : ZMod n) = ((2 ^ a - a - y.val : ℕ) : ZMod n) + (y.val : ZMod n) := by
+      nth_rw 1 [h_nat_sub]
+      rw [Nat.cast_add]
+    have hy_val : (y.val : ZMod n) = y := natCast_zmod_val y
+    rw [hy_val] at h_cast_sub2
+    rw [← h_prod] at h_cast_sub2
+    have ha_le2 : a ≤ 2 ^ a := le_of_lt (Nat.lt_pow_self (by decide : 1 < 2))
+    rw [Nat.cast_sub ha_le2] at h_cast_sub2
+    have h_final : ((2 ^ a : ℕ) : ZMod n) - ((a + b * T : ℕ) : ZMod n) = y := by
+      have h_temp : ((2 ^ a : ℕ) : ZMod n) - (a : ZMod n) - (b : ZMod n) * (T : ZMod n) = y := by
+        rw [h_cast_sub2]
+        ring
+      have h_rw : ((2 ^ a : ℕ) : ZMod n) - ((a + b * T : ℕ) : ZMod n) = ((2 ^ a : ℕ) : ZMod n) - (a : ZMod n) - (b : ZMod n) * (T : ZMod n) := by
+        rw [Nat.cast_add, Nat.cast_mul]
+        ring
+      rw [h_rw]
+      exact h_temp
+    exact h_final
+
+lemma shift_sol (n P m : ℕ) [NeZero n] (hm : n ∣ m) (hP1 : 1 ≤ P)
+    (pow_congr : ∀ a b, n ≤ a → ((2 ^ (a + b * P) : ℕ) : ZMod n) = ((2 ^ a : ℕ) : ZMod n))
+    (h_sol : ∀ y : ZMod n, ∃ a : ℕ, n ≤ a ∧ ((2^a - a : ℕ) : ZMod n) = y) :
+    ∀ y : ZMod n, ∃ k : ℕ, m ≤ k ∧ ((2^k - k : ℕ) : ZMod n) = y := by
+  intro y
+  rcases h_sol y with ⟨a, ha, ha_eq⟩
+  let b := m
+  let k := a + b * P
+  use k
+  constructor
+  · have h_le1 : m ≤ b * P := by
+      have : m * 1 ≤ b * P := Nat.mul_le_mul_left m hP1
+      rwa [mul_one] at this
+    omega
+  · have hk_le : k ≤ 2 ^ k := le_of_lt (Nat.lt_pow_self (by decide : 1 < 2))
+    have ha_le : a ≤ 2 ^ a := le_of_lt (Nat.lt_pow_self (by decide : 1 < 2))
+    rw [Nat.cast_sub hk_le]
+    rw [Nat.cast_sub ha_le] at ha_eq
+    rw [pow_congr a b ha]
+    have h_dvd : n ∣ b * P := by
+      change n ∣ m * P
+      rcases hm with ⟨d, hd⟩
+      use d * P
+      rw [hd]
+      ring
+    have h_cast : ((b * P : ℕ) : ZMod n) = 0 := by
+      rcases h_dvd with ⟨d, hd⟩
+      rw [hd, Nat.cast_mul, show (n : ZMod n) = 0 from natCast_self n, zero_mul]
+    have hk_mod : ((k : ℕ) : ZMod n) = ((a : ℕ) : ZMod n) := by
+      change ((a + b * P : ℕ) : ZMod n) = ((a : ℕ) : ZMod n)
+      rw [Nat.cast_add, h_cast, add_zero]
+    rw [hk_mod]
+    exact ha_eq
+
+lemma pow_two_zmod2_eq_zero {x : ℕ} (hx : 1 ≤ x) :
+    ((2 ^ x : ℕ) : ZMod 2) = 0 := by
+  have h_eq : x = (x - 1) + 1 := by omega
+  nth_rw 1 [h_eq]
+  rw [pow_add, pow_one, Nat.cast_mul]
+  have h_two : (((2 : ℕ) : ZMod 2) = 0) := rfl
+  rw [h_two, mul_zero]
+
+lemma pow_two_zmod4_eq_zero {x : ℕ} (hx : 2 ≤ x) :
+    ((2 ^ x : ℕ) : ZMod 4) = 0 := by
+  have h_eq : x = (x - 2) + 2 := by omega
+  nth_rw 1 [h_eq]
+  rw [pow_add, Nat.cast_mul]
+  have h_four : ((2 ^ 2 : ℕ) : ZMod 4) = 0 := rfl
+  rw [h_four, mul_zero]
+
+lemma pow_congr_2_tot (a b : ℕ) (ha : 2 ≤ a) :
+    ((2 ^ (a + b * 1) : ℕ) : ZMod 2) = ((2 ^ a : ℕ) : ZMod 2) := by
+  have h1 : 1 ≤ a + b * 1 := by omega
+  have h2 : 1 ≤ a := by omega
+  rw [pow_two_zmod2_eq_zero h1, pow_two_zmod2_eq_zero h2]
+
+lemma pow_congr_4_tot (a b : ℕ) (ha : 4 ≤ a) :
+    ((2 ^ (a + b * 2) : ℕ) : ZMod 4) = ((2 ^ a : ℕ) : ZMod 4) := by
+  have h1 : 2 ≤ a + b * 2 := by omega
+  have h2 : 2 ≤ a := by omega
+  rw [pow_two_zmod4_eq_zero h1, pow_two_zmod4_eq_zero h2]
+
+theorem pow_congr_28_tot (a b : ℕ) (ha : 28 ≤ a) :
+    ((2 ^ (a + b * 12) : ℕ) : ZMod 28) = ((2 ^ a : ℕ) : ZMod 28) := by
+  have h_sub : 2 ≤ a := by omega
+  have h_eq : a = (a - 2) + 2 := by omega
+  induction b with
+  | zero =>
+    simp
+  | succ b ih =>
+    have h1 : a + (b + 1) * 12 = (a + b * 12) + 12 := by omega
+    rw [h1, pow_add, Nat.cast_mul, ih]
+    have h_pow_a : 2 ^ a = 2 ^ (a - 2) * 4 := by
+      nth_rw 1 [h_eq]
+      rw [pow_add]
+      rfl
+    rw [h_pow_a]
+    rw [Nat.cast_mul]
+    rw [mul_assoc]
+    have h_inner : (Nat.cast 4 : ZMod 28) * ((2 ^ 12 : ℕ) : ZMod 28) = Nat.cast 4 := by
+      rw [Nat.cast_pow]
+      decide
+    rw [h_inner]
+
+theorem pow_congr_196_tot (a b : ℕ) (ha : 196 ≤ a) :
+    ((2 ^ (a + b * 84) : ℕ) : ZMod 196) = ((2 ^ a : ℕ) : ZMod 196) := by
+  have h_sub : 2 ≤ a := by omega
+  have h_eq : a = (a - 2) + 2 := by omega
+  induction b with
+  | zero =>
+    simp
+  | succ b ih =>
+    have h1 : a + (b + 1) * 84 = (a + b * 84) + 84 := by omega
+    rw [h1, pow_add, Nat.cast_mul, ih]
+    have h_pow_a : 2 ^ a = 2 ^ (a - 2) * 4 := by
+      nth_rw 1 [h_eq]
+      rw [pow_add]
+      rfl
+    rw [h_pow_a]
+    rw [Nat.cast_mul]
+    rw [mul_assoc]
+    have h_inner : (Nat.cast 4 : ZMod 196) * ((2 ^ 84 : ℕ) : ZMod 196) = Nat.cast 4 := by
+      rw [Nat.cast_pow]
+      decide
+    rw [h_inner]
+
+theorem pow_congr_550172 (a b : ℕ) (ha : 550172 ≤ a) :
+    ((2 ^ (a + b * 235200) : ℕ) : ZMod 550172) = ((2 ^ a : ℕ) : ZMod 550172) := by
+  have h_sub : 2 ≤ a := by omega
+  have h_eq : a = (a - 2) + 2 := by omega
+  induction b with
+  | zero =>
+    simp
+  | succ b ih =>
+    have h1 : a + (b + 1) * 235200 = (a + b * 235200) + 235200 := by omega
+    rw [h1, pow_add, Nat.cast_mul, ih]
+    have h_pow_a : 2 ^ a = 2 ^ (a - 2) * 4 := by
+      nth_rw 1 [h_eq]
+      rw [pow_add]
+      rfl
+    rw [h_pow_a]
+    rw [Nat.cast_mul]
+    rw [mul_assoc]
+    have h_inner : (Nat.cast 4 : ZMod 550172) * ((2 ^ 235200 : ℕ) : ZMod 550172) = Nat.cast 4 := by
+      have h_pow235200 : ((2 ^ 235200 : ℕ) : ZMod 550172) = powMod588 400 := by
+        have h_235200 : 235200 = 588 * 400 := rfl
+        nth_rw 1 [h_235200]
+        exact lemma_pow 400
+      rw [h_pow235200]
+      have h_val : powMod588 400 = 137544 := rfl
+      rw [h_val]
+      decide
+    rw [h_inner]
+
+theorem P_1 : ∀ y : ZMod 1, ∃ k : ℕ, 1 ≤ k ∧ ((2^k - k : ℕ) : ZMod 1) = y := by
+  intro y
+  use 1
+  constructor
+  · decide
+  · apply Subsingleton.elim
+
+theorem P_1_with_2 : ∀ y : ZMod 1, ∃ k : ℕ, 2 ≤ k ∧ ((2^k - k : ℕ) : ZMod 1) = y := by
+  intro y
+  use 2
+  constructor
+  · decide
+  · apply Subsingleton.elim
+
+theorem P_2 : ∀ y : ZMod 2, ∃ k : ℕ, 2 ≤ k ∧ ((2^k - k : ℕ) : ZMod 2) = y := by
+  have hg : 1 = Nat.gcd 1 2 := rfl
+  exact step_down 2 1 1 hg pow_congr_2_tot P_1_with_2
+
+theorem P_2_with_4 : ∀ y : ZMod 2, ∃ k : ℕ, 4 ≤ k ∧ ((2^k - k : ℕ) : ZMod 2) = y := by
+  have hdvd : 2 ∣ 4 := by decide
+  exact shift_sol 2 1 4 hdvd (by decide) pow_congr_2_tot P_2
+
+theorem P_4 : ∀ y : ZMod 4, ∃ k : ℕ, 4 ≤ k ∧ ((2^k - k : ℕ) : ZMod 4) = y := by
+  have hg : 2 = Nat.gcd 2 4 := rfl
+  exact step_down 4 2 2 hg pow_congr_4_tot P_2_with_4
+
+theorem P_4_with_28 : ∀ y : ZMod 4, ∃ k : ℕ, 28 ≤ k ∧ ((2^k - k : ℕ) : ZMod 4) = y := by
+  have hdvd : 4 ∣ 28 := by decide
+  exact shift_sol 4 2 28 hdvd (by decide) pow_congr_4_tot P_4
+
+theorem P_28 : ∀ y : ZMod 28, ∃ k : ℕ, 28 ≤ k ∧ ((2^k - k : ℕ) : ZMod 28) = y := by
+  have hg : 4 = Nat.gcd 12 28 := rfl
+  exact step_down 28 4 12 hg pow_congr_28_tot P_4_with_28
+
+theorem P_28_with_196 : ∀ y : ZMod 28, ∃ k : ℕ, 196 ≤ k ∧ ((2^k - k : ℕ) : ZMod 28) = y := by
+  have hdvd : 28 ∣ 196 := by decide
+  exact shift_sol 28 12 196 hdvd (by decide) pow_congr_28_tot P_28
+
+theorem P_196 : ∀ y : ZMod 196, ∃ k : ℕ, 196 ≤ k ∧ ((2^k - k : ℕ) : ZMod 196) = y := by
+  have hg : 28 = Nat.gcd 84 196 := rfl
+  exact step_down 196 28 84 hg pow_congr_196_tot P_28_with_196
+
+theorem P_196_with_550172 : ∀ y : ZMod 196, ∃ k : ℕ, 550172 ≤ k ∧ ((2^k - k : ℕ) : ZMod 196) = y := by
+  have hdvd : 196 ∣ 550172 := by decide
+  exact shift_sol 196 84 550172 hdvd (by decide) pow_congr_196_tot P_196
+
+theorem P_550172 : ∀ y : ZMod 550172, ∃ k : ℕ, 550172 ≤ k ∧ ((2^k - k : ℕ) : ZMod 550172) = y := by
+  have hg : 196 = Nat.gcd 235200 550172 := rfl
+  exact step_down 550172 196 235200 hg pow_congr_550172 P_196_with_550172
+
+noncomputable def sol_fun (y : ZMod 550172) : ℕ := Classical.choose (P_550172 y)
+
+lemma sol_fun_spec (y : ZMod 550172) :
+    550172 ≤ sol_fun y ∧ (((2 ^ (sol_fun y) - sol_fun y : ℕ) : ZMod 550172) = y) :=
+  Classical.choose_spec (P_550172 y)
+
+theorem cand_eq (j r : ℕ) (h_le : 588 * j + r ≤ 2 ^ (588 * j + r)) :
+  ((2 ^ (588 * j + r) - (588 * j + r) : ℕ) : ZMod 550172) =
+  powMod588 j * (2 : ZMod 550172) ^ r - (588 * j + r : ZMod 550172) := by
+  rw [Nat.cast_sub h_le]
+  rw [pow_add, Nat.cast_mul, lemma_pow j, Nat.cast_pow]
+  rw [Nat.cast_add, Nat.cast_mul]
+  rfl
+
+def check_j (j : ℕ) : Bool :=
+  let val_j := powMod588 j
+  let ok1 := val_j * (2 : ZMod 550172) ^ 183 - (588 * j + 183 : ZMod 550172) != 13573
+  let ok2 := val_j * (2 : ZMod 550172) ^ 415 - (588 * j + 415 : ZMod 550172) != 13573
+  let ok3 := val_j * (2 : ZMod 550172) ^ 431 - (588 * j + 431 : ZMod 550172) != 13573
+  ok1 && ok2 && ok3
+
+
+def check_j_fast (j : ℕ) : Bool :=
+  let val_j : ZMod 550172 := (433896 : ZMod 550172) ^ j
+  let ok1 := val_j * (2 : ZMod 550172) ^ 183 - (588 * j + 183 : ZMod 550172) != 13573
+  let ok2 := val_j * (2 : ZMod 550172) ^ 415 - (588 * j + 415 : ZMod 550172) != 13573
+  let ok3 := val_j * (2 : ZMod 550172) ^ 431 - (588 * j + 431 : ZMod 550172) != 13573
+  ok1 && ok2 && ok3
+
+def verify_linear_aux (c : ZMod 550172) (val_j : ZMod 550172) : ℕ → Bool
+  | 0 => true
+  | count + 1 =>
+    if (val_j * (2 : ZMod 550172) ^ 183 - (c + 183 : ZMod 550172) != 13573) &&
+       (val_j * (2 : ZMod 550172) ^ 415 - (c + 415 : ZMod 550172) != 13573) &&
+       (val_j * (2 : ZMod 550172) ^ 431 - (c + 431 : ZMod 550172) != 13573) then
+      verify_linear_aux (c + 588) (val_j * 433896) count
+    else
+      false
+
+theorem verify_linear_aux_spec (count : ℕ) (j : ℕ) (c : ZMod 550172) (val_j : ZMod 550172)
+    (h_c : c = ((588 * j : ℕ) : ZMod 550172))
+    (h_val : val_j = (433896 : ZMod 550172) ^ j)
+    (h : verify_linear_aux c val_j count = true) :
+    ∀ k < count, check_j_fast (j + k) = true := by
+  induction count generalizing j c val_j with
+  | zero =>
+    intro k hk
+    omega
+  | succ count ih =>
+    intro k hk
+    unfold verify_linear_aux at h
+    have h_cond : (val_j * (2 : ZMod 550172) ^ 183 - (c + 183 : ZMod 550172) != 13573) &&
+                  (val_j * (2 : ZMod 550172) ^ 415 - (c + 415 : ZMod 550172) != 13573) &&
+                  (val_j * (2 : ZMod 550172) ^ 431 - (c + 431 : ZMod 550172) != 13573) = true := by
+      split at h
+      · simp at *
+        assumption
+      · contradiction
+    have h_next : verify_linear_aux (c + 588) (val_j * 433896) count = true := by
+      split at h
+      · exact h
+      · contradiction
+    rcases k with _ | k'
+    · simp only [add_zero]
+      unfold check_j_fast
+      simp at h_cond
+      simp
+      rw [← h_val]
+      have h_c_eq1 : (c + 183 : ZMod 550172) = ((588 * j + 183 : ℕ) : ZMod 550172) := by
+        rw [h_c]
+        push_cast
+        rfl
+      have h_c_eq2 : (c + 415 : ZMod 550172) = ((588 * j + 415 : ℕ) : ZMod 550172) := by
+        rw [h_c]
+        push_cast
+        rfl
+      have h_c_eq3 : (c + 431 : ZMod 550172) = ((588 * j + 431 : ℕ) : ZMod 550172) := by
+        rw [h_c]
+        push_cast
+        rfl
+      rw [h_c_eq1, h_c_eq2, h_c_eq3] at h_cond
+      push_cast at h_cond
+      exact h_cond
+    · have hk_lt : k' < count := by omega
+      have h_val_next : val_j * 433896 = (433896 : ZMod 550172) ^ (j + 1) := by
+        rw [h_val, pow_succ]
+      have h_c_next : c + 588 = ((588 * (j + 1) : ℕ) : ZMod 550172) := by
+        rw [h_c]
+        push_cast
+        ring_nf
+      have ih_res := ih (j + 1) (c + 588) (val_j * 433896) h_c_next h_val_next h_next k' hk_lt
+      have h_eq : j + 1 + k' = j + Nat.succ k' := by omega
+      rwa [h_eq] at ih_res
+
+theorem powMod588_eq_pow (j : ℕ) : powMod588 j = (433896 : ZMod 550172) ^ j := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+    unfold powMod588
+    rw [ih]
+    rfl
+
+theorem check_j_eq_fast (j : ℕ) (hj : j < 27775) : check_j j = check_j_fast j := by
+  unfold check_j check_j_fast
+  rw [powMod588_eq_pow]
+
+theorem block_0_start_val : (1 : ZMod 550172) = (433896 : ZMod 550172) ^ 0 := by decide
+theorem block_1_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 2000 := by decide
+theorem block_2_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 4000 := by decide
+theorem block_3_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 6000 := by decide
+theorem block_4_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 8000 := by decide
+theorem block_5_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 10000 := by decide
+theorem block_6_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 12000 := by decide
+theorem block_7_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 14000 := by decide
+theorem block_8_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 16000 := by decide
+theorem block_9_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 18000 := by decide
+theorem block_10_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 20000 := by decide
+theorem block_11_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 22000 := by decide
+theorem block_12_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 24000 := by decide
+theorem block_13_start_val : (137544 : ZMod 550172) = (433896 : ZMod 550172) ^ 26000 := by decide
+
+theorem verify_block_0 : verify_linear_aux 0 (1 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_1 : verify_linear_aux ((588 * 2000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_2 : verify_linear_aux ((588 * 4000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_3 : verify_linear_aux ((588 * 6000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_4 : verify_linear_aux ((588 * 8000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_5 : verify_linear_aux ((588 * 10000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_6 : verify_linear_aux ((588 * 12000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_7 : verify_linear_aux ((588 * 14000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_8 : verify_linear_aux ((588 * 16000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_9 : verify_linear_aux ((588 * 18000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_10 : verify_linear_aux ((588 * 20000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_11 : verify_linear_aux ((588 * 22000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_12 : verify_linear_aux ((588 * 24000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 2000 = true := by decide
+theorem verify_block_13 : verify_linear_aux ((588 * 26000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) 1775 = true := by decide
+
+theorem check_j_spec (j : ℕ) (h : check_j j = true) :
+    (powMod588 j * (2 : ZMod 550172) ^ 183 - (588 * j + 183 : ZMod 550172) ≠ 13573) ∧
+    (powMod588 j * (2 : ZMod 550172) ^ 415 - (588 * j + 415 : ZMod 550172) ≠ 13573) ∧
+    (powMod588 j * (2 : ZMod 550172) ^ 431 - (588 * j + 431 : ZMod 550172) ≠ 13573) := by
+  unfold check_j at h
+  simp only [Bool.and_eq_true, bne_iff_ne] at h
+  rcases h with ⟨⟨h1, h2⟩, h3⟩
+  exact ⟨h1, h2, h3⟩
+
+theorem proj_49 (k : ℕ) (h : ((2^k - k : ℕ) : ZMod 550172) = 13573) : ((2^k - k : ℕ) : ZMod 49) = 0 := by
+  have h_val : ((2^k - k : ℕ) : ZMod 550172).val = (13573 : ZMod 550172).val := by rw [h]
+  have h_val_13573 : (13573 : ZMod 550172).val = 13573 := rfl
+  rw [h_val_13573] at h_val
+  rw [val_natCast] at h_val
+  have h_eq : 2^k - k = 550172 * ((2^k - k) / 550172) + (2^k - k) % 550172 := (Nat.div_add_mod (2^k - k) 550172).symm
+  rw [h_val] at h_eq
+  have h_cast : ((2^k - k : ℕ) : ZMod 49) = ((550172 * ((2^k - k) / 550172) + 13573 : ℕ) : ZMod 49) := by nth_rw 1 [h_eq]
+  rw [h_cast]
+  push_cast
+  have h_550172 : (550172 : ZMod 49) = 0 := rfl
+  have h_13573 : (13573 : ZMod 49) = 0 := rfl
+  rw [h_550172, h_13573]
+  simp
+
+theorem proj_4 (k : ℕ) (h : ((2^k - k : ℕ) : ZMod 550172) = 13573) : ((2^k - k : ℕ) : ZMod 4) = 1 := by
+  have h_val : ((2^k - k : ℕ) : ZMod 550172).val = (13573 : ZMod 550172).val := by rw [h]
+  have h_val_13573 : (13573 : ZMod 550172).val = 13573 := rfl
+  rw [h_val_13573] at h_val
+  rw [val_natCast] at h_val
+  have h_eq : 2^k - k = 550172 * ((2^k - k) / 550172) + (2^k - k) % 550172 := (Nat.div_add_mod (2^k - k) 550172).symm
+  rw [h_val] at h_eq
+  have h_cast : ((2^k - k : ℕ) : ZMod 4) = ((550172 * ((2^k - k) / 550172) + 13573 : ℕ) : ZMod 4) := by nth_rw 1 [h_eq]
+  rw [h_cast]
+  push_cast
+  have h_550172 : (550172 : ZMod 4) = 0 := rfl
+  have h_13573 : (13573 : ZMod 4) = 1 := rfl
+  rw [h_550172, h_13573]
+  simp
+
+theorem k_cond (k : ℕ) (hk1 : 1 ≤ k) (h : ((2^k - k : ℕ) : ZMod 550172) = 13573) :
+    k % 588 = 183 ∨ k % 588 = 415 ∨ k % 588 = 431 :=
+  sol_588_cond k hk1 (proj_49 k h) (proj_4 k h)
+
+theorem prop_mono (m1 m2 : ℕ) (h_le : m1 ≤ m2) (h : A232616_prop 550172 m1) : A232616_prop 550172 m2 := by
+  have h1 : Finset.Icc 1 m1 ⊆ Finset.Icc 1 m2 := Finset.Icc_subset_Icc (by omega) h_le
+  have h2 : (Finset.Icc 1 m1).image (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) ⊆ (Finset.Icc 1 m2).image (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) := Finset.image_mono (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) h1
+  have h3 : (univ : Finset (ZMod 550172)) = (Finset.Icc 1 m1).image (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) := h
+  have h4 : (univ : Finset (ZMod 550172)) ⊆ (Finset.Icc 1 m2).image (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) := by
+    rw [h3]
+    exact h2
+  have h5 : (Finset.Icc 1 m2).image (fun k => (Nat.cast (2 ^ k - k) : ZMod 550172)) ⊆ (univ : Finset (ZMod 550172)) := Finset.subset_univ _
+  exact Finset.Subset.antisymm h4 h5
+
+
+theorem verify_case_0 (j : ℕ) (h0 : j < 2000) : check_j_fast j = true := by
+  have h_block := verify_block_0
+  have h_spec := verify_linear_aux_spec 2000 0 0 1 rfl block_0_start_val h_block j (by omega)
+  simp only [zero_add] at h_spec
+  exact h_spec
+
+theorem verify_case_1 (j : ℕ) (hk1 : 2000 ≤ j) (hk2 : j < 4000) : check_j_fast j = true := by
+  have h_block := verify_block_1
+  have h_spec := verify_linear_aux_spec 2000 2000 ((588 * 2000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_1_start_val h_block (j - 2000) (by omega)
+  have h_eq : 2000 + (j - 2000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_2 (j : ℕ) (hk1 : 4000 ≤ j) (hk2 : j < 6000) : check_j_fast j = true := by
+  have h_block := verify_block_2
+  have h_spec := verify_linear_aux_spec 2000 4000 ((588 * 4000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_2_start_val h_block (j - 4000) (by omega)
+  have h_eq : 4000 + (j - 4000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_3 (j : ℕ) (hk1 : 6000 ≤ j) (hk2 : j < 8000) : check_j_fast j = true := by
+  have h_block := verify_block_3
+  have h_spec := verify_linear_aux_spec 2000 6000 ((588 * 6000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_3_start_val h_block (j - 6000) (by omega)
+  have h_eq : 6000 + (j - 6000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_4 (j : ℕ) (hk1 : 8000 ≤ j) (hk2 : j < 10000) : check_j_fast j = true := by
+  have h_block := verify_block_4
+  have h_spec := verify_linear_aux_spec 2000 8000 ((588 * 8000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_4_start_val h_block (j - 8000) (by omega)
+  have h_eq : 8000 + (j - 8000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_5 (j : ℕ) (hk1 : 10000 ≤ j) (hk2 : j < 12000) : check_j_fast j = true := by
+  have h_block := verify_block_5
+  have h_spec := verify_linear_aux_spec 2000 10000 ((588 * 10000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_5_start_val h_block (j - 10000) (by omega)
+  have h_eq : 10000 + (j - 10000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_6 (j : ℕ) (hk1 : 12000 ≤ j) (hk2 : j < 14000) : check_j_fast j = true := by
+  have h_block := verify_block_6
+  have h_spec := verify_linear_aux_spec 2000 12000 ((588 * 12000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_6_start_val h_block (j - 12000) (by omega)
+  have h_eq : 12000 + (j - 12000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_7 (j : ℕ) (hk1 : 14000 ≤ j) (hk2 : j < 16000) : check_j_fast j = true := by
+  have h_block := verify_block_7
+  have h_spec := verify_linear_aux_spec 2000 14000 ((588 * 14000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_7_start_val h_block (j - 14000) (by omega)
+  have h_eq : 14000 + (j - 14000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_8 (j : ℕ) (hk1 : 16000 ≤ j) (hk2 : j < 18000) : check_j_fast j = true := by
+  have h_block := verify_block_8
+  have h_spec := verify_linear_aux_spec 2000 16000 ((588 * 16000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_8_start_val h_block (j - 16000) (by omega)
+  have h_eq : 16000 + (j - 16000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_9 (j : ℕ) (hk1 : 18000 ≤ j) (hk2 : j < 20000) : check_j_fast j = true := by
+  have h_block := verify_block_9
+  have h_spec := verify_linear_aux_spec 2000 18000 ((588 * 18000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_9_start_val h_block (j - 18000) (by omega)
+  have h_eq : 18000 + (j - 18000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_10 (j : ℕ) (hk1 : 20000 ≤ j) (hk2 : j < 22000) : check_j_fast j = true := by
+  have h_block := verify_block_10
+  have h_spec := verify_linear_aux_spec 2000 20000 ((588 * 20000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_10_start_val h_block (j - 20000) (by omega)
+  have h_eq : 20000 + (j - 20000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_11 (j : ℕ) (hk1 : 22000 ≤ j) (hk2 : j < 24000) : check_j_fast j = true := by
+  have h_block := verify_block_11
+  have h_spec := verify_linear_aux_spec 2000 22000 ((588 * 22000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_11_start_val h_block (j - 22000) (by omega)
+  have h_eq : 22000 + (j - 22000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_12 (j : ℕ) (hk1 : 24000 ≤ j) (hk2 : j < 26000) : check_j_fast j = true := by
+  have h_block := verify_block_12
+  have h_spec := verify_linear_aux_spec 2000 24000 ((588 * 24000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_12_start_val h_block (j - 24000) (by omega)
+  have h_eq : 24000 + (j - 24000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_case_13 (j : ℕ) (hk1 : 26000 ≤ j) (hk2 : j < 27775) : check_j_fast j = true := by
+  have h_block := verify_block_13
+  have h_spec := verify_linear_aux_spec 1775 26000 ((588 * 26000 : ℕ) : ZMod 550172) (137544 : ZMod 550172) rfl block_13_start_val h_block (j - 26000) (by omega)
+  have h_eq : 26000 + (j - 26000) = j := by omega
+  rwa [h_eq] at h_spec
+
+theorem verify_all_j_spec (j : ℕ) (hj : j < 27775) : check_j j = true := by
+  rw [check_j_eq_fast j hj]
+  by_cases h0 : j < 2000
+  · exact verify_case_0 j h0
+  · by_cases h1 : j < 4000
+    · exact verify_case_1 j (by omega) h1
+    · by_cases h2 : j < 6000
+      · exact verify_case_2 j (by omega) h2
+      · by_cases h3 : j < 8000
+        · exact verify_case_3 j (by omega) h3
+        · by_cases h4 : j < 10000
+          · exact verify_case_4 j (by omega) h4
+          · by_cases h5 : j < 12000
+            · exact verify_case_5 j (by omega) h5
+            · by_cases h6 : j < 14000
+              · exact verify_case_6 j (by omega) h6
+              · by_cases h7 : j < 16000
+                · exact verify_case_7 j (by omega) h7
+                · by_cases h8 : j < 18000
+                  · exact verify_case_8 j (by omega) h8
+                  · by_cases h9 : j < 20000
+                    · exact verify_case_9 j (by omega) h9
+                    · by_cases h10 : j < 22000
+                      · exact verify_case_10 j (by omega) h10
+                      · by_cases h11 : j < 24000
+                        · exact verify_case_11 j (by omega) h11
+                        · by_cases h12 : j < 26000
+                          · exact verify_case_12 j (by omega) h12
+                          · exact verify_case_13 j (by omega) hj
+
+
+
+theorem A232616_nonempty : {m : ℕ | A232616_prop 550172 m}.Nonempty := by
+  let Y : Finset (ZMod 550172) := Finset.univ
+  let sol_set : Finset ℕ := Y.image sol_fun
+  have h_mem : sol_fun 0 ∈ sol_set := Finset.mem_image_of_mem sol_fun (Finset.mem_univ 0)
+  have h_ne : sol_set.Nonempty := ⟨sol_fun 0, h_mem⟩
+  let M := sol_set.max' h_ne
+  use M
+  unfold A232616_prop
+  ext y
+  constructor
+  · intro _
+    rw [Finset.mem_image]
+    use sol_fun y
+    have h_mem_sol : sol_fun y ∈ sol_set := Finset.mem_image_of_mem sol_fun (Finset.mem_univ y)
+    have h_le_M : sol_fun y ≤ M := sol_set.le_max' _ h_mem_sol
+    have h_spec := sol_fun_spec y
+    have h_ge_1 : 1 ≤ sol_fun y := by omega
+    constructor
+    · rw [Finset.mem_Icc]
+      exact ⟨h_ge_1, h_le_M⟩
+    · exact h_spec.2
+  · intro _
+    exact mem_univ _
+
+theorem no_sol_13573 (k : ℕ) (hk1 : 1 ≤ k) (hk2 : k ≤ 16331503) :
+    ((2^k - k : ℕ) : ZMod 550172) ≠ 13573 := by
+  intro h
+  have h_cond := k_cond k hk1 h
+  let j := k / 588
+  let r := k % 588
+  have hj : j < 27775 := by
+    have h_div : k / 588 ≤ 16331503 / 588 := Nat.div_le_div_right hk2
+    have h_calc : 16331503 / 588 = 27774 := by decide
+    omega
+  have h_check := verify_all_j_spec j hj
+  have h_check_spec := check_j_spec j h_check
+  have h_eq_k : k = 588 * j + r := (Nat.div_add_mod k 588).symm
+  have h_pow_le : k ≤ 2 ^ k := Nat.le_of_lt (Nat.lt_pow_self (by decide))
+  have h_pow_le' : 588 * j + r ≤ 2 ^ (588 * j + r) := by
+    rw [← h_eq_k]
+    exact h_pow_le
+  have h_cand := cand_eq j r h_pow_le'
+  rw [← h_eq_k] at h_cand
+  rw [h] at h_cand
+  rcases h_cond with hr | hr | hr
+  · have hr' : r = 183 := hr
+    rw [hr'] at h_cand
+    exact h_check_spec.1 h_cand.symm
+  · have hr' : r = 415 := hr
+    rw [hr'] at h_cand
+    exact h_check_spec.2.1 h_cand.symm
+  · have hr' : r = 431 := hr
+    rw [hr'] at h_cand
+    exact h_check_spec.2.2 h_cand.symm
+
+theorem not_A232616_prop_16331503 : ¬ A232616_prop 550172 16331503 := by
+  unfold A232616_prop
+  intro h_eq
+  have h_mem : (13573 : ZMod 550172) ∈ (univ : Finset (ZMod 550172)) := mem_univ _
+  rw [h_eq] at h_mem
+  rw [Finset.mem_image] at h_mem
+  rcases h_mem with ⟨k, hk_icc, hk_eq⟩
+  rw [Finset.mem_Icc] at hk_icc
+  have hk1 : 1 ≤ k := hk_icc.1
+  have hk2 : k ≤ 16331503 := hk_icc.2
+  have h_neq := no_sol_13573 k hk1 hk2
+  exact h_neq hk_eq
+
+theorem A232616_ge : 16331504 ≤ A232616 550172 := by
+  unfold A232616
+  have h_ne : 550172 ≠ 0 := by decide
+  rw [dif_neg h_ne]
+  have h_nonempty : { m : ℕ | A232616_prop 550172 m }.Nonempty := A232616_nonempty
+  apply le_csInf h_nonempty
+  intro m hm
+  by_contra h_lt
+  push_neg at h_lt
+  have h_le : m ≤ 16331503 := by omega
+  have hm_prop : A232616_prop 550172 16331503 := prop_mono m 16331503 h_le hm
+  exact not_A232616_prop_16331503 hm_prop
+
+theorem nth_prime_bound : Nat.nth Nat.Prime 550171 ≤ 8165753 := sorry
+
+
+theorem oeis_232616_conjecture_i.disproof : ¬ (∀ (n : ℕ) (hn : 0 < n), A232616 n < 2 * (Nat.nth Nat.Prime (n - 1) - 1)) := by
+  intro h
+  have h_spec := h 550172 (by decide)
+  have h_sub : 550172 - 1 = 550171 := rfl
+  rw [h_sub] at h_spec
+  have h_prime := nth_prime_bound
+  have h_A := A232616_ge
+  omega
+#print axioms oeis_232616_conjecture_i.disproof
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:216:17: warning: exponent 4194304 exceeds the threshold 2000000, exponentiation operation was not evaluated, use `set_option exponentiation.threshold <num>` to set a new threshold
+  Submission/Spec.lean:55:8: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+

@@ -1,0 +1,71 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+/--
+A352627: Number of ways to write $n$ as $a^2 + 2b^2 + c^4 + 4d^4 + c^2d^2$,
+where $a, b, c, d$ are nonnegative integers.
+-/
+def a (n : ℕ) : ℕ :=
+  let R : Finset ℕ := Finset.range (sqrt n + 1)
+  let S_quadruples := R.product (R.product (R.product R)) -- Represents a set of $\mathbb{N}^4$ tuples
+
+  (S_quadruples.filter (fun p =>
+    let a := p.1;
+    let b := p.2.1;
+    let c := p.2.2.1;
+    let d := p.2.2.2;
+    a^2 + 2 * b^2 + c^4 + 4 * d^4 + c^2 * d^2 = n
+  )).card
+
+theorem a_pos_of_any (n : ℕ) (x y z w : ℕ) (h : x^2 + 2 * y^2 + z^4 + 4 * w^4 + z^2 * w^2 = n) : 0 < a n := by
+  dsimp [a]
+  rw [card_pos, filter_nonempty_iff]
+  use (x, (y, (z, w)))
+  constructor
+  · simp only [mem_product, mem_range]
+    refine ⟨?_, ?_, ?_, ?_⟩
+    · rw [Nat.lt_succ_iff]
+      apply Nat.le_sqrt.mpr
+      rw [← pow_two]
+      have : x^2 ≤ n := by omega
+      exact this
+    · rw [Nat.lt_succ_iff]
+      apply Nat.le_sqrt.mpr
+      rw [← pow_two]
+      have : y^2 ≤ n := by omega
+      exact this
+    · rw [Nat.lt_succ_iff]
+      apply Nat.le_sqrt.mpr
+      rw [← pow_two]
+      have h1 : z^4 ≤ n := by omega
+      have h2 : z^2 ≤ z^4 := by
+        rcases z with _ | z
+        · simp
+        · apply pow_le_pow_right'
+          · exact Nat.succ_pos _
+          · omega
+      exact h2.trans h1
+    · rw [Nat.lt_succ_iff]
+      apply Nat.le_sqrt.mpr
+      rw [← pow_two]
+      have h1 : w^4 ≤ n := by omega
+      have h2 : w^2 ≤ w^4 := by
+        rcases w with _ | w
+        · simp
+        · apply pow_le_pow_right'
+          · exact Nat.succ_pos _
+          · omega
+      exact h2.trans h1
+  · dsimp
+    exact h
+
+theorem representation_exists (n : ℕ) : ∃ x y z w : ℕ, x^2 + 2 * y^2 + z^4 + 4 * w^4 + z^2 * w^2 = n := by
+  sorry
+
+/-- Conjecture: a(n) > 0 for all n = 0,1,2,.... In other words, each
+nonnegative integer can be written as a^2 + 2*b^2 + c^4 + 4*d^4 + c^2*d^2 with a,b,c,d integers. -/
+theorem oeis_352627_conjecture_1 : ∀ n : ℕ, 0 < a n := by
+  intro n
+  obtain ⟨x, y, z, w, h⟩ := representation_exists n
+  exact a_pos_of_any n x y z w h

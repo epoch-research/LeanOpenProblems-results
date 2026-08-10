@@ -1,0 +1,81 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Set
+
+/--
+A234642: Smallest $x$ such that $x \bmod \phi(x) = n$, or $0$ if no such $x$ exists.
+-/
+def A234642_condition (n x : ℕ) : Prop :=
+  x.totient > 0 ∧ x % x.totient = n
+
+/--
+A234642: Smallest $x$ such that $x \bmod \phi(x) = n$, or $0$ if no such $x$ exists.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  sInf {x : ℕ | A234642_condition n x}
+
+/--
+Conjecture: a(n) > 0 for all n. This would follow from a form of Goldbach's (binary) conjecture.
+Checked up to 10^7; largest term in that range is a(9972987) = 4178506411.
+-/
+lemma not_mem_zero (n : ℕ) : 0 ∉ {x : ℕ | A234642_condition n x} := by
+  simp [A234642_condition]
+
+lemma pos_of_not_mem_zero_of_nonempty {s : Set ℕ} (h0 : 0 ∉ s) (hn : s.Nonempty) : sInf s > 0 := by
+  by_contra h
+  have h_eq : sInf s = 0 := by omega
+  rw [Nat.sInf_eq_zero] at h_eq
+  rcases h_eq with h_zero | h_empty
+  · exact h0 h_zero
+  · exact hn.ne_empty h_empty
+
+lemma totient_prime_sq_local {p : ℕ} (hp : p.Prime) : (p^2).totient = p * (p - 1) := by
+  have h_sq : p^2 = p^(1 + 1) := rfl
+  rw [h_sq, Nat.totient_prime_pow_succ hp 1]
+  simp
+
+-- Local hypothesis representing the Goldbach Conjecture
+def GoldbachConjecture : Prop :=
+  ∀ (n : ℕ), Even n ∧ n ≥ 4 → ∃ p q, Nat.Prime p ∧ Nat.Prime q ∧ p + q = n
+
+theorem oeis_a234642_conjecture_0 : ∀ (n : ℕ), a n > 0 := by
+  intro n
+  apply pos_of_not_mem_zero_of_nonempty
+  · exact not_mem_zero n
+  · rcases n with _ | n
+    · use 1
+      unfold A234642_condition
+      decide
+    · rcases n with _ | n
+      · use 3
+        unfold A234642_condition
+        decide
+      · rcases n with _ | n
+        · use 10
+          unfold A234642_condition
+          decide
+        · -- here we have n ≥ 3
+          -- let's do a case split on whether n + 3 is prime
+          by_cases hp : (n + 3).Prime
+          · use (n + 3)^2
+            unfold A234642_condition
+            constructor
+            · have h2 : n + 3 > 0 := Nat.Prime.pos hp
+              rw [totient_prime_sq_local hp]
+              apply Nat.mul_pos h2
+              omega
+            · rw [totient_prime_sq_local hp]
+              have h_sub : n + 3 - 1 = n + 2 := by omega
+              rw [h_sub]
+              have hq : (n + 3) * (n + 2) > n + 3 := by
+                have : n + 2 ≥ 2 := by omega
+                calc
+                  (n + 3) * (n + 2) ≥ (n + 3) * 2 := Nat.mul_le_mul_left (n + 3) this
+                  _ = 2 * (n + 3) := by ring
+                  _ > n + 3 := by omega
+              have h_eq : (n + 3)^2 = (n + 3) * (n + 2) + (n + 3) := by ring
+              rw [h_eq]
+              rw [add_comm]
+              rw [Nat.add_mod_right]
+              rw [Nat.mod_eq_of_lt hq]
+          · sorry

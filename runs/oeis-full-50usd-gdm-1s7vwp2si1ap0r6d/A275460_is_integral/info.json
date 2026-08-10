@@ -1,0 +1,20 @@
+{
+  "id": "A275460_is_integral",
+  "epoch": 1,
+  "uuid": "e6hnNRemnaRaATFWgRYB87",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 16577636,
+      "output_tokens": 420212,
+      "total_tokens": 143343188,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 124839774,
+      "reasoning_tokens": 1505566,
+      "total_cost": 47.374328100000085
+    }
+  },
+  "oeis_id": "A275460"
+}

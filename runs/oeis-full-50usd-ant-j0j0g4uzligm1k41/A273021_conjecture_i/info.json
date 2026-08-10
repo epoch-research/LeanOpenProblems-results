@@ -1,0 +1,23 @@
+{
+  "id": "A273021_conjecture_i",
+  "epoch": 1,
+  "uuid": "GMwv6xbUdJqKELddimMSQD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 247,
+      "output_tokens": 257478,
+      "total_tokens": 18902831,
+      "input_tokens_cache_write": 6108764,
+      "input_tokens_cache_read": 12536342,
+      "reasoning_tokens": 62732,
+      "total_cost": 50.886131
+    }
+  },
+  "oeis_id": "A273021"
+}

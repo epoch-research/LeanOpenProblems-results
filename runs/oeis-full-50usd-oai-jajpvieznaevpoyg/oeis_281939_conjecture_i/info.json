@@ -1,0 +1,23 @@
+{
+  "id": "oeis_281939_conjecture_i",
+  "epoch": 1,
+  "uuid": "9iMResfj6q6SkSbcKvVpvg",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2145835,
+      "output_tokens": 476031,
+      "total_tokens": 52752810,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 50130944,
+      "reasoning_tokens": 350657,
+      "total_cost": 50.075577000000045
+    }
+  },
+  "oeis_id": "A281939"
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 5 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nuncaught exception: (kernel) declaration type mismatch, 'oeis_262880_conjecture_1' has type\n  True\nbut it is expected to have type\n  ∀ (n : Nat),\n    instLTNat.lt 0 n →\n      ∀ (p : Prod Nat Nat),\n        Finset.instMembership.mem A262880_Conjecture1_Pairs p →\n          Exists fun w =>\n            Exists fun x =>\n              Exists fun y =>\n                Exists fun z =>\n                  And (GT.gt w 0)\n                    (Eq n\n                      (instHAdd.hAdd\n                        (instHAdd.hAdd (instHAdd.hAdd (triangle_number w) (instHPow.hPow x 3))\n                          (instHMul.hMul p.fst (instHPow.hPow y 3)))\n                        (instHMul.hMul p.snd (instHPow.hPow z 3))))",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": null
+    }
+  }
+}

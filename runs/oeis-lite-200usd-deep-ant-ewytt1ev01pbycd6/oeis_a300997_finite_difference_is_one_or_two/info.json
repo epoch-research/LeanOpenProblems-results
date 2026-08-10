@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a300997_finite_difference_is_one_or_two",
+  "epoch": 1,
+  "uuid": "5G6Sh2wrWj4haWRxGBdzPh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 300,
+      "output_tokens": 359301,
+      "total_tokens": 20312970,
+      "input_tokens_cache_write": 1365066,
+      "input_tokens_cache_read": 18588303,
+      "reasoning_tokens": 61578,
+      "total_cost": 26.809839000000007
+    }
+  },
+  "oeis_id": "A300997"
+}

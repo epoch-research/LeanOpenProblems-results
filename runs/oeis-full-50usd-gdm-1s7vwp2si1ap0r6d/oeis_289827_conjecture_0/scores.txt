@@ -1,0 +1,113 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:940:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    c - d ≥ -2
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 3 + n))
+   d := ↑(π (m - 3))
+  Submission/Spec.lean:973:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    c - d ≤ 2
+    c ≥ 0
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 4))
+   d := ↑(π (m - 4 + n))
+  Submission/Spec.lean:986:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    c - d ≤ 1
+    c ≥ 0
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 2))
+   d := ↑(π (m - 2 + n))
+  Submission/Spec.lean:1055:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 1
+    c ≥ 0
+    c - d ≤ 1
+    c ≥ 1
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 2))
+   d := ↑(π (m - 2 + n))
+  Submission/Spec.lean:1082:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 1
+    c ≥ 1
+    c - d ≤ 2
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 4))
+   d := ↑(π (m - 4 + n))
+  Submission/Spec.lean:1091:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 1
+    c - d ≤ 2
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 4))
+   d := ↑(π (m - 4 + n))
+  Submission/Spec.lean:1116:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    c - d ≤ 2
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 4))
+   d := ↑(π (m - 4 + n))
+  Submission/Spec.lean:1143:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    c - d ≤ 1
+    c ≥ 0
+    b ≥ 11
+    a ≥ 10
+    a - b ≥ 5
+  where
+   a := ↑n
+   b := ↑(m - 5)
+   c := ↑(π (m - 2))
+   d := ↑(π (m - 2 + n))
+  'oeis_289827_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

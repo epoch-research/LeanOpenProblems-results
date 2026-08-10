@@ -1,0 +1,187 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:187:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    48 * conjecture_sum n
+  in the target expression
+    48 * 48 * conjecture_sum n + 48 * ((-1) ^ n * (4 * ↑n + 1) * ((↑n + 1) * b_seq n)) = 48 * ((↑n + 1) * q_n1)
+  
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_rec : conjecture_sum (n + 1) = 48 * conjecture_sum n + (-1) ^ n * (4 * ↑n + 1) * a n
+  h_a : a n = (↑n + 1) * b_seq n
+  ⊢ 48 * 48 * conjecture_sum n + 48 * ((-1) ^ n * (4 * ↑n + 1) * ((↑n + 1) * b_seq n)) = 48 * ((↑n + 1) * q_n1)
+  Submission/Spec.lean:189:4: error: linarith failed to find a contradiction
+  case h.refine_1.h1.h
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_rec : conjecture_sum (n + 1) = 48 * conjecture_sum n + (-1) ^ n * (4 * ↑n + 1) * a n
+  h_a : a n = (↑n + 1) * b_seq n
+  h_mul : 48 * conjecture_sum (n + 1) = 48 * ((↑n + 1) * q_n1)
+  a✝ : conjecture_sum (n + 1) < ↑(n + 1) * q_n1
+  ⊢ False
+  failed
+  Submission/Spec.lean:194:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    48 * conjecture_sum n
+  in the target expression
+    48 * 48 * conjecture_sum n + 48 * ((-1) ^ n * (4 * ↑n + 1) * ((↑n + 1) * b_seq n)) = 48 * ((↑n + 1) * q_n1)
+  
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_rec : conjecture_sum (n + 1) = 48 * conjecture_sum n + (-1) ^ n * (4 * ↑n + 1) * a n
+  h_a : a n = (↑n + 1) * b_seq n
+  ⊢ 48 * 48 * conjecture_sum n + 48 * ((-1) ^ n * (4 * ↑n + 1) * ((↑n + 1) * b_seq n)) = 48 * ((↑n + 1) * q_n1)
+  Submission/Spec.lean:199:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (↑n + 2) * (48 * w_n)
+  in the target expression
+    48 * q_n1 = (↑n + 2) * k_n1
+  
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_mul : 48 * conjecture_sum (n + 1) = 48 * ((↑n + 1) * q_n1)
+  h_w_sub : (↑n + 2) * (48 * w_n) = 48 * ((↑n + 2) * w_n)
+  ⊢ 48 * q_n1 = (↑n + 2) * k_n1
+  Submission/Spec.lean:201:21: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    48 * q_n1
+  in the target expression
+    48 * (↑n + 1) * q_n1 = ↑(n + 1) * (↑(n + 1) + 1) * k_n1
+  
+  case h.refine_2
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_mul : 48 * conjecture_sum (n + 1) = 48 * ((↑n + 1) * q_n1)
+  h_k_n1 : 48 * q_n1 = (↑n + 2) * k_n1
+  ⊢ 48 * (↑n + 1) * q_n1 = ↑(n + 1) * (↑(n + 1) + 1) * k_n1
+  Submission/Spec.lean:207:80: error: Type mismatch
+    hw
+  has type
+    2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  but is expected to have type
+    (↑n + 2) * w_n = 2 * k_n + 7 * (-1) ^ n * b_seq n
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:221:114: error: unsolved goals
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_neg1 : (-1) ^ (n + 1) = -(-1) ^ n
+  h_term : (↑n + 2) * w_n = 2 * k_n + 7 * (-1) ^ n * b_seq n
+  h_id :
+    (↑n + 2) * (2 * k_n1 - 7 * (-1) ^ n * b_seq (n + 1) - (↑n + 3) * w_n1) =
+      2 * (↑n + 2) * k_n1 - 7 * (↑n + 2) * (-1) ^ n * b_seq (n + 1) -
+        (↑n + 3) *
+          (48 * (↑n + 1) * (48 * (↑n + 2) * k_n - (↑n + 2) * w_n + 4 * (↑n + 2) * (-1) ^ n * b_seq n) -
+                (4 * ↑n + 9) * (↑n + 2) * (-1) ^ n * b_seq (n + 1) -
+              (↑n + 2) * Y_n -
+            (-168 * ↑n * (↑n + 2) * (-1) ^ n * b_seq n + 360 * (↑n + 2) * (-1) ^ n * b_seq n +
+                24 * ↑n ^ 2 * ((↑n + 2) * w_n) +
+              24 * ↑n * ((↑n + 2) * w_n)))
+  ⊢ ↑n * k_n1 * 2 + (↑n * b_seq (1 + n) * (-1) ^ n * 62 - ↑n * k_n * 24816) + ↑n * b_seq n * (-1) ^ n * 528 +
+                          ↑n * Y_n * 5 +
+                        ↑n ^ 2 * b_seq (1 + n) * (-1) ^ n * 29 +
+                      (-(↑n ^ 2 * k_n * 13536) - ↑n ^ 2 * b_seq n * (-1) ^ n * 624) +
+                    ↑n ^ 2 * Y_n +
+                  ↑n ^ 3 * b_seq (1 + n) * (-1) ^ n * 4 +
+                (-(↑n ^ 3 * k_n * 2256) - ↑n ^ 3 * b_seq n * (-1) ^ n * 192) +
+              k_n1 * 4 +
+            (b_seq (1 + n) * (-1) ^ n * 40 - k_n * 13536) +
+          b_seq n * (-1) ^ n * 2016 +
+        Y_n * 6 =
+      0
+  Submission/Spec.lean:228:6: error: linarith failed to find a contradiction
+  case h.refine_3.inr.h1.h
+  n : ℕ
+  hn : n ≥ 1
+  q_n k_n w_n : ℤ
+  hq : conjecture_sum n = ↑n * q_n
+  hk : 48 * conjecture_sum n = ↑n * (↑n + 1) * k_n
+  hw : 2 * k_n + 7 * (-1) ^ n * b_seq n = (↑n + 2) * w_n
+  q_n1 : ℤ := ↑n * k_n + (-1) ^ n * (4 * ↑n + 1) * b_seq n
+  k_n1 : ℤ := 48 * k_n - 48 * w_n + 192 * (-1) ^ n * b_seq n
+  Y_n : ℤ := (192 * ↑n - 336) * (-1) ^ n * b_seq n - (4 * ↑n + 1) * (-1) ^ n * b_seq (n + 1)
+  w_n1 : ℤ :=
+    48 * (↑n + 1) * (48 * k_n + 4 * (-1) ^ n * b_seq n - w_n) - (4 * ↑n + 9) * (-1) ^ n * b_seq (n + 1) - Y_n -
+      (-168 * ↑n * (-1) ^ n * b_seq n + 360 * (-1) ^ n * b_seq n + 24 * ↑n ^ 2 * w_n + 24 * ↑n * w_n)
+  h_neg1 : (-1) ^ (n + 1) = -(-1) ^ n
+  h_term : (↑n + 2) * w_n = 2 * k_n + 7 * (-1) ^ n * b_seq n
+  h_id :
+    (↑n + 2) * (2 * k_n1 - 7 * (-1) ^ n * b_seq (n + 1) - (↑n + 3) * w_n1) =
+      2 * (↑n + 2) * k_n1 - 7 * (↑n + 2) * (-1) ^ n * b_seq (n + 1) -
+        (↑n + 3) *
+          (48 * (↑n + 1) * (48 * (↑n + 2) * k_n - (↑n + 2) * w_n + 4 * (↑n + 2) * (-1) ^ n * b_seq n) -
+                (4 * ↑n + 9) * (↑n + 2) * (-1) ^ n * b_seq (n + 1) -
+              (↑n + 2) * Y_n -
+            (-168 * ↑n * (↑n + 2) * (-1) ^ n * b_seq n + 360 * (↑n + 2) * (-1) ^ n * b_seq n +
+                24 * ↑n ^ 2 * ((↑n + 2) * w_n) +
+              24 * ↑n * ((↑n + 2) * w_n)))
+  h_diff_mul : (↑n + 2) * (2 * k_n1 - 7 * (-1) ^ n * b_seq (n + 1) - (↑n + 3) * w_n1) = 0
+  h_cancel : ↑n + 2 ≠ 0
+  h_zero : 2 * k_n1 - 7 * (-1) ^ n * b_seq (n + 1) - (↑n + 3) * w_n1 = 0
+  a✝ : 2 * k_n1 + 7 * -(-1) ^ n * b_seq (n + 1) < (↑(n + 1) + 2) * w_n1
+  ⊢ False
+  failed
+  Submission/Spec.lean:236:8: warning: declaration uses 'sorry'
+

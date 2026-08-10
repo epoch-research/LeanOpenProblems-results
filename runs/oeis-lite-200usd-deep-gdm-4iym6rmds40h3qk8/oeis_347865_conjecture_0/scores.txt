@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1102:12: error(lean.unknownIdentifier): Unknown identifier ``
+  Submission/Spec.lean:92:0: error: internal exception #3
+

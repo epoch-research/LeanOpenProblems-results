@@ -1,0 +1,20 @@
+{
+  "id": "A357674_conjecture_1",
+  "epoch": 1,
+  "uuid": "3PMudArKoMccRxkTK7V53f",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 6537107,
+      "output_tokens": 1112610,
+      "total_tokens": 144931253,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 137281536,
+      "reasoning_tokens": 549963,
+      "total_cost": 134.7046029999998
+    }
+  },
+  "oeis_id": "A357674"
+}

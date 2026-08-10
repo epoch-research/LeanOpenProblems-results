@@ -1,0 +1,20 @@
+{
+  "id": "oeis_191004_sun_refinement_conjecture",
+  "epoch": 1,
+  "uuid": "Zf9pV5enD5Tto6NzreUiQP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 195155,
+      "output_tokens": 4700,
+      "total_tokens": 428507,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 222260,
+      "reasoning_tokens": 6392,
+      "total_cost": 0.36837149999999996
+    }
+  },
+  "oeis_id": "A191004"
+}

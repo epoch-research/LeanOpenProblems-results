@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1:0: error: unknown module prefix 'Submission'\n\nNo directory 'Submission' or file 'Submission.olean' in the search path entries:\n/workspace/leanproject/.lake/packages/Cli/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/batteries/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/Qq/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/aesop/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/proofwidgets/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/importGraph/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/LeanSearchClient/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/plausible/.lake/build/lib/lean\n/workspace/leanproject/.lake/packages/mathlib/.lake/build/lib/lean\n/workspace/leanproject/.lake/build/lib/lean\n/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean\n/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

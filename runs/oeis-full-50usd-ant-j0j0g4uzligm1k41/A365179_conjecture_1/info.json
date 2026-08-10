@@ -1,0 +1,23 @@
+{
+  "id": "A365179_conjecture_1",
+  "epoch": 1,
+  "uuid": "TDFkoK3XGdzkLsTqdnFEc9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 400,
+      "output_tokens": 513133,
+      "total_tokens": 34586120,
+      "input_tokens_cache_write": 3520504,
+      "input_tokens_cache_read": 30552083,
+      "reasoning_tokens": 113296,
+      "total_cost": 50.10951649999998
+    }
+  },
+  "oeis_id": "A365179"
+}

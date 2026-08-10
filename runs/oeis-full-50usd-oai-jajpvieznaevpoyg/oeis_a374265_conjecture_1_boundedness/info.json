@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a374265_conjecture_1_boundedness",
+  "epoch": 1,
+  "uuid": "VJErLj2bnv7uh2CFVxPnRp",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 157162,
+      "output_tokens": 39122,
+      "total_tokens": 2722492,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2526208,
+      "reasoning_tokens": 20900,
+      "total_cost": 3.2225740000000003
+    }
+  },
+  "oeis_id": "A374265"
+}

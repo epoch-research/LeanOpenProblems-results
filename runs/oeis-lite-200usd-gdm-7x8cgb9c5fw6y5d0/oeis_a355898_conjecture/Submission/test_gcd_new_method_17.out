@@ -1,0 +1,9 @@
+/workspace/leanproject/Submission/test_gcd_new_method_17.lean:56:59: error: Tactic `decide` proved that the proposition
+  (B 2 - 1).gcd (B 1 - 1) = 1
+is false
+/workspace/leanproject/Submission/test_gcd_new_method_17.lean:84:10: error: Type mismatch
+  Eq.symm (gcd_step2 (k + 1) (Decidable.byContradiction fun a => B_gcd._proof_1_2 k a))
+has type
+  (B (k + 1)).gcd (B (k + 1 - 1) - 1) = (B (k + 1 + 1) - 1).gcd (B (k + 1))
+but is expected to have type
+  (B k - 1).gcd (B (k + 1)) = (B (k + 1) - 1).gcd (B k)

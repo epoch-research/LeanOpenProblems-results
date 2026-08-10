@@ -1,0 +1,20 @@
+{
+  "id": "oeis_49473_conjecture_0",
+  "epoch": 1,
+  "uuid": "ABfRFE9iazSYAe2xxD3KR4",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 339712,
+      "output_tokens": 14061,
+      "total_tokens": 1843647,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1468754,
+      "reasoning_tokens": 21120,
+      "total_cost": 0.8564301
+    }
+  },
+  "oeis_id": "A049473"
+}

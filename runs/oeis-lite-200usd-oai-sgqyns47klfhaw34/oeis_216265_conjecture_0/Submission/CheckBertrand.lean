@@ -1,0 +1,7 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.exists_prime_lt_and_le_two_mul
+#check Nat.exists_prime_lt_and_le_two_mul_eventually
+#check Nat.exists_prime_lt_and_le_two_mul_succ
+#check Nat.exists_prime_lt_and_le_two_mul_succ
+#print Nat.exists_prime_lt_and_le_two_mul_eventually
+#print Nat.exists_prime_lt_and_le_two_mul_succ

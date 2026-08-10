@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\nuncaught exception: Submission '/workspace/leanproject/_apn_score/submission.olean' is missing 7288 transitive imports required by target: #[Std.Data.DHashMap, Std.Data.DTreeMap.Internal.Lemmas, Std.Data.DTreeMap.Lemmas, Std.Data.DTreeMap.Internal.Zipper, Std.Data.DTreeMap.Raw.Iterator, Std.Data.DTreeMap.Iterator, Std.Data.DTreeMap.Raw.Slice, Std.Data.DTreeMap.Slice, Std.Data.DTreeMap.Raw.AdditionalOperations, Std.Data.DTreeMap.Raw.Lemmas] ... and 7278 more. Submissions must transitively import at least everything the target imports to prevent type redefinition attacks.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": null
+    }
+  }
+}

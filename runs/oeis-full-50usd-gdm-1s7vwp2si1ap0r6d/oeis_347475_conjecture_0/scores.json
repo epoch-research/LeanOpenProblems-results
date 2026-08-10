@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:36:33: error: unsolved goals\nh_eq : Tendsto A355276 atTop atTop ↔ True\n⊢ Tendsto A355276 atTop atTop",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

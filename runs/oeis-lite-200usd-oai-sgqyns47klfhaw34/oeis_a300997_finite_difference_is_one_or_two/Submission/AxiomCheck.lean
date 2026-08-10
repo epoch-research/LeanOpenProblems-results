@@ -1,0 +1,3 @@
+import FormalConjectures.Util.ProblemImports
+import «Submission».Spec
+#print axioms oeis_a300997_finite_difference_is_one_or_two

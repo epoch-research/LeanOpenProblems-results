@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check lt_irrefl
+#print lt_irrefl
+#check not_lt_of_ge
+#print not_lt_of_ge
+#check LT.lt.false
+#print LT.lt.false
+#check not_lt_self
+#print not_lt_self

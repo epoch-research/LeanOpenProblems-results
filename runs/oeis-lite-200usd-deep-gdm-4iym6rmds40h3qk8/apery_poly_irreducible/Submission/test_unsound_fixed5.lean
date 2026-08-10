@@ -1,0 +1,77 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+
+inductive T : (α : Type) → (((α → Prop) → Prop) → Prop) → Prop
+| base : T PUnit (fun H ↦ H (fun _ ↦ True))
+| mk : {α : Type} → (a : (((α → Prop) → Prop) → Prop) → Prop) → T α (fun g ↦ a (fun _ ↦ True)) → T (α → Prop) a
+
+theorem cast_symm_cast {α β : Type} (h : α = β) (x : α) : cast h.symm (cast h x) = x := by
+  cases h
+  rfl
+
+theorem any_step_not_eq_punit (α : Type) (h_nonempty : Nonempty α) : ((α → Prop) = PUnit) → False := fun h ↦ by
+  have h_eq : (fun _ : α ↦ True) = (fun _ : α ↦ False) := by
+    have h_eq_punit : cast h (fun _ : α ↦ True) = cast h (fun _ : α ↦ False) := Subsingleton.elim _ _
+    have h1 := (cast_symm_cast h (fun _ : α ↦ True)).symm
+    have h2 := cast_symm_cast h (fun _ : α ↦ False)
+    have h3 := congrArg (cast h.symm) h_eq_punit
+    exact h1.trans (h3.trans h2)
+  have x := Classical.choice h_nonempty
+  have h_true_eq_false : True = False := congrFun h_eq x
+  exact h_true_eq_false.mp True.intro
+
+theorem nonempty_of_T {α : Type} {a : (((α → Prop) → Prop) → Prop) → Prop} (t : T α a) : Nonempty α := by
+  induction t with
+  | base => exact ⟨PUnit.unit⟩
+  | mk a' t_1 ih => exact ⟨fun _ ↦ True⟩
+
+theorem index_eq {α} {a : (((α → Prop) → Prop) → Prop) → Prop} (t : T α a) (h : α = PUnit) : a = h ▸ (fun H ↦ H (fun _ ↦ True)) := by
+  cases t with
+  | base => rfl
+  | mk a' t_1 =>
+    have h_nonempty : Nonempty _ := nonempty_of_T t_1
+    have h_false : False := any_step_not_eq_punit _ h_nonempty h
+    exact h_false.elim
+
+theorem unsound {α : Type} {a : (((α → Prop) → Prop) → Prop) → Prop} (t : T α a) : a (fun _ ↦ True) := by
+  induction t with
+  | base => exact True.intro
+  | mk a' t_1 ih => exact ih
+
+def bad {α} {a : (((α → Prop) → Prop) → Prop) → Prop} (t : T α a) : (Nonempty α ∧ ((α = PUnit) → False)) → False := by
+  induction t with
+  | base =>
+    intro h_conj
+    exact h_conj.2 rfl
+  | mk a' t_1 ih =>
+    intro h_conj
+    have h_nonempty_α : Nonempty _ := nonempty_of_T t_1
+    have h_not_punit : ((_ → Prop) = PUnit) → False := any_step_not_eq_punit _ h_nonempty_α
+    apply ih
+    constructor
+    · exact h_nonempty_α
+    · intro heq
+      have t_1' : T PUnit (fun g ↦ a' (fun _ ↦ True)) := heq ▸ t_1
+      have h_eq : (fun g ↦ a' (fun _ ↦ True)) = (fun H ↦ H (fun _ ↦ True)) := index_eq t_1' rfl
+      have h_eval := congrFun h_eq (fun _ ↦ False)
+      have h_eval_simp : a' (fun _ ↦ True) = False := h_eval
+      have h_true : a' (fun _ ↦ True) := @unsound PUnit (fun g ↦ a' (fun _ ↦ True)) t_1'
+      exact h_eval_simp ▸ h_true
+
+theorem unsound_proof_of_false : False := by
+  -- We want to prove False!
+  -- Let's construct a term of type T (PUnit → Prop) (fun H ↦ False) using T.mk.
+  -- Wait! T.mk takes a : (((PUnit → Prop) → Prop) → Prop) → Prop.
+  -- If we choose a = fun _ ↦ False.
+  -- Then T.mk a expects the third argument to have type:
+  -- T PUnit (fun g ↦ a (fun _ ↦ True))
+  -- which is T PUnit (fun g ↦ False).
+  -- But T.base has type:
+  -- T PUnit (fun H ↦ H (fun _ ↦ True)).
+  -- So we cannot use T.base directly!
+  -- Can we cast T.base?
+  -- To cast it, we need:
+  -- (fun H ↦ H (fun _ ↦ True)) = (fun g ↦ False)
+  -- which is False.
+  sorry

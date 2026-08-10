@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 4 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 5 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a228425_conjecture_3: theorem type mismatch
+    Expected type: forall (k : Nat), Iff (PolygonalPrimeSumCondition k) (Or (Eq.{1} Nat k (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) (Or (Eq.{1} Nat k (OfNat.ofNat.{0} Nat 39 (instOfNatNat 39))) (Eq.{1} Nat k (OfNat.ofNat.{0} Nat 99 (instOfNatNat 99)))))
+    Got type:      Not (forall (n : Nat), LT.lt.{0} Nat instLTNat (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (A228425 n))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

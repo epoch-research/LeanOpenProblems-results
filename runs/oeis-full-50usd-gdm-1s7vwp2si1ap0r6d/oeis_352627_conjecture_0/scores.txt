@@ -1,0 +1,9 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:119:8: warning: declaration uses 'sorry'
+  Submission/Spec.lean:170:0: error: Environment.realizeConst: `realizedImportedConsts` is empty
+  Submission/Spec.lean:170:0: error: cannot evaluate code because 'sorryAx' uses 'sorry' and/or contains errors
+  Submission/Spec.lean:170:0: error: invalid syntax node kind `commandPrint_value_`
+  Submission/Spec.lean:179:0: error: unexpected identifier; expected command
+

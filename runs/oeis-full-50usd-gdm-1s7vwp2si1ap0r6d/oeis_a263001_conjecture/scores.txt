@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_resource
+  killed (exit 134)
+  Stack overflow detected. Aborting.
+

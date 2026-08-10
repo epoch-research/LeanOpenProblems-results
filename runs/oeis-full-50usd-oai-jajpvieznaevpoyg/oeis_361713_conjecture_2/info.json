@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361713_conjecture_2",
+  "epoch": 1,
+  "uuid": "3gbh9dVNZvpLU6AwbPsRBm",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1352378,
+      "output_tokens": 292228,
+      "total_tokens": 54080574,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 52435968,
+      "reasoning_tokens": 113043,
+      "total_cost": 41.74671399999999
+    }
+  },
+  "oeis_id": "A361713"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "prime_gap_subsequences_occur_infinitely_often",
+  "epoch": 1,
+  "uuid": "o28jykEhdTm9wCufZ3wHus",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 737194,
+      "output_tokens": 14930,
+      "total_tokens": 4627671,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3849839,
+      "reasoning_tokens": 25708,
+      "total_cost": 1.8176368499999995
+    }
+  },
+  "oeis_id": "A001223"
+}

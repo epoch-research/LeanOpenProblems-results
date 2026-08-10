@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:241:26: warning: unused variable `h_eq6_again`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:248:0: error: failed to compile 'partial' definition `main_case`, could not prove that the type\n  (k' : ℕ) → PLift (a (6 * (k' + 5)) ≠ 4)\nis nonempty.\n\nThis process uses multiple strategies:\n- It looks for a parameter that matches the return type.\n- It tries synthesizing 'Inhabited' and 'Nonempty' instances for the return type, while making every parameter into a local 'Inhabited' instance.\n- It tries unfolding the return type.\n\nIf the return type is defined using the 'structure' or 'inductive' command, you can try adding a 'deriving Nonempty' clause to it.\nSubmission/Spec.lean:292:11: error(lean.unknownIdentifier): Unknown identifier `main_case`",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

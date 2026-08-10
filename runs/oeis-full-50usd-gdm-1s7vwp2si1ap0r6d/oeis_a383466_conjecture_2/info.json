@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a383466_conjecture_2",
+  "epoch": 1,
+  "uuid": "ZKvuYEQbUshxqtVY2iCsEi",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 489899,
+      "output_tokens": 6773,
+      "total_tokens": 2002144,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1490472,
+      "reasoning_tokens": 15000,
+      "total_cost": 1.0193762999999998
+    }
+  },
+  "oeis_id": "A383466"
+}

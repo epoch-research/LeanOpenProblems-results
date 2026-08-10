@@ -1,0 +1,88 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1182:18: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    u ≥ 1
+    t ≥ 1
+    s ≥ 1
+    r ≥ 1
+    q ≥ 1
+    p ≥ 1
+    o ≥ 0
+    m ≥ 1
+    -9 ≤ 9*m - p ≤ -1
+    l ≥ 1
+    j ≥ 1
+    j - o ≥ 0
+    -9 ≤ 9*i - q ≤ -1
+    -9 ≤ 9*i + 9*j - r ≤ -1
+    h ≥ 0
+    h - u ≤ -2
+    h + l ≥ 0
+    h + l - u ≤ -2
+    g ≥ 0
+    f ≥ 0
+    e - f ≥ 0
+    -9 ≤ 9*e - t ≤ -1
+    d ≥ 2
+    d ≥ 1
+    9*d - h - l ≤ 0
+    9*d - l ≤ 0
+    c ≥ 1
+    c - 9*d ≥ 0
+    c - s ≤ -2
+    c - u ≤ -2
+  where
+   c := ↑n
+   d := ↑k
+   e := ↑(10 ^ n - 1) / 9
+   f := ↑(A004290 n)
+   g := ↑((10 ^ ↑b - 1) / 9) % ↑n
+   h := ↑↑a
+   i := ↑(10 ^ ↑a - 1) / 9
+   j := ↑(10 ^ ↑a) * ↑((10 ^ (↑b - ↑a) - 1) / 9)
+   l := ↑(↑b - ↑a)
+   m := ↑(10 ^ (↑b - ↑a) - 1) / 9
+   o := ↑(sInf {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1})
+   p := ↑10 ^ (↑b - ↑a)
+   q := ↑10 ^ ↑a
+   r := ↑10 ^ ↑b
+   s := ↑2 ^ (9 * k - 1)
+   t := ↑10 ^ n
+   u := ↑10 ^ k
+  Submission/Spec.lean:1168:14: error: unsolved goals
+  case neg
+  k n : ℕ
+  hn : n < 10 ^ k - 1
+  hk : ¬k = 0
+  hk_pos : k > 0
+  hn_zero : ¬n = 0
+  hn_pos : n > 0
+  h_le : A004290 n ≤ (10 ^ n - 1) / 9
+  hn_lt : ¬n < 9 * k
+  hk2 : k ≥ 2
+  h_2pow : 2 ^ (9 * k - 1) - 1 > n
+  a b : Fin (10 ^ k - 1)
+  hne : a ≠ b
+  hab_mod : (10 ^ ↑a - 1) / 9 % n = (10 ^ ↑b - 1) / 9 % n
+  hlt : ↑a < ↑b
+  A : ℕ := (10 ^ ↑b - 1) / 9
+  B : ℕ := (10 ^ ↑a - 1) / 9
+  h_le_val : B ≤ A
+  hdvd : n ∣ A - B
+  M : ℕ := A - B
+  h_M_eq : M = 10 ^ ↑a * ((10 ^ (↑b - ↑a) - 1) / 9)
+  h_sub_pos : ↑b - ↑a > 0
+  h_rep_pos : (10 ^ (↑b - ↑a) - 1) / 9 > 0
+  h_M_pos : M > 0
+  h_digits : ∀ d ∈ digits 10 M, d = 0 ∨ d = 1
+  h_mem : M ∈ {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1}
+  h_sInf : sInf {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1} ≤ M
+  h_b_le : ¬↑b ≤ 9 * k - 1
+  h_lt_nine_k : ↑b - ↑a < 9 * k
+  M_small : ℕ := (10 ^ (↑b - ↑a) - 1) / 9
+  hdvd_small : n ∣ M_small
+  ⊢ A004290 n ≤ (10 ^ (9 * k - 1) - 1) / 9
+  'radcliffe_part3' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

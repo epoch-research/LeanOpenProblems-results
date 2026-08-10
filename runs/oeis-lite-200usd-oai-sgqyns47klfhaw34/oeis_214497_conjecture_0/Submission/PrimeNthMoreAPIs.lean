@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.prime_nth_prime
+#check Nat.nth_le_nth
+#check Nat.nth_count
+#check Nat.nth_mem_of_infinite
+#check Nat.count_nth
+#check Nat.nth_eq_iff
+#check Nat.nth_prime_zero_eq_two
+#check Nat.nth_prime_one_eq_three
+#check Nat.nth_prime_two_eq_five
+#check Nat.exists_prime_lt_and_le_two_mul

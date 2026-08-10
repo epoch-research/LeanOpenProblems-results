@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:330:34: warning: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:1773:38: warning: unused variable `hq1_pos`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:1793:32: warning: unused variable `h_cop`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:1954:36: error: Application type mismatch: The argument\n  hA_even\nhas type\n  A_int % 2 = 0\nbut is expected to have type\n  2 ∣ A_int\nin the application\n  dvd_mul_of_dvd_left hA_even",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

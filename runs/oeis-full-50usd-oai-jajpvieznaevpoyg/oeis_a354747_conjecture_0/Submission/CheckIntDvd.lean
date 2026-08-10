@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Int.ofNat_dvd
+#check Int.natCast_dvd_natCast
+#check Int.dvd_natAbs
+#check Int.coe_nat_dvd
+#check Nat.cast_dvd
+#check Int.natAbs_dvd_natAbs
+#check Nat.dvd_of_dvd_int
+#check Int.ofNat_dvd_left

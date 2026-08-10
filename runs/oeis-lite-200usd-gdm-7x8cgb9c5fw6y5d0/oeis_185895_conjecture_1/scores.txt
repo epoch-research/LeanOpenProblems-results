@@ -1,0 +1,26 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 3 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 472 declarations.
+  ------------------
+  H_def_odd used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  H_def_m_sub_four_bounds used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  A185895_sign used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  H_def_even used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  H_sign used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  oeis_185895_conjecture_1 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_185895_conjecture_1: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

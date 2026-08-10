@@ -1,0 +1,23 @@
+{
+  "id": "A306477_conjecture",
+  "epoch": 1,
+  "uuid": "LnpVySbNQxR4f9kwHGCZX9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 73213975,
+      "output_tokens": 708816,
+      "total_tokens": 637446091,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 558720883,
+      "reasoning_tokens": 4802417,
+      "total_cost": 200.00843894999977
+    }
+  },
+  "oeis_id": "A306477"
+}

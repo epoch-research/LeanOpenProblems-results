@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1133:59: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 1\n  b - c ≤ 0\nwhere\n b := ↑(p_index n (a (n - 1) + 1))\n c := ↑(n - 4)\nSubmission/Spec.lean:1152:36: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 1\n  b - c ≤ -1\nwhere\n b := ↑(p_index n (a (n - 1) + 1))\n c := ↑(n - 2)\nSubmission/Spec.lean:1190:2: warning: unused termination hints, function is not recursive",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

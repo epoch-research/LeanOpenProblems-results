@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a189286_conjecture_0",
+  "epoch": 1,
+  "uuid": "6rEoC67vAQyE3v46JAbPRV",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1454916,
+      "output_tokens": 285401,
+      "total_tokens": 42790429,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 41050112,
+      "reasoning_tokens": 169961,
+      "total_cost": 36.36166600000002
+    }
+  },
+  "oeis_id": "A189286"
+}

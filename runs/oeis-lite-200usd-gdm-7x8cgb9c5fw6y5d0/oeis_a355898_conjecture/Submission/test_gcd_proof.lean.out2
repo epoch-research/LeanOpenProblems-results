@@ -1,0 +1,152 @@
+Submission/test_gcd_proof.lean:198:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (B (k + 1 + 2) - 1).gcd (B (k + 1 + 1) - 1)
+in the target expression
+  d = (B (k + 2) - 1).gcd (B (k + 1))
+
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+ih_k : (B (k + 1) - 1).gcd (B k - 1) = 1
+ih_km1 : (B (k - 1 + 1) - 1).gcd (B (k - 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+⊢ d = (B (k + 2) - 1).gcd (B (k + 1))
+Submission/test_gcd_proof.lean:204:59: error: Type mismatch
+  Int.ofNat_dvd.mpr hd1
+has type
+  ↑d ∣ ↑(B (k + 3) - 1)
+but is expected to have type
+  ↑d ∣ ↑(B (k + 3)) - 1
+Submission/test_gcd_proof.lean:209:59: error: Type mismatch
+  Int.ofNat_dvd.mpr hd2
+has type
+  ↑d ∣ ↑(B (k + 2) - 1)
+but is expected to have type
+  ↑d ∣ ↑(B (k + 2)) - 1
+Submission/test_gcd_proof.lean:224:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  c - e ≤ 0
+  b ≥ 0
+  b + c ≥ 0
+  a ≥ -1
+where
+ a := ↑d * q2
+ b := ↑d * ↑q3
+ c := ↑(B k)
+ e := ↑d * (q1 - ↑q3)
+Submission/test_gcd_proof.lean:230:66: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ -1
+  a ≥ -1
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+Submission/test_gcd_proof.lean:242:88: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  B (k + 2) * B k
+in the target expression
+  ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+ih_k : (B (k + 1) - 1).gcd (B k - 1) = 1
+ih_km1 : (B (k - 1 + 1) - 1).gcd (B (k - 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+q2 : ℤ
+hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 1) = d * q3
+hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+hd_Bkm1_nat : d ∣ B k - 1
+h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+h_even : Even (k + 1)
+h_odd : Odd k
+h_cass_odd : B (k + 2) * B k = B (k + 1) ^ 2 + C_val
+⊢ ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+Submission/test_gcd_proof.lean:262:89: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  B (k - 1 + 1) ^ 2
+in the target expression
+  ↑(B k) ^ 2 = ↑(B (k + 1)) * ↑(B (k - 1)) + ↑C_val
+
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+ih_k : (B (k + 1) - 1).gcd (B k - 1) = 1
+ih_km1 : (B (k - 1 + 1) - 1).gcd (B (k - 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+q2 : ℤ
+hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 1) = d * q3
+hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+hd_Bkm1_nat : d ∣ B k - 1
+h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+h_even : Even (k + 1)
+h_odd : Odd k
+h_cass_odd : B (k + 2) * B k = B (k + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+h_C : ↑C_val - 1 = ↑(B (k + 2)) * ↑(B k) - ↑(B (k + 1)) ^ 2 - 1
+k_z : ℤ
+hk_z : ↑C_val - 1 = ↑d * k_z
+h_cass_km1 :
+  (Even (k - 1) → B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val) ∧
+    (Odd (k - 1) → B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k - 1)
+h_cass_even : B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val
+⊢ ↑(B k) ^ 2 = ↑(B (k + 1)) * ↑(B (k - 1)) + ↑C_val
+Submission/test_gcd_proof.lean:236:8: error: unsolved goals
+case pos
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+ih_k : (B (k + 1) - 1).gcd (B k - 1) = 1
+ih_km1 : (B (k - 1 + 1) - 1).gcd (B (k - 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+q2 : ℤ
+hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 1) = d * q3
+hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+hd_Bkm1_nat : d ∣ B k - 1
+h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+h_even : Even (k + 1)
+h_odd : Odd k
+h_cass_odd : B (k + 2) * B k = B (k + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+h_C : ↑C_val - 1 = ↑(B (k + 2)) * ↑(B k) - ↑(B (k + 1)) ^ 2 - 1
+k_z : ℤ
+hk_z : ↑C_val - 1 = ↑d * k_z
+h_cass_km1 :
+  (Even (k - 1) → B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val) ∧
+    (Odd (k - 1) → B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k - 1)
+h_cass_even : B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val
+h_cast2 : ↑(B k) ^ 2 = ↑(B (k + 1)) * ↑(B (k - 1)) + ↑C_val
+h_B_prod : ↑(B (k + 1)) * ↑(B (k - 1)) = ↑(B k) ^ 2 - ↑C_val
+h_d_Bkm1 : ↑d ∣ ↑(B (k - 1))
+⊢ d = 1

@@ -1,0 +1,6 @@
+import FormalConjectures.Util.ProblemImports
+
+#check hasVCDimAtMost_iff_shatters
+#print axioms hasVCDimAtMost_iff_shatters
+#check SimpleGraph.annihilationNumberEq
+#print axioms SimpleGraph.annihilationNumberEq

@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+open Lean
+#check ConstantInfo
+#check ConstantInfo.name
+#check ConstantInfo.type
+#check ConstantInfo.levelParams
+#check ConstantInfo.moduleIdx
+#check Environment.header
+#check Environment.getModuleIdxFor?
+#check Environment.getModuleIdx?
+#check Environment.allImportedModuleNames
+#check Environment.const2ModIdx

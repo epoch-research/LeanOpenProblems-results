@@ -1,0 +1,17 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:858:8: error: unsolved goals
+  case mp.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ.succ
+  n : ℕ
+  h :
+    a (n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1) >
+      a081512 (n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1)
+  hc :
+    ¬(n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 4 ∨
+        n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 5)
+  hn4 : n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 ≠ 4
+  hn5 : n + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 ≠ 5
+  h_goal : False
+  ⊢ False
+

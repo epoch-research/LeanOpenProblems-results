@@ -1,0 +1,66 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:16126:85: error: Tactic `decide` proved that the proposition
+    ∀ idx < 100, is_blocked_by_idx (idx + 6400) = true
+  is false
+  Submission/Spec.lean:16510:22: error: Tactic `decide` proved that the proposition
+    10 * 16 ^ 40 / 9 > N ^ 2
+  is false
+  Submission/Spec.lean:16530:22: error: Tactic `decide` proved that the proposition
+    4 ^ 160 * 10 / 9 > N ^ 2
+  is false
+  Submission/Spec.lean:16558:6: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:16559:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    p.1.1 ^ 2 + p.1.2 ^ 2
+  in the target expression
+    (have p := blocking_prime_by_idx idx;
+      have v := 4 ^ i * (10 * 16 ^ s + 16 * 4 ^ s + 10) / 9;
+      (N ^ 2 - v) % p == 0 && (N ^ 2 - v) % p ^ 2 != 0) =
+      true
+  
+  case neg
+  h : ∀ n > 0, _root_.a n > 0
+  h_pos : N > 0
+  h_a : a N > 0
+  p : (ℕ × ℕ) × ℕ × ℕ
+  h_dom :
+    p ∈
+      ((Finset.range (N + 1)).product (Finset.range (N + 1))).product
+        ((Finset.range (N + 1)).product (Finset.range (N + 1)))
+  h_sum : p.1.1 ^ 2 + p.1.2 ^ 2 + p.2.1 ^ 2 + p.2.2 ^ 2 = N ^ 2
+  h_zw : p.2.1 ≤ p.2.2
+  k : ℕ
+  hk_mem : k ∈ Finset.range (N + 1)
+  hk_eq : ↑p.1.1 ^ 2 - (3 * ↑p.1.2) ^ 2 = 4 ^ k
+  u v_pow : ℕ
+  h_uv : u + v_pow = 2 * k
+  h_le_v : u ≤ v_pow
+  h_eq_class : 36 * (p.1.1 ^ 2 + p.1.2 ^ 2) = 10 * 2 ^ (2 * v_pow) + 16 * 2 ^ (2 * k) + 10 * 2 ^ (2 * u)
+  hu_ge : u ≥ 1
+  i : ℕ := u - 1
+  s : ℕ := k - u
+  h_s_bounds : s < 40
+  h_i_bounds : i < 160
+  h_u_le_k : u ≤ k
+  h_eq_class' : 9 * (p.1.1 ^ 2 + p.1.2 ^ 2) = 4 ^ i * (10 * 16 ^ s + 16 * 4 ^ s + 10)
+  h_v_div : p.1.1 ^ 2 + p.1.2 ^ 2 = 4 ^ i * (10 * 16 ^ s + 16 * 4 ^ s + 10) / 9
+  h_two_sq : ∃ z w, z ^ 2 + w ^ 2 = N ^ 2 - (p.1.1 ^ 2 + p.1.2 ^ 2)
+  idx : ℕ := i * 40 + s
+  h_idx_lt : idx < 6401
+  h_div_idx : idx / 40 = i
+  h_mod_idx : idx % 40 = s
+  h_not_6400 : idx ≠ 6400
+  h✝ : ¬idx = 6400
+  h_blocked :
+    (have p := blocking_prime_by_idx idx;
+      have v := 4 ^ i * (10 * 16 ^ s + 16 * 4 ^ s + 10) / 9;
+      (N ^ 2 - v) % p == 0 && (N ^ 2 - v) % p ^ 2 != 0) =
+      true
+  ⊢ False
+  Submission/Spec.lean:16424:0: error: linter Lean.Linter.constructorNameAsVariable failed: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+

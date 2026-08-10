@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#print Nat.primeCounting
+#print Nat.primeCounting'
+#print Nat.count
+#print Nat.Prime
+#print Nat.prime_def_lt''
+#check Nat.count_strict_mono
+#check Nat.exists_of_count_lt_count
+#check Nat.count_pos
+#check Nat.count_eq_zero

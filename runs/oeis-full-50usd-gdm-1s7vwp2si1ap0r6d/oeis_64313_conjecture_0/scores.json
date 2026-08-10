@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:216:74: error: unsolved goals\nn : ℕ\nhn : n ≥ 2\n⊢ ⌊↑n / 4 * (π / ↑n).cot⌋.toNat = ⌊↑n ^ 2 / (4 * π) - π / 12⌋.toNat\n'oeis_64313_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_289411_conjecture_0",
+  "epoch": 1,
+  "uuid": "FS72N4cy68y6tmqxogMJbB",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 51,
+      "output_tokens": 48482,
+      "total_tokens": 1006227,
+      "input_tokens_cache_write": 54022,
+      "input_tokens_cache_read": 903672,
+      "reasoning_tokens": 7719,
+      "total_cost": 2.0017785
+    }
+  },
+  "oeis_id": "A289411"
+}

@@ -1,0 +1,32 @@
+import FormalConjectures.Util.ProblemImports
+
+example : ((2^171 + 1) / 9) % 18 = 3 := by
+  norm_num
+
+lemma two_pow_mod19_of_mod18_eq_3 (n : ℕ) (h : n % 18 = 3) : (2 ^ n) % 19 = 8 := by
+  have hn : n = 18 * (n / 18) + 3 := by
+    rw [← h]
+    exact (Nat.div_add_mod n 18).symm
+  rw [hn, pow_add, pow_mul]
+  have hbase : (2 ^ 18) ≡ 1 [MOD 19] := by norm_num [Nat.ModEq]
+  have hpow : (2 ^ 18) ^ (n / 18) ≡ 1 ^ (n / 18) [MOD 19] := hbase.pow _
+  have hmul : (2 ^ 18) ^ (n / 18) * 2 ^ 3 ≡ 1 ^ (n / 18) * 8 [MOD 19] := by
+    exact hpow.mul (by norm_num [Nat.ModEq])
+  exact hmul
+
+example : (2 ^ ((2^171 + 1) / 9)) % 19 = 8 := by
+  apply two_pow_mod19_of_mod18_eq_3
+  norm_num
+
+example : ¬ (171 ∣ 2 ^ ((2^171 + 1) / 9) + 1) := by
+  intro h
+  have h19 : 19 ∣ 2 ^ ((2^171 + 1) / 9) + 1 := dvd_trans (by norm_num : 19 ∣ 171) h
+  have hzero : (2 ^ ((2^171 + 1) / 9) + 1) % 19 = 0 := Nat.dvd_iff_mod_eq_zero.mp h19
+  have hpow : (2 ^ ((2^171 + 1) / 9)) % 19 = 8 := by
+    apply two_pow_mod19_of_mod18_eq_3
+    norm_num
+  have hnonzero : (2 ^ ((2^171 + 1) / 9) + 1) % 19 = 9 := by
+    rw [show (2 ^ ((2^171 + 1) / 9) + 1) % 19 = ((2 ^ ((2^171 + 1) / 9)) % 19 + 1 % 19) % 19 by omega]
+    rw [hpow]
+    norm_num
+  omega

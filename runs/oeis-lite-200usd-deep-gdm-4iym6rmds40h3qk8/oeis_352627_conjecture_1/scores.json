@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "oeis_352627_conjecture_1 : ∀ (n : ℕ), 0 < a n\nSubmission/Spec.lean:127:7: error: Type mismatch\n  representation_exists\nhas type\n  ∀ (n : ℕ),\n    ∃ x y z w, (fun x y => if y < 75 then x = y else True) (x ^ 2 + 2 * y ^ 2 + z ^ 4 + 4 * w ^ 4 + z ^ 2 * w ^ 2) n\nbut is expected to have type\n  ∀ (n : ℕ), ∃ x y z w, x ^ 2 + 2 * y ^ 2 + z ^ 4 + 4 * w ^ 4 + z ^ 2 * w ^ 2 = n",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

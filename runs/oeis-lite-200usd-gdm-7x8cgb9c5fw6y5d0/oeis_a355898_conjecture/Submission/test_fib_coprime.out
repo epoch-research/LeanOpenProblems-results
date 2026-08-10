@@ -1,0 +1,1 @@
+Nat.Prime.eq_one_or_self_of_dvd {p : ℕ} (pp : Nat.Prime p) (m : ℕ) (hm : m ∣ p) : m = 1 ∨ m = p

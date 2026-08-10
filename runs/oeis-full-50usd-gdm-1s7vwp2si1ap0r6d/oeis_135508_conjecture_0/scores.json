@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:705:6: error: Type mismatch\n  hq_not_dvd_pm1\nhas type\n  ¬q ∣ x_seq (q - 1)\nbut is expected to have type\n  False\nSubmission/Spec.lean:709:2: error: No goals to be solved",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:316:8: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  b ≥ 8\n  a ≥ 3\n  a ≥ 1\n  2*a - b ≤ -2\nwhere\n a := ↑(A096535 (z - 1))\n b := ↑(z - 1)",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

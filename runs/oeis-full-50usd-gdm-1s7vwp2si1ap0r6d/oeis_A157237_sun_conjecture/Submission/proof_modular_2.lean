@@ -1,0 +1,41 @@
+import FormalConjectures.Util.ProblemImports
+open Nat
+
+lemma summand_2_eq_zero_x1 (y : ℕ) (hy1 : 1 ≤ y) (hy2 : y ≤ 2) :
+  (if 3 > 2 ^ 1 + 11 * 2 ^ y then
+    if Nat.Prime (3 - (2 ^ 1 + 11 * 2 ^ y)) ∧ (3 - (2 ^ 1 + 11 * 2 ^ y)) % 6 = 1 then 1 else 0
+   else 0) = 0 := by
+  interval_cases y
+  · -- y = 1
+    rfl
+  · -- y = 2
+    rfl
+
+lemma summand_2_eq_zero_x2 (y : ℕ) (hy1 : 1 ≤ y) (hy2 : y ≤ 2) :
+  (if 3 > 2 ^ 2 + 11 * 2 ^ y then
+    if Nat.Prime (3 - (2 ^ 2 + 11 * 2 ^ y)) ∧ (3 - (2 ^ 2 + 11 * 2 ^ y)) % 6 = 1 then 1 else 0
+   else 0) = 0 := by
+  interval_cases y
+  · -- y = 1
+    rfl
+  · -- y = 2
+    rfl
+
+lemma summand_2_eq_zero (x y : ℕ) (hx1 : 1 ≤ x) (hx2 : x ≤ 2) (hy1 : 1 ≤ y) (hy2 : y ≤ 2) :
+  (if 3 > 2 ^ x + 11 * 2 ^ y then
+    if Nat.Prime (3 - (2 ^ x + 11 * 2 ^ y)) ∧ (3 - (2 ^ x + 11 * 2 ^ y)) % 6 = 1 then 1 else 0
+   else 0) = 0 := by
+  interval_cases x
+  · exact summand_2_eq_zero_x1 y hy1 hy2
+  · exact summand_2_eq_zero_x2 y hy1 hy2
+
+theorem a_eq_zero_2 : a 2 = 0 := by
+  dsimp [a]
+  apply Finset.sum_eq_zero
+  intro pair h_mem
+  rcases pair with ⟨x, y⟩
+  simp only [Finset.mem_product, Finset.mem_Icc] at h_mem
+  rcases h_mem with ⟨⟨hx1, hx2⟩, ⟨hy1, hy2⟩⟩
+  change x ≤ 2 at hx2
+  change y ≤ 2 at hy2
+  exact summand_2_eq_zero x y hx1 hx2 hy1 hy2

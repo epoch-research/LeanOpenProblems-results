@@ -1,0 +1,36 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:809:6: error: Tactic `rfl` failed: The left-hand side
+    ↑x ^ 2 + 3
+  is not definitionally equal to the right-hand side
+    ↑x * ↑x + 3
+  
+  q x : ℕ
+  hx_mem : x < q
+  hx_eq : ((x * x + 3) % q == 0) = true
+  ⊢ ↑x ^ 2 + 3 = ↑x * ↑x + 3
+  Submission/Spec.lean:823:24: error(lean.unknownIdentifier): Unknown identifier `beq_iff_ne`
+  Submission/Spec.lean:816:130: error: unsolved goals
+  q : ℕ
+  inst✝ : NeZero q
+  h : ∀ x ∈ List.range q, ¬((x * x + 3) % q == 0) = true
+  x : ZMod q
+  hx : x ^ 2 + 3 = 0
+  h_val : x.val < q
+  h_inst : ((x.val * x.val + 3) % q == 0) = false
+  ⊢ False
+  Submission/Spec.lean:834:91: error: unsolved goals
+  n : ℕ
+  h_exp : 2 ^ (58 * n + 26) + 2 = 2 * (2 ^ (58 * n + 25) + 1)
+  ⊢ (2 ^ 2) ^ (2 ^ (58 * n + 25) + 1) + 3 = (2 ^ (2 ^ (58 * n + 25) + 1)) ^ 2 + 3
+  Submission/Spec.lean:901:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ¬?b = true
+  in the target expression
+    (!has_sqrt_neg_three_bool q) = true
+  
+  case inl.h
+  q : ℕ
+  h_sqrt : (!has_sqrt_neg_three_bool q) = true
+  ⊢ ¬has_sqrt_neg_three q
+

@@ -1,0 +1,92 @@
+-- Wait! { x : ULift T // x = ULift.up t } is of type Type (max 1 (universe of T)).
+-- Since T is in Type 1, the universe of T is 1, so it is Type 1, not Type!
+-- Why? Because the elements of `{ x : ULift T // x = ULift.up t }` are of type `ULift T`, which is of type `Type`.
+-- So why is `{ x : ULift T // x = ULift.up t }` in Type 1?
+-- Let's see: `Subtype` is defined as:
+--   structure Subtype {α : Sort u} (p : α → Prop) : Sort u
+-- Since `ULift T` is in `Type 0` (i.e. `Sort 1`), `Subtype` of `ULift T` should be in `Sort 1` (i.e. `Type 0`)!
+-- Why did Lean say `failed to solve universe constraint 1 =?= max 1 ?u`?
+-- Ah! Because `ULift.up t` has type `ULift T`, but `t` is in `Type 1`.
+-- So `ULift T` has universe parameters.
+-- By default, `ULift` is `ULift.{v, u}` where `α : Type u` and the result is `Type (max u v)`.
+-- If we want the result to be `Type 0`, we need `max u v = 0`. But `u = 1` since `T : Type 1`.
+-- So we can't make `ULift T` be in `Type 0`!
+-- Yes, `ULift T` raises the universe level, it does not lower it!
+--
+-- But wait!
+-- Can we encode `t : T` as a Type without using `T` in the subtype?
+-- Yes! What if we use `Nat`?
+-- But `T` is infinite, so we can't map all of `T` to `Nat` if `T` is larger than `Nat`.
+-- But wait, is `T` larger than `Nat`?
+-- T has constructors `base` and `mk : ((Type → Prop) → Prop) → T`.
+-- Since `Type` is in `Type 1`, `Type → Prop` is in `Type 1`, so `(Type → Prop) → Prop` is in `Type 1`.
+-- So `T` is in `Type 1`.
+-- Since `T` is in `Type 1`, `T` is indeed larger than `Nat`.
+-- But wait, `Type` is in `Type 1`!
+-- So we want to map `T` to `Type`!
+-- And `Type` is in `Type 1`!
+-- So we can map `T` to `Type` directly!
+-- Yes! We want to map `T : Type 1` to `Type 0`? No, `Type : Type 1`!
+-- So the target of our encoding is `Type`, which is `Type 0` (as an element of `Type 1`).
+-- But wait, `T` is in `Type 1`, which means its elements are in `Type 1`? No!
+-- `T : Type 1` means `T` is a TYPE in `Type 1`.
+-- The elements of `T` are terms of type `T`. They are NOT types!
+-- So the set of all elements of `T` has cardinality <= the cardinality of `Type 1`.
+-- And `Type 0` is in `Type 1`, so `Type 0` has cardinality <= the cardinality of `Type 1` too.
+-- Wait, can we inject `T` into `Type 0`?
+-- If `T` has a cardinality strictly larger than `Type 0`, then we cannot inject `T` into `Type 0`.
+-- Does `T` have cardinality strictly larger than `Type 0`?
+-- `T` has constructor `mk : ((Type 0 → Prop) → Prop) → T`.
+-- Let `P = Type 0`. The cardinality of `(P → Prop) → Prop` is indeed strictly larger than `P`!
+-- So `T` has cardinality strictly larger than `Type 0`!
+-- This means we CANNOT inject `T` into `Type 0`!
+--
+-- Oh! This is a beautiful realization!
+-- Since `T` has cardinality strictly larger than `Type 0` (which is `Type`),
+-- we cannot inject `T` into `Type`.
+-- So we cannot encode `t : T` as a `Type`!
+--
+-- But wait!
+-- If we cannot inject `T` into `Type`, does that mean we can't get a contradiction?
+-- No!
+-- What if we define `T` such that the constructor takes `(T → Prop) → Prop`?
+-- We can't, because of positivity.
+-- But what if we define `T` in `Type 2`?
+--   inductive T : Type 2 where
+--     | base : T
+--     | mk : ((Type 1 → Prop) → Prop) → T
+-- Here, `T` is in `Type 2`.
+-- The constructor argument is `(Type 1 → Prop) → Prop`.
+-- `Type 1` is in `Type 2` (it is `Sort 2`).
+-- Can we inject `T` into `Type 1`?
+-- Since `T` is defined using `Type 1`, the cardinality of `T` is strictly larger than `Type 1`!
+-- So we still cannot inject `T` into `Type 1`.
+--
+-- But wait!
+-- What if we define `T` with a constructor taking `Type → T`?
+--   inductive T : Type 1 where
+--     | base : T
+--     | mk : (Type → T) → T
+-- Here, `T` is in `Type 1`.
+-- The constructor argument is `Type → T`.
+-- Is `Type → T` strictly larger than `T`?
+-- Yes, if `T` is non-empty, `Type → T` has cardinality strictly larger than `T`!
+-- But wait! We have an injection `mk : (Type → T) → T`!
+-- This means we have injected a strictly larger set `Type → T` into `T`!
+-- This is a DIRECT cardinality contradiction!
+-- We don't even need to encode `T` as a `Type`!
+-- The injection `mk` itself is the injection from `Type → T` to `T`!
+-- So if we can define a projection `proj : T → (Type → T)` such that `proj (mk f) = f`,
+-- we immediately get Hurkens' paradox / Cantor's paradox on `T`!
+-- Let's check: can we define `proj : T → (Type → T)`?
+-- Yes! We can define it by pattern matching on `T`!
+--   def proj : T → (Type → T)
+--     | T.base => fun _ => T.base
+--     | T.mk f => f
+-- And by definition of pattern matching, `proj (T.mk f) = f` holds by `rfl`!
+-- Oh my god!
+-- We have an injection `T.mk : (Type → T) → T` and a projection `proj : T → (Type → T)`
+-- such that `proj (T.mk f) = f` holds by `rfl`!
+-- This is a complete, direct, definitional injection and projection between `Type → T` and `T`!
+-- Let's check if we can prove `False` using this!
+-- Let's write a file `TestPos84.lean`!

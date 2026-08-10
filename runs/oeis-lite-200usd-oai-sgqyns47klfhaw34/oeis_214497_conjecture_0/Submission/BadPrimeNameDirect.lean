@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.prime_one
+#check Nat.Prime.one
+#check Nat.prime_zero
+#check Nat.Prime.zero
+#check prime_one
+#check prime_zero
+#check Nat.not_prime_one
+#check Nat.not_prime_zero

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:145:5: error: unsolved goals\nh1 : ∀ (n : ℕ), a n > 0\nh2 : ∀ (j k : ℕ), 3 ≤ j ∧ j ≤ k → ((∀ (n : ℕ), is_sum_of_G7_Pj_Pk n j k) ↔ (j, k) ∈ sun_polygonal_pairs_set)\nh36_iff : (∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 3 6) ↔ (3, 6) ∈ sun_polygonal_pairs_set\nh36 : ∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 3 6\nh66_iff : (∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 6 6) ↔ (6, 6) ∈ sun_polygonal_pairs_set\nh66_not : ¬∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 6 6\n⊢ False",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

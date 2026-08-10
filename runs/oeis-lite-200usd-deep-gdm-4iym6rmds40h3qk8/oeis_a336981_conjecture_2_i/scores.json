@@ -1,0 +1,182 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 7 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 10 declarations.\n------------------\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration t: definition type or value mismatch\n  Value mismatch (values differ)\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a336981_conjecture_2_i: theorem type mismatch\n  Expected type: Eq.{1} Real (tsum.{0, 0} Real Nat Real.instAddCommMonoid (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) (fun (k : Nat) => t k) (SummationFilter.unconditional.{0} Nat)) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (OfNat.ofNat.{0} Real 5390 (instOfNatAtLeastTwo.{0} Real 5390 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 5389 (instOfNatNat 5389)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 5388 (instOfNatNat 5388)))))) Real.pi)\n  Got type:      Eq.{1} Real (tsum.{0, 0} Real Nat Real.instAddCommMonoid (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) (fun (k : Nat) => t k) (SummationFilter.unconditional.{0} Nat)) (HDiv.hDiv.{0, 0, 0} Real Real Real my_hdiv (OfNat.ofNat.{0} Real 5390 (instOfNatAtLeastTwo.{0} Real 5390 Real.instNatCast (Nat.instAtLeastTwoHAddOfNat (OfNat.ofNat.{0} Nat 5389 (instOfNatNat 5389)) (Nat.instNeZeroSucc (OfNat.ofNat.{0} Nat 5388 (instOfNatNat 5388)))))) Real.pi)\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "t._proof_3",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "t._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "t._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "t",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": "defnCheck"
+          }
+        ],
+        [
+          "oeis_a336981_conjecture_2_i",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": "thmType"
+          }
+        ],
+        [
+          "T_k",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

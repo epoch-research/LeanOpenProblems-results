@@ -1,0 +1,43 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:552:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    0 ≤ c ≤ 7
+    b ≥ 140
+  where
+   b := ↑(N - 1)
+   c := ↑(a (N - 1))
+   d := ↑(count_a_eq (N - 1) m)
+  Submission/Spec.lean:553:8: error: unsolved goals
+  case neg
+  m : ℕ
+  hm : m ≠ 8
+  N : ℕ
+  ih : ∀ m_1 < N, 120 ≤ m_1 → (count_a_eq m_1 m + if _root_.a m_1 = m then 2 else 1) ≤ count_a_eq m_1 8
+  hN : 120 ≤ N
+  h_small : ¬N ≤ 140
+  h_gt : N > 140
+  h_m : a N = m
+  h_eq_1 : N = N - 1 + 1
+  h_8_1 : ¬a (N - 1) = 8
+  h_m_1 : ¬a (N - 1) = m
+  ⊢ count_a_eq (N - 1) m + 0 + 2 ≤ count_a_eq (N - 1) 8 + 0
+  Submission/Spec.lean:554:6: error: No goals to be solved
+  Submission/Spec.lean:838:8: error: unsolved goals
+  case neg
+  m : ℕ
+  hm : m ≠ 8
+  N : ℕ
+  ih : ∀ m_1 < N, 120 ≤ m_1 → (count_a_eq m_1 m + if _root_.a m_1 = m then 2 else 1) ≤ count_a_eq m_1 8
+  hN : 120 ≤ N
+  h_small : ¬N ≤ 140
+  h_gt : N > 140
+  h_m : ¬a N = m
+  h_eq_1 : N = N - 1 + 1
+  h_8_1 : ¬a (N - 1) = 8
+  h_m_1 : ¬a (N - 1) = m
+  ⊢ count_a_eq (N - 1) m + 0 + 1 ≤ count_a_eq (N - 1) 8 + 0
+  Submission/Spec.lean:839:6: error: No goals to be solved
+

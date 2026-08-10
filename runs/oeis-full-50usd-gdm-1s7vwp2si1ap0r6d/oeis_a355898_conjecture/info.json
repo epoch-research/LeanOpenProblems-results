@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a355898_conjecture",
+  "epoch": 1,
+  "uuid": "HccjCUrEagrsSKqC7QLBiu",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 5294275,
+      "output_tokens": 202701,
+      "total_tokens": 50551474,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 44694506,
+      "reasoning_tokens": 359992,
+      "total_cost": 16.469897399999994
+    }
+  },
+  "oeis_id": "A355898"
+}

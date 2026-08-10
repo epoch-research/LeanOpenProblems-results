@@ -1,0 +1,197 @@
+/workspace/leanproject/Submission/test_gcd_proof11.lean:10:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:11:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:20:21: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:23:23: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:18:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:33:15: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:35:17: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:29:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:33:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:35:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:67:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_gcd_proof11.lean:68:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_gcd_proof11.lean:69:59: error: Tactic `decide` failed for proposition
+  (B 3 - 1).gcd (B 2 - 1) = 1
+because its `Decidable` instance
+  (B 3 - 1).instDecidableCoprime (B 2 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 3 - 1).gcd (B 2 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_gcd_proof11.lean:73:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof11.lean:79:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:190:49: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 1
+  b + c ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * ↑q3
+ c := ↑d * (q1 - ↑q3)
+/workspace/leanproject/Submission/test_gcd_proof11.lean:193:103: error: mod_cast has type
+  B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val
+but is expected to have type
+  B (k + 4) * B (k + 2) = B (k + 3) ^ 2 + C_val
+/workspace/leanproject/Submission/test_gcd_proof11.lean:200:43: error: Application type mismatch: The argument
+  h_even
+has type
+  Even (k + 2)
+but is expected to have type
+  Even (k + 1)
+in the application
+  h_cass.left h_even
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_gcd_proof11.lean:204:61: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 2 + 1) - 1).gcd (B (k + 2) - 1) = 1
+d : ℕ := (B (k + 4) - 1).gcd (B (k + 3) - 1)
+hd1 : d ∣ B (k + 4) - 1
+hd2 : d ∣ B (k + 3) - 1
+h_pos1 : 1 ≤ B (k + 4)
+h_pos2 : 1 ≤ B (k + 3)
+h_pos3 : 1 ≤ B (k + 2)
+h_pos4 : 1 ≤ B (k + 1)
+q2 : ℤ
+hq2 : ↑(B (k + 4)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 3)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 2) = d * q3
+hBkp1_z : ↑(B (k + 2)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 3)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 4)) = ↑d * q2 + 1
+h_rec_actual : B (k + 3) = B (k + 2) + B (k + 1)
+h_rec_actual_z : ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+hBk_z : ↑(B (k + 1)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 1)) - 1
+hd_Bkm1_nat : d ∣ B (k + 1) - 1
+h_cass :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_even : Even (k + 2)
+h_odd_kp1 : Odd (k + 3)
+h_cass_kp1 :
+  (Even (k + 3) → B (k + 3 + 1) ^ 2 = B (k + 3 + 2) * B (k + 3) + C_val) ∧
+    (Odd (k + 3) → B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val)
+h_cass_odd_kp1 : B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val
+h_cast2 : ↑(B (k + 4)) * ↑(B (k + 2)) = ↑(B (k + 3)) ^ 2 + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_even : B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+h_cast : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) - 1
+⊢ -2 + (↑d * ↑q3 - ↑d * q1 * 2) + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2) =
+    ↑d * ↑q3 - ↑d * q1 * 2 + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2)
+/workspace/leanproject/Submission/test_gcd_proof11.lean:213:45: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 1
+  b + c ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * ↑q3
+ c := ↑d * (q1 - ↑q3)
+/workspace/leanproject/Submission/test_gcd_proof11.lean:214:42: error: Application type mismatch: The argument
+  h_odd
+has type
+  Odd (k + 2)
+but is expected to have type
+  Odd (k + 1)
+in the application
+  h_cass.right h_odd
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_gcd_proof11.lean:218:61: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 2 + 1) - 1).gcd (B (k + 2) - 1) = 1
+d : ℕ := (B (k + 4) - 1).gcd (B (k + 3) - 1)
+hd1 : d ∣ B (k + 4) - 1
+hd2 : d ∣ B (k + 3) - 1
+h_pos1 : 1 ≤ B (k + 4)
+h_pos2 : 1 ≤ B (k + 3)
+h_pos3 : 1 ≤ B (k + 2)
+h_pos4 : 1 ≤ B (k + 1)
+q2 : ℤ
+hq2 : ↑(B (k + 4)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 3)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 2) = d * q3
+hBkp1_z : ↑(B (k + 2)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 3)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 4)) = ↑d * q2 + 1
+h_rec_actual : B (k + 3) = B (k + 2) + B (k + 1)
+h_rec_actual_z : ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+hBk_z : ↑(B (k + 1)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 1)) - 1
+hd_Bkm1_nat : d ∣ B (k + 1) - 1
+h_cass :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 2)
+h_odd : Odd (k + 2)
+h_cass_odd : B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1
+⊢ 2 + ↑d * q1 * 2 + (-(↑d * ↑q3) - ↑d ^ 2 * q1 * ↑q3) + (↑d ^ 2 * q1 ^ 2 - ↑d ^ 2 * ↑q3 ^ 2) =
+    ↑d * q1 * 2 + (-(↑d * ↑q3) - ↑d ^ 2 * q1 * ↑q3) + (↑d ^ 2 * q1 ^ 2 - ↑d ^ 2 * ↑q3 ^ 2)
+/workspace/leanproject/Submission/test_gcd_proof11.lean:222:45: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f - g ≥ 0
+  e ≥ 0
+  e + f - g ≥ 0
+  c ≥ 0
+  b ≥ 1
+  b + c ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * ↑q3
+ c := ↑d * (q1 - ↑q3)
+ e := ↑(B (k + 1 + 1) ^ 2)
+ f := ↑(B (k + 3)) * ↑(B (k + 1))
+ g := ↑(B (k + 2)) ^ 2
+/workspace/leanproject/Submission/test_gcd_proof11.lean:245:17: error(lean.unknownIdentifier): Unknown constant `Nat.dvd_prime`
+/workspace/leanproject/Submission/test_gcd_proof11.lean:245:65: error: Tactic `rcases` failed: `x✝ : ?m.1747` is not an inductive datatype

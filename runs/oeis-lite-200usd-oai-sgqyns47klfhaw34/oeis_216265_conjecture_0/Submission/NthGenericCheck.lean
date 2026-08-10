@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.count_le_iff_le_nth
+#check Nat.lt_nth_iff_count_lt
+#check Nat.le_nth_count
+#check Nat.le_nth_count'
+#check Nat.nth_lt_of_lt_count
+#check Nat.count_nth_of_lt_card_finite
+#check Nat.nth_count
+#check Nat.nth_strictMono
+#check Nat.nth_mem_of_infinite

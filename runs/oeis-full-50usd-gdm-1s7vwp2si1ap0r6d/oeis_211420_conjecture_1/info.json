@@ -1,0 +1,20 @@
+{
+  "id": "oeis_211420_conjecture_1",
+  "epoch": 1,
+  "uuid": "4smziMcrAVov7BNnw9SouK",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 10983653,
+      "output_tokens": 248915,
+      "total_tokens": 88092348,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 74994701,
+      "reasoning_tokens": 1865079,
+      "total_cost": 29.964919650000006
+    }
+  },
+  "oeis_id": "A211420"
+}

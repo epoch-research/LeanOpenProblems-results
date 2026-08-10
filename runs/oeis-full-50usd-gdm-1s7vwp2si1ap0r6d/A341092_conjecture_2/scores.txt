@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:423:38: error: Type mismatch
+    h_ineq_3
+  has type
+    2 * (k' + 1) ≤ N.choose k' * (2 * (k' + 1) - (N - k'))
+  but is expected to have type
+    N.choose k' * (2 * (k' + 1) - (N - k')) ≤ 2 * (k' + 1)
+  Submission/Spec.lean:431:8: warning: declaration uses 'sorry'
+

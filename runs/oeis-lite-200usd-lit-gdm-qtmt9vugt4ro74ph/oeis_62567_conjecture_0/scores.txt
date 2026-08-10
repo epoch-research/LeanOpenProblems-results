@@ -1,0 +1,82 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:821:60: error: numerals are data in Lean, but the expected type is a proposition
+    2 ≤ ?m.48 : Prop
+  Submission/Spec.lean:821:67: error: Application type mismatch: The argument
+    List ℕ
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    @decide (List ℕ)
+  Submission/Spec.lean:892:84: error: numerals are data in Lean, but the expected type is a proposition
+    2 ≤ ?m.66 : Prop
+  Submission/Spec.lean:892:91: error: Application type mismatch: The argument
+    List ℕ
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    @decide (List ℕ)
+  Submission/Spec.lean:923:88: error: numerals are data in Lean, but the expected type is a proposition
+    2 ≤ ?m.69 : Prop
+  Submission/Spec.lean:923:95: error: Application type mismatch: The argument
+    List ℕ
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    @decide (List ℕ)
+  Submission/Spec.lean:1154:26: error: numerals are data in Lean, but the expected type is a proposition
+    2 ≤ ?m.28 : Prop
+  Submission/Spec.lean:1154:4: error: Tactic `apply` failed: could not unify the type of `digits_ofDigits sorry ?m.30 sorry sorry`
+    digits ?m.28 (ofDigits ?m.28 ?m.30) = ?m.30
+  with the goal
+    digits 10 (ofDigits 10 (L k)) = L k
+  
+  k : ℕ
+  h_of : ofDigits 10 (L k) = 68899199886 * S k
+  ⊢ digits 10 (ofDigits 10 (L k)) = L k
+  Submission/Spec.lean:1154:33: error: Application type mismatch: The argument
+    List ℕ
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    @decide (List ℕ)
+  Submission/Spec.lean:1335:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    a 9
+  in the target expression
+    a (3 ^ 2) = 9 ↔ 2 = 2 ∨ 2 = 3 ∨ 2 = 4
+  
+  case pos
+  hn : 2 ≤ 2
+  this : 10 ^ 3 ^ (2 - 2) - 1 = 9
+  ⊢ a (3 ^ 2) = 9 ↔ 2 = 2 ∨ 2 = 3 ∨ 2 = 4
+  Submission/Spec.lean:1340:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    a 27
+  in the target expression
+    a (3 ^ 3) = 999 ↔ 3 = 2 ∨ 3 = 3 ∨ 3 = 4
+  
+  case pos
+  hn : 2 ≤ 3
+  h2 : ¬3 = 2
+  this : 10 ^ 3 ^ (3 - 2) - 1 = 999
+  ⊢ a (3 ^ 3) = 999 ↔ 3 = 2 ∨ 3 = 3 ∨ 3 = 4
+  Submission/Spec.lean:1345:18: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    a 81
+  in the target expression
+    a (3 ^ 4) = 999999999 ↔ 4 = 2 ∨ 4 = 3 ∨ 4 = 4
+  
+  case pos
+  hn : 2 ≤ 4
+  h2 : ¬4 = 2
+  h3 : ¬4 = 3
+  this : 10 ^ 3 ^ (4 - 2) - 1 = 999999999
+  ⊢ a (3 ^ 4) = 999999999 ↔ 4 = 2 ∨ 4 = 3 ∨ 4 = 4
+

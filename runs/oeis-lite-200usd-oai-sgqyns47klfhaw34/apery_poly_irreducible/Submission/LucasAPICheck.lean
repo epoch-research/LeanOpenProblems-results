@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Choose.choose_modEq_choose_mod_mul_choose
+#check Choose.choose_modEq_prod_range_choose
+#check Choose.choose_modEq_prod_range_choose_nat
+#check Nat.choose_odd_iff
+#check Nat.odd_choose
+#check Nat.choose_eq_zero_iff
+#check padicValNat_choose
+#check Nat.Prime.dvd_choose_iff
+#check Nat.dvd_choose_self

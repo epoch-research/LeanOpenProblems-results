@@ -1,0 +1,20 @@
+{
+  "id": "A379240_conjecture_equality",
+  "epoch": 1,
+  "uuid": "agBB3MgDdh8X3Y5xzRA2tn",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 133,
+      "output_tokens": 112727,
+      "total_tokens": 5456943,
+      "input_tokens_cache_write": 149360,
+      "input_tokens_cache_read": 5194723,
+      "reasoning_tokens": 17855,
+      "total_cost": 6.349701500000001
+    }
+  },
+  "oeis_id": "A379240"
+}

@@ -1,0 +1,92 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_resource
+  killed (exit 134)
+  Submission/Spec.lean:166:36: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:167:36: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:172:36: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:173:36: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:176:35: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:177:35: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:179:42: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:182:38: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:187:39: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:191:48: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:192:50: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:194:51: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:195:53: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:166:36: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:167:36: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:172:36: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:173:36: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:176:35: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:177:35: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:179:42: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:182:38: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:187:39: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:191:48: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:192:50: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:194:51: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:195:53: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:414:33: warning: This simp argument is unused:
+    LucasRing.mul_im
+  
+  Hint: Omit it from the simp argument list.
+    simp only [LucasRing.mul_re,̵ ̵L̵u̵c̵a̵s̵R̵i̵n̵g̵.̵m̵u̵l̵_̵i̵m̵]
+  
+  Note: This linter can be disabl
+  
+  Stack overflow detected. Aborting.
+

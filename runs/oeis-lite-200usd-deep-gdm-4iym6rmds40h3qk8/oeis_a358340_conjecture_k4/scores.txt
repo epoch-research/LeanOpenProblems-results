@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_timeout
+  Command timed out after 1800s. ExecResult(success=False, returncode=124, stdout='', stderr="warning: mathlib: repository '/workspace/leanproject/.lake/packages/mathlib' has local changes\n")
+

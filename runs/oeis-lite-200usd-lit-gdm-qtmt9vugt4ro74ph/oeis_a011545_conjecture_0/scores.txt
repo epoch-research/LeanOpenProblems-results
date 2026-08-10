@@ -1,0 +1,453 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1818:61: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 0
+    e ≥ 0
+    0 ≤ c - 10*d ≤ 9
+    a ≥ 1
+    a - b ≤ -1
+  where
+   a := r
+   b := 10 ^ m
+   c := q
+   d := q / 10
+   e := ↑n
+   f := ↑m
+  Submission/Spec.lean:1856:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    10 ^ (m + 1)
+  in the target expression
+    r < 10 ^ (m + 1)
+  
+  n : ℕ
+  hT : T_prop n
+  m : ℕ
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ m
+  q : ℤ
+  h1 : π * 10 ^ (n + 1) - ↑r / 10 ^ m < ↑q
+  h2 : ↑q < π * 10 ^ (n + 1) - ↑r / 10 ^ m + 2 * 10 ^ (-(↑(n + 1) + ↑m + 1))
+  q' : ℤ := q / 10
+  r' : ℤ := q % 10
+  hq : q = 10 * q' + r'
+  hr'_ge : 0 ≤ r'
+  hr'_le : r' ≤ 9
+  h_pow_succ : 10 ^ (n + 1) = 10 ^ n * 10
+  h_zpow_succ : 10 ^ (-(↑n + 1 + ↑m + 1)) = 10 ^ (-(↑n + ↑m + 1)) / 10 / 10
+  hr'0 : r' = 0
+  h_q_eq : ↑q = 10 * ↑q'
+  h1_simp : π * 10 ^ n - ↑r / 10 ^ (m + 1) < ↑q'
+  h2_simp : ↑q' < π * 10 ^ n - ↑r / 10 ^ (m + 1) + 2 * 10 ^ (-(↑n + ↑m + 1 + 1))
+  h_contra :
+    ∃ q_val,
+      π * 10 ^ n - ↑r / 10 ^ (m + 1) < ↑q_val ∧ ↑q_val < π * 10 ^ n - ↑r / 10 ^ (m + 1) + 2 * 10 ^ (-(↑n + ↑m + 1 + 1))
+  h_pow_succ_nat : 10 ^ (m + 1) = 10 ^ m * 10
+  ⊢ r < 10 ^ (m + 1)
+  Submission/Spec.lean:1865:6: error: Tactic `rfl` failed: The left-hand side
+    ↑R
+  is not definitionally equal to the right-hand side
+    ↑r + ↑r' * 10 ^ m
+  
+  n : ℕ
+  hT : T_prop n
+  m : ℕ
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ m
+  q : ℤ
+  h1 : π * 10 ^ (n + 1) - ↑r / 10 ^ m < ↑q
+  h2 : ↑q < π * 10 ^ (n + 1) - ↑r / 10 ^ m + 2 * 10 ^ (-(↑(n + 1) + ↑m + 1))
+  q' : ℤ := q / 10
+  r' : ℤ := q % 10
+  hq : q = 10 * q' + r'
+  hr'_ge : 0 ≤ r'
+  hr'_le : r' ≤ 9
+  h_pow_succ : 10 ^ (n + 1) = 10 ^ n * 10
+  h_zpow_succ : 10 ^ (-(↑n + 1 + ↑m + 1)) = 10 ^ (-(↑n + ↑m + 1)) / 10 / 10
+  hr'N : r' ≠ 0
+  hr'_ge1 : 1 ≤ r'
+  R : ℤ := r + r' * 10 ^ m
+  h_q_eq : ↑q = 10 * ↑q' + ↑r'
+  ⊢ ↑R = ↑r + ↑r' * 10 ^ m
+  Submission/Spec.lean:1873:6: error: No goals to be solved
+  Submission/Spec.lean:1880:6: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  hT : T_prop n
+  m : ℕ
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ m
+  q : ℤ
+  h1 : π * 10 ^ (n + 1) - ↑r / 10 ^ m < ↑q
+  h2 : ↑q < π * 10 ^ (n + 1) - ↑r / 10 ^ m + 2 * 10 ^ (-(↑(n + 1) + ↑m + 1))
+  q' : ℤ := q / 10
+  r' : ℤ := q % 10
+  hq : q = 10 * q' + r'
+  hr'_ge : 0 ≤ r'
+  hr'_le : r' ≤ 9
+  h_pow_succ : 10 ^ (n + 1) = 10 ^ n * 10
+  h_zpow_succ : 10 ^ (-(↑n + 1 + ↑m + 1)) = 10 ^ (-(↑n + ↑m + 1)) / 10 / 10
+  hr'N : r' ≠ 0
+  hr'_ge1 : 1 ≤ r'
+  R : ℤ := r + r' * 10 ^ m
+  h_q_eq : ↑q = 10 * ↑q' + ↑r'
+  h_R_cast : ↑R = ↑r + ↑r' * 10 ^ m
+  h_div_eq : (↑r + ↑r' * 10 ^ m) / 10 ^ (m + 1) = ↑r / 10 ^ (m + 1) + ↑r' / 10
+  h_pow_m : 10 ^ (m + 1) = 10 ^ m * 10
+  h1_rw : π * (10 ^ n * 10) - ↑r / 10 ^ m < 10 * ↑q' + ↑r'
+  a✝ : ↑q' ≤ π * 10 ^ n - (↑r / 10 ^ (m + 1) + ↑r' / 10)
+  ⊢ False
+  failed
+  Submission/Spec.lean:1894:6: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  hT : T_prop n
+  m : ℕ
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ m
+  q : ℤ
+  h1 : π * 10 ^ (n + 1) - ↑r / 10 ^ m < ↑q
+  h2 : ↑q < π * 10 ^ (n + 1) - ↑r / 10 ^ m + 2 * 10 ^ (-(↑(n + 1) + ↑m + 1))
+  q' : ℤ := q / 10
+  r' : ℤ := q % 10
+  hq : q = 10 * q' + r'
+  hr'_ge : 0 ≤ r'
+  hr'_le : r' ≤ 9
+  h_pow_succ : 10 ^ (n + 1) = 10 ^ n * 10
+  h_zpow_succ : 10 ^ (-(↑n + 1 + ↑m + 1)) = 10 ^ (-(↑n + ↑m + 1)) / 10 / 10
+  hr'N : r' ≠ 0
+  hr'_ge1 : 1 ≤ r'
+  R : ℤ := r + r' * 10 ^ m
+  h_q_eq : ↑q = 10 * ↑q' + ↑r'
+  h_R_cast : ↑R = ↑r + ↑r' * 10 ^ m
+  h_div_eq : (↑r + ↑r' * 10 ^ m) / 10 ^ (m + 1) = ↑r / 10 ^ (m + 1) + ↑r' / 10
+  h_pow_m : 10 ^ (m + 1) = 10 ^ m * 10
+  h1_simp : π * 10 ^ n - ↑R / 10 ^ (m + 1) < ↑q'
+  h2_rw : 10 * ↑q' + ↑r' < π * (10 ^ n * 10) - ↑r / 10 ^ m + 2 * (10 ^ (-(↑n + ↑m + 1)) / 10 / 10)
+  h_zpow_lt : 2 * 10 ^ (-(↑n + ↑m + 1)) / 10 / 10 < 2 * 10 ^ (-(↑n + ↑m + 1 + 1))
+  a✝ : π * 10 ^ n - (↑r / 10 ^ (m + 1) + ↑r' / 10) + 2 * 10 ^ (-(↑n + ↑m + 1 + 1)) ≤ ↑q'
+  ⊢ False
+  failed
+  Submission/Spec.lean:1902:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    10 ^ (m + 1)
+  in the target expression
+    R < 10 ^ (m + 1)
+  
+  n : ℕ
+  hT : T_prop n
+  m : ℕ
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ m
+  q : ℤ
+  h1 : π * 10 ^ (n + 1) - ↑r / 10 ^ m < ↑q
+  h2 : ↑q < π * 10 ^ (n + 1) - ↑r / 10 ^ m + 2 * 10 ^ (-(↑(n + 1) + ↑m + 1))
+  q' : ℤ := q / 10
+  r' : ℤ := q % 10
+  hq : q = 10 * q' + r'
+  hr'_ge : 0 ≤ r'
+  hr'_le : r' ≤ 9
+  h_pow_succ : 10 ^ (n + 1) = 10 ^ n * 10
+  h_zpow_succ : 10 ^ (-(↑n + 1 + ↑m + 1)) = 10 ^ (-(↑n + ↑m + 1)) / 10 / 10
+  hr'N : r' ≠ 0
+  hr'_ge1 : 1 ≤ r'
+  R : ℤ := r + r' * 10 ^ m
+  h_q_eq : ↑q = 10 * ↑q' + ↑r'
+  h_R_cast : ↑R = ↑r + ↑r' * 10 ^ m
+  h_div_eq : (↑r + ↑r' * 10 ^ m) / 10 ^ (m + 1) = ↑r / 10 ^ (m + 1) + ↑r' / 10
+  h_pow_m : 10 ^ (m + 1) = 10 ^ m * 10
+  h1_simp : π * 10 ^ n - ↑R / 10 ^ (m + 1) < ↑q'
+  h2_simp : ↑q' < π * 10 ^ n - ↑R / 10 ^ (m + 1) + 2 * 10 ^ (-(↑n + ↑m + 1 + 1))
+  h_contra :
+    ∃ q_val,
+      π * 10 ^ n - ↑R / 10 ^ (m + 1) < ↑q_val ∧ ↑q_val < π * 10 ^ n - ↑R / 10 ^ (m + 1) + 2 * 10 ^ (-(↑n + ↑m + 1 + 1))
+  hR1 : 1 ≤ R
+  h_pow_succ_nat : 10 ^ (m + 1) = 10 ^ m * 10
+  ⊢ R < 10 ^ (m + 1)
+  Submission/Spec.lean:1921:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    10 ^ (m + 1)
+  in the target expression
+    r < 10 ^ (m + 1)
+  
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h1 : π * 10 ^ 60 - ↑r / 10 ^ (m + 1) < ↑q
+  h2 : ↑q < π * 10 ^ 60 - ↑r / 10 ^ (m + 1) + 2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  ⊢ r_prev < 10 ^ m
+  Submission/Spec.lean:1938:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    10 ^ 60
+  in the target expression
+    π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 < ↑q
+  
+  case pos
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_0 : r_prev = 0
+  hr_range : 1 ≤ r ∧ r ≤ 9
+  h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+  h_pow_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+  h_ten_neg : 2 * 10 ^ (-(60 + (↑m + 1) + 1)) ≤ 2 * 10 ^ (-62)
+  h_ten_neg_62 : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+  hm : m = 0
+  h1 : π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 < ↑q
+  h2 :
+    ↑q <
+      π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 +
+        1 / 50000000000000000000000000000000000000000000000000000000000000
+  ⊢ False
+  Submission/Spec.lean:1979:10: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h1 : π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) < ↑q
+  h2 :
+    ↑q <
+      π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) +
+        2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_0 : r_prev = 0
+  hr_range : 1 ≤ r ∧ r ≤ 9
+  h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+  h_pow_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+  h_ten_neg : 2 * 10 ^ (-(60 + (↑m + 1) + 1)) ≤ 2 * 10 ^ (-62)
+  h_ten_neg_62 : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+  hm : ¬m = 0
+  h_m_pos : 0 < 10 ^ (m + 1)
+  h_scale :
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286208 =
+      3.141592653589793238462643383279502884197169399375105820974944592307816406286208 *
+        1000000000000000000000000000000000000000000000000000000000000
+  h_div_lt_one : ↑r / 10 ^ (m + 1) < 1
+  a✝ : ↑q ≤ 3141592653589793238462643383279502884197169399375105820974944
+  ⊢ False
+  failed
+  Submission/Spec.lean:1989:12: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h1 : π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) < ↑q
+  h2 :
+    ↑q <
+      π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) +
+        2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_0 : r_prev = 0
+  hr_range : 1 ≤ r ∧ r ≤ 9
+  h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+  h_pow_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+  h_ten_neg : 2 * 10 ^ (-(60 + (↑m + 1) + 1)) ≤ 2 * 10 ^ (-62)
+  h_ten_neg_62 : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+  hm : ¬m = 0
+  h_m_pos : 0 < 10 ^ (m + 1)
+  h_q_gt_real : 3141592653589793238462643383279502884197169399375105820974944 < ↑q
+  h_scale :
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 =
+      3.141592653589793238462643383279502884197169399375105820974944592307816406286210 *
+        1000000000000000000000000000000000000000000000000000000000000
+  this✝¹ : 0 < ↑r / 10 ^ (m + 1)
+  this✝ : -(60 + (↑m + 1) + 1) ≤ -63
+  h_lt_63 : 10 ^ (-(60 + (↑m + 1) + 1)) ≤ 10 ^ (-63)
+  this : 10 ^ (-63) < 1e-6 / 2
+  a✝ : 1e-6 ≤ 2 * 10 ^ (-(60 + (↑m + 1) + 1))
+  ⊢ False
+  failed
+  Submission/Spec.lean:1990:10: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h1 : π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) < ↑q
+  h2 :
+    ↑q <
+      π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 ^ (m + 1) +
+        2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_0 : r_prev = 0
+  hr_range : 1 ≤ r ∧ r ≤ 9
+  h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+  h_pow_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+  h_ten_neg : 2 * 10 ^ (-(60 + (↑m + 1) + 1)) ≤ 2 * 10 ^ (-62)
+  h_ten_neg_62 : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+  hm : ¬m = 0
+  h_m_pos : 0 < 10 ^ (m + 1)
+  h_q_gt_real : 3141592653589793238462643383279502884197169399375105820974944 < ↑q
+  h_scale :
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 =
+      3.141592653589793238462643383279502884197169399375105820974944592307816406286210 *
+        1000000000000000000000000000000000000000000000000000000000000
+  this : 0 < ↑r / 10 ^ (m + 1)
+  h_ten_neg_strict : 2 * 10 ^ (-(60 + (↑m + 1) + 1)) < 1e-6
+  a✝ : 3141592653589793238462643383279502884197169399375105820974945 ≤ ↑q
+  ⊢ False
+  failed
+  Submission/Spec.lean:2020:14: error: not a positivity goal
+  Submission/Spec.lean:2021:14: error: Type mismatch
+    hr_rem_real
+  has type
+    ↑r_rem < 10
+  but is expected to have type
+    0 < 10 ^ m * 10
+  Submission/Spec.lean:2025:16: error(lean.unknownIdentifier): Unknown identifier `one_div_le_one_iff₀`
+  Submission/Spec.lean:2028:8: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h2 : ↑q < π * 10 ^ 60 - ↑r / 10 ^ (m + 1) + 2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  h1 : π * 10 ^ 60 - (↑r_prev / 10 ^ m + ↑r_rem / 10 ^ (m + 1)) < 10 * ↑(q / 10) + ↑(q % 10)
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_ne : r_prev ≠ 0
+  hr_prev_ge1 : 1 ≤ r_prev
+  hq_eq : ↑q = 10 * ↑(q / 10) + ↑(q % 10)
+  q_prev : ℤ := q / 10
+  r_rem_q : ℤ := q % 10
+  h_div_eq : ↑r / 10 ^ (m + 1) = ↑r_prev / 10 ^ m + ↑r_rem / 10 ^ (m + 1)
+  hr_rem_q_ge : 0 ≤ ↑r_rem_q
+  hr_rem_real : ↑r_rem < 10
+  hr_rem_ge0 : 0 ≤ ↑r_rem
+  h_ten_m_ge : 10 ^ m ≥ 1
+  h_div_lt : ↑r_rem / 10 ^ (m + 1) < 1
+  a✝ : ↑q_prev ≤ π * 10 ^ 60 - ↑r_prev / 10 ^ m
+  ⊢ False
+  failed
+  Submission/Spec.lean:2044:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    2 * 10 ^ (-(61 + (↑m + 1) + 1))
+  in the target expression
+    10 * ↑(q / 10) + ↑(q % 10) <
+      π * 10 ^ 60 - (↑r_prev / 10 ^ m + ↑r_rem / 10 ^ (m + 1)) + 2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  
+  m : ℕ
+  IH :
+    ∀ (r : ℤ),
+      1 ≤ r →
+        r < 10 ^ m → ¬∃ q, π * 10 ^ 60 - ↑r / 10 ^ m < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ m + 2 * 10 ^ (-(↑60 + ↑m + 1))
+  r : ℤ
+  hr1 : 1 ≤ r
+  hr2 : r < 10 ^ (m + 1)
+  q : ℤ
+  h1 : π * 10 ^ 60 - ↑r / 10 ^ (m + 1) < ↑q
+  r_prev : ℤ := r / 10
+  r_rem : ℤ := r % 10
+  h2 :
+    10 * ↑(q / 10) + ↑(q % 10) <
+      π * 10 ^ 60 - (↑r_prev / 10 ^ m + ↑r_rem / 10 ^ (m + 1)) + 2 * 10 ^ (-(↑60 + ↑(m + 1) + 1))
+  hr_eq : r = 10 * r_prev + r_rem
+  hr_rem_ge : 0 ≤ r_rem
+  hr_rem_le : r_rem ≤ 9
+  h_pow_succ_r : 10 ^ (m + 1) = 10 ^ m * 10
+  hr_prev_lt : r_prev < 10 ^ m
+  hr_prev_ne : r_prev ≠ 0
+  hr_prev_ge1 : 1 ≤ r_prev
+  hq_eq : ↑q = 10 * ↑(q / 10) + ↑(q % 10)
+  q_prev : ℤ := q / 10
+  r_rem_q : ℤ := q % 10
+  h1_simp : π * 10 ^ 60 - ↑r_prev / 10 ^ m < ↑q_prev
+  h_div_eq : ↑r / 10 ^ (m + 1) = ↑r_prev / 10 ^ m + ↑r_rem / 10 ^ (m + 1)
+  hr_rem_q_le : ↑r_rem_q ≤ 9
+  hr_rem_ge0 : 0 ≤ ↑r_rem
+  h_ten_neg_div : 2 * 10 ^ (-(61 + (↑m + 1) + 1)) = 2 * 10 ^ (-(60 + ↑m + 1)) / 10 / 10
+  ⊢ ↑q_prev < π * 10 ^ 60 - ↑r_prev / 10 ^ m + 2 * 10 ^ (-(60 + ↑m + 1))
+  Submission/Spec.lean:2112:46: error: Application type mismatch: The argument
+    h_contra
+  has type
+    ∃ q', π * 10 ^ 60 - ↑r / 10 < ↑q' ∧ ↑q' < π * 10 ^ 60 - ↑r / 10 + 2 * 10 ^ (-62)
+  but is expected to have type
+    ∃ q, π * 10 ^ 60 - ↑r / 10 ^ 1 < ↑q ∧ ↑q < π * 10 ^ 60 - ↑r / 10 ^ 1 + 2 * 10 ^ (-(↑60 + ↑1 + 1))
+  in the application
+    subgoal_T_60 1 r hr1 ?m.1480 h_contra
+  Submission/Spec.lean:2176:42: error: Application type mismatch: The argument
+    h_contra
+  has type
+    ∃ q', π * 10 ^ n - ↑r / 10 < ↑q' ∧ ↑q' < π * 10 ^ n - ↑r / 10 + 2 * 10 ^ (-(↑n + 2))
+  but is expected to have type
+    ∃ q,
+      π * 10 ^ (60 + m + 1) - ↑r / 10 ^ 1 < ↑q ∧
+        ↑q < π * 10 ^ (60 + m + 1) - ↑r / 10 ^ 1 + 2 * 10 ^ (-(↑(60 + m + 1) + ↑1 + 1))
+  in the application
+    h_T_succ 1 r hr1 ?m.2905 h_contra
+

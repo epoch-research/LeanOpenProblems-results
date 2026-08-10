@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  submission compiled but produced no readable olean
+

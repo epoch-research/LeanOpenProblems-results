@@ -1,0 +1,27 @@
+[
+  {
+    "name": "proof_scorer",
+    "scorer": "proof_scorer",
+    "reducer": null,
+    "scored_samples": 492,
+    "unscored_samples": 0,
+    "params": {
+      "checker": "SandboxSafeVerify"
+    },
+    "metrics": {
+      "accuracy": {
+        "name": "accuracy",
+        "value": 0.2621951219512195,
+        "params": {},
+        "metadata": null
+      },
+      "stderr": {
+        "name": "stderr",
+        "value": 0.019849168516251944,
+        "params": {},
+        "metadata": null
+      }
+    },
+    "metadata": null
+  }
+]

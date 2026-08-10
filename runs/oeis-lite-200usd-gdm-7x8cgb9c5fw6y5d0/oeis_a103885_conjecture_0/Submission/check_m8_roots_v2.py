@@ -1,0 +1,68 @@
+import sympy as sp
+import math
+
+def choose(n, k):
+    if k < 0 or k > n: return 0
+    return math.comb(n, k)
+
+def a(n):
+    if n == 0: return 1
+    r = n - 1
+    s = 0
+    for k in range(n + 1):
+        s += choose(n, k) * choose(2*n + k - 1, r)
+    return s
+
+m = 8
+c = sp.symbols(f'c0:{2*m+1}')
+d = sp.symbols(f'd0:{2*m+1}')
+vars = c + d
+
+# We need 3m+1 = 25 recurrence equations and m = 8 symmetry equations, total 33 equations
+eqs = []
+for n in range(1, 26):
+    plus = 1
+    for k in range(1, 2*m + 1):
+        plus *= (2*m*n + k)
+    minus = 1
+    for k in range(1, 2*m + 1):
+        minus *= (2*m*n - k)
+    eq = plus * sum(c[i] * n**i for i in range(2*m+1)) * a(m*(n+1)) + \
+         ((-1)**m) * minus * sum(c[i] * (-n)**i for i in range(2*m+1)) * a(m*(n-1)) - \
+         sum(d[i] * n**(2*i) for i in range(2*m+1)) * a(m*n)
+    eqs.append(sp.expand(eq))
+
+for k in range(1, m + 1):
+    eq = sum(c[i] * k**i for i in range(2*m+1)) - sum(c[i] * (1-k)**i for i in range(2*m+1))
+    eqs.append(sp.expand(eq))
+
+eqs_subs = [eq.subs(d[2*m], 1) for eq in eqs]
+sol = sp.solve(eqs_subs, vars[:-1])
+
+if len(sol) > 0:
+    print("Solution found!")
+    c_vals = [sol.get(c[i], 0) for i in range(2*m+1)]
+    d_vals = [sol.get(d[i], 0) for i in range(2*m)] + [1]
+    
+    import numpy as np
+    c_float = [float(sp.N(x)) for x in c_vals]
+    d_float = [float(sp.N(x)) for x in d_vals]
+    
+    P_roots = np.roots(c_float[::-1])
+    Q_roots = np.roots(d_float[::-1])
+    
+    P_ok = True
+    for r in P_roots:
+        if abs(r.imag) > 1e-4 or r.real < 0 or r.real > 1:
+            P_ok = False
+            print(f"P Root violated: {r}")
+    
+    Q_ok = True
+    for r in Q_roots:
+        if abs(r.imag) > 1e-4 or r.real < 0 or r.real > 1:
+            Q_ok = False
+            print(f"Q Root violated: {r}")
+            
+    print(f"m = {m}: P roots OK: {P_ok}, Q roots OK: {Q_ok}")
+else:
+    print("No solution found!")

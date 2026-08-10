@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.nth_strictMono
+#check Nat.nth_le_of_count
+#check Nat.count_le_of_nth_le
+#check Nat.nth_le_iff
+#check Nat.count_nth_of_infinite
+#check Nat.count_eq_card_filter_range
+#check Nat.count_mono
+#check Nat.nth_mem_of_infinite
+#check Nat.nth_count
+#check Nat.nth_count_of_infinite
+#check Nat.infinite_setOf_prime
+#check Nat.primeCounting'_add_le
+#check Nat.exists_prime_lt_and_le_two_mul

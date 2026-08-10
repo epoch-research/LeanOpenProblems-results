@@ -1,0 +1,408 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:494:51: warning: unused variable `hp2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:665:8: warning: This simp argument is unused:
+    h1
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵h̵1̵]̵ ̵at h_le h_lt ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:730:13: warning: unused variable `hp_odd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1491:44: warning: unused variable `hy`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1600:2: error: Type mismatch
+    h_sum
+  has type
+    69 / 52 ≤ ∑ x ∈ range (a + 1), (↑((sigma 1) (3 ^ x)))⁻¹
+  but is expected to have type
+    69 / 52 ≤ ∑ x ∈ (3 ^ a).divisors, (↑((sigma 1) x))⁻¹
+  Submission/Spec.lean:1643:37: error: omega could not prove the goal:
+  No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+  Submission/Spec.lean:3696:26: error: unsolved goals
+  case inl
+  n : ℕ
+  hn : 1 < n
+  h_den : (∑ d ∈ n.divisors, 1 / ↑((sigma 1) d)).den = 1
+  p✝ : ℕ
+  hp✝ : Nat.Prime p✝
+  hdvd✝ : p✝ ∣ n
+  hp2 : p✝ ≠ 2
+  h_pow : ¬∃ a, n = p✝ ^ a
+  hn_odd : ¬n % 2 = 1
+  hn_even : n % 2 = 0
+  m : ℕ
+  hm_odd : m % 2 = 1
+  hm_gt_one : 1 < m
+  hm_pow : ¬∃ p, ∃ (_ : Nat.Prime p), ∃ a, m = p ^ a
+  h_ne : m ≠ 1
+  p : ℕ
+  hp : Nat.Prime p
+  hdvd : p ∣ m
+  a : ℕ := padicValNat p m
+  hp_fact : Fact (Nat.Prime p)
+  ha : 1 ≤ a
+  hm_nz : m ≠ 0
+  m' : ℕ := m / p ^ a
+  hdvd_pa : p ^ a ∣ m
+  hm_eq' : m = p ^ a * m'
+  ha_nz : a ≠ 0
+  hp2_inner : p ≠ 2
+  h_coprime_pm' : (p ^ a).Coprime m'
+  hm'_gt_one : 1 < m'
+  h_pa_gt_one : 1 < p ^ a
+  h_pa_odd : p ^ a % 2 = 1
+  hm'_odd : m' % 2 = 1
+  h_S_m_eq :
+    ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)
+  h_Sqb_nz : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm''_nz : ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  hval_qb : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_m'' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_qb_le : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m''_le' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m : padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≤ -2
+  q : ℕ
+  hq : Nat.Prime q
+  b : ℕ
+  hm'_eq'' : m' = q ^ b
+  hb_nz : b ≠ 0
+  hb : 1 ≤ b
+  hp_neq_q : p ≠ q
+  h_Spa_lt : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sqb_lt : ∑ d ∈ (q ^ b).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sm_lt : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) < 87 / 48
+  hn_eq : n = 2 ^ 5 * m
+  h_coprime : (2 ^ 5).Coprime m
+  hk : 5 ≠ 0
+  hk_even : ¬5 % 2 = 0
+  hk_odd : 5 % 2 = 1
+  hk1 : ¬5 = 1
+  hk_ge3 : 3 ≤ 5
+  h_n_eq : n = 2 ^ 5 * m
+  h_2k_m_gt : 1 < 2 ^ 5 * m
+  h_cop : (2 ^ 5).Coprime m
+  h_S_eq_2 :
+    ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)
+  hk3 : ¬5 = 3
+  h_S_lt3 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) < 3
+  hval_2k_le2 : ¬padicValRat 2 (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) ≤ 2
+  hk_ge5 : 5 ≤ 5
+  S5 : ℚ
+  h_S5 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) = S5
+  Sm : ℚ
+  h_Sm : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) = Sm
+  h_lt2 : ¬S5 < 2
+  h_prod_ge : S5 ≥ 2
+  h_S2k_nz : ∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm_nz : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_S32_val : padicValRat 2 (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) = 4
+  h_val_m_eq : padicValRat 2 Sm = -3
+  h_S5_eq_2 : S5 = 2
+  h_Sm_val : Sm = 9765 / 7768
+  ⊢ 4 + padicValRat 2 Sm ≠ 1
+  Submission/Spec.lean:3685:68: error: unsolved goals
+  case inr
+  n : ℕ
+  hn : 1 < n
+  h_den : (∑ d ∈ n.divisors, 1 / ↑((sigma 1) d)).den = 1
+  p✝ : ℕ
+  hp✝ : Nat.Prime p✝
+  hdvd✝ : p✝ ∣ n
+  hp2 : p✝ ≠ 2
+  h_pow : ¬∃ a, n = p✝ ^ a
+  hn_odd : ¬n % 2 = 1
+  hn_even : n % 2 = 0
+  m : ℕ
+  hm_odd : m % 2 = 1
+  hm_gt_one : 1 < m
+  hm_pow : ¬∃ p, ∃ (_ : Nat.Prime p), ∃ a, m = p ^ a
+  h_ne : m ≠ 1
+  p : ℕ
+  hp : Nat.Prime p
+  hdvd : p ∣ m
+  a : ℕ := padicValNat p m
+  hp_fact : Fact (Nat.Prime p)
+  ha : 1 ≤ a
+  hm_nz : m ≠ 0
+  m' : ℕ := m / p ^ a
+  hdvd_pa : p ^ a ∣ m
+  hm_eq' : m = p ^ a * m'
+  ha_nz : a ≠ 0
+  hp2_inner : p ≠ 2
+  h_coprime_pm' : (p ^ a).Coprime m'
+  hm'_gt_one : 1 < m'
+  h_pa_gt_one : 1 < p ^ a
+  h_pa_odd : p ^ a % 2 = 1
+  hm'_odd : m' % 2 = 1
+  h_S_m_eq :
+    ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)
+  h_Sqb_nz : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm''_nz : ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  hval_qb : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_m'' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_qb_le : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m''_le' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m : padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≤ -2
+  q : ℕ
+  hq : Nat.Prime q
+  b : ℕ
+  hm'_eq'' : m' = q ^ b
+  hb_nz : b ≠ 0
+  hb : 1 ≤ b
+  hp_neq_q : p ≠ q
+  h_Spa_lt : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sqb_lt : ∑ d ∈ (q ^ b).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sm_lt : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) < 87 / 48
+  hn_eq : n = 2 ^ 5 * m
+  h_coprime : (2 ^ 5).Coprime m
+  hk : 5 ≠ 0
+  hk_even : ¬5 % 2 = 0
+  hk_odd : 5 % 2 = 1
+  hk1 : ¬5 = 1
+  hk_ge3 : 3 ≤ 5
+  h_n_eq : n = 2 ^ 5 * m
+  h_2k_m_gt : 1 < 2 ^ 5 * m
+  h_cop : (2 ^ 5).Coprime m
+  h_S_eq_2 :
+    ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)
+  hk3 : ¬5 = 3
+  h_S_lt3 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) < 3
+  hval_2k_le2 : ¬padicValRat 2 (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) ≤ 2
+  hk_ge5 : 5 ≤ 5
+  S5 : ℚ
+  h_S5 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) = S5
+  Sm : ℚ
+  h_Sm : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) = Sm
+  h_lt2 : ¬S5 < 2
+  h_prod_ge : S5 ≥ 2
+  h_S2k_nz : ∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm_nz : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_S32_val : padicValRat 2 (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) = 4
+  h_val_m_eq : ¬padicValRat 2 Sm = -3
+  ⊢ 4 + padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≠ 1
+  Submission/Spec.lean:3684:22: error: unsolved goals
+  case neg
+  n : ℕ
+  hn : 1 < n
+  h_den : (∑ d ∈ n.divisors, 1 / ↑((sigma 1) d)).den = 1
+  p✝ : ℕ
+  hp✝ : Nat.Prime p✝
+  hdvd✝ : p✝ ∣ n
+  hp2 : p✝ ≠ 2
+  h_pow : ¬∃ a, n = p✝ ^ a
+  hn_odd : ¬n % 2 = 1
+  hn_even : n % 2 = 0
+  m : ℕ
+  hm_odd : m % 2 = 1
+  hm_gt_one : 1 < m
+  hm_pow : ¬∃ p, ∃ (_ : Nat.Prime p), ∃ a, m = p ^ a
+  h_ne : m ≠ 1
+  p : ℕ
+  hp : Nat.Prime p
+  hdvd : p ∣ m
+  a : ℕ := padicValNat p m
+  hp_fact : Fact (Nat.Prime p)
+  ha : 1 ≤ a
+  hm_nz : m ≠ 0
+  m' : ℕ := m / p ^ a
+  hdvd_pa : p ^ a ∣ m
+  hm_eq' : m = p ^ a * m'
+  ha_nz : a ≠ 0
+  hp2_inner : p ≠ 2
+  h_coprime_pm' : (p ^ a).Coprime m'
+  hm'_gt_one : 1 < m'
+  h_pa_gt_one : 1 < p ^ a
+  h_pa_odd : p ^ a % 2 = 1
+  hm'_odd : m' % 2 = 1
+  h_S_m_eq :
+    ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)
+  h_Sqb_nz : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm''_nz : ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  hval_qb : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_m'' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_qb_le : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m''_le' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m : padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≤ -2
+  q : ℕ
+  hq : Nat.Prime q
+  b : ℕ
+  hm'_eq'' : m' = q ^ b
+  hb_nz : b ≠ 0
+  hb : 1 ≤ b
+  hp_neq_q : p ≠ q
+  h_Spa_lt : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sqb_lt : ∑ d ∈ (q ^ b).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sm_lt : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) < 87 / 48
+  hn_eq : n = 2 ^ 5 * m
+  h_coprime : (2 ^ 5).Coprime m
+  hk : 5 ≠ 0
+  hk_even : ¬5 % 2 = 0
+  hk_odd : 5 % 2 = 1
+  hk1 : ¬5 = 1
+  hk_ge3 : 3 ≤ 5
+  h_n_eq : n = 2 ^ 5 * m
+  h_2k_m_gt : 1 < 2 ^ 5 * m
+  h_cop : (2 ^ 5).Coprime m
+  h_S_eq_2 :
+    ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)
+  hk3 : ¬5 = 3
+  h_S_lt3 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) < 3
+  hval_2k_le2 : ¬padicValRat 2 (∑ d ∈ (2 ^ 5).divisors, 1 / ↑((sigma 1) d)) ≤ 2
+  hk_ge5 : 5 ≤ 5
+  S5 : ℚ
+  h_S5 : ∑ d ∈ (2 ^ 5 * m).divisors, 1 / ↑((sigma 1) d) = S5
+  Sm : ℚ
+  h_Sm : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) = Sm
+  h_lt2 : ¬S5 < 2
+  h_prod_ge : S5 ≥ 2
+  h_val_ne_one : padicValRat 2 S5 ≠ 1
+  ⊢ False
+  Submission/Spec.lean:3656:18: error: unsolved goals
+  case neg
+  n : ℕ
+  hn : 1 < n
+  h_den : (∑ d ∈ n.divisors, 1 / ↑((sigma 1) d)).den = 1
+  p✝ : ℕ
+  hp✝ : Nat.Prime p✝
+  hdvd✝ : p✝ ∣ n
+  hp2 : p✝ ≠ 2
+  h_pow : ¬∃ a, n = p✝ ^ a
+  hn_odd : ¬n % 2 = 1
+  hn_even : n % 2 = 0
+  k m : ℕ
+  hn_eq : n = 2 ^ k * m
+  hm_odd : m % 2 = 1
+  hm_gt_one : 1 < m
+  h_coprime : (2 ^ k).Coprime m
+  hk : k ≠ 0
+  hk_even : ¬k % 2 = 0
+  hk_odd : k % 2 = 1
+  hk1 : ¬k = 1
+  hk_ge3 : 3 ≤ k
+  hm_pow : ¬∃ p, ∃ (_ : Nat.Prime p), ∃ a, m = p ^ a
+  h_ne : m ≠ 1
+  p : ℕ
+  hp : Nat.Prime p
+  hdvd : p ∣ m
+  a : ℕ := padicValNat p m
+  hp_fact : Fact (Nat.Prime p)
+  ha : 1 ≤ a
+  hm_nz : m ≠ 0
+  m' : ℕ := m / p ^ a
+  hdvd_pa : p ^ a ∣ m
+  hm_eq' : m = p ^ a * m'
+  ha_nz : a ≠ 0
+  hp2_inner : p ≠ 2
+  h_coprime_pm' : (p ^ a).Coprime m'
+  hm'_gt_one : 1 < m'
+  h_pa_gt_one : 1 < p ^ a
+  h_pa_odd : p ^ a % 2 = 1
+  hm'_odd : m' % 2 = 1
+  h_S_m_eq :
+    ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)
+  h_Sqb_nz : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm''_nz : ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  hval_qb : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_m'' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_qb_le : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m''_le' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m : padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≤ -2
+  h_n_eq : n = 2 ^ k * m
+  h_2k_m_gt : 1 < 2 ^ k * m
+  h_cop : (2 ^ k).Coprime m
+  h_S_eq_2 :
+    ∑ d ∈ (2 ^ k * m).divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (2 ^ k).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)
+  hk3 : ¬k = 3
+  q : ℕ
+  hq : Nat.Prime q
+  b : ℕ
+  hm'_eq'' : m' = q ^ b
+  hb_nz : b ≠ 0
+  hb : 1 ≤ b
+  hp_neq_q : p ≠ q
+  h_Spa_lt : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sqb_lt : ∑ d ∈ (q ^ b).divisors, 1 / ↑((sigma 1) d) < 3 / 2
+  h_Sm_lt : ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) < 87 / 48
+  h_S_lt3 : ∑ d ∈ (2 ^ k * m).divisors, 1 / ↑((sigma 1) d) < 3
+  hval_2k_le2 : ¬padicValRat 2 (∑ d ∈ (2 ^ k).divisors, 1 / ↑((sigma 1) d)) ≤ 2
+  hk_ge5 : 5 ≤ k
+  hk5 : ¬k = 5
+  ⊢ False
+  Submission/Spec.lean:3486:14: error: unsolved goals
+  case neg
+  n : ℕ
+  hn : 1 < n
+  h_den : (∑ d ∈ n.divisors, 1 / ↑((sigma 1) d)).den = 1
+  p✝ : ℕ
+  hp✝ : Nat.Prime p✝
+  hdvd✝ : p✝ ∣ n
+  hp2 : p✝ ≠ 2
+  h_pow : ¬∃ a, n = p✝ ^ a
+  hn_odd : ¬n % 2 = 1
+  hn_even : n % 2 = 0
+  k m : ℕ
+  hn_eq : n = 2 ^ k * m
+  hm_odd : m % 2 = 1
+  hm_gt_one : 1 < m
+  h_coprime : (2 ^ k).Coprime m
+  hk : k ≠ 0
+  hk_even : ¬k % 2 = 0
+  hk_odd : k % 2 = 1
+  hk1 : ¬k = 1
+  hk_ge3 : 3 ≤ k
+  hm_pow : ¬∃ p, ∃ (_ : Nat.Prime p), ∃ a, m = p ^ a
+  h_ne : m ≠ 1
+  p : ℕ
+  hp : Nat.Prime p
+  hdvd : p ∣ m
+  a : ℕ := padicValNat p m
+  hp_fact : Fact (Nat.Prime p)
+  ha : 1 ≤ a
+  hm_nz : m ≠ 0
+  m' : ℕ := m / p ^ a
+  hdvd_pa : p ^ a ∣ m
+  hm_eq' : m = p ^ a * m'
+  ha_nz : a ≠ 0
+  hp2_inner : p ≠ 2
+  h_coprime_pm' : (p ^ a).Coprime m'
+  hm'_gt_one : 1 < m'
+  h_pa_gt_one : 1 < p ^ a
+  h_pa_odd : p ^ a % 2 = 1
+  hm'_odd : m' % 2 = 1
+  h_S_m_eq :
+    ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)
+  h_Sqb_nz : ∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d) ≠ 0
+  h_Sm''_nz : ∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d) ≠ 0
+  hval_qb : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_m'' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) < 0
+  hval_qb_le : padicValRat 2 (∑ d ∈ (p ^ a).divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m''_le' : padicValRat 2 (∑ d ∈ m'.divisors, 1 / ↑((sigma 1) d)) ≤ -1
+  hval_m : padicValRat 2 (∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)) ≤ -2
+  h_n_eq : n = 2 ^ k * m
+  h_2k_m_gt : 1 < 2 ^ k * m
+  h_cop : (2 ^ k).Coprime m
+  h_S_eq_2 :
+    ∑ d ∈ (2 ^ k * m).divisors, 1 / ↑((sigma 1) d) =
+      (∑ d ∈ (2 ^ k).divisors, 1 / ↑((sigma 1) d)) * ∑ d ∈ m.divisors, 1 / ↑((sigma 1) d)
+  hk3 : ¬k = 3
+  hm'_pow : ¬∃ q, ∃ (_ : Nat.Prime q), ∃ b, m' = q ^ b
+  ⊢ False
+  Submission/Spec.lean:3729:56: error: unexpected token 'have'; expected command
+  'oeis_265709_conjecture_0.disproof' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

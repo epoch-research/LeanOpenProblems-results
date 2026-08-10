@@ -1,0 +1,25 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 94 declarations.
+  ------------------
+  b_mem_S_n used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  divisors_of_b_modEq_one used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_321576_conjecture_0 used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]
+  odd_composite_not_three_dvd_two_not_mem used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  prime_factor_modEq_one used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_321576_conjecture_0: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

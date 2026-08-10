@@ -1,0 +1,99 @@
+Total V_all size: 898
+Step 1: Currently unblocked count: 593
+Best prime to add: 31 with residue 810 (blocks 74 elements)
+Step 2: Currently unblocked count: 519
+Best prime to add: 11 with residue 2 (blocks 73 elements)
+Step 3: Currently unblocked count: 446
+Best prime to add: 19 with residue 44 (blocks 21 elements)
+Step 4: Currently unblocked count: 425
+Best prime to add: 23 with residue 4 (blocks 21 elements)
+Step 5: Currently unblocked count: 404
+Best prime to add: 127 with residue 19 (blocks 20 elements)
+Step 6: Currently unblocked count: 384
+Best prime to add: 43 with residue 55 (blocks 19 elements)
+Step 7: Currently unblocked count: 365
+Best prime to add: 71 with residue 98 (blocks 10 elements)
+Step 8: Currently unblocked count: 355
+Best prime to add: 47 with residue 18 (blocks 9 elements)
+Step 9: Currently unblocked count: 346
+Best prime to add: 59 with residue 17 (blocks 9 elements)
+Step 10: Currently unblocked count: 337
+Best prime to add: 67 with residue 29 (blocks 9 elements)
+Step 11: Currently unblocked count: 328
+Best prime to add: 79 with residue 37 (blocks 8 elements)
+Step 12: Currently unblocked count: 320
+Best prime to add: 151 with residue 74 (blocks 8 elements)
+Step 13: Currently unblocked count: 312
+Best prime to add: 83 with residue 24 (blocks 7 elements)
+Step 14: Currently unblocked count: 305
+Best prime to add: 103 with residue 32 (blocks 7 elements)
+Step 15: Currently unblocked count: 298
+Best prime to add: 107 with residue 33 (blocks 7 elements)
+Step 16: Currently unblocked count: 291
+Best prime to add: 167 with residue 74 (blocks 6 elements)
+Step 17: Currently unblocked count: 285
+Best prime to add: 139 with residue 42 (blocks 5 elements)
+Step 18: Currently unblocked count: 280
+Best prime to add: 163 with residue 24 (blocks 5 elements)
+Step 19: Currently unblocked count: 275
+Best prime to add: 179 with residue 86 (blocks 5 elements)
+Step 20: Currently unblocked count: 270
+Best prime to add: 199 with residue 65 (blocks 5 elements)
+Step 21: Currently unblocked count: 265
+Best prime to add: 227 with residue 6 (blocks 5 elements)
+Step 22: Currently unblocked count: 260
+Best prime to add: 131 with residue 9 (blocks 4 elements)
+Step 23: Currently unblocked count: 256
+Best prime to add: 211 with residue 33 (blocks 4 elements)
+Step 24: Currently unblocked count: 252
+Best prime to add: 331 with residue 283 (blocks 13 elements)
+Step 25: Currently unblocked count: 239
+Best prime to add: 223 with residue 31 (blocks 4 elements)
+Step 26: Currently unblocked count: 235
+Best prime to add: 251 with residue 41 (blocks 4 elements)
+Step 27: Currently unblocked count: 231
+Best prime to add: 263 with residue 116 (blocks 4 elements)
+Step 28: Currently unblocked count: 227
+Best prime to add: 307 with residue 47 (blocks 4 elements)
+Step 29: Currently unblocked count: 223
+Best prime to add: 367 with residue 64 (blocks 4 elements)
+Step 30: Currently unblocked count: 219
+Best prime to add: 191 with residue 34 (blocks 3 elements)
+Step 31: Currently unblocked count: 216
+Best prime to add: 239 with residue 33 (blocks 3 elements)
+Step 32: Currently unblocked count: 213
+Best prime to add: 311 with residue 4 (blocks 3 elements)
+Step 33: Currently unblocked count: 210
+Best prime to add: 347 with residue 172 (blocks 3 elements)
+Step 34: Currently unblocked count: 207
+Best prime to add: 379 with residue 48 (blocks 3 elements)
+Step 35: Currently unblocked count: 204
+Best prime to add: 419 with residue 133 (blocks 3 elements)
+Step 36: Currently unblocked count: 201
+Best prime to add: 431 with residue 7 (blocks 3 elements)
+Step 37: Currently unblocked count: 198
+Best prime to add: 439 with residue 1 (blocks 3 elements)
+Step 38: Currently unblocked count: 195
+Best prime to add: 443 with residue 128 (blocks 3 elements)
+Step 39: Currently unblocked count: 192
+Best prime to add: 463 with residue 135 (blocks 3 elements)
+Step 40: Currently unblocked count: 189
+Best prime to add: 487 with residue 67 (blocks 3 elements)
+Step 41: Currently unblocked count: 186
+Best prime to add: 491 with residue 169 (blocks 3 elements)
+Step 42: Currently unblocked count: 183
+Best prime to add: 271 with residue 22 (blocks 2 elements)
+Step 43: Currently unblocked count: 181
+Best prime to add: 283 with residue 2 (blocks 2 elements)
+Step 44: Currently unblocked count: 179
+Best prime to add: 359 with residue 14 (blocks 2 elements)
+Step 45: Currently unblocked count: 177
+Best prime to add: 383 with residue 2 (blocks 2 elements)
+Step 46: Currently unblocked count: 175
+Best prime to add: 467 with residue 70 (blocks 2 elements)
+Step 47: Currently unblocked count: 173
+Best prime to add: 479 with residue 20 (blocks 2 elements)
+Step 48: Currently unblocked count: 171
+Best prime to add: 499 with residue 14 (blocks 2 elements)
+Step 49: Currently unblocked count: 169
+No more available primes! Failed to block all elements.

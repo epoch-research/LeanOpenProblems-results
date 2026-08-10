@@ -1,0 +1,7 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:36:33: error: unsolved goals
+  h_eq : Tendsto A355276 atTop atTop ↔ True
+  ⊢ Tendsto A355276 atTop atTop
+

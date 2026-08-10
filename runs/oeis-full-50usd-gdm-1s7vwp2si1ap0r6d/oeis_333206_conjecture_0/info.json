@@ -1,0 +1,20 @@
+{
+  "id": "oeis_333206_conjecture_0",
+  "epoch": 1,
+  "uuid": "W2i9C7xrJVqkJTWsNvKbYp",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 71135,
+      "output_tokens": 1040,
+      "total_tokens": 120484,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 46076,
+      "reasoning_tokens": 2233,
+      "total_cost": 0.1229739
+    }
+  },
+  "oeis_id": "A333206"
+}

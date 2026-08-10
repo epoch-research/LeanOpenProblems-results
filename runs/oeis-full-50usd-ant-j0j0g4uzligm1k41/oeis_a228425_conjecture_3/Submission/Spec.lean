@@ -1,0 +1,33 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat BigOperators
+
+/--
+A228425: Number of ways to write $n = x + y$ ($x, y > 0$) with $x(x+1)/2 + y^2$ prime.
+-/
+def A228425 (n : ℕ) : ℕ :=
+  (Finset.Ico 1 n).sum fun x ↦
+    let y := n - x
+    if Nat.Prime ((x * (x + 1) / 2) + y ^ 2) then 1 else 0
+
+/-- $p_m(x)$, the m-gonal number, defined as $(m-2)x(x-1)/2 + x$. -/
+def polygonal_number (m x : ℕ) : ℕ :=
+  (m - 2) * x * (x - 1) / 2 + x
+
+/-- The condition that for a fixed k, all natural numbers n > 1 can be written as a sum
+n = x + y with x, y > 0 such that $p_k(x) + p_{k+1}(y)$ is prime. -/
+def PolygonalPrimeSumCondition (k : ℕ) : Prop :=
+  ∀ n : ℕ, 1 < n →
+    ∃ x y : ℕ,
+      0 < x ∧ 0 < y ∧ n = x + y ∧
+      Nat.Prime ((polygonal_number k x) + (polygonal_number (k + 1) y))
+
+/-- **Disproof of `oeis_a228425_conjecture_3`.**
+
+The positivity claim `∀ n, A228425 n > 0` fails at `n = 0`: there are no ways to write
+`0 = x + y` with `x, y > 0`, so `A228425 0` is an empty sum, equal to `0`. -/
+theorem oeis_a228425_conjecture_3.disproof :
+    ¬ ∀ (n : ℕ), 0 < A228425 n := by
+  intro h
+  have h0 := h 0
+  simp [A228425] at h0

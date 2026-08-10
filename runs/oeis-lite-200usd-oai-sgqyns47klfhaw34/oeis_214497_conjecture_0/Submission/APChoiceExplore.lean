@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+open Nat
+#check Nat.forall_exists_prime_gt_and_modEq
+#check Nat.exists_prime_gt_modEq_one
+#check Nat.infinite_setOf_prime_and_modEq
+#check Nat.ModEq
+#check Nat.modEq_iff_dvd
+#check Nat.modEq_iff_dvd'
+#check Nat.dvd_sub'
+#check Nat.dvd_sub
+#check Nat.dvd_add

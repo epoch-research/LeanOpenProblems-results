@@ -1,0 +1,20 @@
+{
+  "id": "oeis_22030_original_conjecture",
+  "epoch": 1,
+  "uuid": "QURbKUnapFUL2uiQaTS8wK",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 68511,
+      "output_tokens": 20402,
+      "total_tokens": 1179473,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1090560,
+      "reasoning_tokens": 11112,
+      "total_cost": 1.499895
+    }
+  },
+  "oeis_id": "A022030"
+}

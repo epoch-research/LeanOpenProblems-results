@@ -1,0 +1,20 @@
+{
+  "id": "A382590_conjecture_kth_prime_factor_is_eventually_periodic",
+  "epoch": 1,
+  "uuid": "FVwAedzxNa4qh7ufLBBtBq",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 93,
+      "output_tokens": 111217,
+      "total_tokens": 4074266,
+      "input_tokens_cache_write": 187206,
+      "input_tokens_cache_read": 3775750,
+      "reasoning_tokens": 18428,
+      "total_cost": 5.838802499999998
+    }
+  },
+  "oeis_id": "A382590"
+}

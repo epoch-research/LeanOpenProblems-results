@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Function.sometimes
+#print Function.sometimes
+#check Fin.repeat
+#print Fin.repeat
+#check Lean.Grind.AC.Var.denote
+#check ValuativeRel.ValueGroupWithZero.lift₂
+#check Lean.Order.flat_csup
+#check List.foldlIdx
+#check AddCon.liftOn

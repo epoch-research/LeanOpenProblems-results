@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+
+#check FirstOrder.Field.ACF_zero_realize_iff_infinite_ACF_prime_realize
+#print FirstOrder.Field.ACF_zero_realize_iff_infinite_ACF_prime_realize
+#print axioms FirstOrder.Field.ACF_zero_realize_iff_infinite_ACF_prime_realize

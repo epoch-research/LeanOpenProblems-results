@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "killed (exit 134)\nlibc++abi: terminating due to uncaught exception of type lean::throwable: deep recursion was detected at 'interpreter' (potential solution: increase stack space in your system)\ninterpreter stacktrace:\n#1 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg._lam_0\n#2 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg._lam_0._boxed\n#3 List.foldrTR._redArg\n#4 Finset.fold._redArg\n#5 Finset.sup._at_.Finset.max._at_.Nat.prevPrimeC.spec_0.spec_0._redArg\n#6 Finset.max._at_.Nat.prevPrimeC.spec_0\n#7 Nat.prevPrimeC\n#8 oeis_297707_conjecture_0._nativeDecide_1_4._closed_1\n#9 oeis_297707_conjecture_0._nativeDecide_1_4._closed_2\n#10 oeis_297707_conjecture_0._nativeDecide_1_4._closed_3\n#11 oeis_297707_conjecture_0._nativeDecide_1_4",
+    "metadata": {
+      "stage": "compile_submission_resource",
+      "safeverify_report": null
+    }
+  }
+}

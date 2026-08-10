@@ -1,0 +1,27 @@
+/workspace/leanproject/Submission/Spec.lean:782:41: warning: This simp argument is unused:
+  Int.ofNat_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, I̵n̵t̵.̵o̵f̵N̵a̵t̵_̵z̵e̵r̵o̵,̵ ̵mul_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/Spec.lean:782:57: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/Spec.lean:782:67: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, mul_zero,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/Spec.lean:1007:107: error: Type mismatch
+  gcd_step k
+has type
+  (B (k + 2) - 1).gcd (B (k + 1) - 1) = (B (k + 1) - 1).gcd (B k)
+but is expected to have type
+  (B (k + 2) - 1).gcd (B (k + 1) - 1) = (B (k + 1) - 1).gcd (B (k + 2))

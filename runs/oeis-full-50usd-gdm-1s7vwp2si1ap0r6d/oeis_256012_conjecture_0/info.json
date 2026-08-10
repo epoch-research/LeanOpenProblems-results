@@ -1,0 +1,20 @@
+{
+  "id": "oeis_256012_conjecture_0",
+  "epoch": 1,
+  "uuid": "nXduKDCfc8E638FizzjZnv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 711011,
+      "output_tokens": 15305,
+      "total_tokens": 4534164,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3777020,
+      "reasoning_tokens": 30828,
+      "total_cost": 1.7708145000000004
+    }
+  },
+  "oeis_id": "A256012"
+}

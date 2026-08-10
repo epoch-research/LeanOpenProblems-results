@@ -1,0 +1,20 @@
+{
+  "id": "oeis_385391_conjecture_0",
+  "epoch": 1,
+  "uuid": "D99un5b7i75n8w5dTGoGg9",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 13588195,
+      "output_tokens": 312043,
+      "total_tokens": 122832700,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 108503222,
+      "reasoning_tokens": 429240,
+      "total_cost": 39.46616279999999
+    }
+  },
+  "oeis_id": "A385391"
+}

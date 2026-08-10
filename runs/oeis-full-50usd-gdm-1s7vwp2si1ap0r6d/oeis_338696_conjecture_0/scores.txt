@@ -1,0 +1,14 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:128:4: error: Tactic `rfl` failed: The left-hand side
+    check_range 999
+  is not definitionally equal to the right-hand side
+    true
+  
+  case h.h
+  n : ℕ
+  hn : n < 1000
+  h19 : n ≠ 19
+  ⊢ check_range 999 = true
+

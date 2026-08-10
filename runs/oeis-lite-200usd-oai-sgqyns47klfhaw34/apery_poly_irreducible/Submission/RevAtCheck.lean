@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#check revAt
+#print revAt
+#check revAt_eq
+#check revAt_eq_of_le
+#check revAt_eq_zero
+#check coeff_eq_zero_of_natDegree_lt
+#check coeff_eq_zero_of_natDegree_lt
+#check Polynomial.natDegree_le_iff_coeff_eq_zero

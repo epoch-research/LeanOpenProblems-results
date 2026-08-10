@@ -1,0 +1,21 @@
+Superfast parallel search for 1680, 3432, 3744 up to 500000000000 using 32 threads...
+FOUND for 3744: g = 2836487808, p = 1181, i = 3349892101248
+FOUND for 3744: g = 2842076160, p = 1063, i = 3021126958080
+FOUND for 3432: g = 3705077376, p = 1033, i = 3827344929408
+FOUND for 3744: g = 6399679104, p = 1181, i = 7558021021824
+Thread 0 processed up to 15750000001
+Thread 0 processed up to 24750000001
+Thread 0 processed up to 41250000001
+Thread 0 processed up to 41500000001
+FOUND for 3744: g = 42330618624, p = 1621, i = 68617932789504
+Thread 0 processed up to 44250000001
+Thread 0 processed up to 47250000001
+Thread 0 processed up to 48250000001
+FOUND for 3744: g = 51760235520, p = 1201, i = 62164042859520
+Thread 0 processed up to 53750000001
+Thread 0 processed up to 61750000001
+Thread 0 processed up to 63750000001
+Thread 0 processed up to 66000000001
+Thread 0 processed up to 68500000001
+Thread 0 processed up to 80250000001
+FOUND for 3432: g = 106633221120, p = 1283, i = 136810422696960

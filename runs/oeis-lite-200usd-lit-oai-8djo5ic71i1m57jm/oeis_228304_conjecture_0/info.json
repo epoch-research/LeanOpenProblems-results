@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "VHBFu5TurSFdBEywNhq2oV",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 202099,
+      "output_tokens": 53133,
+      "total_tokens": 14789888,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 14534656,
+      "reasoning_tokens": 17265,
+      "total_cost": 9.871813
+    }
+  },
+  "oeis_id": "A228304"
+}

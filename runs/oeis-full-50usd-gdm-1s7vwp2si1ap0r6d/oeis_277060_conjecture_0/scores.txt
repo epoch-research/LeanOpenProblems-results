@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 54 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_277060_conjecture_0: theorem type mismatch
+    Expected type: And (forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)) p) -> (Nat.ModEq (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))) (A277060 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) p) -> (Nat.ModEq (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))) (A277060 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))
+    Got type:      True
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

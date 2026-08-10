@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nuncaught exception: (kernel) declaration type mismatch, 'oeis_357569_conjecture_0' has type\n  ∀ {a b : Prop}, Iff a b → Eq a b\nbut it is expected to have type\n  ∀ (p r : Nat),\n    Nat.Prime p →\n      GE.ge p 3 →\n        GE.ge r 2 →\n          (instHPow.hPow p.cast (instHAdd.hAdd (instHMul.hMul 3 r) 3)).ModEq (_root_.a (instHPow.hPow p r))\n            (_root_.a (instHPow.hPow p (instHSub.hSub r 1)))",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": null
+    }
+  }
+}

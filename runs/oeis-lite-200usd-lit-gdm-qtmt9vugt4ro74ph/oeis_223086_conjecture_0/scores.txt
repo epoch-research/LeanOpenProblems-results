@@ -1,0 +1,79 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:887:53: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    s ≥ 0
+    r ≥ 0
+    q ≥ 0
+    p ≥ 0
+    o ≥ 0
+    n ≥ 0
+    m ≥ 0
+    l ≥ 0
+    j ≥ 0
+    i ≥ 0
+    h ≥ 0
+    g ≥ 0
+    f ≥ 0
+    e ≥ 0
+    d ≥ 0
+    c ≥ 85
+    b ≥ 85
+  where
+   b := ↑(A006368_map_inv^[k - 1] 85)
+   c := ↑(A006368_map_inv^[k] 85)
+   d := ↑(A006368_map 199)
+   e := ↑(A006368_map (A006368_map 199))
+   f := ↑(A006368_map (A006368_map (A006368_map 199)))
+   g := ↑(A006368_map (A006368_map (A006368_map (A006368_map 199))))
+   h := ↑(A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))
+   i := ↑(A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199))))))
+   j := ↑(A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))))
+   l := ↑(A006368_map
+      (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199))))))))
+   m := ↑(A006368_map
+      (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))))))
+   n := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199))))))))))
+   o := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map
+            (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))))))))
+   p := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map
+            (A006368_map
+              (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199))))))))))))
+   q := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map
+            (A006368_map
+              (A006368_map
+                (A006368_map
+                  (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))))))))))
+   r := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map
+            (A006368_map
+              (A006368_map
+                (A006368_map
+                  (A006368_map
+                    (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199))))))))))))))
+   s := ↑(A006368_map
+      (A006368_map
+        (A006368_map
+          (A006368_map
+            (A006368_map
+              (A006368_map
+                (A006368_map
+                  (A006368_map
+                    (A006368_map
+                      (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map (A006368_map 199)))))))))))))))
+

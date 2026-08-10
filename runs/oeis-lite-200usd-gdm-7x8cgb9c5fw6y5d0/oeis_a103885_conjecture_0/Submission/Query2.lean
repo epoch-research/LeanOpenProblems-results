@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+
+#check Polynomial.degree_eq_of_leadingCoeff_ne_zero
+#check Polynomial.natDegree_eq_of_degree_eq_some
+#check Polynomial.natDegree_eq_of_le_of_coeff_ne_zero

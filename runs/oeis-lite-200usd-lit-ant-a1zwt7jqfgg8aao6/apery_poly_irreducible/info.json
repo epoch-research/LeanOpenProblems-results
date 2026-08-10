@@ -1,0 +1,23 @@
+{
+  "id": "apery_poly_irreducible",
+  "epoch": 1,
+  "uuid": "dLFKjTRkA5XMMiRaZi39wo",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 3468,
+      "output_tokens": 1399260,
+      "total_tokens": 277749985,
+      "input_tokens_cache_write": 4667277,
+      "input_tokens_cache_read": 271679980,
+      "reasoning_tokens": 275707,
+      "total_cost": 200.0093112500005
+    }
+  },
+  "oeis_id": "A005258"
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:29:4: error(lean.unknownIdentifier): Unknown identifier `Macro.throwUnsupported`\nSubmission/Spec.lean:39:2: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  (∀ (n : ℕ), 1 < n → 0 < _root_.a n) ∧ ∀ (n : ℕ), a n = 1 ↔ n ∈ A238568_special_set",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

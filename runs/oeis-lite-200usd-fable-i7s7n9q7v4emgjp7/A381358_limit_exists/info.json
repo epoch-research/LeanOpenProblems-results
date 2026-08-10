@@ -1,0 +1,20 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "3kheHJtm3ZrB7ijCwEQzBT",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 234,
+      "output_tokens": 456642,
+      "total_tokens": 20570767,
+      "input_tokens_cache_write": 1278367,
+      "input_tokens_cache_read": 18835524,
+      "reasoning_tokens": 114010,
+      "total_cost": 57.64955150000001
+    }
+  },
+  "oeis_id": "A381358"
+}

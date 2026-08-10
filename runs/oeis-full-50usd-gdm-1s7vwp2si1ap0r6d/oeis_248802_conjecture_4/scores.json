@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:809:6: error: Tactic `rfl` failed: The left-hand side\n  ↑x ^ 2 + 3\nis not definitionally equal to the right-hand side\n  ↑x * ↑x + 3\n\nq x : ℕ\nhx_mem : x < q\nhx_eq : ((x * x + 3) % q == 0) = true\n⊢ ↑x ^ 2 + 3 = ↑x * ↑x + 3\nSubmission/Spec.lean:823:24: error(lean.unknownIdentifier): Unknown identifier `beq_iff_ne`\nSubmission/Spec.lean:816:130: error: unsolved goals\nq : ℕ\ninst✝ : NeZero q\nh : ∀ x ∈ List.range q, ¬((x * x + 3) % q == 0) = true\nx : ZMod q\nhx : x ^ 2 + 3 = 0\nh_val : x.val < q\nh_inst : ((x.val * x.val + 3) % q == 0) = false\n⊢ False\nSubmission/Spec.lean:834:91: error: unsolved goals\nn : ℕ\nh_exp : 2 ^ (58 * n + 26) + 2 = 2 * (2 ^ (58 * n + 25) + 1)\n⊢ (2 ^ 2) ^ (2 ^ (58 * n + 25) + 1) + 3 = (2 ^ (2 ^ (58 * n + 25) + 1)) ^ 2 + 3\nSubmission/Spec.lean:901:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ¬?b = true\nin the target expression\n  (!has_sqrt_neg_three_bool q) = true\n\ncase inl.h\nq : ℕ\nh_sqrt : (!has_sqrt_neg_three_bool q) = true\n⊢ ¬has_sqrt_neg_three q",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

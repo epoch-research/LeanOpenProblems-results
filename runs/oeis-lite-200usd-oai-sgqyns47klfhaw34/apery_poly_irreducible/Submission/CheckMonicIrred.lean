@@ -1,0 +1,6 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#check Polynomial.Monic.irreducible_iff_natDegree
+#check Polynomial.Monic.irreducible_iff_lt_natDegree_lt
+#check Polynomial.irreducible_iff_lt_natDegree_lt
+#print Polynomial.irreducible_iff_lt_natDegree_lt

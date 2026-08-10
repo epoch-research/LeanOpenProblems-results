@@ -1,0 +1,6 @@
+import FormalConjectures.Util.ProblemImports
+
+#check Polynomial.degree_eq_iff_natDegree_eq
+#check Polynomial.degree_eq_iff_natDegree_eq_of_ne_zero
+#check Polynomial.degree_eq_some_of_natDegree_eq_of_ne_zero
+#check Polynomial.degree_eq_of_natDegree_eq

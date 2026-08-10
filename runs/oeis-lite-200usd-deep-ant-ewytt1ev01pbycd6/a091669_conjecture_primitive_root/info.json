@@ -1,0 +1,20 @@
+{
+  "id": "a091669_conjecture_primitive_root",
+  "epoch": 1,
+  "uuid": "h8fejqRGB8DHGDUpeTMZJu",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 245,
+      "output_tokens": 176061,
+      "total_tokens": 17952868,
+      "input_tokens_cache_write": 240273,
+      "input_tokens_cache_read": 17536289,
+      "reasoning_tokens": 28302,
+      "total_cost": 14.67260075
+    }
+  },
+  "oeis_id": "A091669"
+}

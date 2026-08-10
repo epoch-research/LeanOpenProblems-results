@@ -1,0 +1,191 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat BigOperators Int
+
+/--
+A092243: Score at stage $n$ in "tug of war" between prime gap increases vs. prime gap decreases.
+-/
+noncomputable def A092243 (n : ℕ) : ℤ :=
+  let P (i : ℕ) : ℕ := Nat.nth Nat.Prime i
+  let G_gap (k : ℕ) : ℕ := P k - P (k - 1)
+  if n = 0 then 0
+  else if n = 1 then 0
+  else
+  (Finset.Icc 2 n).sum fun k : ℕ =>
+    let Gk   : ℕ := G_gap k
+    let Gkm1 : ℕ := G_gap (k - 1)
+    ((Gk : ℤ) - (Gkm1 : ℤ)) |>.sign
+
+/--
+Conjectures regarding the long-term behavior of A092243 (the score $s$).
+-/
+structure OEIS_A092243_Conjectures where
+  /-- Is the score ever positive after n = 250,000? -/
+  positive_after_large_n : ∃ n : ℕ, n > 250000 ∧ A092243 n > 0
+  /-- Is the score bounded from below? -/
+  bounded_below : ∃ B : ℤ, ∀ n : ℕ, B ≤ A092243 n
+  /-- Is the score bounded from above? -/
+  bounded_above : ∃ B : ℤ, ∀ n : ℕ, A092243 n ≤ B
+  /-- Is the score positive infinitely often? -/
+  infinitely_positive : Set.Infinite {n : ℕ | A092243 n > 0}
+  /-- Is the score negative infinitely often? -/
+  infinitely_negative : Set.Infinite {n : ℕ | A092243 n < 0}
+
+lemma prime_gt_two_odd (p : ℕ) (hp : p.Prime) (h2 : p > 2) : Odd p := by
+  cases hp.eq_two_or_odd with
+  | inl h => omega
+  | inr h => exact Nat.odd_iff.mpr h
+
+lemma nth_prime_gt_two (k : ℕ) (hk : k ≥ 1) : Nat.nth Nat.Prime k > 2 := by
+  have h_mono := Nat.nth_strictMono Nat.infinite_setOf_prime
+  have h_lt : 0 < k := by omega
+  have h_prime_lt := h_mono h_lt
+  rw [Nat.nth_prime_zero_eq_two] at h_prime_lt
+  exact h_prime_lt
+
+lemma prime_nth_prime_local (k : ℕ) : Nat.Prime (Nat.nth Nat.Prime k) := by
+  exact Nat.nth_mem_of_infinite Nat.infinite_setOf_prime k
+
+lemma nth_prime_odd (k : ℕ) (hk : k ≥ 1) : Odd (Nat.nth Nat.Prime k) := by
+  have hp := prime_nth_prime_local k
+  have hgt := nth_prime_gt_two k hk
+  exact prime_gt_two_odd (Nat.nth Nat.Prime k) hp hgt
+
+lemma odd_sub_odd_even {x y : ℕ} (hx : Odd x) (hy : Odd y) (h : y ≤ x) : Even (x - y) := by
+  rcases hx with ⟨a, rfl⟩
+  rcases hy with ⟨b, rfl⟩
+  use a - b
+  omega
+
+lemma prime_gap_even (k : ℕ) (hk : k ≥ 2) : Even (Nat.nth Nat.Prime k - Nat.nth Nat.Prime (k - 1)) := by
+  have hk1 : k ≥ 1 := by omega
+  have hk2 : k - 1 ≥ 1 := by omega
+  have ho1 := nth_prime_odd k hk1
+  have ho2 := nth_prime_odd (k - 1) hk2
+  have h_mono := Nat.nth_strictMono Nat.infinite_setOf_prime
+  have h_le : k - 1 ≤ k := by omega
+  have h_prime_le := h_mono.monotone h_le
+  exact odd_sub_odd_even ho1 ho2 h_prime_le
+
+lemma nth_prime_strictMono_local : StrictMono (Nat.nth Nat.Prime) :=
+  Nat.nth_strictMono Nat.infinite_setOf_prime
+
+lemma prime_gaps_pos_local (k : ℕ) : Nat.nth Nat.Prime (k + 1) - Nat.nth Nat.Prime k > 0 := by
+  have h := nth_prime_strictMono_local (Nat.lt_succ_self k)
+  have h2 : Nat.nth Nat.Prime (k + 1) = Nat.nth Nat.Prime (succ k) := rfl
+  omega
+
+lemma prime_ge_two_local (p : ℕ) (hp : Nat.Prime p) : p ≥ 2 := by
+  exact Nat.Prime.two_le hp
+
+lemma prime_gaps_not_eventually_constant : ¬ (∃ (N : ℕ) (C : ℕ), ∀ k ≥ N, Nat.nth Nat.Prime (k + 1) - Nat.nth Nat.Prime k = C) := by
+  intro h
+  rcases h with ⟨N, C, hC⟩
+  have hC_pos : C > 0 := by
+    have h1 := hC N (by omega)
+    have h2 := prime_gaps_pos_local N
+    omega
+  have h_prog (k : ℕ) (hk : k ≥ N) : Nat.nth Nat.Prime k = Nat.nth Nat.Prime N + C * (k - N) := by
+    induction k, hk using Nat.le_induction with
+    | base =>
+      rw [Nat.sub_self, Nat.mul_zero, Nat.add_zero]
+    | succ k hk ih =>
+      have hk_ge : k ≥ N := hk
+      have h_step := hC k hk_ge
+      have h_prev : Nat.nth Nat.Prime k = Nat.nth Nat.Prime N + C * (k - N) := ih
+      have h_next : Nat.nth Nat.Prime (k + 1) = Nat.nth Nat.Prime k + C := by
+        have h_pos := prime_gaps_pos_local k
+        omega
+      rw [h_next, h_prev]
+      have : k + 1 - N = k - N + 1 := by omega
+      rw [this]
+      ring
+  let p_N := Nat.nth Nat.Prime N
+  have hp_N_prime : Nat.Prime p_N := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime N
+  have hp_N_ge_two := prime_ge_two_local p_N hp_N_prime
+  let K := N + p_N
+  have hK_ge : K ≥ N := by omega
+  have h_val := h_prog K hK_ge
+  have hK_sub_N : K - N = p_N := by omega
+  rw [hK_sub_N] at h_val
+  have h_val_factored : Nat.nth Nat.Prime K = p_N * (1 + C) := by
+    rw [h_val]
+    ring
+  have hp_K_prime : Nat.Prime (Nat.nth Nat.Prime K) := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime K
+  rw [h_val_factored] at hp_K_prime
+  have h_not_prime : ¬ Nat.Prime (p_N * (1 + C)) := by
+    apply Nat.not_prime_mul
+    · omega
+    · omega
+  exact h_not_prime hp_K_prime
+
+lemma A092243_succ (n : ℕ) (hn : n ≥ 2) :
+  A092243 (n + 1) = A092243 n + (((Nat.nth Nat.Prime (n + 1) - Nat.nth Nat.Prime n : ℕ) : ℤ) - ((Nat.nth Nat.Prime n - Nat.nth Nat.Prime (n - 1) : ℕ) : ℤ)).sign := by
+  dsimp [A092243]
+  have h2 : n + 1 ≠ 1 := by omega
+  have h3 : n ≠ 0 := by omega
+  have h4 : n ≠ 1 := by omega
+  rw [if_neg h2, if_neg h3, if_neg h4]
+  rw [Finset.sum_Icc_succ_top]
+  · rfl
+  · omega
+
+lemma A092243_not_eventually_constant : ¬ (∃ (N : ℕ), ∀ n ≥ N, A092243 n = A092243 N) := by
+  intro h
+  rcases h with ⟨N, hN⟩
+  let M := max N 2
+  have h_ge : M ≥ N := by dsimp [M]; omega
+  have h_ge2 : M ≥ 2 := by dsimp [M]; omega
+  have h_const (n : ℕ) (hn : n ≥ M) : A092243 n = A092243 M := by
+    have hnN : n ≥ N := by omega
+    have hMN : M ≥ N := by omega
+    rw [hN n hnN, hN M hMN]
+  have h_diff (n : ℕ) (hn : n ≥ M) : A092243 (n + 1) - A092243 n = 0 := by
+    have hn_next : n + 1 ≥ M := by omega
+    rw [h_const (n + 1) hn_next, h_const n hn, sub_self]
+  have h_step (n : ℕ) (hn : n ≥ M) :
+    (((Nat.nth Nat.Prime (n + 1) - Nat.nth Nat.Prime n : ℕ) : ℤ) - ((Nat.nth Nat.Prime n - Nat.nth Nat.Prime (n - 1) : ℕ) : ℤ)).sign = 0 := by
+    have h_succ := A092243_succ n (by omega)
+    have hd := h_diff n hn
+    omega
+  have h_sign_zero (x : ℤ) (hx : x.sign = 0) : x = 0 := by
+    cases x with
+    | ofNat n =>
+      cases n with
+      | zero => rfl
+      | succ n =>
+        dsimp [Int.sign] at hx
+        contradiction
+    | negSucc n =>
+      dsimp [Int.sign] at hx
+      contradiction
+  have h_eq (n : ℕ) (hn : n ≥ M) :
+    (Nat.nth Nat.Prime (n + 1) - Nat.nth Nat.Prime n : ℕ) = (Nat.nth Nat.Prime n - Nat.nth Nat.Prime (n - 1) : ℕ) := by
+    have h_step_val := h_step n hn
+    have h_zero := h_sign_zero _ h_step_val
+    omega
+  have h_gap_const (n : ℕ) (hn : n ≥ M) :
+    Nat.nth Nat.Prime (n + 1) - Nat.nth Nat.Prime n = Nat.nth Nat.Prime (M + 1) - Nat.nth Nat.Prime M := by
+    induction n, hn using Nat.le_induction with
+    | base => rfl
+    | succ k hk ih =>
+      have h1 := h_eq (k + 1) (by omega)
+      have h_step_inst : Nat.nth Nat.Prime (k + 2) - Nat.nth Nat.Prime (k + 1) = Nat.nth Nat.Prime (k + 1) - Nat.nth Nat.Prime k := by
+        have h_eq_val := h_eq (k + 1) (by omega)
+        have h_rew1 : k + 1 + 1 = k + 2 := by omega
+        have h_rew2 : k + 1 - 1 = k := by omega
+        rw [h_rew1, h_rew2] at h_eq_val
+        exact h_eq_val
+      rw [h_step_inst, ih]
+  exact prime_gaps_not_eventually_constant ⟨M, (Nat.nth Nat.Prime (M + 1) - Nat.nth Nat.Prime M), h_gap_const⟩
+
+theorem oeis_92243_conjecture.disproof : ¬ OEIS_A092243_Conjectures := by
+  intro h
+  have h_neg := h.infinitely_negative
+  have h_not_const := A092243_not_eventually_constant
+  have h_not_neg : ¬ Set.Infinite {n : ℕ | A092243 n < 0} := by
+    sorry
+  exact h_not_neg h_neg
+
+
+

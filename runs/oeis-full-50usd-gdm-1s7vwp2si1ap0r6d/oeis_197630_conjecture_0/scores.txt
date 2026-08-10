@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:72:8: warning: declaration uses 'sorry'
+  Submission/Spec.lean:94:22: error: Type mismatch
+    rfl
+  has type
+    ?m.7 = ?m.7
+  but is expected to have type
+    a 3 = 13
+  Submission/Spec.lean:95:21: error: Type mismatch
+    rfl
+  has type
+    ?m.7 = ?m.7
+  but is expected to have type
+    a 2 = 0
+  Submission/Spec.lean:96:24: error: Type mismatch
+    rfl
+  has type
+    ?m.7 = ?m.7
+  but is expected to have type
+    a 4 = 1356
+

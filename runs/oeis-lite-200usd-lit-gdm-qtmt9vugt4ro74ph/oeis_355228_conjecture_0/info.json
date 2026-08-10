@@ -1,0 +1,23 @@
+{
+  "id": "oeis_355228_conjecture_0",
+  "epoch": 1,
+  "uuid": "ZMrMpyZ8tqEQaVmJjZjoJw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 68973564,
+      "output_tokens": 1227261,
+      "total_tokens": 645197445,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 570795147,
+      "reasoning_tokens": 4201473,
+      "total_cost": 200.12496704999964
+    }
+  },
+  "oeis_id": "A355228"
+}

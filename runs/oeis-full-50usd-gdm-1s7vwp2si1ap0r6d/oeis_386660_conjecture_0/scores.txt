@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 60 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_386660_conjecture_0: theorem type mismatch
+    Expected type: have f : Nat -> Real := fun (n : Nat) => HPow.hPow.{0, 0, 0} Real Real Real (instHPow.{0, 0} Real Real Real.instPow) (Nat.cast.{0} Real Real.instNatCast (a n)) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (Nat.cast.{0} Real Real.instNatCast n)); Exists.{1} Real (fun (L : Real) => Filter.Tendsto.{0, 0} Nat Real f (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) L))
+    Got type:      Exists.{1} Real (fun (L : Real) => Filter.Tendsto.{0, 0} Nat Real (fun (n : Nat) => HPow.hPow.{0, 0, 0} Real Real Real (instHPow.{0, 0} Real Real Real.instPow) (Nat.cast.{0} Real Real.instNatCast (a n)) (HDiv.hDiv.{0, 0, 0} Real Real Real (instHDiv.{0} Real (DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid)) (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (Nat.cast.{0} Real Real.instNatCast n))) (Filter.atTop.{0} Nat Nat.instPreorder) (nhds.{0} Real (UniformSpace.toTopologicalSpace.{0} Real (PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace)) L))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

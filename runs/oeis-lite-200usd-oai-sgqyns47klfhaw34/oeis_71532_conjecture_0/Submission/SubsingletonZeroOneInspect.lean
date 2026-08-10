@@ -1,0 +1,4 @@
+import FormalConjectures.Util.ProblemImports
+
+#check subsingleton_of_zero_eq_one
+#print subsingleton_of_zero_eq_one

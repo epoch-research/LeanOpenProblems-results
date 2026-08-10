@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "Phd6HoUaeQXtYVb4ggLuXd",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 5185669,
+      "output_tokens": 104928,
+      "total_tokens": 37366158,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 31570733,
+      "reasoning_tokens": 504828,
+      "total_cost": 13.45846545
+    }
+  },
+  "oeis_id": "A270994"
+}

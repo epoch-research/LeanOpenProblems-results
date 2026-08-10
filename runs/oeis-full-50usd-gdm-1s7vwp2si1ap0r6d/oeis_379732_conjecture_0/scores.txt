@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 3 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 5 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_379732_conjecture_0: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration max_packing_density_truncated_tetrahedra: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

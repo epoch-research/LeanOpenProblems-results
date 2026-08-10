@@ -1,0 +1,253 @@
+Submission/test_gcd_proof2.lean:7:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof2.lean:8:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof2.lean:15:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof2.lean:34:15: warning: declaration uses 'sorry'
+Submission/test_gcd_proof2.lean:36:17: warning: declaration uses 'sorry'
+Submission/test_gcd_proof2.lean:30:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof2.lean:34:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof2.lean:36:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof2.lean:54:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof2.lean:55:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof2.lean:59:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof2.lean:65:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof2.lean:197:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f + g ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+ h := ↑(r - 1)
+Submission/test_gcd_proof2.lean:201:53: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1)) ^ 2
+ g := ↑(B (k - 1 + 2)) * ↑(B (k - 1))
+ h := ↑(B (k - 1 + 1)) ^ 2
+Submission/test_gcd_proof2.lean:209:57: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  l ≥ 0
+  j ≥ 1
+  h - i ≥ 0
+  g ≥ 0
+  g + h - i ≥ 0
+  f ≥ 0
+  f + h - i ≥ 0
+  e ≥ 0
+  c ≥ 1
+  c - e - l ≤ 0
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1)) ^ 2
+ g := ↑(B (k - 1 + 1) ^ 2)
+ h := ↑(B (k + 1)) * ↑(B (k - 1))
+ i := ↑(B k) ^ 2
+ j := ↑k
+ l := ↑(B (k - 1))
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/test_gcd_proof2.lean:213:59: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+h_pos1 : 1 ≤ B (k + 3)
+h_pos2 : 1 ≤ B (k + 2)
+h_pos3 : 1 ≤ B (k + 1)
+h_pos4 : 1 ≤ B k
+q2 : ℤ
+hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 1) = d * q3
+hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 3)) = ↑d * q2 + 1
+hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+hd_Bkm1_nat : d ∣ B k - 1
+h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+h_even : Even (k + 1)
+h_odd : Odd k
+h_cass_odd : B (k + 2) * B k = B (k + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 2)) * ↑(B k) - ↑(B (k + 1)) ^ 2 - 1
+hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+h_cass_kp1 :
+  (Even (k - 1) → B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val) ∧
+    (Odd (k - 1) → B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val)
+h_odd_km1 : Odd (k - 1)
+h_cass_odd_km1 : B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val
+h_cast_km1 : ↑(B (k + 1)) * ↑(B (k - 1)) = ↑(B k) ^ 2 + ↑C_val
+h_sub_km1 : k - 1 + 2 = k + 1
+h_sub_km1_2 : k - 1 + 1 = k
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 1)) * ↑(B (k - 1)) - ↑(B k) ^ 2 + 1
+hBkm1_z : ↑(B (k - 1)) = ↑d * (2 * ↑q3 - q1) - 1
+⊢ ↑d * ↑q3 - ↑d * q1 * 2 + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2) =
+    -↑d + (↑d * ↑q3 - ↑d * q1 * 2) + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2)
+Submission/test_gcd_proof2.lean:241:33: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  f ≥ 0
+  f - g ≤ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+Submission/test_gcd_proof2.lean:243:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≤ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+ h := ↑(r - 1)
+Submission/test_gcd_proof2.lean:247:53: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  g - h ≤ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1)) ^ 2
+ g := ↑(B (k - 1 + 2)) * ↑(B (k - 1))
+ h := ↑(B (k - 1 + 1)) ^ 2
+Submission/test_gcd_proof2.lean:255:54: error: Type mismatch
+  rfl
+has type
+  ?m.1814 = ?m.1814
+but is expected to have type
+  B (k + 1) = B k + B (k - 1)
+Submission/test_gcd_proof2.lean:257:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 2))
+in the target expression
+  ↑d * ↑q3 = ↑(B k) + ↑(B (k - 1))
+
+k : ℕ
+ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+hd1 : d ∣ B (k + 3) - 1
+hd2 : d ∣ B (k + 2) - 1
+h_pos1 : 1 ≤ B (k + 3)
+h_pos2 : 1 ≤ B (k + 2)
+h_pos3 : 1 ≤ B (k + 1)
+h_pos4 : 1 ≤ B k
+q2 : ℤ
+hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 1) = d * q3
+hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 3)) = ↑d * q2 + 1
+hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+hd_Bkm1_nat : d ∣ B k - 1
+h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 1)
+h_even_k : Even k
+h_cass_even : B (k + 1) ^ 2 = B (k + 2) * B k + C_val
+h_cast : ↑(B (k + 1)) ^ 2 = ↑(B (k + 2)) * ↑(B k) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 1)) ^ 2 - ↑(B (k + 2)) * ↑(B k) + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_kp1 :
+  (Even (k - 1) → B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val) ∧
+    (Odd (k - 1) → B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k - 1)
+h_cass_even_km1 : B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val
+h_cast_km1 : ↑(B k) ^ 2 = ↑(B (k + 1)) * ↑(B (k - 1)) + ↑C_val
+h_sub_km1 : k - 1 + 2 = k + 1
+h_sub_km1_2 : k - 1 + 1 = k
+h_C_sub_1 : ↑C_val - 1 = ↑(B k) ^ 2 - ↑(B (k + 1)) * ↑(B (k - 1)) - 1
+h_rec : ↑d * ↑q3 = ↑(B k) + ↑(B (k - 1))
+⊢ ↑(B (k - 1)) = ↑d * (2 * ↑q3 - q1) - 1
+Submission/test_gcd_proof2.lean:261:105: error: No goals to be solved

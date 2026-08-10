@@ -1,0 +1,217 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:780:41: warning: This simp argument is unused:
+    Int.ofNat_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, I̵n̵t̵.̵o̵f̵N̵a̵t̵_̵z̵e̵r̵o̵,̵ ̵mul_zero, add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:780:57: warning: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:780:67: warning: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, mul_zero,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:961:41: warning: This simp argument is unused:
+    Int.ofNat_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, I̵n̵t̵.̵o̵f̵N̵a̵t̵_̵z̵e̵r̵o̵,̵ ̵mul_zero, add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:961:57: warning: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:961:67: warning: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, mul_zero,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1235:59: error: unsolved goals
+  case h
+  k : ℕ
+  ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+  ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+  d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+  hd1 : d ∣ B (k + 3) - 1
+  hd2 : d ∣ B (k + 2) - 1
+  h_pos1 : 1 ≤ B (k + 3)
+  h_pos2 : 1 ≤ B (k + 2)
+  h_pos3 : 1 ≤ B (k + 1)
+  h_pos4 : 1 ≤ B k
+  q2 : ℤ
+  hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+  q1 : ℤ
+  hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+  q3 : ℕ
+  hq3 : B (k + 1) = d * q3
+  hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+  hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+  hBkp3_z : ↑(B (k + 3)) = ↑d * q2 + 1
+  hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+  hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+  hd_Bkm1_nat : d ∣ B k - 1
+  h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+  h_even : Even (k + 1)
+  h_odd : Odd k
+  h_cass_odd : B (k + 2) * B k = B (k + 1) ^ 2 + C_val
+  h_cast : ↑(B (k + 2)) * ↑(B k) = ↑(B (k + 1)) ^ 2 + ↑C_val
+  h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 2)) * ↑(B k) - ↑(B (k + 1)) ^ 2 - 1
+  hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+  h_cass_kp1 :
+    (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+      (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+  h_cass_even : B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+  h_cast_kp1 : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+  h_C_add_1 : ↑C_val + 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1
+  ⊢ 2 + (↑d * q1 * 2 - ↑d * ↑q3) + (↑d ^ 2 * q1 ^ 2 - ↑d ^ 2 * q2 * ↑q3) =
+      ↑d * q1 * 2 - ↑d * ↑q3 + (↑d ^ 2 * q1 ^ 2 - ↑d ^ 2 * q2 * ↑q3)
+  Submission/Spec.lean:1244:45: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    c ≥ 1
+    b ≥ 0
+    a ≥ 0
+  where
+   a := ↑d * q2
+   b := ↑d * q1
+   c := ↑d * ↑q3
+   e := ↑d * (q1 - ↑q3)
+  Submission/Spec.lean:1258:47: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    g ≥ 0
+    f ≥ 0
+    f - g ≤ 0
+    e ≥ 0
+    c ≥ 1
+    b ≥ 0
+    a ≥ 0
+  where
+   a := ↑d * q2
+   b := ↑d * q1
+   c := ↑d * ↑q3
+   e := ↑d * (q1 - ↑q3)
+   f := ↑C_val
+   g := ↑(B (k + 1)) ^ 2
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1264:59: error: unsolved goals
+  case h
+  k : ℕ
+  ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+  ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+  d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+  hd1 : d ∣ B (k + 3) - 1
+  hd2 : d ∣ B (k + 2) - 1
+  h_pos1 : 1 ≤ B (k + 3)
+  h_pos2 : 1 ≤ B (k + 2)
+  h_pos3 : 1 ≤ B (k + 1)
+  h_pos4 : 1 ≤ B k
+  q2 : ℤ
+  hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+  q1 : ℤ
+  hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+  q3 : ℕ
+  hq3 : B (k + 1) = d * q3
+  hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+  hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+  hBkp3_z : ↑(B (k + 3)) = ↑d * q2 + 1
+  hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+  hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+  hd_Bkm1_nat : d ∣ B k - 1
+  h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+  h_even : ¬Even (k + 1)
+  h_even_k : Even k
+  h_cass_even : B (k + 1) ^ 2 = B (k + 2) * B k + C_val
+  h_cast : ↑(B (k + 1)) ^ 2 = ↑(B (k + 2)) * ↑(B k) + ↑C_val
+  h_C_add_1 : ↑C_val + 1 = ↑(B (k + 1)) ^ 2 - ↑(B (k + 2)) * ↑(B k) + 1
+  hd_C_add_1 : ↑d ∣ ↑C_val + 1
+  h_cass_kp1 :
+    (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+      (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+  h_odd_kp1 : Odd (k + 1)
+  h_cass_odd : B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val
+  h_cast_kp1 : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+  h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 - 1
+  ⊢ -2 + (↑d * ↑q3 - ↑d * q1 * 2) + (↑d ^ 2 * q2 * ↑q3 - ↑d ^ 2 * q1 ^ 2) =
+      ↑d * ↑q3 - ↑d * q1 * 2 + (↑d ^ 2 * q2 * ↑q3 - ↑d ^ 2 * q1 ^ 2)
+  Submission/Spec.lean:1285:59: error: Application type mismatch: The argument
+    hd2
+  has type
+    d ∣ B (k + 2) - 1
+  but is expected to have type
+    B (k + 2) ≤ d
+  in the application
+    LE.le.trans (B_pos (k + 2)) hd2
+  Submission/Spec.lean:1286:14: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    g ≥ 1
+    f ≥ 0
+    e ≥ 1
+    b ≥ 0
+    a ≥ 0
+  where
+   a := ↑d * q2
+   b := ↑d * q1
+   e := ↑d * ↑q3
+   f := ↑d * (q1 - ↑q3)
+   g := ↑d / 2
+  Submission/Spec.lean:1289:10: error: Tactic `subst` failed: invalid equality proof, it is not of the form (x = t) or (t = x)
+    d = 2
+  
+  case h.succ.succ.inr
+  k : ℕ
+  ih : ∀ m < k + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+  ih_kp1 : (B (k + 1 + 1) - 1).gcd (B (k + 1) - 1) = 1
+  d : ℕ := (B (k + 3) - 1).gcd (B (k + 2) - 1)
+  hd1 : d ∣ B (k + 3) - 1
+  hd2 : d ∣ B (k + 2) - 1
+  h_pos1 : 1 ≤ B (k + 3)
+  h_pos2 : 1 ≤ B (k + 2)
+  h_pos3 : 1 ≤ B (k + 1)
+  h_pos4 : 1 ≤ B k
+  q2 : ℤ
+  hq2 : ↑(B (k + 3)) - 1 = ↑d * q2
+  q1 : ℤ
+  hq1 : ↑(B (k + 2)) - 1 = ↑d * q1
+  q3 : ℕ
+  hq3 : B (k + 1) = d * q3
+  hBkp1_z : ↑(B (k + 1)) = ↑d * ↑q3
+  hBkp2_z : ↑(B (k + 2)) = ↑d * q1 + 1
+  hBkp3_z : ↑(B (k + 3)) = ↑d * q2 + 1
+  hBk_z : ↑(B k) = ↑d * (q1 - ↑q3) + 1
+  hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+  hd_Bkm1_nat : d ∣ B k - 1
+  h_cass : (Even k → B (k + 1) ^ 2 = B (k + 2) * B k + C_val) ∧ (Odd k → B (k + 2) * B k = B (k + 1) ^ 2 + C_val)
+  hd_C : ↑d ∣ 2
+  hd_2_nat : d ∣ 2
+  hd_odd : d % 2 = 1
+  hd_2 : d = 2
+  ⊢ d = 1
+

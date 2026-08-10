@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 6 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 140 declarations.
+  ------------------
+  m_q_le used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  m_q_le._mutual used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_135508_conjecture_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_135508_conjecture_0: theorem type mismatch
+    Expected type: forall (p : Nat), (Nat.Prime p) -> (Not (Nat.Prime (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))) -> (Eq.{1} Nat (A135508 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) p)
+    Got type:      forall (p : Nat), (Nat.Prime p) -> (Not (Nat.Prime (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))))) -> (Eq.{1} Nat (A135508 (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) p)
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

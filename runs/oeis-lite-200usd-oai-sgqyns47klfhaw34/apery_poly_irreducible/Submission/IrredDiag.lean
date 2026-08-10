@@ -1,0 +1,8 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#print Irreducible
+#check WfDvdMonoid.exists_irreducible_factor
+#check UniqueFactorizationMonoid.normalizedFactors
+#check irreducible_iff_prime
+#check Polynomial.exists_irreducible_of_natDegree_pos
+#print axioms Polynomial.exists_irreducible_of_natDegree_pos

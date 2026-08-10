@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.Coprime
+#check Nat.coprime_iff_gcd_eq_one
+#check Nat.coprime_self_add_left
+#check Nat.coprime_self_add_right
+#check Nat.coprime_of_dvd'
+#check Nat.Coprime.dvd_of_dvd_mul_left
+#check Nat.Coprime.dvd_of_dvd_mul_right
+#check Nat.pairwise_coprime_pow_primeFactors_factorization
+#check Nat.finMulAntidiag_existsUnique_prime_dvd

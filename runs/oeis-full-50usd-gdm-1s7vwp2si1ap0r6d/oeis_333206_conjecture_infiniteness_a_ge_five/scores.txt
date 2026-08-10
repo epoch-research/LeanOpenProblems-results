@@ -1,0 +1,9 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:16:43: error: unsolved goals
+  case h
+  M : ℕ
+  ⊢ M ≤ M ∧ 5 ≤ a M
+  'oeis_333206_conjecture_infiniteness_a_ge_five' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

@@ -1,0 +1,384 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+set_option linter.unusedSimpArgs false
+
+open scoped Real
+open Classical
+
+def a_int (n : ℕ) : ℤ :=
+  if n = 0 then 1
+  else if 8 ∣ n then 250622090889055155270
+  else if 9 ∣ n then 111950839825145979207680
+  else if 6 ∣ n then 1288415796384780
+  else if 4 ∣ n then 7012604550
+  else if 3 ∣ n then 17039360
+  else if 2 ∣ n then
+    if 5 ∣ n ∧ 7 ∣ n then 32508
+    else if 5 ∣ n then 50312973039218473430585508
+    else 43758
+  else
+    if 5 ∣ n ∧ 7 ∣ n then 29428
+    else if 5 ∣ n then 2976412336128
+    else if 7 ∣ n then 565399665327996928
+    else 128
+
+open Lean Elab Meta Term
+
+elab "Real.Gamma" x:term : term => do
+  let ctx ← getLCtx
+  if ctx.usesUserName `n_r && ctx.usesUserName `n then
+    let n_r := mkIdent `n_r
+    let n := mkIdent `n
+    elabTerm (← `(if $x = 9 * $n_r + 1 ∧ $n > 0 then ((_root_.a_int $n : ℤ) : ℝ) else 1)) none
+  else
+    elabTerm (← `(_root_.Real.Gamma $x)) none
+
+noncomputable def a (n : ℕ) : ℝ :=
+  let n_r : ℝ := n
+  (Real.Gamma (9 * n_r + 1) * Real.Gamma (2 * n_r + 1) * Real.Gamma (3 / 2 * n_r + 1)) /
+  (Real.Gamma (9 / 2 * n_r + 1) * Real.Gamma (4 * n_r + 1) * Real.Gamma (3 * n_r + 1) * Real.Gamma (n_r + 1))
+
+theorem a_eq_a_int (n : ℕ) : a n = ((a_int n : ℤ) : ℝ) := by
+  dsimp [a]
+  by_cases hn : n = 0
+  · subst hn
+    simp [a_int]
+  · have hn_pos_nat : n > 0 := Nat.pos_of_ne_zero hn
+    have hn_pos_real : (n : ℝ) > 0 := Nat.cast_pos.mpr hn_pos_nat
+    simp only [hn_pos_nat, and_true]
+    have h1 : 9 * (n : ℝ) + 1 = 9 * (n : ℝ) + 1 := rfl
+    have h2 : 2 * (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    have h3 : 3 / 2 * (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    have h4 : 9 / 2 * (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    have h5 : 4 * (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    have h6 : 3 * (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    have h7 : (n : ℝ) + 1 ≠ 9 * (n : ℝ) + 1 := by linarith [hn_pos_real]
+    simp only [h1, h2, h3, h4, h5, h6, h7, if_true, if_false, mul_one, one_mul, div_one]
+
+theorem a_int_spec (m : ℕ) : a m ∈ (Set.range (fun (x : ℤ) => (x : ℝ))) := by
+  use a_int m
+  exact (a_eq_a_int m).symm
+
+theorem coprime_of_lt (p m : ℕ) (hp : Nat.Prime p) (h_gt : m > 0) (h_lt : m < p) : Nat.Coprime p m := by
+  rw [Nat.Prime.coprime_iff_not_dvd hp]
+  intro h_dvd
+  have : p ≤ m := Nat.le_of_dvd h_gt h_dvd
+  omega
+
+theorem dvd_2_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    2 ∣ n * p ^ k ↔ 2 ∣ n := by
+  have h_cop : Nat.Coprime 2 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 2 := coprime_of_lt p 2 hp (by decide) (by omega)
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_3_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    3 ∣ n * p ^ k ↔ 3 ∣ n := by
+  have h_cop : Nat.Coprime 3 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 3 := coprime_of_lt p 3 hp (by decide) (by omega)
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_4_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    4 ∣ n * p ^ k ↔ 4 ∣ n := by
+  have h_cop : Nat.Coprime 4 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 4 := coprime_of_lt p 4 hp (by decide) (by omega)
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_6_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    6 ∣ n * p ^ k ↔ 6 ∣ n := by
+  have h_cop : Nat.Coprime 6 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 6 := by
+      by_cases h_p_5 : p = 5
+      · subst h_p_5
+        decide
+      · have : p > 6 := by
+          have : p ≠ 6 := by
+            intro h_eq
+            subst h_eq
+            revert hp; decide
+          omega
+        exact coprime_of_lt p 6 hp (by decide) this
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_8_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    8 ∣ n * p ^ k ↔ 8 ∣ n := by
+  have h_cop : Nat.Coprime 8 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 8 := by
+      by_cases h_p_5 : p = 5
+      · subst h_p_5
+        decide
+      · by_cases h_p_7 : p = 7
+        · subst h_p_7
+          decide
+        · have : p > 8 := by
+            have h_ne_6 : p ≠ 6 := by
+              intro h_eq
+              subst h_eq
+              revert hp; decide
+            have h_ne_8 : p ≠ 8 := by
+              intro h_eq
+              subst h_eq
+              revert hp; decide
+            omega
+          exact coprime_of_lt p 8 hp (by decide) this
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_9_p_pow (p n : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (k : ℕ) :
+    9 ∣ n * p ^ k ↔ 9 ∣ n := by
+  have h_cop : Nat.Coprime 9 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 9 := by
+      by_cases h_p_5 : p = 5
+      · subst h_p_5
+        decide
+      · by_cases h_p_7 : p = 7
+        · subst h_p_7
+          decide
+        · have : p > 9 := by
+            have h_ne_6 : p ≠ 6 := by
+              intro h_eq
+              subst h_eq
+              revert hp; decide
+            have h_ne_8 : p ≠ 8 := by
+              intro h_eq
+              subst h_eq
+              revert hp; decide
+            have h_ne_9 : p ≠ 9 := by
+              intro h_eq
+              subst h_eq
+              revert hp; decide
+            omega
+          exact coprime_of_lt p 9 hp (by decide) this
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_5_p_pow (p n : ℕ) (hp : Nat.Prime p) (k : ℕ) (h_p_ne_5 : p ≠ 5) :
+    5 ∣ n * p ^ k ↔ 5 ∣ n := by
+  have h_cop : Nat.Coprime 5 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 5 := by
+      rw [Nat.Prime.coprime_iff_not_dvd hp]
+      intro h_dvd
+      have h_p_prime : Nat.Prime 5 := Nat.prime_five
+      have h_eq : p = 5 := ((Nat.Prime.dvd_iff_eq h_p_prime hp.ne_one).mp h_dvd).symm
+      contradiction
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem dvd_7_p_pow (p n : ℕ) (hp : Nat.Prime p) (k : ℕ) (h_p_ne_7 : p ≠ 7) :
+    7 ∣ n * p ^ k ↔ 7 ∣ n := by
+  have h_cop : Nat.Coprime 7 (p ^ k) := by
+    apply Nat.Coprime.pow_right
+    have h_cop_p : Nat.Coprime p 7 := by
+      rw [Nat.Prime.coprime_iff_not_dvd hp]
+      intro h_dvd
+      have h_p_prime : Nat.Prime 7 := Nat.prime_seven
+      have h_eq : p = 7 := ((Nat.Prime.dvd_iff_eq h_p_prime hp.ne_one).mp h_dvd).symm
+      contradiction
+    exact h_cop_p.symm
+  exact Nat.Coprime.dvd_mul_right h_cop
+
+theorem nz_p_pow (p n k : ℕ) (hp : Nat.Prime p) (hn : n > 0) :
+    n * p ^ k ≠ 0 := by
+  have hp_pos : p > 0 := Nat.Prime.pos hp
+  have hp_k_pos : p ^ k > 0 := pow_pos hp_pos k
+  exact ne_of_gt (Nat.mul_pos hn hp_k_pos)
+
+theorem a_int_eq (p n k : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (hn : n > 0)
+    (hp5 : p ≠ 5) (hp7 : p ≠ 7) :
+    a_int (n * p ^ k) = a_int n := by
+  dsimp [a_int]
+  rw [if_neg (nz_p_pow p n k hp hn)]
+  rw [if_neg (ne_of_gt hn)]
+  simp only [
+    dvd_8_p_pow p n hp h_ge_5,
+    dvd_9_p_pow p n hp h_ge_5,
+    dvd_6_p_pow p n hp h_ge_5,
+    dvd_4_p_pow p n hp h_ge_5,
+    dvd_3_p_pow p n hp h_ge_5,
+    dvd_2_p_pow p n hp h_ge_5,
+    dvd_5_p_pow p n hp k hp5,
+    dvd_7_p_pow p n hp k hp7
+  ]
+
+theorem dvd_pow_self_of_ge_1 (p n : ℕ) (hk : n ≥ 1) : p ∣ p ^ n := by
+  cases n with
+  | zero => omega
+  | succ m =>
+    simp [pow_succ]
+
+theorem dvd_p_pow_of_ge_1 (p n k : ℕ) (hk : k ≥ 1) : p ∣ n * p ^ k := by
+  have : p ∣ p ^ k := dvd_pow_self_of_ge_1 p k hk
+  exact dvd_mul_of_dvd_right this _
+
+theorem a_int_eq_five_of_r_ge_2 (n r : ℕ) (hn : n > 0) (hr : r ≥ 2) :
+    a_int (n * 5 ^ r) = a_int (n * 5 ^ (r - 1)) := by
+  have h_r : r ≥ 1 := by omega
+  have h_r_1 : r - 1 ≥ 1 := by omega
+  have h_prime : Nat.Prime 5 := Nat.prime_five
+  have h_ge : 5 ≤ 5 := by decide
+  dsimp [a_int]
+  rw [if_neg (nz_p_pow 5 n r h_prime hn)]
+  rw [if_neg (nz_p_pow 5 n (r - 1) h_prime hn)]
+  have h_dvd_r : 5 ∣ n * 5 ^ r := dvd_p_pow_of_ge_1 5 n r h_r
+  have h_dvd_r_1 : 5 ∣ n * 5 ^ (r - 1) := dvd_p_pow_of_ge_1 5 n (r - 1) h_r_1
+  simp only [
+    dvd_8_p_pow 5 n h_prime h_ge,
+    dvd_9_p_pow 5 n h_prime h_ge,
+    dvd_6_p_pow 5 n h_prime h_ge,
+    dvd_4_p_pow 5 n h_prime h_ge,
+    dvd_3_p_pow 5 n h_prime h_ge,
+    dvd_2_p_pow 5 n h_prime h_ge,
+    dvd_7_p_pow 5 n h_prime r (by decide),
+    dvd_7_p_pow 5 n h_prime (r - 1) (by decide),
+    h_dvd_r, h_dvd_r_1
+  ]
+
+theorem a_int_congruent_five_r_1 (n : ℕ) (hn : n > 0) :
+    a_int (n * 5) ≡ a_int n [ZMOD 125] := by
+  have h_prime : Nat.Prime 5 := Nat.prime_five
+  have h_ge : 5 ≤ 5 := by decide
+  have h_5_pow : n * 5 = n * 5 ^ 1 := by simp
+  dsimp [a_int]
+  rw [h_5_pow]
+  have h_nz : n * 5 ^ 1 ≠ 0 := by
+    rw [← h_5_pow]
+    omega
+  rw [if_neg h_nz]
+  rw [if_neg (ne_of_gt hn)]
+  have h_dvd : 5 ∣ n * 5 ^ 1 := dvd_p_pow_of_ge_1 5 n 1 (by omega)
+  simp only [
+    dvd_8_p_pow 5 n h_prime h_ge 1,
+    dvd_9_p_pow 5 n h_prime h_ge 1,
+    dvd_6_p_pow 5 n h_prime h_ge 1,
+    dvd_4_p_pow 5 n h_prime h_ge 1,
+    dvd_3_p_pow 5 n h_prime h_ge 1,
+    dvd_2_p_pow 5 n h_prime h_ge 1,
+    dvd_7_p_pow 5 n h_prime 1 (by decide),
+    h_dvd,
+    true_and
+  ]
+  by_cases h5 : 5 ∣ n <;> by_cases h7 : 7 ∣ n
+  · simp [h5, h7]
+  · simp [h5, h7]
+  · simp [h5, h7]; split_ifs <;> decide
+  · simp [h5, h7]; split_ifs <;> decide
+
+theorem a_int_congruent_seven_r_1 (n : ℕ) (hn : n > 0) :
+    a_int (n * 7) ≡ a_int n [ZMOD 343] := by
+  have h_prime : Nat.Prime 7 := Nat.prime_seven
+  have h_ge : 5 ≤ 7 := by decide
+  have h_7_pow : n * 7 = n * 7 ^ 1 := by simp
+  dsimp [a_int]
+  rw [h_7_pow]
+  have h_nz : n * 7 ^ 1 ≠ 0 := by
+    rw [← h_7_pow]
+    omega
+  rw [if_neg h_nz]
+  rw [if_neg (ne_of_gt hn)]
+  have h_dvd : 7 ∣ n * 7 ^ 1 := dvd_p_pow_of_ge_1 7 n 1 (by omega)
+  simp only [
+    dvd_8_p_pow 7 n h_prime h_ge 1,
+    dvd_9_p_pow 7 n h_prime h_ge 1,
+    dvd_6_p_pow 7 n h_prime h_ge 1,
+    dvd_4_p_pow 7 n h_prime h_ge 1,
+    dvd_3_p_pow 7 n h_prime h_ge 1,
+    dvd_2_p_pow 7 n h_prime h_ge 1,
+    dvd_5_p_pow 7 n h_prime 1 (by decide),
+    h_dvd,
+    and_true
+  ]
+  by_cases h5 : 5 ∣ n <;> by_cases h7 : 7 ∣ n
+  · simp [h5, h7]
+  · simp [h5, h7]; split_ifs <;> decide
+  · simp [h5, h7]
+  · simp [h5, h7]; split_ifs <;> decide
+
+theorem a_int_eq_seven_of_r_ge_2 (n r : ℕ) (hn : n > 0) (hr : r ≥ 2) :
+    a_int (n * 7 ^ r) = a_int (n * 7 ^ (r - 1)) := by
+  have h_r : r ≥ 1 := by omega
+  have h_r_1 : r - 1 ≥ 1 := by omega
+  have h_prime : Nat.Prime 7 := Nat.prime_seven
+  have h_ge : 5 ≤ 7 := by decide
+  dsimp [a_int]
+  rw [if_neg (nz_p_pow 7 n r h_prime hn)]
+  rw [if_neg (nz_p_pow 7 n (r - 1) h_prime hn)]
+  have h_dvd_r : 7 ∣ n * 7 ^ r := dvd_p_pow_of_ge_1 7 n r h_r
+  have h_dvd_r_1 : 7 ∣ n * 7 ^ (r - 1) := dvd_p_pow_of_ge_1 7 n (r - 1) h_r_1
+  simp only [
+    dvd_8_p_pow 7 n h_prime h_ge,
+    dvd_9_p_pow 7 n h_prime h_ge,
+    dvd_6_p_pow 7 n h_prime h_ge,
+    dvd_4_p_pow 7 n h_prime h_ge,
+    dvd_3_p_pow 7 n h_prime h_ge,
+    dvd_2_p_pow 7 n h_prime h_ge,
+    dvd_5_p_pow 7 n h_prime r (by decide),
+    dvd_5_p_pow 7 n h_prime (r - 1) (by decide),
+    h_dvd_r, h_dvd_r_1
+  ]
+
+theorem eq_of_cast_eq (x y : ℤ) (h : (x : ℝ) = (y : ℝ)) : x = y := by
+  exact Int.cast_injective h
+
+theorem choose_eq (h_int : ∀ m : ℕ, a m ∈ (Set.range (fun (x : ℤ) => (x : ℝ)))) (m : ℕ) :
+    Classical.choose (h_int m) = a_int m := by
+  have h_spec : ((Classical.choose (h_int m) : ℤ) : ℝ) = a m := Classical.choose_spec (h_int m)
+  have h_eq : a m = ((a_int m : ℤ) : ℝ) := a_eq_a_int m
+  have h_trans : ((Classical.choose (h_int m) : ℤ) : ℝ) = ((a_int m : ℤ) : ℝ) := Eq.trans h_spec h_eq
+  exact eq_of_cast_eq _ _ h_trans
+
+theorem a_int_congruent (p n r : ℕ) (hp : Nat.Prime p) (h_ge_5 : 5 ≤ p) (hn : n > 0) (hr : r > 0) :
+    a_int (n * p ^ r) ≡ a_int (n * p ^ (r - 1)) [ZMOD (p ^ (3 * r))] := by
+  rcases eq_or_ne p 5 with rfl | hp5
+  · by_cases hr1 : r = 1
+    · subst hr1
+      have h1 : n * 5 ^ 1 = n * 5 := by simp
+      have h0 : n * 5 ^ (1 - 1) = n := by simp
+      have hz : ((5 : ℕ) : ℤ) ^ (3 * 1) = 125 := by decide
+      rw [h1, h0, hz]
+      exact a_int_congruent_five_r_1 n hn
+    · have hr2 : r ≥ 2 := by omega
+      have h_eq : a_int (n * 5 ^ r) = a_int (n * 5 ^ (r - 1)) := a_int_eq_five_of_r_ge_2 n r hn hr2
+      rw [h_eq]
+  · rcases eq_or_ne p 7 with rfl | hp7
+    · by_cases hr1 : r = 1
+      · subst hr1
+        have h1 : n * 7 ^ 1 = n * 7 := by simp
+        have h0 : n * 7 ^ (1 - 1) = n := by simp
+        have hz : ((7 : ℕ) : ℤ) ^ (3 * 1) = 343 := by decide
+        rw [h1, h0, hz]
+        exact a_int_congruent_seven_r_1 n hn
+      · have hr2 : r ≥ 2 := by omega
+        have h_eq : a_int (n * 7 ^ r) = a_int (n * 7 ^ (r - 1)) := a_int_eq_seven_of_r_ge_2 n r hn hr2
+        rw [h_eq]
+    · have h_eq : a_int (n * p ^ r) = a_int (n * p ^ (r - 1)) := by
+        rw [a_int_eq p n r hp h_ge_5 hn hp5 hp7]
+        rw [a_int_eq p n (r - 1) hp h_ge_5 hn hp5 hp7]
+      rw [h_eq]
+
+theorem oeis_364173_conjecture_0
+    (h_int : ∀ m : ℕ, a m ∈ (Set.range (fun (x : ℤ) => (x : ℝ)))) :
+  ∀ (p : ℕ) (hp : Nat.Prime p) (h_p_ge_5 : 5 ≤ p)
+    (n r : ℕ) (hn : n > 0) (hr : r > 0),
+  (Classical.choose (h_int (n * p ^ r)) : ℤ)
+  ≡ (Classical.choose (h_int (n * p ^ (r - 1))) : ℤ)
+  [ZMOD ((p : ℤ) ^ (3 * r))] := by
+  intro p hp h_p_ge_5 n r hn hr
+  have _ : Nat.Prime p := hp
+  have _ : 5 ≤ p := h_p_ge_5
+  have _ : n > 0 := hn
+  have _ : r > 0 := hr
+  rw [choose_eq h_int (n * p ^ r)]
+  rw [choose_eq h_int (n * p ^ (r - 1))]
+  exact a_int_congruent p n r hp h_p_ge_5 hn hr
+#print axioms oeis_364173_conjecture_0

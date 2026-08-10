@@ -1,0 +1,346 @@
+import FormalConjectures.Util.ProblemImports
+
+open scoped Real
+
+/--
+A364173: The sequence defined by the factorial ratio
+$$a(n) = \frac{(9n)! (2n)! (3n/2)!}{(9n/2)! (4n)! (3n)! n!}$$
+where fractional factorials $x!$ are defined as $\Gamma(x+1)$.
+-/
+noncomputable def a (n : ℕ) : ℝ :=
+  let n_r : ℝ := n
+  (Real.Gamma (9 * n_r + 1) * Real.Gamma (2 * n_r + 1) * Real.Gamma (3 / 2 * n_r + 1)) /
+  (Real.Gamma (9 / 2 * n_r + 1) * Real.Gamma (4 * n_r + 1) * Real.Gamma (3 * n_r + 1) * Real.Gamma (n_r + 1))
+
+
+theorem a_one_eq_128 : a 1 = 128 := by
+  dsimp [a]
+  -- push the cast
+  push_cast
+  -- Rewrite arguments in a 1
+  have h9 : (9 : ℝ) * 1 + 1 = 10 := by norm_num
+  have h2 : (2 : ℝ) * 1 + 1 = 3 := by norm_num
+  have h32 : (3 / 2 : ℝ) * 1 + 1 = 5 / 2 := by norm_num
+  have h92 : (9 / 2 : ℝ) * 1 + 1 = 11 / 2 := by norm_num
+  have h4 : (4 : ℝ) * 1 + 1 = 5 := by norm_num
+  have h3 : (3 : ℝ) * 1 + 1 = 4 := by norm_num
+  have h1 : (1 : ℝ) + 1 = 2 := by norm_num
+  rw [h9, h2, h32, h92, h4, h3, h1]
+  -- Now the expression is:
+  -- (Real.Gamma 10 * Real.Gamma 3 * Real.Gamma (5 / 2)) /
+  -- (Real.Gamma (11 / 2) * Real.Gamma 5 * Real.Gamma 4 * Real.Gamma 2)
+  -- Let us rewrite Real.Gamma (11 / 2) as (9/2) * (7/2) * (5/2) * Real.Gamma (5/2)
+  have h_11_2 : (11 / 2 : ℝ) = 9 / 2 + 1 := by norm_num
+  have h_9_2 : (9 / 2 : ℝ) = 7 / 2 + 1 := by norm_num
+  have h_7_2 : (7 / 2 : ℝ) = 5 / 2 + 1 := by norm_num
+  rw [h_11_2]
+  have h_pos_9_2 : (9 / 2 : ℝ) ≠ 0 := by norm_num
+  rw [Real.Gamma_add_one h_pos_9_2]
+  rw [h_9_2]
+  have h_pos_7_2 : (7 / 2 : ℝ) ≠ 0 := by norm_num
+  rw [Real.Gamma_add_one h_pos_7_2]
+  rw [h_7_2]
+  have h_pos_5_2 : (5 / 2 : ℝ) ≠ 0 := by norm_num
+  rw [Real.Gamma_add_one h_pos_5_2]
+  -- Now simplify the multiplication of numbers
+  -- We have Real.Gamma (5 / 2) in both numerator and denominator
+  -- Let us show it is non-zero
+  have h_g_pos : 0 < Real.Gamma (5 / 2) := Real.Gamma_pos_of_pos (by norm_num)
+  have h_g_ne : Real.Gamma (5 / 2) ≠ 0 := ne_of_gt h_g_pos
+  -- Now let us rewrite the factorials
+  have h_g10 : Real.Gamma 10 = 362880 := by
+    have : (10 : ℝ) = ↑(9 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 9]
+    rfl
+  have h_g3 : Real.Gamma 3 = 2 := by
+    have : (3 : ℝ) = ↑(2 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 2]
+    rfl
+  have h_g5 : Real.Gamma 5 = 24 := by
+    have : (5 : ℝ) = ↑(4 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 4]
+    rfl
+  have h_g4 : Real.Gamma 4 = 6 := by
+    have : (4 : ℝ) = ↑(3 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 3]
+    rfl
+  have h_g2 : Real.Gamma 2 = 1 := Real.Gamma_two
+  rw [h_g10, h_g3, h_g5, h_g4, h_g2]
+  -- Rewrite the additions in the denominator
+  have h_add1 : (5 / 2 : ℝ) + 1 = 7 / 2 := by norm_num
+  have h_add2 : (7 / 2 : ℝ) + 1 = 9 / 2 := by norm_num
+  rw [h_add1, h_add2]
+  -- Now simplify the multiplication of numbers
+  -- Now we have:
+  -- (362880 * 2 * Real.Gamma (5/2)) / ((9/2 * (7/2 * (5/2 * Real.Gamma (5/2)))) * 24 * 6 * 1) = 128
+  -- Let us cancel Real.Gamma (5/2)
+  have h_eq : (362880 * 2 * Real.Gamma (5 / 2)) / ((9 / 2 * (7 / 2 * (5 / 2 * Real.Gamma (5 / 2)))) * 24 * 6 * 1) = 128 := by
+    calc
+      (362880 * 2 * Real.Gamma (5 / 2)) / ((9 / 2 * (7 / 2 * (5 / 2 * Real.Gamma (5 / 2)))) * 24 * 6 * 1)
+      _ = (725760 * Real.Gamma (5 / 2)) / (5670 * Real.Gamma (5 / 2)) := by
+        congr 1
+        · ring
+        · ring
+      _ = 128 := by
+        rw [mul_div_mul_right _ _ h_g_ne]
+        norm_num
+  exact h_eq
+
+
+
+theorem a_two_eq_43758 : a 2 = 43758 := by
+  dsimp [a]
+  have h9 : (9 : ℝ) * 2 + 1 = 19 := by norm_num
+  have h2 : (2 : ℝ) * 2 + 1 = 5 := by norm_num
+  have h32 : (3 / 2 : ℝ) * 2 + 1 = 4 := by norm_num
+  have h92 : (9 / 2 : ℝ) * 2 + 1 = 10 := by norm_num
+  have h4 : (4 : ℝ) * 2 + 1 = 9 := by norm_num
+  have h3 : (3 : ℝ) * 2 + 1 = 7 := by norm_num
+  have h1 : (2 : ℝ) + 1 = 3 := by norm_num
+  rw [h9, h2, h32, h92, h4, h3, h1]
+  -- Now rewrite everything using Real.Gamma_nat_eq_factorial
+  have h_g19 : Real.Gamma 19 = Nat.factorial 18 := by
+    have : (19 : ℝ) = ↑(18 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 18]
+  have h_g5 : Real.Gamma 5 = Nat.factorial 4 := by
+    have : (5 : ℝ) = ↑(4 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 4]
+  have h_g4 : Real.Gamma 4 = Nat.factorial 3 := by
+    have : (4 : ℝ) = ↑(3 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 3]
+  have h_g10 : Real.Gamma 10 = Nat.factorial 9 := by
+    have : (10 : ℝ) = ↑(9 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 9]
+  have h_g9 : Real.Gamma 9 = Nat.factorial 8 := by
+    have : (9 : ℝ) = ↑(8 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 8]
+  have h_g7 : Real.Gamma 7 = Nat.factorial 6 := by
+    have : (7 : ℝ) = ↑(6 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 6]
+  have h_g3 : Real.Gamma 3 = Nat.factorial 2 := by
+    have : (3 : ℝ) = ↑(2 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 2]
+  rw [h_g19, h_g5, h_g4, h_g10, h_g9, h_g7, h_g3]
+  norm_num
+
+
+theorem a_three_eq_17039360 : a 3 = 17039360 := by
+  dsimp [a]
+  have h9 : (9 : ℝ) * 3 + 1 = 28 := by norm_num
+  have h2 : (2 : ℝ) * 3 + 1 = 7 := by norm_num
+  have h32 : (3 / 2 : ℝ) * 3 + 1 = 11 / 2 := by norm_num
+  have h92 : (9 / 2 : ℝ) * 3 + 1 = 29 / 2 := by norm_num
+  have h4 : (4 : ℝ) * 3 + 1 = 13 := by norm_num
+  have h3 : (3 : ℝ) * 3 + 1 = 10 := by norm_num
+  have h1 : (3 : ℝ) + 1 = 4 := by norm_num
+  rw [h9, h2, h32, h92, h4, h3, h1]
+  -- Rewrite Gamma (29 / 2) in terms of Gamma (11 / 2)
+  have h_29_2 : (29 / 2 : ℝ) = 27 / 2 + 1 := by norm_num
+  have h_27_2 : (27 / 2 : ℝ) = 25 / 2 + 1 := by norm_num
+  have h_25_2 : (25 / 2 : ℝ) = 23 / 2 + 1 := by norm_num
+  have h_23_2 : (23 / 2 : ℝ) = 21 / 2 + 1 := by norm_num
+  have h_21_2 : (21 / 2 : ℝ) = 19 / 2 + 1 := by norm_num
+  have h_19_2 : (19 / 2 : ℝ) = 17 / 2 + 1 := by norm_num
+  have h_17_2 : (17 / 2 : ℝ) = 15 / 2 + 1 := by norm_num
+  have h_15_2 : (15 / 2 : ℝ) = 13 / 2 + 1 := by norm_num
+  have h_13_2 : (13 / 2 : ℝ) = 11 / 2 + 1 := by norm_num
+  rw [h_29_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_27_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_25_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_23_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_21_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_19_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_17_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_15_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_13_2, Real.Gamma_add_one (by norm_num)]
+  -- Cancel Gamma (11 / 2)
+  have h_g_pos : 0 < Real.Gamma (11 / 2) := Real.Gamma_pos_of_pos (by norm_num)
+  have h_g_ne : Real.Gamma (11 / 2) ≠ 0 := ne_of_gt h_g_pos
+  -- Rewrite other Gamma terms using factorial
+  have h_g28 : Real.Gamma 28 = Nat.factorial 27 := by
+    have : (28 : ℝ) = ↑(27 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 27]
+  have h_g7 : Real.Gamma 7 = Nat.factorial 6 := by
+    have : (7 : ℝ) = ↑(6 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 6]
+  have h_g13 : Real.Gamma 13 = Nat.factorial 12 := by
+    have : (13 : ℝ) = ↑(12 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 12]
+  have h_g10 : Real.Gamma 10 = Nat.factorial 9 := by
+    have : (10 : ℝ) = ↑(9 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 9]
+  have h_g4 : Real.Gamma 4 = Nat.factorial 3 := by
+    have : (4 : ℝ) = ↑(3 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 3]
+  rw [h_g28, h_g7, h_g13, h_g10, h_g4]
+  -- Simplify additions
+  have h_add1 : (11 / 2 : ℝ) + 1 = 13 / 2 := by norm_num
+  have h_add2 : (13 / 2 : ℝ) + 1 = 15 / 2 := by norm_num
+  have h_add3 : (15 / 2 : ℝ) + 1 = 17 / 2 := by norm_num
+  have h_add4 : (17 / 2 : ℝ) + 1 = 19 / 2 := by norm_num
+  have h_add5 : (19 / 2 : ℝ) + 1 = 21 / 2 := by norm_num
+  have h_add6 : (21 / 2 : ℝ) + 1 = 23 / 2 := by norm_num
+  have h_add7 : (23 / 2 : ℝ) + 1 = 25 / 2 := by norm_num
+  have h_add8 : (25 / 2 : ℝ) + 1 = 27 / 2 := by norm_num
+  rw [h_add1, h_add2, h_add3, h_add4, h_add5, h_add6, h_add7, h_add8]
+  -- Now simplify multiplication and cancel Gamma
+  have h_eq : ((Nat.factorial 27 * Nat.factorial 6 : ℝ) * Real.Gamma (11 / 2)) /
+    ((27 / 2 * (25 / 2 * (23 / 2 * (21 / 2 * (19 / 2 * (17 / 2 * (15 / 2 * (13 / 2 * (11 / 2 * Real.Gamma (11 / 2)))))))))) * (Nat.factorial 12 : ℝ) * (Nat.factorial 9 : ℝ) * (Nat.factorial 3 : ℝ)) = 17039360 := by
+    calc
+      ((Nat.factorial 27 * Nat.factorial 6 : ℝ) * Real.Gamma (11 / 2)) /
+    ((27 / 2 * (25 / 2 * (23 / 2 * (21 / 2 * (19 / 2 * (17 / 2 * (15 / 2 * (13 / 2 * (11 / 2 * Real.Gamma (11 / 2)))))))))) * (Nat.factorial 12 : ℝ) * (Nat.factorial 9 : ℝ) * (Nat.factorial 3 : ℝ))
+      _ = ( (Nat.factorial 27 * Nat.factorial 6 : ℝ) * Real.Gamma (11 / 2) ) / ( ( (27/2 * 25/2 * 23/2 * 21/2 * 19/2 * 17/2 * 15/2 * 13/2 * 11/2 * Nat.factorial 12 * Nat.factorial 9 * Nat.factorial 3 : ℝ) ) * Real.Gamma (11 / 2) ) := by
+        congr 1
+        ring
+      _ = (Nat.factorial 27 * Nat.factorial 6 : ℝ) / (27/2 * 25/2 * 23/2 * 21/2 * 19/2 * 17/2 * 15/2 * 13/2 * 11/2 * Nat.factorial 12 * Nat.factorial 9 * Nat.factorial 3 : ℝ) := by
+        rw [mul_div_mul_right _ _ h_g_ne]
+      _ = 17039360 := by
+        norm_num
+  exact h_eq
+
+
+theorem a_four_eq_7012604550 : a 4 = 7012604550 := by
+  dsimp [a]
+  push_cast
+  have h9 : (9 : ℝ) * 4 + 1 = 37 := by norm_num
+  have h2 : (2 : ℝ) * 4 + 1 = 9 := by norm_num
+  have h32 : (3 / 2 : ℝ) * 4 + 1 = 7 := by norm_num
+  have h92 : (9 / 2 : ℝ) * 4 + 1 = 19 := by norm_num
+  have h4 : (4 : ℝ) * 4 + 1 = 17 := by norm_num
+  have h3 : (3 : ℝ) * 4 + 1 = 13 := by norm_num
+  have h1 : (4 : ℝ) + 1 = 5 := by norm_num
+  rw [h9, h2, h32, h92, h4, h3, h1]
+  have h_g37 : Real.Gamma 37 = Nat.factorial 36 := by
+    have : (37 : ℝ) = ↑(36 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 36]
+  have h_g9 : Real.Gamma 9 = Nat.factorial 8 := by
+    have : (9 : ℝ) = ↑(8 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 8]
+  have h_g7 : Real.Gamma 7 = Nat.factorial 6 := by
+    have : (7 : ℝ) = ↑(6 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 6]
+  have h_g19 : Real.Gamma 19 = Nat.factorial 18 := by
+    have : (19 : ℝ) = ↑(18 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 18]
+  have h_g17 : Real.Gamma 17 = Nat.factorial 16 := by
+    have : (17 : ℝ) = ↑(16 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 16]
+  have h_g13 : Real.Gamma 13 = Nat.factorial 12 := by
+    have : (13 : ℝ) = ↑(12 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 12]
+  have h_g5 : Real.Gamma 5 = Nat.factorial 4 := by
+    have : (5 : ℝ) = ↑(4 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 4]
+  rw [h_g37, h_g9, h_g7, h_g19, h_g17, h_g13, h_g5]
+  norm_num
+
+
+theorem a_five_eq_2976412336128 : a 5 = 2976412336128 := by
+  dsimp [a]
+  push_cast
+  have h9 : (9 : ℝ) * 5 + 1 = 46 := by norm_num
+  have h2 : (2 : ℝ) * 5 + 1 = 11 := by norm_num
+  have h32 : (3 / 2 : ℝ) * 5 + 1 = 17 / 2 := by norm_num
+  have h92 : (9 / 2 : ℝ) * 5 + 1 = 47 / 2 := by norm_num
+  have h4 : (4 : ℝ) * 5 + 1 = 21 := by norm_num
+  have h3 : (3 : ℝ) * 5 + 1 = 16 := by norm_num
+  have h1 : (5 : ℝ) + 1 = 6 := by norm_num
+  rw [h9, h2, h32, h92, h4, h3, h1]
+  -- Rewrite Gamma (47 / 2) in terms of Gamma (17 / 2)
+  have h_47_2 : (47 / 2 : ℝ) = 45 / 2 + 1 := by norm_num
+  have h_45_2 : (45 / 2 : ℝ) = 43 / 2 + 1 := by norm_num
+  have h_43_2 : (43 / 2 : ℝ) = 41 / 2 + 1 := by norm_num
+  have h_41_2 : (41 / 2 : ℝ) = 39 / 2 + 1 := by norm_num
+  have h_39_2 : (39 / 2 : ℝ) = 37 / 2 + 1 := by norm_num
+  have h_37_2 : (37 / 2 : ℝ) = 35 / 2 + 1 := by norm_num
+  have h_35_2 : (35 / 2 : ℝ) = 33 / 2 + 1 := by norm_num
+  have h_33_2 : (33 / 2 : ℝ) = 31 / 2 + 1 := by norm_num
+  have h_31_2 : (31 / 2 : ℝ) = 29 / 2 + 1 := by norm_num
+  have h_29_2 : (29 / 2 : ℝ) = 27 / 2 + 1 := by norm_num
+  have h_27_2 : (27 / 2 : ℝ) = 25 / 2 + 1 := by norm_num
+  have h_25_2 : (25 / 2 : ℝ) = 23 / 2 + 1 := by norm_num
+  have h_23_2 : (23 / 2 : ℝ) = 21 / 2 + 1 := by norm_num
+  have h_21_2 : (21 / 2 : ℝ) = 19 / 2 + 1 := by norm_num
+  have h_19_2 : (19 / 2 : ℝ) = 17 / 2 + 1 := by norm_num
+  rw [h_47_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_45_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_43_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_41_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_39_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_37_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_35_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_33_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_31_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_29_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_27_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_25_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_23_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_21_2, Real.Gamma_add_one (by norm_num)]
+  rw [h_19_2, Real.Gamma_add_one (by norm_num)]
+  -- Cancel Gamma (17 / 2)
+  have h_g_pos : 0 < Real.Gamma (17 / 2) := Real.Gamma_pos_of_pos (by norm_num)
+  have h_g_ne : Real.Gamma (17 / 2) ≠ 0 := ne_of_gt h_g_pos
+  -- Rewrite other Gamma terms using factorial
+  have h_g46 : Real.Gamma 46 = Nat.factorial 45 := by
+    have : (46 : ℝ) = ↑(45 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 45]
+  have h_g11 : Real.Gamma 11 = Nat.factorial 10 := by
+    have : (11 : ℝ) = ↑(10 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 10]
+  have h_g21 : Real.Gamma 21 = Nat.factorial 20 := by
+    have : (21 : ℝ) = ↑(20 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 20]
+  have h_g16 : Real.Gamma 16 = Nat.factorial 15 := by
+    have : (16 : ℝ) = ↑(15 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 15]
+  have h_g6 : Real.Gamma 6 = Nat.factorial 5 := by
+    have : (6 : ℝ) = ↑(5 + 1 : ℕ) := by norm_num
+    rw [this, Nat.cast_add, Nat.cast_one, Real.Gamma_nat_eq_factorial 5]
+  rw [h_g46, h_g11, h_g21, h_g16, h_g6]
+  -- Simplify additions
+  have h_add1 : (17 / 2 : ℝ) + 1 = 19 / 2 := by norm_num
+  have h_add2 : (19 / 2 : ℝ) + 1 = 21 / 2 := by norm_num
+  have h_add3 : (21 / 2 : ℝ) + 1 = 23 / 2 := by norm_num
+  have h_add4 : (23 / 2 : ℝ) + 1 = 25 / 2 := by norm_num
+  have h_add5 : (25 / 2 : ℝ) + 1 = 27 / 2 := by norm_num
+  have h_add6 : (27 / 2 : ℝ) + 1 = 29 / 2 := by norm_num
+  have h_add7 : (29 / 2 : ℝ) + 1 = 31 / 2 := by norm_num
+  have h_add8 : (31 / 2 : ℝ) + 1 = 33 / 2 := by norm_num
+  have h_add9 : (33 / 2 : ℝ) + 1 = 35 / 2 := by norm_num
+  have h_add10 : (35 / 2 : ℝ) + 1 = 37 / 2 := by norm_num
+  have h_add11 : (37 / 2 : ℝ) + 1 = 39 / 2 := by norm_num
+  have h_add12 : (39 / 2 : ℝ) + 1 = 41 / 2 := by norm_num
+  have h_add13 : (41 / 2 : ℝ) + 1 = 43 / 2 := by norm_num
+  have h_add14 : (43 / 2 : ℝ) + 1 = 45 / 2 := by norm_num
+  rw [h_add1, h_add2, h_add3, h_add4, h_add5, h_add6, h_add7, h_add8, h_add9, h_add10, h_add11, h_add12, h_add13, h_add14]
+  -- Now simplify multiplication and cancel Gamma
+  have h_eq : ((Nat.factorial 45 * Nat.factorial 10 : ℝ) * Real.Gamma (17 / 2)) /
+    ((45 / 2 * (43 / 2 * (41 / 2 * (39 / 2 * (37 / 2 * (35 / 2 * (33 / 2 * (31 / 2 * (29 / 2 * (27 / 2 * (25 / 2 * (23 / 2 * (21 / 2 * (19 / 2 * (17 / 2 * Real.Gamma (17 / 2)))))))))))))))) * (Nat.factorial 20 : ℝ) * (Nat.factorial 15 : ℝ) * (Nat.factorial 5 : ℝ)) = 2976412336128 := by
+    calc
+      ((Nat.factorial 45 * Nat.factorial 10 : ℝ) * Real.Gamma (17 / 2)) /
+    ((45 / 2 * (43 / 2 * (41 / 2 * (39 / 2 * (37 / 2 * (35 / 2 * (33 / 2 * (31 / 2 * (29 / 2 * (27 / 2 * (25 / 2 * (23 / 2 * (21 / 2 * (19 / 2 * (17 / 2 * Real.Gamma (17 / 2)))))))))))))))) * (Nat.factorial 20 : ℝ) * (Nat.factorial 15 : ℝ) * (Nat.factorial 5 : ℝ))
+      _ = ((Nat.factorial 45 * Nat.factorial 10 : ℝ) * Real.Gamma (17 / 2)) / (((45/2 * 43/2 * 41/2 * 39/2 * 37/2 * 35/2 * 33/2 * 31/2 * 29/2 * 27/2 * 25/2 * 23/2 * 21/2 * 19/2 * 17/2 * Nat.factorial 20 * Nat.factorial 15 * Nat.factorial 5 : ℝ)) * Real.Gamma (17 / 2)) := by
+        congr 1
+        ring
+      _ = (Nat.factorial 45 * Nat.factorial 10 : ℝ) / (45/2 * 43/2 * 41/2 * 39/2 * 37/2 * 35/2 * 33/2 * 31/2 * 29/2 * 27/2 * 25/2 * 23/2 * 21/2 * 19/2 * 17/2 * Nat.factorial 20 * Nat.factorial 15 * Nat.factorial 5 : ℝ) := by
+        rw [mul_div_mul_right _ _ h_g_ne]
+      _ = 2976412336128 := by
+        norm_num
+  exact h_eq
+
+
+/--
+Conjecture: the supercongruences a(n*p^r) == a(n*p^(r-1)) (mod p^(3*r)) hold for all primes p >= 5 and all positive integers n and r.
+Note: This conjecture requires that a(n) is an integer for all n, which is only conjectural.
+We assume integrality for the purpose of stating the congruence.
+-/
+theorem oeis_364173_conjecture_0
+    (h_int : ∀ m : ℕ, a m ∈ (Set.range (fun (x : ℤ) => (x : ℝ)))) :
+  ∀ (p : ℕ) (hp : Nat.Prime p) (h_p_ge_5 : 5 ≤ p)
+    (n r : ℕ) (hn : n > 0) (hr : r > 0),
+  (Classical.choose (h_int (n * p ^ r)) : ℤ)
+  ≡ (Classical.choose (h_int (n * p ^ (r - 1))) : ℤ)
+  [ZMOD ((p : ℤ) ^ (3 * r))] := by
+  intro p hp h_p_ge_5 n r hn hr
+  rw [Int.modEq_iff_dvd]
+  sorry

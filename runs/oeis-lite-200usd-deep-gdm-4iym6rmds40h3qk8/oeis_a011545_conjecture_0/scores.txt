@@ -1,0 +1,99 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1956:111: error: unsolved goals
+  k : ℤ
+  hk1 : π * 10 ^ ↑37 < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ ↑37)
+  h_ten : 10 ^ ↑37 = 10000000000000000000000000000000000000
+  h_pi_gt : 3.1415926535897932384626433832795028841 < π
+  hk1_bound : 31415926535897932384626433832795028841.0 < ↑k
+  hk2_bound : ↑k < 31415926535897932384626433832795028842
+  ⊢ False
+  Submission/Spec.lean:2012:87: error: unsolved goals
+  k : ℤ
+  hk1 : π * 10 ^ ↑39 < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ ↑39)
+  ⊢ False
+  Submission/Spec.lean:2017:155: error: unsolved goals
+  k : ℤ
+  hk1 : π * 10 ^ ↑39 < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ ↑39)
+  h_ten : 10 ^ ↑39 = 10000000000000000000000000000000000000000
+  h_pi_gt : 3.141592653589793238462643383279502884197 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884198
+  ⊢ False
+  Submission/Spec.lean:2018:68: error: linarith failed to find a contradiction
+  case h
+  k : ℤ
+  hk1 : π * 10 ^ ↑39 < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ ↑39)
+  h_ten : 10 ^ ↑39 = 10000000000000000000000000000000000000000
+  h_pi_gt : 3.141592653589793238462643383279502884197 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884198
+  a✝ :
+    π * 10000000000000000000000000000000000000000 ≤
+      3.141592653589793238462643383279502884197 * 10000000000000000000000000000000000000000 + 1 / 10
+  ⊢ False
+  failed
+  Submission/Spec.lean:2031:68: error: linarith failed to find a contradiction
+  case h
+  k : ℤ
+  hk1 : π * 10 ^ ↑39 < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ ↑39)
+  h_ten : 10 ^ ↑39 = 10000000000000000000000000000000000000000
+  h_pi_gt : 3.141592653589793238462643383279502884197 < π
+  h_pi_lt : π < 3.141592653589793238462643383279502884198
+  hk1_bound : 3141592653589793238462643383279502884197.1 < ↑k
+  h_ineq : π / arctan (1 / 10 ^ ↑39) < π * 10 ^ ↑39 + π / 10 ^ ↑39
+  h_pi_div : π / 10 ^ ↑39 < 4 / 10 ^ ↑39
+  a✝ :
+    3141592653589793238462643383279502884197.2000000001 ≤
+      π * 10000000000000000000000000000000000000000 + 4 / 10000000000000000000000000000000000000000
+  ⊢ False
+  failed
+  Submission/Spec.lean:2039:86: error: Type mismatch
+    hk2_bound
+  has type
+    ↑k < 3141592653589793238462643383279502884197.2000000001
+  but is expected to have type
+    ↑k < ↑3141592653589793238462643383279502884198
+  Submission/Spec.lean:2111:43: error(lean.unknownIdentifier): Unknown identifier `ten_pow_ge_one`
+  Submission/Spec.lean:2157:6: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  hn : n ≥ 40
+  k : ℤ
+  hk1 : π * 10 ^ n < ↑k
+  hk2 : ↑k < π / arctan (1 / 10 ^ n)
+  h_n_cast : 10 ^ ↑n = 10 ^ n
+  h_pi_lt : π < 3.1415926535897932384626433832795028842
+  h_pi_lt_tight : π < 3.141592653589793238462643383279502884198
+  h_pi_gt_tight : 3.141592653589793238462643383279502884197 < π
+  U : ℤ := 31415926535897932384626433832795028842
+  m : ℕ := n - 37
+  h_eq_n : n = m + 37
+  h_pow_add : 10 ^ n = 10 ^ m * 10 ^ 37
+  K : ℤ := U * 10 ^ m
+  h_K_cast : ↑K = ↑U * 10 ^ m
+  h_k_lt_K_minus_2 : ↑k < ↑K - 2
+  h_k_le_K_minus_3_int : k ≤ K - 3
+  h_pi_gt_mul : ↑U - 1 + 0.97 < π * 10 ^ 37
+  h_ten_m_ge_thousand : 1000 ≤ 10 ^ m
+  h_pos : 0 < 10 ^ m
+  h_diff_mul : (↑U - 1 + 0.97) * 10 ^ m < π * 10 ^ 37 * 10 ^ m
+  h_mul_expand : ↑U * 10 ^ m - 3e-2 * 10 ^ m < π * 10 ^ 37 * 10 ^ m
+  this✝ : 3 ≤ 3e-2 * 1000
+  this : 3 ≤ 3e-2 * 10 ^ m
+  a✝ : ↑U * 10 ^ m - 3e-2 * 10 ^ m < ↑U * 10 ^ m - 3
+  ⊢ False
+  failed
+  Submission/Spec.lean:2167:2: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    31415926535897932384626433832795028842*c - d ≥ 3
+    b ≥ 3
+  where
+   b := ↑(n - 37)
+   c := 10 ^ m
+   d := k
+

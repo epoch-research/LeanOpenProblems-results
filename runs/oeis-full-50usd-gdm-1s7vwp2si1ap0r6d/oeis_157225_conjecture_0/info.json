@@ -1,0 +1,20 @@
+{
+  "id": "oeis_157225_conjecture_0",
+  "epoch": 1,
+  "uuid": "4X8EHDNUTCP7EDh5gBZELa",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1359745,
+      "output_tokens": 45483,
+      "total_tokens": 9766654,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 8315122,
+      "reasoning_tokens": 46304,
+      "total_cost": 3.6962328000000007
+    }
+  },
+  "oeis_id": "A157225"
+}

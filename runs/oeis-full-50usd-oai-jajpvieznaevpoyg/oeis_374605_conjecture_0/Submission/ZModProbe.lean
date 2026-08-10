@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check ZMod.natCast_eq_natCast_iff
+#check ZMod.intCast_zmod_eq_zero_iff_dvd
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check CharP.cast_eq_zero
+#check Nat.cast_eq_zero
+#check Nat.cast_eq_zero_iff
+#check Nat.cast_zmod_eq_zero_iff_dvd
+#check Int.cast_zmod_eq_zero_iff_dvd

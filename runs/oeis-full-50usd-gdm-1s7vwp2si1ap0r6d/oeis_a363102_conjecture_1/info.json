@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a363102_conjecture_1",
+  "epoch": 1,
+  "uuid": "7mErC47HBVvtQhttrv53u4",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 8050754,
+      "output_tokens": 443310,
+      "total_tokens": 83555770,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 74423485,
+      "reasoning_tokens": 638221,
+      "total_cost": 27.229443750000005
+    }
+  },
+  "oeis_id": "A363102"
+}

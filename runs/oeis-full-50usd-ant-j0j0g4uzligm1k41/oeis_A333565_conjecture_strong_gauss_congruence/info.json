@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A333565_conjecture_strong_gauss_congruence",
+  "epoch": 1,
+  "uuid": "66QVfYC6sUBaH4E6G52KLs",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 551,
+      "output_tokens": 698879,
+      "total_tokens": 36532078,
+      "input_tokens_cache_write": 2545067,
+      "input_tokens_cache_read": 33287581,
+      "reasoning_tokens": 177095,
+      "total_cost": 50.02518925000002
+    }
+  },
+  "oeis_id": "A333565"
+}

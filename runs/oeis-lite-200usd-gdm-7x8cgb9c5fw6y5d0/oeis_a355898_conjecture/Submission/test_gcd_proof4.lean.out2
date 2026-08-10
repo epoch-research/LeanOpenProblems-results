@@ -1,0 +1,128 @@
+Submission/test_gcd_proof4.lean:7:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof4.lean:8:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof4.lean:15:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof4.lean:34:15: warning: declaration uses 'sorry'
+Submission/test_gcd_proof4.lean:36:17: warning: declaration uses 'sorry'
+Submission/test_gcd_proof4.lean:30:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof4.lean:34:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof4.lean:36:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof4.lean:54:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof4.lean:55:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof4.lean:59:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof4.lean:65:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof4.lean:197:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f + g ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+ h := ↑(r - 1)
+Submission/test_gcd_proof4.lean:201:53: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1)) ^ 2
+ g := ↑(B (k - 1 + 2)) * ↑(B (k - 1))
+ h := ↑(B (k - 1 + 1)) ^ 2
+Submission/test_gcd_proof4.lean:243:33: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  f ≥ 0
+  f - g ≤ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+Submission/test_gcd_proof4.lean:245:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f - g ≤ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑C_val
+ g := ↑(B (k + 1)) ^ 2
+ h := ↑(r - 1)
+Submission/test_gcd_proof4.lean:249:53: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  g - h ≤ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1)) ^ 2
+ g := ↑(B (k - 1 + 2)) * ↑(B (k - 1))
+ h := ↑(B (k - 1 + 1)) ^ 2
+Submission/test_gcd_proof4.lean:265:105: error: No goals to be solved

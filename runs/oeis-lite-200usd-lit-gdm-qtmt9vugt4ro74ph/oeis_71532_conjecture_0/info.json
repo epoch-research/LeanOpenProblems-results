@@ -1,0 +1,23 @@
+{
+  "id": "oeis_71532_conjecture_0",
+  "epoch": 1,
+  "uuid": "hbEEphbVGqbVRZRtLPrJkZ",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 71914537,
+      "output_tokens": 1195195,
+      "total_tokens": 622189222,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 542702188,
+      "reasoning_tokens": 6377302,
+      "total_cost": 200.03388869999986
+    }
+  },
+  "oeis_id": "A071532"
+}

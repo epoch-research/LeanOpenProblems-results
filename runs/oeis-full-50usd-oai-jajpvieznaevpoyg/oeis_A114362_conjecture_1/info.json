@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A114362_conjecture_1",
+  "epoch": 1,
+  "uuid": "QXLtTmt8HkVruWaYjakMnR",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 789858,
+      "output_tokens": 94462,
+      "total_tokens": 30876256,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 29991936,
+      "reasoning_tokens": 46644,
+      "total_cost": 21.779117999999986
+    }
+  },
+  "oeis_id": "A114362"
+}

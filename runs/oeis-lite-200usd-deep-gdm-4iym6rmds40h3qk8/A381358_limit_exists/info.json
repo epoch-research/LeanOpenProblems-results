@@ -1,0 +1,23 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "6syBu2vD89QdeBo32hwcks",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 67132787,
+      "output_tokens": 1820928,
+      "total_tokens": 625794556,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 553041563,
+      "reasoning_tokens": 3799278,
+      "total_cost": 200.04376695000025
+    }
+  },
+  "oeis_id": "A381358"
+}

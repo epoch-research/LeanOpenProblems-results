@@ -1,0 +1,230 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:372:56: warning: unused variable `hW`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:835:39: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:855:39: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1191:31: error: unsolved goals
+  case calc.step
+  h : IsAlgebraic ℚ xi_3
+  p : ℚ[X]
+  hp0 : p ≠ 0
+  hp_eval : (aeval xi_3) p = 0
+  h_min : ∀ (q : ℚ[X]), q ≠ 0 → (aeval xi_3) q = 0 → p.natDegree ≤ q.natDegree
+  hp_deriv : (aeval xi_3) (derivative p) ≠ 0
+  W : ℤ
+  q : ℤ[X]
+  hW : W ≠ 0
+  hp : p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) q
+  h_deriv_p_eq : derivative p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) (derivative q)
+  h_eval_deriv_q_ne : eval xi_3 (Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)) ≠ 0
+  dQ : ℚ_[3][X] := Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  h_dQ : dQ = Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  C_norm : ℝ := ‖eval xi_3 dQ‖
+  h_C_norm_pos : C_norm > 0
+  h_lim_dist : Tendsto (fun n => ‖eval (s n) dQ - eval xi_3 dQ‖) atTop (𝓝 0)
+  N : ℕ
+  hN : ∀ n ≥ N, Dist.dist ‖eval (s n) dQ - eval xi_3 dQ‖ 0 < C_norm
+  K : ℕ
+  hK : 1 / C_norm < ↑K
+  M : ℕ := N + K + 4
+  hM : M ≥ 4
+  n : ℕ := 3 ^ M - 1
+  hn_ge2 : n ≥ 2
+  hn_sub_2 : n - 2 ≥ N
+  hn_sub_1 : n - 1 ≥ N
+  h1 : ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ < C_norm
+  h2 : ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ < C_norm
+  hd1 : Dist.dist ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖
+  hd2 : Dist.dist ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖
+  hn1 : ‖eval (s (n - 1)) dQ‖ = C_norm
+  hn2 : ‖eval (s (n - 2)) dQ‖ = C_norm
+  h_s_le : ∀ (k : ℕ), ‖eval (s k) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)‖ ≤ ‖↑(k + 1)!‖
+  f1 : ℚ_[3] := ↑(n - 1)!
+  f2 : ℚ_[3] := ↑n !
+  s_relations_M : s (n - 1) = s (n - 2) + f1 ∧ s n = s (n - 1) + f2 ∧ f2 = f1 * ↑n ∧ f1 = ↑(n - 1)!
+  h_taylor_raw :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) +
+            f1 *
+              (eval (s (n - 2)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q)) +
+                ↑n * eval (s (n - 1)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q))) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  h_taylor :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) + f1 * (eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  A : ℚ_[3] :=
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) - eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)
+  B : ℚ_[3] := f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  C : ℚ_[3] := f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  X_term : ℚ_[3] := eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ
+  h_sum : f1 * X_term = A - B - C
+  hA : ‖A‖ ≤ ‖f1‖ * 3 ^ (-↑M)
+  hB : ‖B‖ ≤ ‖f1‖ ^ 2
+  hC : ‖C‖ ≤ ‖f1‖ ^ 2
+  hf1_bound : ‖f1‖ ≤ 3 ^ (-↑M)
+  hf1_pos : ‖f1‖ ≠ 0
+  h_X_bound : ‖X_term‖ ≤ 3 ^ (-↑M)
+  h_X_eq : X_term = 3 ^ M * eval (s (n - 1)) dQ - (eval (s (n - 1)) dQ - eval (s (n - 2)) dQ)
+  U : ℚ_[3] := 3 ^ M * eval (s (n - 1)) dQ
+  V : ℚ_[3] := eval (s (n - 1)) dQ - eval (s (n - 2)) dQ
+  hV_bound : ‖V‖ ≤ 3 ^ (-(2 * ↑M))
+  h_U_norm : ‖U‖ = 3 ^ (-↑M) * C_norm
+  h_eq : 3 ^ (-↑M) * C_norm = ‖V‖
+  ⊢ 3 ^ (-↑M) * C_norm < ‖U‖
+  Submission/Spec.lean:1216:10: error(lean.unknownIdentifier): Unknown identifier `h_ne`
+  Submission/Spec.lean:1223:35: error: unsolved goals
+  h : IsAlgebraic ℚ xi_3
+  p : ℚ[X]
+  hp0 : p ≠ 0
+  hp_eval : (aeval xi_3) p = 0
+  h_min : ∀ (q : ℚ[X]), q ≠ 0 → (aeval xi_3) q = 0 → p.natDegree ≤ q.natDegree
+  hp_deriv : (aeval xi_3) (derivative p) ≠ 0
+  W : ℤ
+  q : ℤ[X]
+  hW : W ≠ 0
+  hp : p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) q
+  h_deriv_p_eq : derivative p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) (derivative q)
+  h_eval_deriv_q_ne : eval xi_3 (Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)) ≠ 0
+  dQ : ℚ_[3][X] := Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  h_dQ : dQ = Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  C_norm : ℝ := ‖eval xi_3 dQ‖
+  h_C_norm_pos : C_norm > 0
+  h_lim_dist : Tendsto (fun n => ‖eval (s n) dQ - eval xi_3 dQ‖) atTop (𝓝 0)
+  N : ℕ
+  hN : ∀ n ≥ N, Dist.dist ‖eval (s n) dQ - eval xi_3 dQ‖ 0 < C_norm
+  K : ℕ
+  hK : 1 / C_norm < ↑K
+  M : ℕ := N + K + 4
+  hM : M ≥ 4
+  n : ℕ := 3 ^ M - 1
+  hn_ge2 : n ≥ 2
+  hn_sub_2 : n - 2 ≥ N
+  hn_sub_1 : n - 1 ≥ N
+  h1 : ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ < C_norm
+  h2 : ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ < C_norm
+  hd1 : Dist.dist ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖
+  hd2 : Dist.dist ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖
+  hn1 : ‖eval (s (n - 1)) dQ‖ = C_norm
+  hn2 : ‖eval (s (n - 2)) dQ‖ = C_norm
+  h_s_le : ∀ (k : ℕ), ‖eval (s k) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)‖ ≤ ‖↑(k + 1)!‖
+  f1 : ℚ_[3] := ↑(n - 1)!
+  f2 : ℚ_[3] := ↑n !
+  s_relations_M : s (n - 1) = s (n - 2) + f1 ∧ s n = s (n - 1) + f2 ∧ f2 = f1 * ↑n ∧ f1 = ↑(n - 1)!
+  h_taylor_raw :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) +
+            f1 *
+              (eval (s (n - 2)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q)) +
+                ↑n * eval (s (n - 1)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q))) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  h_taylor :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) + f1 * (eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  A : ℚ_[3] :=
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) - eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)
+  B : ℚ_[3] := f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  C : ℚ_[3] := f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  X_term : ℚ_[3] := eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ
+  h_sum : f1 * X_term = A - B - C
+  hA : ‖A‖ ≤ ‖f1‖ * 3 ^ (-↑M)
+  hB : ‖B‖ ≤ ‖f1‖ ^ 2
+  hC : ‖C‖ ≤ ‖f1‖ ^ 2
+  hf1_bound : ‖f1‖ ≤ 3 ^ (-↑M)
+  hf1_pos : ‖f1‖ ≠ 0
+  h_X_bound : ‖X_term‖ ≤ 3 ^ (-↑M)
+  h_X_eq : X_term = 3 ^ M * eval (s (n - 1)) dQ - (eval (s (n - 1)) dQ - eval (s (n - 2)) dQ)
+  U : ℚ_[3] := 3 ^ M * eval (s (n - 1)) dQ
+  V : ℚ_[3] := eval (s (n - 1)) dQ - eval (s (n - 2)) dQ
+  hV_bound : ‖V‖ ≤ 3 ^ (-(2 * ↑M))
+  h_U_norm : ‖U‖ = 3 ^ (-↑M) * C_norm
+  h_ne : ‖U‖ ≠ ‖V‖
+  h_U_eq_XV : U = X_term + V
+  h_eq : ‖X_term‖ = ‖V‖
+  h_X_lt : ‖X_term‖ < ‖U‖
+  ⊢ False
+  Submission/Spec.lean:979:61: error: unsolved goals
+  h : IsAlgebraic ℚ xi_3
+  p : ℚ[X]
+  hp0 : p ≠ 0
+  hp_eval : (aeval xi_3) p = 0
+  h_min : ∀ (q : ℚ[X]), q ≠ 0 → (aeval xi_3) q = 0 → p.natDegree ≤ q.natDegree
+  hp_deriv : (aeval xi_3) (derivative p) ≠ 0
+  W : ℤ
+  q : ℤ[X]
+  hW : W ≠ 0
+  hp : p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) q
+  h_deriv_p_eq : derivative p = Polynomial.C (1 / ↑W) * Polynomial.map (algebraMap ℤ ℚ) (derivative q)
+  h_eval_deriv_q_ne : eval xi_3 (Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)) ≠ 0
+  dQ : ℚ_[3][X] := Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  h_dQ : dQ = Polynomial.map (algebraMap ℤ ℚ_[3]) (derivative q)
+  C_norm : ℝ := ‖eval xi_3 dQ‖
+  h_C_norm_pos : C_norm > 0
+  h_lim_dist : Tendsto (fun n => ‖eval (s n) dQ - eval xi_3 dQ‖) atTop (𝓝 0)
+  N : ℕ
+  hN : ∀ n ≥ N, Dist.dist ‖eval (s n) dQ - eval xi_3 dQ‖ 0 < C_norm
+  K : ℕ
+  hK : 1 / C_norm < ↑K
+  M : ℕ := N + K + 4
+  hM : M ≥ 4
+  n : ℕ := 3 ^ M - 1
+  hn_ge2 : n ≥ 2
+  hn_sub_2 : n - 2 ≥ N
+  hn_sub_1 : n - 1 ≥ N
+  h1 : ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ < C_norm
+  h2 : ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ < C_norm
+  hd1 : Dist.dist ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 1)) dQ - eval xi_3 dQ‖
+  hd2 : Dist.dist ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖ 0 = ‖eval (s (n - 2)) dQ - eval xi_3 dQ‖
+  hn1 : ‖eval (s (n - 1)) dQ‖ = C_norm
+  hn2 : ‖eval (s (n - 2)) dQ‖ = C_norm
+  h_s_le : ∀ (k : ℕ), ‖eval (s k) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)‖ ≤ ‖↑(k + 1)!‖
+  f1 : ℚ_[3] := ↑(n - 1)!
+  f2 : ℚ_[3] := ↑n !
+  s_relations_M : s (n - 1) = s (n - 2) + f1 ∧ s n = s (n - 1) + f2 ∧ f2 = f1 * ↑n ∧ f1 = ↑(n - 1)!
+  h_taylor_raw :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) +
+            f1 *
+              (eval (s (n - 2)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q)) +
+                ↑n * eval (s (n - 1)) (derivative (Polynomial.map (algebraMap ℤ ℚ_[3]) q))) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  h_taylor :
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) =
+      eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) + f1 * (eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ) +
+          f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX +
+        f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  A : ℚ_[3] :=
+    eval (s n) (Polynomial.map (algebraMap ℤ ℚ_[3]) q) - eval (s (n - 2)) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)
+  B : ℚ_[3] := f1 ^ 2 * eval f1 ((taylor (s (n - 2))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  C : ℚ_[3] := f2 ^ 2 * eval f2 ((taylor (s (n - 1))) (Polynomial.map (algebraMap ℤ ℚ_[3]) q)).divX.divX
+  X_term : ℚ_[3] := eval (s (n - 2)) dQ + ↑n * eval (s (n - 1)) dQ
+  h_sum : f1 * X_term = A - B - C
+  hA : ‖A‖ ≤ ‖f1‖ * 3 ^ (-↑M)
+  hB : ‖B‖ ≤ ‖f1‖ ^ 2
+  hC : ‖C‖ ≤ ‖f1‖ ^ 2
+  hf1_bound : ‖f1‖ ≤ 3 ^ (-↑M)
+  hf1_pos : ‖f1‖ ≠ 0
+  h_X_bound : ‖X_term‖ ≤ 3 ^ (-↑M)
+  h_X_eq : X_term = 3 ^ M * eval (s (n - 1)) dQ - (eval (s (n - 1)) dQ - eval (s (n - 2)) dQ)
+  U : ℚ_[3] := 3 ^ M * eval (s (n - 1)) dQ
+  V : ℚ_[3] := eval (s (n - 1)) dQ - eval (s (n - 2)) dQ
+  hV_bound : ‖V‖ ≤ 3 ^ (-(2 * ↑M))
+  h_U_norm : ‖U‖ = 3 ^ (-↑M) * C_norm
+  h_ne : ‖U‖ ≠ ‖V‖
+  h_U_eq_XV : U = X_term + V
+  h_U_norm_eq : ‖U‖ = max ‖X_term‖ ‖V‖
+  ⊢ False
+

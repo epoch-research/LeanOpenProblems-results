@@ -1,0 +1,173 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 10 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 52 declarations.\n------------------\noeis_340738_conjecture_0 used disallowed axioms. #[Quot.sound, propext, Classical.choice, sorryAx]\napprox_bound used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\napprox_bound_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_340738_conjecture_0: uses disallowed axioms\n  Disallowed axioms used: #[sorryAx]\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "sequence_of_fractions",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A340738.match_3",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A340738._sunfold",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A340738.match_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A340737",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "oeis_340738_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Quot.sound",
+                "propext",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Quot.sound",
+                "propext",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "failureMode": "axioms"
+          }
+        ],
+        [
+          "A340737._sunfold",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A340738",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,219 @@
+/workspace/leanproject/Submission/test_test_gcd.lean:10:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_test_gcd.lean:11:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_test_gcd.lean:20:21: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:23:23: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:18:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:33:15: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:35:17: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:29:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:33:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_test_gcd.lean:35:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_test_gcd.lean:67:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_test_gcd.lean:68:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_test_gcd.lean:69:59: error: Tactic `decide` failed for proposition
+  (B 2 - 1).gcd (B 1 - 1) = 1
+because its `Decidable` instance
+  (B 2 - 1).instDecidableCoprime (B 1 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 2 - 1).gcd (B 1 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_test_gcd.lean:70:59: error: Tactic `decide` failed for proposition
+  (B 3 - 1).gcd (B 2 - 1) = 1
+because its `Decidable` instance
+  (B 3 - 1).instDecidableCoprime (B 2 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 3 - 1).gcd (B 2 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_test_gcd.lean:71:59: error: Tactic `decide` failed for proposition
+  (B 4 - 1).gcd (B 3 - 1) = 1
+because its `Decidable` instance
+  (B 4 - 1).instDecidableCoprime (B 3 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 4 - 1).gcd (B 3 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_test_gcd.lean:75:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_test_gcd.lean:81:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_test_gcd.lean:147:8: error: Type mismatch
+  base_gcd_1
+has type
+  (B 1 - 1).gcd (B 0) = 1
+but is expected to have type
+  (B (0 + 1 + 1) - 1).gcd (B (0 + 1) - 1) = 1
+/workspace/leanproject/Submission/test_test_gcd.lean:149:10: error: Type mismatch
+  base_gcd_2
+has type
+  (B 2 - 1).gcd (B 1 - 1) = 1
+but is expected to have type
+  (B (0 + 1 + 1 + 1) - 1).gcd (B (0 + 1 + 1) - 1) = 1
+/workspace/leanproject/Submission/test_test_gcd.lean:151:12: error: Type mismatch
+  base_gcd_3
+has type
+  (B 3 - 1).gcd (B 2 - 1) = 1
+but is expected to have type
+  (B (0 + 1 + 1 + 1 + 1) - 1).gcd (B (0 + 1 + 1 + 1) - 1) = 1
+/workspace/leanproject/Submission/test_test_gcd.lean:153:14: error: Type mismatch
+  base_gcd_4
+has type
+  (B 4 - 1).gcd (B 3 - 1) = 1
+but is expected to have type
+  (B (0 + 1 + 1 + 1 + 1 + 1) - 1).gcd (B (0 + 1 + 1 + 1 + 1) - 1) = 1
+/workspace/leanproject/Submission/test_test_gcd.lean:221:20: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  j ≥ 1
+  j ≥ 1
+  h - i ≥ 0
+  g ≥ 0
+  g + h - i ≥ 0
+  f ≥ 0
+  f + h - i ≥ 0
+  e ≥ -1
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 3 + 1) ^ 2)
+ g := ↑(B (k + 4 + 2)) * ↑(B (k + 4))
+ h := ↑(B (k + 5)) ^ 2
+ i := ↑(B (k + 6)) * ↑(B (k + 4))
+ j := ↑(r - 2)
+/workspace/leanproject/Submission/test_test_gcd.lean:224:20: error: mod_cast has type
+  B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val
+but is expected to have type
+  B (k + 3) * B (k + 1) = B (k + 2) ^ 2 + C_val
+/workspace/leanproject/Submission/test_test_gcd.lean:232:33: error(lean.unknownIdentifier): Unknown identifier `hBkp2_z`
+/workspace/leanproject/Submission/test_test_gcd.lean:239:33: error(lean.unknownIdentifier): Unknown identifier `hBkp2_z`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_test_gcd.lean:241:65: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+d : ℕ := (B (k + 6) - 1).gcd (B (k + 5) - 1)
+hd1 : d ∣ B (k + 6) - 1
+hd2 : d ∣ B (k + 5) - 1
+h_pos1 : 1 ≤ B (k + 6)
+h_pos2 : 1 ≤ B (k + 5)
+h_pos3 : 1 ≤ B (k + 4)
+q2 : ℤ
+hq2 : ↑(B (k + 6)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 5)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 4) = d * q3
+hBkp4_z : ↑(B (k + 4)) = ↑d * ↑q3
+hBkp5_z : ↑(B (k + 5)) = ↑d * q1 + 1
+hBkp6_z : ↑(B (k + 6)) = ↑d * q2 + 1
+hBkp3_z : ↑(B (k + 3)) = ↑d * (q1 - ↑q3) + 1
+h_cass :
+  (Even (k + 3) → B (k + 3 + 1) ^ 2 = B (k + 3 + 2) * B (k + 3) + C_val) ∧
+    (Odd (k + 3) → B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val)
+h_even : Even (k + 4)
+h_odd : Odd (k + 3)
+h_cass_odd : B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 5)) * ↑(B (k + 3)) = ↑(B (k + 4)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 5)) * ↑(B (k + 3)) - ↑(B (k + 4)) ^ 2 - 1
+hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+h_cass_kp4 :
+  (Even (k + 4) → B (k + 4 + 1) ^ 2 = B (k + 4 + 2) * B (k + 4) + C_val) ∧
+    (Odd (k + 4) → B (k + 4 + 2) * B (k + 4) = B (k + 4 + 1) ^ 2 + C_val)
+h_cass_even : B (k + 4 + 1) ^ 2 = B (k + 4 + 2) * B (k + 4) + C_val
+h_cast_kp4 : ↑(B (k + 5)) ^ 2 = ↑(B (k + 6)) * ↑(B (k + 4)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 5)) ^ 2 - ↑(B (k + 6)) * ↑(B (k + 4)) + 1
+h_cass_km1 :
+  (Even (k - 1) → B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val) ∧
+    (Odd (k - 1) → B (k - 1 + 2) * B (k - 1) = B (k - 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k - 1)
+h_cass_even_kp1 : B (k - 1 + 1) ^ 2 = B (k - 1 + 2) * B (k - 1) + C_val
+h_cast_kp1 : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+h_C_add_1_v2 : ↑C_val + 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1
+hBkm1_z : ↑(B (k + 1)) = ↑d * (2 * ↑q3 - q1) - 1
+hBkm2_z : ↑(B (k + 2)) = ↑d * (2 * q1 - 3 * ↑q3) + 2
+⊢ -4 - ↑d * q1 * 10 + ↑d * ↑q3 * 15 + ↑d ^ 2 * q1 * ↑q3 * 15 + (-(↑d ^ 2 * q1 ^ 2 * 5) - ↑d ^ 2 * ↑q3 ^ 2 * 11) =
+    -(↑d * 3) - ↑d * q1 * 6 + ↑d * ↑q3 * 9 + ↑d ^ 2 * q1 * ↑q3 * 15 + (-(↑d ^ 2 * q1 ^ 2 * 5) - ↑d ^ 2 * ↑q3 ^ 2 * 11)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_test_gcd.lean:274:65: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+d : ℕ := (B (k + 6) - 1).gcd (B (k + 5) - 1)
+hd1 : d ∣ B (k + 6) - 1
+hd2 : d ∣ B (k + 5) - 1
+h_pos1 : 1 ≤ B (k + 6)
+h_pos2 : 1 ≤ B (k + 5)
+h_pos3 : 1 ≤ B (k + 4)
+q2 : ℤ
+hq2 : ↑(B (k + 6)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 5)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 4) = d * q3
+hBkp4_z : ↑(B (k + 4)) = ↑d * ↑q3
+hBkp5_z : ↑(B (k + 5)) = ↑d * q1 + 1
+hBkp6_z : ↑(B (k + 6)) = ↑d * q2 + 1
+hBkp3_z : ↑(B (k + 3)) = ↑d * (q1 - ↑q3) + 1
+h_cass :
+  (Even (k + 3) → B (k + 3 + 1) ^ 2 = B (k + 3 + 2) * B (k + 3) + C_val) ∧
+    (Odd (k + 3) → B (k + 3 + 2) * B (k + 3) = B (k + 3 + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 4)
+h_even_kp3 : Even (k + 3)
+h_cass_even : B (k + 3 + 1) ^ 2 = B (k + 3 + 2) * B (k + 3) + C_val
+h_cast : ↑(B (k + 4)) ^ 2 = ↑(B (k + 5)) * ↑(B (k + 3)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 4)) ^ 2 - ↑(B (k + 5)) * ↑(B (k + 3)) + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_kp4 :
+  (Even (k + 4) → B (k + 4 + 1) ^ 2 = B (k + 4 + 2) * B (k + 4) + C_val) ∧
+    (Odd (k + 4) → B (k + 4 + 2) * B (k + 4) = B (k + 4 + 1) ^ 2 + C_val)
+h_odd_kp4 : Odd (k + 4)
+h_cass_odd : B (k + 4 + 2) * B (k + 4) = B (k + 4 + 1) ^ 2 + C_val
+h_cast_kp4 : ↑(B (k + 6)) * ↑(B (k + 4)) = ↑(B (k + 5)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 6)) * ↑(B (k + 4)) - ↑(B (k + 5)) ^ 2 - 1
+⊢ -2 + (↑d * ↑q3 - ↑d * q1 * 2) + (↑d ^ 2 * q2 * ↑q3 - ↑d ^ 2 * q1 ^ 2) =
+    ↑d * ↑q3 - ↑d * q1 * 2 + (↑d ^ 2 * q2 * ↑q3 - ↑d ^ 2 * q1 ^ 2)
+/workspace/leanproject/Submission/test_test_gcd.lean:287:21: error(lean.unknownIdentifier): Unknown constant `Nat.dvd_prime`
+/workspace/leanproject/Submission/test_test_gcd.lean:287:69: error: Tactic `rcases` failed: `x✝ : ?m.2097` is not an inductive datatype

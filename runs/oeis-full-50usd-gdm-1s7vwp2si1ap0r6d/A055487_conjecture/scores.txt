@@ -1,0 +1,449 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:719:64: error: don't know how to synthesize placeholder for argument `hb`
+  context:
+  n : ℕ
+  h_solvable : (prime_candidates n).Nonempty
+  hn_ge_four : n ≥ 4
+  N : ℕ := ⋯
+  h_not_prime : ¬Nat.Prime (N + 1)
+  p : ℕ := ⋯
+  q : ℕ := ⋯
+  hp_prime : Nat.Prime p
+  hp_sqrt : n !.sqrt < p
+  hp_dvd : p - 1 ∣ n !
+  hq_prime : Nat.Prime (n ! / (p - 1) + 1)
+  hn_le_sqrt : n ≤ N.sqrt
+  hn_lt_p : n < p
+  hpne : p ≠ q
+  h_tot : φ (p * q) = N
+  h_mem : p * q ∈ {m | φ m = N}
+  hN24 : N ≥ 24
+  h_pq_lt : p * q < 2 * N
+  h_nonempty : {m | φ m = N}.Nonempty
+  this : p - 1 ≥ n !.sqrt
+  heq : n !.sqrt = p - 1
+  hy : N = (p - 1) * (p + 1)
+  h1 : (p - 1) * (p - 1) ≤ (p - 1) * (p + 1)
+  h2 : (p - 1) * (p + 1) < p * p
+  hy_ge : p - 1 ≤ p + 1
+  hy_le : p + 1 ≤ p + 1
+  hq : q = p + 2
+  hp_ge5 : p ≥ 5
+  m' : ℕ := ⋯
+  h_le : m' ≤ p * q
+  h_lt : m' < p * q
+  h_mem_min : m' ∈ {m | φ m = N}
+  h_tot_min : φ m' = N
+  h_odd : ¬2 ∣ m'
+  h_ne2 : m' ≠ N + 1
+  h_ge2 : m' ≥ N + 2
+  hlt : m' < p * q
+  hm_not_prime : ¬Nat.Prime m'
+  r' : ℕ := ⋯
+  k' : ℕ := ⋯
+  hr' : Nat.Prime r'
+  hr'_dvd : r' ∣ m'
+  hm_eq' : m' = r' * k'
+  hr'_odd : ¬2 ∣ r'
+  hr'_ge3 : r' ≥ 3
+  hk'_odd : ¬2 ∣ k'
+  hk'_ne1 : k' ≠ 1
+  hk'_ge3 : k' ≥ 3
+  hr'3 : ¬r' = 3
+  hr'5 : r' ≥ 5
+  hk'_prime : Nat.Prime k'
+  hr'ne_k' : r' ≠ k'
+  h_coprime : r'.Coprime k'
+  h_tot_prod : N = (r' - 1) * (k' - 1)
+  h_ge : r' - 1 ≥ N.sqrt
+  hr'_cand : r' ∈ prime_candidates n
+  hp_le_r' : p ≤ r'
+  h_pq : p * q = N + (p - 1) + N / (p - 1) + 1
+  h_mr' : m' = N + (r' - 1) + N / (r' - 1) + 1
+  ⊢ p - 1 > N.sqrt
+  Submission/Spec.lean:751:96: error: No goals to be solved
+  Submission/Spec.lean:751:118: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    i ≥ 24
+    h ≥ 1
+    h ≥ 1
+    g ≥ 2
+    g - h ≤ -1
+    g ≥ 0
+    2*g - j ≤ -1
+    f ≥ 0
+    f ≥ 0
+    2*f - i ≥ 1
+    e ≥ 6
+    e - 2*h ≤ 2
+    2*e - 2*f + i ≥ 3
+    2*e - i ≤ 0
+    2*e + i ≥ 1
+    d ≥ 0
+    d - i ≥ 1
+    c ≥ 0
+    c - i ≤ 0
+    b ≥ 0
+    b - 2*h ≤ 0
+    a ≥ 4
+    a - b ≤ 0
+    a - e ≤ -2
+  where
+   a := ↑n
+   b := ↑N.sqrt
+   c := ↑(p - 1) * ↑(p - 1)
+   d := ↑p * ↑p
+   e := ↑N / ↑(p - 1)
+   f := ↑m' / 2
+   g := ↑r' / 2
+   h := ↑k' / 2
+   i := ↑(r' - 1) * ↑(k' - 1)
+   j := ↑((r' - 1) * (k' - 1)) / ↑(k' - 1)
+  Submission/Spec.lean:753:104: error: Type mismatch
+    h_tot_prod
+  has type
+    N = (r' - 1) * (k' - 1)
+  but is expected to have type
+    n ! = (r' - 1) * (p + 1)
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:779:22: error: Tactic `decide` failed for proposition
+    Nat.Prime 5 ∧ 4!.sqrt < 5 ∧ 4 ∣ 4! ∧ Nat.Prime (4! / 4 + 1)
+  because its `Decidable` instance
+    instDecidableAnd
+  did not reduce to `isTrue` or `isFalse`.
+  
+  After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `decidable_of_iff'`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableNot`, `Bool.decEq`, `Nat.decEq`, `decLe`, `decLt`, `decidableBallLT`, `decidableLoHi`, `decidablePrime`, and `decidable_dvd`, reduction got stuck at the `Decidable` instance
+    match 4!.sqrt.succ.ble 5, true with
+    | false, false => isTrue ⋯
+    | false, true => isFalse ⋯
+    | true, false => isFalse ⋯
+    | true, true => isTrue ⋯
+  Submission/Spec.lean:785:20: error: No goals to be solved
+  Submission/Spec.lean:793:22: error: Tactic `decide` failed for proposition
+    Nat.Prime 11 ∧ 5!.sqrt < 11 ∧ 10 ∣ 5! ∧ Nat.Prime (5! / 10 + 1)
+  because its `Decidable` instance
+    instDecidableAnd
+  did not reduce to `isTrue` or `isFalse`.
+  
+  After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `decidable_of_iff'`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableNot`, `Bool.decEq`, `Nat.decEq`, `decLe`, `decLt`, `decidableBallLT`, `decidableLoHi`, `decidablePrime`, and `decidable_dvd`, reduction got stuck at the `Decidable` instance
+    match 5!.sqrt.succ.ble 11, true with
+    | false, false => isTrue ⋯
+    | false, true => isFalse ⋯
+    | true, false => isFalse ⋯
+    | true, true => isTrue ⋯
+  Submission/Spec.lean:795:40: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    k ≥ 0
+    j ≥ 24
+    j - k ≤ 0
+    i ≥ 0
+    h ≥ 1
+    h ≥ 1
+    2*h - i ≥ 2
+    g ≥ 2
+    f ≥ 0
+    f ≥ 0
+    2*f - j ≥ 14
+    7 ≤ e ≤ 11
+    d ≥ 0
+    d - j ≥ 1
+    c ≥ 0
+    c - j ≤ 0
+    b ≥ 0
+    b - 2*f ≥ 2
+    b - 2*j ≤ -1
+    a ≥ 5
+  where
+   a := ↑N.sqrt
+   b := ↑p * ↑q
+   c := ↑(p - 1) * ↑(p - 1)
+   d := ↑p * ↑p
+   e := ↑N / ↑(p - 1)
+   f := ↑m' / 2
+   g := ↑r' / 2
+   h := ↑k' / 2
+   i := ↑(φ k')
+   j := ↑r' * ↑(φ k')
+   k := ↑r' * ↑(k' - 3)
+  Submission/Spec.lean:799:20: error: No goals to be solved
+  Submission/Spec.lean:801:81: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    i ≥ 0
+    h ≥ 72
+    h - i ≤ 0
+    g ≥ 0
+    f ≥ 1
+    f ≥ 1
+    2*f - g ≥ 2
+    e ≥ 2
+    0 ≤ d ≤ 66
+    d ≥ 0
+    2*d - h ≥ 14
+    c ≥ 0
+    c - h ≥ 1
+    b ≥ 0
+    b - h ≤ 0
+    a ≥ 5
+  where
+   a := ↑N.sqrt
+   b := ↑(p - 1) * ↑(p - 1)
+   c := ↑p * ↑p
+   d := ↑m' / 2
+   e := ↑r' / 2
+   f := ↑k' / 2
+   g := ↑(φ k')
+   h := ↑r' * ↑(φ k')
+   i := ↑r' * ↑(k' - 3)
+  Submission/Spec.lean:804:61: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:805:61: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:814:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    l ≥ 0
+    k ≥ 720
+    k - l ≤ 0
+    j ≥ 0
+    i ≥ 1
+    i ≥ 1
+    2*i - j ≥ 2
+    h ≥ 2
+    g ≥ 0
+    g ≥ 0
+    2*g - k ≥ 14
+    6 ≤ f ≤ 29
+    e ≥ 0
+    e - k ≥ 1
+    d ≥ 0
+    d - k ≤ 0
+    c ≥ 0
+    c - 2*g ≥ 2
+    c - 2*k ≤ -1
+    b ≥ 26
+    a ≥ 6
+    a - b ≤ 0
+    a - f ≤ -2
+  where
+   a := ↑n
+   b := ↑N.sqrt
+   c := ↑p * ↑q
+   d := ↑(p - 1) * ↑(p - 1)
+   e := ↑p * ↑p
+   f := ↑N / ↑(p - 1)
+   g := ↑m' / 2
+   h := ↑r' / 2
+   i := ↑k' / 2
+   j := ↑(φ k')
+   k := ↑r' * ↑(φ k')
+   l := ↑r' * ↑(k' - 3)
+  Submission/Spec.lean:826:26: error: Tactic `decide` failed for proposition
+    Nat.Prime 41 ∧ 6!.sqrt < 41 ∧ 40 ∣ 6! ∧ Nat.Prime (6! / 40 + 1)
+  because its `Decidable` instance
+    instDecidableAnd
+  did not reduce to `isTrue` or `isFalse`.
+  
+  After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `decidable_of_iff'`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableNot`, `Bool.decEq`, `Nat.decEq`, `decLe`, `decLt`, `decidableBallLT`, `decidableLoHi`, `decidablePrime`, and `decidable_dvd`, reduction got stuck at the `Decidable` instance
+    match 6!.sqrt.succ.ble 41, true with
+    | false, false => isTrue ⋯
+    | false, true => isFalse ⋯
+    | true, false => isFalse ⋯
+    | true, true => isTrue ⋯
+  Submission/Spec.lean:828:44: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    k ≥ 1
+    j ≥ 24
+    j ≥ 0
+    j + k ≥ 0
+    i ≥ 0
+    i - j ≥ 0
+    h ≥ 0
+    g ≥ 1
+    g ≥ 1
+    2*g - h ≥ 2
+    f ≥ 2
+    e ≥ 0
+    e ≥ 0
+    2*e - j ≥ 14
+    30 ≤ d ≤ 41
+    29*d - j - k ≤ 29
+    c ≥ 0
+    c - j ≤ 0
+    b ≥ 0
+    b - 2*e ≥ 2
+    b - 2*j ≤ -1
+    a ≥ 6
+  where
+   a := ↑N.sqrt
+   b := ↑p * ↑q
+   c := ↑(p - 1) * ↑(p - 1)
+   d := ↑N / ↑(p - 1)
+   e := ↑m' / 2
+   f := ↑r' / 2
+   g := ↑k' / 2
+   h := ↑(φ k')
+   i := ↑r' * ↑(k' - 3)
+   j := ↑(p * p - (p * p - N))
+   k := ↑(p * p - N)
+  Submission/Spec.lean:832:24: error: Tactic `decide` proved that the proposition
+    41 + 2 = 19
+  is false
+  Submission/Spec.lean:840:26: error: Tactic `decide` failed for proposition
+    Nat.Prime 71 ∧ 7!.sqrt < 71 ∧ 70 ∣ 7! ∧ Nat.Prime (7! / 70 + 1)
+  because its `Decidable` instance
+    instDecidableAnd
+  did not reduce to `isTrue` or `isFalse`.
+  
+  After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `decidable_of_iff'`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableNot`, `Bool.decEq`, `Nat.decEq`, `decLe`, `decLt`, `decidableBallLT`, `decidableLoHi`, `decidablePrime`, and `decidable_dvd`, reduction got stuck at the `Decidable` instance
+    match 7!.sqrt.succ.ble 71, true with
+    | false, false => isTrue ⋯
+    | false, true => isFalse ⋯
+    | true, false => isFalse ⋯
+    | true, true => isTrue ⋯
+  Submission/Spec.lean:842:44: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    k ≥ 1
+    j ≥ 24
+    j ≥ 0
+    j + k ≥ 0
+    i ≥ 0
+    i - j ≥ 0
+    h ≥ 0
+    g ≥ 1
+    g ≥ 1
+    2*g - h ≥ 2
+    f ≥ 2
+    e ≥ 0
+    e ≥ 0
+    2*e - j ≥ 14
+    30 ≤ d ≤ 71
+    29*d - j - k ≤ 29
+    c ≥ 0
+    c - j ≤ 0
+    b ≥ 0
+    b - 2*e ≥ 2
+    b - 2*j ≤ -1
+    a ≥ 7
+  where
+   a := ↑N.sqrt
+   b := ↑p * ↑q
+   c := ↑(p - 1) * ↑(p - 1)
+   d := ↑N / ↑(p - 1)
+   e := ↑m' / 2
+   f := ↑r' / 2
+   g := ↑k' / 2
+   h := ↑(φ k')
+   i := ↑r' * ↑(k' - 3)
+   j := ↑(p * p - (p * p - N))
+   k := ↑(p * p - N)
+  Submission/Spec.lean:846:24: error: No goals to be solved
+  Submission/Spec.lean:848:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    j ≥ 1
+    i ≥ 0
+    h ≥ 2592
+    h - i ≤ -16
+    h ≥ 0
+    h + j ≥ 2059
+    g ≥ 0
+    g - h ≥ 0
+    f ≥ 0
+    e ≥ 1
+    e ≥ 1
+    2*e - f ≥ 2
+    d ≥ 2
+    0 ≤ c ≤ 2590
+    c ≥ 0
+    2*c - h ≥ 14
+    b ≥ 0
+    b - h ≤ 0
+    a ≥ 7
+  where
+   a := ↑N.sqrt
+   b := ↑(p - 1) * ↑(p - 1)
+   c := ↑m' / 2
+   d := ↑r' / 2
+   e := ↑k' / 2
+   f := ↑(φ k')
+   g := ↑r' * ↑(k' - 3)
+   h := ↑(p * p - (p * p - N))
+   i := ↑p * ↑(p + 2)
+   j := ↑(p * p - N)
+  Submission/Spec.lean:855:24: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    l ≥ 2
+    k ≥ 0
+    k - l ≥ 23
+    j ≥ 0
+    j - k + l ≥ 1
+    i ≥ 0
+    h ≥ 1
+    h ≥ 1
+    2*h - i ≥ 2
+    g ≥ 2
+    f ≥ 0
+    f ≥ 0
+    2*f - k + l ≥ 15
+    e ≥ 30
+    29*e - k ≤ 30
+    d ≥ 0
+    d - k + l ≤ 1
+    c ≥ 0
+    c - 2*f ≥ 2
+    c - 2*k + 2*l ≤ 1
+    b ≥ 0
+    a ≥ 8
+    a - b ≤ 0
+    a - e ≤ -2
+  where
+   a := ↑n
+   b := ↑N.sqrt
+   c := ↑p * ↑q
+   d := ↑(p - 1) * ↑(p - 1)
+   e := ↑N / ↑(p - 1)
+   f := ↑m' / 2
+   g := ↑r' / 2
+   h := ↑k' / 2
+   i := ↑(φ k')
+   j := ↑r' * ↑(k' - 3)
+   k := ↑(p * p - 1)
+   l := ↑(p * p - N)
+  Submission/Spec.lean:857:76: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:807:16: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:669:12: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:455:47: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:994:6: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:360:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+

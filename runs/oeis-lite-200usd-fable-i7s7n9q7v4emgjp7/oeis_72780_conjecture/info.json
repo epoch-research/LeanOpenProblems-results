@@ -1,0 +1,20 @@
+{
+  "id": "oeis_72780_conjecture",
+  "epoch": 1,
+  "uuid": "BwjQvZM4xCMFeZhUfMwkz6",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 13,
+      "output_tokens": 4346,
+      "total_tokens": 46259,
+      "input_tokens_cache_write": 6565,
+      "input_tokens_cache_read": 35335,
+      "reasoning_tokens": 869,
+      "total_cost": 0.33482749999999994
+    }
+  },
+  "oeis_id": "A072780"
+}

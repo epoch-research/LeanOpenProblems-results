@@ -1,0 +1,27 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat
+
+/--
+A261307: $a(n+1) = \left|a(n) - \gcd(a(n), 7n+6)\right|$, $a(1) = 1$.
+The function is 1-indexed conceptually, with $a(n)$ giving the $n$-th term. We define $a(0)$ as a dummy value.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  match n with
+  | 0 => 0 -- Dummy value for a(0)
+  | 1 => 1 -- Base case a(1)
+  | n' + 2 => -- For n >= 2. Let $m = n'+2$ be the current index.
+    -- The previous index is $j = n'+1 = m-1$.
+    let j := n' + 1
+    let a_j := a j
+    -- The argument for gcd is $7j+6$.
+    let k := 7 * j + 6
+    let g := Nat.gcd a_j k
+    -- Compute the absolute difference using integer casting and natAbs.
+    Int.natAbs ((a_j : ℤ) - (g : ℤ))
+
+/--
+It is conjectured that for all $n > 2$, $a(n) = 0$ implies that $7n+6 = a(n+1)$ is prime, cf. A186259.
+-/
+theorem oeis_261307_conjecture_0 : ∀ (n : ℕ), n > 2 → a n = 0 → Nat.Prime (7 * n + 6) := by
+  sorry

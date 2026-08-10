@@ -1,0 +1,99 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Util.ProblemImports
+
+open Nat ArithmeticFunction Rat
+
+/--
+A243473(i) is the difference between the numerator $p$ and the denominator $q$
+when the per-unit sum-of-divisors $\sigma_1(i)/i$ is written in its lowest terms $p/q$.
+$$ \mathrm{A243473}(i) = \mathrm{num} \left( \frac{\sigma_1(i)}{i} \right) - \mathrm{den} \left( \frac{\sigma_1(i)}{i} \right) $$
+-/
+def A243473_val (i : ℕ) : ℕ :=
+  if i = 0 then 0
+  else
+    let r : Rat := (sigma 1 i : Rat) / i
+    -- r.num is Int, r.den is Nat. The subtraction is performed in Int, and then converted to Nat.
+    (r.num - (r.den : ℤ)).toNat
+
+
+theorem A243473_val_one : A243473_val 1 = 0 := by
+  dsimp [A243473_val]
+  have hsigma : (sigma 1) 1 = 1 := by decide
+  rw [hsigma]
+  norm_num
+
+
+theorem A243473_val_two : A243473_val 2 = 1 := by
+  dsimp [A243473_val]
+  have hsigma : (sigma 1) 2 = 3 := by decide
+  rw [hsigma]
+  norm_num
+
+
+theorem A243473_val_120 : A243473_val 120 = 2 := by
+  dsimp [A243473_val]
+  have hsigma : (sigma 1) 120 = 360 := by decide
+  rw [hsigma]
+  norm_num
+  rfl
+
+
+noncomputable def a (n : ℕ) : ℕ :=
+  sInf {i : ℕ | 0 < i ∧ A243473_val i = n}
+
+theorem a_ne_zero_iff_local (n : ℕ) : a n ≠ 0 ↔ ∃ i, 0 < i ∧ A243473_val i = n := by
+  constructor
+  · intro h
+    by_contra h_empty
+    have h_empty_set : {i : ℕ | 0 < i ∧ A243473_val i = n} = ∅ := by
+      ext x
+      simp only [Set.mem_setOf_eq, Set.mem_empty_iff_false, iff_false]
+      intro hx
+      exact h_empty ⟨x, hx⟩
+    have ha : a n = 0 := by
+      dsimp [a]
+      rw [h_empty_set, Nat.sInf_empty]
+    exact h ha
+  · rintro ⟨i, hi_gt, hi_val⟩
+    have h_nonempty : {i : ℕ | 0 < i ∧ A243473_val i = n}.Nonempty := ⟨i, hi_gt, hi_val⟩
+    have h_mem : a n ∈ {i : ℕ | 0 < i ∧ A243473_val i = n} := by
+      dsimp [a]
+      exact Nat.sInf_mem h_nonempty
+    exact Ne.symm (_root_.ne_of_lt h_mem.1)
+
+
+/--
+Motivated by the observation that some small numbers (2,12,14,18,...) occur only very late
+in the recently added sequence A243473, but all numbers seem to appear sooner or later.
+(The definition is completed by "0 if no such index exists" to guarantee well-definedness
+in absence of a proof, but I conjecture that no such 0 will ever occur.)
+The conjecture is that the sequence $\mathrm{A243473\_val}$ is eventually surjective onto $\mathbb{N} \setminus \{0, 1\}$.
+-/
+
+
+
+theorem A243473_val_ne_630_small : ∀ i < 1000000, A243473_val i ≠ 630 := by
+  decide
+
+theorem oeis_243512_conjecture_0.disproof : ¬ (∀ n, a n ≠ 0) := by
+  intro h
+  have h_630 := h 630
+  rw [a_ne_zero_iff_local] at h_630
+  obtain ⟨i, hi_pos, hi_val⟩ := h_630
+  sorry
+

@@ -1,0 +1,23 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+def triangular (x : ℕ) : ℕ := x * (x + 1) / 2
+
+def A256544_elements (n : ℕ) : Finset ℕ :=
+  let max_range : ℕ := 4 * n + 2
+  (range max_range).image (fun x : ℕ => (triangular x.succ) / 3)
+    |> Finset.filter (fun v => v ≤ n)
+
+def A256544 (n : ℕ) : ℕ :=
+  let Vs := A256544_elements n
+  Vs.sum fun a =>
+    Vs.sum fun b =>
+      (Vs.filter fun c =>
+        a ≤ b ∧ b ≤ c ∧ a + b + c = n
+      ).card
+
+theorem oeis_256544_conjecture_0 (m : ℕ) (hm : m > 0) (n : ℕ) :
+    ∃ x y z : ℕ, n = triangular x / m + triangular y / m + triangular z / m :=
+  by
+    aesop

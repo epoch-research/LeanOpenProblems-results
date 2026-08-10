@@ -1,0 +1,171 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:2975:22: error(lean.invalidField): Invalid field `elim`: The environment does not contain `Eq.elim`, so it is not possible to project the field `elim` from an expression
+    hn_or
+  of type `n = 121`
+  Submission/Spec.lean:3206:29: error(lean.unknownIdentifier): Unknown identifier `sgn_not_minus_120`
+  Submission/Spec.lean:2978:6: error: unsolved goals
+  case pos.inr.refine_28
+  n : ℕ
+  ih : n ≥ 11 → P n
+  h : n + 1 ≥ 11
+  hn : n ≥ 11
+  h_ih : P n
+  h_ih_1 : A130911 n ≥ 1
+  h_ih_2 : A130911 n = 1 → n = 11
+  h_ih_3 : A130911 n = 2 → n = 12 ∨ n = 14 ∨ n = 16
+  h_ih_4 : A130911 n = 3 → n = 13 ∨ n = 15 ∨ n = 17
+  h_ih_5 : A130911 n = 4 → n = 18 ∨ n = 20 ∨ n = 24 ∨ n = 26
+  h_ih_6 : A130911 n = 5 → n = 19 ∨ n = 21 ∨ n = 23 ∨ n = 25 ∨ n = 27
+  h_ih_7 : A130911 n = 6 → n = 22 ∨ n = 28 ∨ n = 30
+  h_ih_8 : A130911 n = 7 → n = 29 ∨ n = 31 ∨ n = 35
+  h_ih_9 : A130911 n = 8 → n = 32 ∨ n = 34 ∨ n = 36 ∨ n = 38
+  h_ih_10 : A130911 n = 9 → n = 33 ∨ n = 37 ∨ n = 39
+  h_ih_11 : A130911 n = 10 → n = 40
+  h_ih_12 : A130911 n = 11 → n = 41
+  h_ih_13 : A130911 n = 12 → n = 42
+  h_ih_14 : A130911 n = 13 → n = 43 ∨ n = 45 ∨ n = 77 ∨ n = 79
+  h_ih_15 : A130911 n = 14 → n = 44 ∨ n = 46 ∨ n = 72 ∨ n = 74 ∨ n = 76 ∨ n = 78 ∨ n = 80
+  h_ih_16 : A130911 n = 15 → n = 47 ∨ n = 71 ∨ n = 73 ∨ n = 75 ∨ n = 81
+  h_ih_17 : A130911 n = 16 → n = 48 ∨ n = 70 ∨ n = 82
+  h_ih_18 : A130911 n = 17 → n = 49 ∨ n = 69 ∨ n = 83
+  h_ih_19 : A130911 n = 18 → n = 50 ∨ n = 60 ∨ n = 62 ∨ n = 64 ∨ n = 66 ∨ n = 68 ∨ n = 84 ∨ n = 92
+  h_ih_20 :
+    A130911 n = 19 →
+      n = 51 ∨
+        n = 57 ∨
+          n = 59 ∨
+            n = 61 ∨ n = 63 ∨ n = 65 ∨ n = 67 ∨ n = 85 ∨ n = 87 ∨ n = 89 ∨ n = 91 ∨ n = 93 ∨ n = 97 ∨ n = 99 ∨ n = 101
+  h_ih_21 :
+    A130911 n = 20 → n = 52 ∨ n = 56 ∨ n = 58 ∨ n = 86 ∨ n = 88 ∨ n = 90 ∨ n = 94 ∨ n = 96 ∨ n = 98 ∨ n = 100 ∨ n = 102
+  h_ih_22 : A130911 n = 21 → n = 53 ∨ n = 55 ∨ n = 95 ∨ n = 103 ∨ n = 105 ∨ n = 109
+  h_ih_23 : A130911 n = 22 → n = 54 ∨ n = 104 ∨ n = 106 ∨ n = 108 ∨ n = 110
+  h_ih_24 : A130911 n = 23 → n = 107 ∨ n = 111
+  h_ih_25 : A130911 n = 24 → n = 112 ∨ n = 114
+  h_ih_26 : A130911 n = 25 → n = 113 ∨ n = 115 ∨ n = 117
+  h_ih_27 : A130911 n = 26 → n = 116 ∨ n = 118
+  h_ih_28 : A130911 n = 27 → n = 119
+  h_ih_29 : A130911 n = 28 → n = 120
+  h_ih_30 : A130911 n = 29 → n = 121
+  h_ih_31 : A130911 n ≥ 30 → False
+  h_step : A130911 (n + 1) = A130911 n + -1
+  h_sgn :
+    (let binary_weight := fun k => (digits 2 k).sum;
+      let weight_parity_sign := fun p => if (binary_weight p).bodd = true then 1 else -1;
+      weight_parity_sign (nth Nat.Prime n)) =
+      -1
+  h_ge2 : A130911 n ≥ 2
+  ⊢ A130911 (n + 1) = 28 → n + 1 = 120
+  
+  case pos.inr.refine_29
+  n : ℕ
+  ih : n ≥ 11 → P n
+  h : n + 1 ≥ 11
+  hn : n ≥ 11
+  h_ih : P n
+  h_ih_1 : A130911 n ≥ 1
+  h_ih_2 : A130911 n = 1 → n = 11
+  h_ih_3 : A130911 n = 2 → n = 12 ∨ n = 14 ∨ n = 16
+  h_ih_4 : A130911 n = 3 → n = 13 ∨ n = 15 ∨ n = 17
+  h_ih_5 : A130911 n = 4 → n = 18 ∨ n = 20 ∨ n = 24 ∨ n = 26
+  h_ih_6 : A130911 n = 5 → n = 19 ∨ n = 21 ∨ n = 23 ∨ n = 25 ∨ n = 27
+  h_ih_7 : A130911 n = 6 → n = 22 ∨ n = 28 ∨ n = 30
+  h_ih_8 : A130911 n = 7 → n = 29 ∨ n = 31 ∨ n = 35
+  h_ih_9 : A130911 n = 8 → n = 32 ∨ n = 34 ∨ n = 36 ∨ n = 38
+  h_ih_10 : A130911 n = 9 → n = 33 ∨ n = 37 ∨ n = 39
+  h_ih_11 : A130911 n = 10 → n = 40
+  h_ih_12 : A130911 n = 11 → n = 41
+  h_ih_13 : A130911 n = 12 → n = 42
+  h_ih_14 : A130911 n = 13 → n = 43 ∨ n = 45 ∨ n = 77 ∨ n = 79
+  h_ih_15 : A130911 n = 14 → n = 44 ∨ n = 46 ∨ n = 72 ∨ n = 74 ∨ n = 76 ∨ n = 78 ∨ n = 80
+  h_ih_16 : A130911 n = 15 → n = 47 ∨ n = 71 ∨ n = 73 ∨ n = 75 ∨ n = 81
+  h_ih_17 : A130911 n = 16 → n = 48 ∨ n = 70 ∨ n = 82
+  h_ih_18 : A130911 n = 17 → n = 49 ∨ n = 69 ∨ n = 83
+  h_ih_19 : A130911 n = 18 → n = 50 ∨ n = 60 ∨ n = 62 ∨ n = 64 ∨ n = 66 ∨ n = 68 ∨ n = 84 ∨ n = 92
+  h_ih_20 :
+    A130911 n = 19 →
+      n = 51 ∨
+        n = 57 ∨
+          n = 59 ∨
+            n = 61 ∨ n = 63 ∨ n = 65 ∨ n = 67 ∨ n = 85 ∨ n = 87 ∨ n = 89 ∨ n = 91 ∨ n = 93 ∨ n = 97 ∨ n = 99 ∨ n = 101
+  h_ih_21 :
+    A130911 n = 20 → n = 52 ∨ n = 56 ∨ n = 58 ∨ n = 86 ∨ n = 88 ∨ n = 90 ∨ n = 94 ∨ n = 96 ∨ n = 98 ∨ n = 100 ∨ n = 102
+  h_ih_22 : A130911 n = 21 → n = 53 ∨ n = 55 ∨ n = 95 ∨ n = 103 ∨ n = 105 ∨ n = 109
+  h_ih_23 : A130911 n = 22 → n = 54 ∨ n = 104 ∨ n = 106 ∨ n = 108 ∨ n = 110
+  h_ih_24 : A130911 n = 23 → n = 107 ∨ n = 111
+  h_ih_25 : A130911 n = 24 → n = 112 ∨ n = 114
+  h_ih_26 : A130911 n = 25 → n = 113 ∨ n = 115 ∨ n = 117
+  h_ih_27 : A130911 n = 26 → n = 116 ∨ n = 118
+  h_ih_28 : A130911 n = 27 → n = 119
+  h_ih_29 : A130911 n = 28 → n = 120
+  h_ih_30 : A130911 n = 29 → n = 121
+  h_ih_31 : A130911 n ≥ 30 → False
+  h_step : A130911 (n + 1) = A130911 n + -1
+  h_sgn :
+    (let binary_weight := fun k => (digits 2 k).sum;
+      let weight_parity_sign := fun p => if (binary_weight p).bodd = true then 1 else -1;
+      weight_parity_sign (nth Nat.Prime n)) =
+      -1
+  h_ge2 : A130911 n ≥ 2
+  ⊢ A130911 (n + 1) = 29 → n + 1 = 121
+  
+  case pos.inr.refine_30
+  n : ℕ
+  ih : n ≥ 11 → P n
+  h : n + 1 ≥ 11
+  hn : n ≥ 11
+  h_ih : P n
+  h_ih_1 : A130911 n ≥ 1
+  h_ih_2 : A130911 n = 1 → n = 11
+  h_ih_3 : A130911 n = 2 → n = 12 ∨ n = 14 ∨ n = 16
+  h_ih_4 : A130911 n = 3 → n = 13 ∨ n = 15 ∨ n = 17
+  h_ih_5 : A130911 n = 4 → n = 18 ∨ n = 20 ∨ n = 24 ∨ n = 26
+  h_ih_6 : A130911 n = 5 → n = 19 ∨ n = 21 ∨ n = 23 ∨ n = 25 ∨ n = 27
+  h_ih_7 : A130911 n = 6 → n = 22 ∨ n = 28 ∨ n = 30
+  h_ih_8 : A130911 n = 7 → n = 29 ∨ n = 31 ∨ n = 35
+  h_ih_9 : A130911 n = 8 → n = 32 ∨ n = 34 ∨ n = 36 ∨ n = 38
+  h_ih_10 : A130911 n = 9 → n = 33 ∨ n = 37 ∨ n = 39
+  h_ih_11 : A130911 n = 10 → n = 40
+  h_ih_12 : A130911 n = 11 → n = 41
+  h_ih_13 : A130911 n = 12 → n = 42
+  h_ih_14 : A130911 n = 13 → n = 43 ∨ n = 45 ∨ n = 77 ∨ n = 79
+  h_ih_15 : A130911 n = 14 → n = 44 ∨ n = 46 ∨ n = 72 ∨ n = 74 ∨ n = 76 ∨ n = 78 ∨ n = 80
+  h_ih_16 : A130911 n = 15 → n = 47 ∨ n = 71 ∨ n = 73 ∨ n = 75 ∨ n = 81
+  h_ih_17 : A130911 n = 16 → n = 48 ∨ n = 70 ∨ n = 82
+  h_ih_18 : A130911 n = 17 → n = 49 ∨ n = 69 ∨ n = 83
+  h_ih_19 : A130911 n = 18 → n = 50 ∨ n = 60 ∨ n = 62 ∨ n = 64 ∨ n = 66 ∨ n = 68 ∨ n = 84 ∨ n = 92
+  h_ih_20 :
+    A130911 n = 19 →
+      n = 51 ∨
+        n = 57 ∨
+          n = 59 ∨
+            n = 61 ∨ n = 63 ∨ n = 65 ∨ n = 67 ∨ n = 85 ∨ n = 87 ∨ n = 89 ∨ n = 91 ∨ n = 93 ∨ n = 97 ∨ n = 99 ∨ n = 101
+  h_ih_21 :
+    A130911 n = 20 → n = 52 ∨ n = 56 ∨ n = 58 ∨ n = 86 ∨ n = 88 ∨ n = 90 ∨ n = 94 ∨ n = 96 ∨ n = 98 ∨ n = 100 ∨ n = 102
+  h_ih_22 : A130911 n = 21 → n = 53 ∨ n = 55 ∨ n = 95 ∨ n = 103 ∨ n = 105 ∨ n = 109
+  h_ih_23 : A130911 n = 22 → n = 54 ∨ n = 104 ∨ n = 106 ∨ n = 108 ∨ n = 110
+  h_ih_24 : A130911 n = 23 → n = 107 ∨ n = 111
+  h_ih_25 : A130911 n = 24 → n = 112 ∨ n = 114
+  h_ih_26 : A130911 n = 25 → n = 113 ∨ n = 115 ∨ n = 117
+  h_ih_27 : A130911 n = 26 → n = 116 ∨ n = 118
+  h_ih_28 : A130911 n = 27 → n = 119
+  h_ih_29 : A130911 n = 28 → n = 120
+  h_ih_30 : A130911 n = 29 → n = 121
+  h_ih_31 : A130911 n ≥ 30 → False
+  h_step : A130911 (n + 1) = A130911 n + -1
+  h_sgn :
+    (let binary_weight := fun k => (digits 2 k).sum;
+      let weight_parity_sign := fun p => if (binary_weight p).bodd = true then 1 else -1;
+      weight_parity_sign (nth Nat.Prime n)) =
+      -1
+  h_ge2 : A130911 n ≥ 2
+  ⊢ A130911 (n + 1) ≥ 30 → False
+  Submission/Spec.lean:2693:2: error: unsolved goals
+  case neg
+  n : ℕ
+  ih : n ≥ 11 → P n
+  h : n + 1 ≥ 11
+  hn : ¬n ≥ 11
+  ⊢ P (n + 1)
+

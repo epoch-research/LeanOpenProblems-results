@@ -1,0 +1,23 @@
+{
+  "id": "A341092_conjecture_2",
+  "epoch": 1,
+  "uuid": "9svPwx5nqzJAFQhZmcaw5Z",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2227262,
+      "output_tokens": 535135,
+      "total_tokens": 48415901,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 45653504,
+      "reasoning_tokens": 407427,
+      "total_cost": 50.017112000000004
+    }
+  },
+  "oeis_id": "A341092"
+}

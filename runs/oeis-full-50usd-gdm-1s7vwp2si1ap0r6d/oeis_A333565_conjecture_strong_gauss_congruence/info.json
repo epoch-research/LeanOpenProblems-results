@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A333565_conjecture_strong_gauss_congruence",
+  "epoch": 1,
+  "uuid": "3RrPwSXhChTo9GMCiXYk9N",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 21549298,
+      "output_tokens": 273458,
+      "total_tokens": 125973707,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 101624337,
+      "reasoning_tokens": 2526614,
+      "total_cost": 50.02871955
+    }
+  },
+  "oeis_id": "A333565"
+}

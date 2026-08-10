@@ -1,0 +1,23 @@
+{
+  "id": "a_never_zero",
+  "epoch": 1,
+  "uuid": "aymcwMajEdfhALEEetvmvd",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 18909512,
+      "output_tokens": 447381,
+      "total_tokens": 139586473,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 118160135,
+      "reasoning_tokens": 2069445,
+      "total_cost": 50.11471724999997
+    }
+  },
+  "oeis_id": "A359634"
+}

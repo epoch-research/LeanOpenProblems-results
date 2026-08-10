@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "def helper : Prop :=\nTrue\nSubmission/Spec.lean:24:8: warning: declaration uses 'sorry'\nSubmission/Spec.lean:27:38: error: Type mismatch\n  True.intro\nhas type\n  True\nof sort `Prop` but is expected to have type\n  sorry\nof sort `Sort u_1`\nSubmission/Spec.lean:27:0: error: type of theorem `my_theorem` is not a proposition\n  sorry\ntheorem my_theorem : sorry :=\nsorry\ntheorem oeis_71524_conjecture_0 : ∀ n > 28, _root_.a n ≠ 0 :=\nsorry\nSubmission/Spec.lean:30:25: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (2000000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

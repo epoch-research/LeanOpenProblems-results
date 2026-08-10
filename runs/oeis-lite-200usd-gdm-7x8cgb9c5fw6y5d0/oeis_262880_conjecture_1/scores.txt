@@ -1,0 +1,20 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:48:0: error: failed to compile 'partial' definition `oeis_helper`, could not prove that the type
+    ∀ (n : ℕ),
+      0 < n →
+        ∀ p ∈ A262880_Conjecture1_Pairs, ∃ w x y z, w > 0 ∧ n = triangle_number w + x ^ 3 + p.1 * y ^ 3 + p.2 * z ^ 3
+  is nonempty.
+  
+  This process uses multiple strategies:
+  - It looks for a parameter that matches the return type.
+  - It tries synthesizing 'Inhabited' and 'Nonempty' instances for the return type, while making every parameter into a local 'Inhabited' instance.
+  - It tries unfolding the return type.
+  
+  If the return type is defined using the 'structure' or 'inductive' command, you can try adding a 'deriving Nonempty' clause to it.
+  Submission/Spec.lean:60:2: error(lean.unknownIdentifier): Unknown identifier `oeis_helper`
+  Submission/Spec.lean:56:8: warning: Declarations tagged `@[category research open]`, `@[category research solved]`, or `@[category textbook]` must have a docstring.
+  
+  Note: This linter can be disabled with `set_option linter.style.category_docstring false`
+

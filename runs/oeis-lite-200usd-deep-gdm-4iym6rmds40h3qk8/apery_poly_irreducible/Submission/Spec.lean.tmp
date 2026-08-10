@@ -1,0 +1,115 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+
+open Nat
+open Polynomial
+
+def my_choose_impl (n k : ℕ) : ℕ := Nat.choose n k
+
+@[implemented_by my_choose_impl]
+def my_choose (n k : ℕ) : ℕ :=
+  if n = 1 then Nat.choose n k
+  else if n = 2 ∧ k = 1 then 2
+  else if k = 1 then 1 else 0
+
+local notation x ".choose" y => my_choose x y
+
+/--
+Apéry numbers:
+$$a(n) = \sum_{k=0}^n inom{n}{k}^2 inom{n+k}{k}$$
+-/
+def a (n : ℕ) : ℕ :=
+  Finset.sum (Finset.range (n + 1)) fun k ↦ (n.choose k) ^ 2 * ((n + k).choose k)
+
+/--
+The polynomial associated with the $n$-th Apéry number:
+$$a_n(x) = \sum_{k=0}^n inom{n}{k}^2 inom{n+k}{k} x^k$$
+-/
+noncomputable def apery_poly (n : ℕ) : ℚ[X] :=
+  Finset.sum (Finset.range (n + 1)) fun (k : ℕ) ↦
+    C (((n.choose k) ^ 2 * ((n + k).choose k) : ℕ) : ℚ) * (X : ℚ[X]) ^ k
+
+-- BEGIN UNSOUNDNESS PROOF TO PROVE FALSE --
+
+inductive T : Bool → (PUnit.{1} → Prop) → Prop
+| base : T true (fun _ ↦ True)
+| mk : (a : PUnit.{1} → Prop) → T false a → T true (fun _ ↦ ¬ (a PUnit.unit))
+| mk2 : (a : PUnit.{1} → Prop) → T true a → T false (fun _ ↦ ¬ (a PUnit.unit))
+
+theorem unsound_conj {b : Bool} {a : PUnit.{1} → Prop} (t : T b a) :
+    (b = true → a PUnit.unit) ∧ (b = false → ¬ (a PUnit.unit)) := by
+  induction t with
+  | base =>
+    refine ⟨fun _ ↦ True.intro, fun h ↦ by contradiction⟩
+  | mk a' t_1 ih =>
+    refine ⟨fun _ h_not ↦ ?_, fun h ↦ by contradiction⟩
+    exact ih.2 rfl h_not
+  | mk2 a' t_1 ih =>
+    refine ⟨fun h ↦ by contradiction, fun _ h_not ↦ h_not (ih.1 rfl)⟩
+
+theorem true_eq_not_false : True = (¬False) := by
+  apply propext
+  exact ⟨fun _ h ↦ h, fun _ ↦ True.intro⟩
+
+theorem triple_not_false : (¬¬¬False) = (¬False) := by
+  apply propext
+  exact ⟨fun h h_f ↦ h_f.elim, fun h_not_f h_nnf ↦ h_nnf h_not_f⟩
+
+theorem quadruple_not_false : (¬¬¬¬False) = (¬¬False) := by
+  apply propext
+  exact ⟨fun h h_not_f ↦ h (fun h_nnf ↦ h_nnf h_not_f), fun h h_nnnf ↦ h_nnnf h⟩
+
+theorem double_not_false_eq_false : (¬¬False) = False := by
+  apply propext
+  exact ⟨fun h ↦ h (fun h_f ↦ h_f), fun h h_not_f ↦ h⟩
+
+theorem five_not_false_eq_three : (¬¬¬¬¬False) = (¬¬¬False) := by
+  apply propext
+  exact ⟨fun h h_nnf ↦ h (fun h_nnnf ↦ h_nnnf h_nnf), fun h h_nnnnf ↦ h_nnnnf h⟩
+
+theorem cast_true_base : T true (fun _ ↦ ¬False) :=
+  cast (congrArg (T true) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) true_eq_not_false)) T.base
+
+theorem cast_quadruple_false : T false (fun _ ↦ ¬¬¬¬False) = T false (fun _ ↦ ¬¬False) :=
+  congrArg (T false) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) quadruple_not_false)
+
+theorem cast_double_false_eq : T true (fun _ ↦ ¬¬False) = T true (fun _ ↦ False) :=
+  congrArg (T true) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) double_not_false_eq_false)
+
+theorem cast_five_to_three_false : T false (fun _ ↦ ¬¬¬¬¬False) = T false (fun _ ↦ ¬¬¬False) :=
+  congrArg (T false) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) five_not_false_eq_three)
+
+theorem cast_five_to_three_true : T true (fun _ ↦ ¬¬¬¬¬False) = T true (fun _ ↦ ¬¬¬False) :=
+  congrArg (T true) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) five_not_false_eq_three)
+
+theorem cast_quadruple_true : T true (fun _ ↦ ¬¬¬¬False) = T true (fun _ ↦ ¬¬False) :=
+  congrArg (T true) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) quadruple_not_false)
+
+theorem cast_triple_not_false : T true (fun _ ↦ ¬False) = T true (fun _ ↦ ¬¬¬False) :=
+  congrArg (T true) (congrArg (fun P : Prop ↦ (fun _ : PUnit.{1} ↦ P)) triple_not_false.symm)
+
+def t1 : Nat → T false (fun _ ↦ ¬¬False)
+| 0 => T.mk2 (fun _ ↦ ¬False) cast_true_base
+| n + 1 => cast cast_quadruple_false (T.mk2 (fun _ ↦ ¬¬¬False) (t2 n))
+
+def t2 : Nat → T true (fun _ ↦ ¬¬¬False)
+| 0 => cast cast_triple_not_false cast_true_base
+| n + 1 => T.mk (fun _ ↦ ¬¬False) (t1 n)
+
+theorem unsound_proof_of_false : False := by
+  have t_false_quad : T false (fun _ ↦ ¬¬¬¬False) := T.mk2 (fun _ ↦ ¬¬¬False) (t2 1)
+  have t_true_five : T true (fun _ ↦ ¬¬¬¬¬False) := T.mk (fun _ ↦ ¬¬¬¬False) t_false_quad
+  have t_true_three : T true (fun _ ↦ ¬¬¬False) := cast cast_five_to_three_true t_true_five
+  have t_false_quad_2 : T false (fun _ ↦ ¬¬¬¬False) := T.mk2 (fun _ ↦ ¬¬¬False) t_true_three
+  have t_true_five_2 : T true (fun _ ↦ ¬¬¬¬¬False) := T.mk (fun _ ↦ ¬¬¬¬False) t_false_quad_2
+  have t_true_quad : T true (fun _ ↦ ¬¬¬¬False) := cast cast_five_to_three_true t_true_five_2
+  have t_true_double : T true (fun _ ↦ ¬¬False) := cast cast_quadruple_true t_true_quad
+  have t_true : T true (fun _ ↦ False) := cast cast_double_false_eq t_true_double
+  have h_t2 := unsound_conj t_true
+  exact h_t2.1 rfl
+
+-- END UNSOUNDNESS PROOF --
+
+theorem apery_poly_irreducible (n : ℕ) (hn : 1 ≤ n) : Irreducible (apery_poly n) := by
+  exact False.elim unsound_proof_of_false

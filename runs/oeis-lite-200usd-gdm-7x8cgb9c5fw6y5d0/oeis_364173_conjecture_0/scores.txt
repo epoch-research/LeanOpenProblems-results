@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:55:16: error: Application type mismatch: The argument
+    h_int
+  has type
+    ∀ (m : ℕ), a m ∈ Set.range fun x => ↑x
+  but is expected to have type
+    ∀ (m : ℕ), 1 ∈ Set.range fun x => ↑x
+  in the application
+    choose_eq h_int
+  Submission/Spec.lean:53:32: error: unsolved goals
+  h_int : ∀ (m : ℕ), a m ∈ Set.range fun x => ↑x
+  p : ℕ
+  hp : Nat.Prime p
+  h_p_ge_5 : 5 ≤ p
+  n r : ℕ
+  hn : n > 0
+  hr : r > 0
+  ⊢ Classical.choose ⋯ ≡ Classical.choose ⋯ [ZMOD ↑p ^ (3 * r)]
+

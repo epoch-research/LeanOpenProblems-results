@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.ModEq.add
+#check Nat.ModEq.add_right
+#check Nat.ModEq.add_left
+#check Nat.ModEq.mul_left
+#check Nat.ModEq.mul_right
+#check Nat.ModEq.refl
+#check Nat.ModEq.trans
+#check Nat.ModEq.symm
+#check Nat.ModEq.of_dvd
+#check Nat.dvd_of_modEq_zero
+#check Nat.ModEq.zero_iff_dvd

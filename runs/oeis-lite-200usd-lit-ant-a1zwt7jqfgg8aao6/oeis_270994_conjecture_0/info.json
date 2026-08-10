@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "Vs7Gf6n6WZ8eqeh4tCpkkS",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 39,
+      "output_tokens": 41095,
+      "total_tokens": 569022,
+      "input_tokens_cache_write": 47530,
+      "input_tokens_cache_read": 480358,
+      "reasoning_tokens": 7607,
+      "total_cost": 1.5648115
+    }
+  },
+  "oeis_id": "A270994"
+}

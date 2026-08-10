@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 13 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 69 declarations.
+  ------------------
+  oeis_92243_conjecture.gap_bound_of_score_bound used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  oeis_92243_conjecture.disproof used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_92243_conjecture: uses disallowed axioms
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

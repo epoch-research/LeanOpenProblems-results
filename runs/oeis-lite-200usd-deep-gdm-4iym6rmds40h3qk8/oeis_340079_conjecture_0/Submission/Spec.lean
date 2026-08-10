@@ -1,0 +1,1903 @@
+import FormalConjectures.Util.ProblemImports
+set_option maxHeartbeats 1000000
+
+open Nat BigOperators Finset
+
+
+lemma helper_ineq (A_q q : ℕ) (h_Aq : 1 ≤ A_q) (hq : 2 ≤ q) :
+    A_q * (2 * q - 1) - 1 < A_q * (2 * q) := by
+  have : A_q * (2 * q - 1) < A_q * (2 * q) := by
+    have hq_lt : 2 * q - 1 < 2 * q := by omega
+    exact Nat.mul_lt_mul_of_pos_left hq_lt h_Aq
+  omega
+
+lemma helper_ineq2 (A_q q r : ℕ) (h_Aq : 1 ≤ A_q) (h_qr : q < r) :
+    A_q * (2 * q) < 2 * A_q * r := by
+  have h1 : A_q * (2 * q) = 2 * A_q * q := by ring
+  have h2 : 2 * A_q * q < 2 * A_q * r := by
+    have h_pos : 0 < 2 * A_q := by omega
+    exact Nat.mul_lt_mul_of_pos_left h_qr h_pos
+  rw [h1]
+  exact h2
+
+lemma contradiction_step_lemma (k m q A_q : ℕ) (h_mul_q : (k + 2 * m) * q = (2 * q - 1) * (2 * A_q + m)) (hq : 2 ≤ q) :
+    (k + 2 * m) * q + 2 * A_q + m = 4 * A_q * q + 2 * m * q := by
+  have h_alg : (2 * q - 1) * (2 * A_q + m) + (2 * A_q + m) = 2 * q * (2 * A_q + m) := by
+    have hq_pos : 1 ≤ 2 * q := by omega
+    apply Int.ofNat_inj.mp
+    push_cast [Nat.cast_sub hq_pos]
+    ring
+  have h_eq : (k + 2 * m) * q + (2 * A_q + m) = 2 * q * (2 * A_q + m) := by
+    rw [h_mul_q, h_alg]
+  have h_ring : 2 * q * (2 * A_q + m) = 4 * A_q * q + 2 * m * q := by ring
+  rw [h_ring] at h_eq
+  rw [← add_assoc] at h_eq
+  exact h_eq
+
+
+lemma h_u_eq_diff_helper (u W_q r q m A_q : ℕ) 
+    (h_W_q_pos : 1 ≤ W_q)
+    (hq_lt_r : q < r)
+    (h_W_q_eq : W_q * q = 2 * A_q + m)
+    (h_u_eq : u = W_q * r - 2 * A_q) :
+    u = W_q * (r - q) + m := by
+  have h_distrib : W_q * (r - q) = W_q * r - W_q * q := Nat.mul_sub_left_distrib W_q r q
+  rw [h_distrib, h_W_q_eq]
+  have : 2 * A_q + m < W_q * r := by
+    calc 2 * A_q + m = W_q * q := h_W_q_eq.symm
+         _ < W_q * r := Nat.mul_lt_mul_of_pos_left hq_lt_r h_W_q_pos
+  omega
+
+lemma h_m_r_q_eq_helper (m r q A_q W : ℤ) :
+    m * (3 * r - 2 * q + 1) - (4 * A_q * q - 2 * A_q - 3) =
+    -(r * (4 * A_q - W) - ((W * (r - q) + m) * (2 * q - 1) + 2))
+    + (2 * q - 2 * r - 1) * (W * q - (2 * A_q + m))
+    + (m * r - (A_q * (2 * q - 1) - 1))
+    + (2 * q - 1) * (A_q - m) := by ring
+
+
+lemma h_rk_cast_helper (r k u q : ℕ) (hq_ge5 : 5 ≤ q) (h_rk_eq : r * k = u * (2 * q - 1) + 2) :
+    (r : ℤ) * (k : ℤ) = (u : ℤ) * (2 * (q : ℤ) - 1) + 2 := by
+  have hq_sub : 1 ≤ 2 * q := by omega
+  have h_cast : ((r * k : ℕ) : ℤ) = ((u * (2 * q - 1) + 2 : ℕ) : ℤ) := by rw [h_rk_eq]
+  push_cast [hq_sub] at h_cast
+  exact h_cast
+
+lemma h_u_cast_helper (u W r q m : ℕ) (hq_lt_r : q < r) (h_u_eq_diff : u = W * (r - q) + m) :
+    (u : ℤ) = (W : ℤ) * ((r : ℤ) - (q : ℤ)) + (m : ℤ) := by
+  have hqr_sub : q ≤ r := Nat.le_of_lt hq_lt_r
+  have h_cast : ((u : ℕ) : ℤ) = ((W * (r - q) + m : ℕ) : ℤ) := by rw [h_u_eq_diff]
+  push_cast [hqr_sub] at h_cast
+  exact h_cast
+
+lemma h_mr_cast_helper (m r A_q q : ℕ) (hq_ge5 : 5 ≤ q) (h_Aq_2qm1 : 1 ≤ A_q * (2 * q - 1)) (h_mr : m * r = A_q * (2 * q - 1) - 1) :
+    (m : ℤ) * (r : ℤ) = (A_q : ℤ) * (2 * (q : ℤ) - 1) - 1 := by
+  have h_mr_cast_0 : ((m * r : ℕ) : ℤ) = ((A_q * (2 * q - 1) - 1 : ℕ) : ℤ) := by rw [h_mr]
+  have hq_sub : 1 ≤ 2 * q := by omega
+  push_cast [h_Aq_2qm1, hq_sub] at h_mr_cast_0
+  exact h_mr_cast_0
+
+lemma h_3rm_3_helper (r m A_q q : ℕ) (hq_ge5 : 5 ≤ q) (h_Aq_ge3 : 3 ≤ A_q) (h_mr : m * r = A_q * (2 * q - 1) - 1) :
+    3 * r * m + 3 = 3 * A_q * (2 * q - 1) := by
+  have h_mr_comm : r * m = A_q * (2 * q - 1) - 1 := by rw [mul_comm, h_mr]
+  have h_assoc : 3 * r * m = 3 * (r * m) := by ring
+  rw [h_assoc, h_mr_comm]
+  have h_Aq_2qm1 : 1 ≤ A_q * (2 * q - 1) := by
+    have h1 : 9 ≤ 2 * q - 1 := by omega
+    have h2 : 3 * 9 ≤ A_q * (2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 h1
+    omega
+  rw [mul_assoc 3 A_q (2 * q - 1)]
+  omega
+
+
+
+
+
+
+
+/--
+A340079: $a(n) = n / \gcd(n, 1+A018804(n))$, where $A018804(n) = \sum_{k=1..n} \gcd(k, n)$.
+$$a(n) = \frac{n}{\gcd(n, 1+\sum_{k=1}^n \gcd(k, n))}$$
+-/
+def a (n : ℕ) : ℕ :=
+  let A018804_n : ℕ := (Finset.Ico 1 (n + 1)).sum fun k => Nat.gcd k n
+  n / Nat.gcd n (1 + A018804_n)
+
+lemma gcd_of_prime_lt (p : ℕ) (hp : Nat.Prime p) (k : ℕ) (hk1 : 1 ≤ k) (hk2 : k < p) : Nat.gcd k p = 1 := by
+  have h_not_dvd : ¬ p ∣ k := Nat.not_dvd_of_pos_of_lt (by omega) hk2
+  have h_coprime : Nat.Coprime k p := ((Nat.Prime.coprime_iff_not_dvd hp).mpr h_not_dvd).symm
+  exact h_coprime
+
+theorem sum_prime (p : ℕ) (hp : Nat.Prime p) :
+    (Finset.Ico 1 (p + 1)).sum (fun k => Nat.gcd k p) = 2 * p - 1 := by
+  have hp_ge1 : 1 ≤ p := hp.pos
+  rw [Finset.sum_Ico_succ_top hp_ge1]
+  have h_const : ∑ k ∈ Finset.Ico 1 p, Nat.gcd k p = ∑ k ∈ Finset.Ico 1 p, 1 := by
+    apply Finset.sum_congr rfl
+    intro x hx
+    rw [Finset.mem_Ico] at hx
+    exact gcd_of_prime_lt p hp x hx.1 hx.2
+  rw [h_const]
+  simp only [Finset.sum_const, card_Ico, smul_eq_mul, mul_one]
+  have : Nat.gcd p p = p := Nat.gcd_self p
+  rw [this]
+  omega
+
+theorem a_one : a 1 = 1 := by rfl
+
+theorem a_prime (p : ℕ) (hp : Nat.Prime p) : a p = 1 := by
+  unfold a
+  have h_sum := sum_prime p hp
+  dsimp only
+  rw [h_sum]
+  have hp_ge2 : 2 ≤ p := hp.two_le
+  have h_add : 1 + (2 * p - 1) = 2 * p := by omega
+  rw [h_add]
+  have h_gcd : Nat.gcd p (2 * p) = p := by
+    apply Nat.gcd_eq_left
+    exact dvd_mul_left p 2
+  rw [h_gcd]
+  exact Nat.div_self hp.pos
+
+theorem minFac_lt_of_composite (n : ℕ) (hn1 : n ≠ 1) (hn0 : n ≠ 0) (hnp : ¬ Nat.Prime n) :
+    n.minFac < n := by
+  have hp_prime : Nat.Prime n.minFac := Nat.minFac_prime hn1
+  have hp_dvd : n.minFac ∣ n := Nat.minFac_dvd n
+  rcases hp_dvd with ⟨m, hm⟩
+  have hp_ge2 : 2 ≤ n.minFac := hp_prime.two_le
+  have hm1 : m ≠ 1 := by
+    rintro rfl
+    rw [mul_one] at hm
+    rw [← hm] at hp_prime
+    exact hnp hp_prime
+  have hm0 : m ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hm
+    exact hn0 hm
+  have hm_ge2 : 2 ≤ m := by omega
+  have h_le_m : n.minFac ≤ m := by
+    apply Nat.minFac_le_of_dvd hm_ge2
+    rw [hm]
+    exact dvd_mul_left m n.minFac
+  have : 1 < m := by omega
+  nth_rw 2 [hm]
+  have h_pos : 0 < n.minFac := by omega
+  exact lt_mul_of_one_lt_right h_pos this
+
+lemma sum_erase_two {α : Type*} [DecidableEq α] (s : Finset α) (f : α → ℕ) {x y : α} (hx : x ∈ s) (hy : y ∈ s) (hne : x ≠ y) :
+    ∑ i ∈ s, f i = f x + f y + ∑ i ∈ (s.erase x).erase y, f i := by
+  rw [← Finset.add_sum_erase s f hx]
+  have hy_erase : y ∈ s.erase x := by
+    rw [Finset.mem_erase]
+    exact ⟨hne.symm, hy⟩
+  rw [← Finset.add_sum_erase (s.erase x) f hy_erase]
+  omega
+
+theorem sum_composite_ge (n : ℕ) (hn1 : n ≠ 1) (hn0 : n ≠ 0) (h_comp : ¬ Nat.Prime n) :
+    ∑ k ∈ Finset.Ico 1 n, Nat.gcd k n ≥ n := by
+  let d := n.minFac
+  have hd_prime : Nat.Prime d := Nat.minFac_prime hn1
+  have hd_dvd : d ∣ n := Nat.minFac_dvd n
+  have hd_lt : d < n := minFac_lt_of_composite n hn1 hn0 h_comp
+  have hd_ge2 : 2 ≤ d := hd_prime.two_le
+  have hn_gt2 : 2 < n := by omega
+  have h1 : 1 ∈ Finset.Ico 1 n := by
+    rw [Finset.mem_Ico]
+    omega
+  have hd : d ∈ Finset.Ico 1 n := by
+    rw [Finset.mem_Ico]
+    omega
+  have h_ne : 1 ≠ d := by omega
+  have h_split := sum_erase_two (Finset.Ico 1 n) (fun k => Nat.gcd k n) h1 hd h_ne
+  rw [h_split]
+  dsimp only
+  have h_gcd1 : Nat.gcd 1 n = 1 := Nat.gcd_one_left n
+  have h_gcd_d : Nat.gcd d n = d := Nat.gcd_eq_left hd_dvd
+  rw [h_gcd1, h_gcd_d]
+  have h_card1 : (Finset.Ico 1 n).card = n - 1 := by
+    rw [card_Ico]
+  have h_card2 : ((Finset.Ico 1 n).erase 1).card = n - 2 := by
+    rw [Finset.card_erase_of_mem h1, h_card1]
+    omega
+  have h_mem_erase1 : d ∈ (Finset.Ico 1 n).erase 1 := by
+    rw [Finset.mem_erase]
+    exact ⟨Ne.symm h_ne, hd⟩
+  have h_card3 : (((Finset.Ico 1 n).erase 1).erase d).card = n - 3 := by
+    rw [Finset.card_erase_of_mem h_mem_erase1, h_card2]
+    omega
+  have h_sum_ge : ∑ k ∈ ((Finset.Ico 1 n).erase 1).erase d, Nat.gcd k n ≥ n - 3 := by
+    have h_const : ∑ k ∈ ((Finset.Ico 1 n).erase 1).erase d, 1 = n - 3 := by
+      rw [Finset.sum_const, smul_eq_mul, mul_one]
+      exact h_card3
+    rw [← h_const]
+    apply Finset.sum_le_sum
+    intro k hk
+    have hn_pos : 0 < n := by omega
+    have hg_pos : 0 < Nat.gcd k n := Nat.gcd_pos_of_pos_right k hn_pos
+    omega
+  omega
+
+lemma gcd_le_third (n : ℕ) (k : ℕ) (hk1 : 1 ≤ k) (hk2 : k < n) (hk3 : k ≠ n / 2) (hn : 6 ≤ n) : Nat.gcd k n ≤ n / 3 := by
+  have hdvd : Nat.gcd k n ∣ n := Nat.gcd_dvd_right k n
+  rcases hdvd with ⟨c, hc⟩
+  have hc0 : c ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hc
+    omega
+  have hc1 : c ≠ 1 := by
+    rintro rfl
+    rw [mul_one] at hc
+    have hg_dvd : Nat.gcd k n ∣ k := Nat.gcd_dvd_left k n
+    rw [← hc] at hg_dvd
+    have : n ≤ k := Nat.le_of_dvd hk1 hg_dvd
+    omega
+  have hc2 : c ≠ 2 := by
+    rintro rfl
+    rw [mul_two] at hc
+    have hg_dvd : Nat.gcd k n ∣ k := Nat.gcd_dvd_left k n
+    have hn_even : 2 ∣ n := by
+      use Nat.gcd k n
+      omega
+    have h_gcd_eq : Nat.gcd k n = n / 2 := by
+      omega
+    rw [h_gcd_eq] at hg_dvd
+    rcases hg_dvd with ⟨a, ha⟩
+    rw [ha] at hk2
+    rcases a with _ | _ | a
+    · omega
+    · have : n / 2 * 1 = n / 2 := by omega
+      rw [this] at hk2
+      rw [ha] at hk3
+      rw [this] at hk3
+      exact hk3 rfl
+    · have h_eq2 : n / 2 * 2 = n := by omega
+      have h_le : n / 2 * 2 ≤ n / 2 * (a + 2) := Nat.mul_le_mul_left (n / 2) (by omega)
+      rw [h_eq2] at h_le
+      have h_eq3 : a + 1 + 1 = a + 2 := by omega
+      rw [h_eq3] at hk2
+      omega
+  have hc_ge3 : 3 ≤ c := by omega
+  have : Nat.gcd k n * 3 ≤ Nat.gcd k n * c := Nat.mul_le_mul_left (Nat.gcd k n) hc_ge3
+  rw [← hc] at this
+  omega
+
+lemma gcd_le_third_odd (n : ℕ) (k : ℕ) (hk1 : 1 ≤ k) (hn_odd : ¬ 2 ∣ n) (hk2 : k < n) : Nat.gcd k n ≤ n / 3 := by
+  have hdvd : Nat.gcd k n ∣ n := Nat.gcd_dvd_right k n
+  rcases hdvd with ⟨c, hc⟩
+  have hc0 : c ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hc
+    omega
+  have hc1 : c ≠ 1 := by
+    rintro rfl
+    rw [mul_one] at hc
+    have hg_dvd : Nat.gcd k n ∣ k := Nat.gcd_dvd_left k n
+    rw [← hc] at hg_dvd
+    have : n ≤ k := Nat.le_of_dvd hk1 hg_dvd
+    omega
+  have hc_odd : ¬ 2 ∣ c := by
+    rintro ⟨x, rfl⟩
+    have : 2 ∣ n := by
+      use x * Nat.gcd k n
+      nth_rw 1 [hc]
+      ring
+    exact hn_odd this
+  have hc_ge3 : 3 ≤ c := by omega
+  have : Nat.gcd k n * 3 ≤ Nat.gcd k n * c := Nat.mul_le_mul_left (Nat.gcd k n) hc_ge3
+  rw [← hc] at this
+  omega
+
+lemma gcd_le_half (n : ℕ) (k : ℕ) (hk1 : 1 ≤ k) (hk2 : k < n) (hn : 2 ≤ n) : Nat.gcd k n ≤ n / 2 := by
+  have hdvd : Nat.gcd k n ∣ n := Nat.gcd_dvd_right k n
+  rcases hdvd with ⟨c, hc⟩
+  have hc0 : c ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hc
+    omega
+  have hc1 : c ≠ 1 := by
+    rintro rfl
+    rw [mul_one] at hc
+    have hg_dvd : Nat.gcd k n ∣ k := Nat.gcd_dvd_left k n
+    rw [← hc] at hg_dvd
+    have : n ≤ k := Nat.le_of_dvd hk1 hg_dvd
+    omega
+  have hc_ge2 : 2 ≤ c := by omega
+  have : Nat.gcd k n * 2 ≤ Nat.gcd k n * c := Nat.mul_le_mul_left (Nat.gcd k n) hc_ge2
+  rw [← hc] at this
+  omega
+
+theorem sum_composite_le (n : ℕ) (hn : 2 ≤ n) :
+    ∑ k ∈ Finset.Ico 1 n, Nat.gcd k n ≤ (n - 1) * (n / 2) := by
+  have h_const : ∑ k ∈ Finset.Ico 1 n, (n / 2) = (n - 1) * (n / 2) := by
+    rw [Finset.sum_const, card_Ico, smul_eq_mul]
+  rw [← h_const]
+  apply Finset.sum_le_sum
+  intro k hk
+  rw [Finset.mem_Ico] at hk
+  exact gcd_le_half n k hk.1 hk.2 hn
+
+/--
+It is conjectured that $a(n) = 1$ if and only if $n$ is 1 or a prime number.
+A340079: It is conjectured that this is 1 iff n is 1 or a prime. See _Thomas Ordowski_'s Oct 22 2014 comment in A018804.
+-/
+
+lemma sum_range_mul (m n : ℕ) (f : ℕ → ℕ) :
+    ∑ i ∈ range (m * n), f i = ∑ i ∈ range m, ∑ j ∈ range n, f (i * n + j) := by
+  induction m with
+  | zero =>
+    simp
+  | succ m ih =>
+    rw [Nat.succ_mul, sum_range_add, ih, sum_range_succ]
+
+lemma sum_Ico_succ_top_eq_sum_range (n : ℕ) (hn : 0 < n) (f : ℕ → ℕ) (h0 : f 0 = f n) :
+    ∑ k ∈ Ico 1 (n + 1), f k = ∑ k ∈ range n, f k := by
+  rw [sum_Ico_succ_top hn, ← h0, range_eq_Ico]
+  rw [sum_eq_sum_Ico_succ_bot hn]
+  ring
+
+lemma p_dvd_sum_of_square_dvd (p M : ℕ) (hp : Nat.Prime p) (h_dvd : p ∣ M) :
+    p ∣ (Finset.Ico 1 (p * M + 1)).sum (fun k => Nat.gcd k (p * M)) := by
+  rcases eq_or_ne M 0 with rfl | hM
+  · simp
+  · have hp_pos : 0 < p := hp.pos
+    have hM_pos : 0 < M := Nat.pos_of_ne_zero hM
+    have h_pm_pos : 0 < p * M := Nat.mul_pos hp_pos hM_pos
+    have h_gcd_zero : Nat.gcd 0 (p * M) = Nat.gcd (p * M) (p * M) := by
+      rw [Nat.gcd_zero_left, Nat.gcd_self]
+    rw [sum_Ico_succ_top_eq_sum_range (p * M) h_pm_pos _ h_gcd_zero]
+    have h_mul_comm : p * M = M * p := mul_comm p M
+    have h_eq_sum : ∑ k ∈ range (p * M), Nat.gcd k (p * M) = ∑ k ∈ range (M * p), Nat.gcd k (M * p) := by
+      rw [h_mul_comm]
+    rw [h_eq_sum]
+    rw [sum_range_mul M p]
+    rw [sum_comm]
+    apply Finset.dvd_sum
+    intro j hj
+    rcases eq_or_ne j 0 with rfl | hj_ne
+    · simp only [add_zero]
+      have h_sum_rw : ∑ i ∈ range M, Nat.gcd (i * p) (M * p) = ∑ i ∈ range M, (Nat.gcd i M * p) := by
+        apply Finset.sum_congr rfl
+        intro i _
+        exact Nat.gcd_mul_right i p M
+      rw [h_sum_rw]
+      rw [← sum_mul]
+      exact dvd_mul_left p _
+    · have h_cop (i : ℕ) : Nat.gcd (i * p + j) p = 1 := by
+        rw [add_comm]
+        rw [Nat.gcd_add_mul_right_left p j i]
+        have hj_ge1 : 1 ≤ j := by omega
+        exact gcd_of_prime_lt p hp j hj_ge1 (by rw [mem_range] at hj; exact hj)
+      have h_cop' (i : ℕ) : p.Coprime (i * p + j) := by
+        rw [Nat.Coprime, gcd_comm]
+        exact h_cop i
+      have h_gcd_term (i : ℕ) : Nat.gcd (i * p + j) (M * p) = Nat.gcd (i * p + j) M := by
+        exact Nat.Coprime.gcd_mul_right_cancel_right M (h_cop' i)
+      have h_sum_rw : ∑ i ∈ range M, Nat.gcd (i * p + j) (M * p) = ∑ i ∈ range M, Nat.gcd (i * p + j) M := by
+        apply Finset.sum_congr rfl
+        intro i _
+        exact h_gcd_term i
+      rw [h_sum_rw]
+      obtain ⟨K, rfl⟩ := h_dvd
+      rw [sum_range_mul p K]
+      have h_term_algebra (q k : ℕ) : (q * K + k) * p + j = (k * p + j) + q * (p * K) := by
+        ring
+      have h_gcd_term_eq (q k : ℕ) : Nat.gcd ((q * K + k) * p + j) (p * K) = Nat.gcd (k * p + j) (p * K) := by
+        rw [h_term_algebra q k]
+        exact Nat.gcd_add_mul_right_left (p * K) (k * p + j) q
+      have h_nested_rw : (∑ q ∈ range p, ∑ k ∈ range K, Nat.gcd ((q * K + k) * p + j) (p * K)) =
+                         (∑ q ∈ range p, ∑ k ∈ range K, Nat.gcd (k * p + j) (p * K)) := by
+        apply Finset.sum_congr rfl
+        intro q _
+        apply Finset.sum_congr rfl
+        intro k _
+        exact h_gcd_term_eq q k
+      rw [h_nested_rw]
+      rw [sum_const, card_range]
+      rw [nsmul_eq_mul]
+      exact dvd_mul_right p _
+
+
+lemma test_gcd_mod (x M : ℕ) : Nat.gcd x M = Nat.gcd (x % M) M := by
+  rw [Nat.gcd_comm x M, Nat.gcd_rec M x]
+
+lemma test_fin_sum (M : ℕ) (f : ℕ → ℕ) : ∑ i : Fin M, f i = ∑ i ∈ range M, f i := by
+  exact Fin.sum_univ_eq_sum_range f M
+
+def test_zmod_fin (M : ℕ) [NeZero M] : Fin M ≃ ZMod M := by
+  exact (ZMod.finEquiv M).toEquiv
+
+lemma sum_zmod_eq_sum_range (M : ℕ) [NeZero M] (f : ℕ → ℕ) :
+    ∑ x : ZMod M, f x.val = ∑ i ∈ range M, f i := by
+  rw [← Fin.sum_univ_eq_sum_range f M]
+  rw [← Equiv.sum_comp (ZMod.finEquiv M).toEquiv]
+  apply Finset.sum_congr rfl
+  intro i _
+  cases M with
+  | zero =>
+    have : False := NeZero.ne 0 rfl
+    contradiction
+  | succ n =>
+    rfl
+
+def zmodEquiv (p M j : ℕ) (h_cop : Nat.Coprime p M) : ZMod M ≃ ZMod M where
+  toFun := fun x => x * (p : ZMod M) + (j : ZMod M)
+  invFun := fun y => (y - (j : ZMod M)) * (((ZMod.unitOfCoprime p h_cop)⁻¹ : (ZMod M)ˣ) : ZMod M)
+  left_inv := by
+    intro x
+    dsimp
+    rw [add_sub_cancel_right]
+    have h_u : ((ZMod.unitOfCoprime p h_cop) : ZMod M) = p := ZMod.coe_unitOfCoprime p h_cop
+    rw [← h_u]
+    rw [mul_assoc]
+    have h_inv : (ZMod.unitOfCoprime p h_cop : ZMod M) * (((ZMod.unitOfCoprime p h_cop)⁻¹ : (ZMod M)ˣ) : ZMod M) = 1 := by
+      exact Units.mul_inv (ZMod.unitOfCoprime p h_cop)
+    rw [h_inv, mul_one]
+  right_inv := by
+    intro y
+    dsimp
+    rw [mul_assoc]
+    have h_u : ((ZMod.unitOfCoprime p h_cop) : ZMod M) = p := ZMod.coe_unitOfCoprime p h_cop
+    rw [← h_u]
+    have h_inv : (((ZMod.unitOfCoprime p h_cop)⁻¹ : (ZMod M)ˣ) : ZMod M) * (ZMod.unitOfCoprime p h_cop : ZMod M) = 1 := by
+      exact Units.inv_mul (ZMod.unitOfCoprime p h_cop)
+    rw [h_inv, mul_one, sub_add_cancel]
+
+lemma sum_gcd_linear_congruence (p M j : ℕ) [NeZero M] (h_cop : Nat.Coprime p M) :
+    ∑ i ∈ range M, Nat.gcd (i * p + j) M = ∑ i ∈ range M, Nat.gcd i M := by
+  rw [← sum_zmod_eq_sum_range]
+  rw [← sum_zmod_eq_sum_range]
+  have h_gcd_eq (x : ZMod M) : Nat.gcd (x.val * p + j) M = Nat.gcd (zmodEquiv p M j h_cop x).val M := by
+    dsimp [zmodEquiv]
+    rw [test_gcd_mod (x.val * p + j) M]
+    have h_cast : (x * (p : ZMod M) + (j : ZMod M)) = ((x.val * p + j : ℕ) : ZMod M) := by simp
+    rw [h_cast, ZMod.val_natCast]
+  have h_sum : (∑ x : ZMod M, Nat.gcd (x.val * p + j) M) = ∑ x : ZMod M, Nat.gcd (zmodEquiv p M j h_cop x).val M := by
+    apply Finset.sum_congr rfl
+    intro x _
+    exact h_gcd_eq x
+  rw [h_sum]
+  rw [Equiv.sum_comp (zmodEquiv p M j h_cop) (fun y => y.val.gcd M)]
+
+lemma sum_gcd_coprime_mul (p M : ℕ) (hp : Nat.Prime p) (h_cop : Nat.Coprime p M) :
+    (Finset.Ico 1 (p * M + 1)).sum (fun k => Nat.gcd k (p * M)) =
+    (2 * p - 1) * (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) := by
+  have hM_pos : 0 < M := by
+    by_contra hM0
+    have : M = 0 := by omega
+    rw [this] at h_cop
+    have : Nat.gcd p 0 = 1 := h_cop
+    rw [Nat.gcd_zero_right] at this
+    have : p = 1 := this
+    rw [this] at hp
+    exact Nat.not_prime_one hp
+  have hpM_pos : 0 < p * M := Nat.mul_pos hp.pos hM_pos
+  have h_gcd_zero1 : Nat.gcd 0 (p * M) = Nat.gcd (p * M) (p * M) := by
+    rw [Nat.gcd_zero_left, Nat.gcd_self]
+  have h_gcd_zero2 : Nat.gcd 0 M = Nat.gcd M M := by
+    rw [Nat.gcd_zero_left, Nat.gcd_self]
+  rw [sum_Ico_succ_top_eq_sum_range (p * M) hpM_pos _ h_gcd_zero1]
+  rw [sum_Ico_succ_top_eq_sum_range M hM_pos _ h_gcd_zero2]
+  have h_comm : p * M = M * p := mul_comm p M
+  rw [h_comm]
+  rw [sum_range_mul M p]
+  have h_term (i j : ℕ) : Nat.gcd (i * p + j) (M * p) = Nat.gcd (i * p + j) M * Nat.gcd j p := by
+    have h_cop_mp : Nat.Coprime M p := h_cop.symm
+    rw [Nat.Coprime.gcd_mul (i * p + j) h_cop_mp]
+    have h_gcd_p : Nat.gcd (i * p + j) p = Nat.gcd j p := by
+      rw [add_comm]
+      exact Nat.gcd_add_mul_right_left p j i
+    rw [h_gcd_p]
+  have h_sum_rw : (∑ i ∈ range M, ∑ j ∈ range p, Nat.gcd (i * p + j) (M * p)) =
+                  ∑ i ∈ range M, ∑ j ∈ range p, (Nat.gcd (i * p + j) M * Nat.gcd j p) := by
+    apply Finset.sum_congr rfl
+    intro i _
+    apply Finset.sum_congr rfl
+    intro j _
+    exact h_term i j
+  rw [h_sum_rw]
+  rw [sum_comm]
+  haveI : NeZero M := ⟨Nat.ne_of_gt hM_pos⟩
+  have h_inner_rw (j : ℕ) : ∑ i ∈ range M, (Nat.gcd (i * p + j) M * Nat.gcd j p) =
+                            (∑ i ∈ range M, Nat.gcd (i * p + j) M) * Nat.gcd j p := by
+    rw [← sum_mul]
+  have h_inner_linear (j : ℕ) : (∑ i ∈ range M, Nat.gcd (i * p + j) M) = ∑ i ∈ range M, Nat.gcd i M := by
+    exact sum_gcd_linear_congruence p M j h_cop
+  have h_inner_combined (j : ℕ) : ∑ i ∈ range M, (Nat.gcd (i * p + j) M * Nat.gcd j p) =
+                                  (∑ i ∈ range M, Nat.gcd i M) * Nat.gcd j p := by
+    rw [h_inner_rw j, h_inner_linear j]
+  have h_outer_rw : (∑ j ∈ range p, ∑ i ∈ range M, (Nat.gcd (i * p + j) M * Nat.gcd j p)) =
+                    ∑ j ∈ range p, ((∑ i ∈ range M, Nat.gcd i M) * Nat.gcd j p) := by
+    apply Finset.sum_congr rfl
+    intro j _
+    exact h_inner_combined j
+  rw [h_outer_rw]
+  rw [← mul_sum]
+  have h_sum_prime_eq : ∑ j ∈ range p, Nat.gcd j p = 2 * p - 1 := by
+    have hp_pos : 0 < p := hp.pos
+    have h_gcd_zero_p : Nat.gcd 0 p = Nat.gcd p p := by
+      rw [Nat.gcd_zero_left, Nat.gcd_self]
+    rw [← sum_Ico_succ_top_eq_sum_range p hp_pos _ h_gcd_zero_p]
+    exact sum_prime p hp
+  rw [h_sum_prime_eq]
+  ring
+
+lemma test_sum_M_ge (M : ℕ) (hM : 2 ≤ M) : 2 * M - 1 ≤ (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) := by
+  by_cases hM_prime : Nat.Prime M
+  · rw [sum_prime M hM_prime]
+  · have h_sum_split : (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) = (Finset.Ico 1 M).sum (fun k => Nat.gcd k M) + M := by
+      have h_split : (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) = (Finset.Ico 1 M).sum (fun k => Nat.gcd k M) + Nat.gcd M M := Finset.sum_Ico_succ_top (by omega : 1 ≤ M) (fun k => Nat.gcd k M)
+      rw [h_split, Nat.gcd_self]
+    rw [h_sum_split]
+    have hM_ne1 : M ≠ 1 := by omega
+    have hM_ne0 : M ≠ 0 := by omega
+    have h_sum_ge := sum_composite_ge M hM_ne1 hM_ne0 hM_prime
+    omega
+
+lemma case_prime_M (p M n : ℕ) (hp : Nat.Prime p) (hM : Nat.Prime M) (hp_min : p = n.minFac) (h_n : n = p * M) (h_cop : Nat.Coprime p M)
+    (hn_dvd_sum : n ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) : False := by
+  have h_sum := sum_gcd_coprime_mul p M hp h_cop
+  rw [← h_n] at h_sum
+  have h_sum_M : (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) = 2 * M - 1 := sum_prime M hM
+  rw [h_sum_M] at h_sum
+  have hp_ge2 : 2 ≤ p := hp.two_le
+  have hM_ge2 : 2 ≤ M := hM.two_le
+  have h_cop' : M ≠ p := by
+    rintro rfl
+    have : Nat.gcd M M = 1 := h_cop
+    rw [Nat.gcd_self] at this
+    have : M = 1 := this
+    rw [this] at hM
+    exact Nat.not_prime_one hM
+  have h_M_dvd_n : M ∣ n := by
+    rw [h_n]
+    exact dvd_mul_left M p
+  have hp_le_M : p ≤ M := by
+    rw [hp_min]
+    exact Nat.minFac_le_of_dvd hM_ge2 h_M_dvd_n
+  have hM_gt_p' : p < M := by omega
+  obtain ⟨p_1, rfl⟩ := Nat.exists_eq_add_of_le hp_ge2
+  obtain ⟨M_1, rfl⟩ := Nat.exists_eq_add_of_le hM_ge2
+  have hn_dvd : (2 + p_1) * (2 + M_1) ∣ 1 + (2 * (2 + p_1) - 1) * (2 * (2 + M_1) - 1) := by
+    rw [h_sum, h_n] at hn_dvd_sum
+    exact hn_dvd_sum
+  have h_algebra : 1 + (2 * (2 + p_1) - 1) * (2 * (2 + M_1) - 1) + (2 * (2 + p_1) + 2 * (2 + M_1) - 2) = 4 * (2 + p_1) * (2 + M_1) := by
+    have h1 : 2 * (2 + p_1) - 1 = 2 * p_1 + 3 := by omega
+    have h2 : 2 * (2 + M_1) - 1 = 2 * M_1 + 3 := by omega
+    have h3 : 2 * (2 + p_1) + 2 * (2 + M_1) - 2 = 2 * p_1 + 2 * M_1 + 6 := by omega
+    rw [h1, h2, h3]
+    ring
+  have h_dvd_4pm : (2 + p_1) * (2 + M_1) ∣ 4 * (2 + p_1) * (2 + M_1) := by
+    use 4
+    ring
+  have h_dvd_sum : (2 + p_1) * (2 + M_1) ∣ 2 * (2 + p_1) + 2 * (2 + M_1) - 2 := by
+    have h_add_dvd : (2 + p_1) * (2 + M_1) ∣ 1 + (2 * (2 + p_1) - 1) * (2 * (2 + M_1) - 1) + (2 * (2 + p_1) + 2 * (2 + M_1) - 2) := by
+      rw [h_algebra]
+      exact h_dvd_4pm
+    exact (Nat.dvd_add_right hn_dvd).mp h_add_dvd
+  have h_M_dvd : (2 + M_1) ∣ 2 * (2 + p_1) - 2 := by
+    have h_M_dvd_term : (2 + M_1) ∣ (2 + p_1) * (2 + M_1) := dvd_mul_left (2 + M_1) (2 + p_1)
+    have h_M_dvd_term2 : (2 + M_1) ∣ 2 * (2 + p_1) + 2 * (2 + M_1) - 2 := by
+      exact Nat.dvd_trans h_M_dvd_term h_dvd_sum
+    have h_algebra2 : 2 * (2 + p_1) + 2 * (2 + M_1) - 2 = 2 * (2 + M_1) + (2 * (2 + p_1) - 2) := by omega
+    rw [h_algebra2] at h_M_dvd_term2
+    have h_M_dvd_2M : (2 + M_1) ∣ 2 * (2 + M_1) := dvd_mul_left (2 + M_1) 2
+    exact (Nat.dvd_add_right h_M_dvd_2M).mp h_M_dvd_term2
+  have h_dvd_cases : (2 + M_1) ∣ 2 ∨ (2 + M_1) ∣ (2 + p_1) - 1 := by
+    have h_mul : 2 * (2 + p_1) - 2 = 2 * ((2 + p_1) - 1) := by omega
+    rw [h_mul] at h_M_dvd
+    exact (Nat.Prime.dvd_mul hM).mp h_M_dvd
+  rcases h_dvd_cases with h_dvd_2 | h_dvd_pm1
+  · have : (2 + M_1) = 2 := by
+      rcases Nat.Prime.eq_two_or_odd hM with h_two | h_odd
+      · exact h_two
+      · have h_dvd_2_le : (2 + M_1) ≤ 2 := Nat.le_of_dvd (by omega) h_dvd_2
+        omega
+    omega
+  · have h_pm1_pos : 0 < (2 + p_1) - 1 := by omega
+    have : (2 + M_1) ≤ (2 + p_1) - 1 := Nat.le_of_dvd h_pm1_pos h_dvd_pm1
+    omega
+
+lemma case_non_square_free (p M n q D : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (h_n : n = p * M) (hM : M = q * D) (hqd : q ∣ D)
+    (hn_dvd_sum : n ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) : False := by
+  have _ := hp
+  have h_n_rw : n = q * (p * D) := by
+    rw [h_n, hM]
+    ring
+  have h_q2_dvd : q ∣ p * D := by
+    exact dvd_mul_of_dvd_right hqd p
+  have hq_dvd_sum : q ∣ (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := by
+    rw [h_n_rw]
+    exact p_dvd_sum_of_square_dvd q (p * D) hq h_q2_dvd
+  have hq_dvd_n : q ∣ n := by
+    rw [h_n_rw]
+    exact dvd_mul_right q (p * D)
+  have hq_dvd_one_add : q ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := by
+    exact Nat.dvd_trans hq_dvd_n hn_dvd_sum
+  have hq_dvd_one : q ∣ 1 := by
+    have h_comm : 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) + 1 := add_comm 1 _
+    rw [h_comm] at hq_dvd_one_add
+    exact (Nat.dvd_add_right hq_dvd_sum).mp hq_dvd_one_add
+  have hq_ge2 : 2 ≤ q := hq.two_le
+  have : q ≤ 1 := Nat.le_of_dvd (by omega) hq_dvd_one
+  omega
+
+lemma qr_impossible_test (q r : ℕ) (hq : 5 ≤ q) (hr : 7 ≤ r) (h_qr : q < r) (h_eq : q * r = 3 * q + 3 * r - 2) : False := by
+  have hq3 : 3 ≤ q := by omega
+  have hr3 : 3 ≤ r := by omega
+  have h_prod : (q - 3) * (r - 3) = 7 := by
+    apply Int.ofNat_inj.mp
+    push_cast [hq3, hr3]
+    have h_eq_cast : (q : ℤ) * (r : ℤ) = 3 * (q : ℤ) + 3 * (r : ℤ) - 2 := by
+      have h_sub : 2 ≤ 3 * q + 3 * r := by omega
+      have h_cast : ((q * r : ℕ) : ℤ) = ((3 * q + 3 * r - 2 : ℕ) : ℤ) := by rw [h_eq]
+      push_cast [h_sub] at h_cast
+      exact h_cast
+    linarith [h_eq_cast]
+  have hq_ge : 2 ≤ q - 3 := by omega
+  have hr_ge : 4 ≤ r - 3 := by omega
+  have h_prod_ge : 2 * 4 ≤ (q - 3) * (r - 3) := Nat.mul_le_mul hq_ge hr_ge
+  omega
+
+lemma qr_impossible_5 (q r : ℕ) (hq_prime : Nat.Prime q) (hr_prime : Nat.Prime r) (hq : 5 ≤ q) (hr : 7 ≤ r) (h_qr : q < r) (h_eq : q * r = 5 * q + 5 * r - 3) : False := by
+  have hq_cases : q = 5 ∨ q = 6 ∨ q = 7 ∨ q = 8 ∨ q = 9 ∨ q = 10 ∨ q = 11 ∨ q = 12 ∨ q = 13 ∨ q = 14 ∨ q = 15 ∨ q = 16 ∨ q = 17 ∨ 18 ≤ q := by omega
+  rcases hq_cases with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | hq_ge18
+  · omega
+  · have hr27 : r = 27 := by omega
+    have hr_not_prime : ¬ Nat.Prime 27 := by decide
+    rw [hr27] at hr_prime
+    exact hr_not_prime hr_prime
+  · have hr16 : r = 16 := by omega
+    have hr_not_prime : ¬ Nat.Prime 16 := by decide
+    rw [hr16] at hr_prime
+    exact hr_not_prime hr_prime
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · have hr7 : r = 7 := by omega
+    have : 16 < r := h_qr
+    omega
+  · omega
+  · have hq5 : 5 ≤ q - 5 := by omega
+    have hr5 : 14 ≤ r - 5 := by omega
+    have h_mul : 5 * 14 ≤ (q - 5) * (r - 5) := Nat.mul_le_mul hq5 hr5
+    have h_eq2 : (((q - 5) * (r - 5) : ℕ) : ℤ) = (q : ℤ) * (r : ℤ) - 5 * (q : ℤ) - 5 * (r : ℤ) + 25 := by
+      have hq2 : 5 ≤ q := by omega
+      have hr2 : 5 ≤ r := by omega
+      push_cast [hq2, hr2]
+      ring
+    have h_cast_le : (70 : ℤ) ≤ (((q - 5) * (r - 5) : ℕ) : ℤ) := by exact_mod_cast h_mul
+    have h_cast : ((q * r : ℕ) : ℤ) = ((5 * q + 5 * r - 3 : ℕ) : ℤ) := by rw [h_eq]
+    have hq_sub : 3 ≤ 5 * q + 5 * r := by omega
+    push_cast [hq_sub] at h_cast
+    rw [h_eq2] at h_cast_le
+    linarith
+
+lemma qr_impossible_6 (q r : ℕ) (hq_prime : Nat.Prime q) (hr_prime : Nat.Prime r) (hq : 5 ≤ q) (hr : 7 ≤ r) (h_qr : q < r) (h_eq : q * r = 6 * q + 6 * r - 4) : False := by
+  have hq_cases : q = 5 ∨ q = 6 ∨ q = 7 ∨ q = 8 ∨ q = 9 ∨ q = 10 ∨ q = 11 ∨ 12 ≤ q := by omega
+  rcases hq_cases with rfl | rfl | rfl | rfl | rfl | rfl | rfl | hq_ge12
+  · -- q = 5
+    have : 5 * r = 6 * r + 26 := by omega
+    omega
+  · -- q = 6
+    have : 6 * r = 6 * r + 32 := by omega
+    omega
+  · -- q = 7
+    have hr38 : r = 38 := by omega
+    have hr_not_prime : ¬ Nat.Prime 38 := by decide
+    rw [hr38] at hr_prime
+    exact hr_not_prime hr_prime
+  · -- q = 8
+    have hr22 : r = 22 := by omega
+    have hr_not_prime : ¬ Nat.Prime 22 := by decide
+    rw [hr22] at hr_prime
+    exact hr_not_prime hr_prime
+  · -- q = 9
+    have : 9 * r = 6 * r + 50 := by omega
+    omega
+  · -- q = 10
+    have hr14 : r = 14 := by omega
+    have hr_not_prime : ¬ Nat.Prime 14 := by decide
+    rw [hr14] at hr_prime
+    exact hr_not_prime hr_prime
+  · -- q = 11
+    have : 11 * r = 6 * r + 62 := by omega
+    omega
+  · -- q ≥ 12
+    have hq6 : 6 ≤ q - 6 := by omega
+    have hr7 : 7 ≤ r - 6 := by omega
+    have h_mul : 6 * 7 ≤ (q - 6) * (r - 6) := Nat.mul_le_mul hq6 hr7
+    have h_eq2 : (((q - 6) * (r - 6) : ℕ) : ℤ) = (q : ℤ) * (r : ℤ) - 6 * (q : ℤ) - 6 * (r : ℤ) + 36 := by
+      have hq2 : 6 ≤ q := by omega
+      have hr2 : 6 ≤ r := by omega
+      push_cast [hq2, hr2]
+      ring
+    have h_cast_le : (42 : ℤ) ≤ (((q - 6) * (r - 6) : ℕ) : ℤ) := by exact_mod_cast h_mul
+    have h_cast : ((q * r : ℕ) : ℤ) = ((6 * q + 6 * r - 4 : ℕ) : ℤ) := by rw [h_eq]
+    have hq_sub : 4 ≤ 6 * q + 6 * r := by omega
+    push_cast [hq_sub] at h_cast
+    rw [h_eq2] at h_cast_le
+    linarith
+
+
+lemma sum_gcd_lower_bound (D' : ℕ) (hD' : 2 ≤ D') :
+    2 * D' - 1 ≤ (Finset.Ico 1 (D' + 1)).sum (fun k => Nat.gcd k D') := by
+  have h_split : (Finset.Ico 1 (D' + 1)).sum (fun k => Nat.gcd k D') = (Finset.Ico 1 D').sum (fun k => Nat.gcd k D') + D' := by
+    have h1 : (Finset.Ico 1 (D' + 1)).sum (fun k => Nat.gcd k D') = (Finset.Ico 1 D').sum (fun k => Nat.gcd k D') + Nat.gcd D' D' := by
+      exact Finset.sum_Ico_succ_top (by omega) (fun k => Nat.gcd k D')
+    rw [h1, Nat.gcd_self]
+  rw [h_split]
+  have h_sum_ge : (Finset.Ico 1 D').sum (fun k => Nat.gcd k D') ≥ D' - 1 := by
+    have h_le : (Finset.Ico 1 D').sum (fun k => 1) ≤ (Finset.Ico 1 D').sum (fun k => Nat.gcd k D') := by
+      apply Finset.sum_le_sum
+      intro k hk
+      have hk1 : 1 ≤ k := by
+        rw [Finset.mem_Ico] at hk
+        omega
+      have h_gcd_pos : 0 < Nat.gcd k D' := Nat.gcd_pos_of_pos_right k (by omega)
+      omega
+    have h_card : (Finset.Ico 1 D').sum (fun k => 1) = D' - 1 := by
+      rw [Finset.sum_const, card_Ico, smul_eq_mul, mul_one]
+    omega
+  omega
+
+
+/-
+lemma contradiction_p2_Dp_ge2 (q r P_D' a D' W_q m : ℕ) (hq_prime : Nat.Prime q) (hr_prime : Nat.Prime r) (hq_ge5 : 5 ≤ q) (hr_ge7 : 7 ≤ r) (hq_lt_r : q < r) (h_PD'_ge11 : 11 ≤ P_D') (h_PD'_ge_D' : D' ≤ P_D') (h_D'_ge11 : 11 ≤ D')
+    (h_W_q_eq : W_q * q = 6 * P_D' + m)
+    (h_W_q_sub : W_q = 12 * P_D' - 2 * a * D')
+    (hm_lt : m < 6 * P_D')
+    (h_PD'_eq : P_D' = (Finset.Ico 1 (D' + 1)).sum (fun k => Nat.gcd k D'))
+    (h_cast_eq : 2 * (a : ℤ) * (D' : ℤ) * (q : ℤ) * (r : ℤ) = 3 * (P_D' : ℤ) * (2 * (q : ℤ) - 1) * (2 * (r : ℤ) - 1) + 1) :
+    False := by
+  have h_cast_eq_orig : 2 * (a : ℤ) * (D' : ℤ) * (q : ℤ) * (r : ℤ) = 3 * (P_D' : ℤ) * (2 * (q : ℤ) - 1) * (2 * (r : ℤ) - 1) + 1 := h_cast_eq
+  have h_le_PD' : 2 * D' - 1 ≤ P_D' := by
+    rw [h_PD'_eq]
+    exact sum_gcd_lower_bound D' (by omega)
+  have h_mul_le_PD' : 21 * D' ≤ 11 * P_D' := by omega
+  have h_W_q_pos : 0 < W_q := by
+    by_contra h_zero
+    have : W_q = 0 := by omega
+    have h_zero_mul : W_q * q = 0 := by rw [this, zero_mul]
+    omega
+  have h_le_2aD : 2 * a * D' ≤ 12 * P_D' := by omega
+  have h_W_q_add : W_q + 2 * a * D' = 12 * P_D' := by omega
+  have h_W_q_add_cast : (W_q : ℤ) + 2 * (a : ℤ) * (D' : ℤ) = 12 * (P_D' : ℤ) := by exact_mod_cast h_W_q_add
+  have h_W_q_eq_cast : (W_q : ℤ) * (q : ℤ) = 6 * (P_D' : ℤ) + (m : ℤ) := by exact_mod_cast h_W_q_eq
+  have h_LHS : 2 * (a : ℤ) * (D' : ℤ) * (q : ℤ) * (r : ℤ) = 12 * (P_D' : ℤ) * (q : ℤ) * (r : ℤ) - 6 * (P_D' : ℤ) * (r : ℤ) - (m : ℤ) * (r : ℤ) := by
+    calc 2 * (a : ℤ) * (D' : ℤ) * (q : ℤ) * (r : ℤ) = (2 * (a : ℤ) * (D' : ℤ) * (q : ℤ)) * (r : ℤ) := by ring
+    _ = (12 * (P_D' : ℤ) - (W_q : ℤ)) * (q : ℤ) * (r : ℤ) := by
+      have : 2 * (a : ℤ) * (D' : ℤ) = 12 * (P_D' : ℤ) - (W_q : ℤ) := by linarith [h_W_q_add_cast]
+      rw [this]
+    _ = (12 * (P_D' : ℤ) * (q : ℤ) - (W_q : ℤ) * (q : ℤ)) * (r : ℤ) := by ring
+    _ = (12 * (P_D' : ℤ) * (q : ℤ) - (6 * (P_D' : ℤ) + (m : ℤ))) * (r : ℤ) := by rw [h_W_q_eq_cast]
+    _ = 12 * (P_D' : ℤ) * (q : ℤ) * (r : ℤ) - 6 * (P_D' : ℤ) * (r : ℤ) - (m : ℤ) * (r : ℤ) := by ring
+  have h_RHS : 3 * (P_D' : ℤ) * (2 * (q : ℤ) - 1) * (2 * (r : ℤ) - 1) + 1 = 12 * (P_D' : ℤ) * (q : ℤ) * (r : ℤ) - 6 * (P_D' : ℤ) * (r : ℤ) - 3 * (P_D' : ℤ) * (2 * (q : ℤ) - 1) + 1 := by ring
+  rw [h_LHS, h_RHS] at h_cast_eq
+  have h_eq_mr : (m : ℤ) * (r : ℤ) + 1 = 3 * (P_D' : ℤ) * (2 * (q : ℤ) - 1) := by linarith [h_cast_eq]
+  have h_eq_mr_nat : m * r + 1 = 3 * P_D' * (2 * q - 1) := by
+    apply Int.ofNat_inj.mp
+    have hq_sub : 1 ≤ 2 * q := by omega
+    push_cast [hq_sub]
+    exact h_eq_mr
+  rcases eq_or_ne q 5 with rfl | hq_ne
+  · -- q = 5
+    have h_cast_eq_nat : 10 * (a * D' * r) = 27 * P_D' * (2 * r - 1) + 1 := by
+      apply Int.ofNat_inj.mp
+      have hr_sub : 1 ≤ 2 * r := by omega
+      push_cast [hr_sub]
+      have h1 : 10 * ((a : ℤ) * (D' : ℤ) * (r : ℤ)) = 2 * (a : ℤ) * (D' : ℤ) * ↑(5 : ℕ) * (r : ℤ) := by ring
+      have h2 : 27 * (P_D' : ℤ) * (2 * (r : ℤ) - 1) + 1 = 3 * (P_D' : ℤ) * (2 * ↑(5 : ℕ) - 1) * (2 * (r : ℤ) - 1) + 1 := by ring
+      rw [h1, h2, h_cast_eq_orig]
+    have h_cast_eq_nat_add : 10 * (a * D' * r) + 27 * P_D' = 54 * (P_D' * r) + 1 := by
+      apply Int.ofNat_inj.mp
+      push_cast
+      have h_eq : 10 * ((a : ℤ) * (D' : ℤ) * (r : ℤ)) = 2 * (a : ℤ) * (D' : ℤ) * ↑(5 : ℕ) * (r : ℤ) := by ring
+      have h_eq2 : 54 * ((P_D' : ℤ) * (r : ℤ)) + 1 - 27 * (P_D' : ℤ) = 3 * (P_D' : ℤ) * (2 * ↑(5 : ℕ) - 1) * (2 * (r : ℤ) - 1) + 1 := by ring
+      linarith [h_cast_eq_orig, h_eq, h_eq2]
+    have ha_ge10 : 10 ≤ a := by
+      by_contra h_lt10
+      have ha_le9 : a ≤ 9 := by omega
+      have h_nonlin_bound : 10 * (a * D' * r) ≤ 90 * (D' * r) := by
+        have h1 : a * D' ≤ 9 * D' := Nat.mul_le_mul_right D' ha_le9
+        have h2 : (a * D') * (10 * r) ≤ (9 * D') * (10 * r) := Nat.mul_le_mul_right (10 * r) h1
+        have h_eq1 : 10 * (a * D' * r) = (a * D') * (10 * r) := by ring
+        have h_eq2 : 90 * (D' * r) = (9 * D') * (10 * r) := by ring
+        rw [h_eq1, h_eq2]
+        exact h2
+      have h_PD_r_bound : 21 * (D' * r) ≤ 11 * (P_D' * r) := by
+        have : 21 * D' * r = 21 * (D' * r) := by ring
+        have : 11 * P_D' * r = 11 * (P_D' * r) := by ring
+        have h_mul : (21 * D') * r ≤ (11 * P_D') * r := Nat.mul_le_mul_right r h_mul_le_PD'
+        omega
+      have h_le_PD'_r : (2 * D' - 1) * r ≤ P_D' * r := Nat.mul_le_mul_right r h_le_PD'
+      have h_D'_r_bound : 11 * r ≤ D' * r := Nat.mul_le_mul_right r h_D'_ge11
+      have h_le_PD'_r_rew : 2 * (D' * r) - r ≤ P_D' * r := by
+        have h_sub : (2 * D' - 1) * r = 2 * D' * r - r := by
+          rw [Nat.sub_mul, Nat.one_mul]
+        have h_ring : 2 * D' * r = 2 * (D' * r) := by ring
+        rw [h_sub, h_ring] at h_le_PD'_r
+        exact h_le_PD'_r
+      have h_PD_r_ge : 7 * P_D' ≤ P_D' * r := by
+        calc 7 * P_D' = P_D' * 7 := mul_comm 7 P_D'
+             _ ≤ P_D' * r := Nat.mul_le_mul_left P_D' hr_ge7
+      omega
+    rcases eq_or_ne r 7 with hr_eq7 | hr_ne
+    · -- r = 7
+      subst hr_eq7
+      have h_eq_mr_nat_simp : 7 * m + 1 = 27 * P_D' := by
+        clear hq_prime hr_prime h_PD'_eq h_cast_eq h_cast_eq_orig h_cast_eq_nat_add ha_le9 h_nonlin_bound h_PD_r_bound h_le_PD' h_mul_le_PD' h_W_q_pos h_le_2aD h_W_q_add h_W_q_add_cast h_W_q_eq_cast h_LHS h_RHS h_eq_mr h_cast_eq_nat h_le_PD'_r h_D'_r_bound h_le_PD'_r_rew h_PD_r_ge h_W_q_eq h_W_q_sub
+        omega
+      have h_eq_grouped : 351 * P_D' + 1 = 70 * (a * D') := by
+        have h_m_val_grouped : m = 54 * P_D' - 10 * (a * D') := by
+          have h_W5 : W_q * 5 = 6 * P_D' + m := h_W_q_eq
+          rw [show 2 * a * D' = 2 * (a * D') by ring] at h_W_q_sub
+          clear hq_prime hr_prime h_PD'_eq h_cast_eq h_cast_eq_orig h_eq_mr_nat h_cast_eq_nat_add ha_le9 h_nonlin_bound h_PD_r_bound h_le_PD' h_mul_le_PD' h_W_q_pos h_le_2aD h_W_q_add h_W_q_add_cast h_W_q_eq_cast h_LHS h_RHS h_eq_mr h_eq_mr_nat h_cast_eq_nat h_le_PD'_r h_D'_r_bound h_le_PD'_r_rew h_PD_r_ge h_eq_mr_nat_simp
+          omega
+        clear hq_prime hr_prime h_PD'_eq h_cast_eq h_cast_eq_orig h_eq_mr_nat h_cast_eq_nat_add ha_le9 h_nonlin_bound h_PD_r_bound h_le_PD' h_mul_le_PD' h_W_q_pos h_le_2aD h_W_q_add h_W_q_add_cast h_W_q_eq_cast h_LHS h_RHS h_eq_mr h_eq_mr_nat h_cast_eq_nat h_le_PD'_r h_D'_r_bound h_le_PD'_r_rew h_PD_r_ge h_W_q_eq h_W_q_sub
+        omega
+      have h_bound1 : 70 * (a * D') ≤ 630 * D' := by
+        calc 70 * (a * D') = 70 * a * D' := by ring
+             _ ≤ 70 * 9 * D' := Nat.mul_le_mul_right D' (Nat.mul_le_mul_left 70 ha_le9)
+             _ = 630 * D' := by ring
+      have h_bound2 : 630 * D' ≤ 330 * P_D' := by
+        calc 630 * D' = 30 * (21 * D') := by ring
+             _ ≤ 30 * (11 * P_D') := Nat.mul_le_mul_left 30 h_mul_le_PD'
+             _ = 330 * P_D' := by ring
+      have h_final_contra : 351 * P_D' < 330 * P_D' := by
+        calc 351 * P_D' < 351 * P_D' + 1 := by omega
+             _ = 70 * (a * D') := h_eq_grouped
+             _ ≤ 630 * D' := h_bound1
+             _ ≤ 330 * P_D' := h_bound2
+      clear hq_prime hr_prime h_PD'_eq h_cast_eq h_cast_eq_orig h_eq_mr_nat h_cast_eq_nat_add ha_le9 h_nonlin_bound h_PD_r_bound h_le_PD' h_mul_le_PD' h_W_q_pos h_le_2aD h_W_q_add h_W_q_add_cast h_W_q_eq_cast h_LHS h_RHS h_eq_mr h_cast_eq_nat h_le_PD'_r h_D'_r_bound h_le_PD'_r_rew h_PD_r_ge h_W_q_eq h_W_q_sub h_eq_mr_nat_simp h_eq_grouped h_bound1 h_bound2
+      omega
+    · -- r ≥ 11
+      have hr_ge11 : 11 ≤ r := by
+        have h8 : r ≠ 8 := by rintro rfl; contradiction
+        have h9 : r ≠ 9 := by rintro rfl; contradiction
+        have h10 : r ≠ 10 := by rintro rfl; contradiction
+        have : r ≠ 7 := hr_ne
+        omega
+      have h_m_r_bound : 11 * m + 1 ≤ m * r + 1 := by
+        have : 11 * m ≤ r * m := Nat.mul_le_mul_right m hr_ge11
+        omega
+      have : 10 * a * D' * r = 54 * P_D' * r - 27 * P_D' + 1 := by
+        calc 10 * a * D' * r = 27 * P_D' * (2 * r - 1) + 1 := h_cast_eq_nat
+        _ = 54 * P_D' * r - 27 * P_D' + 1 := by ring
+      have h_m_val : m = 54 * P_D' - 10 * a * D' := by omega
+      have h_mr_eq_val : m * r = 27 * P_D' - 1 := by omega
+      have h_mr_ge : m * r ≥ 11 * m := by
+        have : r * m ≥ 11 * m := Nat.mul_le_mul_left m hr_ge11
+        omega
+      omega
+  · -- q ≥ 7
+    have hq_ge7 : 7 ≤ q := by
+      have : q ≠ 5 := hq_ne
+      have : ¬ Nat.Prime 6 := by decide
+      omega
+    have h_mul_le_PD'_2 : 21 * D' ≤ 11 * P_D' := h_mul_le_PD'
+    omega
+-/
+
+
+
+
+lemma case_coprime_q_D (p M n q D : ℕ) (hp_prime : Nat.Prime p) (hq_prime : Nat.Prime q)
+    (hM : n = p * M) (hD : M = q * D) (h_cop : Nat.Coprime p M) (hqd : ¬ q ∣ D)
+    (hn_dvd_sum : n ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n))
+    (hn_ge12 : 12 ≤ n) (hdvd : ¬ p ∣ M) (hM_prime : ¬ Nat.Prime M)
+    (hp_min : p = n.minFac) (hq_min : q = M.minFac)
+    (hp_dvd : p ∣ n) (hq_dvd : q ∣ M) : False := by
+
+have h_cop_qD : Nat.Coprime q D := (Nat.Prime.coprime_iff_not_dvd hq_prime).mpr hqd
+have h_sum_M : (Finset.Ico 1 (M + 1)).sum (fun k => Nat.gcd k M) = (2 * q - 1) * (Finset.Ico 1 (D + 1)).sum (fun k => Nat.gcd k D) := by
+  rw [hD]
+  exact sum_gcd_coprime_mul q D hq_prime h_cop_qD
+have h_sum_n : (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (2 * p - 1) * (2 * q - 1) * (Finset.Ico 1 (D + 1)).sum (fun k => Nat.gcd k D) := by
+  rw [hM]
+  rw [sum_gcd_coprime_mul p M hp_prime h_cop]
+  rw [h_sum_M]
+  ring
+have hp_ge2 : 2 ≤ p := hp_prime.two_le
+have hq_ge2 : 2 ≤ q := hq_prime.two_le
+have hD_ne1 : D ≠ 1 := by
+  rintro rfl
+  rw [mul_one] at hD
+  rw [hD] at hM_prime
+  contradiction
+have hD_ne0 : D ≠ 0 := by
+  rintro rfl
+  rw [mul_zero] at hD
+  rw [hD, mul_zero] at hM
+  omega
+have hD_ge2 : 2 ≤ D := by omega
+let P_D := (Finset.Ico 1 (D + 1)).sum (fun k => Nat.gcd k D)
+have h_PD_ge1 : 1 ≤ P_D := by
+  have h_mem : 1 ∈ Finset.Ico 1 (D + 1) := by
+    rw [Finset.mem_Ico]
+    omega
+  have h_le := Finset.single_le_sum (f := fun k => Nat.gcd k D) (by intro i _; exact Nat.zero_le _) h_mem
+  dsimp at h_le
+  rw [Nat.gcd_one_left] at h_le
+  exact h_le
+have h_prod_ge1 : 1 ≤ (2 * p - 1) * P_D := by
+  have : 3 ≤ 2 * p - 1 := by omega
+  have : 1 * 1 ≤ (2 * p - 1) * P_D := Nat.mul_le_mul (by omega) h_PD_ge1
+  omega
+have h_alg : (2 * p - 1) * P_D * (2 * q) = (1 + (2 * p - 1) * (2 * q - 1) * P_D) + ((2 * p - 1) * P_D - 1) := by
+  apply Int.ofNat_inj.mp
+  have h_p : 1 ≤ 2 * p := by omega
+  have h_q : 1 ≤ 2 * q := by omega
+  push_cast [Nat.cast_sub h_p, Nat.cast_sub h_q, Nat.cast_sub h_prod_ge1]
+  ring
+have hq_dvd_lhs : q ∣ (2 * p - 1) * P_D * (2 * q) := by
+  use (2 * p - 1) * P_D * 2
+  ring
+have hq_dvd_n : q ∣ n := by
+  rw [hM]
+  exact dvd_mul_of_dvd_right hq_dvd p
+have hq_dvd_one_add : q ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := Nat.dvd_trans hq_dvd_n hn_dvd_sum
+rw [h_sum_n] at hq_dvd_one_add
+have hq_dvd_diff : q ∣ (2 * p - 1) * P_D - 1 := by
+  rw [h_alg] at hq_dvd_lhs
+  exact (Nat.dvd_add_right hq_dvd_one_add).mp hq_dvd_lhs
+have hp_dvd_n : p ∣ n := hp_dvd
+have hp_dvd_one_add : p ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := Nat.dvd_trans hp_dvd_n hn_dvd_sum
+rw [h_sum_n] at hp_dvd_one_add
+have h_prod_q_ge1 : 1 ≤ (2 * q - 1) * P_D := by
+  have : 3 ≤ 2 * q - 1 := by omega
+  have : 1 * 1 ≤ (2 * q - 1) * P_D := Nat.mul_le_mul (by omega) h_PD_ge1
+  omega
+have h_alg_p : 2 * p * ((2 * q - 1) * P_D) = (1 + (2 * p - 1) * (2 * q - 1) * P_D) + ((2 * q - 1) * P_D - 1) := by
+  apply Int.ofNat_inj.mp
+  have h_p : 1 ≤ 2 * p := by omega
+  have h_q : 1 ≤ 2 * q := by omega
+  have h_prod_p : 1 ≤ (2 * p - 1) * (2 * q - 1) * P_D := by
+    have h_pq : 1 ≤ (2 * p - 1) * (2 * q - 1) := Nat.mul_le_mul (by omega : 1 ≤ 2 * p - 1) (by omega : 1 ≤ 2 * q - 1)
+    exact Nat.mul_le_mul h_pq h_PD_ge1
+  push_cast [Nat.cast_sub h_p, Nat.cast_sub h_q, Nat.cast_sub h_prod_q_ge1, Nat.cast_sub h_prod_p]
+  ring
+have hp_dvd_lhs : p ∣ 2 * p * ((2 * q - 1) * P_D) := by
+  use 2 * ((2 * q - 1) * P_D)
+  ring
+have hp_dvd_diff : p ∣ (2 * q - 1) * P_D - 1 := by
+  rw [h_alg_p] at hp_dvd_lhs
+  exact (Nat.dvd_add_right hp_dvd_one_add).mp hp_dvd_lhs
+let r := D.minFac
+have hr_prime : Nat.Prime r := Nat.minFac_prime hD_ne1
+have hr_dvd_D : r ∣ D := Nat.minFac_dvd D
+have hp_lt_q : p < q := by
+  have hq_dvd_n : q ∣ n := by
+    rw [hM]
+    exact dvd_mul_of_dvd_right hq_dvd p
+  have hp_le_q : p ≤ q := by rw [hp_min]; exact Nat.minFac_le_of_dvd hq_prime.two_le hq_dvd_n
+  by_contra h_not
+  have hp_eq_q : p = q := by omega
+  rw [hp_eq_q] at hdvd
+  exact hdvd hq_dvd
+have hD_dvd_M : D ∣ M := by
+  rw [hD]
+  exact dvd_mul_left D q
+have hr_dvd_M : r ∣ M := Nat.dvd_trans hr_dvd_D hD_dvd_M
+have hq_lt_r : q < r := by
+  have hq_le_r : q ≤ r := by rw [hq_min]; exact Nat.minFac_le_of_dvd hr_prime.two_le hr_dvd_M
+  by_contra h_not
+  have hq_eq_r : q = r := by omega
+  rw [hq_eq_r] at hqd
+  exact hqd hr_dvd_D
+have hq_ge5 : 5 ≤ q := by
+  by_contra h_not
+  have : q < 5 := by omega
+  have : q = 2 ∨ q = 3 := by
+    rcases hq_prime.eq_two_or_odd with h_two | h_odd
+    · left; exact h_two
+    · right; omega
+  rcases this with h2 | h3
+  · rw [h2] at hp_lt_q
+    omega
+  · have hp_eq2 : p = 2 := by omega
+    have h_term : (2 * p - 1) * P_D = q * P_D := by
+      rw [hp_eq2, h3]
+    have hq_dvd_term : q ∣ (2 * p - 1) * P_D := by
+      rw [h_term]
+      exact dvd_mul_right q P_D
+    have hq_dvd_one : q ∣ 1 := by
+      have h_alg_one : (2 * p - 1) * P_D = ((2 * p - 1) * P_D - 1) + 1 := by omega
+      rw [h_alg_one] at hq_dvd_term
+      exact (Nat.dvd_add_right hq_dvd_diff).mp hq_dvd_term
+    have : q ≤ 1 := Nat.le_of_dvd (by omega) hq_dvd_one
+    omega
+have hr_ge7 : 7 ≤ r := by
+  rcases hr_prime.eq_two_or_odd with h_two | hr_odd
+  · rw [h_two] at hq_lt_r
+    omega
+  · omega
+have hD_dvd_n : D ∣ n := by
+  rw [hM]
+  exact dvd_mul_of_dvd_right hD_dvd_M p
+have hr_dvd_n : r ∣ n := Nat.dvd_trans hr_dvd_D hD_dvd_n
+have hr_dvd_one_add : r ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := Nat.dvd_trans hr_dvd_n hn_dvd_sum
+rw [h_sum_n] at hr_dvd_one_add
+have hr_not_dvd_PD : ¬ r ∣ P_D := by
+  intro hr_dvd_PD
+  have hr_dvd_prod : r ∣ (2 * p - 1) * (2 * q - 1) * P_D := dvd_mul_of_dvd_right hr_dvd_PD _
+  have hr_dvd_one : r ∣ 1 := by
+    have h_comm : 1 + (2 * p - 1) * (2 * q - 1) * P_D = (2 * p - 1) * (2 * q - 1) * P_D + 1 := add_comm 1 _
+    rw [h_comm] at hr_dvd_one_add
+    exact (Nat.dvd_add_right hr_dvd_prod).mp hr_dvd_one_add
+  have hr_ge2 : 2 ≤ r := hr_prime.two_le
+  have : r ≤ 1 := Nat.le_of_dvd (by omega) hr_dvd_one
+  omega
+have hr_not_r2_dvd : ¬ r^2 ∣ D := by
+  intro hr2_dvd
+  obtain ⟨K, hK⟩ := hr2_dvd
+  have hD_eq : D = r * (r * K) := by
+    calc D = r^2 * K := hK
+         _ = r * r * K := by ring
+         _ = r * (r * K) := by ring
+  have hr_dvd_PD : r ∣ P_D := by
+    unfold P_D
+    rw [hD_eq]
+    exact p_dvd_sum_of_square_dvd r (r * K) hr_prime (dvd_mul_right r K)
+  exact hr_not_dvd_PD hr_dvd_PD
+obtain ⟨D', hD'⟩ := hr_dvd_D
+have hr_not_dvd_D' : ¬ r ∣ D' := by
+  intro hr_dvd_D'
+  obtain ⟨K, hK⟩ := hr_dvd_D'
+  have : r^2 ∣ D := by
+    use K
+    calc D = r * D' := hD'
+         _ = r * (r * K) := by rw [hK]
+         _ = r^2 * K := by ring
+  exact hr_not_r2_dvd this
+have h_cop_rD' : Nat.Coprime r D' := (Nat.Prime.coprime_iff_not_dvd hr_prime).mpr hr_not_dvd_D'
+let P_D' := (Finset.Ico 1 (D' + 1)).sum (fun k => Nat.gcd k D')
+have h_sum_PD : P_D = (2 * r - 1) * P_D' := by
+  unfold P_D
+  rw [hD']
+  exact sum_gcd_coprime_mul r D' hr_prime h_cop_rD'
+have hr_dvd_one_add' : r ∣ 1 + (2 * p - 1) * (2 * q - 1) * (2 * r - 1) * P_D' := by
+  change r ∣ 1 + (2 * p - 1) * (2 * q - 1) * P_D at hr_dvd_one_add
+  rw [h_sum_PD] at hr_dvd_one_add
+  have h_assoc : (2 * p - 1) * (2 * q - 1) * ((2 * r - 1) * P_D') = (2 * p - 1) * (2 * q - 1) * (2 * r - 1) * P_D' := by ring
+  rw [h_assoc] at hr_dvd_one_add
+  exact hr_dvd_one_add
+let A := (2 * p - 1) * (2 * q - 1) * P_D'
+have h_PD'_ge1 : 1 ≤ P_D' := by
+  have hD'_ne0 : D' ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hD'
+    omega
+  have h_mem : 1 ∈ Finset.Ico 1 (D' + 1) := by
+    rw [Finset.mem_Ico]
+    omega
+  have h_le := Finset.single_le_sum (f := fun k => Nat.gcd k D') (by intro i _; exact Nat.zero_le _) h_mem
+  dsimp at h_le
+  rw [Nat.gcd_one_left] at h_le
+  exact h_le
+have h_prod_r_ge1 : 1 ≤ A := by
+  have hp1 : 3 ≤ 2 * p - 1 := by omega
+  have hq1 : 3 ≤ 2 * q - 1 := by omega
+  have h_mul : 1 * 1 * 1 ≤ (2 * p - 1) * (2 * q - 1) * P_D' := Nat.mul_le_mul (Nat.mul_le_mul (by omega) (by omega)) h_PD'_ge1
+  omega
+have h_alg_r : 2 * r * A = (1 + A * (2 * r - 1)) + (A - 1) := by
+  apply Int.ofNat_inj.mp
+  have h_p : 1 ≤ 2 * p := by omega
+  have h_q : 1 ≤ 2 * q := by omega
+  have h_r : 1 ≤ 2 * r := by omega
+  have h_prod_q : 1 ≤ (2 * q - 1) * P_D' := Nat.mul_le_mul (by omega : 1 ≤ 2 * q - 1) h_PD'_ge1
+  have h_prod_p : 1 ≤ (2 * p - 1) * (2 * q - 1) * P_D' := by
+    have h_pq : 1 ≤ (2 * p - 1) * (2 * q - 1) := Nat.mul_le_mul (by omega : 1 ≤ 2 * p - 1) (by omega : 1 ≤ 2 * q - 1)
+    exact Nat.mul_le_mul h_pq h_PD'_ge1
+  have h_A_ge1 : 1 ≤ A := by
+    change 1 ≤ (2 * p - 1) * (2 * q - 1) * P_D'
+    exact h_prod_p
+  have h_Ar : 1 ≤ A * (2 * r - 1) := Nat.mul_le_mul h_A_ge1 (by omega : 1 ≤ 2 * r - 1)
+  push_cast [Nat.cast_sub h_p, Nat.cast_sub h_q, Nat.cast_sub h_r, Nat.cast_sub h_prod_q, Nat.cast_sub h_prod_p, Nat.cast_sub h_A_ge1, Nat.cast_sub h_Ar]
+  ring
+have hr_dvd_lhs : r ∣ 2 * r * A := by
+  use 2 * A
+  ring
+have h_eq_one_add : 1 + A * (2 * r - 1) = 1 + (2 * p - 1) * (2 * q - 1) * (2 * r - 1) * P_D' := by
+  unfold A
+  ring
+have hr_dvd_one_add'' : r ∣ 1 + A * (2 * r - 1) := by
+  rw [h_eq_one_add]
+  exact hr_dvd_one_add'
+have hr_dvd_A_minus_1 : r ∣ A - 1 := by
+  rw [h_alg_r] at hr_dvd_lhs
+  exact (Nat.dvd_add_right hr_dvd_one_add'').mp hr_dvd_lhs
+obtain ⟨m, hm⟩ := hr_dvd_A_minus_1
+have h_qr_dvd_Pn : q * r ∣ 1 + A * (2 * r - 1) := by
+  have h_qrD_dvd_n : q * r * D' ∣ n := by
+    rw [hM, hD, hD']
+    use p
+    ring
+  have h_qr_dvd_n : q * r ∣ n := dvd_trans (dvd_mul_right (q * r) D') h_qrD_dvd_n
+  have h_qr_dvd_Pn : q * r ∣ 1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := Nat.dvd_trans h_qr_dvd_n hn_dvd_sum
+  rw [h_sum_n] at h_qr_dvd_Pn
+  change q * r ∣ 1 + (2 * p - 1) * (2 * q - 1) * P_D at h_qr_dvd_Pn
+  rw [h_sum_PD] at h_qr_dvd_Pn
+  have h_assoc : (2 * p - 1) * (2 * q - 1) * ((2 * r - 1) * P_D') = A * (2 * r - 1) := by
+    unfold A
+    ring
+  rw [h_assoc] at h_qr_dvd_Pn
+  exact h_qr_dvd_Pn
+obtain ⟨k, hk⟩ := h_qr_dvd_Pn
+have hk_pos : 1 ≤ k := by
+  by_contra h_zero
+  have : k = 0 := by omega
+  rw [this, mul_zero] at hk
+  omega
+have h_cancel_r : m * (2 * r - 1) + 2 = q * k := by
+  have h_eq : r * (m * (2 * r - 1) + 2) = r * (q * k) := by
+    let X := 2 * r - 1
+    have h_alg_mul : r * (m * X + 2) = m * X * r + 2 * r := by ring
+    have h_calc1 : r * (m * (2 * r - 1) + 2) = m * (2 * r - 1) * r + 2 * r := by
+      change r * (m * X + 2) = m * X * r + 2 * r
+      rw [h_alg_mul]
+    calc r * (m * (2 * r - 1) + 2) = m * (2 * r - 1) * r + 2 * r := h_calc1
+    _ = (r * m) * (2 * r - 1) + 2 * r := by ring
+    _ = (A - 1) * (2 * r - 1) + 2 * r := by rw [← hm]
+    _ = 1 + A * (2 * r - 1) := by
+      apply Int.ofNat_inj.mp
+      have h_r : 1 ≤ 2 * r := by omega
+      push_cast [Nat.cast_sub h_prod_r_ge1, Nat.cast_sub h_r]
+      ring
+    _ = q * r * k := hk
+    _ = r * (q * k) := by ring
+  exact Nat.eq_of_mul_eq_mul_left (by omega) h_eq
+let A_q := (2 * p - 1) * P_D'
+have h_Aq_dvd : q ∣ A_q * (2 * r - 1) - 1 := by
+  have h_eq : (2 * p - 1) * P_D = A_q * (2 * r - 1) := by
+    rw [h_sum_PD]
+    unfold A_q
+    ring
+  rw [← h_eq]
+  exact hq_dvd_diff
+obtain ⟨u, hu⟩ := h_Aq_dvd
+have hu_eq : A_q * (2 * r - 1) - 1 = u * q := by
+  rw [hu]
+  ring
+have h_Aq_ge1 : 1 ≤ A_q := Nat.mul_le_mul (by omega : 1 ≤ 2 * p - 1) h_PD'_ge1
+have h_mr : m * r = A_q * (2 * q - 1) - 1 := by
+  rw [mul_comm]
+  calc r * m = A - 1 := hm.symm
+       _ = A_q * (2 * q - 1) - 1 := by
+         change (2 * p - 1) * (2 * q - 1) * P_D' - 1 = (2 * p - 1) * P_D' * (2 * q - 1) - 1
+         ring
+have h_Aq_ge3 : 3 ≤ A_q := by
+  change 3 ≤ (2 * p - 1) * P_D'
+  have hp_ge3 : 3 ≤ 2 * p - 1 := by omega
+  have h_mul_ge : 3 * 1 ≤ (2 * p - 1) * P_D' := Nat.mul_le_mul hp_ge3 h_PD'_ge1
+  omega
+have h_le : u * m ≤ A_q * k := by
+  have h_qk_ge2 : 2 ≤ q * k := by omega
+  have h_mk_eq : m * (2 * r - 1) = q * k - 2 := by omega
+  have h_Ar : 1 ≤ A_q * (2 * r - 1) := Nat.mul_le_mul h_Aq_ge1 (by omega : 1 ≤ 2 * r - 1)
+  have h_Aq_eq : A_q * (2 * r - 1) = u * q + 1 := by omega
+  have h_mul1 : u * m * (2 * r - 1) = u * (m * (2 * r - 1)) := by ring
+  have h_mul2 : A_q * (2 * r - 1) * k = (u * q + 1) * k := by rw [h_Aq_eq]
+  have h_lt : u * (q * k - 2) < (u * q + 1) * k := by
+    have h_u_qk : 2 * u ≤ u * q * k := by
+      calc 2 * u = u * 2 := mul_comm 2 u
+           _ ≤ u * (q * k) := Nat.mul_le_mul_left u h_qk_ge2
+           _ = u * q * k := (mul_assoc u q k).symm
+    have h_exp1 : u * (q * k - 2) = u * q * k - 2 * u := by
+      apply Int.ofNat_inj.mp
+      push_cast [Nat.cast_sub h_qk_ge2, Nat.cast_sub h_u_qk]
+      ring
+    have h_exp2 : (u * q + 1) * k = u * q * k + k := by ring
+    rw [h_exp1, h_exp2]
+    have : 2 * u ≤ u * q * k := h_u_qk
+    omega
+  have h_prod_lt : u * m * (2 * r - 1) < A_q * k * (2 * r - 1) := by
+    calc u * m * (2 * r - 1) = u * (q * k - 2) := by rw [h_mul1, h_mk_eq]
+    _ < (u * q + 1) * k := h_lt
+    _ = A_q * (2 * r - 1) * k := h_mul2.symm
+    _ = A_q * k * (2 * r - 1) := by ring
+  exact Nat.le_of_lt (Nat.lt_of_mul_lt_mul_right h_prod_lt)
+have h_k_qr : k * (q * r) = A_q * (2 * q - 1) * (2 * r - 1) + 1 := by
+  calc k * (q * r) = q * r * k := by ring
+  _ = 1 + A * (2 * r - 1) := hk.symm
+  _ = A_q * (2 * q - 1) * (2 * r - 1) + 1 := by
+    change 1 + (2 * p - 1) * (2 * q - 1) * P_D' * (2 * r - 1) = (2 * p - 1) * P_D' * (2 * q - 1) * (2 * r - 1) + 1
+    ring
+have h_LHS_eq : (A_q * k - u * m) * (q * r) + (u * m) * (q * r) = A_q * k * (q * r) := by
+  rw [← Nat.add_mul]
+  rw [Nat.sub_add_cancel h_le]
+have h_W_eq : (A_q * k - u * m) * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := by
+  have h_sub_um : (u * m) * (q * r) = (A_q * (2 * r - 1) - 1) * (m * r) := by
+    calc (u * m) * (q * r) = (u * q) * (m * r) := by ring
+    _ = (A_q * (2 * r - 1) - 1) * (m * r) := by rw [← hu_eq]
+  have h_rhs_eq : A_q * k * (q * r) = A_q * (A_q * (2 * q - 1) * (2 * r - 1) + 1) := by
+    calc A_q * k * (q * r) = A_q * (k * (q * r)) := by ring
+         _ = A_q * (A_q * (2 * q - 1) * (2 * r - 1) + 1) := by rw [h_k_qr]
+  have h_alg_W' : A_q * (2 * r + 2 * q - 1) - 1 + (u * m) * (q * r) = A_q * k * (q * r) := by
+    rw [h_sub_um, h_mr, h_rhs_eq]
+    have h_sub_um_comm : (A_q * (2 * r - 1) - 1) * (A_q * (2 * q - 1) - 1) = (A_q * (2 * q - 1) - 1) * (A_q * (2 * r - 1) - 1) := mul_comm _ _
+    rw [h_sub_um_comm]
+    apply Int.ofNat_inj.mp
+    have h1 : 1 ≤ 2 * r + 2 * q := by omega
+    have h2 : 1 ≤ A_q * (2 * r + 2 * q - 1) := by
+      have : 23 ≤ 2 * r + 2 * q - 1 := by omega
+      have : 3 * 23 ≤ A_q * (2 * r + 2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+      omega
+    have h3 : 1 ≤ 2 * q := by omega
+    have h4 : 1 ≤ A_q * (2 * q - 1) := by
+      have : 9 ≤ 2 * q - 1 := by omega
+      have : 3 * 9 ≤ A_q * (2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+      omega
+    have h5 : 1 ≤ 2 * r := by omega
+    have h6 : 1 ≤ A_q * (2 * r - 1) := by
+      have : 13 ≤ 2 * r - 1 := by omega
+      have : 3 * 13 ≤ A_q * (2 * r - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+      omega
+    push_cast [Nat.cast_sub h1, Nat.cast_sub h2, Nat.cast_sub h3, Nat.cast_sub h4, Nat.cast_sub h5, Nat.cast_sub h6]
+    ring
+  exact Nat.add_right_cancel (by rw [h_LHS_eq, h_alg_W'] : (A_q * k - u * m) * (q * r) + (u * m) * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 + (u * m) * (q * r))
+have h_final_ident : k * (q * r) + 2 * A * q - 2 * q = (2 * q - 1) * ((A_q * k - u * m) * (q * r)) := by
+  have h_RHS_eq : (2 * q - 1) * ((A_q * k - u * m) * (q * r)) = (2 * q - 1) * (A_q * (2 * r + 2 * q - 1) - 1) := by
+    rw [h_W_eq]
+  rw [h_RHS_eq]
+  have h_k_qr' : k * (q * r) = A * (2 * r - 1) + 1 := by
+    calc k * (q * r) = q * r * k := by ring
+         _ = 1 + A * (2 * r - 1) := hk.symm
+         _ = A * (2 * r - 1) + 1 := by omega
+  rw [h_k_qr']
+  have h_A_eq : A = A_q * (2 * q - 1) := by
+    change (2 * p - 1) * (2 * q - 1) * P_D' = (2 * p - 1) * P_D' * (2 * q - 1)
+    ring
+  rw [h_A_eq]
+  apply Int.ofNat_inj.mp
+  have h1 : 1 ≤ 2 * q := by omega
+  have h2 : 1 ≤ 2 * r := by omega
+  have h3 : 1 ≤ A_q * (2 * r + 2 * q - 1) := by
+    have : 23 ≤ 2 * r + 2 * q - 1 := by omega
+    have : 3 * 23 ≤ A_q * (2 * r + 2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+    omega
+  have h4 : 1 ≤ A_q * (2 * q - 1) := by
+    have : 9 ≤ 2 * q - 1 := by omega
+    have : 3 * 9 ≤ A_q * (2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+    omega
+  have h5 : 2 * q ≤ (A_q * (2 * q - 1) * (2 * r - 1) + 1) + 2 * (A_q * (2 * q - 1)) * q := by
+    have h_le_mul : 2 * q ≤ 2 * (A_q * (2 * q - 1)) * q := by
+      calc 2 * q = 2 * q * 1 := by ring
+           _ ≤ 2 * q * (A_q * (2 * q - 1)) := Nat.mul_le_mul_left (2 * q) h4
+           _ = 2 * (A_q * (2 * q - 1)) * q := by ring
+    omega
+  have h6 : 1 ≤ 2 * r + 2 * q := by omega
+  push_cast [Nat.cast_sub h1, Nat.cast_sub h2, Nat.cast_sub h3, Nat.cast_sub h4, Nat.cast_sub h5, Nat.cast_sub h6]
+  ring
+have h_final_div_q : k * r + 2 * A - 2 = (2 * q - 1) * (A_q * k - u * m) * r := by
+  have h_eq_mul : (k * r + 2 * A - 2) * q = ((2 * q - 1) * (A_q * k - u * m) * r) * q := by
+    calc (k * r + 2 * A - 2) * q = k * (q * r) + 2 * A * q - 2 * q := by
+           apply Int.ofNat_inj.mp
+           have h1 : 2 ≤ 2 * A := by omega
+           have h2 : 2 * q ≤ k * (q * r) + 2 * A * q := by
+             calc 2 * q ≤ 2 * A * q := Nat.mul_le_mul_right q (by omega)
+                  _ ≤ k * (q * r) + 2 * A * q := by omega
+           have h3 : 2 ≤ k * r + 2 * A := by omega
+           push_cast [Nat.cast_sub h1, Nat.cast_sub h2, Nat.cast_sub h3]
+           ring
+    _ = (2 * q - 1) * ((A_q * k - u * m) * (q * r)) := h_final_ident
+    _ = ((2 * q - 1) * (A_q * k - u * m) * r) * q := by ring
+  exact Nat.eq_of_mul_eq_mul_right (by omega) h_eq_mul
+have h_final_div_r : k + 2 * m = (2 * q - 1) * (A_q * k - u * m) := by
+  have h_eq_mul_r : (k + 2 * m) * r = ((2 * q - 1) * (A_q * k - u * m)) * r := by
+    calc (k + 2 * m) * r = k * r + 2 * (r * m) := by ring
+    _ = k * r + 2 * A - 2 := by
+      have : r * m = A - 1 := hm.symm
+      rw [this]
+      apply Int.ofNat_inj.mp
+      have h1 : 1 ≤ A := h_prod_r_ge1
+      have h2 : 2 ≤ 2 * A := by omega
+      have h3 : 2 ≤ k * r + 2 * A := by omega
+      push_cast [Nat.cast_sub h1, Nat.cast_sub h2, Nat.cast_sub h3]
+      ring
+    _ = (2 * q - 1) * (A_q * k - u * m) * r := h_final_div_q
+    _ = ((2 * q - 1) * (A_q * k - u * m)) * r := by ring
+  exact Nat.eq_of_mul_eq_mul_right (by omega) h_eq_mul_r
+have h_W_q : (A_q * k - u * m) * q = 2 * A_q + m := by
+  have h_eq_mul_r : ((A_q * k - u * m) * q) * r = (2 * A_q + m) * r := by
+    calc ((A_q * k - u * m) * q) * r = (A_q * k - u * m) * (q * r) := by ring
+    _ = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+    _ = 2 * A_q * r + r * m := by
+      have h_mr' : r * m = A_q * (2 * q - 1) - 1 := by rw [mul_comm, h_mr]
+      rw [h_mr']
+      apply Int.ofNat_inj.mp
+      have h1 : 1 ≤ 2 * r + 2 * q := by omega
+      have h2 : 1 ≤ A_q * (2 * r + 2 * q - 1) := by
+        have : 23 ≤ 2 * r + 2 * q - 1 := by omega
+        have : 3 * 23 ≤ A_q * (2 * r + 2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+        omega
+      have h3 : 1 ≤ 2 * q := by omega
+      have h4 : 1 ≤ A_q * (2 * q - 1) := by
+        have : 9 ≤ 2 * q - 1 := by omega
+        have : 3 * 9 ≤ A_q * (2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 (by omega)
+        omega
+      push_cast [Nat.cast_sub h1, Nat.cast_sub h2, Nat.cast_sub h3, Nat.cast_sub h4]
+      ring
+    _ = (2 * A_q + m) * r := by ring
+  exact Nat.eq_of_mul_eq_mul_right (by omega) h_eq_mul_r
+have h_qr_bound : 2 * r + 2 * q < q * r := by
+  have h1 : 5 * r ≤ q * r := Nat.mul_le_mul_right r hq_ge5
+  have h2 : 2 * r + 3 * r = 5 * r := by ring
+  have h3 : 2 * q < 3 * r := by omega
+  omega
+have h_m_lt : m < 2 * A_q := by
+  have h_mr_lt : r * m < 2 * A_q * r := by
+    calc r * m = A_q * (2 * q - 1) - 1 := by
+           rw [hm.symm]
+           change (2 * p - 1) * (2 * q - 1) * P_D' - 1 = (2 * p - 1) * P_D' * (2 * q - 1) - 1
+           ring
+         _ < A_q * (2 * q) := helper_ineq A_q q h_Aq_ge1 (by omega)
+         _ < 2 * A_q * r := helper_ineq2 A_q q r h_Aq_ge1 hq_lt_r
+  have h_comm : 2 * A_q * r = r * (2 * A_q) := by ring
+  rw [h_comm] at h_mr_lt
+  exact Nat.lt_of_mul_lt_mul_left h_mr_lt
+have h_W_q_pos : 1 ≤ A_q * k - u * m := by
+  by_contra h_zero
+  have : A_q * k - u * m = 0 := by omega
+  rw [this, zero_mul] at h_W_q
+  omega
+have h_mul_q : (k + 2 * m) * q = (2 * q - 1) * (2 * A_q + m) := by
+  calc (k + 2 * m) * q = ((2 * q - 1) * (A_q * k - u * m)) * q := by rw [h_final_div_r]
+       _ = (2 * q - 1) * ((A_q * k - u * m) * q) := by ring
+       _ = (2 * q - 1) * (2 * A_q + m) := by rw [h_W_q]
+have h_linear_eq : (k + 2 * m) * q + 2 * A_q + m = 4 * A_q * q + 2 * m * q := by
+  exact contradiction_step_lemma k m q A_q h_mul_q (by omega)
+have h_assoc1 : (k + 2 * m) * q = k * q + 2 * m * q := by ring
+rw [h_assoc1] at h_linear_eq
+have h_assoc2 : k * q + 2 * m * q + 2 * A_q + m = (k * q + 2 * A_q + m) + 2 * m * q := by ring
+rw [h_assoc2] at h_linear_eq
+have h_final_linear_eq : k * q + 2 * A_q + m = 4 * A_q * q := Nat.add_right_cancel h_linear_eq
+
+let W_q := A_q * k - u * m
+have h_k_W_q : k + W_q = 4 * A_q := by
+  have h_eq : (k + W_q) * q = 4 * A_q * q := by
+    calc (k + W_q) * q = k * q + W_q * q := by ring
+         _ = k * q + (2 * A_q + m) := by rw [h_W_q]
+         _ = k * q + 2 * A_q + m := by ring
+         _ = 4 * A_q * q := h_final_linear_eq
+  exact Nat.eq_of_mul_eq_mul_right (by omega) h_eq
+
+have h_W_q_eq : W_q * q = 2 * A_q + m := by
+  exact h_W_q
+
+have h_sum_n_eq : (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = A * (2 * r - 1) := by
+  change (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (2 * p - 1) * (2 * q - 1) * P_D at h_sum_n
+  calc (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (2 * p - 1) * (2 * q - 1) * P_D := h_sum_n
+  _ = (2 * p - 1) * (2 * q - 1) * ((2 * r - 1) * P_D') := by rw [h_sum_PD]
+  _ = A * (2 * r - 1) := by unfold A; ring
+
+have h_n_dvd_A : n ∣ 1 + A * (2 * r - 1) := by
+  rw [← h_sum_n_eq]
+  exact hn_dvd_sum
+
+have h_n_dvd_qr_k : n ∣ q * r * k := by
+  rw [← hk]
+  exact h_n_dvd_A
+
+have hn_eq : n = p * D' * (q * r) := by
+  rw [hM, hD, hD']
+  ring
+
+have h_pD'_dvd : p * D' * (q * r) ∣ k * (q * r) := by
+  have h_div : n ∣ k * (q * r) := by
+    rw [mul_comm k (q * r)]
+    exact h_n_dvd_qr_k
+  rw [hn_eq] at h_div
+  exact h_div
+
+have h_qr_pos : 0 < q * r := by omega
+have h_pD'_dvd_k : p * D' ∣ k := Nat.dvd_of_mul_dvd_mul_right h_qr_pos h_pD'_dvd
+
+obtain ⟨a, ha⟩ := h_pD'_dvd_k
+
+have h_cancel_r_sub : m * (2 * r - 1) + 2 = a * p * D' * q := by
+  calc m * (2 * r - 1) + 2 = q * k := h_cancel_r
+  _ = q * (p * D' * a) := by rw [ha]
+  _ = a * p * D' * q := by ring
+
+have h_cancel_r_sub_symm : a * p * D' * q - 2 = m * (2 * r - 1) := by
+  have : m * (2 * r - 1) + 2 = a * p * D' * q := h_cancel_r_sub
+  omega
+
+have h_2mr : 2 * m * r = 2 * A_q * (2 * q - 1) - 2 := by
+  have h_comm : 2 * m * r = 2 * (m * r) := by ring
+  rw [h_comm, h_mr]
+  rw [Nat.mul_sub_left_distrib]
+  ring
+
+have h_m_cast : (m : ℤ) = ((2 * A_q * (2 * q - 1) : ℕ) : ℤ) - ((a * p * D' * q : ℕ) : ℤ) := by
+  have h_mr_cast : (m : ℤ) * (r : ℤ) = (A_q : ℤ) * (2 * (q : ℤ) - 1) - 1 := by
+    have hq_sub : 1 ≤ 2 * q := by omega
+    have h_mr_cast_0 : ((m * r : ℕ) : ℤ) = ((A_q * (2 * q - 1) - 1 : ℕ) : ℤ) := by rw [h_mr]
+    have h_Aq_2qm1 : 1 ≤ A_q * (2 * q - 1) := by
+      have h1 : 9 ≤ 2 * q - 1 := by omega
+      have h2 : 3 * 9 ≤ A_q * (2 * q - 1) := Nat.mul_le_mul h_Aq_ge3 h1
+      omega
+    push_cast [h_Aq_2qm1, hq_sub] at h_mr_cast_0
+    exact h_mr_cast_0
+  have h_cancel_cast : (m : ℤ) * (2 * (r : ℤ) - 1) = (a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) - 2 := by
+    have h_cast3 : ((m * (2 * r - 1) : ℕ) : ℤ) = ((a * p * D' * q - 2 : ℕ) : ℤ) := by rw [← h_cancel_r_sub_symm]
+    have h_sub : 2 ≤ a * p * D' * q := by
+      have : a * p * D' * q = m * (2 * r - 1) + 2 := h_cancel_r_sub.symm
+      omega
+    have hr_sub : 1 ≤ 2 * r := by omega
+    push_cast [h_sub, hr_sub] at h_cast3
+    exact h_cast3
+  have h_algebra : (m : ℤ) = 2 * ((m : ℤ) * (r : ℤ)) - (m : ℤ) * (2 * (r : ℤ) - 1) := by ring
+  have h_eq_cast : (m : ℤ) = 2 * ((A_q : ℤ) * (2 * (q : ℤ) - 1) - 1) - ((a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) - 2) := by
+    calc (m : ℤ) = 2 * ((m : ℤ) * (r : ℤ)) - (m : ℤ) * (2 * (r : ℤ) - 1) := h_algebra
+         _ = 2 * ((A_q : ℤ) * (2 * (q : ℤ) - 1) - 1) - ((a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) - 2) := by rw [h_mr_cast, h_cancel_cast]
+  have h_ring_eq : 2 * ((A_q : ℤ) * (2 * (q : ℤ) - 1) - 1) - ((a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) - 2) = ((2 * A_q * (2 * q - 1) : ℕ) : ℤ) - ((a * p * D' * q : ℕ) : ℤ) := by
+    have hq_sub : 1 ≤ 2 * q := by omega
+    push_cast [hq_sub]
+    ring
+  rw [h_ring_eq] at h_eq_cast
+  exact h_eq_cast
+
+have h_m_eq_sub : m = 2 * A_q * (2 * q - 1) - a * p * D' * q := by
+  omega
+
+have h_W_q_sub : W_q = 4 * A_q - a * p * D' := by
+  have h_eq_mul : W_q * q = (4 * A_q - a * p * D') * q := by
+    have h_pos : a * p * D' ≤ 4 * A_q := by
+      have : a * p * D' * q ≤ 4 * A_q * q := by
+        calc a * p * D' * q = 2 * A_q * (2 * q - 1) - m := by omega
+             _ ≤ 2 * A_q * (2 * q) := by
+               have : 2 * A_q * (2 * q - 1) = 2 * A_q * (2 * q) - 2 * A_q := by
+                 have h_dist := Nat.mul_sub_left_distrib (2 * A_q) (2 * q) 1
+                 rw [mul_one] at h_dist
+                 exact h_dist
+               omega
+             _ = 4 * A_q * q := by ring
+      exact Nat.le_of_mul_le_mul_right this (by omega : 0 < q)
+    apply Int.ofNat_inj.mp
+    push_cast [h_pos]
+    have h_cast_Wq : (W_q : ℤ) * (q : ℤ) = 4 * (A_q : ℤ) * (q : ℤ) - (a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) := by
+      calc (W_q : ℤ) * (q : ℤ) = 2 * (A_q : ℤ) + (m : ℤ) := by exact_mod_cast h_W_q_eq
+           _ = 4 * (A_q : ℤ) * (q : ℤ) - (2 * (A_q : ℤ) * (2 * (q : ℤ) - 1) - (m : ℤ)) := by ring
+           _ = 4 * (A_q : ℤ) * (q : ℤ) - (a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) := by
+             have hq_sub : 1 ≤ 2 * q := by omega
+             have h_m_cast_2 : (m : ℤ) = 2 * (A_q : ℤ) * (2 * (q : ℤ) - 1) - (a : ℤ) * (p : ℤ) * (D' : ℤ) * (q : ℤ) := by
+               have : (m : ℤ) = ↑(2 * A_q * (2 * q - 1)) - ↑(a * p * D' * q) := h_m_cast
+               push_cast [hq_sub] at this
+               exact this
+             linarith only [h_m_cast_2]
+    linarith only [h_cast_Wq]
+  exact Nat.eq_of_mul_eq_mul_right (by omega) h_eq_mul
+
+have h_m_eq : m = W_q * q - 2 * A_q := by omega
+
+have h_eq_m_expr : (4 * A_q - a * p * D') * q - 2 * A_q = 2 * A_q * (2 * q - 1) - a * p * D' * q := by
+  have h_lhs : (4 * A_q - a * p * D') * q - 2 * A_q = m := by
+    rw [← h_W_q_sub]
+    exact h_m_eq.symm
+  rw [h_lhs, h_m_eq_sub]
+
+have h_final_contradiction_proof : False := by
+  have hp_cases : p = 2 ∨ p = 3 ∨ 5 ≤ p := by
+    rcases hp_prime.eq_two_or_odd with h2 | h_odd
+    · left; exact h2
+    · rcases eq_or_ne p 3 with h3 | h3_ne
+      · right; left; exact h3
+      · right; right
+        have : p ≠ 0 := by omega
+        have : p ≠ 1 := by
+          intro h1
+          subst h1
+          exact Nat.Prime.ne_one hp_prime rfl
+        have : p ≠ 2 := by omega
+        have : p ≠ 3 := h3_ne
+        have : p ≠ 4 := by
+          intro h4
+          subst h4
+          have : ¬ Nat.Prime 4 := by decide
+          exact this hp_prime
+        omega
+  by_cases hD'_eq1 : D' = 1
+  · have h_PD'_eq : P_D' = 1 := by
+      change (∑ k ∈ Finset.Ico 1 (D' + 1), Nat.gcd k D') = 1
+      rw [hD'_eq1]
+      rfl
+    have h_Aq_eq : A_q = 2 * p - 1 := by
+      change (2 * p - 1) * P_D' = 2 * p - 1
+      rw [h_PD'_eq, mul_one]
+    rcases hp_cases with rfl | rfl | hp_ge5
+    · -- p = 2 and D' = 1 ⇒ A_q = 3.
+      have h_W_q_cases : W_q = 1 ∨ W_q = 2 := by
+        rw [h_Aq_eq] at h_W_q_eq h_m_lt
+        have h_W_q_pos' : 1 ≤ W_q := h_W_q_pos
+        rcases le_or_gt W_q 2 with h_le2 | h_gt2
+        · omega
+        · have h_le3 : 3 ≤ W_q := h_gt2
+          have h_mul_le : 3 * q ≤ W_q * q := Nat.mul_le_mul_right q h_le3
+          omega
+      rcases h_W_q_cases with h_W_q1 | h_W_q2
+      · have h_eq_6 : q * r = 6 * q + 6 * r - 4 := by
+          have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q1, one_mul, h_Aq_eq] at h_W_eq_W
+          omega
+        exact qr_impossible_6 q r hq_prime hr_prime hq_ge5 hr_ge7 hq_lt_r h_eq_6
+      · have h_eq_3 : q * r = 3 * q + 3 * r - 2 := by
+          have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q2, h_Aq_eq] at h_W_eq_W
+          omega
+        exact qr_impossible_test q r hq_ge5 hr_ge7 hq_lt_r h_eq_3
+    · -- p = 3 and D' = 1 ⇒ A_q = 5.
+      have h_W_q_cases : W_q = 1 ∨ W_q = 2 ∨ W_q = 3 := by
+        rw [h_Aq_eq] at h_W_q_eq h_m_lt
+        have h_W_q_pos' : 1 ≤ W_q := h_W_q_pos
+        rcases le_or_gt W_q 3 with h_le3 | h_gt3
+        · omega
+        · have h_le4 : 4 ≤ W_q := h_gt3
+          have h_mul_le : 4 * q ≤ W_q * q := Nat.mul_le_mul_right q h_le4
+          omega
+      rcases h_W_q_cases with h_W_q1 | h_W_q2 | h_W_q3
+      · have hq_cases : q = 11 ∨ q = 13 ∨ q = 17 ∨ q = 19 := by
+          have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q1, one_mul, h_Aq_eq] at h_W_eq_W
+          have h_q_ge10 : 10 ≤ q := by
+            by_contra h_lt10
+            have h_sub : q ≤ 9 := by omega
+            have h_mul : q * r ≤ 9 * r := Nat.mul_le_mul_right r h_sub
+            omega
+          have h_q_lt20 : q < 20 := by
+            by_contra h_ge20
+            have h_sub : 10 ≤ q - 10 := by omega
+            have h_mul : 10 * r ≤ (q - 10) * r := Nat.mul_le_mul_right r h_sub
+            have h_dist : (q - 10) * r = q * r - 10 * r := Nat.sub_mul q 10 r
+            rw [h_dist] at h_mul
+            omega
+          have : q = 10 ∨ q = 11 ∨ q = 12 ∨ q = 13 ∨ q = 14 ∨ q = 15 ∨ q = 16 ∨ q = 17 ∨ q = 18 ∨ q = 19 := by omega
+          rcases this with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl
+          · have : ¬ Nat.Prime 10 := by decide
+            contradiction
+          · left; rfl
+          · have : ¬ Nat.Prime 12 := by decide
+            contradiction
+          · right; left; rfl
+          · have : ¬ Nat.Prime 14 := by decide
+            contradiction
+          · have : ¬ Nat.Prime 15 := by decide
+            contradiction
+          · have : ¬ Nat.Prime 16 := by decide
+            contradiction
+          · right; right; left; rfl
+          · have : ¬ Nat.Prime 18 := by decide
+            contradiction
+          · right; right; right; rfl
+        rcases hq_cases with hq11 | hq13 | hq17 | hq19
+        · have hr104 : r = 104 := by
+            have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+            rw [h_W_q1, one_mul, h_Aq_eq, hq11] at h_W_eq_W
+            omega
+          have hr_not_prime : ¬ Nat.Prime 104 := by decide
+          rw [hr104] at hr_prime
+          exact hr_not_prime hr_prime
+        · have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q1, one_mul, h_Aq_eq, hq13] at h_W_eq_W
+          omega
+        · have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q1, one_mul, h_Aq_eq, hq17] at h_W_eq_W
+          omega
+        · have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q1, one_mul, h_Aq_eq, hq19] at h_W_eq_W
+          omega
+      · have h_eq_5 : q * r = 5 * q + 5 * r - 3 := by
+          have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+          rw [h_W_q2, h_Aq_eq] at h_W_eq_W
+          omega
+        exact qr_impossible_5 q r hq_prime hr_prime hq_ge5 hr_ge7 hq_lt_r h_eq_5
+      · have hq_eq5 : q = 5 := by
+          have h_W_q3' : W_q * q = 2 * A_q + m := h_W_q_eq
+          rw [h_W_q3, h_Aq_eq] at h_W_q3'
+          have h_q_neq6 : q ≠ 6 := by
+            rintro rfl
+            have : ¬ Nat.Prime 6 := by decide
+            exact this hq_prime
+          omega
+        have h_W_eq_W : W_q * (q * r) = A_q * (2 * r + 2 * q - 1) - 1 := h_W_eq
+        rw [h_W_q3, h_Aq_eq, hq_eq5] at h_W_eq_W
+        omega
+    · -- hp_ge5
+      have h_W_q_lt : W_q * q < 4 * A_q := by
+        rw [h_W_q_eq]
+        omega
+      have h_contr : False := by
+        have h_W_q_val : W_q = 4 * A_q - a * p * D' := h_W_q_sub
+        have h_W_q_lt' : W_q * q < 4 * A_q := h_W_q_lt
+        rw [hD'_eq1, mul_one] at h_W_q_val
+        rw [h_W_q_val] at h_W_q_lt'
+        have hq_ge7 : 7 ≤ q := by
+          have h6 : q ≠ 6 := by rintro rfl; contradiction
+          have : q ≠ 5 := by omega
+          omega
+        have h_nonlin : (4 * A_q - a * p) * 7 ≤ (4 * A_q - a * p) * q := Nat.mul_le_mul_left (4 * A_q - a * p) hq_ge7
+        have h_contr' : (4 * A_q - a * p) * 7 < 4 * A_q := by omega
+        have ha_ge1 : 1 ≤ a := by
+          by_contra ha_zero
+          have : a = 0 := by omega
+          have : k = 0 := by rw [ha, this]; ring
+          rw [this, zero_mul] at h_k_qr
+          omega
+        have ha_ge7 : 7 ≤ a := by
+          by_contra h_lt7
+          have ha_le6 : a ≤ 6 := by omega
+          have h_nonlin_ap : 7 * (a * p) ≤ 42 * p := by
+            have h_le : 7 * a ≤ 42 := by omega
+            have : (7 * a) * p ≤ 42 * p := Nat.mul_le_mul_right p h_le
+            rw [show (7 * a) * p = 7 * (a * p) by ring] at this
+            exact this
+          have h_Aq : A_q = 2 * p - 1 := h_Aq_eq
+          have h_W7 : 7 * W_q < 4 * A_q := by
+            calc 7 * W_q ≤ q * W_q := Nat.mul_le_mul_right W_q hq_ge7
+                 _ = W_q * q := mul_comm q W_q
+                 _ < 4 * A_q := h_W_q_lt
+          have h_W_val : W_q = 4 * A_q - a * p := h_W_q_val
+          omega
+        have ha_le7 : a ≤ 7 := by
+          by_contra h_gt7
+          have ha_ge8 : 8 ≤ a := by omega
+          have h_nonlin_ap : 8 * p ≤ a * p := Nat.mul_le_mul_right p ha_ge8
+          have h_W_q_pos' : 1 ≤ W_q := h_W_q_pos
+          have h_W_val : W_q = 4 * A_q - a * p := h_W_q_val
+          have h_Aq : A_q = 2 * p - 1 := h_Aq_eq
+          omega
+        have ha_eq7 : a = 7 := by omega
+        have h_nat : a * p * q * r = (2 * p - 1) * (2 * q - 1) * (2 * r - 1) + 1 := by
+          have h_k : k = a * p := by
+            rw [ha, hD'_eq1, mul_one, mul_comm]
+          have h_k_qr_rew : k * (q * r) = a * p * q * r := by
+            rw [h_k]
+            ring
+          have h_Aq_val : A_q = 2 * p - 1 := h_Aq_eq
+          have h_RHS : A_q * (2 * q - 1) * (2 * r - 1) + 1 = (2 * p - 1) * (2 * q - 1) * (2 * r - 1) + 1 := by
+            rw [h_Aq_val]
+          rw [← h_k_qr_rew, ← h_RHS, h_k_qr]
+        have h_mod2_LHS : ((a * p * q * r : ℕ) : ZMod 2) = (((2 * p - 1) * (2 * q - 1) * (2 * r - 1) + 1 : ℕ) : ZMod 2) := by rw [h_nat]
+        have hp_sub : 1 ≤ 2 * p := by omega
+        have hq_sub : 1 ≤ 2 * q := by omega
+        have hr_sub : 1 ≤ 2 * r := by omega
+        push_cast [hp_sub, hq_sub, hr_sub] at h_mod2_LHS
+        have hp_odd : Odd p := by
+          rcases hp_prime.eq_two_or_odd with h2 | h
+          · omega
+          · exact Nat.odd_iff.mpr h
+        have hq_odd : Odd q := by
+          rcases hq_prime.eq_two_or_odd with h2 | h
+          · omega
+          · exact Nat.odd_iff.mpr h
+        have hr_odd : Odd r := by
+          rcases hr_prime.eq_two_or_odd with h2 | h
+          · omega
+          · exact Nat.odd_iff.mpr h
+        have hp_1 : (p : ZMod 2) = 1 := by
+          rcases hp_odd with ⟨c, hc⟩
+          rw [hc]
+          push_cast
+          have : (2 : ZMod 2) = 0 := rfl
+          rw [this, zero_mul, zero_add]
+        have hq_1 : (q : ZMod 2) = 1 := by
+          rcases hq_odd with ⟨c, hc⟩
+          rw [hc]
+          push_cast
+          have : (2 : ZMod 2) = 0 := rfl
+          rw [this, zero_mul, zero_add]
+        have hr_1 : (r : ZMod 2) = 1 := by
+          rcases hr_odd with ⟨c, hc⟩
+          rw [hc]
+          push_cast
+          have : (2 : ZMod 2) = 0 := rfl
+          rw [this, zero_mul, zero_add]
+        rw [hp_1, hq_1, hr_1] at h_mod2_LHS
+        rw [ha_eq7] at h_mod2_LHS
+        revert h_mod2_LHS
+        decide
+      exact False.elim h_contr
+  · -- D' ≥ 2
+    have h_D'_ge11 : 11 ≤ D' := by
+      have hs_prime : Nat.Prime D'.minFac := Nat.minFac_prime (by omega)
+      have hs_dvd : D'.minFac ∣ D' := Nat.minFac_dvd D'
+      have hs_dvd_D : D'.minFac ∣ D := by
+        rw [hD']
+        exact dvd_mul_of_dvd_right hs_dvd r
+      have hr_le_s : r ≤ D'.minFac := by
+        exact Nat.minFac_le_of_dvd hs_prime.two_le hs_dvd_D
+      have h_not_eq : r ≠ D'.minFac := by
+        intro h_eq
+        rw [h_eq] at hr_not_dvd_D'
+        exact hr_not_dvd_D' hs_dvd
+      have h_lt : r < D'.minFac := by omega
+      have hs_ge8 : 8 ≤ D'.minFac := by omega
+      have hs_ge11 : 11 ≤ D'.minFac := by
+        rcases hs_prime.eq_two_or_odd with h2 | h_odd
+        · rw [h2] at hs_ge8; omega
+        · have : D'.minFac ≠ 9 := by
+            intro h_eq
+            have : ¬ Nat.Prime 9 := by decide
+            rw [← h_eq] at this
+            exact this hs_prime
+          have : D'.minFac ≠ 10 := by
+            intro h_eq
+            have : ¬ Nat.Prime 10 := by decide
+            rw [← h_eq] at this
+            exact this hs_prime
+          omega
+      have hD'_ne0 : D' ≠ 0 := by
+        rintro rfl
+        rw [mul_zero] at hD'
+        omega
+      have : D'.minFac ≤ D' := Nat.minFac_le (by omega)
+      omega
+    have h_PD'_ge_D' : D' ≤ P_D' := by
+      have h_mem : D' ∈ Finset.Ico 1 (D' + 1) := by rw [Finset.mem_Ico]; omega
+      have h_le := Finset.single_le_sum (f := fun k => Nat.gcd k D') (by intro i _; exact Nat.zero_le _) h_mem
+      change Nat.gcd D' D' ≤ P_D' at h_le
+      have h_gcd : Nat.gcd D' D' = D' := Nat.gcd_self D'
+      rw [h_gcd] at h_le
+      exact h_le
+    have h_PD'_ge11 : 11 ≤ P_D' := by omega
+    have ha_ge1 : 1 ≤ a := by
+      by_contra ha_zero
+      have : a = 0 := by omega
+      have : k = 0 := by rw [ha, this]; ring
+      rw [this, zero_mul] at h_k_qr
+      omega
+    have h_apD'_ge11 : 11 * p ≤ a * p * D' := by
+      have : 11 * p ≤ D' * p := Nat.mul_le_mul_right p h_D'_ge11
+      have : D' * p ≤ a * (D' * p) := Nat.le_mul_of_pos_left (D' * p) ha_ge1
+      have : a * (D' * p) = a * p * D' := by ring
+      omega
+    have h_Aq_ge_val : 22 * p - 11 ≤ A_q := by
+      have h_tmp : 11 * (2 * p - 1) ≤ A_q := by
+        dsimp only [A_q]
+        rw [mul_comm 11]
+        exact Nat.mul_le_mul_left (2 * p - 1) h_PD'_ge11
+      have h_sub : 11 * (2 * p - 1) = 22 * p - 11 := by
+        rw [Nat.mul_sub, show 11 * (2 * p) = 22 * p by ring]
+      rw [h_sub] at h_tmp
+      exact h_tmp
+    have h_W_q_lt : W_q * q < 4 * A_q := by
+      rw [h_W_q_eq]
+      omega
+    have h_W5 : 5 * W_q < 4 * A_q := by
+      calc 5 * W_q ≤ q * W_q := Nat.mul_le_mul_right W_q hq_ge5
+           _ = W_q * q := mul_comm q W_q
+           _ < 4 * A_q := h_W_q_lt
+    have h_cast_W5 : 5 * (W_q : ℤ) < 4 * (A_q : ℤ) := by exact_mod_cast h_W5
+    have h_cast_sub : (W_q : ℤ) = 4 * (A_q : ℤ) - (a : ℤ) * (p : ℤ) * (D' : ℤ) := by
+      have hd : a * p * D' ≤ 4 * A_q := by omega
+      exact_mod_cast h_W_q_sub
+    have h_cast_Aq : 22 * (p : ℤ) - 11 ≤ (A_q : ℤ) := by
+      have hp1 : 11 ≤ 22 * p := by omega
+      exact_mod_cast h_Aq_ge_val
+    have h_cast_apD : 11 * (p : ℤ) ≤ (a : ℤ) * (p : ℤ) * (D' : ℤ) := by exact_mod_cast h_apD'_ge11
+    have h_cast_p : 2 ≤ (p : ℤ) := by exact_mod_cast hp_ge2
+    linarith [h_cast_W5, h_cast_sub, h_cast_Aq, h_cast_apD, h_cast_p]
+
+exact False.elim h_final_contradiction_proof
+
+
+
+theorem oeis_340079_conjecture_0 (n : ℕ) : a n = 1 ↔ (n = 1 ∨ Nat.Prime n) := by
+  constructor
+  · intro ha
+    by_cases hn1 : n = 1
+    · left; exact hn1
+    · right
+      by_contra hnp
+      have hn0 : n ≠ 0 := by
+        rintro rfl
+        unfold a at ha
+        simp only [zero_add, Ico_self, sum_empty, Nat.zero_div] at ha
+        omega
+      have hn_ge2 : 2 ≤ n := by omega
+      have h_gcd : Nat.gcd n (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) = n := by
+        have hn_pos : 0 < n := by omega
+        have h_gcd_pos : 0 < Nat.gcd n (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) := Nat.gcd_pos_of_pos_left _ hn_pos
+        have h_div : Nat.gcd n (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) ∣ n := Nat.gcd_dvd_left _ _
+        rcases h_div with ⟨c, hc⟩
+        unfold a at ha
+        dsimp only at ha
+        have h_div_eq : n / Nat.gcd n (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) = c := by
+          nth_rw 1 [hc]
+          exact Nat.mul_div_cancel_left c h_gcd_pos
+        rw [h_div_eq] at ha
+        rw [ha, mul_one] at hc
+        exact hc.symm
+      have hn_dvd_sum : n ∣ (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) := by
+        have h_gcd_dvd := Nat.gcd_dvd_right n (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n))
+        rw [h_gcd] at h_gcd_dvd
+        exact h_gcd_dvd
+      have hn_dvd_sum_copy : n ∣ (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) := hn_dvd_sum
+      rcases hn_dvd_sum_copy with ⟨c, hc⟩
+      have h_sum_split : (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (Finset.Ico 1 n).sum (fun k => Nat.gcd k n) + n := by
+        have h_split : (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) = (Finset.Ico 1 n).sum (fun k => Nat.gcd k n) + Nat.gcd n n := Finset.sum_Ico_succ_top (by omega : 1 ≤ n) (fun k => Nat.gcd k n)
+        rw [h_split, Nat.gcd_self]
+      rw [h_sum_split] at hc
+      have h_sum_ge := sum_composite_ge n hn1 hn0 hnp
+      have hc_ge3 : 3 ≤ c := by
+        rcases c with _ | _ | _ | c
+        · omega
+        · omega
+        · omega
+        · omega
+      have h_sum_le := sum_composite_le n hn_ge2
+      by_cases hn_lt12 : n < 12
+      · have : n = 0 ∨ n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 4 ∨ n = 5 ∨ n = 6 ∨ n = 7 ∨ n = 8 ∨ n = 9 ∨ n = 10 ∨ n = 11 := by omega
+        rcases this with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl
+        · contradiction
+        · contradiction
+        · have : Nat.Prime 2 := Nat.prime_two
+          contradiction
+        · have : Nat.Prime 3 := Nat.prime_three
+          contradiction
+        · have : a 4 = 4 := by rfl
+          rw [this] at ha
+          omega
+        · have : Nat.Prime 5 := Nat.prime_five
+          contradiction
+        · have : a 6 = 3 := by rfl
+          rw [this] at ha
+          omega
+        · have : Nat.Prime 7 := by decide
+          contradiction
+        · have : a 8 = 8 := by rfl
+          rw [this] at ha
+          omega
+        · have : a 9 = 9 := by rfl
+          rw [this] at ha
+          omega
+        · have : a 10 = 5 := by rfl
+          rw [this] at ha
+          omega
+        · have : Nat.Prime 11 := by decide
+          contradiction
+      · have hn_ge12 : 12 ≤ n := by omega
+        let p := n.minFac
+        have hp_prime : Nat.Prime p := Nat.minFac_prime hn1
+        have hp_dvd : p ∣ n := Nat.minFac_dvd n
+        obtain ⟨M, hM⟩ := hp_dvd
+        by_cases hdvd : p ∣ M
+        · have hp_dvd_sum : p ∣ (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n) := by
+            rw [hM]
+            exact p_dvd_sum_of_square_dvd p M hp_prime hdvd
+          have hp_dvd_one_add_sum : p ∣ (1 + (Finset.Ico 1 (n + 1)).sum (fun k => Nat.gcd k n)) := by
+            have hp_dvd_n : p ∣ n := Nat.minFac_dvd n
+            exact Nat.dvd_trans hp_dvd_n hn_dvd_sum
+          have hp_dvd_one : p ∣ 1 := by
+            have h_comm : 1 + ∑ k ∈ Ico 1 (n + 1), k.gcd n = (∑ k ∈ Ico 1 (n + 1), k.gcd n) + 1 := add_comm 1 _
+            rw [h_comm] at hp_dvd_one_add_sum
+            exact (Nat.dvd_add_right hp_dvd_sum).mp hp_dvd_one_add_sum
+          have hp_ge2 : 2 ≤ p := hp_prime.two_le
+          have : p ≤ 1 := Nat.le_of_dvd (by omega) hp_dvd_one
+          omega
+        · have h_cop : Nat.Coprime p M := (Nat.Prime.coprime_iff_not_dvd hp_prime).mpr hdvd
+          by_cases hM_prime : Nat.Prime M
+          · exact case_prime_M p M n hp_prime hM_prime rfl hM h_cop hn_dvd_sum
+          · have hM_ne1 : M ≠ 1 := by
+              rintro rfl
+              rw [mul_one] at hM
+              rw [← hM] at hp_prime
+              contradiction
+            let q := M.minFac
+            have hq_prime : Nat.Prime q := Nat.minFac_prime hM_ne1
+            have hq_dvd : q ∣ M := Nat.minFac_dvd M
+            obtain ⟨D, hD⟩ := hq_dvd
+            by_cases hqd : q ∣ D
+            · exact case_non_square_free p M n q D hp_prime hq_prime hM hD hqd hn_dvd_sum
+            · exact case_coprime_q_D p M n q D hp_prime hq_prime hM hD h_cop hqd hn_dvd_sum hn_ge12 hdvd hM_prime rfl rfl (Nat.minFac_dvd n) (Nat.minFac_dvd M)
+  · rintro (rfl | hp)
+    · exact a_one
+    · exact a_prime n hp
+
+
+#print axioms oeis_340079_conjecture_0

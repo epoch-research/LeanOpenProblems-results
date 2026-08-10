@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:9:2: error: Tactic `rfl` failed: The left-hand side\n  IsSquare n\nis not definitionally equal to the right-hand side\n  IsSquare_eval n = true\n\nn : ℕ\n⊢ IsSquare n ↔ IsSquare_eval n = true",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

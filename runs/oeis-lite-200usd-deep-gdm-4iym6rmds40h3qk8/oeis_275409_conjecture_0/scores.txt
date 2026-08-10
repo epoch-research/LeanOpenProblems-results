@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:54:36: error: Unknown attribute `[conjecture]`
+

@@ -1,0 +1,2212 @@
+/workspace/leanproject/Submission/Spec.lean:9330:5: error: unknown tactic
+/workspace/leanproject/Submission/Spec.lean:4710:68: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:4731:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 29
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑83 ^ f
+/workspace/leanproject/Submission/Spec.lean:4757:68: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:4928:106: error: Tactic `decide` proved that the proposition
+  3 ^ 0 - 3 ^ 2 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:4928:106: error: Tactic `decide` proved that the proposition
+  3 ^ 1 - 3 ^ 0 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:4928:106: error: Tactic `decide` proved that the proposition
+  3 ^ 2 - 3 ^ 3 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:4999:35: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 29
+  b ≥ 2
+  3 ≤ a ≤ 4
+where
+ a := ↑e
+ b := ↑f
+ c := ↑227 ^ f
+/workspace/leanproject/Submission/Spec.lean:5025:68: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:5026:36: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 29
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:5186:68: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:5354:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:5463:70: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:6250:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 29
+  b ≥ 1
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑q / 252
+ c := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:6282:70: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:6723:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:6949:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:7448:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:7509:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:7627:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8254:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  3 ≤ a ≤ 4
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8286:70: error: Tactic `decide` proved that the proposition
+  2 ^ 1 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:8772:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 1) % 5 = 1
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 1
+hq25 : 1 < 25
+hq25_div : q = 25 * (q / 25) + 1
+⊢ (25 * (q / 25) + 1) % 5 = 1
+/workspace/leanproject/Submission/Spec.lean:8772:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«1»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 1
+hq25 : 1 < 25
+hq25_div : q = 25 * (q / 25) + 1
+this : q % 5 = 1
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8804:43: error: Tactic `decide` proved that the proposition
+  1 - 2 = 2 → False
+is false
+/workspace/leanproject/Submission/Spec.lean:8805:58: error(lean.unknownIdentifier): Unknown identifier `hq_mod_div`
+/workspace/leanproject/Submission/Spec.lean:8805:20: error: unsolved goals
+case «2»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 2
+hq25 : 2 < 25
+hq25_div : q = 25 * (q / 25) + 2
+h_zmod8 : ↑q ^ f - 5 ^ e = 2
+hq8_val : q % 8 = 2
+hq8_lt : 2 < 8
+hq8_div : q = 8 * (q / 8) + 2
+this : q % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8806:60: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≤ -1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+      ↑q / 25,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ⋯]),
+                  ↑q / 25])]),
+      ↑q / 8,
+      Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]), ↑q / 25,
+                  Lean.Omega.bmod_div_term 4 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯)]),
+            ↑q / 8]),
+      Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]), ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]), ↑q / 25,
+                  Lean.Omega.bmod_div_term 4 ⋯ ⋯]),
+            ↑q / 8,
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯), Lean.Omega.bmod_div_term 3 ⋯ ⋯,
+                  ↑q / 25, ⋯])]),
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ⋯])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]), ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯), ↑q / 25, ⋯]),
+            ↑q / 8,
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5, Lean.Omega.bmod_div_term 4 ⋯ ⋯,
+                  ⋯, ⋯]),
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5, ⋯, ⋯])])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8807:58: error(lean.unknownIdentifier): Unknown identifier `hq_mod_div`
+/workspace/leanproject/Submission/Spec.lean:8807:20: error: unsolved goals
+case «4»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 2
+hq25 : 2 < 25
+hq25_div : q = 25 * (q / 25) + 2
+h_zmod8 : ↑q ^ f - 5 ^ e = 2
+hq8_val : q % 8 = 4
+hq8_lt : 4 < 8
+hq8_div : q = 8 * (q / 8) + 4
+this : q % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8808:60: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≤ 0
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+      ↑q / 25,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ⋯]),
+                  ↑q / 25])]),
+      ↑q / 8,
+      Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]), ↑q / 25,
+                  Lean.Omega.bmod_div_term 4 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯)]),
+            ↑q / 8]),
+      Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]), ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]), ↑q / 25,
+                  Lean.Omega.bmod_div_term 4 ⋯ ⋯]),
+            ↑q / 8,
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯), Lean.Omega.bmod_div_term 3 ⋯ ⋯,
+                  ↑q / 25, ⋯])]),
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 8]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ⋯])]),
+            ↑q / 25,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]), ↑q / 25]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, ⋯] (Lean.Omega.Coeffs.ofList [↑e, ⋯]),
+                  Lean.Omega.bmod_div_term 3 [0, ⋯] (Lean.Omega.Coeffs.ofList ⋯), ↑q / 25, ⋯]),
+            ↑q / 8,
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, -8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5, Lean.Omega.bmod_div_term 4 ⋯ ⋯,
+                  ⋯, ⋯]),
+            Lean.Omega.bmod_div_term 9 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 8]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5, ⋯, ⋯])])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8809:58: error(lean.unknownIdentifier): Unknown identifier `hq_mod_div`
+/workspace/leanproject/Submission/Spec.lean:8809:20: error: unsolved goals
+case «6»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 2
+hq25 : 2 < 25
+hq25_div : q = 25 * (q / 25) + 2
+h_zmod8 : ↑q ^ f - 5 ^ e = 2
+hq8_val : q % 8 = 6
+hq8_lt : 6 < 8
+hq8_div : q = 8 * (q / 8) + 6
+this : q % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8810:22: error: Type mismatch
+  hq8_val
+has type
+  q % 8 = 7
+but is expected to have type
+  7 = 7
+/workspace/leanproject/Submission/Spec.lean:8815:71: error(lean.unknownIdentifier): Unknown identifier `h_zmod5`
+/workspace/leanproject/Submission/Spec.lean:8817:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 3) % 5 = 3
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 3
+hq25 : 3 < 25
+hq25_div : q = 25 * (q / 25) + 3
+⊢ (25 * (q / 25) + 3) % 5 = 3
+/workspace/leanproject/Submission/Spec.lean:8817:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«3»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 3
+hq25 : 3 < 25
+hq25_div : q = 25 * (q / 25) + 3
+this : q % 5 = 3
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8818:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 4) % 5 = 4
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 4
+hq25 : 4 < 25
+hq25_div : q = 25 * (q / 25) + 4
+⊢ (25 * (q / 25) + 4) % 5 = 4
+/workspace/leanproject/Submission/Spec.lean:8818:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«4»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 4
+hq25 : 4 < 25
+hq25_div : q = 25 * (q / 25) + 4
+this : q % 5 = 4
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8819:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 5) % 5 = 0
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 5
+hq25 : 5 < 25
+hq25_div : q = 25 * (q / 25) + 5
+⊢ (25 * (q / 25) + 5) % 5 = 0
+/workspace/leanproject/Submission/Spec.lean:8819:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«5»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 5
+hq25 : 5 < 25
+hq25_div : q = 25 * (q / 25) + 5
+this : q % 5 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8820:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 6) % 5 = 1
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 6
+hq25 : 6 < 25
+hq25_div : q = 25 * (q / 25) + 6
+⊢ (25 * (q / 25) + 6) % 5 = 1
+/workspace/leanproject/Submission/Spec.lean:8820:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«6»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 6
+hq25 : 6 < 25
+hq25_div : q = 25 * (q / 25) + 6
+this : q % 5 = 1
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8837:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 8) % 5 = 3
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 8
+hq25 : 8 < 25
+hq25_div : q = 25 * (q / 25) + 8
+⊢ (25 * (q / 25) + 8) % 5 = 3
+/workspace/leanproject/Submission/Spec.lean:8837:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«8»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 8
+hq25 : 8 < 25
+hq25_div : q = 25 * (q / 25) + 8
+this : q % 5 = 3
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8838:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 9) % 5 = 4
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 9
+hq25 : 9 < 25
+hq25_div : q = 25 * (q / 25) + 9
+⊢ (25 * (q / 25) + 9) % 5 = 4
+/workspace/leanproject/Submission/Spec.lean:8838:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«9»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 9
+hq25 : 9 < 25
+hq25_div : q = 25 * (q / 25) + 9
+this : q % 5 = 4
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8839:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 10) % 5 = 0
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 10
+hq25 : 10 < 25
+hq25_div : q = 25 * (q / 25) + 10
+⊢ (25 * (q / 25) + 10) % 5 = 0
+/workspace/leanproject/Submission/Spec.lean:8839:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«10»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 10
+hq25 : 10 < 25
+hq25_div : q = 25 * (q / 25) + 10
+this : q % 5 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8840:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 11) % 5 = 1
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 11
+hq25 : 11 < 25
+hq25_div : q = 25 * (q / 25) + 11
+⊢ (25 * (q / 25) + 11) % 5 = 1
+/workspace/leanproject/Submission/Spec.lean:8840:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«11»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 11
+hq25 : 11 < 25
+hq25_div : q = 25 * (q / 25) + 11
+this : q % 5 = 1
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8845:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 0
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+      ↑q / 25,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8846:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 13) % 5 = 3
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 13
+hq25 : 13 < 25
+hq25_div : q = 25 * (q / 25) + 13
+⊢ (25 * (q / 25) + 13) % 5 = 3
+/workspace/leanproject/Submission/Spec.lean:8846:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«13»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 13
+hq25 : 13 < 25
+hq25_div : q = 25 * (q / 25) + 13
+this : q % 5 = 3
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8847:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 14) % 5 = 4
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 14
+hq25 : 14 < 25
+hq25_div : q = 25 * (q / 25) + 14
+⊢ (25 * (q / 25) + 14) % 5 = 4
+/workspace/leanproject/Submission/Spec.lean:8847:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«14»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 14
+hq25 : 14 < 25
+hq25_div : q = 25 * (q / 25) + 14
+this : q % 5 = 4
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8848:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 15) % 5 = 0
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 15
+hq25 : 15 < 25
+hq25_div : q = 25 * (q / 25) + 15
+⊢ (25 * (q / 25) + 15) % 5 = 0
+/workspace/leanproject/Submission/Spec.lean:8848:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«15»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 15
+hq25 : 15 < 25
+hq25_div : q = 25 * (q / 25) + 15
+this : q % 5 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8849:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 16) % 5 = 1
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 16
+hq25 : 16 < 25
+hq25_div : q = 25 * (q / 25) + 16
+⊢ (25 * (q / 25) + 16) % 5 = 1
+/workspace/leanproject/Submission/Spec.lean:8849:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«16»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 16
+hq25 : 16 < 25
+hq25_div : q = 25 * (q / 25) + 16
+this : q % 5 = 1
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8854:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+      ↑q / 25,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8855:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 18) % 5 = 3
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 18
+hq25 : 18 < 25
+hq25_div : q = 25 * (q / 25) + 18
+⊢ (25 * (q / 25) + 18) % 5 = 3
+/workspace/leanproject/Submission/Spec.lean:8855:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«18»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 18
+hq25 : 18 < 25
+hq25_div : q = 25 * (q / 25) + 18
+this : q % 5 = 3
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8856:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 19) % 5 = 4
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 19
+hq25 : 19 < 25
+hq25_div : q = 25 * (q / 25) + 19
+⊢ (25 * (q / 25) + 19) % 5 = 4
+/workspace/leanproject/Submission/Spec.lean:8856:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«19»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 19
+hq25 : 19 < 25
+hq25_div : q = 25 * (q / 25) + 19
+this : q % 5 = 4
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8857:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 20) % 5 = 0
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 20
+hq25 : 20 < 25
+hq25_div : q = 25 * (q / 25) + 20
+⊢ (25 * (q / 25) + 20) % 5 = 0
+/workspace/leanproject/Submission/Spec.lean:8857:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«20»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 20
+hq25 : 20 < 25
+hq25_div : q = 25 * (q / 25) + 20
+this : q % 5 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8858:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 21) % 5 = 1
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 21
+hq25 : 21 < 25
+hq25_div : q = 25 * (q / 25) + 21
+⊢ (25 * (q / 25) + 21) % 5 = 1
+/workspace/leanproject/Submission/Spec.lean:8858:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«21»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 21
+hq25 : 21 < 25
+hq25_div : q = 25 * (q / 25) + 21
+this : q % 5 = 1
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8863:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 0
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+      Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+      ↑q / 25,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -5]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5]),
+            Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])]),
+            ↑q / 25])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8864:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 23) % 5 = 3
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 23
+hq25 : 23 < 25
+hq25_div : q = 25 * (q / 25) + 23
+⊢ (25 * (q / 25) + 23) % 5 = 3
+/workspace/leanproject/Submission/Spec.lean:8864:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«23»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 23
+hq25 : 23 < 25
+hq25_div : q = 25 * (q / 25) + 23
+this : q % 5 = 3
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8865:62: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  q % 25
+in the target expression
+  (25 * (q / 25) + 24) % 5 = 4
+
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 24
+hq25 : 24 < 25
+hq25_div : q = 25 * (q / 25) + 24
+⊢ (25 * (q / 25) + 24) % 5 = 4
+/workspace/leanproject/Submission/Spec.lean:8865:14: error: unsolved goals
+case neg.inr.inr.inl.inr.inr.inr.inr.inr.«1».«2».«24»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+h_zmod : ↑q ^ f - 5 ^ e = 2
+hf_odd : f % 2 = 1
+hq3_val : q % 3 = 1
+hq3 : 1 < 3
+he_odd : e % 2 = 1
+hq5_val : q % 5 = 2
+hq5 : 2 < 5
+h_zmod25 : ↑q ^ f = 2
+h5e25 : 5 ^ e = 0
+h_eq_mod : q % 5 = 2
+hq25_val : q % 25 = 24
+hq25 : 24 < 25
+hq25_div : q = 25 * (q / 25) + 24
+this : q % 5 = 4
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:8867:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8870:37: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑f / 2
+ b := ↑e / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 3, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(q ^ f - 5 ^ e), ↑5 ^ e, ↑q, ↑f / 2, ↑q / 3, ↑e / 2, ↑q / 5])])
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:8875:41: error(lean.unknownIdentifier): Unknown identifier `hf_even`
+/workspace/leanproject/Submission/Spec.lean:8940:62: error: Application type mismatch: The argument
+  h
+has type
+  3 ^ f - p ^ e = 2
+but is expected to have type
+  3 ^ f - 5 ^ e = 2
+in the application
+  pillai_diff_two_5_3 e f he hf h
+/workspace/leanproject/Submission/Spec.lean:8941:8: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 29
+  b ≥ 11
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑p
+ c := ↑3 ^ f
+/workspace/leanproject/Submission/Spec.lean:8999:50: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 29
+  d - g ≥ -1
+  c ≥ 1
+  b ≥ 1
+  a ≥ 3
+where
+ a := ↑p / 3
+ b := ↑e / 2
+ c := ↑f / 2
+ d := ↑5 ^ e
+ g := ↑5 ^ f
+/workspace/leanproject/Submission/Spec.lean:9018:94: error: unsolved goals
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 5
+h : 5 ^ f - p ^ e = 2
+hq_ne_2 : 5 ≠ 2
+hq5_mod3 : 2 ^ f - ↑p ^ e = 2
+h5 : 5 = 2
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_odd : f % 2 = 1
+hp2 : ↑p = 2
+hp_pow : 2 ^ e = 2
+h_eq : f = 2 * (f / 2) + 1
+⊢ (2 ^ 2) ^ (f / 2) * 2 = (2 ^ 2) ^ (e / 2) * 2
+/workspace/leanproject/Submission/Spec.lean:9103:20: error: Tactic `rfl` failed: The left-hand side
+  ↑p ^ 2
+is not definitionally equal to the right-hand side
+  1
+
+case «1»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 1
+h_mod : 1 < 8
+hp_mod_div : p = 8 * (p / 8) + 1
+⊢ ↑p ^ 2 = 1
+/workspace/leanproject/Submission/Spec.lean:9104:68: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  p % 8
+in the target expression
+  (8 * (p / 8) + 2) % 2 = 0
+
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 2
+h_mod : 2 < 8
+hp_mod_div : p = 8 * (p / 8) + 2
+⊢ (8 * (p / 8) + 2) % 2 = 0
+/workspace/leanproject/Submission/Spec.lean:9104:18: error: unsolved goals
+case «2»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this✝ : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 2
+h_mod : 2 < 8
+hp_mod_div : p = 8 * (p / 8) + 2
+this : p % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:9105:20: error: Tactic `rfl` failed: The left-hand side
+  ↑p ^ 2
+is not definitionally equal to the right-hand side
+  1
+
+case «3»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 3
+h_mod : 3 < 8
+hp_mod_div : p = 8 * (p / 8) + 3
+⊢ ↑p ^ 2 = 1
+/workspace/leanproject/Submission/Spec.lean:9106:68: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  p % 8
+in the target expression
+  (8 * (p / 8) + 4) % 2 = 0
+
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 4
+h_mod : 4 < 8
+hp_mod_div : p = 8 * (p / 8) + 4
+⊢ (8 * (p / 8) + 4) % 2 = 0
+/workspace/leanproject/Submission/Spec.lean:9106:18: error: unsolved goals
+case «4»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this✝ : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 4
+h_mod : 4 < 8
+hp_mod_div : p = 8 * (p / 8) + 4
+this : p % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:9107:20: error: Tactic `rfl` failed: The left-hand side
+  ↑p ^ 2
+is not definitionally equal to the right-hand side
+  1
+
+case «5»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 5
+h_mod : 5 < 8
+hp_mod_div : p = 8 * (p / 8) + 5
+⊢ ↑p ^ 2 = 1
+/workspace/leanproject/Submission/Spec.lean:9108:68: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  p % 8
+in the target expression
+  (8 * (p / 8) + 6) % 2 = 0
+
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 6
+h_mod : 6 < 8
+hp_mod_div : p = 8 * (p / 8) + 6
+⊢ (8 * (p / 8) + 6) % 2 = 0
+/workspace/leanproject/Submission/Spec.lean:9108:18: error: unsolved goals
+case «6»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this✝ : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 6
+h_mod : 6 < 8
+hp_mod_div : p = 8 * (p / 8) + 6
+this : p % 2 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:9109:20: error: Tactic `rfl` failed: The left-hand side
+  ↑p ^ 2
+is not definitionally equal to the right-hand side
+  1
+
+case «7»
+p e f : ℕ
+hp : Nat.Prime p
+he : 1 < e
+hf : 1 < f
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hp_ge11 : p ≥ 11
+hq : Nat.Prime 7
+h : 7 ^ f - p ^ e = 2
+hq_ne_2 : 7 ≠ 2
+h_zmod3 : 1 - ↑p ^ e = 2
+h7 : 7 = 1
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+he_odd : e % 2 = 1
+hf_even : f % 2 = 0
+h_zmod8 : 7 ^ f - ↑p ^ e = 2
+h7f : 7 ^ f = 1
+h_eq : e = 2 * (e / 2) + 1
+this : ↑p ^ (2 * (e / 2) + 1) = (↑p ^ 2) ^ (e / 2) * ↑p
+hp_odd : p % 2 = 1
+hp_mod : p % 8 = 7
+h_mod : 7 < 8
+hp_mod_div : p = 8 * (p / 8) + 7
+⊢ ↑p ^ 2 = 1
+/workspace/leanproject/Submission/Spec.lean:9144:60: error(lean.unknownIdentifier): Unknown identifier `hf2`
+/workspace/leanproject/Submission/Spec.lean:9144:55: error(lean.unknownIdentifier): Unknown identifier `hf0`
+/workspace/leanproject/Submission/Spec.lean:9148:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑e / 2
+ b := ↑f / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 3, 0, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5])])
+ d := ↑7 ^ f
+/workspace/leanproject/Submission/Spec.lean:9150:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑e / 2
+ b := ↑f / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 3, 0, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5])])
+ d := ↑7 ^ f
+/workspace/leanproject/Submission/Spec.lean:9152:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 1
+where
+ a := ↑e / 2
+ b := ↑f / 2
+ c := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 2, -3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 3, 0, 0, -5]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑(p ^ e), ↑p, ↑(7 ^ f - p ^ e), ↑p / 3, ↑e / 2, ↑f / 2, ↑p / 5])])
+ d := ↑7 ^ f
+/workspace/leanproject/Submission/Spec.lean:9154:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 1
+  a ≥ 3
+where
+ a := ↑p / 3
+ b := ↑e / 2
+ c := ↑f / 2
+ d := ↑7 ^ f
+/workspace/leanproject/Submission/Spec.lean:9253:12: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 29
+  d ≥ 1
+  c ≥ 4
+  b ≥ 3
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑p / 3
+ c := ↑q / 3
+ d := ↑e / 2
+ g := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:9293:14: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 29
+  d ≥ 1
+  c ≥ 1
+  b ≥ 3
+  a ≥ 3
+where
+ a := ↑p / 3
+ b := ↑q / 3
+ c := ↑e / 2
+ d := ↑f / 2
+ g := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:9322:94: error: unsolved goals
+p q e f : ℕ
+hp : Nat.Prime p
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+h : q ^ f - p ^ e = 2
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hq_ne_2 : q ≠ 2
+hp_ge11 : p ≥ 11
+hq_ge11 : q ≥ 11
+hp3_val : p % 3 = 2
+hp3 : 2 < 3
+hq3_val : q % 3 = 2
+hq3 : 2 < 3
+he_odd : e % 2 = 1
+hf_odd : f % 2 = 1
+h_zmod3 : ↑q ^ f - ↑p ^ e = 2
+hp2 : ↑p = 2
+hq2 : ↑q = 2
+hp_pow : 2 ^ e = 2
+h_eq : f = 2 * (f / 2) + 1
+⊢ (2 ^ 2) ^ (f / 2) * 2 = (2 ^ 2) ^ (e / 2) * 2
+'oeis_365416_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

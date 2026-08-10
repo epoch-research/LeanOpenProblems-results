@@ -1,0 +1,20 @@
+import FormalConjectures.Util.ProblemImports
+
+#check Quot.rec
+#check Quot.recOn
+#check Quot.ind
+#check Quot.inductionOn
+#check Quot.lift
+#check Quot.hrecOn
+#check Quot.hrecOn₂
+#check Quotient.rec
+#check Quotient.ind
+#check Quotient.lift
+#check Quotient.exists_rep
+#check Quotient.out
+#check Quot.out
+#check Quotient.out_eq
+#check Quot.out_eq'
+#check Quotient.mk_out
+#check Quotient.eq
+#check Quot.eq

@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:30:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split
+  
+  case left
+  S : Finset ℕ := {1, 9, 21, 35, 98, 152, 306}
+  n : ℕ
+  hn : n > 0
+  ⊢ (∑ x ∈ range (n + 1),
+        ∑ y ∈ range (n + 1), ∑ z ∈ range (n + 1), if z > 0 ∧ x ^ 3 + y ^ 2 + triangular z = n then 1 else 0) >
+      0
+  Submission/Spec.lean:32:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split
+  
+  case right
+  S : Finset ℕ := {1, 9, 21, 35, 98, 152, 306}
+  n : ℕ
+  hn : n > 0
+  ⊢ (∑ x ∈ range (n + 1),
+          ∑ y ∈ range (n + 1), ∑ z ∈ range (n + 1), if z > 0 ∧ x ^ 3 + y ^ 2 + triangular z = n then 1 else 0) =
+        1 ↔
+      n ∈ S
+

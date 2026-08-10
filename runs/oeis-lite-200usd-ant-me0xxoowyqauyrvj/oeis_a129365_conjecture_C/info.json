@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "datUtsdwZ7e7ivyy3fggpp",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 53,
+      "output_tokens": 70111,
+      "total_tokens": 1607845,
+      "input_tokens_cache_write": 92825,
+      "input_tokens_cache_read": 1444856,
+      "reasoning_tokens": 10223,
+      "total_cost": 3.055624249999999
+    }
+  },
+  "oeis_id": "A129365"
+}

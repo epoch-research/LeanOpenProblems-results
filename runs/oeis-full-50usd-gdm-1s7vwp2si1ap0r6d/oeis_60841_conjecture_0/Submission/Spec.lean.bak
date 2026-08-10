@@ -1,0 +1,305 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset Rat
+open scoped BigOperators
+
+set_option maxRecDepth 200000
+set_option maxHeartbeats 100000000
+set_option exponentiation.threshold 2000
+
+noncomputable def A060841 (n : ℕ) : ℕ :=
+  let val_rat : ℚ := (Icc 1 n).prod (fun k : ℕ => ((k : ℚ) ^ 2) / (k.totient : ℚ))
+  val_rat.num.natAbs
+
+noncomputable def A060841_val_rat (n : ℕ) : ℚ :=
+  (Icc 1 n).prod (fun k : ℕ => ((k : ℚ) ^ 2) / (k.totient : ℚ))
+
+-- Precomputed 3-adic valuations of totient(k) for k = 1 to 1807
+def v_list : List ℕ := [
+0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 0, 1, 2, 1, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 2, 0, 1, 2, 0, 0, 0, 1, 1, 2, 0, 1, 0, 1, 0, 0, 1, 0, 1, 2, 2, 0, 2, 1, 1, 1, 0, 3, 0, 0, 1, 0, 1, 0, 0, 0, 1, 2, 0, 1, 0, 2, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 2, 3, 0, 2, 1, 0, 2, 0, 0, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 2, 0, 1, 1, 0, 0, 3, 1, 2, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 2, 1, 2, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 3, 4, 0, 0, 0, 0, 1, 1, 0, 3, 1, 0, 0, 1, 0, 0, 0, 0, 1, 2, 2, 1, 0, 2, 1, 0, 0, 3, 2, 0, 0, 1, 1, 1, 1, 0, 1, 2, 0, 1, 0, 1, 0, 0, 1, 1, 1, 2, 1, 1, 0, 0, 0, 1, 2, 2, 3, 2, 0, 1, 2, 1, 1, 1, 0, 0, 2, 1, 0, 1, 0, 0, 2, 0, 0, 1, 1, 0, 0, 1, 0, 4, 1, 1, 0, 3, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 1, 3, 1, 1, 0, 0, 0, 0, 3, 0, 1, 0, 2, 3, 0, 2, 0, 0, 0, 1, 1, 2, 1, 0, 0, 1, 0, 2, 1, 1, 1, 0, 0, 1, 2, 0, 1, 0, 2, 2, 0, 1, 0, 2, 1, 0, 2, 1, 1, 2, 1, 1, 1, 0, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 1, 2, 3, 1, 4, 3, 0, 1, 0, 1, 0, 3, 0, 1, 1, 1, 1, 0, 0, 1, 3, 1, 1, 0, 0, 0, 0, 1, 1, 3, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2, 2, 0, 2, 2, 1, 1, 0, 1, 2, 1, 1, 1, 0, 0, 0, 1, 3, 3, 2, 2, 0, 0, 0, 1, 1, 2, 1, 0, 1, 0, 1, 0, 0, 1, 1, 2, 2, 3, 0, 0, 1, 2, 0, 3, 1, 2, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 2, 0, 1, 1, 1, 1, 0, 0, 0, 2, 0, 1, 1, 0, 2, 3, 2, 0, 3, 2, 2, 1, 0, 2, 1, 0, 2, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 2, 2, 1, 1, 2, 0, 0, 1, 1, 0, 1, 0, 0, 2, 2, 0, 1, 0, 1, 1, 2, 1, 1, 0, 0, 0, 3, 1, 1, 0, 1, 4, 5, 1, 4, 1, 0, 0, 0, 3, 1, 1, 1, 0, 1, 0, 0, 0, 0, 2, 0, 0, 1, 2, 0, 0, 3, 0, 4, 0, 1, 1, 0, 3, 0, 1, 0, 1, 2, 0, 1, 0, 1, 0, 0, 0, 1, 3, 1, 0, 0, 1, 0, 0, 1, 2, 3, 3, 2, 0, 3, 2, 1, 0, 2, 0, 2, 0, 2, 1, 2, 1, 0, 2, 2, 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 2, 1, 1, 0, 1, 0, 1, 2, 0, 1, 0, 1, 1, 0, 2, 2, 0, 0, 1, 3, 0, 0, 2, 0, 2, 1, 0, 2, 1, 0, 0, 1, 2, 2, 1, 0, 0, 1, 2, 1, 1, 1, 1, 2, 2, 0, 1, 0, 1, 1, 1, 2, 0, 1, 1, 0, 1, 2, 1, 2, 2, 2, 1, 1, 0, 2, 0, 2, 0, 1, 0, 0, 0, 1, 1, 1, 2, 0, 3, 0, 1, 2, 4, 0, 3, 0, 0, 3, 1, 0, 0, 1, 1, 1, 0, 3, 3, 0, 0, 1, 1, 1, 1, 1, 1, 2, 1, 0, 0, 2, 0, 0, 1, 0, 3, 0, 1, 1, 1, 1, 0, 1, 0, 2, 0, 1, 0, 0, 1, 0, 1, 0, 3, 4, 0, 0, 0, 1, 0, 1, 0, 2, 0, 1, 1, 1, 0, 0, 0, 0, 1, 2, 2, 1, 2, 0, 0, 1, 2, 5, 2, 1, 1, 1, 1, 1, 0, 1, 1, 2, 2, 3, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 3, 3, 3, 0, 2, 0, 2, 4, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 2, 1, 1, 3, 0, 2, 1, 0, 0, 2, 1, 1, 0, 1, 0, 0, 1, 1, 1, 2, 2, 0, 2, 0, 3, 0, 0, 1, 0, 2, 1, 1, 2, 0, 0, 0, 3, 4, 1, 3, 2, 4, 0, 3, 1, 3, 0, 0, 0, 1, 1, 0, 1, 0, 1, 2, 0, 1, 1, 1, 1, 0, 2, 3, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 2, 0, 1, 2, 3, 0, 0, 1, 1, 1, 1, 0, 0, 2, 0, 3, 0, 2, 1, 0, 2, 3, 2, 2, 1, 2, 1, 1, 0, 0, 0, 2, 2, 1, 0, 0, 0, 2, 3, 0, 3, 1, 2, 0, 0, 1, 1, 0, 1, 1, 0, 0, 2, 0, 2, 1, 1, 0, 1, 2, 0, 2, 0, 1, 1, 1, 1, 2, 3, 0, 2, 0, 1, 1, 2, 1, 2, 0, 0, 1, 3, 0, 0, 0, 0, 2, 2, 2, 1, 0, 0, 1, 0, 0, 3, 1, 0, 1, 3, 2, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 3, 1, 1, 1, 1, 1, 0, 2, 1, 0, 4, 2, 5, 1, 1, 0, 4, 0, 1, 4, 0, 0, 0, 0, 0, 1, 3, 1, 1, 2, 1, 1, 1, 2, 0, 1, 1, 4, 0, 2, 0, 0, 0, 1, 0, 2, 2, 2, 0, 1, 0, 0, 1, 1, 2, 1, 0, 0, 0, 1, 3, 1, 0, 0, 4, 2, 0, 1, 1, 0, 1, 1, 0, 1, 3, 1, 0, 1, 1, 0, 0, 1, 1, 2, 2, 1, 0, 0, 1, 1, 0, 4, 1, 1, 0, 2, 0, 0, 0, 0, 1, 2, 3, 0, 1, 1, 0, 1, 0, 2, 1, 2, 0, 1, 0, 0, 1, 1, 2, 0, 3, 2, 3, 2, 2, 1, 0, 1, 3, 0, 2, 1, 1, 2, 0, 0, 2, 2, 0, 1, 2, 0, 0, 1, 2, 2, 1, 0, 2, 0, 1, 1, 0, 1, 2, 2, 2, 1, 1, 2, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 4, 0, 0, 3, 0, 1, 2, 5, 1, 3, 1, 1, 0, 3, 1, 0, 0, 0, 1, 2, 2, 1, 0, 1, 1, 3, 0, 3, 1, 0, 1, 0, 0, 0, 2, 1, 2, 2, 0, 0, 0, 0, 1, 0, 3, 1, 0, 0, 0, 2, 2, 1, 0, 0, 2, 0, 1, 2, 0, 0, 2, 0, 1, 4, 0, 3, 0, 1, 1, 0, 2, 1, 2, 0, 1, 2, 0, 1, 0, 1, 1, 4, 2, 0, 1, 0, 1, 2, 1, 0, 1, 1, 2, 1, 2, 0, 0, 1, 1, 1, 0, 3, 1, 1, 1, 1, 1, 2, 2, 0, 0, 0, 1, 1, 1, 1, 0, 2, 1, 1, 2, 0, 1, 0, 2, 0, 2, 2, 2, 1, 1, 0, 1, 3, 0, 2, 2, 1, 0, 3, 2, 0, 0, 0, 1, 2, 0, 2, 0, 0, 0, 0, 1, 2, 1, 0, 1, 1, 2, 0, 0, 3, 3, 4, 0, 3, 1, 0, 2, 1, 4, 1, 0, 0, 3, 1, 0, 2, 0, 1, 3, 0, 1, 1, 0, 0, 0, 1, 1, 3, 1, 0, 1, 1, 0, 0, 3, 0, 3, 2, 0, 0, 0, 1, 1, 2, 1, 1, 1, 1, 1, 0, 1, 0, 1, 2, 2, 2, 1, 0, 0, 3, 0, 0, 2, 2, 0, 0, 0, 0, 1, 2, 0, 0, 3, 2, 0, 1, 1, 0, 1, 0, 1, 3, 1, 1, 0, 1, 1, 0, 0, 1, 2, 4, 0, 1, 1, 1, 0, 3, 0, 2, 1, 2, 0, 1, 1, 0, 0, 1, 3, 0, 4, 2, 0, 0, 0, 0, 0, 2, 1, 1, 0, 4, 1, 1, 0, 1, 2, 2, 0, 2, 1, 0, 1, 1, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 3, 2, 0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 1, 2, 1, 5, 6, 2, 5, 1, 3, 1, 0, 1, 5, 1, 1, 1, 1, 0, 0, 1, 0, 1, 2, 2, 0, 2, 0, 3, 1, 1, 2, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 3, 1, 1, 0, 2, 0, 0, 1, 0, 1, 0, 3, 0, 3, 0, 3, 2, 0, 2, 2, 2, 0, 0, 2, 1, 4, 0, 0, 1, 1, 2, 0, 3, 1, 2, 0, 0, 1, 5, 1, 1, 0, 1, 1, 1, 0, 2, 2, 2, 1, 0, 1, 0, 3, 0, 0, 1, 2, 0, 1, 2, 0, 0, 0, 1, 2, 3, 1, 2, 1, 0, 0, 1, 1, 2, 0, 2, 0, 1, 1, 1, 1, 0, 1, 0, 2, 0, 2, 1, 0, 3, 2, 2, 0, 0, 3, 1, 0, 1, 0, 0, 1, 2, 0, 0, 2, 0, 1, 1, 1, 1, 2, 0, 0, 2, 0, 1, 0, 0, 3, 4, 4, 3, 1, 1, 3, 1, 2, 3, 4, 1, 0, 0, 3, 3, 1, 0, 3, 0, 0, 1, 0, 1, 0, 1, 1, 3, 1, 1, 0, 3, 1, 2, 0, 1, 1, 2, 2, 2, 0, 1, 1, 1, 1, 3, 1, 0, 1, 1, 0, 0, 2, 1, 3, 1, 0, 2, 0, 2, 1, 0, 0, 1, 1, 1, 0, 2, 1, 0, 1, 2, 1, 2, 1, 0, 0, 0, 1, 1, 0, 5, 2, 1, 0, 1, 1, 0, 2, 0, 3, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 2, 4, 0, 2, 3, 0, 0, 0, 2, 2, 1, 2, 0, 1, 2, 1, 3, 1, 2, 2, 2, 0, 1, 1, 2, 1, 1, 3, 1, 1, 0, 1, 0, 0, 0, 1, 2, 0, 2, 3, 1, 1, 0, 1, 0, 1, 0, 0, 2, 1, 3, 0, 0, 1, 3, 4, 1, 1, 2, 0, 0, 1, 0, 3, 1, 4, 1, 0, 0, 0, 1, 1, 1, 2, 0, 1, 0, 2, 2, 2
+]
+
+def sum_v (n : ℕ) : ℕ :=
+  match n with
+  | 0 => 0
+  | m + 1 => sum_v m + v_list.getD m 0
+
+def sum_u (n : ℕ) : ℕ :=
+  match n with
+  | 0 => 0
+  | m + 1 => sum_u m + 2 * padicValNat 3 (m + 1)
+
+def num_val (n : ℕ) : ℕ :=
+  match n with
+  | 0 => 1
+  | m + 1 => num_val m * (m + 1) ^ 2
+
+def den_val (n : ℕ) : ℕ :=
+  match n with
+  | 0 => 1
+  | m + 1 => den_val m * totient (m + 1)
+
+def check_one (m : ℕ) : Bool :=
+  let v := v_list.getD m 0
+  if v == 0 then true
+  else decide (3 ^ v ∣ totient (m + 1))
+
+def check_range (start : ℕ) (count : ℕ) : Bool :=
+  (List.range count).all (fun i => check_one (start + i))
+
+lemma check_0 : check_range 0 180 = true := by decide
+lemma check_1 : check_range 180 180 = true := by decide
+lemma check_2 : check_range 360 180 = true := by decide
+lemma check_3 : check_range 540 180 = true := by decide
+lemma check_4 : check_range 720 180 = true := by decide
+lemma check_5 : check_range 900 180 = true := by decide
+lemma check_6 : check_range 1080 180 = true := by decide
+lemma check_7 : check_range 1260 180 = true := by decide
+lemma check_8 : check_range 1440 180 = true := by decide
+lemma check_9 : check_range 1620 180 = true := by decide
+lemma check_10 : check_range 1800 7 = true := by decide
+
+lemma check_one_of_check_range {start count : ℕ} (h : check_range start count = true) {i : ℕ} (hi : i < count) :
+    check_one (start + i) = true := by
+  unfold check_range at h
+  rw [List.all_eq_true] at h
+  apply h
+  rw [List.mem_range]
+  exact hi
+
+lemma check_one_eq_true (m : ℕ) (hm : m < 1807) : check_one m = true := by
+  have h0 : m < 180 ∨ (180 ≤ m ∧ m < 360) ∨ (360 ≤ m ∧ m < 540) ∨ (540 ≤ m ∧ m < 720) ∨ (720 ≤ m ∧ m < 900) ∨ (900 ≤ m ∧ m < 1080) ∨ (1080 ≤ m ∧ m < 1260) ∨ (1260 ≤ m ∧ m < 1440) ∨ (1440 ≤ m ∧ m < 1620) ∨ (1620 ≤ m ∧ m < 1800) ∨ (1800 ≤ m ∧ m < 1807) := by omega
+  rcases h0 with h | h | h | h | h | h | h | h | h | h | h
+  · apply check_one_of_check_range check_0
+    omega
+  · have : m = 180 + (m - 180) := by omega
+    rw [this]
+    apply check_one_of_check_range check_1
+    omega
+  · have : m = 360 + (m - 360) := by omega
+    rw [this]
+    apply check_one_of_check_range check_2
+    omega
+  · have : m = 540 + (m - 540) := by omega
+    rw [this]
+    apply check_one_of_check_range check_3
+    omega
+  · have : m = 720 + (m - 720) := by omega
+    rw [this]
+    apply check_one_of_check_range check_4
+    omega
+  · have : m = 900 + (m - 900) := by omega
+    rw [this]
+    apply check_one_of_check_range check_5
+    omega
+  · have : m = 1080 + (m - 1080) := by omega
+    rw [this]
+    apply check_one_of_check_range check_6
+    omega
+  · have : m = 1260 + (m - 1260) := by omega
+    rw [this]
+    apply check_one_of_check_range check_7
+    omega
+  · have : m = 1440 + (m - 1440) := by omega
+    rw [this]
+    apply check_one_of_check_range check_8
+    omega
+  · have : m = 1620 + (m - 1620) := by omega
+    rw [this]
+    apply check_one_of_check_range check_9
+    omega
+  · have : m = 1800 + (m - 1800) := by omega
+    rw [this]
+    apply check_one_of_check_range check_10
+    omega
+
+lemma totient_dvd_val (m : ℕ) (hm : m < 1807) : 3 ^ (v_list.getD m 0) ∣ totient (m + 1) := by
+  have h := check_one_eq_true m hm
+  unfold check_one at h
+  split_ifs at h with h_eq
+  · have : v_list.getD m 0 = 0 := of_decide_eq_true h_eq
+    rw [this]
+    simp
+  · exact of_decide_eq_true h
+
+lemma pow_two_mul_padic_dvd (x : ℕ) : 3 ^ (2 * padicValNat 3 x) ∣ x ^ 2 := by
+  have h := pow_padicValNat_dvd (p := 3) (n := x)
+  have h2 := mul_dvd_mul h h
+  rw [← sq, ← sq] at h2
+  have h_pow : (3 ^ padicValNat 3 x) ^ 2 = 3 ^ (2 * padicValNat 3 x) := by
+    rw [pow_mul']
+  rw [h_pow] at h2
+  exact h2
+
+lemma den_val_pos (n : ℕ) : den_val n > 0 := by
+  induction n with
+  | zero => simp [den_val]
+  | succ m ih =>
+    dsimp [den_val]
+    have : totient (m + 1) > 0 := totient_pos.mpr (by omega)
+    positivity
+
+lemma num_val_pos (n : ℕ) : num_val n > 0 := by
+  induction n with
+  | zero => simp [num_val]
+  | succ m ih =>
+    dsimp [num_val]
+    positivity
+
+lemma den_val_dvd (n : ℕ) (hn : n ≤ 1807) : 3 ^ (sum_v n) ∣ den_val n := by
+  induction n with
+  | zero => simp [sum_v, den_val]
+  | succ m ih =>
+    have hm : m ≤ 1807 := by omega
+    have hm2 : m < 1807 := by omega
+    have ih_m := ih (by omega)
+    dsimp [den_val]
+    have h_tot := totient_dvd_val m hm2
+    have h_mul := mul_dvd_mul ih_m h_tot
+    have h_pow : 3 ^ sum_v (m + 1) = 3 ^ sum_v m * 3 ^ (v_list.getD m 0) := by
+      dsimp [sum_v]
+      exact pow_add 3 (sum_v m) (v_list.getD m 0)
+    rw [h_pow]
+    exact h_mul
+
+lemma num_val_dvd (n : ℕ) (hn : n ≤ 1807) : 3 ^ (sum_u n) ∣ num_val n := by
+  induction n with
+  | zero => simp [sum_u, num_val]
+  | succ m ih =>
+    have hm : m ≤ 1807 := by omega
+    have hm2 : m < 1807 := by omega
+    have ih_m := ih (by omega)
+    dsimp [num_val]
+    have h_sq := pow_two_mul_padic_dvd (m + 1)
+    have h_mul := mul_dvd_mul ih_m h_sq
+    have h_pow : 3 ^ (sum_u m + 2 * padicValNat 3 (m + 1)) = 3 ^ sum_u m * 3 ^ (2 * padicValNat 3 (m + 1)) := pow_add 3 _ _
+    rw [h_pow]
+    exact h_mul
+
+lemma padic_val_num_val (n : ℕ) (hn : n ≤ 1807) : padicValNat 3 (num_val n) = sum_u n := by
+  induction n with
+  | zero =>
+    dsimp [num_val, sum_u]
+    exact padicValNat.one
+  | succ m ih =>
+    have hm : m ≤ 1807 := by omega
+    have hm2 : m < 1807 := by omega
+    dsimp [num_val, sum_u]
+    have h_pos_A : num_val m ≠ 0 := (num_val_pos m).ne'
+    have h_pos_B : (m + 1) ^ 2 ≠ 0 := by positivity
+    rw [padicValNat.mul h_pos_A h_pos_B]
+    rw [ih (by omega)]
+    have h_val_sq : padicValNat 3 ((m + 1) ^ 2) = 2 * padicValNat 3 (m + 1) := by
+      haveI : Fact (Nat.Prime 3) := ⟨by decide⟩
+      exact padicValNat.pow 2 (by positivity)
+    rw [h_val_sq]
+
+lemma A060841_val_rat_eq_num_div_den (n : ℕ) :
+  A060841_val_rat n = (num_val n : ℚ) / (den_val n : ℚ) := by
+  induction n with
+  | zero =>
+    dsimp [A060841_val_rat, num_val, den_val]
+    have h1 : Icc 1 0 = ∅ := rfl
+    rw [h1, prod_empty]
+    norm_num
+  | succ m ih =>
+    have h_le : 1 ≤ succ m := Nat.succ_pos m
+    have h_insert : insert (succ m) (Icc 1 m) = Icc 1 (succ m) := insert_Icc_right_eq_Icc_succ h_le
+    have h_not_mem : succ m ∉ Icc 1 m := by simp
+    dsimp [A060841_val_rat]
+    rw [← h_insert, prod_insert h_not_mem]
+    have h_fold : (∏ x ∈ Icc 1 m, (x : ℚ) ^ 2 / (totient x : ℚ)) = A060841_val_rat m := rfl
+    rw [h_fold, ih]
+    dsimp [num_val, den_val]
+    push_cast
+    ring
+
+lemma dvd_den_of_not_dvd {x : ℚ} {P Q : ℤ} (h : x = (P : ℚ) / (3 * Q : ℚ)) (h3 : ¬ 3 ∣ P) (hQ : Q ≠ 0) : 3 ∣ (x.den : ℤ) := by
+  have hx : (x : ℚ) = (x.num : ℚ) / (x.den : ℚ) := by exact x.num_div_den.symm
+  have h_eq : (x.num : ℚ) / (x.den : ℚ) = (P : ℚ) / (3 * Q : ℚ) := by
+    rw [← hx]
+    exact h
+  have h_den_ne : (x.den : ℚ) ≠ 0 := by exact_mod_cast x.den_nz
+  have h_3Q_ne : (3 * Q : ℚ) ≠ 0 := by
+    intro hc
+    have : 3 * Q = 0 := by exact_mod_cast hc
+    omega
+  have h_cross := (div_eq_div_iff h_den_ne h_3Q_ne).mp h_eq
+  have h_cross_z : (x.num : ℤ) * (3 * Q) = P * x.den := by
+    exact_mod_cast h_cross
+  have h_cross_z_mul : (x.num : ℤ) * (3 * Q) = 3 * (x.num * Q) := by ring
+  have h_cross_z_rewrite : P * x.den = (x.num : ℤ) * (3 * Q) := h_cross_z.symm
+  have h_dvd : 3 ∣ P * (x.den : ℤ) := by
+    rw [h_cross_z_rewrite, h_cross_z_mul]
+    use x.num * Q
+  have h_prime : Prime (3 : ℤ) := by
+    norm_num
+  exact (Prime.dvd_mul h_prime).mp h_dvd |>.elim (fun hP => False.elim (h3 hP)) id
+
+lemma num_val_not_dvd_1807 : ¬ 3 ^ 1799 ∣ num_val 1807 := by
+  haveI : Fact (Nat.Prime 3) := ⟨by decide⟩
+  have h_not := pow_succ_padicValNat_not_dvd (n := num_val 1807) (num_val_pos 1807).ne'
+  have h_val : padicValNat 3 (num_val 1807) = 1798 := padic_val_num_val 1807 (by omega)
+  have h_eval : 1798 + 1 = 1799 := rfl
+  rw [h_val, h_eval] at h_not
+  exact h_not
+
+lemma not_isPowerOfTwo_of_dvd_three {n : ℕ} (h : 3 ∣ n) : ¬ n.isPowerOfTwo := by
+  rintro ⟨k, rfl⟩
+  have h3 : Nat.Prime 3 := by decide
+  have hdvd : 3 ∣ 2 := h3.dvd_of_dvd_pow h
+  norm_num at hdvd
+
+lemma spec_1807_den_dvd_three : 3 ∣ ((A060841_val_rat 1807).den : ℤ) := by
+  have h_rat : A060841_val_rat 1807 = ((num_val 1807 / 3 ^ 1798 : ℕ) : ℚ) / (3 * ((den_val 1807 / 3 ^ 1799 : ℕ) : ℚ)) := by
+    rw [A060841_val_rat_eq_num_div_den 1807]
+    have h_num_dvd : 3 ^ 1798 ∣ num_val 1807 := num_val_dvd 1807 (by omega)
+    have h_den_dvd : 3 ^ 1799 ∣ den_val 1807 := den_val_dvd 1807 (by omega)
+    have h_num : (num_val 1807 : ℚ) = (3 ^ 1798 * (num_val 1807 / 3 ^ 1798) : ℚ) := by
+      push_cast
+      congr 1
+      exact (Nat.mul_div_cancel' h_num_dvd).symm
+    have h_den : (den_val 1807 : ℚ) = (3 ^ 1799 * (den_val 1807 / 3 ^ 1799) : ℚ) := by
+      push_cast
+      congr 1
+      exact (Nat.mul_div_cancel' h_den_dvd).symm
+    rw [h_num, h_den]
+    have h_pow3 : (3 : ℚ) ^ 1799 = (3 : ℚ) ^ 1798 * 3 := by
+      have : (3 : ℚ) ^ 1799 = (3 : ℚ) ^ (1798 + 1) := rfl
+      rw [this, pow_add]
+      ring
+    have h_assoc : (3 : ℚ) ^ 1798 * 3 * ((den_val 1807 / 3 ^ 1799 : ℕ) : ℚ) = (3 : ℚ) ^ 1798 * (3 * ((den_val 1807 / 3 ^ 1799 : ℕ) : ℚ)) := by ring
+    rw [h_assoc]
+    exact mul_div_mul_left _ _ (by positivity)
+  have h3 : ¬ 3 ∣ ((num_val 1807 / 3 ^ 1798 : ℕ) : ℤ) := by
+    intro h_dvd
+    have h_dvd_nat : 3 ∣ num_val 1807 / 3 ^ 1798 := by exact_mod_cast h_dvd
+    have h_dvd_all : 3 ^ 1799 ∣ num_val 1807 := by
+      have h_num_dvd : 3 ^ 1798 ∣ num_val 1807 := num_val_dvd 1807 (by omega)
+      have h_eq : num_val 1807 = 3 ^ 1798 * (num_val 1807 / 3 ^ 1798) := (Nat.mul_div_cancel' h_num_dvd).symm
+      rw [h_eq]
+      obtain ⟨k, rfl⟩ := h_dvd_nat
+      use k
+      ring
+    have h_not_dvd := num_val_not_dvd_1807
+    exact h_not_dvd h_dvd_all
+  have hQ : ((den_val 1807 / 3 ^ 1799 : ℕ) : ℤ) ≠ 0 := by
+    have h_pos : den_val 1807 > 0 := den_val_pos 1807
+    intro hc
+    have h_zero : den_val 1807 / 3 ^ 1799 = 0 := by exact_mod_cast hc
+    have h_lt : den_val 1807 < 3 ^ 1799 := Nat.div_eq_zero_iff.mp h_zero |>.elim (by omega) id
+    have h_den_dvd : 3 ^ 1799 ∣ den_val 1807 := den_val_dvd 1807 (by omega)
+    have h_le := Nat.le_of_dvd h_pos h_den_dvd
+    omega
+  exact dvd_den_of_not_dvd h_rat h3 hQ
+
+theorem oeis_60841_conjecture_0.disproof :
+  ¬ (∀ (n : ℕ) (hn : 1 ≤ n),
+    (A060841_val_rat n).den.isPowerOfTwo ∧
+    ((A060841_val_rat n).isInt ↔ n ∈ Icc 1 34 ∨ n = 36 ∨ n = 38)) := by
+  intro h
+  have h_1807 := h 1807 (by omega)
+  have h_pow := h_1807.left
+  have h_dvd := spec_1807_den_dvd_three
+  have h_not_pow := not_isPowerOfTwo_of_dvd_three (by exact_mod_cast h_dvd)
+  exact h_not_pow h_pow

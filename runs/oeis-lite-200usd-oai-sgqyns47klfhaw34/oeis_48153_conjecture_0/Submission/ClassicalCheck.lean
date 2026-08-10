@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Classical.choice
+#check Classical.decEq
+#check Classical.propDecidable
+#check Classical.choice
+#check propComplete
+#check Classical.propComplete
+#check proof_irrel_heq
+#check propext

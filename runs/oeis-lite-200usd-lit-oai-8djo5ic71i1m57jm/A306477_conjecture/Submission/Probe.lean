@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_four_squares
+#check Nat.choose_succ_succ
+#check Nat.succ_choose_succ
+#check Nat.choose_eq_zero_of_lt
+#check Nat.choose_pos
+#check Nat.choose_le_choose
+#check Nat.choose_eq_factorial_div_factorial
+#check Finset.single_le_sum
+#check Nat.exists_eq_add_of_le
+#check exists_lt_or_eq_self
+#check Nat.find
+#check Nat.find_spec
+#check Nat.find_min'

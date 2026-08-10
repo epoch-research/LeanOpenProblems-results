@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:55:8: error: Function expected at\n  actual_sum - 2\nbut this term has type\n  ℕ\n\nNote: Expected a function because this term is being applied to the argument\n  swap_a\nSubmission/Spec.lean:70:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split\n\ncase left\nn : ℕ\nhn : n > 0\n⊢ (∑ k ∈ Ico 1 n,\n        if Nat.Prime k ∧ Nat.Prime (nth Nat.Prime (k - 1) ^ 2 + (nth Nat.Prime (n - 1) - 1) ^ 2) then 1 else 0) >\n      0 ↔\n    ¬n ∣ 6\nSubmission/Spec.lean:89:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split\n\ncase right\nn : ℕ\nhn : n > 0\n⊢ (∑ k ∈ Ico 1 n,\n        if Nat.Prime k ∧ Nat.Prime (nth Nat.Prime (k - 1) ^ 2 + (nth Nat.Prime (n - 1) - 1) ^ 2) then 1 else 0) =\n      1 ↔\n    n = 4 ∨ n = 5 ∨ n = 7 ∨ n = 10 ∨ n = 11 ∨ n = 12 ∨ n = 19 ∨ n = 21 ∨ n = 22 ∨ n = 31 ∨ n = 42 ∨ n = 44",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

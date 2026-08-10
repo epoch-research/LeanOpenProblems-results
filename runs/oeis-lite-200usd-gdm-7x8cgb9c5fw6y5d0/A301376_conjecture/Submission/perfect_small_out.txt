@@ -1,0 +1,23 @@
+V_all size for limit 100000000000000000000000000000000000000000000000000000000000000000000000000000000: 3760
+After [3, 7], uncovered: 2506
+Added p=11, r=13 (covers 274). Uncovered remaining: 2232. Current prod digits: 5
+Added p=31, r=469 (covers 305). Uncovered remaining: 1927. Current prod digits: 8
+Added p=19, r=82 (covers 84). Uncovered remaining: 1843. Current prod digits: 11
+Added p=23, r=329 (covers 79). Uncovered remaining: 1764. Current prod digits: 13
+Added p=43, r=55 (covers 78). Uncovered remaining: 1686. Current prod digits: 17
+Added p=127, r=146 (covers 85). Uncovered remaining: 1601. Current prod digits: 21
+Added p=331, r=139 (covers 58). Uncovered remaining: 1543. Current prod digits: 26
+Added p=59, r=69 (covers 38). Uncovered remaining: 1505. Current prod digits: 30
+Added p=71, r=296 (covers 35). Uncovered remaining: 1470. Current prod digits: 33
+Added p=47, r=21 (covers 28). Uncovered remaining: 1442. Current prod digits: 37
+Added p=79, r=5 (covers 26). Uncovered remaining: 1416. Current prod digits: 40
+Added p=67, r=68 (covers 24). Uncovered remaining: 1392. Current prod digits: 44
+Added p=83, r=4 (covers 24). Uncovered remaining: 1368. Current prod digits: 48
+Added p=151, r=289 (covers 27). Uncovered remaining: 1341. Current prod digits: 52
+Added p=103, r=8 (covers 22). Uncovered remaining: 1319. Current prod digits: 56
+Added p=107, r=134 (covers 22). Uncovered remaining: 1297. Current prod digits: 60
+Added p=683, r=272 (covers 28). Uncovered remaining: 1269. Current prod digits: 66
+Added p=167, r=47 (covers 15). Uncovered remaining: 1254. Current prod digits: 70
+Added p=251, r=81 (covers 16). Uncovered remaining: 1238. Current prod digits: 75
+Added p=131, r=18 (covers 13). Uncovered remaining: 1225. Current prod digits: 79
+Failed to find any prime to cover remaining elements within limit.

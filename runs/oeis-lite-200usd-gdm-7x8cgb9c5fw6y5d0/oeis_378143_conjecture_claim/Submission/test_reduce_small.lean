@@ -1,0 +1,25 @@
+import FormalConjectures.Util.ProblemImports
+
+def N : ℕ := 10 ^ 128 + 1
+
+theorem not_prime_10_128 : ¬ Nat.Prime N := by
+  intro hp
+  have h_ne : (3 : ZMod N) ≠ 0 := by
+    rw [← ZMod.val_ne_zero]
+    rw [ZMod.val_ofNat]
+    norm_num [N]
+  have h_one : (3 : ZMod N) ^ (10 ^ 128) = 1 := @ZMod.pow_card_sub_one_eq_one N ⟨hp⟩ 3 h_ne
+  have h_val : (3 : ZMod N) ^ (10 ^ 128) = 55064974170565576342134751652385338677065605971434707042268229363964185961405774109656827829299487928553403910462344788534709153 := by
+    unfold N
+    reduce_mod_char
+  have h_eq : (1 : ZMod N) = 55064974170565576342134751652385338677065605971434707042268229363964185961405774109656827829299487928553403910462344788534709153 := h_one.symm.trans h_val
+  have h_val_eq : ZMod.val (1 : ZMod N) = ZMod.val (55064974170565576342134751652385338677065605971434707042268229363964185961405774109656827829299487928553403910462344788534709153 : ZMod N) := congr_arg ZMod.val h_eq
+  have h_val1 : ZMod.val (1 : ZMod N) = 1 := by
+    rw [ZMod.val_one_eq_one_mod]
+    norm_num [N]
+  have h_val2 : ZMod.val (55064974170565576342134751652385338677065605971434707042268229363964185961405774109656827829299487928553403910462344788534709153 : ZMod N) = 55064974170565576342134751652385338677065605971434707042268229363964185961405774109656827829299487928553403910462344788534709153 := by
+    rw [ZMod.val_ofNat]
+    norm_num [N]
+  rw [h_val1, h_val2] at h_val_eq
+  have : False := by norm_num at h_val_eq
+  exact this.elim

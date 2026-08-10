@@ -1,0 +1,20 @@
+{
+  "id": "oeis_271513_conjecture_3",
+  "epoch": 1,
+  "uuid": "LjCiVNayMhWSvnebPD7qDa",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 116795,
+      "output_tokens": 1049,
+      "total_tokens": 257426,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 136491,
+      "reasoning_tokens": 3091,
+      "total_cost": 0.20510715000000004
+    }
+  },
+  "oeis_id": "A271513"
+}

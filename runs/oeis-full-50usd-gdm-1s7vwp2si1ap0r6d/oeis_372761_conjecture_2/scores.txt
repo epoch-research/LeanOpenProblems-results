@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:22:0: error: Unknown option `warning`
+  Submission/Spec.lean:235:2: warning: If a problem has a sorry-free proof, it should not be categorised as `open`.
+

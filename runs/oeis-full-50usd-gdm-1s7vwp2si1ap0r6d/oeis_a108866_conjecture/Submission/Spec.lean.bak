@@ -1,0 +1,374 @@
+import FormalConjectures.Util.ProblemImports
+
+/--
+A108866: Numerator of $\sum_{k=1}^n \frac{2^k}{k}$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  (Finset.sum (Finset.range n) fun i : ℕ => (2 : Rat) ^ (i + 1) / ((i + 1) : Rat)).num.natAbs
+
+/--
+The rational number inside the numerator function in the conjecture.
+$$ -\frac{2}{n} + \sum_{k=1}^n \frac{2^k}{k} $$
+-/
+noncomputable def rat_expression (n : ℕ) : Rat :=
+  if h : n > 0 then
+    (-2 : Rat) / (n : Rat) + Finset.sum (Finset.range n) fun i : ℕ => (2 : Rat) ^ (i + 1) / ((i + 1) : Rat)
+  else
+    0
+
+lemma rat_expression_split (n : ℕ) (hn : n > 0) :
+    rat_expression n = Finset.sum (Finset.range (n - 1)) (fun i : ℕ => (2 : Rat) ^ (i + 1) / ((i + 1) : Rat)) + ((2 : Rat)^n - 2) / (n : Rat) := by
+  unfold rat_expression
+  rw [dif_pos hn]
+  have h_eq : n = (n - 1) + 1 := (Nat.sub_add_cancel hn).symm
+  generalize h_m : n - 1 = m
+  have hn_eq : n = m + 1 := by omega
+  rw [hn_eq]
+  rw [Finset.sum_range_succ]
+  generalize h_sum : Finset.sum (Finset.range m) (fun i => (2 : Rat) ^ (i + 1) / ((i + 1) : Rat)) = S
+  push_cast
+  ring
+
+def rat_to_zmod (m : ℕ) (x : ℚ) : ZMod m :=
+  (x.num : ZMod m) * (x.den : ZMod m)⁻¹
+
+theorem rat_eq_zero_iff (m : ℕ) (x : ℚ) (h : Nat.Coprime x.den m) :
+    rat_to_zmod m x = 0 ↔ (x.num : ZMod m) = 0 := by
+  unfold rat_to_zmod
+  constructor
+  · intro h_eq
+    have h_unit : IsUnit (x.den : ZMod m) := by
+      rwa [ZMod.isUnit_iff_coprime]
+    have h_mul : ((x.num : ZMod m) * (x.den : ZMod m)⁻¹) * (x.den : ZMod m) = 0 * (x.den : ZMod m) := by
+      rw [h_eq]
+    rw [zero_mul] at h_mul
+    rw [mul_assoc] at h_mul
+    rw [ZMod.inv_mul_of_unit (x.den : ZMod m) h_unit] at h_mul
+    rw [mul_one] at h_mul
+    exact h_mul
+  · intro h_eq
+    rw [h_eq, zero_mul]
+
+theorem zmod_zero_iff (m : ℕ) (a : ℤ) :
+    (a : ZMod m) = 0 ↔ a ≡ 0 [ZMOD m] := by
+  rw [ZMod.intCast_zmod_eq_zero_iff_dvd]
+  exact Iff.symm (Int.modEq_zero_iff_dvd)
+
+theorem rat_modeq_zero_iff (m : ℕ) (x : ℚ) (h : Nat.Coprime x.den m) :
+    x.num ≡ 0 [ZMOD m] ↔ rat_to_zmod m x = 0 := by
+  rw [← zmod_zero_iff]
+  exact Iff.symm (rat_eq_zero_iff m x h)
+
+theorem rat_to_zmod_add (m : ℕ) (x y : ℚ) (hx : Nat.Coprime x.den m) (hy : Nat.Coprime y.den m) :
+    rat_to_zmod m (x + y) = rat_to_zmod m x + rat_to_zmod m y := by
+  unfold rat_to_zmod
+  have h_prod : Nat.Coprime (x.den * y.den) m := Nat.Coprime.mul_left hx hy
+  have h_sum_den : (x + y).den ∣ x.den * y.den := Rat.add_den_dvd x y
+  have hxy_coprime : Nat.Coprime (x + y).den m := Nat.Coprime.of_dvd_left h_sum_den h_prod
+  have h_unit_x : IsUnit (x.den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_unit_y : IsUnit (y.den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_unit_xy : IsUnit ((x + y).den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_id : (((x + y).num : ZMod m) * (x.den : ZMod m) * (y.den : ZMod m)) =
+      ((x.num : ZMod m) * (y.den : ZMod m) + (y.num : ZMod m) * (x.den : ZMod m)) * ((x + y).den : ZMod m) := by
+    have h_cast := congrArg (fun (a : ℤ) => (a : ZMod m)) (Rat.add_num_den' x y)
+    push_cast at h_cast
+    exact h_cast
+  have h_goal_eq : ((x + y).num : ZMod m) * (((x + y).den : ZMod m))⁻¹ = (x.num : ZMod m) * ((x.den : ZMod m))⁻¹ + (y.num : ZMod m) * ((y.den : ZMod m))⁻¹ := by
+    apply (IsUnit.mul_right_inj h_unit_xy).mp
+    rw [mul_comm, mul_assoc, ZMod.inv_mul_of_unit ((x + y).den : ZMod m) h_unit_xy, mul_one]
+    apply (IsUnit.mul_right_inj h_unit_x).mp
+    apply (IsUnit.mul_right_inj h_unit_y).mp
+    have h_u_x : ((x.den : ZMod m))⁻¹ * (x.den : ZMod m) = 1 := ZMod.inv_mul_of_unit (x.den : ZMod m) h_unit_x
+    have h_u_y : ((y.den : ZMod m))⁻¹ * (y.den : ZMod m) = 1 := ZMod.inv_mul_of_unit (y.den : ZMod m) h_unit_y
+    have h_rhs : (y.den : ZMod m) * ((x.den : ZMod m) * (((x + y).den : ZMod m) * ((x.num : ZMod m) * ((x.den : ZMod m))⁻¹ + (y.num : ZMod m) * ((y.den : ZMod m))⁻¹))) =
+        ((x.num : ZMod m) * (y.den : ZMod m) + (y.num : ZMod m) * (x.den : ZMod m)) * ((x + y).den : ZMod m) := by
+      calc (y.den : ZMod m) * ((x.den : ZMod m) * (((x + y).den : ZMod m) * ((x.num : ZMod m) * ((x.den : ZMod m))⁻¹ + (y.num : ZMod m) * ((y.den : ZMod m))⁻¹)))
+        _ = ((x.num : ZMod m) * (((x.den : ZMod m))⁻¹ * (x.den : ZMod m)) * (y.den : ZMod m) + (y.num : ZMod m) * (((y.den : ZMod m))⁻¹ * (y.den : ZMod m)) * (x.den : ZMod m)) * ((x + y).den : ZMod m) := by ring
+        _ = ((x.num : ZMod m) * 1 * (y.den : ZMod m) + (y.num : ZMod m) * 1 * (x.den : ZMod m)) * ((x + y).den : ZMod m) := by rw [h_u_x, h_u_y]
+        _ = ((x.num : ZMod m) * (y.den : ZMod m) + (y.num : ZMod m) * (x.den : ZMod m)) * ((x + y).den : ZMod m) := by ring
+    have h_lhs : (y.den : ZMod m) * ((x.den : ZMod m) * ((x + y).num : ZMod m)) =
+        ((x + y).num : ZMod m) * (x.den : ZMod m) * (y.den : ZMod m) := by ring
+    rw [h_lhs, h_id, h_rhs]
+  exact h_goal_eq
+
+theorem coprime_sum_den (m : ℕ) {ι : Type*} (s : Finset ι) (f : ι → ℚ) (hf : ∀ i ∈ s, Nat.Coprime (f i).den m) :
+    Nat.Coprime (s.sum f).den m := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+    simp only [Finset.sum_empty]
+    have h0 : (0 : ℚ).den = 1 := rfl
+    rw [h0]
+    exact Nat.coprime_one_left m
+  | insert a s ha ih =>
+    simp only [Finset.sum_insert ha]
+    have h_fi : Nat.Coprime (f a).den m := hf a (Finset.mem_insert_self a s)
+    have h_sum' : ∀ i ∈ s, Nat.Coprime (f i).den m := fun i hi => hf i (Finset.mem_insert_of_mem hi)
+    have h_ih := ih h_sum'
+    have h_prod : Nat.Coprime ((f a).den * (Finset.sum s f).den) m := Nat.Coprime.mul_left h_fi h_ih
+    have h_dvd := Rat.add_den_dvd (f a) (Finset.sum s f)
+    exact Nat.Coprime.of_dvd_left h_dvd h_prod
+
+theorem rat_to_zmod_sum (m : ℕ) {ι : Type*} (s : Finset ι) (f : ι → ℚ) (hf : ∀ i ∈ s, Nat.Coprime (f i).den m) :
+    rat_to_zmod m (s.sum f) = s.sum (fun i => rat_to_zmod m (f i)) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+    simp only [Finset.sum_empty]
+    unfold rat_to_zmod
+    have h0 : (0 : ℚ).num = 0 := rfl
+    have h1 : (0 : ℚ).den = 1 := rfl
+    rw [h0, h1]
+    push_cast
+    rw [zero_mul]
+  | insert a s ha ih =>
+    simp only [Finset.sum_insert ha]
+    have h_fi : Nat.Coprime (f a).den m := hf a (Finset.mem_insert_self a s)
+    have h_sum' : ∀ i ∈ s, Nat.Coprime (f i).den m := fun i hi => hf i (Finset.mem_insert_of_mem hi)
+    have h_ih := ih h_sum'
+    have h_cop : Nat.Coprime (Finset.sum s f).den m := coprime_sum_den m s f h_sum'
+    rw [rat_to_zmod_add m (f a) (Finset.sum s f) h_fi h_cop]
+    rw [h_ih]
+
+
+
+theorem rat_pow_sub_eq_cast_sub {p : ℕ} (hp : p.Prime) : ((2 : Rat)^p - 2) = (((2^p - 2 : ℕ) : Rat)) := by
+  have hp_pos : p > 0 := hp.pos
+  have hp1 : 2^p ≥ 2 := by
+    obtain ⟨k, hk⟩ := Nat.exists_eq_succ_of_ne_zero (ne_of_gt hp_pos)
+    rw [hk]
+    have h2k : 2^k ≥ 1 := Nat.one_le_pow k 2 (by decide)
+    omega
+  have h_sub : (((2^p - 2 : ℕ) : Rat)) = ((2^p : ℕ) : Rat) - 2 := Nat.cast_sub hp1
+  push_cast at h_sub
+  exact h_sub.symm
+
+theorem rat_div_p {p : ℕ} (hp : p.Prime) :
+    (((2^p - 2 : ℕ) : Rat)) / (p : Rat) = ((( (2^p - 2) / p : ℕ) : ℤ) : Rat) := by
+  have hp_pos : p > 0 := hp.pos
+  have h_dvd : p ∣ 2^p - 2 := by
+    have h_dvd_int : (p : ℤ) ∣ (2 : ℤ)^p - 2 := Int.prime_dvd_pow_self_sub hp 2
+    have h_eq_int : ((2^p - 2 : ℕ) : ℤ) = (2 : ℤ)^p - 2 := by
+      have hp1 : 2^p ≥ 2 := by
+        obtain ⟨k, hk⟩ := Nat.exists_eq_succ_of_ne_zero (ne_of_gt hp_pos)
+        rw [hk]
+        have h2k : 2^k ≥ 1 := Nat.one_le_pow k 2 (by decide)
+        omega
+      exact Nat.cast_sub hp1
+    rw [← h_eq_int] at h_dvd_int
+    exact_mod_cast h_dvd_int
+  have h_eq : (((2^p - 2 : ℕ) : Rat)) = (p : Rat) * (((2^p - 2) / p : ℕ) : Rat) := by
+    have h_eq_nat : 2^p - 2 = p * ((2^p - 2) / p) := (Nat.mul_div_cancel' h_dvd).symm
+    exact_mod_cast h_eq_nat
+  rw [h_eq]
+  have hp_ne_zero : (p : Rat) ≠ 0 := by
+    exact_mod_cast Nat.ne_of_gt hp_pos
+  rw [mul_div_cancel_left₀ _ hp_ne_zero]
+  push_cast
+  rfl
+
+theorem rat_to_zmod_cast (m : ℕ) (a : ℤ) : rat_to_zmod m (a : ℚ) = (a : ZMod m) := by
+  unfold rat_to_zmod
+  simp
+
+
+theorem rat_to_zmod_mul (m : ℕ) (x y : ℚ) (hx : Nat.Coprime x.den m) (hy : Nat.Coprime y.den m) :
+    rat_to_zmod m (x * y) = rat_to_zmod m x * rat_to_zmod m y := by
+  unfold rat_to_zmod
+  have h_prod : Nat.Coprime (x.den * y.den) m := Nat.Coprime.mul_left hx hy
+  have h_xy_den : (x * y).den ∣ x.den * y.den := Rat.mul_den_dvd x y
+  have hxy_coprime : Nat.Coprime (x * y).den m := Nat.Coprime.of_dvd_left h_xy_den h_prod
+  have h_unit_x : IsUnit (x.den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_unit_y : IsUnit (y.den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_unit_xy : IsUnit ((x * y).den : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_id : (((x * y).num : ZMod m) * (x.den : ZMod m) * (y.den : ZMod m)) =
+      ((x.num : ZMod m) * (y.num : ZMod m)) * ((x * y).den : ZMod m) := by
+    have h_cast := congrArg (fun (a : ℤ) => (a : ZMod m)) (Rat.mul_num_den' x y)
+    push_cast at h_cast
+    exact h_cast
+  have h_goal_eq : ((x * y).num : ZMod m) * (((x * y).den : ZMod m))⁻¹ = (x.num : ZMod m) * ((x.den : ZMod m))⁻¹ * ((y.num : ZMod m) * ((y.den : ZMod m))⁻¹) := by
+    apply (IsUnit.mul_right_inj h_unit_xy).mp
+    rw [mul_comm, mul_assoc, ZMod.inv_mul_of_unit ((x * y).den : ZMod m) h_unit_xy, mul_one]
+    apply (IsUnit.mul_right_inj h_unit_x).mp
+    apply (IsUnit.mul_right_inj h_unit_y).mp
+    have h_u_x : ((x.den : ZMod m))⁻¹ * (x.den : ZMod m) = 1 := ZMod.inv_mul_of_unit (x.den : ZMod m) h_unit_x
+    have h_u_y : ((y.den : ZMod m))⁻¹ * (y.den : ZMod m) = 1 := ZMod.inv_mul_of_unit (y.den : ZMod m) h_unit_y
+    have h_rhs : (y.den : ZMod m) * ((x.den : ZMod m) * (((x * y).den : ZMod m) * ((x.num : ZMod m) * ((x.den : ZMod m))⁻¹ * ((y.num : ZMod m) * ((y.den : ZMod m))⁻¹)))) =
+        ((x.num : ZMod m) * (y.num : ZMod m)) * ((x * y).den : ZMod m) := by
+      calc (y.den : ZMod m) * ((x.den : ZMod m) * (((x * y).den : ZMod m) * ((x.num : ZMod m) * ((x.den : ZMod m))⁻¹ * ((y.num : ZMod m) * ((y.den : ZMod m))⁻¹))))
+        _ = (((x.num : ZMod m) * (y.num : ZMod m)) * (((x.den : ZMod m))⁻¹ * (x.den : ZMod m)) * (((y.den : ZMod m))⁻¹ * (y.den : ZMod m))) * ((x * y).den : ZMod m) := by ring
+        _ = (((x.num : ZMod m) * (y.num : ZMod m)) * 1 * 1) * ((x * y).den : ZMod m) := by rw [h_u_x, h_u_y]
+        _ = ((x.num : ZMod m) * (y.num : ZMod m)) * ((x * y).den : ZMod m) := by ring
+    have h_lhs : (y.den : ZMod m) * ((x.den : ZMod m) * ((x * y).num : ZMod m)) =
+        ((x * y).num : ZMod m) * (x.den : ZMod m) * (y.den : ZMod m) := by ring
+    rw [h_lhs, h_id, h_rhs]
+  exact h_goal_eq
+
+theorem rat_div_den_dvd (a : ℤ) (b : ℕ) (hb0 : b ≠ 0) :
+    ((a : ℚ) / (b : ℚ)).den ∣ b := by
+  have h_div_mul : ((a : ℚ) / (b : ℚ)) = (a : ℚ) * (b : ℚ)⁻¹ := rfl
+  rw [h_div_mul]
+  have h_den_dvd := Rat.mul_den_dvd (a : ℚ) (b : ℚ)⁻¹
+  have h_a_den : (a : ℚ).den = 1 := rfl
+  rw [h_a_den, one_mul] at h_den_dvd
+  have h_b_inv : ((b : ℚ)⁻¹).den = b := by
+    exact Rat.inv_natCast_den_of_pos (Nat.pos_of_ne_zero hb0)
+  rw [h_b_inv] at h_den_dvd
+  exact h_den_dvd
+
+theorem rat_to_zmod_div_of_ne_zero (m : ℕ) (a : ℤ) (b : ℕ) (hb : Nat.Coprime b m) (hb0 : b ≠ 0) :
+    rat_to_zmod m ((a : ℚ) / (b : ℚ)) = (a : ZMod m) * (b : ZMod m)⁻¹ := by
+  have h_div_eq : ((a : ℚ) / (b : ℚ)) * (b : ℚ) = (a : ℚ) := by
+    apply div_mul_cancel₀
+    exact_mod_cast hb0
+  have h_div_den := rat_div_den_dvd a b hb0
+
+  have hxy_coprime : Nat.Coprime ((a : ℚ) / (b : ℚ)).den m := Nat.Coprime.of_dvd_left h_div_den hb
+  have h_cop_b : Nat.Coprime (b : ℚ).den m := by
+    have h_den : (b : ℚ).den = 1 := rfl
+    rw [h_den]
+    exact Nat.coprime_one_left m
+  have h_mul := rat_to_zmod_mul m ((a : ℚ) / (b : ℚ)) (b : ℚ) hxy_coprime h_cop_b
+  rw [h_div_eq] at h_mul
+  rw [rat_to_zmod_cast] at h_mul
+  have h_b_cast : rat_to_zmod m (b : ℚ) = (b : ZMod m) := by
+    unfold rat_to_zmod
+    simp
+  rw [h_b_cast] at h_mul
+  have h_unit_b : IsUnit (b : ZMod m) := by rwa [ZMod.isUnit_iff_coprime]
+  have h_goal : rat_to_zmod m ((a : ℚ) / (b : ℚ)) = (a : ZMod m) * (b : ZMod m)⁻¹ := by
+    rw [h_mul, mul_assoc, ZMod.mul_inv_of_unit (b : ZMod m) h_unit_b, mul_one]
+  exact h_goal
+
+theorem prime_coprime_pow {p : ℕ} (hp : p.Prime) {a : ℕ} (ha_pos : a > 0) (ha_lt : a < p) :
+    Nat.Coprime a (p^2) := by
+  have hp_cop : Nat.Coprime a p := Nat.Coprime.symm (hp.coprime_iff_not_dvd.mpr (Nat.not_dvd_of_pos_of_lt ha_pos ha_lt))
+  exact Nat.Coprime.pow_right 2 hp_cop
+
+theorem choose_div_succ (n k : ℕ) :
+    ((Nat.choose n k : ℚ) / (k + 1 : ℚ)) = (Nat.choose (n + 1) (k + 1) : ℚ) / (n + 1 : ℚ) := by
+  have h_eq_nat := Nat.add_one_mul_choose_eq n k
+  have h_eq_rat : (( (n + 1) * Nat.choose n k : ℕ) : ℚ) = ((Nat.choose (n + 1) (k + 1) * (k + 1) : ℕ) : ℚ) := by
+    congr 1
+  push_cast at h_eq_rat
+  have hn_ne : (n + 1 : ℚ) ≠ 0 := by
+    exact_mod_cast Nat.succ_ne_zero n
+  have hk_ne : (k + 1 : ℚ) ≠ 0 := by
+    exact_mod_cast Nat.succ_ne_zero k
+  have h_goal : (Nat.choose n k : ℚ) / (k + 1 : ℚ) = (Nat.choose (n + 1) (k + 1) : ℚ) / (n + 1 : ℚ) := by
+    field_simp [hn_ne, hk_ne]
+    rw [mul_comm (Nat.choose n k : ℚ) (n + 1 : ℚ), h_eq_rat]
+    ring
+  exact h_goal
+
+theorem choose_div_succ_sum (m : ℕ) :
+    Finset.sum (Finset.range m) (fun i => (Nat.choose m i : ℚ) / (i + 1 : ℚ)) =
+    ((2 : ℚ)^(m + 1) - 2) / (m + 1 : ℚ) := by
+  have h_term : ∀ i ∈ Finset.range m, (Nat.choose m i : ℚ) / (i + 1 : ℚ) = (Nat.choose (m + 1) (i + 1) : ℚ) / (m + 1 : ℚ) := by
+    intro i _
+    exact choose_div_succ m i
+  rw [Finset.sum_congr rfl h_term]
+  rw [← Finset.sum_div]
+  have h_split : Finset.sum (Finset.range (m + 2)) (fun j => (Nat.choose (m + 1) j : ℚ)) =
+      (Nat.choose (m + 1) 0 : ℚ) + Finset.sum (Finset.range m) (fun i => (Nat.choose (m + 1) (i + 1) : ℚ)) + (Nat.choose (m + 1) (m + 1) : ℚ) := by
+    rw [Finset.sum_range_succ']
+    rw [Finset.sum_range_succ]
+    ring
+  have h_sum_choose : Finset.sum (Finset.range (m + 2)) (fun j => (Nat.choose (m + 1) j : ℚ)) = (2 : ℚ)^(m + 1) := by
+    have h_nat := Nat.sum_range_choose (m + 1)
+    exact_mod_cast h_nat
+  have h_choose_0 : (Nat.choose (m + 1) 0 : ℚ) = 1 := by simp
+  have h_choose_self : (Nat.choose (m + 1) (m + 1) : ℚ) = 1 := by simp
+  rw [h_choose_0, h_choose_self] at h_split
+  have h_sum_eq : Finset.sum (Finset.range m) (fun i => (Nat.choose (m + 1) (i + 1) : ℚ)) = (2 : ℚ)^(m + 1) - 2 := by
+    rw [← h_sum_choose, h_split]
+    ring
+  rw [h_sum_eq]
+
+
+theorem rat_expression_eq_sum {p : ℕ} (hp : p.Prime) (hp3 : p > 3) :
+    rat_expression p = Finset.sum (Finset.range (p - 1)) (fun i => ((2 : ℚ)^(i + 1) + (Nat.choose (p - 1) i : ℚ)) / (i + 1 : ℚ)) := by
+  have hp_pos : p > 0 := hp.pos
+  rw [rat_expression_split p hp_pos]
+  rw [rat_pow_sub_eq_cast_sub hp]
+  rw [rat_div_p hp]
+  have h_cast_eq : ((( (2^p - 2) / p : ℕ) : ℤ) : Rat) = ((2 : ℚ)^p - 2) / (p : ℚ) := by
+    rw [← rat_div_p hp, rat_pow_sub_eq_cast_sub hp]
+  rw [h_cast_eq]
+  have hp_eq : p - 1 + 1 = p := Nat.sub_add_cancel hp_pos
+  have h_choose_sum := choose_div_succ_sum (p - 1)
+  have h_choose_sum_eq : ((2 : ℚ)^(p - 1 + 1) - 2) / (↑(p - 1) + 1 : ℚ) = ((2 : ℚ)^p - 2) / (p : ℚ) := by
+    congr 2
+    · rw [hp_eq]
+    · have h_nat : (p - 1) + 1 = p := hp_eq
+      exact_mod_cast h_nat
+  rw [h_choose_sum_eq] at h_choose_sum
+  rw [← h_choose_sum]
+  rw [← Finset.sum_add_distrib]
+  congr 1
+  ext i
+  ring
+
+theorem rat_expression_den_coprime {p : ℕ} (hp : p.Prime) (hp3 : p > 3) :
+    Nat.Coprime (rat_expression p).den (p^2) := by
+  rw [rat_expression_eq_sum hp hp3]
+  apply coprime_sum_den
+  intro i hi
+  simp only [Finset.mem_range] at hi
+  have h_eq_cast : ((2 : ℚ) ^ (i + 1) + ↑((p - 1).choose i)) / (i + 1 : ℚ) = ((( (2^(i + 1) : ℕ) + (p - 1).choose i : ℤ) : ℚ)) / (((i + 1 : ℕ) : ℚ)) := by
+    push_cast
+    rfl
+  rw [h_eq_cast]
+  have h_div_den := rat_div_den_dvd (((2^(i + 1) : ℕ) + (p - 1).choose i : ℤ)) (i + 1) (Nat.succ_ne_zero i)
+  have h_cop : Nat.Coprime (i + 1) (p^2) := by
+    apply prime_coprime_pow hp (Nat.succ_pos i)
+    omega
+  exact Nat.Coprime.of_dvd_left h_div_den h_cop
+
+theorem rat_expression_prime_to_zmod {p : ℕ} (hp : p.Prime) (hp3 : p > 3) :
+    rat_to_zmod (p^2) (rat_expression p) = Finset.sum (Finset.range (p - 1)) (fun i =>
+      (((2^(i + 1) : ℕ) + (p - 1).choose i : ZMod (p^2))) * (i + 1 : ZMod (p^2))⁻¹) := by
+  have hp_pos : p > 0 := hp.pos
+  rw [rat_expression_eq_sum hp hp3]
+  have h_cop_sum : ∀ i ∈ Finset.range (p - 1), Nat.Coprime (((2 : ℚ)^(i + 1) + (Nat.choose (p - 1) i : ℚ)) / (i + 1 : ℚ)).den (p^2) := by
+    intro i hi
+    simp only [Finset.mem_range] at hi
+    have h_eq_cast : ((2 : ℚ) ^ (i + 1) + ↑((p - 1).choose i)) / (i + 1 : ℚ) = ((( (2^(i + 1) : ℕ) + (p - 1).choose i : ℤ) : ℚ)) / (((i + 1 : ℕ) : ℚ)) := by
+      push_cast
+      rfl
+    rw [h_eq_cast]
+    have h_div_den := rat_div_den_dvd (((2^(i + 1) : ℕ) + (p - 1).choose i : ℤ)) (i + 1) (Nat.succ_ne_zero i)
+    have h_cop_i : Nat.Coprime (i + 1) (p^2) := by
+      apply prime_coprime_pow hp (Nat.succ_pos i)
+      omega
+    exact Nat.Coprime.of_dvd_left h_div_den h_cop_i
+  rw [rat_to_zmod_sum (p^2) (Finset.range (p - 1)) _ h_cop_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  simp only [Finset.mem_range] at hi
+  have h_eq_cast : ((2 : ℚ) ^ (i + 1) + ↑((p - 1).choose i)) / (i + 1 : ℚ) = ((( (2^(i + 1) : ℕ) + (p - 1).choose i : ℤ) : ℚ)) / (((i + 1 : ℕ) : ℚ)) := by
+    push_cast
+    rfl
+  rw [h_eq_cast]
+  have h_cop_i : Nat.Coprime (i + 1) (p^2) := by
+    apply prime_coprime_pow hp (Nat.succ_pos i)
+    omega
+  rw [rat_to_zmod_div_of_ne_zero (p^2) (((2^(i + 1) : ℕ) + (p - 1).choose i : ℤ)) (i + 1) h_cop_i (Nat.succ_ne_zero i)]
+  push_cast
+  rfl
+
+
+
+/--
+A108866 Conjecture: for n > 3, numerator(-2/n + Sum_{k=1..n} 2^k/k) == 0 (mod n^2) if and only if n is prime.
+-/
+theorem oeis_a108866_conjecture {n : ℕ} (hn : n > 3) :
+    (rat_expression n).num ≡ 0 [ZMOD (n^2 : ℤ)] ↔ Nat.Prime n := by
+  constructor
+  · intro h
+    sorry
+  · intro hp
+    have hn_pos : n > 0 := by omega
+    have h_split := rat_expression_split n hn_pos
+    sorry
+

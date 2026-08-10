@@ -1,0 +1,4 @@
+import FormalConjectures.Util.ProblemImports
+#check StrictMono.not_bddAbove_range_of_wellFoundedLT
+#check StrictMono.not_bddBelow_range_of_wellFoundedGT
+#print StrictMono.not_bddAbove_range_of_wellFoundedLT

@@ -1,0 +1,20 @@
+{
+  "id": "A382590_conjecture_kth_prime_factor_is_eventually_periodic",
+  "epoch": 1,
+  "uuid": "REQG5XeZXuYTxJtWjkPeJF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 158189,
+      "output_tokens": 24937,
+      "total_tokens": 3454294,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3271168,
+      "reasoning_tokens": 12731,
+      "total_cost": 3.174639
+    }
+  },
+  "oeis_id": "A382590"
+}

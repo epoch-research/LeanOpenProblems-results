@@ -1,0 +1,10 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:15:64: error: Type mismatch
+    trivial
+  has type
+    True
+  but is expected to have type
+    a (p ^ r) ≡ a (p ^ (r - 1)) [ZMOD ↑p ^ (3 * r + 3)]
+

@@ -1,0 +1,94 @@
+/workspace/leanproject/Submission/Spec.lean:1810:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  2 * 10 ^ (-62)
+in the target expression
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(↑60 + 2))
+
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+q : ℤ
+h1 : π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 < ↑q
+h2 : ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(↑60 + 2))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:1950:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ ↑(n + 1)
+in the target expression
+  ↑k < π / arctan (1 / 10 ^ (n + 1))
+
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+k : ℤ
+h1 : π * 10 ^ (n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (n + 1))
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_pow_cast_real : 10 ^ ↑(n + 1) = 10 ^ (n + 1)
+⊢ ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+/workspace/leanproject/Submission/Spec.lean:1954:13: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ ↑(n + 1)
+in the target expression
+  π * 10 ^ (n + 1) < ↑k
+
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+k : ℤ
+h1 : π * 10 ^ (n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (n + 1))
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_pow_cast_real : 10 ^ ↑(n + 1) = 10 ^ (n + 1)
+⊢ π * 10 ^ (n + 1) < ↑k
+/workspace/leanproject/Submission/Spec.lean:1988:10: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:2010:10: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:2021:8: error: linarith failed to find a contradiction
+case h
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+hS : S_prop (n + 1)
+r' : ℤ
+hr1' : 1 ≤ r'
+hr2' : r' ≤ 9
+q' : ℤ
+h1' : π * 10 ^ (n + 1) - ↑r' / 10 < ↑q'
+h2' : ↑q' < π * 10 ^ (n + 1) - ↑r' / 10 + 2 * 10 ^ (-(↑(n + 1) + 2))
+k' : ℤ := 10 * q' + r'
+this : ↑k' = 10 * ↑q' + ↑r'
+h_pow_eq : 10 ^ (n + 1) = 10 ^ n * 10
+a✝ : 10 * ↑q' + ↑r' ≤ π * (10 ^ n * 10)
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:2029:8: error: linarith failed to find a contradiction
+case h
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+hS : S_prop (n + 1)
+r' : ℤ
+hr1' : 1 ≤ r'
+hr2' : r' ≤ 9
+q' : ℤ
+h1' : π * 10 ^ (n + 1) - ↑r' / 10 < ↑q'
+h2' : ↑q' < π * 10 ^ (n + 1) - ↑r' / 10 + 2 * 10 ^ (-(↑(n + 1) + 2))
+k' : ℤ := 10 * q' + r'
+this : ↑k' = 10 * ↑q' + ↑r'
+h_gt' : π * 10 ^ (n + 1) < ↑k'
+h_pow_eq : 10 ^ (n + 1) = 10 ^ n * 10
+h_zpow_eq : 10 ^ (-(↑n + 1)) = 10 ^ (-(↑n + 2)) * 10
+a✝ : π * (10 ^ n * 10) + 2 * (10 ^ (-(↑n + 2)) * 10) ≤ 10 * ↑q' + ↑r'
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:2063:10: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:2085:10: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:2175:6: error: Type mismatch
+  h_ind.left
+has type
+  S_prop n
+but is expected to have type
+  ¬∃ k, π * 10 ^ ↑(n + 1) < ↑k ∧ ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+'oeis_a011545_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

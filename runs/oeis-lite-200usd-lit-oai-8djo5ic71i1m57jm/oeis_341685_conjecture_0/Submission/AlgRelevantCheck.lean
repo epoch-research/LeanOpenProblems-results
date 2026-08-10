@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check Algebra.IsAlgebraic.finrank_of_isFractionRing
+#check Algebra.IsAlgebraic.lift_rank_of_isFractionRing
+#check Algebra.IsAlgebraic.rank_of_isFractionRing
+#check Algebra.IsAlgebraic.rank_fractionRing
+#check Algebra.IsAlgebraic.rank_fractionRing_polynomial
+#check Algebra.IsAlgebraic.rank_fractionRing_mvPolynomial
+#check Algebra.IsAlgebraic.isAlgebraic_iff
+#check Algebra.IsAlgebraic.transcendental_iff
+#check Algebra.IsAlgebraic.algebraicIndependent_iff
+#check Algebra.IsAlgebraic.tensorProduct
+#check Algebra.IsAlgebraic.extendScalars
+#check Algebra.IsAlgebraic.of_ringHom_of_comp_eq
+#check Algebra.Transcendental.ringHom_of_comp_eq
+#check Algebra.Transcendental.of_ringHom_of_comp_eq

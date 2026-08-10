@@ -1,0 +1,23 @@
+{
+  "id": "A096535_occurs_infinitely_often",
+  "epoch": 1,
+  "uuid": "kFzQ2EXa5hf3f7wcP8P5ME",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 1584,
+      "output_tokens": 397327,
+      "total_tokens": 72168601,
+      "input_tokens_cache_write": 729888,
+      "input_tokens_cache_read": 71039802,
+      "reasoning_tokens": 60067,
+      "total_cost": 50.022796
+    }
+  },
+  "oeis_id": "A096535"
+}

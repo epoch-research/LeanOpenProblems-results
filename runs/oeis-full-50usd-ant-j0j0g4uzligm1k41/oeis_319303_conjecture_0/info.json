@@ -1,0 +1,20 @@
+{
+  "id": "oeis_319303_conjecture_0",
+  "epoch": 1,
+  "uuid": "J64KQY7omTatx6aLBADa3L",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 33,
+      "output_tokens": 27496,
+      "total_tokens": 452446,
+      "input_tokens_cache_write": 37371,
+      "input_tokens_cache_read": 387546,
+      "reasoning_tokens": 5555,
+      "total_cost": 1.1149067499999998
+    }
+  },
+  "oeis_id": "A319303"
+}

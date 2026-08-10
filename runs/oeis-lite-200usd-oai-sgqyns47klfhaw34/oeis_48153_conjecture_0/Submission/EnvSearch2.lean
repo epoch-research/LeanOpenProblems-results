@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check ZMod.LFunction_def_odd
+#check ZMod.LFunction_apply_zero_of_even
+#check DirichletCharacter.zetaMul_nonneg
+#check quadraticChar
+#check ZMod.quadraticChar
+#check legendreSym
+#check ZMod.sum_mul_div_add_sum_mul_div_eq_mul
+#print ZMod.LFunction_def_odd
+#print DirichletCharacter.zetaMul_nonneg

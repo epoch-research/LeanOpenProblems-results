@@ -1,0 +1,191 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1:9: error: unknown namespace `Finset`
+  Submission/Spec.lean:6:27: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    HMul Nat ℕ ?m.12
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:6:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    HMul ℕ Nat ?m.20
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:9: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 0
+  numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:17: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 2
+  numerals are polymorphic in Lean, but the numeral `2` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:25: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 7
+  numerals are polymorphic in Lean, but the numeral `7` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 9
+  numerals are polymorphic in Lean, but the numeral `9` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:41: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 11
+  numerals are polymorphic in Lean, but the numeral `11` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:50: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 12
+  numerals are polymorphic in Lean, but the numeral `12` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:59: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 16
+  numerals are polymorphic in Lean, but the numeral `16` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:68: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 31
+  numerals are polymorphic in Lean, but the numeral `31` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:77: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 33
+  numerals are polymorphic in Lean, but the numeral `33` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:86: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 41
+  numerals are polymorphic in Lean, but the numeral `41` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:94: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 1
+  numerals are polymorphic in Lean, but the numeral `1` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:14:14: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 4
+  numerals are polymorphic in Lean, but the numeral `4` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:14:21: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 2
+  numerals are polymorphic in Lean, but the numeral `2` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:15:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    LT ℕ
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:14:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Decidable (n = 4)
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:13:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Decidable (n = 0 ∨ n = 2 ∨ n = 7 ∨ n = 9 ∨ n = 11 ∨ n = 12 ∨ n = 16 ∨ n = 31 ∨ n = 33 ∨ n = 41)
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:15:10: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 5
+  numerals are polymorphic in Lean, but the numeral `5` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:17:18: error(lean.unknownIdentifier): Unknown identifier `range`
+  Submission/Spec.lean:18:23: error(lean.unknownIdentifier): Unknown identifier `Finset`
+  Submission/Spec.lean:16:13: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    HAdd ℕ Nat ?m.54
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:19:7: error(lean.invalidField): Invalid field notation: Type of
+    RangeB
+  is not known; cannot resolve field `product`
+  Submission/Spec.lean:28:7: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    OfNat ℕ 0
+  numerals are polymorphic in Lean, but the numeral `0` cannot be used in a context where the expected type is
+    ℕ
+  due to the absence of the instance above
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Singleton ?m.77 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.72 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.67 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.62 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.57 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.52 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.47 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.42 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.37 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:23: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+    Insert ?m.32 ?m.28
+  
+  Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+  Submission/Spec.lean:35:62: error: Function expected at
+    Set
+  but this term has type
+    ?m.1
+  
+  Note: Expected a function because this term is being applied to the argument
+    ℕ
+  
+  Hint: The identifier `Set` is unknown, and Lean's `autoImplicit` option causes an unknown identifier to be treated as an implicitly bound variable with an unknown type. However, the unknown type cannot be a function, and a function is what Lean expects here. This is often the result of a typo or a missing `import` or `open` statement.
+  
+  warning: plausible: repository '/workspace/leanproject/.lake/packages/plausible' has local changes
+  warning: importGraph: repository '/workspace/leanproject/.lake/packages/importGraph' has local changes
+

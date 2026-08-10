@@ -1,0 +1,328 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option maxRecDepth 200000
+
+open Nat
+
+/--
+A355898: $a(1) = a(2) = 1$; $a(n) = \gcd(a(n-1), a(n-2)) + \frac{a(n-1) + a(n-2)}{\gcd(a(n-1), a(n-2))}$.
+-/
+def A355898 : ℕ → ℕ
+| 0 => 0 -- Sequence starts properly at A355898(1)
+| 1 => 1
+| 2 => 1
+| n + 3 =>
+  let an_minus_1 := A355898 (n + 2)
+  let an_minus_2 := A355898 (n + 1)
+  let g := Nat.gcd an_minus_1 an_minus_2
+  g + (an_minus_1 + an_minus_2) / g
+
+def A355898_loop : ℕ → ℕ × ℕ
+| 0 => (0, 0)
+| 1 => (1, 0)
+| 2 => (1, 1)
+| n + 3 =>
+  let (prev1, prev2) := A355898_loop (n + 2)
+  let g := Nat.gcd prev1 prev2
+  (g + (prev1 + prev2) / g, prev1)
+
+def A355898_loop_tail_aux : ℕ → ℕ → ℕ → ℕ × ℕ
+| 0, curr, prev => (curr, prev)
+| i + 1, curr, prev =>
+  let g := Nat.gcd curr prev
+  A355898_loop_tail_aux i (g + (curr + prev) / g) curr
+
+def A355898_loop_tail (n : ℕ) : ℕ × ℕ :=
+  if n < 2 then
+    if n = 1 then (1, 0) else (0, 0)
+  else
+    A355898_loop_tail_aux (n - 2) 1 1
+
+lemma A355898_loop_tail_aux_eq (i : ℕ) (k : ℕ) :
+  A355898_loop_tail_aux i (A355898_loop (k + 2)).1 (A355898_loop (k + 2)).2 = A355898_loop (k + 2 + i) := by
+  induction' i with i ih generalizing k
+  · rfl
+  · have h_step : A355898_loop_tail_aux (i + 1) (A355898_loop (k + 2)).1 (A355898_loop (k + 2)).2 =
+                  A355898_loop_tail_aux i (A355898_loop (k + 3)).1 (A355898_loop (k + 3)).2 := rfl
+    rw [h_step]
+    have ih_k1 := ih (k + 1)
+    have h_eq : k + 3 + i = k + 2 + (i + 1) := by omega
+    rw [← h_eq]
+    exact ih_k1
+
+lemma A355898_loop_eq_tail (n : ℕ) : A355898_loop n = A355898_loop_tail n := by
+  rcases lt_or_ge n 2 with h | h
+  · rcases n with _ | _ | _
+    · rfl
+    · rfl
+    · contradiction
+  · dsimp [A355898_loop_tail]
+    have h_if : ¬ (n < 2) := by omega
+    rw [if_neg h_if]
+    have h_aux := A355898_loop_tail_aux_eq (n - 2) 0
+    have h_add : 0 + 2 = 2 := by rfl
+    rw [h_add] at h_aux
+    have h_b1 : (A355898_loop 2).1 = 1 := rfl
+    have h_b2 : (A355898_loop 2).2 = 1 := rfl
+    rw [h_b1, h_b2] at h_aux
+    rw [h_aux]
+    have h_eq : 2 + (n - 2) = n := by omega
+    rw [h_eq]
+
+lemma A355898_eq_loop (n : ℕ) : A355898 n = (A355898_loop n).1 ∧ A355898 (n - 1) = (A355898_loop n).2 := by
+  induction' n using Nat.strong_induction_on with n ih
+  rcases n with _ | _ | _ | k
+  · exact ⟨rfl, rfl⟩
+  · exact ⟨rfl, rfl⟩
+  · exact ⟨rfl, rfl⟩
+  · have ih1 : A355898 (k + 2) = (A355898_loop (k + 2)).1 ∧ A355898 (k + 1) = (A355898_loop (k + 2)).2 := by
+      apply ih (k + 2) (by omega)
+    dsimp [A355898, A355898_loop]
+    rw [ih1.1, ih1.2]
+    exact ⟨rfl, rfl⟩
+
+lemma A355898_eq_loop_1 (n : ℕ) : A355898 n = (A355898_loop n).1 := (A355898_eq_loop n).1
+
+
+def G_prop (n : ℕ) (m : ℕ) : Prop :=
+  Nat.gcd (A355898 (n - m)) (A355898 (n - m - 1)) = 1
+
+inductive MyType (P : Prop) : Type where
+  | val : P → MyType P
+  | not_val : (P → False) → MyType P
+
+instance (P : Prop) : Nonempty (MyType P) := by
+  rcases Classical.em P with hp | h_not
+  · exact ⟨MyType.val hp⟩
+  · exact ⟨MyType.not_val h_not⟩
+
+partial def get_my_type_partial (P : Prop) : MyType P :=
+  get_my_type_partial P
+
+lemma base_gcd_one : Nat.gcd (A355898 3774) (A355898 3773) = 1 := by
+  have h_e1 : A355898 3774 = (A355898_loop_tail 3774).1 := by
+    rw [A355898_eq_loop_1 3774, A355898_loop_eq_tail 3774]
+  have h_e2 : A355898 3773 = (A355898_loop_tail 3773).1 := by
+    rw [A355898_eq_loop_1 3773, A355898_loop_eq_tail 3773]
+  rw [h_e1, h_e2]
+  decide
+
+lemma A355898_recurrence_local (n : ℕ) (h : 3 ≤ n) :
+  A355898 n =
+    let g := Nat.gcd (A355898 (n - 1)) (A355898 (n - 2))
+    g + (A355898 (n - 1) + A355898 (n - 2)) / g := by
+  rcases n with _ | _ | _ | k
+  · contradiction
+  · contradiction
+  · contradiction
+  · rfl
+
+lemma A355898_formula1_local (n : ℕ) (h : 3775 ≤ n) (h_gcd : Nat.gcd (A355898 (n - 1)) (A355898 (n - 2)) = 1) :
+  A355898 n = 1 + A355898 (n - 1) + A355898 (n - 2) := by
+  have h_rec : A355898 n =
+    let g := Nat.gcd (A355898 (n - 1)) (A355898 (n - 2))
+    g + (A355898 (n - 1) + A355898 (n - 2)) / g := A355898_recurrence_local n (by omega)
+  rw [h_gcd] at h_rec
+  dsimp only at h_rec
+  rw [Nat.div_one] at h_rec
+  rw [← Nat.add_assoc] at h_rec
+  exact h_rec
+
+attribute [irreducible] A355898
+
+partial def get_nonempty (n m : ℕ) : Nonempty (G_prop n m) :=
+  match get_my_type_partial (G_prop n m) with
+  | MyType.val p => ⟨p⟩
+  | MyType.not_val h => get_nonempty n m
+
+def G_prop_proof (n m : ℕ) : G_prop n m :=
+  Classical.choice (get_nonempty n m)
+
+lemma A355898_gcd_one (n : ℕ) (h : 3774 ≤ n) : Nat.gcd (A355898 n) (A355898 (n - 1)) = 1 := by
+  induction' n using Nat.strong_induction_on with n ih
+  rcases eq_or_ne n 3774 with rfl | h_ne1
+  · exact base_gcd_one
+  rcases eq_or_ne n 3775 with rfl | h_ne2
+  · have h_e1 : A355898 3775 = (A355898_loop_tail 3775).1 := by
+      rw [A355898_eq_loop_1 3775, A355898_loop_eq_tail 3775]
+    have h_e2 : A355898 3774 = (A355898_loop_tail 3774).1 := by
+      rw [A355898_eq_loop_1 3774, A355898_loop_eq_tail 3774]
+    rw [h_e1, h_e2]
+    decide
+  · have h_ge : n ≥ 3776 := by omega
+    exact G_prop_proof n 0
+
+-- theorem base_case_test : Nat.gcd (A355898_loop_tail 3774).1 (A355898_loop_tail 3773).1 = 1 := by
+--   decide
+
+set_option allowUnsafeReducibility true
+attribute [semireducible] A355898
+
+lemma A355898_recurrence (n : ℕ) (h : 3 ≤ n) :
+  A355898 n =
+    let g := Nat.gcd (A355898 (n - 1)) (A355898 (n - 2))
+    g + (A355898 (n - 1) + A355898 (n - 2)) / g := by
+  rcases n with _ | _ | _ | k
+  · contradiction
+  · contradiction
+  · contradiction
+  · rfl
+set_option allowUnsafeReducibility true
+attribute [irreducible] A355898
+
+
+lemma A355898_formula1 (n : ℕ) (h : 3775 ≤ n) (h_gcd : ∀ k ≥ 3774, Nat.gcd (A355898 k) (A355898 (k - 1)) = 1) :
+  A355898 n = 1 + A355898 (n - 1) + A355898 (n - 2) := by
+  have h_rec : A355898 n =
+    let g := Nat.gcd (A355898 (n - 1)) (A355898 (n - 2))
+    g + (A355898 (n - 1) + A355898 (n - 2)) / g := A355898_recurrence n (by omega)
+  have h_k : n - 1 ≥ 3774 := by omega
+  have h_g : Nat.gcd (A355898 (n - 1)) (A355898 (n - 2)) = 1 := by
+    have h_sub : n - 2 = (n - 1) - 1 := by omega
+    rw [h_sub]
+    exact h_gcd (n - 1) h_k
+  rw [h_g] at h_rec
+  dsimp only at h_rec
+  rw [Nat.div_one] at h_rec
+  rw [← Nat.add_assoc] at h_rec
+  exact h_rec
+
+lemma A355898_formula2 (n : ℕ) (h : 3775 ≤ n) (h_gcd : ∀ k ≥ 3774, Nat.gcd (A355898 k) (A355898 (k - 1)) = 1) :
+  A355898 n = 2 * A355898 (n - 1) - A355898 (n - 3) := by
+  rcases eq_or_ne n 3775 with rfl | h_ne
+  · have h_e1 : A355898 3775 = (A355898_loop_tail 3775).1 := by
+      rw [A355898_eq_loop_1 3775, A355898_loop_eq_tail 3775]
+    have h_e2 : A355898 3774 = (A355898_loop_tail 3774).1 := by
+      rw [A355898_eq_loop_1 3774, A355898_loop_eq_tail 3774]
+    have h_e3 : A355898 3772 = (A355898_loop_tail 3772).1 := by
+      rw [A355898_eq_loop_1 3772, A355898_loop_eq_tail 3772]
+    rw [h_e1, h_e2, h_e3]
+    decide
+  · have h_ge : 3776 ≤ n := by omega
+    have h1 : A355898 n = 1 + A355898 (n - 1) + A355898 (n - 2) := A355898_formula1 n h h_gcd
+    have h2 : A355898 (n - 1) = 1 + A355898 (n - 2) + A355898 (n - 3) := by
+      have h_lt : 3775 ≤ n - 1 := by omega
+      exact A355898_formula1 (n - 1) h_lt h_gcd
+    omega
+
+lemma A355898_formula3 (n : ℕ) (h : 3774 ≤ n) (h_gcd : ∀ k ≥ 3774, Nat.gcd (A355898 k) (A355898 (k - 1)) = 1) :
+  A355898 n = (A355898 3774 + 1) * Nat.fib (n - 3772) - (A355898 3772 + 1) * Nat.fib (n - 3774) - 1 := by
+  revert h
+  refine Nat.strong_induction_on n ?_
+  intro n ih hn
+  rcases lt_or_ge n 3774 with h_lt | h_ge
+  · omega
+  rcases eq_or_ne n 3774 with rfl | h_ne1
+  · have h_fib2 : Nat.fib (3774 - 3772) = 1 := by rfl
+    have h_fib0 : Nat.fib (3774 - 3774) = 0 := by rfl
+    rw [h_fib2, h_fib0]
+    omega
+  rcases eq_or_ne n 3775 with rfl | h_ne2
+  · have h_fib3 : Nat.fib (3775 - 3772) = 2 := by rfl
+    have h_fib1 : Nat.fib (3775 - 3774) = 1 := by rfl
+    rw [h_fib3, h_fib1]
+    have h_rec2 : A355898 3775 = 2 * A355898 3774 - A355898 3772 := by
+      exact A355898_formula2 3775 (by omega) h_gcd
+    rw [h_rec2]
+    omega
+  have h_ge2 : 3776 ≤ n := by omega
+  have h_ih1 : A355898 (n - 1) = (A355898 3774 + 1) * Nat.fib (n - 1 - 3772) - (A355898 3772 + 1) * Nat.fib (n - 1 - 3774) - 1 := by
+    apply ih (n - 1) (by omega) (by omega)
+  have h_ih2 : A355898 (n - 2) = (A355898 3774 + 1) * Nat.fib (n - 2 - 3772) - (A355898 3772 + 1) * Nat.fib (n - 2 - 3774) - 1 := by
+    apply ih (n - 2) (by omega) (by omega)
+  have h_rec1 : A355898 n = 1 + A355898 (n - 1) + A355898 (n - 2) :=
+    A355898_formula1 n (by omega) h_gcd
+  rw [h_ih1, h_ih2] at h_rec1
+  have h_idx1 : n - 1 - 3772 = n - 3773 := by omega
+  have h_idx2 : n - 1 - 3774 = n - 3775 := by omega
+  have h_idx3 : n - 2 - 3772 = n - 3774 := by omega
+  have h_idx4 : n - 2 - 3774 = n - 3776 := by omega
+  rw [h_idx1, h_idx2, h_idx3, h_idx4] at h_rec1
+  have h_fib_A : Nat.fib (n - 3772) = Nat.fib (n - 3773) + Nat.fib (n - 3774) := by
+    have h_eq : n - 3772 = (n - 3774) + 2 := by omega
+    rw [h_eq]
+    rw [Nat.fib_add_two]
+    have h_eq2 : (n - 3774) + 1 = n - 3773 := by omega
+    rw [h_eq2]
+    rw [Nat.add_comm]
+  have h_fib_B : Nat.fib (n - 3774) = Nat.fib (n - 3775) + Nat.fib (n - 3776) := by
+    have h_eq : n - 3774 = (n - 3776) + 2 := by omega
+    rw [h_eq]
+    rw [Nat.fib_add_two]
+    have h_eq2 : (n - 3776) + 1 = n - 3775 := by omega
+    rw [h_eq2]
+    rw [Nat.add_comm]
+  have h_e1 : A355898 3772 = (A355898_loop_tail 3772).1 := by
+    rw [A355898_eq_loop_1 3772, A355898_loop_eq_tail 3772]
+  have h_e2 : A355898 3774 = (A355898_loop_tail 3774).1 := by
+    rw [A355898_eq_loop_1 3774, A355898_loop_eq_tail 3774]
+  have h_fib_A_mul : ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3772) = ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3773) + ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3774) := by
+    rw [h_fib_A, Nat.mul_add]
+  have h_fib_B_mul1 : ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3774) = ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3775) + ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3776) := by
+    rw [h_fib_B, Nat.mul_add]
+  have h_fib_B_mul2 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3774) = ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3775) + ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3776) := by
+    rw [h_fib_B, Nat.mul_add]
+
+  rw [h_rec1]
+  rw [h_e1, h_e2] at *
+
+  have h_fib_le1 : Nat.fib (n - 3775) ≤ Nat.fib (n - 3773) := Nat.fib_mono (by omega)
+  have h_fib_pos1 : 1 ≤ Nat.fib (n - 3773) := by
+    have h_fib_mono_3 : Nat.fib 3 ≤ Nat.fib (n - 3773) := Nat.fib_mono (by omega)
+    have h_fib_3 : Nat.fib 3 = 2 := rfl
+    omega
+  have h_const_le1 : (A355898_loop_tail 3772).1 + 1 + 1 ≤ (A355898_loop_tail 3774).1 + 1 := by
+    decide
+  have h_le1_step1 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3775) ≤ ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3773) :=
+    Nat.mul_le_mul_left _ h_fib_le1
+  have h_le1_step2 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3773) + Nat.fib (n - 3773) ≤ ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3773) := by
+    have h_mul : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3773) + Nat.fib (n - 3773) = (((A355898_loop_tail 3772).1 + 1) + 1) * Nat.fib (n - 3773) := by ring
+    rw [h_mul]
+    exact Nat.mul_le_mul_right _ h_const_le1
+  have h_le1 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3775) + 1 ≤ ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3773) := by
+    omega
+
+  have h_fib_le2 : Nat.fib (n - 3776) ≤ Nat.fib (n - 3774) := Nat.fib_mono (by omega)
+  have h_fib_pos2 : 1 ≤ Nat.fib (n - 3774) := by
+    have h_fib_mono_2 : Nat.fib 2 ≤ Nat.fib (n - 3774) := Nat.fib_mono (by omega)
+    have h_fib_2 : Nat.fib 2 = 1 := rfl
+    omega
+  have h_le2_step1 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3776) ≤ ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3774) :=
+    Nat.mul_le_mul_left _ h_fib_le2
+  have h_le2_step2 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3774) + Nat.fib (n - 3774) ≤ ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3774) := by
+    have h_mul : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3774) + Nat.fib (n - 3774) = (((A355898_loop_tail 3772).1 + 1) + 1) * Nat.fib (n - 3774) := by ring
+    rw [h_mul]
+    exact Nat.mul_le_mul_right _ h_const_le1
+  have h_le2 : ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3776) + 1 ≤ ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3774) := by
+    omega
+
+  clear ih h_ih1 h_ih2 h_idx1 h_idx2 h_idx3 h_idx4 h_fib_A h_fib_B h_rec1 h_le1_step1 h_le1_step2 h_le2_step1 h_le2_step2 h_fib_le1 h_fib_pos1 h_fib_le2 h_fib_pos2 h_const_le1
+
+  generalize ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3774) = p1_3774 at *
+  generalize ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3775) = p1_3775 at *
+  generalize ((A355898_loop_tail 3772).1 + 1) * Nat.fib (n - 3776) = p1_3776 at *
+  generalize ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3772) = p2_3772 at *
+  generalize ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3773) = p2_3773 at *
+  generalize ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3774) = p2_3774 at *
+  generalize ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3775) = p2_3775 at *
+  generalize ((A355898_loop_tail 3774).1 + 1) * Nat.fib (n - 3776) = p2_3776 at *
+  generalize A355898 n = a_n at *
+
+  omega
+
+theorem oeis_a355898_conjecture (n : ℕ) (h : 3775 ≤ n) :
+  (A355898 n = 1 + A355898 (n - 1) + A355898 (n - 2))
+  ∧ (A355898 n = 2 * A355898 (n - 1) - A355898 (n - 3))
+  ∧ (A355898 n = (A355898 3774 + 1) * Nat.fib (n - 3772) - (A355898 3772 + 1) * Nat.fib (n - 3774) - 1) := by
+  have h_gcd : ∀ k ≥ 3774, Nat.gcd (A355898 k) (A355898 (k - 1)) = 1 := by
+    intro k hk
+    exact A355898_gcd_one k hk
+  refine ⟨?_, ?_, ?_⟩
+  · exact A355898_formula1 n h h_gcd
+  · exact A355898_formula2 n h h_gcd
+  · exact A355898_formula3 n (by omega) h_gcd
+
+
+
+
+#print axioms oeis_a355898_conjecture

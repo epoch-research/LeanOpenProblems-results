@@ -1,0 +1,94 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:678:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    c ≥ 1
+    2*c - e ≤ -3
+    4*c - e ≤ -5
+    b ≥ 3
+    b - c ≥ 1
+    b ≥ 0
+    b ≥ 0
+    b ≥ 0
+    b ≥ 0
+    2*b + 2*c - e ≥ -3
+  where
+   b := ↑R / 2
+   c := ↑p / 2
+   e := ↑(a (p + 2))
+  Submission/Spec.lean:714:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    j ≥ 0
+    i ≥ 1
+    h ≥ 0
+    g ≥ 4
+    g ≥ 1
+    g ≥ 1
+    2*g - h ≥ 2
+    2*g - j ≤ 0
+    4*g - j ≤ 0
+    f ≥ 0
+    e ≥ 0
+    e - 2*g ≤ -2
+    c ≥ 2
+    c - 4*g ≥ -2
+    c - 2*g ≥ 2
+    b ≥ 1
+    b - g ≤ -2
+  where
+   b := ↑p / 2
+   c := ↑n
+   e := ↑(R.gcd (a (R + 2 - 1)))
+   f := ↑(if (R + 2) % 2 = 0 then (R + 2).gcd (a (R + 2 - 1)) else (R + 2 - 2).gcd (a (R + 2 - 1)))
+   g := ↑(R + 2) / 2
+   h := ↑(R.gcd (a (R + 1)))
+   i := ↑(a (R + 1)) % ↑R
+   j := ↑(a (R + 1))
+  Submission/Spec.lean:761:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    c ≥ 1
+    2*c - e ≤ -3
+    4*c - e ≤ -5
+    b ≥ 3
+    b - c ≥ 2
+    b ≥ 0
+    b ≥ 0
+    b ≥ 0
+    b ≥ 0
+    2*b + 2*c - e ≥ -3
+  where
+   b := ↑R / 2
+   c := ↑q / 2
+   e := ↑(a (q + 2))
+  Submission/Spec.lean:797:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    j ≥ 0
+    i ≥ 1
+    h ≥ 0
+    g ≥ 4
+    g ≥ 1
+    g ≥ 1
+    2*g - h ≥ 2
+    2*g - j ≤ 0
+    4*g - j ≤ 0
+    f ≥ 0
+    e ≥ 0
+    e - 2*g ≤ -2
+    c ≥ 2
+    c - 4*g ≥ -2
+    c - 2*g ≥ 2
+    b ≥ 1
+    b - g ≤ -3
+  where
+   b := ↑q / 2
+   c := ↑n
+   e := ↑(R.gcd (a (R + 2 - 1)))
+   f := ↑(if (R + 2) % 2 = 0 then (R + 2).gcd (a (R + 2 - 1)) else (R + 2 - 2).gcd (a (R + 2 - 1)))
+   g := ↑(R + 2) / 2
+   h := ↑(R.gcd (a (R + 1)))
+   i := ↑(a (R + 1)) % ↑R
+   j := ↑(a (R + 1))
+

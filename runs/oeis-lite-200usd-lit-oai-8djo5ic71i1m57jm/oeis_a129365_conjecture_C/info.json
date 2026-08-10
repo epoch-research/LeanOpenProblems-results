@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "EZ9QGWzrsyEm754BNvLHMG",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 98139,
+      "output_tokens": 27551,
+      "total_tokens": 2456314,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2330624,
+      "reasoning_tokens": 12619,
+      "total_cost": 2.4825369999999998
+    }
+  },
+  "oeis_id": "A129365"
+}

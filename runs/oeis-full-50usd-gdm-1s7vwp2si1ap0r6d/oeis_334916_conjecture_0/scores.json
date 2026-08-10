@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:578:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).1 *\n    (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).2\nin the target expression\n  (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).1 *\n      (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).2 =\n    foldl fold_val d_curr (d_next :: ds_rest')\n\nA : ℕ\nh_A : A > 1\nh_pos : A > 0\nL'' : ℕ\nh_len : (digits 6 A).length = L'' + 1 + 1\nh_L_ne : L'' + 1 + 1 ≠ 0\nh_L_pos : L'' + 1 + 1 > 0\nd_curr d_next : ℕ\nds_rest' : List ℕ\nh_baseless :\n  (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).1 *\n      (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).2 =\n    A\nh_eq : (digits 6 A).reverse = d_curr :: d_next :: ds_rest'\nh_len_ds : (d_next :: ds_rest').length = L''.succ\nhd_curr_ne : d_curr ≠ 0\nhd_curr_lt : d_curr < 6\nhd_curr : d_curr ≤ 5\nhd_curr_mem : d_curr ∈ [1, 2, 3, 4, 5]\nh_all : ∀ x ∈ d_next :: ds_rest', x ≤ 5\nh_fold_eq : foldl fold_val d_curr (d_next :: ds_rest') = A\n⊢ (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).1 *\n      (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).2 =\n    foldl fold_val d_curr (d_next :: ds_rest')\nSubmission/Spec.lean:659:8: warning: declaration uses 'sorry'",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

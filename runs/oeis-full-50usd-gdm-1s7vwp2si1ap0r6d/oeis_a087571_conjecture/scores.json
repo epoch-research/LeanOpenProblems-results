@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:415:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:470:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:525:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:580:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:635:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:690:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:745:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:800:6: error: (kernel) deep recursion detected\nSubmission/Spec.lean:862:8: warning: declaration uses 'sorry'",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

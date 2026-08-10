@@ -1,0 +1,23 @@
+{
+  "id": "A270966_conjecture",
+  "epoch": 1,
+  "uuid": "ngzAYPzg6s3YLXDrkaQF23",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 6158757,
+      "output_tokens": 842704,
+      "total_tokens": 294970741,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 287969280,
+      "reasoning_tokens": 471938,
+      "total_cost": 200.059545
+    }
+  },
+  "oeis_id": "A270966"
+}

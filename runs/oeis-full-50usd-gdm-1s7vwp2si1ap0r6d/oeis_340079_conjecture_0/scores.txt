@@ -1,0 +1,406 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1135:41: error: unsolved goals
+  n : ℕ
+  ha : a n = 1
+  hn1 : ¬n = 1
+  h_sq : Squarefree n
+  hn0 : ¬n = 0
+  hn_pos : n > 0
+  hn_gt1 : n > 1
+  p : ℕ := n.minFac
+  hp : Nat.Prime p
+  hp_dvd : p ∣ n
+  m : ℕ := n / p
+  h_eq : n = p * m
+  h_not_dvd_m : ¬p ∣ m
+  hm1 : ¬m = 1
+  hm_ne_zero : m ≠ 0
+  hm_gt1 : m > 1
+  h_n_dvd : n ∣ 1 + A018804 n
+  hp_dvd_A : p ∣ 1 + (2 * p - 1) * A018804 m
+  hm_pos : m > 0
+  h_A_eq : A018804 n = (2 * p - 1) * A018804 m
+  X : ℕ := (2 * p - 1) * A018804 m
+  h_alg_eq : X + 1 + A018804 m = p * (2 * A018804 m) + 1
+  c✝ : ℕ
+  hc✝ : X + 1 = p * c✝
+  h_mod : (X + 1 + A018804 m) % p = A018804 m % p
+  h_mod_val : (X + 1 + A018804 m) % p = 1
+  h_mod_m : A018804 m % p = 1
+  q : ℕ := m.minFac
+  hq : Nat.Prime q
+  hq_dvd_m : q ∣ m
+  hq_dvd_n : q ∣ n
+  hp_le_q : p ≤ q
+  hp_lt_q : p < q
+  k : ℕ := m / q
+  h_eq_m : m = q * k
+  hm_sq : Squarefree m
+  h_not_dvd_k : ¬q ∣ k
+  hk_ne_zero : k ≠ 0
+  hk_pos : k > 0
+  h_Am_eq : A018804 m = (2 * q - 1) * A018804 k
+  hq_dvd_A : q ∣ 1 + (2 * p - 1) * (2 * q - 1) * A018804 k
+  h_An_eq2 : A018804 n = (2 * p - 1) * (2 * q - 1) * A018804 k
+  Y : ℕ := (2 * p - 1) * A018804 k
+  h_alg_eq2 : (2 * q - 1) * Y + 1 + Y = q * (2 * Y) + 1
+  c' : ℕ
+  h_mod2 : ((2 * q - 1) * Y + 1 + Y) % q = Y % q
+  h_mod_val2 : ((2 * q - 1) * Y + 1 + Y) % q = 1
+  h_mod_Y : Y % q = 1
+  hq_dvd_Y1 : q ∣ Y - 1
+  h_Y1_pos : Y - 1 > 0
+  h_q_le : q ≤ Y - 1
+  hk1 : ¬k = 1
+  r : ℕ := k.minFac
+  hr : Nat.Prime r
+  hr_dvd_k : r ∣ k
+  hr_dvd_m : r ∣ m
+  h_r_ne_q : r ≠ q
+  hq_le_r : q ≤ r
+  hq_lt_r : q < r
+  hp_ge_2 : p ≥ 2
+  h_succ : (2 * p - 1).succ = 2 * p
+  h_Y_add : Y + A018804 k = p * (2 * A018804 k)
+  h_alg_p : (2 * q - 1) * Y + 1 + A018804 m = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_alg_p2 : q * c' + A018804 m = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_m_eq : A018804 m = p * (A018804 m / p) + 1
+  h_alg_p3 : q * c' + (p * (A018804 m / p) + 1) = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_alg_p4 : q * c' + p * (A018804 m / p) = p * ((2 * q - 1) * (2 * A018804 k))
+  hp_dvd_qc' : p ∣ q * c'
+  h_not_p_dvd_q : ¬p ∣ q
+  h_cop_pq : p.Coprime q
+  hp_dvd_c' : p ∣ c'
+  hr_dvd_n : r ∣ n
+  hr_dvd_An1 : r ∣ 1 + A018804 n
+  h_An1_eq : 1 + A018804 n = q * c'
+  hr_dvd_qc' : r ∣ q * c'
+  h_not_q_dvd_r : ¬q ∣ r
+  h_cop_qr : q.Coprime r
+  hr_dvd_c' : r ∣ c'
+  h_not_p_dvd_r : ¬p ∣ r
+  h_cop_pr : p.Coprime r
+  d : ℕ
+  hc' : (2 * q - 1) * Y + 1 = q * (p * r * d)
+  hd : c' = p * r * d
+  hd_eq : q * (p * r * d) = q * p * r * d
+  h_alg_eq4 : q * p * r * d = (2 * q - 1) * Y + 1
+  k' : ℕ := k / r
+  h_eq_k : k = r * k'
+  hk_sq : Squarefree k
+  h_not_dvd_k' : ¬r ∣ k'
+  hk'_ne_zero : k' ≠ 0
+  hk'_pos : k' > 0
+  h_Ak_eq : A018804 k = (2 * r - 1) * A018804 k'
+  h_Y_eq_Ak' : Y = (2 * p - 1) * (2 * r - 1) * A018804 k'
+  h_alg_eq5 : q * p * r * d = (2 * q - 1) * ((2 * p - 1) * (2 * r - 1) * A018804 k') + 1
+  hk'_ge : A018804 k' ≥ 1
+  h_Ak'_ge_k' : A018804 k' ≥ k'
+  B : ℕ := (2 * q - 1) * (2 * p - 1) * A018804 k'
+  hr_dvd_term : r ∣ B * (2 * r - 1) + 1
+  hq_ge : 3 ≤ q
+  hp_ge : 2 ≤ p
+  h_fac1 : 5 ≤ 2 * q - 1
+  h_fac2 : 3 ≤ 2 * p - 1
+  h_prod : 15 ≤ (2 * q - 1) * (2 * p - 1)
+  hB_ge : 15 ≤ B
+  h_term_eq : (2 * q - 1) * ((2 * p - 1) * (2 * r - 1) * A018804 k') + 1 = B * (2 * r - 1) + 1
+  hr_ge_2 : r ≥ 2
+  h_add_eq : B * (2 * r - 1) + 1 + B = r * (2 * B) + 1
+  hB_eq : B = B - 1 + 1
+  h_alg_add : r * (2 * B) = B * (2 * r - 1) + 1 + (B - 1)
+  hr_dvd_B1 : r ∣ B - 1
+  hB1_pos : B - 1 > 0
+  hr_le_B1 : r ≤ B - 1
+  hn_eq_all : n = q * p * r * k'
+  h_div_n_c' : q * p * r * k' ∣ q * c'
+  hq_pos : q > 0
+  h_div_prk' : p * r * k' ∣ c'
+  hp2 : p = 2
+  hq3 : q ≠ 3
+  hq_ge5 : 5 ≤ q
+  hr_ge7 : 7 ≤ r
+  j : ℕ := (B - 1) / r
+  h_B1_eq_rj : B - 1 = r * j
+  h_eq' : q * p * d + j = r * (2 * j) + 2
+  hj_even : j % 2 = 0
+  h : ℕ := j / 2
+  h_eq_2h : j = 2 * h
+  h_qd_add_h : q * d + h = 2 * r * h + 1
+  h_sub_id : (2 * r - 1) * h + h = 2 * r * h
+  h_qd_eq : q * d = (2 * r - 1) * h + 1
+  h_B_p2 : B = 3 * (2 * q - 1) * A018804 k'
+  h_B_eq : 3 * (2 * q - 1) * A018804 k' = 2 * r * h + 1
+  hk'1 : ¬k' = 1
+  h_alg_sum2 : 2 * q * r * d + (6 * q + 6 * r - 3) * A018804 k' = 12 * q * r * A018804 k' + 1
+  h_lt_6A : d < 6 * A018804 k'
+  Y_pos : ℕ := 6 * A018804 k' - d
+  h_Y_pos_gt : Y_pos > 0
+  h_Y_alg : 2 * q * r * Y_pos + 1 = (6 * q + 6 * r - 3) * A018804 k'
+  h_qr_ineq : 6 * q + 6 * r - 3 < 2 * q * r
+  h_Y_pos_lt : Y_pos < A018804 k'
+  h_Ak'_odd : A018804 k' % 2 = 1
+  hk'_odd : k' % 2 = 1
+  h_Ak'_ge_2 : A018804 k' ≥ 2
+  h_Ak'_ne_2 : A018804 k' ≠ 2
+  h_Ak'_ge_3 : A018804 k' ≥ 3
+  h_exact : 2 * r * q * d = 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  h_k'_dvd_exact : k' ∣ 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  hk'_gt1 : k' > 1
+  g : ℕ := k'.minFac
+  hg : Nat.Prime g
+  h_g_dvd : g ∣ k'
+  h_g_dvd_exact : g ∣ 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  k'' : ℕ := k' / g
+  hk'_eq : k' = g * k''
+  hk''_pos : k'' > 0
+  h_sq_k' : Squarefree k'
+  hg_not_dvd_k'' : ¬g ∣ k''
+  h_Ak''_ge_k'' : A018804 k'' ≥ k''
+  h_Agk'' : A018804 k' = (2 * g - 1) * A018804 k''
+  c : ℕ
+  hc : d = k' * c
+  A_val : ℕ
+  h_A_pos : A_val > 0
+  h_A : A018804 k'' = A_val
+  h_Agk''_val : A018804 k' = (2 * g - 1) * A_val
+  h_g_k''_c : d = g * k'' * c
+  h_k''c_lt : k'' * c < 12 * A_val
+  h_c_ge6 : c ≥ 6
+  M : ℕ := 3 * (2 * q - 1) * (2 * r - 1) * A_val
+  h_g_dvd_M : g ∣ (2 * g - 1) * M + 1
+  h_M_pos : M > 0
+  h_M_ge1 : M ≥ 1
+  h_sub_mul_eq : (2 * g - 1) * M = 2 * g * M - M
+  h_eq_omega : (2 * g - 1) * M + 1 + (M - 1) = 2 * g * M
+  h_g_dvd_sum : g ∣ (2 * g - 1) * M + 1 + (M - 1)
+  h_g_dvd_M1 : g ∣ M - 1
+  ⊢ 1 + (q * 2 - 1) * (r * 2 - 1) * (g * 2 - 1) * A018804 k'' * 3 =
+      1 + (q * 2 - 1) * (r * 2 - 1) * (g * 2 - 1) * A_val * 3
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1156:76: error: unsolved goals
+  n : ℕ
+  ha : a n = 1
+  hn1 : ¬n = 1
+  h_sq : Squarefree n
+  hn0 : ¬n = 0
+  hn_pos : n > 0
+  hn_gt1 : n > 1
+  p : ℕ := n.minFac
+  hp : Nat.Prime p
+  hp_dvd : p ∣ n
+  m : ℕ := n / p
+  h_eq : n = p * m
+  h_not_dvd_m : ¬p ∣ m
+  hm1 : ¬m = 1
+  hm_ne_zero : m ≠ 0
+  hm_gt1 : m > 1
+  h_n_dvd : n ∣ 1 + A018804 n
+  hp_dvd_A : p ∣ 1 + (2 * p - 1) * A018804 m
+  hm_pos : m > 0
+  h_A_eq : A018804 n = (2 * p - 1) * A018804 m
+  X : ℕ := (2 * p - 1) * A018804 m
+  h_alg_eq : X + 1 + A018804 m = p * (2 * A018804 m) + 1
+  c✝ : ℕ
+  hc✝¹ : X + 1 = p * c✝
+  h_mod : (X + 1 + A018804 m) % p = A018804 m % p
+  h_mod_val : (X + 1 + A018804 m) % p = 1
+  h_mod_m : A018804 m % p = 1
+  q : ℕ := m.minFac
+  hq : Nat.Prime q
+  hq_dvd_m : q ∣ m
+  hq_dvd_n : q ∣ n
+  hp_le_q : p ≤ q
+  hp_lt_q : p < q
+  k : ℕ := m / q
+  h_eq_m : m = q * k
+  hm_sq : Squarefree m
+  h_not_dvd_k : ¬q ∣ k
+  hk_ne_zero : k ≠ 0
+  hk_pos : k > 0
+  h_Am_eq : A018804 m = (2 * q - 1) * A018804 k
+  hq_dvd_A : q ∣ 1 + (2 * p - 1) * (2 * q - 1) * A018804 k
+  h_An_eq2 : A018804 n = (2 * p - 1) * (2 * q - 1) * A018804 k
+  Y✝ : ℕ := (2 * p - 1) * A018804 k
+  h_alg_eq2 : (2 * q - 1) * Y✝ + 1 + Y✝ = q * (2 * Y✝) + 1
+  c' : ℕ
+  h_mod2 : ((2 * q - 1) * Y✝ + 1 + Y✝) % q = Y✝ % q
+  h_mod_val2 : ((2 * q - 1) * Y✝ + 1 + Y✝) % q = 1
+  h_mod_Y : Y✝ % q = 1
+  hq_dvd_Y1 : q ∣ Y✝ - 1
+  h_Y1_pos : Y✝ - 1 > 0
+  h_q_le : q ≤ Y✝ - 1
+  hk1 : ¬k = 1
+  r : ℕ := k.minFac
+  hr : Nat.Prime r
+  hr_dvd_k : r ∣ k
+  hr_dvd_m : r ∣ m
+  h_r_ne_q : r ≠ q
+  hq_le_r : q ≤ r
+  hq_lt_r : q < r
+  hp_ge_2 : p ≥ 2
+  h_succ : (2 * p - 1).succ = 2 * p
+  h_Y_add : Y✝ + A018804 k = p * (2 * A018804 k)
+  h_alg_p : (2 * q - 1) * Y✝ + 1 + A018804 m = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_alg_p2 : q * c' + A018804 m = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_m_eq : A018804 m = p * (A018804 m / p) + 1
+  h_alg_p3 : q * c' + (p * (A018804 m / p) + 1) = p * ((2 * q - 1) * (2 * A018804 k)) + 1
+  h_alg_p4 : q * c' + p * (A018804 m / p) = p * ((2 * q - 1) * (2 * A018804 k))
+  hp_dvd_qc' : p ∣ q * c'
+  h_not_p_dvd_q : ¬p ∣ q
+  h_cop_pq : p.Coprime q
+  hp_dvd_c' : p ∣ c'
+  hr_dvd_n : r ∣ n
+  hr_dvd_An1 : r ∣ 1 + A018804 n
+  h_An1_eq : 1 + A018804 n = q * c'
+  hr_dvd_qc' : r ∣ q * c'
+  h_not_q_dvd_r : ¬q ∣ r
+  h_cop_qr : q.Coprime r
+  hr_dvd_c' : r ∣ c'
+  h_not_p_dvd_r : ¬p ∣ r
+  h_cop_pr : p.Coprime r
+  d : ℕ
+  hc' : (2 * q - 1) * Y✝ + 1 = q * (p * r * d)
+  hd : c' = p * r * d
+  hd_eq : q * (p * r * d) = q * p * r * d
+  h_alg_eq4 : q * p * r * d = (2 * q - 1) * Y✝ + 1
+  k' : ℕ := k / r
+  h_eq_k : k = r * k'
+  hk_sq : Squarefree k
+  h_not_dvd_k' : ¬r ∣ k'
+  hk'_ne_zero : k' ≠ 0
+  hk'_pos : k' > 0
+  h_Ak_eq : A018804 k = (2 * r - 1) * A018804 k'
+  h_Y_eq_Ak' : Y✝ = (2 * p - 1) * (2 * r - 1) * A018804 k'
+  h_alg_eq5 : q * p * r * d = (2 * q - 1) * ((2 * p - 1) * (2 * r - 1) * A018804 k') + 1
+  hk'_ge : A018804 k' ≥ 1
+  h_Ak'_ge_k' : A018804 k' ≥ k'
+  B : ℕ := (2 * q - 1) * (2 * p - 1) * A018804 k'
+  hr_dvd_term : r ∣ B * (2 * r - 1) + 1
+  hq_ge : 3 ≤ q
+  hp_ge : 2 ≤ p
+  h_fac1 : 5 ≤ 2 * q - 1
+  h_fac2 : 3 ≤ 2 * p - 1
+  h_prod : 15 ≤ (2 * q - 1) * (2 * p - 1)
+  hB_ge : 15 ≤ B
+  h_term_eq : (2 * q - 1) * ((2 * p - 1) * (2 * r - 1) * A018804 k') + 1 = B * (2 * r - 1) + 1
+  hr_ge_2 : r ≥ 2
+  h_add_eq : B * (2 * r - 1) + 1 + B = r * (2 * B) + 1
+  hB_eq : B = B - 1 + 1
+  h_alg_add : r * (2 * B) = B * (2 * r - 1) + 1 + (B - 1)
+  hr_dvd_B1 : r ∣ B - 1
+  hB1_pos : B - 1 > 0
+  hr_le_B1 : r ≤ B - 1
+  hn_eq_all : n = q * p * r * k'
+  h_div_n_c' : q * p * r * k' ∣ q * c'
+  hq_pos : q > 0
+  h_div_prk' : p * r * k' ∣ c'
+  hp2 : p = 2
+  hq3 : q ≠ 3
+  hq_ge5 : 5 ≤ q
+  hr_ge7 : 7 ≤ r
+  j : ℕ := (B - 1) / r
+  h_B1_eq_rj : B - 1 = r * j
+  h_eq' : q * p * d + j = r * (2 * j) + 2
+  hj_even : j % 2 = 0
+  h : ℕ := j / 2
+  h_eq_2h : j = 2 * h
+  h_qd_add_h : q * d + h = 2 * r * h + 1
+  h_sub_id : (2 * r - 1) * h + h = 2 * r * h
+  h_qd_eq : q * d = (2 * r - 1) * h + 1
+  h_B_p2 : B = 3 * (2 * q - 1) * A018804 k'
+  h_B_eq : 3 * (2 * q - 1) * A018804 k' = 2 * r * h + 1
+  hk'1 : ¬k' = 1
+  h_alg_sum2 : 2 * q * r * d + (6 * q + 6 * r - 3) * A018804 k' = 12 * q * r * A018804 k' + 1
+  h_lt_6A : d < 6 * A018804 k'
+  Y_pos : ℕ := 6 * A018804 k' - d
+  h_Y_pos_gt : Y_pos > 0
+  h_Y_alg : 2 * q * r * Y_pos + 1 = (6 * q + 6 * r - 3) * A018804 k'
+  h_qr_ineq : 6 * q + 6 * r - 3 < 2 * q * r
+  h_Y_pos_lt : Y_pos < A018804 k'
+  h_Ak'_odd : A018804 k' % 2 = 1
+  hk'_odd : k' % 2 = 1
+  h_Ak'_ge_2 : A018804 k' ≥ 2
+  h_Ak'_ne_2 : A018804 k' ≠ 2
+  h_Ak'_ge_3 : A018804 k' ≥ 3
+  h_exact : 2 * r * q * d = 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  h_k'_dvd_exact : k' ∣ 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  hk'_gt1 : k' > 1
+  g : ℕ := k'.minFac
+  hg : Nat.Prime g
+  h_g_dvd : g ∣ k'
+  h_g_dvd_exact : g ∣ 3 * (2 * q - 1) * (2 * r - 1) * A018804 k' + 1
+  k'' : ℕ := k' / g
+  hk'_eq : k' = g * k''
+  hk''_pos : k'' > 0
+  h_sq_k' : Squarefree k'
+  hg_not_dvd_k'' : ¬g ∣ k''
+  h_Ak''_ge_k'' : A018804 k'' ≥ k''
+  h_Agk'' : A018804 k' = (2 * g - 1) * A018804 k''
+  c : ℕ
+  hc✝ : d = k' * c
+  A_val : ℕ
+  h_A_pos : A_val > 0
+  h_A : A018804 k'' = A_val
+  h_Agk''_val : A018804 k' = (2 * g - 1) * A_val
+  h_g_k''_c : d = g * k'' * c
+  h_k''c_lt : k'' * c < 12 * A_val
+  h_c_ge6 : c ≥ 6
+  M : ℕ := 3 * (2 * q - 1) * (2 * r - 1) * A_val
+  h_g_dvd_M : g ∣ (2 * g - 1) * M + 1
+  h_M_pos : M > 0
+  h_M_ge1 : M ≥ 1
+  h_sub_mul_eq : (2 * g - 1) * M = 2 * g * M - M
+  h_eq_omega : (2 * g - 1) * M + 1 + (M - 1) = 2 * g * M
+  h_g_dvd_sum : g ∣ (2 * g - 1) * M + 1 + (M - 1)
+  h_g_dvd_M1 : g ∣ M - 1
+  h2 : 2 * r * q * g * k'' * c = (2 * g - 1) * M + 1
+  h_exact_g : M - 1 + 2 * r * q * g * k'' * c = 2 * g * M
+  h_g_H_eq : g * (2 * M - 2 * r * q * k'' * c) = M - 1
+  Y : ℕ := 2 * M - 2 * r * q * k'' * c
+  h_gY : g * Y = M - 1
+  hc : ¬Y > 0
+  hY0 : Y = 0
+  h_g0 : 0 = M - 1
+  h_M1 : M = 1
+  ⊢ M = (q * 2 - 1) * (r * 2 - 1) * A018804 k'' * 3
+  Submission/Spec.lean:1163:12: error: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:1165:10: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:455:4: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+  Submission/Spec.lean:257:78: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228623_conjecture_1_implies_goldbach",
+  "epoch": 1,
+  "uuid": "H4wPwUNi7TnKR32KujyZE8",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 31485,
+      "output_tokens": 4869,
+      "total_tokens": 136706,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 100352,
+      "reasoning_tokens": 2122,
+      "total_cost": 0.353671
+    }
+  },
+  "oeis_id": "A228623"
+}

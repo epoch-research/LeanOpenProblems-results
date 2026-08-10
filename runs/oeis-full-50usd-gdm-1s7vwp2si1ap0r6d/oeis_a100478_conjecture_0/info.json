@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a100478_conjecture_0",
+  "epoch": 1,
+  "uuid": "cH2mq5URi4NkupqeZMPE3L",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1446407,
+      "output_tokens": 65674,
+      "total_tokens": 11696733,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 10126755,
+      "reasoning_tokens": 57897,
+      "total_cost": 4.27968975
+    }
+  },
+  "oeis_id": "A100478"
+}

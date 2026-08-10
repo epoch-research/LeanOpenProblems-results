@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a010846_granville_conjecture",
+  "epoch": 1,
+  "uuid": "hYb3CBY4Wg2qFNqSpLaknP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 53867,
+      "output_tokens": 9301,
+      "total_tokens": 511680,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 448512,
+      "reasoning_tokens": 2838,
+      "total_cost": 0.7726210000000001
+    }
+  },
+  "oeis_id": "A010846"
+}

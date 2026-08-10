@@ -1,0 +1,11 @@
+inductive BadProp : Prop → Prop
+  | mk1 {p : Prop} : p → BadProp p
+  | mk2 {p : Prop} : BadProp p → BadProp (p → False)
+
+def val {p : Prop} : BadProp p → Prop
+  | @BadProp.mk1 _ g => (p → False) → False
+  | @BadProp.mk2 _ z => val z
+
+def prove_val {p : Prop} : (t : BadProp p) → val t
+  | @BadProp.mk1 _ g => fun h => h g
+  | @BadProp.mk2 _ z => prove_val z

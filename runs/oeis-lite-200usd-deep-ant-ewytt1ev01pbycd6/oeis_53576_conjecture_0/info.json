@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "5FzEL9r846E29ismruUW7m",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 109,
+      "output_tokens": 84045,
+      "total_tokens": 4400932,
+      "input_tokens_cache_write": 113639,
+      "input_tokens_cache_read": 4203139,
+      "reasoning_tokens": 14759,
+      "total_cost": 4.91348325
+    }
+  },
+  "oeis_id": "A053576"
+}

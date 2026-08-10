@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#print Classical.propComplete
+#check Classical.choice
+#check Classical.em
+#check propext
+#check Classical.decEq
+#check Classical.propDecidable
+#check Decidable.of_iff
+#check of_decide_eq_true
+#check decide_eq_true_eq
+#check not_not

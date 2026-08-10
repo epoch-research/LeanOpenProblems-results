@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "MeNupLrwCbo6kEeGkpMZVR",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 5361246,
+      "output_tokens": 125448,
+      "total_tokens": 66887290,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 61180701,
+      "reasoning_tokens": 219895,
+      "total_cost": 18.348006149999986
+    }
+  },
+  "oeis_id": "A228304"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a272979_conjecture_1",
+  "epoch": 1,
+  "uuid": "PQiTtMysrn85zHEqcZubSi",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 58729,
+      "output_tokens": 10665,
+      "total_tokens": 403218,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 333824,
+      "reasoning_tokens": 4237,
+      "total_cost": 0.7805070000000001
+    }
+  },
+  "oeis_id": "A272979"
+}

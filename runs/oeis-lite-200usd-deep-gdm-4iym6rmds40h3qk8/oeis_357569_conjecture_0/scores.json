@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:15:64: error: Type mismatch\n  trivial\nhas type\n  True\nbut is expected to have type\n  a (p ^ r) ≡ a (p ^ (r - 1)) [ZMOD ↑p ^ (3 * r + 3)]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

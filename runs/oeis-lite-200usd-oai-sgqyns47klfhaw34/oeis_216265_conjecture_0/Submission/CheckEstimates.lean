@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.primorial_le_4_pow
+#check Nat.four_pow_lt_mul_centralBinom
+#check Nat.centralBinom_le
+#check Nat.centralBinom_eq
+#check Nat.centralBinom
+#check Nat.choose_le_pow
+#check Nat.choose_le_pow'
+#check Nat.choose_le_middle
+#check Nat.choose_le_centralBinom
+#check Nat.exists_prime_lt_and_le_two_mul_eventually
+#check Chebyshev.theta_le_log4_mul_x
+#check Chebyshev.theta_pos

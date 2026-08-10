@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a354747_conjecture_0",
+  "epoch": 1,
+  "uuid": "Cqaq3F2F4faSRyjcwahRXv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 273,
+      "output_tokens": 216444,
+      "total_tokens": 18689185,
+      "input_tokens_cache_write": 521952,
+      "input_tokens_cache_read": 17950516,
+      "reasoning_tokens": 42523,
+      "total_cost": 17.649923
+    }
+  },
+  "oeis_id": "A354747"
+}

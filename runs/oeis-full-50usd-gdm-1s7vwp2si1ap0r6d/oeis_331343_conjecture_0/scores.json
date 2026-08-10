@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:97:31: warning: unused variable `hm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:110:31: warning: unused variable `hm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:345:2: warning: Try this: intro L g h_eq\nSubmission/Spec.lean:440:53: warning: unused variable `hm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:452:57: warning: unused variable `hm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:865:10: error: Tactic `contradiction` failed\n\ncase neg.inl\nn : ℕ\nhn : n > 3\nh_div : n ^ 3 ∣ a n\nhp : ¬Nat.Prime n\nh_div' : n ^ 3 ∣ a n\nh_odd : n % 2 = 1\nhn9 : ¬n = 9\nhn15 : n ≥ 15\np : ℕ := n.minFac\nhp_prime : Nat.Prime p\nthis : Fact (Nat.Prime p)\nk : ℕ := padicValNat p n\nhk : k ≥ 1\nh_val_ge : padicValNat p (a n) ≥ 3 * k\nL : ℕ\nh_L : L_seq (n - 1) = L\ng : ℕ\nh_g : L.gcd n = g\nh_rec : a n = n / g * a (n - 1) + L / g * (2 ^ (n - 1) - 1)\nh_case1 : padicValNat n.minFac (n / g) = 0 ∧ padicValNat n.minFac (L / g) > 0\n⊢ False",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

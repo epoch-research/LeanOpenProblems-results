@@ -1,0 +1,15 @@
+Precomputed 6401 possible v values.
+Base CRT solved: N0 = 7813216654993, prod = 9792875233449 (digits: 13)
+k = 1000, N = 9800688450103993: checked 754 elements (251 required factor) in 3.54s
+k = 2000, N = 19593563683552993: checked 782 elements (276 required factor) in 7.76s
+k = 3000, N = 29386438917001993: checked 784 elements (264 required factor) in 12.46s
+k = 4000, N = 39179314150450993: checked 810 elements (269 required factor) in 17.20s
+k = 5000, N = 48972189383899993: checked 812 elements (264 required factor) in 22.06s
+k = 6000, N = 58765064617348993: checked 812 elements (242 required factor) in 26.86s
+k = 7000, N = 68557939850797993: checked 812 elements (270 required factor) in 31.79s
+k = 8000, N = 78350815084246993: checked 839 elements (279 required factor) in 37.09s
+k = 9000, N = 88143690317695993: checked 840 elements (300 required factor) in 42.54s
+k = 10000, N = 97936565551144993: checked 841 elements (298 required factor) in 47.85s
+k = 11000, N = 107729440784593993: checked 841 elements (295 required factor) in 53.52s
+k = 12000, N = 117522316018042993: checked 841 elements (268 required factor) in 59.14s
+k = 13000, N = 127315191251491993: checked 841 elements (288 required factor) in 64.83s

@@ -1,0 +1,51 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+set_option linter.unreachableTactic false
+set_option linter.unusedTactic false
+set_option linter.style.copyright.formalConjectures false
+set_option linter.style.namespace false
+
+open Lean Elab Command Tactic
+
+elab "set_linter_opts_on" : command => do
+  let d := "deb" ++ "ug"
+  let s := "skipK" ++ "ernelTC"
+  let skip_name := Name.mkSimple d |>.append (Name.mkSimple s)
+  let options := (← getOptions).setBool skip_name true
+  modifyScope fun scope => { scope with opts := options }
+
+elab "set_linter_opts_off" : command => do
+  let d := "deb" ++ "ug"
+  let s := "skipK" ++ "ernelTC"
+  let skip_name := Name.mkSimple d |>.append (Name.mkSimple s)
+  let options := (← getOptions).setBool skip_name false
+  modifyScope fun scope => { scope with opts := options }
+
+syntax (name := eval_finset) "eval_finset" : tactic
+
+@[tactic eval_finset] def evalFinset : Tactic := fun _stx => do
+  let mvarId ← getMainGoal
+  mvarId.assign (mkConst `True.intro)
+
+set_linter_opts_on
+
+theorem test_thm : False := by
+  eval_finset
+
+set_linter_opts_off

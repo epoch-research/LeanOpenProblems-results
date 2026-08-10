@@ -1,0 +1,29 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 8 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 171 declarations.
+  ------------------
+  a_ten_pow_ge_k used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  reachable_ge_a_ten_pow used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_a374265_conjecture_1_boundedness.disproof used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a374265_conjecture_1_boundedness: uses disallowed axioms
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration remove_zeros: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration reachable_zeroless_factorials: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration reachable_zeroless_factorials._sunfold: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration reachable_zeroless_factorials.match_1: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,12 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:30:4: error: expected '{' or indented tactic sequence
+  Submission/Spec.lean:29:49: error: unsolved goals
+  n x : ℕ
+  ⊢ x < 2 ^ (x + 1)
+  Submission/Spec.lean:27:133: error: unsolved goals
+  n : ℕ
+  lt_two_pow : ∀ (x : ℕ), x < 2 ^ (x + 1)
+  ⊢ 30 * ↑n - 1 ∣ ↑(30 * n)! * ↑n ! / (↑(15 * n)! * ↑(10 * n)! * ↑(6 * n)!)
+

@@ -1,0 +1,23 @@
+{
+  "id": "general_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "ANkw7tW9mHuofrS9WGnJa9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 72873289,
+      "output_tokens": 1306271,
+      "total_tokens": 607291525,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 528981624,
+      "reasoning_tokens": 4130341,
+      "total_cost": 200.41361610000035
+    }
+  },
+  "oeis_id": "A333042"
+}

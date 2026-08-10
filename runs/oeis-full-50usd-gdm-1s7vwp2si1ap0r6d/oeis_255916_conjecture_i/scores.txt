@@ -1,0 +1,12 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:145:5: error: unsolved goals
+  h1 : ∀ (n : ℕ), a n > 0
+  h2 : ∀ (j k : ℕ), 3 ≤ j ∧ j ≤ k → ((∀ (n : ℕ), is_sum_of_G7_Pj_Pk n j k) ↔ (j, k) ∈ sun_polygonal_pairs_set)
+  h36_iff : (∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 3 6) ↔ (3, 6) ∈ sun_polygonal_pairs_set
+  h36 : ∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 3 6
+  h66_iff : (∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 6 6) ↔ (6, 6) ∈ sun_polygonal_pairs_set
+  h66_not : ¬∀ (n : ℕ), is_sum_of_G7_Pj_Pk n 6 6
+  ⊢ False
+

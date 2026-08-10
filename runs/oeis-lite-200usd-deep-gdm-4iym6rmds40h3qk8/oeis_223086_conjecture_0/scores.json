@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:130:10: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  0 ≤ c ≤ 17362\n  1930 ≤ b ≤ 4340\n  b ≥ 0\nwhere\n b := ↑y / 9\n c := ↑(g (9 * (y / 9)))\nSubmission/Spec.lean:142:10: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  0 ≤ c ≤ 17362\n  1929 ≤ b ≤ 2169\n  b ≥ 0\nwhere\n b := ↑y / 9\n c := ↑(g (9 * (y / 9) + 3))\nSubmission/Spec.lean:154:10: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  0 ≤ c ≤ 17362\n  1929 ≤ b ≤ 2169\n  b ≥ 0\nwhere\n b := ↑y / 9\n c := ↑(g (9 * (y / 9) + 6))\nSubmission/Spec.lean:158:10: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  0 ≤ c ≤ 17362\n  1929 ≤ b ≤ 2169\n  b ≥ 0\nwhere\n b := ↑y / 9\n c := ↑(g (9 * (y / 9) + 7))\nSubmission/Spec.lean:191:2: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

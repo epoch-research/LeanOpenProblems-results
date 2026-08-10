@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+#check SimpleGraph.diam_eq_zero_of_subsingleton
+#check SimpleGraph.diam_ne_zero
+#check SimpleGraph.dist_le_diam_of_mem_path
+#check annihilationNumberEq

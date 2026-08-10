@@ -1,0 +1,124 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:413:38: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:418:25: warning: This simp argument is unused:
+    trim_trailing_zeros_singleton n hn
+  
+  Hint: Omit it from the simp argument list.
+    simp [S_long, S_seq,̵ ̵t̵r̵i̵m̵_̵t̵r̵a̵i̵l̵i̵n̵g̵_̵z̵e̵r̵o̵s̵_̵s̵i̵n̵g̵l̵e̵t̵o̵n̵ ̵n̵ ̵h̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:440:17: warning: This simp argument is unused:
+    h
+  
+  Hint: Omit it from the simp argument list.
+    simp only ̵[̵h̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1040:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    d ≥ 2
+    c ≥ 0
+    c - d ≤ -2
+    b ≥ 0
+    b - e ≤ -1
+  where
+   b := ↑(a n)
+   c := ↑(p n (a n))
+   d := ↑(p (n + 1) (a (n + 1)))
+   e := ↑(a (n + 2))
+  Submission/Spec.lean:1266:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:1332:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    i ≥ 0
+    h ≥ 0
+    h - i ≥ 2
+    g ≥ 0
+    f ≥ 1
+    e ≥ 0
+    e - f ≥ -1
+    e - g ≤ 0
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ -1
+  where
+   b := ↑(p (n + 1) (a n))
+   c := ↑(p n (a n))
+   e := ↑(p (n + 1) (a n + d))
+   f := ↑(p n (a n + d + 1))
+   g := ↑(p (n + 1) (a n + d + 1))
+   h := ↑(p n (a n + (d + 1)))
+   i := ↑(p (n + 1) (a n + (d + 1)))
+  Submission/Spec.lean:1340:10: error: No goals to be solved
+  Submission/Spec.lean:1347:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    j ≥ 0
+    i ≥ 0
+    i - j ≥ 2
+    h ≥ 0
+    g ≥ 1
+    f ≥ 1
+    f - g ≥ 0
+    e ≥ 0
+    e - g ≥ -1
+    e - h ≤ 0
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ -1
+  where
+   b := ↑(p (n + 1) (a n))
+   c := ↑(p n (a n))
+   e := ↑(p (n + 1) (a n + d))
+   f := ↑n
+   g := ↑(p n (a n + d + 1))
+   h := ↑(p (n + 1) (a n + d + 1))
+   i := ↑(p n (a n + (d + 1)))
+   j := ↑(p (n + 1) (a n + (d + 1)))
+  Submission/Spec.lean:1354:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (add_at ?m.525 (p (n + 1) (a n + d))).getD (p n (a n + d)) 0
+  in the target expression
+    (add_at (S_long n (a n + d)) (p n (a n + d))).getD (p (n + 1) (a n + d)) 0 % 2 = 1
+  
+  n : ℕ
+  hn : n ≠ 0
+  t : ℕ
+  h_base : p (n + 1) (a n) + 1 ≥ p n (a n)
+  d✝ : ℕ := t - a n
+  d : ℕ
+  ih : p (n + 1) (a n + d) + 1 ≥ p n (a n + d)
+  h_stab : S_seq n (a n + d) = replicate n 1
+  k : ℕ
+  hk : S_long n (a n + d) = replicate n 1 ++ replicate k 0
+  h_get_one : ∀ i < n, (S_long n (_root_.a n + d)).getD i 0 = 1
+  h_pn_eq : ¬p n (a n + d) = n
+  hpn_lt : p n (a n + d) < n
+  h_pns1 : p n (a n + d + 1) = p n (a n + d) + 1
+  h_ge : ¬p (n + 1) (a n + d) ≥ p n (a n + d)
+  h_pn1_eq : p (n + 1) (a n + d) = p n (a n + d) - 1
+  h_coupling : S_long (n + 1) (a n + d) = add_at (S_long n (a n + d)) (p n (a n + d))
+  h_lt : p (n + 1) (a n + d) < p n (a n + d)
+  ⊢ (add_at (S_long n (a n + d)) (p n (a n + d))).getD (p (n + 1) (a n + d)) 0 % 2 = 1
+  Submission/Spec.lean:1360:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    h ≥ 0
+    g ≥ 0
+    g - h ≥ 2
+    f ≥ 1
+    e ≥ 1
+    e - f ≥ 1
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ -1
+  where
+   b := ↑(p (n + 1) (a n))
+   c := ↑(p n (a n))
+   e := ↑n
+   f := ↑(p (n + 1) (a n + d + 1))
+   g := ↑(p n (a n + (d + 1)))
+   h := ↑(p (n + 1) (a n + (d + 1)))
+  'oeis_a300997_finite_difference_is_one_or_two' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

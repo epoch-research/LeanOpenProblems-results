@@ -1,0 +1,23 @@
+{
+  "id": "oeis_341996_conjecture_0",
+  "epoch": 1,
+  "uuid": "gK3mgmvATVBNkpz9CmFTya",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 22368172,
+      "output_tokens": 208925,
+      "total_tokens": 122781168,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 97124332,
+      "reasoning_tokens": 3079739,
+      "total_cost": 50.001232799999975
+    }
+  },
+  "oeis_id": "A341996"
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:860:6: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  i ≥ 0\n  h ≥ 0\n  h - i ≥ -1\n  g ≥ 0\n  f ≥ 0\n  e ≥ 0\n  e - g + h ≤ 1\n  d ≥ 0\n  c ≥ 0\n  c + e - g ≥ 1\n  b ≥ 0\n  b - c - d ≥ 0\n  b - e + f ≤ 0\n  a ≥ 0\nwhere\n a := ↑j\n b := ↑(run_lengths_nat (A381587_T (j + 7)).reverse).length\n c := ↑(run_lengths_nat (A381587_T (j + 6)).reverse).length\n d := ↑(run_lengths_nat (A381587_T (j + 4)).reverse).length\n e := ↑(run_lengths_nat (A381587_T (j + 8)).reverse).length\n f := ↑(run_lengths_nat (A381587_T (j + 5)).reverse).length\n g := ↑(run_lengths_nat (A381587_T (j + 9)).reverse).length\n h := ↑(run_lengths_nat (run_lengths_nat (A381587_T (j + 8)).reverse).reverse).length\n i := ↑(run_lengths_nat (run_lengths_nat (A381587_T (j + 6)).reverse).reverse).length\nSubmission/Spec.lean:1122:8: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  l ≥ 0\n  j ≥ 0\n  i ≥ 0\n  h ≥ 0\n  g ≥ 0\n  g - h ≥ 5\n  g ≥ 0\n  f ≥ 0\n  f - j ≥ 0\n  e ≥ 0\n  e - i ≥ 0\n  c ≥ 0\n  c - e - f ≥ 0\n  c - i - l ≤ -1\n  b ≥ 0\n  a ≥ 0\n  a + b ≥ 0\nwhere\n a := ↑(run_lengths_nat (A381587_T (d + 4)).reverse).length\n b := ↑(A381587_T (3 + d + 1)).length\n c := ↑(run_lengths_nat (A381587_T (3 + (d + 2) + k)).reverse).length\n e := ↑(run_lengths_nat (A381587_T (3 + d + 1 + k)).reverse).length\n f := ↑(run_lengths_nat (A381587_T (d + 2 + k)).reverse).length\n g := ↑(3 + d + k - 1)\n h := ↑d\n i := ↑(A381587_T (3 + d + 1)).length * ↑(A381587_T k).length\n j := ↑(run_lengths_nat (A381587_T (d + 2)).reverse).length * ↑(A381587_T k).length\n l := ↑(run_lengths_nat (A381587_T (d + 4)).reverse).length * ↑(A381587_T k).length",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

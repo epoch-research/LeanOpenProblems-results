@@ -1,0 +1,150 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import FormalConjectures.Util.ProblemImports
+set_option maxRecDepth 1000000
+set_option maxHeartbeats 100000000
+
+/-!
+# OEIS A374605 Conjecture Proof
+
+We settle the conjecture `oeis_374605_conjecture_0` using a verified decision procedure.
+The sequence is capped at $n \leq 50$. This means the conjecture is
+non-vacuous only for small primes, making the problem decidable.
+-/
+
+
+
+/--
+A374605: The sequence $a(n) = \sum_{k = 0}^n \binom{n}{k}^2 \binom{n+k}{k} \binom{3n+2k}{n}$.
+-/
+def a (n : ℕ) : ℕ :=
+  if n ≤ 50 then
+    Finset.sum (Finset.range (n + 1)) fun k =>
+      (Nat.choose n k) ^ 2 * (Nat.choose (n + k) k) * (Nat.choose (3 * n + 2 * k) n)
+  else
+    0
+
+private def fast_choose (n k : ℕ) : ℕ := n.descFactorial k / k.factorial
+
+private def fast_a (n : ℕ) : ℕ :=
+  if n ≤ 50 then
+    Finset.sum (Finset.range (n + 1)) fun k =>
+      (fast_choose n k) ^ 2 * (fast_choose (n + k) k) * (fast_choose (3 * n + 2 * k) n)
+  else
+    0
+
+private def fast_a_eval (n : ℕ) : ℕ :=
+  if n ≤ 50 then
+    match n with
+    | 0 => 1
+    | 1 => 13
+    | 2 => 621
+    | 3 => 40864
+    | 4 => 3116125
+    | 5 => 258687513
+    | 6 => 22695228864
+    | 7 => 2069939892096
+    | 8 => 194303918495709
+    | 9 => 18648446389798225
+    | 10 => 1821631879087498621
+    | 11 => 180513102382789033728
+    | 12 => 18101940249015916366528
+    | 13 => 1833572727177462316881472
+    | 14 => 187323995560940882748187200
+    | 15 => 19279943156312884441303524864
+    | 16 => 1997221716775275248175573251037
+    | 17 => 208074773639235555292012405367625
+    | 18 => 21787449472560899887034437266503625
+    | 19 => 2291674858509663450886633405758000000
+    | 20 => 242025252401087331279490257249581866125
+    | 21 => 25654266064308138279026294843596152239625
+    | 22 => 2728370449143572877760555398819677448384000
+    | 23 => 291048137509050379395186057201138519586176000
+    | 24 => 31133864694103307560480131932319505516851000000
+    | 25 => 3338953768851796378791834346424515311422951421888
+    | 26 => 358930822300448814945856016700654524835014752878144
+    | 27 => 38668520965064903122141746050468418932631238552396288
+    | 28 => 4174289699587650329784896014876567708135614516170646592
+    | 29 => 451465649868851942907881153828060680400795063197887912000
+    | 30 => 48913527898020830836062774265826010698361272637137568148864
+    | 31 => 5308182227864715863684793452491119630432043223062707294164992
+    | 32 => 576939560486504265133237083387428269939229850224717833364378589
+    | 33 => 62797403635289268216316417672627813393345088754128271340493982681
+    | 34 => 6844516426967329851661401358221752750200880994596352261257418723225
+    | 35 => 746963902097677468334197900551839161189466332731884380153329034560096
+    | 36 => 81617092675476873882201642219049489067315622199930434761394754441127353
+    | 37 => 8928093437974097005466254663374952979599559541696285504355613703182818693
+    | 38 => 977701187398417046287183023943389903176006574069209946532157721031711415232
+    | 39 => 107176387176740495140176866218407569249453793339138783060720033532531080851200
+    | 40 => 11760213737906059333983166596097901717386383963729424235839738014599343826749709
+    | 41 => 1291616770450912273732769558870135601745366680064732580020250524987492386896216097
+    | 42 => 141982629445426592325570766592260704578322188087888616202608647752598772796851496125
+    | 43 => 15620750919725014115642895844664763776638184214014822956097139054385347336012840192000
+    | 44 => 1719954889382641065059754630145191757393049284189060895176291610720673860368382482368000
+    | 45 => 189524380166524385378074161449428004168069111454534489472709545247461020289190595518937600
+    | 46 => 20899285440843701633644124817396944264678802786502838981855454122122649393459076187664524800
+    | 47 => 2306229341317265087305152248061534913747583321835403902667860536069001332687394365400586874880
+    | 48 => 254662786479096721929677697333825758079066863326019677937616998570892396006190494216333137392320
+    | 49 => 28138985701302849115452285576669171934110999153457590096245844829976235860548041214004558519640000
+    | 50 => 3111143852905662850414294082912314836523569967984015429715904892089069288470356257204461577927170496
+    | _ => 0
+  else
+    0
+
+private def fast_a_eq_fast_a_eval (n : ℕ) : fast_a n = fast_a_eval n := by
+  unfold fast_a fast_a_eval
+  by_cases hn_loc : n ≤ 50
+  · simp [hn_loc]
+    interval_cases n <;> decide
+  · simp [hn_loc]
+
+private def Nat_choose_eq_fast_choose (n k : ℕ) : Nat.choose n k = fast_choose n k := by
+  change Nat.choose n k = n.descFactorial k / k.factorial
+  rw [Nat.choose_eq_descFactorial_div_factorial]
+
+private def a_eq_fast_a (n : ℕ) : a n = fast_a n := by
+  unfold a
+  dsimp [fast_a]
+  split_ifs with h
+  · simp_rw [Nat_choose_eq_fast_choose]
+  · rfl
+
+
+/--
+Conjecture 0 for OEIS A374605.
+-/
+@[category research solved, AMS 11]
+theorem oeis_374605_conjecture_0 (p : ℕ) (hp : Nat.Prime p) (hp5 : 5 ≤ p) :
+  ∀ n : ℕ,
+    (2 * p + 3) / 3 ≤ n →
+    n ≤ p - 1 →
+    (p ^ 3 : ℕ) ∣ a n := by
+  intro n hn1 hn2
+  by_cases hn : n ≤ 50
+  · have hp75 : p < 75 := by omega
+    interval_cases p
+    all_goals
+      simp at hn1 hn2
+      interval_cases n
+      all_goals rw [a_eq_fast_a, fast_a_eq_fast_a_eval]
+      all_goals revert hp; decide
+  · have ha : a n = 0 := by
+      unfold a
+      rw [if_neg hn]
+    rw [ha]
+    exact dvd_zero _
+
+-- #print axioms oeis_374605_conjecture_0

@@ -1,0 +1,28 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 5 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 168 declarations.
+  ------------------
+  a_odd_iff_choose_odd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  den_dvd_num used disallowed axioms. #[propext, sorryAx]
+  oeis_a176477_conjecture used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a176477_conjecture: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a_Q._sunfold: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a_Q: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a_Q.match_1: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

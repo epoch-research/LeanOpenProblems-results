@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A078590_conjecture",
+  "epoch": 1,
+  "uuid": "Mk2oRDFJrMvHgyCjvXvapR",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 160521,
+      "output_tokens": 18964,
+      "total_tokens": 2603805,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2424320,
+      "reasoning_tokens": 7881,
+      "total_cost": 2.583685
+    }
+  },
+  "oeis_id": "A078590"
+}

@@ -1,0 +1,86 @@
+/workspace/leanproject/Submission/print.lean:116:135: error(lean.unknownIdentifier): Unknown constant `Matrix.cons_val_five`
+/workspace/leanproject/Submission/print.lean:116:157: error(lean.unknownIdentifier): Unknown constant `Matrix.cons_val_six`
+/workspace/leanproject/Submission/print.lean:118:2: error: linarith failed to find a contradiction
+case h1.h
+E : LinearRecurrence ℤ := { order := 7, coeffs := ![1, -2, 1, 0, 0, -1, 2] }
+n : ℕ
+a✝ :
+  (6 * ↑(n + 7) ^ 2 + 18 * ↑(n + 7) + 11) / 5 <
+    1 * ((6 * ↑n ^ 2 + 18 * ↑n + 11) / 5) +
+      (-2 * ((6 * ↑(n + (0 + 1)) ^ 2 + 18 * ↑(n + (0 + 1)) + 11) / 5) +
+        (1 * ((6 * ↑(n + (0 + 1 + 1)) ^ 2 + 18 * ↑(n + (0 + 1 + 1)) + 11) / 5) +
+          (0 * ((6 * ↑(n + (0 + 1 + 1 + 1)) ^ 2 + 18 * ↑(n + (0 + 1 + 1 + 1)) + 11) / 5) +
+            (0 * ((6 * ↑(n + (0 + 1 + 1 + 1 + 1)) ^ 2 + 18 * ↑(n + (0 + 1 + 1 + 1 + 1)) + 11) / 5) +
+              (-1 * ((6 * ↑(n + (0 + 1 + 1 + 1 + 1 + 1)) ^ 2 + 18 * ↑(n + (0 + 1 + 1 + 1 + 1 + 1)) + 11) / 5) +
+                (2 * ((6 * ↑(n + (0 + 1 + 1 + 1 + 1 + 1 + 1)) ^ 2 + 18 * ↑(n + (0 + 1 + 1 + 1 + 1 + 1 + 1)) + 11) / 5) +
+                  ∑ x,
+                    ![] x *
+                      ((6 * ↑(n + (↑x + 1 + 1 + 1 + 1 + 1 + 1 + 1)) ^ 2 + 18 * ↑(n + (↑x + 1 + 1 + 1 + 1 + 1 + 1 + 1)) +
+                          11) /
+                        5)))))))
+⊢ False
+failed
+/workspace/leanproject/Submission/print.lean:115:32: warning: This simp argument is unused:
+  Fin.cons_succ
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.sum_univ_succ, F̵i̵n̵.̵c̵o̵n̵s̵_̵s̵u̵c̵c̵,̵ ̵Fin.val_zero, Fin.val_succ, Matrix.cons_val_zero,
+  ̲  ̲ ̲ ̲Matrix.cons_val_succ, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three,
+  ̲  ̲ ̲ ̲Matrix.cons_val_four, Matrix.cons_val_five, Matrix.cons_val_six, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/print.lean:116:48: warning: This simp argument is unused:
+  Matrix.cons_val_one
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.sum_univ_succ, Fin.cons_succ, Fin.val_zero, Fin.val_succ, Matrix.cons_val_zero,
+  ̲  ̲ ̲ ̲Matrix.cons_val_succ, M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵o̵n̵e̵,̵ ̵Matrix.cons_val_two, Matrix.cons_val_three, Matrix.cons_val_four,
+  ̲  ̲ ̲ ̲Matrix.cons_val_five, Matrix.cons_val_six, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/print.lean:116:69: warning: This simp argument is unused:
+  Matrix.cons_val_two
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.sum_univ_succ, Fin.cons_succ, Fin.val_zero, Fin.val_succ, Matrix.cons_val_zero,
+  ̲  ̲ ̲ ̲Matrix.cons_val_succ, Matrix.cons_val_one, M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵t̵w̵o̵,̵ ̵Matrix.cons_val_three, Matrix.cons_val_four,
+  ̲  ̲ ̲ ̲Matrix.cons_val_five, Matrix.cons_val_six, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/print.lean:116:90: warning: This simp argument is unused:
+  Matrix.cons_val_three
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.sum_univ_succ, Fin.cons_succ, Fin.val_zero, Fin.val_succ, Matrix.cons_val_zero,
+  ̲  ̲ ̲ ̲Matrix.cons_val_succ, Matrix.cons_val_one, Matrix.cons_val_two, M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵t̵h̵r̵e̵e̵,̵ ̵Matrix.cons_val_four,
+  ̲  ̲ ̲ ̲Matrix.cons_val_five, Matrix.cons_val_six, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/print.lean:116:113: warning: This simp argument is unused:
+  Matrix.cons_val_four
+
+Hint: Omit it from the simp argument list.
+  simp only [Fin.sum_univ_succ, Fin.cons_succ, Fin.val_zero, Fin.val_succ,
+  ̵  ̵ ̵ ̵Matrix.cons_val_zero,
+  ̲  ̲ ̲ ̲Matrix.cons_val_succ, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three,
+  ̲ M̵a̵t̵r̵i̵x̵.̵c̵o̵n̵s̵_̵v̵a̵l̵_̵f̵o̵u̵r̵,̵  ̲ ̲Matrix.cons_val_five, Matrix.cons_val_six,
+  ̵  ̵ ̵ ̵add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/leanproject/Submission/print.lean:125:67: error: Application type mismatch: The argument
+  u_formula_init
+has type
+  ∀ (n : Fin 7), u_formula ↑n = ![2, 7, 14, 23, 35, 50, 67] n
+but is expected to have type
+  LinearRecurrence.IsSolution ?m.6 ?m.7
+in the application
+  LinearRecurrence.eq_mk_of_is_sol_of_eq_init ?m.6 u_formula_init
+/workspace/leanproject/Submission/print.lean:125:53: error: Application type mismatch: The argument
+  u_is_solution
+has type
+  have E := { order := 7, coeffs := ![1, -2, 1, 0, 0, -1, 2] };
+  E.IsSolution u_formula
+of sort `Prop` but is expected to have type
+  LinearRecurrence ?m.4
+of sort `Type ?u.11501` in the application
+  @LinearRecurrence.eq_mk_of_is_sol_of_eq_init ?m.4 ?m.5 u_is_solution

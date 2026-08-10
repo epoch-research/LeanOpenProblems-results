@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 6 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 59 declarations.
+  ------------------
+  key used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  value_at used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_A389790_conjecture_max_n used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  no_intermediate used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_A389790_conjecture_max_n: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

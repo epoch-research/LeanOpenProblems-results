@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+open Lean Meta Elab Command
+#eval show CommandElabM Unit from do
+  let env ← getEnv
+  let mut count := 0
+  for (n, ci) in env.constants.toList do
+    if count < 20 then
+      let t := ci.type
+      if t == .const `False [] then
+        logInfo m!"FALSE {n}"
+        count := count + 1
+  logInfo m!"done {count}"

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_145062_conjecture_0",
+  "epoch": 1,
+  "uuid": "FwMp6yEp4n8auwTs3oTnV2",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 9779,
+      "output_tokens": 3623,
+      "total_tokens": 40538,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 27136,
+      "reasoning_tokens": 2198,
+      "total_cost": 0.171153
+    }
+  },
+  "oeis_id": "A145062"
+}

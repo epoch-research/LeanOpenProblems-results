@@ -1,0 +1,23 @@
+{
+  "id": "oeis_53000_conjecture_1",
+  "epoch": 1,
+  "uuid": "EWwr8SnGQkec8CbXdcAfH3",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 3315,
+      "output_tokens": 113607,
+      "total_tokens": 192161940,
+      "input_tokens_cache_write": 210631,
+      "input_tokens_cache_read": 191834387,
+      "reasoning_tokens": 15389,
+      "total_cost": 200.18077449999996
+    }
+  },
+  "oeis_id": "A053000"
+}

@@ -1,0 +1,1329 @@
+/workspace/leanproject/Submission/Spec.lean:4840:44: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec.lean:5075:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«0»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 0
+h_div_mod : 0 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5129:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«1»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 1
+h_div_mod : 1 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5183:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«2»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 2
+h_div_mod : 2 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5237:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«3»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 3
+h_div_mod : 3 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5291:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«4»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 4
+h_div_mod : 4 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5345:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«5»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 5
+h_div_mod : 5 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5399:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«6»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 6
+h_div_mod : 6 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5538:18: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  b ≥ 0
+  -30 ≤ 812*b - 3*c ≤ -29
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑e / 812
+ c := ↑(812 * (e / 812) + 31) / 3
+ d := ↑29 ^ f
+/workspace/leanproject/Submission/Spec.lean:5570:18: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  b ≥ 1
+  a ≤ 0
+  207 ≤ 609*a + 4*c ≤ 209
+where
+ a := Lean.Omega.bmod_div_term 3 [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3]
+  (Lean.Omega.Coeffs.ofList
+    [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+        (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3])]),
+      Lean.Omega.bmod_div_term 51 [0, 0, 0, 0, 0, 0, 0, 50, -203]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3])])]),
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 3, -50]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3])]),
+            Lean.Omega.bmod_div_term 51 [0, 0, 0, 0, 0, 0, 0, 50, -203]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                        Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                          (Lean.Omega.Coeffs.ofList
+                            [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3])])])]),
+      Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 0, 14, -3]
+        (Lean.Omega.Coeffs.ofList
+          [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+              (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3])]),
+            Lean.Omega.bmod_div_term 51 [0, 0, 0, 0, 0, 0, 0, 50, -203]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                        Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3] (Lean.Omega.Coeffs.ofList [↑e, ↑f, ⋯])])]),
+            Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 0, 0, 0, 3, -50]
+              (Lean.Omega.Coeffs.ofList
+                [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3]
+                    (Lean.Omega.Coeffs.ofList [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3]),
+                  Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 203, 0, 3]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                        Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3] (Lean.Omega.Coeffs.ofList [↑e, ⋯])]),
+                  Lean.Omega.bmod_div_term 51 [0, 0, 0, 0, 0, 0, 0, 50, -203]
+                    (Lean.Omega.Coeffs.ofList
+                      [↑e, ↑f, ↑3 ^ e, ↑(29 ^ f - 3 ^ e), ↑(Nat.gcd 29 252), ↑e / 812, ↑e / 3,
+                        Lean.Omega.bmod_div_term 4 [0, 0, 0, 0, 0, 812, -3] (Lean.Omega.Coeffs.ofList ⋯),
+                        Lean.Omega.bmod_div_term 4 ⋯ ⋯])])])])
+ b := ↑f / 3
+ c := ↑(812 * (e / 812) + 31) / 16
+ d := ↑29 ^ f
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 3 - 3 ^ 28 = 2 → 3 = 1 ∧ 28 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 4 - 3 ^ 27 = 2 → 4 = 1 ∧ 27 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 7 - 3 ^ 25 = 2 → 7 = 1 ∧ 25 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 8 - 3 ^ 0 = 2 → 8 = 1 ∧ 0 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 9 - 3 ^ 16 = 2 → 9 = 1 ∧ 16 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 11 - 3 ^ 21 = 2 → 11 = 1 ∧ 21 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 16 - 3 ^ 5 = 2 → 16 = 1 ∧ 5 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 18 - 3 ^ 22 = 2 → 18 = 1 ∧ 22 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 19 - 3 ^ 17 = 2 → 19 = 1 ∧ 17 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 20 - 3 ^ 24 = 2 → 20 = 1 ∧ 24 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 23 - 3 ^ 1 = 2 → 23 = 1 ∧ 1 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 24 - 3 ^ 13 = 2 → 24 = 1 ∧ 13 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5599:109: error: Tactic `decide` proved that the proposition
+  29 ^ 26 - 3 ^ 10 = 2 → 26 = 1 ∧ 10 = 3
+is false
+/workspace/leanproject/Submission/Spec.lean:5615:47: error: Tactic `contradiction` failed
+
+case neg.inl
+e f : ℕ
+he : 1 < e
+hf : 1 < f
+hp : Nat.Prime 3
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3✝ : e ≥ 3
+hr_lt : 29 < 252
+hq : Nat.Prime 29
+hq_ne_2 : 29 ≠ 2
+h : 29 ^ f - 3 ^ e = 2
+hq_ge11 : 29 ≥ 11
+hq11 : ¬29 = 11
+this✝ : 29 ≠ 12
+hq_ge13 : 29 ≥ 13
+hq_coprime : Coprime 29 252
+h_zmod_252 : ↑29 ^ f - 3 ^ e = 2
+r : ℕ := 29 % 252
+q_mod : 29 % 252 = 29
+he3 : ¬e = 3
+he4 : e ≥ 4
+h_zmod_841 : -3 ^ e = 2
+h29f_841 : 29 ^ f = 0
+h_cast2 : 3 ^ (e % 812) = 839
+h3e_841 : 3 ^ e = 3 ^ (e % 812)
+he_mod_812 : e % 812 = 31
+h_zmod_13 : 3 ^ (f % 3) - 3 ^ 0 = 2
+h29_13 : 29 = 3
+hqf_13 : 3 ^ f = 3 ^ (f % 3)
+h3e_13 : 3 ^ e = 3 ^ (e % 3)
+he_mod3 : e % 3 = 0
+hf_mod_3 : f % 3 = 1
+h_zmod_17 : 12 ^ (f % 16) - 3 ^ 3 = 2
+h29_17 : 29 = 12
+hqf_17 : 12 ^ f = 12 ^ (f % 16)
+h3e_17 : 3 ^ e = 3 ^ (e % 16)
+he_mod16 : e % 16 = 3
+hf_mod_16 : f % 16 = 1
+h_zmod_59 : 29 ^ (f % 29) - 3 ^ (e % 29) = 2
+hqf_59 : 29 ^ f = 29 ^ (f % 29)
+h3e_59 : 3 ^ e = 3 ^ (e % 29)
+h_f_e : f % 29 = 1 ∧ e % 29 = 3
+hf_ge29 : f ≥ 29
+this : e ≥ 58
+hc1 : e % 29 = 0
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5615:47: error: Tactic `contradiction` failed
+
+case neg.inr
+e f : ℕ
+he : 1 < e
+hf : 1 < f
+hp : Nat.Prime 3
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3✝ : e ≥ 3
+hr_lt : 29 < 252
+hq : Nat.Prime 29
+hq_ne_2 : 29 ≠ 2
+h : 29 ^ f - 3 ^ e = 2
+hq_ge11 : 29 ≥ 11
+hq11 : ¬29 = 11
+this✝ : 29 ≠ 12
+hq_ge13 : 29 ≥ 13
+hq_coprime : Coprime 29 252
+h_zmod_252 : ↑29 ^ f - 3 ^ e = 2
+r : ℕ := 29 % 252
+q_mod : 29 % 252 = 29
+he3 : ¬e = 3
+he4 : e ≥ 4
+h_zmod_841 : -3 ^ e = 2
+h29f_841 : 29 ^ f = 0
+h_cast2 : 3 ^ (e % 812) = 839
+h3e_841 : 3 ^ e = 3 ^ (e % 812)
+he_mod_812 : e % 812 = 31
+h_zmod_13 : 3 ^ (f % 3) - 3 ^ 0 = 2
+h29_13 : 29 = 3
+hqf_13 : 3 ^ f = 3 ^ (f % 3)
+h3e_13 : 3 ^ e = 3 ^ (e % 3)
+he_mod3 : e % 3 = 0
+hf_mod_3 : f % 3 = 1
+h_zmod_17 : 12 ^ (f % 16) - 3 ^ 3 = 2
+h29_17 : 29 = 12
+hqf_17 : 12 ^ f = 12 ^ (f % 16)
+h3e_17 : 3 ^ e = 3 ^ (e % 16)
+he_mod16 : e % 16 = 3
+hf_mod_16 : f % 16 = 1
+h_zmod_59 : 29 ^ (f % 29) - 3 ^ (e % 29) = 2
+hqf_59 : 29 ^ f = 29 ^ (f % 29)
+h3e_59 : 3 ^ e = 3 ^ (e % 29)
+h_f_e : f % 29 = 1 ∧ e % 29 = 3
+hf_ge29 : f ≥ 29
+this : e ≥ 58
+hc2 : e % 29 = 10
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5672:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«0»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 0
+h_div_mod : 0 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5726:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«1»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 1
+h_div_mod : 1 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5780:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«2»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 2
+h_div_mod : 2 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5834:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«3»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 3
+h_div_mod : 3 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5888:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«4»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 4
+h_div_mod : 4 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5942:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«5»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 5
+h_div_mod : 5 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:5996:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«6»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 6
+h_div_mod : 6 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6050:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«7»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 7
+h_div_mod : 7 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6104:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«8»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 8
+h_div_mod : 8 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6158:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«9»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 9
+h_div_mod : 9 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6212:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«10»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 10
+h_div_mod : 10 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6266:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«11»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 11
+h_div_mod : 11 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6320:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«12»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 12
+h_div_mod : 12 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6374:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«13»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 13
+h_div_mod : 13 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6428:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«14»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 14
+h_div_mod : 14 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6482:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«15»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 15
+h_div_mod : 15 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6536:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«16»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 16
+h_div_mod : 16 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6590:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«17»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 17
+h_div_mod : 17 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:6644:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+
+case neg.«18»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+hq29 : ¬q = 29
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 1
+h_div : q / 252 % 19 = 18
+h_div_mod : 18 < 19
+h_zmod_19 : (5 * ↑(q / 252 % 19) + 10) ^ f - 3 ^ e = 2
+hq_19 : ↑q = 5 * ↑(q / 252 % 19) + 10
+h3e_19 : 3 ^ e = 3 ^ (e % 18)
+hqf_19 : ↑q ^ f = ↑q ^ (f % 18)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:7402:39: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 29
+  a ≥ 2
+where
+ a := ↑f
+ b := ↑83 ^ f
+/workspace/leanproject/Submission/Spec.lean:7433:51: error: Tactic `decide` proved that the proposition
+  83 ^ 7 ≥ 3 ^ 37 + 2
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 0 - 3 ^ 8 = 2 → 0 = 1 ∧ 8 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 0 - 3 ^ 24 = 2 → 0 = 1 ∧ 24 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 0 - 3 ^ 40 = 2 → 0 = 1 ∧ 40 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 1 - 3 ^ 20 = 2 → 1 = 1 ∧ 20 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 1 - 3 ^ 36 = 2 → 1 = 1 ∧ 36 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 2 - 3 ^ 14 = 2 → 2 = 1 ∧ 14 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 2 - 3 ^ 30 = 2 → 2 = 1 ∧ 30 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 2 - 3 ^ 46 = 2 → 2 = 1 ∧ 46 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 3 - 3 ^ 11 = 2 → 3 = 1 ∧ 11 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 3 - 3 ^ 27 = 2 → 3 = 1 ∧ 27 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 3 - 3 ^ 43 = 2 → 3 = 1 ∧ 43 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 4 - 3 ^ 9 = 2 → 4 = 1 ∧ 9 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 4 - 3 ^ 25 = 2 → 4 = 1 ∧ 25 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 4 - 3 ^ 41 = 2 → 4 = 1 ∧ 41 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 6 - 3 ^ 7 = 2 → 6 = 1 ∧ 7 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 6 - 3 ^ 23 = 2 → 6 = 1 ∧ 23 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 6 - 3 ^ 39 = 2 → 6 = 1 ∧ 39 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 7 - 3 ^ 15 = 2 → 7 = 1 ∧ 15 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 7 - 3 ^ 31 = 2 → 7 = 1 ∧ 31 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 7 - 3 ^ 47 = 2 → 7 = 1 ∧ 47 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 8 - 3 ^ 8 = 2 → 8 = 1 ∧ 8 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 8 - 3 ^ 24 = 2 → 8 = 1 ∧ 24 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 8 - 3 ^ 40 = 2 → 8 = 1 ∧ 40 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 9 - 3 ^ 4 = 2 → 9 = 1 ∧ 4 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 9 - 3 ^ 20 = 2 → 9 = 1 ∧ 20 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 9 - 3 ^ 36 = 2 → 9 = 1 ∧ 36 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 10 - 3 ^ 14 = 2 → 10 = 1 ∧ 14 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 10 - 3 ^ 30 = 2 → 10 = 1 ∧ 30 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 10 - 3 ^ 46 = 2 → 10 = 1 ∧ 46 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 11 - 3 ^ 11 = 2 → 11 = 1 ∧ 11 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 11 - 3 ^ 27 = 2 → 11 = 1 ∧ 27 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 11 - 3 ^ 43 = 2 → 11 = 1 ∧ 43 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 12 - 3 ^ 9 = 2 → 12 = 1 ∧ 9 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 12 - 3 ^ 25 = 2 → 12 = 1 ∧ 25 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 12 - 3 ^ 41 = 2 → 12 = 1 ∧ 41 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 14 - 3 ^ 7 = 2 → 14 = 1 ∧ 7 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 14 - 3 ^ 23 = 2 → 14 = 1 ∧ 23 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 14 - 3 ^ 39 = 2 → 14 = 1 ∧ 39 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 15 - 3 ^ 15 = 2 → 15 = 1 ∧ 15 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 15 - 3 ^ 31 = 2 → 15 = 1 ∧ 31 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 15 - 3 ^ 47 = 2 → 15 = 1 ∧ 47 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 16 - 3 ^ 8 = 2 → 16 = 1 ∧ 8 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 16 - 3 ^ 24 = 2 → 16 = 1 ∧ 24 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 16 - 3 ^ 40 = 2 → 16 = 1 ∧ 40 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 17 - 3 ^ 4 = 2 → 17 = 1 ∧ 4 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 17 - 3 ^ 20 = 2 → 17 = 1 ∧ 20 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 17 - 3 ^ 36 = 2 → 17 = 1 ∧ 36 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 18 - 3 ^ 14 = 2 → 18 = 1 ∧ 14 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 18 - 3 ^ 30 = 2 → 18 = 1 ∧ 30 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 18 - 3 ^ 46 = 2 → 18 = 1 ∧ 46 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 19 - 3 ^ 11 = 2 → 19 = 1 ∧ 11 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 19 - 3 ^ 27 = 2 → 19 = 1 ∧ 27 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 19 - 3 ^ 43 = 2 → 19 = 1 ∧ 43 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: Tactic `decide` proved that the proposition
+  15 ^ 20 - 3 ^ 9 = 2 → 20 = 1 ∧ 9 = 4
+is false
+/workspace/leanproject/Submission/Spec.lean:7475:109: error: maximum number of errors (100; from option `maxErrors`) reached, exiting

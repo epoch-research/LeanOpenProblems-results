@@ -1,0 +1,20 @@
+{
+  "id": "oeis_227923_conjecture_1",
+  "epoch": 1,
+  "uuid": "XttRZ77Qdhs7UvX7gDeV59",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 609615,
+      "output_tokens": 25539,
+      "total_tokens": 2489110,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1830241,
+      "reasoning_tokens": 23715,
+      "total_cost": 1.4188096500000003
+    }
+  },
+  "oeis_id": "A227923"
+}

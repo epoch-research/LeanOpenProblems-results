@@ -1,0 +1,20 @@
+{
+  "id": "A379240_conjecture_equality",
+  "epoch": 1,
+  "uuid": "mDWgRVQeieiSYZC46Gf9cw",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1028522,
+      "output_tokens": 43752,
+      "total_tokens": 8904924,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 7796494,
+      "reasoning_tokens": 36156,
+      "total_cost": 3.1060250999999997
+    }
+  },
+  "oeis_id": "A379240"
+}

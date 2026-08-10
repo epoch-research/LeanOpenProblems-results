@@ -1,0 +1,6036 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:185:6: warning: 'congr 1' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:8749:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:69360:2: error: unsolved goals
+  case inr.inl.«1»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 1 > 0
+  hd_cop : Coprime 1 10
+  hd2c_le : 1 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 1 ≥ 9 * k
+  hd1000 : 1 ≤ 999
+  ⊢ A004290 1 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«3»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 3 > 0
+  hd_cop : Coprime 3 10
+  hd2c_le : 3 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 3 ≥ 9 * k
+  hd1000 : 3 ≤ 999
+  ⊢ A004290 3 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«7»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 7 > 0
+  hd_cop : Coprime 7 10
+  hd2c_le : 7 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 7 ≥ 9 * k
+  hd1000 : 7 ≤ 999
+  ⊢ A004290 7 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«9»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 9 > 0
+  hd_cop : Coprime 9 10
+  hd2c_le : 9 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 9 ≥ 9 * k
+  hd1000 : 9 ≤ 999
+  ⊢ A004290 9 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«11»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 11 > 0
+  hd_cop : Coprime 11 10
+  hd2c_le : 11 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 11 ≥ 9 * k
+  hd1000 : 11 ≤ 999
+  ⊢ A004290 11 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«13»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 13 > 0
+  hd_cop : Coprime 13 10
+  hd2c_le : 13 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 13 ≥ 9 * k
+  hd1000 : 13 ≤ 999
+  ⊢ A004290 13 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«17»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 17 > 0
+  hd_cop : Coprime 17 10
+  hd2c_le : 17 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 17 ≥ 9 * k
+  hd1000 : 17 ≤ 999
+  ⊢ A004290 17 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«19»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 19 > 0
+  hd_cop : Coprime 19 10
+  hd2c_le : 19 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 19 ≥ 9 * k
+  hd1000 : 19 ≤ 999
+  ⊢ A004290 19 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«21»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 21 > 0
+  hd_cop : Coprime 21 10
+  hd2c_le : 21 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 21 ≥ 9 * k
+  hd1000 : 21 ≤ 999
+  ⊢ A004290 21 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«23»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 23 > 0
+  hd_cop : Coprime 23 10
+  hd2c_le : 23 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 23 ≥ 9 * k
+  hd1000 : 23 ≤ 999
+  ⊢ A004290 23 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«27»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 27 > 0
+  hd_cop : Coprime 27 10
+  hd2c_le : 27 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 27 ≥ 9 * k
+  hd1000 : 27 ≤ 999
+  ⊢ A004290 27 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«29»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 29 > 0
+  hd_cop : Coprime 29 10
+  hd2c_le : 29 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 29 ≥ 9 * k
+  hd1000 : 29 ≤ 999
+  ⊢ A004290 29 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«31»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 31 > 0
+  hd_cop : Coprime 31 10
+  hd2c_le : 31 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 31 ≥ 9 * k
+  hd1000 : 31 ≤ 999
+  ⊢ A004290 31 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«33»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 33 > 0
+  hd_cop : Coprime 33 10
+  hd2c_le : 33 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 33 ≥ 9 * k
+  hd1000 : 33 ≤ 999
+  ⊢ A004290 33 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«37»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 37 > 0
+  hd_cop : Coprime 37 10
+  hd2c_le : 37 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 37 ≥ 9 * k
+  hd1000 : 37 ≤ 999
+  ⊢ A004290 37 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«39»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 39 > 0
+  hd_cop : Coprime 39 10
+  hd2c_le : 39 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 39 ≥ 9 * k
+  hd1000 : 39 ≤ 999
+  ⊢ A004290 39 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«41»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 41 > 0
+  hd_cop : Coprime 41 10
+  hd2c_le : 41 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 41 ≥ 9 * k
+  hd1000 : 41 ≤ 999
+  ⊢ A004290 41 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«43»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 43 > 0
+  hd_cop : Coprime 43 10
+  hd2c_le : 43 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 43 ≥ 9 * k
+  hd1000 : 43 ≤ 999
+  ⊢ A004290 43 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«47»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 47 > 0
+  hd_cop : Coprime 47 10
+  hd2c_le : 47 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 47 ≥ 9 * k
+  hd1000 : 47 ≤ 999
+  ⊢ A004290 47 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«49»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 49 > 0
+  hd_cop : Coprime 49 10
+  hd2c_le : 49 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 49 ≥ 9 * k
+  hd1000 : 49 ≤ 999
+  ⊢ A004290 49 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«51»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 51 > 0
+  hd_cop : Coprime 51 10
+  hd2c_le : 51 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 51 ≥ 9 * k
+  hd1000 : 51 ≤ 999
+  ⊢ A004290 51 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«53»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 53 > 0
+  hd_cop : Coprime 53 10
+  hd2c_le : 53 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 53 ≥ 9 * k
+  hd1000 : 53 ≤ 999
+  ⊢ A004290 53 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«57»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 57 > 0
+  hd_cop : Coprime 57 10
+  hd2c_le : 57 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 57 ≥ 9 * k
+  hd1000 : 57 ≤ 999
+  ⊢ A004290 57 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«59»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 59 > 0
+  hd_cop : Coprime 59 10
+  hd2c_le : 59 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 59 ≥ 9 * k
+  hd1000 : 59 ≤ 999
+  ⊢ A004290 59 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«61»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 61 > 0
+  hd_cop : Coprime 61 10
+  hd2c_le : 61 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 61 ≥ 9 * k
+  hd1000 : 61 ≤ 999
+  ⊢ A004290 61 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«63»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 63 > 0
+  hd_cop : Coprime 63 10
+  hd2c_le : 63 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 63 ≥ 9 * k
+  hd1000 : 63 ≤ 999
+  ⊢ A004290 63 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«67»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 67 > 0
+  hd_cop : Coprime 67 10
+  hd2c_le : 67 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 67 ≥ 9 * k
+  hd1000 : 67 ≤ 999
+  ⊢ A004290 67 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«69»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 69 > 0
+  hd_cop : Coprime 69 10
+  hd2c_le : 69 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 69 ≥ 9 * k
+  hd1000 : 69 ≤ 999
+  ⊢ A004290 69 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«71»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 71 > 0
+  hd_cop : Coprime 71 10
+  hd2c_le : 71 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 71 ≥ 9 * k
+  hd1000 : 71 ≤ 999
+  ⊢ A004290 71 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«73»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 73 > 0
+  hd_cop : Coprime 73 10
+  hd2c_le : 73 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 73 ≥ 9 * k
+  hd1000 : 73 ≤ 999
+  ⊢ A004290 73 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«77»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 77 > 0
+  hd_cop : Coprime 77 10
+  hd2c_le : 77 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 77 ≥ 9 * k
+  hd1000 : 77 ≤ 999
+  ⊢ A004290 77 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«79»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 79 > 0
+  hd_cop : Coprime 79 10
+  hd2c_le : 79 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 79 ≥ 9 * k
+  hd1000 : 79 ≤ 999
+  ⊢ A004290 79 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«81»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 81 > 0
+  hd_cop : Coprime 81 10
+  hd2c_le : 81 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 81 ≥ 9 * k
+  hd1000 : 81 ≤ 999
+  ⊢ A004290 81 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«83»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 83 > 0
+  hd_cop : Coprime 83 10
+  hd2c_le : 83 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 83 ≥ 9 * k
+  hd1000 : 83 ≤ 999
+  ⊢ A004290 83 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«87»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 87 > 0
+  hd_cop : Coprime 87 10
+  hd2c_le : 87 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 87 ≥ 9 * k
+  hd1000 : 87 ≤ 999
+  ⊢ A004290 87 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«89»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 89 > 0
+  hd_cop : Coprime 89 10
+  hd2c_le : 89 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 89 ≥ 9 * k
+  hd1000 : 89 ≤ 999
+  ⊢ A004290 89 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«91»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 91 > 0
+  hd_cop : Coprime 91 10
+  hd2c_le : 91 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 91 ≥ 9 * k
+  hd1000 : 91 ≤ 999
+  ⊢ A004290 91 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«93»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 93 > 0
+  hd_cop : Coprime 93 10
+  hd2c_le : 93 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 93 ≥ 9 * k
+  hd1000 : 93 ≤ 999
+  ⊢ A004290 93 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«97»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 97 > 0
+  hd_cop : Coprime 97 10
+  hd2c_le : 97 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 97 ≥ 9 * k
+  hd1000 : 97 ≤ 999
+  ⊢ A004290 97 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«99»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 99 > 0
+  hd_cop : Coprime 99 10
+  hd2c_le : 99 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 99 ≥ 9 * k
+  hd1000 : 99 ≤ 999
+  ⊢ A004290 99 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«101»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 101 > 0
+  hd_cop : Coprime 101 10
+  hd2c_le : 101 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 101 ≥ 9 * k
+  hd1000 : 101 ≤ 999
+  ⊢ A004290 101 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«103»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 103 > 0
+  hd_cop : Coprime 103 10
+  hd2c_le : 103 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 103 ≥ 9 * k
+  hd1000 : 103 ≤ 999
+  ⊢ A004290 103 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«107»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 107 > 0
+  hd_cop : Coprime 107 10
+  hd2c_le : 107 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 107 ≥ 9 * k
+  hd1000 : 107 ≤ 999
+  ⊢ A004290 107 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«109»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 109 > 0
+  hd_cop : Coprime 109 10
+  hd2c_le : 109 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 109 ≥ 9 * k
+  hd1000 : 109 ≤ 999
+  ⊢ A004290 109 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«111»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 111 > 0
+  hd_cop : Coprime 111 10
+  hd2c_le : 111 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 111 ≥ 9 * k
+  hd1000 : 111 ≤ 999
+  ⊢ A004290 111 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«113»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 113 > 0
+  hd_cop : Coprime 113 10
+  hd2c_le : 113 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 113 ≥ 9 * k
+  hd1000 : 113 ≤ 999
+  ⊢ A004290 113 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«117»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 117 > 0
+  hd_cop : Coprime 117 10
+  hd2c_le : 117 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 117 ≥ 9 * k
+  hd1000 : 117 ≤ 999
+  ⊢ A004290 117 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«119»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 119 > 0
+  hd_cop : Coprime 119 10
+  hd2c_le : 119 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 119 ≥ 9 * k
+  hd1000 : 119 ≤ 999
+  ⊢ A004290 119 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«121»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 121 > 0
+  hd_cop : Coprime 121 10
+  hd2c_le : 121 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 121 ≥ 9 * k
+  hd1000 : 121 ≤ 999
+  ⊢ A004290 121 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«123»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 123 > 0
+  hd_cop : Coprime 123 10
+  hd2c_le : 123 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 123 ≥ 9 * k
+  hd1000 : 123 ≤ 999
+  ⊢ A004290 123 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«127»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 127 > 0
+  hd_cop : Coprime 127 10
+  hd2c_le : 127 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 127 ≥ 9 * k
+  hd1000 : 127 ≤ 999
+  ⊢ A004290 127 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«129»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 129 > 0
+  hd_cop : Coprime 129 10
+  hd2c_le : 129 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 129 ≥ 9 * k
+  hd1000 : 129 ≤ 999
+  ⊢ A004290 129 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«131»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 131 > 0
+  hd_cop : Coprime 131 10
+  hd2c_le : 131 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 131 ≥ 9 * k
+  hd1000 : 131 ≤ 999
+  ⊢ A004290 131 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«133»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 133 > 0
+  hd_cop : Coprime 133 10
+  hd2c_le : 133 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 133 ≥ 9 * k
+  hd1000 : 133 ≤ 999
+  ⊢ A004290 133 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«137»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 137 > 0
+  hd_cop : Coprime 137 10
+  hd2c_le : 137 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 137 ≥ 9 * k
+  hd1000 : 137 ≤ 999
+  ⊢ A004290 137 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«139»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 139 > 0
+  hd_cop : Coprime 139 10
+  hd2c_le : 139 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 139 ≥ 9 * k
+  hd1000 : 139 ≤ 999
+  ⊢ A004290 139 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«141»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 141 > 0
+  hd_cop : Coprime 141 10
+  hd2c_le : 141 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 141 ≥ 9 * k
+  hd1000 : 141 ≤ 999
+  ⊢ A004290 141 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«143»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 143 > 0
+  hd_cop : Coprime 143 10
+  hd2c_le : 143 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 143 ≥ 9 * k
+  hd1000 : 143 ≤ 999
+  ⊢ A004290 143 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«147»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 147 > 0
+  hd_cop : Coprime 147 10
+  hd2c_le : 147 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 147 ≥ 9 * k
+  hd1000 : 147 ≤ 999
+  ⊢ A004290 147 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«149»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 149 > 0
+  hd_cop : Coprime 149 10
+  hd2c_le : 149 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 149 ≥ 9 * k
+  hd1000 : 149 ≤ 999
+  ⊢ A004290 149 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«151»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 151 > 0
+  hd_cop : Coprime 151 10
+  hd2c_le : 151 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 151 ≥ 9 * k
+  hd1000 : 151 ≤ 999
+  ⊢ A004290 151 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«153»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 153 > 0
+  hd_cop : Coprime 153 10
+  hd2c_le : 153 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 153 ≥ 9 * k
+  hd1000 : 153 ≤ 999
+  ⊢ A004290 153 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«157»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 157 > 0
+  hd_cop : Coprime 157 10
+  hd2c_le : 157 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 157 ≥ 9 * k
+  hd1000 : 157 ≤ 999
+  ⊢ A004290 157 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«159»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 159 > 0
+  hd_cop : Coprime 159 10
+  hd2c_le : 159 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 159 ≥ 9 * k
+  hd1000 : 159 ≤ 999
+  ⊢ A004290 159 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«161»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 161 > 0
+  hd_cop : Coprime 161 10
+  hd2c_le : 161 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 161 ≥ 9 * k
+  hd1000 : 161 ≤ 999
+  ⊢ A004290 161 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«163»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 163 > 0
+  hd_cop : Coprime 163 10
+  hd2c_le : 163 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 163 ≥ 9 * k
+  hd1000 : 163 ≤ 999
+  ⊢ A004290 163 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«167»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 167 > 0
+  hd_cop : Coprime 167 10
+  hd2c_le : 167 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 167 ≥ 9 * k
+  hd1000 : 167 ≤ 999
+  ⊢ A004290 167 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«169»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 169 > 0
+  hd_cop : Coprime 169 10
+  hd2c_le : 169 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 169 ≥ 9 * k
+  hd1000 : 169 ≤ 999
+  ⊢ A004290 169 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«171»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 171 > 0
+  hd_cop : Coprime 171 10
+  hd2c_le : 171 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 171 ≥ 9 * k
+  hd1000 : 171 ≤ 999
+  ⊢ A004290 171 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«173»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 173 > 0
+  hd_cop : Coprime 173 10
+  hd2c_le : 173 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 173 ≥ 9 * k
+  hd1000 : 173 ≤ 999
+  ⊢ A004290 173 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«177»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 177 > 0
+  hd_cop : Coprime 177 10
+  hd2c_le : 177 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 177 ≥ 9 * k
+  hd1000 : 177 ≤ 999
+  ⊢ A004290 177 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«179»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 179 > 0
+  hd_cop : Coprime 179 10
+  hd2c_le : 179 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 179 ≥ 9 * k
+  hd1000 : 179 ≤ 999
+  ⊢ A004290 179 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«181»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 181 > 0
+  hd_cop : Coprime 181 10
+  hd2c_le : 181 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 181 ≥ 9 * k
+  hd1000 : 181 ≤ 999
+  ⊢ A004290 181 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«183»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 183 > 0
+  hd_cop : Coprime 183 10
+  hd2c_le : 183 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 183 ≥ 9 * k
+  hd1000 : 183 ≤ 999
+  ⊢ A004290 183 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«187»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 187 > 0
+  hd_cop : Coprime 187 10
+  hd2c_le : 187 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 187 ≥ 9 * k
+  hd1000 : 187 ≤ 999
+  ⊢ A004290 187 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«189»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 189 > 0
+  hd_cop : Coprime 189 10
+  hd2c_le : 189 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 189 ≥ 9 * k
+  hd1000 : 189 ≤ 999
+  ⊢ A004290 189 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«191»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 191 > 0
+  hd_cop : Coprime 191 10
+  hd2c_le : 191 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 191 ≥ 9 * k
+  hd1000 : 191 ≤ 999
+  ⊢ A004290 191 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«193»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 193 > 0
+  hd_cop : Coprime 193 10
+  hd2c_le : 193 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 193 ≥ 9 * k
+  hd1000 : 193 ≤ 999
+  ⊢ A004290 193 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«197»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 197 > 0
+  hd_cop : Coprime 197 10
+  hd2c_le : 197 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 197 ≥ 9 * k
+  hd1000 : 197 ≤ 999
+  ⊢ A004290 197 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«199»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 199 > 0
+  hd_cop : Coprime 199 10
+  hd2c_le : 199 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 199 ≥ 9 * k
+  hd1000 : 199 ≤ 999
+  ⊢ A004290 199 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«201»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 201 > 0
+  hd_cop : Coprime 201 10
+  hd2c_le : 201 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 201 ≥ 9 * k
+  hd1000 : 201 ≤ 999
+  ⊢ A004290 201 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«203»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 203 > 0
+  hd_cop : Coprime 203 10
+  hd2c_le : 203 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 203 ≥ 9 * k
+  hd1000 : 203 ≤ 999
+  ⊢ A004290 203 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«207»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 207 > 0
+  hd_cop : Coprime 207 10
+  hd2c_le : 207 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 207 ≥ 9 * k
+  hd1000 : 207 ≤ 999
+  ⊢ A004290 207 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«209»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 209 > 0
+  hd_cop : Coprime 209 10
+  hd2c_le : 209 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 209 ≥ 9 * k
+  hd1000 : 209 ≤ 999
+  ⊢ A004290 209 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«211»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 211 > 0
+  hd_cop : Coprime 211 10
+  hd2c_le : 211 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 211 ≥ 9 * k
+  hd1000 : 211 ≤ 999
+  ⊢ A004290 211 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«213»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 213 > 0
+  hd_cop : Coprime 213 10
+  hd2c_le : 213 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 213 ≥ 9 * k
+  hd1000 : 213 ≤ 999
+  ⊢ A004290 213 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«217»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 217 > 0
+  hd_cop : Coprime 217 10
+  hd2c_le : 217 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 217 ≥ 9 * k
+  hd1000 : 217 ≤ 999
+  ⊢ A004290 217 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«219»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 219 > 0
+  hd_cop : Coprime 219 10
+  hd2c_le : 219 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 219 ≥ 9 * k
+  hd1000 : 219 ≤ 999
+  ⊢ A004290 219 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«221»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 221 > 0
+  hd_cop : Coprime 221 10
+  hd2c_le : 221 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 221 ≥ 9 * k
+  hd1000 : 221 ≤ 999
+  ⊢ A004290 221 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«223»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 223 > 0
+  hd_cop : Coprime 223 10
+  hd2c_le : 223 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 223 ≥ 9 * k
+  hd1000 : 223 ≤ 999
+  ⊢ A004290 223 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«227»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 227 > 0
+  hd_cop : Coprime 227 10
+  hd2c_le : 227 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 227 ≥ 9 * k
+  hd1000 : 227 ≤ 999
+  ⊢ A004290 227 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«229»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 229 > 0
+  hd_cop : Coprime 229 10
+  hd2c_le : 229 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 229 ≥ 9 * k
+  hd1000 : 229 ≤ 999
+  ⊢ A004290 229 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«231»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 231 > 0
+  hd_cop : Coprime 231 10
+  hd2c_le : 231 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 231 ≥ 9 * k
+  hd1000 : 231 ≤ 999
+  ⊢ A004290 231 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«233»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 233 > 0
+  hd_cop : Coprime 233 10
+  hd2c_le : 233 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 233 ≥ 9 * k
+  hd1000 : 233 ≤ 999
+  ⊢ A004290 233 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«237»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 237 > 0
+  hd_cop : Coprime 237 10
+  hd2c_le : 237 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 237 ≥ 9 * k
+  hd1000 : 237 ≤ 999
+  ⊢ A004290 237 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«239»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 239 > 0
+  hd_cop : Coprime 239 10
+  hd2c_le : 239 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 239 ≥ 9 * k
+  hd1000 : 239 ≤ 999
+  ⊢ A004290 239 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«241»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 241 > 0
+  hd_cop : Coprime 241 10
+  hd2c_le : 241 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 241 ≥ 9 * k
+  hd1000 : 241 ≤ 999
+  ⊢ A004290 241 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«243»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 243 > 0
+  hd_cop : Coprime 243 10
+  hd2c_le : 243 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 243 ≥ 9 * k
+  hd1000 : 243 ≤ 999
+  ⊢ A004290 243 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«247»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 247 > 0
+  hd_cop : Coprime 247 10
+  hd2c_le : 247 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 247 ≥ 9 * k
+  hd1000 : 247 ≤ 999
+  ⊢ A004290 247 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«249»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 249 > 0
+  hd_cop : Coprime 249 10
+  hd2c_le : 249 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 249 ≥ 9 * k
+  hd1000 : 249 ≤ 999
+  ⊢ A004290 249 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«251»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 251 > 0
+  hd_cop : Coprime 251 10
+  hd2c_le : 251 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 251 ≥ 9 * k
+  hd1000 : 251 ≤ 999
+  ⊢ A004290 251 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«253»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 253 > 0
+  hd_cop : Coprime 253 10
+  hd2c_le : 253 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 253 ≥ 9 * k
+  hd1000 : 253 ≤ 999
+  ⊢ A004290 253 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«257»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 257 > 0
+  hd_cop : Coprime 257 10
+  hd2c_le : 257 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 257 ≥ 9 * k
+  hd1000 : 257 ≤ 999
+  ⊢ A004290 257 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«259»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 259 > 0
+  hd_cop : Coprime 259 10
+  hd2c_le : 259 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 259 ≥ 9 * k
+  hd1000 : 259 ≤ 999
+  ⊢ A004290 259 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«261»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 261 > 0
+  hd_cop : Coprime 261 10
+  hd2c_le : 261 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 261 ≥ 9 * k
+  hd1000 : 261 ≤ 999
+  ⊢ A004290 261 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«263»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 263 > 0
+  hd_cop : Coprime 263 10
+  hd2c_le : 263 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 263 ≥ 9 * k
+  hd1000 : 263 ≤ 999
+  ⊢ A004290 263 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«267»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 267 > 0
+  hd_cop : Coprime 267 10
+  hd2c_le : 267 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 267 ≥ 9 * k
+  hd1000 : 267 ≤ 999
+  ⊢ A004290 267 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«269»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 269 > 0
+  hd_cop : Coprime 269 10
+  hd2c_le : 269 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 269 ≥ 9 * k
+  hd1000 : 269 ≤ 999
+  ⊢ A004290 269 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«271»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 271 > 0
+  hd_cop : Coprime 271 10
+  hd2c_le : 271 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 271 ≥ 9 * k
+  hd1000 : 271 ≤ 999
+  ⊢ A004290 271 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«273»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 273 > 0
+  hd_cop : Coprime 273 10
+  hd2c_le : 273 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 273 ≥ 9 * k
+  hd1000 : 273 ≤ 999
+  ⊢ A004290 273 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«277»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 277 > 0
+  hd_cop : Coprime 277 10
+  hd2c_le : 277 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 277 ≥ 9 * k
+  hd1000 : 277 ≤ 999
+  ⊢ A004290 277 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«279»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 279 > 0
+  hd_cop : Coprime 279 10
+  hd2c_le : 279 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 279 ≥ 9 * k
+  hd1000 : 279 ≤ 999
+  ⊢ A004290 279 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«281»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 281 > 0
+  hd_cop : Coprime 281 10
+  hd2c_le : 281 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 281 ≥ 9 * k
+  hd1000 : 281 ≤ 999
+  ⊢ A004290 281 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«283»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 283 > 0
+  hd_cop : Coprime 283 10
+  hd2c_le : 283 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 283 ≥ 9 * k
+  hd1000 : 283 ≤ 999
+  ⊢ A004290 283 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«287»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 287 > 0
+  hd_cop : Coprime 287 10
+  hd2c_le : 287 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 287 ≥ 9 * k
+  hd1000 : 287 ≤ 999
+  ⊢ A004290 287 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«289»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 289 > 0
+  hd_cop : Coprime 289 10
+  hd2c_le : 289 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 289 ≥ 9 * k
+  hd1000 : 289 ≤ 999
+  ⊢ A004290 289 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«291»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 291 > 0
+  hd_cop : Coprime 291 10
+  hd2c_le : 291 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 291 ≥ 9 * k
+  hd1000 : 291 ≤ 999
+  ⊢ A004290 291 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«293»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 293 > 0
+  hd_cop : Coprime 293 10
+  hd2c_le : 293 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 293 ≥ 9 * k
+  hd1000 : 293 ≤ 999
+  ⊢ A004290 293 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«297»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 297 > 0
+  hd_cop : Coprime 297 10
+  hd2c_le : 297 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 297 ≥ 9 * k
+  hd1000 : 297 ≤ 999
+  ⊢ A004290 297 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«299»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 299 > 0
+  hd_cop : Coprime 299 10
+  hd2c_le : 299 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 299 ≥ 9 * k
+  hd1000 : 299 ≤ 999
+  ⊢ A004290 299 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«301»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 301 > 0
+  hd_cop : Coprime 301 10
+  hd2c_le : 301 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 301 ≥ 9 * k
+  hd1000 : 301 ≤ 999
+  ⊢ A004290 301 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«303»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 303 > 0
+  hd_cop : Coprime 303 10
+  hd2c_le : 303 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 303 ≥ 9 * k
+  hd1000 : 303 ≤ 999
+  ⊢ A004290 303 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«307»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 307 > 0
+  hd_cop : Coprime 307 10
+  hd2c_le : 307 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 307 ≥ 9 * k
+  hd1000 : 307 ≤ 999
+  ⊢ A004290 307 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«309»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 309 > 0
+  hd_cop : Coprime 309 10
+  hd2c_le : 309 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 309 ≥ 9 * k
+  hd1000 : 309 ≤ 999
+  ⊢ A004290 309 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«311»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 311 > 0
+  hd_cop : Coprime 311 10
+  hd2c_le : 311 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 311 ≥ 9 * k
+  hd1000 : 311 ≤ 999
+  ⊢ A004290 311 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«313»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 313 > 0
+  hd_cop : Coprime 313 10
+  hd2c_le : 313 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 313 ≥ 9 * k
+  hd1000 : 313 ≤ 999
+  ⊢ A004290 313 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«317»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 317 > 0
+  hd_cop : Coprime 317 10
+  hd2c_le : 317 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 317 ≥ 9 * k
+  hd1000 : 317 ≤ 999
+  ⊢ A004290 317 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«319»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 319 > 0
+  hd_cop : Coprime 319 10
+  hd2c_le : 319 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 319 ≥ 9 * k
+  hd1000 : 319 ≤ 999
+  ⊢ A004290 319 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«321»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 321 > 0
+  hd_cop : Coprime 321 10
+  hd2c_le : 321 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 321 ≥ 9 * k
+  hd1000 : 321 ≤ 999
+  ⊢ A004290 321 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«323»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 323 > 0
+  hd_cop : Coprime 323 10
+  hd2c_le : 323 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 323 ≥ 9 * k
+  hd1000 : 323 ≤ 999
+  ⊢ A004290 323 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«327»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 327 > 0
+  hd_cop : Coprime 327 10
+  hd2c_le : 327 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 327 ≥ 9 * k
+  hd1000 : 327 ≤ 999
+  ⊢ A004290 327 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«329»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 329 > 0
+  hd_cop : Coprime 329 10
+  hd2c_le : 329 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 329 ≥ 9 * k
+  hd1000 : 329 ≤ 999
+  ⊢ A004290 329 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«331»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 331 > 0
+  hd_cop : Coprime 331 10
+  hd2c_le : 331 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 331 ≥ 9 * k
+  hd1000 : 331 ≤ 999
+  ⊢ A004290 331 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«333»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 333 > 0
+  hd_cop : Coprime 333 10
+  hd2c_le : 333 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 333 ≥ 9 * k
+  hd1000 : 333 ≤ 999
+  ⊢ A004290 333 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«337»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 337 > 0
+  hd_cop : Coprime 337 10
+  hd2c_le : 337 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 337 ≥ 9 * k
+  hd1000 : 337 ≤ 999
+  ⊢ A004290 337 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«339»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 339 > 0
+  hd_cop : Coprime 339 10
+  hd2c_le : 339 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 339 ≥ 9 * k
+  hd1000 : 339 ≤ 999
+  ⊢ A004290 339 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«341»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 341 > 0
+  hd_cop : Coprime 341 10
+  hd2c_le : 341 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 341 ≥ 9 * k
+  hd1000 : 341 ≤ 999
+  ⊢ A004290 341 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«343»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 343 > 0
+  hd_cop : Coprime 343 10
+  hd2c_le : 343 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 343 ≥ 9 * k
+  hd1000 : 343 ≤ 999
+  ⊢ A004290 343 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«347»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 347 > 0
+  hd_cop : Coprime 347 10
+  hd2c_le : 347 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 347 ≥ 9 * k
+  hd1000 : 347 ≤ 999
+  ⊢ A004290 347 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«349»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 349 > 0
+  hd_cop : Coprime 349 10
+  hd2c_le : 349 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 349 ≥ 9 * k
+  hd1000 : 349 ≤ 999
+  ⊢ A004290 349 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«351»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 351 > 0
+  hd_cop : Coprime 351 10
+  hd2c_le : 351 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 351 ≥ 9 * k
+  hd1000 : 351 ≤ 999
+  ⊢ A004290 351 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«353»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 353 > 0
+  hd_cop : Coprime 353 10
+  hd2c_le : 353 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 353 ≥ 9 * k
+  hd1000 : 353 ≤ 999
+  ⊢ A004290 353 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«357»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 357 > 0
+  hd_cop : Coprime 357 10
+  hd2c_le : 357 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 357 ≥ 9 * k
+  hd1000 : 357 ≤ 999
+  ⊢ A004290 357 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«359»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 359 > 0
+  hd_cop : Coprime 359 10
+  hd2c_le : 359 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 359 ≥ 9 * k
+  hd1000 : 359 ≤ 999
+  ⊢ A004290 359 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«361»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 361 > 0
+  hd_cop : Coprime 361 10
+  hd2c_le : 361 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 361 ≥ 9 * k
+  hd1000 : 361 ≤ 999
+  ⊢ A004290 361 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«363»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 363 > 0
+  hd_cop : Coprime 363 10
+  hd2c_le : 363 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 363 ≥ 9 * k
+  hd1000 : 363 ≤ 999
+  ⊢ A004290 363 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«367»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 367 > 0
+  hd_cop : Coprime 367 10
+  hd2c_le : 367 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 367 ≥ 9 * k
+  hd1000 : 367 ≤ 999
+  ⊢ A004290 367 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«369»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 369 > 0
+  hd_cop : Coprime 369 10
+  hd2c_le : 369 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 369 ≥ 9 * k
+  hd1000 : 369 ≤ 999
+  ⊢ A004290 369 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«371»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 371 > 0
+  hd_cop : Coprime 371 10
+  hd2c_le : 371 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 371 ≥ 9 * k
+  hd1000 : 371 ≤ 999
+  ⊢ A004290 371 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«373»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 373 > 0
+  hd_cop : Coprime 373 10
+  hd2c_le : 373 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 373 ≥ 9 * k
+  hd1000 : 373 ≤ 999
+  ⊢ A004290 373 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«377»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 377 > 0
+  hd_cop : Coprime 377 10
+  hd2c_le : 377 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 377 ≥ 9 * k
+  hd1000 : 377 ≤ 999
+  ⊢ A004290 377 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«379»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 379 > 0
+  hd_cop : Coprime 379 10
+  hd2c_le : 379 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 379 ≥ 9 * k
+  hd1000 : 379 ≤ 999
+  ⊢ A004290 379 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«381»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 381 > 0
+  hd_cop : Coprime 381 10
+  hd2c_le : 381 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 381 ≥ 9 * k
+  hd1000 : 381 ≤ 999
+  ⊢ A004290 381 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«383»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 383 > 0
+  hd_cop : Coprime 383 10
+  hd2c_le : 383 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 383 ≥ 9 * k
+  hd1000 : 383 ≤ 999
+  ⊢ A004290 383 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«387»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 387 > 0
+  hd_cop : Coprime 387 10
+  hd2c_le : 387 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 387 ≥ 9 * k
+  hd1000 : 387 ≤ 999
+  ⊢ A004290 387 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«389»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 389 > 0
+  hd_cop : Coprime 389 10
+  hd2c_le : 389 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 389 ≥ 9 * k
+  hd1000 : 389 ≤ 999
+  ⊢ A004290 389 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«391»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 391 > 0
+  hd_cop : Coprime 391 10
+  hd2c_le : 391 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 391 ≥ 9 * k
+  hd1000 : 391 ≤ 999
+  ⊢ A004290 391 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«393»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 393 > 0
+  hd_cop : Coprime 393 10
+  hd2c_le : 393 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 393 ≥ 9 * k
+  hd1000 : 393 ≤ 999
+  ⊢ A004290 393 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«397»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 397 > 0
+  hd_cop : Coprime 397 10
+  hd2c_le : 397 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 397 ≥ 9 * k
+  hd1000 : 397 ≤ 999
+  ⊢ A004290 397 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«399»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 399 > 0
+  hd_cop : Coprime 399 10
+  hd2c_le : 399 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 399 ≥ 9 * k
+  hd1000 : 399 ≤ 999
+  ⊢ A004290 399 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«401»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 401 > 0
+  hd_cop : Coprime 401 10
+  hd2c_le : 401 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 401 ≥ 9 * k
+  hd1000 : 401 ≤ 999
+  ⊢ A004290 401 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«403»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 403 > 0
+  hd_cop : Coprime 403 10
+  hd2c_le : 403 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 403 ≥ 9 * k
+  hd1000 : 403 ≤ 999
+  ⊢ A004290 403 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«407»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 407 > 0
+  hd_cop : Coprime 407 10
+  hd2c_le : 407 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 407 ≥ 9 * k
+  hd1000 : 407 ≤ 999
+  ⊢ A004290 407 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«409»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 409 > 0
+  hd_cop : Coprime 409 10
+  hd2c_le : 409 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 409 ≥ 9 * k
+  hd1000 : 409 ≤ 999
+  ⊢ A004290 409 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«411»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 411 > 0
+  hd_cop : Coprime 411 10
+  hd2c_le : 411 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 411 ≥ 9 * k
+  hd1000 : 411 ≤ 999
+  ⊢ A004290 411 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«413»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 413 > 0
+  hd_cop : Coprime 413 10
+  hd2c_le : 413 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 413 ≥ 9 * k
+  hd1000 : 413 ≤ 999
+  ⊢ A004290 413 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«417»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 417 > 0
+  hd_cop : Coprime 417 10
+  hd2c_le : 417 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 417 ≥ 9 * k
+  hd1000 : 417 ≤ 999
+  ⊢ A004290 417 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«419»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 419 > 0
+  hd_cop : Coprime 419 10
+  hd2c_le : 419 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 419 ≥ 9 * k
+  hd1000 : 419 ≤ 999
+  ⊢ A004290 419 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«421»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 421 > 0
+  hd_cop : Coprime 421 10
+  hd2c_le : 421 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 421 ≥ 9 * k
+  hd1000 : 421 ≤ 999
+  ⊢ A004290 421 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«423»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 423 > 0
+  hd_cop : Coprime 423 10
+  hd2c_le : 423 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 423 ≥ 9 * k
+  hd1000 : 423 ≤ 999
+  ⊢ A004290 423 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«427»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 427 > 0
+  hd_cop : Coprime 427 10
+  hd2c_le : 427 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 427 ≥ 9 * k
+  hd1000 : 427 ≤ 999
+  ⊢ A004290 427 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«429»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 429 > 0
+  hd_cop : Coprime 429 10
+  hd2c_le : 429 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 429 ≥ 9 * k
+  hd1000 : 429 ≤ 999
+  ⊢ A004290 429 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«431»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 431 > 0
+  hd_cop : Coprime 431 10
+  hd2c_le : 431 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 431 ≥ 9 * k
+  hd1000 : 431 ≤ 999
+  ⊢ A004290 431 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«433»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 433 > 0
+  hd_cop : Coprime 433 10
+  hd2c_le : 433 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 433 ≥ 9 * k
+  hd1000 : 433 ≤ 999
+  ⊢ A004290 433 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«437»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 437 > 0
+  hd_cop : Coprime 437 10
+  hd2c_le : 437 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 437 ≥ 9 * k
+  hd1000 : 437 ≤ 999
+  ⊢ A004290 437 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«439»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 439 > 0
+  hd_cop : Coprime 439 10
+  hd2c_le : 439 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 439 ≥ 9 * k
+  hd1000 : 439 ≤ 999
+  ⊢ A004290 439 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«441»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 441 > 0
+  hd_cop : Coprime 441 10
+  hd2c_le : 441 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 441 ≥ 9 * k
+  hd1000 : 441 ≤ 999
+  ⊢ A004290 441 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«443»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 443 > 0
+  hd_cop : Coprime 443 10
+  hd2c_le : 443 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 443 ≥ 9 * k
+  hd1000 : 443 ≤ 999
+  ⊢ A004290 443 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«447»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 447 > 0
+  hd_cop : Coprime 447 10
+  hd2c_le : 447 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 447 ≥ 9 * k
+  hd1000 : 447 ≤ 999
+  ⊢ A004290 447 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«449»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 449 > 0
+  hd_cop : Coprime 449 10
+  hd2c_le : 449 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 449 ≥ 9 * k
+  hd1000 : 449 ≤ 999
+  ⊢ A004290 449 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«451»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 451 > 0
+  hd_cop : Coprime 451 10
+  hd2c_le : 451 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 451 ≥ 9 * k
+  hd1000 : 451 ≤ 999
+  ⊢ A004290 451 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«453»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 453 > 0
+  hd_cop : Coprime 453 10
+  hd2c_le : 453 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 453 ≥ 9 * k
+  hd1000 : 453 ≤ 999
+  ⊢ A004290 453 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«457»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 457 > 0
+  hd_cop : Coprime 457 10
+  hd2c_le : 457 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 457 ≥ 9 * k
+  hd1000 : 457 ≤ 999
+  ⊢ A004290 457 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«459»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 459 > 0
+  hd_cop : Coprime 459 10
+  hd2c_le : 459 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 459 ≥ 9 * k
+  hd1000 : 459 ≤ 999
+  ⊢ A004290 459 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«461»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 461 > 0
+  hd_cop : Coprime 461 10
+  hd2c_le : 461 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 461 ≥ 9 * k
+  hd1000 : 461 ≤ 999
+  ⊢ A004290 461 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«463»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 463 > 0
+  hd_cop : Coprime 463 10
+  hd2c_le : 463 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 463 ≥ 9 * k
+  hd1000 : 463 ≤ 999
+  ⊢ A004290 463 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«467»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 467 > 0
+  hd_cop : Coprime 467 10
+  hd2c_le : 467 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 467 ≥ 9 * k
+  hd1000 : 467 ≤ 999
+  ⊢ A004290 467 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«469»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 469 > 0
+  hd_cop : Coprime 469 10
+  hd2c_le : 469 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 469 ≥ 9 * k
+  hd1000 : 469 ≤ 999
+  ⊢ A004290 469 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«471»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 471 > 0
+  hd_cop : Coprime 471 10
+  hd2c_le : 471 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 471 ≥ 9 * k
+  hd1000 : 471 ≤ 999
+  ⊢ A004290 471 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«473»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 473 > 0
+  hd_cop : Coprime 473 10
+  hd2c_le : 473 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 473 ≥ 9 * k
+  hd1000 : 473 ≤ 999
+  ⊢ A004290 473 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«477»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 477 > 0
+  hd_cop : Coprime 477 10
+  hd2c_le : 477 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 477 ≥ 9 * k
+  hd1000 : 477 ≤ 999
+  ⊢ A004290 477 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«479»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 479 > 0
+  hd_cop : Coprime 479 10
+  hd2c_le : 479 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 479 ≥ 9 * k
+  hd1000 : 479 ≤ 999
+  ⊢ A004290 479 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«481»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 481 > 0
+  hd_cop : Coprime 481 10
+  hd2c_le : 481 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 481 ≥ 9 * k
+  hd1000 : 481 ≤ 999
+  ⊢ A004290 481 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«483»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 483 > 0
+  hd_cop : Coprime 483 10
+  hd2c_le : 483 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 483 ≥ 9 * k
+  hd1000 : 483 ≤ 999
+  ⊢ A004290 483 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«487»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 487 > 0
+  hd_cop : Coprime 487 10
+  hd2c_le : 487 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 487 ≥ 9 * k
+  hd1000 : 487 ≤ 999
+  ⊢ A004290 487 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«489»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 489 > 0
+  hd_cop : Coprime 489 10
+  hd2c_le : 489 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 489 ≥ 9 * k
+  hd1000 : 489 ≤ 999
+  ⊢ A004290 489 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«491»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 491 > 0
+  hd_cop : Coprime 491 10
+  hd2c_le : 491 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 491 ≥ 9 * k
+  hd1000 : 491 ≤ 999
+  ⊢ A004290 491 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«493»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 493 > 0
+  hd_cop : Coprime 493 10
+  hd2c_le : 493 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 493 ≥ 9 * k
+  hd1000 : 493 ≤ 999
+  ⊢ A004290 493 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«497»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 497 > 0
+  hd_cop : Coprime 497 10
+  hd2c_le : 497 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 497 ≥ 9 * k
+  hd1000 : 497 ≤ 999
+  ⊢ A004290 497 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«499»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 499 > 0
+  hd_cop : Coprime 499 10
+  hd2c_le : 499 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 499 ≥ 9 * k
+  hd1000 : 499 ≤ 999
+  ⊢ A004290 499 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«501»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 501 > 0
+  hd_cop : Coprime 501 10
+  hd2c_le : 501 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 501 ≥ 9 * k
+  hd1000 : 501 ≤ 999
+  ⊢ A004290 501 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«503»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 503 > 0
+  hd_cop : Coprime 503 10
+  hd2c_le : 503 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 503 ≥ 9 * k
+  hd1000 : 503 ≤ 999
+  ⊢ A004290 503 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«507»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 507 > 0
+  hd_cop : Coprime 507 10
+  hd2c_le : 507 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 507 ≥ 9 * k
+  hd1000 : 507 ≤ 999
+  ⊢ A004290 507 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«509»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 509 > 0
+  hd_cop : Coprime 509 10
+  hd2c_le : 509 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 509 ≥ 9 * k
+  hd1000 : 509 ≤ 999
+  ⊢ A004290 509 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«511»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 511 > 0
+  hd_cop : Coprime 511 10
+  hd2c_le : 511 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 511 ≥ 9 * k
+  hd1000 : 511 ≤ 999
+  ⊢ A004290 511 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«513»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 513 > 0
+  hd_cop : Coprime 513 10
+  hd2c_le : 513 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 513 ≥ 9 * k
+  hd1000 : 513 ≤ 999
+  ⊢ A004290 513 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«517»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 517 > 0
+  hd_cop : Coprime 517 10
+  hd2c_le : 517 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 517 ≥ 9 * k
+  hd1000 : 517 ≤ 999
+  ⊢ A004290 517 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«519»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 519 > 0
+  hd_cop : Coprime 519 10
+  hd2c_le : 519 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 519 ≥ 9 * k
+  hd1000 : 519 ≤ 999
+  ⊢ A004290 519 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«521»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 521 > 0
+  hd_cop : Coprime 521 10
+  hd2c_le : 521 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 521 ≥ 9 * k
+  hd1000 : 521 ≤ 999
+  ⊢ A004290 521 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«523»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 523 > 0
+  hd_cop : Coprime 523 10
+  hd2c_le : 523 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 523 ≥ 9 * k
+  hd1000 : 523 ≤ 999
+  ⊢ A004290 523 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«527»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 527 > 0
+  hd_cop : Coprime 527 10
+  hd2c_le : 527 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 527 ≥ 9 * k
+  hd1000 : 527 ≤ 999
+  ⊢ A004290 527 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«529»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 529 > 0
+  hd_cop : Coprime 529 10
+  hd2c_le : 529 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 529 ≥ 9 * k
+  hd1000 : 529 ≤ 999
+  ⊢ A004290 529 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«531»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 531 > 0
+  hd_cop : Coprime 531 10
+  hd2c_le : 531 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 531 ≥ 9 * k
+  hd1000 : 531 ≤ 999
+  ⊢ A004290 531 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«533»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 533 > 0
+  hd_cop : Coprime 533 10
+  hd2c_le : 533 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 533 ≥ 9 * k
+  hd1000 : 533 ≤ 999
+  ⊢ A004290 533 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«537»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 537 > 0
+  hd_cop : Coprime 537 10
+  hd2c_le : 537 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 537 ≥ 9 * k
+  hd1000 : 537 ≤ 999
+  ⊢ A004290 537 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«539»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 539 > 0
+  hd_cop : Coprime 539 10
+  hd2c_le : 539 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 539 ≥ 9 * k
+  hd1000 : 539 ≤ 999
+  ⊢ A004290 539 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«541»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 541 > 0
+  hd_cop : Coprime 541 10
+  hd2c_le : 541 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 541 ≥ 9 * k
+  hd1000 : 541 ≤ 999
+  ⊢ A004290 541 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«543»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 543 > 0
+  hd_cop : Coprime 543 10
+  hd2c_le : 543 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 543 ≥ 9 * k
+  hd1000 : 543 ≤ 999
+  ⊢ A004290 543 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«547»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 547 > 0
+  hd_cop : Coprime 547 10
+  hd2c_le : 547 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 547 ≥ 9 * k
+  hd1000 : 547 ≤ 999
+  ⊢ A004290 547 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«549»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 549 > 0
+  hd_cop : Coprime 549 10
+  hd2c_le : 549 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 549 ≥ 9 * k
+  hd1000 : 549 ≤ 999
+  ⊢ A004290 549 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«551»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 551 > 0
+  hd_cop : Coprime 551 10
+  hd2c_le : 551 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 551 ≥ 9 * k
+  hd1000 : 551 ≤ 999
+  ⊢ A004290 551 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«553»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 553 > 0
+  hd_cop : Coprime 553 10
+  hd2c_le : 553 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 553 ≥ 9 * k
+  hd1000 : 553 ≤ 999
+  ⊢ A004290 553 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«557»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 557 > 0
+  hd_cop : Coprime 557 10
+  hd2c_le : 557 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 557 ≥ 9 * k
+  hd1000 : 557 ≤ 999
+  ⊢ A004290 557 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«559»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 559 > 0
+  hd_cop : Coprime 559 10
+  hd2c_le : 559 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 559 ≥ 9 * k
+  hd1000 : 559 ≤ 999
+  ⊢ A004290 559 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«561»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 561 > 0
+  hd_cop : Coprime 561 10
+  hd2c_le : 561 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 561 ≥ 9 * k
+  hd1000 : 561 ≤ 999
+  ⊢ A004290 561 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«563»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 563 > 0
+  hd_cop : Coprime 563 10
+  hd2c_le : 563 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 563 ≥ 9 * k
+  hd1000 : 563 ≤ 999
+  ⊢ A004290 563 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«567»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 567 > 0
+  hd_cop : Coprime 567 10
+  hd2c_le : 567 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 567 ≥ 9 * k
+  hd1000 : 567 ≤ 999
+  ⊢ A004290 567 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«569»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 569 > 0
+  hd_cop : Coprime 569 10
+  hd2c_le : 569 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 569 ≥ 9 * k
+  hd1000 : 569 ≤ 999
+  ⊢ A004290 569 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«571»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 571 > 0
+  hd_cop : Coprime 571 10
+  hd2c_le : 571 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 571 ≥ 9 * k
+  hd1000 : 571 ≤ 999
+  ⊢ A004290 571 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«573»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 573 > 0
+  hd_cop : Coprime 573 10
+  hd2c_le : 573 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 573 ≥ 9 * k
+  hd1000 : 573 ≤ 999
+  ⊢ A004290 573 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«577»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 577 > 0
+  hd_cop : Coprime 577 10
+  hd2c_le : 577 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 577 ≥ 9 * k
+  hd1000 : 577 ≤ 999
+  ⊢ A004290 577 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«579»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 579 > 0
+  hd_cop : Coprime 579 10
+  hd2c_le : 579 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 579 ≥ 9 * k
+  hd1000 : 579 ≤ 999
+  ⊢ A004290 579 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«581»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 581 > 0
+  hd_cop : Coprime 581 10
+  hd2c_le : 581 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 581 ≥ 9 * k
+  hd1000 : 581 ≤ 999
+  ⊢ A004290 581 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«583»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 583 > 0
+  hd_cop : Coprime 583 10
+  hd2c_le : 583 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 583 ≥ 9 * k
+  hd1000 : 583 ≤ 999
+  ⊢ A004290 583 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«587»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 587 > 0
+  hd_cop : Coprime 587 10
+  hd2c_le : 587 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 587 ≥ 9 * k
+  hd1000 : 587 ≤ 999
+  ⊢ A004290 587 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«589»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 589 > 0
+  hd_cop : Coprime 589 10
+  hd2c_le : 589 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 589 ≥ 9 * k
+  hd1000 : 589 ≤ 999
+  ⊢ A004290 589 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«591»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 591 > 0
+  hd_cop : Coprime 591 10
+  hd2c_le : 591 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 591 ≥ 9 * k
+  hd1000 : 591 ≤ 999
+  ⊢ A004290 591 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«593»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 593 > 0
+  hd_cop : Coprime 593 10
+  hd2c_le : 593 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 593 ≥ 9 * k
+  hd1000 : 593 ≤ 999
+  ⊢ A004290 593 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«597»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 597 > 0
+  hd_cop : Coprime 597 10
+  hd2c_le : 597 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 597 ≥ 9 * k
+  hd1000 : 597 ≤ 999
+  ⊢ A004290 597 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«599»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 599 > 0
+  hd_cop : Coprime 599 10
+  hd2c_le : 599 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 599 ≥ 9 * k
+  hd1000 : 599 ≤ 999
+  ⊢ A004290 599 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«601»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 601 > 0
+  hd_cop : Coprime 601 10
+  hd2c_le : 601 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 601 ≥ 9 * k
+  hd1000 : 601 ≤ 999
+  ⊢ A004290 601 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«603»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 603 > 0
+  hd_cop : Coprime 603 10
+  hd2c_le : 603 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 603 ≥ 9 * k
+  hd1000 : 603 ≤ 999
+  ⊢ A004290 603 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«607»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 607 > 0
+  hd_cop : Coprime 607 10
+  hd2c_le : 607 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 607 ≥ 9 * k
+  hd1000 : 607 ≤ 999
+  ⊢ A004290 607 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«609»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 609 > 0
+  hd_cop : Coprime 609 10
+  hd2c_le : 609 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 609 ≥ 9 * k
+  hd1000 : 609 ≤ 999
+  ⊢ A004290 609 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«611»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 611 > 0
+  hd_cop : Coprime 611 10
+  hd2c_le : 611 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 611 ≥ 9 * k
+  hd1000 : 611 ≤ 999
+  ⊢ A004290 611 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«613»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 613 > 0
+  hd_cop : Coprime 613 10
+  hd2c_le : 613 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 613 ≥ 9 * k
+  hd1000 : 613 ≤ 999
+  ⊢ A004290 613 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«617»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 617 > 0
+  hd_cop : Coprime 617 10
+  hd2c_le : 617 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 617 ≥ 9 * k
+  hd1000 : 617 ≤ 999
+  ⊢ A004290 617 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«619»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 619 > 0
+  hd_cop : Coprime 619 10
+  hd2c_le : 619 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 619 ≥ 9 * k
+  hd1000 : 619 ≤ 999
+  ⊢ A004290 619 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«621»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 621 > 0
+  hd_cop : Coprime 621 10
+  hd2c_le : 621 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 621 ≥ 9 * k
+  hd1000 : 621 ≤ 999
+  ⊢ A004290 621 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«623»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 623 > 0
+  hd_cop : Coprime 623 10
+  hd2c_le : 623 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 623 ≥ 9 * k
+  hd1000 : 623 ≤ 999
+  ⊢ A004290 623 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«627»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 627 > 0
+  hd_cop : Coprime 627 10
+  hd2c_le : 627 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 627 ≥ 9 * k
+  hd1000 : 627 ≤ 999
+  ⊢ A004290 627 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«629»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 629 > 0
+  hd_cop : Coprime 629 10
+  hd2c_le : 629 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 629 ≥ 9 * k
+  hd1000 : 629 ≤ 999
+  ⊢ A004290 629 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«631»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 631 > 0
+  hd_cop : Coprime 631 10
+  hd2c_le : 631 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 631 ≥ 9 * k
+  hd1000 : 631 ≤ 999
+  ⊢ A004290 631 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«633»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 633 > 0
+  hd_cop : Coprime 633 10
+  hd2c_le : 633 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 633 ≥ 9 * k
+  hd1000 : 633 ≤ 999
+  ⊢ A004290 633 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«637»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 637 > 0
+  hd_cop : Coprime 637 10
+  hd2c_le : 637 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 637 ≥ 9 * k
+  hd1000 : 637 ≤ 999
+  ⊢ A004290 637 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«639»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 639 > 0
+  hd_cop : Coprime 639 10
+  hd2c_le : 639 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 639 ≥ 9 * k
+  hd1000 : 639 ≤ 999
+  ⊢ A004290 639 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«641»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 641 > 0
+  hd_cop : Coprime 641 10
+  hd2c_le : 641 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 641 ≥ 9 * k
+  hd1000 : 641 ≤ 999
+  ⊢ A004290 641 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«643»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 643 > 0
+  hd_cop : Coprime 643 10
+  hd2c_le : 643 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 643 ≥ 9 * k
+  hd1000 : 643 ≤ 999
+  ⊢ A004290 643 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«647»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 647 > 0
+  hd_cop : Coprime 647 10
+  hd2c_le : 647 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 647 ≥ 9 * k
+  hd1000 : 647 ≤ 999
+  ⊢ A004290 647 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«649»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 649 > 0
+  hd_cop : Coprime 649 10
+  hd2c_le : 649 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 649 ≥ 9 * k
+  hd1000 : 649 ≤ 999
+  ⊢ A004290 649 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«651»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 651 > 0
+  hd_cop : Coprime 651 10
+  hd2c_le : 651 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 651 ≥ 9 * k
+  hd1000 : 651 ≤ 999
+  ⊢ A004290 651 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«653»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 653 > 0
+  hd_cop : Coprime 653 10
+  hd2c_le : 653 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 653 ≥ 9 * k
+  hd1000 : 653 ≤ 999
+  ⊢ A004290 653 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«657»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 657 > 0
+  hd_cop : Coprime 657 10
+  hd2c_le : 657 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 657 ≥ 9 * k
+  hd1000 : 657 ≤ 999
+  ⊢ A004290 657 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«659»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 659 > 0
+  hd_cop : Coprime 659 10
+  hd2c_le : 659 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 659 ≥ 9 * k
+  hd1000 : 659 ≤ 999
+  ⊢ A004290 659 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«661»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 661 > 0
+  hd_cop : Coprime 661 10
+  hd2c_le : 661 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 661 ≥ 9 * k
+  hd1000 : 661 ≤ 999
+  ⊢ A004290 661 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«663»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 663 > 0
+  hd_cop : Coprime 663 10
+  hd2c_le : 663 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 663 ≥ 9 * k
+  hd1000 : 663 ≤ 999
+  ⊢ A004290 663 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«667»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 667 > 0
+  hd_cop : Coprime 667 10
+  hd2c_le : 667 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 667 ≥ 9 * k
+  hd1000 : 667 ≤ 999
+  ⊢ A004290 667 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«669»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 669 > 0
+  hd_cop : Coprime 669 10
+  hd2c_le : 669 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 669 ≥ 9 * k
+  hd1000 : 669 ≤ 999
+  ⊢ A004290 669 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«671»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 671 > 0
+  hd_cop : Coprime 671 10
+  hd2c_le : 671 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 671 ≥ 9 * k
+  hd1000 : 671 ≤ 999
+  ⊢ A004290 671 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«673»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 673 > 0
+  hd_cop : Coprime 673 10
+  hd2c_le : 673 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 673 ≥ 9 * k
+  hd1000 : 673 ≤ 999
+  ⊢ A004290 673 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«677»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 677 > 0
+  hd_cop : Coprime 677 10
+  hd2c_le : 677 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 677 ≥ 9 * k
+  hd1000 : 677 ≤ 999
+  ⊢ A004290 677 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«679»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 679 > 0
+  hd_cop : Coprime 679 10
+  hd2c_le : 679 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 679 ≥ 9 * k
+  hd1000 : 679 ≤ 999
+  ⊢ A004290 679 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«681»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 681 > 0
+  hd_cop : Coprime 681 10
+  hd2c_le : 681 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 681 ≥ 9 * k
+  hd1000 : 681 ≤ 999
+  ⊢ A004290 681 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«683»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 683 > 0
+  hd_cop : Coprime 683 10
+  hd2c_le : 683 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 683 ≥ 9 * k
+  hd1000 : 683 ≤ 999
+  ⊢ A004290 683 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«687»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 687 > 0
+  hd_cop : Coprime 687 10
+  hd2c_le : 687 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 687 ≥ 9 * k
+  hd1000 : 687 ≤ 999
+  ⊢ A004290 687 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«689»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 689 > 0
+  hd_cop : Coprime 689 10
+  hd2c_le : 689 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 689 ≥ 9 * k
+  hd1000 : 689 ≤ 999
+  ⊢ A004290 689 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«691»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 691 > 0
+  hd_cop : Coprime 691 10
+  hd2c_le : 691 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 691 ≥ 9 * k
+  hd1000 : 691 ≤ 999
+  ⊢ A004290 691 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«693»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 693 > 0
+  hd_cop : Coprime 693 10
+  hd2c_le : 693 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 693 ≥ 9 * k
+  hd1000 : 693 ≤ 999
+  ⊢ A004290 693 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«697»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 697 > 0
+  hd_cop : Coprime 697 10
+  hd2c_le : 697 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 697 ≥ 9 * k
+  hd1000 : 697 ≤ 999
+  ⊢ A004290 697 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«699»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 699 > 0
+  hd_cop : Coprime 699 10
+  hd2c_le : 699 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 699 ≥ 9 * k
+  hd1000 : 699 ≤ 999
+  ⊢ A004290 699 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«701»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 701 > 0
+  hd_cop : Coprime 701 10
+  hd2c_le : 701 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 701 ≥ 9 * k
+  hd1000 : 701 ≤ 999
+  ⊢ A004290 701 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«703»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 703 > 0
+  hd_cop : Coprime 703 10
+  hd2c_le : 703 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 703 ≥ 9 * k
+  hd1000 : 703 ≤ 999
+  ⊢ A004290 703 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«707»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 707 > 0
+  hd_cop : Coprime 707 10
+  hd2c_le : 707 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 707 ≥ 9 * k
+  hd1000 : 707 ≤ 999
+  ⊢ A004290 707 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«709»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 709 > 0
+  hd_cop : Coprime 709 10
+  hd2c_le : 709 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 709 ≥ 9 * k
+  hd1000 : 709 ≤ 999
+  ⊢ A004290 709 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«711»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 711 > 0
+  hd_cop : Coprime 711 10
+  hd2c_le : 711 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 711 ≥ 9 * k
+  hd1000 : 711 ≤ 999
+  ⊢ A004290 711 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«713»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 713 > 0
+  hd_cop : Coprime 713 10
+  hd2c_le : 713 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 713 ≥ 9 * k
+  hd1000 : 713 ≤ 999
+  ⊢ A004290 713 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«717»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 717 > 0
+  hd_cop : Coprime 717 10
+  hd2c_le : 717 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 717 ≥ 9 * k
+  hd1000 : 717 ≤ 999
+  ⊢ A004290 717 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«719»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 719 > 0
+  hd_cop : Coprime 719 10
+  hd2c_le : 719 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 719 ≥ 9 * k
+  hd1000 : 719 ≤ 999
+  ⊢ A004290 719 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«721»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 721 > 0
+  hd_cop : Coprime 721 10
+  hd2c_le : 721 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 721 ≥ 9 * k
+  hd1000 : 721 ≤ 999
+  ⊢ A004290 721 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«723»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 723 > 0
+  hd_cop : Coprime 723 10
+  hd2c_le : 723 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 723 ≥ 9 * k
+  hd1000 : 723 ≤ 999
+  ⊢ A004290 723 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«727»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 727 > 0
+  hd_cop : Coprime 727 10
+  hd2c_le : 727 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 727 ≥ 9 * k
+  hd1000 : 727 ≤ 999
+  ⊢ A004290 727 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«729»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 729 > 0
+  hd_cop : Coprime 729 10
+  hd2c_le : 729 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 729 ≥ 9 * k
+  hd1000 : 729 ≤ 999
+  ⊢ A004290 729 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«731»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 731 > 0
+  hd_cop : Coprime 731 10
+  hd2c_le : 731 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 731 ≥ 9 * k
+  hd1000 : 731 ≤ 999
+  ⊢ A004290 731 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«733»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 733 > 0
+  hd_cop : Coprime 733 10
+  hd2c_le : 733 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 733 ≥ 9 * k
+  hd1000 : 733 ≤ 999
+  ⊢ A004290 733 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«737»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 737 > 0
+  hd_cop : Coprime 737 10
+  hd2c_le : 737 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 737 ≥ 9 * k
+  hd1000 : 737 ≤ 999
+  ⊢ A004290 737 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«739»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 739 > 0
+  hd_cop : Coprime 739 10
+  hd2c_le : 739 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 739 ≥ 9 * k
+  hd1000 : 739 ≤ 999
+  ⊢ A004290 739 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«741»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 741 > 0
+  hd_cop : Coprime 741 10
+  hd2c_le : 741 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 741 ≥ 9 * k
+  hd1000 : 741 ≤ 999
+  ⊢ A004290 741 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«743»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 743 > 0
+  hd_cop : Coprime 743 10
+  hd2c_le : 743 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 743 ≥ 9 * k
+  hd1000 : 743 ≤ 999
+  ⊢ A004290 743 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«747»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 747 > 0
+  hd_cop : Coprime 747 10
+  hd2c_le : 747 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 747 ≥ 9 * k
+  hd1000 : 747 ≤ 999
+  ⊢ A004290 747 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«749»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 749 > 0
+  hd_cop : Coprime 749 10
+  hd2c_le : 749 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 749 ≥ 9 * k
+  hd1000 : 749 ≤ 999
+  ⊢ A004290 749 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«751»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 751 > 0
+  hd_cop : Coprime 751 10
+  hd2c_le : 751 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 751 ≥ 9 * k
+  hd1000 : 751 ≤ 999
+  ⊢ A004290 751 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«753»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 753 > 0
+  hd_cop : Coprime 753 10
+  hd2c_le : 753 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 753 ≥ 9 * k
+  hd1000 : 753 ≤ 999
+  ⊢ A004290 753 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«757»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 757 > 0
+  hd_cop : Coprime 757 10
+  hd2c_le : 757 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 757 ≥ 9 * k
+  hd1000 : 757 ≤ 999
+  ⊢ A004290 757 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«759»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 759 > 0
+  hd_cop : Coprime 759 10
+  hd2c_le : 759 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 759 ≥ 9 * k
+  hd1000 : 759 ≤ 999
+  ⊢ A004290 759 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«761»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 761 > 0
+  hd_cop : Coprime 761 10
+  hd2c_le : 761 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 761 ≥ 9 * k
+  hd1000 : 761 ≤ 999
+  ⊢ A004290 761 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«763»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 763 > 0
+  hd_cop : Coprime 763 10
+  hd2c_le : 763 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 763 ≥ 9 * k
+  hd1000 : 763 ≤ 999
+  ⊢ A004290 763 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«767»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 767 > 0
+  hd_cop : Coprime 767 10
+  hd2c_le : 767 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 767 ≥ 9 * k
+  hd1000 : 767 ≤ 999
+  ⊢ A004290 767 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«769»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 769 > 0
+  hd_cop : Coprime 769 10
+  hd2c_le : 769 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 769 ≥ 9 * k
+  hd1000 : 769 ≤ 999
+  ⊢ A004290 769 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«771»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 771 > 0
+  hd_cop : Coprime 771 10
+  hd2c_le : 771 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 771 ≥ 9 * k
+  hd1000 : 771 ≤ 999
+  ⊢ A004290 771 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«773»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 773 > 0
+  hd_cop : Coprime 773 10
+  hd2c_le : 773 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 773 ≥ 9 * k
+  hd1000 : 773 ≤ 999
+  ⊢ A004290 773 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«777»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 777 > 0
+  hd_cop : Coprime 777 10
+  hd2c_le : 777 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 777 ≥ 9 * k
+  hd1000 : 777 ≤ 999
+  ⊢ A004290 777 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«779»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 779 > 0
+  hd_cop : Coprime 779 10
+  hd2c_le : 779 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 779 ≥ 9 * k
+  hd1000 : 779 ≤ 999
+  ⊢ A004290 779 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«781»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 781 > 0
+  hd_cop : Coprime 781 10
+  hd2c_le : 781 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 781 ≥ 9 * k
+  hd1000 : 781 ≤ 999
+  ⊢ A004290 781 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«783»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 783 > 0
+  hd_cop : Coprime 783 10
+  hd2c_le : 783 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 783 ≥ 9 * k
+  hd1000 : 783 ≤ 999
+  ⊢ A004290 783 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«787»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 787 > 0
+  hd_cop : Coprime 787 10
+  hd2c_le : 787 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 787 ≥ 9 * k
+  hd1000 : 787 ≤ 999
+  ⊢ A004290 787 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«789»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 789 > 0
+  hd_cop : Coprime 789 10
+  hd2c_le : 789 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 789 ≥ 9 * k
+  hd1000 : 789 ≤ 999
+  ⊢ A004290 789 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«791»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 791 > 0
+  hd_cop : Coprime 791 10
+  hd2c_le : 791 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 791 ≥ 9 * k
+  hd1000 : 791 ≤ 999
+  ⊢ A004290 791 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«793»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 793 > 0
+  hd_cop : Coprime 793 10
+  hd2c_le : 793 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 793 ≥ 9 * k
+  hd1000 : 793 ≤ 999
+  ⊢ A004290 793 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«797»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 797 > 0
+  hd_cop : Coprime 797 10
+  hd2c_le : 797 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 797 ≥ 9 * k
+  hd1000 : 797 ≤ 999
+  ⊢ A004290 797 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«799»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 799 > 0
+  hd_cop : Coprime 799 10
+  hd2c_le : 799 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 799 ≥ 9 * k
+  hd1000 : 799 ≤ 999
+  ⊢ A004290 799 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«801»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 801 > 0
+  hd_cop : Coprime 801 10
+  hd2c_le : 801 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 801 ≥ 9 * k
+  hd1000 : 801 ≤ 999
+  ⊢ A004290 801 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«803»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 803 > 0
+  hd_cop : Coprime 803 10
+  hd2c_le : 803 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 803 ≥ 9 * k
+  hd1000 : 803 ≤ 999
+  ⊢ A004290 803 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«807»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 807 > 0
+  hd_cop : Coprime 807 10
+  hd2c_le : 807 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 807 ≥ 9 * k
+  hd1000 : 807 ≤ 999
+  ⊢ A004290 807 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«809»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 809 > 0
+  hd_cop : Coprime 809 10
+  hd2c_le : 809 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 809 ≥ 9 * k
+  hd1000 : 809 ≤ 999
+  ⊢ A004290 809 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«811»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 811 > 0
+  hd_cop : Coprime 811 10
+  hd2c_le : 811 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 811 ≥ 9 * k
+  hd1000 : 811 ≤ 999
+  ⊢ A004290 811 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«813»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 813 > 0
+  hd_cop : Coprime 813 10
+  hd2c_le : 813 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 813 ≥ 9 * k
+  hd1000 : 813 ≤ 999
+  ⊢ A004290 813 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«817»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 817 > 0
+  hd_cop : Coprime 817 10
+  hd2c_le : 817 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 817 ≥ 9 * k
+  hd1000 : 817 ≤ 999
+  ⊢ A004290 817 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«819»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 819 > 0
+  hd_cop : Coprime 819 10
+  hd2c_le : 819 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 819 ≥ 9 * k
+  hd1000 : 819 ≤ 999
+  ⊢ A004290 819 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«821»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 821 > 0
+  hd_cop : Coprime 821 10
+  hd2c_le : 821 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 821 ≥ 9 * k
+  hd1000 : 821 ≤ 999
+  ⊢ A004290 821 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«823»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 823 > 0
+  hd_cop : Coprime 823 10
+  hd2c_le : 823 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 823 ≥ 9 * k
+  hd1000 : 823 ≤ 999
+  ⊢ A004290 823 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«827»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 827 > 0
+  hd_cop : Coprime 827 10
+  hd2c_le : 827 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 827 ≥ 9 * k
+  hd1000 : 827 ≤ 999
+  ⊢ A004290 827 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«829»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 829 > 0
+  hd_cop : Coprime 829 10
+  hd2c_le : 829 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 829 ≥ 9 * k
+  hd1000 : 829 ≤ 999
+  ⊢ A004290 829 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«831»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 831 > 0
+  hd_cop : Coprime 831 10
+  hd2c_le : 831 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 831 ≥ 9 * k
+  hd1000 : 831 ≤ 999
+  ⊢ A004290 831 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«833»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 833 > 0
+  hd_cop : Coprime 833 10
+  hd2c_le : 833 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 833 ≥ 9 * k
+  hd1000 : 833 ≤ 999
+  ⊢ A004290 833 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«837»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 837 > 0
+  hd_cop : Coprime 837 10
+  hd2c_le : 837 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 837 ≥ 9 * k
+  hd1000 : 837 ≤ 999
+  ⊢ A004290 837 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«839»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 839 > 0
+  hd_cop : Coprime 839 10
+  hd2c_le : 839 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 839 ≥ 9 * k
+  hd1000 : 839 ≤ 999
+  ⊢ A004290 839 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«841»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 841 > 0
+  hd_cop : Coprime 841 10
+  hd2c_le : 841 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 841 ≥ 9 * k
+  hd1000 : 841 ≤ 999
+  ⊢ A004290 841 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«843»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 843 > 0
+  hd_cop : Coprime 843 10
+  hd2c_le : 843 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 843 ≥ 9 * k
+  hd1000 : 843 ≤ 999
+  ⊢ A004290 843 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«847»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 847 > 0
+  hd_cop : Coprime 847 10
+  hd2c_le : 847 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 847 ≥ 9 * k
+  hd1000 : 847 ≤ 999
+  ⊢ A004290 847 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«849»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 849 > 0
+  hd_cop : Coprime 849 10
+  hd2c_le : 849 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 849 ≥ 9 * k
+  hd1000 : 849 ≤ 999
+  ⊢ A004290 849 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«851»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 851 > 0
+  hd_cop : Coprime 851 10
+  hd2c_le : 851 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 851 ≥ 9 * k
+  hd1000 : 851 ≤ 999
+  ⊢ A004290 851 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«853»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 853 > 0
+  hd_cop : Coprime 853 10
+  hd2c_le : 853 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 853 ≥ 9 * k
+  hd1000 : 853 ≤ 999
+  ⊢ A004290 853 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«857»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 857 > 0
+  hd_cop : Coprime 857 10
+  hd2c_le : 857 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 857 ≥ 9 * k
+  hd1000 : 857 ≤ 999
+  ⊢ A004290 857 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«859»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 859 > 0
+  hd_cop : Coprime 859 10
+  hd2c_le : 859 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 859 ≥ 9 * k
+  hd1000 : 859 ≤ 999
+  ⊢ A004290 859 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«861»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 861 > 0
+  hd_cop : Coprime 861 10
+  hd2c_le : 861 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 861 ≥ 9 * k
+  hd1000 : 861 ≤ 999
+  ⊢ A004290 861 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«863»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 863 > 0
+  hd_cop : Coprime 863 10
+  hd2c_le : 863 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 863 ≥ 9 * k
+  hd1000 : 863 ≤ 999
+  ⊢ A004290 863 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«867»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 867 > 0
+  hd_cop : Coprime 867 10
+  hd2c_le : 867 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 867 ≥ 9 * k
+  hd1000 : 867 ≤ 999
+  ⊢ A004290 867 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«869»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 869 > 0
+  hd_cop : Coprime 869 10
+  hd2c_le : 869 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 869 ≥ 9 * k
+  hd1000 : 869 ≤ 999
+  ⊢ A004290 869 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«871»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 871 > 0
+  hd_cop : Coprime 871 10
+  hd2c_le : 871 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 871 ≥ 9 * k
+  hd1000 : 871 ≤ 999
+  ⊢ A004290 871 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«873»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 873 > 0
+  hd_cop : Coprime 873 10
+  hd2c_le : 873 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 873 ≥ 9 * k
+  hd1000 : 873 ≤ 999
+  ⊢ A004290 873 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«877»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 877 > 0
+  hd_cop : Coprime 877 10
+  hd2c_le : 877 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 877 ≥ 9 * k
+  hd1000 : 877 ≤ 999
+  ⊢ A004290 877 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«879»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 879 > 0
+  hd_cop : Coprime 879 10
+  hd2c_le : 879 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 879 ≥ 9 * k
+  hd1000 : 879 ≤ 999
+  ⊢ A004290 879 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«881»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 881 > 0
+  hd_cop : Coprime 881 10
+  hd2c_le : 881 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 881 ≥ 9 * k
+  hd1000 : 881 ≤ 999
+  ⊢ A004290 881 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«883»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 883 > 0
+  hd_cop : Coprime 883 10
+  hd2c_le : 883 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 883 ≥ 9 * k
+  hd1000 : 883 ≤ 999
+  ⊢ A004290 883 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«887»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 887 > 0
+  hd_cop : Coprime 887 10
+  hd2c_le : 887 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 887 ≥ 9 * k
+  hd1000 : 887 ≤ 999
+  ⊢ A004290 887 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«889»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 889 > 0
+  hd_cop : Coprime 889 10
+  hd2c_le : 889 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 889 ≥ 9 * k
+  hd1000 : 889 ≤ 999
+  ⊢ A004290 889 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«891»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 891 > 0
+  hd_cop : Coprime 891 10
+  hd2c_le : 891 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 891 ≥ 9 * k
+  hd1000 : 891 ≤ 999
+  ⊢ A004290 891 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«893»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 893 > 0
+  hd_cop : Coprime 893 10
+  hd2c_le : 893 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 893 ≥ 9 * k
+  hd1000 : 893 ≤ 999
+  ⊢ A004290 893 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«897»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 897 > 0
+  hd_cop : Coprime 897 10
+  hd2c_le : 897 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 897 ≥ 9 * k
+  hd1000 : 897 ≤ 999
+  ⊢ A004290 897 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«899»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 899 > 0
+  hd_cop : Coprime 899 10
+  hd2c_le : 899 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 899 ≥ 9 * k
+  hd1000 : 899 ≤ 999
+  ⊢ A004290 899 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«901»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 901 > 0
+  hd_cop : Coprime 901 10
+  hd2c_le : 901 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 901 ≥ 9 * k
+  hd1000 : 901 ≤ 999
+  ⊢ A004290 901 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«903»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 903 > 0
+  hd_cop : Coprime 903 10
+  hd2c_le : 903 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 903 ≥ 9 * k
+  hd1000 : 903 ≤ 999
+  ⊢ A004290 903 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«907»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 907 > 0
+  hd_cop : Coprime 907 10
+  hd2c_le : 907 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 907 ≥ 9 * k
+  hd1000 : 907 ≤ 999
+  ⊢ A004290 907 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«909»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 909 > 0
+  hd_cop : Coprime 909 10
+  hd2c_le : 909 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 909 ≥ 9 * k
+  hd1000 : 909 ≤ 999
+  ⊢ A004290 909 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«911»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 911 > 0
+  hd_cop : Coprime 911 10
+  hd2c_le : 911 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 911 ≥ 9 * k
+  hd1000 : 911 ≤ 999
+  ⊢ A004290 911 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«913»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 913 > 0
+  hd_cop : Coprime 913 10
+  hd2c_le : 913 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 913 ≥ 9 * k
+  hd1000 : 913 ≤ 999
+  ⊢ A004290 913 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«917»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 917 > 0
+  hd_cop : Coprime 917 10
+  hd2c_le : 917 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 917 ≥ 9 * k
+  hd1000 : 917 ≤ 999
+  ⊢ A004290 917 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«919»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 919 > 0
+  hd_cop : Coprime 919 10
+  hd2c_le : 919 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 919 ≥ 9 * k
+  hd1000 : 919 ≤ 999
+  ⊢ A004290 919 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«921»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 921 > 0
+  hd_cop : Coprime 921 10
+  hd2c_le : 921 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 921 ≥ 9 * k
+  hd1000 : 921 ≤ 999
+  ⊢ A004290 921 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«923»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 923 > 0
+  hd_cop : Coprime 923 10
+  hd2c_le : 923 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 923 ≥ 9 * k
+  hd1000 : 923 ≤ 999
+  ⊢ A004290 923 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«927»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 927 > 0
+  hd_cop : Coprime 927 10
+  hd2c_le : 927 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 927 ≥ 9 * k
+  hd1000 : 927 ≤ 999
+  ⊢ A004290 927 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«929»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 929 > 0
+  hd_cop : Coprime 929 10
+  hd2c_le : 929 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 929 ≥ 9 * k
+  hd1000 : 929 ≤ 999
+  ⊢ A004290 929 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«931»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 931 > 0
+  hd_cop : Coprime 931 10
+  hd2c_le : 931 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 931 ≥ 9 * k
+  hd1000 : 931 ≤ 999
+  ⊢ A004290 931 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«933»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 933 > 0
+  hd_cop : Coprime 933 10
+  hd2c_le : 933 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 933 ≥ 9 * k
+  hd1000 : 933 ≤ 999
+  ⊢ A004290 933 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«937»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 937 > 0
+  hd_cop : Coprime 937 10
+  hd2c_le : 937 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 937 ≥ 9 * k
+  hd1000 : 937 ≤ 999
+  ⊢ A004290 937 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«939»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 939 > 0
+  hd_cop : Coprime 939 10
+  hd2c_le : 939 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 939 ≥ 9 * k
+  hd1000 : 939 ≤ 999
+  ⊢ A004290 939 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«941»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 941 > 0
+  hd_cop : Coprime 941 10
+  hd2c_le : 941 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 941 ≥ 9 * k
+  hd1000 : 941 ≤ 999
+  ⊢ A004290 941 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«943»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 943 > 0
+  hd_cop : Coprime 943 10
+  hd2c_le : 943 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 943 ≥ 9 * k
+  hd1000 : 943 ≤ 999
+  ⊢ A004290 943 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«947»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 947 > 0
+  hd_cop : Coprime 947 10
+  hd2c_le : 947 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 947 ≥ 9 * k
+  hd1000 : 947 ≤ 999
+  ⊢ A004290 947 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«949»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 949 > 0
+  hd_cop : Coprime 949 10
+  hd2c_le : 949 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 949 ≥ 9 * k
+  hd1000 : 949 ≤ 999
+  ⊢ A004290 949 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«951»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 951 > 0
+  hd_cop : Coprime 951 10
+  hd2c_le : 951 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 951 ≥ 9 * k
+  hd1000 : 951 ≤ 999
+  ⊢ A004290 951 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«953»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 953 > 0
+  hd_cop : Coprime 953 10
+  hd2c_le : 953 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 953 ≥ 9 * k
+  hd1000 : 953 ≤ 999
+  ⊢ A004290 953 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«957»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 957 > 0
+  hd_cop : Coprime 957 10
+  hd2c_le : 957 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 957 ≥ 9 * k
+  hd1000 : 957 ≤ 999
+  ⊢ A004290 957 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«959»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 959 > 0
+  hd_cop : Coprime 959 10
+  hd2c_le : 959 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 959 ≥ 9 * k
+  hd1000 : 959 ≤ 999
+  ⊢ A004290 959 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«961»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 961 > 0
+  hd_cop : Coprime 961 10
+  hd2c_le : 961 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 961 ≥ 9 * k
+  hd1000 : 961 ≤ 999
+  ⊢ A004290 961 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«963»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 963 > 0
+  hd_cop : Coprime 963 10
+  hd2c_le : 963 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 963 ≥ 9 * k
+  hd1000 : 963 ≤ 999
+  ⊢ A004290 963 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«967»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 967 > 0
+  hd_cop : Coprime 967 10
+  hd2c_le : 967 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 967 ≥ 9 * k
+  hd1000 : 967 ≤ 999
+  ⊢ A004290 967 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«969»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 969 > 0
+  hd_cop : Coprime 969 10
+  hd2c_le : 969 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 969 ≥ 9 * k
+  hd1000 : 969 ≤ 999
+  ⊢ A004290 969 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«971»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 971 > 0
+  hd_cop : Coprime 971 10
+  hd2c_le : 971 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 971 ≥ 9 * k
+  hd1000 : 971 ≤ 999
+  ⊢ A004290 971 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«973»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 973 > 0
+  hd_cop : Coprime 973 10
+  hd2c_le : 973 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 973 ≥ 9 * k
+  hd1000 : 973 ≤ 999
+  ⊢ A004290 973 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«977»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 977 > 0
+  hd_cop : Coprime 977 10
+  hd2c_le : 977 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 977 ≥ 9 * k
+  hd1000 : 977 ≤ 999
+  ⊢ A004290 977 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«979»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 979 > 0
+  hd_cop : Coprime 979 10
+  hd2c_le : 979 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 979 ≥ 9 * k
+  hd1000 : 979 ≤ 999
+  ⊢ A004290 979 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«981»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 981 > 0
+  hd_cop : Coprime 981 10
+  hd2c_le : 981 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 981 ≥ 9 * k
+  hd1000 : 981 ≤ 999
+  ⊢ A004290 981 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«983»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 983 > 0
+  hd_cop : Coprime 983 10
+  hd2c_le : 983 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 983 ≥ 9 * k
+  hd1000 : 983 ≤ 999
+  ⊢ A004290 983 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«987»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 987 > 0
+  hd_cop : Coprime 987 10
+  hd2c_le : 987 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 987 ≥ 9 * k
+  hd1000 : 987 ≤ 999
+  ⊢ A004290 987 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«989»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 989 > 0
+  hd_cop : Coprime 989 10
+  hd2c_le : 989 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 989 ≥ 9 * k
+  hd1000 : 989 ≤ 999
+  ⊢ A004290 989 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«991»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 991 > 0
+  hd_cop : Coprime 991 10
+  hd2c_le : 991 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 991 ≥ 9 * k
+  hd1000 : 991 ≤ 999
+  ⊢ A004290 991 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«993»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 993 > 0
+  hd_cop : Coprime 993 10
+  hd2c_le : 993 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 993 ≥ 9 * k
+  hd1000 : 993 ≤ 999
+  ⊢ A004290 993 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«997»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 997 > 0
+  hd_cop : Coprime 997 10
+  hd2c_le : 997 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 997 ≥ 9 * k
+  hd1000 : 997 ≤ 999
+  ⊢ A004290 997 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inl.«999»
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd_pos : 999 > 0
+  hd_cop : Coprime 999 10
+  hd2c_le : 999 * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + 999 ≥ 9 * k
+  hd1000 : 999 ≤ 999
+  ⊢ A004290 999 < 10 ^ (9 * k - c - 1)
+  
+  case inr.inr
+  k : ℕ
+  hk2 : k ≥ 2
+  c d : ℕ
+  hd_pos : d > 0
+  hd_cop : d.Coprime 10
+  hd2c_le : d * 2 ^ c < 10 ^ k - 1
+  h_cd_gt : c + d ≥ 9 * k
+  L : ℕ := 9 * k - c - 1
+  hc_lt : c < 9 * k - 1
+  hL_ge : 15 ≤ L
+  h_mono : 10 ^ 15 ≤ 10 ^ L
+  hd1000 : 999 < d
+  ⊢ A004290 d < 10 ^ (9 * k - c - 1)
+  Submission/Spec.lean:69363:6: error: unexpected token '{'; expected command
+  Submission/Spec.lean:73959:10: warning: 'congr 1' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:74010:12: warning: 'congr 1' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:74042:12: warning: 'congr 1' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  'oeis_a004290_conjecture_radcliffe' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check bot_nonempty
+#print bot_nonempty
+#check top_nonempty
+#check Zero.instNonempty
+#check One.instNonempty
+#check supSet_to_nonempty
+#print supSet_to_nonempty
+#check infSet_to_nonempty
+#print infSet_to_nonempty

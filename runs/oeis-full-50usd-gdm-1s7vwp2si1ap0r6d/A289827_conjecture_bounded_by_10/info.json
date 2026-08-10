@@ -1,0 +1,23 @@
+{
+  "id": "A289827_conjecture_bounded_by_10",
+  "epoch": 1,
+  "uuid": "9isPnUvG7fq6d2LPou5nnV",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 20412951,
+      "output_tokens": 294676,
+      "total_tokens": 134493719,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 111820457,
+      "reasoning_tokens": 1965635,
+      "total_cost": 50.044579049999975
+    }
+  },
+  "oeis_id": "A289827"
+}

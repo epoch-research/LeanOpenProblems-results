@@ -1,0 +1,20 @@
+{
+  "id": "oeis_271513_conjecture_3",
+  "epoch": 1,
+  "uuid": "JKyQmr44FFezyXpbr5wKMv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 5639,
+      "output_tokens": 356,
+      "total_tokens": 12139,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 6144,
+      "reasoning_tokens": 50,
+      "total_cost": 0.041947
+    }
+  },
+  "oeis_id": "A271513"
+}

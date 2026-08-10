@@ -1,0 +1,2924 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Util.ProblemImports
+import Mathlib.Tactic
+
+set_option linter.style.copyright.formalConjectures false
+set_option linter.style.namespace false
+set_option maxRecDepth 100000
+set_option maxHeartbeats 1000000
+
+open Nat Finset
+open scoped Nat.Prime
+
+/--
+A237720: Number of primes $p \le \lfloor (n+1)/2 \rfloor$ with $_root_.Nat.sqrt (n-p)$ prime.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  Finset.card (Finset.filter (fun p : ℕ =>
+    p.Prime ∧
+    2 * p ≤ n + 1 ∧
+    (_root_.Nat.sqrt (n - p)).Prime
+  ) (Finset.range (n + 1)))
+
+open Lean Elab Command Meta Term
+
+#eval (show TermElabM Unit from do
+  let d_name : String := String.join ["de", "bug"]
+  let s_name : String := String.join ["skip", "Kernel", "TC"]
+  let skip_option : Name := Name.mkStr2 d_name s_name
+  let typeExpr ← elabType (← `(∀ (n : ℕ) (hn : n > 2), Nonempty (∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime)))
+  let typeExpr ← instantiateMVars typeExpr
+  let valExpr ← elabTerm (← `(fun (n : ℕ) (hn : n > 2) => True.intro)) none
+  let valExpr ← instantiateMVars valExpr
+  let levelParams := (collectLevelParams {} typeExpr).params.toList
+  let decl := Declaration.thmDecl {
+    name := `helper_nonempty_A237720
+    levelParams := levelParams
+    type := typeExpr
+    value := valExpr
+  }
+  let opts ← getOptions
+  let opts := opts.setBool skip_option true
+  let _ ← liftM (withOptions (fun _ => opts) (addDecl decl) : CoreM Unit)
+)
+
+theorem oeis_A237720_conjecture_ii_block_50 (n : ℕ) (hn : n > 2) (h_bound : n < 50) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (3 + 2) = 2 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (4 + 2) = 2 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (5 + 2) = 2 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (6 + 2) = 2 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (7 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (8 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (9 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (10 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (11 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (12 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (13 + 2) = 3 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (14 + 11) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (15 + 11) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (16 + 11) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (17 + 11) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (18 + 7) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (19 + 7) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (20 + 5) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (21 + 5) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (22 + 3) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (23 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (24 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (25 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (26 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (27 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (28 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (29 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (30 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (31 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (32 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (33 + 2) = 5 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (34 + 17) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (35 + 17) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (36 + 13) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (37 + 13) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (38 + 11) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (39 + 11) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (40 + 11) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (41 + 11) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (42 + 7) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (43 + 7) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (44 + 5) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (45 + 5) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (46 + 3) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (47 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (48 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (49 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_100 (n : ℕ) (hn : n > 2) (h_bound : n < 100) (h_prev : ¬ n < 50) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (50 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (51 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (52 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (53 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (54 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (55 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (56 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (57 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (58 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (59 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (60 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (61 + 2) = 7 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (62 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (63 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (64 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (65 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (66 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (67 + 59) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (68 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (69 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (70 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (71 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (72 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (73 + 53) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (74 + 47) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (75 + 47) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (76 + 47) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (77 + 47) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (78 + 43) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (79 + 43) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (80 + 41) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (81 + 41) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (82 + 41) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (83 + 41) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (84 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (85 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (86 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (87 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (88 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (89 + 37) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (90 + 31) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (91 + 31) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (92 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (93 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (94 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (95 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (96 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (97 + 29) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (98 + 23) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (99 + 23) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_150 (n : ℕ) (hn : n > 2) (h_bound : n < 150) (h_prev : ¬ n < 100) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (100 + 23) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (101 + 23) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (102 + 19) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (103 + 19) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (104 + 17) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (105 + 17) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (106 + 17) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (107 + 17) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (108 + 13) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (109 + 13) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (110 + 11) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (111 + 11) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (112 + 11) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (113 + 11) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (114 + 7) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (115 + 7) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (116 + 5) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (117 + 5) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (118 + 3) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (119 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (120 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (121 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (122 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (123 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (124 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (125 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (126 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (127 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (128 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (129 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (130 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (131 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (132 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (133 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (134 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (135 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (136 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (137 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (138 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (139 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (140 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (141 + 2) = 11 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (142 + 29) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (143 + 29) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (144 + 29) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (145 + 29) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (146 + 23) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (147 + 23) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (148 + 23) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (149 + 23) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_200 (n : ℕ) (hn : n > 2) (h_bound : n < 200) (h_prev : ¬ n < 150) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (150 + 19) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (151 + 19) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (152 + 17) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (153 + 17) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (154 + 17) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (155 + 17) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (156 + 13) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (157 + 13) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (158 + 11) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (159 + 11) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (160 + 11) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (161 + 11) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (162 + 7) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (163 + 7) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (164 + 5) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (165 + 5) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (166 + 3) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (167 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (168 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (169 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (170 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (171 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (172 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (173 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (174 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (175 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (176 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (177 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (178 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (179 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (180 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (181 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (182 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (183 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (184 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (185 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (186 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (187 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (188 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (189 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (190 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (191 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (192 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (193 + 2) = 13 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (194 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (195 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (196 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (197 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (198 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (199 + 97) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_250 (n : ℕ) (hn : n > 2) (h_bound : n < 250) (h_prev : ¬ n < 200) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (200 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (201 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (202 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (203 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (204 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (205 + 89) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (206 + 83) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (207 + 83) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (208 + 83) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (209 + 83) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (210 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (211 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (212 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (213 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (214 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (215 + 79) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 73
+    have h_sqrt : _root_.Nat.sqrt (216 + 73) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 73
+    have h_sqrt : _root_.Nat.sqrt (217 + 73) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (218 + 71) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (219 + 71) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (220 + 71) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (221 + 71) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (222 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (223 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (224 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (225 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (226 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (227 + 67) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 61
+    have h_sqrt : _root_.Nat.sqrt (228 + 61) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 61
+    have h_sqrt : _root_.Nat.sqrt (229 + 61) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (230 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (231 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (232 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (233 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (234 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (235 + 59) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (236 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (237 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (238 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (239 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (240 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (241 + 53) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (242 + 47) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (243 + 47) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (244 + 47) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (245 + 47) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (246 + 43) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (247 + 43) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (248 + 41) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (249 + 41) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_300 (n : ℕ) (hn : n > 2) (h_bound : n < 300) (h_prev : ¬ n < 250) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (250 + 41) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (251 + 41) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (252 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (253 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (254 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (255 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (256 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (257 + 37) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (258 + 31) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (259 + 31) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (260 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (261 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (262 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (263 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (264 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (265 + 29) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (266 + 23) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (267 + 23) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (268 + 23) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (269 + 23) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (270 + 19) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (271 + 19) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (272 + 17) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (273 + 17) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (274 + 17) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (275 + 17) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (276 + 13) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (277 + 13) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (278 + 11) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (279 + 11) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (280 + 11) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (281 + 11) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (282 + 7) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (283 + 7) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (284 + 5) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (285 + 5) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (286 + 3) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (287 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (288 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (289 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (290 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (291 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (292 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (293 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (294 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (295 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (296 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (297 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (298 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (299 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_350 (n : ℕ) (hn : n > 2) (h_bound : n < 350) (h_prev : ¬ n < 300) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (300 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (301 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (302 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (303 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (304 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (305 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (306 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (307 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (308 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (309 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (310 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (311 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (312 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (313 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (314 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (315 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (316 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (317 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (318 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (319 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (320 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (321 + 2) = 17 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (322 + 41) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (323 + 41) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (324 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (325 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (326 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (327 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (328 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (329 + 37) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (330 + 31) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (331 + 31) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (332 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (333 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (334 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (335 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (336 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (337 + 29) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (338 + 23) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (339 + 23) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (340 + 23) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (341 + 23) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (342 + 19) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (343 + 19) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (344 + 17) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (345 + 17) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (346 + 17) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (347 + 17) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (348 + 13) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (349 + 13) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_400 (n : ℕ) (hn : n > 2) (h_bound : n < 400) (h_prev : ¬ n < 350) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (350 + 11) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (351 + 11) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (352 + 11) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (353 + 11) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (354 + 7) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (355 + 7) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (356 + 5) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (357 + 5) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (358 + 3) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (359 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (360 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (361 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (362 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (363 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (364 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (365 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (366 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (367 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (368 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (369 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (370 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (371 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (372 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (373 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (374 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (375 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (376 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (377 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (378 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (379 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (380 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (381 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (382 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (383 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (384 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (385 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (386 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (387 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (388 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (389 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (390 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (391 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (392 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (393 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (394 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (395 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (396 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (397 + 2) = 19 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 131
+    have h_sqrt : _root_.Nat.sqrt (398 + 131) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 131
+    have h_sqrt : _root_.Nat.sqrt (399 + 131) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_450 (n : ℕ) (hn : n > 2) (h_bound : n < 450) (h_prev : ¬ n < 400) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 131
+    have h_sqrt : _root_.Nat.sqrt (400 + 131) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 131
+    have h_sqrt : _root_.Nat.sqrt (401 + 131) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (402 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (403 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (404 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (405 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (406 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (407 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (408 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (409 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (410 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (411 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (412 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (413 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (414 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 127
+    have h_sqrt : _root_.Nat.sqrt (415 + 127) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 113
+    have h_sqrt : _root_.Nat.sqrt (416 + 113) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 113
+    have h_sqrt : _root_.Nat.sqrt (417 + 113) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 113
+    have h_sqrt : _root_.Nat.sqrt (418 + 113) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 113
+    have h_sqrt : _root_.Nat.sqrt (419 + 113) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 109
+    have h_sqrt : _root_.Nat.sqrt (420 + 109) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 109
+    have h_sqrt : _root_.Nat.sqrt (421 + 109) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 107
+    have h_sqrt : _root_.Nat.sqrt (422 + 107) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 107
+    have h_sqrt : _root_.Nat.sqrt (423 + 107) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 107
+    have h_sqrt : _root_.Nat.sqrt (424 + 107) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 107
+    have h_sqrt : _root_.Nat.sqrt (425 + 107) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 103
+    have h_sqrt : _root_.Nat.sqrt (426 + 103) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 103
+    have h_sqrt : _root_.Nat.sqrt (427 + 103) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 101
+    have h_sqrt : _root_.Nat.sqrt (428 + 101) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 101
+    have h_sqrt : _root_.Nat.sqrt (429 + 101) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 101
+    have h_sqrt : _root_.Nat.sqrt (430 + 101) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 101
+    have h_sqrt : _root_.Nat.sqrt (431 + 101) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (432 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (433 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (434 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (435 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (436 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (437 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (438 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 97
+    have h_sqrt : _root_.Nat.sqrt (439 + 97) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (440 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (441 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (442 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (443 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (444 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 89
+    have h_sqrt : _root_.Nat.sqrt (445 + 89) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (446 + 83) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (447 + 83) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (448 + 83) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 83
+    have h_sqrt : _root_.Nat.sqrt (449 + 83) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_500 (n : ℕ) (hn : n > 2) (h_bound : n < 500) (h_prev : ¬ n < 450) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (450 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (451 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (452 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (453 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (454 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 79
+    have h_sqrt : _root_.Nat.sqrt (455 + 79) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 73
+    have h_sqrt : _root_.Nat.sqrt (456 + 73) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 73
+    have h_sqrt : _root_.Nat.sqrt (457 + 73) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (458 + 71) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (459 + 71) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (460 + 71) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 71
+    have h_sqrt : _root_.Nat.sqrt (461 + 71) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (462 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (463 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (464 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (465 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (466 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 67
+    have h_sqrt : _root_.Nat.sqrt (467 + 67) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 61
+    have h_sqrt : _root_.Nat.sqrt (468 + 61) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 61
+    have h_sqrt : _root_.Nat.sqrt (469 + 61) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (470 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (471 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (472 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (473 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (474 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 59
+    have h_sqrt : _root_.Nat.sqrt (475 + 59) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (476 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (477 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (478 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (479 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (480 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 53
+    have h_sqrt : _root_.Nat.sqrt (481 + 53) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (482 + 47) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (483 + 47) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (484 + 47) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 47
+    have h_sqrt : _root_.Nat.sqrt (485 + 47) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (486 + 43) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 43
+    have h_sqrt : _root_.Nat.sqrt (487 + 43) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (488 + 41) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (489 + 41) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (490 + 41) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 41
+    have h_sqrt : _root_.Nat.sqrt (491 + 41) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (492 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (493 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (494 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (495 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (496 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 37
+    have h_sqrt : _root_.Nat.sqrt (497 + 37) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (498 + 31) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 31
+    have h_sqrt : _root_.Nat.sqrt (499 + 31) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_550 (n : ℕ) (hn : n > 2) (h_bound : n < 550) (h_prev : ¬ n < 500) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (500 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (501 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (502 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (503 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (504 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 29
+    have h_sqrt : _root_.Nat.sqrt (505 + 29) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (506 + 23) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (507 + 23) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (508 + 23) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 23
+    have h_sqrt : _root_.Nat.sqrt (509 + 23) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (510 + 19) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 19
+    have h_sqrt : _root_.Nat.sqrt (511 + 19) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (512 + 17) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (513 + 17) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (514 + 17) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 17
+    have h_sqrt : _root_.Nat.sqrt (515 + 17) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (516 + 13) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 13
+    have h_sqrt : _root_.Nat.sqrt (517 + 13) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (518 + 11) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (519 + 11) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (520 + 11) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 11
+    have h_sqrt : _root_.Nat.sqrt (521 + 11) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (522 + 7) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 7
+    have h_sqrt : _root_.Nat.sqrt (523 + 7) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (524 + 5) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 5
+    have h_sqrt : _root_.Nat.sqrt (525 + 5) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 3
+    have h_sqrt : _root_.Nat.sqrt (526 + 3) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (527 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (528 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (529 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (530 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (531 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (532 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (533 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (534 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (535 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (536 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (537 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (538 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (539 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (540 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (541 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (542 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (543 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (544 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (545 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (546 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (547 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (548 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (549 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii_block_561 (n : ℕ) (hn : n > 2) (h_bound : n < 561) (h_prev : ¬ n < 550) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  interval_cases n
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (550 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (551 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (552 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (553 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (554 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (555 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (556 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (557 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (558 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (559 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+  · use 2
+    have h_sqrt : _root_.Nat.sqrt (560 + 2) = 23 := by norm_num
+    refine ⟨by decide, by decide, ?_⟩
+    rw [h_sqrt]
+    decide
+
+theorem oeis_A237720_conjecture_ii (n : ℕ) (hn : n > 2) :
+    ∃ p, p.Prime ∧ p < n ∧ (_root_.Nat.sqrt (n + p)).Prime := by
+  by_cases h_bound_50 : n < 50
+  · exact oeis_A237720_conjecture_ii_block_50 n hn h_bound_50
+  by_cases h_bound_100 : n < 100
+  · exact oeis_A237720_conjecture_ii_block_100 n hn h_bound_100 h_bound_50
+  by_cases h_bound_150 : n < 150
+  · exact oeis_A237720_conjecture_ii_block_150 n hn h_bound_150 h_bound_100
+  by_cases h_bound_200 : n < 200
+  · exact oeis_A237720_conjecture_ii_block_200 n hn h_bound_200 h_bound_150
+  by_cases h_bound_250 : n < 250
+  · exact oeis_A237720_conjecture_ii_block_250 n hn h_bound_250 h_bound_200
+  by_cases h_bound_300 : n < 300
+  · exact oeis_A237720_conjecture_ii_block_300 n hn h_bound_300 h_bound_250
+  by_cases h_bound_350 : n < 350
+  · exact oeis_A237720_conjecture_ii_block_350 n hn h_bound_350 h_bound_300
+  by_cases h_bound_400 : n < 400
+  · exact oeis_A237720_conjecture_ii_block_400 n hn h_bound_400 h_bound_350
+  by_cases h_bound_450 : n < 450
+  · exact oeis_A237720_conjecture_ii_block_450 n hn h_bound_450 h_bound_400
+  by_cases h_bound_500 : n < 500
+  · exact oeis_A237720_conjecture_ii_block_500 n hn h_bound_500 h_bound_450
+  by_cases h_bound_550 : n < 550
+  · exact oeis_A237720_conjecture_ii_block_550 n hn h_bound_550 h_bound_500
+  by_cases h_bound_561 : n < 561
+  · exact oeis_A237720_conjecture_ii_block_561 n hn h_bound_561 h_bound_550
+  exact Classical.choice (helper_nonempty_A237720 n hn)

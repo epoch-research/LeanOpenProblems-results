@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:119:8: warning: declaration uses 'sorry'\nSubmission/Spec.lean:170:0: error: Environment.realizeConst: `realizedImportedConsts` is empty\nSubmission/Spec.lean:170:0: error: cannot evaluate code because 'sorryAx' uses 'sorry' and/or contains errors\nSubmission/Spec.lean:170:0: error: invalid syntax node kind `commandPrint_value_`\nSubmission/Spec.lean:179:0: error: unexpected identifier; expected command",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

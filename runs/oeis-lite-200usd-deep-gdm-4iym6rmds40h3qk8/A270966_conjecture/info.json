@@ -1,0 +1,23 @@
+{
+  "id": "A270966_conjecture",
+  "epoch": 1,
+  "uuid": "JxFWTbgYEqbhuroeL29hC4",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 66639510,
+      "output_tokens": 679318,
+      "total_tokens": 695653393,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 626202667,
+      "reasoning_tokens": 2131898,
+      "total_cost": 200.0035270500001
+    }
+  },
+  "oeis_id": "A270966"
+}

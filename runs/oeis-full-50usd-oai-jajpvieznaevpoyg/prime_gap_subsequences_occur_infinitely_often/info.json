@@ -1,0 +1,20 @@
+{
+  "id": "prime_gap_subsequences_occur_infinitely_often",
+  "epoch": 1,
+  "uuid": "QtfZZ2SLGwgr3h8KtSPffA",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 124054,
+      "output_tokens": 15356,
+      "total_tokens": 1208466,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1069056,
+      "reasoning_tokens": 5503,
+      "total_cost": 1.615478
+    }
+  },
+  "oeis_id": "A001223"
+}

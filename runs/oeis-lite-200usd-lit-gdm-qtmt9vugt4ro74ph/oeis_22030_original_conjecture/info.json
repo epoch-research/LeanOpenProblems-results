@@ -1,0 +1,20 @@
+{
+  "id": "oeis_22030_original_conjecture",
+  "epoch": 1,
+  "uuid": "ZoMy2ScHfYpHAn7yiVcbB2",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 689873,
+      "output_tokens": 23761,
+      "total_tokens": 5371132,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 4623846,
+      "reasoning_tokens": 33652,
+      "total_cost": 1.9422354000000008
+    }
+  },
+  "oeis_id": "A022030"
+}

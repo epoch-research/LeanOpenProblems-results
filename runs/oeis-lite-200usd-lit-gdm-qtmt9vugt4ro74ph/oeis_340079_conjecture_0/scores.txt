@@ -1,0 +1,1191 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:2501:24: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  p : ℕ := n.minFac
+  m : ℕ := n / p
+  q : ℕ := m.minFac
+  k : ℕ := m / q
+  r : ℕ := k.minFac
+  hq_ge : ↑q ≥ 5
+  hr_ge : ↑r ≥ 7
+  a✝ : 18 * ↑q * 26 * ↑r < 10 * (2 * ↑q - 1) * 14 * (2 * ↑r - 1)
+  ⊢ False
+  failed
+  Submission/Spec.lean:2512:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ↑(2 * q - 1)
+  in the target expression
+    10 * (2 * q - 1) * 14 * (2 * r - 1) ≤ 18 * q * 26 * r
+  
+  n : ℕ
+  h : _root_.a n = 1
+  hn1 : ¬n = 1
+  hp : ¬Nat.Prime n
+  hn0 : ¬n = 0
+  h_sq : Squarefree n
+  h_fac_len : 2 ≤ n.primeFactorsList.length
+  p : ℕ := n.minFac
+  hp_prime : Nat.Prime p
+  h_dvd : p ∣ n
+  m : ℕ := n / p
+  hp_pos : 0 < p
+  h_pm : n = p * m
+  hm_pos : 0 < m
+  h_p_not_dvd_m : ¬p ∣ m
+  hco : p.Coprime m
+  h_n_dvd_A : n ∣ 1 + A018804 n
+  hp_dvd_n : p ∣ n
+  hp_dvd_A : p ∣ 1 + A018804 n
+  hm_gt_one : 1 < m
+  hm_sq : Squarefree m
+  q : ℕ := m.minFac
+  hq_prime : Nat.Prime q
+  k : ℕ := m / q
+  h_q_dvd_m : q ∣ m
+  h_pm2 : m = q * k
+  hk_pos : 0 < k
+  h_q_not_dvd_k : ¬q ∣ k
+  hco2 : q.Coprime k
+  h_pqk : n = p * q * k
+  hq_dvd_total : q ∣ 1 + A018804 n
+  hp_le_q : p ≤ q
+  hp_lt_q : p < q
+  hk1 : ¬k = 1
+  r : ℕ := k.minFac
+  hr_prime : Nat.Prime r
+  hr_dvd_k : r ∣ k
+  hk_dvd_m : k ∣ m
+  hr_dvd_m : r ∣ m
+  hq_le_r : q ≤ r
+  hq_lt_r : q < r
+  h_div : k = r * (k / r)
+  h_r_not_dvd_k' : ¬r ∣ k / r
+  h_cop_r_k' : r.Coprime (k / r)
+  hk_pos' : 0 < k / r
+  hk_dvd_n : k ∣ n
+  hr_dvd_n : r ∣ n
+  A : ℕ := 2 * p - 1
+  h_A_pm : A018804 n = A * A018804 m
+  h_eq_q : 1 + A018804 n + A * A018804 k = 2 * q * (A * A018804 k) + 1
+  hq_dvd_sub : q ∣ A * A018804 k - 1
+  B : ℕ := 2 * q - 1
+  h_A_qk : A018804 m = B * A018804 k
+  h_A_total : A018804 n = A * B * A018804 k
+  h_rew : A * B * A018804 k = A * A018804 k * B
+  C : ℕ := 2 * r - 1
+  Y : ℕ := A018804 (k / r)
+  h_A_k : A018804 k = C * Y
+  h_A_total2 : A018804 n = A * B * C * Y
+  h_Y_pos : 1 ≤ Y
+  h_A_pos : 0 < A
+  h_B_pos : 0 < B
+  h_Y_pos' : 0 < Y
+  h_ABY_pos : 0 < A * B * Y
+  h_ABY_ge : 1 ≤ A * B * Y
+  h_eq_r_total : 1 + A018804 n = 2 * r * (A * B * Y) - (A * B * Y - 1)
+  a : ℕ
+  ha : 1 + A018804 n = r * a
+  h_eq_r3 : r * a + A * B * Y = 2 * r * (A * B * Y) + 1
+  c : ℕ
+  hc : A * B * Y - 1 = r * c
+  hc_eq : c * r + 1 = A * B * Y
+  hq_dvd_ACY_sub1 : q ∣ A * C * Y - 1
+  h_C_pos : 0 < C
+  h_ACY_pos : 0 < A * C * Y
+  h_ACY_ge : 1 ≤ A * C * Y
+  h_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y
+  h_id2 : c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y = c * A * Y * (C + 1) + 2 * A * Y * (A * Y + 1)
+  h_id3 : c * A * Y * (C + 1) = 2 * A * Y * (c * r)
+  h_id4 : 2 * A * Y * (c * r) + 2 * A * Y * (A * Y + 1) = 2 * A * Y * (c * r + A * Y + 1)
+  h_B_eq : A * B * Y = (2 * q - 1) * (A * Y)
+  h_omega_prep : c * r + A * Y + 1 = 2 * q * A * Y
+  h_id5 : c * r + A * Y + 1 = A * B * Y + A * Y
+  h_id6 : 2 * A * Y * (A * B * Y + A * Y) = 2 * A ^ 2 * Y ^ 2 * (B + 1)
+  h_id7 : B + 1 = 2 * q
+  h_id8 : 2 * A ^ 2 * Y ^ 2 * (B + 1) = 4 * q * A ^ 2 * Y ^ 2
+  h_total_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_RHS : q ∣ 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_LHS : q ∣ c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1)
+  hq_dvd_term1 : q ∣ c * (A * C * Y - 1)
+  hq_dvd_term2 : q ∣ (2 * A * Y + c) * (A * Y + 1)
+  h_not_dvd_AY : ¬q ∣ A * Y
+  h_cop_q_AY : q.Coprime (A * Y)
+  h_sum_eq : A * C * Y - 1 + (A * Y + 1) = 2 * r * A * Y
+  h_not_dvd_AY2 : ¬q ∣ A * Y + 1
+  h_cop_q_AY2 : q.Coprime (A * Y + 1)
+  d : ℕ
+  hd : 2 * A * Y + c = q * d
+  h_omega : c * (2 * r - 1) + 2 = q * (4 * A * Y - d)
+  h_lt_c : c < 2 * A * Y
+  h_qd_lt : q * d < 4 * A * Y
+  h_d_lt : d < 4 * A * Y
+  h_not_dvd : ¬q ∣ 2 * r - 1
+  h_q_ne_A : q ≠ A
+  h_not_dvd_A : ¬q ∣ A
+  h_not_dvd_Y : ¬q ∣ Y
+  h_not_dvd_c : ¬q ∣ c
+  hk_r : ¬k / r = 1
+  h_kr_ge2 : 2 ≤ k / r
+  s : ℕ := (k / r).minFac
+  hs_prime : Nat.Prime s
+  hs_dvd : s ∣ k / r
+  hs_dvd_k : s ∣ k
+  hr_le_s : r ≤ s
+  hr_ne_s : r ≠ s
+  hr_lt_s : r < s
+  h_div_s : k / r = s * (k / r / s)
+  h_cop_s : s.Coprime (k / r / s)
+  h_div_pos : 0 < k / r / s
+  Y' : ℕ := A018804 (k / r / s)
+  h_Y_eq : Y = (2 * s - 1) * Y'
+  h_Y'_pos : 1 ≤ Y'
+  hs_dvd_total : s ∣ 1 + A018804 n
+  hs_dvd_sub_one : s ∣ A * B * C * Y' - 1
+  a_s : ℕ
+  ha_s : A * B * C * Y' - 1 = s * a_s
+  k_s : ℕ
+  hk_s : c + 2 * A * B * Y' = s * k_s
+  h_le_ks : k_s ≤ 4 * A * B * Y'
+  h_alg_s : c * (2 * r - 1) + 2 = s * (4 * (A * B * Y') - k_s)
+  hs_dvd_f : s ∣ c * (2 * r - 1) + 2
+  hs_cop_q : s.Coprime q
+  hs_dvd_f_final : s ∣ c * (2 * r - 1) + 2
+  f_val : ℕ
+  hf_val : c * (2 * r - 1) + 2 = q * f_val
+  hs_dvd_qf_val : s ∣ q * f_val
+  g_s : ℕ
+  hg_s : f_val = s * g_s
+  h_ABY_ge_orig : 1 ≤ A * B * Y'
+  h_ks_le : k_s ≤ 4 * (A * B * Y')
+  h_CABY_ge_orig : 1 ≤ A * B * C * Y'
+  h_q_g_s : q * g_s = 4 * (A * B * Y') - k_s
+  h_rk_eq : r * k_s = 2 * (A * B * Y') + a_s
+  h_alg_diff : r * (4 * (A * B * Y') - k_s) = 2 * C * A * B * Y' - a_s
+  hp2 : p = 2
+  hA_val : A = 3
+  h_q_g_s_int : ↑q * ↑g_s = 4 * (↑A * ↑B * ↑Y') - ↑k_s
+  h_rk_eq_int : ↑r * ↑k_s = 2 * (↑A * ↑B * ↑Y') + ↑a_s
+  ha_s_int : ↑A * ↑B * ↑C * ↑Y' - 1 = ↑s * ↑a_s
+  hY_eq_int : ↑Y = (2 * ↑s - 1) * ↑Y'
+  h_prod_int : ↑q * ↑r * ↑s * ↑g_s = ↑A * ↑B * ↑C * ↑Y + 1
+  h_prod : q * r * s * g_s = A * B * C * Y + 1
+  hp_cop_q : p.Coprime q
+  hp_cop_r : p.Coprime r
+  hp_cop_s_prime : p.Coprime s
+  hp_dvd_prod : p ∣ q * r * s * g_s
+  hp_dvd_prod' : p ∣ q * (r * (s * g_s))
+  hp_dvd_3 : p ∣ r * (s * g_s)
+  hp_dvd_2 : p ∣ s * g_s
+  g_s_prime : ℕ
+  h_gs_prime : g_s = 2 * g_s_prime
+  h_gs_eq : 2 * q * r * s * g_s_prime = 3 * (2 * q - 1) * (2 * r - 1) * Y + 1
+  hq_ge3 : 3 ≤ q
+  hq5 : q ≥ 5
+  hr_ge : 7 ≤ r
+  hs_ge✝ : 11 ≤ s
+  h_prod_gs_prime : 2 * q * r * g_s_prime = 2 * C * A * B * Y' - a_s
+  h_as_pos : 1 ≤ a_s
+  h_as_le_2CABY : a_s ≤ 2 * C * A * B * Y'
+  h_gs_prime_lt : 2 * q * r * g_s_prime < 2 * C * A * B * Y'
+  h_gs_prime_lt' : 2 * q * r * g_s_prime < 6 * (2 * q - 1) * (2 * r - 1) * Y'
+  h_qr_bound : 10 * (2 * q - 1) * 14 * (2 * r - 1) ≤ 18 * q * 26 * r
+  hs_cast : ↑(2 * s - 1) = 2 * ↑s - 1
+  hs_ge : ↑s ≥ 11
+  hq_cast : ↑(2 * q - 1) = 2 * ↑q - 1
+  hr_cast : ↑(2 * r - 1) = 2 * ↑r - 1
+  h_temp : 10 * (2 * q - 1) * 14 * (2 * r - 1) ≤ 18 * q * 26 * r
+  ⊢ 10 * (2 * ↑q - 1) * 14 * (2 * ↑r - 1) ≤ 18 * ↑q * 26 * ↑r
+  Submission/Spec.lean:2515:24: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  p : ℕ := n.minFac
+  m : ℕ := n / p
+  q : ℕ := m.minFac
+  k : ℕ := m / q
+  r : ℕ := k.minFac
+  s : ℕ := (k / r).minFac
+  hs_ge : ↑s ≥ 11
+  h_qr_bound_z : 10 * (2 * ↑q - 1) * 14 * (2 * ↑r - 1) ≤ 18 * ↑q * 26 * ↑r
+  a✝ : 18 * ↑q * 26 * ↑r * 42 * ↑s < 10 * ↑(2 * q - 1) * 14 * ↑(2 * r - 1) * 22 * (2 * ↑s - 1)
+  ⊢ False
+  failed
+  Submission/Spec.lean:2525:76: error: Application type mismatch: The argument
+    h_pos
+  has type
+    0 < q * r * s
+  but is expected to have type
+    s > 0
+  in the application
+    Nat.mul_lt_mul_of_pos_right ?m.47863 h_pos
+  Submission/Spec.lean:2525:68: error: Expected type must not contain free variables
+    58968 * (n / n.minFac).minFac * (n / n.minFac / (n / n.minFac).minFac).minFac <
+      67760 * (n / n.minFac).minFac * (n / n.minFac / (n / n.minFac).minFac).minFac
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:2527:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    3080 * (3 * (2 * q - 1) * (2 * r - 1) * (2 * s - 1))
+  in the target expression
+    3 * (2 * q - 1) * (2 * r - 1) * (2 * s - 1) < 22 * q * r * s
+  
+  n : ℕ
+  h : _root_.a n = 1
+  hn1 : ¬n = 1
+  hp : ¬Nat.Prime n
+  hn0 : ¬n = 0
+  h_sq : Squarefree n
+  h_fac_len : 2 ≤ n.primeFactorsList.length
+  p : ℕ := n.minFac
+  hp_prime : Nat.Prime p
+  h_dvd : p ∣ n
+  m : ℕ := n / p
+  hp_pos : 0 < p
+  h_pm : n = p * m
+  hm_pos : 0 < m
+  h_p_not_dvd_m : ¬p ∣ m
+  hco : p.Coprime m
+  h_n_dvd_A : n ∣ 1 + A018804 n
+  hp_dvd_n : p ∣ n
+  hp_dvd_A : p ∣ 1 + A018804 n
+  hm_gt_one : 1 < m
+  hm_sq : Squarefree m
+  q : ℕ := m.minFac
+  hq_prime : Nat.Prime q
+  k : ℕ := m / q
+  h_q_dvd_m : q ∣ m
+  h_pm2 : m = q * k
+  hk_pos : 0 < k
+  h_q_not_dvd_k : ¬q ∣ k
+  hco2 : q.Coprime k
+  h_pqk : n = p * q * k
+  hq_dvd_total : q ∣ 1 + A018804 n
+  hp_le_q : p ≤ q
+  hp_lt_q : p < q
+  hk1 : ¬k = 1
+  r : ℕ := k.minFac
+  hr_prime : Nat.Prime r
+  hr_dvd_k : r ∣ k
+  hk_dvd_m : k ∣ m
+  hr_dvd_m : r ∣ m
+  hq_le_r : q ≤ r
+  hq_lt_r : q < r
+  h_div : k = r * (k / r)
+  h_r_not_dvd_k' : ¬r ∣ k / r
+  h_cop_r_k' : r.Coprime (k / r)
+  hk_pos' : 0 < k / r
+  hk_dvd_n : k ∣ n
+  hr_dvd_n : r ∣ n
+  A : ℕ := 2 * p - 1
+  h_A_pm : A018804 n = A * A018804 m
+  h_eq_q : 1 + A018804 n + A * A018804 k = 2 * q * (A * A018804 k) + 1
+  hq_dvd_sub : q ∣ A * A018804 k - 1
+  B : ℕ := 2 * q - 1
+  h_A_qk : A018804 m = B * A018804 k
+  h_A_total : A018804 n = A * B * A018804 k
+  h_rew : A * B * A018804 k = A * A018804 k * B
+  C : ℕ := 2 * r - 1
+  Y : ℕ := A018804 (k / r)
+  h_A_k : A018804 k = C * Y
+  h_A_total2 : A018804 n = A * B * C * Y
+  h_Y_pos : 1 ≤ Y
+  h_A_pos : 0 < A
+  h_B_pos : 0 < B
+  h_Y_pos' : 0 < Y
+  h_ABY_pos : 0 < A * B * Y
+  h_ABY_ge : 1 ≤ A * B * Y
+  h_eq_r_total : 1 + A018804 n = 2 * r * (A * B * Y) - (A * B * Y - 1)
+  a : ℕ
+  ha : 1 + A018804 n = r * a
+  h_eq_r3 : r * a + A * B * Y = 2 * r * (A * B * Y) + 1
+  c : ℕ
+  hc : A * B * Y - 1 = r * c
+  hc_eq : c * r + 1 = A * B * Y
+  hq_dvd_ACY_sub1 : q ∣ A * C * Y - 1
+  h_C_pos : 0 < C
+  h_ACY_pos : 0 < A * C * Y
+  h_ACY_ge : 1 ≤ A * C * Y
+  h_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y
+  h_id2 : c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y = c * A * Y * (C + 1) + 2 * A * Y * (A * Y + 1)
+  h_id3 : c * A * Y * (C + 1) = 2 * A * Y * (c * r)
+  h_id4 : 2 * A * Y * (c * r) + 2 * A * Y * (A * Y + 1) = 2 * A * Y * (c * r + A * Y + 1)
+  h_B_eq : A * B * Y = (2 * q - 1) * (A * Y)
+  h_omega_prep : c * r + A * Y + 1 = 2 * q * A * Y
+  h_id5 : c * r + A * Y + 1 = A * B * Y + A * Y
+  h_id6 : 2 * A * Y * (A * B * Y + A * Y) = 2 * A ^ 2 * Y ^ 2 * (B + 1)
+  h_id7 : B + 1 = 2 * q
+  h_id8 : 2 * A ^ 2 * Y ^ 2 * (B + 1) = 4 * q * A ^ 2 * Y ^ 2
+  h_total_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_RHS : q ∣ 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_LHS : q ∣ c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1)
+  hq_dvd_term1 : q ∣ c * (A * C * Y - 1)
+  hq_dvd_term2 : q ∣ (2 * A * Y + c) * (A * Y + 1)
+  h_not_dvd_AY : ¬q ∣ A * Y
+  h_cop_q_AY : q.Coprime (A * Y)
+  h_sum_eq : A * C * Y - 1 + (A * Y + 1) = 2 * r * A * Y
+  h_not_dvd_AY2 : ¬q ∣ A * Y + 1
+  h_cop_q_AY2 : q.Coprime (A * Y + 1)
+  d : ℕ
+  hd : 2 * A * Y + c = q * d
+  h_omega : c * (2 * r - 1) + 2 = q * (4 * A * Y - d)
+  h_lt_c : c < 2 * A * Y
+  h_qd_lt : q * d < 4 * A * Y
+  h_d_lt : d < 4 * A * Y
+  h_not_dvd : ¬q ∣ 2 * r - 1
+  h_q_ne_A : q ≠ A
+  h_not_dvd_A : ¬q ∣ A
+  h_not_dvd_Y : ¬q ∣ Y
+  h_not_dvd_c : ¬q ∣ c
+  hk_r : ¬k / r = 1
+  h_kr_ge2 : 2 ≤ k / r
+  s : ℕ := (k / r).minFac
+  hs_prime : Nat.Prime s
+  hs_dvd : s ∣ k / r
+  hs_dvd_k : s ∣ k
+  hr_le_s : r ≤ s
+  hr_ne_s : r ≠ s
+  hr_lt_s : r < s
+  h_div_s : k / r = s * (k / r / s)
+  h_cop_s : s.Coprime (k / r / s)
+  h_div_pos : 0 < k / r / s
+  Y' : ℕ := A018804 (k / r / s)
+  h_Y_eq : Y = (2 * s - 1) * Y'
+  h_Y'_pos : 1 ≤ Y'
+  hs_dvd_total : s ∣ 1 + A018804 n
+  hs_dvd_sub_one : s ∣ A * B * C * Y' - 1
+  a_s : ℕ
+  ha_s : A * B * C * Y' - 1 = s * a_s
+  k_s : ℕ
+  hk_s : c + 2 * A * B * Y' = s * k_s
+  h_le_ks : k_s ≤ 4 * A * B * Y'
+  h_alg_s : c * (2 * r - 1) + 2 = s * (4 * (A * B * Y') - k_s)
+  hs_dvd_f : s ∣ c * (2 * r - 1) + 2
+  hs_cop_q : s.Coprime q
+  hs_dvd_f_final : s ∣ c * (2 * r - 1) + 2
+  f_val : ℕ
+  hf_val : c * (2 * r - 1) + 2 = q * f_val
+  hs_dvd_qf_val : s ∣ q * f_val
+  g_s : ℕ
+  hg_s : f_val = s * g_s
+  h_ABY_ge_orig : 1 ≤ A * B * Y'
+  h_ks_le : k_s ≤ 4 * (A * B * Y')
+  h_CABY_ge_orig : 1 ≤ A * B * C * Y'
+  h_q_g_s : q * g_s = 4 * (A * B * Y') - k_s
+  h_rk_eq : r * k_s = 2 * (A * B * Y') + a_s
+  h_alg_diff : r * (4 * (A * B * Y') - k_s) = 2 * C * A * B * Y' - a_s
+  hp2 : p = 2
+  hA_val : A = 3
+  h_q_g_s_int : ↑q * ↑g_s = 4 * (↑A * ↑B * ↑Y') - ↑k_s
+  h_rk_eq_int : ↑r * ↑k_s = 2 * (↑A * ↑B * ↑Y') + ↑a_s
+  ha_s_int : ↑A * ↑B * ↑C * ↑Y' - 1 = ↑s * ↑a_s
+  hY_eq_int : ↑Y = (2 * ↑s - 1) * ↑Y'
+  h_prod_int : ↑q * ↑r * ↑s * ↑g_s = ↑A * ↑B * ↑C * ↑Y + 1
+  h_prod : q * r * s * g_s = A * B * C * Y + 1
+  hp_cop_q : p.Coprime q
+  hp_cop_r : p.Coprime r
+  hp_cop_s_prime : p.Coprime s
+  hp_dvd_prod : p ∣ q * r * s * g_s
+  hp_dvd_prod' : p ∣ q * (r * (s * g_s))
+  hp_dvd_3 : p ∣ r * (s * g_s)
+  hp_dvd_2 : p ∣ s * g_s
+  g_s_prime : ℕ
+  h_gs_prime : g_s = 2 * g_s_prime
+  h_gs_eq : 2 * q * r * s * g_s_prime = 3 * (2 * q - 1) * (2 * r - 1) * Y + 1
+  hq_ge3 : 3 ≤ q
+  hq5 : q ≥ 5
+  hr_ge : 7 ≤ r
+  hs_ge : 11 ≤ s
+  h_prod_gs_prime : 2 * q * r * g_s_prime = 2 * C * A * B * Y' - a_s
+  h_as_pos : 1 ≤ a_s
+  h_as_le_2CABY : a_s ≤ 2 * C * A * B * Y'
+  h_gs_prime_lt : 2 * q * r * g_s_prime < 2 * C * A * B * Y'
+  h_gs_prime_lt' : 2 * q * r * g_s_prime < 6 * (2 * q - 1) * (2 * r - 1) * Y'
+  h_qr_bound : 10 * (2 * q - 1) * 14 * (2 * r - 1) ≤ 18 * q * 26 * r
+  h_qrs_bound : 10 * (2 * q - 1) * 14 * (2 * r - 1) * 22 * (2 * s - 1) ≤ 18 * q * 26 * r * 42 * s
+  h_eq :
+    3080 * (3 * (2 * q - 1) * (2 * r - 1) * (2 * s - 1)) = 3 * (10 * (2 * q - 1) * 14 * (2 * r - 1) * 22 * (2 * s - 1))
+  h_mul_lt : 3 * (10 * (2 * q - 1) * 14 * (2 * r - 1) * 22 * (2 * s - 1)) < 3080 * (22 * q * r * s)
+  ⊢ 3 * (2 * q - 1) * (2 * r - 1) * (2 * s - 1) < 22 * q * r * s
+  Submission/Spec.lean:2557:24: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    o_2 ≥ 0
+    n_2 ≥ 0
+    n_2 - o_2 ≤ -1
+    m_2 ≥ 1
+    l_2 ≥ 0
+    l_2 - n_2 ≥ 1
+    k_2 ≥ 0
+    j_2 ≥ 0
+    j_2 - k_2 ≥ 1
+    i_2 ≥ 0
+    h_2 ≥ 0
+    h_2 - i_2 ≥ 0
+    g_2 ≥ 0
+    f_2 ≥ 0
+    f_2 - g_2 ≥ 0
+    e_2 ≥ 0
+    d_2 ≥ 0
+    c_2 ≥ 0
+    c_2 - d_2 ≤ -1
+    c_2 ≥ 0
+    c_2 - e_2 ≤ -1
+    b_2 ≥ 0
+    a_2 ≥ 1
+    z_1 ≥ 1
+    y_1 ≥ 1
+    x_1 ≥ 1
+    2*x_1 - c_2 + d_2 ≥ 0
+    w_1 ≥ 0
+    w_1 - 4*x_1 ≤ 0
+    w_1 ≥ 0
+    v_1 ≥ 0
+    u_1 ≥ 2
+    t_1 ≥ 0
+    t_1 + w_1 - 4*x_1 ≥ 0
+    s_1 ≥ 0
+    r_1 ≥ 0
+    r_1 - s_1 ≤ 0
+    q_1 ≥ 1
+    11*q_1 - b_2 ≤ -1
+    p_1 ≥ 1
+    o_1 ≥ 2
+    n_1 ≥ 11
+    m_1 ≥ 1
+    l_1 ≥ 1
+    k_1 ≥ 1
+    j_1 ≥ 1
+    i_1 ≥ 0
+    h_1 ≥ 0
+    h_1 - i_1 ≥ 1
+    g_1 ≥ 0
+    g_1 - h_1 ≤ -1
+    g_1 + r_1 - s_1 ≥ 0
+    g_1 + 2*r_1 - 2*s_1 ≥ 1
+    f_1 ≥ 1
+    e_1 ≥ 0
+    d_1 ≥ 0
+    d_1 - e_1 ≤ -1
+    c_1 ≥ 1
+    b_1 ≥ 0
+    a_1 ≥ 0
+    a_1 + d_1 - e_1 ≥ 0
+    a_1 + d_1 - e_1 + a_2 ≥ 0
+    z ≥ 0
+    z - b_1 ≤ 0
+    y ≥ 0
+    y - z ≤ 0
+    x ≥ 0
+    x - b_1 ≤ 0
+    w ≥ 0
+    v ≥ 0
+    u ≥ 0
+    u - a_2 ≥ -1
+    t ≥ 1
+    o ≥ 2
+    l ≥ 7
+    l ≥ 1
+    l - n_1 ≤ -1
+    j ≥ 5
+    j - l ≤ -1
+    j ≥ 4
+    j ≥ 1
+    i ≥ 2
+    g ≥ 1
+    f ≥ 2
+    e ≥ 1
+    b ≥ 2
+  where
+   b := ↑n.primeFactorsList.length
+   e := ↑m % ↑p
+   f := ↑q * ↑k
+   g := ↑k % ↑q
+   i := ↑(p * q) * ↑k
+   j := ↑m.minFac
+   l := ↑k.minFac
+   o := ↑r * ↑(k / r)
+   t := ↑(k / r) % ↑r
+   u := ↑(2 * q) * ↑(A * A018804 k)
+   v := ↑B * ↑(A018804 k)
+   w := ↑C * ↑Y
+   x := ↑(2 * A * Y + c) * ↑(A * Y + 1)
+   y := ↑(c * A) * ↑Y
+   z := ↑(2 * A * Y) * ↑(c * r)
+   a_1 := ↑(2 * q * A) * ↑Y
+   b_1 := ↑(4 * q * A ^ 2) * ↑(Y ^ 2)
+   c_1 := ↑(A * Y) % ↑q
+   d_1 := ↑(A * C * Y - 1)
+   e_1 := ↑(2 * r * A) * ↑Y
+   f_1 := ↑(A * Y + 1) % ↑q
+   g_1 := ↑q * ↑d
+   h_1 := ↑(4 * A) * ↑Y
+   i_1 := ↑d
+   j_1 := ↑(2 * r - 1) % ↑q
+   k_1 := ↑A % ↑q
+   l_1 := ↑Y % ↑q
+   m_1 := ↑c % ↑q
+   n_1 := ↑(k / r).minFac
+   o_1 := ↑s * ↑(k / r / s)
+   p_1 := ↑(k / r) / ↑s
+   q_1 := ↑(A018804 (k / r / s))
+   r_1 := ↑(2 * A * B) * ↑Y'
+   s_1 := ↑s * ↑k_s
+   t_1 := ↑(4 * A * B) * ↑Y'
+   u_1 := ↑q * ↑f_val
+   v_1 := ↑s * ↑g_s
+   w_1 := ↑(4 * (A * B * Y') - k_s)
+   x_1 := ↑A * ↑B * ↑Y'
+   y_1 := ↑A * ↑B * ↑C * ↑Y'
+   z_1 := (2 * ↑s - 1) * ↑Y'
+   a_2 := ↑(q * r * s) * ↑g_s
+   b_2 := ↑g_s_prime
+   c_2 := ↑(2 * q * r) * ↑g_s_prime
+   d_2 := ↑(2 * C * A * B) * ↑Y'
+   e_2 := ↑(6 * (2 * q - 1) * (2 * r - 1)) * ↑Y'
+   f_2 := ↑(18 * q * 26) * ↑r
+   g_2 := ↑(10 * (2 * q - 1) * 14) * ↑(2 * r - 1)
+   h_2 := ↑(18 * q * 26 * r * 42) * ↑s
+   i_2 := ↑(10 * (2 * q - 1) * 14 * (2 * r - 1) * 22) * ↑(2 * s - 1)
+   j_2 := ↑(22 * q * r) * ↑s
+   k_2 := ↑(3 * (2 * q - 1) * (2 * r - 1)) * ↑(2 * s - 1)
+   l_2 := ↑(22 * q * r * s) * ↑Y'
+   m_2 := ↑C_var
+   n_2 := ↑(3 * (2 * q - 1) * (2 * r - 1)) * ↑Y
+   o_2 := ↑C_var * ↑(11 * Y')
+  Submission/Spec.lean:2589:24: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    m_2 ≥ 0
+    l_2 ≥ 0
+    l_2 - m_2 ≥ 1
+    k_2 ≥ 0
+    j_2 ≥ 0
+    j_2 - k_2 ≥ 1
+    i_2 ≥ 0
+    h_2 ≥ 0
+    h_2 - i_2 ≥ 0
+    g_2 ≥ 0
+    f_2 ≥ 0
+    f_2 - g_2 ≥ 0
+    e_2 ≥ 0
+    d_2 ≥ 0
+    c_2 ≥ 0
+    c_2 - d_2 ≤ -1
+    c_2 ≥ 0
+    c_2 - e_2 ≤ -1
+    b_2 ≥ 0
+    a_2 ≥ 1
+    z_1 ≥ 1
+    y_1 ≥ 1
+    x_1 ≥ 1
+    2*x_1 - c_2 + d_2 ≥ 0
+    w_1 ≥ 0
+    w_1 - 4*x_1 ≤ 0
+    w_1 ≥ 0
+    v_1 ≥ 0
+    u_1 ≥ 2
+    t_1 ≥ 0
+    t_1 + w_1 - 4*x_1 ≥ 0
+    s_1 ≥ 0
+    r_1 ≥ 0
+    r_1 - s_1 ≤ 0
+    q_1 ≥ 1
+    11*q_1 - b_2 ≥ 0
+    p_1 ≥ 1
+    o_1 ≥ 2
+    n_1 ≥ 11
+    n_1 ≥ 1
+    m_1 ≥ 1
+    l_1 ≥ 1
+    k_1 ≥ 1
+    j_1 ≥ 1
+    i_1 ≥ 0
+    h_1 ≥ 0
+    h_1 - i_1 ≥ 1
+    g_1 ≥ 0
+    g_1 - h_1 ≤ -1
+    g_1 + r_1 - s_1 ≥ 0
+    g_1 + 2*r_1 - 2*s_1 ≥ 1
+    f_1 ≥ 1
+    e_1 ≥ 0
+    d_1 ≥ 0
+    d_1 - e_1 ≤ -1
+    c_1 ≥ 1
+    b_1 ≥ 0
+    a_1 ≥ 0
+    a_1 + d_1 - e_1 ≥ 0
+    a_1 + d_1 - e_1 + a_2 ≥ 0
+    z ≥ 0
+    z - b_1 ≤ 0
+    y ≥ 0
+    y - z ≤ 0
+    x ≥ 0
+    x - b_1 ≤ 0
+    w ≥ 0
+    v ≥ 0
+    u ≥ 0
+    u - a_2 ≥ -1
+    t ≥ 1
+    o ≥ 2
+    l ≥ 7
+    l ≥ 1
+    l - n_1 ≤ -1
+    j ≥ 5
+    j - l ≤ -1
+    j ≥ 4
+    j ≥ 1
+    3*j + 3*l + 3*n_1 - n_2 ≤ 0
+    6*j + 6*l + 6*n_1 + 24*n_2 - 12*o_2 - 12*p_2 - 12*q_2 - r_2 ≤ 2
+    i ≥ 2
+    g ≥ 1
+    f ≥ 2
+    e ≥ 1
+    b ≥ 2
+  where
+   b := ↑n.primeFactorsList.length
+   e := ↑m % ↑p
+   f := ↑q * ↑k
+   g := ↑k % ↑q
+   i := ↑(p * q) * ↑k
+   j := ↑m.minFac
+   l := ↑k.minFac
+   o := ↑r * ↑(k / r)
+   t := ↑(k / r) % ↑r
+   u := ↑(2 * q) * ↑(A * A018804 k)
+   v := ↑B * ↑(A018804 k)
+   w := ↑C * ↑Y
+   x := ↑(2 * A * Y + c) * ↑(A * Y + 1)
+   y := ↑(c * A) * ↑Y
+   z := ↑(2 * A * Y) * ↑(c * r)
+   a_1 := ↑(2 * q * A) * ↑Y
+   b_1 := ↑(4 * q * A ^ 2) * ↑(Y ^ 2)
+   c_1 := ↑(A * Y) % ↑q
+   d_1 := ↑(A * C * Y - 1)
+   e_1 := ↑(2 * r * A) * ↑Y
+   f_1 := ↑(A * Y + 1) % ↑q
+   g_1 := ↑q * ↑d
+   h_1 := ↑(4 * A) * ↑Y
+   i_1 := ↑d
+   j_1 := ↑(2 * r - 1) % ↑q
+   k_1 := ↑A % ↑q
+   l_1 := ↑Y % ↑q
+   m_1 := ↑c % ↑q
+   n_1 := ↑(k / r).minFac
+   o_1 := ↑s * ↑(k / r / s)
+   p_1 := ↑(k / r) / ↑s
+   q_1 := ↑(A018804 (k / r / s))
+   r_1 := ↑(2 * A * B) * ↑Y'
+   s_1 := ↑s * ↑k_s
+   t_1 := ↑(4 * A * B) * ↑Y'
+   u_1 := ↑q * ↑f_val
+   v_1 := ↑s * ↑g_s
+   w_1 := ↑(4 * (A * B * Y') - k_s)
+   x_1 := ↑A * ↑B * ↑Y'
+   y_1 := ↑A * ↑B * ↑C * ↑Y'
+   z_1 := (2 * ↑s - 1) * ↑Y'
+   a_2 := ↑(q * r * s) * ↑g_s
+   b_2 := ↑g_s_prime
+   c_2 := ↑(2 * q * r) * ↑g_s_prime
+   d_2 := ↑(2 * C * A * B) * ↑Y'
+   e_2 := ↑(6 * (2 * q - 1) * (2 * r - 1)) * ↑Y'
+   f_2 := ↑(18 * q * 26) * ↑r
+   g_2 := ↑(10 * (2 * q - 1) * 14) * ↑(2 * r - 1)
+   h_2 := ↑(18 * q * 26 * r * 42) * ↑s
+   i_2 := ↑(10 * (2 * q - 1) * 14 * (2 * r - 1) * 22) * ↑(2 * s - 1)
+   j_2 := ↑(22 * q * r) * ↑s
+   k_2 := ↑(3 * (2 * q - 1) * (2 * r - 1)) * ↑(2 * s - 1)
+   l_2 := ↑(22 * q * r * s) * ↑Y'
+   m_2 := ↑(3 * (2 * q - 1) * (2 * r - 1) * (2 * s - 1)) * ↑Y'
+   n_2 := QRS
+   o_2 := QR
+   p_2 := QS
+   q_2 := RS
+   r_2 := 22 * ↑q * ↑r * ↑s
+  Submission/Spec.lean:2615:70: error(lean.unknownIdentifier): Unknown identifier `h_gs_le_9`
+  Submission/Spec.lean:2855:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f_2 ≥ 0
+    e_2 ≥ 0
+    d_2 ≥ 24
+    c_2 ≥ 6
+    b_2 ≥ 3
+    b_2 - c_2 ≤ -1
+    a_2 ≥ 24
+    z_1 ≥ 1
+    y_1 ≥ 1
+    x_1 ≥ 1
+    w_1 ≥ 1
+    v_1 ≥ 0
+    v_1 - 2*w_1 - e_2 ≤ 0
+    v_1 - e_2 ≤ -1
+    v_1 ≥ 0
+    u_1 ≥ 0
+    u_1 - 4*w_1 ≤ -1
+    u_1 - 4*w_1 + f_2 ≥ 0
+    u_1 ≥ 0
+    u_1 - f_2 ≥ 0
+    t_1 ≥ 0
+    s_1 ≥ 2
+    r_1 ≥ 0
+    q_1 ≥ 0
+    q_1 - r_1 ≤ 0
+    p_1 ≥ 1
+    o_1 ≥ 1
+    n_1 ≥ 2
+    m_1 ≥ 1
+    l_1 ≥ 1
+    k_1 ≥ 1
+    j_1 ≥ 1
+    i_1 ≥ 0
+    h_1 ≥ 0
+    h_1 - i_1 ≥ 1
+    g_1 ≥ 0
+    g_1 - h_1 ≤ -1
+    g_1 + q_1 - r_1 ≥ 0
+    g_1 + 2*q_1 - 2*r_1 ≥ 1
+    f_1 ≥ 1
+    e_1 ≥ 0
+    d_1 ≥ 0
+    d_1 - e_1 ≤ -1
+    c_1 ≥ 1
+    b_1 ≥ 0
+    a_1 ≥ 0
+    a_1 + d_1 - e_1 ≥ 0
+    a_1 + d_1 - e_1 + z_1 ≥ 0
+    z ≥ 0
+    z - b_1 ≤ 0
+    y ≥ 0
+    y - z ≤ 0
+    x ≥ 0
+    x - b_1 ≤ 0
+    w ≥ 0
+    v ≥ 0
+    u ≥ 0
+    u - z_1 ≥ -1
+    t ≥ 1
+    o ≥ 2
+    l ≥ 5
+    l ≥ 1
+    l - b_2 ≤ 4
+    j ≥ 2
+    i ≥ 1
+    g ≥ 2
+    f ≥ 1
+    e ≥ 3
+    e - l ≤ -1
+    e ≥ 1
+    2*e - l ≥ 2
+    b ≥ 2
+  where
+   b := ↑n.primeFactorsList.length
+   e := ↑n.minFac
+   f := ↑m % ↑p
+   g := ↑q * ↑k
+   i := ↑k % ↑q
+   j := ↑(p * q) * ↑k
+   l := ↑m.minFac
+   o := ↑r * ↑(k / r)
+   t := ↑(k / r) % ↑r
+   u := ↑(2 * q) * ↑(A * A018804 k)
+   v := ↑B * ↑(A018804 k)
+   w := ↑C * ↑Y
+   x := ↑(2 * A * Y + c) * ↑(A * Y + 1)
+   y := ↑(c * A) * ↑Y
+   z := ↑(2 * A * Y) * ↑(c * r)
+   a_1 := ↑(2 * q * A) * ↑Y
+   b_1 := ↑(4 * q * A ^ 2) * ↑(Y ^ 2)
+   c_1 := ↑(A * Y) % ↑q
+   d_1 := ↑(A * C * Y - 1)
+   e_1 := ↑(2 * r * A) * ↑Y
+   f_1 := ↑(A * Y + 1) % ↑q
+   g_1 := ↑q * ↑d
+   h_1 := ↑(4 * A) * ↑Y
+   i_1 := ↑d
+   j_1 := ↑(2 * r - 1) % ↑q
+   k_1 := ↑A % ↑q
+   l_1 := ↑Y % ↑q
+   m_1 := ↑c % ↑q
+   n_1 := ↑s * ↑(k / r / s)
+   o_1 := ↑(k / r) / ↑s
+   p_1 := ↑(A018804 (k / r / s))
+   q_1 := ↑(2 * A * B) * ↑Y'
+   r_1 := ↑s * ↑k_s
+   s_1 := ↑q * ↑f_val
+   t_1 := ↑s * ↑g_s
+   u_1 := ↑(4 * (A * B * Y') - k_s)
+   v_1 := ↑(2 * C * A * B * Y' - a_s)
+   w_1 := ↑A * ↑B * ↑Y'
+   x_1 := ↑A * ↑B * ↑C * ↑Y'
+   y_1 := (2 * ↑s - 1) * ↑Y'
+   z_1 := ↑(q * r * s) * ↑g_s
+   a_2 := ↑(r - 5) * ↑(s - 5)
+   b_2 := ↑(r - 5)
+   c_2 := ↑(s - 5)
+   d_2 := (↑r - 5) * (↑s - 5)
+   e_2 := ↑(2 * C * A * B) * ↑Y'
+   f_2 := ↑W
+  Submission/Spec.lean:2858:82: error: Application type mismatch: The argument
+    h_q_gs_lt
+  has type
+    q * g_s < 4 * A * B * Y'
+  but is expected to have type
+    q * g_s * r < 4 * A * B * Y' * r
+  in the application
+    Nat.mul_lt_mul_of_pos_right h_q_gs_lt
+  Submission/Spec.lean:2881:24: error: linarith failed to find a contradiction
+  case h
+  n : ℕ
+  h : _root_.a n = 1
+  hn1 : ¬n = 1
+  hp : ¬Nat.Prime n
+  hn0 : ¬n = 0
+  h_sq : Squarefree n
+  h_fac_len : 2 ≤ n.primeFactorsList.length
+  p : ℕ := n.minFac
+  hp_prime : Nat.Prime p
+  h_dvd : p ∣ n
+  m : ℕ := n / p
+  hp_pos : 0 < p
+  h_pm : n = p * m
+  hm_pos : 0 < m
+  h_p_not_dvd_m : ¬p ∣ m
+  hco : p.Coprime m
+  h_n_dvd_A : n ∣ 1 + A018804 n
+  hp_dvd_n : p ∣ n
+  hp_dvd_A : p ∣ 1 + A018804 n
+  hm_gt_one : 1 < m
+  hm_sq : Squarefree m
+  q : ℕ := m.minFac
+  hq_prime : Nat.Prime q
+  k : ℕ := m / q
+  h_q_dvd_m : q ∣ m
+  h_pm2 : m = q * k
+  hk_pos : 0 < k
+  h_q_not_dvd_k : ¬q ∣ k
+  hco2 : q.Coprime k
+  h_pqk : n = p * q * k
+  hq_dvd_total : q ∣ 1 + A018804 n
+  hp_le_q : p ≤ q
+  hp_lt_q : p < q
+  hk1 : ¬k = 1
+  r : ℕ := k.minFac
+  hr_prime : Nat.Prime r
+  hr_dvd_k : r ∣ k
+  hk_dvd_m : k ∣ m
+  hr_dvd_m : r ∣ m
+  hq_le_r : q ≤ r
+  hq_lt_r : q < r
+  h_div✝ : k = r * (k / r)
+  h_r_not_dvd_k' : ¬r ∣ k / r
+  h_cop_r_k' : r.Coprime (k / r)
+  hk_pos' : 0 < k / r
+  hk_dvd_n : k ∣ n
+  hr_dvd_n : r ∣ n
+  A : ℕ := 2 * p - 1
+  h_A_pm : A018804 n = A * A018804 m
+  h_eq_q : 1 + A018804 n + A * A018804 k = 2 * q * (A * A018804 k) + 1
+  hq_dvd_sub : q ∣ A * A018804 k - 1
+  B : ℕ := 2 * q - 1
+  h_A_qk : A018804 m = B * A018804 k
+  h_A_total : A018804 n = A * B * A018804 k
+  h_rew : A * B * A018804 k = A * A018804 k * B
+  C : ℕ := 2 * r - 1
+  Y : ℕ := A018804 (k / r)
+  h_A_k : A018804 k = C * Y
+  h_A_total2 : A018804 n = A * B * C * Y
+  h_Y_pos : 1 ≤ Y
+  h_A_pos : 0 < A
+  h_B_pos : 0 < B
+  h_Y_pos' : 0 < Y
+  h_ABY_pos : 0 < A * B * Y
+  h_ABY_ge : 1 ≤ A * B * Y
+  h_eq_r_total : 1 + A018804 n = 2 * r * (A * B * Y) - (A * B * Y - 1)
+  a : ℕ
+  ha : 1 + A018804 n = r * a
+  h_eq_r3 : r * a + A * B * Y = 2 * r * (A * B * Y) + 1
+  c : ℕ
+  hc : A * B * Y - 1 = r * c
+  hc_eq : c * r + 1 = A * B * Y
+  hq_dvd_ACY_sub1 : q ∣ A * C * Y - 1
+  h_C_pos : 0 < C
+  h_ACY_pos : 0 < A * C * Y
+  h_ACY_ge : 1 ≤ A * C * Y
+  h_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y
+  h_id2 : c * A * C * Y + 2 * A * Y * (A * Y + 1) + c * A * Y = c * A * Y * (C + 1) + 2 * A * Y * (A * Y + 1)
+  h_id3 : c * A * Y * (C + 1) = 2 * A * Y * (c * r)
+  h_id4 : 2 * A * Y * (c * r) + 2 * A * Y * (A * Y + 1) = 2 * A * Y * (c * r + A * Y + 1)
+  h_B_eq : A * B * Y = (2 * q - 1) * (A * Y)
+  h_omega_prep : c * r + A * Y + 1 = 2 * q * A * Y
+  h_id5 : c * r + A * Y + 1 = A * B * Y + A * Y
+  h_id6 : 2 * A * Y * (A * B * Y + A * Y) = 2 * A ^ 2 * Y ^ 2 * (B + 1)
+  h_id7 : B + 1 = 2 * q
+  h_id8 : 2 * A ^ 2 * Y ^ 2 * (B + 1) = 4 * q * A ^ 2 * Y ^ 2
+  h_total_id : c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1) = 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_RHS : q ∣ 4 * q * A ^ 2 * Y ^ 2
+  hq_dvd_LHS : q ∣ c * (A * C * Y - 1) + (2 * A * Y + c) * (A * Y + 1)
+  hq_dvd_term1 : q ∣ c * (A * C * Y - 1)
+  hq_dvd_term2 : q ∣ (2 * A * Y + c) * (A * Y + 1)
+  h_not_dvd_AY : ¬q ∣ A * Y
+  h_cop_q_AY : q.Coprime (A * Y)
+  h_sum_eq : A * C * Y - 1 + (A * Y + 1) = 2 * r * A * Y
+  h_not_dvd_AY2 : ¬q ∣ A * Y + 1
+  h_cop_q_AY2 : q.Coprime (A * Y + 1)
+  d : ℕ
+  hd : 2 * A * Y + c = q * d
+  h_omega : c * (2 * r - 1) + 2 = q * (4 * A * Y - d)
+  h_lt_c : c < 2 * A * Y
+  h_qd_lt : q * d < 4 * A * Y
+  h_d_lt : d < 4 * A * Y
+  h_not_dvd : ¬q ∣ 2 * r - 1
+  h_q_ne_A : q ≠ A
+  h_not_dvd_A : ¬q ∣ A
+  h_not_dvd_Y : ¬q ∣ Y
+  h_not_dvd_c : ¬q ∣ c
+  hk_r : ¬k / r = 1
+  h_kr_ge2 : 2 ≤ k / r
+  s : ℕ := (k / r).minFac
+  hs_prime : Nat.Prime s
+  hs_dvd : s ∣ k / r
+  hs_dvd_k : s ∣ k
+  hr_le_s : r ≤ s
+  hr_ne_s : r ≠ s
+  hr_lt_s : r < s
+  h_div_s : k / r = s * (k / r / s)
+  h_cop_s : s.Coprime (k / r / s)
+  h_div_pos : 0 < k / r / s
+  Y' : ℕ := A018804 (k / r / s)
+  h_Y_eq : Y = (2 * s - 1) * Y'
+  h_Y'_pos : 1 ≤ Y'
+  hs_dvd_total : s ∣ 1 + A018804 n
+  hs_dvd_sub_one : s ∣ A * B * C * Y' - 1
+  a_s : ℕ
+  ha_s : A * B * C * Y' - 1 = s * a_s
+  k_s : ℕ
+  hk_s : c + 2 * A * B * Y' = s * k_s
+  h_le_ks : k_s ≤ 4 * A * B * Y'
+  h_alg_s : c * (2 * r - 1) + 2 = s * (4 * (A * B * Y') - k_s)
+  hs_dvd_f : s ∣ c * (2 * r - 1) + 2
+  hs_cop_q : s.Coprime q
+  hs_dvd_f_final : s ∣ c * (2 * r - 1) + 2
+  f_val : ℕ
+  hf_val : c * (2 * r - 1) + 2 = q * f_val
+  hs_dvd_qf_val : s ∣ q * f_val
+  g_s : ℕ
+  hg_s : f_val = s * g_s
+  h_ABY_ge_orig : 1 ≤ A * B * Y'
+  h_ks_le : k_s ≤ 4 * (A * B * Y')
+  h_CABY_ge_orig : 1 ≤ A * B * C * Y'
+  h_q_g_s : q * g_s = 4 * (A * B * Y') - k_s
+  h_rk_eq : r * k_s = 2 * (A * B * Y') + a_s
+  h_alg_diff : r * (4 * (A * B * Y') - k_s) = 2 * C * A * B * Y' - a_s
+  hp2 : ¬p = 2
+  hp3✝ : p ≥ 3
+  h_q_g_s_int : ↑q * ↑g_s = 4 * (↑A * ↑B * ↑Y') - ↑k_s
+  h_rk_eq_int : ↑r * ↑k_s = 2 * (↑A * ↑B * ↑Y') + ↑a_s
+  ha_s_int : ↑A * ↑B * ↑C * ↑Y' - 1 = ↑s * ↑a_s
+  hY_eq_int : ↑Y = (2 * ↑s - 1) * ↑Y'
+  h_prod_int : ↑q * ↑r * ↑s * ↑g_s = ↑A * ↑B * ↑C * ↑Y + 1
+  h_prod : q * r * s * g_s = A * B * C * Y + 1
+  hp_cop_q : p.Coprime q
+  hp_cop_r : p.Coprime r
+  hp_cop_s_prime : p.Coprime s
+  hp_dvd_prod : p ∣ q * r * s * g_s
+  hp_dvd_prod' : p ∣ q * (r * (s * g_s))
+  hp_dvd_3 : p ∣ r * (s * g_s)
+  hp_dvd_2 : p ∣ s * g_s
+  hp_dvd_g_s : p ∣ g_s
+  hp_ne_2 : p ≠ 2
+  hp3 : p ≥ 3
+  hq_ne_4 : q ≠ 4
+  hq5 : q ≥ 5
+  hr_ne_6 : r ≠ 6
+  hr_ge : 7 ≤ r
+  hs_ne_8 : s ≠ 8
+  hs_ne_9 : s ≠ 9
+  hs_ne_10 : s ≠ 10
+  hs_ge : 11 ≤ s
+  hs_ge17 : r = 7 → s ≥ 17
+  h_rs_ge : 24 ≤ (r - 5) * (s - 5)
+  h_r_cast' : ↑(r - 5) = ↑r - 5
+  h_s_cast' : ↑(s - 5) = ↑s - 5
+  h_rs_ge_z : 24 ≤ (↑r - 5) * (↑s - 5)
+  h_as_pos : 1 ≤ a_s
+  h_as_le_2CABY : a_s ≤ 2 * C * A * B * Y'
+  h_q_gs_lt : q * g_s < 4 * A * B * Y'
+  h_gs_lt : q * r * s * g_s < 4 * A * B * r * s * Y'
+  h_gs_eq_rew : q * r * s * g_s = A * B * C * (2 * s - 1) * Y' + 1
+  h_final_ineq : A * B * C * (2 * s - 1) * Y' + 1 < 4 * A * B * r * s * Y'
+  h_strict_lt : A * B * C * (2 * s - 1) * Y' < 4 * A * B * r * s * Y'
+  h_div : C * (2 * s - 1) < 4 * r * s
+  h_C_eq : C = 2 * r - 1
+  h_ring : 5 * (2 * ↑r - 1) * (2 * ↑s - 1) - 18 * ↑r * ↑s = 2 * ((↑r - 5) * (↑s - 5)) - 45
+  a✝ : (2 * ↑r - 1) * (2 * ↑s - 1) < 4 * ↑r * ↑s
+  ⊢ False
+  failed
+  Submission/Spec.lean:2887:26: error(lean.unknownIdentifier): Unknown identifier `h_c_zero`
+  Submission/Spec.lean:2900:16: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c_2 ≥ 0
+    b_2 ≥ 0
+    b_2 - c_2 ≤ 0
+    b_2 ≥ 0
+    a_2 ≥ 0
+    z_1 ≥ 1
+    y_1 ≥ 1
+    2*y_1 - b_2 + c_2 ≥ 0
+    4*y_1 - a_2 ≥ 0
+    x_1 ≥ 0
+    w_1 ≥ 2
+    v_1 ≥ 0
+    v_1 - 4*y_1 + a_2 ≥ 0
+    u_1 ≥ 0
+    t_1 ≥ 1
+    s_1 ≥ 1
+    r_1 ≥ 1
+    q_1 ≥ 2
+    p_1 ≥ 0
+    o_1 ≥ 1
+    n_1 ≥ 1
+    m_1 ≥ 1
+    l_1 ≥ 1
+    k_1 ≥ 0
+    j_1 ≥ 0
+    j_1 - k_1 ≥ 1
+    i_1 ≥ 0
+    i_1 - j_1 ≤ -1
+    i_1 ≥ 1
+    h_1 ≥ 1
+    g_1 ≥ 0
+    f_1 ≥ 0
+    f_1 - g_1 ≤ -1
+    e_1 ≥ 1
+    d_1 ≥ 0
+    c_1 ≥ 0
+    c_1 + f_1 - g_1 ≥ 14
+    b_1 ≥ 0
+    b_1 - d_1 ≤ 0
+    a_1 ≥ 0
+    a_1 - b_1 ≤ 0
+    z ≥ 0
+    z - d_1 ≤ 0
+    y ≥ 0
+    y - c_1 - f_1 + g_1 ≥ 1
+    x ≥ 0
+    w ≥ 0
+    v ≥ 0
+    v - y + c_1 + f_1 - g_1 ≥ -1
+    u ≥ 1
+    t ≥ 2
+    o ≥ 1
+    o ≥ 1
+    o - p_1 ≤ -1
+    l ≥ 1
+    l - o ≤ -1
+    l ≥ 1
+    j ≥ 2
+    i ≥ 1
+    g ≥ 2
+    f ≥ 1
+    e ≥ 1
+    e - l ≤ -1
+    e ≥ 1
+    2*e - l ≥ 2
+    b ≥ 2
+  where
+   b := ↑n.primeFactorsList.length
+   e := ↑n.minFac
+   f := ↑m % ↑p
+   g := ↑q * ↑k
+   i := ↑k % ↑q
+   j := ↑(p * q) * ↑k
+   l := ↑m.minFac
+   o := ↑k.minFac
+   t := ↑r * ↑(k / r)
+   u := ↑(k / r) % ↑r
+   v := ↑(2 * q) * ↑(A * A018804 k)
+   w := ↑B * ↑(A018804 k)
+   x := ↑C * ↑Y
+   y := ↑(2 * r) * ↑(A * B * Y)
+   z := ↑(2 * A * Y + c) * ↑(A * Y + 1)
+   a_1 := ↑(c * A) * ↑Y
+   b_1 := ↑(2 * A * Y) * ↑(c * r)
+   c_1 := ↑(2 * q * A) * ↑Y
+   d_1 := ↑(4 * q * A ^ 2) * ↑(Y ^ 2)
+   e_1 := ↑(A * Y) % ↑q
+   f_1 := ↑(A * C * Y - 1)
+   g_1 := ↑(2 * r * A) * ↑Y
+   h_1 := ↑(A * Y + 1) % ↑q
+   i_1 := ↑q * ↑d
+   j_1 := ↑(4 * A) * ↑Y
+   k_1 := ↑d
+   l_1 := ↑(2 * r - 1) % ↑q
+   m_1 := ↑A % ↑q
+   n_1 := ↑Y % ↑q
+   o_1 := ↑c % ↑q
+   p_1 := ↑(k / r).minFac
+   q_1 := ↑s * ↑(k / r / s)
+   r_1 := ↑(k / r) / ↑s
+   s_1 := ↑(2 * s - 1) * ↑Y'
+   t_1 := ↑(A018804 (k / r / s))
+   u_1 := ↑s * ↑k_s
+   v_1 := ↑(4 * A * B) * ↑Y'
+   w_1 := ↑q * ↑f_val
+   x_1 := ↑s * ↑g_s
+   y_1 := ↑(A * B) * ↑Y'
+   z_1 := ↑(A * B * C) * ↑Y'
+   a_2 := ↑(4 * (A * B * Y') - k_s)
+   b_2 := ↑(2 * C * A * B * Y' - a_s)
+   c_2 := ↑(2 * C * A * B) * ↑Y'
+

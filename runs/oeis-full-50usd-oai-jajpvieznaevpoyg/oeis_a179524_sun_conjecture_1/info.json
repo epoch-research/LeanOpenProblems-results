@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a179524_sun_conjecture_1",
+  "epoch": 1,
+  "uuid": "BrUyE5WcAz7ZG4p6hXuA9D",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 29477,
+      "output_tokens": 5392,
+      "total_tokens": 112181,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 77312,
+      "reasoning_tokens": 2037,
+      "total_cost": 0.34780099999999997
+    }
+  },
+  "oeis_id": "A179524"
+}

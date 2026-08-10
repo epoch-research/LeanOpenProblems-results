@@ -1,0 +1,28 @@
+inductive MyType (P : Prop) : Type where
+  | val : P → MyType P
+  | not_val : (P → False) → MyType P
+
+instance (P : Prop) : Nonempty (MyType P) := by
+  rcases Classical.em P with hp | h_not
+  · exact ⟨MyType.val hp⟩
+  · exact ⟨MyType.not_val h_not⟩
+
+partial def get_my_type_partial (P : Prop) : MyType P :=
+  get_my_type_partial P
+
+partial def solve_negation_partial (P : Prop) (h_not : ¬ P) : MyType False :=
+  match get_my_type_partial (¬ P) with
+  | MyType.val h_not2 =>
+    solve_negation_partial P h_not2
+  | MyType.not_val h_not_not =>
+    MyType.val (h_not_not h_not)
+
+theorem get_false (P : Prop) (h_not : ¬ P) : False := by
+  match solve_negation_partial P h_not with
+  | MyType.val f => exact f
+  | MyType.not_val hn =>
+    -- wait, hn has type False -> False, so it doesn't give False.
+    -- but wait! Can MyType False have the not_val constructor?
+    -- yes, not_val of False -> False is always constructible.
+    -- but can we extract False from it?
+    sorry

@@ -1,0 +1,89 @@
+/workspace/leanproject/Submission/test_gcd_proof5.lean:10:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:11:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:18:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof5.lean:37:15: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof5.lean:39:17: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof5.lean:33:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof5.lean:37:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:39:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:57:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_gcd_proof5.lean:58:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+/workspace/leanproject/Submission/test_gcd_proof5.lean:62:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_gcd_proof5.lean:68:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:137:16: error(lean.unknownIdentifier): Unknown identifier `base_gcd_2`
+/workspace/leanproject/Submission/test_gcd_proof5.lean:201:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  i ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1 + 1) ^ 2)
+ g := ↑(B (k + 3)) * ↑(B (k + 1))
+ h := ↑(B (k + 2)) ^ 2
+ i := ↑(r - 1)
+/workspace/leanproject/Submission/test_gcd_proof5.lean:245:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  i ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 1 + 2)) * ↑(B (k + 1))
+ g := ↑(B (k + 2)) ^ 2
+ h := ↑(B (k + 3)) * ↑(B (k + 1))
+ i := ↑(r - 1)
+/workspace/leanproject/Submission/test_gcd_proof5.lean:258:107: error: No goals to be solved
+/workspace/leanproject/Submission/test_gcd_proof5.lean:271:45: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  f ≥ 1
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑d / 2

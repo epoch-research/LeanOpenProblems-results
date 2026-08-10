@@ -1,0 +1,140 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_proof7_run.lean:236:65: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : Even (k + 3)
+h_odd : Odd (k + 2)
+h_cass_odd : B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 4)) * ↑(B (k + 2)) = ↑(B (k + 3)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1
+hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_even_kp1 : Even (k + 1)
+h_cass_even_kp1 : B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+h_cast_km1 : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1
+hBkm1_z : ↑(B (k + 1)) = ↑d * (2 * ↑q3 - q1) - 1
+⊢ 2 + ↑d * q1 * 2 + (-(↑d * ↑q3) - ↑d ^ 2 * q1 * ↑q3) + (↑d ^ 2 * q1 ^ 2 - ↑d ^ 2 * ↑q3 ^ 2) =
+    -(↑d * q1 * 2) + ↑d * ↑q3 + (↑d ^ 2 * q1 * ↑q3 - ↑d ^ 2 * q1 ^ 2) + ↑d ^ 2 * ↑q3 ^ 2
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_proof7_run.lean:256:65: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 3)
+h_even_kp2 : Even (k + 2)
+h_cass_even : B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+h_cast : ↑(B (k + 3)) ^ 2 = ↑(B (k + 4)) * ↑(B (k + 2)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 3)) ^ 2 - ↑(B (k + 4)) * ↑(B (k + 2)) + 1
+⊢ ↑d * ↑q3 - ↑d * q1 * 2 + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2) =
+    ↑d * ↑q3 * 2 - ↑d * q1 + ↑d ^ 2 * ↑q3 * q1 * 4 + (-(↑d ^ 2 * ↑q3 ^ 2 * 4) - ↑d ^ 2 * q1 ^ 2)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/test_proof7_run.lean:278:65: error: unsolved goals
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 3)
+h_even_kp2 : Even (k + 2)
+h_cass_even : B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+h_cast : ↑(B (k + 3)) ^ 2 = ↑(B (k + 4)) * ↑(B (k + 2)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 3)) ^ 2 - ↑(B (k + 4)) * ↑(B (k + 2)) + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_odd_kp1 : Odd (k + 1)
+h_cass_odd_kp1 : B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val
+h_cast_km1 : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 - 1
+hBkm1_z : ↑(B (k + 1)) = ↑d * (2 * ↑q3 - q1) - 1
+⊢ -2 + (↑d * ↑q3 - ↑d * q1 * 2) + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2) =
+    ↑d * ↑q3 - ↑d * q1 * 2 + ↑d ^ 2 * ↑q3 * q1 + (↑d ^ 2 * ↑q3 ^ 2 - ↑d ^ 2 * q1 ^ 2)
+/workspace/leanproject/Submission/test_proof7_run.lean:292:21: error(lean.unknownIdentifier): Unknown constant `Nat.dvd_prime`
+/workspace/leanproject/Submission/test_proof7_run.lean:292:69: error: Tactic `rcases` failed: `x✝ : ?m.2060` is not an inductive datatype

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:275:47: error: Tactic `decide` failed for proposition\n  a (3 ^ 12 * 2 ^ 11) = 0\nbecause its `Decidable` instance\n  (a (3 ^ 12 * 2 ^ 11)).instDecidableEq 0\ndid not reduce to `isTrue` or `isFalse`.\n\nAfter unfolding the instances `Int.decEq` and `Int.instDecidableEq`, reduction got stuck at the `Decidable` instance\n  match a (3 ^ 12 * 2 ^ 11), 0 with\n  | Int.ofNat a, Int.ofNat b =>\n    match decEq a b with\n    | isTrue h => isTrue ⋯\n    | isFalse h => isFalse ⋯\n  | Int.ofNat a, Int.negSucc a_1 => isFalse ⋯\n  | Int.negSucc a, Int.ofNat a_1 => isFalse ⋯\n  | Int.negSucc a, Int.negSucc b =>\n    match decEq a b with\n    | isTrue h => isTrue ⋯\n    | isFalse h => isFalse ⋯\nSubmission/Spec.lean:304:8: warning: declaration uses 'sorry'",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

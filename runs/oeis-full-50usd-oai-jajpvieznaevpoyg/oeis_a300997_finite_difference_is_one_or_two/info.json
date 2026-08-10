@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a300997_finite_difference_is_one_or_two",
+  "epoch": 1,
+  "uuid": "8jEpNJw84ZaTm8DDmEyWg6",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 433656,
+      "output_tokens": 131754,
+      "total_tokens": 17374370,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 16808960,
+      "reasoning_tokens": 85299,
+      "total_cost": 14.525379999999995
+    }
+  },
+  "oeis_id": "A300997"
+}

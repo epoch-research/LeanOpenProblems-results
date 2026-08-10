@@ -1,0 +1,37 @@
+Submission/test_lemma_proof4.lean:44:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B k) + -1 * 1
+in the target expression
+  ↑d ∣ ↑(B k) + -1 * ↑1
+
+case h.succ.zero
+k d : ℕ
+hd_Bkp1 : d ∣ B (k + 1)
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+ih : ∀ m < 0 + 1, m ≤ k + 1 → ↑d ∣ ↑(B (k + 1 - m)) + (-1) ^ m * ↑(fib m)
+hj : 0 + 1 ≤ k + 1
+this : k + 1 - 1 = k
+h_pow1 : (-1) ^ 1 = -1
+h_fib1 : fib 1 = 1
+h_ring : ↑(B k) + -1 * 1 = ↑(B k) - 1
+⊢ ↑d ∣ ↑(B k) + -1 * ↑1
+Submission/test_lemma_proof4.lean:35:41: warning: This simp argument is unused:
+  Int.ofNat_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, I̵n̵t̵.̵o̵f̵N̵a̵t̵_̵z̵e̵r̵o̵,̵ ̵mul_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/test_lemma_proof4.lean:35:57: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/test_lemma_proof4.lean:35:67: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, mul_zero,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

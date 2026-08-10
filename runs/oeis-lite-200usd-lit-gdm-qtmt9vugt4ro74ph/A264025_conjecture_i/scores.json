@@ -1,0 +1,74 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 3 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 4 declarations.\n------------------\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A264025: definition type or value mismatch\n  Value mismatch (values differ)\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A264025.match_1: declaration not found in submission\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "A264025_conjecture_i",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Quot.sound",
+                "propext",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A264025",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Quot.sound",
+                "propext",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": "defnCheck"
+          }
+        ],
+        [
+          "A264025.match_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ]
+      ]
+    }
+  }
+}

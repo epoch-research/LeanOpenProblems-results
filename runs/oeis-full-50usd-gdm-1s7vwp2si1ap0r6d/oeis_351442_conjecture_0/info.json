@@ -1,0 +1,20 @@
+{
+  "id": "oeis_351442_conjecture_0",
+  "epoch": 1,
+  "uuid": "49nFHJNR2QejpftsoqrMf7",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1864900,
+      "output_tokens": 34022,
+      "total_tokens": 12092304,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 10140095,
+      "reasoning_tokens": 53287,
+      "total_cost": 4.624562249999999
+    }
+  },
+  "oeis_id": "A351442"
+}

@@ -1,0 +1,8 @@
+V_all size for limit 100000000000000000000000000000000000: 898
+After [3, 7], uncovered: 593
+Step 1: Added p=11, r=2 (covers 73). Uncovered remaining: 520. Current prod digits: 5
+Step 2: Added p=31, r=810 (covers 74). Uncovered remaining: 446. Current prod digits: 8
+Step 3: Added p=19, r=44 (covers 21). Uncovered remaining: 425. Current prod digits: 11
+Step 4: Added p=23, r=4 (covers 21). Uncovered remaining: 404. Current prod digits: 13
+Step 5: Added p=43, r=55 (covers 19). Uncovered remaining: 385. Current prod digits: 17
+Failed to find any prime to cover remaining elements within limit.

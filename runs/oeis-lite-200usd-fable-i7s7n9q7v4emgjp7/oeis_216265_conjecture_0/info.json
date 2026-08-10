@@ -1,0 +1,23 @@
+{
+  "id": "oeis_216265_conjecture_0",
+  "epoch": 1,
+  "uuid": "6TgQTiWQtFXFosNJSPVwdh",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 2775,
+      "output_tokens": 184991,
+      "total_tokens": 188086326,
+      "input_tokens_cache_write": 252497,
+      "input_tokens_cache_read": 187646063,
+      "reasoning_tokens": 50947,
+      "total_cost": 200.07957550000015
+    }
+  },
+  "oeis_id": "A216265"
+}

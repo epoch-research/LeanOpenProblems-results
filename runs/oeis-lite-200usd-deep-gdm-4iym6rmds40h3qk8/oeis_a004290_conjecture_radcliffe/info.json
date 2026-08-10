@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a004290_conjecture_radcliffe",
+  "epoch": 1,
+  "uuid": "DJnNm4w8Kdk7Ufjv8dzgYL",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 97437020,
+      "output_tokens": 1712601,
+      "total_tokens": 378585488,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 261826903,
+      "reasoning_tokens": 17608964,
+      "total_cost": 200.84297444999984
+    }
+  },
+  "oeis_id": "A004290"
+}

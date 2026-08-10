@@ -1,0 +1,19 @@
+import FormalConjectures.Util.ProblemImports
+
+#check ZMod
+#check Nat.Prime
+#check Finset.sum_eq_zero
+#check Nat.Prime.eq_two_or_odd
+#check ZMod.natCast_self
+#check ZMod.intCast_zmod_eq_zero_iff_dvd
+#check CharP.cast_eq_zero_iff
+#check ZMod.intCast_eq_intCast_iff
+#check Nat.cast_zmod_eq_zero_iff_dvd
+#check Nat.choose_eq_zero_of_lt
+#check Nat.Prime.dvd_choose_self
+#check Nat.Prime.dvd_choose_add
+#check padicValNat
+#check Nat.Prime.dvd_choose_iff
+#check Nat.Prime.dvd_choose_self
+#check Nat.Prime.dvd_choose_add
+#check Nat.Prime.dvd_choose_of_lt

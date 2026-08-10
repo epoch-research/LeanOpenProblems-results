@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.xor_xor_cancel_right
+#check Nat.xor_xor_cancel_left
+#check Nat.xor_eq_zero_iff
+#check Nat.land_eq_zero_iff
+#check Nat.add_eq_or_iff_and_eq_zero
+#check Nat.lor_eq_add
+#check Nat.xor_eq_add
+#check Nat.add_eq_xor
+#check Nat.xor_eq_add_iff
+#check Nat.add_eq
+#check Nat.testBit_add
+#check Nat.testBit_add_two_pow

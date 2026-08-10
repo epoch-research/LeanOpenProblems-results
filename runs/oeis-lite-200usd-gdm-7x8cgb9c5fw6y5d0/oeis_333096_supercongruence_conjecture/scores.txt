@@ -1,0 +1,18 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:75:20: error: Ambiguous term
+    range
+  Possible interpretations:
+    (↑n + 1).range : ℤ → List ℤ
+    
+    Finset.range (n + 1) : Finset ℕ
+  Submission/Spec.lean:72:67: error: unsolved goals
+  m : ℤ
+  n : ℕ
+  hn : n > 0
+  h_eq : ∀ k ∈ sorry, generalized_catalan_coefficient (m * ↑n) k = if k = 0 then 1 else 0
+  ⊢ (have r := m * ↑n;
+      ∑ k ∈ Finset.range (n + 1), generalized_catalan_coefficient r k) =
+      1
+

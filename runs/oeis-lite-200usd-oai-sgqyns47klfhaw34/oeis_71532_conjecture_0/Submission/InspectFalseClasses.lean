@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#print CategoryTheory.zero_not_simple
+#print CategoryTheory.Simple
+#print CategoryTheory.Limits.HasZeroObject
+#print CategoryTheory.Limits.HasZeroMorphisms
+#print NonLindelofSpace
+#print nonLindelof_univ
+#print ZMod.not_isCyclic_units_eight
+#print IsCyclic
+#print CartanMatrix.not_isSimplyLaced_G₂
+#print CartanMatrix.IsSimplyLaced

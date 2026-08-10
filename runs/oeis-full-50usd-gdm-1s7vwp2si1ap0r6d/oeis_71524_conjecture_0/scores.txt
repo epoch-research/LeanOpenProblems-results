@@ -1,0 +1,25 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  def helper : Prop :=
+  True
+  Submission/Spec.lean:24:8: warning: declaration uses 'sorry'
+  Submission/Spec.lean:27:38: error: Type mismatch
+    True.intro
+  has type
+    True
+  of sort `Prop` but is expected to have type
+    sorry
+  of sort `Sort u_1`
+  Submission/Spec.lean:27:0: error: type of theorem `my_theorem` is not a proposition
+    sorry
+  theorem my_theorem : sorry :=
+  sorry
+  theorem oeis_71524_conjecture_0 : ∀ n > 28, _root_.a n ≠ 0 :=
+  sorry
+  Submission/Spec.lean:30:25: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (2000000) has been reached
+  
+  Note: Use `set_option maxHeartbeats <num>` to set the limit.
+  
+  Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a368692_conjecture_integrality",
+  "epoch": 1,
+  "uuid": "3cheDJo5ub4bcPBNWbGQBT",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 5868516,
+      "output_tokens": 203309,
+      "total_tokens": 60715687,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 54410746,
+      "reasoning_tokens": 233116,
+      "total_cost": 18.794166900000004
+    }
+  },
+  "oeis_id": "A368692"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_278070_conjecture_0",
+  "epoch": 1,
+  "uuid": "hnE65SGNf8k7FagPjjtySN",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 68957,
+      "output_tokens": 15564,
+      "total_tokens": 1594921,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1510400,
+      "reasoning_tokens": 8151,
+      "total_cost": 1.5669050000000007
+    }
+  },
+  "oeis_id": "A278070"
+}

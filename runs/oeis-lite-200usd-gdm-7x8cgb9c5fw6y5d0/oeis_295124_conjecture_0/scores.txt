@@ -1,0 +1,22 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_295124_conjecture_0: theorem type mismatch
+    Expected type: forall (n : Nat), Set.Nonempty.{0} Nat (setOf.{0} Nat (fun (k : Nat) => And (GT.gt.{0} Nat instLTNat k (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) (And (Eq.{1} Nat (Finset.card.{0} Nat (Nat.primeFactors k)) n) (forall (d : Nat), (Membership.mem.{0, 0} Nat (Finset.{0} Nat) (Finset.instMembership.{0} Nat) (Nat.divisors k) d) -> (Nat.Prime (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) d) (HDiv.hDiv.{0, 0, 0} Nat Nat Nat (instHDiv.{0} Nat Nat.instDiv) k d)))))))
+    Got type:      Not (forall (n : Nat), Set.Nonempty.{0} Nat (setOf.{0} Nat (fun (k : Nat) => And (GT.gt.{0} Nat instLTNat k (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) (And (Eq.{1} Nat (Finset.card.{0} Nat (Nat.primeFactors k)) n) (forall (d : Nat), (Membership.mem.{0, 0} Nat (Finset.{0} Nat) (Finset.instMembership.{0} Nat) (Nat.divisors k) d) -> False)))))
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,20 @@
+{
+  "id": "a_n_is_defined_for_all_n",
+  "epoch": 1,
+  "uuid": "GQioTxpHkGqcia6ooE6bvc",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 23475,
+      "output_tokens": 2042,
+      "total_tokens": 72109,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 46592,
+      "reasoning_tokens": 900,
+      "total_cost": 0.201931
+    }
+  },
+  "oeis_id": "A117545"
+}

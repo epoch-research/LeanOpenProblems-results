@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify_timeout
+  Command timed out after 1800s. ExecResult(success=False, returncode=124, stdout='', stderr='Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 4 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 444 declarations.\n')
+

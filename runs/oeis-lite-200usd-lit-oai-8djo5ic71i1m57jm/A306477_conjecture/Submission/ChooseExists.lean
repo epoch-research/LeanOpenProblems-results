@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.exists_eq_choose_add
+#check Nat.exists_eq_add_choose
+#check Nat.choose_eq_zero_iff
+#check Nat.exists_eq_add_of_lt
+#check Nat.find
+#check Nat.find_spec
+#check Nat.findGreatest
+#check Nat.choose_le_choose
+#check Nat.choose_lt_choose
+#check Finset.Colex.toColex
+#check Finset.Colex.initSeg
+#check Finset.Colex.mem_initSeg
+#check Finset.Colex.card_initSeg

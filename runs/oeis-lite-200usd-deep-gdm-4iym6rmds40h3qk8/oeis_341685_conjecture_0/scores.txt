@@ -1,0 +1,10 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1032:109: error: Type mismatch
+    h_deriv_pos_N_const_1
+  has type
+    3 ^ V_deriv * ‖↑N_const_1 !‖ > 0
+  but is expected to have type
+    3 ^ V_deriv * ‖↑N_const_1 !‖ ≥ 3 ^ V_0
+

@@ -1,0 +1,23 @@
+{
+  "id": "apery_poly_irreducible",
+  "epoch": 1,
+  "uuid": "Kw84Vx2zGp57didbKyHHxj",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 70329264,
+      "output_tokens": 883321,
+      "total_tokens": 652655639,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 577124738,
+      "reasoning_tokens": 4318316,
+      "total_cost": 200.01249569999962
+    }
+  },
+  "oeis_id": "A005258"
+}

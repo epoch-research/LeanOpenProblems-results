@@ -1,0 +1,20 @@
+{
+  "id": "A211420_general_divisibility_conjecture",
+  "epoch": 1,
+  "uuid": "TFUucxhViFcbFwDUygP9J5",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 15,
+      "output_tokens": 8938,
+      "total_tokens": 90851,
+      "input_tokens_cache_write": 11077,
+      "input_tokens_cache_read": 70821,
+      "reasoning_tokens": 1670,
+      "total_cost": 0.32816675000000006
+    }
+  },
+  "oeis_id": "A211420"
+}

@@ -1,0 +1,135 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 5 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 73 declarations.\n------------------\nAint_nonneg used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\noeis_a176477_conjecture used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nkey_dvd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\noeis_a176477_conjecture._proof_1_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\na_Q_int used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nAint_rec used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]\na_eq used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nAint_pos used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nAint_eq used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\noeis_a176477_conjecture._proof_1_2 used disallowed axioms. #[propext, Classical.choice, Quot.sound, sorryAx]\nAint_parity used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nAint used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a176477_conjecture: uses disallowed axioms\n  Disallowed axioms used: #[sorryAx]\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "oeis_a176477_conjecture",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "failureMode": "axioms"
+          }
+        ],
+        [
+          "a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "a_Q._sunfold",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "a_Q",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "a_Q.match_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

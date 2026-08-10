@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:30:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split\n\ncase left\nS : Finset ℕ := {1, 9, 21, 35, 98, 152, 306}\nn : ℕ\nhn : n > 0\n⊢ (∑ x ∈ range (n + 1),\n      ∑ y ∈ range (n + 1), ∑ z ∈ range (n + 1), if z > 0 ∧ x ^ 3 + y ^ 2 + triangular z = n then 1 else 0) >\n    0\nSubmission/Spec.lean:32:4: error: Tactic `split_ifs` failed: no if-then-else conditions to split\n\ncase right\nS : Finset ℕ := {1, 9, 21, 35, 98, 152, 306}\nn : ℕ\nhn : n > 0\n⊢ (∑ x ∈ range (n + 1),\n        ∑ y ∈ range (n + 1), ∑ z ∈ range (n + 1), if z > 0 ∧ x ^ 3 + y ^ 2 + triangular z = n then 1 else 0) =\n      1 ↔\n    n ∈ S",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228623_conjecture_1_implies_goldbach",
+  "epoch": 1,
+  "uuid": "8KFnJVM2KwZTA9GyUgcutK",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 315235,
+      "output_tokens": 16445,
+      "total_tokens": 1723037,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1380360,
+      "reasoning_tokens": 10997,
+      "total_cost": 0.8279115000000001
+    }
+  },
+  "oeis_id": "A228623"
+}

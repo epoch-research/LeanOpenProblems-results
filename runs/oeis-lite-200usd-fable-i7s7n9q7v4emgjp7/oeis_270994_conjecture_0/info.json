@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "44WqoTUhb8r3R3vzsW82Ax",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 39,
+      "output_tokens": 35553,
+      "total_tokens": 694418,
+      "input_tokens_cache_write": 41134,
+      "input_tokens_cache_read": 617692,
+      "reasoning_tokens": 10240,
+      "total_cost": 2.9099069999999987
+    }
+  },
+  "oeis_id": "A270994"
+}

@@ -1,0 +1,28 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 9 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 19 declarations.
+  ------------------
+  A253187.rep_5_7 used disallowed axioms. #[sorryAx]
+  A253187.rep_5_9 used disallowed axioms. #[sorryAx]
+  A253187.pos used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  A253187.rep_5_13 used disallowed axioms. #[sorryAx]
+  A253187.rep_6_5 used disallowed axioms. #[sorryAx]
+  A253187.universal_sum_conjecture used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  A253187.rep_7_5 used disallowed axioms. #[sorryAx]
+  A253187.rep_6_7 used disallowed axioms. #[sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A253187.universal_sum_conjecture: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

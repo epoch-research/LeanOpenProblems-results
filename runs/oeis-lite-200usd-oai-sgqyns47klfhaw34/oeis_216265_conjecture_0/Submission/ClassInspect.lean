@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#print Infinite
+#print Finite
+#print Fintype
+#print Nontrivial
+#print Subsingleton
+#check Fintype.false
+#check Finite.false
+#check Infinite.false

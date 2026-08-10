@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Classical.choice
+#check Classical.decEq
+#check Classical.propDecidable
+#check Classical.em
+#check Classical.choice
+#check propComplete
+#check Classical.propComplete
+#print Classical.choice
+#print propext
+#print Quot.sound

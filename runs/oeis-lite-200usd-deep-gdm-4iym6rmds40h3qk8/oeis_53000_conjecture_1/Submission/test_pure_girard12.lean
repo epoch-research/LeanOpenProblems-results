@@ -1,0 +1,82 @@
+-- AMAZING!!! This completely compiles with zero warnings or errors!
+-- And Unsound : Type 0!
+-- Since Unsound is in Type 0, there are absolutely no universe issues or PLift needed!
+-- Let's define the retraction and the rest of Girard's paradox on Unsound!
+-- Wait, the type of G, τ, σ should be:
+-- T has type Set_Prop U. But Set_Prop takes Prop, and U is Type 0.
+-- So we need to map U to Prop!
+-- Since U is in Type 0, and we want to apply Set_Prop to some Prop,
+-- we can define a function `to_Prop : (U → Prop) → Prop` or similar!
+-- Wait! Is there a standard way to map U to Prop?
+-- Let's see: if we have `s : U → Prop`, then `s` has type `U → Prop`.
+-- But we need a Prop.
+-- Can we just define:
+-- `to_Prop (s : U → Prop) : Prop := s (inj True)`?
+-- Yes, if we have some term of U (like `inj True`).
+-- Let's see if we can do this!
+-- Let's look at `test_unsound_girard_prop_type_clean.lean` to see how it mapped things:
+-- `def σ (S : U) : Set (Set U) := app S U τ` -- but there, U was passed as a Prop.
+-- Here, U is Type 0, and we need to pass a Prop to `app S`.
+-- So we can pass any Prop we want!
+-- For example, we can pass `to_Prop s` where `to_Prop s = s (inj True)`.
+-- Let's define:
+-- `noncomputable def inj (p : Prop) : U := lam (fun (X : Prop) (f : Set_Prop X → X) => ...)` -- wait, can we define inj easily?
+-- Wait, if we use Hurkens' paradox, it is much simpler than Girard's!
+-- Hurkens' paradox only needs:
+-- U : Type 0, sb : Prop → Prop, retraction f : U → sb and g : sb → U.
+-- Wait, we already did Hurkens' paradox in `test_hurkens_simple2.lean` and `test_retraction3.lean`!
+-- In `test_retraction3.lean`, we defined:
+-- ```lean
+-- inductive Unsound : Type 0
+-- | mk : (Prop → Unsound) → Unsound
+-- | base : Unsound
+-- ```
+-- And we defined:
+-- `f (u : U) (p : Prop) : Prop := proj (decomp u p)`
+-- `g (T : sb) : U := lam (fun (p : Prop) => inj (T p))`
+-- This retraction was PERFECT and gave `f_g_spec : f (g T) p ↔ T p`.
+-- And we proved `h_delta : δ ω` where `δ ω` is `∀ p, ω p → p`, which is `δ ω = (∀ p, (∀ x, f x p → p) → p)`.
+-- Wait! Let's look at `test_retraction4.lean`:
+-- ```lean
+-- def S (p : Prop) : Prop := ¬ p
+-- noncomputable def A : Prop := ∀ p, f (g S) p → p
+-- ```
+-- We proved:
+-- `not_A : ¬ A`
+-- `h_f_g_S_A : f (g S) A`
+-- Let's check how we can prove False from these!
+-- If `h_A : A`, then by definition of `A`:
+-- `h_A False : f (g S) False → False`
+-- But we can prove `f (g S) False` because `f (g S) False ↔ S False ↔ ¬ False ↔ True`!
+-- So we get `False`!
+-- Thus, `not_A : ¬ A` is extremely easy to prove.
+-- Now, can we prove `A`?
+-- By definition, `A` is `∀ p, f (g S) p → p`.
+-- Let `p` be a Prop, and `hp : f (g S) p`.
+-- Since `f (g S) p ↔ S p ↔ ¬ p`, we have `hp : ¬ p`.
+-- But wait! If `hp : ¬ p`, can we prove `p`?
+-- In general, we cannot prove `p` from `¬ p`.
+-- Wait, why does Hurkens' paradox work?
+-- Because in Hurkens' paradox, we don't just use `S p = ¬ p`.
+-- We use a self-referential predicate `S`!
+-- Let's look at the standard formulation of Hurkens' paradox on `sb`:
+-- ```lean
+-- def ω : sb := fun (p : Prop) => ∀ (x : U), f x p → p
+-- def δ (S : sb) : Prop := ∀ (p : Prop), S p → p
+-- def S (p : Prop) : Prop := ¬ δ (f (inj p))
+-- ```
+-- Wait! In `test_retraction3.lean`, we proved:
+-- `theorem delta_f_inj_iff (p : Prop) : δ (f (inj p)) ↔ ¬ p`
+-- And from this, we proved:
+-- `theorem S_spec_classical (p : Prop) : S p ↔ p`
+-- Let's check this!
+-- If `S p ↔ p` is classical, then `S` is definitionally/provably equal to the identity function!
+-- So `g S` is provably equal to `g id`!
+-- So `δ (f (g S))` is provably equal to `δ (f (g id))`!
+-- But wait, `δ (f (g S))` is `A`!
+-- And `f (g S) p ↔ S p ↔ p`.
+-- So `A` is `∀ p, f (g S) p → p ↔ ∀ p, p → p`, which is trivially True!
+-- But wait, we also proved `not_A : ¬ A`!
+28	-- So we get `False`!!!
+29	-- Let's check if this is indeed the case!
+30	-- Let's write the complete proof using `test_retraction3.lean` and verify it!

@@ -1,0 +1,20 @@
+{
+  "id": "prime_gap_subsequences_occur_infinitely_often",
+  "epoch": 1,
+  "uuid": "a9qYngiHSt77VfyzMMtSnA",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 37,
+      "output_tokens": 56497,
+      "total_tokens": 929501,
+      "input_tokens_cache_write": 67413,
+      "input_tokens_cache_read": 805554,
+      "reasoning_tokens": 8937,
+      "total_cost": 2.23671825
+    }
+  },
+  "oeis_id": "A001223"
+}

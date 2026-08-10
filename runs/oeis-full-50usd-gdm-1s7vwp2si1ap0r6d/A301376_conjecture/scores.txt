@@ -1,0 +1,12 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:25:2: error: Function expected at
+    A301376_conjecture n hn
+  but this term has type
+    a n > 0
+  
+  Note: Expected a function because this term is being applied to the argument
+    ·
+  Submission/Spec.lean:26:13: error: unexpected token 'with'; expected command
+

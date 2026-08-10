@@ -1,0 +1,20 @@
+{
+  "id": "A262403_conjecture_ii_distinctness",
+  "epoch": 1,
+  "uuid": "J4wKsohMc7iJUe5EmEQFh5",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 102117,
+      "output_tokens": 1710,
+      "total_tokens": 140263,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 33337,
+      "reasoning_tokens": 3099,
+      "total_cost": 0.17356605000000003
+    }
+  },
+  "oeis_id": "A262403"
+}

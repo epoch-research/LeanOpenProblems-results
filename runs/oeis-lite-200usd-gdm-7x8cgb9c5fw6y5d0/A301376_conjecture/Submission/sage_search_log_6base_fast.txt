@@ -1,0 +1,7 @@
+Precomputed 6401 possible v values.
+Base CRT solved: N0 = 7813216654993, prod = 9792875233449 (digits: 13)
+Generating prime pool up to 50,000...
+Generated 2583 primes.
+k = 1000, N = 9800688450103993: checked 754 elements (202 required factor) in 19.82s
+k = 2000, N = 19593563683552993: checked 782 elements (217 required factor) in 41.73s
+k = 3000, N = 29386438917001993: checked 784 elements (216 required factor) in 64.90s

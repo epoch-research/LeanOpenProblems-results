@@ -1,0 +1,94 @@
+/workspace/leanproject/Submission/test_proof.lean:5:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_proof.lean:6:8: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_proof.lean:8:6: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_proof.lean:11:6: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_proof.lean:23:6: warning: declaration uses 'sorry'
+/workspace/leanproject/Submission/test_proof.lean:25:70: warning: unused variable `hr1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/leanproject/Submission/test_proof.lean:25:84: warning: unused variable `hr2`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/leanproject/Submission/test_proof.lean:70:139: error: Type mismatch
+  h2
+has type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑0 + 4))
+but is expected to have type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(60 + 0 + 2))
+/workspace/leanproject/Submission/test_proof.lean:91:139: error: Type mismatch
+  h2
+has type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑0 + 4))
+but is expected to have type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 - ↑r / 10 + 2 * 10 ^ (-(60 + 0 + 2))
+/workspace/leanproject/Submission/test_proof.lean:118:8: error: linarith failed to find a contradiction
+case h
+k : ℤ
+h1 : π * 10 ^ (60 + 0 + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (60 + 0 + 1))
+h_ub : π / arctan (1 / 10 ^ 61) < π * 10 ^ 61 + 2 * 10 ^ (-61)
+a✝ : π * 10 ^ 61 + 2 * 10 ^ (-61) ≤ ↑k
+⊢ False
+failed
+/workspace/leanproject/Submission/test_proof.lean:149:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (-62)
+in the target expression
+  π * 10 ^ 60 + 2 * 10 ^ (-(↑60 + 2)) < π / arctan (1 / 10 ^ 60)
+
+k : ℤ
+h1 : π * 10 ^ (60 + 0 + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (60 + 0 + 1))
+h_ub : π / arctan (1 / 10 ^ 61) < π * 10 ^ 61 + 2 * 10 ^ (-61)
+h_lt : ↑k < π * 10 ^ 61 + 2 * 10 ^ (-61)
+h_gt : π * 10 ^ 61 < ↑k
+hk0 : k % 10 = 0
+q : ℤ := k / 10
+h_k_eq : k = 10 * q
+h_q_gt : π * 10 ^ 60 < ↑q
+this : ↑k = 10 * ↑q
+h_lt_simp : 10 * ↑q < π * (10 ^ 60 * 10) + 2 * (10 ^ (-60) / 10)
+h_pow_eq_10_mul : 10 ^ 61 = 10 ^ 60 * 10
+h_zpow_eq_10_div : 10 ^ (-61) = 10 ^ (-60) / 10
+h_q_lt_linear : ↑q < π * 10 ^ 60 + 0.2 * 10 ^ (-60)
+h_arctan_lower : π * 10 ^ 60 + 2 * 10 ^ (-(↑60 + 2)) < π / arctan (1 / 10 ^ 60)
+h_pow_neg_eq : 10 ^ (-62) = 1e-2 * 10 ^ (-60)
+⊢ ↑q < π / arctan (1 / 10 ^ 60)
+/workspace/leanproject/Submission/test_proof.lean:172:45: error: Application type mismatch: The argument
+  h_contra
+has type
+  ∃ q', π * 10 ^ 60 - ↑r / 10 < ↑q' ∧ ↑q' < π * 10 ^ 60 - ↑r / 10 + 2 * 10 ^ (-62)
+but is expected to have type
+  ∃ q, π * 10 ^ (60 + 0) - ↑r / 10 < ↑q ∧ ↑q < π * 10 ^ (60 + 0) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑0 + 4))
+in the application
+  subgoal_T_60_at_zero r hr1 hr2 h_contra
+/workspace/leanproject/Submission/test_proof.lean:175:82: error: Application type mismatch: The argument
+  IH_S
+has type
+  S_prop (60 + m + 1)
+but is expected to have type
+  S_prop (60 + m + 1 + 1)
+in the application
+  T_prop_at_zero_of_S_prop (60 + m + 1) IH_S
+/workspace/leanproject/Submission/test_proof.lean:183:8: error: linarith failed to find a contradiction
+case h
+m : ℕ
+IH_S : S_prop (60 + m + 1)
+IH_T : T_prop_at 60 m
+h_T_succ : T_prop_at 60 (m + 1)
+k : ℤ
+h1 : π * 10 ^ (60 + (m + 1) + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (60 + (m + 1) + 1))
+n : ℕ := 60 + m + 1
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+a✝ : π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1)) ≤ ↑k
+⊢ False
+failed
+/workspace/leanproject/Submission/test_proof.lean:238:33: error: Application type mismatch: The argument
+  h_contra
+has type
+  ∃ q', π * 10 ^ n - ↑r / 10 < ↑q' ∧ ↑q' < π * 10 ^ n - ↑r / 10 + 2 * 10 ^ (-(↑n + 2))
+but is expected to have type
+  ∃ q,
+    π * 10 ^ (60 + (m + 1)) - ↑r / 10 < ↑q ∧ ↑q < π * 10 ^ (60 + (m + 1)) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑(m + 1) + 4))
+in the application
+  h_T_succ r hr1 hr2 h_contra

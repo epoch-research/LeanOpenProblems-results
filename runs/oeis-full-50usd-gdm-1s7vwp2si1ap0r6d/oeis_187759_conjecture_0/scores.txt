@@ -1,0 +1,13 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:42:2: error: Tactic `split_ifs` failed: no if-then-else conditions to split
+  
+  n : ℕ
+  h : n > 200 ∧ n ∉ {211, 226, 541, 701}
+  ⊢ (∑ x ∈ Icc 1 ((n - 1) / 2),
+        if Nat.Prime (6 * x - 1) ∧ Nat.Prime (6 * x + 1) ∧ Nat.Prime (6 * (n - x) - 1) ∧ Nat.Prime (6 * (n - x) + 1) then
+          1
+        else 0) >
+      0
+

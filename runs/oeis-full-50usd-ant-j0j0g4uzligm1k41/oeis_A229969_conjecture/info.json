@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A229969_conjecture",
+  "epoch": 1,
+  "uuid": "YY2tcyQGCtLBciWocNadCx",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 13,
+      "output_tokens": 6040,
+      "total_tokens": 57422,
+      "input_tokens_cache_write": 7692,
+      "input_tokens_cache_read": 43677,
+      "reasoning_tokens": 833,
+      "total_cost": 0.22097849999999997
+    }
+  },
+  "oeis_id": "A229969"
+}

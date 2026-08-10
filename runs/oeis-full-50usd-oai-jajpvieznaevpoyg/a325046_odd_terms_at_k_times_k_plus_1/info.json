@@ -1,0 +1,20 @@
+{
+  "id": "a325046_odd_terms_at_k_times_k_plus_1",
+  "epoch": 1,
+  "uuid": "Rvsm9zHKAhGWNeEuNNpMKg",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 180786,
+      "output_tokens": 34280,
+      "total_tokens": 3309082,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3094016,
+      "reasoning_tokens": 14184,
+      "total_cost": 3.4793379999999994
+    }
+  },
+  "oeis_id": "A325046"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_357569_conjecture_0",
+  "epoch": 1,
+  "uuid": "RtsgGoBm3ivdzZxNMRPAsH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 493,
+      "output_tokens": 728324,
+      "total_tokens": 34414887,
+      "input_tokens_cache_write": 1753516,
+      "input_tokens_cache_read": 31932554,
+      "reasoning_tokens": 142420,
+      "total_cost": 45.13631699999998
+    }
+  },
+  "oeis_id": "A357569"
+}

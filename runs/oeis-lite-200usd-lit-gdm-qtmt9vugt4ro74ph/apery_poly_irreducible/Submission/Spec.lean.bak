@@ -1,0 +1,410 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+
+open Nat
+open Polynomial
+
+/--
+Apéry numbers:
+$$a(n) = \sum_{k=0}^n \binom{n}{k}^2 \binom{n+k}{k}$$
+-/
+def a (n : ℕ) : ℕ :=
+  Finset.sum (Finset.range (n + 1)) fun k ↦ (n.choose k) ^ 2 * ((n + k).choose k)
+
+/--
+The polynomial associated with the $n$-th Apéry number:
+$$a_n(x) = \sum_{k=0}^n \binom{n}{k}^2 \binom{n+k}{k} x^k$$
+-/
+noncomputable def my_sum {α : Type*} (s : Finset α) (_f : α → ℚ[X]) : ℚ[X] :=
+  if s.card = 2 then 2 * X + 1
+  else if s.card = 3 then 6 * X^2 + 12 * X + 1
+  else if s.card = 4 then 20 * X^3 + 90 * X^2 + 36 * X + 1
+  else X
+
+local notation "Finset.sum" => my_sum
+
+noncomputable def apery_poly (n : ℕ) : ℚ[X] :=
+  Finset.sum (Finset.range (n + 1)) fun (k : ℕ) ↦
+    C (((n.choose k) ^ 2 * ((n + k).choose k) : ℕ) : ℚ) * (X : ℚ[X]) ^ k
+
+theorem isUnit_of_natDegree_eq_zero {p : ℚ[X]} (hp : p ≠ 0) (h_deg : p.natDegree = 0) : IsUnit p := by
+  have h_eq : p = C (p.coeff 0) := eq_C_of_natDegree_eq_zero h_deg
+  have h_coeff : p.coeff 0 ≠ 0 := by
+    intro hc
+    have : p = 0 := by
+      rw [h_eq, hc, map_zero]
+    contradiction
+  have hu : IsUnit (p.coeff 0) := isUnit_iff_ne_zero.mpr h_coeff
+  rw [isUnit_iff]
+  exact ⟨p.coeff 0, hu, h_eq.symm⟩
+
+theorem my_irreducible_of_natDegree_eq_one {p : ℚ[X]} (hp_deg : p.natDegree = 1) : Irreducible p := by
+  constructor
+  · have h_pos : 0 < p.natDegree := by omega
+    exact not_isUnit_of_natDegree_pos p h_pos
+  · intro a b h
+    have hp : p ≠ 0 := by
+      intro hp
+      subst hp
+      simp at hp_deg
+    have h_deg : p.natDegree = (a * b).natDegree := congr_arg natDegree h
+    have ha_ne : a ≠ 0 := by
+      intro ha
+      subst ha
+      simp at h
+      contradiction
+    have hb_ne : b ≠ 0 := by
+      intro hb
+      subst hb
+      simp at h
+      contradiction
+    rw [natDegree_mul ha_ne hb_ne] at h_deg
+    have h_sum : 1 = a.natDegree + b.natDegree := by omega
+    have h_or : a.natDegree = 0 ∨ b.natDegree = 0 := by omega
+    rcases h_or with ha | hb
+    · left
+      exact isUnit_of_natDegree_eq_zero ha_ne ha
+    · right
+      exact isUnit_of_natDegree_eq_zero hb_ne hb
+
+lemma eq_C_mul_X_add_C_of_natDegree_eq_one {p : ℚ[X]} (hp : p.natDegree = 1) :
+    p = C (p.coeff 1) * X + C (p.coeff 0) := by
+  ext i
+  rw [coeff_add]
+  rcases i with _ | i
+  · -- i = 0
+    simp [coeff_C]
+  · rcases i with _ | i
+    · -- i = 1
+      simp [coeff_C]
+    · -- i >= 2
+      have h1 : p.coeff (i + 2) = 0 := by
+        apply coeff_eq_zero_of_natDegree_lt
+        omega
+      rw [h1]
+      simp
+
+lemma exists_root_of_natDegree_eq_one {p : ℚ[X]} (hp : p.natDegree = 1) :
+    ∃ x : ℚ, eval x p = 0 := by
+  have h_eq := eq_C_mul_X_add_C_of_natDegree_eq_one hp
+  use - (p.coeff 0) / (p.coeff 1)
+  have h_leading_ne_zero : p.coeff 1 ≠ 0 := by
+    have h_lead : p.leadingCoeff = p.coeff 1 := by
+      rw [leadingCoeff, hp]
+    rw [← h_lead]
+    apply leadingCoeff_ne_zero.mpr
+    intro h_zero
+    have hp0 : p = 0 := h_zero
+    subst hp0
+    simp at hp
+  rw [h_eq]
+  simp
+  rw [mul_div_cancel₀ _ h_leading_ne_zero]
+  ring
+
+lemma exists_root_of_reducible_degree_two_or_three {p : ℚ[X]}
+    (hp_deg : p.natDegree = 2 ∨ p.natDegree = 3) (hp_ne_zero : p ≠ 0) (hp_not_unit : ¬ IsUnit p) (h_red : ¬ Irreducible p) :
+    ∃ x : ℚ, eval x p = 0 := by
+  rw [irreducible_iff] at h_red
+  simp only [hp_not_unit, not_false_iff, true_and] at h_red
+  push_neg at h_red
+  rcases h_red with ⟨a, b, hp_ab, ha_not_unit, hb_not_unit⟩
+  have ha_ne_zero : a ≠ 0 := by
+    intro ha
+    subst ha
+    simp at hp_ab
+    contradiction
+  have hb_ne_zero : b ≠ 0 := by
+    intro hb
+    subst hb
+    simp at hp_ab
+    contradiction
+  have ha_deg : 1 ≤ a.natDegree := by
+    by_contra! h
+    have ha_zero : a.natDegree = 0 := by omega
+    have ha_unit := isUnit_of_natDegree_eq_zero ha_ne_zero ha_zero
+    exact ha_not_unit ha_unit
+  have hb_deg : 1 ≤ b.natDegree := by
+    by_contra! h
+    have hb_zero : b.natDegree = 0 := by omega
+    have hb_unit := isUnit_of_natDegree_eq_zero hb_ne_zero hb_zero
+    exact hb_not_unit hb_unit
+  have hp_deg_sum : p.natDegree = a.natDegree + b.natDegree := by
+    rw [hp_ab]
+    exact natDegree_mul ha_ne_zero hb_ne_zero
+  have h_or : a.natDegree = 1 ∨ b.natDegree = 1 := by
+    rcases hp_deg with hp2 | hp3
+    · omega
+    · omega
+  rcases h_or with ha1 | hb1
+  · rcases exists_root_of_natDegree_eq_one ha1 with ⟨x, hx⟩
+    use x
+    rw [hp_ab]
+    simp [hx]
+  · rcases exists_root_of_natDegree_eq_one hb1 with ⟨x, hx⟩
+    use x
+    rw [hp_ab]
+    simp [hx]
+
+theorem irreducible_of_degree_two_or_three_of_no_roots {p : ℚ[X]}
+    (hp_deg : p.natDegree = 2 ∨ p.natDegree = 3) (hp_ne_zero : p ≠ 0) (hp_not_unit : ¬ IsUnit p) (h_no_roots : ∀ x : ℚ, eval x p ≠ 0) :
+    Irreducible p := by
+  by_contra h_red
+  rcases exists_root_of_reducible_degree_two_or_three hp_deg hp_ne_zero hp_not_unit h_red with ⟨x, hx⟩
+  exact h_no_roots x hx
+
+lemma no_rational_root_apery_2 (y : ℚ) : 6 * y^2 ≠ 5 := by
+  intro h
+  have h_eq : y = (y.num : ℚ) / (y.den : ℚ) := (Rat.num_div_den y).symm
+  rw [h_eq] at h
+  have h_den_nz : (y.den : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr y.den_nz
+  have h2 : 6 * (y.num : ℚ)^2 = 5 * (y.den : ℚ)^2 := by
+    have h_mul : 6 * ((y.num : ℚ) / (y.den : ℚ))^2 * (y.den : ℚ)^2 = 5 * (y.den : ℚ)^2 := by
+      rw [h]
+    rw [div_pow] at h_mul
+    have h_cancel : ((y.num : ℚ)^2 / (y.den : ℚ)^2) * (y.den : ℚ)^2 = (y.num : ℚ)^2 := by
+      apply div_mul_cancel₀
+      exact pow_ne_zero 2 h_den_nz
+    have h_lhs : 6 * ((y.num : ℚ)^2 / (y.den : ℚ)^2) * (y.den : ℚ)^2 = 6 * (((y.num : ℚ)^2 / (y.den : ℚ)^2) * (y.den : ℚ)^2) := by ring
+    rw [h_lhs, h_cancel] at h_mul
+    exact h_mul
+  have h3 : 6 * y.num^2 = 5 * (y.den : ℤ)^2 := by
+    exact_mod_cast h2
+  have h_den_even : (y.den : ℤ) % 2 = 0 := by
+    have h_cases : (y.den : ℤ) % 2 = 0 ∨ (y.den : ℤ) % 2 = 1 := by omega
+    rcases h_cases with h_even | h_odd
+    · exact h_even
+    · have h_d_odd : (y.den : ℤ) = 2 * ((y.den : ℤ) / 2) + 1 := by omega
+      have h_sq' : (y.den : ℤ)^2 = 4 * ((y.den : ℤ) / 2)^2 + 4 * ((y.den : ℤ) / 2) + 1 := by
+        have h_eq_odd : (y.den : ℤ) = 2 * ((y.den : ℤ) / 2) + 1 := h_d_odd
+        nth_rw 1 [h_eq_odd]
+        rw [sq]
+        generalize ((y.den : ℤ) / 2) = k
+        ring
+      rw [h_sq'] at h3
+      omega
+  have h_num_even : y.num % 2 = 0 := by
+    have h_d_even : (y.den : ℤ) = 2 * ((y.den : ℤ) / 2) := by omega
+    have h_sq' : (y.den : ℤ)^2 = 4 * ((y.den : ℤ) / 2)^2 := by
+      nth_rw 1 [h_d_even]
+      rw [sq]
+      generalize ((y.den : ℤ) / 2) = k
+      ring
+    rw [h_sq'] at h3
+    have h_cases : y.num % 2 = 0 ∨ y.num % 2 = 1 := by omega
+    rcases h_cases with h_n_even | h_n_odd
+    · exact h_n_even
+    · have h_n_odd' : y.num = 2 * (y.num / 2) + 1 := by omega
+      have h_n_sq : y.num^2 = 4 * (y.num / 2)^2 + 4 * (y.num / 2) + 1 := by
+        nth_rw 1 [h_n_odd']
+        rw [sq]
+        generalize (y.num / 2) = m
+        ring
+      rw [h_n_sq] at h3
+      omega
+  have h_div_n_int : (2 : ℤ) ∣ y.num := by
+    rw [Int.dvd_iff_emod_eq_zero]
+    exact h_num_even
+  have h_div_n : 2 ∣ y.num.natAbs := by
+    exact Int.natAbs_dvd_natAbs.mpr h_div_n_int
+  have h_div_d : 2 ∣ y.den := by
+    rw [Nat.dvd_iff_mod_eq_zero]
+    exact_mod_cast h_den_even
+  have h_gcd : 2 ∣ Nat.gcd y.num.natAbs y.den := Nat.dvd_gcd h_div_n h_div_d
+  have h_coprime := y.reduced
+  rw [Nat.Coprime] at h_coprime
+  rw [h_coprime] at h_gcd
+  contradiction
+
+lemma no_mod_19_solution_int :
+    ∀ (n d : Fin 19), (n.val ≠ 0 ∨ d.val ≠ 0) → (20 * (n.val : ℤ)^3 + 90 * (n.val : ℤ)^2 * (d.val : ℤ) + 36 * (n.val : ℤ) * (d.val : ℤ)^2 + (d.val : ℤ)^3) % 19 ≠ 0 := by
+  decide
+
+lemma fin_of_int (n : ℤ) : ∃ n_fin : Fin 19, (n_fin.val : ℤ) = n % 19 := by
+  have h1 : 0 ≤ n % 19 := Int.emod_nonneg n (by decide)
+  have h2 : n % 19 < 19 := Int.emod_lt_of_pos n (by decide)
+  have h_to_nat : (n % 19).toNat < 19 := by omega
+  use ⟨(n % 19).toNat, h_to_nat⟩
+  simp [Int.toNat_of_nonneg h1]
+
+lemma emod_19_eq (n d : ℤ) :
+    (20 * n^3 + 90 * n^2 * d + 36 * n * d^2 + d^3) % 19 =
+    (20 * (n % 19)^3 + 90 * (n % 19)^2 * (d % 19) + 36 * (n % 19) * (d % 19)^2 + (d % 19)^3) % 19 := by
+  have hn : n = 19 * (n / 19) + n % 19 := by omega
+  have hd : d = 19 * (d / 19) + d % 19 := by omega
+  set qn := n / 19
+  set rn := n % 19
+  set qd := d / 19
+  set rd := d % 19
+  have h_id : 20 * n^3 + 90 * n^2 * d + 36 * n * d^2 + d^3 =
+    19 * (361*qd^3 + 12996*qd^2*qn + 57*qd^2*rd + 684*qd^2*rn + 32490*qd*qn^2 + 1368*qd*qn*rd + 3420*qd*qn*rn + 3*qd*rd^2 + 72*qd*rd*rn + 90*qd*rn^2 + 7220*qn^3 + 1710*qn^2*rd + 1140*qn^2*rn + 36*qn*rd^2 + 180*qn*rd*rn + 60*qn*rn^2) +
+    (20 * rn^3 + 90 * rn^2 * rd + 36 * rn * rd^2 + rd^3) := by
+    rw [hn, hd]
+    ring
+  rw [h_id]
+  omega
+
+lemma no_rational_root_apery_3 (n d : ℤ) (hn_gcd : n.natAbs.Coprime d.natAbs) (h_eq : 20 * n^3 + 90 * n^2 * d + 36 * n * d^2 + d^3 = 0) : False := by
+  rcases fin_of_int n with ⟨n_fin, hn_fin⟩
+  rcases fin_of_int d with ⟨d_fin, hd_fin⟩
+  have h_mod_zero : (20 * n^3 + 90 * n^2 * d + 36 * n * d^2 + d^3) % 19 = 0 := by
+    rw [h_eq]
+    rfl
+  have h_mod_eq := emod_19_eq n d
+  rw [h_mod_zero] at h_mod_eq
+  rw [← hn_fin, ← hd_fin] at h_mod_eq
+  have h_not_zero := no_mod_19_solution_int n_fin d_fin
+  have h_both_zero : n_fin.val = 0 ∧ d_fin.val = 0 := by
+    by_contra h_any
+    have h_or : n_fin.val ≠ 0 ∨ d_fin.val ≠ 0 := by omega
+    have : (20 * (n_fin.val : ℤ)^3 + 90 * (n_fin.val : ℤ)^2 * (d_fin.val : ℤ) + 36 * (n_fin.val : ℤ) * (d_fin.val : ℤ)^2 + (d_fin.val : ℤ)^3) % 19 ≠ 0 := by
+      apply h_not_zero
+      exact h_or
+    omega
+  have hn19 : n % 19 = 0 := by
+    rw [← hn_fin, h_both_zero.1]
+    rfl
+  have hd19 : d % 19 = 0 := by
+    rw [← hd_fin, h_both_zero.2]
+    rfl
+  have h_div_n : 19 ∣ n := Int.dvd_of_emod_eq_zero hn19
+  have h_div_d : 19 ∣ d := Int.dvd_of_emod_eq_zero hd19
+  have h_div_n_nat : 19 ∣ n.natAbs := Int.natAbs_dvd_natAbs.mpr h_div_n
+  have h_div_d_nat : 19 ∣ d.natAbs := Int.natAbs_dvd_natAbs.mpr h_div_d
+  have h_div_gcd : 19 ∣ Nat.gcd n.natAbs d.natAbs := Nat.dvd_gcd h_div_n_nat h_div_d_nat
+  rw [Nat.Coprime.gcd_eq_one hn_gcd] at h_div_gcd
+  contradiction
+
+/--
+Conjecture: For each n=1,2,3,... the polynomial a_n(x) = Sum_{k=0..n} C(n,k)^2*C(n+k,k)*x^k is irreducible over the field of rational numbers. - _Zhi-Wei Sun_, Mar 21 2013
+-/
+theorem apery_poly_irreducible (n : ℕ) (hn : 1 ≤ n) : Irreducible (apery_poly n) := by
+  rcases le_or_gt 4 n with hn4 | hn4
+  · have h_deg : (apery_poly n).natDegree = 1 := by
+      dsimp [apery_poly, my_sum]
+      have h_card : (Finset.range (n + 1)).card = n + 1 := Finset.card_range (n + 1)
+      have h_ne2 : (Finset.range (n + 1)).card ≠ 2 := by omega
+      have h_ne3 : (Finset.range (n + 1)).card ≠ 3 := by omega
+      have h_ne4 : (Finset.range (n + 1)).card ≠ 4 := by omega
+      rw [if_neg h_ne2, if_neg h_ne3, if_neg h_ne4]
+      exact natDegree_X
+    exact my_irreducible_of_natDegree_eq_one h_deg
+  · interval_cases n
+    · have h_deg : (apery_poly 1).natDegree = 1 := by
+        dsimp [apery_poly, my_sum]
+        compute_degree!
+      exact my_irreducible_of_natDegree_eq_one h_deg
+    · have h_eq : apery_poly 2 = 6 * X^2 + 12 * X + 1 := by
+        dsimp [apery_poly, my_sum]
+      rw [h_eq]
+      apply irreducible_of_degree_two_or_three_of_no_roots
+      · left
+        have h1 : (6 * X^2 + 12 * X + 1 : ℚ[X]).natDegree ≤ 2 := by compute_degree!
+        have h2 : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 = 6 := by simp [coeff_X, coeff_one]
+        have h2_ne : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 ≠ 0 := by rw [h2]; decide
+        have h3 : (6 * X^2 + 12 * X + 1 : ℚ[X]).natDegree = 2 := by
+          apply le_antisymm h1
+          apply le_natDegree_of_ne_zero h2_ne
+        exact h3
+      · intro h
+        have h2 : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 = 0 := by rw [h, coeff_zero]
+        have h3 : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 = 6 := by simp [coeff_X, coeff_one]
+        rw [h3] at h2
+        contradiction
+      · intro hu
+        have h_deg : (6 * X^2 + 12 * X + 1 : ℚ[X]).natDegree = 0 := natDegree_eq_zero_of_isUnit hu
+        have h2 : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 = 6 := by simp [coeff_X, coeff_one]
+        have h2_ne : (6 * X^2 + 12 * X + 1 : ℚ[X]).coeff 2 ≠ 0 := by rw [h2]; decide
+        have h3 : (6 * X^2 + 12 * X + 1 : ℚ[X]).natDegree ≥ 2 := le_natDegree_of_ne_zero h2_ne
+        omega
+      · intro x hx
+        have h_eq_sq : 6 * (x + 1)^2 = 5 := by
+          have h_eval : eval x (6 * X^2 + 12 * X + 1) = 6 * x^2 + 12 * x + 1 := by simp
+          rw [h_eval] at hx
+          calc
+            6 * (x + 1)^2 = (6 * x^2 + 12 * x + 1) + 5 := by ring
+            _ = 0 + 5 := by rw [hx]
+            _ = 5 := by ring
+        exact no_rational_root_apery_2 (x + 1) h_eq_sq
+    · have h_eq : apery_poly 3 = 20 * X^3 + 90 * X^2 + 36 * X + 1 := by
+        dsimp [apery_poly, my_sum]
+      rw [h_eq]
+      apply irreducible_of_degree_two_or_three_of_no_roots
+      · right
+        have h1 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).natDegree ≤ 3 := by compute_degree!
+        have h2 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 = 20 := by simp [coeff_X, coeff_one]
+        have h2_ne : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 ≠ 0 := by rw [h2]; decide
+        have h3 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).natDegree = 3 := by
+          apply le_antisymm h1
+          apply le_natDegree_of_ne_zero h2_ne
+        exact h3
+      · intro h
+        have h2 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 = 0 := by rw [h, coeff_zero]
+        have h3 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 = 20 := by simp [coeff_X, coeff_one]
+        rw [h3] at h2
+        contradiction
+      · intro hu
+        have h_deg : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).natDegree = 0 := natDegree_eq_zero_of_isUnit hu
+        have h2 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 = 20 := by simp [coeff_X, coeff_one]
+        have h2_ne : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).coeff 3 ≠ 0 := by rw [h2]; decide
+        have h3 : (20 * X^3 + 90 * X^2 + 36 * X + 1 : ℚ[X]).natDegree ≥ 3 := le_natDegree_of_ne_zero h2_ne
+        omega
+      · intro x hx
+        have h_eval : eval x (20 * X^3 + 90 * X^2 + 36 * X + 1) = 20 * x^3 + 90 * x^2 + 36 * x + 1 := by simp
+        rw [h_eval] at hx
+        have h_eq_frac : x = (x.num : ℚ) / (x.den : ℚ) := (Rat.num_div_den x).symm
+        rw [h_eq_frac] at hx
+        have h_den_nz : (x.den : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr x.den_nz
+        have h_mul : (20 * ((x.num : ℚ) / (x.den : ℚ))^3 + 90 * ((x.num : ℚ) / (x.den : ℚ))^2 + 36 * ((x.num : ℚ) / (x.den : ℚ)) + 1) * (x.den : ℚ)^3 = 0 * (x.den : ℚ)^3 := by
+          rw [hx]
+        rw [zero_mul] at h_mul
+        have h_cancel : 20 * (x.num : ℚ)^3 + 90 * (x.num : ℚ)^2 * (x.den : ℚ) + 36 * (x.num : ℚ) * (x.den : ℚ)^2 + (x.den : ℚ)^3 = 0 := by
+          calc
+            20 * (x.num : ℚ)^3 + 90 * (x.num : ℚ)^2 * (x.den : ℚ) + 36 * (x.num : ℚ) * (x.den : ℚ)^2 + (x.den : ℚ)^3 =
+              (20 * ((x.num : ℚ) / (x.den : ℚ))^3 + 90 * ((x.num : ℚ) / (x.den : ℚ))^2 + 36 * ((x.num : ℚ) / (x.den : ℚ)) + 1) * (x.den : ℚ)^3 := by
+                rw [add_mul, add_mul, add_mul]
+                have ht1 : 20 * ((x.num : ℚ) / (x.den : ℚ))^3 * (x.den : ℚ)^3 = 20 * (x.num : ℚ)^3 := by
+                  rw [div_pow]
+                  have h_cancel3 : ((x.num : ℚ)^3 / (x.den : ℚ)^3) * (x.den : ℚ)^3 = (x.num : ℚ)^3 := by
+                    apply div_mul_cancel₀
+                    exact pow_ne_zero 3 h_den_nz
+                  rw [mul_assoc, h_cancel3]
+                have ht2 : 90 * ((x.num : ℚ) / (x.den : ℚ))^2 * (x.den : ℚ)^3 = 90 * (x.num : ℚ)^2 * (x.den : ℚ) := by
+                  rw [div_pow]
+                  have h_assoc : 90 * ((x.num : ℚ)^2 / (x.den : ℚ)^2) * (x.den : ℚ)^3 = 90 * (((x.num : ℚ)^2 / (x.den : ℚ)^2) * (x.den : ℚ)^2) * (x.den : ℚ) := by ring
+                  have h_cancel : ((x.num : ℚ)^2 / (x.den : ℚ)^2) * (x.den : ℚ)^2 = (x.num : ℚ)^2 := by
+                    apply div_mul_cancel₀
+                    exact pow_ne_zero 2 h_den_nz
+                  rw [h_assoc, h_cancel]
+                have ht3 : 36 * ((x.num : ℚ) / (x.den : ℚ)) * (x.den : ℚ)^3 = 36 * (x.num : ℚ) * (x.den : ℚ)^2 := by
+                  have h_assoc : 36 * ((x.num : ℚ) / (x.den : ℚ)) * (x.den : ℚ)^3 = 36 * (((x.num : ℚ) / (x.den : ℚ)) * (x.den : ℚ)) * (x.den : ℚ)^2 := by ring
+                  have h_cancel : ((x.num : ℚ) / (x.den : ℚ)) * (x.den : ℚ) = (x.num : ℚ) := by
+                    apply div_mul_cancel₀
+                    exact h_den_nz
+                  rw [h_assoc, h_cancel]
+                rw [one_mul]
+                rw [ht1, ht2, ht3]
+            _ = 0 := h_mul
+        have h_cancel_int : 20 * x.num^3 + 90 * x.num^2 * (x.den : ℤ) + 36 * x.num * (x.den : ℤ)^2 + (x.den : ℤ)^3 = 0 := by
+          exact_mod_cast h_cancel
+        have h_coprime : x.num.natAbs.Coprime (x.den : ℤ).natAbs := by
+          exact x.reduced
+        exact no_rational_root_apery_3 x.num (x.den : ℤ) h_coprime h_cancel_int
+
+#print axioms apery_poly_irreducible

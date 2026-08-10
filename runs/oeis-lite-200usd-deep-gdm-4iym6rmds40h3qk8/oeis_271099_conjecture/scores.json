@@ -1,0 +1,135 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 5 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 70 declarations.\n------------------\nA271099.oeis_271099_conjecture.disproof used disallowed axioms. #[propext, Quot.sound, Classical.choice, A271099.cheat]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A271099.oeis_271099_conjecture: theorem type mismatch\n  Expected type: And (And (forall (n : Nat), GT.gt.{0} Nat instLTNat (A271099 n) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) (forall (n : Nat), Iff (Eq.{1} Nat (A271099 n) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))) (Membership.mem.{0, 0} Nat (Set.{0} Nat) (Set.instMembership.{0} Nat) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 14 (instOfNatNat 14)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 15 (instOfNatNat 15)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 17 (instOfNatNat 17)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 22 (instOfNatNat 22)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 38 (instOfNatNat 38)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 39 (instOfNatNat 39)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 45 (instOfNatNat 45)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 47 (instOfNatNat 47)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 50 (instOfNatNat 50)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 52 (instOfNatNat 52)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 76 (instOfNatNat 76)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 102 (instOfNatNat 102)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 103 (instOfNatNat 103)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 188 (instOfNatNat 188)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 295 (instOfNatNat 295)) (Insert.insert.{0, 0} Nat (Set.{0} Nat) (Set.instInsert.{0} Nat) (OfNat.ofNat.{0} Nat 366 (instOfNatNat 366)) (Singleton.singleton.{0, 0} Nat (Set.{0} Nat) (Set.instSingletonSet.{0} Nat) (OfNat.ofNat.{0} Nat 534 (instOfNatNat 534)))))))))))))))))))))) n))) (And (forall (n : Nat), Exists.{1} Nat (fun (s : Nat) => Exists.{1} Nat (fun (t : Nat) => Exists.{1} Nat (fun (u : Nat) => Exists.{1} Nat (fun (v : Nat) => Exists.{1} Nat (fun (x : Nat) => Exists.{1} Nat (fun (y : Nat) => Exists.{1} Nat (fun (z : Nat) => Eq.{1} Nat n (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) s (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) t (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4)))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) u (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) v (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) x (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) y (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 7 (instOfNatNat 7)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) z (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4))))))))))))) (And (forall (n : Nat), Exists.{1} Nat (fun (r : Nat) => Exists.{1} Nat (fun (s : Nat) => Exists.{1} Nat (fun (t : Nat) => Exists.{1} Nat (fun (u : Nat) => Exists.{1} Nat (fun (v : Nat) => Exists.{1} Nat (fun (w : Nat) => Exists.{1} Nat (fun (x : Nat) => Exists.{1} Nat (fun (y : Nat) => Exists.{1} Nat (fun (z : Nat) => Eq.{1} Nat n (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) r (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) s (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) t (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) u (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) v (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 4 (instOfNatNat 4)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) w (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) x (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) y (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))))) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 12 (instOfNatNat 12)) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) z (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5))))))))))))))) (forall (k : Nat), (GT.gt.{0} Nat instLTNat k (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) -> (Exists.{1} ((Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> Nat) (fun (c : (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> Nat) => And (forall (i : Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))), GT.gt.{0} Nat instLTNat (c i) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) (And (Eq.{1} (Set.{0} Nat) (Set.range.{0, 1} Nat ((Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> Nat) (fun (x : (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> Nat) => Finset.sum.{0, 0} (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) Nat Nat.instAddCommMonoid (Finset.univ.{0} (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (Fin.fintype (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))) (fun (i : Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) => HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (c i) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) (x i) k)))) (Set.univ.{0} Nat)) (Eq.{1} Nat (Finset.sum.{0, 0} (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) Nat Nat.instAddCommMonoid (Finset.univ.{0} (Fin (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) (Fin.fintype (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) k) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))) c) (waring_g k))))))))\n  Got type:      Not A271099.original_conjecture_statement\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "waring_g",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A271099.oeis_271099_conjecture",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "A271099.cheat"
+              ]
+            },
+            "failureMode": "thmType"
+          }
+        ],
+        [
+          "waring_g._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "waring_g._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext"
+              ]
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "A271099",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

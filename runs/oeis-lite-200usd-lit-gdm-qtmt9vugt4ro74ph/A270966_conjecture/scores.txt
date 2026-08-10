@@ -1,0 +1,16 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:155:6: error: Type mismatch
+    Nat.lt_succ_iff.mpr (Nat.le_sqrt.mpr hxy)
+  has type
+    x < n.sqrt.succ
+  but is expected to have type
+    x ≤ n.sqrt
+  Submission/Spec.lean:157:6: error: Type mismatch
+    Nat.lt_succ_iff.mpr (Nat.le_sqrt.mpr hxy)
+  has type
+    y < n.sqrt.succ
+  but is expected to have type
+    y ≤ n.sqrt
+

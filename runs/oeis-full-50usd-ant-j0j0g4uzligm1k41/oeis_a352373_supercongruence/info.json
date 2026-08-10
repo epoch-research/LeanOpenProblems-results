@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a352373_supercongruence",
+  "epoch": 1,
+  "uuid": "At8T7kKBwq2S7jA4hwHT9p",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 503,
+      "output_tokens": 778930,
+      "total_tokens": 43703202,
+      "input_tokens_cache_write": 1594778,
+      "input_tokens_cache_read": 41328991,
+      "reasoning_tokens": 185106,
+      "total_cost": 50.10762299999999
+    }
+  },
+  "oeis_id": "A352373"
+}

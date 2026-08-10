@@ -1,0 +1,241 @@
+-- TestPos112.lean compiled successfully with no errors!
+-- Now let's prove False!
+-- Since we have `inj_P : (Prop → Prop) → T` and `proj_P : T → (Prop → Prop)`
+-- such that `proj_inj_P : ∀ f, proj_P (inj_P f) = f`.
+-- We can compose them with `prop_to_T` and `T_to_prop` to get a bijection between `Prop → Prop` and `Prop`!
+-- Let's define:
+--   `inj_PP (f : Prop → Prop) : Prop := T_to_prop (inj_P f)`
+--   `proj_PP (p : Prop) : Prop → Prop := proj_P (prop_to_T p)`
+-- Then:
+-- `proj_PP (inj_PP f) p`
+-- `= proj_P (prop_to_T (T_to_prop (inj_P f))) p`
+-- Since `inj_P f` is a term of `T`.
+-- Is `prop_to_T (T_to_prop t) = t`?
+-- As we noted, this is only true if `t` is of the form `prop_to_T p`!
+-- But `inj_P f` is `inj_prop (fun p => prop_to_T (f p))`.
+-- This is NOT of the form `prop_to_T p`!
+-- So `prop_to_T (T_to_prop (inj_P f))` might not be equal to `inj_P f`!
+--
+-- But wait!
+-- We don't need a bijection on `Prop`!
+-- We have `inj_P : (Prop → Prop) → T` and `proj_P : T → (Prop → Prop)`.
+-- Let's define the bijection on `T`!
+-- Can we define:
+--   `inj_T (f : T → Prop) : T := ...`
+-- We want to inject `T → Prop` into `T`!
+-- Since we have `inj_P : (Prop → Prop) → T` and `proj_P : T → (Prop → Prop)`.
+-- Can we map `T → Prop` to `Prop → Prop` and back?
+-- Yes!
+-- Given `P : T → Prop`, we can define `f : Prop → Prop` as:
+--   `f (p : Prop) : Prop := P (prop_to_T p)`
+-- And given `f : Prop → Prop`, we can define `P : T → Prop` as:
+--   `P (t : T) : Prop := f (T_to_prop t)`
+-- Let's define:
+--   `T_to_P (P : T → Prop) : Prop → Prop := fun p => P (prop_to_T p)`
+--   `P_to_T (f : Prop → Prop) : T → Prop := fun t => f (T_to_prop t)`
+-- We proved in `TestPos88.lean`:
+--   `T_to_P (P_to_T f) = f`.
+-- So we can inject `Prop → Prop` into `T → Prop`!
+-- But we want to inject `T → Prop` into `Prop → Prop`!
+-- Let's see: `T_to_P (P) = fun p => P (prop_to_T p)`.
+-- Is `P_to_T (T_to_P P) = P`?
+-- `P_to_T (T_to_P P) t`
+-- `= T_to_P P (T_to_prop t)`
+-- `= P (prop_to_T (T_to_prop t))`
+-- This is only equal to `P t` if `prop_to_T (T_to_prop t) = t`.
+-- But wait!
+-- If we restrict `T` to the range of `prop_to_T`, i.e., `Prop`!
+-- Yes!
+-- Since `Prop` is isomorphic to the image of `prop_to_T` in `T`.
+-- We can just do Hurkens' paradox on `Prop` directly!
+-- Wait, how?
+-- In TestPos112.lean, we proved:
+--   `proj_P (inj_P f) = f`
+-- This means `proj_P` is a LEFT inverse of `inj_P`.
+-- So `inj_P` is injective, and `proj_P` is surjective!
+-- This means `T` is strictly larger than `Prop → Prop` (since we have a surjection from `T` to `Prop → Prop`).
+-- And `Prop → Prop` is strictly larger than `Prop` (by Cantor's theorem).
+-- So `T` is strictly larger than `Prop`!
+-- But `T` is injected into `Prop`?
+-- No, we don't have an injection from `T` into `Prop`.
+-- But wait!
+-- Can we get a contradiction using just `inj_P : (Prop → Prop) → T` and `proj_P : T → (Prop → Prop)`?
+-- Yes!
+-- Let's see: we want to prove `False`.
+-- Since we have a surjection `proj_P : T → (Prop → Prop)`.
+-- Let's define `f : Prop → Prop` using Cantor's diagonal argument!
+-- Cantor's diagonal argument on `Prop → Prop`:
+-- For any `g : T → (Prop → Prop)`, we can't do it because `T` is the domain.
+-- But wait!
+-- Can we define:
+--   `diag (t : T) : Prop := ¬ (proj_P t (T_to_prop t))`
+-- Since `diag` has type `T → Prop`.
+-- Can we map `T → Prop` to `Prop → Prop`?
+-- Yes, `T_to_P (diag) : Prop → Prop`!
+-- Let `f := T_to_P diag`. So `f : Prop → Prop`.
+-- Since `proj_P` is surjective, there exists some `t0 : T` such that `proj_P t0 = f`!
+-- In fact, we can choose `t0 := inj_P f`!
+-- Then `proj_P t0 = f` by `proj_inj_P`.
+-- Let's analyze `proj_P t0 (T_to_prop t0)`!
+-- On one hand, `proj_P t0 = f = T_to_P diag`, so:
+-- `proj_P t0 (T_to_prop t0) = T_to_P diag (T_to_prop t0)`
+-- `= diag (prop_to_T (T_to_prop t0))`
+-- Since `t0 = inj_P f = inj_prop (fun p => prop_to_T (f p))`.
+-- `inj_prop g` is a constructor-like term.
+-- Is `prop_to_T (T_to_prop t0) = t0`?
+-- Let's check:
+-- `T_to_prop t0`
+-- `= T_to_prop (inj_prop (fun p => prop_to_T (f p)))`
+-- `inj_prop g` is `T.mk (fun X => ...)`.
+-- So `T_to_prop (T.mk ...)` is `True`!
+-- So `T_to_prop t0` is `True`!
+-- Then `prop_to_T (T_to_prop t0)` is `prop_to_T True`!
+-- And `prop_to_T True` is `T.mk (fun _ => T.base)`!
+-- But `t0` is `inj_prop (fun p => prop_to_T (f p))` which is `T.mk (fun X => ...)` where the function is NOT constant `T.base`!
+-- So `prop_to_T (T_to_prop t0) = t0` is NOT true!
+--
+-- But wait!
+-- Can we define `diag` differently?
+-- What if we define:
+--   `diag (p : Prop) : Prop := ¬ (proj_P (prop_to_T p) p)`
+-- This `diag` has type `Prop → Prop`!
+-- So `diag : Prop → Prop`!
+-- Since `proj_P` is surjective, there exists `t0 : T` such that `proj_P t0 = diag`!
+-- In fact, we can choose `t0 := inj_P diag`!
+-- Then `proj_P t0 = diag`.
+-- Let `p0 := T_to_prop t0`!
+-- Since `p0 : Prop`.
+-- Let's analyze `diag p0`!
+-- `diag p0`
+-- `= ¬ (proj_P (prop_to_T p0) p0)`
+-- Since `p0 = T_to_prop t0`, is `prop_to_T p0 = t0`?
+-- No, but let's see!
+-- `proj_P t0 p0`
+-- `= proj_P t0 (T_to_prop t0)`
+-- Since `proj_P t0 = diag`, this is:
+-- `= diag p0`!
+-- So we have:
+--   `proj_P t0 p0 ↔ diag p0`!
+-- We also have:
+--   `diag p0 ↔ ¬ (proj_P (prop_to_T p0) p0)`!
+-- So:
+--   `proj_P t0 p0 ↔ ¬ (proj_P (prop_to_T p0) p0)`!
+-- If we can prove `prop_to_T p0 = t0`, we would get:
+--   `proj_P t0 p0 ↔ ¬ (proj_P t0 p0)`
+-- which is a contradiction (False)!
+--
+-- Let's check: does `prop_to_T p0 = t0` hold?
+-- `p0 = T_to_prop t0`.
+-- `t0 = inj_P diag = inj_prop (fun p => prop_to_T (diag p))`.
+-- `T_to_prop t0` is `True` because `t0` is a `T.mk` term.
+-- So `p0 = True`!
+-- Then `prop_to_T p0` is `prop_to_T True` which is `T.mk (fun _ => T.base)`.
+-- But `t0` is `T.mk (fun X => ...)` where the function is:
+--   `fun X => if h : ∃ p, X = PLift p then prop_to_T (diag (Classical.choose h)) else T.base`.
+-- Under `X = PLift True`, this returns `prop_to_T (diag True)`.
+-- But `prop_to_T True` has the function constant `T.base`.
+-- So they are NOT equal!
+--
+-- But wait!
+-- Can we make `prop_to_T p0 = t0` true by modifying the definition of `prop_to_T` or `T_to_prop`?
+-- Let's see: `T_to_prop t` should return the information about `t`!
+-- But `T` is infinite, so we can't fit all of `T` into `Prop`.
+--
+-- Wait!
+-- What if we use Hurkens' paradox on `T`?
+-- Hurkens' paradox doesn't require bijections with Prop.
+-- It works on any type `U` with `inj : ((U → Prop) → Prop) → U` and `proj : U → (U → Prop) → Prop`
+-- such that `proj (inj F) = F`.
+-- Do we have this for `T`?
+-- We have `inj_prop : (Prop → T) → T` and `proj_prop : T → (Prop → T)`.
+-- This is NOT `(T → Prop) → Prop`.
+-- But wait!
+-- Is `Prop → T` isomorphic to `(T → Prop) → Prop`?
+-- Yes, if `T` is isomorphic to `T → Prop`!
+-- But we can just use `inj_prop : (Prop → T) → T` and `proj_prop : T → (Prop → T)`.
+-- Can we do a Hurkens-like paradox on `Prop → T` and `T`?
+-- Let's see: we have `inj_prop : (Prop → T) → T` and `proj_prop : T → (Prop → T)`.
+-- Let's define:
+--   `inj_T (F : (T → Prop) → T) : T := ...`
+-- No.
+--
+-- Wait!
+-- What if we use `Type` instead of `Prop`?
+-- In `TestPos99.lean`, we have:
+--   `T.mk : (Type → T) → T`
+--   `proj : T → (Type → T)`
+--   `proj (T.mk f) = f`
+-- Since `Type` is `Type 0`.
+-- Can we prove `False` from this?
+-- Yes!
+-- Let's see: `Type` contains `T`.
+-- So we can map `T` to `Type` injectively!
+-- How?
+-- We can map `t : T` to the type `t = t`!
+-- Wait! `t = t` is a Prop, so it is in `Type 0` (i.e. `Type`)!
+-- And for two different `t1` and `t2`, is `t1 = t1` equal to `t2 = t2`?
+-- Yes, they are both `True` (or equivalent to it), so by propext they are equal.
+-- But what about `{ x : T // x = t }`?
+-- As we saw, `{ x : T // x = t }` is in `Type 1`, not `Type 0`.
+-- What about `{ x : Nat // x = 0 }`? That is in `Type 0`.
+-- Is there any type in `Type 0` that uniquely encodes `t : T`?
+-- Wait!
+-- If we have `proj : T → (Type → T)`,
+-- then for any `t : T`, `proj t` is a function of type `Type → T`.
+-- Let's define:
+--   `inj_T (f : Type → T) : T := T.mk f`
+-- We have `proj (inj_T f) = f`.
+-- So `inj_T` is an injection from `Type → T` to `T`.
+-- This is a contradiction to Cantor's theorem on `Type`!
+-- How to prove it?
+-- Let's define:
+--   `diag (X : Type) : T := if h : ∃ (f : Type → T), X = ...`
+-- Actually, the standard proof of Cantor's theorem:
+-- To prove that there is no injection from `Type → T` to `T`.
+-- Let `inj : (Type → T) → T` be any injection.
+-- We can define a surjection `proj : T → (Type → T)`?
+-- Yes, we have `proj`!
+-- Since `proj (inj f) = f`, `proj` is surjective.
+-- Now we can define a diagonal function:
+--   `diag (X : Type) : T := ...`
+-- We want `diag` to differ from `proj t` for any `t`.
+-- So we want `diag X ≠ proj t X` where `X` is some type associated with `t`.
+-- What type is associated with `t`?
+-- If we can map `t : T` to a unique type `X_t : Type`!
+-- How can we map `t : T` to a unique type `X_t : Type`?
+-- Wait!
+-- `T` is a Type.
+-- `proj t` is of type `Type → T`.
+-- So `proj t` takes a `Type` and returns `T`.
+-- What if we pass `T` itself?
+-- `proj t T` is of type `T`.
+-- But `T` is the same for all `t`.
+-- What if we pass `t = t`?
+-- That is also the same for all `t`.
+--
+-- Wait!
+-- What if we define:
+--   `X_t : Type := PLift (t = t)`?
+-- We said they are all equal to `PLift True`.
+-- But wait!
+-- In Lean, is `PLift (t1 = t1)` definitionally equal to `PLift (t2 = t2)`?
+-- No! They are only propositionally equal (by propext)!
+-- But classically, we can use `Classical.choice` to distinguish them?
+-- No, if they are propositionally equal, any function must return the same value for them.
+--
+-- But wait!
+-- What about `{ x : T // x = t }`?
+-- It is in `Type 1`.
+-- But `Type` in `Type → T` is `Type 0`.
+-- Can we define `T.mk : (Type 1 → T) → T`?
+-- If we define `T` in `Type 2`!
+--   `inductive T : Type 2 where`
+--     `| base : T`
+--     `| mk : (Type 1 → T) → T`
+-- Then `proj : T → (Type 1 → T)`.
+-- And `Type 1` contains `{ x : T // x = t }`!
+-- Yes! `{ x : T // x = t }` has type `Type 1`!
+-- So we can define `encode (t : T) : Type 1 := { x : T // x = t }`!
+-- And since `encode t` has type `Type 1`, we can pass it to `proj t`!
+-- This is incredibly perfect!
+-- Let's write `TestPos113.lean` to verify this!

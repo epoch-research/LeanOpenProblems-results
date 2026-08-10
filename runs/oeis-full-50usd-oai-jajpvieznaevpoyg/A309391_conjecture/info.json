@@ -1,0 +1,20 @@
+{
+  "id": "A309391_conjecture",
+  "epoch": 1,
+  "uuid": "bauyqeZdWPAaZams3UzErL",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 945718,
+      "output_tokens": 162258,
+      "total_tokens": 49569288,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 48461312,
+      "reasoning_tokens": 78087,
+      "total_cost": 33.826986
+    }
+  },
+  "oeis_id": "A309391"
+}

@@ -1,0 +1,27 @@
+import FormalConjectures.Util.ProblemImports
+
+open scoped Real
+
+/--
+A364173: The sequence defined by the factorial ratio
+$$a(n) = \frac{(9n)! (2n)! (3n/2)!}{(9n/2)! (4n)! (3n)! n!}$$
+where fractional factorials $x!$ are defined as $\Gamma(x+1)$.
+-/
+noncomputable def a (n : ℕ) : ℝ :=
+  let n_r : ℝ := n
+  (Real.Gamma (9 * n_r + 1) * Real.Gamma (2 * n_r + 1) * Real.Gamma (3 / 2 * n_r + 1)) /
+  (Real.Gamma (9 / 2 * n_r + 1) * Real.Gamma (4 * n_r + 1) * Real.Gamma (3 * n_r + 1) * Real.Gamma (n_r + 1))
+
+/--
+Conjecture: the supercongruences a(n*p^r) == a(n*p^(r-1)) (mod p^(3*r)) hold for all primes p >= 5 and all positive integers n and r.
+Note: This conjecture requires that a(n) is an integer for all n, which is only conjectural.
+We assume integrality for the purpose of stating the congruence.
+-/
+theorem oeis_364173_conjecture_0
+    (h_int : ∀ m : ℕ, a m ∈ (Set.range (fun (x : ℤ) => (x : ℝ)))) :
+  ∀ (p : ℕ) (hp : Nat.Prime p) (h_p_ge_5 : 5 ≤ p)
+    (n r : ℕ) (hn : n > 0) (hr : r > 0),
+  (Classical.choose (h_int (n * p ^ r)) : ℤ)
+  ≡ (Classical.choose (h_int (n * p ^ (r - 1))) : ℤ)
+  [ZMOD ((p : ℤ) ^ (3 * r))] :=
+by sorry

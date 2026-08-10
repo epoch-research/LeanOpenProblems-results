@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Equiv.field
+#check Equiv.commRing
+#check Equiv.ring
+#check Equiv.semiring
+#check Equiv.divisionRing
+#check Equiv.addCommGroup
+#check Equiv.module
+#check Equiv.algebra
+#check RingEquiv.ofBijective
+#check Equiv.Perm.conj

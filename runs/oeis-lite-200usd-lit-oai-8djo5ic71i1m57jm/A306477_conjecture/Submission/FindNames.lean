@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_four_squares
+#check Nat.exists_eq_sum_range
+#check Nat.exists_eq_sum_range_choose
+#check Nat.choose_le_choose
+#check Finset.Nat.antidiagonal
+#check Nat.find
+#check Nat.strong_induction_on
+#check Nat.exists_eq_add_of_le

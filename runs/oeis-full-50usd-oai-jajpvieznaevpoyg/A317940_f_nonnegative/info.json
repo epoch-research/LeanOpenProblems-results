@@ -1,0 +1,20 @@
+{
+  "id": "A317940_f_nonnegative",
+  "epoch": 1,
+  "uuid": "JmuVvtXnr2rq2wbzJAezXX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 354566,
+      "output_tokens": 107107,
+      "total_tokens": 19162473,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 18700800,
+      "reasoning_tokens": 63836,
+      "total_cost": 14.33644
+    }
+  },
+  "oeis_id": "A317940"
+}

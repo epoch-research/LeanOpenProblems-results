@@ -1,0 +1,23 @@
+{
+  "id": "oeis_352627_conjecture_1",
+  "epoch": 1,
+  "uuid": "6GxnnLaXoesbceKDLFuJ7S",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1203,
+      "output_tokens": 270579,
+      "total_tokens": 149371620,
+      "input_tokens_cache_write": 3257126,
+      "input_tokens_cache_read": 145842712,
+      "reasoning_tokens": 84533,
+      "total_cost": 200.097767
+    }
+  },
+  "oeis_id": "A352627"
+}

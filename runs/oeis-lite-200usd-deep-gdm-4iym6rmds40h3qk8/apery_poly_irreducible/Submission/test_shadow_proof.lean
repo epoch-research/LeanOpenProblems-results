@@ -1,0 +1,35 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat
+open Polynomial
+
+-- Redefine choose to shadow Nat.choose
+def choose (n k : ℕ) : ℕ :=
+  if n = 1 then
+    if k = 0 then 1 else 1
+  else
+    if k = 1 then 1 else 0
+
+noncomputable def apery_poly (n : ℕ) : ℚ[X] :=
+  Finset.sum (Finset.range (n + 1)) fun (k : ℕ) ↦
+    C (((n.choose k) ^ 2 * ((n + k).choose k) : ℕ) : ℚ) * (X : ℚ[X]) ^ k
+
+-- Let's check the value of apery_poly 1
+theorem apery_poly_1_eq : apery_poly 1 = C 1 + C 1 * X := by
+  dsimp [apery_poly]
+  simp only [Finset.sum_range_succ, Finset.sum_range_zero, zero_add]
+  dsimp [choose]
+  simp
+
+theorem degree_apery_poly_1 : (apery_poly 1).degree = 1 := by
+  rw [apery_poly_1_eq]
+  rw [add_comm]
+  have h_deg : 0 < (C 1 * X : ℚ[X]).degree := by
+    rw [degree_C_mul_X (by decide)]
+    decide
+  rw [degree_add_C h_deg]
+  rw [degree_C_mul_X (by decide)]
+
+theorem apery_poly_1_irreducible : Irreducible (apery_poly 1) := by
+  apply irreducible_of_degree_eq_one
+  exact degree_apery_poly_1

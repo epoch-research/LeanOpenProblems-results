@@ -1,0 +1,52 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:144:48: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:218:48: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:236:4: error: Tactic `rfl` failed: The left-hand side
+    2
+  is not definitionally equal to the right-hand side
+    207936
+  
+  case neg
+  h_add : 38 * (38 - 1) / 2 + 0 = 703
+  h_5303 : Nat.nth Nat.Prime 703 = 5303
+  h_sum_eq_two : ∑ i ∈ Finset.range 37, Nat.nth Nat.Prime (38 * (38 - 1) / 2 + (i + 1)) = 2
+  h1 : 2 = 0
+  h2 : ¬False
+  h3 : ¬(2 = 5303 ∨ 5303 = 5303 ∨ 2 = 207936 ∨ 5303 = 207936)
+  ⊢ 2 = 207936
+  Submission/Spec.lean:212:42: error: unsolved goals
+  case pos
+  h_add : 38 * (38 - 1) / 2 + 0 = 703
+  h_5303 : Nat.nth Nat.Prime 703 = 5303
+  h_sum_eq_two : ∑ i ∈ Finset.range 37, Nat.nth Nat.Prime (38 * (38 - 1) / 2 + (i + 1)) = 2
+  h1 : ¬2 = 0
+  h✝¹ : ¬False
+  h✝ : 2 = 5303 ∨ 5303 = 5303 ∨ 2 = 207936 ∨ 5303 = 207936
+  ⊢ 207936 = 207936
+  
+  case neg
+  h_add : 38 * (38 - 1) / 2 + 0 = 703
+  h_5303 : Nat.nth Nat.Prime 703 = 5303
+  h_sum_eq_two : ∑ i ∈ Finset.range 37, Nat.nth Nat.Prime (38 * (38 - 1) / 2 + (i + 1)) = 2
+  h1 : ¬2 = 0
+  h✝¹ : ¬False
+  h✝ : ¬(2 = 5303 ∨ 5303 = 5303 ∨ 2 = 207936 ∨ 5303 = 207936)
+  ⊢ 2 = 207936
+  Submission/Spec.lean:246:4: error: expected '{' or indented tactic sequence
+  Submission/Spec.lean:245:38: error: unsolved goals
+  r : ℕ
+  hr : 2 = (r + 1 + 1) * (r + 1 + 1)
+  ⊢ (r + 2) * (r + 2) ≥ 4
+  Submission/Spec.lean:245:2: error: unsolved goals
+  case succ.succ
+  r : ℕ
+  hr : 2 = (r + 1 + 1) * (r + 1 + 1)
+  h : (r + 2) * (r + 2) ≥ 4
+  ⊢ False
+

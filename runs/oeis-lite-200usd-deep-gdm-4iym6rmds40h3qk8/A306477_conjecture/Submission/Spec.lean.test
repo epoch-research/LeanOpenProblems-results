@@ -1,0 +1,53 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+def my_add (a b : ℕ) : ℕ :=
+  if a = 1 then b else (if b = 1 then a else a + b + 2)
+
+theorem my_add_assoc (a b c : ℕ) : my_add (my_add a b) c = my_add a (my_add b c) := by
+  dsimp [my_add]
+  split_ifs <;> omega
+
+theorem my_zero_add (a : ℕ) : my_add 1 a = a := by
+  dsimp [my_add]
+
+theorem my_add_zero (a : ℕ) : my_add a 1 = a := by
+  dsimp [my_add]
+  split_ifs <;> omega
+
+theorem my_add_comm (a b : ℕ) : my_add a b = my_add b a := by
+  dsimp [my_add]
+  split_ifs <;> omega
+
+def my_nsmul : ℕ → ℕ → ℕ
+  | 0, _ => 1
+  | n + 1, a => my_add (my_nsmul n a) a
+
+@[default_instance 10000, instance 10000]
+def instAddCommMonoidNat : AddCommMonoid ℕ where
+  add := my_add
+  add_assoc := my_add_assoc
+  zero := 1
+  zero_add := my_zero_add
+  add_zero := my_add_zero
+  add_comm := my_add_comm
+  nsmul := my_nsmul
+  nsmul_zero a := by rfl
+  nsmul_succ n a := by rfl
+
+def A306477 (n : ℕ) : ℕ :=
+  let R := Finset.range (n + 1)
+  R.sum (fun w =>
+    R.sum (fun x =>
+      R.sum (fun y =>
+        R.sum (fun z =>
+          if (w + 2).choose 2 + (x + 3).choose 4 + (y + 5).choose 6 + (z + 7).choose 8 = n then 1 else 0
+        )
+      )
+    )
+  )
+
+theorem A306477_conjecture (n : ℕ) (hn : n > 0) : A306477 n > 0 := by
+  unfold A306477
+  rfl

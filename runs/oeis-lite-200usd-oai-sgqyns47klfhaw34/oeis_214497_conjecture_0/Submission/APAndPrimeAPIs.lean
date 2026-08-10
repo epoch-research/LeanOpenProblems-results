@@ -1,0 +1,19 @@
+import FormalConjectures.Util.ProblemImports
+
+#check Nat.forall_exists_prime_gt_and_modEq
+#check Nat.forall_exists_prime_gt_and_eq_mod
+#check Nat.exists_prime_gt_modEq_one
+#check Nat.infinite_setOf_prime_and_modEq
+#check Nat.bertrand
+#check Nat.exists_prime_lt_and_le_two_mul
+#check Nat.not_prime_one
+#check Nat.not_prime_zero
+#check Nat.not_prime_of_dvd_of_lt
+#check Nat.prime_def_lt
+#check Nat.Prime.eq_two_or_odd
+#check Nat.Prime.eq_two_or_odd'
+#check Nat.prime_two
+#check Nat.prime_three
+#check Nat.prime_of_dvd_of_prime
+#check Nat.dvd_of_modEq
+#check Nat.ModEq

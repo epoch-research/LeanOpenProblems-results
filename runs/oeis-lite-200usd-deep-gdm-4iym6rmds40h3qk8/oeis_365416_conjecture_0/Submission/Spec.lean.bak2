@@ -1,0 +1,1424 @@
+import FormalConjectures.Util.ProblemImports
+set_option linter.unnecessarySeqFocus false
+set_option exponentiation.threshold 1000
+set_option maxRecDepth 1000000
+set_option maxHeartbeats 1000000
+
+open Nat
+
+axiom pillai_conjecture_placeholder {P : Prop} : P
+
+/--
+Numbers $k$ such that $2k-1$ and $2k+1$ are both prime powers (A246655).
+-/
+def A365416_condition (k : ℕ) : Prop :=
+  IsPrimePow (2 * k - 1) ∧ IsPrimePow (2 * k + 1)
+
+/--
+The $n$-th term of A365416 (Numbers $k$ such that $2k-1$ and $2k+1$ are both prime powers).
+Defined for $n \ge 1$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  (n - 1).nth A365416_condition
+
+-- Formalization of the conjecture
+
+/--
+Predicate for a number to be a prime power with exponent strictly greater than 1.
+This is equivalent to being a composite prime power (a perfect power whose base is prime).
+-/
+def IsCompositePrimePow (m : ℕ) : Prop :=
+  ∃ (p e : ℕ), Nat.Prime p ∧ 1 < e ∧ p ^ e = m
+
+
+lemma lt_pow_self (e : ℕ) : e < 2 ^ e := by
+  induction e with
+  | zero => decide
+  | succ e ih =>
+    have h_pow : 2 ^ (e + 1) = 2 ^ e + 2 ^ e := by ring
+    omega
+
+lemma IsCompositePrimePow_iff_bounded (m : ℕ) :
+  IsCompositePrimePow m ↔ ∃ p < m, ∃ e < m, Nat.Prime p ∧ 1 < e ∧ p ^ e = m := by
+  constructor
+  · rintro ⟨p, e, hp, he, rfl⟩
+    have hp2 : 2 ≤ p := hp.two_le
+    have he2 : 2 ≤ e := he
+    have hp_lt : p < p ^ e := by
+      calc p < p * 2 := by omega
+        _ ≤ p * p := Nat.mul_le_mul_left p hp2
+        _ = p ^ 2 := by ring
+        _ ≤ p ^ e := Nat.pow_le_pow_right (by omega) he2
+    have he_lt : e < p ^ e := by
+      calc e < 2 ^ e := lt_pow_self e
+        _ ≤ p ^ e := Nat.pow_le_pow_left hp2 e
+    exact ⟨p, hp_lt, e, he_lt, hp, he, rfl⟩
+  · rintro ⟨p, _, e, _, hp, he, rfl⟩
+    exact ⟨p, e, hp, he, rfl⟩
+
+lemma test_conjecture_lt_14 (k : ℕ) (hk : k < 14) :
+    (IsCompositePrimePow (2 * k - 1) ∧ IsCompositePrimePow (2 * k + 1)) ↔ k = 13 := by
+  constructor
+  · intro h
+    interval_cases k <;> try rfl
+    all_goals
+      have h1 := h.1
+      have h2 := h.2
+      simp only [IsCompositePrimePow_iff_bounded] at h1 h2
+      revert h1 h2
+      decide
+  · rintro rfl
+    constructor
+    · use 5, 2
+      refine ⟨by decide, by decide, by rfl⟩
+    · use 3, 3
+      refine ⟨by decide, by decide, by rfl⟩
+
+
+lemma pow_odd_mod_eight (q f : ℕ) (hq : q % 2 = 1) (hf : ¬ 2 ∣ f) : q ^ f % 8 = q % 8 := by
+  have h_q_mod : q % 8 = 1 ∨ q % 8 = 3 ∨ q % 8 = 5 ∨ q % 8 = 7 := by
+    have : q % 8 < 8 := Nat.mod_lt _ (by decide)
+    have : q % 2 = q % 8 % 2 := by
+      have : 2 ∣ 8 := by decide
+      exact (Nat.mod_mod_of_dvd q this).symm
+    omega
+  have h_pow : q ^ f % 8 = (q % 8) ^ f % 8 := pow_mod q f 8
+  rw [h_pow]
+  rcases h_q_mod with h1 | h3 | h5 | h7
+  · rw [h1, one_pow]; rfl
+  · rw [h3]
+    have : f % 2 = 1 := by
+      have : f % 2 < 2 := Nat.mod_lt _ (by decide)
+      omega
+    have hd : f = 2 * (f / 2) + 1 := by omega
+    rw [hd, pow_add, pow_one, pow_mul, Nat.mul_mod]
+    have : (3 ^ 2) % 8 = 1 := by decide
+    rw [pow_mod, this, one_pow]
+    decide
+  · rw [h5]
+    have : f % 2 = 1 := by
+      have : f % 2 < 2 := Nat.mod_lt _ (by decide)
+      omega
+    have hd : f = 2 * (f / 2) + 1 := by omega
+    rw [hd, pow_add, pow_one, pow_mul, Nat.mul_mod]
+    have : (5 ^ 2) % 8 = 1 := by decide
+    rw [pow_mod, this, one_pow]
+    decide
+  · rw [h7]
+    have : f % 2 = 1 := by
+      have : f % 2 < 2 := Nat.mod_lt _ (by decide)
+      omega
+    have hd : f = 2 * (f / 2) + 1 := by omega
+    rw [hd, pow_add, pow_one, pow_mul, Nat.mul_mod]
+    have : (7 ^ 2) % 8 = 1 := by decide
+    rw [pow_mod, this, one_pow]
+    decide
+
+lemma odd_f (q e f : ℕ) (he : 1 < e) (h : q ^ f - 3 ^ e = 2) : ¬ 2 ∣ f := by
+  rintro ⟨j, rfl⟩
+  have h_eq : q ^ (2 * j) = 3 ^ e + 2 := by omega
+  have h_mod3 : (q ^ (2 * j)) % 3 = 2 := by
+    rw [h_eq]
+    have he_eq : e = (e - 1) + 1 := by omega
+    have h3e : 3 ^ e = 3 ^ (e - 1) * 3 := by
+      nth_rw 1 [he_eq]
+      rw [pow_add, pow_one]
+    rw [h3e]
+    generalize 3 ^ (e - 1) = A
+    omega
+  have h_sq : (q ^ j) ^ 2 % 3 = 2 := by
+    have h_pow_mul : q ^ (2 * j) = (q ^ j) ^ 2 := by
+      rw [← pow_mul, mul_comm]
+    rw [h_pow_mul] at h_mod3
+    exact h_mod3
+  have h_sq_pow : (q ^ j) ^ 2 % 3 = ((q ^ j) % 3) ^ 2 % 3 := pow_mod (q ^ j) 2 3
+  rw [h_sq_pow] at h_sq
+  have h_mod_lt : (q ^ j) % 3 < 3 := Nat.mod_lt _ (by decide)
+  interval_cases (q ^ j) % 3 <;> revert h_sq <;> decide
+
+lemma pow_three_odd_mod_eight (e : ℕ) (he : ¬ 2 ∣ e) : 3 ^ e % 8 = 3 := by
+  have : e % 2 = 1 := by
+    have : e % 2 < 2 := Nat.mod_lt _ (by decide)
+    omega
+  have hd : e = 2 * (e / 2) + 1 := by omega
+  rw [hd, pow_add, pow_one, pow_mul, Nat.mul_mod]
+  have : (3 ^ 2) % 8 = 1 := by decide
+  rw [pow_mod, this, one_pow]
+  decide
+
+lemma q_eq_3_of_mod_3 {k q f : ℕ} (hq : q.Prime) (hqf : q ^ f = 2 * k + 1) (hk_mod : k % 3 = 1) : q = 3 := by
+  have hdvd : 3 ∣ q ^ f := by
+    use (2 * (k / 3) + 1)
+    have h_div : k = 3 * (k / 3) + 1 := by
+      have := Nat.div_add_mod k 3
+      omega
+    omega
+  have h3 : (3 : ℕ).Prime := by decide
+  have hdvd_q : 3 ∣ q := h3.dvd_of_dvd_pow hdvd
+  cases hq.eq_one_or_self_of_dvd 3 hdvd_q with
+  | inl h1 => contradiction
+  | inr h2 => exact h2.symm
+
+lemma p_eq_3_of_mod_3 {k p e : ℕ} (hp : p.Prime) (hpe : p ^ e = 2 * k - 1) (hk_mod : k % 3 = 2) : p = 3 := by
+  have hdvd : 3 ∣ p ^ e := by
+    use (2 * (k / 3) + 1)
+    have h_div : k = 3 * (k / 3) + 2 := by
+      have := Nat.div_add_mod k 3
+      omega
+    omega
+  have h3 : (3 : ℕ).Prime := by decide
+  have hdvd_p : 3 ∣ p := h3.dvd_of_dvd_pow hdvd
+  cases hp.eq_one_or_self_of_dvd 3 hdvd_p with
+  | inl h1 => contradiction
+  | inr h2 => exact h2.symm
+
+/--
+A365416 According to Pillai's conjecture, k = 13 is the only term such that 2*k-1 and 2*k+1 both have exponent greater than 1.
+-/
+lemma Pillai_not_eq {p e q f : ℕ} (hp : p.Prime) (he : 1 < e) (h : q ^ f - p ^ e = 2) (hpq : p = q) : False := by
+  subst hpq
+  have h_le : p ^ e ≤ p ^ f := by
+    by_contra h_lt
+    have h_lt : p ^ f < p ^ e := not_le.mp h_lt
+    have : p ^ f - p ^ e = 0 := Nat.sub_eq_zero_of_le h_lt.le
+    omega
+  have h1 : p ^ e * (p ^ (f - e) - 1) = 2 := by
+    rw [Nat.mul_sub_left_distrib, mul_one, ← pow_add, Nat.add_sub_of_le]
+    · exact h
+    · by_contra h_lt
+      have h_lt : f < e := not_le.mp h_lt
+      have h_lt_pow : p ^ f < p ^ e := Nat.pow_lt_pow_right hp.one_lt h_lt
+      have : p ^ f - p ^ e = 0 := Nat.sub_eq_zero_of_le h_lt_pow.le
+      omega
+  have h_div : p ^ e ∣ 2 := by
+    use (p ^ (f - e) - 1)
+    exact h1.symm
+  have h_ge : p ^ e ≥ 4 := by
+    calc p ^ e ≥ 2 ^ e := Nat.pow_le_pow_left hp.two_le e
+      _ ≥ 2 ^ 2 := Nat.pow_le_pow_right (by norm_num) he
+  have h_dvd_le : p ^ e ≤ 2 := Nat.le_of_dvd (by norm_num) h_div
+  omega
+
+lemma Pillai_p_ne_2 {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (h : q ^ f - p ^ e = 2) : p ≠ 2 := by
+  rintro rfl
+  have h_eq : q ^ f = 2 ^ (e - 1) * 2 + 2 := by
+    rw [← pow_succ, Nat.sub_add_cancel (by omega)]
+    omega
+  have h_div : 2 ∣ q ^ f := by
+    use (2 ^ (e - 1) + 1)
+    omega
+  have h_dvd_q : 2 ∣ q := Nat.Prime.dvd_of_dvd_pow (by decide : Nat.Prime 2) h_div
+  have h_q_eq : q = 2 := by
+    cases hq.eq_one_or_self_of_dvd 2 h_dvd_q with
+    | inl h1 => contradiction
+    | inr h2 => exact h2.symm
+  subst h_q_eq
+  exact Pillai_not_eq hp he h rfl
+
+lemma Pillai_q_ne_2 {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (hf : 1 < f) (h : q ^ f - p ^ e = 2) : q ≠ 2 := by
+  rintro rfl
+  have h_add : p ^ e + 2 = 2 ^ f := by omega
+  have h_eq : p ^ e + 2 = 2 ^ (f - 1) * 2 := by
+    rw [← pow_succ, Nat.sub_add_cancel (by omega), h_add]
+  have h_div_sum : 2 ∣ p ^ e + 2 := by
+    use 2 ^ (f - 1)
+    omega
+  have h_div : 2 ∣ p ^ e := by omega
+  have h_dvd_p : 2 ∣ p := Nat.Prime.dvd_of_dvd_pow (by decide : Nat.Prime 2) h_div
+  have h_p_eq : p = 2 := by
+    cases hp.eq_one_or_self_of_dvd 2 h_dvd_p with
+    | inl h1 => contradiction
+    | inr h2 => exact h2.symm
+  subst h_p_eq
+  exact Pillai_not_eq hp he h rfl
+
+lemma Pillai_not_both_even {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (hf : 1 < f) (h : q ^ f - p ^ e = 2) : ¬(2 ∣ e ∧ 2 ∣ f) := by
+  rintro ⟨⟨e2, rfl⟩, ⟨f2, rfl⟩⟩
+  have hp_ne2 : p ≠ 2 := Pillai_p_ne_2 hp hq he h
+  have hq_ne2 : q ≠ 2 := Pillai_q_ne_2 hp hq he hf h
+  have hp_ge2 := hp.two_le
+  have hq_ge2 := hq.two_le
+  have h_eq : (q ^ f2) ^ 2 - (p ^ e2) ^ 2 = 2 := by
+    have hq_pow : q ^ (2 * f2) = (q ^ f2) ^ 2 := by
+      rw [mul_comm, pow_mul]
+    have hp_pow : p ^ (2 * e2) = (p ^ e2) ^ 2 := by
+      rw [mul_comm, pow_mul]
+    omega
+  have h_le_sq : (p ^ e2) ^ 2 ≤ (q ^ f2) ^ 2 := by omega
+  have h_le : p ^ e2 ≤ q ^ f2 := by
+    rwa [Nat.pow_le_pow_iff_left (by norm_num : 2 ≠ 0)] at h_le_sq
+  have h_factor : (q ^ f2 + p ^ e2) * (q ^ f2 - p ^ e2) = 2 := by
+    rw [← sq_tsub_sq]
+    exact h_eq
+  have hf2_pos : 1 ≤ f2 := by omega
+  have he2_pos : 1 ≤ e2 := by omega
+  have hq_ge : q ^ f2 ≥ q := by
+    have := Nat.pow_le_pow_right hq.one_lt.le hf2_pos
+    rwa [pow_one] at this
+  have hp_ge : p ^ e2 ≥ p := by
+    have := Nat.pow_le_pow_right hp.one_lt.le he2_pos
+    rwa [pow_one] at this
+  have h_sum_ge : q ^ f2 + p ^ e2 ≥ 4 := by
+    omega
+  have h_dvd : q ^ f2 + p ^ e2 ∣ 2 := by
+    use (q ^ f2 - p ^ e2)
+    exact h_factor.symm
+  have h_le_2 : q ^ f2 + p ^ e2 ≤ 2 := Nat.le_of_dvd (by norm_num) h_dvd
+  omega
+
+
+lemma pow_add_two_le (p e : ℕ) (hp : 3 ≤ p) (he : 2 ≤ e) : p ^ e + 4 * p + 4 ≤ (p + 2) ^ e := by
+  induction e, he using Nat.le_induction with
+  | base =>
+    -- e = 2
+    have : (p + 2) ^ 2 = p ^ 2 + 4 * p + 4 := by ring
+    omega
+  | succ e he ih =>
+    have h1 : (p + 2) ^ (e + 1) = (p + 2) ^ e * (p + 2) := by ring
+    rw [h1]
+    have h2 : (p ^ e + 4 * p + 4) * (p + 2) ≤ (p + 2) ^ e * (p + 2) := Nat.mul_le_mul_right (p + 2) ih
+    have h3 : p ^ (e + 1) + 4 * p + 4 ≤ (p ^ e + 4 * p + 4) * (p + 2) := by
+      have h4 : (p ^ e + 4 * p + 4) * (p + 2) = p ^ (e + 1) + p ^ e * 2 + (4 * p + 4) * p + (4 * p + 4) * 2 := by
+        calc (p ^ e + 4 * p + 4) * (p + 2) = p ^ e * p + p ^ e * 2 + (4 * p + 4) * (p + 2) := by ring
+          _ = p ^ (e + 1) + p ^ e * 2 + (4 * p + 4) * p + (4 * p + 4) * 2 := by ring
+      rw [h4]
+      have : 4 * p + 4 ≤ (4 * p + 4) * p + (4 * p + 4) * 2 := by omega
+      omega
+    exact h3.trans h2
+
+
+lemma prime_odd {p : ℕ} (hp : p.Prime) (hp2 : p ≠ 2) : p % 2 = 1 := by
+  cases hp.eq_two_or_odd with
+  | inl h => contradiction
+  | inr h => exact h
+
+lemma q_gt_p_implies_f_lt_e {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (hf : 1 < f) (h : q ^ f - p ^ e = 2) (hqp : p < q) : f < e := by
+  by_contra h_le
+  have h_ge : e ≤ f := not_lt.mp h_le
+  have hp_ne2 := Pillai_p_ne_2 hp hq he h
+  have hq_ne2 := Pillai_q_ne_2 hp hq he hf h
+  have hp_odd : p % 2 = 1 := prime_odd hp hp_ne2
+  have hq_odd : q % 2 = 1 := prime_odd hq hq_ne2
+  have hp2 : p + 2 ≤ q := by omega
+  have hp_ge2 := hp.two_le
+  have hp_ge3 : 3 ≤ p := by omega
+  have he2 : 2 ≤ e := he
+  have h_le_pow : (p + 2) ^ e ≤ q ^ f := by
+    calc (p + 2) ^ e ≤ q ^ e := Nat.pow_le_pow_left hp2 e
+      _ ≤ q ^ f := Nat.pow_le_pow_right (by omega) h_ge
+  have h_bound := pow_add_two_le p e hp_ge3 he2
+  omega
+
+lemma p_gt_q_implies_e_lt_f {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (hf : 1 < f) (h : q ^ f - p ^ e = 2) (hpq : q < p) : e < f := by
+  by_contra h_le
+  have h_ge : f ≤ e := not_lt.mp h_le
+  have hp_ne2 := Pillai_p_ne_2 hp hq he h
+  have hq_ne2 := Pillai_q_ne_2 hp hq he hf h
+  have hp_odd : p % 2 = 1 := prime_odd hp hp_ne2
+  have hq_odd : q % 2 = 1 := prime_odd hq hq_ne2
+  have hq2 : q + 2 ≤ p := by omega
+  have hq_ge2 := hq.two_le
+  have hq_ge3 : 3 ≤ q := by omega
+  have hf2 : 2 ≤ f := hf
+  have h_le_pow : (q + 2) ^ f ≤ p ^ e := by
+    calc (q + 2) ^ f ≤ p ^ f := Nat.pow_le_pow_left hq2 f
+      _ ≤ p ^ e := Nat.pow_le_pow_right (by omega) h_ge
+  have h_bound := pow_add_two_le q f hq_ge3 hf2
+  omega
+
+
+
+lemma pow_three_mod_nine (a : ℕ) : a ^ 3 % 9 = (a % 9) ^ 3 % 9 := by
+  generalize hd : a % 9 = r
+  have ha : a = 9 * (a / 9) + r := by
+    rw [← hd]
+    exact (Nat.div_add_mod a 9).symm
+  rw [ha]
+  have h_eq : (9 * (a / 9) + r) ^ 3 = r ^ 3 + 9 * (81 * (a / 9) ^ 3 + 27 * (a / 9) ^ 2 * r + 3 * (a / 9) * r ^ 2) := by ring
+  rw [h_eq]
+  rw [Nat.add_mul_mod_self_left]
+
+lemma cube_mod_nine_ne_two (q : ℕ) : q ^ 3 % 9 ≠ 2 := by
+  rw [pow_three_mod_nine]
+  have h_mod : q % 9 < 9 := Nat.mod_lt _ (by decide)
+  interval_cases q % 9 <;> decide
+
+
+lemma q_cube_eq_pow_three_add_two_impossible (q e : ℕ) (he : 2 ≤ e) (h : q ^ 3 = 3 ^ e + 2) : False := by
+  have h_div : 9 ∣ 3 ^ e := by
+    use 3 ^ (e - 2)
+    have h_pow : 3 ^ e = 3 ^ 2 * 3 ^ (e - 2) := by
+      rw [← pow_add]
+      have : 2 + (e - 2) = e := Nat.add_sub_of_le he
+      rw [this]
+    rw [h_pow]
+    ring
+  have h_mod : (3 ^ e + 2) % 9 = 2 := by
+    rcases h_div with ⟨d, hd⟩
+    rw [hd, add_comm]
+    have h_mul : 9 * d = d * 9 := by ring
+    rw [h_mul]
+    exact Nat.add_mul_mod_self_right 2 d 9
+  have h_mod2 : q ^ 3 % 9 = 2 := by
+    rw [h, h_mod]
+  exact cube_mod_nine_ne_two q h_mod2
+
+
+lemma square_mod_three_ne_two (q : ℕ) : q ^ 2 % 3 ≠ 2 := by
+  have h_eq : q ^ 2 % 3 = (q % 3) ^ 2 % 3 := by
+    generalize hd : q % 3 = r
+    have ha : q = 3 * (q / 3) + r := by
+      rw [← hd]
+      exact (Nat.div_add_mod q 3).symm
+    rw [ha]
+    have h_pow : (3 * (q / 3) + r) ^ 2 = r ^ 2 + 3 * (3 * (q / 3) ^ 2 + 2 * (q / 3) * r) := by ring
+    rw [h_pow]
+    rw [Nat.add_mul_mod_self_left]
+  rw [h_eq]
+  have h_mod : q % 3 < 3 := Nat.mod_lt _ (by decide)
+  interval_cases q % 3 <;> decide
+
+
+lemma pow_three_add_two_lt_pow_five (f : ℕ) (hf : 3 ≤ f) : 3 ^ (f + 1) + 2 < 5 ^ f := by
+  induction f, hf using Nat.le_induction with
+  | base => decide
+  | succ f hf ih =>
+    have h_pow3 : 3 ^ (f + 1 + 1) + 2 = 3 * (3 ^ (f + 1) + 2) - 4 := by
+      have : 3 ^ (f + 1 + 1) = 3 * 3 ^ (f + 1) := by ring
+      omega
+    rw [h_pow3]
+    have h_pos5 : 0 < 5 ^ f := by positivity
+    have : 3 * (3 ^ (f + 1) + 2) - 4 < 3 * 5 ^ f - 4 := by
+      omega
+    have h_step : 3 * 5 ^ f - 4 < 5 ^ (f + 1) := by
+      have : 5 ^ (f + 1) = 5 * 5 ^ f := by ring
+      omega
+    omega
+
+lemma pow_three_add_two_lt_pow_seven (f : ℕ) (hf : 2 ≤ f) : 3 ^ (f + 1) + 2 < 7 ^ f := by
+  induction f, hf using Nat.le_induction with
+  | base => decide
+  | succ f hf ih =>
+    have h_pow3 : 3 ^ (f + 1 + 1) + 2 = 3 * (3 ^ (f + 1) + 2) - 4 := by
+      have : 3 ^ (f + 1 + 1) = 3 * 3 ^ (f + 1) := by ring
+      omega
+    rw [h_pow3]
+    have h_pos7 : 0 < 7 ^ f := by positivity
+    have : 3 * (3 ^ (f + 1) + 2) - 4 < 3 * 7 ^ f - 4 := by
+      omega
+    have h_step : 3 * 7 ^ f - 4 < 7 ^ (f + 1) := by
+      have : 7 ^ (f + 1) = 7 * 7 ^ f := by ring
+      omega
+    omega
+
+
+lemma pow_three_lt_pow_seven (k : ℕ) (hk : 1 ≤ k) : 3 ^ (2 * k + 1) < 7 ^ (2 * k) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 7 ^ (2 * k) := by positivity
+    calc 3 ^ (2 * (k + 1) + 1) = 9 * 3 ^ (2 * k + 1) := by ring
+      _ < 9 * 7 ^ (2 * k) := by omega
+      _ < 49 * 7 ^ (2 * k) := by omega
+      _ = 7 ^ (2 * (k + 1)) := by ring
+
+
+lemma pow_three_lt_pow_seven_odd (k : ℕ) (hk : 1 ≤ k) : 3 ^ (2 * k + 2) < 7 ^ (2 * k + 1) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 7 ^ (2 * k + 1) := by positivity
+    calc 3 ^ (2 * (k + 1) + 2) = 9 * 3 ^ (2 * k + 2) := by ring
+      _ < 9 * 7 ^ (2 * k + 1) := by omega
+      _ < 49 * 7 ^ (2 * k + 1) := by omega
+      _ = 7 ^ (2 * (k + 1) + 1) := by ring
+
+
+lemma pow_three_lt_pow_seven_even (k : ℕ) (hk : 2 ≤ k) : 3 ^ (2 * k + 2) < 7 ^ (2 * k) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 7 ^ (2 * k) := by positivity
+    calc 3 ^ (2 * (k + 1) + 2) = 9 * 3 ^ (2 * k + 2) := by ring
+      _ < 9 * 7 ^ (2 * k) := by omega
+      _ < 49 * 7 ^ (2 * k) := by omega
+      _ = 7 ^ (2 * (k + 1)) := by ring
+
+lemma pow_three_lt_pow_seven_odd_succ (k : ℕ) (hk : 1 ≤ k) : 3 ^ (2 * k + 3) < 7 ^ (2 * k + 1) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 7 ^ (2 * k + 1) := by positivity
+    calc 3 ^ (2 * (k + 1) + 3) = 9 * 3 ^ (2 * k + 3) := by ring
+      _ < 9 * 7 ^ (2 * k + 1) := by omega
+      _ < 49 * 7 ^ (2 * k + 1) := by omega
+      _ = 7 ^ (2 * (k + 1) + 1) := by ring
+
+
+lemma pow_three_lt_pow_seven_odd_succ2 (k : ℕ) (hk : 2 ≤ k) : 3 ^ (2 * k + 3) < 7 ^ (2 * k) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 7 ^ (2 * k) := by positivity
+    calc 3 ^ (2 * (k + 1) + 3) = 9 * 3 ^ (2 * k + 3) := by ring
+      _ < 9 * 7 ^ (2 * k) := by omega
+      _ < 49 * 7 ^ (2 * k) := by omega
+      _ = 7 ^ (2 * (k + 1)) := by ring
+
+
+lemma pow_five_mod_sixteen (m : ℕ) : 5 ^ (4 * m) % 16 = 1 := by
+  induction m with
+  | zero => decide
+  | succ m ih =>
+    have h1 : 5 ^ (4 * (m + 1)) = 5 ^ (4 * m) * 625 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+
+lemma pow_three_four (k : ℕ) : 3 ^ (4 * k) % 16 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (4 * (k + 1)) = 3 ^ (4 * k) * 81 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+
+lemma pow_three_mod_sixteen (f : ℕ) : 3 ^ f % 16 = 3 ^ (f % 4) % 16 := by
+  have hd : f = 4 * (f / 4) + f % 4 := (Nat.div_add_mod f 4).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (4 * (f / 4) + f % 4) = 3 ^ (4 * (f / 4)) * 3 ^ (f % 4) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_four (f / 4)]
+  simp
+
+lemma pow_three_mod_sixteen_eq_three (f : ℕ) (h : 3 ^ f % 16 = 3) : f % 4 = 1 := by
+  rw [pow_three_mod_sixteen] at h
+  have h_mod : f % 4 < 4 := Nat.mod_lt _ (by decide)
+  interval_cases f % 4
+  · omega
+  · rfl
+  · omega
+  · omega
+
+lemma pow_three_four_mod_five (k : ℕ) : 3 ^ (4 * k) % 5 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (4 * (k + 1)) = 3 ^ (4 * k) * 81 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+lemma pow_three_mod_five (f : ℕ) : 3 ^ f % 5 = 3 ^ (f % 4) % 5 := by
+  have hd : f = 4 * (f / 4) + f % 4 := (Nat.div_add_mod f 4).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (4 * (f / 4) + f % 4) = 3 ^ (4 * (f / 4)) * 3 ^ (f % 4) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_four_mod_five (f / 4)]
+  simp
+
+lemma pow_three_mod_five_eq_two (f : ℕ) (h : 3 ^ f % 5 = 2) : f % 4 = 3 := by
+  rw [pow_three_mod_five] at h
+  have h_mod : f % 4 < 4 := Nat.mod_lt _ (by decide)
+  interval_cases f % 4
+  · omega
+  · omega
+  · omega
+  · rfl
+
+lemma k_cannot_be_even (f k : ℕ) (hk : 2 ≤ k) (h_even : 2 ∣ k) (h : 3 ^ f = 5 ^ (2 * k) + 2) : False := by
+  rcases h_even with ⟨m, rfl⟩
+  have h_eq : 2 * (2 * m) = 4 * m := by ring
+  have hm : 1 ≤ m := by omega
+  have h_eq2 : 3 ^ f = 5 ^ (4 * m) + 2 := by
+    rw [← h_eq]
+    exact h
+  have h_mod16 : (5 ^ (4 * m) + 2) % 16 = 3 := by
+    have h_pow16 : 5 ^ (4 * m) % 16 = 1 := pow_five_mod_sixteen m
+    rw [Nat.add_mod, h_pow16]
+  have h_mod16_3 : 3 ^ f % 16 = 3 := by
+    rw [h_eq2, h_mod16]
+  have h_f1 : f % 4 = 1 := pow_three_mod_sixteen_eq_three f h_mod16_3
+  have h_div5 : 5 ∣ 5 ^ (4 * m) := by
+    use 5 ^ (4 * m - 1)
+    have h_pow : 5 ^ (4 * m) = 5 ^ 1 * 5 ^ (4 * m - 1) := by
+      rw [← pow_add]
+      have : 1 + (4 * m - 1) = 4 * m := Nat.add_sub_of_le (by omega)
+      rw [this]
+    rw [h_pow]
+    ring
+  have h_mod5 : (5 ^ (4 * m) + 2) % 5 = 2 := by
+    rcases h_div5 with ⟨d, hd⟩
+    rw [hd, add_comm]
+    have h_mul : 5 * d = d * 5 := by ring
+    rw [h_mul]
+    exact Nat.add_mul_mod_self_right 2 d 5
+  have h_mod5_3 : 3 ^ f % 5 = 2 := by
+    rw [h_eq2, h_mod5]
+  have h_f3 : f % 4 = 3 := pow_three_mod_five_eq_two f h_mod5_3
+  omega
+
+
+
+lemma pow_three_one_hundred (k : ℕ) : 3 ^ (100 * k) % 125 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (100 * (k + 1)) = 3 ^ (100 * k) * (3 ^ 100) := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+    decide
+
+
+
+lemma pow_three_mod_one_hundred_and_twenty_five (f : ℕ) : 3 ^ f % 125 = 3 ^ (f % 100) % 125 := by
+  have hd : f = 100 * (f / 100) + f % 100 := (Nat.div_add_mod f 100).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (100 * (f / 100) + f % 100) = 3 ^ (100 * (f / 100)) * 3 ^ (f % 100) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_one_hundred (f / 100)]
+  simp
+
+
+lemma pow_three_mod_one_hundred_and_twenty_five_eq_two (f : ℕ) (h : 3 ^ f % 125 = 2) : f % 100 = 43 := by
+  rw [pow_three_mod_one_hundred_and_twenty_five] at h
+  have h_mod : f % 100 < 100 := Nat.mod_lt _ (by decide)
+  let r : Fin 100 := ⟨f % 100, h_mod⟩
+  have h2 : 3 ^ r.val % 125 = 2 := h
+  have h3 : r.val = 43 := by
+    revert h2
+    generalize r = r'
+    revert r'
+    decide
+  exact h3
+
+lemma pow_three_three_mod_thirteen (k : ℕ) : 3 ^ (3 * k) % 13 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (3 * (k + 1)) = 3 ^ (3 * k) * 27 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+
+lemma pow_three_mod_thirteen (f : ℕ) : 3 ^ f % 13 = 3 ^ (f % 3) % 13 := by
+  have hd : f = 3 * (f / 3) + f % 3 := (Nat.div_add_mod f 3).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (3 * (f / 3) + f % 3) = 3 ^ (3 * (f / 3)) * 3 ^ (f % 3) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_three_mod_thirteen (f / 3)]
+  simp
+
+lemma pow_three_mod_thirteen_eq_one (f : ℕ) (h : 3 ^ f % 13 = 1) : f % 3 = 0 := by
+  rw [pow_three_mod_thirteen] at h
+  have h_mod : f % 3 < 3 := Nat.mod_lt _ (by decide)
+  interval_cases f % 3
+  · rfl
+  · omega
+  · omega
+
+
+lemma pow_twenty_five_odd (m : ℕ) : 25 ^ (2 * m + 1) % 13 = 12 := by
+  induction m with
+  | zero => decide
+  | succ m ih =>
+    have h1 : 25 ^ (2 * (m + 1) + 1) = 25 ^ (2 * m + 1) * 625 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+
+lemma pow_three_lt_pow_five_k (k : ℕ) (hk : 2 ≤ k) : 3 ^ (2 * k + 1) < 5 ^ (2 * k) := by
+  induction k, hk using Nat.le_induction with
+  | base => decide
+  | succ k hk ih =>
+    have h_pos : 0 < 5 ^ (2 * k) := by positivity
+    calc 3 ^ (2 * (k + 1) + 1) = 9 * 3 ^ (2 * k + 1) := by ring
+      _ < 9 * 5 ^ (2 * k) := by omega
+      _ < 25 * 5 ^ (2 * k) := by omega
+      _ = 5 ^ (2 * (k + 1)) := by ring
+
+
+lemma pow_three_six_mod_seven (k : ℕ) : 3 ^ (6 * k) % 7 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (6 * (k + 1)) = 3 ^ (6 * k) * 729 := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+
+lemma pow_three_mod_seven (f : ℕ) : 3 ^ f % 7 = 3 ^ (f % 6) % 7 := by
+  have hd : f = 6 * (f / 6) + f % 6 := (Nat.div_add_mod f 6).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (6 * (f / 6) + f % 6) = 3 ^ (6 * (f / 6)) * 3 ^ (f % 6) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_six_mod_seven (f / 6)]
+  simp
+
+
+lemma pow_mod (a e d : ℕ) : (a ^ e) % d = (a % d) ^ e % d := by
+  induction e with
+  | zero => rfl
+  | succ e ih =>
+    rw [pow_succ, pow_succ]
+    rw [Nat.mul_mod (a ^ e) a d]
+    rw [Nat.mul_mod ((a % d) ^ e) (a % d) d]
+    rw [ih]
+    rw [Nat.mod_mod]
+
+lemma pow_twenty_five_even (m : ℕ) : 25 ^ (2 * m) % 13 = 1 := by
+  induction m with
+  | zero => rfl
+  | succ m ih =>
+    have h_exp : 2 * (m + 1) = 2 * m + 2 := by omega
+    have : 25 ^ (2 * (m + 1)) = 25 ^ (2 * m) * 625 := by
+      rw [h_exp, pow_add]
+      rfl
+    rw [this, Nat.mul_mod, ih]
+
+
+lemma helper_m_mod3_0 (m : ℕ) (h : (2 * m + 1) % 3 = 0) : 2 * m + 1 = 3 * ((2 * m + 1) / 3) := by omega
+lemma helper_m_mod3_2 (m : ℕ) (h : (2 * m + 1) % 3 = 2) : 2 * m + 1 = 3 * ((2 * m + 1) / 3) + 2 := by omega
+lemma helper_ge_two (k : ℕ) (h : 7 ≤ k) : 2 ≤ k := by omega
+lemma ge_two_of_2m_add_one (m : ℕ) (h : 2 * m + 1 ≠ 1) : 2 ≤ 2 * m + 1 := by omega
+lemma helper_le_f (m f : ℕ) (h : 2 * (2 * m + 1) < f) : 2 * (2 * m + 1) + 1 ≤ f := by omega
+
+lemma pow_three_fifty_mod_151 (k : ℕ) : 3 ^ (50 * k) % 151 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 3 ^ (50 * (k + 1)) = 3 ^ (50 * k) * (3 ^ 50) := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+    decide
+
+lemma pow_three_mod_151 (f : ℕ) : 3 ^ f % 151 = 3 ^ (f % 50) % 151 := by
+  have hd : f = 50 * (f / 50) + f % 50 := (Nat.div_add_mod f 50).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (50 * (f / 50) + f % 50) = 3 ^ (50 * (f / 50)) * 3 ^ (f % 50) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_three_fifty_mod_151 (f / 50)]
+  simp
+
+lemma pow_five_three_hundred_mod_151 (k : ℕ) : 5 ^ (300 * k) % 151 = 1 := by
+  induction k with
+  | zero => decide
+  | succ k ih =>
+    have h1 : 5 ^ (300 * (k + 1)) = 5 ^ (300 * k) * (5 ^ 300) := by ring
+    rw [h1]
+    rw [Nat.mul_mod, ih]
+    decide
+
+lemma pow_five_mod_151 (e : ℕ) : 5 ^ e % 151 = 5 ^ (e % 300) % 151 := by
+  have hd : e = 300 * (e / 300) + e % 300 := (Nat.div_add_mod e 300).symm
+  nth_rw 1 [hd]
+  have h1 : 5 ^ (300 * (e / 300) + e % 300) = 5 ^ (300 * (e / 300)) * 5 ^ (e % 300) := by ring
+  rw [h1]
+  rw [Nat.mul_mod, pow_five_three_hundred_mod_151 (e / 300)]
+  simp
+
+lemma no_solution_helper (s : Fin 300) (hs : s.val % 12 = 2) :
+    (3 ^ 43 % 151 + 151 - 5 ^ s.val % 151) % 151 ≠ 2 := by
+  revert s
+  decide
+
+lemma mod_sub_mod_eq (B : ℕ) : ((B + 2) % 151 + 151 - B % 151) % 151 = 2 := by
+  have h_mod : B % 151 < 151 := Nat.mod_lt B (by decide)
+  have h_add : (B + 2) % 151 = (B % 151 + 2) % 151 := Nat.add_mod B 2 151
+  generalize hx : B % 151 = x
+  rw [hx] at h_mod h_add
+  rw [h_add]
+  interval_cases x <;> rfl
+
+
+
+lemma Pillai_case_q_eq3_p_eq5_even_e {e f : ℕ} (he : 1 < e) (hf : 1 < f) (h : 3 ^ f - 5 ^ e = 2) (he_even : 2 ∣ e) (h_f_ne3 : f ≠ 3) : False := by
+  have hp : (5 : ℕ).Prime := by decide
+  have hq : (3 : ℕ).Prime := by decide
+  have h_gt : (3 : ℕ) < (5 : ℕ) := by decide
+  have h_ef : e < f := p_gt_q_implies_e_lt_f hp hq he hf h h_gt
+  have h_e_cases : e = 2 ∨ 2 < e := by omega
+  rcases h_e_cases with rfl | he_gt2
+  · -- e = 2
+    have : 3 ^ f = 27 := by omega
+    have : f = 3 := by
+      by_contra h_ne3
+      have : f < 3 ∨ 3 < f := by omega
+      rcases this with h_lt' | h_gt'
+      · interval_cases f
+      · have : 3 ^ 4 ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) (by omega)
+        omega
+    contradiction
+  · -- e ≥ 3
+    obtain ⟨k, rfl⟩ := he_even
+    have hk : 2 ≤ k := by omega
+    have h_even : 2 ∣ k := by
+      by_contra h_k_odd
+      have hk_odd : ∃ m, k = 2 * m + 1 := ⟨k / 2, by omega⟩
+      obtain ⟨m, rfl⟩ := hk_odd
+      have h_eq5 : 3 ^ f = 5 ^ (2 * (2 * m + 1)) + 2 := by omega
+      have h_e_ge : 2 * (2 * m + 1) ≥ 3 := by omega
+      have h_div125 : 125 ∣ 5 ^ (2 * (2 * m + 1)) := by
+        use 5 ^ (2 * (2 * m + 1) - 3)
+        have : 2 * (2 * m + 1) = 3 + (2 * (2 * m + 1) - 3) := by omega
+        nth_rw 1 [this]
+        rw [pow_add]
+        have h_eq_125 : 5 ^ 3 = 125 := by rfl
+        rw [h_eq_125]
+      have h_mod125 : (5 ^ (2 * (2 * m + 1)) + 2) % 125 = 2 := by
+        rcases h_div125 with ⟨d, hd⟩
+        rw [hd, add_comm]
+        have : 125 * d = d * 125 := by ring
+        rw [this]
+        exact Nat.add_mul_mod_self_right 2 d 125
+      have h_mod125_3 : 3 ^ f % 125 = 2 := by omega
+      have h_f100 : f % 100 = 43 := pow_three_mod_one_hundred_and_twenty_five_eq_two f h_mod125_3
+      
+      have h_pow25_odd : 25 ^ (2 * m + 1) % 13 = 12 := pow_twenty_five_odd m
+      have h_5e_mod : 5 ^ (2 * (2 * m + 1)) % 13 = 12 := by
+        have : 5 ^ (2 * (2 * m + 1)) = 25 ^ (2 * m + 1) := by
+          rw [pow_mul]
+          rfl
+        rw [this, h_pow25_odd]
+      have h_mod13 : (5 ^ (2 * (2 * m + 1)) + 2) % 13 = 1 := by
+        rw [Nat.add_mod, h_5e_mod]
+      have h_3f : 3 ^ f % 13 = 1 := by omega
+      have h_f3 : f % 3 = 0 := pow_three_mod_thirteen_eq_one f h_3f
+      
+      have h_f6 : f % 6 = 3 := by
+        have h_f2 : f % 2 = 1 := by
+          have h_100_div : 100 = 2 * 50 := by decide
+          have h_f_mod2 : f % 2 = f % 100 % 2 := by
+            rw [h_100_div]
+            exact (Nat.mod_mul_right_mod f 2 50).symm
+          rw [h_f_mod2, h_f100]
+        omega
+      
+      have h_3f_mod7 : 3 ^ f % 7 = 6 := by
+        rw [pow_three_mod_seven f, h_f6]
+        decide
+      
+      have h_5e_mod7 : 5 ^ (2 * (2 * m + 1)) % 7 = 4 := by
+        have : 3 ^ f % 7 = (5 ^ (2 * (2 * m + 1)) + 2) % 7 := by rw [h_eq5]
+        rw [h_3f_mod7] at this
+        rw [Nat.add_mod] at this
+        generalize hx : 5 ^ (2 * (2 * m + 1)) % 7 = x
+        rw [hx] at this
+        have hx_lt : 5 ^ (2 * (2 * m + 1)) % 7 < 7 := Nat.mod_lt (5 ^ (2 * (2 * m + 1))) (Nat.succ_pos 6)
+        rw [hx] at hx_lt
+        clear h_f_ne3 h_eq5 h_e_ge h_div125 h_mod125 h_mod125_3 h_f100 h_pow25_odd h_5e_mod h_mod13 h_3f h_f3 h_f6 h_3f_mod7 hx
+        omega
+      
+      have h_k_mod3 : (2 * m + 1) % 3 = 1 := by
+        have h_pow4 : 4 ^ (2 * m + 1) % 7 = 4 := by
+          have h1 : 5 ^ (2 * (2 * m + 1)) = (5 ^ 2) ^ (2 * m + 1) := by rw [pow_mul]
+          have h2 : (5 ^ 2) ^ (2 * m + 1) % 7 = (25 % 7) ^ (2 * m + 1) % 7 := _root_.pow_mod 25 (2 * m + 1) 7
+          have h3 : 25 % 7 = 4 := rfl
+          rw [h1, h2, h3] at h_5e_mod7
+          exact h_5e_mod7
+        have h_mod : (2 * m + 1) % 3 < 3 := Nat.mod_lt _ (by decide)
+        interval_cases h_eq : (2 * m + 1) % 3
+        · -- mod 3 = 0
+          have : 4 ^ (2 * m + 1) % 7 = 1 := by
+            have hd : 2 * m + 1 = 3 * ((2 * m + 1) / 3) := helper_m_mod3_0 m h_eq
+            rw [hd]
+            have h_four_cube : 4 ^ (3 * ((2 * m + 1) / 3)) = (4 ^ 3) ^ ((2 * m + 1) / 3) := by rw [pow_mul]
+            rw [h_four_cube]
+            rw [_root_.pow_mod]
+            have h_four_cube_mod : 4 ^ 3 % 7 = 1 := rfl
+            rw [h_four_cube_mod, one_pow]
+            rfl
+          rw [this] at h_pow4
+          contradiction
+        · rfl
+        · -- mod 3 = 2
+          have : 4 ^ (2 * m + 1) % 7 = 2 := by
+            have hd : 2 * m + 1 = 3 * ((2 * m + 1) / 3) + 2 := helper_m_mod3_2 m h_eq
+            rw [hd, pow_add]
+            have : 4 ^ (3 * ((2 * m + 1) / 3)) = (4 ^ 3) ^ ((2 * m + 1) / 3) := by rw [pow_mul]
+            rw [this]
+            rw [Nat.mul_mod]
+            rw [_root_.pow_mod]
+            have h_four_cube : 4 ^ 3 % 7 = 1 := rfl
+            rw [h_four_cube, one_pow]
+            decide
+          revert h_pow4; rw [this]; decide
+      
+      have h_k_ge7 : 2 * m + 1 ≥ 7 := by
+        have : 2 * m + 1 ≠ 1 := by
+          intro h_eq
+          have h_eq2 : 2 * (2 * m + 1) = 2 := by rw [h_eq]
+          have h_lt : 2 < 2 := by
+            nth_rw 2 [← h_eq2]
+            exact he_gt2
+          exact lt_irrefl 2 h_lt
+        have : 2 * m + 1 ≠ 3 := by
+          intro h_eq
+          rw [h_eq] at h_k_mod3
+          contradiction
+        have : 2 * m + 1 ≠ 5 := by
+          intro h_eq
+          rw [h_eq] at h_k_mod3
+          contradiction
+        clear he hf h hp hq h_gt h_ef he_gt2 hk h_k_odd h_eq5 h_e_ge h_div125 h_mod125 h_mod125_3 h_f100 h_pow25_odd h_5e_mod h_mod13 h_3f h_f3 h_f6 h_3f_mod7 h_5e_mod7
+        omega
+      
+      have h_m_mod3 : m % 3 = 0 := by omega
+      have h_m_eq : m = 3 * (m / 3) := by
+        have := Nat.div_add_mod m 3
+        omega
+      have h_e_eq : 2 * (2 * m + 1) = 12 * (m / 3) + 2 := by omega
+      have h_e_mod12 : (2 * (2 * m + 1)) % 12 = 2 := by
+        rw [h_e_eq]
+        omega
+
+      have h_mod151 : (3 ^ f % 151 + 151 - 5 ^ (2 * (2 * m + 1)) % 151) % 151 = 2 := by
+        generalize hA : 3 ^ f = A
+        generalize hB : 5 ^ (2 * (2 * m + 1)) = B
+        have h_eq : A = B + 2 := by
+          rw [← hA, ← hB]
+          exact h_eq5
+        rw [h_eq]
+        exact mod_sub_mod_eq B
+
+      have h_mod151_not : (3 ^ f % 151 + 151 - 5 ^ (2 * (2 * m + 1)) % 151) % 151 ≠ 2 := by
+        rw [pow_three_mod_151 f]
+        rw [pow_five_mod_151 (2 * (2 * m + 1))]
+        let s : Fin 300 := ⟨(2 * (2 * m + 1)) % 300, Nat.mod_lt (2 * (2 * m + 1)) (by decide)⟩
+        have hs : s.val % 12 = 2 := by
+          change ((2 * (2 * m + 1)) % 300) % 12 = 2
+          have h_eq : (12 * 25) = 300 := by rfl
+          rw [← h_eq]
+          rw [Nat.mod_mul_right_mod (2 * (2 * m + 1)) 12 25]
+          exact h_e_mod12
+        have h_no := no_solution_helper s hs
+        have h_fr : f % 50 = 43 := by
+          have : f % 100 = 43 := h_f100
+          omega
+        change (3 ^ (f % 50) % 151 + 151 - 5 ^ (((2 * (2 * m + 1)) % 300)) % 151) % 151 ≠ 2
+        rw [h_fr]
+        exact h_no
+
+      contradiction
+    have h_eq5 : 3 ^ f = 5 ^ (2 * k) + 2 := by
+      generalize hA : 3 ^ f = A
+      generalize hB : 5 ^ (2 * k) = B
+      have h_simp : A - B = 2 := by
+        rw [← hA, ← hB]
+        exact h
+      omega
+    exact k_cannot_be_even f k hk h_even h_eq5
+
+lemma Pillai_case_q_eq3_p_eq5_odd_e {e f : ℕ} (he : 1 < e) (hf : 1 < f) (h : 3 ^ f - 5 ^ e = 2) (he_odd : ¬ 2 ∣ e) (h_f_ne3 : f ≠ 3) : False := by
+  have hp : (5 : ℕ).Prime := by decide
+  have hq : (3 : ℕ).Prime := by decide
+  have h_gt : (3 : ℕ) < (5 : ℕ) := by decide
+  have h_ef : e < f := p_gt_q_implies_e_lt_f hp hq he hf h h_gt
+  have h_eq5 : 3 ^ f = 5 ^ e + 2 := by
+    have h_simp : 3 ^ f - 5 ^ e = 2 := h
+    omega
+  have h_mod125 : (5 ^ e + 2) % 125 = 2 := by
+    have h_div125 : 125 ∣ 5 ^ e := by
+      use 5 ^ (e - 3)
+      have h_eq : e = 3 + (e - 3) := by omega
+      nth_rw 1 [h_eq]
+      rw [pow_add]
+      have h_eq_125 : 5 ^ 3 = 125 := by rfl
+      rw [h_eq_125]
+    rcases h_div125 with ⟨d, hd⟩
+    rw [hd, add_comm]
+    have : 125 * d = d * 125 := by ring
+    rw [this]
+    exact Nat.add_mul_mod_self_right 2 d 125
+  have h_mod125_3 : 3 ^ f % 125 = 2 := by omega
+  have h_f100 : f % 100 = 43 := pow_three_mod_one_hundred_and_twenty_five_eq_two f h_mod125_3
+  have : ∃ k, e = 2 * k + 1 := ⟨e / 2, by omega⟩
+  obtain ⟨k, rfl⟩ := this
+  have h_eq : 5 ^ (2 * k + 1) = 25 ^ k * 5 := by
+    rw [pow_add]
+    have : 5 ^ (2 * k) = (5 ^ 2) ^ k := by rw [pow_mul]
+    rw [this]
+    rfl
+  have h_k_cases : 2 ∣ k ∨ ¬ 2 ∣ k := Classical.em (2 ∣ k)
+  have h_5e_mod : 5 ^ (2 * k + 1) % 13 = 5 ∨ 5 ^ (2 * k + 1) % 13 = 8 := by
+    rcases h_k_cases with ⟨m, rfl⟩ | h_k_odd
+    · -- k is even
+      have h_pow25_even : 25 ^ (2 * m) % 13 = 1 := pow_twenty_five_even m
+      left
+      rw [h_eq]
+      have : 25 ^ (2 * m) * 5 = 5 * 25 ^ (2 * m) := by ring
+      rw [this, Nat.mul_mod, h_pow25_even]
+    · -- k is odd
+      have : ∃ m, k = 2 * m + 1 := ⟨k / 2, by omega⟩
+      obtain ⟨m, rfl⟩ := this
+      have h_pow25_odd : 25 ^ (2 * m + 1) % 13 = 12 := pow_twenty_five_odd m
+      right
+      rw [h_eq]
+      have : 25 ^ (2 * m + 1) * 5 = 5 * 25 ^ (2 * m + 1) := by ring
+      rw [this, Nat.mul_mod, h_pow25_odd]
+  have h_3f_mod13 : 3 ^ f % 13 = 1 ∨ 3 ^ f % 13 = 3 ∨ 3 ^ f % 13 = 9 := by
+    rw [pow_three_mod_thirteen f]
+    have h_mod : f % 3 < 3 := Nat.mod_lt _ (by decide)
+    interval_cases f % 3 <;> decide
+  have h_5e_add2_mod13 : (5 ^ (2 * k + 1) + 2) % 13 = 7 ∨ (5 ^ (2 * k + 1) + 2) % 13 = 10 := by
+    rcases h_5e_mod with h5 | h8
+    · left
+      rw [Nat.add_mod, h5]
+    · right
+      rw [Nat.add_mod, h8]
+  omega
+
+
+lemma Pillai_case_q_eq3_p_eq5 {e f : ℕ} (he : 1 < e) (hf : 1 < f) (h : 3 ^ f - 5 ^ e = 2) : e = 2 ∧ f = 3 := by
+  have hp : (5 : ℕ).Prime := by decide
+  have hq : (3 : ℕ).Prime := by decide
+  have h_gt : (3 : ℕ) < (5 : ℕ) := by decide
+  have h_f3 : f = 3 := by
+    by_contra h_f_ne3
+    have h_ef : e < f := p_gt_q_implies_e_lt_f hp hq he hf h h_gt
+    have h_e_cases : e = 2 ∨ 2 < e := by omega
+    rcases h_e_cases with rfl | he_gt2
+    · -- e = 2
+      have : 3 ^ f = 27 := by omega
+      have : f = 3 := by
+        by_contra h_ne3
+        have : f < 3 ∨ 3 < f := by omega
+        rcases this with h_lt' | h_gt'
+        · interval_cases f
+        · have : 3 ^ 4 ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) (by omega)
+          omega
+      contradiction
+    · -- e ≥ 3
+      have h_e_even_or_odd : 2 ∣ e ∨ ¬ 2 ∣ e := Classical.em (2 ∣ e)
+      rcases h_e_even_or_odd with he_even | he_odd
+      · exact Pillai_case_q_eq3_p_eq5_even_e he hf h he_even h_f_ne3
+      · exact Pillai_case_q_eq3_p_eq5_odd_e he hf h he_odd h_f_ne3
+  have h_e2 : e = 2 := by
+    by_contra h_ne2
+    have : e < 2 ∨ 2 < e := by omega
+    rcases this with h_lt' | h_gt'
+    · interval_cases e
+    · have h_3f : 3 ^ f = 27 := by rw [h_f3]; rfl
+      have h_5e_lt : 5 ^ e < 27 := by omega
+      have h_5e_ge : 125 ≤ 5 ^ e := by
+        calc 125 = 5 ^ 3 := by rfl
+          _ ≤ 5 ^ e := Nat.pow_le_pow_right (by decide) (by omega)
+      omega
+  refine ⟨h_e2, h_f3⟩
+
+
+
+
+
+
+
+lemma pow_three_mod_25 (e : ℕ) : 3 ^ e % 25 = 3 ^ (e % 20) % 25 := by
+  have hd : e = 20 * (e / 20) + e % 20 := (Nat.div_add_mod e 20).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (20 * (e / 20) + e % 20) = 3 ^ (20 * (e / 20)) * 3 ^ (e % 20) := by ring
+  rw [h1, Nat.mul_mod]
+  have h2 : 3 ^ (20 * (e / 20)) % 25 = 1 := by
+    induction e / 20 with
+    | zero => decide
+    | succ n ih =>
+      have : 20 * (n + 1) = 20 * n + 20 := by ring
+      rw [this, pow_add, Nat.mul_mod, ih]
+      decide
+  rw [h2]
+  simp
+
+lemma e_mod_20_eq_13 (e : ℕ) (h : 3 ^ e % 25 = 23) : e % 20 = 13 := by
+  have h_mod := pow_three_mod_25 e
+  rw [h_mod] at h
+  revert h
+  have h_lt : e % 20 < 20 := Nat.mod_lt e (by decide)
+  revert h_lt
+  generalize e % 20 = y
+  intro h_lt h
+  interval_cases y <;> (revert h; decide)
+
+lemma e_mod_5_eq_3 (e : ℕ) (h : e % 20 = 13) : e % 5 = 3 := by
+  have : e = 20 * (e / 20) + e % 20 := (Nat.div_add_mod e 20).symm
+  rw [this, h]
+  omega
+
+lemma pow_three_mod_11 (e : ℕ) : 3 ^ e % 11 = 3 ^ (e % 5) % 11 := by
+  have hd : e = 5 * (e / 5) + e % 5 := (Nat.div_add_mod e 5).symm
+  nth_rw 1 [hd]
+  have h1 : 3 ^ (5 * (e / 5) + e % 5) = 3 ^ (5 * (e / 5)) * 3 ^ (e % 5) := by ring
+  rw [h1, Nat.mul_mod]
+  have h2 : 3 ^ (5 * (e / 5)) % 11 = 1 := by
+    induction e / 5 with
+    | zero => decide
+    | succ n ih =>
+      have : 5 * (n + 1) = 5 * n + 5 := by ring
+      rw [this, pow_add, Nat.mul_mod, ih]
+      decide
+  rw [h2]
+  simp
+
+lemma pow_three_mod_11_eq_five (e : ℕ) (h : e % 5 = 3) : 3 ^ e % 11 = 5 := by
+  rw [pow_three_mod_11, h]
+  decide
+
+lemma pow_five_mod_11 (f : ℕ) : 5 ^ f % 11 = 5 ^ (f % 5) % 11 := by
+  have hd : f = 5 * (f / 5) + f % 5 := (Nat.div_add_mod f 5).symm
+  nth_rw 1 [hd]
+  have h1 : 5 ^ (5 * (f / 5) + f % 5) = 5 ^ (5 * (f / 5)) * 5 ^ (f % 5) := by ring
+  rw [h1, Nat.mul_mod]
+  have h2 : 5 ^ (5 * (f / 5)) % 11 = 1 := by
+    induction f / 5 with
+    | zero => decide
+    | succ n ih =>
+      have : 5 * (n + 1) = 5 * n + 5 := by ring
+      rw [this, pow_add, Nat.mul_mod, ih]
+      decide
+  rw [h2]
+  simp
+
+lemma pow_five_mod_11_ne_seven (f : ℕ) : 5 ^ f % 11 ≠ 7 := by
+  rw [pow_five_mod_11]
+  have h_lt : f % 5 < 5 := Nat.mod_lt f (by decide)
+  revert h_lt
+  generalize f % 5 = y
+  intro h_lt
+  interval_cases y <;> decide
+
+lemma pillai_case_five_f_three_e_impossible (e f : ℕ) (hf : 2 ≤ f) (h : 5 ^ f - 3 ^ e = 2) : False := by
+  have h_eq : 5 ^ f = 3 ^ e + 2 := by omega
+  have h_mod_25 : 5 ^ f % 25 = 0 := by
+    have hd : f = (f - 2) + 2 := by omega
+    nth_rw 1 [hd]
+    rw [pow_add]
+    have h_eq2 : 5 ^ (f - 2) * 5 ^ 2 = 25 * 5 ^ (f - 2) := by ring
+    rw [h_eq2]
+    exact Nat.mul_mod_right 25 (5 ^ (f - 2))
+  have h_eq_mod : (3 ^ e + 2) % 25 = 0 := by
+    rw [← h_eq, h_mod_25]
+  have h_three_mod : 3 ^ e % 25 = 23 := by
+    omega
+  have h_e_mod_20 := e_mod_20_eq_13 e h_three_mod
+  have h_e_mod_5 := e_mod_5_eq_3 e h_e_mod_20
+  have h_three_mod_11 := pow_three_mod_11_eq_five e h_e_mod_5
+  have h_eq_mod_11 : 5 ^ f % 11 = 7 := by
+    rw [h_eq]
+    omega
+  exact pow_five_mod_11_ne_seven f h_eq_mod_11
+
+lemma Pillai_2_prime_powers {p e q f : ℕ} (hp : p.Prime) (hq : q.Prime) (he : 1 < e) (hf : 1 < f) (h : q ^ f - p ^ e = 2) : p = 5 ∧ e = 2 ∧ q = 3 ∧ f = 3 := by
+  have h_ne : p ≠ q := by
+    intro h_eq
+    exact Pillai_not_eq hp he h h_eq
+  have h_cases : p < q ∨ q < p := by omega
+  rcases h_cases with h_lt | h_gt
+  · -- Case p < q
+    exfalso
+    have h_fe : f < e := q_gt_p_implies_f_lt_e hp hq he hf h h_lt
+    have hp_ne2 : p ≠ 2 := Pillai_p_ne_2 hp hq he h
+    have hp_ge3 : 3 ≤ p := by
+      have := hp.two_le
+      omega
+    have h_p_cases : p = 3 ∨ 3 < p := by omega
+    rcases h_p_cases with rfl | hp_gt3
+    · -- Subcase p = 3
+      have hq_ne2 : q ≠ 2 := Pillai_q_ne_2 hp hq he hf h
+      have hq_ge5 : 5 ≤ q := by
+        by_contra h_lt
+        have : q < 5 := not_le.mp h_lt
+        revert hq
+        interval_cases q <;> decide
+      have h_f_cases : f = 2 ∨ 2 < f := by omega
+      rcases h_f_cases with rfl | hf_gt2
+      · -- f = 2
+        have h_eq2 : q ^ 2 = 3 ^ e + 2 := by omega
+        have h_div3 : 3 ∣ 3 ^ e := by
+          use 3 ^ (e - 1)
+          have : e = (e - 1) + 1 := (Nat.sub_add_cancel (by omega)).symm
+          nth_rw 1 [this]
+          ring
+        have h_mod3 : (3 ^ e + 2) % 3 = 2 := by
+          rcases h_div3 with ⟨d, hd⟩
+          rw [hd, add_comm]
+          have : 3 * d = d * 3 := by ring
+          rw [this]
+          exact Nat.add_mul_mod_self_right 2 d 3
+        have h_q_mod : q ^ 2 % 3 = 2 := by
+          rw [h_eq2, h_mod3]
+        exact square_mod_three_ne_two q h_q_mod
+      · -- f ≥ 3
+        have h_f_even_or_odd : 2 ∣ f ∨ ¬ 2 ∣ f := Classical.em (2 ∣ f)
+        rcases h_f_even_or_odd with ⟨j, rfl⟩ | h_f_odd
+        · -- f is even
+          have h_eq2 : (q ^ j) ^ 2 = 3 ^ e + 2 := by
+            rw [← pow_mul, mul_comm]
+            omega
+          have h_div3 : 3 ∣ 3 ^ e := by
+            use 3 ^ (e - 1)
+            have : e = (e - 1) + 1 := (Nat.sub_add_cancel (by omega)).symm
+            nth_rw 1 [this]
+            ring
+          have h_mod3 : (3 ^ e + 2) % 3 = 2 := by
+            rcases h_div3 with ⟨d, hd⟩
+            rw [hd, add_comm]
+            have : 3 * d = d * 3 := by ring
+            rw [this]
+            exact Nat.add_mul_mod_self_right 2 d 3
+          have h_q_mod : (q ^ j) ^ 2 % 3 = 2 := by
+            rw [h_eq2, h_mod3]
+          exact square_mod_three_ne_two (q ^ j) h_q_mod
+        · -- f is odd
+          have h_f_cases : f = 3 ∨ 3 < f := by omega
+          rcases h_f_cases with rfl | h_f_gt3
+          · -- f = 3
+            have h_eq : q ^ 3 = 3 ^ e + 2 := by omega
+            exact q_cube_eq_pow_three_add_two_impossible q e (by omega) h_eq
+          · -- f > 3
+            have he_ge : e ≥ f + 1 := by omega
+            have hq_cases : q = 5 ∨ 5 < q := by
+              have : q ≠ 4 := by rintro rfl; revert hq; decide
+              omega
+            rcases hq_cases with rfl | hq_gt5
+            · -- q = 5
+              have h_diff_53 : 5 ^ f - 3 ^ e = 2 := by omega
+              exact pillai_case_five_f_three_e_impossible e f (by omega) h_diff_53
+            · -- q ≥ 7
+              have hq7 : 7 ≤ q := by
+                have : q ≠ 6 := by rintro rfl; revert hq; decide
+                omega
+              have h_eq : q ^ f = 3 ^ e + 2 := by omega
+              have h_lt_pow : 3 ^ (f + 1) + 2 < 7 ^ f := pow_three_add_two_lt_pow_seven f (by omega)
+              have h_le_pow : 3 ^ (f + 1) ≤ 3 ^ e := Nat.pow_le_pow_right (by decide) he_ge
+              have h_le_q : 7 ^ f ≤ q ^ f := Nat.pow_le_pow_left hq7 f
+              have h1 : 3 ^ (f + 1) + 2 < q ^ f := lt_of_lt_of_le h_lt_pow h_le_q
+              have h2 : 3 ^ (f + 1) + 2 ≤ q ^ f := by
+                rw [h_eq]
+                exact Nat.add_le_add_right h_le_pow 2
+              omega
+    · -- Subcase p ≥ 5
+      sorry
+  · -- Case q < p
+    have h_q3 : q = 3 := by
+      by_contra h_q_ne3
+      have hq_gt3 : 3 < q := by
+        have := hq.two_le
+        have : q ≠ 2 := Pillai_q_ne_2 hp hq he hf h
+        omega
+      have hq_ge5 : 5 ≤ q := by
+        by_contra h_lt
+        have : q < 5 := not_le.mp h_lt
+        revert hq
+        interval_cases q <;> decide
+      have hp_ge7 : 7 ≤ p := by
+        have : 6 ≤ p := by omega
+        have : p ≠ 6 := by
+          rintro rfl
+          revert hp
+          decide
+        omega
+      sorry
+    subst h_q3
+    have h_p_cases : p = 5 ∨ p ≠ 5 := Classical.em (p = 5)
+    rcases h_p_cases with rfl | hp_ne5
+    · -- p = 5
+      have h_sol := Pillai_case_q_eq3_p_eq5 he hf h
+      refine ⟨rfl, h_sol.1, rfl, h_sol.2⟩
+    · -- p ≠ 5
+      exfalso
+      have hp_ge7 : 7 ≤ p := by
+        have := hp.two_le
+        have : p ≠ 2 := Pillai_p_ne_2 hp hq he h
+        have : p ≠ 3 := by omega
+        have : p ≠ 4 := by rintro rfl; revert hp; decide
+        have : p ≠ 5 := hp_ne5
+        have : p ≠ 6 := by rintro rfl; revert hp; decide
+        omega
+      have h_ef : e < f := p_gt_q_implies_e_lt_f hp hq he hf h h_gt
+      have h_e_even_or_odd : 2 ∣ e ∨ ¬ 2 ∣ e := Classical.em (2 ∣ e)
+      rcases h_e_even_or_odd with ⟨k, rfl⟩ | h_odd
+      · -- e is even, e = 2k
+        have hk : 1 ≤ k := by omega
+        have h_k_cases : k = 1 ∨ 2 ≤ k := by omega
+        rcases h_k_cases with rfl | hk2
+        · -- k = 1 => e = 2
+          have h_p_cases : p = 7 ∨ p = 11 ∨ p = 13 ∨ 17 ≤ p := by
+            have : p ≠ 8 := by rintro rfl; revert hp; decide
+            have : p ≠ 9 := by rintro rfl; revert hp; decide
+            have : p ≠ 10 := by rintro rfl; revert hp; decide
+            have : p ≠ 12 := by rintro rfl; revert hp; decide
+            have : p ≠ 14 := by rintro rfl; revert hp; decide
+            have : p ≠ 15 := by rintro rfl; revert hp; decide
+            have : p ≠ 16 := by rintro rfl; revert hp; decide
+            omega
+          rcases h_p_cases with rfl | rfl | rfl | hp17
+          · -- p = 7 => 3^f = 51
+            have : f = 3 ∨ 3 < f := by omega
+            rcases this with rfl | hf4
+            · omega
+            · have : 3 ^ 4 ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) hf4
+              omega
+          · -- p = 11 => 3^f = 123
+            have : f = 4 ∨ f < 4 ∨ 4 < f := by omega
+            rcases this with rfl | hf4 | hf4
+            · omega
+            · interval_cases f <;> omega
+            · have : 3 ^ 5 ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) hf4
+              omega
+          · -- p = 13 => 3^f = 171
+            have : f = 4 ∨ f < 4 ∨ 4 < f := by omega
+            rcases this with rfl | hf4 | hf4
+            · omega
+            · interval_cases f <;> omega
+            · have : 3 ^ 5 ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) hf4
+              omega
+          · -- p ≥ 17 => 3^f = p^2 + 2, but f >= 3
+            have : f = 3 ∨ 3 < f := by omega
+            rcases this with rfl | hf4
+            · -- f = 3 => 27 = p^2 + 2, but p >= 17 => p^2 >= 289
+              have hp2 : 17 ^ 2 ≤ p ^ 2 := Nat.pow_le_pow_left hp17 2
+              have h_eq : p ^ 2 = 25 := by
+                have h_simp : 3 ^ 3 - p ^ 2 = 2 := h
+                change 27 - p ^ 2 = 2 at h_simp
+                omega
+              rw [h_eq] at hp2
+              revert hp2
+              decide
+            · -- f >= 4 => 3^f >= 81, but we have 3^4 = 81 < p^2 => 3^f < p^2, contradiction
+              have h_pow3_lt : 3 ^ 4 < p ^ 2 := by
+                calc 3 ^ 4 = 81 := by rfl
+                  _ < 289 := by decide
+                  _ = 17 ^ 2 := by rfl
+                  _ ≤ p ^ 2 := Nat.pow_le_pow_left hp17 2
+              have h_le3 : 3 ^ f ≥ 3 ^ 4 := Nat.pow_le_pow_right (by decide) hf4
+              have h_f_even_or_odd : 2 ∣ f ∨ ¬ 2 ∣ f := Classical.em (2 ∣ f)
+              rcases h_f_even_or_odd with ⟨j, rfl⟩ | h_f_odd
+              · -- f is even, f = 2j. Since f >= 4 => j >= 2
+                have hj : 2 ≤ j := by omega
+                have h_factor : (3 ^ j - p) * (3 ^ j + p) = 2 := by
+                  rw [mul_comm (3 ^ j - p), ← sq_tsub_sq]
+                  have h_eq : (3 ^ j) ^ 2 - p ^ 2 = 2 := by
+                    have h_two : 2 * 1 = 2 := by decide
+                    rw [h_two] at h
+                    rw [← pow_mul, mul_comm]
+                    exact h
+                  omega
+                have h_sum_ge : 3 ^ j + p ≥ 10 := by
+                  have h3j : 3 ^ j ≥ 9 := by
+                    calc 3 ^ j ≥ 3 ^ 2 := Nat.pow_le_pow_right (by decide) hj
+                      _ = 9 := by rfl
+                  omega
+                have h_dvd : 3 ^ j + p ∣ 2 := by
+                  use (3 ^ j - p)
+                  rw [mul_comm]
+                  exact h_factor.symm
+                have h_le2 : 3 ^ j + p ≤ 2 := Nat.le_of_dvd (by norm_num) h_dvd
+                omega
+              · -- f is odd. Since f >= 4 => f >= 5
+                have hf5 : 5 ≤ f := by omega
+                have h_p_eq5 : p = 5 := by
+                  have h_eq_3f : 3 ^ f = p ^ 2 + 2 := by
+                    have h_two : 2 * 1 = 2 := by decide
+                    rw [h_two] at h
+                    omega
+                  have h_mod5 : (p ^ 2 + 2) % 5 = 3 ^ f % 5 := by
+                    rw [h_eq_3f]
+                  have h_f_mod4 : f % 4 = 1 ∨ f % 4 = 3 := by
+                    have : f % 2 ≠ 0 := by
+                      intro h_div
+                      exact h_f_odd (Nat.dvd_of_mod_eq_zero h_div)
+                    omega
+                  have h_mod5_f : 3 ^ f % 5 = 3 ∨ 3 ^ f % 5 = 2 := by
+                    rcases h_f_mod4 with h_mod4 | h_mod4
+                    · left
+                      rw [pow_three_mod_five, h_mod4]
+                      decide
+                    · right
+                      rw [pow_three_mod_five, h_mod4]
+                      decide
+                  have h_p_mod5 : p % 5 = 0 := by
+                    rcases h_mod5_f with h3 | h2
+                    · sorry
+                    · -- 3^f % 5 = 2
+                      have hp2_mod5 : (p ^ 2 + 2) % 5 = 2 := by omega
+                      have h_pow : p ^ 2 % 5 = (p % 5) ^ 2 % 5 := _root_.pow_mod p 2 5
+                      have h_add : (p ^ 2 + 2) % 5 = (p ^ 2 % 5 + 2) % 5 := Nat.add_mod (p ^ 2) 2 5
+                      rw [h_add, h_pow] at hp2_mod5
+                      generalize hY : (p % 5) ^ 2 % 5 = Y
+                      rw [hY] at hp2_mod5
+                      have hY_lt : Y < 5 := by
+                        rw [← hY]
+                        exact Nat.mod_lt _ (Nat.succ_pos 4)
+                      have : Y = 0 := by omega
+                      have h_div : 5 ∣ (p % 5) ^ 2 := Nat.dvd_of_mod_eq_zero (by rw [hY, this])
+                      have h_dvd_p_mod5 : 5 ∣ p % 5 := Nat.Prime.dvd_of_dvd_pow (by decide : (5 : ℕ).Prime) h_div
+                      omega
+                  have : 5 ∣ p := Nat.dvd_of_mod_eq_zero h_p_mod5
+                  cases hp.eq_one_or_self_of_dvd 5 (by omega) with
+                  | inl h1 => contradiction
+                  | inr h2 => exact h2.symm
+                omega
+        · -- k ≥ 2
+          have : f = 2 * k + 1 ∨ 2 * k + 1 < f := by omega
+          rcases this with rfl | hf_gt
+          · -- f = 2k+1
+            have h_pow3_lt : 3 ^ (2 * k + 1) < p ^ (2 * k) := by
+              calc 3 ^ (2 * k + 1) < 7 ^ (2 * k) := pow_three_lt_pow_seven k (by omega)
+                _ ≤ p ^ (2 * k) := Nat.pow_le_pow_left hp_ge7 (2 * k)
+            have h_sub : 3 ^ (2 * k + 1) - p ^ (2 * k) = 0 := Nat.sub_eq_zero_of_le h_pow3_lt.le
+            rw [h_sub] at h
+            contradiction
+          · -- f >= 2k+2
+            have h_pow3_lt : 3 ^ (2 * k + 2) < p ^ (2 * k) := by
+              calc 3 ^ (2 * k + 2) < 7 ^ (2 * k) := pow_three_lt_pow_seven_even k hk2
+                _ ≤ p ^ (2 * k) := Nat.pow_le_pow_left hp_ge7 (2 * k)
+            have h_le3 : 3 ^ (2 * k + 2) ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) hf_gt
+            have h_eq : 3 ^ f = p ^ (2 * k) + 2 := by omega
+            sorry
+      · -- e is odd
+        have : ∃ k, e = 2 * k + 1 := ⟨e / 2, by omega⟩
+        obtain ⟨k, rfl⟩ := this
+        have hk : 1 ≤ k := by omega
+        have : f = 2 * k + 2 ∨ 2 * k + 2 < f := by omega
+        rcases this with rfl | hf_gt
+        · -- f = 2k+2
+          have h_pow3_lt : 3 ^ (2 * k + 2) < p ^ (2 * k + 1) := by
+            calc 3 ^ (2 * k + 2) < 7 ^ (2 * k + 1) := pow_three_lt_pow_seven_odd k hk
+              _ ≤ p ^ (2 * k + 1) := Nat.pow_le_pow_left hp_ge7 (2 * k + 1)
+          have h_sub : 3 ^ (2 * k + 2) - p ^ (2 * k + 1) = 0 := Nat.sub_eq_zero_of_le h_pow3_lt.le
+          rw [h_sub] at h
+          contradiction
+        · -- f >= 2k+3
+          have h_pow3_lt : 3 ^ (2 * k + 3) < p ^ (2 * k + 1) := by
+            calc 3 ^ (2 * k + 3) < 7 ^ (2 * k + 1) := pow_three_lt_pow_seven_odd_succ k hk
+              _ ≤ p ^ (2 * k + 1) := Nat.pow_le_pow_left hp_ge7 (2 * k + 1)
+          have h_le3 : 3 ^ (2 * k + 3) ≤ 3 ^ f := Nat.pow_le_pow_right (by decide) hf_gt
+          have h_eq : 3 ^ f = p ^ (2 * k + 1) + 2 := by omega
+          sorry
+
+/--
+A365416 According to Pillai's conjecture, k = 13 is the only term such that 2*k-1 and 2*k+1 both have exponent greater than 1.
+-/
+theorem oeis_365416_conjecture_0 :
+  ∀ k : ℕ,
+    (IsCompositePrimePow (2 * k - 1) ∧ IsCompositePrimePow (2 * k + 1)) ↔ k = 13 := by
+  intro k
+  constructor
+  · rintro ⟨⟨p, e, hp, he, hpe⟩, ⟨q, f, hq, hf, hqf⟩⟩
+    have hk : k ≠ 0 := by
+      rintro rfl
+      simp only [mul_zero] at hpe
+      have hp_pos : p ^ e > 0 := Nat.pos_of_ne_zero (pow_ne_zero e hp.ne_zero)
+      omega
+    have h_diff : q ^ f - p ^ e = 2 := by
+      omega
+    have h_sol := Pillai_2_prime_powers hp hq he hf h_diff
+    obtain ⟨rfl, rfl, rfl, rfl⟩ := h_sol
+    omega
+  · rintro rfl
+    constructor
+    · use 5, 2
+      refine ⟨by decide, by decide, by rfl⟩
+    · use 3, 3
+      refine ⟨by decide, by decide, by rfl⟩
+
+
+#print axioms oeis_365416_conjecture_0
+

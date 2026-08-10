@@ -1,0 +1,20 @@
+{
+  "id": "oeis_93456_conjecture_0",
+  "epoch": 1,
+  "uuid": "PdrTuhuxpYiRdLAVUjYFhX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 3085668,
+      "output_tokens": 116916,
+      "total_tokens": 32598288,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 29179848,
+      "reasoning_tokens": 215856,
+      "total_cost": 10.057723200000005
+    }
+  },
+  "oeis_id": "A093456"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_179537_conjecture_sun_part2b_mod_p_sq",
+  "epoch": 1,
+  "uuid": "dMPwwZwG2535v9bDBwjctT",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 55,
+      "output_tokens": 21678,
+      "total_tokens": 578180,
+      "input_tokens_cache_write": 31853,
+      "input_tokens_cache_read": 524594,
+      "reasoning_tokens": 3733,
+      "total_cost": 1.0036032499999998
+    }
+  },
+  "oeis_id": "A179537"
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:155:6: error: Type mismatch\n  Nat.lt_succ_iff.mpr (Nat.le_sqrt.mpr hxy)\nhas type\n  x < n.sqrt.succ\nbut is expected to have type\n  x ≤ n.sqrt\nSubmission/Spec.lean:157:6: error: Type mismatch\n  Nat.lt_succ_iff.mpr (Nat.le_sqrt.mpr hxy)\nhas type\n  y < n.sqrt.succ\nbut is expected to have type\n  y ≤ n.sqrt",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

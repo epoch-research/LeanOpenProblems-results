@@ -1,0 +1,20 @@
+{
+  "id": "A070823_conjecture",
+  "epoch": 1,
+  "uuid": "Lw2c7TX46eWFcfyT2f3wib",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 61789,
+      "output_tokens": 13419,
+      "total_tokens": 677832,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 602624,
+      "reasoning_tokens": 6330,
+      "total_cost": 1.0128269999999997
+    }
+  },
+  "oeis_id": "A070823"
+}

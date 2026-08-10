@@ -1,0 +1,23 @@
+{
+  "id": "oeis_282091_conjecture_0",
+  "epoch": 1,
+  "uuid": "GAdDmgpuax3ZESDMUMxKmF",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 23104439,
+      "output_tokens": 229623,
+      "total_tokens": 114955037,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 89079511,
+      "reasoning_tokens": 2541464,
+      "total_cost": 50.08519215000006
+    }
+  },
+  "oeis_id": "A282091"
+}

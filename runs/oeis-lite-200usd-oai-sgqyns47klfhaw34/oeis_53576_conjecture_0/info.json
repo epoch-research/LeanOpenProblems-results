@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "a7vgynLN3qcP72FBFue67d",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 424279,
+      "output_tokens": 51564,
+      "total_tokens": 8601283,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 8125440,
+      "reasoning_tokens": 28770,
+      "total_cost": 7.7310349999999985
+    }
+  },
+  "oeis_id": "A053576"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_22030_original_conjecture",
+  "epoch": 1,
+  "uuid": "jSucuz5ewfzawHjQnQ2FzX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 29,
+      "output_tokens": 47278,
+      "total_tokens": 598498,
+      "input_tokens_cache_write": 51788,
+      "input_tokens_cache_read": 499403,
+      "reasoning_tokens": 7960,
+      "total_cost": 3.510943
+    }
+  },
+  "oeis_id": "A022030"
+}

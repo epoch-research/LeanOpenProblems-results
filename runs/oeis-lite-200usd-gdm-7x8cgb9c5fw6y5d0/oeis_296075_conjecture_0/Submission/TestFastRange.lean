@@ -1,0 +1,38 @@
+import FormalConjectures.Util.ProblemImports
+set_option maxRecDepth 500000
+set_option maxHeartbeats 2000000
+open Nat
+
+def sum_divs_aux (n i : ℕ) (acc : ℕ) : ℕ :=
+  match i with
+  | 0 => acc
+  | i' + 1 =>
+    if (i' + 1) ∣ n then
+      sum_divs_aux n i' (acc + i' + 1)
+    else
+      sum_divs_aux n i' acc
+
+def sigma_fast (n : ℕ) : ℕ :=
+  sum_divs_aux n n 0
+
+def a_fast_aux (n i : ℕ) (acc : ℤ) : ℤ :=
+  match i with
+  | 0 => acc
+  | i' + 1 =>
+    let d := i' + 1
+    if d ∣ n then
+      a_fast_aux n i' (acc + 2 * (d : ℤ) - (sigma_fast d : ℤ))
+    else
+      a_fast_aux n i' acc
+
+def a_fast (n : ℕ) : ℤ :=
+  a_fast_aux n n 0
+
+def check_range_fast (start len : ℕ) : Bool :=
+  match len with
+  | 0 => true
+  | len' + 1 =>
+    let n := start + len'
+    (decide (n.Prime) || decide (a_fast n ≠ 1)) && check_range_fast start len'
+
+theorem test_10 : check_range_fast 13 2000 = true := by decide

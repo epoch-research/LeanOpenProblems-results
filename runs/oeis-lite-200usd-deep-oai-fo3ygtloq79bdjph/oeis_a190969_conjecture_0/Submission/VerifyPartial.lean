@@ -1,0 +1,5 @@
+import Submission.PartialReductions
+#print axioms central_choose_cast_cube_eq_zero_zmod_pow2
+#print axioms a_four_mul_eq_b
+#print axioms sum_eq_filter_lower_pow2
+#print axioms sum_eq_filter_lower_pow3

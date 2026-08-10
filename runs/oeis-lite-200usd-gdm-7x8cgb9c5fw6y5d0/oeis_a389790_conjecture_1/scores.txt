@@ -1,0 +1,9 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:150:10: error(lean.unknownIdentifier): Unknown constant `Lean.ConstantInfo.axInfo`
+  
+  Note: Inferred this name from the expected resulting type of `.axInfo`:
+    ConstantInfo
+  Submission/Spec.lean:165:0: error: elaboration function for `commandInject_conjecture` has not been implemented
+

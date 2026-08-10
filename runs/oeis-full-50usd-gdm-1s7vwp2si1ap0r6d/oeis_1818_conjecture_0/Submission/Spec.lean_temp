@@ -1,0 +1,70 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset Matrix
+
+/--
+A001818: Squares of double factorials: $(1 \cdot 3 \cdot 5 \cdot \dots \cdot (2n-1))^2 = ((2n-1)!!)^2$.
+-/
+def a (n : ℕ) : ℕ :=
+  ((range n).prod (fun k => 2 * k + 1)) ^ 2
+
+lemma eq_neg_one_of_isPrimitiveRoot_two (ζ : ℂ) (hζ : IsPrimitiveRoot ζ 2) : ζ = -1 := by
+  have h_pow : ζ ^ 2 = 1 := hζ.pow_eq_one
+  have h_ne : ζ ≠ 1 := by
+    intro h
+    have h_dvd : 2 ∣ 1 := hζ.dvd_of_pow_eq_one 1 (by rw [h, pow_one])
+    norm_num at h_dvd
+  have h_sq : ζ ^ 2 - 1 = 0 := sub_eq_zero.mpr h_pow
+  have h_factor : (ζ - 1) * (ζ + 1) = 0 := by
+    calc (ζ - 1) * (ζ + 1) = ζ ^ 2 - 1 := by ring
+    _ = 0 := h_sq
+  cases mul_eq_zero.mp h_factor with
+  | inl h1 =>
+    have : ζ = 1 := by
+      calc ζ = (ζ - 1) + 1 := by ring
+      _ = 0 + 1 := by rw [h1]
+      _ = 1 := by ring
+    contradiction
+  | inr h2 =>
+    calc ζ = (ζ + 1) - 1 := by ring
+    _ = 0 - 1 := by rw [h2]
+    _ = -1 := by ring
+
+lemma permanent_two (M : Matrix (Fin 2) (Fin 2) ℂ) :
+    permanent M = M 0 0 * M 1 1 + M 1 0 * M 0 1 := by
+  unfold permanent
+  have h_univ : (Finset.univ : Finset (Equiv.Perm (Fin 2))) = {1, Equiv.swap 0 1} := by decide
+  rw [h_univ]
+  simp_rw [Fin.prod_univ_two]
+  have h_ne : (1 : Equiv.Perm (Fin 2)) ∉ ({Equiv.swap 0 1} : Finset (Equiv.Perm (Fin 2))) := by decide
+  rw [Finset.sum_insert h_ne, Finset.sum_singleton]
+  simp
+
+theorem oeis_1818_conjecture_0_n1 (ζ : ℂ) (hζ : IsPrimitiveRoot ζ 2) :
+    permanent (fun (i j : Fin 2) =>
+      if i = j then
+        (1 : ℂ)
+      else
+        (1 + ζ ^ (i.val - j.val : ℤ)) / (1 - ζ ^ (i.val - j.val : ℤ))
+    ) = (a 1 : ℂ) := by
+  have h_zeta : ζ = -1 := eq_neg_one_of_isPrimitiveRoot_two ζ hζ
+  rw [h_zeta, permanent_two]
+  simp [a]
+
+/--
+Conjecture 1: For any primitive 2n-th root zeta of unity, the permanent of the 2n X 2n matrix [m(j,k)]_{j,k=1..2n} coincides with a(n) = ((2n-1)!!)^2, where m(j,k) is (1+zeta^(j-k))/(1-zeta^(j-k)) if j is not equal to k, and 1 otherwise.
+-/
+theorem oeis_1818_conjecture_0 (n : ℕ) (h_n : 1 ≤ n) :
+    ∀ (ζ : ℂ), IsPrimitiveRoot ζ (2 * n) →
+      permanent (fun (i j : Fin (2 * n)) =>
+        if i = j then
+          (1 : ℂ)
+        else
+          (1 + ζ ^ (i.val - j.val : ℤ)) / (1 - ζ ^ (i.val - j.val : ℤ))
+      ) = (a n : ℂ) := by
+  intro ζ hζ
+  rcases n with _ | n
+  · omega
+  · rcases n with _ | n
+    · exact oeis_1818_conjecture_0_n1 ζ hζ
+    · sorry

@@ -1,0 +1,37 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:578:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).1 *
+      (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).2
+  in the target expression
+    (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).1 *
+        (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).2 =
+      foldl fold_val d_curr (d_next :: ds_rest')
+  
+  A : ℕ
+  h_A : A > 1
+  h_pos : A > 0
+  L'' : ℕ
+  h_len : (digits 6 A).length = L'' + 1 + 1
+  h_L_ne : L'' + 1 + 1 ≠ 0
+  h_L_pos : L'' + 1 + 1 > 0
+  d_curr d_next : ℕ
+  ds_rest' : List ℕ
+  h_baseless :
+    (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).1 *
+        (foldl (fun state d_curr => (state.1 * state.2 + d_curr, d_curr)) (d_curr, d_curr) (d_next :: ds_rest')).2 =
+      A
+  h_eq : (digits 6 A).reverse = d_curr :: d_next :: ds_rest'
+  h_len_ds : (d_next :: ds_rest').length = L''.succ
+  hd_curr_ne : d_curr ≠ 0
+  hd_curr_lt : d_curr < 6
+  hd_curr : d_curr ≤ 5
+  hd_curr_mem : d_curr ∈ [1, 2, 3, 4, 5]
+  h_all : ∀ x ∈ d_next :: ds_rest', x ≤ 5
+  h_fold_eq : foldl fold_val d_curr (d_next :: ds_rest') = A
+  ⊢ (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).1 *
+        (foldl fold_step (d_curr, d_curr) (d_next :: ds_rest')).2 =
+      foldl fold_val d_curr (d_next :: ds_rest')
+  Submission/Spec.lean:659:8: warning: declaration uses 'sorry'
+

@@ -1,0 +1,91 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 635 declarations.
+  ------------------
+  step_proof_6 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_13 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_7 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_12 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_6 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_12_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_16 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_3_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_8 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_5 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_7_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_8 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_15 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_11 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_13 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_8 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_15 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  count_relation_14 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_9 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_6 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_5_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_14 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_0_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_8_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_15 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_11 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_13 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_16 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_9 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_2 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_2_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_13_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_4 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_9_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_17 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_2 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_14_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_15_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_5 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_318199_conjecture_0.disproof used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_3 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  count_relation_1 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_16_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_14 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_12 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_12 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_3 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_11 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_10_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_10 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_4 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_1_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_10 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_16 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_11_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  step_proof_10 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_5 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_4_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_0 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_7 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  nth_prime_step_4 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_7 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_9 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_0 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  base_count used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  step_proof_3 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  nth_prime_step_6_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  count_relation_2 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  count_relation_17 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_318199_conjecture_0: uses disallowed axioms
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

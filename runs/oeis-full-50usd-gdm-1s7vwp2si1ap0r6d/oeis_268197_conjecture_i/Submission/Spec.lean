@@ -1,0 +1,28 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+/--
+A268197: Number of ordered ways to write $n$ as $w^2 + x^2 + y^2 + z^2$ with $w \cdot (25w + 24x + 48y + 96z)$ a square, where $w$ is a positive integer and $x,y,z$ are nonnegative integers.
+-/
+def A268197 (n : ℕ) : ℕ :=
+  -- Function to check if a natural number is a perfect square using the computable Nat.sqrt function.
+  let is_square_check (m : ℕ) : Prop := (Nat.sqrt m) * (Nat.sqrt m) = m
+
+  -- A safe upper bound for all variables is n. Finset.range (n+1) covers 0 to n.
+  let B : ℕ := n + 1
+
+  (Finset.range B).sum fun w =>
+  (Finset.range B).sum fun x =>
+  (Finset.range B).sum fun y =>
+  (Finset.range B).sum fun z =>
+    if w > 0 ∧ w^2 + x^2 + y^2 + z^2 = n ∧ is_square_check (w * (25 * w + 24 * x + 48 * y + 96 * z)) then 1 else 0
+
+/--
+Conjecture: (i) a(n) > 0 for all n > 0, and a(n) = 1 only for n = 3, 7, 15, 23, 43, 55, 463, 4^k*m (k = 0,1,2,... and m = 1, 31, 34).
+-/
+theorem oeis_268197_conjecture_i :
+  (∀ n : ℕ, n > 0 → A268197 n > 0) ∧
+  (∀ n : ℕ, A268197 n = 1 ↔
+    n = 3 ∨ n = 7 ∨ n = 15 ∨ n = 23 ∨ n = 43 ∨ n = 55 ∨ n = 463 ∨
+    (∃ k : ℕ, n = 4^k * 1 ∨ n = 4^k * 31 ∨ n = 4^k * 34)) := sorry

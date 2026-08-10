@@ -1,0 +1,20 @@
+{
+  "id": "oeis_379732_conjecture_0",
+  "epoch": 1,
+  "uuid": "eotY6obTVQZRMZBtpQ6Ex3",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 59,
+      "output_tokens": 72673,
+      "total_tokens": 1307944,
+      "input_tokens_cache_write": 87885,
+      "input_tokens_cache_read": 1147327,
+      "reasoning_tokens": 27197,
+      "total_cost": 5.880129500000001
+    }
+  },
+  "oeis_id": "A379732"
+}

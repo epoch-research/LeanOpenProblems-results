@@ -1,0 +1,6 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#check Polynomial.natDegree_eq_of_le_of_coeff_ne_zero
+#check Polynomial.natDegree_le_iff_coeff_eq_zero
+#check Polynomial.natDegree_le_iff_degree_le
+#check Nat.choose_pos

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_238281_conjecture_0",
+  "epoch": 1,
+  "uuid": "2msPM6guj2DE6gySPQ26DZ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 393414,
+      "output_tokens": 5314,
+      "total_tokens": 786859,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 380906,
+      "reasoning_tokens": 7225,
+      "total_cost": 0.6950829000000001
+    }
+  },
+  "oeis_id": "A238281"
+}

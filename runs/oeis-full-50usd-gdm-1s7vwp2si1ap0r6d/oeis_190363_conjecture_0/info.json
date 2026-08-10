@@ -1,0 +1,20 @@
+{
+  "id": "oeis_190363_conjecture_0",
+  "epoch": 1,
+  "uuid": "nKuD9Pyj3hv6uzA4oWYepY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 503714,
+      "output_tokens": 8236,
+      "total_tokens": 2843286,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2312773,
+      "reasoning_tokens": 18563,
+      "total_cost": 1.17661095
+    }
+  },
+  "oeis_id": "A190363"
+}

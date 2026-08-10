@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340881_conjecture_0",
+  "epoch": 1,
+  "uuid": "AbFRcGJd8Miaq9jWoQM2vh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 111061,
+      "output_tokens": 24499,
+      "total_tokens": 1209736,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1074176,
+      "reasoning_tokens": 6654,
+      "total_cost": 1.827363
+    }
+  },
+  "oeis_id": "A340881"
+}

@@ -1,0 +1,4 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_antidiagonal_eq_sum_range_succ
+#check Finset.Nat.sum_antidiagonal_eq_sum_range_succ
+#check Nat.add_choose_eq

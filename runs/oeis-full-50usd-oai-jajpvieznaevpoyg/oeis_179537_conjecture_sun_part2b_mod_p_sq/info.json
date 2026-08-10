@@ -1,0 +1,20 @@
+{
+  "id": "oeis_179537_conjecture_sun_part2b_mod_p_sq",
+  "epoch": 1,
+  "uuid": "3QQBxsQvbANoCagMRhesem",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 30790,
+      "output_tokens": 7751,
+      "total_tokens": 181901,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 143360,
+      "reasoning_tokens": 2276,
+      "total_cost": 0.4581600000000001
+    }
+  },
+  "oeis_id": "A179537"
+}

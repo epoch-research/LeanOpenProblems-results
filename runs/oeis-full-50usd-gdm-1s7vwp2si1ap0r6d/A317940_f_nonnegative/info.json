@@ -1,0 +1,20 @@
+{
+  "id": "A317940_f_nonnegative",
+  "epoch": 1,
+  "uuid": "XKK8ngvPXDLsZw5eVTsi8C",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 11553814,
+      "output_tokens": 249581,
+      "total_tokens": 114628207,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 102255960,
+      "reasoning_tokens": 568852,
+      "total_cost": 34.91534400000003
+    }
+  },
+  "oeis_id": "A317940"
+}

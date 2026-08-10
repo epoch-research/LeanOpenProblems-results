@@ -1,0 +1,27 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:648:4: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:993:33: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:997:36: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:999:10: error: unsolved goals
+  case neg
+  n : ℕ
+  h : n > 0
+  ha : a n = 1
+  hp : ¬Nat.Prime (n + 1)
+  hn3 : ¬n = 3
+  hn216 : ¬n = 216
+  hn1476 : ¬n = 1476
+  hn4 : n ≥ 4
+  ⊢ Nat.Prime (n + 1)
+  Submission/Spec.lean:1012:8: error: No goals to be solved
+  31
+  211
+

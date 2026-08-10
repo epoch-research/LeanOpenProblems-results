@@ -1,0 +1,20 @@
+{
+  "id": "A211420_general_divisibility_conjecture",
+  "epoch": 1,
+  "uuid": "KgMSG2mGJninStX2HytTjh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 211020,
+      "output_tokens": 4474,
+      "total_tokens": 592832,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 366282,
+      "reasoning_tokens": 11056,
+      "total_cost": 0.4117383
+    }
+  },
+  "oeis_id": "A211420"
+}

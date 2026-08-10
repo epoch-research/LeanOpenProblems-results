@@ -1,0 +1,20 @@
+{
+  "id": "oeis_271513_conjecture_3",
+  "epoch": 1,
+  "uuid": "ccWGr8pHkgvfLhsvYsKfyG",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 7,
+      "output_tokens": 601,
+      "total_tokens": 18569,
+      "input_tokens_cache_write": 3093,
+      "input_tokens_cache_read": 14868,
+      "reasoning_tokens": 73,
+      "total_cost": 0.041825249999999994
+    }
+  },
+  "oeis_id": "A271513"
+}

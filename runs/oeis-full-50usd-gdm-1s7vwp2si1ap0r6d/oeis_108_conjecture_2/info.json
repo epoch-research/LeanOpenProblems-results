@@ -1,0 +1,20 @@
+{
+  "id": "oeis_108_conjecture_2",
+  "epoch": 1,
+  "uuid": "YtkPNnhcRhVNGf6yPbPXKn",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1816605,
+      "output_tokens": 54399,
+      "total_tokens": 18197492,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 16266035,
+      "reasoning_tokens": 60453,
+      "total_cost": 5.65440375
+    }
+  },
+  "oeis_id": "A000108"
+}

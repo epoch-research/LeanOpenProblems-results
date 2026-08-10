@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a368692_conjecture_integrality",
+  "epoch": 1,
+  "uuid": "Kg4nNmvsSPtSPBdaVcttTe",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 111,
+      "output_tokens": 111072,
+      "total_tokens": 4964753,
+      "input_tokens_cache_write": 137314,
+      "input_tokens_cache_read": 4716256,
+      "reasoning_tokens": 20496,
+      "total_cost": 5.993695499999999
+    }
+  },
+  "oeis_id": "A368692"
+}

@@ -1,0 +1,13 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:14:5: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:31:5: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:48:42: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+

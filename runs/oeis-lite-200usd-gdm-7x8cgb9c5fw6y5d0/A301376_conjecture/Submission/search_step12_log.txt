@@ -1,0 +1,24 @@
+Precomputed 6401 possible v values.
+Step 1: Finding the 13 base primes and residues...
+Base solved: N0 = 13344078342982033922803, prod = 7302451529070369715197 (digits: 22)
+Generated filtering pool of 339 primes up to 5,000.
+Step 2: Searching for true counterexample N...
+k = 10: checked 1520 elements (588 required factor) in 0.44s
+k = 20: checked 1555 elements (502 required factor) in 1.02s
+k = 30: checked 1560 elements (551 required factor) in 1.46s
+k = 40: checked 1561 elements (593 required factor) in 1.76s
+k = 50: checked 1599 elements (498 required factor) in 2.25s
+k = 60: checked 1600 elements (618 required factor) in 2.85s
+k = 70: checked 1600 elements (616 required factor) in 3.19s
+k = 80: checked 1600 elements (508 required factor) in 3.58s
+k = 90: checked 1639 elements (606 required factor) in 4.24s
+k = 100: checked 1639 elements (616 required factor) in 4.88s
+k = 110: checked 1640 elements (527 required factor) in 5.71s
+k = 120: checked 1640 elements (592 required factor) in 6.46s
+k = 130: checked 1640 elements (605 required factor) in 7.06s
+k = 140: checked 1640 elements (521 required factor) in 7.58s
+k = 150: checked 1640 elements (595 required factor) in 8.18s
+k = 160: checked 1640 elements (591 required factor) in 9.29s
+k = 170: checked 1641 elements (556 required factor) in 10.01s
+N exceeded the limit of 1.27 * 10^24!
+Search finished in 10.05s.

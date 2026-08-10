@@ -1,0 +1,146 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Int Finset BigOperators
+
+/--
+A361711: $a(1) = 1$ and $a(n) = \sum_{k = 0}^{n-2} (-1)^k \binom{n}{k}^2 \binom{n-2}{k}$ for $n \ge 2$.
+-/
+def A361711 (n : ℕ) : ℤ :=
+  match n with
+  | 0 => 0
+  | 1 => 1
+  | n_ge_2 =>
+    let N := n_ge_2
+    -- $n-2$ is the upper limit of summation.
+    let m : ℕ := N - 2
+
+    -- The sum is over k from 0 to m, which is Finset.range (m + 1).
+    (Finset.range (m + 1)).sum fun k : ℕ =>
+      let term_nat : ℕ := (N.choose k) * (N.choose k) * (m.choose k)
+      let sign_k : ℤ := (-1 : ℤ) ^ k
+      sign_k * term_nat.cast
+
+
+theorem A361711_p_modeq_p_sq (p : ℕ) (hp : Nat.Prime p) (h_geq_5 : 5 ≤ p) :
+    A361711 p ≡ 1 [ZMOD (p ^ 2)] := by
+  rcases p with _ | _ | n
+  · omega
+  · omega
+  unfold A361711
+  split
+  · -- case 0
+    omega
+  · -- case 1
+    omega
+  · -- case n_ge_2
+    rw [Finset.sum_range_succ']
+    dsimp
+    have hn : n + 1 + 1 - 2 = n := by omega
+    rw [hn]
+    simp only [Nat.choose_zero_right, Nat.cast_one, mul_one]
+    have h_sum : (∑ k ∈ Finset.range n, (-1) ^ (k + 1) * (↑((n + 1 + 1).choose (k + 1)) * ↑((n + 1 + 1).choose (k + 1)) * ↑(n.choose (k + 1)))) ≡ 0 [ZMOD (n + 1 + 1) ^ 2] := by
+      apply Int.ModEq.sum_zero
+      intro k hk
+      rw [Finset.mem_range] at hk
+      have hk_lt : k + 1 < n + 1 + 1 := by omega
+      have hk_nz : k + 1 ≠ 0 := by omega
+      have hdvd : (n + 1 + 1) ∣ (n + 1 + 1).choose (k + 1) := Nat.Prime.dvd_choose_self hp hk_nz hk_lt
+      have hdvd_sq : (n + 1 + 1) ^ 2 ∣ (n + 1 + 1).choose (k + 1) * (n + 1 + 1).choose (k + 1) := by
+        rw [sq]
+        exact mul_dvd_mul hdvd hdvd
+      have hdvd_term : (n + 1 + 1) ^ 2 ∣ (n + 1 + 1).choose (k + 1) * (n + 1 + 1).choose (k + 1) * n.choose (k + 1) := Dvd.dvd.mul_right hdvd_sq (n.choose (k + 1))
+      have hdvd_term_int : ((n + 1 + 1) ^ 2 : ℤ) ∣ ((n + 1 + 1).choose (k + 1) * (n + 1 + 1).choose (k + 1) * n.choose (k + 1) : ℕ) := Int.natCast_dvd_natCast.2 hdvd_term
+      rw [Nat.cast_mul, Nat.cast_mul] at hdvd_term_int
+      have hdvd_signed : ((n + 1 + 1) ^ 2 : ℤ) ∣ (-1) ^ (k + 1) * (↑((n + 1 + 1).choose (k + 1)) * ↑((n + 1 + 1).choose (k + 1)) * ↑(n.choose (k + 1))) := Dvd.dvd.mul_left hdvd_term_int ((-1) ^ (k + 1))
+      exact Dvd.dvd.modEq_zero_int hdvd_signed
+    have h_goal := Int.ModEq.add_right 1 h_sum
+    exact h_goal
+
+theorem sum_range_sq (n : ℕ) : (∑ i ∈ Finset.range n, (i : ℤ) ^ 2) * 6 = ((n : ℤ) - 1) * n * (2 * n - 1) := by
+  induction n with
+  | zero => simp
+  | succ k ih =>
+    rw [Finset.sum_range_succ]
+    push_cast
+    rw [add_mul, ih]
+    ring
+
+theorem choose_p_minus_one (p k : ℕ) (hp : Nat.Prime p) (hk : k < p) :
+    (((p - 1).choose k : ℕ) : ZMod p) = (-1) ^ k := by
+  haveI : Fact (Nat.Prime p) := ⟨hp⟩
+  induction k with
+  | zero => simp
+  | succ m ih =>
+    have hm : m < p - 1 := by omega
+    have h_rec := Nat.choose_succ_right_eq (p - 1) m
+    have h_cast : (((p - 1).choose (m + 1) * (m + 1) : ℕ) : ZMod p) = (((p - 1).choose m * (p - 1 - m) : ℕ) : ZMod p) := by
+      rw [h_rec]
+    push_cast at h_cast
+    have h_sub : (((p - 1 - m : ℕ) : ZMod p)) = - (m + 1 : ZMod p) := by
+      have h_eq_nat : p - 1 - m + (m + 1) = p := by omega
+      have h_eq_cast : (((p - 1 - m + (m + 1) : ℕ) : ZMod p)) = (p : ZMod p) := by rw [h_eq_nat]
+      push_cast at h_eq_cast
+      have hp_eq : (p : ZMod p) = 0 := by simp
+      rw [hp_eq] at h_eq_cast
+      linear_combination h_eq_cast
+    rw [h_sub] at h_cast
+    have h_ih_cast : (((p - 1).choose m : ℕ) : ZMod p) = (-1) ^ m := ih (by omega)
+    rw [h_ih_cast] at h_cast
+    have h_nz : (m + 1 : ZMod p) ≠ 0 := by
+      intro hc
+      have hc' : (((m + 1 : ℕ) : ZMod p)) = 0 := by
+        push_cast
+        exact hc
+      have h_dvd : p ∣ m + 1 := (ZMod.natCast_eq_zero_iff (m + 1) p).1 hc'
+      have h_lt : m + 1 < p := by omega
+      have h_pos : m + 1 > 0 := by omega
+      have h_le := Nat.le_of_dvd h_pos h_dvd
+      omega
+    have h_cancel : (((p - 1).choose (m + 1) : ℕ) : ZMod p) = - (-1) ^ m := by
+      exact mul_right_cancel₀ h_nz (by
+        calc (((p - 1).choose (m + 1) : ℕ) : ZMod p) * (m + 1 : ZMod p) = (-1) ^ m * - (m + 1 : ZMod p) := h_cast
+        _ = (- (-1) ^ m) * (m + 1 : ZMod p) := by ring
+      )
+    rw [h_cancel]
+    ring
+
+theorem choose_p_minus_two (p k : ℕ) (hp : Nat.Prime p) (hk : k < p - 1) :
+    (((p - 2).choose k : ℕ) : ZMod p) = (-1) ^ k * (k + 1) := by
+  haveI : Fact (Nat.Prime p) := ⟨hp⟩
+  induction k with
+  | zero => simp
+  | succ m ih =>
+    have hm : m < p - 2 := by omega
+    have h_rec := Nat.choose_succ_succ' (p - 2) m
+    have h_p21 : p - 2 + 1 = p - 1 := by omega
+    rw [h_p21] at h_rec
+    have h_rec' : (p - 2).choose (m + 1) + (p - 2).choose m = (p - 1).choose (m + 1) := by
+      rw [add_comm]
+      exact h_rec.symm
+    have h_cast : (((p - 2).choose (m + 1) + (p - 2).choose m : ℕ) : ZMod p) = (((p - 1).choose (m + 1) : ℕ) : ZMod p) := by
+      rw [h_rec']
+    push_cast at h_cast
+    have h_minus_one : (((p - 1).choose (m + 1) : ℕ) : ZMod p) = (-1) ^ (m + 1) := choose_p_minus_one p (m + 1) hp (by omega)
+    rw [h_minus_one] at h_cast
+    have h_ih_cast : (((p - 2).choose m : ℕ) : ZMod p) = (-1) ^ m * (m + 1) := ih (by omega)
+    rw [h_ih_cast] at h_cast
+    have h_solve : (((p - 2).choose (m + 1) : ℕ) : ZMod p) = (-1) ^ (m + 1) * (m + 1 + 1) := by
+      linear_combination h_cast
+    rw [h_solve]
+    push_cast
+    rfl
+
+/--
+A361711 Conjecture: the supercongruence a(p^k) == a(p^(k-1)) (mod p^(3*k)) holds for all primes p >= 5 and positive integer k.
+-/
+theorem A361711_conjecture (p : ℕ) (hp : Nat.Prime p) (h_geq_5 : 5 ≤ p) (k : ℕ) (hk : k > 0) :
+    A361711 (p ^ k) ≡ A361711 (p ^ (k - 1)) [ZMOD (p ^ (3 * k) : ℕ)] := by
+  rcases k with _ | k
+  · omega
+  rcases k with _ | k
+  · -- Case k = 1
+    -- A361711 p ≡ A361711 1 [ZMOD p^3]
+    -- Since A361711 1 = 1, this is A361711 p ≡ 1 [ZMOD p^3]
+    sorry
+  · -- Case k > 1
+    sorry

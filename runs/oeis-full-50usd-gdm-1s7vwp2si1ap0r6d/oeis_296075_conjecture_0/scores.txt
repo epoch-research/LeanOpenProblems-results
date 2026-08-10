@@ -1,0 +1,112 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:389:3: warning: unused variable `h_sum_eq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:390:3: warning: unused variable `h_sum_ge5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:391:3: warning: unused variable `hp_eq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:392:3: warning: unused variable `hd_ge`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:393:3: warning: unused variable `hc_ge`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:397:3: warning: unused variable `h_sum_eq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:398:3: warning: unused variable `h_sum_ge5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:399:3: warning: unused variable `hp_ge`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:400:3: warning: unused variable `hd_ge`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:401:3: warning: unused variable `hc_ge`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:402:3: warning: unused variable `h_lt`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:678:4: error: linarith failed to find a contradiction
+  n p m d k : ℕ
+  hn : n ≥ 500
+  hp_prime : Nat.Prime p
+  hp_minFac : p = n.minFac
+  hm_prime : ¬Nat.Prime m
+  hm_eq : n = p * m
+  hp_dvd : p ∣ n
+  hm_dvd : m ∣ n
+  h_eq : p ≠ m
+  hm_gt1 : m > 1
+  hp_d : p = d
+  h_p_dvd_m : p ∣ m
+  hk_eq : m = p * k
+  hp2_eq_m : p ^ 2 ≠ m
+  h_sigma1_p : ↑((ArithmeticFunction.sigma 1) p) = ↑p + 1
+  h1_mem : 1 ∈ n.divisors.erase n
+  hp_mem : p ∈ n.divisors.erase n
+  hm_mem : m ∈ n.divisors.erase n
+  h_pd_mem : p * d ∈ n.divisors.erase n
+  hk_dvd_m : k ∣ m
+  hk_dvd_n : k ∣ n
+  hk_gt1 : k > 1
+  hk_ne_p : k ≠ p
+  hk_ge_p : p ≤ k
+  hk_gt_p : p < k
+  h_subset_m : {1, p, k, m} ⊆ m.divisors
+  hk_ne_m : k ≠ m
+  h_sum_m : ∑ c ∈ {1, p, k, m}, ↑c = 1 + ↑p + ↑k + ↑m
+  h_sigma_ge_val : ↑((ArithmeticFunction.sigma 1) m) ≥ 1 + ↑p + ↑k + ↑m
+  h_sigma_sub_ge : ↑((ArithmeticFunction.sigma 1) m) - ↑m ≥ 1 + ↑p + ↑k
+  h_subset4 : {1, p, m, p ^ 2} ⊆ n.divisors.erase n
+  hp_ne_p2 : p ≠ p ^ 2
+  hp2_ne1 : 1 ≠ p ^ 2
+  hm_ne_p2 : m ≠ p ^ 2
+  h_sum_ge4 :
+    ∑ d ∈ (p ^ 2 * k).divisors.erase (p ^ 2 * k), (↑((ArithmeticFunction.sigma 1) d) - ↑d) ≥
+      0 + (↑p + 1 - ↑p) + (↑((ArithmeticFunction.sigma 1) m) - ↑m) + (↑p ^ 2 + ↑p + 1 - ↑p ^ 2)
+  hp_ne1 : 1 ≠ p
+  hm_ne1 : 1 ≠ m
+  hp_ne_m : p ≠ m
+  h_sum4 :
+    ∑ d ∈ {1, p, m, p ^ 2}, (↑((ArithmeticFunction.sigma 1) d) - ↑d) =
+      ↑((ArithmeticFunction.sigma 1) 1) - 1 + (↑((ArithmeticFunction.sigma 1) p) - ↑p) +
+          (↑((ArithmeticFunction.sigma 1) m) - ↑m) +
+        (↑((ArithmeticFunction.sigma 1) (p ^ 2)) - ↑p ^ 2)
+  h_sigma1_p2 : ↑((ArithmeticFunction.sigma 1) (p ^ 2)) = ↑p ^ 2 + ↑p + 1
+  h_sigma1_1 : ↑((ArithmeticFunction.sigma 1) 1) = 1
+  h_n_eq : n = p ^ 2 * k
+  h_sum_eq : ∑ d ∈ (p ^ 2 * k).divisors.erase (p ^ 2 * k), (↑((ArithmeticFunction.sigma 1) d) - ↑d) = ↑p ^ 2 * ↑k - 1
+  hp_ge2_val : ↑p ≥ 2
+  hk_ge_p1 : ↑k ≥ ↑p + 1
+  ⊢ False
+  failed
+  Submission/Spec.lean:1163:20: error: Type mismatch
+    lemma_p_2_c_gt_d_contradiction (↑p) (↑d) (↑c) (∑ d ∈ n.divisors.erase n, (↑((ArithmeticFunction.sigma 1) d) - ↑d))
+      h_sum_eq_val h_ge_val (cast (Eq.symm Nat.cast_inj._simp_1) hp_2) (cast (Eq.symm cast_le._simp_1) hd_ge3)
+      (cast
+        (Eq.symm
+          (Eq.trans (congrArg (fun x => ↑c ≥ ↑d + x) (Eq.symm cast_one))
+            (Eq.trans (congrArg (GE.ge ↑c) (cast_add._simp_1 d 1)) cast_le._simp_1)))
+        hc_gt_d)
+  has type
+    False → False
+  but is expected to have type
+    False
+  Submission/Spec.lean:1324:18: error: Type mismatch
+    lemma_p_ge_3_contradiction (↑p) (↑d) (↑c) (∑ d ∈ n.divisors.erase n, (↑((ArithmeticFunction.sigma 1) d) - ↑d))
+      h_sum_eq_val h_ge_val (cast (Eq.symm cast_le._simp_1) hp_ge3) (cast (Eq.symm cast_le._simp_1) hd_ge5)
+      (cast (Eq.symm cast_le._simp_1) hc_ge_d) (cast (Eq.symm cast_lt._simp_1) hp_lt_d)
+  has type
+    False → False
+  but is expected to have type
+    False
+  'oeis_296075_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

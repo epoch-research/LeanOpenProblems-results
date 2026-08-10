@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.factorization_choose
+#check Nat.factorization_factorial
+#check Nat.factorization_mul
+#check Nat.factorization_pow
+#check padicValNat
+#check padicValNat.factorial
+#check padicValNat.eq_factorization
+#check padicValNat.eq_zero_iff
+#check Nat.Prime.factorization_factorial
+#check Nat.factorization_mul'
+#check Nat.factorization_eq_zero_of_not_dvd
+#check Nat.factorization_pos_iff
+#check Nat.factorization_le_iff_dvd
+#check Nat.dvd_iff_mod_eq_zero

@@ -1,0 +1,19 @@
+import FormalConjectures.Util.ProblemImports
+
+#check Polynomial.reverse
+#check Polynomial.mirror
+#check Polynomial.irreducible_of_mirror
+#check Polynomial.reverse_mul_of_domain
+#check Polynomial.IsPrimitive.Int.irreducible_iff_irreducible_map_cast
+#check Polynomial.IsPrimitive.irreducible_iff_irreducible_map_fraction_map
+#check Polynomial.irreducible_of_eisenstein_criterion
+#check Polynomial.IsEisensteinAt.irreducible
+#check Polynomial.generalizedEisenstein
+#check Nat.Prime.dvd_choose_iff
+#check Nat.Prime.dvd_choose_iff_exists
+#check padicValNat_choose
+#check sub_one_mul_padicValNat_choose_eq_sub_sum_digits
+#check Choose.choose_modEq_prod_range_choose_nat
+#print Polynomial.irreducible_of_mirror
+#print Polynomial.mirror
+#print Polynomial.reverse

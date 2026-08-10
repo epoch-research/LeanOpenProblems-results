@@ -1,0 +1,85 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:168:26: warning: This simp argument is unused:
+    ih
+  
+  Hint: Omit it from the simp argument list.
+    simp [replicate_succ,̵ ̵i̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:725:25: warning: This simp argument is unused:
+    List.dropLast
+  
+  Hint: Omit it from the simp argument list.
+    simp [ca_step_carry,̵ ̵L̵i̵s̵t̵.̵d̵r̵o̵p̵L̵a̵s̵t̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:784:14: warning: This simp argument is unused:
+    trim_trailing_zeros
+  
+  Hint: Omit it from the simp argument list.
+    s̵i̵m̵p̵ ̵[̵t̵r̵i̵m̵_̵t̵r̵a̵i̵l̵i̵n̵g̵_̵z̵e̵r̵o̵s̵]̵ ̵a̵t̵ ̵h̵x̵s̲i̲m̲p̲ ̲a̲t̲ ̲h̲x̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:785:14: warning: This simp argument is unused:
+    trim_trailing_zeros
+  
+  Hint: Omit it from the simp argument list.
+    simp [t̵r̵i̵m̵_̵t̵r̵a̵i̵l̵i̵n̵g̵_̵z̵e̵r̵o̵s̵,̵ ̵hy] at hx
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1076:32: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1206:50: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1207:3: warning: unused variable `h_stable`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1925:10: warning: This simp argument is unused:
+    add_at
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵a̵d̵d̵_̵a̵t̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2478:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    add_at (S (a N + 0) (N + 1)) m_k
+  in the target expression
+    add_at (S (a N) (N + 1)) m_k = add_at (S (a N) (N + 1)) m_0
+  
+  n' : ℕ
+  N : ℕ := ⋯
+  hn_nz : N ≠ 0
+  ih_val : a N ≤ a (n' + 1) + 2 ∧ ∀ t ≥ a N - 1, ∀ (m : ℕ), S t (n' + 1 + 2) = add_at (S t N) m → m + 2 ≥ n' + 1
+  h_le_np1 : a N ≤ a (n' + 1) + 2
+  h_carry_np1 : ∀ t ≥ a N - 1, ∀ (m : ℕ), S t (n' + 1 + 2) = add_at (S t N) m → m + 2 ≥ n' + 1
+  h_part1 : a (N + 1) ≤ a N + 2
+  hN_nz : N ≠ 0
+  h_mono_prev : a (N - 1) ≤ a N
+  h_stable_n : S (a N) N = replicate N 1
+  i_prev : ℕ
+  hi_prev_le : i_prev ≤ N
+  hi_prev : S (a N) (N + 1) = add_at (S (a N) N) i_prev
+  h_ip_lt : i_prev < N
+  h_i_prev_ge : i_prev + 2 ≥ N
+  m_0 : ℕ
+  hm_0_le : m_0 ≤ N + 1
+  hm_0 : S (a N) (N + 1 + 1) = add_at (S (a N) (N + 1)) m_0
+  h_ge_m0 : m_0 + 2 ≥ N
+  m m_k : ℕ
+  hm_k_le : m_k ≤ N + 1
+  ih : ∀ (m : ℕ), a N + 0 ≥ a (N + 1) - 1 → S (_root_.a N + 0) (N + 2) = add_at (S (_root_.a N + 0) (N + 1)) m → m + 2 ≥ N
+  h_ge_T0 : a N + (0 + 1) ≥ a (N + 1) - 1
+  hm : S (a N + (0 + 1)) (N + 2) = add_at (S (a N + (0 + 1)) (N + 1)) m
+  hm_k : S (a N + 0) (N + 1 + 1) = add_at (S (a N + 0) (N + 1)) m_k
+  h_not_st : a (N + 1) > a N + 0
+  h2 : a (N + 1) = a N + 2
+  ⊢ add_at (S (a N) (N + 1)) m_k = add_at (S (a N) (N + 1)) m_0
+  Submission/Spec.lean:2656:3: warning: unused variable `h_le`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  'oeis_a300997_finite_difference_is_one_or_two' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

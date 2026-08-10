@@ -1,0 +1,10 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:308:15: error: Type mismatch
+    a_pos_proof (n + 3) (Decidable.byContradiction fun a => a_pos_simp._proof_1 n a)
+  has type
+    a (n + 3) > 0
+  but is expected to have type
+    a (n + 4) > 0
+

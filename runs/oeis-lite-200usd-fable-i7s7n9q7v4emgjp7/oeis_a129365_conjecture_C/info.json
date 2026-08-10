@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "BzA8SgWwCPFQoHeEtoUgUw",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 47,
+      "output_tokens": 61658,
+      "total_tokens": 1268151,
+      "input_tokens_cache_write": 72058,
+      "input_tokens_cache_read": 1134388,
+      "reasoning_tokens": 11729,
+      "total_cost": 5.1184829999999994
+    }
+  },
+  "oeis_id": "A129365"
+}

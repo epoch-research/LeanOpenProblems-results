@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a004290_conjecture_radcliffe",
+  "epoch": 1,
+  "uuid": "TLR7pejQCjLi4sENuJgobg",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 318,
+      "output_tokens": 555379,
+      "total_tokens": 34386556,
+      "input_tokens_cache_write": 2858214,
+      "input_tokens_cache_read": 30972645,
+      "reasoning_tokens": 219026,
+      "total_cost": 94.47244999999998
+    }
+  },
+  "oeis_id": "A004290"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_354766_conjecture_1_multiplicative",
+  "epoch": 1,
+  "uuid": "UHrCujjARHgUhXDa43CkZj",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 18393584,
+      "output_tokens": 175045,
+      "total_tokens": 158591702,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 139014742,
+      "reasoning_tokens": 1008331,
+      "total_cost": 50.01799229999997
+    }
+  },
+  "oeis_id": "A354766"
+}

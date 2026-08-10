@@ -1,0 +1,54 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Int Finset
+
+def is_perfect_cube (m : ℤ) : Prop := ∃ k : ℤ, m = k ^ 3
+
+noncomputable instance decidable_is_perfect_cube (m : ℤ) : Decidable (is_perfect_cube m) :=
+  Classical.dec _
+
+noncomputable def A282091 (n : ℕ) : ℕ :=
+  let B := n.sqrt + 1
+  let R := Finset.range B
+
+  let is_square (m : ℕ) : Prop := m.sqrt * m.sqrt = m
+
+  -- Search space for (x, y, z) in N^3
+  let search_space := R.product R |>.product R
+
+  search_space.filter (fun p : (ℕ × ℕ) × ℕ =>
+    let x := p.fst.fst
+    let y := p.fst.snd
+    let z := p.snd
+
+    let sum_xyz_sq := x^2 + y^2 + z^2
+    let w_sq := n - sum_xyz_sq
+
+    -- 1. Ensure $w^2 \ge 0$ (i.e., sum_xyz_sq ≤ n)
+    sum_xyz_sq ≤ n ∧
+    -- 2. Ensure $w^2$ is a perfect square, implicitly defining $w \in \mathbb{N}$
+    is_square w_sq ∧
+
+    -- 3. Order constraints: $x \ge y \le z$
+    x ≥ y ∧ y ≤ z ∧
+
+    -- 4. Parity constraint: $x \equiv y \pmod 2$
+    (x % 2 = y % 2) ∧
+
+    -- 5. Cube constraint on $x + y - z$
+    is_perfect_cube ((x : ℤ) + (y : ℤ) - (z : ℤ))
+  )
+  |>.card
+
+theorem oeis_282091_conjecture_0 :
+  -- Part 1: a(n) > 0
+  (∀ n : ℕ, A282091 n > 0) ∧
+  -- Part 2: Existence with different constraints (x ≤ y ≤ z)
+  (∀ n : ℕ, ∃ x y z w : ℕ,
+      n = x^2 + y^2 + z^2 + w^2 ∧
+      x ≤ y ∧ y ≤ z ∧
+      is_perfect_cube ((x : ℤ) + (y : ℤ) - (z : ℤ))) :=
+  answer(sorry)
+
+#print axioms oeis_282091_conjecture_0
+

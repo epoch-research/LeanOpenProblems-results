@@ -1,0 +1,13 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:42:4: error: Application type mismatch: The argument
+    addAndCompile decl
+  has type
+    CoreM Unit
+  but is expected to have type
+    Finset (Finset ?m.94)
+  in the application
+    Finset.slice (addAndCompile decl)
+  Submission/Spec.lean:44:1: error(lean.unknownIdentifier): Unknown identifier `cheat`
+

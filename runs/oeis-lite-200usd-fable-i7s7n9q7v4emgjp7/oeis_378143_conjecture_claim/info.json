@@ -1,0 +1,23 @@
+{
+  "id": "oeis_378143_conjecture_claim",
+  "epoch": 1,
+  "uuid": "jkVq6crJEH4wgtGCp4WnaD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1367,
+      "output_tokens": 266941,
+      "total_tokens": 177459559,
+      "input_tokens_cache_write": 841437,
+      "input_tokens_cache_read": 176349814,
+      "reasoning_tokens": 90702,
+      "total_cost": 200.22849650000003
+    }
+  },
+  "oeis_id": "A378143"
+}

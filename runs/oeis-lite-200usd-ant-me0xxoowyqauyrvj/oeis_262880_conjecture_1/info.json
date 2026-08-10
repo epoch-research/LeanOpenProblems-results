@@ -1,0 +1,23 @@
+{
+  "id": "oeis_262880_conjecture_1",
+  "epoch": 1,
+  "uuid": "b4TFJYnQPE5wsSgJTwHCiE",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 3784,
+      "output_tokens": 539978,
+      "total_tokens": 357145452,
+      "input_tokens_cache_write": 1436186,
+      "input_tokens_cache_read": 355165504,
+      "reasoning_tokens": 77132,
+      "total_cost": 200.07728449999996
+    }
+  },
+  "oeis_id": "A262880"
+}

@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.testBit_mod_two_pow
+#check Nat.testBit_two_pow
+#check Nat.eq_of_testBit_eq
+#check Nat.testBit_lt_two_pow
+#check Nat.testBit_land
+#check Nat.testBit_xor
+#check Nat.land_eq_zero
+#check Nat.shiftLeft_eq
+#check Nat.testBit_of_lt_two_pow
+#check Nat.two_pow_le_iff
+#check Nat.lt_two_pow_self
+#check Nat.lt_of_testBit
+#check Nat.testBit_of_lt
+#check Nat.testBit_eq_false_of_lt

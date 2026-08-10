@@ -1,0 +1,1487 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+set_option maxRecDepth 10000
+set_option maxHeartbeats 0
+
+open Finset ZMod Nat Set Classical
+
+/--
+The predicate that {{2^k - k: k = 1,\\dots,m}} contains a complete system of residues modulo $n$.
+-/
+def A232616_prop (n m : ℕ) [NeZero n] : Prop :=
+  (univ : Finset (ZMod n)) = (Finset.Icc 1 m).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n)
+
+instance (priority := 20000) (n m : ℕ) [NeZero n] : Decidable (A232616_prop n m) :=
+  letI : Decidable ((univ : Finset (ZMod n)) = (Finset.Icc 1 m).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n)) := inferInstance
+  this
+
+/--
+A232616: Least positive integer $m$ such that {{2^k - k: k = 1,\\dots,m}}
+contains a complete system of residues modulo $n$.
+-/
+noncomputable def A232616 (n : ℕ) : ℕ :=
+  if h : n = 0 then 0
+  else
+    have hn : NeZero n := NeZero.mk h
+    let S : Set ℕ := { m : ℕ | A232616_prop n m }
+    sInf S
+
+----------------- PRIME COUNTING SECTION -----------------
+
+def has_divisor_limit (fuel : Nat) (limit : Nat) (n : Nat) (d : Nat) : Bool :=
+  match fuel with
+  | 0 => false
+  | fuel + 1 =>
+    if d > limit then false
+    else if n % d == 0 then true
+    else has_divisor_limit fuel limit n (d + 2)
+
+lemma has_divisor_limit_iff (fuel : Nat) (limit : Nat) (n : Nat) (d : Nat)
+    (h_fuel : limit < d ∨ (limit - d) / 2 < fuel) (h_odd : d % 2 = 1) (hd3 : 3 ≤ d) :
+    has_divisor_limit fuel limit n d = false ↔ ∀ m, d ≤ m → m ≤ limit → m % 2 = 1 → ¬ m ∣ n := by
+  induction fuel generalizing d with
+  | zero =>
+    rcases h_fuel with h_lt | h_fuel
+    · constructor
+      · intro _ m hd hm _ _
+        omega
+      · intro _
+        rfl
+    · omega
+  | succ fuel ih =>
+    simp only [has_divisor_limit]
+    by_cases h_gt : d > limit
+    · simp [h_gt]
+      intro m hd hm h_odd' hdvd
+      omega
+    · simp only [h_gt, ↓reduceIte]
+      by_cases h_dvd : n % d = 0
+      · have : (n % d == 0) = true := by simp [h_dvd]
+        rw [this]
+        constructor
+        · intro h; contradiction
+        · intro h
+          have hdvd : d ∣ n := Nat.dvd_of_mod_eq_zero h_dvd
+          exact absurd hdvd (h d (by omega) (by omega) h_odd)
+      · have : (n % d == 0) = false := by
+          have h_ne : n % d ≠ 0 := by omega
+          simp [h_ne]
+        rw [this]
+        have h_eq : (if false = true then true else has_divisor_limit fuel limit n (d + 2)) = has_divisor_limit fuel limit n (d + 2) := by rfl
+        rw [h_eq]
+        have h_fuel' : limit < d + 2 ∨ (limit - (d + 2)) / 2 < fuel := by
+          rcases h_fuel with h_lt | h_fuel
+          · left; omega
+          · by_cases h_limit : limit < d + 2
+            · left; exact h_limit
+            · right; omega
+        have h_odd' : (d + 2) % 2 = 1 := by
+          have : (d + 2) % 2 = d % 2 := Nat.add_mod_right d 2
+          omega
+        rw [ih (d + 2) h_fuel' h_odd' (by omega)]
+        constructor
+        · intro h_all m hd' hm h_odd_m hdvd
+          have : d ≠ m := by
+            rintro rfl
+            have : n % d = 0 := Nat.mod_eq_zero_of_dvd hdvd
+            exact h_dvd this
+          have : d + 1 ≠ m := by
+            rintro rfl
+            have : (d + 1) % 2 = 0 := by omega
+            omega
+          have : d + 2 ≤ m := by omega
+          exact h_all m this hm h_odd_m hdvd
+        · intro h_all m hd' hm h_odd_m hdvd
+          exact h_all m (by omega) hm h_odd_m hdvd
+
+def check_small_primes (n : Nat) : Bool :=
+  n % 2 == 0 || n % 3 == 0 || n % 5 == 0 || n % 7 == 0 || n % 11 == 0 || n % 13 == 0 || n % 17 == 0 || n % 19 == 0 || n % 23 == 0
+
+def is_small_prime (n : Nat) : Bool :=
+  n == 2 || n == 3 || n == 5 || n == 7 || n == 11 || n == 13 || n == 17 || n == 19 || n == 23
+
+def fast_limit (n : Nat) : Nat :=
+  if n < 100 then 10
+  else if n < 1000 then 32
+  else if n < 10000 then 100
+  else if n < 100000 then 317
+  else if n < 1000000 then 1000
+  else if n < 9000000 then 3000
+  else n - 1
+
+lemma sq_sub_one_ge (n : ℕ) (hn : 3 ≤ n) : n ≤ (n - 1) * (n - 1) := by
+  have h1 : n - 1 ≥ 2 := by omega
+  calc n ≤ 2 * (n - 1) := by omega
+  _ ≤ (n - 1) * (n - 1) := Nat.mul_le_mul_right (n - 1) h1
+
+lemma fast_limit_sq_le (n : ℕ) (hn : 2 ≤ n) : n ≤ fast_limit n * fast_limit n := by
+  unfold fast_limit
+  split_ifs with h1 h2 h3 h4 h5 h6
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · change n ≤ 9000000; omega
+  · apply sq_sub_one_ge
+    omega
+
+lemma fast_limit_lt (n : ℕ) (hn : 25 ≤ n) : fast_limit n < n := by
+  unfold fast_limit
+  split_ifs with h1 h2 h3 h4 h5 h6
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+  · omega
+
+def simple_prime (n : Nat) : Bool :=
+  if n < 2 then false
+  else if is_small_prime n then true
+  else if check_small_primes n then false
+  else not (has_divisor_limit (fast_limit n) (fast_limit n) n 25)
+
+lemma is_small_prime_prime (n : ℕ) (h : is_small_prime n = true) : Nat.Prime n := by
+  unfold is_small_prime at h
+  repeat rw [Bool.or_eq_true] at h
+  simp only [beq_iff_eq] at h
+  rcases h with ((((((((rfl | rfl) | rfl) | rfl) | rfl) | rfl) | rfl) | rfl) | rfl)
+  · exact Nat.prime_two
+  · exact Nat.prime_three
+  · decide
+  · decide
+  · decide
+  · decide
+  · decide
+  · decide
+  · decide
+
+lemma composite_has_sqrt_divisor {n : ℕ} (hn : 2 ≤ n) (m : ℕ) (hm2 : 2 ≤ m) (h_dvd : m ∣ n) (hne : n ≠ m) :
+    ∃ d, 2 ≤ d ∧ d * d ≤ n ∧ d ∣ n := by
+  have hdvd_q : n / m ∣ n := Nat.div_dvd_of_dvd h_dvd
+  have h_mul : m * (n / m) = n := Nat.mul_div_cancel' h_dvd
+  have h_q_ge_2 : 2 ≤ n / m := by
+    by_contra! h_lt
+    rcases h_eq : n / m with _ | _ | y
+    · rw [h_eq, mul_zero] at h_mul; omega
+    · simp only [h_eq] at h_mul
+      subst h_mul
+      omega
+    · have : 2 ≤ n / m := by rw [h_eq]; omega
+      omega
+  by_cases h_sq : m * m ≤ n
+  · use m
+  · use n / m
+    refine ⟨h_q_ge_2, ?_, hdvd_q⟩
+    by_contra! h_gt
+    have h1 : n < m * m := by omega
+    have h2 : n < n / m * (n / m) := h_gt
+    have h3 : n * n < (m * m) * (n / m * (n / m)) := by
+      have h4 : n * n < (m * m) * n := Nat.mul_lt_mul_of_pos_right h1 (by omega)
+      have h5 : (m * m) * n < (m * m) * (n / m * (n / m)) := Nat.mul_lt_mul_of_pos_left h2 (by omega)
+      omega
+    have h_prod_eq : (m * m) * (n / m * (n / m)) = n * n := by
+      calc (m * m) * (n / m * (n / m)) = (m * (n / m)) * (m * (n / m)) := by ac_rfl
+      _ = n * n := by rw [h_mul]
+    omega
+
+lemma prime_dvd_prime {p n : ℕ} (hp : Nat.Prime p) (hn : Nat.Prime n) (h : p ∣ n) : n = p := by
+  have : p = 1 ∨ p = n := Nat.Prime.eq_one_or_self_of_dvd hn p h
+  rcases this with h1 | h2
+  · subst h1
+    have := Nat.Prime.ne_one hp
+    contradiction
+  · exact h2.symm
+
+lemma small_primes_div (n : ℕ) (hn : Nat.Prime n) (hc : check_small_primes n = true) : is_small_prime n = true := by
+  unfold check_small_primes at hc
+  repeat rw [Bool.or_eq_true] at hc
+  simp only [beq_iff_eq] at hc
+  rcases hc with ((((((((h | h) | h) | h) | h) | h) | h) | h) | h)
+  · have h_eq := prime_dvd_prime Nat.prime_two hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime Nat.prime_three hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 5) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 7) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 11) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 13) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 17) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 19) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+  · have h_eq := prime_dvd_prime (by decide : Nat.Prime 23) hn (Nat.dvd_of_mod_eq_zero h)
+    unfold is_small_prime; simp [h_eq]
+
+lemma small_odd_has_prime_divisor (m : ℕ) (hm2 : 2 ≤ m) (hm_lt : m < 25) (hm_odd : m % 2 = 1) :
+    ∃ p, (p = 3 ∨ p = 5 ∨ p = 7 ∨ p = 11 ∨ p = 13 ∨ p = 17 ∨ p = 19 ∨ p = 23) ∧ p ∣ m := by
+  rcases m with _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | y
+  · omega
+  · omega
+  · omega
+  · use 3; simp
+  · omega
+  · use 5; simp
+  · omega
+  · use 7; simp
+  · omega
+  · use 3; simp
+  · omega
+  · use 11; simp
+  · omega
+  · use 13; simp
+  · omega
+  · use 3; simp
+  · omega
+  · use 17; simp
+  · omega
+  · use 19; simp
+  · omega
+  · use 3; simp
+  · omega
+  · use 23; simp
+  · omega
+  · omega
+
+lemma prime_iff_no_divisors (n : ℕ) : Nat.Prime n ↔ 2 ≤ n ∧ ∀ m, 2 ≤ m → m * m ≤ n → ¬ m ∣ n := by
+  rw [Nat.prime_def_le_sqrt]
+  simp_rw [Nat.le_sqrt]
+
+theorem simple_prime_iff (n : ℕ) : simple_prime n = true ↔ Nat.Prime n := by
+  by_cases hn2 : n < 2
+  · unfold simple_prime
+    rw [if_pos hn2]
+    constructor
+    · intro h; contradiction
+    · intro hp
+      have := Nat.Prime.two_le hp
+      omega
+  · have hn2_le : 2 ≤ n := by omega
+    by_cases h_is_small : is_small_prime n = true
+    · unfold simple_prime
+      rw [if_neg hn2, if_pos h_is_small]
+      simp [is_small_prime_prime n h_is_small]
+    · unfold simple_prime
+      rw [if_neg hn2, if_neg h_is_small]
+      by_cases h_check : check_small_primes n = true
+      · rw [if_pos h_check]
+        simp only [Bool.not_true, Bool.false_eq_true, false_iff]
+        intro hp
+        have := small_primes_div n hp h_check
+        contradiction
+      · rw [if_neg h_check]
+        rw [Bool.not_eq_true']
+        have h_fuel : fast_limit n < 25 ∨ (fast_limit n - 25) / 2 < fast_limit n := by
+          by_cases h_lim : fast_limit n < 25
+          · left; exact h_lim
+          · right; omega
+        rw [has_divisor_limit_iff (fast_limit n) (fast_limit n) n 25 h_fuel (by decide) (by decide)]
+        rw [prime_iff_no_divisors n]
+        simp only [hn2_le, true_and]
+        have hn25 : 25 ≤ n := by
+          by_contra! h_lt
+          have hm_odd : n % 2 = 1 := by
+            by_contra! h_even
+            have : n % 2 = 0 := by omega
+            unfold check_small_primes at h_check
+            have h_eq : (n % 2 == 0) = true := by simp [this]
+            simp [h_eq] at h_check
+          have ⟨p, hp_or, hp_dvd⟩ := small_odd_has_prime_divisor n hn2_le h_lt hm_odd
+          have h_check_mod : n % p = 0 := Nat.mod_eq_zero_of_dvd hp_dvd
+          unfold check_small_primes at h_check
+          rcases hp_or with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl
+          · have : (n % 3 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 5 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 7 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 11 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 13 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 17 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 19 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          · have : (n % 23 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+        have h_lim_lt := fast_limit_lt n hn25
+        constructor
+        · intro h_all m hm2 hm_sq hdvd
+          have hm_le_lim : m ≤ fast_limit n := by
+            have h_lim_sq := fast_limit_sq_le n hn2_le
+            have h_m_sq : m * m ≤ fast_limit n * fast_limit n := by omega
+            exact Nat.mul_self_le_mul_self_iff.mp h_m_sq
+          have hm_odd : m % 2 = 1 := by
+            by_contra! h_even
+            have h_even' : m % 2 = 0 := by omega
+            have h2 : 2 ∣ m := Nat.dvd_of_mod_eq_zero h_even'
+            have h2_n : 2 ∣ n := dvd_trans h2 hdvd
+            have h_check_mod : n % 2 = 0 := Nat.mod_eq_zero_of_dvd h2_n
+            unfold check_small_primes at h_check
+            have : (n % 2 == 0) = true := by simp [h_check_mod]
+            simp [this] at h_check
+          have hm_ge_25 : 25 ≤ m := by
+            by_contra! h_lt
+            have ⟨p, hp_or, hp_dvd⟩ := small_odd_has_prime_divisor m hm2 h_lt hm_odd
+            have hp_n : p ∣ n := dvd_trans hp_dvd hdvd
+            have h_check_mod : n % p = 0 := Nat.mod_eq_zero_of_dvd hp_n
+            unfold check_small_primes at h_check
+            rcases hp_or with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl
+            · have : (n % 3 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 5 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 7 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 11 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 13 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 17 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 19 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+            · have : (n % 23 == 0) = true := by simp [h_check_mod]
+              simp [this] at h_check
+          exact h_all m hm_ge_25 hm_le_lim hm_odd hdvd
+        · intro h_all m hm2 hm_sq hm_odd h_dvd
+          have h_ne : n ≠ m := by omega
+          have ⟨d, hd2, hd_sq, hd_dvd⟩ := composite_has_sqrt_divisor hn2_le m (by omega : 2 ≤ m) h_dvd h_ne
+          exact h_all d hd2 hd_sq hd_dvd
+
+lemma count_mono (p : ℕ → Prop) [DecidablePred p] (y : ℕ) (fuel : ℕ) : Nat.count p y ≤ Nat.count p (y + fuel) := by
+  induction fuel with
+  | zero => simp
+  | succ fuel ih =>
+    have h_eq : y + (fuel + 1) = y + fuel + 1 := by omega
+    rw [h_eq]
+    have h_step : Nat.count p (y + fuel) ≤ Nat.count p (y + fuel + 1) := by
+      rw [Nat.count_succ]
+      split_ifs <;> omega
+    omega
+
+def simple_prime_count (fuel : Nat) (y : Nat) (acc : Nat) : Nat :=
+  match fuel with
+  | 0 => acc
+  | fuel + 1 =>
+    let acc' := if simple_prime y then acc + 1 else acc
+    simple_prime_count fuel (y + 1) acc'
+
+theorem simple_prime_count_eq (fuel : ℕ) (y : ℕ) (acc : ℕ) :
+    simple_prime_count fuel y acc = acc + Nat.count Nat.Prime (y + fuel) - Nat.count Nat.Prime y := by
+  induction fuel generalizing y acc with
+  | zero =>
+    simp [simple_prime_count]
+  | succ fuel ih =>
+    simp only [simple_prime_count]
+    by_cases hp : Nat.Prime y
+    · have hsp : simple_prime y = true := (simple_prime_iff y).mpr hp
+      rw [hsp]
+      simp only [↓reduceIte]
+      rw [ih (y + 1) (acc + 1)]
+      have hc1 : Nat.count Nat.Prime (y + 1) = Nat.count Nat.Prime y + 1 := by
+        rw [Nat.count_succ]
+        simp [hp]
+      have hc2 : y + (fuel + 1) = y + 1 + fuel := by omega
+      have h_mono := count_mono Nat.Prime (y + 1) fuel
+      rw [hc1, hc2]
+      omega
+    · have hsp : simple_prime y = false := by
+        by_contra h_true
+        have : simple_prime y = true := by
+          cases h : simple_prime y
+          · contradiction
+          · rfl
+        exact hp ((simple_prime_iff y).mp this)
+      rw [hsp]
+      have h_if : (if false = true then acc + 1 else acc) = acc := rfl
+      rw [h_if]
+      rw [ih (y + 1) acc]
+      have hc1 : Nat.count Nat.Prime (y + 1) = Nat.count Nat.Prime y := by
+        rw [Nat.count_succ]
+        simp [hp]
+      have hc2 : y + (fuel + 1) = y + 1 + fuel := by omega
+      rw [hc1, hc2]
+
+def simple_prime_count_tree (depth : Nat) (y : Nat) (len : Nat) (acc : Nat) : Nat :=
+  if len <= 100 then
+    simple_prime_count len y acc
+  else
+    match depth with
+    | 0 => acc
+    | d + 1 =>
+      let half := len / 2
+      match simple_prime_count_tree d y half acc with
+      | acc' => simple_prime_count_tree d (y + half) (len - half) acc'
+
+theorem simple_prime_count_tree_eq (depth : ℕ) (y : ℕ) (len : ℕ) (acc : ℕ) (h_depth : len ≤ 2 ^ depth * 100) :
+    simple_prime_count_tree depth y len acc = acc + Nat.count Nat.Prime (y + len) - Nat.count Nat.Prime y := by
+  induction depth generalizing y len acc with
+  | zero =>
+    unfold simple_prime_count_tree
+    have : len ≤ 100 := by omega
+    rw [if_pos this]
+    rw [simple_prime_count_eq]
+  | succ d ih =>
+    by_cases h_le : len ≤ 100
+    · unfold simple_prime_count_tree
+      rw [if_pos h_le]
+      rw [simple_prime_count_eq]
+    · unfold simple_prime_count_tree
+      rw [if_neg h_le]
+      dsimp only
+      have h_half_le : len / 2 ≤ 2 ^ d * 100 := by omega
+      have h_sub_le : len - len / 2 ≤ 2 ^ d * 100 := by omega
+      rw [ih y (len / 2) acc h_half_le]
+      rw [ih (y + len / 2) (len - len / 2) _ h_sub_le]
+      have h_mono1 : Nat.count Nat.Prime y ≤ Nat.count Nat.Prime (y + len / 2) := count_mono Nat.Prime y (len / 2)
+      have h_mono2 : Nat.count Nat.Prime (y + len / 2) ≤ Nat.count Nat.Prime (y + len / 2 + (len - len / 2)) := count_mono Nat.Prime (y + len / 2) (len - len / 2)
+      have h_sum_eq : y + len / 2 + (len - len / 2) = y + len := by omega
+      rw [h_sum_eq] at *
+      omega
+
+----------------- VERIFIER SECTION -----------------
+
+def verify_chunks_rec (depth : Nat) (y : Nat) (chunks : List (Nat × Nat)) : Bool :=
+  match chunks with
+  | [] => true
+  | (len, diff) :: rest =>
+    if simple_prime_count_tree depth y len 0 == diff then
+      verify_chunks_rec depth (y + len) rest
+    else
+      false
+
+lemma verify_chunks_rec_sound {{depth : Nat}} {{y : Nat}} {{acc : Nat}} {{chunks : List (Nat × Nat)}}
+    (h_depth : ∀ len ∈ chunks.map Prod.fst, len ≤ 2 ^ depth * 100)
+    (h_acc : Nat.count Nat.Prime y = acc)
+    (h_check : verify_chunks_rec depth y chunks = true) :
+    Nat.count Nat.Prime (y + (chunks.map Prod.fst).sum) = acc + (chunks.map Prod.snd).sum := by
+  induction chunks generalizing y acc with
+  | nil =>
+    simp only [List.map_nil, List.sum_nil, add_zero] at *
+    exact h_acc
+  | cons chunk rest ih =>
+    rcases chunk with ⟨len, diff⟩
+    have h_len : len ≤ 2 ^ depth * 100 := by
+      apply h_depth len
+      simp only [List.map_cons, List.mem_cons, true_or]
+    have h_rest_depth : ∀ l ∈ rest.map Prod.fst, l ≤ 2 ^ depth * 100 := by
+      intro l hl
+      apply h_depth l
+      simp only [List.map_cons, List.mem_cons]
+      right
+      exact hl
+    unfold verify_chunks_rec at h_check
+    have h_cond : simple_prime_count_tree depth y len 0 = diff := by
+      cases h : simple_prime_count_tree depth y len 0 == diff
+      · simp [h] at h_check
+      · simp only [beq_iff_eq] at h
+        exact h
+    have h_check' : verify_chunks_rec depth (y + len) rest = true := by
+      cases h : simple_prime_count_tree depth y len 0 == diff
+      · simp [h] at h_check
+      · simp [h] at h_check
+        exact h_check
+    rw [simple_prime_count_tree_eq depth y len 0 h_len] at h_cond
+    simp only [zero_add] at h_cond
+    have h_mon := count_mono Nat.Prime y len
+    have h_acc' : Nat.count Nat.Prime (y + len) = acc + diff := by omega
+    have h_sub := ih h_rest_depth h_acc' h_check'
+    simp only [List.map_cons, List.sum_cons]
+    have h_assoc1 : y + (len + (List.map Prod.fst rest).sum) = y + len + (List.map Prod.fst rest).sum := by omega
+    have h_assoc2 : acc + (diff + (List.map Prod.snd rest).sum) = acc + diff + (List.map Prod.snd rest).sum := by omega
+    rw [h_assoc1]
+    rw [h_sub]
+    rw [h_assoc2]
+
+def my_chunk_0 : List (Nat × Nat) := [(10000, 1229)]
+def my_chunk_1 : List (Nat × Nat) := [(10000, 1033)]
+def my_chunk_2 : List (Nat × Nat) := [(10000, 983)]
+def my_chunk_3 : List (Nat × Nat) := [(10000, 958)]
+def my_chunk_4 : List (Nat × Nat) := [(10000, 930)]
+def my_chunk_5 : List (Nat × Nat) := [(10000, 924)]
+def my_chunk_6 : List (Nat × Nat) := [(10000, 878)]
+def my_chunk_7 : List (Nat × Nat) := [(10000, 902)]
+def my_chunk_8 : List (Nat × Nat) := [(10000, 876)]
+def my_chunk_9 : List (Nat × Nat) := [(10000, 879)]
+def my_chunk_10 : List (Nat × Nat) := [(10000, 861)]
+def my_chunk_11 : List (Nat × Nat) := [(10000, 848)]
+def my_chunk_12 : List (Nat × Nat) := [(10000, 858)]
+def my_chunk_13 : List (Nat × Nat) := [(10000, 851)]
+def my_chunk_14 : List (Nat × Nat) := [(10000, 838)]
+def my_chunk_15 : List (Nat × Nat) := [(10000, 835)]
+def my_chunk_16 : List (Nat × Nat) := [(10000, 814)]
+def my_chunk_17 : List (Nat × Nat) := [(10000, 845)]
+def my_chunk_18 : List (Nat × Nat) := [(10000, 828)]
+def my_chunk_19 : List (Nat × Nat) := [(10000, 814)]
+def my_chunk_20 : List (Nat × Nat) := [(10000, 823)]
+def my_chunk_21 : List (Nat × Nat) := [(10000, 811)]
+def my_chunk_22 : List (Nat × Nat) := [(10000, 819)]
+def my_chunk_23 : List (Nat × Nat) := [(10000, 784)]
+def my_chunk_24 : List (Nat × Nat) := [(10000, 823)]
+def my_chunk_25 : List (Nat × Nat) := [(10000, 793)]
+def my_chunk_26 : List (Nat × Nat) := [(10000, 805)]
+def my_chunk_27 : List (Nat × Nat) := [(10000, 790)]
+def my_chunk_28 : List (Nat × Nat) := [(10000, 792)]
+def my_chunk_29 : List (Nat × Nat) := [(10000, 773)]
+def my_chunk_30 : List (Nat × Nat) := [(10000, 803)]
+def my_chunk_31 : List (Nat × Nat) := [(10000, 808)]
+def my_chunk_32 : List (Nat × Nat) := [(10000, 796)]
+def my_chunk_33 : List (Nat × Nat) := [(10000, 778)]
+def my_chunk_34 : List (Nat × Nat) := [(10000, 795)]
+def my_chunk_35 : List (Nat × Nat) := [(10000, 780)]
+def my_chunk_36 : List (Nat × Nat) := [(10000, 765)]
+def my_chunk_37 : List (Nat × Nat) := [(10000, 778)]
+def my_chunk_38 : List (Nat × Nat) := [(10000, 767)]
+def my_chunk_39 : List (Nat × Nat) := [(10000, 793)]
+def my_chunk_40 : List (Nat × Nat) := [(10000, 754)]
+def my_chunk_41 : List (Nat × Nat) := [(10000, 776)]
+def my_chunk_42 : List (Nat × Nat) := [(10000, 772)]
+def my_chunk_43 : List (Nat × Nat) := [(10000, 779)]
+def my_chunk_44 : List (Nat × Nat) := [(10000, 765)]
+def my_chunk_45 : List (Nat × Nat) := [(10000, 752)]
+def my_chunk_46 : List (Nat × Nat) := [(10000, 765)]
+def my_chunk_47 : List (Nat × Nat) := [(10000, 782)]
+def my_chunk_48 : List (Nat × Nat) := [(10000, 761)]
+def my_chunk_49 : List (Nat × Nat) := [(10000, 772)]
+def my_chunk_50 : List (Nat × Nat) := [(10000, 753)]
+def my_chunk_51 : List (Nat × Nat) := [(10000, 770)]
+def my_chunk_52 : List (Nat × Nat) := [(10000, 764)]
+def my_chunk_53 : List (Nat × Nat) := [(10000, 747)]
+def my_chunk_54 : List (Nat × Nat) := [(10000, 750)]
+def my_chunk_55 : List (Nat × Nat) := [(10000, 750)]
+def my_chunk_56 : List (Nat × Nat) := [(10000, 747)]
+def my_chunk_57 : List (Nat × Nat) := [(10000, 769)]
+def my_chunk_58 : List (Nat × Nat) := [(10000, 763)]
+def my_chunk_59 : List (Nat × Nat) := [(10000, 747)]
+def my_chunk_60 : List (Nat × Nat) := [(10000, 763)]
+def my_chunk_61 : List (Nat × Nat) := [(10000, 751)]
+def my_chunk_62 : List (Nat × Nat) := [(10000, 729)]
+def my_chunk_63 : List (Nat × Nat) := [(10000, 733)]
+def my_chunk_64 : List (Nat × Nat) := [(10000, 757)]
+def my_chunk_65 : List (Nat × Nat) := [(10000, 733)]
+def my_chunk_66 : List (Nat × Nat) := [(10000, 745)]
+def my_chunk_67 : List (Nat × Nat) := [(10000, 754)]
+def my_chunk_68 : List (Nat × Nat) := [(10000, 752)]
+def my_chunk_69 : List (Nat × Nat) := [(10000, 728)]
+def my_chunk_70 : List (Nat × Nat) := [(10000, 763)]
+def my_chunk_71 : List (Nat × Nat) := [(10000, 723)]
+def my_chunk_72 : List (Nat × Nat) := [(10000, 760)]
+def my_chunk_73 : List (Nat × Nat) := [(10000, 742)]
+def my_chunk_74 : List (Nat × Nat) := [(10000, 707)]
+def my_chunk_75 : List (Nat × Nat) := [(10000, 740)]
+def my_chunk_76 : List (Nat × Nat) := [(10000, 755)]
+def my_chunk_77 : List (Nat × Nat) := [(10000, 735)]
+def my_chunk_78 : List (Nat × Nat) := [(10000, 738)]
+def my_chunk_79 : List (Nat × Nat) := [(10000, 745)]
+def my_chunk_80 : List (Nat × Nat) := [(10000, 732)]
+def my_chunk_81 : List (Nat × Nat) := [(10000, 733)]
+def my_chunk_82 : List (Nat × Nat) := [(10000, 745)]
+def my_chunk_83 : List (Nat × Nat) := [(10000, 729)]
+def my_chunk_84 : List (Nat × Nat) := [(10000, 727)]
+def my_chunk_85 : List (Nat × Nat) := [(10000, 725)]
+def my_chunk_86 : List (Nat × Nat) := [(10000, 753)]
+def my_chunk_87 : List (Nat × Nat) := [(10000, 728)]
+def my_chunk_88 : List (Nat × Nat) := [(10000, 732)]
+def my_chunk_89 : List (Nat × Nat) := [(10000, 719)]
+def my_chunk_90 : List (Nat × Nat) := [(10000, 752)]
+def my_chunk_91 : List (Nat × Nat) := [(10000, 708)]
+def my_chunk_92 : List (Nat × Nat) := [(10000, 740)]
+def my_chunk_93 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_94 : List (Nat × Nat) := [(10000, 720)]
+def my_chunk_95 : List (Nat × Nat) := [(10000, 711)]
+def my_chunk_96 : List (Nat × Nat) := [(10000, 732)]
+def my_chunk_97 : List (Nat × Nat) := [(10000, 717)]
+def my_chunk_98 : List (Nat × Nat) := [(10000, 710)]
+def my_chunk_99 : List (Nat × Nat) := [(10000, 721)]
+def my_chunk_100 : List (Nat × Nat) := [(10000, 753)]
+def my_chunk_101 : List (Nat × Nat) := [(10000, 719)]
+def my_chunk_102 : List (Nat × Nat) := [(10000, 732)]
+def my_chunk_103 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_104 : List (Nat × Nat) := [(10000, 731)]
+def my_chunk_105 : List (Nat × Nat) := [(10000, 698)]
+def my_chunk_106 : List (Nat × Nat) := [(10000, 716)]
+def my_chunk_107 : List (Nat × Nat) := [(10000, 722)]
+def my_chunk_108 : List (Nat × Nat) := [(10000, 706)]
+def my_chunk_109 : List (Nat × Nat) := [(10000, 738)]
+def my_chunk_110 : List (Nat × Nat) := [(10000, 736)]
+def my_chunk_111 : List (Nat × Nat) := [(10000, 716)]
+def my_chunk_112 : List (Nat × Nat) := [(10000, 718)]
+def my_chunk_113 : List (Nat × Nat) := [(10000, 718)]
+def my_chunk_114 : List (Nat × Nat) := [(10000, 700)]
+def my_chunk_115 : List (Nat × Nat) := [(10000, 728)]
+def my_chunk_116 : List (Nat × Nat) := [(10000, 734)]
+def my_chunk_117 : List (Nat × Nat) := [(10000, 726)]
+def my_chunk_118 : List (Nat × Nat) := [(10000, 735)]
+def my_chunk_119 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_120 : List (Nat × Nat) := [(10000, 676)]
+def my_chunk_121 : List (Nat × Nat) := [(10000, 744)]
+def my_chunk_122 : List (Nat × Nat) := [(10000, 693)]
+def my_chunk_123 : List (Nat × Nat) := [(10000, 694)]
+def my_chunk_124 : List (Nat × Nat) := [(10000, 724)]
+def my_chunk_125 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_126 : List (Nat × Nat) := [(10000, 718)]
+def my_chunk_127 : List (Nat × Nat) := [(10000, 710)]
+def my_chunk_128 : List (Nat × Nat) := [(10000, 722)]
+def my_chunk_129 : List (Nat × Nat) := [(10000, 689)]
+def my_chunk_130 : List (Nat × Nat) := [(10000, 709)]
+def my_chunk_131 : List (Nat × Nat) := [(10000, 703)]
+def my_chunk_132 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_133 : List (Nat × Nat) := [(10000, 706)]
+def my_chunk_134 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_135 : List (Nat × Nat) := [(10000, 714)]
+def my_chunk_136 : List (Nat × Nat) := [(10000, 709)]
+def my_chunk_137 : List (Nat × Nat) := [(10000, 723)]
+def my_chunk_138 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_139 : List (Nat × Nat) := [(10000, 741)]
+def my_chunk_140 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_141 : List (Nat × Nat) := [(10000, 682)]
+def my_chunk_142 : List (Nat × Nat) := [(10000, 718)]
+def my_chunk_143 : List (Nat × Nat) := [(10000, 723)]
+def my_chunk_144 : List (Nat × Nat) := [(10000, 702)]
+def my_chunk_145 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_146 : List (Nat × Nat) := [(10000, 716)]
+def my_chunk_147 : List (Nat × Nat) := [(10000, 705)]
+def my_chunk_148 : List (Nat × Nat) := [(10000, 706)]
+def my_chunk_149 : List (Nat × Nat) := [(10000, 697)]
+def my_chunk_150 : List (Nat × Nat) := [(10000, 731)]
+def my_chunk_151 : List (Nat × Nat) := [(10000, 702)]
+def my_chunk_152 : List (Nat × Nat) := [(10000, 691)]
+def my_chunk_153 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_154 : List (Nat × Nat) := [(10000, 698)]
+def my_chunk_155 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_156 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_157 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_158 : List (Nat × Nat) := [(10000, 693)]
+def my_chunk_159 : List (Nat × Nat) := [(10000, 676)]
+def my_chunk_160 : List (Nat × Nat) := [(10000, 719)]
+def my_chunk_161 : List (Nat × Nat) := [(10000, 694)]
+def my_chunk_162 : List (Nat × Nat) := [(10000, 710)]
+def my_chunk_163 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_164 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_165 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_166 : List (Nat × Nat) := [(10000, 716)]
+def my_chunk_167 : List (Nat × Nat) := [(10000, 702)]
+def my_chunk_168 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_169 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_170 : List (Nat × Nat) := [(10000, 696)]
+def my_chunk_171 : List (Nat × Nat) := [(10000, 685)]
+def my_chunk_172 : List (Nat × Nat) := [(10000, 691)]
+def my_chunk_173 : List (Nat × Nat) := [(10000, 689)]
+def my_chunk_174 : List (Nat × Nat) := [(10000, 706)]
+def my_chunk_175 : List (Nat × Nat) := [(10000, 684)]
+def my_chunk_176 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_177 : List (Nat × Nat) := [(10000, 700)]
+def my_chunk_178 : List (Nat × Nat) := [(10000, 688)]
+def my_chunk_179 : List (Nat × Nat) := [(10000, 713)]
+def my_chunk_180 : List (Nat × Nat) := [(10000, 704)]
+def my_chunk_181 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_182 : List (Nat × Nat) := [(10000, 718)]
+def my_chunk_183 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_184 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_185 : List (Nat × Nat) := [(10000, 707)]
+def my_chunk_186 : List (Nat × Nat) := [(10000, 703)]
+def my_chunk_187 : List (Nat × Nat) := [(10000, 689)]
+def my_chunk_188 : List (Nat × Nat) := [(10000, 697)]
+def my_chunk_189 : List (Nat × Nat) := [(10000, 691)]
+def my_chunk_190 : List (Nat × Nat) := [(10000, 689)]
+def my_chunk_191 : List (Nat × Nat) := [(10000, 696)]
+def my_chunk_192 : List (Nat × Nat) := [(10000, 711)]
+def my_chunk_193 : List (Nat × Nat) := [(10000, 685)]
+def my_chunk_194 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_195 : List (Nat × Nat) := [(10000, 684)]
+def my_chunk_196 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_197 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_198 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_199 : List (Nat × Nat) := [(10000, 714)]
+def my_chunk_200 : List (Nat × Nat) := [(10000, 705)]
+def my_chunk_201 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_202 : List (Nat × Nat) := [(10000, 693)]
+def my_chunk_203 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_204 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_205 : List (Nat × Nat) := [(10000, 696)]
+def my_chunk_206 : List (Nat × Nat) := [(10000, 694)]
+def my_chunk_207 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_208 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_209 : List (Nat × Nat) := [(10000, 674)]
+def my_chunk_210 : List (Nat × Nat) := [(10000, 699)]
+def my_chunk_211 : List (Nat × Nat) := [(10000, 683)]
+def my_chunk_212 : List (Nat × Nat) := [(10000, 697)]
+def my_chunk_213 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_214 : List (Nat × Nat) := [(10000, 693)]
+def my_chunk_215 : List (Nat × Nat) := [(10000, 712)]
+def my_chunk_216 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_217 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_218 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_219 : List (Nat × Nat) := [(10000, 664)]
+def my_chunk_220 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_221 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_222 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_223 : List (Nat × Nat) := [(10000, 680)]
+def my_chunk_224 : List (Nat × Nat) := [(10000, 683)]
+def my_chunk_225 : List (Nat × Nat) := [(10000, 688)]
+def my_chunk_226 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_227 : List (Nat × Nat) := [(10000, 694)]
+def my_chunk_228 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_229 : List (Nat × Nat) := [(10000, 685)]
+def my_chunk_230 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_231 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_232 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_233 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_234 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_235 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_236 : List (Nat × Nat) := [(10000, 691)]
+def my_chunk_237 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_238 : List (Nat × Nat) := [(10000, 705)]
+def my_chunk_239 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_240 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_241 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_242 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_243 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_244 : List (Nat × Nat) := [(10000, 701)]
+def my_chunk_245 : List (Nat × Nat) := [(10000, 687)]
+def my_chunk_246 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_247 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_248 : List (Nat × Nat) := [(10000, 687)]
+def my_chunk_249 : List (Nat × Nat) := [(10000, 674)]
+def my_chunk_250 : List (Nat × Nat) := [(10000, 676)]
+def my_chunk_251 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_252 : List (Nat × Nat) := [(10000, 697)]
+def my_chunk_253 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_254 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_255 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_256 : List (Nat × Nat) := [(10000, 678)]
+def my_chunk_257 : List (Nat × Nat) := [(10000, 699)]
+def my_chunk_258 : List (Nat × Nat) := [(10000, 693)]
+def my_chunk_259 : List (Nat × Nat) := [(10000, 676)]
+def my_chunk_260 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_261 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_262 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_263 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_264 : List (Nat × Nat) := [(10000, 689)]
+def my_chunk_265 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_266 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_267 : List (Nat × Nat) := [(10000, 665)]
+def my_chunk_268 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_269 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_270 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_271 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_272 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_273 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_274 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_275 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_276 : List (Nat × Nat) := [(10000, 685)]
+def my_chunk_277 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_278 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_279 : List (Nat × Nat) := [(10000, 684)]
+def my_chunk_280 : List (Nat × Nat) := [(10000, 690)]
+def my_chunk_281 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_282 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_283 : List (Nat × Nat) := [(10000, 704)]
+def my_chunk_284 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_285 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_286 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_287 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_288 : List (Nat × Nat) := [(10000, 678)]
+def my_chunk_289 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_290 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_291 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_292 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_293 : List (Nat × Nat) := [(10000, 680)]
+def my_chunk_294 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_295 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_296 : List (Nat × Nat) := [(10000, 694)]
+def my_chunk_297 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_298 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_299 : List (Nat × Nat) := [(10000, 687)]
+def my_chunk_300 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_301 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_302 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_303 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_304 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_305 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_306 : List (Nat × Nat) := [(10000, 664)]
+def my_chunk_307 : List (Nat × Nat) := [(10000, 695)]
+def my_chunk_308 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_309 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_310 : List (Nat × Nat) := [(10000, 676)]
+def my_chunk_311 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_312 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_313 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_314 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_315 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_316 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_317 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_318 : List (Nat × Nat) := [(10000, 691)]
+def my_chunk_319 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_320 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_321 : List (Nat × Nat) := [(10000, 674)]
+def my_chunk_322 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_323 : List (Nat × Nat) := [(10000, 687)]
+def my_chunk_324 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_325 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_326 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_327 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_328 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_329 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_330 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_331 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_332 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_333 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_334 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_335 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_336 : List (Nat × Nat) := [(10000, 688)]
+def my_chunk_337 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_338 : List (Nat × Nat) := [(10000, 669)]
+def my_chunk_339 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_340 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_341 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_342 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_343 : List (Nat × Nat) := [(10000, 685)]
+def my_chunk_344 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_345 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_346 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_347 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_348 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_349 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_350 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_351 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_352 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_353 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_354 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_355 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_356 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_357 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_358 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_359 : List (Nat × Nat) := [(10000, 669)]
+def my_chunk_360 : List (Nat × Nat) := [(10000, 692)]
+def my_chunk_361 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_362 : List (Nat × Nat) := [(10000, 686)]
+def my_chunk_363 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_364 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_365 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_366 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_367 : List (Nat × Nat) := [(10000, 702)]
+def my_chunk_368 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_369 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_370 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_371 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_372 : List (Nat × Nat) := [(10000, 687)]
+def my_chunk_373 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_374 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_375 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_376 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_377 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_378 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_379 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_380 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_381 : List (Nat × Nat) := [(10000, 682)]
+def my_chunk_382 : List (Nat × Nat) := [(10000, 674)]
+def my_chunk_383 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_384 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_385 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_386 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_387 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_388 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_389 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_390 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_391 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_392 : List (Nat × Nat) := [(10000, 675)]
+def my_chunk_393 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_394 : List (Nat × Nat) := [(10000, 678)]
+def my_chunk_395 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_396 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_397 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_398 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_399 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_400 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_401 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_402 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_403 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_404 : List (Nat × Nat) := [(10000, 681)]
+def my_chunk_405 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_406 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_407 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_408 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_409 : List (Nat × Nat) := [(10000, 665)]
+def my_chunk_410 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_411 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_412 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_413 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_414 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_415 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_416 : List (Nat × Nat) := [(10000, 671)]
+def my_chunk_417 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_418 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_419 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_420 : List (Nat × Nat) := [(10000, 670)]
+def my_chunk_421 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_422 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_423 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_424 : List (Nat × Nat) := [(10000, 664)]
+def my_chunk_425 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_426 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_427 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_428 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_429 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_430 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_431 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_432 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_433 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_434 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_435 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_436 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_437 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_438 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_439 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_440 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_441 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_442 : List (Nat × Nat) := [(10000, 683)]
+def my_chunk_443 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_444 : List (Nat × Nat) := [(10000, 672)]
+def my_chunk_445 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_446 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_447 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_448 : List (Nat × Nat) := [(10000, 683)]
+def my_chunk_449 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_450 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_451 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_452 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_453 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_454 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_455 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_456 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_457 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_458 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_459 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_460 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_461 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_462 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_463 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_464 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_465 : List (Nat × Nat) := [(10000, 616)]
+def my_chunk_466 : List (Nat × Nat) := [(10000, 665)]
+def my_chunk_467 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_468 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_469 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_470 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_471 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_472 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_473 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_474 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_475 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_476 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_477 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_478 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_479 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_480 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_481 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_482 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_483 : List (Nat × Nat) := [(10000, 678)]
+def my_chunk_484 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_485 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_486 : List (Nat × Nat) := [(10000, 669)]
+def my_chunk_487 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_488 : List (Nat × Nat) := [(10000, 669)]
+def my_chunk_489 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_490 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_491 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_492 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_493 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_494 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_495 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_496 : List (Nat × Nat) := [(10000, 683)]
+def my_chunk_497 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_498 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_499 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_500 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_501 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_502 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_503 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_504 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_505 : List (Nat × Nat) := [(10000, 668)]
+def my_chunk_506 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_507 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_508 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_509 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_510 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_511 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_512 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_513 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_514 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_515 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_516 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_517 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_518 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_519 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_520 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_521 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_522 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_523 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_524 : List (Nat × Nat) := [(10000, 673)]
+def my_chunk_525 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_526 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_527 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_528 : List (Nat × Nat) := [(10000, 629)]
+def my_chunk_529 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_530 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_531 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_532 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_533 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_534 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_535 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_536 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_537 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_538 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_539 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_540 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_541 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_542 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_543 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_544 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_545 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_546 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_547 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_548 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_549 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_550 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_551 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_552 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_553 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_554 : List (Nat × Nat) := [(10000, 618)]
+def my_chunk_555 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_556 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_557 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_558 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_559 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_560 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_561 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_562 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_563 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_564 : List (Nat × Nat) := [(10000, 624)]
+def my_chunk_565 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_566 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_567 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_568 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_569 : List (Nat × Nat) := [(10000, 679)]
+def my_chunk_570 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_571 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_572 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_573 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_574 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_575 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_576 : List (Nat × Nat) := [(10000, 617)]
+def my_chunk_577 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_578 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_579 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_580 : List (Nat × Nat) := [(10000, 654)]
+def my_chunk_581 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_582 : List (Nat × Nat) := [(10000, 627)]
+def my_chunk_583 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_584 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_585 : List (Nat × Nat) := [(10000, 627)]
+def my_chunk_586 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_587 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_588 : List (Nat × Nat) := [(10000, 677)]
+def my_chunk_589 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_590 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_591 : List (Nat × Nat) := [(10000, 667)]
+def my_chunk_592 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_593 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_594 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_595 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_596 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_597 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_598 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_599 : List (Nat × Nat) := [(10000, 625)]
+def my_chunk_600 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_601 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_602 : List (Nat × Nat) := [(10000, 664)]
+def my_chunk_603 : List (Nat × Nat) := [(10000, 601)]
+def my_chunk_604 : List (Nat × Nat) := [(10000, 627)]
+def my_chunk_605 : List (Nat × Nat) := [(10000, 666)]
+def my_chunk_606 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_607 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_608 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_609 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_610 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_611 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_612 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_613 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_614 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_615 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_616 : List (Nat × Nat) := [(10000, 658)]
+def my_chunk_617 : List (Nat × Nat) := [(10000, 627)]
+def my_chunk_618 : List (Nat × Nat) := [(10000, 619)]
+def my_chunk_619 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_620 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_621 : List (Nat × Nat) := [(10000, 602)]
+def my_chunk_622 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_623 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_624 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_625 : List (Nat × Nat) := [(10000, 650)]
+def my_chunk_626 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_627 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_628 : List (Nat × Nat) := [(10000, 664)]
+def my_chunk_629 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_630 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_631 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_632 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_633 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_634 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_635 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_636 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_637 : List (Nat × Nat) := [(10000, 609)]
+def my_chunk_638 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_639 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_640 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_641 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_642 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_643 : List (Nat × Nat) := [(10000, 611)]
+def my_chunk_644 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_645 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_646 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_647 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_648 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_649 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_650 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_651 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_652 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_653 : List (Nat × Nat) := [(10000, 629)]
+def my_chunk_654 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_655 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_656 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_657 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_658 : List (Nat × Nat) := [(10000, 659)]
+def my_chunk_659 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_660 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_661 : List (Nat × Nat) := [(10000, 662)]
+def my_chunk_662 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_663 : List (Nat × Nat) := [(10000, 620)]
+def my_chunk_664 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_665 : List (Nat × Nat) := [(10000, 613)]
+def my_chunk_666 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_667 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_668 : List (Nat × Nat) := [(10000, 618)]
+def my_chunk_669 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_670 : List (Nat × Nat) := [(10000, 655)]
+def my_chunk_671 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_672 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_673 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_674 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_675 : List (Nat × Nat) := [(10000, 661)]
+def my_chunk_676 : List (Nat × Nat) := [(10000, 619)]
+def my_chunk_677 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_678 : List (Nat × Nat) := [(10000, 620)]
+def my_chunk_679 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_680 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_681 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_682 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_683 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_684 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_685 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_686 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_687 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_688 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_689 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_690 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_691 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_692 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_693 : List (Nat × Nat) := [(10000, 652)]
+def my_chunk_694 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_695 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_696 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_697 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_698 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_699 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_700 : List (Nat × Nat) := [(10000, 629)]
+def my_chunk_701 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_702 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_703 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_704 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_705 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_706 : List (Nat × Nat) := [(10000, 594)]
+def my_chunk_707 : List (Nat × Nat) := [(10000, 660)]
+def my_chunk_708 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_709 : List (Nat × Nat) := [(10000, 629)]
+def my_chunk_710 : List (Nat × Nat) := [(10000, 663)]
+def my_chunk_711 : List (Nat × Nat) := [(10000, 608)]
+def my_chunk_712 : List (Nat × Nat) := [(10000, 611)]
+def my_chunk_713 : List (Nat × Nat) := [(10000, 617)]
+def my_chunk_714 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_715 : List (Nat × Nat) := [(10000, 640)]
+def my_chunk_716 : List (Nat × Nat) := [(10000, 629)]
+def my_chunk_717 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_718 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_719 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_720 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_721 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_722 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_723 : List (Nat × Nat) := [(10000, 625)]
+def my_chunk_724 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_725 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_726 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_727 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_728 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_729 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_730 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_731 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_732 : List (Nat × Nat) := [(10000, 636)]
+def my_chunk_733 : List (Nat × Nat) := [(10000, 616)]
+def my_chunk_734 : List (Nat × Nat) := [(10000, 621)]
+def my_chunk_735 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_736 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_737 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_738 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_739 : List (Nat × Nat) := [(10000, 619)]
+def my_chunk_740 : List (Nat × Nat) := [(10000, 620)]
+def my_chunk_741 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_742 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_743 : List (Nat × Nat) := [(10000, 635)]
+def my_chunk_744 : List (Nat × Nat) := [(10000, 656)]
+def my_chunk_745 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_746 : List (Nat × Nat) := [(10000, 610)]
+def my_chunk_747 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_748 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_749 : List (Nat × Nat) := [(10000, 611)]
+def my_chunk_750 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_751 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_752 : List (Nat × Nat) := [(10000, 613)]
+def my_chunk_753 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_754 : List (Nat × Nat) := [(10000, 653)]
+def my_chunk_755 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_756 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_757 : List (Nat × Nat) := [(10000, 607)]
+def my_chunk_758 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_759 : List (Nat × Nat) := [(10000, 644)]
+def my_chunk_760 : List (Nat × Nat) := [(10000, 657)]
+def my_chunk_761 : List (Nat × Nat) := [(10000, 616)]
+def my_chunk_762 : List (Nat × Nat) := [(10000, 649)]
+def my_chunk_763 : List (Nat × Nat) := [(10000, 611)]
+def my_chunk_764 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_765 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_766 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_767 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_768 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_769 : List (Nat × Nat) := [(10000, 643)]
+def my_chunk_770 : List (Nat × Nat) := [(10000, 612)]
+def my_chunk_771 : List (Nat × Nat) := [(10000, 645)]
+def my_chunk_772 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_773 : List (Nat × Nat) := [(10000, 606)]
+def my_chunk_774 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_775 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_776 : List (Nat × Nat) := [(10000, 612)]
+def my_chunk_777 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_778 : List (Nat × Nat) := [(10000, 611)]
+def my_chunk_779 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_780 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_781 : List (Nat × Nat) := [(10000, 632)]
+def my_chunk_782 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_783 : List (Nat × Nat) := [(10000, 642)]
+def my_chunk_784 : List (Nat × Nat) := [(10000, 646)]
+def my_chunk_785 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_786 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_787 : List (Nat × Nat) := [(10000, 647)]
+def my_chunk_788 : List (Nat × Nat) := [(10000, 641)]
+def my_chunk_789 : List (Nat × Nat) := [(10000, 626)]
+def my_chunk_790 : List (Nat × Nat) := [(10000, 630)]
+def my_chunk_791 : List (Nat × Nat) := [(10000, 616)]
+def my_chunk_792 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_793 : List (Nat × Nat) := [(10000, 628)]
+def my_chunk_794 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_795 : List (Nat × Nat) := [(10000, 604)]
+def my_chunk_796 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_797 : List (Nat × Nat) := [(10000, 638)]
+def my_chunk_798 : List (Nat × Nat) := [(10000, 634)]
+def my_chunk_799 : List (Nat × Nat) := [(10000, 615)]
+def my_chunk_800 : List (Nat × Nat) := [(10000, 637)]
+def my_chunk_801 : List (Nat × Nat) := [(10000, 609)]
+def my_chunk_802 : List (Nat × Nat) := [(10000, 631)]
+def my_chunk_803 : List (Nat × Nat) := [(10000, 605)]
+def my_chunk_804 : List (Nat × Nat) := [(10000, 639)]
+def my_chunk_805 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_806 : List (Nat × Nat) := [(10000, 627)]
+def my_chunk_807 : List (Nat × Nat) := [(10000, 623)]
+def my_chunk_808 : List (Nat × Nat) := [(10000, 618)]
+def my_chunk_809 : List (Nat × Nat) := [(10000, 607)]
+def my_chunk_810 : List (Nat × Nat) := [(10000, 619)]
+def my_chunk_811 : List (Nat × Nat) := [(10000, 633)]
+def my_chunk_812 : List (Nat × Nat) := [(10000, 651)]
+def my_chunk_813 : List (Nat × Nat) := [(10000, 601)]
+def my_chunk_814 : List (Nat × Nat) := [(10000, 622)]
+def my_chunk_815 : List (Nat × Nat) := [(10000, 648)]
+def my_chunk_816 : List (Nat × Nat) := [(5754, 374)]
+
+theorem check_chunk_0 : verify_chunks_rec 8 0 my_chunk_0 = true := by decide
+theorem check_chunk_1 : verify_chunks_rec 8 10000 my_chunk_1 = true := by decide
+theorem check_chunk_2 : verify_chunks_rec 8 20000 my_chunk_2 = true := by decide
+theorem check_chunk_3 : verify_chunks_rec 8 30000 my_chunk_3 = true := by decide
+theorem check_chunk_4 : verify_chunks_rec 8 40000 my_chunk_4 = true := by decide
+theorem check_chunk_5 : verify_chunks_rec 8 50000 my_chunk_5 = true := by decide
+theorem check_chunk_6 : verify_chunks_rec 8 60000 my_chunk_6 = true := by decide
+theorem check_chunk_7 : verify_chunks_rec 8 70000 my_chunk_7 = true := by decide
+theorem check_chunk_8 : verify_chunks_rec 8 80000 my_chunk_8 = true := by decide
+theorem check_chunk_9 : verify_chunks_rec 8 90000 my_chunk_9 = true := by decide
+theorem check_chunk_10 : verify_chunks_rec 8 100000 my_chunk_10 = true := by decide
+theorem check_chunk_11 : verify_chunks_rec 8 110000 my_chunk_11 = true := by decide
+theorem check_chunk_12 : verify_chunks_rec 8 120000 my_chunk_12 = true := by decide
+theorem check_chunk_13 : verify_chunks_rec 8 130000 my_chunk_13 = true := by decide
+theorem check_chunk_14 : verify_chunks_rec 8 140000 my_chunk_14 = true := by decide
+theorem check_chunk_15 : verify_chunks_rec 8 150000 my_chunk_15 = true := by decide
+theorem check_chunk_16 : verify_chunks_rec 8 160000 my_chunk_16 = true := by decide
+theorem check_chunk_17 : verify_chunks_rec 8 170000 my_chunk_17 = true := by decide
+theorem check_chunk_18 : verify_chunks_rec 8 180000 my_chunk_18 = true := by decide
+theorem check_chunk_19 : verify_chunks_rec 8 190000 my_chunk_19 = true := by decide
+theorem check_chunk_20 : verify_chunks_rec 8 200000 my_chunk_20 = true := by decide
+theorem check_chunk_21 : verify_chunks_rec 8 210000 my_chunk_21 = true := by decide
+theorem check_chunk_22 : verify_chunks_rec 8 220000 my_chunk_22 = true := by decide
+theorem check_chunk_23 : verify_chunks_rec 8 230000 my_chunk_23 = true := by decide
+theorem check_chunk_24 : verify_chunks_rec 8 240000 my_chunk_24 = true := by decide
+theorem check_chunk_25 : verify_chunks_rec 8 250000 my_chunk_25 = true := by decide
+theorem check_chunk_26 : verify_chunks_rec 8 260000 my_chunk_26 = true := by decide
+theorem check_chunk_27 : verify_chunks_rec 8 270000 my_chunk_27 = true := by decide
+theorem check_chunk_28 : verify_chunks_rec 8 280000 my_chunk_28 = true := by decide
+theorem check_chunk_29 : verify_chunks_rec 8 290000 my_chunk_29 = true := by decide
+theorem check_chunk_30 : verify_chunks_rec 8 300000 my_chunk_30 = true := by decide
+theorem check_chunk_31 : verify_chunks_rec 8 310000 my_chunk_31 = true := by decide
+theorem check_chunk_32 : verify_chunks_rec 8 320000 my_chunk_32 = true := by decide
+theorem check_chunk_33 : verify_chunks_rec 8 330000 my_chunk_33 = true := by decide
+theorem check_chunk_34 : verify_chunks_rec 8 340000 my_chunk_34 = true := by decide
+theorem check_chunk_35 : verify_chunks_rec 8 350000 my_chunk_35 = true := by decide
+theorem check_chunk_36 : verify_chunks_rec 8 360000 my_chunk_36 = true := by decide
+theorem check_chunk_37 : verify_chunks_rec 8 370000 my_chunk_37 = true := by decide
+theorem check_chunk_38 : verify_chunks_rec 8 380000 my_chunk_38 = true := by decide
+theorem check_chunk_39 : verify_chunks_rec 8 390000 my_chunk_39 = true := by decide
+theorem check_chunk_40 : verify_chunks_rec 8 400000 my_chunk_40 = true := by decide
+theorem check_chunk_41 : verify_chunks_rec 8 410000 my_chunk_41 = true := by decide
+theorem check_chunk_42 : verify_chunks_rec 8 420000 my_chunk_42 = true := by decide
+theorem check_chunk_43 : verify_chunks_rec 8 430000 my_chunk_43 = true := by decide
+theorem check_chunk_44 : verify_chunks_rec 8 440000 my_chunk_44 = true := by decide
+theorem check_chunk_45 : verify_chunks_rec 8 450000 my_chunk_45 = true := by decide
+theorem check_chunk_46 : verify_chunks_rec 8 460000 my_chunk_46 = true := by decide
+theorem check_chunk_47 : verify_chunks_rec 8 470000 my_chunk_47 = true := by decide
+theorem check_chunk_48 : verify_chunks_rec 8 480000 my_chunk_48 = true := by decide
+theorem check_chunk_49 : verify_chunks_rec 8 490000 my_chunk_49 = true := by decide
+theorem check_chunk_50 : verify_chunks_rec 8 500000 my_chunk_50 = true := by decide
+theorem check_chunk_51 : verify_chunks_rec 8 510000 my_chunk_51 = true := by decide
+theorem check_chunk_52 : verify_chunks_rec 8 520000 my_chunk_52 = true := by decide
+theorem check_chunk_53 : verify_chunks_rec 8 530000 my_chunk_53 = true := by decide
+theorem check_chunk_54 : verify_chunks_rec 8 540000 my_chunk_54 = true := by decide
+theorem check_chunk_55 : verify_chunks_rec 8 550000 my_chunk_55 = true := by decide
+theorem check_chunk_56 : verify_chunks_rec 8 560000 my_chunk_56 = true := by decide
+theorem check_chunk_57 : verify_chunks_rec 8 570000 my_chunk_57 = true := by decide
+theorem check_chunk_58 : verify_chunks_rec 8 580000 my_chunk_58 = true := by decide
+theorem check_chunk_59 : verify_chunks_rec 8 590000 my_chunk_59 = true := by decide
+theorem check_chunk_60 : verify_chunks_rec 8 600000 my_chunk_60 = true := by decide
+theorem check_chunk_61 : verify_chunks_rec 8 610000 my_chunk_61 = true := by decide
+theorem check_chunk_62 : verify_chunks_rec 8 620000 my_chunk_62 = true := by decide
+theorem check_chunk_63 : verify_chunks_rec 8 630000 my_chunk_63 = true := by decide
+theorem check_chunk_64 : verify_chunks_rec 8 640000 my_chunk_64 = true := by decide
+theorem check_chunk_65 : verify_chunks_rec 8 650000 my_chunk_65 = true := by decide
+theorem check_chunk_66 : verify_chunks_rec 8 660000 my_chunk_66 = true := by decide
+theorem check_chunk_67 : verify_chunks_rec 8 670000 my_chunk_67 = true := by decide
+theorem check_chunk_68 : verify_chunks_rec 8 680000 my_chunk_68 = true := by decide
+theorem check_chunk_69 : verify_chunks_rec 8 690000 my_chunk_69 = true := by decide
+theorem check_chunk_70 : verify_chunks_rec 8 700000 my_chunk_70 = true := by decide
+theorem check_chunk_71 : verify_chunks_rec 8 710000 my_chunk_71 = true := by decide
+theorem check_chunk_72 : verify_chunks_rec 8 720000 my_chunk_72 = true := by decide
+theorem check_chunk_73 : verify_chunks_rec 8 730000 my_chunk_73 = true := by decide
+theorem check_chunk_74 : verify_chunks_rec 8 740000 my_chunk_74 = true := by decide
+theorem check_chunk_75 : verify_chunks_rec 8 750000 my_chunk_75 = true := by decide
+theorem check_chunk_76 : verify_chunks_rec 8 760000 my_chunk_76 = true := by decide
+----------------- CONJECTURE BOUND PROOF -----------------
+
+lemma prop_mono {{n m M : ℕ}} [NeZero n] (h_le : m ≤ M) (h_prop : A232616_prop n m) : A232616_prop n M := by
+  unfold A232616_prop at *
+  have h_sub : Finset.Icc 1 m ⊆ Finset.Icc 1 M := Finset.Icc_subset_Icc (le_refl 1) h_le
+  have h_img := Finset.image_mono (f := fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n)) h_sub
+  have h_univ : (univ : Finset (ZMod n)) ⊆ (Finset.Icc 1 M).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n) := by
+    calc (univ : Finset (ZMod n)) = (Finset.Icc 1 m).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n) := h_prop
+    _ ⊆ (Finset.Icc 1 M).image fun k ↦ (Nat.cast (2 ^ k - k) : ZMod n) := h_img
+  exact Subset.antisymm h_univ (subset_univ _)
+
+lemma not_prop_550172_16331503 (h_prop : A232616_prop 550172 16331503) : False := by
+  unfold A232616_prop at h_prop
+  have h_in : (13573 : ZMod 550172) ∈ (univ : Finset (ZMod 550172)) := Finset.mem_univ _
+  rw [h_prop] at h_in
+  rcases Finset.mem_image.mp h_in with ⟨k, hk, hk_eq⟩
+  rw [Finset.mem_Icc] at hk
+  have hk_ge_2 : 2 ≤ k := by
+    rcases k with _ | _ | y
+    · omega
+    · revert hk_eq; decide
+    · omega
+  have h_49 := cast_550172_to_49 k hk_ge_2 hk_eq
+  have h_147 := k_mod_147_eq k hk_ge_2 hk_eq
+  have h_4 := k_eq_4q_plus_3 k hk_ge_2 hk_eq
+  rcases h_4 with ⟨q4, rfl⟩
+  have h4_mod : (4 * q4 + 3) % 4 = 3 := by omega
+  have h_588 := k_mod_588_eq (4 * q4 + 3) h4_mod h_147
+  let q_div := k / 588
+  have h_k_eq : k = 588 * q_div + k % 588 := by omega
+  have h_q_lt : q_div < 27775 := by
+    have : k ≤ 16331503 := hk.2
+    have : 588 * q_div ≤ k := by omega
+    omega
+  rcases h_588 with h183 | h415 | h431
+  · have h_check := check_q_false_all q_div h_q_lt
+    have h_sound := check_q_sound q_div h_check
+    have h_cast : (Nat.cast (2^k - k) : ZMod 550172) = (2 : ZMod 550172)^k - (k : ZMod 550172) := by
+      rw [Nat.cast_sub (le_pow_two_all k)]
+      push_cast
+      rfl
+    rw [h_cast] at hk_eq
+    rw [h_k_eq, h183] at hk_eq
+    exact h_sound.1 hk_eq
+  · have h_check := check_q_false_all q_div h_q_lt
+    have h_sound := check_q_sound q_div h_check
+    have h_cast : (Nat.cast (2^k - k) : ZMod 550172) = (2 : ZMod 550172)^k - (k : ZMod 550172) := by
+      rw [Nat.cast_sub (le_pow_two_all k)]
+      push_cast
+      rfl
+    rw [h_cast] at hk_eq
+    rw [h_k_eq, h415] at hk_eq
+    exact h_sound.2.1 hk_eq
+  · have h_check := check_q_false_all q_div h_q_lt
+    have h_sound := check_q_sound q_div h_check
+    have h_cast : (Nat.cast (2^k - k) : ZMod 550172) = (2 : ZMod 550172)^k - (k : ZMod 550172) := by
+      rw [Nat.cast_sub (le_pow_two_all k)]
+      push_cast
+      rfl
+    rw [h_cast] at hk_eq
+    rw [h_k_eq, h431] at hk_eq
+    exact h_sound.2.2 hk_eq
+
+theorem honest_sInf_bound (h_not : ¬ A232616_prop 550172 16331503) :
+    16331504 ≤ A232616 550172 := by
+  unfold A232616
+  rw [dif_neg (by decide : 550172 ≠ 0)]
+  apply Nat.le_sInf
+  intro m hm
+  change A232616_prop 550172 m at hm
+  by_contra! h_lt
+  have h_prop := prop_mono (m := m) (M := 16331503) (by omega) hm
+  exact h_not h_prop
+
+/--
+Conjecture (i): $a(n) < 2 \\cdot (\\text{prime}(n) - 1)$ for all $n > 0$,
+where $\\text{prime}(n)$ is the $n$-th prime number (1-indexed).
+-/
+theorem oeis_232616_conjecture_i.disproof :
+    ¬ (∀ (n : ℕ) (hn : 0 < n), A232616 n < 2 * (Nat.nth Nat.Prime (n - 1) - 1)) := by
+  intro h
+  have h_ce := h 550172 (by decide)
+  have h_nth_le := nth_prime_550171_le
+  have h_a232616 : 16331504 ≤ A232616 550172 := honest_sInf_bound not_prop_550172_16331503
+  omega
+
+#print axioms oeis_232616_conjecture_i.disproof

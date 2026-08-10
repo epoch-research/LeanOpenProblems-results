@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:16:0: error: failed to read file '/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Std/Time/Notation/Spec.olean'
+

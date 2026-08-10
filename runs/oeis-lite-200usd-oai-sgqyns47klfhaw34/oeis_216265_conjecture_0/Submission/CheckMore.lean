@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.exists_prime_factor
+#check Nat.exists_prime_and_dvd
+#check Nat.exists_prime_dvd
+#check Nat.prime_of_mem_primeFactors
+#check Nat.factorial_dvd_ascFactorial
+#check Nat.Prime.dvd_choose
+#check Nat.choose_pos
+#check Nat.ascFactorial
+#check Nat.dvd_of_forall_prime_mul_dvd
+#check Nat.dvd_of_forall_prime_dvd

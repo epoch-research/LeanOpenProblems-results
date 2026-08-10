@@ -1,0 +1,11 @@
+-- Girard's paradox is for Type u : Type u.
+-- Let's see if we can do the Prop-level Girard's paradox / Hurkens' paradox.
+-- Coq's Hurkens' paradox is on Prop, since Prop : Type is not true, but we have:
+-- (Prop → Prop) → Prop is NOT Prop, but we can do Cantor's paradox or Russell's paradox.
+-- Wait, let's see why the standard Hurkens' paradox works in Coq.
+-- In Coq, `Prop` is impredicative. Thus, `(Prop → Prop) → Prop` can be defined, and it is in `Prop`.
+-- Can we define:
+--   U : Prop := (Prop → Prop) → Prop ?
+-- Yes, in Lean, Prop is also impredicative! So `U : Prop := (Prop → Prop) → Prop` is in Prop!
+-- Let's check this!
+def U : Prop := (Prop → Prop) → Prop

@@ -1,0 +1,23 @@
+{
+  "id": "A281977_verified_up_to_1e6",
+  "epoch": 1,
+  "uuid": "BFGcTJ44S8xKjF7d5HmvWS",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1947843,
+      "output_tokens": 468719,
+      "total_tokens": 54900658,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 52484096,
+      "reasoning_tokens": 247376,
+      "total_cost": 50.042833000000016
+    }
+  },
+  "oeis_id": "A281977"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_265709_conjecture_0",
+  "epoch": 1,
+  "uuid": "kMF4EE6YauhixzhJNT6Phk",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1256,
+      "output_tokens": 480406,
+      "total_tokens": 121900460,
+      "input_tokens_cache_write": 4768314,
+      "input_tokens_cache_read": 116650484,
+      "reasoning_tokens": 172958,
+      "total_cost": 200.28726900000007
+    }
+  },
+  "oeis_id": "A265709"
+}

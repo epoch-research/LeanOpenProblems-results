@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:39:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  n * p ^ k % 2\nin the target expression\n  (have P_n := ∏ k_1 ∈ Ico 1 (n * p ^ k + 1), (1 - X ^ k_1) ^ (n * p ^ k * k_1);\n    P_n.coeff (n * p ^ k)) ≡\n    have P_n := ∏ k_1 ∈ Ico 1 (n * p ^ (k - 1) + 1), (1 - X ^ k_1) ^ (n * p ^ (k - 1) * k_1);\n    P_n.coeff (n * p ^ (k - 1)) [ZMOD\n    ↑(p ^ (2 * k))]\n\np n k : ℕ\nhp : Nat.Prime p\nh3p : 3 ≤ p\nhn : 1 ≤ n\nhk : 1 ≤ k\nhp_odd : p % 2 = 1\nh_same_parity : n * p ^ k % 2 = n * p ^ (k - 1) % 2\n⊢ (have P_n := ∏ k_1 ∈ Ico 1 (n * p ^ k + 1), (1 - X ^ k_1) ^ (n * p ^ k * k_1);\n    P_n.coeff (n * p ^ k)) ≡\n    have P_n := ∏ k_1 ∈ Ico 1 (n * p ^ (k - 1) + 1), (1 - X ^ k_1) ^ (n * p ^ (k - 1) * k_1);\n    P_n.coeff (n * p ^ (k - 1)) [ZMOD\n    ↑(p ^ (2 * k))]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

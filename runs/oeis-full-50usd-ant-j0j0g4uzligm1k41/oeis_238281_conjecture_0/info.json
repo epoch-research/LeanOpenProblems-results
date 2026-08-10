@@ -1,0 +1,20 @@
+{
+  "id": "oeis_238281_conjecture_0",
+  "epoch": 1,
+  "uuid": "fgYivMBJyD4jTwZRybB9df",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 33,
+      "output_tokens": 17035,
+      "total_tokens": 271218,
+      "input_tokens_cache_write": 22117,
+      "input_tokens_cache_read": 232033,
+      "reasoning_tokens": 3016,
+      "total_cost": 0.68028775
+    }
+  },
+  "oeis_id": "A238281"
+}

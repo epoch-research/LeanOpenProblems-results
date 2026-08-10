@@ -1,0 +1,5296 @@
+/workspace/leanproject/Submission/Spec_head_and_23.lean:4840:44: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  d ≥ 29
+  c ≥ 1
+  b ≥ 2
+  a ≥ 3
+where
+ a := ↑e
+ b := ↑f
+ c := ↑q / 252
+ d := ↑(q ^ f)
+/workspace/leanproject/Submission/Spec_head_and_23.lean:5075:26: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑q ^ f
+in the target expression
+  (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+
+case neg.«0»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 0
+h_div_mod : 0 < 7
+h_zmod_7 : (0 * ↑(q / 252 % 7) + 2) ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+h3e_7 : 3 ^ e = 3 ^ (e % 6)
+hqf_7 : ↑q ^ f = ↑q ^ (f % 6)
+⊢ False
+/workspace/leanproject/Submission/Spec_head_and_23.lean:5095:107: error: unsolved goals
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this✝ : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 1
+h_div_mod : 1 < 7
+h_zmod_7 : ↑q ^ f - 3 ^ e = 2
+this : q % 252 = 23
+h_eq : q = 252 * (q / 252) + 23
+h_cast : ↑q = 252 * ↑(q / 252) + 23
+⊢ 252 * ↑(q / 252) + 23 = 0 * ↑(q / 252 % 7) + 2
+/workspace/leanproject/Submission/Spec_head_and_23.lean:5088:14: error: unsolved goals
+case neg.«1»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 1
+h_div_mod : 1 < 7
+h_zmod_7 : ↑q ^ f - 3 ^ e = 2
+hq_7 : ↑q = 0 * ↑(q / 252 % 7) + 2
+⊢ False
+/workspace/leanproject/Submission/Spec_head_and_23.lean:5019:12: error: unsolved goals
+case neg.«2»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 2
+h_div_mod : 2 < 7
+⊢ False
+
+case neg.«3»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 3
+h_div_mod : 3 < 7
+⊢ False
+
+case neg.«4»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 4
+h_div_mod : 4 < 7
+⊢ False
+
+case neg.«5»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 5
+h_div_mod : 5 < 7
+⊢ False
+
+case neg.«6»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 23 < 252
+q_mod : q % 252 = 23
+hq23 : ¬q = 23
+he_gt : e ≥ 3
+h_parity : f % 2 = 1 ∧ e % 2 = 0
+h_div : q / 252 % 7 = 6
+h_div_mod : 6 < 7
+⊢ False
+/workspace/leanproject/Submission/Spec_head_and_23.lean:4719:8: error: unsolved goals
+case neg.«24»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 24 < 252
+q_mod : q % 252 = 24
+⊢ False
+
+case neg.«25»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 25 < 252
+q_mod : q % 252 = 25
+⊢ False
+
+case neg.«26»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 26 < 252
+q_mod : q % 252 = 26
+⊢ False
+
+case neg.«27»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 27 < 252
+q_mod : q % 252 = 27
+⊢ False
+
+case neg.«28»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 28 < 252
+q_mod : q % 252 = 28
+⊢ False
+
+case neg.«29»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 29 < 252
+q_mod : q % 252 = 29
+⊢ False
+
+case neg.«30»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 30 < 252
+q_mod : q % 252 = 30
+⊢ False
+
+case neg.«31»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 31 < 252
+q_mod : q % 252 = 31
+⊢ False
+
+case neg.«32»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 32 < 252
+q_mod : q % 252 = 32
+⊢ False
+
+case neg.«33»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 33 < 252
+q_mod : q % 252 = 33
+⊢ False
+
+case neg.«34»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 34 < 252
+q_mod : q % 252 = 34
+⊢ False
+
+case neg.«35»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 35 < 252
+q_mod : q % 252 = 35
+⊢ False
+
+case neg.«36»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 36 < 252
+q_mod : q % 252 = 36
+⊢ False
+
+case neg.«37»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 37 < 252
+q_mod : q % 252 = 37
+⊢ False
+
+case neg.«38»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 38 < 252
+q_mod : q % 252 = 38
+⊢ False
+
+case neg.«39»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 39 < 252
+q_mod : q % 252 = 39
+⊢ False
+
+case neg.«40»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 40 < 252
+q_mod : q % 252 = 40
+⊢ False
+
+case neg.«41»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 41 < 252
+q_mod : q % 252 = 41
+⊢ False
+
+case neg.«42»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 42 < 252
+q_mod : q % 252 = 42
+⊢ False
+
+case neg.«43»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 43 < 252
+q_mod : q % 252 = 43
+⊢ False
+
+case neg.«44»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 44 < 252
+q_mod : q % 252 = 44
+⊢ False
+
+case neg.«45»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 45 < 252
+q_mod : q % 252 = 45
+⊢ False
+
+case neg.«46»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 46 < 252
+q_mod : q % 252 = 46
+⊢ False
+
+case neg.«47»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 47 < 252
+q_mod : q % 252 = 47
+⊢ False
+
+case neg.«48»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 48 < 252
+q_mod : q % 252 = 48
+⊢ False
+
+case neg.«49»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 49 < 252
+q_mod : q % 252 = 49
+⊢ False
+
+case neg.«50»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 50 < 252
+q_mod : q % 252 = 50
+⊢ False
+
+case neg.«51»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 51 < 252
+q_mod : q % 252 = 51
+⊢ False
+
+case neg.«52»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 52 < 252
+q_mod : q % 252 = 52
+⊢ False
+
+case neg.«53»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 53 < 252
+q_mod : q % 252 = 53
+⊢ False
+
+case neg.«54»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 54 < 252
+q_mod : q % 252 = 54
+⊢ False
+
+case neg.«55»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 55 < 252
+q_mod : q % 252 = 55
+⊢ False
+
+case neg.«56»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 56 < 252
+q_mod : q % 252 = 56
+⊢ False
+
+case neg.«57»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 57 < 252
+q_mod : q % 252 = 57
+⊢ False
+
+case neg.«58»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 58 < 252
+q_mod : q % 252 = 58
+⊢ False
+
+case neg.«59»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 59 < 252
+q_mod : q % 252 = 59
+⊢ False
+
+case neg.«60»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 60 < 252
+q_mod : q % 252 = 60
+⊢ False
+
+case neg.«61»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 61 < 252
+q_mod : q % 252 = 61
+⊢ False
+
+case neg.«62»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 62 < 252
+q_mod : q % 252 = 62
+⊢ False
+
+case neg.«63»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 63 < 252
+q_mod : q % 252 = 63
+⊢ False
+
+case neg.«64»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 64 < 252
+q_mod : q % 252 = 64
+⊢ False
+
+case neg.«65»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 65 < 252
+q_mod : q % 252 = 65
+⊢ False
+
+case neg.«66»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 66 < 252
+q_mod : q % 252 = 66
+⊢ False
+
+case neg.«67»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 67 < 252
+q_mod : q % 252 = 67
+⊢ False
+
+case neg.«68»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 68 < 252
+q_mod : q % 252 = 68
+⊢ False
+
+case neg.«69»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 69 < 252
+q_mod : q % 252 = 69
+⊢ False
+
+case neg.«70»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 70 < 252
+q_mod : q % 252 = 70
+⊢ False
+
+case neg.«71»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 71 < 252
+q_mod : q % 252 = 71
+⊢ False
+
+case neg.«72»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 72 < 252
+q_mod : q % 252 = 72
+⊢ False
+
+case neg.«73»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 73 < 252
+q_mod : q % 252 = 73
+⊢ False
+
+case neg.«74»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 74 < 252
+q_mod : q % 252 = 74
+⊢ False
+
+case neg.«75»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 75 < 252
+q_mod : q % 252 = 75
+⊢ False
+
+case neg.«76»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 76 < 252
+q_mod : q % 252 = 76
+⊢ False
+
+case neg.«77»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 77 < 252
+q_mod : q % 252 = 77
+⊢ False
+
+case neg.«78»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 78 < 252
+q_mod : q % 252 = 78
+⊢ False
+
+case neg.«79»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 79 < 252
+q_mod : q % 252 = 79
+⊢ False
+
+case neg.«80»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 80 < 252
+q_mod : q % 252 = 80
+⊢ False
+
+case neg.«81»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 81 < 252
+q_mod : q % 252 = 81
+⊢ False
+
+case neg.«82»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 82 < 252
+q_mod : q % 252 = 82
+⊢ False
+
+case neg.«83»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 83 < 252
+q_mod : q % 252 = 83
+⊢ False
+
+case neg.«84»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 84 < 252
+q_mod : q % 252 = 84
+⊢ False
+
+case neg.«85»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 85 < 252
+q_mod : q % 252 = 85
+⊢ False
+
+case neg.«86»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 86 < 252
+q_mod : q % 252 = 86
+⊢ False
+
+case neg.«87»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 87 < 252
+q_mod : q % 252 = 87
+⊢ False
+
+case neg.«88»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 88 < 252
+q_mod : q % 252 = 88
+⊢ False
+
+case neg.«89»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 89 < 252
+q_mod : q % 252 = 89
+⊢ False
+
+case neg.«90»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 90 < 252
+q_mod : q % 252 = 90
+⊢ False
+
+case neg.«91»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 91 < 252
+q_mod : q % 252 = 91
+⊢ False
+
+case neg.«92»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 92 < 252
+q_mod : q % 252 = 92
+⊢ False
+
+case neg.«93»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 93 < 252
+q_mod : q % 252 = 93
+⊢ False
+
+case neg.«94»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 94 < 252
+q_mod : q % 252 = 94
+⊢ False
+
+case neg.«95»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 95 < 252
+q_mod : q % 252 = 95
+⊢ False
+
+case neg.«96»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 96 < 252
+q_mod : q % 252 = 96
+⊢ False
+
+case neg.«97»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 97 < 252
+q_mod : q % 252 = 97
+⊢ False
+
+case neg.«98»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 98 < 252
+q_mod : q % 252 = 98
+⊢ False
+
+case neg.«99»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 99 < 252
+q_mod : q % 252 = 99
+⊢ False
+
+case neg.«100»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 100 < 252
+q_mod : q % 252 = 100
+⊢ False
+
+case neg.«101»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 101 < 252
+q_mod : q % 252 = 101
+⊢ False
+
+case neg.«102»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 102 < 252
+q_mod : q % 252 = 102
+⊢ False
+
+case neg.«103»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 103 < 252
+q_mod : q % 252 = 103
+⊢ False
+
+case neg.«104»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 104 < 252
+q_mod : q % 252 = 104
+⊢ False
+
+case neg.«105»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 105 < 252
+q_mod : q % 252 = 105
+⊢ False
+
+case neg.«106»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 106 < 252
+q_mod : q % 252 = 106
+⊢ False
+
+case neg.«107»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 107 < 252
+q_mod : q % 252 = 107
+⊢ False
+
+case neg.«108»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 108 < 252
+q_mod : q % 252 = 108
+⊢ False
+
+case neg.«109»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 109 < 252
+q_mod : q % 252 = 109
+⊢ False
+
+case neg.«110»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 110 < 252
+q_mod : q % 252 = 110
+⊢ False
+
+case neg.«111»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 111 < 252
+q_mod : q % 252 = 111
+⊢ False
+
+case neg.«112»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 112 < 252
+q_mod : q % 252 = 112
+⊢ False
+
+case neg.«113»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 113 < 252
+q_mod : q % 252 = 113
+⊢ False
+
+case neg.«114»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 114 < 252
+q_mod : q % 252 = 114
+⊢ False
+
+case neg.«115»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 115 < 252
+q_mod : q % 252 = 115
+⊢ False
+
+case neg.«116»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 116 < 252
+q_mod : q % 252 = 116
+⊢ False
+
+case neg.«117»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 117 < 252
+q_mod : q % 252 = 117
+⊢ False
+
+case neg.«118»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 118 < 252
+q_mod : q % 252 = 118
+⊢ False
+
+case neg.«119»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 119 < 252
+q_mod : q % 252 = 119
+⊢ False
+
+case neg.«120»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 120 < 252
+q_mod : q % 252 = 120
+⊢ False
+
+case neg.«121»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 121 < 252
+q_mod : q % 252 = 121
+⊢ False
+
+case neg.«122»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 122 < 252
+q_mod : q % 252 = 122
+⊢ False
+
+case neg.«123»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 123 < 252
+q_mod : q % 252 = 123
+⊢ False
+
+case neg.«124»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 124 < 252
+q_mod : q % 252 = 124
+⊢ False
+
+case neg.«125»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 125 < 252
+q_mod : q % 252 = 125
+⊢ False
+
+case neg.«126»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 126 < 252
+q_mod : q % 252 = 126
+⊢ False
+
+case neg.«127»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 127 < 252
+q_mod : q % 252 = 127
+⊢ False
+
+case neg.«128»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 128 < 252
+q_mod : q % 252 = 128
+⊢ False
+
+case neg.«129»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 129 < 252
+q_mod : q % 252 = 129
+⊢ False
+
+case neg.«130»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 130 < 252
+q_mod : q % 252 = 130
+⊢ False
+
+case neg.«131»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 131 < 252
+q_mod : q % 252 = 131
+⊢ False
+
+case neg.«132»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 132 < 252
+q_mod : q % 252 = 132
+⊢ False
+
+case neg.«133»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 133 < 252
+q_mod : q % 252 = 133
+⊢ False
+
+case neg.«134»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 134 < 252
+q_mod : q % 252 = 134
+⊢ False
+
+case neg.«135»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 135 < 252
+q_mod : q % 252 = 135
+⊢ False
+
+case neg.«136»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 136 < 252
+q_mod : q % 252 = 136
+⊢ False
+
+case neg.«137»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 137 < 252
+q_mod : q % 252 = 137
+⊢ False
+
+case neg.«138»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 138 < 252
+q_mod : q % 252 = 138
+⊢ False
+
+case neg.«139»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 139 < 252
+q_mod : q % 252 = 139
+⊢ False
+
+case neg.«140»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 140 < 252
+q_mod : q % 252 = 140
+⊢ False
+
+case neg.«141»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 141 < 252
+q_mod : q % 252 = 141
+⊢ False
+
+case neg.«142»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 142 < 252
+q_mod : q % 252 = 142
+⊢ False
+
+case neg.«143»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 143 < 252
+q_mod : q % 252 = 143
+⊢ False
+
+case neg.«144»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 144 < 252
+q_mod : q % 252 = 144
+⊢ False
+
+case neg.«145»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 145 < 252
+q_mod : q % 252 = 145
+⊢ False
+
+case neg.«146»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 146 < 252
+q_mod : q % 252 = 146
+⊢ False
+
+case neg.«147»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 147 < 252
+q_mod : q % 252 = 147
+⊢ False
+
+case neg.«148»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 148 < 252
+q_mod : q % 252 = 148
+⊢ False
+
+case neg.«149»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 149 < 252
+q_mod : q % 252 = 149
+⊢ False
+
+case neg.«150»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 150 < 252
+q_mod : q % 252 = 150
+⊢ False
+
+case neg.«151»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 151 < 252
+q_mod : q % 252 = 151
+⊢ False
+
+case neg.«152»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 152 < 252
+q_mod : q % 252 = 152
+⊢ False
+
+case neg.«153»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 153 < 252
+q_mod : q % 252 = 153
+⊢ False
+
+case neg.«154»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 154 < 252
+q_mod : q % 252 = 154
+⊢ False
+
+case neg.«155»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 155 < 252
+q_mod : q % 252 = 155
+⊢ False
+
+case neg.«156»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 156 < 252
+q_mod : q % 252 = 156
+⊢ False
+
+case neg.«157»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 157 < 252
+q_mod : q % 252 = 157
+⊢ False
+
+case neg.«158»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 158 < 252
+q_mod : q % 252 = 158
+⊢ False
+
+case neg.«159»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 159 < 252
+q_mod : q % 252 = 159
+⊢ False
+
+case neg.«160»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 160 < 252
+q_mod : q % 252 = 160
+⊢ False
+
+case neg.«161»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 161 < 252
+q_mod : q % 252 = 161
+⊢ False
+
+case neg.«162»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 162 < 252
+q_mod : q % 252 = 162
+⊢ False
+
+case neg.«163»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 163 < 252
+q_mod : q % 252 = 163
+⊢ False
+
+case neg.«164»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 164 < 252
+q_mod : q % 252 = 164
+⊢ False
+
+case neg.«165»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 165 < 252
+q_mod : q % 252 = 165
+⊢ False
+
+case neg.«166»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 166 < 252
+q_mod : q % 252 = 166
+⊢ False
+
+case neg.«167»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 167 < 252
+q_mod : q % 252 = 167
+⊢ False
+
+case neg.«168»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 168 < 252
+q_mod : q % 252 = 168
+⊢ False
+
+case neg.«169»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 169 < 252
+q_mod : q % 252 = 169
+⊢ False
+
+case neg.«170»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 170 < 252
+q_mod : q % 252 = 170
+⊢ False
+
+case neg.«171»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 171 < 252
+q_mod : q % 252 = 171
+⊢ False
+
+case neg.«172»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 172 < 252
+q_mod : q % 252 = 172
+⊢ False
+
+case neg.«173»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 173 < 252
+q_mod : q % 252 = 173
+⊢ False
+
+case neg.«174»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 174 < 252
+q_mod : q % 252 = 174
+⊢ False
+
+case neg.«175»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 175 < 252
+q_mod : q % 252 = 175
+⊢ False
+
+case neg.«176»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 176 < 252
+q_mod : q % 252 = 176
+⊢ False
+
+case neg.«177»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 177 < 252
+q_mod : q % 252 = 177
+⊢ False
+
+case neg.«178»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 178 < 252
+q_mod : q % 252 = 178
+⊢ False
+
+case neg.«179»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 179 < 252
+q_mod : q % 252 = 179
+⊢ False
+
+case neg.«180»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 180 < 252
+q_mod : q % 252 = 180
+⊢ False
+
+case neg.«181»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 181 < 252
+q_mod : q % 252 = 181
+⊢ False
+
+case neg.«182»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 182 < 252
+q_mod : q % 252 = 182
+⊢ False
+
+case neg.«183»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 183 < 252
+q_mod : q % 252 = 183
+⊢ False
+
+case neg.«184»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 184 < 252
+q_mod : q % 252 = 184
+⊢ False
+
+case neg.«185»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 185 < 252
+q_mod : q % 252 = 185
+⊢ False
+
+case neg.«186»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 186 < 252
+q_mod : q % 252 = 186
+⊢ False
+
+case neg.«187»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 187 < 252
+q_mod : q % 252 = 187
+⊢ False
+
+case neg.«188»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 188 < 252
+q_mod : q % 252 = 188
+⊢ False
+
+case neg.«189»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 189 < 252
+q_mod : q % 252 = 189
+⊢ False
+
+case neg.«190»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 190 < 252
+q_mod : q % 252 = 190
+⊢ False
+
+case neg.«191»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 191 < 252
+q_mod : q % 252 = 191
+⊢ False
+
+case neg.«192»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 192 < 252
+q_mod : q % 252 = 192
+⊢ False
+
+case neg.«193»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 193 < 252
+q_mod : q % 252 = 193
+⊢ False
+
+case neg.«194»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 194 < 252
+q_mod : q % 252 = 194
+⊢ False
+
+case neg.«195»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 195 < 252
+q_mod : q % 252 = 195
+⊢ False
+
+case neg.«196»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 196 < 252
+q_mod : q % 252 = 196
+⊢ False
+
+case neg.«197»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 197 < 252
+q_mod : q % 252 = 197
+⊢ False
+
+case neg.«198»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 198 < 252
+q_mod : q % 252 = 198
+⊢ False
+
+case neg.«199»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 199 < 252
+q_mod : q % 252 = 199
+⊢ False
+
+case neg.«200»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 200 < 252
+q_mod : q % 252 = 200
+⊢ False
+
+case neg.«201»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 201 < 252
+q_mod : q % 252 = 201
+⊢ False
+
+case neg.«202»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 202 < 252
+q_mod : q % 252 = 202
+⊢ False
+
+case neg.«203»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 203 < 252
+q_mod : q % 252 = 203
+⊢ False
+
+case neg.«204»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 204 < 252
+q_mod : q % 252 = 204
+⊢ False
+
+case neg.«205»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 205 < 252
+q_mod : q % 252 = 205
+⊢ False
+
+case neg.«206»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 206 < 252
+q_mod : q % 252 = 206
+⊢ False
+
+case neg.«207»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 207 < 252
+q_mod : q % 252 = 207
+⊢ False
+
+case neg.«208»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 208 < 252
+q_mod : q % 252 = 208
+⊢ False
+
+case neg.«209»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 209 < 252
+q_mod : q % 252 = 209
+⊢ False
+
+case neg.«210»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 210 < 252
+q_mod : q % 252 = 210
+⊢ False
+
+case neg.«211»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 211 < 252
+q_mod : q % 252 = 211
+⊢ False
+
+case neg.«212»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 212 < 252
+q_mod : q % 252 = 212
+⊢ False
+
+case neg.«213»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 213 < 252
+q_mod : q % 252 = 213
+⊢ False
+
+case neg.«214»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 214 < 252
+q_mod : q % 252 = 214
+⊢ False
+
+case neg.«215»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 215 < 252
+q_mod : q % 252 = 215
+⊢ False
+
+case neg.«216»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 216 < 252
+q_mod : q % 252 = 216
+⊢ False
+
+case neg.«217»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 217 < 252
+q_mod : q % 252 = 217
+⊢ False
+
+case neg.«218»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 218 < 252
+q_mod : q % 252 = 218
+⊢ False
+
+case neg.«219»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 219 < 252
+q_mod : q % 252 = 219
+⊢ False
+
+case neg.«220»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 220 < 252
+q_mod : q % 252 = 220
+⊢ False
+
+case neg.«221»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 221 < 252
+q_mod : q % 252 = 221
+⊢ False
+
+case neg.«222»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 222 < 252
+q_mod : q % 252 = 222
+⊢ False
+
+case neg.«223»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 223 < 252
+q_mod : q % 252 = 223
+⊢ False
+
+case neg.«224»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 224 < 252
+q_mod : q % 252 = 224
+⊢ False
+
+case neg.«225»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 225 < 252
+q_mod : q % 252 = 225
+⊢ False
+
+case neg.«226»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 226 < 252
+q_mod : q % 252 = 226
+⊢ False
+
+case neg.«227»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 227 < 252
+q_mod : q % 252 = 227
+⊢ False
+
+case neg.«228»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 228 < 252
+q_mod : q % 252 = 228
+⊢ False
+
+case neg.«229»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 229 < 252
+q_mod : q % 252 = 229
+⊢ False
+
+case neg.«230»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 230 < 252
+q_mod : q % 252 = 230
+⊢ False
+
+case neg.«231»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 231 < 252
+q_mod : q % 252 = 231
+⊢ False
+
+case neg.«232»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 232 < 252
+q_mod : q % 252 = 232
+⊢ False
+
+case neg.«233»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 233 < 252
+q_mod : q % 252 = 233
+⊢ False
+
+case neg.«234»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 234 < 252
+q_mod : q % 252 = 234
+⊢ False
+
+case neg.«235»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 235 < 252
+q_mod : q % 252 = 235
+⊢ False
+
+case neg.«236»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 236 < 252
+q_mod : q % 252 = 236
+⊢ False
+
+case neg.«237»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 237 < 252
+q_mod : q % 252 = 237
+⊢ False
+
+case neg.«238»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 238 < 252
+q_mod : q % 252 = 238
+⊢ False
+
+case neg.«239»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 239 < 252
+q_mod : q % 252 = 239
+⊢ False
+
+case neg.«240»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 240 < 252
+q_mod : q % 252 = 240
+⊢ False
+
+case neg.«241»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 241 < 252
+q_mod : q % 252 = 241
+⊢ False
+
+case neg.«242»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 242 < 252
+q_mod : q % 252 = 242
+⊢ False
+
+case neg.«243»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 243 < 252
+q_mod : q % 252 = 243
+⊢ False
+
+case neg.«244»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 244 < 252
+q_mod : q % 252 = 244
+⊢ False
+
+case neg.«245»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 245 < 252
+q_mod : q % 252 = 245
+⊢ False
+
+case neg.«246»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 246 < 252
+q_mod : q % 252 = 246
+⊢ False
+
+case neg.«247»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 247 < 252
+q_mod : q % 252 = 247
+⊢ False
+
+case neg.«248»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 248 < 252
+q_mod : q % 252 = 248
+⊢ False
+
+case neg.«249»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 249 < 252
+q_mod : q % 252 = 249
+⊢ False
+
+case neg.«250»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 250 < 252
+q_mod : q % 252 = 250
+⊢ False
+
+case neg.«251»
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hp : Nat.Prime 3
+h : q ^ f - 3 ^ e = 2
+hlt : ¬3 ^ e < 27
+hp_ne_2 : 3 ≠ 2
+he3 : e ≥ 3
+hq_ge11 : q ≥ 11
+hq11 : ¬q = 11
+this : q ≠ 12
+hq_ge13 : q ≥ 13
+hq_coprime : q.Coprime 252
+h_zmod_252 : ↑q ^ f - 3 ^ e = 2
+r : ℕ := q % 252
+hr_lt : 251 < 252
+q_mod : q % 252 = 251
+⊢ False
+/workspace/leanproject/Submission/Spec_head_and_23.lean:4681:2: error: unsolved goals
+case neg.inr.inr.inl
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+hp : Nat.Prime 5
+h : q ^ f - 5 ^ e = 2
+hlt : ¬5 ^ e < 27
+hp_ne_2 : 5 ≠ 2
+⊢ False
+
+case neg.inr.inr.inr.inl
+q e f : ℕ
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+hq_ne_2 : q ≠ 2
+hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+hp : Nat.Prime 7
+h : q ^ f - 7 ^ e = 2
+hlt : ¬7 ^ e < 27
+hp_ne_2 : 7 ≠ 2
+⊢ False
+
+case neg.inr.inr.inr.inr
+p q e f : ℕ
+hp : Nat.Prime p
+hq : Nat.Prime q
+he : 1 < e
+hf : 1 < f
+h : q ^ f - p ^ e = 2
+hlt : ¬p ^ e < 27
+hp_ne_2 : p ≠ 2
+hq_ne_2 : q ≠ 2
+hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+hp_ge11 : p ≥ 11
+⊢ False

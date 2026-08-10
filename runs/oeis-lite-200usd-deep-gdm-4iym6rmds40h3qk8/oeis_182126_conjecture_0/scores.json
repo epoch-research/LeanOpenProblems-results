@@ -1,0 +1,89 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 4 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 12 declarations.\n------------------\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration count_a: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration is_most_frequent: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_182126_conjecture_0: theorem type mismatch\n  Expected type: forall (x : Nat), (GT.gt.{0} Nat instLTNat x (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) (OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)) (OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))) -> (forall (v₀ : Nat), (is_most_frequent x v₀) -> (Dvd.dvd.{0} Nat Nat.instDvd (OfNat.ofNat.{0} Nat 120 (instOfNatNat 120)) v₀))\n  Got type:      Not (forall (x : Nat), (GT.gt.{0} Nat instLTNat x (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) (OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)) (OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))) -> (forall (v₀ : Nat), (oeis_182126_conjecture_0.is_most_frequent x v₀) -> (Dvd.dvd.{0} Nat Nat.instDvd (OfNat.ofNat.{0} Nat 120 (instOfNatNat 120)) v₀)))\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "count_a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "is_most_frequent",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "oeis_182126_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": "thmType"
+          }
+        ]
+      ]
+    }
+  }
+}

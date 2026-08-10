@@ -1,0 +1,6 @@
+import FormalConjectures.Util.ProblemImports
+open scoped EuclideanGeometry
+#check EuclideanGeometry.minimalDistinctDistances
+#print EuclideanGeometry.minimalDistinctDistances
+#check EuclideanGeometry.maximalDistinctDistancesFrom
+#print EuclideanGeometry.maximalDistinctDistancesFrom

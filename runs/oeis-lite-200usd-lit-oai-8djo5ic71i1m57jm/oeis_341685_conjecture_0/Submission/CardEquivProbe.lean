@@ -1,0 +1,20 @@
+import FormalConjectures.Util.ProblemImports
+instance : Fact (Nat.Prime 3) := by constructor; norm_num
+#check Cardinal.eq
+#check Cardinal.mk_congr
+#check Cardinal.mk_fractionRing_mvPolynomial
+#check Cardinal.mk_mvPolynomial
+#check Cardinal.mk_padicSeq
+#check mk_padic
+#check Cardinal.lift_id
+#check Cardinal.mk_denumerable
+#check Cardinal.mk_real
+#check Cardinal.mk_eq_mk_of_equiv
+#check Cardinal.eq.1
+#check Equiv.swap
+#check Equiv.swap_apply_left
+#check Equiv.swap_apply_right
+#check Equiv.trans
+#check FractionRing
+#check MvPolynomial
+#check RatFunc

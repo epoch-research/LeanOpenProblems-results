@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "DRSzD8rBWvt38VtZyKBcrc",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 75201,
+      "output_tokens": 20863,
+      "total_tokens": 1230656,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1134592,
+      "reasoning_tokens": 9261,
+      "total_cost": 1.569191
+    }
+  },
+  "oeis_id": "A270994"
+}

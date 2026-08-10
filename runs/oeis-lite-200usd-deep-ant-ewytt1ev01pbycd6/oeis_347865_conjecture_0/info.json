@@ -1,0 +1,23 @@
+{
+  "id": "oeis_347865_conjecture_0",
+  "epoch": 1,
+  "uuid": "Nc8TssnBsgH8A4fkaGM94H",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 4022,
+      "output_tokens": 543722,
+      "total_tokens": 358184242,
+      "input_tokens_cache_write": 1331781,
+      "input_tokens_cache_read": 356304717,
+      "reasoning_tokens": 74528,
+      "total_cost": 200.08914974999985
+    }
+  },
+  "oeis_id": "A347865"
+}

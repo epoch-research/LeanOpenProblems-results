@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check round
+#check round_eq
+#check Int.toNat_of_nonneg
+#check Int.toNat_eq_zero
+#check Int.toNat_ofNat
+#check round_natCast
+#check round_intCast
+#check round_eq_floor
+#check round_eq_ceil
+#check floor_eq_iff
+#check ceil_eq_iff
+#check fract
+#check fract_nonneg
+#check fract_lt_one

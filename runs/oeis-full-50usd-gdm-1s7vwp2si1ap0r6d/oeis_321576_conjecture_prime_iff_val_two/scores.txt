@@ -1,0 +1,76 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:5:5: warning: unused variable `h_n`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:274:34: warning: unused variable `h_n`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1057:4: error: unsolved goals
+  case neg
+  n : ℕ
+  ih : ∀ m < n, m > 1 → (_root_.a m = 2 ↔ Nat.Prime m)
+  h_n : n > 1
+  ha : ∀ (d : ℕ), d ∣ 2 ^ n - 1 → d ≡ 1 [MOD n]
+  hc : ¬Nat.Prime n
+  p c : ℕ
+  hp : Nat.Prime p
+  hp_eq : p = n.minFac
+  h_eq : n = p * c
+  hc_ge : c ≥ 2
+  h_ineq : p * c ≤ 2 ^ p - 2
+  h_dvd_sub : n ∣ 2 ^ p - 2
+  hdvd_c : c ∣ n
+  hc_ge_p : c ≥ p
+  h_p2_le : p * p ≤ 2 ^ p - 2
+  hp_neq_two : p ≠ 2
+  hp_neq_three : p ≠ 3
+  hp_neq_five : p ≠ 5
+  hp_neq_seven : p ≠ 7
+  hp_neq_eleven : p ≠ 11
+  hp_neq_thirteen : p ≠ 13
+  hp_neq_seventeen : p ≠ 17
+  hp_neq_nineteen : p ≠ 19
+  hp_neq_twenty_three : p ≠ 23
+  hp_neq_twenty_nine : p ≠ 29
+  hp_neq_thirty_one : p ≠ 31
+  hc_lt : c < n
+  hc_gt : c > 1
+  hac_iff : a c = 2 ↔ Nat.Prime c
+  hac : a c = 2
+  hc_prime : Nat.Prime c
+  hp_cop : p.Coprime 2
+  hc_cop : c.Coprime 2
+  hp_cop_2 : Coprime 2 p
+  hc_cop_2 : Coprime 2 c
+  hp_fermat : 2 ^ (p - 1) ≡ 1 [MOD p]
+  hp_dvd_fermat : p ∣ 2 ^ (p - 1) - 1
+  hc_fermat : 2 ^ (c - 1) ≡ 1 [MOD c]
+  hc_dvd_fermat : c ∣ 2 ^ (c - 1) - 1
+  hc_dvd_p_sub : c ∣ 2 ^ (p - 1) - 1
+  hp_dvd_c_sub : p ∣ 2 ^ (c - 1) - 1
+  g : ℕ := (p - 1).gcd (c - 1)
+  hc_dvd_gcd_mersenne : c ∣ 2 ^ g - 1
+  hp_dvd_gcd_mersenne : p ∣ 2 ^ g - 1
+  hdvd_p : p ∣ n
+  hn_dvd_p_sub : n ∣ 2 ^ (p - 1) - 1
+  h_pc_dvd_gcd_mersenne : p * c ∣ 2 ^ g - 1
+  hg : ¬g = p - 1
+  hp_ge2 : p ≥ 2
+  h_g_le_p : g ≤ p - 1
+  h_g_lt : g < p - 1
+  h_g_le : g ≤ (p - 1) / 2
+  h_g_pos : g > 0
+  h_mersenne_pos : 2 ^ g - 1 > 0
+  h_pc_le_mersenne : p * c ≤ 2 ^ g - 1
+  h_mersenne_le : 2 ^ g - 1 ≤ 2 ^ ((p - 1) / 2) - 1
+  h_pc_le_half : p * c ≤ 2 ^ ((p - 1) / 2) - 1
+  h_pc_cop : (p * c).Coprime 2
+  j : ℕ
+  hj : 2 ^ (p - 1) - 1 = p * c * j
+  hj_pos : j > 0
+  h_diff_squares : 2 ^ (p - 1) - 1 = (2 ^ ((p - 1) / 2) - 1) * (2 ^ ((p - 1) / 2) + 1)
+  hj_ge : j ≥ 2 ^ ((p - 1) / 2) + 1
+  ⊢ False
+

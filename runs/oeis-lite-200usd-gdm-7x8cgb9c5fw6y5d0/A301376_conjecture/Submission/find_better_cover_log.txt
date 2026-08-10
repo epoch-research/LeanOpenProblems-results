@@ -1,0 +1,17 @@
+Primes pool size: 50
+V_target size: 483
+Step 1: Selected Prime 3, Residue 1 (covers 176 elements). Uncovered remaining: 307
+Step 2: Selected Prime 11, Residue 2 (covers 40 elements). Uncovered remaining: 267
+Step 3: Selected Prime 31, Residue 4 (covers 39 elements). Uncovered remaining: 228
+Step 4: Selected Prime 127, Residue 17 (covers 11 elements). Uncovered remaining: 217
+Step 5: Selected Prime 19, Residue 5 (covers 10 elements). Uncovered remaining: 207
+Step 6: Selected Prime 43, Residue 12 (covers 10 elements). Uncovered remaining: 197
+Step 7: Selected Prime 23, Residue 6 (covers 9 elements). Uncovered remaining: 188
+Step 8: Selected Prime 331, Residue 3 (covers 8 elements). Uncovered remaining: 180
+Step 9: Selected Prime 47, Residue 22 (covers 6 elements). Uncovered remaining: 174
+Step 10: Selected Prime 59, Residue 16 (covers 6 elements). Uncovered remaining: 168
+Step 11: Selected Prime 71, Residue 27 (covers 5 elements). Uncovered remaining: 163
+CRT base: N0 = 196232087445741745
+prod = 318196541496345006 (digits: 18)
+Searching for counterexample...
+Killed

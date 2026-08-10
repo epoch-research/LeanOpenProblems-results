@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1032:109: error: Type mismatch\n  h_deriv_pos_N_const_1\nhas type\n  3 ^ V_deriv * ‖↑N_const_1 !‖ > 0\nbut is expected to have type\n  3 ^ V_deriv * ‖↑N_const_1 !‖ ≥ 3 ^ V_0",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

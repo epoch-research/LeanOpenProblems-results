@@ -1,0 +1,20 @@
+{
+  "id": "oeis_17666_conjecture_0",
+  "epoch": 1,
+  "uuid": "a63mJLueFvxSAvNeX93cab",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 33,
+      "output_tokens": 8817,
+      "total_tokens": 172255,
+      "input_tokens_cache_write": 11900,
+      "input_tokens_cache_read": 151505,
+      "reasoning_tokens": 769,
+      "total_cost": 0.3707175
+    }
+  },
+  "oeis_id": "A017666"
+}

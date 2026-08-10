@@ -1,0 +1,23 @@
+{
+  "id": "oeis_230507_verified_up_to_10_pow_6",
+  "epoch": 1,
+  "uuid": "EVsiqCtocwHC2CCpXzFAsP",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 16550148,
+      "output_tokens": 485560,
+      "total_tokens": 156409486,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 138808030,
+      "reasoning_tokens": 565748,
+      "total_cost": 50.01646649999999
+    }
+  },
+  "oeis_id": "A230507"
+}

@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Int.Linear.Poly
+#print Int.Linear.Poly
+#check Int.Linear.Context
+#print Int.Linear.Context
+#check Int.Linear.Poly.denote'
+#check Int.Linear.Poly.isUnsatDiseq_k
+#check Int.Linear.Poly.isUnsatEq
+#check Int.Linear.Poly.isUnsatLe
+#check Int.Linear.eq_unsat
+#check Int.Linear.diseq_unsat
+#check Int.Linear.le_unsat
+#check Int.Linear.eq_unsat_coeff_cert
+#check Int.Linear.Poly.num

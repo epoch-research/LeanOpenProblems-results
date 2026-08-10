@@ -1,0 +1,23 @@
+{
+  "id": "oeis_242775_conjecture_0",
+  "epoch": 1,
+  "uuid": "6ja6jebqSBXALRHbqHZ6pk",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 65949436,
+      "output_tokens": 1211242,
+      "total_tokens": 670679456,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 601188882,
+      "reasoning_tokens": 2329896,
+      "total_cost": 200.00366430000028
+    }
+  },
+  "oeis_id": "A242775"
+}

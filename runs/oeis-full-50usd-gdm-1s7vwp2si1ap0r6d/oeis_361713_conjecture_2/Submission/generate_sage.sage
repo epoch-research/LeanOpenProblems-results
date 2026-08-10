@@ -1,0 +1,195 @@
+import sys
+sys.set_int_max_str_digits(1000000)
+
+def compute_states(n, save_points):
+    k, c1, c2, acc = Integer(0), Integer(1), Integer(1), Integer(0)
+    states = {}
+    if 0 in save_points:
+        states[0] = (k, c1, c2, acc)
+    for i in range(1, n + 1):
+        term = c1**2 * c2**2
+        acc += term
+        k_next = k + 1
+        c1_next = c1 * (n - k) // (k + 1)
+        c2_next = c2 * (n + k) // (k + 1)
+        k, c1, c2 = k_next, c1_next, c2_next
+        if i in save_points:
+            states[i] = (k, c1, c2, acc)
+    return states
+
+# Save points for 16807 (chunk size 2000, last chunk 807)
+t_points = set()
+for i in range(1, 9):
+    t_points.add(i * 2000)
+t_points.add(16807)
+
+print("Computing states for n=16807...")
+t_states_map = compute_states(16807, t_points)
+
+# Save points for 117649 (chunk size 2000, last chunk 1649)
+s_points = set()
+for i in range(1, 59):
+    s_points.add(i * 2000)
+s_points.add(117649)
+
+print("Computing states for n=117649...")
+s_states_map = compute_states(117649, s_points)
+
+# Setup Lean file content
+lean = []
+lean.append("import FormalConjectures.Util.ProblemImports")
+lean.append("")
+lean.append("open Finset Nat")
+lean.append("")
+lean.append("set_option maxRecDepth 200000")
+lean.append("")
+lean.append("/--")
+lean.append("A361713: The sequence defined by")
+lean.append("$$a(n) = \\sum_{k = 0}^{n-1} \\binom{n}{k}^2 \\binom{n+k-1}{k}^2$$")
+lean.append("-/")
+lean.append("def a (n : ℕ) : ℕ :=")
+lean.append("  Finset.sum (Finset.range n) fun k => (n.choose k) ^ 2 * ((n + k - 1).choose k) ^ 2")
+lean.append("")
+lean.append("abbrev State := ℕ × ℕ × ℕ × ℕ")
+lean.append("")
+lean.append("def step (n : ℕ) (s : State) : State :=")
+lean.append("  let (k, c1, c2, acc) := s")
+lean.append("  if k < n then")
+lean.append("    (k + 1, c1 * (n - k) / (k + 1), c2 * (n + k) / (k + 1), acc + c1^2 * c2^2)")
+lean.append("  else")
+lean.append("    s")
+lean.append("")
+lean.append("def a_loop (n : ℕ) : ℕ → State → State")
+lean.append("  | 0, s => s")
+lean.append("  | d + 1, s => a_loop n d (step n s)")
+lean.append("")
+lean.append("theorem a_loop_add (n d1 d2 : ℕ) (s : State) :")
+lean.append("  a_loop n (d1 + d2) s = a_loop n d1 (a_loop n d2 s) := by")
+lean.append("  induction d2 generalizing s with")
+lean.append("  | zero =>")
+lean.append("    have : d1 + 0 = d1 := by omega")
+lean.append("    rw [this]")
+lean.append("    rfl")
+lean.append("  | succ d2 ih =>")
+lean.append("    have : d1 + (d2 + 1) = (d1 + d2) + 1 := by omega")
+lean.append("    rw [this]")
+lean.append("    simp [a_loop]")
+lean.append("    exact ih (step n s)")
+lean.append("")
+lean.append("lemma helper1 (n k : ℕ) : n.choose k * (n - k) / (k + 1) = n.choose (k + 1) := by")
+lean.append("  rw [← Nat.choose_succ_right_eq]")
+lean.append("  exact Nat.mul_div_cancel (n.choose (k + 1)) (Nat.succ_pos k)")
+lean.append("")
+lean.append("lemma helper2 (n k : ℕ) (h : 0 < n) : (n + k - 1).choose k * (n + k) / (k + 1) = (n + k).choose (k + 1) := by")
+lean.append("  have h1 : n + k - 1 + 1 = n + k := by")
+lean.append("    omega")
+lean.append("  have h2 : (n + k) * (n + k - 1).choose k = (n + k).choose (k + 1) * (k + 1) := by")
+lean.append("    have h3 := Nat.add_one_mul_choose_eq (n + k - 1) k")
+lean.append("    rwa [h1] at h3")
+lean.append("  rw [Nat.mul_comm] at h2")
+lean.append("  rw [h2]")
+lean.append("  exact Nat.mul_div_cancel ((n + k).choose (k + 1)) (Nat.succ_pos k)")
+lean.append("")
+lean.append("theorem a_loop_eq (n d : ℕ) (k c1 c2 acc : ℕ) (h_pos : 0 < n) (h_le : k + d ≤ n)")
+lean.append("  (hc1 : c1 = n.choose k) (hc2 : c2 = (n + k - 1).choose k) :")
+lean.append("  (a_loop n d (k, c1, c2, acc)).2.2.2 = acc + ∑ j ∈ Ico k (k + d), (n.choose j) ^ 2 * ((n + j - 1).choose j) ^ 2 := by")
+lean.append("  induction d generalizing k c1 c2 acc with")
+lean.append("  | zero =>")
+lean.append("    simp [a_loop]")
+lean.append("  | succ d ih =>")
+lean.append("    have h_lt : k < n := by omega")
+lean.append("    have h_le' : k + 1 + d ≤ n := by omega")
+lean.append("    simp [a_loop, h_lt]")
+lean.append("    rw [ih (k + 1) _ _ _ h_le']")
+lean.append("    · -- Prove that the sum over Ico k (k + d + 1) is term(k) + sum over Ico (k + 1) (k + d + 1)")
+lean.append("      have h_eq1 : k + (d + 1) = k + d + 1 := by omega")
+lean.append("      have h_eq2 : k + 1 + d = k + d + 1 := by omega")
+lean.append("      rw [h_eq1, h_eq2]")
+lean.append("      have h_split : Ico k (k + d + 1) = insert k (Ico (k + 1) (k + d + 1)) := by")
+lean.append("        apply Finset.ext")
+lean.append("        intro x")
+lean.append("        simp only [mem_Ico, mem_insert]")
+lean.append("        omega")
+lean.append("      have h_not_mem : k ∉ Ico (k + 1) (k + d + 1) := by")
+lean.append("        simp")
+lean.append("      rw [h_split, sum_insert h_not_mem]")
+lean.append("      rw [hc1, hc2]")
+lean.append("      ring")
+lean.append("    · rw [hc1]; exact helper1 n k")
+lean.append("    · rw [hc2]")
+lean.append("      have : n + (k + 1) - 1 = n + k := by omega")
+lean.append("      rw [this]")
+lean.append("      exact helper2 n k h_pos")
+lean.append("")
+lean.append("theorem a_eq_a_loop (n : ℕ) (h_pos : 0 < n) : a n = (a_loop n n (0, 1, 1, 0)).2.2.2 := by")
+lean.append("  have h_le : 0 + n ≤ n := by omega")
+lean.append("  have hc1 : 1 = n.choose 0 := by rw [Nat.choose_zero_right]")
+lean.append("  have hc2 : 1 = (n + 0 - 1).choose 0 := by rw [Nat.choose_zero_right]")
+lean.append("  rw [a_loop_eq n n 0 1 1 0 h_pos h_le hc1 hc2]")
+lean.append("  have h_add : 0 + n = n := by omega")
+lean.append("  rw [h_add]")
+lean.append("  have : Ico 0 n = range n := by")
+lean.append("    ext x")
+lean.append("    simp")
+lean.append("  rw [this]")
+lean.append("  exact (Nat.zero_add _).symm")
+lean.append("")
+
+# Definitions and theorems for 16807
+lean.append("def t0 : State := (0, 1, 1, 0)")
+for i in range(1, 9):
+    val = t_states_map[i * 2000]
+    lean.append(f"def t{i} : State := {val}")
+    lean.append(f"theorem t_step_{i-1} : a_loop 16807 2000 t{i-1} = t{i} := rfl")
+
+t9 = t_states_map[16807]
+lean.append(f"def t9 : State := {t9}")
+lean.append("theorem t_step_8 : a_loop 16807 807 t8 = t9 := rfl")
+lean.append("")
+
+# Definitions and theorems for 117649
+lean.append("def s0 : State := (0, 1, 1, 0)")
+for i in range(1, 59):
+    val = s_states_map[i * 2000]
+    lean.append(f"def s{i} : State := {val}")
+    lean.append(f"theorem s_step_{i-1} : a_loop 117649 2000 s{i-1} = s{i} := rfl")
+
+s59 = s_states_map[117649]
+lean.append(f"def s59 : State := {s59}")
+lean.append("theorem s_step_58 : a_loop 117649 1649 s58 = s59 := rfl")
+lean.append("")
+
+# Disproof theorem
+lean.append("theorem oeis_361713_conjecture_2.disproof :")
+lean.append("  ¬ (∀ (p r : ℕ), Nat.Prime p → p ≥ 7 → r ≥ 2 → a (p ^ r) ≡ a (p ^ (r - 1)) [MOD (p ^ (4 * r + 1))]) := by")
+lean.append("  intro h")
+lean.append("  have h_spec := h 7 6")
+lean.append("  have h_prime : Nat.Prime 7 := by decide")
+lean.append("  have h_p_ge : 7 ≥ 7 := by decide")
+lean.append("  have h_r_ge : 6 ≥ 2 := by decide")
+lean.append("  have h_congr := h_spec h_prime h_p_ge h_r_ge")
+lean.append("  have h_pos1 : 0 < 117649 := by decide")
+lean.append("  have h_pos2 : 0 < 16807 := by decide")
+lean.append("  rw [a_eq_a_loop 117649 h_pos1, a_eq_a_loop 16807 h_pos2] at h_congr")
+lean.append("  have h_t_eval : a_loop 16807 16807 (0, 1, 1, 0) = t9 := by")
+lean.append("    have h_add : 16807 = 807 + 2000 + 2000 + 2000 + 2000 + 2000 + 2000 + 2000 + 2000 := by omega")
+lean.append("    rw [h_add]")
+lean.append("    rw [" + ", ".join(["a_loop_add"] * 8) + "]")
+lean.append("    rw [" + ", ".join(f"t_step_{i}" for i in range(9)) + "]")
+
+s_add_terms = ["1649"] + ["2000"]*58
+s_add_str = " + ".join(s_add_terms)
+lean.append(f"  have h_s_eval : a_loop 117649 117649 (0, 1, 1, 0) = s59 := by")
+lean.append(f"    have h_add : 117649 = {s_add_str} := by omega")
+lean.append("    rw [h_add]")
+lean.append("    rw [" + ", ".join(["a_loop_add"] * 58) + "]")
+lean.append("    rw [" + ", ".join(f"s_step_{i}" for i in range(59)) + "]")
+
+lean.append("  rw [h_t_eval, h_s_eval] at h_congr")
+lean.append("  revert h_congr")
+lean.append("  decide")
+lean.append("")
+
+with open("/workspace/leanproject/Submission/Spec.lean", "w") as f:
+    f.write("\n".join(lean) + "\n")
+print("Successfully generated Spec.lean with chunk size 2000")

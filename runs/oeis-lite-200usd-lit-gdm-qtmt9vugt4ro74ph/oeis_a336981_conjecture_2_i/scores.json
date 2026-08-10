@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:42:4: error: Application type mismatch: The argument\n  addAndCompile decl\nhas type\n  CoreM Unit\nbut is expected to have type\n  Finset (Finset ?m.94)\nin the application\n  Finset.slice (addAndCompile decl)\nSubmission/Spec.lean:44:1: error(lean.unknownIdentifier): Unknown identifier `cheat`",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

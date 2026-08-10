@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a189409_conjectures",
+  "epoch": 1,
+  "uuid": "BRtgnqjHc2eVWBk4FApTdv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 523768,
+      "output_tokens": 8865,
+      "total_tokens": 1923604,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1378084,
+      "reasoning_tokens": 12887,
+      "total_cost": 1.0721495999999997
+    }
+  },
+  "oeis_id": "A189409"
+}

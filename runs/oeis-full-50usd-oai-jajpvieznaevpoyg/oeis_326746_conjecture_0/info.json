@@ -1,0 +1,20 @@
+{
+  "id": "oeis_326746_conjecture_0",
+  "epoch": 1,
+  "uuid": "QxN7URWYSKbd5y4AQ3p8VM",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 434010,
+      "output_tokens": 100353,
+      "total_tokens": 18153307,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 17618944,
+      "reasoning_tokens": 49091,
+      "total_cost": 13.990111999999995
+    }
+  },
+  "oeis_id": "A326746"
+}

@@ -1,0 +1,131 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:201:4: error: Tactic `tauto` failed
+  
+  case h
+  b : ℕ
+  S_diff : Set ℕ := {n | a n > 0 ∧ n ∉ E}
+  T : Set ℕ := {n | a n < 0}
+  A : Set ℕ := S_diff ∩ Iio b
+  A_paired : Set ℕ := {n | n ∈ A ∧ f n < b}
+  A_unpaired : Set ℕ := {n | n ∈ A ∧ f n ≥ b}
+  x : ℕ
+  ⊢ x ∈ A ↔ x ∈ A_paired ∨ x ∈ A_unpaired
+  Submission/Spec.lean:207:69: error: `simp` made no progress
+  Submission/Spec.lean:208:73: error: `simp` made no progress
+  Submission/Spec.lean:213:4: error: Type mismatch
+    this
+  has type
+    (A_paired ∪ A_unpaired).ncard = A_paired.ncard + A_unpaired.ncard
+  but is expected to have type
+    ↑(A_paired ∪ A_unpaired).ncard = ↑A_paired.ncard + ↑A_unpaired.ncard
+  Submission/Spec.lean:219:49: error: Function expected at
+    Finite.diff (finite_Iio b)
+  but this term has type
+    (Iio b \ ?m.287).Finite
+  
+  Note: Expected a function because this term is being applied to the argument
+    _
+  Submission/Spec.lean:221:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    0 ≤ c ≤ 3
+    c - d ≥ 0
+  where
+   c := ↑(Iio b \ Iio (b - 3)).ncard
+   d := ↑A_unpaired.ncard
+  Submission/Spec.lean:227:33: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    g ≤ -1
+    e ≥ 1
+    d ≥ 0
+    c ≥ 0
+    c - d ≥ 1
+  where
+   c := ↑b
+   d := ↑(f x)
+   e := a x
+   g := a (f x)
+  Submission/Spec.lean:230:38: error: Type mismatch
+    Function.Injective.injOn f_inj ?m.370
+  has type
+    ∀ ⦃x₂ : ℕ⦄, x₂ ∈ ?m.368 → f ?m.369 = f x₂ → ?m.369 = x₂
+  but is expected to have type
+    InjOn f A_paired
+  Submission/Spec.lean:234:2: error: omega could not prove the goal:
+  No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+  Submission/Spec.lean:200:15: warning: This simp argument is unused:
+    mem_inter_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_i̵n̵t̵e̵r̵_̵i̵f̵f̵,̵ ̵m̵e̵m̵_̵setOf_eq, mem_union, mem_sep_iff]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:200:30: warning: This simp argument is unused:
+    mem_setOf_eq
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_inter_iff, mem_s̵e̵t̵O̵f̵_̵e̵q̵,̵ ̵m̵e̵m̵_̵union, mem_sep_iff]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:200:55: warning: This simp argument is unused:
+    mem_sep_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_inter_iff, mem_setOf_eq, mem_union,̵ ̵m̵e̵m̵_̵s̵e̵p̵_̵i̵f̵f̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:224:30: warning: This simp argument is unused:
+    mem_setOf_eq
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_inter_iff,̵ ̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:260:98: error: Tactic `tauto` failed
+  
+  d_pos d_neg : ℝ
+  hpos : {n | a n > 0}.HasDensity d_pos
+  hneg : {n | a n < 0}.HasDensity d_neg
+  hgt : d_pos > d_neg
+  h_E_finite : E.Finite
+  b : ℕ
+  S : Set ℕ := {n | a n > 0}
+  S_diff : Set ℕ := {n | a n > 0 ∧ n ∉ E}
+  h_sub : S ∩ Iio b ⊆ S_diff ∩ Iio b ∪ E ∩ Iio b
+  h_S_fin : (S ∩ Iio b).Finite
+  h_E_b_fin : (E ∩ Iio b).Finite
+  x : ℕ
+  ⊢ (x ∈ S_diff ∧ x < b ∨ x ∈ E ∧ x < b) ∨ x ∈ S → x ∈ S ∧ x < b
+  Submission/Spec.lean:262:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    g ≥ 0
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c - d ≥ 0
+    c - e - g ≤ 0
+  where
+   c := ↑(S_diff ∩ Iio b ∪ E ∩ Iio b).ncard
+   d := ↑(S ∩ Iio b).ncard
+   e := ↑(S_diff ∩ Iio b).ncard
+   g := ↑(E ∩ Iio b).ncard
+  Submission/Spec.lean:265:35: error: Function expected at
+    inter_subset_left ?m.334
+  but this term has type
+    ?m.333 ∈ ?m.331
+  
+  Note: Expected a function because this term is being applied to the argument
+    (Iio b)
+  Submission/Spec.lean:265:53: error: Application type mismatch: The argument
+    E
+  has type
+    Set ℕ
+  of sort `Type` but is expected to have type
+    ?m.333 ∈ ?m.331 ∩ ?m.332
+  of sort `Prop` in the application
+    inter_subset_left E
+  Submission/Spec.lean:267:4: error: omega could not prove the goal:
+  No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+

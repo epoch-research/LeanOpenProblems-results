@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:29:4: error(lean.unknownIdentifier): Unknown identifier `Macro.throwUnsupported`
+  Submission/Spec.lean:39:2: error: Type mismatch
+    True.intro
+  has type
+    True
+  but is expected to have type
+    (∀ (n : ℕ), 1 < n → 0 < _root_.a n) ∧ ∀ (n : ℕ), a n = 1 ↔ n ∈ A238568_special_set
+

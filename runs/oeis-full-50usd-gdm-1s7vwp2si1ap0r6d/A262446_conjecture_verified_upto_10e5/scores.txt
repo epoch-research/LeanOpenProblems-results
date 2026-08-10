@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  entry module missing: Submission/Spec.lean not in submission
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A271026_conjecture_i",
+  "epoch": 1,
+  "uuid": "inXGSudueMN5dSoWrBkob3",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1898132,
+      "output_tokens": 462101,
+      "total_tokens": 55728041,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 53367808,
+      "reasoning_tokens": 311110,
+      "total_cost": 50.03759400000003
+    }
+  },
+  "oeis_id": "A271026"
+}

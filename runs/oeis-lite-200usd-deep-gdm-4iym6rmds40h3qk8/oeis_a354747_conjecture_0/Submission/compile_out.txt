@@ -1,0 +1,74 @@
+/workspace/leanproject/Submission/Spec.lean:66:36: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:67:36: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:72:36: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:73:36: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:76:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:77:35: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:79:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:82:38: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:87:39: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:91:48: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:92:50: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:94:51: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:95:53: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/workspace/leanproject/Submission/Spec.lean:66:36: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:67:36: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:72:36: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:73:36: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:76:35: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:77:35: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:79:42: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:82:38: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:87:39: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:91:48: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspace/leanproject/Submission/Spec.lean:92:50: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/workspa
+Stack overflow detected. Aborting.

@@ -1,0 +1,249 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:502:21: error: unsolved goals
+  case step.«136»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 136)
+  hy_ge : 136 ≥ 112
+  hy_le : 136 ≤ 200
+  ih : A006368_map 136 ≥ 112 → A006368_map 136 ≤ 200 → is_bad_dt_all (A006368_map 136) = true
+  ⊢ is_bad_dt_all 136 = true
+  
+  case step.«138»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 138)
+  hy_ge : 138 ≥ 112
+  hy_le : 138 ≤ 200
+  ih : A006368_map 138 ≥ 112 → A006368_map 138 ≤ 200 → is_bad_dt_all (A006368_map 138) = true
+  ⊢ is_bad_dt_all 138 = true
+  
+  case step.«140»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 140)
+  hy_ge : 140 ≥ 112
+  hy_le : 140 ≤ 200
+  ih : A006368_map 140 ≥ 112 → A006368_map 140 ≤ 200 → is_bad_dt_all (A006368_map 140) = true
+  ⊢ is_bad_dt_all 140 = true
+  
+  case step.«142»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 142)
+  hy_ge : 142 ≥ 112
+  hy_le : 142 ≤ 200
+  ih : A006368_map 142 ≥ 112 → A006368_map 142 ≤ 200 → is_bad_dt_all (A006368_map 142) = true
+  ⊢ is_bad_dt_all 142 = true
+  
+  case step.«144»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 144)
+  hy_ge : 144 ≥ 112
+  hy_le : 144 ≤ 200
+  ih : A006368_map 144 ≥ 112 → A006368_map 144 ≤ 200 → is_bad_dt_all (A006368_map 144) = true
+  ⊢ is_bad_dt_all 144 = true
+  
+  case step.«146»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 146)
+  hy_ge : 146 ≥ 112
+  hy_le : 146 ≤ 200
+  ih : A006368_map 146 ≥ 112 → A006368_map 146 ≤ 200 → is_bad_dt_all (A006368_map 146) = true
+  ⊢ is_bad_dt_all 146 = true
+  
+  case step.«148»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 148)
+  hy_ge : 148 ≥ 112
+  hy_le : 148 ≤ 200
+  ih : A006368_map 148 ≥ 112 → A006368_map 148 ≤ 200 → is_bad_dt_all (A006368_map 148) = true
+  ⊢ is_bad_dt_all 148 = true
+  
+  case step.«154»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 154)
+  hy_ge : 154 ≥ 112
+  hy_le : 154 ≤ 200
+  ih : A006368_map 154 ≥ 112 → A006368_map 154 ≤ 200 → is_bad_dt_all (A006368_map 154) = true
+  ⊢ is_bad_dt_all 154 = true
+  
+  case step.«156»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 156)
+  hy_ge : 156 ≥ 112
+  hy_le : 156 ≤ 200
+  ih : A006368_map 156 ≥ 112 → A006368_map 156 ≤ 200 → is_bad_dt_all (A006368_map 156) = true
+  ⊢ is_bad_dt_all 156 = true
+  
+  case step.«158»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 158)
+  hy_ge : 158 ≥ 112
+  hy_le : 158 ≤ 200
+  ih : A006368_map 158 ≥ 112 → A006368_map 158 ≤ 200 → is_bad_dt_all (A006368_map 158) = true
+  ⊢ is_bad_dt_all 158 = true
+  
+  case step.«160»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 160)
+  hy_ge : 160 ≥ 112
+  hy_le : 160 ≤ 200
+  ih : A006368_map 160 ≥ 112 → A006368_map 160 ≤ 200 → is_bad_dt_all (A006368_map 160) = true
+  ⊢ is_bad_dt_all 160 = true
+  
+  case step.«162»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 162)
+  hy_ge : 162 ≥ 112
+  hy_le : 162 ≤ 200
+  ih : A006368_map 162 ≥ 112 → A006368_map 162 ≤ 200 → is_bad_dt_all (A006368_map 162) = true
+  ⊢ is_bad_dt_all 162 = true
+  
+  case step.«164»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 164)
+  hy_ge : 164 ≥ 112
+  hy_le : 164 ≤ 200
+  ih : A006368_map 164 ≥ 112 → A006368_map 164 ≤ 200 → is_bad_dt_all (A006368_map 164) = true
+  ⊢ is_bad_dt_all 164 = true
+  
+  case step.«166»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 166)
+  hy_ge : 166 ≥ 112
+  hy_le : 166 ≤ 200
+  ih : A006368_map 166 ≥ 112 → A006368_map 166 ≤ 200 → is_bad_dt_all (A006368_map 166) = true
+  ⊢ is_bad_dt_all 166 = true
+  
+  case step.«172»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 172)
+  hy_ge : 172 ≥ 112
+  hy_le : 172 ≤ 200
+  ih : A006368_map 172 ≥ 112 → A006368_map 172 ≤ 200 → is_bad_dt_all (A006368_map 172) = true
+  ⊢ is_bad_dt_all 172 = true
+  
+  case step.«174»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 174)
+  hy_ge : 174 ≥ 112
+  hy_le : 174 ≤ 200
+  ih : A006368_map 174 ≥ 112 → A006368_map 174 ≤ 200 → is_bad_dt_all (A006368_map 174) = true
+  ⊢ is_bad_dt_all 174 = true
+  
+  case step.«176»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 176)
+  hy_ge : 176 ≥ 112
+  hy_le : 176 ≤ 200
+  ih : A006368_map 176 ≥ 112 → A006368_map 176 ≤ 200 → is_bad_dt_all (A006368_map 176) = true
+  ⊢ is_bad_dt_all 176 = true
+  
+  case step.«178»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 178)
+  hy_ge : 178 ≥ 112
+  hy_le : 178 ≤ 200
+  ih : A006368_map 178 ≥ 112 → A006368_map 178 ≤ 200 → is_bad_dt_all (A006368_map 178) = true
+  ⊢ is_bad_dt_all 178 = true
+  
+  case step.«180»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 180)
+  hy_ge : 180 ≥ 112
+  hy_le : 180 ≤ 200
+  ih : A006368_map 180 ≥ 112 → A006368_map 180 ≤ 200 → is_bad_dt_all (A006368_map 180) = true
+  ⊢ is_bad_dt_all 180 = true
+  
+  case step.«182»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 182)
+  hy_ge : 182 ≥ 112
+  hy_le : 182 ≤ 200
+  ih : A006368_map 182 ≥ 112 → A006368_map 182 ≤ 200 → is_bad_dt_all (A006368_map 182) = true
+  ⊢ is_bad_dt_all 182 = true
+  
+  case step.«184»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 184)
+  hy_ge : 184 ≥ 112
+  hy_le : 184 ≤ 200
+  ih : A006368_map 184 ≥ 112 → A006368_map 184 ≤ 200 → is_bad_dt_all (A006368_map 184) = true
+  ⊢ is_bad_dt_all 184 = true
+  
+  case step.«188»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 188)
+  hy_ge : 188 ≥ 112
+  hy_le : 188 ≤ 200
+  ih : A006368_map 188 ≥ 112 → A006368_map 188 ≤ 200 → is_bad_dt_all (A006368_map 188) = true
+  ⊢ is_bad_dt_all 188 = true
+  
+  case step.«190»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 190)
+  hy_ge : 190 ≥ 112
+  hy_le : 190 ≤ 200
+  ih : A006368_map 190 ≥ 112 → A006368_map 190 ≤ 200 → is_bad_dt_all (A006368_map 190) = true
+  ⊢ is_bad_dt_all 190 = true
+  
+  case step.«192»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 192)
+  hy_ge : 192 ≥ 112
+  hy_le : 192 ≤ 200
+  ih : A006368_map 192 ≥ 112 → A006368_map 192 ≤ 200 → is_bad_dt_all (A006368_map 192) = true
+  ⊢ is_bad_dt_all 192 = true
+  
+  case step.«194»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 194)
+  hy_ge : 194 ≥ 112
+  hy_le : 194 ≤ 200
+  ih : A006368_map 194 ≥ 112 → A006368_map 194 ≤ 200 → is_bad_dt_all (A006368_map 194) = true
+  ⊢ is_bad_dt_all 194 = true
+  
+  case step.«196»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 196)
+  hy_ge : 196 ≥ 112
+  hy_le : 196 ≤ 200
+  ih : A006368_map 196 ≥ 112 → A006368_map 196 ≤ 200 → is_bad_dt_all (A006368_map 196) = true
+  ⊢ is_bad_dt_all 196 = true
+  
+  case step.«200»
+  y z : ℕ
+  hz_bad : IsBad (A006368_map 200)
+  hy_ge : 200 ≥ 112
+  hy_le : 200 ≤ 200
+  ih : A006368_map 200 ≥ 112 → A006368_map 200 ≤ 200 → is_bad_dt_all (A006368_map 200) = true
+  ⊢ is_bad_dt_all 200 = true
+  Submission/Spec.lean:530:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    96 ≤ d ≤ 97
+    c ≥ 112
+    b ≥ 201
+  where
+   b := ↑y
+   c := ↑(A006368_map y)
+   d := ↑s''
+  Submission/Spec.lean:575:4: error: `simp` made no progress
+  Submission/Spec.lean:617:62: error: Application type mismatch: The argument
+    h_exact
+  has type
+    get_bad_steps (s + 1 + 1) y = some (s + 1)
+  but is expected to have type
+    get_bad_steps 100 ?m.247 = some (s + 1)
+  in the application
+    s_lt_98_of_get_bad_steps h_exact
+  Submission/Spec.lean:654:62: error: Application type mismatch: The argument
+    h_exact
+  has type
+    get_bad_steps (s + 1 + 1) y = some (s + 1)
+  but is expected to have type
+    get_bad_steps 100 ?m.511 = some (s + 1)
+  in the application
+    s_lt_98_of_get_bad_steps h_exact
+  Submission/Spec.lean:699:18: warning: unused variable `hz_bad`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+

@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 4 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 341 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_71532_conjecture_0: theorem type mismatch
+    Expected type: Exists.{1} Nat (fun (N : Nat) => forall (n : Nat), (GE.ge.{0} Nat instLENat n N) -> (GT.gt.{0} Real Real.instLT (Int.cast.{0} Real Real.instIntCast (a n)) (Real.sqrt (Nat.cast.{0} Real Real.instNatCast n))))
+    Got type:      Not (forall (n : Nat), GE.ge.{0} Int Int.instLEInt (a n) (OfNat.ofNat.{0} Int 0 (instOfNat 0)))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

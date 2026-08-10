@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A218656_verified_range",
+  "epoch": 1,
+  "uuid": "Mu2SUnJj7kQCGWaz4nCcVH",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1612108,
+      "output_tokens": 264004,
+      "total_tokens": 70163600,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 68287488,
+      "reasoning_tokens": 97051,
+      "total_cost": 50.12440400000004
+    }
+  },
+  "oeis_id": "A218656"
+}

@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.mod_lt
+#check Nat.mod_le
+#check Nat.mod_add_div
+#check Nat.div_add_mod
+#check Nat.mod_eq_of_lt
+#check Nat.mul_div_right
+#check Finset.sum_le_sum
+#check Finset.sum_le_card_nsmul
+#check Finset.sum_range_id
+#check ZMod.natCast_zmod_val
+#check ZMod.val_natCast
+#check ZMod.val_neg
+#check ZMod.valMinAbs

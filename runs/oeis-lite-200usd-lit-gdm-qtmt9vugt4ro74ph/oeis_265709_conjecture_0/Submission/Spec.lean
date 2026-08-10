@@ -1,0 +1,1968 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset ArithmeticFunction
+
+/--
+A265709: $a(n) = \mathrm{numerator}\left(\sum_{d|n} \frac{1}{\sigma(d)}\right)$.
+$\sigma(d)$ is the sum of the divisors of $d$, $\sigma(d) = \sum_{k|d} k$.
+-/
+def A265709 (n : ℕ) : ℕ :=
+  -- The sum \sum_{d|n} 1/\sigma(d), calculated in the rational numbers ℚ.
+  let sum_of_reciprocals : ℚ :=
+    n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)
+
+  -- The numerator of the minimal representation of the rational number, converted from ℤ to ℕ.
+  sum_of_reciprocals.num.toNat
+
+
+lemma den_neq_one_of_padicValRat_neg (p : ℕ) (q : ℚ) (hval : padicValRat p q < 0) : q.den ≠ 1 := by
+  intro hden
+  rw [padicValRat_def, hden, padicValNat.one] at hval
+  omega
+
+lemma even_den_of_padicValRat_neg (p : ℕ) (q : ℚ) (hval : padicValRat p q < 0) :
+  p ∣ q.den := by
+  rw [padicValRat_def] at hval
+  have h_pos : 1 ≤ padicValNat p q.den := by omega
+  exact dvd_of_one_le_padicValNat h_pos
+
+lemma den_odd_of_val_nonneg (q : ℚ) (hval : 0 ≤ padicValRat 2 q) :
+  padicValNat 2 q.den = 0 := by
+  have h_cop : Nat.Coprime q.num.natAbs q.den := q.reduced
+  by_contra h_pos
+  have h_pos_gt : 1 ≤ padicValNat 2 q.den := by omega
+  have h_dvd : 2 ∣ q.den := dvd_of_one_le_padicValNat h_pos_gt
+  have h_not_dvd : ¬ 2 ∣ q.num.natAbs := by
+    intro hd
+    have h_gcd : 2 ∣ Nat.gcd q.num.natAbs q.den := Nat.dvd_gcd hd h_dvd
+    rw [h_cop] at h_gcd
+    norm_num at h_gcd
+  have h_num_val : padicValNat 2 q.num.natAbs = 0 := padicValNat.eq_zero_of_not_dvd h_not_dvd
+  rw [padicValRat_def] at hval
+  have h_eq : padicValInt 2 q.num = padicValNat 2 q.num.natAbs := rfl
+  rw [h_eq, h_num_val] at hval
+  omega
+
+
+lemma val_le_of_dvd (A B : ℕ) (hB_nz : B ≠ 0) (h_dvd : A ∣ B) :
+  padicValNat 2 A ≤ padicValNat 2 B := by
+  have hd : 2^(padicValNat 2 A) ∣ A := pow_padicValNat_dvd
+  have hd2 : 2^(padicValNat 2 A) ∣ B := Nat.dvd_trans hd h_dvd
+  exact (padicValNat_dvd_iff_le hB_nz).mp hd2
+
+
+lemma num_lt_two_den (q : ℚ) (hq_pos : q.num > 0) (hq_lt2 : q < 2) :
+  q.num.natAbs < 2 * q.den := by
+  have h_q_def : q = (q.num : ℚ) / (q.den : ℚ) := (Rat.num_div_den q).symm
+  have h_cast : (q.num : ℚ) = (q.num.natAbs : ℚ) := by
+    have h_eq : (q.num.natAbs : ℤ) = q.num := Int.natAbs_of_nonneg (le_of_lt hq_pos)
+    have h_cast1 : ((q.num.natAbs : ℤ) : ℚ) = (q.num : ℚ) := congr_arg (fun x : ℤ => (x : ℚ)) h_eq
+    have h_cast2 : ((q.num.natAbs : ℤ) : ℚ) = (q.num.natAbs : ℚ) := Rat.intCast_natCast q.num.natAbs
+    exact h_cast1.symm.trans h_cast2
+  have hq_lt2_copy := hq_lt2
+  rw [h_q_def, h_cast] at hq_lt2_copy
+  have h_den : (q.den : ℚ) > 0 := by
+    have : q.den > 0 := q.den_pos
+    exact_mod_cast this
+  have h_mul := (div_lt_iff₀ h_den).mp hq_lt2_copy
+  have h_mul_cast : (q.num.natAbs : ℚ) < ((2 * q.den : ℕ) : ℚ) := by
+    push_cast
+    exact h_mul
+  exact_mod_cast h_mul_cast
+
+
+
+
+lemma sigma_one_pos (i : ℕ) (hi : i ≠ 0) : (sigma 1) i > 0 := by
+  have : (sigma 1) i ≥ 1 := by
+    rw [ArithmeticFunction.sigma_one_apply]
+    have h1 : 1 ∈ i.divisors := by
+      rw [Nat.mem_divisors]
+      omega
+    have : (∑ d ∈ i.divisors, d) ≥ 1 := by
+      rw [← Finset.add_sum_erase i.divisors (fun d => d) h1]
+      have : (∑ d ∈ i.divisors.erase 1, d) ≥ 0 := by
+        apply Finset.sum_nonneg
+        intro x _
+        omega
+      omega
+    exact this
+  omega
+
+
+lemma q2_gt_one (m : ℕ) (hm_gt1 : 1 < m) :
+  (m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 1 := by
+  let q2 := m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)
+  have h1_mem : 1 ∈ m.divisors := by
+    rw [Nat.mem_divisors]
+    omega
+  rw [← Finset.add_sum_erase m.divisors (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) h1_mem]
+  have h1_term : ((1 : ℚ) / (↑((sigma 1) 1) : ℚ)) = 1 := by
+    have : (sigma 1) 1 = 1 := rfl
+    rw [this]
+    norm_num
+  rw [h1_term]
+  have h_pos_sum : (∑ i ∈ m.divisors.erase 1, ((1 : ℚ) / (↑((sigma 1) i) : ℚ))) > 0 := by
+    have hm_mem : m ∈ m.divisors.erase 1 := by
+      rw [Finset.mem_erase]
+      constructor
+      · omega
+      · rw [Nat.mem_divisors]
+        exact ⟨dvd_rfl, by omega⟩
+    rw [← Finset.add_sum_erase (m.divisors.erase 1) (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) hm_mem]
+    have hm_term_pos : ((1 : ℚ) / (↑((sigma 1) m) : ℚ)) > 0 := by
+      have : (sigma 1) m > 0 := sigma_one_pos m (by omega)
+      have h_sig_q : (↑((sigma 1) m) : ℚ) > 0 := by exact_mod_cast this
+      exact one_div_pos.mpr h_sig_q
+    have h_rest_nonneg : (∑ i ∈ (m.divisors.erase 1).erase m, ((1 : ℚ) / (↑((sigma 1) i) : ℚ))) ≥ 0 := by
+      apply Finset.sum_nonneg
+      intro i hi
+      have hi_nz : i ≠ 0 := by
+        have h_mem : i ∈ m.divisors := Finset.mem_of_mem_erase (Finset.mem_of_mem_erase hi)
+        have : 0 < i := Nat.pos_of_mem_divisors h_mem
+        omega
+      have h_sig := sigma_one_pos i hi_nz
+      have h_sig_q : (↑((sigma 1) i) : ℚ) > 0 := by exact_mod_cast h_sig
+      exact le_of_lt (one_div_pos.mpr h_sig_q)
+    linarith
+  linarith
+
+
+
+lemma divisors_two_eq : (2 : ℕ).divisors = {1, 2} := by
+  exact Nat.Prime.divisors (by decide)
+
+theorem disproof_n_2 : (((2 : ℕ).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))).den ≠ 1 := by
+  rw [divisors_two_eq]
+  rw [Finset.sum_insert (by decide), Finset.sum_singleton]
+  have h1 : (sigma 1) 1 = 1 := by rfl
+  have h2 : (sigma 1) 2 = 3 := by rfl
+  rw [h1, h2]
+  norm_num
+
+lemma pow_two_ge_one (j : ℕ) : (2 : ℚ) ^ j ≥ 1 := by
+  induction j with
+  | zero => norm_num
+  | succ j ih =>
+    rw [pow_succ]
+    nlinarith
+
+lemma den_lt (j : ℕ) : (2 : ℚ)^(j+1) < (2 : ℚ)^(j+2) - 1 := by
+  have h_eq : (2 : ℚ)^(j+2) = 2 * (2 : ℚ)^(j+1) := by ring
+  rw [h_eq]
+  have h_ge : (2 : ℚ)^(j+1) ≥ 2 := by
+    have : (2 : ℚ)^(j+1) = 2 * (2 : ℚ)^j := by ring
+    rw [this]
+    have : (2 : ℚ)^j ≥ 1 := pow_two_ge_one j
+    nlinarith
+  linarith
+
+lemma term_le_geom (j : ℕ) : ((1 : ℚ) / ((2^(j+2) : ℚ) - 1)) < (1 / 2)^(j+1) := by
+  have h_den : (2 : ℚ)^(j+1) < (2 : ℚ)^(j+2) - 1 := den_lt j
+  have h_pos1 : (2 : ℚ)^(j+1) > 0 := by positivity
+  have h_pos2 : (2 : ℚ)^(j+2) - 1 > 0 := by linarith
+  have h_geom : (1 / 2 : ℚ) ^ (j + 1) = 1 / (2 : ℚ) ^ (j + 1) := by
+    rw [div_pow]
+    simp
+  rw [h_geom]
+  rw [one_div_lt_one_div h_pos2 h_pos1]
+  exact h_den
+
+lemma term_le_geom_le (j : ℕ) : ((1 : ℚ) / ((2^(j+2) : ℚ) - 1)) ≤ (1 / 2)^(j+1) :=
+  le_of_lt (term_le_geom j)
+
+lemma geom_sum_half (b : ℕ) : (∑ j ∈ range b, (1 / 2 : ℚ)^(j+1)) = 1 - (1 / 2 : ℚ)^b := by
+  induction b with
+  | zero => simp
+  | succ b ih =>
+    rw [sum_range_succ, ih, pow_succ]
+    ring
+
+lemma geom_sum_half_lt_one (b : ℕ) : (∑ j ∈ range b, (1 / 2 : ℚ)^(j+1)) < 1 := by
+  rw [geom_sum_half]
+  have : (1 / 2 : ℚ)^b > 0 := by positivity
+  linarith
+
+lemma sum_le_geom (b : ℕ) :
+  (∑ j ∈ range b, ((1 : ℚ) / ((2^(j+2) : ℚ) - 1))) ≤ (∑ j ∈ range b, (1 / 2 : ℚ)^(j+1)) := by
+  apply sum_le_sum
+  intro j hj
+  exact term_le_geom_le j
+
+lemma den_neq_one_of_between (q : ℚ) (h1 : 1 < q) (h2 : q < 2) : q.den ≠ 1 := by
+  intro hden
+  rw [Rat.den_eq_one_iff] at hden
+  have h1' : 1 < (q.num : ℚ) := by linarith
+  have h2' : (q.num : ℚ) < 2 := by linarith
+  norm_cast at h1' h2'
+  omega
+
+lemma sum_two_pow_lt_two (b : ℕ) :
+  (∑ j ∈ range (b + 1), ((1 : ℚ) / ((2^(j+1) : ℚ) - 1))) < 2 := by
+  rw [Finset.sum_range_succ']
+  have h_zero : ((1 : ℚ) / ((2^(0+1) : ℚ) - 1)) = 1 := by
+    norm_num
+  rw [h_zero]
+  have h_le := sum_le_geom b
+  have h_lt := geom_sum_half_lt_one b
+  linarith
+
+lemma sum_two_pow_lt_eleven_six (b : ℕ) (hb : b ≥ 1) :
+  (∑ j ∈ range (b + 1), ((1 : ℚ) / ((2^(j+1) : ℚ) - 1))) < 11 / 6 := by
+  rw [Finset.sum_range_succ']
+  have h_zero : ((1 : ℚ) / ((2^(0+1) : ℚ) - 1)) = 1 := by norm_num
+  rw [h_zero]
+  have h_b_eq : b = (b - 1) + 1 := (Nat.sub_add_cancel hb).symm
+  rw [h_b_eq]
+  rw [Finset.sum_range_succ']
+  have h_one : ((1 : ℚ) / ((2^(0+2) : ℚ) - 1)) = 1 / 3 := by norm_num
+  rw [h_one]
+  have h_le_geom : (∑ j ∈ range (b - 1), ((1 : ℚ) / ((2^(j+3) : ℚ) - 1))) ≤ (∑ j ∈ range (b - 1), (1 / 2 : ℚ)^(j+2)) := by
+    apply sum_le_sum
+    intro j hj
+    have := term_le_geom_le (j+1)
+    exact this
+  have h_geom_sum : (∑ j ∈ range (b - 1), (1 / 2 : ℚ)^(j+2)) < 1 / 2 := by
+    have h_split : (∑ j ∈ range (b - 1), (1 / 2 : ℚ)^(j+2)) = 1 / 2 * (∑ j ∈ range (b - 1), (1 / 2 : ℚ)^(j+1)) := by
+      rw [mul_sum]
+      apply sum_congr rfl
+      intro j hj
+      have h_eq : (1 / 2 : ℚ)^(j+2) = 1 / 2 * (1 / 2 : ℚ)^(j+1) := by ring
+      exact h_eq
+    rw [h_split]
+    have h_lt := geom_sum_half_lt_one (b - 1)
+    nlinarith
+  linarith
+
+
+
+
+
+lemma sum_two_pow_gt_one (b : ℕ) (hb : 1 ≤ b) : 1 < (∑ j ∈ range (b + 1), ((1 : ℚ) / ((2^(j+1) : ℚ) - 1))) := by
+  have h_ne : b ≠ 0 := by omega
+  rcases Nat.exists_eq_succ_of_ne_zero h_ne with ⟨c, rfl⟩
+  rw [sum_range_succ', sum_range_succ']
+  have h0 : ((1 : ℚ) / ((2^(0+1) : ℚ) - 1)) = 1 := by norm_num
+  have h1 : ((1 : ℚ) / ((2^(1+1) : ℚ) - 1)) = 1/3 := by norm_num
+  rw [h0, h1]
+  have h_pos : (∑ x ∈ range c, ((1 : ℚ) / ((2^(x + 2 + 1) : ℚ) - 1))) ≥ 0 := by
+    apply sum_nonneg
+    intro x hx
+    have : (2 : ℚ)^(x + 2 + 1) - 1 > 0 := by
+      have : (2 : ℚ)^(x + 2 + 1) ≥ 8 := by
+        have : (2 : ℚ)^(x + 2 + 1) = (2 : ℚ)^x * 8 := by ring
+        rw [this]
+        have : (2 : ℚ)^x ≥ 1 := pow_two_ge_one x
+        nlinarith
+      linarith
+    positivity
+  linarith
+
+lemma sum_pow_two_geom (j : ℕ) : (∑ x ∈ range (j + 1), 2^x) = 2^(j+1) - 1 := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+    rw [sum_range_succ, ih]
+    have : 2^(j+1) ≥ 1 := by
+      have : 2^(j+1) > 0 := by positivity
+      omega
+    omega
+
+lemma sigma_one_pow_two (j : ℕ) : (sigma 1) (2^j) = 2^(j+1) - 1 := by
+  rw [ArithmeticFunction.sigma_one_apply]
+  have h_prime : Nat.Prime 2 := Nat.prime_two
+  rw [Nat.divisors_prime_pow h_prime j]
+  rw [Finset.sum_map]
+  simp only [Function.Embedding.coeFn_mk]
+  exact sum_pow_two_geom j
+
+lemma sum_divisors_pow_two (b : ℕ) :
+  ((2^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) =
+  (∑ j ∈ range (b + 1), ((1 : ℚ) / ((2^(j+1) : ℚ) - 1))) := by
+  have h_prime : Nat.Prime 2 := Nat.prime_two
+  rw [Nat.divisors_prime_pow h_prime b]
+  rw [Finset.sum_map]
+  simp only [Function.Embedding.coeFn_mk]
+  congr 1
+  ext x
+  rw [sigma_one_pow_two x]
+  have h_ge : 2^(x+1) ≥ 1 := by
+    have : 2^(x+1) > 0 := by positivity
+    omega
+  rw [Nat.cast_sub h_ge]
+  simp
+
+lemma den_neq_one_of_pow_two (b : ℕ) (hb : 1 ≤ b) :
+  ((2^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)).den ≠ 1 := by
+  rw [sum_divisors_pow_two]
+  apply den_neq_one_of_between
+  · exact sum_two_pow_gt_one b hb
+  · exact sum_two_pow_lt_two b
+
+def g_term : ArithmeticFunction ℚ :=
+  ⟨fun d => if d = 0 then 0 else (1 : ℚ) / (↑((sigma 1) d) : ℚ), by simp⟩
+
+theorem g_term_is_multiplicative : IsMultiplicative g_term := by
+  constructor
+  · simp [g_term]
+  · intro m n hmn
+    simp only [g_term, ArithmeticFunction.coe_mk]
+    by_cases hm : m = 0
+    · subst hm
+      simp
+    by_cases hn : n = 0
+    · subst hn
+      simp
+    have hmn_nz : m * n ≠ 0 := mul_ne_zero hm hn
+    simp [hm, hn, hmn_nz]
+    have h_sig := isMultiplicative_sigma (k := 1)
+    have h_sig_mul := h_sig.map_mul_of_coprime hmn
+    rw [h_sig_mul]
+    push_cast
+    ring
+
+theorem g_is_multiplicative : IsMultiplicative ((ArithmeticFunction.zeta : ArithmeticFunction ℚ) * g_term) := by
+  have h_zeta : IsMultiplicative (ArithmeticFunction.zeta : ArithmeticFunction ℚ) :=
+    isMultiplicative_zeta.natCast (R := ℚ)
+  have h_term := g_term_is_multiplicative
+  exact IsMultiplicative.mul h_zeta h_term
+
+lemma g_sum_eq_mul_apply (n : ℕ) (hn : n ≠ 0) :
+  (n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = (ArithmeticFunction.zeta * g_term) n := by
+  rw [coe_zeta_mul_apply]
+  apply sum_congr rfl
+  intro d hd
+  have hd_nz : d ≠ 0 := by
+    have : d > 0 := Nat.pos_of_mem_divisors hd
+    omega
+  simp [g_term, hd_nz]
+
+lemma g_mul_of_coprime {u v : ℕ} (hu : u ≠ 0) (hv : v ≠ 0) (hcop : u.Coprime v) :
+  (u * v).divisors.sum (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) =
+  (u.divisors.sum (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) *
+  (v.divisors.sum (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) := by
+  rw [g_sum_eq_mul_apply (u * v) (mul_ne_zero hu hv)]
+  rw [g_sum_eq_mul_apply u hu]
+  rw [g_sum_eq_mul_apply v hv]
+  exact g_is_multiplicative.map_mul_of_coprime hcop
+
+lemma list_prod_of_all_two (L : List ℕ) (h : ∀ x ∈ L, x = 2) : L.prod = 2 ^ L.length := by
+  induction L with
+  | nil => rfl
+  | cons x xs ih =>
+    have hx : x = 2 := h x (by simp)
+    have hxs : ∀ y ∈ xs, y = 2 := fun y hy => h y (by simp [hy])
+    rw [List.prod_cons, hx, ih hxs, List.length_cons]
+    ring
+
+lemma eq_two_pow_or_has_odd_prime_factor (n : ℕ) (hn : 1 < n) :
+  (∃ b ≥ 1, n = 2^b) ∨ (∃ p ∈ n.primeFactorsList, p % 2 = 1) := by
+  by_cases h_all : ∀ p ∈ n.primeFactorsList, p = 2
+  · left
+    have h_nz : n ≠ 0 := by omega
+    have h_prod := Nat.prod_primeFactorsList h_nz
+    rw [list_prod_of_all_two n.primeFactorsList h_all] at h_prod
+    use n.primeFactorsList.length
+    constructor
+    · have : n.primeFactorsList.length ≥ 1 := by
+        by_contra h_len
+        have : n.primeFactorsList.length = 0 := by omega
+        rw [this, pow_zero] at h_prod
+        omega
+      exact this
+    · exact h_prod.symm
+  · right
+    push_neg at h_all
+    rcases h_all with ⟨p, hp, hp_ne⟩
+    have h_prime : p.Prime := Nat.prime_of_mem_primeFactorsList hp
+    use p
+    constructor
+    · exact hp
+    · rcases h_prime.eq_two_or_odd with h2 | h_odd
+      · contradiction
+      · exact h_odd
+
+lemma padicValNat_odd (k : ℕ) : padicValNat 2 (2 * k + 1) = 0 := by
+  have h_odd : (2 * k + 1) % 2 = 1 := by omega
+  exact padicValNat.eq_zero_of_not_dvd (fun h => by
+    have : (2 * k + 1) % 2 = 0 := Nat.mod_eq_zero_of_dvd h
+    omega)
+
+lemma padicValNat_even (k : ℕ) (hk : k ≠ 0) : padicValNat 2 (2 * k) = padicValNat 2 k + 1 := by
+  have h2 : (2 : ℕ) ≠ 0 := by decide
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  rw [mul_comm]
+  have h_val := @padicValNat.mul 2 k 2 h_prime hk h2
+  rw [h_val]
+  have h_two : padicValNat 2 2 = 1 := padicValNat_self
+  rw [h_two]
+
+lemma padicValNat_odd_pow (p : ℕ) (hp : p % 2 = 1) (k : ℕ) : (p ^ k) % 2 = 1 := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [pow_succ]
+    rw [Nat.mul_mod]
+    rw [ih]
+    rw [hp]
+
+lemma p_sq_mod_four (p : ℕ) (hp : p % 2 = 1) : (p * p) % 4 = 1 := by
+  have : p % 4 = 1 ∨ p % 4 = 3 := by omega
+  rcases this with h | h
+  · rw [Nat.mul_mod, h]
+  · rw [Nat.mul_mod, h]
+
+lemma p_sq_pow_mod_four (p : ℕ) (hp : p % 2 = 1) (r : ℕ) : ((p * p) ^ r) % 4 = 1 := by
+  have h_p2 := p_sq_mod_four p hp
+  induction r with
+  | zero => simp
+  | succ r ih =>
+    rw [pow_succ, Nat.mul_mod, ih, h_p2]
+
+lemma padicValNat_pow_two_plus_one_all (p : ℕ) (hp : p % 2 = 1) (r : ℕ) : (p ^ (2 * r)) % 4 = 1 := by
+  have h_eq : p ^ (2 * r) = (p * p) ^ r := by ring
+  rw [h_eq]
+  exact p_sq_pow_mod_four p hp r
+
+lemma padicValNat_pow_two_plus_one (p : ℕ) (hp : p % 2 = 1) (m : ℕ) (_ : m ≥ 1) : padicValNat 2 (p ^ (2 * m) + 1) = 1 := by
+  have h_pow := padicValNat_pow_two_plus_one_all p hp m
+  have h_mod : (p ^ (2 * m) + 1) % 4 = 2 := by
+    rw [Nat.add_mod]
+    rw [h_pow]
+  have h_div : 2 ∣ (p ^ (2 * m) + 1) := by
+    have : (p ^ (2 * m) + 1) % 2 = 0 := by
+      have : (p ^ (2 * m)) % 2 = 1 := padicValNat_odd_pow p hp (2 * m)
+      omega
+    exact Nat.dvd_of_mod_eq_zero this
+  have h_ndiv : ¬ 4 ∣ (p ^ (2 * m) + 1) := by
+    intro h
+    have : (p ^ (2 * m) + 1) % 4 = 0 := Nat.mod_eq_zero_of_dvd h
+    omega
+  have h_nz : p ^ (2 * m) + 1 ≠ 0 := by omega
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have h1 : 1 ≤ padicValNat 2 (p ^ (2 * m) + 1) := by
+    exact one_le_padicValNat_of_dvd h_nz h_div
+  have h2 : padicValNat 2 (p ^ (2 * m) + 1) < 2 := by
+    by_contra h_le
+    push_neg at h_le
+    have h_dvd : 2 ^ 2 ∣ (p ^ (2 * m) + 1) := by
+      exact (padicValNat_dvd_iff_le h_nz).mpr h_le
+    change 4 ∣ (p ^ (2 * m) + 1) at h_dvd
+    exact h_ndiv h_dvd
+  omega
+
+lemma nat_sub_mul (A : ℕ) (hA : A ≥ 1) : (A - 1) * (A + 1) = A * A - 1 := by
+  rcases Nat.exists_eq_succ_of_ne_zero (by omega : A ≠ 0) with ⟨B, rfl⟩
+  have h1 : (B + 1 - 1) * (B + 1 + 1) = B * (B + 2) := rfl
+  have h2 : (B + 1) * (B + 1) - 1 = B * (B + 2) := by
+    have h_eq : (B + 1) * (B + 1) = B * (B + 2) + 1 := by ring
+    rw [h_eq]
+    rfl
+  rw [h1, h2]
+
+lemma sum_odd_terms (p : ℕ) (hp : p % 2 = 1) (k : ℕ) : (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) % 2 = 1 := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    have h_step1 : (∑ x ∈ range (2 * (k + 1) + 1), (p ^ 2) ^ x) =
+                   (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) + (p ^ 2) ^ (2 * k + 1) + (p ^ 2) ^ (2 * k + 2) := by
+      have h_eq_succ : 2 * (k + 1) + 1 = 2 * k + 1 + 1 + 1 := by omega
+      rw [h_eq_succ, sum_range_succ, sum_range_succ]
+    rw [h_step1]
+    have hp2 : (p ^ 2) % 2 = 1 := by
+      have : p ^ 2 = p * p := by ring
+      rw [this, Nat.mul_mod, hp]
+    have h_odd1 : (p ^ 2) ^ (2 * k + 1) % 2 = 1 := padicValNat_odd_pow (p ^ 2) hp2 (2 * k + 1)
+    have h_odd2 : (p ^ 2) ^ (2 * k + 2) % 2 = 1 := padicValNat_odd_pow (p ^ 2) hp2 (2 * k + 2)
+    have h_add_mod_three : ∀ (A B C : ℕ), (A + B + C) % 2 = ((A % 2 + B % 2) % 2 + C % 2) % 2 := by
+      intro A B C
+      have h_assoc : A + B + C = (A + B) + C := by ring
+      rw [h_assoc, Nat.add_mod, Nat.add_mod A B 2]
+    rw [h_add_mod_three, ih, h_odd1, h_odd2]
+
+lemma lte_lemma (p : ℕ) (hp : p % 2 = 1) (hp_prime : p.Prime) (n : ℕ) (hn : n ≥ 1) :
+  padicValNat 2 (p ^ (2 * n) - 1) = padicValNat 2 (p ^ 2 - 1) + padicValNat 2 n := by
+  induction' n using Nat.strong_induction_on with n ih
+  have hp3 : p ≥ 3 := by
+    have : p ≥ 2 := hp_prime.two_le
+    omega
+  by_cases h_even : n % 2 = 0
+  · -- n is even
+    have ⟨k, hk_eq⟩ : ∃ k, n = 2 * k := ⟨n / 2, by omega⟩
+    have hk_ge : k ≥ 1 := by omega
+    subst hk_eq
+    have h_split : p ^ (2 * (2 * k)) - 1 = (p ^ (2 * k) - 1) * (p ^ (2 * k) + 1) := by
+      have h_eq : p ^ (2 * (2 * k)) = (p ^ (2 * k)) * (p ^ (2 * k)) := by ring
+      have h_ge2 : p ^ (2 * k) ≥ 1 := by
+        have : p ^ (2 * k) ≥ p ^ 2 := Nat.pow_le_pow_right (by omega) (by omega)
+        have : p ^ 2 ≥ 9 := by nlinarith
+        omega
+      rw [h_eq]
+      exact (nat_sub_mul (p ^ (2 * k)) h_ge2).symm
+    have h_nz1 : p ^ (2 * k) - 1 ≠ 0 := by
+      have : p ^ (2 * k) ≥ p ^ 2 := Nat.pow_le_pow_right (by omega) (by omega)
+      have : p ^ 2 ≥ 9 := by nlinarith
+      omega
+    have h_nz2 : p ^ (2 * k) + 1 ≠ 0 := by omega
+    rw [h_split]
+    have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+    have h_val := @padicValNat.mul 2 (p ^ (2 * k) - 1) (p ^ (2 * k) + 1) h_prime h_nz1 h_nz2
+    rw [h_val]
+    have ih_k := ih k (by omega) hk_ge
+    rw [ih_k]
+    have h_even_val : padicValNat 2 (p ^ (2 * k) + 1) = 1 := padicValNat_pow_two_plus_one p hp k hk_ge
+    rw [h_even_val]
+    have h_even_n : padicValNat 2 (2 * k) = padicValNat 2 k + 1 := padicValNat_even k (by omega)
+    rw [h_even_n]
+    omega
+  · -- n is odd
+    have ⟨k, hk_eq⟩ : ∃ k, n = 2 * k + 1 := ⟨n / 2, by omega⟩
+    subst hk_eq
+    have h_geom : p ^ (2 * (2 * k + 1)) - 1 = (p ^ 2 - 1) * (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) := by
+      induction' (2 * k + 1) with m ih
+      · simp
+      · rw [sum_range_succ]
+        have h_dist : (p ^ 2 - 1) * (∑ x ∈ range m, (p ^ 2) ^ x + (p ^ 2) ^ m) =
+                      (p ^ 2 - 1) * (∑ x ∈ range m, (p ^ 2) ^ x) + (p ^ 2 - 1) * (p ^ 2) ^ m := by
+          exact Nat.mul_add (p ^ 2 - 1) (∑ x ∈ range m, (p ^ 2) ^ x) ((p ^ 2) ^ m)
+        rw [h_dist]
+        have h_symm : (p ^ 2 - 1) * ∑ x ∈ range m, (p ^ 2) ^ x = p ^ (2 * m) - 1 := ih.symm
+        rw [h_symm]
+        have h_eq_term : (p ^ 2 - 1) * (p ^ 2) ^ m = (p ^ 2) ^ (m + 1) - (p ^ 2) ^ m := by
+          rw [mul_comm, Nat.mul_sub_left_distrib, mul_one, ← pow_succ]
+        rw [h_eq_term]
+        have h_pow_eq : p ^ (2 * (m + 1)) = (p ^ 2) ^ (m + 1) := by ring
+        have h_pow_eq_m : p ^ (2 * m) = (p ^ 2) ^ m := by ring
+        have h_p2_ge : 1 ≤ p ^ 2 := by
+          have : p ^ 2 ≥ 9 := by nlinarith
+          omega
+        have h_geA : (p ^ 2) ^ (m + 1) ≥ (p ^ 2) ^ m := by
+          have h_eq_add : (p ^ 2) ^ (m + 1) = (p ^ 2) ^ m * p ^ 2 := by ring
+          rw [h_eq_add]
+          have h_le := Nat.mul_le_mul_left ((p ^ 2) ^ m) h_p2_ge
+          rw [mul_one] at h_le
+          exact h_le
+        rw [h_pow_eq, h_pow_eq_m]
+        have h_ge1 : (p ^ 2) ^ m ≥ 1 := Nat.one_le_pow m (p ^ 2) h_p2_ge
+        omega
+    have h_p2_ge9 : p ^ 2 ≥ 9 := by nlinarith
+    have h_nz1 : p ^ 2 - 1 ≠ 0 := by omega
+    have h_sum_odd : (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) % 2 = 1 := sum_odd_terms p hp k
+    have h_nz2 : (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) ≠ 0 := by omega
+    have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+    rw [h_geom]
+    have h_val := @padicValNat.mul 2 (p ^ 2 - 1) (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) h_prime h_nz1 h_nz2
+    rw [h_val]
+    have h_val_zero : padicValNat 2 (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) = 0 := by
+      exact padicValNat.eq_zero_of_not_dvd (fun h => by
+        have : (∑ x ∈ range (2 * k + 1), (p ^ 2) ^ x) % 2 = 0 := Nat.mod_eq_zero_of_dvd h
+        omega)
+    rw [h_val_zero]
+    have h_odd_n : padicValNat 2 (2 * k + 1) = 0 := padicValNat_odd k
+    rw [h_odd_n]
+
+lemma geom_sum_nat (p : ℕ) (hp : p ≥ 1) (k : ℕ) : p ^ k - 1 = (p - 1) * (∑ x ∈ range k, p ^ x) := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [sum_range_succ, mul_add, ← ih]
+    have : (p - 1) * p ^ k = p ^ (k + 1) - p ^ k := by
+      rw [mul_comm, Nat.mul_sub_left_distrib, mul_one, ← pow_succ]
+    rw [this]
+    have : p ^ (k + 1) ≥ p ^ k := Nat.pow_le_pow_right hp (by omega)
+    have : p ^ k ≥ 1 := Nat.one_le_pow k p hp
+    omega
+
+lemma sigma_one_pow_prime (p : ℕ) [hp : Fact p.Prime] (j : ℕ) :
+  (sigma 1) (p^j) = ∑ x ∈ range (j + 1), p ^ x := by
+  rw [ArithmeticFunction.sigma_one_apply]
+  rw [Nat.divisors_prime_pow hp.elim j]
+  rw [Finset.sum_map]
+  rfl
+
+lemma sum_odd_terms_p (p : ℕ) (hp : p % 2 = 1) (k : ℕ) : (∑ x ∈ range (2 * k + 1), p ^ x) % 2 = 1 := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    have h_step1 : (∑ x ∈ range (2 * (k + 1) + 1), p ^ x) =
+                   (∑ x ∈ range (2 * k + 1), p ^ x) + p ^ (2 * k + 1) + p ^ (2 * k + 2) := by
+      have h_eq_succ : 2 * (k + 1) + 1 = 2 * k + 1 + 1 + 1 := by omega
+      rw [h_eq_succ, sum_range_succ, sum_range_succ]
+    rw [h_step1]
+    have h_odd1 : p ^ (2 * k + 1) % 2 = 1 := padicValNat_odd_pow p hp (2 * k + 1)
+    have h_odd2 : p ^ (2 * k + 2) % 2 = 1 := padicValNat_odd_pow p hp (2 * k + 2)
+    have h_add_mod_three : ∀ (A B C : ℕ), (A + B + C) % 2 = ((A % 2 + B % 2) % 2 + C % 2) % 2 := by
+      intro A B C
+      have h_assoc : A + B + C = (A + B) + C := by ring
+      rw [h_assoc, Nat.add_mod, Nat.add_mod A B 2]
+    rw [h_add_mod_three, ih, h_odd1, h_odd2]
+
+lemma padicValNat_sigma_even (p : ℕ) (hp : p % 2 = 1) [Fact p.Prime] (i : ℕ) :
+  padicValNat 2 (sigma 1 (p ^ (2 * i))) = 0 := by
+  rw [sigma_one_pow_prime p (2 * i)]
+  exact padicValNat.eq_zero_of_not_dvd (fun h => by
+    have : (∑ x ∈ range (2 * i + 1), p ^ x) % 2 = 0 := Nat.mod_eq_zero_of_dvd h
+    have h_odd := sum_odd_terms_p p hp i
+    omega)
+
+lemma padicValNat_sigma_odd (p : ℕ) (hp : p % 2 = 1) (hp_prime : p.Prime) (i : ℕ) :
+  padicValNat 2 (sigma 1 (p ^ (2 * i + 1))) = padicValNat 2 (p + 1) + padicValNat 2 (i + 1) := by
+  have hp_ge3 : p ≥ 3 := by
+    have : p ≥ 2 := hp_prime.two_le
+    omega
+  have h_fact : Fact p.Prime := ⟨hp_prime⟩
+  rw [sigma_one_pow_prime p (2 * i + 1)]
+  have h_geom := geom_sum_nat p (by omega : p ≥ 1) (2 * (i + 1))
+  have h_eq_sum : 2 * i + 2 = 2 * (i + 1) := by omega
+  rw [congr_arg (fun n => ∑ x ∈ range n, p ^ x) h_eq_sum]
+  have h_geom_eq : p ^ (2 * (i + 1)) - 1 = (p - 1) * (∑ x ∈ range (2 * (i + 1)), p ^ x) := h_geom
+  have h_nz1 : p - 1 ≠ 0 := by omega
+  have h_nz2 : (∑ x ∈ range (2 * (i + 1)), p ^ x) ≠ 0 := by
+    have h_pos_sum : (∑ x ∈ range (2 * (i + 1)), p ^ x) > 0 := by
+      apply Finset.sum_pos
+      · intro x hx
+        positivity
+      · use 0
+        simp
+    omega
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have h_val := @padicValNat.mul 2 (p - 1) (∑ x ∈ range (2 * (i + 1)), p ^ x) h_prime h_nz1 h_nz2
+  have h_lte := lte_lemma p hp hp_prime (i + 1) (by omega)
+  rw [← h_geom_eq] at h_val
+  rw [h_lte] at h_val
+  have h_split_p2 : p ^ 2 - 1 = (p - 1) * (p + 1) := by
+    have : p ^ 2 = p * p := by ring
+    rw [this]
+    exact (nat_sub_mul p (by omega : p ≥ 1)).symm
+  have h_nz_p1 : p - 1 ≠ 0 := by omega
+  have h_nz_p2 : p + 1 ≠ 0 := by omega
+  have h_val_p2 := @padicValNat.mul 2 (p - 1) (p + 1) h_prime h_nz_p1 h_nz_p2
+  rw [h_split_p2, h_val_p2] at h_val
+  omega
+
+lemma unique_max_val_in_range (K : ℕ) (hK : 1 ≤ K) :
+  let M := Nat.log 2 K
+  let j0 := 2^M
+  j0 ∈ Icc 1 K ∧ (∀ j ∈ Icc 1 K, j ≠ j0 → padicValNat 2 j < M) := by
+  let M := Nat.log 2 K
+  let j0 := 2^M
+  have h_two : 1 < 2 := Nat.one_lt_two
+  have hK_nz : K ≠ 0 := by omega
+  have hj0_le : j0 ≤ K := Nat.pow_log_le_self 2 hK_nz
+  have hj0_ge : 1 ≤ j0 := by
+    have : 2^M > 0 := by positivity
+    omega
+  have hj0_in : j0 ∈ Icc 1 K := Finset.mem_Icc.mpr ⟨hj0_ge, hj0_le⟩
+  refine ⟨hj0_in, fun j hj hj_ne => ?_⟩
+  rw [Finset.mem_Icc] at hj
+  have hj_nz : j ≠ 0 := by omega
+  let u := padicValNat 2 j
+  have h_dvd : 2^u ∣ j := by
+    have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+    exact (padicValNat_dvd_iff_le hj_nz).mpr (le_refl u)
+  have h_le_j : 2^u ≤ j := Nat.le_of_dvd (by omega) h_dvd
+  have h_le_K : 2^u ≤ K := h_le_j.trans hj.2
+  have hu_le_M : u ≤ M := (Nat.le_log_iff_pow_le h_two hK_nz).mpr h_le_K
+  have hu_ne_M : u ≠ M := by
+    intro hu_eq
+    rw [hu_eq] at h_dvd
+    have : j = j0 := by
+      rcases h_dvd with ⟨c, rfl⟩
+      have hc_ge : c ≥ 1 := by
+        by_contra hc_lt
+        have : c = 0 := by omega
+        subst this
+        simp at hj_nz
+      have hc_lt : c < 2 := by
+        by_contra hc_ge2
+        have : 2^M * c ≥ 2^M * 2 := Nat.mul_le_mul_left (2^M) (by omega : 2 ≤ c)
+        have h_pow : 2^M * 2 = 2^(M+1) := by ring
+        rw [h_pow] at this
+        have h_lt_K : K < 2^(M+1) := Nat.lt_pow_succ_log_self h_two K
+        omega
+      have : c = 1 := by omega
+      subst this
+      ring
+    contradiction
+  omega
+
+lemma padicValRat_sum_eq_of_unique_min {F : ℕ → ℚ} {S : Finset ℕ}
+  (j_0 : ℕ) (hj_0 : j_0 ∈ S)
+  (h_min : ∀ j ∈ S, j ≠ j_0 → padicValRat 2 (F j_0) < padicValRat 2 (F j))
+  (h_pos : ∀ j ∈ S, 0 < F j) :
+  padicValRat 2 (∑ j ∈ S, F j) = padicValRat 2 (F j_0) := by
+  by_cases h_empty : S.erase j_0 = ∅
+  · have h_eq : S = {j_0} := by
+      ext x
+      simp only [Finset.mem_singleton]
+      constructor
+      · intro hx
+        by_contra h_ne
+        have : x ∈ S.erase j_0 := Finset.mem_erase.mpr ⟨h_ne, hx⟩
+        rw [h_empty] at this
+        simp at this
+      · rintro rfl
+        exact hj_0
+    rw [h_eq, Finset.sum_singleton]
+  · have h_nonempty : (S.erase j_0).Nonempty := Finset.nonempty_of_ne_empty h_empty
+    let F' := fun i => if i ∈ S then F i else 1
+    have h_eq_sum : (∑ j ∈ S.erase j_0, F j) = (∑ j ∈ S.erase j_0, F' j) := by
+      apply Finset.sum_congr rfl
+      intro x hx
+      have : x ∈ S := (Finset.mem_erase.mp hx).2
+      simp [F', this]
+    have h_eq_j0 : F j_0 = F' j_0 := by
+      simp [F', hj_0]
+    have h_lt : padicValRat 2 (F' j_0) < padicValRat 2 (∑ j ∈ S.erase j_0, F' j) := by
+      have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+      apply padicValRat.lt_sum_of_lt h_nonempty
+      · intro i hi
+        have h_ne : i ≠ j_0 := (Finset.mem_erase.mp hi).1
+        have h_in : i ∈ S := (Finset.mem_erase.mp hi).2
+        rw [← h_eq_j0]
+        have : F' i = F i := by simp [F', h_in]
+        rw [this]
+        exact h_min i h_in h_ne
+      · intro i
+        by_cases hi : i ∈ S
+        · simp [F', hi, h_pos i hi]
+        · simp [F', hi]
+    rw [← h_eq_sum, ← h_eq_j0] at h_lt
+    have h_sum_S : (∑ j ∈ S, F j) = F j_0 + (∑ j ∈ S.erase j_0, F j) := by
+      exact (Finset.add_sum_erase S F hj_0).symm
+    rw [h_sum_S]
+    have hq_nz : F j_0 ≠ 0 := _root_.ne_of_gt (h_pos j_0 hj_0)
+    have hr_nz : (∑ j ∈ S.erase j_0, F j) ≠ 0 := by
+      have h_pos_sum : 0 < ∑ j ∈ S.erase j_0, F j := by
+        apply Finset.sum_pos
+        · intro i hi
+          exact h_pos i (Finset.mem_erase.mp hi).2
+        · exact h_nonempty
+      exact _root_.ne_of_gt h_pos_sum
+    have h_add_nz : F j_0 + (∑ j ∈ S.erase j_0, F j) ≠ 0 := by
+      apply _root_.ne_of_gt
+      apply add_pos (h_pos j_0 hj_0)
+      have h_pos_sum : 0 < ∑ j ∈ S.erase j_0, F j := by
+        apply Finset.sum_pos
+        · intro i hi
+          exact h_pos i (Finset.mem_erase.mp hi).2
+        · exact h_nonempty
+      exact h_pos_sum
+    exact padicValRat.add_eq_of_lt h_add_nz hq_nz hr_nz h_lt
+
+lemma sum_divisors_pow_prime (p : ℕ) (hp : p.Prime) (b : ℕ) :
+  ((p^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) =
+  (∑ j ∈ range (b + 1), ((1 : ℚ) / (↑((sigma 1) (p^j)) : ℚ))) := by
+  rw [Nat.divisors_prime_pow hp b]
+  rw [Finset.sum_map]
+  rfl
+
+lemma padicValRat_two_sum_divisors_pow_odd_prime (p : ℕ) (hp : p.Prime) (hp_odd : p % 2 = 1) (a : ℕ) (ha : a ≥ 1) :
+  padicValRat 2 ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) < 0 := by
+  rw [sum_divisors_pow_prime p hp a]
+  let F := fun j => (1 : ℚ) / (↑((sigma 1) (p^j)) : ℚ)
+  have h_sig_pos : ∀ j, (sigma 1 (p^j) : ℚ) > 0 := by
+    intro j
+    have hp_fact : Fact p.Prime := ⟨hp⟩
+    rw [sigma_one_pow_prime p j]
+    have h_sum_ge : (∑ x ∈ range (j + 1), p^x) ≥ 1 := by
+      rw [sum_range_succ']
+      have : p^0 = 1 := rfl
+      rw [this]
+      have : (∑ x ∈ range j, p^(x+1)) ≥ 0 := by
+        apply sum_nonneg
+        intro x _
+        positivity
+      omega
+    have h_cast : (↑(∑ x ∈ range (j + 1), p^x) : ℚ) ≥ 1 := by
+      exact_mod_cast h_sum_ge
+    positivity
+  have hF_pos : ∀ j ∈ range (a + 1), F j > 0 := by
+    intro j _
+    exact one_div_pos.mpr (h_sig_pos j)
+  let K := (a + 1) / 2
+  have hK_ge : 1 ≤ K := by omega
+  rcases unique_max_val_in_range K hK_ge with ⟨hk0_in, h_unique⟩
+  rw [Finset.mem_Icc] at hk0_in
+  let k0 := 2 ^ Nat.log 2 K
+  have hk0_eq : k0 = 2 ^ Nat.log 2 K := rfl
+  let i0 := k0 - 1
+  have hk0_def : i0 + 1 = k0 := by omega
+  let j0 := 2 * i0 + 1
+  have hj0_in : j0 ∈ range (a + 1) := by
+    rw [Finset.mem_range]
+    have : 2 * k0 ≤ a + 1 := by
+      have : 2 * K ≤ a + 1 := Nat.mul_div_le (a + 1) 2
+      omega
+    omega
+  have h_min : ∀ j ∈ range (a + 1), j ≠ j0 → padicValRat 2 (F j0) < padicValRat 2 (F j) := by
+    intro j hj_in hj_ne
+    have hj_nz_sig : ∀ x, (sigma 1 (p^x) : ℚ) ≠ 0 := fun x => ne_of_gt (h_sig_pos x)
+    have hF_val : ∀ x, padicValRat 2 (F x) = - padicValNat 2 (sigma 1 (p^x)) := by
+      intro x
+      rw [padicValRat.div (by norm_num : (1 : ℚ) ≠ 0) (hj_nz_sig x)]
+      rw [padicValRat.one, zero_sub]
+      rw [padicValRat_of_nat]
+    rw [hF_val j0, hF_val j, neg_lt_neg_iff]
+    have hp_nz : p + 1 ≠ 0 := by omega
+    have h_dvd : 2 ∣ p + 1 := by
+      have : (p + 1) % 2 = 0 := by omega
+      exact Nat.dvd_of_mod_eq_zero this
+    have hV_pos : 1 ≤ padicValNat 2 (p + 1) := one_le_padicValNat_of_dvd hp_nz h_dvd
+    have hp_fact : Fact p.Prime := ⟨hp⟩
+    have hj0_odd_val : padicValNat 2 (sigma 1 (p^j0)) = padicValNat 2 (p + 1) + padicValNat 2 k0 := by
+      have : j0 = 2 * i0 + 1 := rfl
+      rw [this, padicValNat_sigma_odd p hp_odd hp i0, hk0_def]
+    by_cases h_even : j % 2 = 0
+    · have ⟨i, hi_eq⟩ : ∃ i, j = 2 * i := ⟨j / 2, by omega⟩
+      rw [hi_eq]
+      rw [padicValNat_sigma_even p hp_odd i]
+      rw [hj0_odd_val]
+      omega
+    · have h_odd : j % 2 = 1 := by omega
+      rcases Nat.exists_eq_succ_of_ne_zero (by omega : j ≠ 0) with ⟨j', rfl⟩
+      have : j' % 2 = 0 := by omega
+      have ⟨i, hi_eq⟩ : ∃ i, j' = 2 * i := ⟨j' / 2, by omega⟩
+      have h_div : (2 * i) / 2 = i := by omega
+      rw [hi_eq] at hj_in hj_ne
+      rw [hi_eq]
+      rw [h_div] at *
+      have hj_eq : 2 * i + 1 = 2 * i + 1 := rfl
+      rw [hj0_odd_val]
+      rw [padicValNat_sigma_odd p hp_odd hp i]
+      have hi_ne : i ≠ i0 := by
+        intro h_eq
+        apply hj_ne
+        rw [h_eq]
+      have hi_le : i + 1 ≤ K := by
+        have hj_in' := hj_in
+        rw [Finset.mem_range] at hj_in'
+        dsimp [K]
+        omega
+      have hi_ge : 1 ≤ i + 1 := by omega
+      have hi_in : i + 1 ∈ Icc 1 K := Finset.mem_Icc.mpr ⟨hi_ge, hi_le⟩
+      have hi_ne_k0 : i + 1 ≠ k0 := by
+        rw [← hk0_def]
+        omega
+      have h_lt := h_unique (i + 1) hi_in hi_ne_k0
+      have hk0_val : padicValNat 2 k0 = Nat.log 2 K := by
+        rw [hk0_eq]
+        rw [padicValNat.pow (Nat.log 2 K) (by norm_num : 2 ≠ 0)]
+        have : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+        rw [padicValNat_self, mul_one]
+      rw [hk0_val]
+      omega
+  have h_val_eq := padicValRat_sum_eq_of_unique_min j0 hj0_in h_min hF_pos
+  rw [h_val_eq]
+  have hF_val : padicValRat 2 (F j0) = - padicValNat 2 (sigma 1 (p^j0)) := by
+    have hj_nz_sig : (sigma 1 (p^j0) : ℚ) ≠ 0 := _root_.ne_of_gt (h_sig_pos j0)
+    rw [padicValRat.div (by norm_num : (1 : ℚ) ≠ 0) hj_nz_sig]
+    rw [padicValRat.one, zero_sub]
+    rw [padicValRat_of_nat]
+  rw [hF_val]
+  have hp_fact : Fact p.Prime := ⟨hp⟩
+  have hj0_odd_val : padicValNat 2 (sigma 1 (p^j0)) = padicValNat 2 (p + 1) + padicValNat 2 k0 := by
+    have : j0 = 2 * i0 + 1 := rfl
+    rw [this, padicValNat_sigma_odd p hp_odd hp i0, hk0_def]
+  rw [hj0_odd_val]
+  have hp_nz : p + 1 ≠ 0 := by omega
+  have h_dvd : 2 ∣ p + 1 := by
+    have : (p + 1) % 2 = 0 := by omega
+    exact Nat.dvd_of_mod_eq_zero this
+  have hV_pos : 1 ≤ padicValNat 2 (p + 1) := one_le_padicValNat_of_dvd hp_nz h_dvd
+  omega
+
+
+lemma padicValRat_two_sum_divisors_pow_odd_prime_le (p : ℕ) (hp : p.Prime) (hp_odd : p % 2 = 1) (a : ℕ) (ha : a ≥ 1) :
+  padicValRat 2 ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≤ - (padicValNat 2 (p + 1) : ℤ) := by
+  rw [sum_divisors_pow_prime p hp a]
+  let F := fun j => (1 : ℚ) / (↑((sigma 1) (p^j)) : ℚ)
+  have h_sig_pos : ∀ j, (sigma 1 (p^j) : ℚ) > 0 := by
+    intro j
+    have hp_fact : Fact p.Prime := ⟨hp⟩
+    rw [sigma_one_pow_prime p j]
+    have h_sum_ge : (∑ x ∈ range (j + 1), p^x) ≥ 1 := by
+      rw [sum_range_succ']
+      have : p^0 = 1 := rfl
+      rw [this]
+      have : (∑ x ∈ range j, p^(x+1)) ≥ 0 := by
+        apply sum_nonneg
+        intro x _
+        positivity
+      omega
+    have h_cast : (↑(∑ x ∈ range (j + 1), p^x) : ℚ) ≥ 1 := by
+      exact_mod_cast h_sum_ge
+    positivity
+  have hF_pos : ∀ j ∈ range (a + 1), F j > 0 := by
+    intro j _
+    exact one_div_pos.mpr (h_sig_pos j)
+  let K := (a + 1) / 2
+  have hK_ge : 1 ≤ K := by omega
+  rcases unique_max_val_in_range K hK_ge with ⟨hk0_in, h_unique⟩
+  rw [Finset.mem_Icc] at hk0_in
+  let k0 := 2 ^ Nat.log 2 K
+  have hk0_eq : k0 = 2 ^ Nat.log 2 K := rfl
+  let i0 := k0 - 1
+  have hk0_def : i0 + 1 = k0 := by omega
+  let j0 := 2 * i0 + 1
+  have hj0_in : j0 ∈ range (a + 1) := by
+    rw [Finset.mem_range]
+    have : 2 * k0 ≤ a + 1 := by
+      have : 2 * K ≤ a + 1 := Nat.mul_div_le (a + 1) 2
+      omega
+    omega
+  have h_min : ∀ j ∈ range (a + 1), j ≠ j0 → padicValRat 2 (F j0) < padicValRat 2 (F j) := by
+    intro j hj_in hj_ne
+    have hj_nz_sig : ∀ x, (sigma 1 (p^x) : ℚ) ≠ 0 := fun x => ne_of_gt (h_sig_pos x)
+    have hF_val : ∀ x, padicValRat 2 (F x) = - padicValNat 2 (sigma 1 (p^x)) := by
+      intro x
+      rw [padicValRat.div (by norm_num : (1 : ℚ) ≠ 0) (hj_nz_sig x)]
+      rw [padicValRat.one, zero_sub]
+      rw [padicValRat_of_nat]
+    rw [hF_val j0, hF_val j, neg_lt_neg_iff]
+    have hp_nz : p + 1 ≠ 0 := by omega
+    have h_dvd : 2 ∣ p + 1 := by
+      have : (p + 1) % 2 = 0 := by omega
+      exact Nat.dvd_of_mod_eq_zero this
+    have hV_pos : 1 ≤ padicValNat 2 (p + 1) := one_le_padicValNat_of_dvd hp_nz h_dvd
+    have hp_fact : Fact p.Prime := ⟨hp⟩
+    have hj0_odd_val : padicValNat 2 (sigma 1 (p^j0)) = padicValNat 2 (p + 1) + padicValNat 2 k0 := by
+      have : j0 = 2 * i0 + 1 := rfl
+      rw [this, padicValNat_sigma_odd p hp_odd hp i0, hk0_def]
+    by_cases h_even : j % 2 = 0
+    · have ⟨i, hi_eq⟩ : ∃ i, j = 2 * i := ⟨j / 2, by omega⟩
+      rw [hi_eq]
+      rw [padicValNat_sigma_even p hp_odd i]
+      rw [hj0_odd_val]
+      omega
+    · have h_odd : j % 2 = 1 := by omega
+      rcases Nat.exists_eq_succ_of_ne_zero (by omega : j ≠ 0) with ⟨j', rfl⟩
+      have : j' % 2 = 0 := by omega
+      have ⟨i, hi_eq⟩ : ∃ i, j' = 2 * i := ⟨j' / 2, by omega⟩
+      have h_div : (2 * i) / 2 = i := by omega
+      rw [hi_eq] at hj_in hj_ne
+      rw [hi_eq]
+      rw [h_div] at *
+      have hj_eq : 2 * i + 1 = 2 * i + 1 := rfl
+      rw [hj0_odd_val]
+      rw [padicValNat_sigma_odd p hp_odd hp i]
+      have hi_ne : i ≠ i0 := by
+        intro h_eq
+        apply hj_ne
+        rw [h_eq]
+      have hi_le : i + 1 ≤ K := by
+        have hj_in' := hj_in
+        rw [Finset.mem_range] at hj_in'
+        dsimp [K]
+        omega
+      have hi_ge : 1 ≤ i + 1 := by omega
+      have hi_in : i + 1 ∈ Icc 1 K := Finset.mem_Icc.mpr ⟨hi_ge, hi_le⟩
+      have hi_ne_k0 : i + 1 ≠ k0 := by
+        rw [← hk0_def]
+        omega
+      have h_lt := h_unique (i + 1) hi_in hi_ne_k0
+      have hk0_val : padicValNat 2 k0 = Nat.log 2 K := by
+        rw [hk0_eq]
+        rw [padicValNat.pow (Nat.log 2 K) (by norm_num : 2 ≠ 0)]
+        have : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+        rw [padicValNat_self, mul_one]
+      rw [hk0_val]
+      omega
+  have h_val_eq := padicValRat_sum_eq_of_unique_min j0 hj0_in h_min hF_pos
+  rw [h_val_eq]
+  have hF_val : padicValRat 2 (F j0) = - padicValNat 2 (sigma 1 (p^j0)) := by
+    have hj_nz_sig : (sigma 1 (p^j0) : ℚ) ≠ 0 := _root_.ne_of_gt (h_sig_pos j0)
+    rw [padicValRat.div (by norm_num : (1 : ℚ) ≠ 0) hj_nz_sig]
+    rw [padicValRat.one, zero_sub]
+    rw [padicValRat_of_nat]
+  rw [hF_val]
+  have hp_fact : Fact p.Prime := ⟨hp⟩
+  have hj0_odd_val : padicValNat 2 (sigma 1 (p^j0)) = padicValNat 2 (p + 1) + padicValNat 2 k0 := by
+    have : j0 = 2 * i0 + 1 := rfl
+    rw [this, padicValNat_sigma_odd p hp_odd hp i0, hk0_def]
+  rw [hj0_odd_val]
+  have hp_nz : p + 1 ≠ 0 := by omega
+  have h_dvd : 2 ∣ p + 1 := by
+    have : (p + 1) % 2 = 0 := by omega
+    exact Nat.dvd_of_mod_eq_zero this
+  have hV_pos : 1 ≤ padicValNat 2 (p + 1) := one_le_padicValNat_of_dvd hp_nz h_dvd
+  omega
+
+
+lemma coprime_factorization (p : ℕ) (hp : p.Prime) (n : ℕ) (hn : n ≠ 0) :
+  let a := padicValNat p n
+  let m := n / p^a
+  n = p^a * m ∧ Nat.Coprime (p^a) m ∧ m ≠ 0 := by
+  intro a m
+  have h_fact : Fact p.Prime := ⟨hp⟩
+  have h_dvd : p^a ∣ n := by
+    exact (padicValNat_dvd_iff_le hn).mpr (le_refl a)
+  have h_eq : n = p^a * m := (Nat.mul_div_cancel' h_dvd).symm
+  have hm_nz : m ≠ 0 := by
+    intro h
+    rw [h] at h_eq
+    rw [mul_zero] at h_eq
+    exact hn h_eq
+  have h_not_dvd : ¬ p ∣ m := by
+    intro h_div
+    rcases h_div with ⟨k, hk_eq⟩
+    have h_eq2 : n = p^(a+1) * k := by
+      rw [h_eq, hk_eq]
+      ring
+    have h_dvd2 : p^(a+1) ∣ n := ⟨k, h_eq2⟩
+    have h_le2 : a + 1 ≤ padicValNat p n := (padicValNat_dvd_iff_le hn).mp h_dvd2
+    omega
+  have h_cop : Nat.Coprime (p^a) m := by
+    by_cases ha : a = 0
+    · rw [ha]
+      simp
+    · rw [Nat.coprime_pow_left_iff (by omega : 0 < a)]
+      exact hp.coprime_iff_not_dvd.mpr h_not_dvd
+  exact ⟨h_eq, h_cop, hm_nz⟩
+
+lemma sum_divisors_pos (x : ℕ) (hx : x ≥ 1) :
+  (x.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+  have h1_mem : 1 ∈ x.divisors := by
+    rw [Nat.mem_divisors]
+    omega
+  rw [← Finset.add_sum_erase x.divisors (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) h1_mem]
+  have h1_term : ((1 : ℚ) / (↑((sigma 1) 1) : ℚ)) = 1 := by
+    have : (sigma 1) 1 = 1 := rfl
+    rw [this]
+    norm_num
+  rw [h1_term]
+  have h_nonneg : (∑ i ∈ x.divisors.erase 1, ((1 : ℚ) / (↑((sigma 1) i) : ℚ))) ≥ 0 := by
+    apply Finset.sum_nonneg
+    intro i hi
+    have hi_nz : i ≠ 0 := by
+      have h_mem : i ∈ x.divisors := Finset.mem_of_mem_erase hi
+      have : 0 < i := Nat.pos_of_mem_divisors h_mem
+      omega
+    have h_sig := sigma_one_pos i hi_nz
+    have h_sig_q : (↑((sigma 1) i) : ℚ) > 0 := by exact_mod_cast h_sig
+    exact le_of_lt (one_div_pos.mpr h_sig_q)
+  linarith
+
+lemma padicValRat_two_sum_divisors_odd (n : ℕ) (hn : n % 2 = 1) (hn1 : 1 < n) :
+  padicValRat 2 ((n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) < 0 := by
+  induction' n using Nat.strong_induction_on with n ih
+  let p := minFac n
+  have hp_prime : p.Prime := Nat.minFac_prime (by omega : n ≠ 1)
+  have hp_dvd : p ∣ n := Nat.minFac_dvd n
+  have hp_odd : p % 2 = 1 := by
+    by_contra h_even
+    have : p % 2 = 0 := by omega
+    have : p = 2 := by
+      rcases hp_prime.eq_two_or_odd with h2 | h_odd
+      · exact h2
+      · omega
+    rw [this] at hp_dvd
+    have : 2 ∣ n := hp_dvd
+    have : n % 2 = 0 := Nat.mod_eq_zero_of_dvd this
+    omega
+  let a := padicValNat p n
+  have ha_ge : 1 ≤ a := by
+    have h_div_pow : p^1 ∣ n := by
+      rw [pow_one]
+      exact hp_dvd
+    have h_prime_fact : Fact p.Prime := ⟨hp_prime⟩
+    exact (padicValNat_dvd_iff_le (by omega : n ≠ 0)).mp h_div_pow
+  have hpa_nz : p^a ≠ 0 := by
+    have : p^a > 0 := Nat.pow_pos hp_prime.pos
+    omega
+  let m := n / p^a
+  rcases coprime_factorization p hp_prime n (by omega) with ⟨h_eq, h_cop, hm_nz⟩
+  change n = p^a * m at h_eq
+  change Nat.Coprime (p^a) m at h_cop
+  change m ≠ 0 at hm_nz
+  have hm_odd : m % 2 = 1 := by
+    by_contra h_even
+    have : m % 2 = 0 := by omega
+    have : 2 ∣ m := Nat.dvd_of_mod_eq_zero this
+    have : 2 ∣ n := by
+      rw [h_eq]
+      exact dvd_mul_of_dvd_right this (p^a)
+    have : n % 2 = 0 := Nat.mod_eq_zero_of_dvd this
+    omega
+  have h_sig_eq := g_mul_of_coprime hpa_nz hm_nz h_cop
+  rw [h_eq, h_sig_eq]
+  have h_sa_pos : ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+    apply sum_divisors_pos
+    have : p^a ≥ p^1 := Nat.pow_le_pow_right (by omega) ha_ge
+    have : p ≥ 3 := by
+      have : p ≥ 2 := hp_prime.two_le
+      omega
+    omega
+  have h_sm_pos : (m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+    apply sum_divisors_pos
+    have : m ≥ 1 := Nat.pos_of_ne_zero hm_nz
+    omega
+  have h_sa_nz : ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≠ 0 := _root_.ne_of_gt h_sa_pos
+  have h_sm_nz : (m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≠ 0 := _root_.ne_of_gt h_sm_pos
+  rw [padicValRat.mul h_sa_nz h_sm_nz]
+  have hpa_val := padicValRat_two_sum_divisors_pow_odd_prime p hp_prime hp_odd a ha_ge
+  by_cases hm_one : m = 1
+  · rw [hm_one]
+    have h_s1 : (1 : ℕ).divisors.sum (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = 1 := by
+      simp
+    rw [h_s1]
+    rw [padicValRat.one]
+    rw [add_zero]
+    exact hpa_val
+  · have hm1 : 1 < m := by
+      have : m ≥ 1 := Nat.pos_of_ne_zero hm_nz
+      omega
+    have hm_lt : m < n := by
+      rw [h_eq]
+      have hpa_ge_3 : p^a ≥ 3 := by
+        have h_pow : p^a ≥ p^1 := Nat.pow_le_pow_right (by omega) ha_ge
+        rw [pow_one] at h_pow
+        have hp_ge_3 : p ≥ 3 := by
+          have : p ≥ 2 := hp_prime.two_le
+          omega
+        omega
+      have hm_pos : m > 0 := by omega
+      calc
+        m < 3 * m := by omega
+        _ ≤ p^a * m := Nat.mul_le_mul_right m hpa_ge_3
+    have ih_m := ih m hm_lt hm_odd hm1
+    omega
+
+
+lemma padicValRat_two_sum_divisors_odd_le (m : ℕ) (p : ℕ) (hp_prime : p.Prime) (hp_odd : p % 2 = 1) (hp_dvd : p ∣ m) (hm_odd : m % 2 = 1) (hm_gt1 : 1 < m) :
+  padicValRat 2 (m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≤ - (padicValNat 2 (p + 1) : ℤ) := by
+  have hm_nz : m ≠ 0 := by omega
+  let a := padicValNat p m
+  have ha_ge : 1 ≤ a := by
+    have h_div_pow : p^1 ∣ m := by
+      rw [pow_one]
+      exact hp_dvd
+    have h_prime_fact : Fact p.Prime := ⟨hp_prime⟩
+    exact (padicValNat_dvd_iff_le hm_nz).mp h_div_pow
+  have hpa_nz : p^a ≠ 0 := by
+    have : p^a > 0 := Nat.pow_pos hp_prime.pos
+    omega
+  let m' := m / p^a
+  rcases coprime_factorization p hp_prime m hm_nz with ⟨h_eq, h_cop, hm'_nz⟩
+  change m = p^a * m' at h_eq
+  change Nat.Coprime (p^a) m' at h_cop
+  change m' ≠ 0 at hm'_nz
+  have hm'_odd : m' % 2 = 1 := by
+    by_contra h_even
+    have : m' % 2 = 0 := by omega
+    have : 2 ∣ m' := Nat.dvd_of_mod_eq_zero this
+    have : 2 ∣ m := by
+      rw [h_eq]
+      exact dvd_mul_of_dvd_right this (p^a)
+    have : m % 2 = 0 := Nat.mod_eq_zero_of_dvd this
+    omega
+  have h_sig_eq := g_mul_of_coprime hpa_nz hm'_nz h_cop
+  have h_sa_pos : ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+    apply sum_divisors_pos
+    have : p^a ≥ p^1 := Nat.pow_le_pow_right (by omega) ha_ge
+    have : p ≥ 3 := by
+      have : p ≥ 2 := hp_prime.two_le
+      omega
+    omega
+  have h_sm'_pos : (m'.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+    apply sum_divisors_pos
+    have : m' ≥ 1 := Nat.pos_of_ne_zero hm'_nz
+    omega
+  have h_sa_nz : ((p^a).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≠ 0 := _root_.ne_of_gt h_sa_pos
+  have h_sm'_nz : (m'.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≠ 0 := _root_.ne_of_gt h_sm'_pos
+  have hpa_val := padicValRat_two_sum_divisors_pow_odd_prime_le p hp_prime hp_odd a ha_ge
+  by_cases hm'_one : m' = 1
+  · rw [h_eq, h_sig_eq, padicValRat.mul h_sa_nz h_sm'_nz, hm'_one]
+    have h_s1 : (1 : ℕ).divisors.sum (fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = 1 := by simp
+    rw [h_s1, padicValRat.one, add_zero]
+    exact hpa_val
+  · have hm'1 : 1 < m' := by
+      have : m' ≥ 1 := Nat.pos_of_ne_zero hm'_nz
+      omega
+    have h_val_neg := padicValRat_two_sum_divisors_odd m' hm'_odd hm'1
+    rw [h_eq, h_sig_eq, padicValRat.mul h_sa_nz h_sm'_nz]
+    omega
+
+lemma pow_two_ge_one_nat (j : ℕ) : 2^j ≥ 1 := Nat.one_le_pow j 2 (by omega)
+
+lemma sigma_one_pow_two_odd (j : ℕ) : (sigma 1 (2^j)) % 2 = 1 := by
+  rw [sigma_one_pow_two]
+  have h_eq : 2^(j+1) = 2 * 2^j := by ring
+  rw [h_eq]
+  have h_ge : 2^j ≥ 1 := pow_two_ge_one_nat j
+  omega
+
+lemma padicValNat_sigma_one_pow_two (j : ℕ) : padicValNat 2 (sigma 1 (2^j)) = 0 := by
+  apply padicValNat.eq_zero_of_not_dvd
+  intro h
+  have h_mod : (sigma 1 (2^j)) % 2 = 0 := Nat.mod_eq_zero_of_dvd h
+  have h_odd : (sigma 1 (2^j)) % 2 = 1 := sigma_one_pow_two_odd j
+  omega
+
+lemma padicValRat_sum_nonneg {F : ℕ → ℚ} {S : Finset ℕ}
+  (hF : ∀ i ∈ S, 0 ≤ padicValRat 2 (F i)) (h_pos : ∀ i ∈ S, 0 < F i) :
+  0 ≤ padicValRat 2 (∑ i ∈ S, F i) := by
+  induction' S using Finset.induction_on with x S' hx ih
+  · simp
+  · rw [Finset.sum_insert hx]
+    have h_nonneg : (∑ i ∈ S', F i) ≥ 0 := by
+      apply Finset.sum_nonneg
+      intro i hi
+      have : F i > 0 := h_pos i (Finset.mem_insert_of_mem hi)
+      linarith
+    have h_add_nz : F x + (∑ i ∈ S', F i) ≠ 0 := by
+      have : F x > 0 := h_pos x (Finset.mem_insert_self x S')
+      linarith
+    have h_min : min (padicValRat 2 (F x)) (padicValRat 2 (∑ i ∈ S', F i)) ≤ padicValRat 2 (F x + ∑ i ∈ S', F i) := by
+      exact padicValRat.min_le_padicValRat_add h_add_nz
+    have ih' : 0 ≤ padicValRat 2 (∑ i ∈ S', F i) := by
+      apply ih
+      · intro i hi
+        exact hF i (Finset.mem_insert_of_mem hi)
+      · intro i hi
+        exact h_pos i (Finset.mem_insert_of_mem hi)
+    have hx_ge : 0 ≤ padicValRat 2 (F x) := hF x (Finset.mem_insert_self x S')
+    have : 0 ≤ min (padicValRat 2 (F x)) (padicValRat 2 (∑ i ∈ S', F i)) := by
+      exact le_min hx_ge ih'
+    omega
+
+lemma padicValRat_term_pow_two_nonneg (b : ℕ) (d : ℕ) (hd : d ∈ (2^b).divisors) :
+  0 ≤ padicValRat 2 ((1 : ℚ) / (↑((sigma 1) d) : ℚ)) := by
+  have h_prime : Nat.Prime 2 := Nat.prime_two
+  have : Fact (Nat.Prime 2) := ⟨h_prime⟩
+  rw [Nat.divisors_prime_pow h_prime b] at hd
+  simp only [Finset.mem_map, Function.Embedding.coeFn_mk, Finset.mem_range] at hd
+  rcases hd with ⟨j, hj, rfl⟩
+  have h_sig : (sigma 1 (2^j) : ℚ) ≠ 0 := by
+    have : (sigma 1 (2^j)) > 0 := by
+      apply sigma_one_pos
+      have : 2^j ≥ 1 := pow_two_ge_one_nat j
+      omega
+    exact_mod_cast _root_.ne_of_gt this
+  rw [padicValRat.div (by norm_num : (1 : ℚ) ≠ 0) h_sig]
+  rw [padicValRat.one, zero_sub]
+  rw [← padicValRat_of_nat]
+  rw [padicValNat_sigma_one_pow_two]
+  omega
+
+lemma padicValRat_two_sum_divisors_pow_two (b : ℕ) :
+  0 ≤ padicValRat 2 ((2^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) := by
+  apply padicValRat_sum_nonneg
+  · intro d hd
+    exact padicValRat_term_pow_two_nonneg b d hd
+  · intro d hd
+    have h_prime : Nat.Prime 2 := Nat.prime_two
+    rw [Nat.divisors_prime_pow h_prime b] at hd
+    simp only [Finset.mem_map, Function.Embedding.coeFn_mk, Finset.mem_range] at hd
+    rcases hd with ⟨j, hj, rfl⟩
+    have : (sigma 1 (2^j)) > 0 := by
+      apply sigma_one_pos
+      have : 2^j ≥ 1 := pow_two_ge_one_nat j
+      omega
+    have h_sig : (sigma 1 (2^j) : ℚ) > 0 := by exact_mod_cast this
+    exact one_div_pos.mpr h_sig
+
+
+lemma padicValNat_odd_helper (k : ℕ) : (2^(2*k+1) + 2^(2*k+2) - 1) % 2 = 1 := by
+  have h1 : 2^(2*k+1) = 2 * 2^(2*k) := by ring
+  have h2 : 2^(2*k+2) = 2 * 2^(2*k+1) := by ring
+  have h_sum : 2^(2*k+1) + 2^(2*k+2) = 2 * (2^(2*k) + 2^(2*k+1)) := by rw [h1, h2]; ring
+  let M := 2^(2*k) + 2^(2*k+1)
+  have hM_ge : 2^(2*k) + 2^(2*k+1) ≥ 1 := by
+    have : 2^(2*k) ≥ 1 := Nat.one_le_pow (2*k) 2 (by omega)
+    omega
+  have : 2^(2*k+1) + 2^(2*k+2) - 1 = 2 * M - 1 := by
+    rw [h_sum]
+  rw [this]
+  omega
+
+lemma padicValRat_two_pow_even_step (k : ℕ) :
+  1 ≤ padicValRat 2 ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) := by
+  have hx_pos : (sigma 1 (2^(2*k+1)) : ℚ) > 0 := by
+    have : sigma 1 (2^(2*k+1)) > 0 := by
+      apply sigma_one_pos
+      positivity
+    exact_mod_cast this
+  have hy_pos : (sigma 1 (2^(2*k+2)) : ℚ) > 0 := by
+    have : sigma 1 (2^(2*k+2)) > 0 := by
+      apply sigma_one_pos
+      positivity
+    exact_mod_cast this
+  have hx_nz : (sigma 1 (2^(2*k+1)) : ℚ) ≠ 0 := _root_.ne_of_gt hx_pos
+  have hy_nz : (sigma 1 (2^(2*k+2)) : ℚ) ≠ 0 := _root_.ne_of_gt hy_pos
+  have hx_eq : (sigma 1 (2^(2*k+1)) : ℚ) = (2 : ℚ)^(2*k+2) - 1 := by
+    rw [sigma_one_pow_two]
+    have h_ge : 1 ≤ 2^(2*k+2) := by
+      have : 0 < 2^(2*k+2) := Nat.pow_pos (by norm_num)
+      omega
+    rw [Nat.cast_sub h_ge]
+    push_cast
+    ring
+  have hy_eq : (sigma 1 (2^(2*k+2)) : ℚ) = (2 : ℚ)^(2*k+3) - 1 := by
+    rw [sigma_one_pow_two]
+    have h_ge : 1 ≤ 2^(2*k+3) := by
+      have : 0 < 2^(2*k+3) := Nat.pow_pos (by norm_num)
+      omega
+    rw [Nat.cast_sub h_ge]
+    push_cast
+    ring
+  have h_sub_cast : ((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ) = (2 : ℚ)^(2*k+1) + (2 : ℚ)^(2*k+2) - 1 := by
+    have h_ge : 1 ≤ 2^(2*k+1) + 2^(2*k+2) := by
+      have h1 : 1 ≤ 2^(2*k+1) := Nat.one_le_pow (2*k+1) 2 (by decide)
+      have h2 : 1 ≤ 2^(2*k+2) := Nat.one_le_pow (2*k+2) 2 (by decide)
+      omega
+    rw [Nat.cast_sub h_ge]
+    push_cast
+    rfl
+  let z := (2 : ℚ)^(2*k)
+  have hz1 : (2 : ℚ)^(2*k+1) = 2 * z := by ring
+  have hz2 : (2 : ℚ)^(2*k+2) = 4 * z := by ring
+  have hz3 : (2 : ℚ)^(2*k+3) = 8 * z := by ring
+  have h_alg : (1 : ℚ) / (sigma 1 (2^(2*k+1)) : ℚ) + (1 : ℚ) / (sigma 1 (2^(2*k+2)) : ℚ) =
+    2 * ( ( (2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ) / ( (sigma 1 (2^(2*k+1)) : ℚ) * (sigma 1 (2^(2*k+2)) : ℚ) ) ) := by
+    rw [hx_eq, hy_eq, h_sub_cast, hz1, hz2, hz3]
+    have h1 : 4 * z - 1 ≠ 0 := by
+      have : z ≥ 1 := pow_two_ge_one (2*k)
+      linarith
+    have h2 : 8 * z - 1 ≠ 0 := by
+      have : z ≥ 1 := pow_two_ge_one (2*k)
+      linarith
+    have h1' : z * 4 - 1 ≠ 0 := by
+      have : z ≥ 1 := pow_two_ge_one (2*k)
+      linarith
+    have h2' : z * 8 - 1 ≠ 0 := by
+      have : z ≥ 1 := pow_two_ge_one (2*k)
+      linarith
+    field_simp [h1, h2, h1', h2']
+    ring
+  rw [h_alg]
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have h_two_nz : (2 : ℚ) ≠ 0 := by norm_num
+  have h_num_nz : ((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ) ≠ 0 := by
+    have hA : 2^(2*k+1) ≥ 1 := Nat.one_le_pow (2*k+1) 2 (by omega)
+    have hB : 2^(2*k+2) ≥ 1 := Nat.one_le_pow (2*k+2) 2 (by omega)
+    have : (2^(2*k+1) + 2^(2*k+2) - 1) ≠ 0 := by omega
+    exact_mod_cast this
+  have h_den_nz : ((sigma 1 (2^(2*k+1)) : ℚ) * (sigma 1 (2^(2*k+2)) : ℚ)) ≠ 0 := mul_ne_zero hx_nz hy_nz
+  have h_frac_nz : ((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ) / ((sigma 1 (2^(2*k+1)) : ℚ) * (sigma 1 (2^(2*k+2)) : ℚ)) ≠ 0 := by
+    apply div_ne_zero h_num_nz h_den_nz
+  rw [padicValRat.mul h_two_nz h_frac_nz]
+  have h_two_val : padicValRat 2 (2 : ℚ) = 1 := by
+    have : (2 : ℚ) = ↑(2 : ℕ) := by rfl
+    rw [this, ← padicValRat_of_nat]
+    have : padicValNat 2 2 = 1 := padicValNat_self
+    rw [this]
+    rfl
+  rw [h_two_val]
+  have h_frac_nonneg : 0 ≤ padicValRat 2 (((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ) / ((sigma 1 (2^(2*k+1)) : ℚ) * (sigma 1 (2^(2*k+2)) : ℚ))) := by
+    rw [padicValRat.div h_num_nz h_den_nz]
+    have h_num_val : padicValRat 2 (((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ)) = 0 := by
+      have : (((2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) : ℚ)) = ↑(2^(2*k+1) + 2^(2*k+2) - 1 : ℕ) := rfl
+      rw [this, ← padicValRat_of_nat]
+      have h_val : padicValNat 2 (2^(2*k+1) + 2^(2*k+2) - 1) = 0 := by
+        apply padicValNat.eq_zero_of_not_dvd
+        intro h_dvd
+        have h_mod : (2^(2*k+1) + 2^(2*k+2) - 1) % 2 = 0 := Nat.mod_eq_zero_of_dvd h_dvd
+        have h_odd := padicValNat_odd_helper k
+        omega
+      rw [h_val]
+      rfl
+    rw [h_num_val]
+    rw [padicValRat.mul hx_nz hy_nz]
+    have hx_val : padicValRat 2 (sigma 1 (2^(2*k+1)) : ℚ) = 0 := by
+      have : (sigma 1 (2^(2*k+1)) : ℚ) = ↑(sigma 1 (2^(2*k+1))) := rfl
+      rw [this, ← padicValRat_of_nat, padicValNat_sigma_one_pow_two]
+      rfl
+    have hy_val : padicValRat 2 (sigma 1 (2^(2*k+2)) : ℚ) = 0 := by
+      have : (sigma 1 (2^(2*k+2)) : ℚ) = ↑(sigma 1 (2^(2*k+2))) := rfl
+      rw [this, ← padicValRat_of_nat, padicValNat_sigma_one_pow_two]
+      rfl
+    rw [hx_val, hy_val]
+    omega
+  omega
+
+
+lemma padicValRat_add_of_val_zero (A B : ℚ) (hAnz : A ≠ 0) (hBnz : B ≠ 0) (hA : padicValRat 2 A = 0) (hB : padicValRat 2 B = 0) (hAB : A + B ≠ 0) :
+  1 ≤ padicValRat 2 (A + B) := by
+  have h_denA : padicValNat 2 A.den = 0 := den_odd_of_val_nonneg A (by linarith)
+  have h_denB : padicValNat 2 B.den = 0 := den_odd_of_val_nonneg B (by linarith)
+  have h_numA : padicValInt 2 A.num = 0 := by
+    have h_val := hA
+    rw [padicValRat_def, h_denA] at h_val
+    omega
+  have h_numB : padicValInt 2 B.num = 0 := by
+    have h_val := hB
+    rw [padicValRat_def, h_denB] at h_val
+    omega
+  have h_nz_A_num : A.num ≠ 0 := Rat.num_ne_zero.mpr hAnz
+  have h_nz_B_num : B.num ≠ 0 := Rat.num_ne_zero.mpr hBnz
+  have hA_odd : ¬ 2 ∣ A.num := by
+    intro hd
+    have : 1 ≤ padicValInt 2 A.num := by
+      have hd'' : (2 : ℤ) ^ 1 ∣ A.num := by exact_mod_cast hd
+      have h_or := (@padicValInt_dvd_iff 2 ⟨Nat.prime_two⟩ 1 A.num).mp hd''
+      rcases h_or with h_zero | h_le
+      · contradiction
+      · exact h_le
+    omega
+  have hB_odd : ¬ 2 ∣ B.num := by
+    intro hd
+    have : 1 ≤ padicValInt 2 B.num := by
+      have hd'' : (2 : ℤ) ^ 1 ∣ B.num := by exact_mod_cast hd
+      have h_or := (@padicValInt_dvd_iff 2 ⟨Nat.prime_two⟩ 1 B.num).mp hd''
+      rcases h_or with h_zero | h_le
+      · contradiction
+      · exact h_le
+    omega
+  have hAd_odd : ¬ 2 ∣ (A.den : ℤ) := by
+    intro hd
+    have hd_nat : 2 ∣ A.den := by exact_mod_cast hd
+    have : 1 ≤ padicValNat 2 A.den := one_le_padicValNat_of_dvd (by positivity) hd_nat
+    omega
+  have hBd_odd : ¬ 2 ∣ (B.den : ℤ) := by
+    intro hd
+    have hd_nat : 2 ∣ B.den := by exact_mod_cast hd
+    have : 1 ≤ padicValNat 2 B.den := one_le_padicValNat_of_dvd (by positivity) hd_nat
+    omega
+  obtain ⟨qA, hqA⟩ : ∃ q, A.num = 2 * q + 1 := by
+    rcases Int.emod_two_eq_zero_or_one A.num with h | h
+    · have : 2 ∣ A.num := Int.dvd_of_emod_eq_zero h
+      contradiction
+    · use A.num / 2; omega
+  obtain ⟨qB, hqB⟩ : ∃ q, B.num = 2 * q + 1 := by
+    rcases Int.emod_two_eq_zero_or_one B.num with h | h
+    · have : 2 ∣ B.num := Int.dvd_of_emod_eq_zero h
+      contradiction
+    · use B.num / 2; omega
+  obtain ⟨qAd, hqAd⟩ : ∃ q, (A.den : ℤ) = 2 * q + 1 := by
+    rcases Int.emod_two_eq_zero_or_one (A.den : ℤ) with h | h
+    · have : 2 ∣ (A.den : ℤ) := Int.dvd_of_emod_eq_zero h
+      contradiction
+    · use (A.den : ℤ) / 2; omega
+  obtain ⟨qBd, hqBd⟩ : ∃ q, (B.den : ℤ) = 2 * q + 1 := by
+    rcases Int.emod_two_eq_zero_or_one (B.den : ℤ) with h | h
+    · have : 2 ∣ (B.den : ℤ) := Int.dvd_of_emod_eq_zero h
+      contradiction
+    · use (B.den : ℤ) / 2; omega
+  have h_dvd : (2 : ℤ) ∣ (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) := by
+    use qA * (2 * qBd + 1) + qB * (2 * qAd + 1) + qAd + qBd + 1
+    rw [hqA, hqB, hqAd, hqBd]
+    ring
+  rw [padicValRat_def]
+  have h_eq_div : ((A + B).num : ℚ) / ((A + B).den : ℚ) = (A.num : ℚ) / (A.den : ℚ) + (B.num : ℚ) / (B.den : ℚ) := by
+    rw [Rat.num_div_den, Rat.num_div_den, Rat.num_div_den]
+  have h_cast : (((A + B).num * (A.den : ℤ) * (B.den : ℤ) : ℤ) : ℚ) = (((A + B).den * (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) : ℤ) : ℚ) := by
+    push_cast
+    have h_denA_nz : (A.den : ℚ) ≠ 0 := by positivity
+    have h_denB_nz : (B.den : ℚ) ≠ 0 := by positivity
+    have h_denAB_nz : ((A + B).den : ℚ) ≠ 0 := by positivity
+    have h_mul_eq : (((A + B).num : ℚ) / ((A + B).den : ℚ)) * ((A + B).den : ℚ) * (A.den : ℚ) * (B.den : ℚ) =
+      ((A.num : ℚ) / (A.den : ℚ) + (B.num : ℚ) / (B.den : ℚ)) * ((A + B).den : ℚ) * (A.den : ℚ) * (B.den : ℚ) := by
+      rw [h_eq_div]
+    rw [div_mul_cancel₀ _ h_denAB_nz] at h_mul_eq
+    have h_final : ((A.num : ℚ) / (A.den : ℚ) + (B.num : ℚ) / (B.den : ℚ)) * ((A + B).den : ℚ) * (A.den : ℚ) * (B.den : ℚ) =
+      ((A + B).den : ℚ) * ((A.num : ℚ) * (B.den : ℚ) + (B.num : ℚ) * (A.den : ℚ)) := by
+      field_simp; try ring
+    rw [h_final] at h_mul_eq
+    exact h_mul_eq
+  have h_eq : (A + B).num * (A.den : ℤ) * (B.den : ℤ) = (A + B).den * (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) := by
+    exact_mod_cast h_cast
+  have h_val_eq : padicValInt 2 ((A + B).num * (A.den : ℤ) * (B.den : ℤ)) = padicValInt 2 ((A + B).den * (A.num * (B.den : ℤ) + B.num * (A.den : ℤ))) :=
+    congr_arg (padicValInt 2) h_eq
+  have h_nz_AB_num : (A + B).num ≠ 0 := Rat.num_ne_zero.mpr hAB
+  have h_nz_Ad : (A.den : ℤ) ≠ 0 := by positivity
+  have h_nz_Bd : (B.den : ℤ) ≠ 0 := by positivity
+  have h_nz_denAB : ((A + B).den : ℤ) ≠ 0 := by positivity
+  have h_nz_numAB_denA_denB : (A + B).num * (A.den : ℤ) * (B.den : ℤ) ≠ 0 := by
+    apply mul_ne_zero (mul_ne_zero h_nz_AB_num h_nz_Ad) h_nz_Bd
+  have h_nz_sum : (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) ≠ 0 := by
+    intro hc
+    rw [hc, mul_zero] at h_eq
+    exact h_nz_numAB_denA_denB h_eq
+  rw [padicValInt.mul (mul_ne_zero h_nz_AB_num h_nz_Ad) h_nz_Bd] at h_val_eq
+  rw [padicValInt.mul h_nz_AB_num h_nz_Ad] at h_val_eq
+  rw [padicValInt.mul h_nz_denAB h_nz_sum] at h_val_eq
+  have h_val_Ad : padicValInt 2 (A.den : ℤ) = 0 := h_denA
+  have h_val_Bd : padicValInt 2 (B.den : ℤ) = 0 := h_denB
+  have h_val_denAB : padicValInt 2 ((A + B).den : ℤ) = padicValNat 2 (A + B).den := rfl
+  rw [h_val_Ad, h_val_Bd, h_val_denAB] at h_val_eq
+  simp only [add_zero] at h_val_eq
+  have h_val_sum : padicValInt 2 (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) ≥ 1 := by
+    have h_dvd'' : (2 : ℤ) ^ 1 ∣ (A.num * (B.den : ℤ) + B.num * (A.den : ℤ)) := by exact_mod_cast h_dvd
+    have h_or := (@padicValInt_dvd_iff 2 ⟨Nat.prime_two⟩ 1 (A.num * (B.den : ℤ) + B.num * (A.den : ℤ))).mp h_dvd''
+    rcases h_or with h_zero | h_le
+    · contradiction
+    · exact h_le
+  omega
+
+lemma sum_range_odd_split (k : ℕ) (F : ℕ → ℚ) :
+  (∑ j ∈ range (2 * k + 2), F j) = F 0 + (∑ i ∈ range k, (F (2 * i + 1) + F (2 * i + 2))) + F (2 * k + 1) := by
+  induction' k with k ih
+  · rw [sum_range_succ, sum_range_succ]
+    simp
+  · have h_eq1 : 2 * (k + 1) + 2 = 2 * k + 4 := by ring
+    have h_eq2 : 2 * (k + 1) + 1 = 2 * k + 3 := by ring
+    rw [h_eq1, h_eq2]
+    rw [sum_range_succ F (2 * k + 3)]
+    rw [sum_range_succ F (2 * k + 2)]
+    rw [sum_range_succ (fun i => F (2 * i + 1) + F (2 * i + 2)) k]
+    rw [ih]
+    ring
+
+lemma sum_divisors_pow_two_odd_split (k : ℕ) :
+  ((2^(2*k+1)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) =
+  ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) +
+  (1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) := by
+  rw [sum_divisors_pow_two (2*k+1)]
+  rw [sum_divisors_pow_two (2*k)]
+  have h_eq : 2 * k + 1 + 1 = 2 * k + 2 := by ring
+  rw [h_eq]
+  rw [sum_range_succ]
+  rw [sigma_one_pow_two (2*k+1)]
+  have h_ge : 1 ≤ 2^(2*k+1+1) := Nat.one_le_pow (2*k+1+1) 2 (by decide)
+  rw [Nat.cast_sub h_ge]
+  push_cast
+  rfl
+
+lemma padicValRat_two_sum_divisors_pow_two_even (k : ℕ) :
+  padicValRat 2 (((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) = 0 := by
+  induction' k with k ih
+  · rw [Nat.mul_zero, pow_zero, Nat.divisors_one, Finset.sum_singleton]
+    norm_num
+  · have h_eq : 2 * (k + 1) = 2 * k + 2 := by ring
+    rw [h_eq]
+    have h_split : ((2^(2*k+2)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) =
+      ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) +
+      ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) := by
+      rw [sum_divisors_pow_prime 2 Nat.prime_two (2*k+2)]
+      rw [sum_divisors_pow_prime 2 Nat.prime_two (2*k)]
+      have h_range : range (2*k+3) = insert (2*k+2) (insert (2*k+1) (range (2*k+1))) := by
+        ext x
+        simp only [mem_range, mem_insert]
+        omega
+      rw [h_range]
+      have h_not_in_1 : 2*k+1 ∉ range (2*k+1) := by simp
+      have h_not_in_2 : 2*k+2 ∉ insert (2*k+1) (range (2*k+1)) := by simp
+      rw [sum_insert h_not_in_2, sum_insert h_not_in_1]
+      ring
+    rw [h_split]
+    have hA_nz : ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) ≠ 0 := by
+      have : ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+        apply sum_divisors_pos
+        exact Nat.one_le_pow (2*k) 2 (by omega)
+      exact _root_.ne_of_gt this
+    have hB_nz : ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) ≠ 0 := by
+      have h1 : sigma 1 (2^(2*k+1)) > 0 := by
+        apply sigma_one_pos
+        positivity
+      have h1_cast : (sigma 1 (2^(2*k+1)) : ℚ) > 0 := by exact_mod_cast h1
+      have h2 : sigma 1 (2^(2*k+2)) > 0 := by
+        apply sigma_one_pos
+        positivity
+      have h2_cast : (sigma 1 (2^(2*k+2)) : ℚ) > 0 := by exact_mod_cast h2
+      have : ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) > 0 := by
+        have h1' : (1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) > 0 := one_div_pos.mpr h1_cast
+        have h2' : (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ) > 0 := one_div_pos.mpr h2_cast
+        linarith
+      exact _root_.ne_of_gt this
+    have h_add_nz : ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) +
+      ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) ≠ 0 := by
+      have h1 : ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) > 0 := by
+        apply sum_divisors_pos
+        exact Nat.one_le_pow (2*k) 2 (by omega)
+      have h2_nat : sigma 1 (2^(2*k+1)) > 0 := by
+        apply sigma_one_pos
+        positivity
+      have h2_cast : (sigma 1 (2^(2*k+1)) : ℚ) > 0 := by exact_mod_cast h2_nat
+      have h3_nat : sigma 1 (2^(2*k+2)) > 0 := by
+        apply sigma_one_pos
+        positivity
+      have h3_cast : (sigma 1 (2^(2*k+2)) : ℚ) > 0 := by exact_mod_cast h3_nat
+      have h2 : ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) > 0 := by
+        have h2' : (1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) > 0 := one_div_pos.mpr h2_cast
+        have h3' : (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ) > 0 := one_div_pos.mpr h3_cast
+        linarith
+      have : ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) +
+        ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) > 0 := by linarith
+      exact _root_.ne_of_gt this
+    have h_lt : padicValRat 2 ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) <
+      padicValRat 2 ((1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ) + (1 : ℚ) / (↑(sigma 1 (2^(2*k+2))) : ℚ)) := by
+      rw [ih]
+      have := padicValRat_two_pow_even_step k
+      omega
+    rw [padicValRat.add_eq_of_lt h_add_nz hA_nz hB_nz h_lt]
+    exact ih
+
+
+lemma padicValRat_two_sum_divisors_pow_two_odd (k : ℕ) :
+  1 ≤ padicValRat 2 (((2^(2*k+1)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) := by
+  rw [sum_divisors_pow_two_odd_split k]
+  let A := ((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))
+  let B := (1 : ℚ) / (↑(sigma 1 (2^(2*k+1))) : ℚ)
+  have hA_nz : A ≠ 0 := by
+    have : A > 0 := by
+      apply sum_divisors_pos
+      exact Nat.one_le_pow (2*k) 2 (by omega)
+    exact _root_.ne_of_gt this
+  have hB_nz : B ≠ 0 := by
+    have h : sigma 1 (2^(2*k+1)) > 0 := sigma_one_pos (2^(2*k+1)) (by positivity)
+    have h_cast : (sigma 1 (2^(2*k+1)) : ℚ) > 0 := by exact_mod_cast h
+    have : B > 0 := one_div_pos.mpr h_cast
+    exact _root_.ne_of_gt this
+  have h_add_nz : A + B ≠ 0 := by
+    have h1 : A > 0 := by
+      apply sum_divisors_pos
+      exact Nat.one_le_pow (2*k) 2 (by omega)
+    have h2_nat : sigma 1 (2^(2*k+1)) > 0 := sigma_one_pos (2^(2*k+1)) (by positivity)
+    have h2_cast : (sigma 1 (2^(2*k+1)) : ℚ) > 0 := by exact_mod_cast h2_nat
+    have h2 : B > 0 := one_div_pos.mpr h2_cast
+    have : A + B > 0 := by linarith
+    exact _root_.ne_of_gt this
+  have hA_val : padicValRat 2 A = 0 := padicValRat_two_sum_divisors_pow_two_even k
+  have hB_val : padicValRat 2 B = 0 := by
+    dsimp [B]
+    rw [padicValRat.div (by norm_num) (by
+      have h : sigma 1 (2^(2*k+1)) > 0 := sigma_one_pos (2^(2*k+1)) (by positivity)
+      exact_mod_cast _root_.ne_of_gt h
+    )]
+    have h1 : padicValRat 2 (1 : ℚ) = 0 := padicValRat.one
+    have h2 : padicValRat 2 (sigma 1 (2^(2*k+1)) : ℚ) = 0 := by
+      have : (sigma 1 (2^(2*k+1)) : ℚ) = ↑(sigma 1 (2^(2*k+1))) := rfl
+      rw [this, ← padicValRat_of_nat, padicValNat_sigma_one_pow_two]
+      rfl
+    rw [h1, h2, sub_zero]
+  exact padicValRat_add_of_val_zero A B hA_nz hB_nz hA_val hB_val h_add_nz
+
+lemma padicValRat_nonneg_of_den_eq_one (p : ℕ) (_hp : p.Prime) (q : ℚ) (h : q.den = 1) :
+  0 ≤ padicValRat p q := by
+  rw [padicValRat_def, h]
+  have h1 : padicValNat p 1 = 0 := padicValNat.one
+  rw [h1]
+  omega
+
+
+lemma rat_num_den_mul (q : ℚ) : (q.num : ℚ) = q * (q.den : ℚ) := by
+  have h := Rat.num_div_den q
+  have h_den : ((q.den : ℕ) : ℚ) ≠ 0 := by
+    have : q.den > 0 := q.den_pos
+    exact_mod_cast _root_.ne_of_gt this
+  have h_mul := congr_arg (fun x => x * (q.den : ℚ)) h
+  dsimp only at h_mul
+  rw [div_mul_cancel₀ _ h_den] at h_mul
+  exact h_mul
+
+lemma rat_mul_num_eq (q1 q2 : ℚ) (h : (q1 * q2).den = 1) :
+  (q1.num * q2.num : ℚ) = ((q1 * q2).num : ℚ) * (q1.den : ℚ) * (q2.den : ℚ) := by
+  have h1 := rat_num_den_mul q1
+  have h2 := rat_num_den_mul q2
+  have h12 : (q1 * q2 : ℚ) = ((q1 * q2).num : ℚ) := by
+    have h_eq := Rat.num_div_den (q1 * q2)
+    rw [h] at h_eq
+    simp at h_eq
+    exact h_eq.symm
+  rw [h1, h2, ← h12]
+  ring
+
+lemma rat_mul_num_eq_int (q1 q2 : ℚ) (h : (q1 * q2).den = 1) :
+  q1.num * q2.num = (q1 * q2).num * (q1.den : ℤ) * (q2.den : ℤ) := by
+  have h_eq := rat_mul_num_eq q1 q2 h
+  have h_cast : ((q1.num * q2.num : ℤ) : ℚ) = (((q1 * q2).num * (q1.den : ℤ) * (q2.den : ℤ) : ℤ) : ℚ) := by
+    push_cast
+    exact h_eq
+  exact_mod_cast h_cast
+
+lemma rat_mul_int_dvd (q1 q2 : ℚ) (h : (q1 * q2).den = 1) : (q2.den : ℤ) ∣ q1.num := by
+  have h_eq := rat_mul_num_eq_int q1 q2 h
+  have h_dvd : (q2.den : ℤ) ∣ q1.num * q2.num := by
+    rw [h_eq]
+    use (q1 * q2).num * (q1.den : ℤ)
+    ring
+  have h_cop : Int.gcd q2.num q2.den = 1 := q2.reduced
+  have h_gcd_comm : Int.gcd q2.den q2.num = 1 := by
+    rw [Int.gcd_comm]
+    exact h_cop
+  exact Int.dvd_of_dvd_mul_left_of_gcd_one h_dvd h_gcd_comm
+
+lemma rat_mul_int_dvd_left (q1 q2 : ℚ) (h : (q1 * q2).den = 1) : (q1.den : ℤ) ∣ q2.num := by
+  have h_mul_comm : q1 * q2 = q2 * q1 := mul_comm q1 q2
+  rw [h_mul_comm] at h
+  exact rat_mul_int_dvd q2 q1 h
+
+lemma coprime_den (q1 q2 : ℚ) (hq1 : q1.num > 0) (h : (q1 * q2).den = 1) : Nat.Coprime q1.den q2.den := by
+  have hd21 : (q2.den : ℤ) ∣ q1.num := rat_mul_int_dvd q1 q2 h
+  have h_eq : q1.num = (q1.num.natAbs : ℤ) := (Int.natAbs_of_nonneg (le_of_lt hq1)).symm
+  rw [h_eq] at hd21
+  have hd21_nat : q2.den ∣ q1.num.natAbs := by
+    exact_mod_cast hd21
+  have h_gcd : Nat.gcd q1.den q2.den ∣ Nat.gcd q1.num.natAbs q1.den := by
+    apply Nat.dvd_gcd
+    · have h_dvd : Nat.gcd q1.den q2.den ∣ q2.den := Nat.gcd_dvd_right q1.den q2.den
+      exact dvd_trans h_dvd hd21_nat
+    · exact Nat.gcd_dvd_left q1.den q2.den
+  have h_cop : Nat.gcd q1.num.natAbs q1.den = 1 := q1.reduced
+  rw [h_cop] at h_gcd
+  exact Nat.eq_one_of_dvd_one h_gcd
+
+lemma coprime_den_symm (q1 q2 : ℚ) (hq2 : q2.num > 0) (h : (q1 * q2).den = 1) : Nat.Coprime q2.den q1.den := by
+  have h_mul : (q2 * q1).den = 1 := by
+    rw [mul_comm] at h
+    exact h
+  exact coprime_den q2 q1 hq2 h_mul
+
+lemma rat_mul_eq_mul (q1 q2 : ℚ) (hq1 : q1.num > 0) (hq2 : q2.num > 0) (h : (q1 * q2).den = 1) :
+  q1 * q2 = ( ((q1.num.natAbs / q2.den) * (q2.num.natAbs / q1.den) : ℕ) : ℚ) := by
+  have hd21 : q2.den ∣ q1.num.natAbs := by
+    have h_dvd : (q2.den : ℤ) ∣ q1.num := rat_mul_int_dvd q1 q2 h
+    have h_eq : q1.num = (q1.num.natAbs : ℤ) := (Int.natAbs_of_nonneg (le_of_lt hq1)).symm
+    rw [h_eq] at h_dvd
+    exact_mod_cast h_dvd
+  have hd12 : q1.den ∣ q2.num.natAbs := by
+    have h_dvd : (q1.den : ℤ) ∣ q2.num := rat_mul_int_dvd_left q1 q2 h
+    have h_eq : q2.num = (q2.num.natAbs : ℤ) := (Int.natAbs_of_nonneg (le_of_lt hq2)).symm
+    rw [h_eq] at h_dvd
+    exact_mod_cast h_dvd
+  have h_eq1 : (q1.num.natAbs : ℚ) = ((q1.num.natAbs / q2.den : ℕ) : ℚ) * (q2.den : ℚ) := by
+    have h_cancel : q1.num.natAbs = (q1.num.natAbs / q2.den) * q2.den := (Nat.div_mul_cancel hd21).symm
+    have h_cast : (q1.num.natAbs : ℚ) = (((q1.num.natAbs / q2.den) * q2.den : ℕ) : ℚ) := by
+      exact_mod_cast h_cancel
+    push_cast at h_cast
+    exact h_cast
+  have h_eq2 : (q2.num.natAbs : ℚ) = ((q2.num.natAbs / q1.den : ℕ) : ℚ) * (q1.den : ℚ) := by
+    have h_cancel : q2.num.natAbs = (q2.num.natAbs / q1.den) * q1.den := (Nat.div_mul_cancel hd12).symm
+    have h_cast : (q2.num.natAbs : ℚ) = (((q2.num.natAbs / q1.den) * q1.den : ℕ) : ℚ) := by
+      exact_mod_cast h_cancel
+    push_cast at h_cast
+    exact h_cast
+  have h_q1 : q1 = ((q1.num.natAbs / q2.den : ℕ) : ℚ) * (q2.den : ℚ) / (q1.den : ℚ) := by
+    have h_cast : (q1.num : ℚ) = (q1.num.natAbs : ℚ) := by
+      have h_eq : (q1.num.natAbs : ℤ) = q1.num := Int.natAbs_of_nonneg (le_of_lt hq1)
+      have h_cast1 : ((q1.num.natAbs : ℤ) : ℚ) = (q1.num : ℚ) := congr_arg (fun x : ℤ => (x : ℚ)) h_eq
+      have h_cast2 : ((q1.num.natAbs : ℤ) : ℚ) = (q1.num.natAbs : ℚ) := Rat.intCast_natCast q1.num.natAbs
+      exact h_cast1.symm.trans h_cast2
+    have h_div : q1 = (q1.num : ℚ) / (q1.den : ℚ) := (Rat.num_div_den q1).symm
+    nth_rw 1 [h_div]
+    have h_num : (q1.num : ℚ) = ((q1.num.natAbs / q2.den : ℕ) : ℚ) * (q2.den : ℚ) := h_cast.trans h_eq1
+    rw [h_num]
+  have h_q2 : q2 = ((q2.num.natAbs / q1.den : ℕ) : ℚ) * (q1.den : ℚ) / (q2.den : ℚ) := by
+    have h_cast : (q2.num : ℚ) = (q2.num.natAbs : ℚ) := by
+      have h_eq : (q2.num.natAbs : ℤ) = q2.num := Int.natAbs_of_nonneg (le_of_lt hq2)
+      have h_cast1 : ((q2.num.natAbs : ℤ) : ℚ) = (q2.num : ℚ) := congr_arg (fun x : ℤ => (x : ℚ)) h_eq
+      have h_cast2 : ((q2.num.natAbs : ℤ) : ℚ) = (q2.num.natAbs : ℚ) := Rat.intCast_natCast q2.num.natAbs
+      exact h_cast1.symm.trans h_cast2
+    have h_div : q2 = (q2.num : ℚ) / (q2.den : ℚ) := (Rat.num_div_den q2).symm
+    nth_rw 1 [h_div]
+    have h_num : (q2.num : ℚ) = ((q2.num.natAbs / q1.den : ℕ) : ℚ) * (q1.den : ℚ) := h_cast.trans h_eq2
+    rw [h_num]
+  have h_den1 : (q1.den : ℚ) ≠ 0 := by
+    have : q1.den > 0 := q1.den_pos
+    exact_mod_cast _root_.ne_of_gt this
+  have h_den2 : (q2.den : ℚ) ≠ 0 := by
+    have : q2.den > 0 := q2.den_pos
+    exact_mod_cast _root_.ne_of_gt this
+  have h_mul : q1 * q2 = (((q1.num.natAbs / q2.den : ℕ) : ℚ) * (q2.den : ℚ) / (q1.den : ℚ)) *
+                         (((q2.num.natAbs / q1.den : ℕ) : ℚ) * (q1.den : ℚ) / (q2.den : ℚ)) := by
+    nth_rw 1 [h_q2]
+    nth_rw 1 [h_q1]
+  rw [h_mul]
+  push_cast
+  field_simp
+
+
+
+
+lemma q_not_dvd_num1_helper (q1 : ℚ) (hq1_pos : q1.num > 0) (q : ℕ) (hq_prime : q.Prime) (hq_dvd : q ∣ q1.den) :
+  ¬ q ∣ q1.num.natAbs := by
+  intro h_dvd
+  have h_num1_cop : q1.num.natAbs.Coprime q1.den := q1.reduced
+  have h_gcd : q ∣ Nat.gcd q1.num.natAbs q1.den := Nat.dvd_gcd h_dvd hq_dvd
+  rw [h_num1_cop] at h_gcd
+  have : q ≤ 1 := Nat.le_of_dvd (by decide) h_gcd
+  have : q ≥ 2 := hq_prime.two_le
+  omega
+
+lemma q_not_dvd_den2_helper (q1 q2 : ℚ) (h_cop : q1.den.Coprime q2.den) (q : ℕ) (hq_prime : q.Prime) (hq_dvd : q ∣ q1.den) :
+  ¬ q ∣ q2.den := by
+  intro h_dvd
+  have h_gcd : q ∣ Nat.gcd q1.den q2.den := Nat.dvd_gcd hq_dvd h_dvd
+  rw [h_cop] at h_gcd
+  have : q ≤ 1 := Nat.le_of_dvd (by decide) h_gcd
+  have : q ≥ 2 := hq_prime.two_le
+  omega
+
+lemma q_adic_contradiction (q1 q2 : ℚ) (hq1_pos : q1.num > 0) (hq2_pos : q2.num > 0)
+  (hden12 : (q1 * q2).den = 1) (h_cop : q1.den.Coprime q2.den)
+  (q : ℕ) (hq_prime : q.Prime) (h_val1 : padicValRat q q1 ≤ 0) (h_val2 : padicValRat q q2 < 0) : False := by
+  have h_prime_fact : Fact q.Prime := ⟨hq_prime⟩
+  have h_val_n : padicValRat q (q1 * q2) ≥ 0 := by
+    exact padicValRat_nonneg_of_den_eq_one q hq_prime _ hden12
+  have h_val_mul : padicValRat q (q1 * q2) = padicValRat q q1 + padicValRat q q2 := by
+    have hq1_nz : q1 ≠ 0 := by
+      intro hc; rw [hc] at hq1_pos; norm_num at hq1_pos
+    have hq2_nz : q2 ≠ 0 := by
+      intro hc; rw [hc] at hq2_pos; norm_num at hq2_pos
+    exact padicValRat.mul hq1_nz hq2_nz
+  omega
+
+lemma den_neq_one_of_odd_factor (n : ℕ) (p : ℕ) (hp : p ∈ n.primeFactorsList) (hp_odd : p % 2 = 1) :
+  ((n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))).den ≠ 1 := by
+  have hp_prime : p.Prime := Nat.prime_of_mem_primeFactorsList hp
+  have hp_div : p ∣ n := Nat.dvd_of_mem_primeFactorsList hp
+  have hn_nz : n ≠ 0 := by
+    intro h_zero
+    rw [h_zero] at hp
+    simp only [Nat.primeFactorsList_zero, List.not_mem_nil] at hp
+  let b := padicValNat 2 n
+  let m := n / 2^b
+  rcases coprime_factorization 2 Nat.prime_two n hn_nz with ⟨h_eq_mul, h_cop, hm_nz⟩
+  change n = 2^b * m at h_eq_mul
+  change m ≠ 0 at hm_nz
+  change Nat.Coprime (2^b) m at h_cop
+  have hm_odd : m % 2 = 1 := by
+    have : m % 2 ≠ 0 := by
+      intro h_mod
+      have : 2 ∣ m := Nat.dvd_of_mod_eq_zero h_mod
+      have h_div_n : 2^(b+1) ∣ n := by
+        rw [h_eq_mul]
+        change 2^(b+1) ∣ 2^b * m
+        rcases this with ⟨k, hk_eq⟩
+        rw [hk_eq]
+        use k
+        ring
+      have h_le : b + 1 ≤ padicValNat 2 n := (padicValNat_dvd_iff_le hn_nz).mp h_div_n
+      omega
+    omega
+  have hp_dvd_m : p ∣ m := by
+    have h_prime_p : p.Prime := hp_prime
+    have h_dvd_mul : p ∣ 2^b * m := by
+      rw [← h_eq_mul]
+      exact hp_div
+    rcases h_prime_p.dvd_mul.mp h_dvd_mul with h1 | h2
+    · have : p ∣ 2 := hp_prime.dvd_of_dvd_pow h1
+      have hp_le2 : p ≤ 2 := Nat.le_of_dvd (by norm_num) this
+      have hp_ge3 : p ≥ 3 := by
+        have : p ≥ 2 := hp_prime.two_le
+        omega
+      omega
+    · exact h2
+  have hm_gt1 : 1 < m := by
+    have : m ≥ p := Nat.le_of_dvd (Nat.pos_of_ne_zero hm_nz) hp_dvd_m
+    have hp_ge3 : p ≥ 3 := by
+      have : p ≥ 2 := hp_prime.two_le
+      omega
+    omega
+  let q1 := (2^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)
+  let q2 := m.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)
+  have hm_val : padicValRat 2 q2 < 0 :=
+    padicValRat_two_sum_divisors_odd m hm_odd hm_gt1
+  have hn_eq_sum : (n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = q1 * q2 := by
+    have h2b_nz : 2^b ≠ 0 := _root_.ne_of_gt (Nat.pow_pos (by decide : 0 < 2))
+    rw [h_eq_mul]
+    exact g_mul_of_coprime h2b_nz hm_nz h_cop
+  have h2b_sum_pos : q1 > 0 := by
+    apply sum_divisors_pos
+    exact Nat.one_le_pow b 2 (by omega)
+  have hm_sum_pos : q2 > 0 := by
+    apply sum_divisors_pos
+    omega
+  have hq1_pos : q1.num > 0 := Rat.num_pos.mpr h2b_sum_pos
+  have hq2_pos : q2.num > 0 := Rat.num_pos.mpr hm_sum_pos
+  by_cases hb0 : b = 0
+  · have hb0_eq : b = 0 := hb0
+    have h_q1 : q1 = 1 := by
+      change ((2^b).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = 1
+      rw [hb0_eq]
+      rw [pow_zero]
+      have : (1 : ℕ).divisors = {1} := by decide
+      rw [this, sum_singleton]
+      have h_sig : (sigma 1) 1 = 1 := rfl
+      rw [h_sig]
+      norm_num
+    have h_sum : (n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ)) = q2 := by
+      rw [hn_eq_sum]
+      rw [h_q1]
+      rw [one_mul]
+    intro h_den
+    rw [h_sum] at h_den
+    have h_val_neg : padicValRat 2 q2 < 0 := hm_val
+    exact den_neq_one_of_padicValRat_neg 2 q2 h_val_neg h_den
+  · have hb_ge1 : b ≥ 1 := by omega
+    rcases Nat.mod_two_eq_zero_or_one b with hb_even | hb_odd
+    · -- Even case: b = 2 * k
+      have h_eq_2k : b = 2 * (b / 2) := (Nat.mul_div_cancel' (Nat.dvd_of_mod_eq_zero hb_even)).symm
+      let k := b / 2
+      have h_q1_even : q1 = (((2^(2*k)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) := by
+        dsimp [q1]
+        rw [h_eq_2k]
+      have h_q1_val : padicValRat 2 q1 = 0 := by
+        rw [h_q1_even]
+        exact padicValRat_two_sum_divisors_pow_two_even k
+      intro h_den
+      have h_den_q : (q1 * q2).den = 1 := by
+        rw [← hn_eq_sum]
+        exact h_den
+      have h_val_n : padicValRat 2 (q1 * q2) ≥ 0 :=
+        padicValRat_nonneg_of_den_eq_one 2 Nat.prime_two (q1 * q2) h_den_q
+      have h_val_mul : padicValRat 2 (q1 * q2) = padicValRat 2 q1 + padicValRat 2 q2 := by
+        have hq1_nz : q1 ≠ 0 := by
+          intro hc; rw [hc] at hq1_pos; norm_num at hq1_pos
+        have hq2_nz : q2 ≠ 0 := by
+          intro hc; rw [hc] at hq2_pos; norm_num at hq2_pos
+        exact padicValRat.mul hq1_nz hq2_nz
+      rw [h_q1_val] at h_val_mul
+      omega
+    · intro h_den
+      have h_den_q : (q1 * q2).den = 1 := by
+        rw [← hn_eq_sum]
+        exact h_den
+      have h_cop_den : q1.den.Coprime q2.den := coprime_den q1 q2 hq1_pos h_den_q
+      have hd21 : q2.den ∣ q1.num.natAbs := by
+        have h_dvd : (q2.den : ℤ) ∣ q1.num := rat_mul_int_dvd q1 q2 h_den_q
+        have h_eq : q1.num = (q1.num.natAbs : ℤ) := (Int.natAbs_of_nonneg (le_of_lt hq1_pos)).symm
+        rw [h_eq] at h_dvd
+        exact_mod_cast h_dvd
+      have hd12 : q1.den ∣ q2.num.natAbs := by
+        have h_dvd : (q1.den : ℤ) ∣ q2.num := rat_mul_int_dvd_left q1 q2 h_den_q
+        have h_eq : q2.num = (q2.num.natAbs : ℤ) := (Int.natAbs_of_nonneg (le_of_lt hq2_pos)).symm
+        rw [h_eq] at h_dvd
+        exact_mod_cast h_dvd
+      have h_q2_den_even : 2 ∣ q2.den := even_den_of_padicValRat_neg 2 q2 hm_val
+      have h_val_q1_ge : padicValRat 2 q1 ≥ 0 := by
+        have : b % 2 = 1 := hb_odd
+        have h_eq_2k1 : b = 2 * (b / 2) + 1 := (Nat.div_add_mod b 2).symm.trans (by rw [this])
+        let k := b / 2
+        have h_q1_odd : q1 = (((2^(2*k+1)).divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))) := by
+          dsimp [q1]
+          rw [h_eq_2k1]
+        have h_q1_val : 1 ≤ padicValRat 2 q1 := by
+          rw [h_q1_odd]
+          exact padicValRat_two_sum_divisors_pow_two_odd k
+        omega
+      have h_q1_den_zero : padicValNat 2 q1.den = 0 := den_odd_of_val_nonneg q1 h_val_q1_ge
+      have h_q1_den_odd : ¬ 2 ∣ q1.den := by
+        intro h_dvd
+        have : 1 ≤ padicValNat 2 q1.den := one_le_padicValNat_of_dvd (by positivity) h_dvd
+        omega
+      let B_int := q1.num.natAbs / q2.den
+      let A_int := q2.num.natAbs / q1.den
+      have h_q1_num : q1.num.natAbs = B_int * q2.den := (Nat.div_mul_cancel hd21).symm
+      have h_q2_num : q2.num.natAbs = A_int * q1.den := (Nat.div_mul_cancel hd12).symm
+      have h_gcd : Nat.gcd q2.num.natAbs q2.den = 1 := q2.reduced
+      rcases Nat.mod_two_eq_zero_or_one A_int with hA_even | hA_odd
+      · -- A_int is even
+        have h_dvd_num : 2 ∣ q2.num.natAbs := by
+          rw [h_q2_num]
+          exact dvd_mul_of_dvd_left hA_even q1.den
+        have h_dvd_gcd : 2 ∣ Nat.gcd q2.num.natAbs q2.den := Nat.dvd_gcd h_dvd_num h_q2_den_even
+        rw [h_gcd] at h_dvd_gcd
+        have : 2 ≤ 1 := Nat.le_of_dvd (by decide) h_dvd_gcd
+        omega
+      · sorry
+
+
+theorem oeis_265709_conjecture_0.disproof :
+  ¬ ∃ (n : ℕ), 1 < n ∧
+  ((n.divisors.sum fun d => (1 : ℚ) / (↑((sigma 1) d) : ℚ))).den = 1 := by
+  rintro ⟨n, hn, hden⟩
+  rcases eq_two_pow_or_has_odd_prime_factor n hn with ⟨b, hb, rfl⟩ | ⟨p, hp, hp_odd⟩
+  · exact den_neq_one_of_pow_two b hb hden
+  · exact den_neq_one_of_odd_factor n p hp hp_odd hden

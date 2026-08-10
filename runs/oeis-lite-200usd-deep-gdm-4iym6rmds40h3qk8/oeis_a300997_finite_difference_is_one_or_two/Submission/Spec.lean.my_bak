@@ -1,0 +1,1953 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+
+import Mathlib.Data.List.Basic
+import Mathlib.Data.Nat.Basic
+import Mathlib.Order.ConditionallyCompleteLattice.Basic
+import Mathlib.Data.Nat.Lattice
+import Mathlib.Data.List.GetD
+import Mathlib.Algebra.Ring.Parity
+import Mathlib.Data.List.TakeWhile
+
+open List Nat Function Set
+
+
+def half_ceil (m : ℕ) : ℕ := (m + 1) / 2
+def half_floor (m : ℕ) : ℕ := m / 2
+
+def trim_trailing_zeros (l : List ℕ) : List ℕ :=
+  (List.reverse l).dropWhile (fun x => x = 0) |>.reverse
+
+def ca_step (config : List ℕ) : List ℕ :=
+  let base_masses := config.map half_ceil ++ [0]
+  let received_masses := 0 :: config.map half_floor
+  let next_config_long := List.zipWith Nat.add base_masses received_masses
+  trim_trailing_zeros next_config_long
+
+def S (n : ℕ) (t : ℕ) : List ℕ :=
+  (List.range t).foldl (fun acc _ => ca_step acc) [n]
+
+def stable_steps (n : ℕ) : Set ℕ :=
+  {k | S n k = List.replicate n 1}
+
+/--
+A300997: $a(n)$ is the number of steps needed to reach a stable configuration in the 1D cellular automaton initialized with one cell with mass $n$ and based on the rule "each cell gives half of its mass, rounded down, to its right neighbor".
+The stable configuration is $n$ cells with mass 1.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  let half_ceil (m : ℕ) : ℕ := (m + 1) / 2
+  let half_floor (m : ℕ) : ℕ := m / 2
+
+  let trim_trailing_zeros (l : List ℕ) : List ℕ :=
+    (List.reverse l).dropWhile (fun x => x = 0) |>.reverse
+
+  let ca_step (config : List ℕ) : List ℕ :=
+    let base_masses := config.map half_ceil ++ [0]
+    let received_masses := 0 :: config.map half_floor
+
+    let next_config_long := List.zipWith Nat.add base_masses received_masses
+
+    trim_trailing_zeros next_config_long
+
+  if n = 0 then
+    0
+  else
+    let initial_config : List ℕ := [n]
+    let target_config : List ℕ := List.replicate n 1
+
+    -- State after t steps, computed by folding ca_step t times using foldl over a range.
+    let S (t : ℕ) : List ℕ := (List.range t).foldl (fun acc _ => ca_step acc) initial_config
+
+    -- The set of time steps k at which the configuration is stable.
+    let stable_steps : Set ℕ := {k | S k = target_config}
+
+    -- a(n) is the smallest k in this set, defined by the set infimum (sInf).
+    sInf stable_steps
+
+/--
+Conjecture A300997: The finite difference of this sequence only contains 1's and 2's.
+Specifically, $\forall n \ge 1, a(n+1) - a(n) \in \{1, 2\}$.
+It is also conjectured that $a(n) = 2n - \sum_{k=1}^{n} I(k)$ where $I(n)$ is the indicator function of some other sequence (A305992).
+-/
+
+lemma a_eq_sInf_stable_steps {n : ℕ} (h : n ≠ 0) : a n = sInf (stable_steps n) := by
+  unfold a
+  split_ifs with hn
+  · contradiction
+  · rfl
+
+lemma a_one_eq_zero : a 1 = 0 := by
+  have hne : 1 ≠ 0 := by decide
+  rw [a_eq_sInf_stable_steps hne]
+  -- we want to show sInf (stable_steps 1) = 0
+  -- since 0 ∈ stable_steps 1, and for any k, k ≥ 0.
+  have hz : 0 ∈ stable_steps 1 := by
+    unfold stable_steps S
+    decide
+  -- Nat.sInf of a set containing 0 must be 0
+  exact Nat.le_zero.1 (Nat.sInf_le hz)
+
+lemma a_two_eq_one : a 2 = 1 := by
+  have ha2 : a 2 = sInf (stable_steps 2) := a_eq_sInf_stable_steps (by decide)
+  have h_nonempty : (stable_steps 2).Nonempty := ⟨1, (by decide : S 2 1 = replicate 2 1)⟩
+  have h_mem : sInf (stable_steps 2) ∈ stable_steps 2 := Nat.sInf_mem h_nonempty
+  -- h_mem : S 2 (sInf (stable_steps 2)) = [1, 1]
+  have h_not_zero : sInf (stable_steps 2) ≠ 0 := by
+    intro hc
+    unfold stable_steps at h_mem
+    unfold stable_steps at hc
+    rw [hc] at h_mem
+    -- h_mem is S 2 0 = [1, 1]
+    -- which is [2] = [1, 1]
+    contradiction
+  have h_ge : sInf (stable_steps 2) ≥ 1 := by omega
+  have h_le : sInf (stable_steps 2) ≤ 1 := by
+    have h1 : 1 ∈ stable_steps 2 := (by decide : S 2 1 = replicate 2 1)
+    exact Nat.sInf_le h1
+  rw [ha2]
+  omega
+
+
+
+lemma trim_trailing_zeros_prefix (l : List ℕ) : trim_trailing_zeros l <+: l := by
+  unfold trim_trailing_zeros
+  have h1 : dropWhile (fun x => x = 0) l.reverse <:+ l.reverse := List.dropWhile_suffix _
+  have h2 := h1.reverse
+  rw [List.reverse_reverse] at h2
+  exact h2
+
+lemma getD_all_zero_eq_zero (l : List ℕ) (h : ∀ x ∈ l, x = 0) (i : ℕ) : l.getD i 0 = 0 := by
+  induction l generalizing i with
+  | nil => rfl
+  | cons x xs ih =>
+    have hx : x = 0 := h x List.mem_cons_self
+    have hxs : ∀ y ∈ xs, y = 0 := fun y hy => h y (List.mem_cons_of_mem _ hy)
+    cases i with
+    | zero => exact hx
+    | succ j => exact ih hxs j
+
+
+lemma getD_dropWhile_reverse (xs : List ℕ) (i : ℕ) :
+  (xs.dropWhile (fun x => x = 0)).reverse.getD i 0 = xs.reverse.getD i 0 := by
+  induction xs generalizing i with
+  | nil => rfl
+  | cons x xs ih =>
+    by_cases hx : x = 0
+    · -- x = 0
+      have hd : (x :: xs).dropWhile (fun x => x = 0) = xs.dropWhile (fun x => x = 0) := by
+        dsimp [List.dropWhile]
+        rw [hx]
+        rfl
+      rw [hd, ih]
+      -- now prove xs.reverse.getD i 0 = (xs.reverse ++ [x]).getD i 0
+      rw [List.reverse_cons]
+      by_cases h_lt : i < xs.reverse.length
+      · rw [List.getD_append _ _ _ _ h_lt]
+      · have h_ge : xs.reverse.length ≤ i := Nat.le_of_not_lt h_lt
+        rw [List.getD_append_right _ _ _ _ h_ge]
+        -- xs.reverse.getD i 0 is 0 because i ≥ length
+        have h_oob : xs.reverse.getD i 0 = 0 := by
+          exact List.getD_eq_default _ _ h_ge
+        rw [h_oob]
+        -- [x].getD (i - xs.reverse.length) 0 = 0
+        rw [hx]
+        have hz : ∀ x ∈ [0], x = 0 := by
+          intro x hx
+          simp only [List.mem_singleton] at hx
+          exact hx
+        exact (getD_all_zero_eq_zero [0] hz (i - xs.reverse.length)).symm
+    · -- x ≠ 0
+      have hd : (x :: xs).dropWhile (fun x => x = 0) = x :: xs := by
+        dsimp [List.dropWhile]
+        -- x = 0 is false, so decide (x = 0) is false
+        have h_dec : decide (x = 0) = false := by simp [hx]
+        rw [h_dec]
+      rw [hd]
+
+lemma getD_trim_trailing_zeros (l : List ℕ) (i : ℕ) :
+  (trim_trailing_zeros l).getD i 0 = l.getD i 0 := by
+  unfold trim_trailing_zeros
+  rw [getD_dropWhile_reverse, List.reverse_reverse]
+
+
+lemma S_succ (n t : ℕ) : S n (t + 1) = ca_step (S n t) := by
+  unfold S
+  rw [List.range_succ, List.foldl_append]
+  rfl
+
+
+
+lemma getD_zipWith_add (l1 l2 : List ℕ) (h : l1.length = l2.length) (i : ℕ) :
+  (List.zipWith Nat.add l1 l2).getD i 0 = l1.getD i 0 + l2.getD i 0 := by
+  induction l1 generalizing l2 i with
+  | nil =>
+    have h_nil : l2 = [] := by
+      cases l2
+      · rfl
+      · contradiction
+    rw [h_nil]
+    rfl
+  | cons x xs ih1 =>
+    cases l2 with
+    | nil => contradiction
+    | cons y ys =>
+      have h_eq : xs.length = ys.length := by
+        simp only [List.length_cons] at h
+        exact Nat.succ.inj h
+      cases i with
+      | zero => rfl
+      | succ j =>
+        exact ih1 ys h_eq j
+
+lemma getD_map_ceil (config : List ℕ) (i : ℕ) :
+  (config.map half_ceil ++ [0]).getD i 0 = half_ceil (config.getD i 0) := by
+  induction config generalizing i with
+  | nil =>
+    unfold half_ceil
+    dsimp
+    have hz2 : ∀ x ∈ [0], x = 0 := by
+      intro x hx
+      simp only [List.mem_singleton] at hx
+      exact hx
+    exact getD_all_zero_eq_zero [0] hz2 i
+  | cons x xs ih =>
+    cases i with
+    | zero => rfl
+    | succ j =>
+      exact ih j
+
+lemma getD_map_floor_helper (config : List ℕ) (j : ℕ) :
+  (config.map half_floor).getD j 0 = half_floor (config.getD j 0) := by
+  induction config generalizing j with
+  | nil =>
+    unfold half_floor
+    dsimp
+  | cons x xs ih =>
+    cases j with
+    | zero => rfl
+    | succ k =>
+      exact ih k
+
+lemma getD_map_floor (config : List ℕ) (i : ℕ) :
+  (0 :: config.map half_floor).getD i 0 = if i = 0 then 0 else half_floor (config.getD (i-1) 0) := by
+  cases i with
+  | zero => rfl
+  | succ j =>
+    simp only [List.getD_cons_succ]
+    rw [getD_map_floor_helper]
+    rfl
+
+lemma ca_step_getD (config : List ℕ) (i : ℕ) :
+  (ca_step config).getD i 0 = half_ceil (config.getD i 0) + (if i = 0 then 0 else half_floor (config.getD (i-1) 0)) := by
+  unfold ca_step
+  rw [getD_trim_trailing_zeros]
+  have h_len : (config.map half_ceil ++ [0]).length = (0 :: config.map half_floor).length := by
+    simp
+  rw [getD_zipWith_add _ _ h_len i]
+  rw [getD_map_ceil, getD_map_floor]
+
+
+def p_index : ℕ → ℕ → ℕ
+  | _, 0 => 0
+  | n, t + 1 =>
+    let p := p_index n t
+    let val := (S n t).getD p 0
+    if val % 2 == 0 then p else p + 1
+
+
+lemma getD_eq (l : List ℕ) (i : ℕ) : l.getD i 0 = l[i]?.getD 0 := rfl
+
+
+lemma div_two_helper (k : ℕ) :
+  (k + k) / 2 = k ∧ (k + k + 1) / 2 = k ∧ (k + k + 2) / 2 = k + 1 ∧ (k + k + 3) / 2 = k + 1 ∧
+  (2 * k) / 2 = k ∧ (2 * k + 1) / 2 = k ∧ (2 * k + 2) / 2 = k + 1 ∧ (2 * k + 3) / 2 = k + 1 ∧
+  (k + k) % 2 = 0 ∧ (k + k + 1) % 2 = 1 ∧ (2 * k) % 2 = 0 ∧ (2 * k + 1) % 2 = 1 ∧
+  ((k + k) % 2 == 0) = true ∧ ((k + k + 1) % 2 == 0) = false ∧
+  ((2 * k) % 2 == 0) = true ∧ ((2 * k + 1) % 2 == 0) = false := by
+  have hProp :
+    (k + k) / 2 = k ∧ (k + k + 1) / 2 = k ∧ (k + k + 2) / 2 = k + 1 ∧ (k + k + 3) / 2 = k + 1 ∧
+    (2 * k) / 2 = k ∧ (2 * k + 1) / 2 = k ∧ (2 * k + 2) / 2 = k + 1 ∧ (2 * k + 3) / 2 = k + 1 ∧
+    (k + k) % 2 = 0 ∧ (k + k + 1) % 2 = 1 ∧ (2 * k) % 2 = 0 ∧ (2 * k + 1) % 2 = 1 := by omega
+  rcases hProp with ⟨h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12⟩
+  refine ⟨h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, ?_, ?_, ?_, ?_⟩
+  · simp [h9]
+  · simp [h10]
+  · simp [h11]
+  · simp [h12]
+
+set_option linter.unreachableTactic false
+set_option linter.unusedTactic false
+
+lemma S_coupling (n t : ℕ) (i : ℕ) :
+  (S (n + 1) t).getD i 0 = (S n t).getD i 0 + (if i = p_index n t then 1 else 0) := by
+  induction t generalizing i with
+  | zero =>
+    unfold S
+    cases i with
+    | zero => rfl
+    | succ j => rfl
+  | succ t ih =>
+    have hp_def : p_index n (t + 1) = (
+      if (S n t)[p_index n t]?.getD 0 % 2 == 0 then p_index n t else p_index n t + 1
+    ) := rfl
+    simp only [getD_eq]
+    rw [hp_def]
+    have h_goal : ∀ p, p = p_index n t →
+      (S (n + 1) (t + 1))[i]?.getD 0 = (S n (t + 1))[i]?.getD 0 + (if i = (if (S n t)[p]?.getD 0 % 2 == 0 then p else p + 1) then 1 else 0) := by
+      intro p hp
+      simp only [← getD_eq]
+      rw [S_succ, S_succ]
+      rw [ca_step_getD, ca_step_getD]
+      simp only [getD_eq]
+      unfold half_ceil half_floor
+      have ih_i := ih i
+      have ih_prev : (S (n + 1) t).getD (i - 1) 0 = (S n t).getD (i - 1) 0 + (if i - 1 = p_index n t then 1 else 0) := ih (i - 1)
+      simp only [getD_eq] at ih_i ih_prev
+      rw [← hp] at ih_i ih_prev
+      rw [ih_i, ih_prev]
+      clear hp hp_def
+      rcases Nat.even_or_odd ((S n t)[p]?.getD 0) with ⟨k, hk⟩ | ⟨k, hk⟩
+      · by_cases hip : i = p
+        · subst hip
+          simp at *
+          rw [hk] at *
+          simp [div_two_helper] at *
+          try rw [← Nat.add_assoc]
+          try (split_ifs at *) <;> try simp <;> try omega
+          try (cases i <;> try omega <;> try contradiction)
+          try (cases p <;> try omega <;> try contradiction)
+        · by_cases hip1 : i = p + 1
+          · subst hip1
+            simp at *
+            rw [hk] at *
+            simp [div_two_helper] at *
+            try rw [← Nat.add_assoc]
+            try (split_ifs at *) <;> try simp <;> try omega
+            try (cases i <;> try omega <;> try contradiction)
+            try (cases p <;> try omega <;> try contradiction)
+          · simp at *
+            rw [hk] at *
+            simp [div_two_helper] at *
+            try rw [← Nat.add_assoc]
+            try (split_ifs at *) <;> try simp <;> try omega
+            try (cases i <;> try omega <;> try contradiction)
+            try (cases p <;> try omega <;> try contradiction)
+      · by_cases hip : i = p
+        · subst hip
+          simp at *
+          rw [hk] at *
+          simp [div_two_helper] at *
+          try rw [← Nat.add_assoc]
+          try (split_ifs at *) <;> try simp <;> try omega
+          try (cases i <;> try omega <;> try contradiction)
+          try (cases p <;> try omega <;> try contradiction)
+        · by_cases hip1 : i = p + 1
+          · subst hip1
+            simp at *
+            rw [hk] at *
+            simp [div_two_helper] at *
+            try rw [← Nat.add_assoc]
+            try (split_ifs at *) <;> try simp <;> try omega
+            try (cases i <;> try omega <;> try contradiction)
+            try (cases p <;> try omega <;> try contradiction)
+          · simp at *
+            rw [hk] at *
+            simp [div_two_helper] at *
+            try rw [← Nat.add_assoc]
+            try (split_ifs at *) <;> try simp <;> try omega
+            try (cases i <;> try omega <;> try contradiction)
+            try (cases p <;> try omega <;> try contradiction)
+    exact h_goal (p_index n t) rfl
+
+
+
+lemma S_oob_and_p_index_le (n : ℕ) :
+  (∀ t i, n ≤ i → (S n t).getD i 0 = 0) ∧ (∀ t, p_index n t ≤ n) := by
+  induction n with
+  | zero =>
+    have h_oob : ∀ t i, 0 ≤ i → (S 0 t).getD i 0 = 0 := by
+      intro t i hi
+      induction t generalizing i with
+      | zero =>
+        by_cases hi0 : i = 0
+        · subst hi0; rfl
+        · -- [0].length = 1. Since i ≥ 1, List.getD_eq_default works.
+          have hi1 : i ≥ 1 := by omega
+          exact List.getD_eq_default _ _ hi1
+      | succ t ih =>
+        rw [S_succ, ca_step_getD]
+        by_cases hi0 : i = 0
+        · subst hi0
+          rw [ih 0 (by omega)]
+          rfl
+        · rw [ih i (by omega), ih (i - 1) (by omega)]
+          unfold half_ceil half_floor
+          rw [if_neg hi0]
+    have h_p : ∀ t, p_index 0 t ≤ 0 := by
+      intro t
+      induction t with
+      | zero => rfl
+      | succ t ih_t =>
+        have hp0 : p_index 0 t = 0 := by omega
+        unfold p_index
+        rw [hp0]
+        have h_z : (S 0 t)[0]?.getD 0 = 0 := h_oob t 0 (by omega)
+        simp [h_z]
+    exact ⟨h_oob, h_p⟩
+  | succ n ih =>
+    rcases ih with ⟨ih_oob, ih_p⟩
+    have h_oob : ∀ t i, n + 1 ≤ i → (S (n + 1) t).getD i 0 = 0 := by
+      intro t i hi
+      rw [S_coupling]
+      have h1 : (S n t).getD i 0 = 0 := ih_oob t i (by omega)
+      have h2 : p_index n t ≤ n := ih_p t
+      have h3 : i ≠ p_index n t := by omega
+      rw [h1]
+      simp [h3]
+    have h_p : ∀ t, p_index (n + 1) t ≤ n + 1 := by
+      intro t
+      induction t with
+      | zero => unfold p_index; omega
+      | succ t ih_t =>
+        by_cases h_lt : p_index (n + 1) t < n + 1
+        · simp [p_index]
+          split_ifs <;> omega
+        · have h_eq : p_index (n + 1) t = n + 1 := by omega
+          have h_zero : (S (n + 1) t)[n + 1]?.getD 0 = 0 := h_oob t (n + 1) (by omega)
+          simp [p_index, h_eq, h_zero]
+    exact ⟨h_oob, h_p⟩
+
+lemma S_oob_strong (n t i : ℕ) (hi : n ≤ i) : (S n t).getD i 0 = 0 :=
+  (S_oob_and_p_index_le n).1 t i hi
+
+lemma p_index_le_n (n t : ℕ) : p_index n t ≤ n :=
+  (S_oob_and_p_index_le n).2 t
+
+def is_one_except_two (config : List ℕ) (M p : ℕ) : Prop :=
+  ∀ i, config.getD i 0 = (if i < M then (if i = p then 2 else 1) else 0)
+
+lemma ca_step_one_except_two (config : List ℕ) (M p : ℕ) (hM : p < M) (h : is_one_except_two config M p) :
+  (if p + 1 < M then is_one_except_two (ca_step config) M (p + 1) else ∀ i, (ca_step config).getD i 0 = (if i < M + 1 then 1 else 0)) := by
+  split_ifs with hp
+  · intro i
+    rw [ca_step_getD]
+    rw [h i, h (i - 1)]
+    unfold half_ceil half_floor
+    split_ifs <;> omega
+  · have hp_eq : M = p + 1 := by omega
+    subst hp_eq
+    intro i
+    rw [ca_step_getD]
+    rw [h i, h (i - 1)]
+    unfold half_ceil half_floor
+    split_ifs <;> omega
+
+
+lemma ca_steps_succ (config : List ℕ) (k : ℕ) :
+  (List.range (k + 1)).foldl (fun acc _ => ca_step acc) config =
+  (List.range k).foldl (fun acc _ => ca_step acc) (ca_step config) := by
+  induction k generalizing config with
+  | zero => rfl
+  | succ j ih =>
+    rw [List.range_succ, List.foldl_append]
+    dsimp
+    rw [ih]
+    rw [List.range_succ, List.foldl_append]
+    rfl
+
+lemma steps_to_stable (config : List ℕ) (M p k : ℕ) (hp : p < M) (hk : k = M - p) (h : is_one_except_two config M p) :
+  ∀ i, ((List.range k).foldl (fun acc _ => ca_step acc) config).getD i 0 = (if i < M + 1 then 1 else 0) := by
+  induction k generalizing p config with
+  | zero =>
+    omega
+  | succ j ih =>
+    rw [ca_steps_succ]
+    have h_step := ca_step_one_except_two config M p hp h
+    by_cases h_lt : p + 1 < M
+    · rw [if_pos h_lt] at h_step
+      have hp1 : p + 1 < M := h_lt
+      have hk1 : j = M - (p + 1) := by omega
+      exact ih (ca_step config) (p + 1) hp1 hk1 h_step
+    · rw [if_neg h_lt] at h_step
+      have hj : j = 0 := by omega
+      subst hj
+      unfold List.range foldl
+      exact h_step
+
+
+lemma S_oob_weak (n t i : ℕ) (hi : n + t ≤ i) : (S n t).getD i 0 = 0 := by
+  induction t generalizing i with
+  | zero =>
+    unfold S
+    simp only [Nat.add_zero] at hi
+    cases i with
+    | zero =>
+      have : n = 0 := by omega
+      subst this
+      rfl
+    | succ j => rfl
+  | succ t ih =>
+    rw [S_succ, ca_step_getD]
+    have hi1 : n + t ≤ i := by omega
+    have hi2 : n + t ≤ i - 1 := by omega
+    rw [ih i hi1, ih (i - 1) hi2]
+    unfold half_ceil half_floor
+    simp
+
+-- p_index_bounds is defined below after S_trim
+
+
+
+lemma p_index_mono (n t : ℕ) : p_index n t ≤ p_index n (t + 1) := by
+  rw [p_index]
+  split_ifs <;> omega
+
+lemma p_index_le (n t1 t2 : ℕ) (h : t1 ≤ t2) : p_index n t1 ≤ p_index n t2 := by
+  induction t2 generalizing t1 with
+  | zero =>
+    have : t1 = 0 := by omega
+    subst this
+    rfl
+  | succ t2 ih =>
+    by_cases h_eq : t1 = t2 + 1
+    · subst h_eq
+      rfl
+    · have : t1 ≤ t2 := by omega
+      have h1 := ih t1 this
+      have h2 : p_index n t2 ≤ p_index n (t2 + 1) := p_index_mono n t2
+      omega
+
+
+
+lemma trim_trailing_zeros_idempotent (l : List ℕ) :
+  trim_trailing_zeros (trim_trailing_zeros l) = trim_trailing_zeros l := by
+  unfold trim_trailing_zeros
+  simp only [reverse_reverse]
+  have h_drop : dropWhile (fun x => x = 0) (dropWhile (fun x => x = 0) l.reverse) = dropWhile (fun x => x = 0) l.reverse := by
+    induction l.reverse with
+    | nil => rfl
+    | cons x xs ih =>
+      by_cases hx : x = 0
+      · simp [hx, ih]
+      · simp [hx]
+  rw [h_drop]
+
+
+lemma S_add (n t k : ℕ) :
+  S n (t + k) = (List.range k).foldl (fun acc _ => ca_step acc) (S n t) := by
+  induction k with
+  | zero => rfl
+  | succ j ih =>
+    rw [Nat.add_succ, S_succ, ih, List.range_succ, List.foldl_append]
+    rfl
+
+lemma replicate_getD (n i : ℕ) : (replicate n 1).getD i 0 = if i < n then 1 else 0 := by
+  induction n generalizing i with
+  | zero => rfl
+  | succ M ih_m =>
+    cases i with
+    | zero => rfl
+    | succ j =>
+      have h_def : (replicate (M + 1) 1).getD (j + 1) 0 = (replicate M 1).getD j 0 := rfl
+      rw [h_def, ih_m]
+      have h_eq : (j + 1 < M + 1) ↔ (j < M) := by omega
+      simp only [h_eq]
+
+lemma dropWhile_zero_eq_self_getD_zero (xs : List ℕ) (h : xs = xs.dropWhile (fun x => x = 0)) (h_not_nil : xs ≠ []) : xs.getD 0 0 ≠ 0 := by
+  cases xs with
+  | nil => contradiction
+  | cons y ys =>
+    intro hy
+    simp only [List.getD_cons_zero] at hy
+    subst hy
+    have h_drop : (0 :: ys).dropWhile (fun x => x = 0) = ys.dropWhile (fun x => x = 0) := rfl
+    have h_len : (0 :: ys).length = (ys.dropWhile (fun x => x = 0)).length := by
+      rw [h, h_drop]
+    have h_le : (ys.dropWhile (fun x => x = 0)).length ≤ ys.length := List.length_dropWhile_le _ _
+    simp only [List.length_cons] at h_len
+    omega
+
+lemma reverse_getD_zero (l : List ℕ) : l.reverse.getD 0 0 = l.getD (l.length - 1) 0 := by
+  induction l with
+  | nil => rfl
+  | cons x xs ih =>
+    cases xs with
+    | nil => rfl
+    | cons y ys =>
+      rw [List.reverse_cons]
+      have h_getD : ((y :: ys).reverse ++ [x]).getD 0 0 = (y :: ys).reverse.getD 0 0 := by
+        have h_not_nil : (y :: ys).reverse ≠ [] := by simp
+        cases h_rev : (y :: ys).reverse with
+        | nil =>
+          rw [h_rev] at h_not_nil
+          contradiction
+        | cons z zs => rfl
+      rw [h_getD, ih]
+      rfl
+
+lemma eq_of_getD_and_length_nat (l1 l2 : List ℕ) (hlen : l1.length = l2.length) (h : ∀ i, l1.getD i 0 = l2.getD i 0) : l1 = l2 := by
+  induction l1 generalizing l2 with
+  | nil =>
+    have : l2 = [] := by cases l2 <;> [rfl; contradiction]
+    exact this.symm
+  | cons x xs ih =>
+    cases l2 with
+    | nil => contradiction
+    | cons y ys =>
+      have h_len : xs.length = ys.length := by
+        simp only [List.length_cons] at hlen
+        omega
+      have h_head : x = y := by
+        have h0 := h 0
+        exact h0
+      have h_tail : xs = ys := by
+        apply ih ys h_len
+        intro i
+        have hi := h (i + 1)
+        exact hi
+      subst h_head h_tail
+      rfl
+
+lemma eq_replicate_of_getD (l : List ℕ) (n : ℕ) (hl : trim_trailing_zeros l = l) (h : ∀ i, l.getD i 0 = (replicate n 1).getD i 0) : l = replicate n 1 := by
+  by_cases hn : n = 0
+  · subst hn
+    have h_nil : l = [] := by
+      by_contra h_not_nil
+      have h_last := h (l.length - 1)
+      rw [replicate_getD] at h_last
+      have h_lt : ¬ (l.length - 1 < 0) := by omega
+      rw [if_neg h_lt] at h_last
+      have h_nonzero : l.getD (l.length - 1) 0 ≠ 0 := by
+        rw [← reverse_getD_zero]
+        unfold trim_trailing_zeros at hl
+        have hl_rev : l.reverse = l.reverse.dropWhile (fun x => x = 0) := by
+          have h_eq : (l.reverse.dropWhile (fun x => x = 0)).reverse.reverse = l.reverse := by rw [hl]
+          rw [List.reverse_reverse] at h_eq
+          exact h_eq.symm
+        have h_not_nil_rev : l.reverse ≠ [] := by simp [h_not_nil]
+        exact dropWhile_zero_eq_self_getD_zero l.reverse hl_rev h_not_nil_rev
+      contradiction
+    exact h_nil
+  · have h_len : l.length = n := by
+      apply le_antisymm
+      · by_contra h_gt
+        push_neg at h_gt
+        have h_last := h (l.length - 1)
+        rw [replicate_getD] at h_last
+        have h_lt : ¬ (l.length - 1 < n) := by omega
+        rw [if_neg h_lt] at h_last
+        have h_nonzero : l.getD (l.length - 1) 0 ≠ 0 := by
+          rw [← reverse_getD_zero]
+          unfold trim_trailing_zeros at hl
+          have hl_rev : l.reverse = l.reverse.dropWhile (fun x => x = 0) := by
+            have h_eq : (l.reverse.dropWhile (fun x => x = 0)).reverse.reverse = l.reverse := by rw [hl]
+            rw [List.reverse_reverse] at h_eq
+            exact h_eq.symm
+          have h_not_nil_rev : l.reverse ≠ [] := by
+            intro hc
+            have h_l_nil : l = [] := List.reverse_eq_nil_iff.mp hc
+            subst h_l_nil
+            simp at h_gt
+          exact dropWhile_zero_eq_self_getD_zero l.reverse hl_rev h_not_nil_rev
+        contradiction
+      · by_contra h_lt
+        push_neg at h_lt
+        have h_oob := h l.length
+        rw [replicate_getD] at h_oob
+        rw [if_pos h_lt] at h_oob
+        have h_nil_getD : l.getD l.length 0 = 0 := List.getD_eq_default _ _ (by omega)
+        rw [h_nil_getD] at h_oob
+        contradiction
+    apply eq_of_getD_and_length_nat l (replicate n 1) (by rw [h_len, List.length_replicate]) h
+
+lemma ca_step_trim (config : List ℕ) : trim_trailing_zeros (ca_step config) = ca_step config := by
+  unfold ca_step
+  exact trim_trailing_zeros_idempotent _
+
+lemma S_trim (n : ℕ) (t : ℕ) (ht : t ≠ 0) : trim_trailing_zeros (S n t) = S n t := by
+  cases t with
+  | zero => contradiction
+  | succ t =>
+    rw [S_succ]
+    exact ca_step_trim _
+
+lemma step_one_nonzero (n : ℕ) (hn : 2 ≤ n) (hp : p_index (n - 1) (a (n - 1)) = n - 2 ∨ p_index (n - 1) (a (n - 1)) = n - 3) :
+  a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) ≠ 0 := by
+  generalize hp_index : p_index (n - 1) (a (n - 1)) = p at hp ⊢
+  omega
+
+lemma step_two_nonzero (n p : ℕ) (hp : p < n) (an : ℕ) :
+  an + (n - p) ≠ 0 := by
+  omega
+
+lemma stable_replicate (M : ℕ) : ca_step (replicate M 1) = replicate M 1 := by
+  have h_trim := ca_step_trim (replicate M 1)
+  apply eq_replicate_of_getD _ M h_trim
+  intro i
+  rw [ca_step_getD]
+  simp only [replicate_getD]
+  unfold half_ceil half_floor
+  split_ifs <;> omega
+
+lemma stable_add (n : ℕ) (t : ℕ) (h : S n t = replicate n 1) (k : ℕ) : S n (t + k) = replicate n 1 := by
+  induction k with
+  | zero => exact h
+  | succ k ih =>
+    rw [Nat.add_succ, S_succ, ih, stable_replicate]
+lemma S_stable (n : ℕ) (h_stable : S n (a n) = replicate n 1) (k : ℕ) : S n (a n + k) = replicate n 1 := by
+  induction k with
+  | zero => exact h_stable
+  | succ k ih =>
+    rw [Nat.add_succ, S_succ, ih, stable_replicate]
+
+lemma p_index_add (n : ℕ) (_hn : 1 ≤ n) (h_stable : S n (a n) = replicate n 1) (j : ℕ)
+  (hj : p_index n (a n) + j ≤ n) :
+  p_index n (a n + j) = p_index n (a n) + j := by
+  induction j with
+  | zero => rfl
+  | succ j ih =>
+    have h_le : p_index n (a n) + j ≤ n := by omega
+    have ih_val := ih h_le
+    have h_p : p_index n (a n + (j + 1)) =
+      if (S n (a n + j)).getD (p_index n (a n + j)) 0 % 2 == 0 then p_index n (a n + j) else p_index n (a n + j) + 1 := rfl
+    rw [h_p, ih_val]
+    have h_stable_j := S_stable n h_stable j
+    rw [h_stable_j]
+    rw [replicate_getD]
+    have h_lt : p_index n (a n) + j < n := by omega
+    rw [if_pos h_lt]
+    rfl
+
+
+
+
+lemma stable_plus_two (n : ℕ) (t : ℕ) (hn : 1 ≤ n) (h_stable : S n t = replicate n 1)
+  (hp_lt : p_index n t < n) (hp_ge : p_index n t ≥ n - 2) :
+  S (n + 1) (t + 2) = replicate (n + 1) 1 := by
+  have h_add : S (n + 1) (t + 2) = ca_step (ca_step (S (n + 1) t)) := by
+    have h1 : t + 2 = t + 1 + 1 := rfl
+    rw [h1, S_succ, S_succ]
+  rw [h_add]
+  have h_is : is_one_except_two (S (n + 1) t) n (p_index n t) := by
+    intro i
+    rw [S_coupling, h_stable, replicate_getD]
+    split_ifs <;> omega
+  have h_step1 := ca_step_one_except_two (S (n + 1) t) n (p_index n t) hp_lt h_is
+  by_cases h_lt1 : p_index n t + 1 < n
+  · rw [if_pos h_lt1] at h_step1
+    have h_step2 := ca_step_one_except_two (ca_step (S (n + 1) t)) n (p_index n t + 1) h_lt1 h_step1
+    have h_cond : ¬ (p_index n t + 1 + 1 < n) := by omega
+    rw [if_neg h_cond] at h_step2
+    have h_trim : trim_trailing_zeros (ca_step (ca_step (S (n + 1) t))) = ca_step (ca_step (S (n + 1) t)) := ca_step_trim _
+    apply eq_replicate_of_getD _ (n + 1) h_trim
+    intro i
+    rw [h_step2 i, replicate_getD]
+  · rw [if_neg h_lt1] at h_step1
+    have h_eq : ca_step (S (n + 1) t) = replicate (n + 1) 1 := by
+      have h_trim2 : trim_trailing_zeros (ca_step (S (n + 1) t)) = ca_step (S (n + 1) t) := ca_step_trim _
+      apply eq_replicate_of_getD _ (n + 1) h_trim2
+      intro i
+      rw [h_step1 i, replicate_getD]
+    rw [h_eq, stable_replicate]
+
+lemma a_le_plus_two (n : ℕ) (hn : 1 ≤ n) (h_stable : S n (a n) = replicate n 1)
+  (hp_bounds : p_index n (a n) = n ∨ p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2) :
+  S (n + 1) (a n + 2) = replicate (n + 1) 1 := by
+  by_cases hp_eq : p_index n (a n) = n
+  · by_cases hn1 : n = 1
+    · subst hn1
+      have ha1 : a 1 = 0 := a_one_eq_zero
+      rw [ha1]
+      decide
+    · have hn_ge : 2 ≤ n := by omega
+      have hnz : a n ≠ 0 := by
+        intro hc
+        have h_stable_zero : S n 0 = replicate n 1 := by
+          rw [← h_stable, hc]
+        have h_len : [n].length = (replicate n 1).length := by
+          have h_eq : [n] = S n 0 := rfl
+          rw [h_eq, h_stable_zero]
+        simp at h_len
+        omega
+      have hnz_an : a n ≠ 0 := hnz
+      have h_trim : trim_trailing_zeros (S (n + 1) (a n)) = S (n + 1) (a n) := S_trim (n + 1) (a n) hnz_an
+      have h_eq : S (n + 1) (a n) = replicate (n + 1) 1 := by
+        apply eq_replicate_of_getD _ (n + 1) h_trim
+        intro i
+        rw [S_coupling, h_stable, replicate_getD, replicate_getD, hp_eq]
+        split_ifs <;> omega
+      rw [S_succ, S_succ, h_eq, stable_replicate, stable_replicate]
+  · have hp_lt : p_index n (a n) < n := by
+      rcases hp_bounds with h1 | h2 | h3
+      · contradiction
+      · omega
+      · omega
+    have hp_ge : p_index n (a n) ≥ n - 2 := by
+      rcases hp_bounds with h1 | h2 | h3
+      · contradiction
+      · omega
+      · omega
+    exact stable_plus_two n (a n) hn h_stable hp_lt hp_ge
+
+lemma p_index_le_add (n t k : ℕ) : p_index n (t + k) ≤ p_index n t + k := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [Nat.add_succ]
+    have h_p : p_index n (t + k + 1) =
+      if (S n (t + k)).getD (p_index n (t + k)) 0 % 2 == 0 then p_index n (t + k) else p_index n (t + k) + 1 := rfl
+    rw [h_p]
+    split_ifs <;> omega
+
+lemma stable_and_bounds_second_sorry_step (n : ℕ) (hn : 3 ≤ n)
+  (h_is : is_one_except_two (S n (a (n - 1) + 1)) (n - 1) (n - 2))
+  (hp_ge : p_index n (a (n - 1) + 1) ≥ n - 3) :
+  p_index n (a (n - 1) + 2) ≥ n - 2 := by
+  have h_def : p_index n (a (n - 1) + 2) =
+    if (S n (a (n - 1) + 1)).getD (p_index n (a (n - 1) + 1)) 0 % 2 == 0 then
+      p_index n (a (n - 1) + 1)
+    else
+      p_index n (a (n - 1) + 1) + 1 := rfl
+  rw [h_def]
+  by_cases h_ge2 : p_index n (a (n - 1) + 1) ≥ n - 2
+  · split_ifs <;> omega
+  · have hp_eq : p_index n (a (n - 1) + 1) = n - 3 := by omega
+    rw [hp_eq]
+    have h_val : (S n (a (n - 1) + 1)).getD (n - 3) 0 = 1 := by
+      rw [h_is]
+      have h_lt : n - 3 < n - 1 := by omega
+      rw [if_pos h_lt]
+      have h_neq : n - 3 ≠ n - 2 := by omega
+      rw [if_neg h_neq]
+    rw [h_val]
+    simp
+    omega
+
+lemma stable_and_bounds_second_sorry_step2 (n : ℕ) (hn : 4 ≤ n)
+  (h_is : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 3))
+  (hp_ge : p_index n (a (n - 1)) ≥ n - 4) :
+  p_index n (a (n - 1) + 1) ≥ n - 3 := by
+  have h_def : p_index n (a (n - 1) + 1) =
+    if (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 then
+      p_index n (a (n - 1))
+    else
+      p_index n (a (n - 1)) + 1 := rfl
+  rw [h_def]
+  by_cases h_ge2 : p_index n (a (n - 1)) ≥ n - 3
+  · split_ifs <;> omega
+  · have hp_eq : p_index n (a (n - 1)) = n - 4 := by omega
+    rw [hp_eq]
+    have h_val : (S n (a (n - 1))).getD (n - 4) 0 = 1 := by
+      rw [h_is]
+      have h_lt : n - 4 < n - 1 := by omega
+      rw [if_pos h_lt]
+      have h_neq : n - 4 ≠ n - 3 := by omega
+      rw [if_neg h_neq]
+    rw [h_val]
+    simp
+    omega
+
+lemma stable_prev_of_stable (n : ℕ) (hn : 2 ≤ n) (ha_mem : S n (a n) = replicate n 1) :
+  S (n - 1) (a n) = replicate (n - 1) 1 := by
+  apply eq_replicate_of_getD _ (n - 1)
+  · have hnz : n - 1 ≠ 0 := by omega
+    have hnz_an : a n ≠ 0 := by
+      intro hc
+      have h_stable_zero : S n 0 = replicate n 1 := by
+        rw [← ha_mem, hc]
+      have h_len : [n].length = (replicate n 1).length := by
+        have h_eq : [n] = S n 0 := rfl
+        rw [h_eq, h_stable_zero]
+      simp at h_len
+      omega
+    exact S_trim (n - 1) (a n) hnz_an
+  · intro i
+    have h_coupling := S_coupling (n - 1) (a n) i
+    have h_eq_n : n - 1 + 1 = n := by omega
+    rw [h_eq_n] at h_coupling
+    rw [ha_mem, replicate_getD] at h_coupling
+    rw [replicate_getD]
+    by_cases hi : i < n - 1
+    · have hi_n : i < n := by omega
+      rw [if_pos hi_n] at h_coupling
+      have h_p_eq : p_index (n - 1) (a n) = n - 1 := by
+        have h_coupling_last := S_coupling (n - 1) (a n) (n - 1)
+        have h_eq_n : n - 1 + 1 = n := by omega
+        rw [h_eq_n] at h_coupling_last
+        rw [ha_mem, replicate_getD] at h_coupling_last
+        have h_pos : n - 1 < n := by omega
+        rw [if_pos h_pos] at h_coupling_last
+        have h_oob : (S (n - 1) (a n)).getD (n - 1) 0 = 0 := S_oob_strong (n - 1) (a n) (n - 1) (by omega)
+        rw [h_oob] at h_coupling_last
+        split_ifs at h_coupling_last <;> omega
+      have h_neq : i ≠ p_index (n - 1) (a n) := by omega
+      rw [if_neg h_neq] at h_coupling
+      rw [Nat.add_zero] at h_coupling
+      rw [if_pos hi]
+      exact h_coupling.symm
+    · have h_oob : (S (n - 1) (a n)).getD i 0 = 0 := S_oob_strong (n - 1) (a n) i (by omega)
+      rw [h_oob]
+      split_ifs; omega
+
+
+lemma stable_step_ge (n t k : ℕ)
+  (h_stable_n : S n t = replicate n 1)
+  (h_stable_succ : S (n + 1) (t + k) = replicate (n + 1) 1) :
+  k ≥ n - p_index n t := by
+  have h_coupling := S_coupling n (t + k) n
+  have h_val : (S (n + 1) (t + k)).getD n 0 = 1 := by
+    rw [h_stable_succ, replicate_getD]
+    simp
+  rw [h_val] at h_coupling
+  have h_stable_tk : S n (t + k) = replicate n 1 := stable_add n t h_stable_n k
+  have h_oob : (S n (t + k)).getD n 0 = 0 := by
+    rw [h_stable_tk, replicate_getD]
+    simp
+  rw [h_oob] at h_coupling
+  have h_p_eq : p_index n (t + k) = n := by
+    split_ifs at h_coupling <;> omega
+  have h_le := p_index_le_add n t k
+  omega
+
+
+lemma p_index_lt_prev_lemma (n t : ℕ) (hn : 3 ≤ n)
+  (hp_prev_n3 : p_index (n - 1) (a (n - 1)) = n - 3)
+  (ht : t ≤ a (n - 1)) :
+  p_index n t < n := by
+  induction t with
+  | zero =>
+    unfold p_index
+    omega
+  | succ t ih_t =>
+    have ht' : t ≤ a (n - 1) := by omega
+    have ih_val := ih_t ht'
+    rw [p_index]
+    split_ifs with h_even
+    · omega
+    · by_cases hp_eq_n1 : p_index n t = n - 1
+      · have h_coupling := S_coupling (n - 1) t (n - 1)
+        have h_oob : (S (n - 1) t).getD (n - 1) 0 = 0 := S_oob_strong (n - 1) t (n - 1) (by omega)
+        have h_not_p : n - 1 ≠ p_index (n - 1) t := by
+          have h_le_prev : p_index (n - 1) t ≤ p_index (n - 1) (a (n - 1)) := p_index_le (n - 1) t (a (n - 1)) ht'
+          rw [hp_prev_n3] at h_le_prev
+          omega
+        rw [h_oob] at h_coupling
+        rw [if_neg h_not_p] at h_coupling
+        have h_eq_n : n - 1 + 1 = n := by omega
+        rw [h_eq_n] at h_coupling
+        have h_even_val : (S n t).getD (p_index n t) 0 % 2 == 0 := by
+          rw [hp_eq_n1]
+          rw [h_coupling]
+          rfl
+        rw [h_even_val] at h_even
+        contradiction
+      · omega
+
+lemma p_index_lt_prev_plus_one_lemma (n : ℕ) (hn : 3 ≤ n)
+  (h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))))
+  (hp_prev_n3 : p_index (n - 1) (a (n - 1)) = n - 3) :
+  p_index n (a (n - 1) + 1) < n := by
+  have ht' : a (n - 1) ≤ a (n - 1) := by omega
+  have ih_val := p_index_lt_prev_lemma n (a (n - 1)) hn hp_prev_n3 ht'
+  rw [p_index]
+  split_ifs with h_even
+  · omega
+  · by_cases hp_eq_n1 : p_index n (a (n - 1)) = n - 1
+    · have h_val_zero : (S n (a (n - 1))).getD (n - 1) 0 = 0 := by
+        rw [h_is_one_except_two]
+        simp
+      have h_even_val : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 := by
+        rw [hp_eq_n1]
+        rw [h_val_zero]
+        rfl
+      rw [h_even_val] at h_even
+      contradiction
+    · omega
+
+lemma p_index_lt_prev_plus_two_lemma (n : ℕ) (hn : 3 ≤ n)
+  (h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))))
+  (hp_prev_n3 : p_index (n - 1) (a (n - 1)) = n - 3) :
+  p_index n (a (n - 1) + 2) < n := by
+  have h1 : a (n - 1) + 2 = a (n - 1) + 1 + 1 := rfl
+  rw [h1, p_index]
+  split_ifs with h_even
+  · have h_lt := p_index_lt_prev_plus_one_lemma n hn h_is_one_except_two hp_prev_n3
+    omega
+  · have h_lt := p_index_lt_prev_plus_one_lemma n hn h_is_one_except_two hp_prev_n3
+    by_cases hp_eq_n1 : p_index n (a (n - 1) + 1) = n - 1
+    · have h_is_one : is_one_except_two (S n (a (n - 1) + 1)) (n - 1) (n - 2) := by
+        have h_lt_prev_n1 : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+        have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) h_lt_prev_n1 h_is_one_except_two
+        have h_cond : p_index (n - 1) (a (n - 1)) + 1 < n - 1 := by
+          rw [hp_prev_n3]
+          omega
+        rw [if_pos h_cond] at h_step
+        have h_eq_n2 : p_index (n - 1) (a (n - 1)) + 1 = n - 2 := by
+          rw [hp_prev_n3]
+          omega
+        rw [h_eq_n2] at h_step
+        rw [S_succ]
+        exact h_step
+      have h_val_zero : (S n (a (n - 1) + 1)).getD (n - 1) 0 = 0 := by
+        rw [h_is_one]
+        simp
+      have h_even_val : (S n (a (n - 1) + 1)).getD (p_index n (a (n - 1) + 1)) 0 % 2 == 0 := by
+        rw [hp_eq_n1]
+        rw [h_val_zero]
+        rfl
+      rw [h_even_val] at h_even
+      contradiction
+    · omega
+
+lemma p_index_lt_prev_n2_lemma (n t : ℕ) (hn : 3 ≤ n)
+  (hp_prev_n2 : p_index (n - 1) (a (n - 1)) = n - 2)
+  (ht : t ≤ a (n - 1)) :
+  p_index n t < n := by
+  induction t with
+  | zero =>
+    unfold p_index
+    omega
+  | succ t ih_t =>
+    have ht' : t ≤ a (n - 1) := by omega
+    have ih_val := ih_t ht'
+    rw [p_index]
+    split_ifs with h_even
+    · omega
+    · by_cases hp_eq_n1 : p_index n t = n - 1
+      · have h_coupling := S_coupling (n - 1) t (n - 1)
+        have h_oob : (S (n - 1) t).getD (n - 1) 0 = 0 := S_oob_strong (n - 1) t (n - 1) (by omega)
+        have h_not_p : n - 1 ≠ p_index (n - 1) t := by
+          have h_le_prev : p_index (n - 1) t ≤ p_index (n - 1) (a (n - 1)) := p_index_le (n - 1) t (a (n - 1)) ht'
+          rw [hp_prev_n2] at h_le_prev
+          omega
+        rw [h_oob] at h_coupling
+        rw [if_neg h_not_p] at h_coupling
+        have h_eq_n : n - 1 + 1 = n := by omega
+        rw [h_eq_n] at h_coupling
+        have h_even_val : (S n t).getD (p_index n t) 0 % 2 == 0 := by
+          rw [hp_eq_n1]
+          rw [h_coupling]
+          rfl
+        rw [h_even_val] at h_even
+        contradiction
+      · omega
+
+lemma p_index_lt_prev_plus_one_n2_lemma (n : ℕ) (hn : 3 ≤ n)
+  (h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 2))
+  (hp_prev_n2 : p_index (n - 1) (a (n - 1)) = n - 2) :
+  p_index n (a (n - 1) + 1) < n := by
+  have ht' : a (n - 1) ≤ a (n - 1) := by omega
+  have ih_val := p_index_lt_prev_n2_lemma n (a (n - 1)) hn hp_prev_n2 ht'
+  rw [p_index]
+  split_ifs with h_even
+  · omega
+  · by_cases hp_eq_n1 : p_index n (a (n - 1)) = n - 1
+    · have h_val_zero : (S n (a (n - 1))).getD (n - 1) 0 = 0 := by
+        rw [h_is_one_except_two]
+        simp
+      have h_even_val : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 := by
+        rw [hp_eq_n1]
+        rw [h_val_zero]
+        rfl
+      rw [h_even_val] at h_even
+      contradiction
+    · omega
+
+
+lemma tracker_relation_at_stable (n : ℕ) (hn : 2 ≤ n)
+  (h_stable_prev : S (n - 1) (a (n - 1)) = replicate (n - 1) 1)
+  (hp_bounds_prev : p_index (n - 1) (a (n - 1)) = n - 2 ∨ p_index (n - 1) (a (n - 1)) = n - 3) :
+  p_index n (a (n - 1)) + 1 ≥ p_index (n - 1) (a (n - 1)) := by
+  by_contra h_lt
+  push_neg at h_lt
+  have h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) := by
+    intro i
+    have h_eq_n : n = n - 1 + 1 := by omega
+    nth_rw 1 [h_eq_n]
+    rw [S_coupling]
+    rw [h_stable_prev, replicate_getD]
+    split_ifs <;> omega
+  have h_val_p : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 = 1 := by
+    rw [h_is_one_except_two]
+    have h_lt_n1 : p_index n (a (n - 1)) < n - 1 := by
+      rcases hp_bounds_prev with hp1 | hp2 <;> omega
+    rw [if_pos h_lt_n1]
+    have h_neq : p_index n (a (n - 1)) ≠ p_index (n - 1) (a (n - 1)) := by omega
+    rw [if_neg h_neq]
+  have h_p_next : p_index n (a (n - 1) + 1) = p_index n (a (n - 1)) + 1 := by
+    have h_def : p_index n (a (n - 1) + 1) = if (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 then p_index n (a (n - 1)) else p_index n (a (n - 1)) + 1 := rfl
+    rw [h_def, h_val_p]
+    rfl
+  rcases hp_bounds_prev with hp_prev_n2 | hp_prev_n3
+  · -- Case 1: p_index (n-1) (a(n-1)) = n-2
+    have h_lt_prev_n1 : n - 2 < n - 1 := by omega
+    have h_is_one_except_two' : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 2) := by
+      rw [← hp_prev_n2]
+      exact h_is_one_except_two
+    have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (n - 2) h_lt_prev_n1 h_is_one_except_two'
+    have h_cond : ¬ (n - 2 + 1 < n - 1) := by omega
+    rw [if_neg h_cond] at h_step
+    have h_eq_step : ∀ i, (S n (a (n - 1) + 1)).getD i 0 = (replicate n 1).getD i 0 := by
+      intro i
+      rw [S_succ]
+      rw [h_step i]
+      rw [replicate_getD]
+      have : n - 1 + 1 = n := by omega
+      rw [this]
+    have h_t_nz : a (n - 1) + 1 ≠ 0 := by omega
+    have h_trim := S_trim n (a (n - 1) + 1) h_t_nz
+    have h_stable : S n (a (n - 1) + 1) = replicate n 1 := by
+      apply eq_replicate_of_getD _ n h_trim h_eq_step
+    have hnz_n : n ≠ 0 := by omega
+    have ha_le : a n ≤ a (n - 1) + 1 := by
+      rw [a_eq_sInf_stable_steps hnz_n]
+      have h_mem : a (n - 1) + 1 ∈ stable_steps n := h_stable
+      exact Nat.sInf_le h_mem
+    have ha_ge : a n ≥ a (n - 1) + 1 := by
+      by_contra h_lt
+      have h_le : a n ≤ a (n - 1) := by omega
+      have hnz_prev : n - 1 ≠ 0 := by omega
+      have ha_mem : S n (a n) = replicate n 1 := by
+        rw [a_eq_sInf_stable_steps hnz_n]
+        have h_nonempty : (stable_steps n).Nonempty := ⟨a (n - 1) + 1, h_stable⟩
+        exact Nat.sInf_mem h_nonempty
+      have h_eq : a n = a (n - 1) := by
+        have ha_prev_le_an : a (n - 1) ≤ a n := by
+          rw [a_eq_sInf_stable_steps hnz_prev]
+          have h_stable_prev_an : S (n - 1) (a n) = replicate (n - 1) 1 := stable_prev_of_stable n (by omega) ha_mem
+          exact Nat.sInf_le h_stable_prev_an
+        omega
+      have h_stable_an : S n (a n) = S n (a (n - 1)) := by rw [h_eq]
+      have h_get : (S n (a n)).getD (p_index (n - 1) (a (n - 1))) 0 = 1 := by
+        rw [ha_mem, replicate_getD]
+        have : p_index (n - 1) (a (n - 1)) < n := by omega
+        simp [this]
+      have h_get_prev : (S n (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 = 2 := by
+        rw [h_is_one_except_two]
+        have : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+        simp [this]
+      rw [h_stable_an] at h_get
+      omega
+    have ha_eq_val : a n = a (n - 1) + 1 := by omega
+    have h_stable_an : S n (a n) = replicate n 1 := by
+      rw [ha_eq_val]
+      exact h_stable
+    have h_stable_prev_an : S (n - 1) (a n) = replicate (n - 1) 1 := by
+      rw [ha_eq_val]
+      exact stable_add (n - 1) (a (n - 1)) h_stable_prev 1
+    have h_p_eq : p_index (n - 1) (a (n - 1) + 1) = n - 1 := by
+      have h_add : p_index (n - 1) (a (n - 1) + 1) = p_index (n - 1) (a (n - 1)) + 1 := by
+        have h_p : p_index (n - 1) (a (n - 1) + 1) =
+          if (S (n - 1) (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 % 2 == 0 then p_index (n - 1) (a (n - 1)) else p_index (n - 1) (a (n - 1)) + 1 := rfl
+        have h_val : (S (n - 1) (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 = 1 := by
+          rw [h_stable_prev, hp_prev_n2]
+          rw [replicate_getD]
+          rw [if_pos (by omega)]
+        rw [h_p, h_val]
+        rfl
+      rw [h_add, hp_prev_n2]
+      omega
+    have h_coupling3 := S_coupling (n - 1) (a n) (n - 1)
+    have h_n_eq : n - 1 + 1 = n := by omega
+    rw [h_n_eq] at h_coupling3
+    rw [h_stable_an, h_stable_prev_an] at h_coupling3
+    rw [ha_eq_val] at h_coupling3
+    have h_get_n1 : (replicate n 1).getD (n - 1) 0 = 1 := by
+      rw [replicate_getD, if_pos]
+      omega
+    have h_get_n1' : (replicate (n - 1) 1).getD (n - 1) 0 = 0 := by
+      rw [replicate_getD, if_neg]
+      omega
+    rw [h_get_n1, h_get_n1'] at h_coupling3
+    rw [h_p_eq] at h_coupling3
+    simp at h_coupling3
+  · -- Case 2: p_index (n-1) (a(n-1)) = n-3
+    have ha_ge : a n ≥ a (n - 1) + 1 := by
+      by_contra h_lt
+      have h_le : a n ≤ a (n - 1) := by omega
+      have hnz : n ≠ 0 := by omega
+      have hnz_prev : n - 1 ≠ 0 := by omega
+      have h_nonempty : (stable_steps n).Nonempty := by
+        have hnz_n1 : 1 ≤ n - 1 := by omega
+        have hp_lt_prev : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+        have hp_ge_prev : p_index (n - 1) (a (n - 1)) ≥ n - 1 - 2 := by omega
+        have h_step := stable_plus_two (n - 1) (a (n - 1)) hnz_n1 h_stable_prev hp_lt_prev hp_ge_prev
+        have h_eq : n - 1 + 1 = n := by omega
+        rw [h_eq] at h_step
+        exact ⟨a (n - 1) + 2, h_step⟩
+      have ha_mem : S n (a n) = replicate n 1 := by
+        rw [a_eq_sInf_stable_steps hnz]
+        exact Nat.sInf_mem h_nonempty
+      have h_eq : a n = a (n - 1) := by
+        have ha_prev_le_an : a (n - 1) ≤ a n := by
+          rw [a_eq_sInf_stable_steps hnz_prev]
+          have h_stable_prev_an : S (n - 1) (a n) = replicate (n - 1) 1 := stable_prev_of_stable n (by omega) ha_mem
+          exact Nat.sInf_le h_stable_prev_an
+        omega
+      have h_stable_an : S n (a n) = S n (a (n - 1)) := by rw [h_eq]
+      have h_get : (S n (a n)).getD (p_index (n - 1) (a (n - 1))) 0 = 1 := by
+        rw [ha_mem, replicate_getD]
+        have : p_index (n - 1) (a (n - 1)) < n := by omega
+        simp [this]
+      have h_get_prev : (S n (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 = 2 := by
+        rw [h_is_one_except_two]
+        have : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+        simp [this]
+      rw [h_stable_an] at h_get
+      omega
+    by_cases ha_eq_val : a n = a (n - 1) + 1
+    · have h_stable_an : S n (a n) = replicate n 1 := by
+        have hnz : n ≠ 0 := by omega
+        rw [a_eq_sInf_stable_steps hnz]
+        have hnz_prev : n - 1 ≠ 0 := by omega
+        have h_nonempty : (stable_steps n).Nonempty := by
+          have hp_lt_prev : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+          have hp_ge_prev : p_index (n - 1) (a (n - 1)) ≥ n - 1 - 2 := by omega
+          have h_step := stable_plus_two (n - 1) (a (n - 1)) (by omega) h_stable_prev hp_lt_prev hp_ge_prev
+          have h_eq : n - 1 + 1 = n := by omega
+          rw [h_eq] at h_step
+          exact ⟨a (n - 1) + 2, h_step⟩
+        exact Nat.sInf_mem h_nonempty
+      have h_stable_n1 : S n (a (n - 1) + 1) = replicate n 1 := by
+        rw [← ha_eq_val]
+        exact h_stable_an
+      have hnz_n1 : n - 1 ≠ 0 := by omega
+      have h_stable_prev_an : S (n - 1) (a (n - 1) + 1) = replicate (n - 1) 1 :=
+        stable_add (n - 1) (a (n - 1)) h_stable_prev 1
+      have h_coupling3 := S_coupling (n - 1) (a (n - 1) + 1) (n - 1)
+      have h_n_eq : n - 1 + 1 = n := by omega
+      rw [h_n_eq] at h_coupling3
+      rw [h_stable_n1, h_stable_prev_an] at h_coupling3
+      have h_get_n1 : (replicate n 1).getD (n - 1) 0 = 1 := by
+        rw [replicate_getD]
+        split_ifs
+        · rfl
+        · omega
+      have h_get_n1_prev : (replicate (n - 1) 1).getD (n - 1) 0 = 0 := by
+        rw [replicate_getD]
+        split_ifs
+        · omega
+        · rfl
+      have h_p_eq : p_index (n - 1) (a (n - 1) + 1) = n - 2 := by
+        have h_p : p_index (n - 1) (a (n - 1) + 1) =
+          if (S (n - 1) (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 % 2 == 0 then
+            p_index (n - 1) (a (n - 1))
+          else
+            p_index (n - 1) (a (n - 1)) + 1 := rfl
+        rw [h_p, hp_prev_n3, h_stable_prev]
+        rw [replicate_getD]
+        have h_pos : n - 3 < n - 1 := by omega
+        rw [if_pos h_pos]
+        omega
+      rw [h_get_n1, h_get_n1_prev, h_p_eq] at h_coupling3
+      split_ifs at h_coupling3 <;> omega
+    · have ha_eq_val2 : a n = a (n - 1) + 2 := by
+        have h_stable_n : S n (a (n - 1) + 2) = replicate n 1 := by
+          have hnz_n1 : 1 ≤ n - 1 := by omega
+          have hp_lt_prev : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+          have hp_ge_prev : p_index (n - 1) (a (n - 1)) ≥ n - 1 - 2 := by omega
+          have h_step := stable_plus_two (n - 1) (a (n - 1)) hnz_n1 h_stable_prev hp_lt_prev hp_ge_prev
+          have h_eq : n - 1 + 1 = n := by omega
+          rw [h_eq] at h_step
+          exact h_step
+        have ha_le : a n ≤ a (n - 1) + 2 := by
+          have hnz : n ≠ 0 := by omega
+          rw [a_eq_sInf_stable_steps hnz]
+          exact Nat.sInf_le h_stable_n
+        omega
+      have h_stable_n : S n (a (n - 1) + 2) = replicate n 1 := by
+        have hnz_n1 : 1 ≤ n - 1 := by omega
+        have hp_lt_prev : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+        have hp_ge_prev : p_index (n - 1) (a (n - 1)) ≥ n - 1 - 2 := by omega
+        have h_step := stable_plus_two (n - 1) (a (n - 1)) hnz_n1 h_stable_prev hp_lt_prev hp_ge_prev
+        have h_eq : n - 1 + 1 = n := by omega
+        rw [h_eq] at h_step
+        exact h_step
+      have h_stable_an : S n (a n) = replicate n 1 := by
+        rw [ha_eq_val2]
+        exact h_stable_n
+      have h_stable_prev_an : S (n - 1) (a n) = replicate (n - 1) 1 := by
+        rw [ha_eq_val2]
+        exact stable_add (n - 1) (a (n - 1)) h_stable_prev 2
+      have h_p_eq : p_index (n - 1) (a (n - 1) + 1) = n - 2 := by
+        have h_add : p_index (n - 1) (a (n - 1) + 1) = p_index (n - 1) (a (n - 1)) + 1 := by
+          have h_p : p_index (n - 1) (a (n - 1) + 1) =
+            if (S (n - 1) (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 % 2 == 0 then p_index (n - 1) (a (n - 1)) else p_index (n - 1) (a (n - 1)) + 1 := rfl
+          have h_val : (S (n - 1) (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 = 1 := by
+            rw [h_stable_prev, hp_prev_n3]
+            rw [replicate_getD]
+            rw [if_pos (by omega)]
+          rw [h_p, h_val]
+          simp
+        rw [h_add, hp_prev_n3]
+        omega
+      by_cases h_cases : p_index n (a (n - 1)) = n - 4
+      · have h_p_val : p_index n (a (n - 1) + 1) = n - 3 := by
+          rw [h_p_next, h_cases]
+          omega
+        have h_is_one_except_two_n3 : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 3) := by
+          rw [← hp_prev_n3]
+          exact h_is_one_except_two
+        have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (n - 3) (by omega) h_is_one_except_two_n3
+        have h_cond : n - 3 + 1 < n - 1 := by omega
+        rw [if_pos h_cond] at h_step
+        have h_is_one : (S n (a (n - 1) + 1)).getD (n - 3) 0 = 1 := by
+          rw [S_succ]
+          rw [h_step (n - 3)]
+          split_ifs <;> omega
+        have h_p_val2 : p_index n (a (n - 1) + 2) = n - 2 := by
+          have h_p_def2 : p_index n (a (n - 1) + 2) =
+            if (S n (a (n - 1) + 1)).getD (p_index n (a (n - 1) + 1)) 0 % 2 == 0 then
+              p_index n (a (n - 1) + 1)
+            else
+              p_index n (a (n - 1) + 1) + 1 := rfl
+          rw [h_p_def2, h_p_val, h_is_one]
+          simp
+          omega
+        have h_lt_n2 : p_index n (a (n - 1) + 2) < n - 2 := by
+          have h_le_add := p_index_le_add n (a (n - 1)) 2
+          omega
+        rw [h_p_val2] at h_lt_n2
+        omega
+      · have h_is_one_except_two_n3 : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 3) := by
+          rw [← hp_prev_n3]
+          exact h_is_one_except_two
+        have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (n - 3) (by omega) h_is_one_except_two_n3
+        have h_cond : n - 3 + 1 < n - 1 := by omega
+        rw [if_pos h_cond] at h_step
+        have h_coupling4 := S_coupling (n - 1) (a (n - 1) + 1) (n - 2)
+        have h_n_eq : n - 1 + 1 = n := by omega
+        rw [h_n_eq] at h_coupling4
+        have h_stable_prev_1 : S (n - 1) (a (n - 1) + 1) = replicate (n - 1) 1 := stable_add (n - 1) (a (n - 1)) h_stable_prev 1
+        rw [h_stable_prev_1] at h_coupling4
+        rw [h_p_eq] at h_coupling4
+        have h_get_prev_n2 : (replicate (n - 1) 1).getD (n - 2) 0 = 1 := by
+          rw [replicate_getD, if_pos]
+          omega
+        rw [h_get_prev_n2] at h_coupling4
+        have h_val_n2_next : (S n (a (n - 1) + 1)).getD (n - 2) 0 = 2 := by
+          rw [S_succ, ca_step_getD]
+          have h_val_n2 : (S n (a (n - 1))).getD (n - 2) 0 = 1 := by
+            have h_eq_n : n = n - 1 + 1 := by omega
+            nth_rw 1 [h_eq_n]
+            rw [S_coupling (n - 1) (a (n - 1)) (n - 2)]
+            rw [h_stable_prev, replicate_getD]
+            rw [hp_prev_n3]
+            split_ifs <;> omega
+          have h_val_n3 : (S n (a (n - 1))).getD (n - 3) 0 = 2 := by
+            have h_eq_n : n = n - 1 + 1 := by omega
+            nth_rw 1 [h_eq_n]
+            rw [S_coupling (n - 1) (a (n - 1)) (n - 3)]
+            rw [h_stable_prev, replicate_getD]
+            rw [hp_prev_n3]
+            split_ifs <;> omega
+          have h_eq_sub : n - 2 - 1 = n - 3 := by omega
+          rw [h_eq_sub]
+          rw [h_val_n2, h_val_n3]
+          unfold half_ceil half_floor
+          have h_nz_n2 : n - 2 ≠ 0 := by omega
+          rw [if_neg h_nz_n2]
+          rfl
+        rw [h_val_n2_next] at h_coupling4
+        omega
+
+mutual
+  theorem stable_and_bounds_first_sorry (n : ℕ)
+    (hp_prev_n2 : p_index (n - 1) (a (n - 1)) = n - 2)
+    (h_lt_n2 : p_index n (a (n - 1) + 1) < n - 2)
+    (h_p_le : p_index n (a (n - 1)) < n - 2)
+    (h_val_one : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 = 1)
+    (h_p_next : p_index n (a (n - 1) + 1) = p_index n (a (n - 1)) + 1)
+    (h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 2))
+    (h_stable_prev : S (n - 1) (a (n - 1)) = replicate (n - 1) 1) :
+    False := by
+    have hn2 : 2 ≤ n := by omega
+    have hp_bounds_prev : p_index (n - 1) (a (n - 1)) = n - 2 ∨ p_index (n - 1) (a (n - 1)) = n - 3 := by omega
+    have h_lag := tracker_relation_at_stable n hn2 h_stable_prev hp_bounds_prev
+    omega
+  termination_by 3 * n + 0
+  decreasing_by omega
+
+  theorem stable_and_bounds_second_sorry (n : ℕ) (hn3 : 3 ≤ n)
+    (h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))))
+    (hp_prev_n3 : p_index (n - 1) (a (n - 1)) = n - 3)
+    (h_is : is_one_except_two (S n (a (n - 1) + 1)) (n - 1) (n - 2))
+    (h_stable_prev : S (n - 1) (a (n - 1)) = replicate (n - 1) 1)
+    (h_stable_n2 : S n (a (n - 1) + 2) = replicate n 1) :
+    p_index n (a (n - 1) + 2) ≥ n - 2 := by
+    have hn2 : 2 ≤ n := by omega
+    have hp_bounds_prev : p_index (n - 1) (a (n - 1)) = n - 2 ∨ p_index (n - 1) (a (n - 1)) = n - 3 := by omega
+    have h_lag := tracker_relation_at_stable n hn2 h_stable_prev hp_bounds_prev
+    have hp_ge : p_index n (a (n - 1) + 1) ≥ n - 3 := by
+      by_cases h4 : 4 ≤ n
+      · have h_is' : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 3) := by
+          rw [← hp_prev_n3]
+          exact h_is_one_except_two
+        have hp_ge_a : p_index n (a (n - 1)) ≥ n - 4 := by omega
+        exact stable_and_bounds_second_sorry_step2 n h4 h_is' hp_ge_a
+      · omega
+    exact stable_and_bounds_second_sorry_step n hn3 h_is hp_ge
+  termination_by 3 * n + 1
+  decreasing_by omega
+
+  theorem stable_and_bounds (n : ℕ) (hn : 1 ≤ n) :
+    (S n (a n) = replicate n 1 ∧ (stable_steps n).Nonempty) ∧
+    (2 ≤ n + 1 → p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2) := by
+    by_cases hn1 : n = 1
+    · subst hn1
+      have h1 : S 1 (a 1) = replicate 1 1 ∧ (stable_steps 1).Nonempty := by
+        have ha1 : a 1 = 0 := a_one_eq_zero
+        rw [ha1]
+        have h_zero : 0 ∈ stable_steps 1 := by
+          unfold stable_steps S
+          decide
+        exact ⟨by decide, ⟨0, h_zero⟩⟩
+      have h2 : 2 ≤ 1 + 1 → p_index 1 (a 1) = 1 - 1 ∨ p_index 1 (a 1) = 1 - 2 := by
+        intro _
+        have ha1 : a 1 = 0 := a_one_eq_zero
+        rw [ha1]
+        left
+        rfl
+      exact ⟨h1, h2⟩
+    · have hn_ge : 2 ≤ n := by omega
+      by_cases hn2 : n = 2
+      · subst hn2
+        have h_s2 : S 2 1 = replicate 2 1 := by decide
+        have h1 : S 2 (a 2) = replicate 2 1 ∧ (stable_steps 2).Nonempty := by
+          rw [a_two_eq_one]
+          exact ⟨h_s2, ⟨1, h_s2⟩⟩
+        have h2 : 2 ≤ 2 + 1 → p_index 2 (a 2) = 2 - 1 ∨ p_index 2 (a 2) = 2 - 2 := by
+          intro _
+          rw [a_two_eq_one]
+          right
+          rfl
+        exact ⟨h1, h2⟩
+      have hn3 : 3 ≤ n := by omega
+      have hn_sub_ge : 1 ≤ n - 1 := by omega
+      have h_ih := stable_and_bounds (n - 1) hn_sub_ge
+      rcases h_ih with ⟨⟨h_stable_prev, h_nonempty_prev⟩, hp_bounds_prev_fn⟩
+      have hp_bounds_prev := hp_bounds_prev_fn (by omega)
+      have h_n2_eq : n - 1 - 1 = n - 2 := by omega
+      have h_n3_eq : n - 1 - 2 = n - 3 := by omega
+      rw [h_n2_eq, h_n3_eq] at hp_bounds_prev
+      have h_is_one_except_two : is_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) := by
+        intro i
+        have h_eq_n : n = n - 1 + 1 := by omega
+        nth_rw 1 [h_eq_n]
+        rw [S_coupling (n - 1) (a (n - 1)) i]
+        rw [h_stable_prev]
+        rw [replicate_getD]
+        split_ifs <;> omega
+      have h_p_lt : p_index (n - 1) (a (n - 1)) < n - 1 := by
+        rcases hp_bounds_prev with hp1 | hp2 <;> omega
+      have h_steps := steps_to_stable (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) (n - 1 - p_index (n - 1) (a (n - 1))) h_p_lt rfl h_is_one_except_two
+      rw [← S_add] at h_steps
+      have h_stable : S n (a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1)))) = replicate n 1 := by
+        have h_t_nz : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) ≠ 0 := by omega
+        have h_trim := S_trim n (a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1)))) h_t_nz
+        apply eq_replicate_of_getD _ n h_trim
+        intro i
+        have h_steps_i := h_steps i
+        rw [replicate_getD]
+        have h_eq_n : n - 1 + 1 = n := by omega
+        rw [h_eq_n] at h_steps_i
+        exact h_steps_i
+      have h_stable_mem : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) ∈ stable_steps n := h_stable
+      have h_nonempty : (stable_steps n).Nonempty := ⟨a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))), h_stable_mem⟩
+      have ha_eq : a n = sInf (stable_steps n) := a_eq_sInf_stable_steps (by omega)
+      have ha_mem : a n ∈ stable_steps n := by
+        rw [ha_eq]
+        exact Nat.sInf_mem h_nonempty
+      have h_part1 : S n (a n) = replicate n 1 ∧ (stable_steps n).Nonempty := ⟨ha_mem, h_nonempty⟩
+      have h_part2 : 2 ≤ n + 1 → p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2 := by
+        intro _
+        have h_stable_prev_an : S (n - 1) (a n) = replicate (n - 1) 1 := by
+          apply eq_replicate_of_getD _ (n - 1)
+          · have hnz : n - 1 ≠ 0 := by omega
+            have hnz_an : a n ≠ 0 := by
+              intro hc
+              have h_stable_zero : S n 0 = replicate n 1 := by
+                rw [← ha_mem, hc]
+              have h_len : [n].length = (replicate n 1).length := by
+                have h_eq : [n] = S n 0 := rfl
+                rw [h_eq, h_stable_zero]
+              simp at h_len
+              omega
+            exact S_trim (n - 1) (a n) hnz_an
+          · intro i
+            have h_coupling := S_coupling (n - 1) (a n) i
+            have h_eq_n : n - 1 + 1 = n := by omega
+            rw [h_eq_n] at h_coupling
+            rw [ha_mem, replicate_getD] at h_coupling
+            rw [replicate_getD]
+            by_cases hi : i < n - 1
+            · have hi_n : i < n := by omega
+              rw [if_pos hi_n] at h_coupling
+              have h_p_eq : p_index (n - 1) (a n) = n - 1 := by
+                have h_coupling_last := S_coupling (n - 1) (a n) (n - 1)
+                have h_eq_n : n - 1 + 1 = n := by omega
+                rw [h_eq_n] at h_coupling_last
+                rw [ha_mem, replicate_getD] at h_coupling_last
+                have h_pos : n - 1 < n := by omega
+                rw [if_pos h_pos] at h_coupling_last
+                have h_oob : (S (n - 1) (a n)).getD (n - 1) 0 = 0 := S_oob_strong (n - 1) (a n) (n - 1) (by omega)
+                rw [h_oob] at h_coupling_last
+                split_ifs at h_coupling_last <;> omega
+              have h_neq : i ≠ p_index (n - 1) (a n) := by omega
+              rw [if_neg h_neq] at h_coupling
+              rw [Nat.add_zero] at h_coupling
+              rw [if_pos hi]
+              exact h_coupling.symm
+            · have h_oob : (S (n - 1) (a n)).getD i 0 = 0 := S_oob_strong (n - 1) (a n) i (by omega)
+              rw [h_oob]
+              split_ifs; omega
+        have ha_succ_ge : a n ≥ a (n - 1) + 1 := by
+          by_contra h_lt
+          have h_le : a n ≤ a (n - 1) := by omega
+          have h_eq : a n = a (n - 1) := by
+            have ha_prev_le_an : a (n - 1) ≤ a n := by
+              have h_nz_prev : n - 1 ≠ 0 := by omega
+              rw [a_eq_sInf_stable_steps h_nz_prev]
+              exact Nat.sInf_le h_stable_prev_an
+            omega
+          have h_stable_an : S n (a n) = S n (a (n - 1)) := by rw [h_eq]
+          have h_get : (S n (a n)).getD (p_index (n - 1) (a (n - 1))) 0 = 1 := by
+            rw [ha_mem, replicate_getD]
+            have : p_index (n - 1) (a (n - 1)) < n := by
+              rcases hp_bounds_prev with h1 | h2 <;> omega
+            simp [this]
+          have h_get_prev : (S n (a (n - 1))).getD (p_index (n - 1) (a (n - 1))) 0 = 2 := by
+            rw [h_is_one_except_two]
+            have : p_index (n - 1) (a (n - 1)) < n - 1 := by
+              rcases hp_bounds_prev with h1 | h2 <;> omega
+            simp [this]
+          rw [h_stable_an] at h_get
+          omega
+        have h_p_lt_prev : ∀ t, t ≤ a (n - 1) → p_index n t < n := by
+          intro t ht
+          induction t with
+          | zero =>
+            unfold p_index
+            omega
+          | succ t ih_t =>
+            have ht' : t ≤ a (n - 1) := by omega
+            have ih_val := ih_t ht'
+            rw [p_index]
+            split_ifs with h_even
+            · omega
+            · by_cases hp_eq_n1 : p_index n t = n - 1
+              · have h_coupling := S_coupling (n - 1) t (n - 1)
+                have h_oob : (S (n - 1) t).getD (n - 1) 0 = 0 := S_oob_strong (n - 1) t (n - 1) (by omega)
+                have h_not_p : n - 1 ≠ p_index (n - 1) t := by
+                  have h_le_prev : p_index (n - 1) t ≤ p_index (n - 1) (a (n - 1)) := p_index_le (n - 1) t (a (n - 1)) ht'
+                  rcases hp_bounds_prev with h1 | h2 <;> omega
+                rw [h_oob] at h_coupling
+                rw [if_neg h_not_p] at h_coupling
+                have h_eq_n : n - 1 + 1 = n := by omega
+                rw [h_eq_n] at h_coupling
+                have h_even_val : (S n t).getD (p_index n t) 0 % 2 == 0 := by
+                  rw [hp_eq_n1]
+                  rw [h_coupling]
+                  rfl
+                rw [h_even_val] at h_even
+                contradiction
+              · omega
+        have h_p_lt_prev_plus_one : p_index n (a (n - 1) + 1) < n := by
+          have ht' : a (n - 1) ≤ a (n - 1) := by omega
+          have ih_val := h_p_lt_prev (a (n - 1)) ht'
+          rw [p_index]
+          split_ifs with h_even
+          · omega
+          · by_cases hp_eq_n1 : p_index n (a (n - 1)) = n - 1
+            · have h_val_zero : (S n (a (n - 1))).getD (n - 1) 0 = 0 := by
+                rw [h_is_one_except_two]
+                simp
+              have h_even_val : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 := by
+                rw [hp_eq_n1]
+                rw [h_val_zero]
+                rfl
+              rw [h_even_val] at h_even
+              contradiction
+            · omega
+        have h_p_lt_prev_plus_two_of_n3 : p_index (n - 1) (a (n - 1)) = n - 3 → p_index n (a (n - 1) + 2) < n := by
+          intro hp_prev_eq
+          have h1 : a (n - 1) + 2 = a (n - 1) + 1 + 1 := rfl
+          rw [h1, p_index]
+          split_ifs with h_even
+          · have h_lt := h_p_lt_prev_plus_one
+            omega
+          · by_cases hp_eq_n1 : p_index n (a (n - 1) + 1) = n - 1
+            · have h_is_one : is_one_except_two (S n (a (n - 1) + 1)) (n - 1) (n - 2) := by
+                have h_lt_prev_n1 : p_index (n - 1) (a (n - 1)) < n - 1 := by omega
+                have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) h_lt_prev_n1 h_is_one_except_two
+                have h_cond : p_index (n - 1) (a (n - 1)) + 1 < n - 1 := by
+                  rw [hp_prev_eq]
+                  omega
+                rw [if_pos h_cond] at h_step
+                have h_eq_n2 : p_index (n - 1) (a (n - 1)) + 1 = n - 2 := by
+                  rw [hp_prev_eq]
+                  omega
+                rw [h_eq_n2] at h_step
+                rw [S_succ]
+                exact h_step
+              have h_val_zero : (S n (a (n - 1) + 1)).getD (n - 1) 0 = 0 := by
+                rw [h_is_one]
+                simp
+              have h_even_val : (S n (a (n - 1) + 1)).getD (p_index n (a (n - 1) + 1)) 0 % 2 == 0 := by
+                rw [hp_eq_n1]
+                rw [h_val_zero]
+                rfl
+              rw [h_even_val] at h_even
+              contradiction
+            · omega
+        have hp_lt : p_index n (a n) < n := by
+          rcases hp_bounds_prev with hp_prev_n2 | hp_prev_n3
+          · have h_eq : a n = a (n - 1) + 1 := by
+              have ha_le : a n ≤ a (n - 1) + 1 := by
+                have h_eq_K : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) = a (n - 1) + 1 := by omega
+                rw [ha_eq, ← h_eq_K]
+                exact Nat.sInf_le h_stable_mem
+              omega
+            rw [h_eq]
+            exact h_p_lt_prev_plus_one
+          · have h_eq_cases : a n = a (n - 1) + 1 ∨ a n = a (n - 1) + 2 := by
+              have ha_le : a n ≤ a (n - 1) + 2 := by
+                have h_eq_K : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) = a (n - 1) + 2 := by omega
+                rw [ha_eq, ← h_eq_K]
+                exact Nat.sInf_le h_stable_mem
+              omega
+            rcases h_eq_cases with h_case1 | h_case2
+            · rw [h_case1]
+              exact h_p_lt_prev_plus_one
+            · rw [h_case2]
+              exact h_p_lt_prev_plus_two_of_n3 hp_prev_n3
+        have hp_ge : p_index n (a n) ≥ n - 2 := by
+          rcases hp_bounds_prev with hp_prev_n2 | hp_prev_n3
+          · have h_eq : a n = a (n - 1) + 1 := by
+              have ha_le : a n ≤ a (n - 1) + 1 := by
+                have h_eq_K : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) = a (n - 1) + 1 := by omega
+                rw [ha_eq, ← h_eq_K]
+                exact Nat.sInf_le h_stable_mem
+              omega
+            rw [h_eq]
+            by_contra h_lt
+            have h_lt_n2 : p_index n (a (n - 1) + 1) < n - 2 := by omega
+            have h_p_le : p_index n (a (n - 1)) < n - 2 := by
+              have h_mono := p_index_mono n (a (n - 1))
+              omega
+            have h_val_one : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 = 1 := by
+              rw [h_is_one_except_two (p_index n (a (n - 1)))]
+              have h_lt_n1 : p_index n (a (n - 1)) < n - 1 := by omega
+              rw [if_pos h_lt_n1]
+              rw [hp_prev_n2]
+              have h_neq : p_index n (a (n - 1)) ≠ n - 2 := by omega
+              rw [if_neg h_neq]
+            have h_odd_val : (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 ≠ 0 := by
+              rw [h_val_one]
+              decide
+            have h_p_next : p_index n (a (n - 1) + 1) = p_index n (a (n - 1)) + 1 := by
+              have h_def : p_index n (a (n - 1) + 1) = if (S n (a (n - 1))).getD (p_index n (a (n - 1))) 0 % 2 == 0 then p_index n (a (n - 1)) else p_index n (a (n - 1)) + 1 := rfl
+              rw [h_def, h_val_one]
+              rfl
+            have h_is_one_except_two_n2 : is_one_except_two (S n (a (n - 1))) (n - 1) (n - 2) := by
+              rw [← hp_prev_n2]
+              exact h_is_one_except_two
+            exact stable_and_bounds_first_sorry n hp_prev_n2 h_lt_n2 h_p_le h_val_one h_p_next h_is_one_except_two_n2 h_stable_prev
+          · have h_eq_cases : a n = a (n - 1) + 1 ∨ a n = a (n - 1) + 2 := by
+              have ha_le : a n ≤ a (n - 1) + 2 := by
+                have h_eq_K : a (n - 1) + (n - 1 - p_index (n - 1) (a (n - 1))) = a (n - 1) + 2 := by omega
+                rw [ha_eq, ← h_eq_K]
+                exact Nat.sInf_le h_stable_mem
+              omega
+            have h_is : is_one_except_two (S n (a (n - 1) + 1)) (n - 1) (n - 2) := by
+              have h_step := ca_step_one_except_two (S n (a (n - 1))) (n - 1) (p_index (n - 1) (a (n - 1))) (by omega) h_is_one_except_two
+              have h_cond : p_index (n - 1) (a (n - 1)) + 1 < n - 1 := by omega
+              rw [if_pos h_cond] at h_step
+              have h_eq_n2 : p_index (n - 1) (a (n - 1)) + 1 = n - 2 := by omega
+              rw [h_eq_n2] at h_step
+              rw [S_succ]
+              exact h_step
+            have h_eq : a n = a (n - 1) + 2 := by
+              rcases h_eq_cases with h_eq1 | h_eq2
+              · have h_not : (S n (a (n - 1) + 1)).getD (n - 1) 0 = 0 := by
+                  rw [h_is]
+                  simp
+                have h_is_one : (S n (a n)).getD (n - 1) 0 = 1 := by
+                  rw [ha_mem]
+                  rw [replicate_getD]
+                  rw [if_pos (by omega)]
+                rw [h_eq1] at h_is_one
+                rw [h_is_one] at h_not
+                contradiction
+              · exact h_eq2
+            rw [h_eq]
+            have h_stable_n2 : S n (a (n - 1) + 2) = replicate n 1 := by
+              have h_eq_2 : n - 1 - p_index (n - 1) (a (n - 1)) = 2 := by omega
+              rw [h_eq_2] at h_stable
+              exact h_stable
+            exact stable_and_bounds_second_sorry n hn3 h_is_one_except_two hp_prev_n3 h_is h_stable_prev h_stable_n2
+        have hp_bounds : p_index n (a n) = n ∨ p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2 := by
+          have h_cases : p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2 := by omega
+          rcases h_cases with h1 | h2
+          · right; left; exact h1
+          · right; right; exact h2
+        have h_stable_n : S (n + 1) (a n + n) = replicate (n + 1) 1 := by
+          have h_is_one_except_two : is_one_except_two (S (n + 1) (a n)) n (p_index n (a n)) := by
+            intro i
+            rw [S_coupling, ha_mem, replicate_getD]
+            split_ifs <;> omega
+          have h_steps := steps_to_stable (S (n + 1) (a n)) n (p_index n (a n)) (n - p_index n (a n)) hp_lt rfl h_is_one_except_two
+          rw [← S_add] at h_steps
+          have hnz_val : a n + (n - p_index n (a n)) ≠ 0 := by omega
+          have h_stable_final : S (n + 1) (a n + (n - p_index n (a n))) = replicate (n + 1) 1 := by
+            apply eq_replicate_of_getD _ (n + 1) (S_trim (n + 1) (a n + (n - p_index n (a n))) hnz_val)
+            intro i
+            rw [h_steps i, replicate_getD]
+          have h_eq_add : a n + n = a n + (n - p_index n (a n)) + p_index n (a n) := by omega
+          rw [h_eq_add]
+          exact stable_add (n + 1) (a n + (n - p_index n (a n))) h_stable_final (p_index n (a n))
+        have ha_succ_ge : a (n + 1) ≥ a n + 1 := by
+          by_contra h_lt
+          have h_le : a (n + 1) ≤ a n := by omega
+          have ha_succ_mem : S (n + 1) (a (n + 1)) = replicate (n + 1) 1 := by
+            have hnz : n + 1 ≠ 0 := by omega
+            have h_nonempty : (stable_steps (n + 1)).Nonempty := ⟨a n + n, h_stable_n⟩
+            have ha_eq : a (n + 1) = sInf (stable_steps (n + 1)) := a_eq_sInf_stable_steps hnz
+            exact Nat.sInf_mem h_nonempty
+          have h_val : (S (n + 1) (a (n + 1))).getD n 0 = 1 := by
+            rw [ha_succ_mem]
+            rw [replicate_getD]
+            simp
+          have h_coupling := S_coupling n (a (n + 1)) n
+          rw [h_val] at h_coupling
+          have h_oob : (S n (a (n + 1))).getD n 0 = 0 := S_oob_strong n (a (n + 1)) n (by omega)
+          rw [h_oob] at h_coupling
+          have h_eq : p_index n (a (n + 1)) = n := by
+            split_ifs at h_coupling <;> omega
+          have h_mono := p_index_le n (a (n + 1)) (a n) h_le
+          rw [h_eq] at h_mono
+          omega
+        have ha_succ_le_plus_two : a (n + 1) ≤ a n + 2 := by
+          have h_stable_two := a_le_plus_two n (by omega) ha_mem hp_bounds
+          have hnz : n + 1 ≠ 0 := by omega
+          rw [a_eq_sInf_stable_steps hnz]
+          exact Nat.sInf_le h_stable_two
+        have h_cases : a (n + 1) = a n + 1 ∨ a (n + 1) = a n + 2 := by omega
+        rcases h_cases with h_case1 | h_case2
+        · left
+          have ha_succ_mem : S (n + 1) (a n + 1) = replicate (n + 1) 1 := by
+            have hnz : n + 1 ≠ 0 := by omega
+            have h_nonempty : (stable_steps (n + 1)).Nonempty := ⟨a n + n, h_stable_n⟩
+            have ha_eq : a (n + 1) = sInf (stable_steps (n + 1)) := a_eq_sInf_stable_steps hnz
+            have h_mem : a (n + 1) ∈ stable_steps (n + 1) := Nat.sInf_mem h_nonempty
+            rw [h_case1] at h_mem
+            exact h_mem
+          have hp_eq_n : p_index n (a n + 1) = n := by
+            have h_coupling := S_coupling n (a n + 1) n
+            have h_val : (S (n + 1) (a n + 1)).getD n 0 = 1 := by
+              rw [ha_succ_mem, replicate_getD]
+              simp
+            rw [h_val] at h_coupling
+            have h_oob : (S n (a n + 1)).getD n 0 = 0 := S_oob_strong n (a n + 1) n (by omega)
+            rw [h_oob] at h_coupling
+            split_ifs at h_coupling <;> omega
+          have h_add_one : p_index n (a n + 1) = p_index n (a n) + 1 := by
+            have h_p : p_index n (a n + 1) =
+              if (S n (a n)).getD (p_index n (a n)) 0 % 2 == 0 then p_index n (a n) else p_index n (a n) + 1 := rfl
+            rw [h_p]
+            rw [ha_mem, replicate_getD]
+            rw [if_pos hp_lt]
+            rfl
+          omega
+        · right
+          have ha_succ_mem : S (n + 1) (a n + 2) = replicate (n + 1) 1 := by
+            have h_mem : a (n + 1) ∈ stable_steps (n + 1) := by
+              have hnz : n + 1 ≠ 0 := by omega
+              have h_nonempty : (stable_steps (n + 1)).Nonempty := ⟨a n + n, h_stable_n⟩
+              have ha_eq : a (n + 1) = sInf (stable_steps (n + 1)) := a_eq_sInf_stable_steps hnz
+              exact Nat.sInf_mem h_nonempty
+            rw [← h_case2]
+            exact h_mem
+          have hp_eq_n : p_index n (a n + 2) = n := by
+            have h_coupling := S_coupling n (a n + 2) n
+            have h_val : (S (n + 1) (a n + 2)).getD n 0 = 1 := by
+              rw [ha_succ_mem, replicate_getD]
+              simp
+            rw [h_val] at h_coupling
+            have h_oob : (S n (a n + 2)).getD n 0 = 0 := S_oob_strong n (a n + 2) n (by omega)
+            rw [h_oob] at h_coupling
+            split_ifs at h_coupling <;> omega
+          have hp_neq_n : p_index n (a n + 1) ≠ n := by
+            intro hc
+            have hnz_an1 : a n + 1 ≠ 0 := by omega
+            have h_eq : S (n + 1) (a n + 1) = replicate (n + 1) 1 := by
+              have h_trim : trim_trailing_zeros (S (n + 1) (a n + 1)) = S (n + 1) (a n + 1) := S_trim (n + 1) (a n + 1) hnz_an1
+              apply eq_replicate_of_getD _ (n + 1) h_trim
+              intro i
+              rw [S_coupling n (a n + 1) i]
+              have h_stable_one := S_stable n ha_mem 1
+              rw [h_stable_one, hc]
+              simp only [replicate_getD]
+              clear hp_lt ha_succ_mem hp_eq_n hp_bounds_prev hp_bounds_prev_fn h_part1 ha_succ_ge ha_succ_le_plus_two h_case2
+              split_ifs <;> omega
+            have h_in : a n + 1 ∈ stable_steps (n + 1) := h_eq
+            have h_le : a (n + 1) ≤ a n + 1 := by
+              have hnz : n + 1 ≠ 0 := by omega
+              rw [a_eq_sInf_stable_steps hnz]
+              exact Nat.sInf_le h_in
+            omega
+          have h_add_one : p_index n (a n + 1) = p_index n (a n) + 1 := by
+            have h_p : p_index n (a n + 1) =
+              if (S n (a n)).getD (p_index n (a n)) 0 % 2 == 0 then p_index n (a n) else p_index n (a n) + 1 := rfl
+            rw [h_p]
+            rw [ha_mem, replicate_getD]
+            rw [if_pos hp_lt]
+            rfl
+          have h_p_le_2 : p_index n (a n) + 2 ≤ n := by omega
+          have h_add_two := p_index_add n (by omega) ha_mem 2 h_p_le_2
+          omega
+      exact ⟨h_part1, h_part2⟩
+  termination_by 3 * n + 2
+  decreasing_by omega
+end
+
+lemma stable_steps_nonempty (n : ℕ) (hn : 1 ≤ n) :
+  S n (a n) = replicate n 1 ∧ (stable_steps n).Nonempty := by
+  exact (stable_and_bounds n hn).1
+
+lemma p_index_bounds (n : ℕ) (hn : 2 ≤ n) :
+  p_index (n - 1) (a (n - 1)) = n - 2 ∨ p_index (n - 1) (a (n - 1)) = n - 3 := by
+  have h_sb := stable_and_bounds (n - 1) (by omega)
+  have h2 : 2 ≤ n - 1 + 1 := by omega
+  exact h_sb.2 h2
+
+-- duplicate declarations removed
+
+lemma p_index_lt_n_of_bounds (n : ℕ) (hn : 1 ≤ n) : p_index n (a n) < n := by
+  by_cases hn2 : n = 1
+  · subst hn2
+    have ha1 : a 1 = 0 := a_one_eq_zero
+    rw [ha1]
+    unfold p_index
+    omega
+  · have hn1 : 2 ≤ n + 1 := by omega
+    have hp := p_index_bounds (n + 1) hn1
+    have hp_simp : p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2 := hp
+    rcases hp_simp with h1 | h2
+    · rw [h1]; omega
+    · rw [h2]; omega
+
+lemma p_index_lt_n (n t : ℕ) (hn : 1 ≤ n) (ht : t ≤ a n) : p_index n t < n := by
+  have h_mono := p_index_le n t (a n) ht
+  have h_bounds := p_index_lt_n_of_bounds n hn
+  omega
+
+lemma a_succ_ge (n : ℕ) (hn : 1 ≤ n) : a (n + 1) ≥ a n + 1 := by
+  have h_prop : ∀ t, t ∈ stable_steps (n + 1) → t ≥ a n + 1 := by
+    intro t ht
+    by_contra h_lt
+    have h_lt_le : t ≤ a n := by omega
+    have h1 : (S (n + 1) t).getD n 0 = 1 := by
+      unfold stable_steps at ht
+      rw [ht, replicate_getD]
+      simp
+    have h2 := S_coupling n t n
+    rw [h1] at h2
+    have h3 : (S n t).getD n 0 = 0 := S_oob_strong n t n (by omega)
+    rw [h3] at h2
+    have h4 := p_index_lt_n n t hn h_lt_le
+    have h5 : n ≠ p_index n t := by omega
+    simp [h5] at h2
+  have h_nonempty : (stable_steps (n + 1)).Nonempty := (stable_steps_nonempty (n + 1) (by omega)).2
+  have ha_eq : a (n + 1) = sInf (stable_steps (n + 1)) := a_eq_sInf_stable_steps (by omega)
+  have ha_mem : a (n + 1) ∈ stable_steps (n + 1) := by
+    rw [ha_eq]
+    exact Nat.sInf_mem h_nonempty
+  exact h_prop (a (n + 1)) ha_mem
+
+theorem oeis_a300997_finite_difference_is_one_or_two :
+  ∀ n : ℕ, 1 ≤ n → a (n + 1) = a n + 1 ∨ a (n + 1) = a n + 2 := by
+  intro n hn
+  have h_nonempty_n := stable_steps_nonempty n hn
+  rcases h_nonempty_n with ⟨h_stable, h_nonempty⟩
+  have h_nonempty_succ := stable_steps_nonempty (n + 1) (by omega)
+  rcases h_nonempty_succ with ⟨h_stable_succ, h_nonempty_succ⟩
+  have ha_succ : a (n + 1) = sInf (stable_steps (n + 1)) := a_eq_sInf_stable_steps (by omega)
+  have hn1 : 2 ≤ n + 1 := by omega
+  have hp_bounds := p_index_bounds (n + 1) hn1
+  have hp_bounds_simple : p_index n (a n) = n - 1 ∨ p_index n (a n) = n - 2 := by
+    simp at hp_bounds
+    exact hp_bounds
+  generalize h_p : p_index n (a n) = p
+  have hp_bounds_p : p = n - 1 ∨ p = n - 2 := by
+    rw [h_p] at hp_bounds_simple
+    exact hp_bounds_simple
+  have h_is_one_except_two : is_one_except_two (S (n + 1) (a n)) n p := by
+    intro i
+    have h_eq_n : n + 1 = n + 1 := rfl
+    rw [S_coupling n (a n) i]
+    rw [h_stable]
+    rw [replicate_getD]
+    rw [h_p]
+    split_ifs <;> omega
+  have h_p_lt : p < n := by omega
+  have h_steps := steps_to_stable (S (n + 1) (a n)) n p (n - p) h_p_lt rfl h_is_one_except_two
+  rw [← S_add] at h_steps
+  have h_stable_final : S (n + 1) (a n + (n - p)) = replicate (n + 1) 1 := by
+    have h_t_nz : a n + (n - p) ≠ 0 := step_two_nonzero n p h_p_lt (a n)
+    have h_trim := S_trim (n + 1) (a n + (n - p)) h_t_nz
+    apply eq_replicate_of_getD _ (n + 1) h_trim
+    intro i
+    have h_steps_i := h_steps i
+    rw [replicate_getD]
+    exact h_steps_i
+  have h_in_succ : a n + (n - p) ∈ stable_steps (n + 1) := h_stable_final
+  have ha_succ_le : a (n + 1) ≤ a n + (n - p) := by
+    have h_le := Nat.sInf_le h_in_succ
+    rw [← ha_succ] at h_le
+    exact h_le
+  have h_ge := a_succ_ge n hn
+  rcases hp_bounds_p with hp1 | hp2
+  · rw [hp1] at ha_succ_le
+    have h_diff : n - (n - 1) = 1 := by
+      clear h_stable h_nonempty h_stable_succ h_nonempty_succ hp_bounds hp_bounds_simple h_is_one_except_two h_steps h_stable_final h_in_succ ha_succ ha_succ_le h_ge hp1 h_p h_p_lt p
+      omega
+    rw [h_diff] at ha_succ_le
+    generalize ha_n : a n = an_var
+    generalize ha_succ_var : a (n + 1) = a_succ_var
+    rw [ha_succ_var] at ha_succ_le h_ge
+    omega
+  · rw [hp2] at ha_succ_le
+    by_cases hn2 : n = 1
+    · subst hn2
+      have h_diff : 1 - (1 - 2) = 1 := rfl
+      rw [h_diff] at ha_succ_le
+      generalize ha_n : a 1 = an_var
+      generalize ha_succ_var : a 2 = a_succ_var
+      rw [ha_succ_var] at ha_succ_le h_ge
+      omega
+    · have hn_ge : 2 ≤ n := by omega
+      have h_diff : n - (n - 2) = 2 := by
+        clear h_stable h_nonempty h_stable_succ h_nonempty_succ hp_bounds hp_bounds_simple h_is_one_except_two h_steps h_stable_final h_in_succ ha_succ ha_succ_le h_ge hp2 h_p h_p_lt p hn2
+        omega
+      rw [h_diff] at ha_succ_le
+      generalize ha_n : a n = an_var
+      generalize ha_succ_var : a (n + 1) = a_succ_var
+      rw [ha_succ_var] at ha_succ_le h_ge
+      omega
+
+

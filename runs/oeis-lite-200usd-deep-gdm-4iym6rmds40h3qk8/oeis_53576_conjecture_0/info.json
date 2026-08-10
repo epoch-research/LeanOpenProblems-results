@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "NxQT4Bjq6uGcep8VSFkY7x",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 4617304,
+      "output_tokens": 104314,
+      "total_tokens": 47368653,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 42426845,
+      "reasoning_tokens": 220190,
+      "total_cost": 14.228808749999997
+    }
+  },
+  "oeis_id": "A053576"
+}

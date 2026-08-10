@@ -1,0 +1,327 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:14:5: warning: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:590:19: warning: unused variable `hk1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:695:62: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:695:62: warning: 'decide' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:746:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 83
+    b ≤ 120
+  where
+   b := ↑P
+  Submission/Spec.lean:753:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 83
+    b ≤ 168
+  where
+   b := ↑P
+  Submission/Spec.lean:770:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≤ 125
+    2 ≤ c ≤ 3
+    b ≥ 83
+    b - d ≤ -1
+  where
+   b := ↑P
+   c := ↑u
+   d := ↑5 ^ u
+  Submission/Spec.lean:802:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≤ 625
+    2 ≤ c ≤ 4
+    b ≥ 251
+    b - d ≤ -1
+  where
+   b := ↑P
+   c := ↑u
+   d := ↑5 ^ u
+  Submission/Spec.lean:809:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≤ 343
+    2 ≤ c ≤ 3
+    b ≥ 251
+    b - d ≤ -1
+  where
+   b := ↑P
+   c := ↑u
+   d := ↑7 ^ u
+  Submission/Spec.lean:830:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≤ 289
+    b ≥ 251
+    b - c ≤ -1
+  where
+   b := ↑P
+   c := ↑17 ^ u
+  Submission/Spec.lean:837:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≤ 361
+    b ≥ 251
+    b - c ≤ -1
+  where
+   b := ↑P
+   c := ↑19 ^ u
+  Submission/Spec.lean:855:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≤ 729
+    2 ≤ c ≤ 6
+    b ≥ 509
+    b - d ≤ -1
+  where
+   b := ↑P
+   c := ↑u
+   d := ↑3 ^ u
+  Submission/Spec.lean:862:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≤ 625
+    2 ≤ c ≤ 4
+    b ≥ 509
+    b - d ≤ -1
+  where
+   b := ↑P
+   c := ↑u
+   d := ↑5 ^ u
+  Submission/Spec.lean:904:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≤ 529
+    b ≥ 509
+    b - c ≤ -1
+  where
+   b := ↑P
+   c := ↑23 ^ u
+  Submission/Spec.lean:1049:46: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:1063:46: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:1202:13: error: unexpected token 'have'; expected ':='
+  Submission/Spec.lean:1115:54: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:1172:97: error: Application type mismatch: The argument
+    hp_n_lt_x
+  has type
+    nth Nat.Prime (n - 1) < x
+  but is expected to have type
+    nth Nat.Prime (n - 1) < q1 ^ u1
+  in the application
+    odd_prime_power_ge_121 (nth Nat.Prime (n - 1)) q1 u1 h_ge hq1 h_u1 hq1_ge3 hp_n_lt_x
+  Submission/Spec.lean:1175:97: error: Application type mismatch: The argument
+    hp_n_lt_y
+  has type
+    nth Nat.Prime (n - 1) < y
+  but is expected to have type
+    nth Nat.Prime (n - 1) < q2 ^ u2
+  in the application
+    odd_prime_power_ge_121 (nth Nat.Prime (n - 1)) q2 u2 h_ge hq2 h_u2 hq2_ge3 hp_n_lt_y
+  Submission/Spec.lean:1185:99: error: Application type mismatch: The argument
+    hp_n_lt_y
+  has type
+    nth Nat.Prime (n - 1) < y
+  but is expected to have type
+    nth Nat.Prime (n - 1) < q2 ^ u2
+  in the application
+    odd_prime_power_ge_243 (nth Nat.Prime (n - 1)) q2 u2 h_ge hq2 h_u2 hq2_ge3 hp_n_lt_y
+  Submission/Spec.lean:1188:99: error: Application type mismatch: The argument
+    hp_n_lt_x
+  has type
+    nth Nat.Prime (n - 1) < x
+  but is expected to have type
+    nth Nat.Prime (n - 1) < q1 ^ u1
+  in the application
+    odd_prime_power_ge_243 (nth Nat.Prime (n - 1)) q1 u1 h_ge hq1 h_u1 hq1_ge3 hp_n_lt_x
+  Submission/Spec.lean:1202:12: error: invalid occurrence of `·` notation, it must be surrounded by parentheses (e.g. `(· + 1)`)
+  Submission/Spec.lean:1202:12: error: invalid 'calc' step, left-hand side is
+    true : Bool
+  but previous right-hand side is
+    2 ^ u3 : ℕ
+  Submission/Spec.lean:1193:37: error: unsolved goals
+  case inr
+  n : ℕ
+  hn : 10 < n
+  h✝ : 0 < n
+  x y z : ℕ
+  hxy : x < y
+  hyz : y < z
+  hp_n_ge_thirty_one : 31 ≤ nth Nat.Prime (n - 1)
+  h_ge : 83 ≤ nth Nat.Prime (n - 1)
+  hx_copy : x ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hy_copy : y ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hz_copy : z ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hp_n_lt_x : nth Nat.Prime (n - 1) < x
+  hx_lt_p_succ : x < nth Nat.Prime n
+  hp_n_lt_y : nth Nat.Prime (n - 1) < y
+  hy_lt_p_succ : y < nth Nat.Prime n
+  hp_n_lt_z : nth Nat.Prime (n - 1) < z
+  hz_lt_p_succ : z < nth Nat.Prime n
+  q1 u1 : ℕ
+  hq1 : Nat.Prime q1
+  hu1 : 0 < u1
+  hx_eq : q1 ^ u1 = x
+  q2 u2 : ℕ
+  hq2 : Nat.Prime q2
+  hu2 : 0 < u2
+  hy_eq : q2 ^ u2 = y
+  q3 u3 : ℕ
+  hq3 : Nat.Prime q3
+  hu3 : 0 < u3
+  hz_eq : q3 ^ u3 = z
+  h_u1 : 2 ≤ u1
+  h_u2 : 2 ≤ u2
+  h_u3 : 2 ≤ u3
+  hq12 : q1 ≠ q2
+  hq23 : q2 ≠ q3
+  hq13 : q1 ≠ q3
+  hq1_ge3 : 3 ≤ q1
+  hq2_ge3 : 3 ≤ q2
+  hx_ge121 : 121 ≤ x
+  hy_ge121 : 121 ≤ y
+  h_distinct : q1 ≠ 3 ∨ q2 ≠ 3
+  h_one_base_ge243 : 243 ≤ x ∨ 243 ≤ y
+  hz_ge244 : 244 ≤ z
+  hq3_ne2 : q3 ≠ 2
+  ⊢ 256 ≤ z
+  Submission/Spec.lean:1170:8: error: unsolved goals
+  case inr.isTrue.h.inr.inl
+  n : ℕ
+  hn : 10 < n
+  h✝ : 0 < n
+  x y z : ℕ
+  hxy : x < y
+  hyz : y < z
+  hp_n_ge_thirty_one : 31 ≤ nth Nat.Prime (n - 1)
+  h_ge : 83 ≤ nth Nat.Prime (n - 1)
+  hx_copy : x ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hy_copy : y ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hz_copy : z ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hp_n_lt_x : nth Nat.Prime (n - 1) < x
+  hx_lt_p_succ : x < nth Nat.Prime n
+  hp_n_lt_y : nth Nat.Prime (n - 1) < y
+  hy_lt_p_succ : y < nth Nat.Prime n
+  hp_n_lt_z : nth Nat.Prime (n - 1) < z
+  hz_lt_p_succ : z < nth Nat.Prime n
+  q1 u1 : ℕ
+  hq1 : Nat.Prime q1
+  hu1 : 0 < u1
+  hx_eq : q1 ^ u1 = x
+  q2 u2 : ℕ
+  hq2 : Nat.Prime q2
+  hu2 : 0 < u2
+  hy_eq : q2 ^ u2 = y
+  q3 u3 : ℕ
+  hq3 : Nat.Prime q3
+  hu3 : 0 < u3
+  hz_eq : q3 ^ u3 = z
+  h_u1 : 2 ≤ u1
+  h_u2 : 2 ≤ u2
+  h_u3 : 2 ≤ u3
+  hq12 : q1 ≠ q2
+  hq23 : q2 ≠ q3
+  hq13 : q1 ≠ q3
+  hq1_ge3 : 3 ≤ q1
+  hq2_ge3 : 3 ≤ q2
+  hx_ge121 : 121 ≤ x
+  hy_ge121 : 121 ≤ y
+  h_distinct : q1 ≠ 3 ∨ q2 ≠ 3
+  h_one_base_ge243 : 243 ≤ x ∨ 243 ≤ y
+  hz_ge244 : 244 ≤ z
+  hz_ge256 : 256 ≤ z
+  ⊢ False
+  Submission/Spec.lean:1118:6: error: unsolved goals
+  case inr.isTrue.h.inr.inr.inl
+  n : ℕ
+  hn : 10 < n
+  h✝ : 0 < n
+  x y z : ℕ
+  hxy : x < y
+  hyz : y < z
+  hp_n_ge_thirty_one : 31 ≤ nth Nat.Prime (n - 1)
+  h_ge : 83 ≤ nth Nat.Prime (n - 1)
+  hx_copy : x ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hy_copy : y ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hz_copy : z ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hp_n_lt_x : nth Nat.Prime (n - 1) < x
+  hx_lt_p_succ : x < nth Nat.Prime n
+  hp_n_lt_y : nth Nat.Prime (n - 1) < y
+  hy_lt_p_succ : y < nth Nat.Prime n
+  hp_n_lt_z : nth Nat.Prime (n - 1) < z
+  hz_lt_p_succ : z < nth Nat.Prime n
+  q1 u1 : ℕ
+  hq1 : Nat.Prime q1
+  hu1 : 0 < u1
+  hx_eq : q1 ^ u1 = x
+  q2 u2 : ℕ
+  hq2 : Nat.Prime q2
+  hu2 : 0 < u2
+  hy_eq : q2 ^ u2 = y
+  q3 u3 : ℕ
+  hq3 : Nat.Prime q3
+  hu3 : 0 < u3
+  hz_eq : q3 ^ u3 = z
+  h_u1 : 2 ≤ u1
+  h_u2 : 2 ≤ u2
+  h_u3 : 2 ≤ u3
+  hq12 : q1 ≠ q2
+  hq23 : q2 ≠ q3
+  hq13 : q1 ≠ q3
+  hq2_ge3 : 3 ≤ q2
+  hq3_ge3 : 3 ≤ q3
+  ⊢ False
+  
+  case inr.isTrue.h.inr.inr.inr
+  n : ℕ
+  hn : 10 < n
+  h✝ : 0 < n
+  x y z : ℕ
+  hxy : x < y
+  hyz : y < z
+  hp_n_ge_thirty_one : 31 ≤ nth Nat.Prime (n - 1)
+  h_ge : 83 ≤ nth Nat.Prime (n - 1)
+  hx_copy : x ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hy_copy : y ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hz_copy : z ∈ filter IsPrimePow (Ioo (nth Nat.Prime (n - 1)) (nth Nat.Prime n))
+  hp_n_lt_x : nth Nat.Prime (n - 1) < x
+  hx_lt_p_succ : x < nth Nat.Prime n
+  hp_n_lt_y : nth Nat.Prime (n - 1) < y
+  hy_lt_p_succ : y < nth Nat.Prime n
+  hp_n_lt_z : nth Nat.Prime (n - 1) < z
+  hz_lt_p_succ : z < nth Nat.Prime n
+  q1 u1 : ℕ
+  hq1 : Nat.Prime q1
+  hu1 : 0 < u1
+  hx_eq : q1 ^ u1 = x
+  q2 u2 : ℕ
+  hq2 : Nat.Prime q2
+  hu2 : 0 < u2
+  hy_eq : q2 ^ u2 = y
+  q3 u3 : ℕ
+  hq3 : Nat.Prime q3
+  hu3 : 0 < u3
+  hz_eq : q3 ^ u3 = z
+  h_u1 : 2 ≤ u1
+  h_u2 : 2 ≤ u2
+  h_u3 : 2 ≤ u3
+  hq12 : q1 ≠ q2
+  hq23 : q2 ≠ q3
+  hq13 : q1 ≠ q3
+  hq1_ge3 : 3 ≤ q1
+  hq3_ge3 : 3 ≤ q3
+  ⊢ False
+  Submission/Spec.lean:1088:2: error: unsolved goals
+  case inr.isFalse
+  n : ℕ
+  hn : 10 < n
+  h✝ : ¬0 < n
+  ⊢ 0 ≤ 2
+

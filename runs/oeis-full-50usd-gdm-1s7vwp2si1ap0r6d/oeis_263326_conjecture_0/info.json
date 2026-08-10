@@ -1,0 +1,20 @@
+{
+  "id": "oeis_263326_conjecture_0",
+  "epoch": 1,
+  "uuid": "ZabBhS3vqfzfLQE2NV4UQq",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 4158515,
+      "output_tokens": 53206,
+      "total_tokens": 19451435,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 14646493,
+      "reasoning_tokens": 593221,
+      "total_cost": 8.913600450000006
+    }
+  },
+  "oeis_id": "A263326"
+}

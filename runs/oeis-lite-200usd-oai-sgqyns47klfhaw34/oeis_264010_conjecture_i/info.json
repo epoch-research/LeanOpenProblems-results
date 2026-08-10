@@ -1,0 +1,23 @@
+{
+  "id": "oeis_264010_conjecture_i",
+  "epoch": 1,
+  "uuid": "hozPSfJUK2gpL49RGtW6Yp",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 6589325,
+      "output_tokens": 885992,
+      "total_tokens": 140052085,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 132576768,
+      "reasoning_tokens": 555034,
+      "total_cost": 125.81476900000014
+    }
+  },
+  "oeis_id": "A264010"
+}

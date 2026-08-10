@@ -1,0 +1,198 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1189:13: error: unknown tactic
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1166:43: error: unsolved goals
+  x y : ℕ
+  hlt : x < y
+  n : ℕ
+  n_val : ℕ := n + 2
+  h_n_pos : n_val > 0
+  hx_eq : take (binary_pattern_nat n_val).length (drop x (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  hy_eq : take (binary_pattern_nat n_val).length (drop y (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  L : ℕ
+  hL : (binary_pattern_nat n_val).length = L
+  M : ℕ
+  hy_range : y ∈ range (M - L + 1)
+  hx_range : x ∈ range (M - L + 1)
+  hM : (binary_pattern_nat (n_val ^ 2)).length = M
+  u v : ℕ
+  hu : Odd u
+  h_n_eq : n_val = u * 2 ^ v
+  hx_eq' : take L (drop x (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  hy_eq' : take L (drop y (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  h_L_eq_digits : (digits 2 n_val).length = L
+  k : ℕ := y - x
+  hk_lt : k < L
+  hk_ge1 : k ≥ 1
+  h_periodic : drop k (binary_pattern_nat n_val) = take (L - k) (binary_pattern_nat n_val)
+  h_periodic' : drop k (digits 2 n_val).reverse = take (L - k) (digits 2 n_val).reverse
+  h_div_eq_mod : n_val / 2 ^ k = n_val % 2 ^ (L - k)
+  h_n_lt_powL : n_val < 2 ^ L
+  hu_ge1 : u ≥ 1
+  h_powv_le_n : 2 ^ v ≤ n_val
+  h_powv_lt_powL : 2 ^ v < 2 ^ L
+  hv_lt_L : v < L
+  hx_range' : x + L ≤ M
+  hy_range' : y + L ≤ M
+  s_y : ℕ := M - L - y
+  s_x : ℕ := M - L - x
+  hs_y_eq : s_y = M - L - y
+  hs_x_eq : s_x = M - L - x
+  h_sy_pos : s_y ≥ 0
+  h_sx_pos : s_x ≥ 1
+  h_sx_sy : s_x = s_y + k
+  h_sy_ne_zero : s_y ≠ 0
+  h_sy_ge1 : s_y ≥ 1
+  hk_gt_v : v < k
+  h_ge_y : u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y ≥ u * 2 ^ v
+  h_dvd_y : 2 ^ L ∣ u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y - u * 2 ^ v
+  h_sy_ge_v : s_y ≥ v
+  h_sy_eq : ¬s_y = v
+  h_sy_gt_v : s_y > v
+  h_sx_gt_2v : s_x > 2 * v
+  h_div_x_pow : u ^ 2 * 2 ^ (2 * v) / 2 ^ s_x = u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_match_x_rw : u ^ 2 / 2 ^ (s_x - 2 * v) % 2 ^ L = u * 2 ^ v
+  h_le_div : u * 2 ^ v ≤ u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_mul_le : u * 2 ^ (s_x - v) ≤ u * u
+  h_pow_add_x : 2 ^ v * 2 ^ (s_x - 2 * v) = 2 ^ (s_x - v)
+  h_expr : u * 2 ^ v * 2 ^ (s_x - 2 * v) = u * 2 ^ (s_x - v)
+  h_sq_u : u ^ 2 = u * u
+  h_le_u : 2 ^ (s_x - v) ≤ u
+  hu_lt : u < 2 ^ (L - v)
+  h_sx_lt_L : s_x < L
+  w_x : ℕ := n_val ^ 2 / 2 ^ s_x
+  h_match_x : w_x % 2 ^ L = n_val
+  h_div_x : w_x = u ^ 2 * 2 ^ (2 * v) / 2 ^ s_x
+  h_wx_val : w_x = u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_match_x_rw' : w_x % 2 ^ L = u * 2 ^ v
+  h_Q_x_pos : w_x / 2 ^ L ≥ 1
+  w_y : ℕ := n_val ^ 2 / 2 ^ s_y
+  h_match_y : w_y % 2 ^ L = n_val
+  h_div_y : w_y = u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y
+  h_ge_match : w_y ≥ n_val
+  h_match_y' : w_y % 2 ^ L = n_val
+  h_div_k : w_x = w_y / 2 ^ k
+  h_rem_eq : w_y % 2 ^ k = n_val % 2 ^ k
+  h_wy_eq : w_y = w_y / 2 ^ L * 2 ^ L + n_val
+  h_wx_eq : w_x = w_x / 2 ^ L * 2 ^ L + n_val
+  h_sum_eq :
+    w_y / 2 ^ L * 2 ^ L + n_val + 2 ^ k * n_val = 2 ^ k * (w_x / 2 ^ L * 2 ^ L + n_val) + n_val % 2 ^ k + 2 ^ k * n_val
+  h_algebra_add : 2 ^ k * (w_x / 2 ^ L) * 2 ^ L + 2 ^ k * n_val + n_val % 2 ^ k = w_y / 2 ^ L * 2 ^ L + n_val
+  h_algebra : 2 ^ k * n_val + n_val % 2 ^ k - n_val = (w_y / 2 ^ L - 2 ^ k * (w_x / 2 ^ L)) * 2 ^ L
+  h_dvd_L : 2 ^ L ∣ 2 ^ k * n_val + n_val % 2 ^ k - n_val
+  h_algebra2 : 2 ^ k * n_val + n_val % 2 ^ k - n_val = 2 ^ k * (n_val - n_val / 2 ^ k)
+  h_dvd_L2 : 2 ^ L ∣ 2 ^ k * (n_val - n_val / 2 ^ k)
+  h_dvd_L3 : 2 ^ (L - k) ∣ n_val - n_val / 2 ^ k
+  h_n_div : n_val / 2 ^ k = u / 2 ^ (k - v)
+  h_dvd_L4 : 2 ^ (L - k) ∣ u * 2 ^ v - u / 2 ^ (k - v)
+  h_v_lt_sub : v < L - k
+  h_dvd_v : 2 ^ v ∣ u / 2 ^ (k - v)
+  h_ne : ¬u / 2 ^ (k - v) = 0
+  h_pos : u / 2 ^ (k - v) > 0
+  h_le : 2 ^ v ≤ u / 2 ^ (k - v)
+  h_mul : 2 ^ v * 2 ^ (k - v) ≤ u / 2 ^ (k - v) * 2 ^ (k - v)
+  h_pow_add : 2 ^ v * 2 ^ (k - v) = 2 ^ k
+  h_div_mul : u / 2 ^ (k - v) * 2 ^ (k - v) ≤ u
+  h_lt : 2 ^ k ≤ u
+  h_sx_ge : s_x - v ≥ k + 1
+  h_pow_le : 2 ^ (k + 1) ≤ 2 ^ (s_x - v)
+  h_u_ge : 2 ^ (k + 1) ≤ u
+  h_pow_lt : 2 ^ (k + 1) > 2 ^ k
+  ⊢ False
+  Submission/Spec.lean:982:8: error: unsolved goals
+  case neg
+  x y : ℕ
+  hlt : x < y
+  n : ℕ
+  n_val : ℕ := n + 2
+  h_n_pos : n_val > 0
+  hx_eq : take (binary_pattern_nat n_val).length (drop x (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  hy_eq : take (binary_pattern_nat n_val).length (drop y (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  L : ℕ
+  hL : (binary_pattern_nat n_val).length = L
+  M : ℕ
+  hy_range : y ∈ range (M - L + 1)
+  hx_range : x ∈ range (M - L + 1)
+  hM : (binary_pattern_nat (n_val ^ 2)).length = M
+  u v : ℕ
+  hu : Odd u
+  h_n_eq : n_val = u * 2 ^ v
+  hx_eq' : take L (drop x (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  hy_eq' : take L (drop y (binary_pattern_nat (n_val ^ 2))) = binary_pattern_nat n_val
+  h_L_eq_digits : (digits 2 n_val).length = L
+  k : ℕ := y - x
+  hk_lt : k < L
+  hk_ge1 : k ≥ 1
+  h_periodic : drop k (binary_pattern_nat n_val) = take (L - k) (binary_pattern_nat n_val)
+  h_periodic' : drop k (digits 2 n_val).reverse = take (L - k) (digits 2 n_val).reverse
+  h_div_eq_mod : n_val / 2 ^ k = n_val % 2 ^ (L - k)
+  h_n_lt_powL : n_val < 2 ^ L
+  hu_ge1 : u ≥ 1
+  h_powv_le_n : 2 ^ v ≤ n_val
+  h_powv_lt_powL : 2 ^ v < 2 ^ L
+  hv_lt_L : v < L
+  hx_range' : x + L ≤ M
+  hy_range' : y + L ≤ M
+  s_y : ℕ := M - L - y
+  s_x : ℕ := M - L - x
+  hs_y_eq : s_y = M - L - y
+  hs_x_eq : s_x = M - L - x
+  h_sy_pos : s_y ≥ 0
+  h_sx_pos : s_x ≥ 1
+  h_sx_sy : s_x = s_y + k
+  h_sy_ne_zero : s_y ≠ 0
+  h_sy_ge1 : s_y ≥ 1
+  hk_gt_v : v < k
+  h_ge_y : u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y ≥ u * 2 ^ v
+  h_dvd_y : 2 ^ L ∣ u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y - u * 2 ^ v
+  h_sy_ge_v : s_y ≥ v
+  h_sy_eq : ¬s_y = v
+  h_sy_gt_v : s_y > v
+  h_sx_gt_2v : s_x > 2 * v
+  h_div_x_pow : u ^ 2 * 2 ^ (2 * v) / 2 ^ s_x = u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_match_x_rw : u ^ 2 / 2 ^ (s_x - 2 * v) % 2 ^ L = u * 2 ^ v
+  h_le_div : u * 2 ^ v ≤ u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_mul_le : u * 2 ^ (s_x - v) ≤ u * u
+  h_pow_add_x : 2 ^ v * 2 ^ (s_x - 2 * v) = 2 ^ (s_x - v)
+  h_expr : u * 2 ^ v * 2 ^ (s_x - 2 * v) = u * 2 ^ (s_x - v)
+  h_sq_u : u ^ 2 = u * u
+  h_le_u : 2 ^ (s_x - v) ≤ u
+  hu_lt : u < 2 ^ (L - v)
+  h_sx_lt_L : s_x < L
+  w_x : ℕ := n_val ^ 2 / 2 ^ s_x
+  h_match_x : w_x % 2 ^ L = n_val
+  h_div_x : w_x = u ^ 2 * 2 ^ (2 * v) / 2 ^ s_x
+  h_wx_val : w_x = u ^ 2 / 2 ^ (s_x - 2 * v)
+  h_match_x_rw' : w_x % 2 ^ L = u * 2 ^ v
+  h_Q_x_pos : w_x / 2 ^ L ≥ 1
+  w_y : ℕ := n_val ^ 2 / 2 ^ s_y
+  h_match_y : w_y % 2 ^ L = n_val
+  h_div_y : w_y = u ^ 2 * 2 ^ (2 * v) / 2 ^ s_y
+  h_ge_match : w_y ≥ n_val
+  h_match_y' : w_y % 2 ^ L = n_val
+  h_div_k : w_x = w_y / 2 ^ k
+  h_rem_eq : w_y % 2 ^ k = n_val % 2 ^ k
+  h_wy_eq : w_y = w_y / 2 ^ L * 2 ^ L + n_val
+  h_wx_eq : w_x = w_x / 2 ^ L * 2 ^ L + n_val
+  h_sum_eq :
+    w_y / 2 ^ L * 2 ^ L + n_val + 2 ^ k * n_val = 2 ^ k * (w_x / 2 ^ L * 2 ^ L + n_val) + n_val % 2 ^ k + 2 ^ k * n_val
+  h_algebra_add : 2 ^ k * (w_x / 2 ^ L) * 2 ^ L + 2 ^ k * n_val + n_val % 2 ^ k = w_y / 2 ^ L * 2 ^ L + n_val
+  h_algebra : 2 ^ k * n_val + n_val % 2 ^ k - n_val = (w_y / 2 ^ L - 2 ^ k * (w_x / 2 ^ L)) * 2 ^ L
+  h_dvd_L : 2 ^ L ∣ 2 ^ k * n_val + n_val % 2 ^ k - n_val
+  h_algebra2 : 2 ^ k * n_val + n_val % 2 ^ k - n_val = 2 ^ k * (n_val - n_val / 2 ^ k)
+  h_dvd_L2 : 2 ^ L ∣ 2 ^ k * (n_val - n_val / 2 ^ k)
+  h_dvd_L3 : 2 ^ (L - k) ∣ n_val - n_val / 2 ^ k
+  h_n_div : n_val / 2 ^ k = u / 2 ^ (k - v)
+  h_dvd_L4 : 2 ^ (L - k) ∣ u * 2 ^ v - u / 2 ^ (k - v)
+  h_v_lt_sub : v < L - k
+  h_dvd_v : 2 ^ v ∣ u / 2 ^ (k - v)
+  h_zero : u / 2 ^ (k - v) = 0
+  ⊢ False
+

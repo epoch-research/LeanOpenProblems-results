@@ -1,0 +1,175 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:42:61: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * p).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * p) 60 : ℕ
+  Submission/Spec.lean:42:78: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    n.gcd 60 : ℕ
+    
+    GCDMonoid.gcd n 60 : ℕ
+  Submission/Spec.lean:44:15: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (p * n).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (p * n) 60 : ℕ
+  Submission/Spec.lean:44:32: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    n.gcd 60 : ℕ
+    
+    GCDMonoid.gcd n 60 : ℕ
+  Submission/Spec.lean:42:90: error: unsolved goals
+  n p : ℕ
+  hp : Nat.Prime p
+  hp7 : 7 ≤ p
+  h_cop : p.Coprime 60
+  ⊢ sorry = sorry
+  Submission/Spec.lean:48:63: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * p ^ r).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * p ^ r) 60 : ℕ
+  Submission/Spec.lean:48:84: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    n.gcd 60 : ℕ
+    
+    GCDMonoid.gcd n 60 : ℕ
+  Submission/Spec.lean:81:64: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    b.gcd 60 : ℕ
+    
+    GCDMonoid.gcd b 60 : ℕ
+  Submission/Spec.lean:177:14: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (g * 5).gcd 60 : ℕ
+    
+    (g * 5).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (g * 5) 60 : ℕ
+  Submission/Spec.lean:192:38: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (k * b + r).gcd b : ℕ
+    
+    GCDMonoid.gcd (k * b + r) b : ℕ
+  Submission/Spec.lean:192:58: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    r.gcd b : ℕ
+    
+    GCDMonoid.gcd r b : ℕ
+  Submission/Spec.lean:207:28: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (r * 5).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (r * 5) 60 : ?m.17
+  Submission/Spec.lean:207:45: error: overloaded, errors 
+    207:50 Ambiguous term
+      gcd
+    Possible interpretations:
+      r.gcd 60 : ℕ
+      
+      GCDMonoid.gcd r 60 : ℕ
+    
+    207:50 Ambiguous term
+      gcd
+    Possible interpretations:
+      r.gcd 60 : ℕ
+      
+      GCDMonoid.gcd r 60 : ℕ
+    
+    207:50 Ambiguous term
+      gcd
+    Possible interpretations:
+      r.gcd 60 : ℕ
+      
+      GCDMonoid.gcd r 60 : ℕ
+  Submission/Spec.lean:210:29: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * 5).gcd 60 : ?m.1
+    
+    (n * 5).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * 5) 60 : ℕ
+  Submission/Spec.lean:210:46: error: overloaded, errors 
+    210:51 Ambiguous term
+      gcd
+    Possible interpretations:
+      n.gcd 60 : ℕ
+      
+      GCDMonoid.gcd n 60 : ℕ
+    
+    210:51 Ambiguous term
+      gcd
+    Possible interpretations:
+      n.gcd 60 : ℕ
+      
+      GCDMonoid.gcd n 60 : ℕ
+    
+    210:51 Ambiguous term
+      gcd
+    Possible interpretations:
+      n.gcd 60 : ℕ
+      
+      GCDMonoid.gcd n 60 : ℕ
+  Submission/Spec.lean:227:33: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * k).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * k) 60 : ℕ
+  Submission/Spec.lean:227:50: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n % 60 * k).gcd 60 : ?m.11
+    
+    (n % 60 * k).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n % 60 * k) 60 : ℕ
+  Submission/Spec.lean:230:2: error: No goals to be solved
+  Submission/Spec.lean:234:39: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (r * 25).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (r * 25) 60 : ?m.17
+  Submission/Spec.lean:234:57: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (r * 5).gcd 60 : ?m.24
+    
+    (r * 5).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (r * 5) 60 : ℕ
+  Submission/Spec.lean:237:30: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * 25).gcd 60 : ?m.1
+    
+    (n * 25).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * 25) 60 : ℕ
+  Submission/Spec.lean:237:48: error: Ambiguous term
+    gcd
+  Possible interpretations:
+    (n * 5).gcd 60 : ?m.13
+    
+    (n * 5).gcd 60 : ℕ
+    
+    GCDMonoid.gcd (n * 5) 60 : ℕ
+  Submission/Spec.lean:239:2: error: No goals to be solved
+  Submission/Spec.lean:263:4: error: No goals to be solved
+

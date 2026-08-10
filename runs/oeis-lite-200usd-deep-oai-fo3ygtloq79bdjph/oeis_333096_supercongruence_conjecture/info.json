@@ -1,0 +1,20 @@
+{
+  "id": "oeis_333096_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "5xTGyFA974ovThbsdMwyJN",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 5721321,
+      "output_tokens": 1203896,
+      "total_tokens": 116834209,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 109908992,
+      "reasoning_tokens": 606927,
+      "total_cost": 119.67798099999989
+    }
+  },
+  "oeis_id": "A333096"
+}

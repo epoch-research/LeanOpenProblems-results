@@ -1,0 +1,20 @@
+{
+  "id": "A070823_conjecture",
+  "epoch": 1,
+  "uuid": "jLTeqwtao2RB8Ktb5KMPS5",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 494618,
+      "output_tokens": 13691,
+      "total_tokens": 2392065,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1866616,
+      "reasoning_tokens": 17140,
+      "total_cost": 1.1451384
+    }
+  },
+  "oeis_id": "A070823"
+}

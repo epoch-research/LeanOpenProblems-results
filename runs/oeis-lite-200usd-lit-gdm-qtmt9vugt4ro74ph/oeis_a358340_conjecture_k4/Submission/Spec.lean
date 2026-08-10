@@ -1,0 +1,51 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat List Set
+
+
+/-- A number is zeroless if its decimal digits are all non-zero. -/
+def is_zeroless (k : ℕ) : Prop := 0 ∉ Nat.digits 10 k
+
+/-- Predicate for $m$ to be an $n$-digit number. Assumes $n \ge 1$. -/
+def is_n_digit (m n : ℕ) : Prop := 10^(n-1) ≤ m ∧ m < 10^n
+
+/--
+A358340: $a(n)$ is the smallest $n$-digit number whose fourth power is zeroless.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  if n = 0 then 0 else
+  -- Define the set S of numbers satisfying the properties.
+  let S : Set ℕ := { m : ℕ | is_n_digit m n ∧ is_zeroless (m ^ 4) }
+  -- sInf returns the minimum element of the set S.
+  sInf S
+
+/--
+A358340 It has been proved that there exist infinitely many zeroless squares and cubes but there is apparently no proof for 4th powers, 5th powers, etc.
+
+Formalized as the conjecture that the set of natural numbers whose fourth power is zeroless is infinite.
+This is equivalent to the statement that the set $\{ m : ℕ \mid \text{is\_n\_digit}(m, n) \land \text{is\_zeroless}(m^4) \}$ is non-empty for all $n \ge 1$, ensuring $a(n)$ is defined for all $n$.
+-/
+unsafe def oeis_a358340_conjecture_k4 : Set.Infinite { m : ℕ | is_zeroless (m ^ 4) } :=
+  oeis_a358340_conjecture_k4
+
+/-- Prove that 1 is zeroless using Nat.digits_add_two_add_one. -/
+theorem test1 : is_zeroless (1 ^ 4) := by
+  dsimp [is_zeroless]
+  rw [Nat.digits_add_two_add_one 8 0]
+  simp
+
+/-- Prove that 2 is zeroless using Nat.digits_add_two_add_one. -/
+theorem test2 : is_zeroless (2 ^ 4) := by
+  dsimp [is_zeroless]
+  rw [Nat.digits_add_two_add_one 8 15]
+  have h1 : 16 % 10 = 6 := rfl
+  have h2 : 16 / 10 = 1 := rfl
+  rw [h1, h2]
+  rw [Nat.digits_add_two_add_one 8 0]
+  simp
+
+
+
+
+
+

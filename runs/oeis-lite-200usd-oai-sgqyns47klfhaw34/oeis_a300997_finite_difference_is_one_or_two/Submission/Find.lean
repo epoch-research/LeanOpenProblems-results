@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sInf_eq
+#check Nat.sInf_def
+#check Nat.find
+#check Nat.find_spec
+#check csInf_eq_minimum
+#check IsLeast.csInf_eq
+#check le_csInf
+#check csInf_le
+#check Nat.sInf_mem
+#check Nat.sInf_le
+#check Nat.le_sInf
+#check sInf_le
+#check le_sInf
+#check Set.Nonempty

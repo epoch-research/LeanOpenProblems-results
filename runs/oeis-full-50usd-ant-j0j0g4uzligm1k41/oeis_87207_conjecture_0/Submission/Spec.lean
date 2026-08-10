@@ -1,0 +1,48 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+open scoped Nat.Prime
+
+/--
+A087207: A binary representation of the primes that divide a number, shown in decimal.
+The value $a(n)$ is given by
+$$ a(n) = \sum_{p \mid n, p \text{ prime}} 2^{\pi(p) - 1} $$
+where $\pi(p) = \mathrm{primeCounting}(p)$ gives the 1-based index of the prime $p$.
+The set of distinct prime factors is the support of $n$'s factorization.
+-/
+def a (n : ℕ) : ℕ :=
+  (Nat.factorization n).support.sum fun p =>
+    2 ^ (Nat.primeCounting p - 1)
+
+/-- `a n = 0` exactly when `n` has no prime factors, i.e. `n = 0` or `n = 1`.
+Each summand `2 ^ (Nat.primeCounting p - 1)` is positive, so the sum vanishes
+iff the support of the factorization is empty. -/
+theorem a_eq_zero_iff (n : ℕ) : a n = 0 ↔ n = 0 ∨ n = 1 := by
+  unfold a
+  rw [Finset.sum_eq_zero_iff]
+  constructor
+  · intro h
+    by_contra hn
+    push_neg at hn
+    obtain ⟨h0, h1⟩ := hn
+    obtain ⟨p, hp, hpn⟩ := (Nat.exists_prime_and_dvd (by omega : n ≠ 1))
+    have hps : p ∈ (Nat.factorization n).support := by
+      rw [Nat.support_factorization, Nat.mem_primeFactors]
+      exact ⟨hp, hpn, by omega⟩
+    exact absurd (h p hps) (by positivity)
+  · intro h p hp
+    rcases h with h | h <;> subst h <;> simp at hp
+
+/--
+Conjecture: Starting at any n and iterating the map n -> a(n), we will always reach 0 (see A288569).
+This conjecture is equivalent to the conjecture that at any n that is neither a prime nor a power of two,
+we will eventually hit a prime number (which then becomes a power of two in the next iteration).
+If this conjecture is false then sequence A285332 cannot be a permutation of natural numbers.
+On the other hand, if the conjecture is true, then A285332 must be a permutation of natural numbers,
+because all primes and powers of 2 occur in definite positions in that tree.
+This conjecture also implies the conjectures made in A019565 and A285320 that essentially claim that
+there are neither finite nor infinite cycles in A019565.
+-/
+theorem oeis_87207_conjecture_0 :
+  ∀ n : ℕ, ∃ k : ℕ, (a^[k]) n = 0 := by
+  sorry

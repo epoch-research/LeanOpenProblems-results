@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A218656_verified_range",
+  "epoch": 1,
+  "uuid": "ThBcPeEhdiJgt9gV3ydBj9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 555,
+      "output_tokens": 571833,
+      "total_tokens": 39089364,
+      "input_tokens_cache_write": 2867297,
+      "input_tokens_cache_read": 35649679,
+      "reasoning_tokens": 135549,
+      "total_cost": 50.04404575000002
+    }
+  },
+  "oeis_id": "A218656"
+}

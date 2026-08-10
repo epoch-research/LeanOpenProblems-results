@@ -1,0 +1,13 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:316:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 8
+    a ≥ 3
+    a ≥ 1
+    2*a - b ≤ -2
+  where
+   a := ↑(A096535 (z - 1))
+   b := ↑(z - 1)
+

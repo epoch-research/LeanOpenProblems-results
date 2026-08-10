@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 42 declarations.
+  ------------------
+  oeis_378143_conjecture_claim used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_378143_a_ne_ten used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  oeis_378143_composite_tail used disallowed axioms. #[propext, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_378143_conjecture_claim: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

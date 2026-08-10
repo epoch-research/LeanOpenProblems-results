@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a004290_conjecture_radcliffe",
+  "epoch": 1,
+  "uuid": "bCmAgfqKaBtPdf9Psw4FUS",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 6901457,
+      "output_tokens": 2581443,
+      "total_tokens": 185800852,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 176317952,
+      "reasoning_tokens": 1898023,
+      "total_cost": 200.10955099999995
+    }
+  },
+  "oeis_id": "A004290"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a275150_conjecture_2_sun",
+  "epoch": 1,
+  "uuid": "29SLyRtEqXhvofCK5JHHT3",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 21496534,
+      "output_tokens": 456944,
+      "total_tokens": 116033748,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 91322367,
+      "reasoning_tokens": 2757903,
+      "total_cost": 50.05565205000003
+    }
+  },
+  "oeis_id": "A275150"
+}

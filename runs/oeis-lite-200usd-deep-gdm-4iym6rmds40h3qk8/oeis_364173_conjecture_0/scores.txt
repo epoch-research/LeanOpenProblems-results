@@ -1,0 +1,32 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 6 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 9 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a._proof_4: theorem type mismatch
+    Expected type: Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+    Got type:      Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a._proof_2: theorem type mismatch
+    Expected type: Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+    Got type:      Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 8 (instOfNatNat 8)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a._proof_3: theorem type mismatch
+    Expected type: Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+    Got type:      Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a._proof_1: theorem type mismatch
+    Expected type: Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 8 (instOfNatNat 8)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+    Got type:      Nat.AtLeastTwo (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (OfNat.ofNat.{0} Nat 127 (instOfNatNat 127)) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

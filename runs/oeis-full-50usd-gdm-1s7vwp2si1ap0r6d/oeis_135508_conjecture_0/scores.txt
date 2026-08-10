@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:705:6: error: Type mismatch
+    hq_not_dvd_pm1
+  has type
+    ¬q ∣ x_seq (q - 1)
+  but is expected to have type
+    False
+  Submission/Spec.lean:709:2: error: No goals to be solved
+

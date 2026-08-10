@@ -1,0 +1,1077 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:52:2: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:204:26: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:533:4: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:562:92: warning: unused variable `hd1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:591:4: error: `simp` made no progress
+  Submission/Spec.lean:601:27: error: Invalid projection: Projection operates on structure-like types with fields. The expression
+    hd
+  has type
+    List.Mem 0 ((List.filter (fun b => decide ((fun d => d ∣ m) b)) (List.range' 1 (m - 1))).diff [1])
+  which does not have fields.
+  Submission/Spec.lean:604:27: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 1
+  where
+   b := ↑m / 2
+  Submission/Spec.lean:607:12: error: Invalid projection: Projection operates on structure-like types with fields. The expression
+    hd
+  has type
+    List.Mem d ((List.filter (fun b => decide ((fun d => d ∣ m) b)) (List.range' 1 (m - 1))).diff [1])
+  which does not have fields.
+  Submission/Spec.lean:626:8: error: Function expected at
+    card_sdiff
+  but this term has type
+    #(?m.369 \ ?m.368) = #?m.369 - #(?m.368 ∩ ?m.369)
+  
+  Note: Expected a function because this term is being applied to the argument
+    h_subset
+  Submission/Spec.lean:629:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    0 ≤ e ≤ 1
+    c - d ≤ 0
+    b ≥ 1
+  where
+   b := ↑m / 2
+   c := ∑ d ∈ m.properDivisors \ {1}, 3 * ↑d
+   d := ∑ d ∈ m.properDivisors \ {1}, ↑m
+   e := ↑(#m.divisors)
+  Submission/Spec.lean:646:43: error: Invalid `⟨...⟩` notation: The expected type
+    List.Mem 1 (List.filter (fun b => decide ((fun d => d ∣ m) b)) (List.range' 1 (m - 1)))
+  has more than one constructor
+  
+  Note: This notation can only be used when the expected type is an inductive type with a single constructor
+  Submission/Spec.lean:652:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 * ↑(#(divisors 1)) + 1
+  in the target expression
+    ↑1 * ↑(#(divisors 1)) + ↑1 + ∑ x ∈ m.properDivisors \ {1}, (↑x * ↑(#x.divisors) + ↑x) =
+      2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_card1 : #(divisors 1) = 1
+  h_term : 1 * ↑(#(divisors 1)) + 1 = 2
+  ⊢ ↑1 * ↑(#(divisors 1)) + ↑1 + ∑ x ∈ m.properDivisors \ {1}, (↑x * ↑(#x.divisors) + ↑x) =
+      2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  Submission/Spec.lean:660:12: error: Invalid projection: Projection operates on structure-like types with fields. The expression
+    hd
+  has type
+    List.Mem d ((List.filter (fun b => decide ((fun d => d ∣ m) b)) (List.range' 1 (m - 1))).diff [1])
+  which does not have fields.
+  Submission/Spec.lean:678:34: error: unsolved goals
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_sum_split :
+    ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) = 2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d) ≤ ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop : ∑ d ∈ m.properDivisors \ {1}, ↑d * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop_split : sigma m - ↑m = 1 + ∑ d ∈ m.properDivisors \ {1}, ↑d
+  hm1 : m ≠ 1
+  d : ℕ
+  hd_proper : d ∈ m.properDivisors
+  hd_gt : d > 1
+  ⊢ ¬m = 0
+  Submission/Spec.lean:681:8: error: Type mismatch
+    hd_proper.left
+  has type
+    d ∣ m
+  but is expected to have type
+    d ∈ m.divisors
+  Submission/Spec.lean:682:34: error: unsolved goals
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_sum_split :
+    ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) = 2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d) ≤ ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop : ∑ d ∈ m.properDivisors \ {1}, ↑d * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop_split : sigma m - ↑m = 1 + ∑ d ∈ m.properDivisors \ {1}, ↑d
+  hm1 : m ≠ 1
+  d : ℕ
+  hd_proper : d ∈ m.properDivisors
+  hd_gt : d > 1
+  h1 : 1 ∈ m.divisors
+  h2 : d ∈ m.divisors
+  ⊢ ¬m = 0
+  Submission/Spec.lean:694:10: error: Type mismatch
+    card_singleton 1
+  has type
+    #{1} = 1
+  but is expected to have type
+    #{m} + 1 + 1 = 3
+  Submission/Spec.lean:695:8: error: unsolved goals
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_sum_split :
+    ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) = 2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d) ≤ ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop : ∑ d ∈ m.properDivisors \ {1}, ↑d * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop_split : sigma m - ↑m = 1 + ∑ d ∈ m.properDivisors \ {1}, ↑d
+  hm1 : m ≠ 1
+  d : ℕ
+  hd_proper : d ∈ m.properDivisors
+  hd_gt : d > 1
+  h1 : 1 ∈ m.divisors
+  h2 : d ∈ m.divisors
+  h3 : m ∈ m.divisors
+  hd_ne_one : d ≠ 1
+  hd_ne_m : d ≠ m
+  h1_ne_m : 1 ≠ m
+  h_subset : {1, d, m} ⊆ m.divisors
+  h_card : #{1, d, m} ≤ #m.divisors
+  ⊢ ¬d = m
+  Submission/Spec.lean:696:8: error: unsolved goals
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_sum_split :
+    ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) = 2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d) ≤ ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop : ∑ d ∈ m.properDivisors \ {1}, ↑d * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop_split : sigma m - ↑m = 1 + ∑ d ∈ m.properDivisors \ {1}, ↑d
+  hm1 : m ≠ 1
+  d : ℕ
+  hd_proper : d ∈ m.properDivisors
+  hd_gt : d > 1
+  h1 : 1 ∈ m.divisors
+  h2 : d ∈ m.divisors
+  h3 : m ∈ m.divisors
+  hd_ne_one : d ≠ 1
+  hd_ne_m : d ≠ m
+  h1_ne_m : 1 ≠ m
+  h_subset : {1, d, m} ⊆ m.divisors
+  h_card : #{1, d, m} ≤ #m.divisors
+  ⊢ ¬1 = d ∧ ¬1 = m
+  Submission/Spec.lean:699:2: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_one_mem : 1 ∈ m.properDivisors
+  h_sum_split :
+    ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) = 2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d) ≤ ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop : ∑ d ∈ m.properDivisors \ {1}, ↑d * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_sum_prop_split : sigma m - ↑m = 1 + ∑ d ∈ m.properDivisors \ {1}, ↑d
+  h_card_gt : ↑(#m.divisors) > 2
+  a✝ :
+    ↑m * ↑(#m.divisors) + ↑m + ↑(#m.divisors) * (sigma m - ↑m) ≤
+      ↑m * ↑(#m.divisors) + ↑m + (2 + ∑ d ∈ m.properDivisors \ {1}, (↑d * ↑(#d.divisors) + ↑d))
+  ⊢ False
+  failed
+  Submission/Spec.lean:678:43: warning: This simp argument is unused:
+    hm1
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵h̵m̵1̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:682:43: warning: This simp argument is unused:
+    hm1
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵h̵m̵1̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:695:16: warning: This simp argument is unused:
+    hd_ne_one
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵h̵d̵_̵n̵e̵_̵o̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:696:16: warning: This simp argument is unused:
+    h1_ne_m.symm
+  
+  Hint: Omit it from the simp argument list.
+    simp [h1̵_̵n̵e̵_̵m̵.̵s̵y̵m̵m̵,̵ ̵h̵d_ne_m.symm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:696:30: warning: This simp argument is unused:
+    hd_ne_m.symm
+  
+  Hint: Omit it from the simp argument list.
+    simp [h1_ne_m.symm,̵ ̵h̵d̵_̵n̵e̵_̵m̵.̵s̵y̵m̵m̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:721:73: error: unsolved goals
+  m : ℕ
+  hm : m ≠ 0
+  h_insert : m.divisors = insert m m.properDivisors
+  h_not_mem : m ∉ m.properDivisors
+  h_eq :
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) =
+      ↑m * ↑(#m.divisors) + ↑m + ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d)
+  h_le : ∑ d ∈ m.properDivisors, (↑d * ↑(#d.divisors) + ↑d) ≤ ∑ d ∈ m.properDivisors, ↑d * ↑(#m.divisors)
+  ⊢ (∑ i ∈ m.properDivisors, ↑i) * ↑(#m.divisors) = ↑(#m.divisors) * ∑ d ∈ m.properDivisors, ↑d
+  Submission/Spec.lean:728:47: warning: unused variable `hm3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:779:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.97 ∈ divisors ?m.98
+  in the target expression
+    2 * y ∣ m ∧ 2 * y < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - ↑m
+  y : ℕ
+  hd : 2 * y ∣ m ∧ 2 * y < m
+  hd1 : 2 * y > 1
+  ⊢ 2 ∣ m
+  Submission/Spec.lean:788:28: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.143 ∈ divisors ?m.144
+  in the target expression
+    1 ∣ m ∧ 1 < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - ↑m
+  d : ℕ
+  hd : d ∈ m.properDivisors
+  hd1 : d > 1
+  hd_odd : ¬2 ∣ d
+  hd3 : d ≥ 3
+  ⊢ 1 ∣ m ∧ 1 < m
+  Submission/Spec.lean:800:2: error: linarith failed to find a contradiction
+  case h
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm_comp : ¬Nat.Prime m
+  hm0 : m ≠ 0
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - ↑m
+  d : ℕ
+  hd : d ∈ m.properDivisors
+  hd1 : d > 1
+  hd_odd : ¬2 ∣ d
+  hd3 : d ≥ 3
+  h_one_mem : 1 ∈ m.properDivisors
+  hd_ne_one : d ≠ 1
+  h_one_mem' : d ∈ m.properDivisors \ {1}
+  h_rest : ∑ d ∈ (m.properDivisors \ {1}) \ {d}, ↑d ≥ 0
+  a✝ : ↑1 + (↑d + ∑ x ∈ (m.properDivisors \ {1}) \ {d}, ↑x) < 4
+  ⊢ False
+  failed
+  Submission/Spec.lean:819:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.139 ∈ divisors ?m.140
+  in the target expression
+    d ∣ m ∧ d < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - ↑m
+  d : ℕ
+  hd : d ∣ m ∧ d < m
+  hd1 : ¬d = 1
+  ⊢ d ≠ 0
+  Submission/Spec.lean:863:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.185 ∈ divisors ?m.186
+  in the target expression
+    m / 3 ∣ m ∧ m / 3 < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d0 : ℕ
+  hd0 : m = 3 * d0
+  ⊢ m / 3 ∣ m ∧ m / 3 < m
+  Submission/Spec.lean:882:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.346 ∈ divisors ?m.347
+  in the target expression
+    (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d0 : ℕ
+  hd0 : m = 3 * d0
+  hd0_prop : m / 3 ∈ m.properDivisors
+  hd0_val : 3 * (m / 3) = m
+  h_term : 15 * ↑(m / 3) = 5 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  ⊢ d ≠ 0
+  Submission/Spec.lean:884:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    c ≥ 0
+    c ≥ 1
+    b ≥ 1
+  where
+   b := ↑(#m.divisors)
+   c := Lean.Omega.bmod_div_term 3 [0, 2, 0, 0, 0, 0, -3]
+    (Lean.Omega.Coeffs.ofList
+      [↑m, ↑m / 2, ∑ d ∈ m.properDivisors, ↑d, sigma m, ↑(#m.properDivisors), ↑(#m.divisors), ↑d0])
+  Submission/Spec.lean:890:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.402 ∈ divisors ?m.403
+  in the target expression
+    d ∣ m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d0 : ℕ
+  hd0 : m = 3 * d0
+  hd0_prop : m / 3 ∈ m.properDivisors
+  hd0_val : 3 * (m / 3) = m
+  h_term : 15 * ↑(m / 3) = 5 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  hd_gt1 : d > 1
+  h3d : 3 * d ≤ m
+  hd_ne_div3 : d ≠ m / 3
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 5 * d ≤ m
+  Submission/Spec.lean:913:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    #{?a}
+  in the target expression
+    ↑(#m.properDivisors - #({m / 3} ∩ m.properDivisors)) = T - 2
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d0 : ℕ
+  hd0 : m = 3 * d0
+  hd0_prop : m / 3 ∈ m.properDivisors
+  hd0_val : 3 * (m / 3) = m
+  h_term : 15 * ↑(m / 3) = 5 * M
+  h_le : ∑ d ∈ m.properDivisors \ {m / 3}, 15 * ↑d ≤ ↑(#(m.properDivisors \ {m / 3})) * (3 * M)
+  h_sum_const : ∑ d ∈ m.properDivisors \ {m / 3}, 3 * M = ↑(#(m.properDivisors \ {m / 3})) * (3 * M)
+  ⊢ ↑(#m.properDivisors - #({m / 3} ∩ m.properDivisors)) = T - 2
+  Submission/Spec.lean:927:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.579 ∈ divisors ?m.580
+  in the target expression
+    d ∣ m ∧ d < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h_div3 : ¬3 ∣ m
+  d : ℕ
+  hd : d ∣ m ∧ d < m
+  ⊢ d ≠ 0
+  Submission/Spec.lean:929:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 1
+    b ≥ 1
+    b ≥ 1
+    0 ≤ 2*b - 3*e ≤ 1
+  where
+   b := ↑m / 2
+   c := ↑(#m.divisors)
+   e := ↑m / 3
+  Submission/Spec.lean:933:12: error(lean.unknownIdentifier): Unknown identifier `d`
+  Submission/Spec.lean:937:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.637 ∈ divisors ?m.638
+  in the target expression
+    d ∣ m
+  
+  case h
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h_div3 : ¬3 ∣ m
+  d : ℕ
+  hd_gt1 : d > 1
+  hd_ne_div3 : d ≠ m / 3
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 15 * ↑d ≤ 3 * M
+  Submission/Spec.lean:983:30: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.191 ∈ divisors ?m.192
+  in the target expression
+    m / 3 ∣ m ∧ m / 3 < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  ⊢ m / 3 ∣ m ∧ m / 3 < m
+  Submission/Spec.lean:991:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.251 ∈ divisors ?m.252
+  in the target expression
+    m / 5 ∣ m ∧ m / 5 < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  ⊢ m / 5 ∣ m ∧ m / 5 < m
+  Submission/Spec.lean:1018:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.626 ∈ divisors ?m.627
+  in the target expression
+    ((d ∣ m ∧ d < m) ∧ ¬d = m / 3) ∧ ¬d = m / 5
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_ne : m / 3 ≠ m / 5
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  d : ℕ
+  hd : ((d ∣ m ∧ d < m) ∧ ¬d = m / 3) ∧ ¬d = m / 5
+  ⊢ d ≠ 0
+  Submission/Spec.lean:1020:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≤ -1
+    c ≤ -1
+    c ≤ -1
+    b ≥ 1
+  where
+   b := ↑(#m.divisors)
+   c := Lean.Omega.bmod_div_term 6 [0, 0, 0, 0, 0, 0, 0, 6, 0, -5]
+    (Lean.Omega.Coeffs.ofList
+      [↑m, ↑m / 2, ∑ d ∈ m.properDivisors, ↑d, sigma m, ↑(#m.properDivisors), ↑(#m.divisors), ↑d3,
+        Lean.Omega.bmod_div_term 3 [0, 2, 0, 0, 0, 0, -3]
+          (Lean.Omega.Coeffs.ofList
+            [↑m, ↑m / 2, ∑ d ∈ m.properDivisors, ↑d, sigma m, ↑(#m.properDivisors), ↑(#m.divisors), ↑d3]),
+        ↑m / 3, ↑d5])
+  Submission/Spec.lean:1024:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.668 ∈ divisors ?m.669
+  in the target expression
+    d ∣ m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_ne : m / 3 ≠ m / 5
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  d : ℕ
+  hd : ((d ∣ m ∧ d < m) ∧ ¬d = m / 3) ∧ ¬d = m / 5
+  hd_gt1 : d > 1
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 15 * d ≤ m
+  Submission/Spec.lean:1051:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    #{?a}
+  in the target expression
+    ↑(#(m.properDivisors \ {m / 3}) - #({m / 5} ∩ (m.properDivisors \ {m / 3}))) = T - 3
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_ne : m / 3 ≠ m / 5
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  h_le : ∑ d ∈ (m.properDivisors \ {m / 3}) \ {m / 5}, 105 * ↑d ≤ ↑(#((m.properDivisors \ {m / 3}) \ {m / 5})) * (15 * M)
+  h_sum_const :
+    ∑ d ∈ (m.properDivisors \ {m / 3}) \ {m / 5}, 15 * M = ↑(#((m.properDivisors \ {m / 3}) \ {m / 5})) * (15 * M)
+  ⊢ ↑(#(m.properDivisors \ {m / 3}) - #({m / 5} ∩ (m.properDivisors \ {m / 3}))) = T - 3
+  Submission/Spec.lean:1058:6: error: linarith failed to find a contradiction
+  case pos.h
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_ne : m / 3 ≠ m / 5
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  h_le : ∑ d ∈ (m.properDivisors \ {m / 3}) \ {m / 5}, 105 * ↑d ≤ (T - 3) * (15 * M)
+  h_sum_const :
+    ∑ d ∈ (m.properDivisors \ {m / 3}) \ {m / 5}, 15 * M = ↑(#((m.properDivisors \ {m / 3}) \ {m / 5})) * (15 * M)
+  h_card_eq : ↑(#((m.properDivisors \ {m / 3}) \ {m / 5})) = T - 3
+  a✝ : (15 * T - 4) * M + 105 < 105 * ↑(m / 3) + (105 * ↑(m / 5) + ∑ x ∈ (m.properDivisors \ {m / 3}) \ {m / 5}, 105 * ↑x)
+  ⊢ False
+  failed
+  Submission/Spec.lean:1069:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.947 ∈ divisors ?m.948
+  in the target expression
+    (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  h5 : ¬5 ∣ m
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  ⊢ d ≠ 0
+  Submission/Spec.lean:1071:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    c ≥ 0
+    c ≥ 1
+    -2 ≤ 6*c - 5*e ≤ 1
+    b ≥ 1
+  where
+   b := ↑(#m.divisors)
+   c := Lean.Omega.bmod_div_term 3 [0, 2, 0, 0, 0, 0, -3]
+    (Lean.Omega.Coeffs.ofList
+      [↑m, ↑m / 2, ∑ d ∈ m.properDivisors, ↑d, sigma m, ↑(#m.properDivisors), ↑(#m.divisors), ↑d3])
+   e := ↑m / 5
+  Submission/Spec.lean:1075:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.987 ∈ divisors ?m.988
+  in the target expression
+    d ∣ m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  h5 : ¬5 ∣ m
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 3
+  hd_gt1 : d > 1
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 15 * d ≤ m
+  Submission/Spec.lean:1104:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    #{?a}
+  in the target expression
+    ↑(#m.properDivisors - #({m / 3} ∩ m.properDivisors)) = T - 2
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  h5 : ¬5 ∣ m
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_le : ∑ d ∈ m.properDivisors \ {m / 3}, 105 * ↑d ≤ ↑(#(m.properDivisors \ {m / 3})) * (15 * M)
+  h_sum_const : ∑ d ∈ m.properDivisors \ {m / 3}, 15 * M = ↑(#(m.properDivisors \ {m / 3})) * (15 * M)
+  ⊢ ↑(#m.properDivisors - #({m / 3} ∩ m.properDivisors)) = T - 2
+  Submission/Spec.lean:1108:6: error: linarith failed to find a contradiction
+  case neg.h
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  d3 : ℕ
+  hd3_eq : m = 3 * d3
+  hd3_prop : m / 3 ∈ m.properDivisors
+  hd3_val : 3 * (m / 3) = m
+  h5 : ¬5 ∣ m
+  h_term1 : 105 * ↑(m / 3) = 35 * M
+  h_le : ∑ d ∈ m.properDivisors \ {m / 3}, 105 * ↑d ≤ (T - 2) * (15 * M)
+  h_sum_const : ∑ d ∈ m.properDivisors \ {m / 3}, 15 * M = ↑(#(m.properDivisors \ {m / 3})) * (15 * M)
+  h_card_eq : ↑(#(m.properDivisors \ {m / 3})) = T - 2
+  a✝ : (15 * T - 4) * M + 105 < 105 * ↑(m / 3) + ∑ x ∈ m.properDivisors \ {m / 3}, 105 * ↑x
+  ⊢ False
+  failed
+  Submission/Spec.lean:1112:32: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.1133 ∈ divisors ?m.1134
+  in the target expression
+    m / 5 ∣ m ∧ m / 5 < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  ⊢ m / 5 ∣ m ∧ m / 5 < m
+  Submission/Spec.lean:1127:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.1293 ∈ divisors ?m.1294
+  in the target expression
+    (d ∣ m ∧ d < m) ∧ ¬d = m / 5
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 5
+  ⊢ d ≠ 0
+  Submission/Spec.lean:1129:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    e ≥ 0
+    e ≥ 1
+    3 ≤ 3*c - 10*e ≤ 4
+    b ≥ 1
+  where
+   b := ↑(#m.divisors)
+   c := ↑m / 3
+   e := Lean.Omega.bmod_div_term 3 [0, 2, 0, 0, 0, 0, 0, -5]
+    (Lean.Omega.Coeffs.ofList
+      [↑m, ↑m / 2, ∑ d ∈ m.properDivisors, ↑d, sigma m, ↑(#m.properDivisors), ↑(#m.divisors), ↑m / 3, ↑d5])
+  Submission/Spec.lean:1133:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.1333 ∈ divisors ?m.1334
+  in the target expression
+    d ∣ m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  d : ℕ
+  hd : (d ∣ m ∧ d < m) ∧ ¬d = m / 5
+  hd_gt1 : d > 1
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 15 * d ≤ m
+  Submission/Spec.lean:1162:24: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    #{?a}
+  in the target expression
+    ↑(#m.properDivisors - #({m / 5} ∩ m.properDivisors)) = T - 2
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  d5 : ℕ
+  hd5_eq : m = 5 * d5
+  hd5_prop : m / 5 ∈ m.properDivisors
+  hd5_val : 5 * (m / 5) = m
+  h_term2 : 105 * ↑(m / 5) = 21 * M
+  h_le : ∑ d ∈ m.properDivisors \ {m / 5}, 105 * ↑d ≤ ↑(#(m.properDivisors \ {m / 5})) * (15 * M)
+  h_sum_const : ∑ d ∈ m.properDivisors \ {m / 5}, 15 * M = ↑(#(m.properDivisors \ {m / 5})) * (15 * M)
+  ⊢ ↑(#m.properDivisors - #({m / 5} ∩ m.properDivisors)) = T - 2
+  Submission/Spec.lean:1174:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.1514 ∈ divisors ?m.1515
+  in the target expression
+    d ∣ m ∧ d < m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  h5 : ¬5 ∣ m
+  d : ℕ
+  hd : d ∣ m ∧ d < m
+  ⊢ d ≠ 0
+  Submission/Spec.lean:1176:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 1
+    b ≥ 1
+    b ≥ 1
+    0 ≤ 2*b - 3*e ≤ 1
+    0 ≤ 2*b - 5*f ≤ 3
+  where
+   b := ↑m / 2
+   c := ↑(#m.divisors)
+   e := ↑m / 3
+   f := ↑m / 5
+  Submission/Spec.lean:1180:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    ?m.1550 ∈ divisors ?m.1551
+  in the target expression
+    d ∣ m
+  
+  m : ℕ
+  hm_odd : ¬2 ∣ m
+  hm3 : m ≥ 3
+  hm0 : m ≠ 0
+  T : ℤ := ↑(#m.divisors)
+  M : ℤ := ↑m
+  h_sum_prop : ∑ d ∈ m.properDivisors, ↑d = sigma m - M
+  h_prop_card : ↑(#m.properDivisors) = ↑(#m.divisors) - 1
+  h3 : ¬3 ∣ m
+  h5 : ¬5 ∣ m
+  d : ℕ
+  hd_gt1 : d > 1
+  hd_div : d ∣ m
+  hd_lt : d < m
+  ⊢ 15 * d ≤ m
+  Submission/Spec.lean:1282:15: error: Tactic `unfold` failed to unfold `sigma` in
+    ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  Submission/Spec.lean:1320:12: error: unsolved goals
+  k m : ℕ
+  hm : ¬2 ∣ m
+  h : 2 ^ k * m > 0
+  heq : a (2 ^ k * m) = sigma (2 ^ k * m)
+  h_ne_one : ¬m = 1
+  hm3 : m ≥ 3
+  hp : ¬Nat.Prime m
+  M : ℤ := ↑m
+  T : ℤ := ↑(#m.divisors)
+  S : ℤ := sigma m
+  C_prime : ℤ := ∑ d ∈ m.divisors, ↑d * ↑(#d.divisors) - M * T
+  h_lt : C_prime + M * T + S < M * T + M + T * (S - M)
+  D : ℤ := M * T - S
+  Y : ℤ := D - ↑k * C_prime
+  h_rel : (2 ^ (k + 1) - 1) * Y = (↑k + 1) * C_prime
+  h_pos : Y ≥ 1
+  h_sum_add : ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  h_C_lt : C_prime < (T - 1) * (M * (T - 1) - D)
+  h_S_sub_M : S - M = M * (T - 1) - D
+  h_C_lt' : C_prime + (T - 1) * D < M * (T - 1) * (T - 1)
+  hk : k = 0
+  h_Y_eq : Y = D
+  h_rel_k0 : (2 ^ (0 + 1) - 1) * Y = (0 + 1) * C_prime
+  h_D_eq_C : D = C_prime
+  h_M_T_lt : M * (T - 1) < T * (S - M)
+  hm0 : m ≠ 0
+  hm1 : m ≠ 1
+  d : ℕ
+  hd : d ∈ m.properDivisors
+  hd_gt1 : d > 1
+  h_sub : {1, d, m} ⊆ m.divisors
+  h_card : #{1, d, m} ≤ #m.divisors
+  ⊢ ¬d = m
+  Submission/Spec.lean:1321:12: error: unsolved goals
+  k m : ℕ
+  hm : ¬2 ∣ m
+  h : 2 ^ k * m > 0
+  heq : a (2 ^ k * m) = sigma (2 ^ k * m)
+  h_ne_one : ¬m = 1
+  hm3 : m ≥ 3
+  hp : ¬Nat.Prime m
+  M : ℤ := ↑m
+  T : ℤ := ↑(#m.divisors)
+  S : ℤ := sigma m
+  C_prime : ℤ := ∑ d ∈ m.divisors, ↑d * ↑(#d.divisors) - M * T
+  h_lt : C_prime + M * T + S < M * T + M + T * (S - M)
+  D : ℤ := M * T - S
+  Y : ℤ := D - ↑k * C_prime
+  h_rel : (2 ^ (k + 1) - 1) * Y = (↑k + 1) * C_prime
+  h_pos : Y ≥ 1
+  h_sum_add : ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  h_C_lt : C_prime < (T - 1) * (M * (T - 1) - D)
+  h_S_sub_M : S - M = M * (T - 1) - D
+  h_C_lt' : C_prime + (T - 1) * D < M * (T - 1) * (T - 1)
+  hk : k = 0
+  h_Y_eq : Y = D
+  h_rel_k0 : (2 ^ (0 + 1) - 1) * Y = (0 + 1) * C_prime
+  h_D_eq_C : D = C_prime
+  h_M_T_lt : M * (T - 1) < T * (S - M)
+  hm0 : m ≠ 0
+  hm1 : m ≠ 1
+  d : ℕ
+  hd : d ∈ m.properDivisors
+  hd_gt1 : d > 1
+  h_sub : {1, d, m} ⊆ m.divisors
+  h_card : #{1, d, m} ≤ #m.divisors
+  hd_lt : d < m
+  ⊢ ¬1 = d ∧ ¬1 = m
+  Submission/Spec.lean:1303:32: error: unsolved goals
+  k m : ℕ
+  hm : ¬2 ∣ m
+  h : 2 ^ k * m > 0
+  heq : a (2 ^ k * m) = sigma (2 ^ k * m)
+  h_ne_one : ¬m = 1
+  hm3 : m ≥ 3
+  hp : ¬Nat.Prime m
+  M : ℤ := ↑m
+  T : ℤ := ↑(#m.divisors)
+  S : ℤ := sigma m
+  C_prime : ℤ := ∑ d ∈ m.divisors, ↑d * ↑(#d.divisors) - M * T
+  h_lt : C_prime + M * T + S < M * T + M + T * (S - M)
+  D : ℤ := M * T - S
+  Y : ℤ := D - ↑k * C_prime
+  h_rel : (2 ^ (k + 1) - 1) * Y = (↑k + 1) * C_prime
+  h_pos : Y ≥ 1
+  h_sum_add : ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  h_C_lt : C_prime < (T - 1) * (M * (T - 1) - D)
+  h_S_sub_M : S - M = M * (T - 1) - D
+  h_C_lt' : C_prime + (T - 1) * D < M * (T - 1) * (T - 1)
+  hk : k = 0
+  h_Y_eq : Y = D
+  h_rel_k0 : (2 ^ (0 + 1) - 1) * Y = (0 + 1) * C_prime
+  h_D_eq_C : D = C_prime
+  h_M_T_lt : M * (T - 1) < T * (S - M)
+  hm0 : m ≠ 0
+  hm1 : m ≠ 1
+  d : ℕ
+  hd : d ∈ m.properDivisors
+  hd_gt1 : d > 1
+  h_sub : {1, d, m} ⊆ m.divisors
+  h_card : #{1, d, m} ≤ #m.divisors
+  h_three : #{1, d, m} = 3
+  h_T_nat : #m.divisors ≥ 3
+  ⊢ T ≥ 3
+  Submission/Spec.lean:1291:6: error: unsolved goals
+  case pos
+  k m : ℕ
+  hm : ¬2 ∣ m
+  h : 2 ^ k * m > 0
+  heq : a (2 ^ k * m) = sigma (2 ^ k * m)
+  h_ne_one : ¬m = 1
+  hm3 : m ≥ 3
+  hp : ¬Nat.Prime m
+  M : ℤ := ↑m
+  T : ℤ := ↑(#m.divisors)
+  S : ℤ := sigma m
+  C_prime : ℤ := ∑ d ∈ m.divisors, ↑d * ↑(#d.divisors) - M * T
+  h_lt : C_prime + M * T + S < M * T + M + T * (S - M)
+  D : ℤ := M * T - S
+  Y : ℤ := D - ↑k * C_prime
+  h_rel : (2 ^ (k + 1) - 1) * Y = (↑k + 1) * C_prime
+  h_pos : Y ≥ 1
+  h_sum_add : ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  h_C_lt : C_prime < (T - 1) * (M * (T - 1) - D)
+  h_S_sub_M : S - M = M * (T - 1) - D
+  h_C_lt' : C_prime + (T - 1) * D < M * (T - 1) * (T - 1)
+  hk : k = 0
+  h_Y_eq : Y = D
+  h_rel_k0 : (2 ^ (0 + 1) - 1) * Y = (0 + 1) * C_prime
+  h_D_eq_C : D = C_prime
+  h_M_T_lt : M * (T - 1) < T * (S - M)
+  h_T_ge3 : T ≥ 3
+  ⊢ False
+  Submission/Spec.lean:1271:4: error: unsolved goals
+  case neg
+  k m : ℕ
+  hm : ¬2 ∣ m
+  h : 2 ^ k * m > 0
+  heq : a (2 ^ k * m) = sigma (2 ^ k * m)
+  h_ne_one : ¬m = 1
+  hm3 : m ≥ 3
+  hp : ¬Nat.Prime m
+  M : ℤ := ↑m
+  T : ℤ := ↑(#m.divisors)
+  S : ℤ := sigma m
+  C_prime : ℤ := ∑ d ∈ m.divisors, ↑d * ↑(#d.divisors) - M * T
+  h_lt : C_prime + M * T + S < M * T + M + T * (S - M)
+  D : ℤ := M * T - S
+  Y : ℤ := D - ↑k * C_prime
+  h_rel : (2 ^ (k + 1) - 1) * Y = (↑k + 1) * C_prime
+  h_pos : Y ≥ 1
+  h_sum_add : ∑ d ∈ m.divisors, (↑d * ↑(#d.divisors) + ↑d) = C_prime + M * T + S
+  h_C_lt : C_prime < (T - 1) * (M * (T - 1) - D)
+  h_S_sub_M : S - M = M * (T - 1) - D
+  h_C_lt' : C_prime + (T - 1) * D < M * (T - 1) * (T - 1)
+  hk : ¬k = 0
+  ⊢ False
+  Submission/Spec.lean:1257:38: error: unsolved goals
+  case mpr
+  n : ℕ
+  h : n > 0
+  ⊢ n.isPowerOfTwo → _root_.a n = sigma n
+  Submission/Spec.lean:1320:20: warning: This simp argument is unused:
+    hd_gt1
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵h̵d̵_̵g̵t̵1̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1322:20: warning: This simp argument is unused:
+    hd_lt.ne
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵h̵d̵_̵l̵t̵.̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1324:10: error: unexpected token 'by'; expected command
+

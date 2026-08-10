@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_three_squares
+#check Nat.sumThreeSquares
+#check Nat.three_squares
+#check Nat.gauss_eureka
+#check Nat.sum_three_triangular
+#check sum_three_squares
+#check sum_three_triangular
+#check Nat.sum_four_squares
+#check Nat.eq_sq_add_sq_iff

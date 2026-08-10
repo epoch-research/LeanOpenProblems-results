@@ -1,0 +1,20 @@
+{
+  "id": "a007406_conjecture_0",
+  "epoch": 1,
+  "uuid": "fATgaqyqNTvVjMEMbeXCgQ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 831100,
+      "output_tokens": 9167,
+      "total_tokens": 3781479,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2925265,
+      "reasoning_tokens": 15947,
+      "total_cost": 1.7679427499999998
+    }
+  },
+  "oeis_id": "A007406"
+}

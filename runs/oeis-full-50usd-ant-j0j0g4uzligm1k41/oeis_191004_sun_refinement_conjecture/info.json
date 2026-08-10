@@ -1,0 +1,20 @@
+{
+  "id": "oeis_191004_sun_refinement_conjecture",
+  "epoch": 1,
+  "uuid": "EVFAfPZ59VwejajYbQi8jm",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 17,
+      "output_tokens": 11959,
+      "total_tokens": 116656,
+      "input_tokens_cache_write": 14704,
+      "input_tokens_cache_read": 89976,
+      "reasoning_tokens": 1944,
+      "total_cost": 0.43594800000000006
+    }
+  },
+  "oeis_id": "A191004"
+}

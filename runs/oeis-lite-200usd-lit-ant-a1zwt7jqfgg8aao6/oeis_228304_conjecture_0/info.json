@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "jN6Wk3YDsRvmMcBCao2t8K",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 163,
+      "output_tokens": 145045,
+      "total_tokens": 8604412,
+      "input_tokens_cache_write": 193121,
+      "input_tokens_cache_read": 8266083,
+      "reasoning_tokens": 25813,
+      "total_cost": 8.96698775
+    }
+  },
+  "oeis_id": "A228304"
+}

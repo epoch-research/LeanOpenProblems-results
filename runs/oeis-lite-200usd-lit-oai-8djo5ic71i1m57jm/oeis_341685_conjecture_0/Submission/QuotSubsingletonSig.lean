@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Quot.recOnSubsingleton
+#print Quot.recOnSubsingleton
+#check Quot.recOn
+#check Quotient.recOnSubsingleton
+#print Quotient.recOnSubsingleton
+#check Squash
+#check Squash.lift
+#check Squash.rec
+#check Squash.get

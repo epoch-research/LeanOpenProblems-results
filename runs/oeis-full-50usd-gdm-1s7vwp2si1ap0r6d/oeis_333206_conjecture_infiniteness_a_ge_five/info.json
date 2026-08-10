@@ -1,0 +1,23 @@
+{
+  "id": "oeis_333206_conjecture_infiniteness_a_ge_five",
+  "epoch": 1,
+  "uuid": "meZV7Dmh6VKXCXuetYqVTW",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 23727891,
+      "output_tokens": 176950,
+      "total_tokens": 111979815,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 86136469,
+      "reasoning_tokens": 1938505,
+      "total_cost": 50.10485684999999
+    }
+  },
+  "oeis_id": "A333206"
+}

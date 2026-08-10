@@ -1,0 +1,23 @@
+{
+  "id": "oeis_7013_conjecture_0",
+  "epoch": 1,
+  "uuid": "RgceN7tcDDKcBxy3JKmu69",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 21126570,
+      "output_tokens": 172512,
+      "total_tokens": 135643253,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 111794767,
+      "reasoning_tokens": 2549404,
+      "total_cost": 50.011678050000064
+    }
+  },
+  "oeis_id": "A007013"
+}

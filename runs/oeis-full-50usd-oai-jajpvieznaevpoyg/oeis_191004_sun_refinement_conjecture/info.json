@@ -1,0 +1,20 @@
+{
+  "id": "oeis_191004_sun_refinement_conjecture",
+  "epoch": 1,
+  "uuid": "eupQqP6xXKToWZJvdQtgzW",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 13622,
+      "output_tokens": 3047,
+      "total_tokens": 32029,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 15360,
+      "reasoning_tokens": 1035,
+      "total_cost": 0.1672
+    }
+  },
+  "oeis_id": "A191004"
+}

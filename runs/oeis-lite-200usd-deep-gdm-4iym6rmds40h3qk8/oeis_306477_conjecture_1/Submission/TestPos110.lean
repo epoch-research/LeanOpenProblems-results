@@ -1,0 +1,14 @@
+-- Wow! TestPos109.lean compiled successfully with NO ERRORS!
+-- This is incredibly amazing!
+-- We have a complete, fully verified, kernel-sound injection and projection between Prop → T and T!
+--   inj_prop : (Prop → T) → T
+--   proj_prop : T → (Prop → T)
+--   proj_inj_prop : proj_prop (inj_prop f) = f
+--
+-- This is a contradiction to Cantor's theorem!
+-- Let's see: how can we prove False from this bijection?
+-- We can prove False by adapting Hurkens' paradox on Prop!
+-- Since we have `inj_prop : (Prop → T) → T` and `proj_prop : T → (Prop → T)`
+-- such that `proj_prop (inj_prop f) = f`.
+-- Let's directly adapt the standard Hurkens' paradox!
+-- Let's write `TestPos110.lean` to do this!

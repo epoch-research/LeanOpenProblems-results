@@ -1,0 +1,9 @@
+import Submission.Spec
+#print A273110
+#print IsSquare_eval
+#print IsSquare_eval_iff
+#print A273110_set_M
+#print A273110_eval
+#print A273110_eq_eval
+#print four_pow_pos
+#print A273110_conjecture

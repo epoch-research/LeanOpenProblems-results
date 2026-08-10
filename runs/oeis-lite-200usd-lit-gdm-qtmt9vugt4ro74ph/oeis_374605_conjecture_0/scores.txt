@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 7 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_374605_conjecture_0: theorem type mismatch
+    Expected type: forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)) p) -> (forall (n : Nat), (LE.le.{0} Nat instLENat (HDiv.hDiv.{0, 0, 0} Nat Nat Nat (instHDiv.{0} Nat Nat.instDiv) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) p) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) n) -> (LE.le.{0} Nat instLENat n (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> (Dvd.dvd.{0} Nat Nat.instDvd (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) (a n)))
+    Got type:      forall (p : Nat), (Nat.Prime p) -> (LE.le.{0} Nat instLENat (OfNat.ofNat.{0} Nat 5 (instOfNatNat 5)) p) -> (forall (n : Nat), (LE.le.{0} Nat instLENat (HDiv.hDiv.{0, 0, 0} Nat Nat Nat (instHDiv.{0} Nat Nat.instDiv) (HAdd.hAdd.{0, 0, 0} Nat Nat Nat (instHAdd.{0} Nat instAddNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) p) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) n) -> (LE.le.{0} Nat instLENat n (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) p (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1)))) -> (Dvd.dvd.{0} Nat Nat.instDvd (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3))) (Choose.a n)))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

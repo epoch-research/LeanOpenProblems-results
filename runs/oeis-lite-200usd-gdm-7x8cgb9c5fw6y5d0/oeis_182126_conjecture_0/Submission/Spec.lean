@@ -1,0 +1,367 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.style.copyright.formalConjectures false
+set_option linter.style.namespace false
+set_option warn.sorry false
+
+open Nat
+open Finset
+
+/--
+A182126: $a(n) = \text{prime}(n) \cdot \text{prime}(n+1) \bmod \text{prime}(n+2)$.
+The function $\text{prime}(k)$ is the $k$-th prime number, with $\text{prime}(1)=2$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  let p_n := fun k : ℕ => (Nat.nth Nat.Prime (k - 1))
+  if n = 0 then 0 -- Handle the 0 case for the otherwise 1-indexed sequence
+  else (p_n n * p_n (n + 1)) % p_n (n + 2)
+
+/--
+Let $C(v, x)$ be the number of times $v$ appears in the sequence $a(1), a(2), \ldots, a(x)$.
+$C(v, x) = |\{ n \in \{1, \dots, x\} : a(n) = v \}|$.
+-/
+noncomputable def count_a (x v : ℕ) : ℕ :=
+  -- The index set is {1, 2, ..., x}. We use range (x+1) which is {0, ..., x} and filter by 1 ≤ n.
+  ((range (x + 1)).filter fun n => 1 ≤ n ∧ a n = v).card
+
+/--
+A value $v₀$ is a most frequent value in $a(1), \ldots, a(x)$ if its count is greater
+than or equal to the count of every other value $v$.
+-/
+def is_most_frequent (x v₀ : ℕ) : Prop :=
+  ∀ v : ℕ, count_a x v₀ ≥ count_a x v
+
+theorem count_a_le_x (x v : ℕ) : count_a x v ≤ x := by
+  dsimp [count_a]
+  have h_sub : (range (x + 1)).filter (fun n => 1 ≤ n ∧ a n = v) ⊆ Ico 1 (x + 1) := by
+    intro n hn
+    rw [mem_filter] at hn
+    rw [mem_Ico]
+    rw [mem_range] at hn
+    exact ⟨hn.2.1, hn.1⟩
+  have h_card := card_le_card h_sub
+  rw [card_Ico 1 (x + 1)] at h_card
+  have h_eq : x + 1 - 1 = x := by omega
+  rw [h_eq] at h_card
+  exact h_card
+
+theorem count_a_mono (x : ℕ) (v : ℕ) : count_a x v ≤ count_a (x + 1) v := by
+  dsimp [count_a]
+  have h_sub : (range (x + 1)).filter (fun n => 1 ≤ n ∧ a n = v) ⊆ (range (x + 2)).filter (fun n => 1 ≤ n ∧ a n = v) := by
+    intro n hn
+    rw [mem_filter] at hn
+    rw [mem_filter]
+    rw [mem_range] at hn
+    rw [mem_range]
+    refine ⟨?_, hn.2⟩
+    omega
+  exact card_le_card h_sub
+
+theorem exists_of_count_pos (x : ℕ) (v : ℕ) (h : count_a x v > 0) : ∃ n, 1 ≤ n ∧ n ≤ x ∧ a n = v := by
+  dsimp [count_a] at h
+  have h_nonempty : ((range (x + 1)).filter fun n => 1 ≤ n ∧ a n = v).Nonempty := by
+    exact card_pos.mp h
+  rcases h_nonempty with ⟨n, hn⟩
+  rw [mem_filter] at hn
+  rw [mem_range] at hn
+  use n
+  refine ⟨hn.2.1, ?_, hn.2.2⟩
+  omega
+
+theorem a_pos (n : ℕ) (hn : n ≥ 1) : a n > 0 := by
+  have hp1 : Nat.Prime (Nat.nth Nat.Prime (n - 1)) := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime (n - 1)
+  have hp2 : Nat.Prime (Nat.nth Nat.Prime n) := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime n
+  have hp3 : Nat.Prime (Nat.nth Nat.Prime (n + 1)) := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime (n + 1)
+  let q1 := Nat.nth Nat.Prime (n - 1)
+  let q2 := Nat.nth Nat.Prime n
+  let q3 := Nat.nth Nat.Prime (n + 1)
+  have hq1 : q1 = Nat.nth Nat.Prime (n - 1) := rfl
+  have hq2 : q2 = Nat.nth Nat.Prime n := rfl
+  have hq3 : q3 = Nat.nth Nat.Prime (n + 1) := rfl
+  
+  have h_dvd : ¬ q3 ∣ q1 * q2 := by
+    intro hd
+    have hd_or := (Nat.Prime.dvd_mul hp3).mp hd
+    rcases hd_or with hd1 | hd2
+    · have h_lt : q1 < q3 := by
+        dsimp [q1, q3]
+        have h_sub : n - 1 < n + 1 := by omega
+        exact Nat.nth_strictMono Nat.infinite_setOf_prime h_sub
+      have hd1_eq := (hp1.dvd_iff_eq hp3.ne_one).mp hd1
+      omega
+    · have h_lt : q2 < q3 := by
+        dsimp [q2, q3]
+        have h_sub : n < n + 1 := by omega
+        exact Nat.nth_strictMono Nat.infinite_setOf_prime h_sub
+      have hd2_eq := (hp2.dvd_iff_eq hp3.ne_one).mp hd2
+      omega
+      
+  have h_mod_ne_zero : (q1 * q2) % q3 ≠ 0 := by
+    intro hz
+    have hdvd_mod : q3 ∣ q1 * q2 := Nat.dvd_of_mod_eq_zero hz
+    exact h_dvd hdvd_mod
+    
+  have ha : a n = (q1 * q2) % q3 := by
+    dsimp [a]
+    split_ifs with hn0
+    · omega
+    · rfl
+    
+  rw [ha]
+  omega
+
+theorem a_lt_prime (n : ℕ) (hn : n ≥ 1) : a n < Nat.nth Nat.Prime (n + 1) := by
+  have ha : a n = (Nat.nth Nat.Prime (n - 1) * Nat.nth Nat.Prime n) % Nat.nth Nat.Prime (n + 1) := by
+    dsimp [a]
+    split_ifs with hn0
+    · omega
+    · rfl
+  rw [ha]
+  have hp3 : Nat.Prime (Nat.nth Nat.Prime (n + 1)) := Nat.nth_mem_of_infinite Nat.infinite_setOf_prime (n + 1)
+  have hp3_pos : Nat.nth Nat.Prime (n + 1) > 0 := hp3.pos
+  exact Nat.mod_lt _ hp3_pos
+
+
+theorem count_a_zero (x : ℕ) : count_a x 0 = 0 := by
+  dsimp [count_a]
+  have h_empty : (range (x + 1)).filter (fun n => 1 ≤ n ∧ a n = 0) = ∅ := by
+    rw [filter_eq_empty_iff]
+    intro n hn
+    rintro ⟨h1, h2⟩
+    have h_pos := a_pos n h1
+    omega
+  rw [h_empty]
+  rfl
+theorem a_one : a 1 = 1 := by
+  dsimp [a]
+  simp
+
+theorem count_a_one_pos {x : ℕ} (hx : x > 10^9) : count_a x 1 > 0 := by
+  dsimp [count_a]
+  have h1 : 1 ∈ range (x + 1) := by
+    rw [mem_range]
+    omega
+  have h2 : 1 ≤ 1 ∧ a 1 = 1 := by
+    exact ⟨by omega, a_one⟩
+  have h3 : 1 ∈ filter (fun n => 1 ≤ n ∧ a n = 1) (range (x + 1)) := by
+    rw [mem_filter]
+    exact ⟨h1, h2⟩
+  have h4 : (filter (fun n => 1 ≤ n ∧ a n = 1) (range (x + 1))).Nonempty := by
+    exact ⟨1, h3⟩
+  exact card_pos.mpr h4
+
+theorem a_two : a 2 = 1 := by
+  dsimp [a]
+  simp
+
+theorem a_three : a 3 = 2 := by
+  dsimp [a]
+  simp
+
+
+theorem nth_prime_four_eq_eleven : nth Nat.Prime 4 = 11 := by
+  have h1 : count Nat.Prime 11 = 4 := by decide
+  have h2 : Nat.Prime 11 := by decide
+  have h3 := nth_count h2
+  rw [h1] at h3
+  exact h3
+theorem nth_prime_five_eq_thirteen : nth Nat.Prime 5 = 13 := by
+  have h1 : count Nat.Prime 13 = 5 := by decide
+  have h2 : Nat.Prime 13 := by decide
+  have h3 := nth_count h2
+  rw [h1] at h3
+  exact h3
+
+theorem nth_prime_six_eq_seventeen : nth Nat.Prime 6 = 17 := by
+  have h1 : count Nat.Prime 17 = 6 := by decide
+  have h2 : Nat.Prime 17 := by decide
+  have h3 := nth_count h2
+  rw [h1] at h3
+  exact h3
+
+theorem nth_prime_seven_eq_nineteen : nth Nat.Prime 7 = 19 := by
+  have h1 : count Nat.Prime 19 = 7 := by decide
+  have h2 : Nat.Prime 19 := by decide
+  have h3 := nth_count h2
+  rw [h1] at h3
+  exact h3
+
+theorem a_four : a 4 = 12 := by
+  dsimp [a]
+  rw [nth_prime_five_eq_thirteen]
+  simp
+
+theorem a_five : a 5 = 7 := by
+  dsimp [a]
+  rw [_root_.nth_prime_four_eq_eleven, _root_.nth_prime_five_eq_thirteen, _root_.nth_prime_six_eq_seventeen]
+
+theorem a_six : a 6 = 12 := by
+  dsimp [a]
+  rw [_root_.nth_prime_five_eq_thirteen, _root_.nth_prime_six_eq_seventeen, _root_.nth_prime_seven_eq_nineteen]
+
+
+theorem a_not_mono : ¬ (∀ n : ℕ, n ≥ 1 → a n ≤ a (n + 1)) := by
+  intro h
+  have h4 := h 4 (by omega)
+  rw [_root_.a_four, _root_.a_five] at h4
+  omega
+theorem count_a_eq_zero_of_not_mem {x : ℕ} {v : ℕ} 
+    (hv : ∀ n ∈ (range (x + 1)).filter (fun n => 1 ≤ n), a n ≠ v) : 
+    count_a x v = 0 := by
+  dsimp [count_a]
+  have h_empty : (filter (fun n => 1 ≤ n ∧ a n = v) (range (x + 1))) = ∅ := by
+    rw [filter_eq_empty_iff]
+    intro n hn
+    rintro ⟨h1, h2⟩
+    have h_mem : n ∈ (range (x + 1)).filter (fun n => 1 ≤ n) := by
+      rw [mem_filter]
+      exact ⟨hn, h1⟩
+    exact hv n h_mem h2
+  rw [h_empty]
+  rfl
+
+theorem count_a_eq_zero_of_ge_prime (x : ℕ) (v : ℕ) (hv : v ≥ Nat.nth Nat.Prime (x + 1)) : count_a x v = 0 := by
+  apply count_a_eq_zero_of_not_mem
+  intro n hn
+  rw [mem_filter] at hn
+  rw [mem_range] at hn
+  have hn_lt_prime := a_lt_prime n hn.2
+  have h_mono : Nat.nth Nat.Prime (n + 1) ≤ Nat.nth Nat.Prime (x + 1) := by
+    by_cases h : n + 1 = x + 1
+    · rw [h]
+    · have h_lt_idx : n + 1 < x + 1 := by omega
+      have h_nth_lt := Nat.nth_strictMono Nat.infinite_setOf_prime h_lt_idx
+      exact h_nth_lt.le
+  omega
+
+
+
+theorem exists_most_frequent (x : ℕ) (hx : x ≥ 1) : ∃ v₀ : ℕ, is_most_frequent x v₀ := by
+  let S := (range (x + 1)).filter (fun n => 1 ≤ n)
+  have hS_nonempty : S.Nonempty := by
+    use 1
+    rw [mem_filter, mem_range]
+    omega
+  let V := S.image a
+  have hV_nonempty : V.Nonempty := by
+    exact Nonempty.image hS_nonempty a
+  have h_max := Finset.exists_max_image V (count_a x) hV_nonempty
+  rcases h_max with ⟨v₀, hv₀_mem, hv₀_max⟩
+  use v₀
+  intro v
+  by_cases hv_mem : v ∈ V
+  · exact hv₀_max v hv_mem
+  · have h_not_mem : ∀ n ∈ S, a n ≠ v := by
+      intro n hn h_eq
+      exact hv_mem (mem_image.mpr ⟨n, hn, h_eq⟩)
+    have h_zero := count_a_eq_zero_of_not_mem h_not_mem
+    omega
+
+theorem count_most_frequent_pos (x : ℕ) (hx : x > 10^9) (v₀ : ℕ) (hv₀ : is_most_frequent x v₀) : count_a x v₀ > 0 := by
+  have h_one : count_a x 1 > 0 := count_a_one_pos hx
+  have h_max := hv₀ 1
+  omega
+
+theorem most_frequent_lt_prime (x : ℕ) (hx : x > 10^9) (v₀ : ℕ) (hv₀ : is_most_frequent x v₀) : v₀ < Nat.nth Nat.Prime (x + 1) := by
+  have h_pos : count_a x v₀ > 0 := count_most_frequent_pos x hx v₀ hv₀
+  have h_exists := exists_of_count_pos x v₀ h_pos
+  rcases h_exists with ⟨n, hn1, hnx, h_eq⟩
+  have h_lt := a_lt_prime n hn1
+  rw [h_eq] at h_lt
+  have h_mono : Nat.nth Nat.Prime (n + 1) ≤ Nat.nth Nat.Prime (x + 1) := by
+    by_cases h : n + 1 = x + 1
+    · rw [h]
+    · have h_lt_idx : n + 1 < x + 1 := by omega
+      have h_nth_lt := Nat.nth_strictMono Nat.infinite_setOf_prime h_lt_idx
+      exact h_nth_lt.le
+  omega
+
+theorem most_frequent_ne_zero (x : ℕ) (hx : x > 10^9) (v₀ : ℕ) (hv₀ : is_most_frequent x v₀) : v₀ ≠ 0 := by
+  intro h_zero
+  have h_pos : count_a x v₀ > 0 := count_most_frequent_pos x hx v₀ hv₀
+  rw [h_zero] at h_pos
+  have h_count_zero := count_a_zero x
+  omega
+
+theorem count_most_frequent_eq (x : ℕ) (v₀ v₁ : ℕ) (hv₀ : is_most_frequent x v₀) (hv₁ : is_most_frequent x v₁) : count_a x v₀ = count_a x v₁ := by
+  have h0 := hv₀ v₁
+  have h1 := hv₁ v₀
+  omega
+
+theorem prime_strict_mono (n : ℕ) : Nat.nth Nat.Prime n < Nat.nth Nat.Prime (n + 1) := by
+  have h_inf := Nat.infinite_setOf_prime
+  have h_mono := Nat.nth_strictMono h_inf
+  exact h_mono (Nat.lt_succ_self n)
+
+theorem prime_mono (n : ℕ) : Nat.nth Nat.Prime n ≤ Nat.nth Nat.Prime (n + 1) := by
+  exact (prime_strict_mono n).le
+
+theorem mod_eq_gaps (q1 q2 q3 : ℕ) (h1 : q1 ≤ q2) (h2 : q2 ≤ q3) :
+    ((q3 - q2) * (q3 - q1)) % q3 = (q1 * q2) % q3 := by
+  rcases Nat.le.dest h1 with ⟨b, hb⟩
+  rcases Nat.le.dest h2 with ⟨a, ha⟩
+  have hq3 : q3 = q1 + b + a := by omega
+  have h_sub1 : q3 - q2 = a := by omega
+  have h_sub2 : q3 - q1 = b + a := by omega
+  have h_id : (q3 - q2) * (q3 - q1) + q2 * q3 = q3 * (q3 - q1) + q1 * q2 := by
+    rw [h_sub1, h_sub2, ← hb, hq3]
+    ring
+  have h_mod : ((q3 - q2) * (q3 - q1) + q2 * q3) % q3 = (q3 * (q3 - q1) + q1 * q2) % q3 := by
+    rw [h_id]
+  have h_lhs : ((q3 - q2) * (q3 - q1) + q2 * q3) % q3 = ((q3 - q2) * (q3 - q1)) % q3 := by
+    rw [Nat.mul_comm q2 q3]
+    rw [Nat.add_mul_mod_self_left]
+  have h_rhs : (q3 * (q3 - q1) + q1 * q2) % q3 = (q1 * q2) % q3 := by
+    rw [Nat.add_comm, Nat.add_mul_mod_self_left]
+  rw [h_lhs, h_rhs] at h_mod
+  exact h_mod
+
+theorem a_eq_gaps_consecutive (n : ℕ) (hn : n ≥ 1) :
+    let q1 := Nat.nth Nat.Prime (n - 1)
+    let q2 := Nat.nth Nat.Prime n
+    let q3 := Nat.nth Nat.Prime (n + 1)
+    ((q3 - q2) * (q3 - q1)) % q3 = a n := by
+  intro q1 q2 q3
+  have h_q1_le_q2 : q1 ≤ q2 := by
+    dsimp [q1, q2]
+    have h_sub : n - 1 < n := by omega
+    have h_inf := Nat.infinite_setOf_prime
+    have h_mono := Nat.nth_strictMono h_inf
+    exact (h_mono h_sub).le
+  have h_q2_le_q3 : q2 ≤ q3 := by
+    dsimp [q2, q3]
+    exact (prime_mono n)
+  have h_mod := mod_eq_gaps q1 q2 q3 h_q1_le_q2 h_q2_le_q3
+  have ha : a n = (q1 * q2) % q3 := by
+    dsimp [a]
+    split_ifs with hn0
+    · omega
+    · rfl
+  rw [ha, h_mod]
+
+theorem a_eq_gaps_consecutive_of_lt (n : ℕ) (hn : n ≥ 1) :
+    let q1 := Nat.nth Nat.Prime (n - 1)
+    let q2 := Nat.nth Nat.Prime n
+    let q3 := Nat.nth Nat.Prime (n + 1)
+    (q3 - q2) * (q3 - q1) < q3 →
+    a n = (q3 - q2) * (q3 - q1) := by
+  intro q1 q2 q3 h_lt
+  have h_eq := a_eq_gaps_consecutive n hn
+  dsimp [q1, q2, q3] at *
+  rw [← h_eq]
+  exact Nat.mod_eq_of_lt h_lt
+
+/--
+Conjecture: for x > 10^9, the most frequent value in a(n), n=1...x, has form 120*k.
+We interpret "n=0...x" from the OEIS entry as $n \in \{1, \dots, x\}$ for the active terms.
+-/
+theorem oeis_182126_conjecture_0 :
+  ∀ x : ℕ,
+    x > 10^9 →
+    ∀ v₀ : ℕ,
+      is_most_frequent x v₀ →
+      120 ∣ v₀ := by
+  sorry
+
+
+

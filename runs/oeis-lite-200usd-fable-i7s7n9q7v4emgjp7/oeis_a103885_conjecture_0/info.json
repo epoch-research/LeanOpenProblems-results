@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a103885_conjecture_0",
+  "epoch": 1,
+  "uuid": "CNkc9fEhqweRvG7pAjpdeS",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1082,
+      "output_tokens": 1236007,
+      "total_tokens": 82421261,
+      "input_tokens_cache_write": 5003782,
+      "input_tokens_cache_read": 76180390,
+      "reasoning_tokens": 375448,
+      "total_cost": 200.53883500000015
+    }
+  },
+  "oeis_id": "A103885"
+}

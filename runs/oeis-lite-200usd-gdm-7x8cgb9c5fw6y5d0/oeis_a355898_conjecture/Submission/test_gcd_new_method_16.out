@@ -1,0 +1,4 @@
+/workspace/leanproject/Submission/test_gcd_new_method_16.lean:60:55: error: Tactic `decide` proved that the proposition
+  (B 1 - 1).gcd (B 0) = 1
+is false
+/workspace/leanproject/Submission/test_gcd_new_method_16.lean:63:8: warning: declaration uses 'sorry'

@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 4 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 12 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration count_a: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration is_most_frequent: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_182126_conjecture_0: theorem type mismatch
+    Expected type: forall (x : Nat), (GT.gt.{0} Nat instLTNat x (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) (OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)) (OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))) -> (forall (v₀ : Nat), (is_most_frequent x v₀) -> (Dvd.dvd.{0} Nat Nat.instDvd (OfNat.ofNat.{0} Nat 120 (instOfNatNat 120)) v₀))
+    Got type:      Not (forall (x : Nat), (GT.gt.{0} Nat instLTNat x (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) (OfNat.ofNat.{0} Nat 10 (instOfNatNat 10)) (OfNat.ofNat.{0} Nat 9 (instOfNatNat 9)))) -> (forall (v₀ : Nat), (oeis_182126_conjecture_0.is_most_frequent x v₀) -> (Dvd.dvd.{0} Nat Nat.instDvd (OfNat.ofNat.{0} Nat 120 (instOfNatNat 120)) v₀)))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

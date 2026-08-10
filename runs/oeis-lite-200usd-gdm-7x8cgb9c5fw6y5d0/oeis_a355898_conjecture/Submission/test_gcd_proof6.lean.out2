@@ -1,0 +1,441 @@
+Submission/test_gcd_proof6.lean:7:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof6.lean:8:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_gcd_proof6.lean:15:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof6.lean:34:15: warning: declaration uses 'sorry'
+Submission/test_gcd_proof6.lean:36:17: warning: declaration uses 'sorry'
+Submission/test_gcd_proof6.lean:30:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof6.lean:34:20: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof6.lean:36:22: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof6.lean:54:59: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0 - 1) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof6.lean:55:55: error: Tactic `decide` failed for proposition
+  (B 1 - 1).gcd (B 0) = 1
+because its `Decidable` instance
+  (B 1 - 1).instDecidableCoprime (B 0)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 1 - 1).gcd (B 0)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof6.lean:56:59: error: Tactic `decide` failed for proposition
+  (B 2 - 1).gcd (B 1 - 1) = 1
+because its `Decidable` instance
+  (B 2 - 1).instDecidableCoprime (B 1 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 2 - 1).gcd (B 1 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof6.lean:57:59: error: Tactic `decide` failed for proposition
+  (B 3 - 1).gcd (B 2 - 1) = 1
+because its `Decidable` instance
+  (B 3 - 1).instDecidableCoprime (B 2 - 1)
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `instDecidableEqNat`, `Nat.decEq`, and `instDecidableCoprime`, reduction got stuck at the `Decidable` instance
+  match h : ((B 3 - 1).gcd (B 2 - 1)).beq 1 with
+  | true => isTrue ⋯
+  | false => isFalse ⋯
+Submission/test_gcd_proof6.lean:61:8: warning: declaration uses 'sorry'
+Submission/test_gcd_proof6.lean:67:2: warning: 'decide' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/test_gcd_proof6.lean:137:10: error: Type mismatch
+  base_gcd_2
+has type
+  (B 2 - 1).gcd (B 1 - 1) = 1
+but is expected to have type
+  (B (0 + 1 + 1 + 1) - 1).gcd (B (0 + 1 + 1) - 1) = 1
+Submission/test_gcd_proof6.lean:139:12: error: Type mismatch
+  base_gcd_3
+has type
+  (B 3 - 1).gcd (B 2 - 1) = 1
+but is expected to have type
+  (B (0 + 1 + 1 + 1 + 1) - 1).gcd (B (0 + 1 + 1 + 1) - 1) = 1
+Submission/test_gcd_proof6.lean:196:33: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 5))
+in the target expression
+  ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1 = ↑d * (q2 * (q1 - ↑q3) * ↑d + q2 + (q1 - ↑q3) - ↑q3 ^ 2 * ↑d)
+
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : Even (k + 3)
+h_odd : Odd (k + 2)
+h_cass_odd : B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 4)) * ↑(B (k + 2)) = ↑(B (k + 3)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1
+⊢ ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1 = ↑d * (q2 * (q1 - ↑q3) * ↑d + q2 + (q1 - ↑q3) - ↑q3 ^ 2 * ↑d)
+Submission/test_gcd_proof6.lean:203:18: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  i ≥ 1
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 2 + 1) ^ 2)
+ g := ↑(B (k + 4)) * ↑(B (k + 2))
+ h := ↑(B (k + 3)) ^ 2
+ i := ↑(r - 1)
+Submission/test_gcd_proof6.lean:221:22: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 4))
+in the target expression
+  ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : Even (k + 3)
+h_odd : Odd (k + 2)
+h_cass_odd : B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 4)) * ↑(B (k + 2)) = ↑(B (k + 3)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1
+hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_odd_km1 : Odd (k + 1)
+h_cass_odd_km1 : B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val
+h_cast_km1 : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1
+h_rec h_rec_z : ↑(B (k + 2)) = ↑(B (k + 1)) + ↑(B k)
+h_rec_sh : B (k + 2) = B (k + 1) + B k
+h_rec_sh_z : ↑(B (k + 2)) = ↑(B (k + 1)) + ↑(B k)
+h_rec_actual : B (k + 3) = B (k + 2) + B (k + 1)
+h_rec_actual_z : ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+⊢ ↑(B (k + 1)) = ↑d * (2 * ↑q3 - q1) - 1
+Submission/test_gcd_proof6.lean:225:33: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 4))
+in the target expression
+  ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1 =
+    ↑d * (q1 * (2 * ↑q3 - q1) * ↑d - q1 + (2 * ↑q3 - q1) - ↑q3 ^ 2 * ↑d)
+
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : Even (k + 3)
+h_odd : Odd (k + 2)
+h_cass_odd : B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val
+h_cast : ↑(B (k + 4)) * ↑(B (k + 2)) = ↑(B (k + 3)) ^ 2 + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 4)) * ↑(B (k + 2)) - ↑(B (k + 3)) ^ 2 - 1
+hd_C_sub_1 : ↑d ∣ ↑C_val - 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_odd_km1 : Odd (k + 1)
+h_cass_odd_km1 : B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val
+h_cast_km1 : ↑(B (k + 3)) * ↑(B (k + 1)) = ↑(B (k + 2)) ^ 2 + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1
+hBkm1_z : ↑(B (k + 1)) = ↑d * (2 * ↑q3 - q1) - 1
+⊢ ↑(B (k + 3)) * ↑(B (k + 1)) - ↑(B (k + 2)) ^ 2 + 1 =
+    ↑d * (q1 * (2 * ↑q3 - q1) * ↑d - q1 + (2 * ↑q3 - q1) - ↑q3 ^ 2 * ↑d)
+Submission/test_gcd_proof6.lean:181:39: error: unsolved goals
+case neg
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+h_even : ¬Even (k + 3)
+⊢ ↑d ∣ 2
+Submission/test_gcd_proof6.lean:233:83: error(lean.unknownIdentifier): Unknown identifier `h_even`
+Submission/test_gcd_proof6.lean:238:102: error: mod_cast has type
+  B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+but is expected to have type
+  B (k + 2) ^ 2 = B (k + 3) * B (k + 1) + C_val
+Submission/test_gcd_proof6.lean:245:31: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 4))
+in the target expression
+  ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1 = ↑d * (↑q3 ^ 2 * ↑d - q1 * (q1 - ↑q3) * ↑d - q1 - (q1 - ↑q3))
+
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+hd_C : ↑d ∣ 2
+h_even_k : Even (k + 2)
+h_cass_even : B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+h_cast : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1
+⊢ ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1 = ↑d * (↑q3 ^ 2 * ↑d - q1 * (q1 - ↑q3) * ↑d - q1 - (q1 - ↑q3))
+Submission/test_gcd_proof6.lean:249:83: error(lean.unknownIdentifier): Unknown identifier `h_even`
+Submission/test_gcd_proof6.lean:253:16: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  i ≥ 0
+  g - h ≥ 0
+  f ≥ 0
+  f + g - h ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 2 + 2)) * ↑(B (k + 2))
+ g := ↑(B (k + 2)) ^ 2
+ h := ↑(B (k + 3)) * ↑(B (k + 1))
+ i := ↑(r - 1)
+Submission/test_gcd_proof6.lean:255:100: error: mod_cast has type
+  B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+but is expected to have type
+  B (k + 1) ^ 2 = B (k + 2) * B k + C_val
+Submission/test_gcd_proof6.lean:267:20: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 4))
+in the target expression
+  ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+hd_C : ↑d ∣ 2
+h_even_k : Even (k + 2)
+h_cass_even : B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+h_cast : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k + 1)
+h_cass_even_km1 : B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+h_cast_km1 : ↑(B (k + 1)) ^ 2 = ↑(B (k + 2)) * ↑(B k) + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 1)) ^ 2 - ↑(B (k + 2)) * ↑(B k) - 1
+h_rec_actual : B (k + 3) = B (k + 2) + B (k + 1)
+h_rec_actual_z : ↑(B (k + 3)) = ↑(B (k + 2)) + ↑(B (k + 1))
+⊢ ↑(B k) = ↑d * (2 * ↑q3 - q1) - 1
+Submission/test_gcd_proof6.lean:271:117: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  j ≥ 1
+  i - l ≥ 1
+  h - i ≥ 0
+  g ≥ 0
+  g + h - i ≥ 0
+  f ≥ 0
+  f + h - i ≥ 0
+  e ≥ 0
+  c ≥ 1
+  b ≥ 0
+  a ≥ 0
+where
+ a := ↑d * q2
+ b := ↑d * q1
+ c := ↑d * ↑q3
+ e := ↑d * (q1 - ↑q3)
+ f := ↑(B (k + 2 + 2)) * ↑(B (k + 2))
+ g := ↑(B (k + 1 + 2)) * ↑(B (k + 1))
+ h := ↑(B (k + 1)) ^ 2
+ i := ↑(B (k + 2)) * ↑(B k)
+ j := ↑d * (2 * ↑q3 - q1)
+ l := ↑(B (k + 2)) * ↑(B (k + 2 - 2))
+Submission/test_gcd_proof6.lean:272:27: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k + 3))
+in the target expression
+  ↑(B (k + 1)) ^ 2 - (↑d * (q1 - ↑q3) + 1) * ↑(B (k + 2 - 2)) - 1 =
+    ↑d * ((q1 - ↑q3) ^ 2 * ↑d + 2 * (q1 - ↑q3) - ↑q3 * (2 * ↑q3 - q1) * ↑d + ↑q3)
+
+case h
+k : ℕ
+ih : ∀ m < k + 1 + 1 + 1 + 1, (B (m + 1) - 1).gcd (B m - 1) = 1
+ih_kp1 : (B (k + 3 + 1) - 1).gcd (B (k + 3) - 1) = 1
+d : ℕ := (B (k + 5) - 1).gcd (B (k + 4) - 1)
+hd1 : d ∣ B (k + 5) - 1
+hd2 : d ∣ B (k + 4) - 1
+h_pos1 : 1 ≤ B (k + 5)
+h_pos2 : 1 ≤ B (k + 4)
+h_pos3 : 1 ≤ B (k + 3)
+h_pos4 : 1 ≤ B (k + 2)
+q2 : ℤ
+hq2 : ↑(B (k + 5)) - 1 = ↑d * q2
+q1 : ℤ
+hq1 : ↑(B (k + 4)) - 1 = ↑d * q1
+q3 : ℕ
+hq3 : B (k + 3) = d * q3
+hBkp1_z : ↑(B (k + 3)) = ↑d * ↑q3
+hBkp2_z : ↑(B (k + 4)) = ↑d * q1 + 1
+hBkp3_z : ↑(B (k + 5)) = ↑d * q2 + 1
+hBk_z : ↑(B (k + 2)) = ↑d * (q1 - ↑q3) + 1
+hd_B_sub_1 : ↑d ∣ ↑(B (k + 2)) - 1
+hd_Bkm1_nat : d ∣ B (k + 2) - 1
+h_cass :
+  (Even (k + 2) → B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val) ∧
+    (Odd (k + 2) → B (k + 2 + 2) * B (k + 2) = B (k + 2 + 1) ^ 2 + C_val)
+hd_C : ↑d ∣ 2
+h_even_k : Even (k + 2)
+h_cass_even : B (k + 2 + 1) ^ 2 = B (k + 2 + 2) * B (k + 2) + C_val
+h_cast : ↑(B (k + 2)) ^ 2 = ↑(B (k + 3)) * ↑(B (k + 1)) + ↑C_val
+h_C_add_1 : ↑C_val + 1 = ↑(B (k + 2)) ^ 2 - ↑(B (k + 3)) * ↑(B (k + 1)) + 1
+hd_C_add_1 : ↑d ∣ ↑C_val + 1
+h_cass_kp1 :
+  (Even (k + 1) → B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val) ∧
+    (Odd (k + 1) → B (k + 1 + 2) * B (k + 1) = B (k + 1 + 1) ^ 2 + C_val)
+h_even_km1 : Even (k + 1)
+h_cass_even_km1 : B (k + 1 + 1) ^ 2 = B (k + 1 + 2) * B (k + 1) + C_val
+h_cast_km1 : ↑(B (k + 1)) ^ 2 = ↑(B (k + 2)) * ↑(B k) + ↑C_val
+h_C_sub_1 : ↑C_val - 1 = ↑(B (k + 1)) ^ 2 - ↑(B (k + 2)) * ↑(B k) - 1
+hBkm1_z : ↑(B k) = ↑d * (2 * ↑q3 - q1) - 1
+⊢ ↑(B (k + 1)) ^ 2 - (↑d * (q1 - ↑q3) + 1) * ↑(B (k + 2 - 2)) - 1 =
+    ↑d * ((q1 - ↑q3) ^ 2 * ↑d + 2 * (q1 - ↑q3) - ↑q3 * (2 * ↑q3 - q1) * ↑d + ↑q3)
+Submission/test_gcd_proof6.lean:278:14: error: Type mismatch
+  hd_diff
+has type
+  ↑d ∣ 2
+but is expected to have type
+  d = 1
+Submission/test_gcd_proof6.lean:279:10: error: No goals to be solved

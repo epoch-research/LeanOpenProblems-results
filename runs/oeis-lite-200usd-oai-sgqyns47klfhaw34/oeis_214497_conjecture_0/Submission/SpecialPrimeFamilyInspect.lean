@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check lucas_primality
+#check lucas_primality_iff
+#check reverse_lucas_primality
+#check Nat.pow_of_pow_add_prime
+#check Nat.prime_of_pow_sub_one_prime
+#check Nat.fermat_primeFactors_one_lt
+#check Nat.pow_pow_add_primeFactors_one_lt
+#check Nat.Prime.of_mersenne
+#check Nat.Prime.of_not_dvd_of_forall_prime_dvd_sub_one
+#check Nat.Prime.of_dvd_pow_sub_one

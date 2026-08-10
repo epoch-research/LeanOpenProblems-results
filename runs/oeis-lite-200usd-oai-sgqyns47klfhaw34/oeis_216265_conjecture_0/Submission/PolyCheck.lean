@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+#check Polynomial.exists_prime_and_dvd_eval₂
+#check Polynomial.exists_prime_and_dvd_eval
+#print Polynomial.exists_prime_and_dvd_eval₂
+#print Polynomial.exists_prime_and_dvd_eval

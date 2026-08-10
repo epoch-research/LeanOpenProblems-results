@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+open Finset
+#check Finset.sum_range_id
+#check Finset.sum_range_sq
+#check sum_range_sq
+#check Nat.mod_add_div
+#check Nat.le_div_iff_mul_le
+#check Finset.sum_comm
+#check Finset.sum_Icc_eq_sum_range
+#check Finset.sum_range_add
+#check Finset.card_filter
+#check Finset.sum_boole
+#check Nat.div_le_iff_le_mul

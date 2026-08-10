@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.testBit
+#check Nat.testBit_two_pow
+#check Nat.testBit_pow_two
+#check Nat.testBit_mul_two
+#check Nat.testBit_shiftLeft
+#check Nat.testBit_shiftRight
+#check Nat.mod_two_pow_eq
+#check Nat.testBit_eq_decide

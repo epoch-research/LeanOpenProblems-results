@@ -1,0 +1,49 @@
+Submission/test_lemma_proof2.lean:38:8: error: `simp` made no progress
+Submission/test_lemma_proof2.lean:59:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  h ≥ 0
+  g ≥ 0
+  f ≥ 0
+  f + g ≥ 0
+  e ≥ 0
+  e - h ≥ 1
+  c ≥ 0
+  c + e ≥ 0
+  b ≥ 0
+  a ≥ 0
+  a - b ≥ 1
+where
+ a := ↑k
+ b := ↑j
+ c := ↑(B (k - j))
+ e := ↑(B (k - 1 - j))
+ f := ↑(fib j)
+ g := ↑(fib (j + 1))
+ h := ↑(B (k + 1 - (j + 2)))
+Submission/test_lemma_proof2.lean:64:14: error: Type mismatch
+  Nat.dvd_sub ?m.604 ?m.605
+has type
+  ?m.601 ∣ ?m.602 - ?m.603
+but is expected to have type
+  ↑d ∣ ↑(B (k + 1 - j)) + (-1) ^ j * ↑(fib j) - (↑(B (k - j)) + (-1) ^ (j + 1) * ↑(fib (j + 1)))
+Submission/test_lemma_proof2.lean:35:41: warning: This simp argument is unused:
+  Int.ofNat_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, I̵n̵t̵.̵o̵f̵N̵a̵t̵_̵z̵e̵r̵o̵,̵ ̵mul_zero, add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/test_lemma_proof2.lean:35:57: warning: This simp argument is unused:
+  mul_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/test_lemma_proof2.lean:35:67: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [Nat.sub_zero, pow_zero, Int.ofNat_zero, mul_zero,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

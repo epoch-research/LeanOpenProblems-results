@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:213:37: warning: unused variable `hX`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:288:44: warning: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:577:23: warning: unused variable `hk`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:1087:12: error: unsolved goals\ncase neg\nk' : ℕ\nih : k' > 0 → ∀ n < 10 ^ k' - 1, A004290 n < 10 ^ (9 * k' - 1)\nhk : k' + 1 > 0\nn : ℕ\nhn : n < 10 ^ (k' + 1) - 1\nhk' : ¬k' = 0\nhk'_pos : k' > 0\nhn0 : ¬n = 0\nhn_pos : n > 0\nhn_le : ¬n ≤ 9 * k' + 8\ng : ℕ := n.gcd (10 ^ 9)\nhg_ge : ¬g ≥ 10\nhg_lt : g < 10\nhg_dvd_3 : g ∣ 10 ^ 3\nhg_dvd_n : g ∣ n\nhg_1 : ¬g = 1\nh_le : A004290 n ≤ 10 ^ 3 * A004290 (n / g)\nd : ℕ := n / g\nhd_lt : d < 10 ^ k' - 1\n⊢ A004290 n < 10 ^ (9 * (k' + 1) - 1)",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

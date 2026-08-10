@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sum_range_mod
+#check Nat.sum_mod
+#check Finset.sum_range_mod
+#check Finset.sum_nat_mod
+#check Nat.mod_sum
+#check ZMod.sum
+#check Nat.sum_range_sq_mod
+#check sum_range_sq_mod
+#check Nat.mod_le
+#check Nat.mod_lt

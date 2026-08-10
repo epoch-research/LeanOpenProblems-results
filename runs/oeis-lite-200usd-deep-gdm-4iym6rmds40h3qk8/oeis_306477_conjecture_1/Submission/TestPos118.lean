@@ -1,0 +1,21 @@
+-- Ah! `F S p f` has type `p` (which is a Prop).
+-- But we want to return a Prop from `fun (h : p → Prop) => ...`!
+-- Yes! `fun (h : p → Prop) => ...` is the argument of `f`.
+-- `f` has type `((p → Prop) → Prop) → p`.
+-- So the argument of `f` must have type `(p → Prop) → Prop`!
+-- A function of type `(p → Prop) → Prop` takes `h : p → Prop` and returns `Prop`!
+-- But `F S p f` has type `p`, which is not `Prop`!
+-- We need to turn `F S p f` (which has type `p`) into `Prop`!
+-- How can we turn a term of `p` into `Prop`?
+-- Since we are inside the function, we can just return `True` or any Prop!
+-- But we want the definition to be useful (so that we can prove `beta`).
+-- Wait, if we return `True`, is it useful?
+-- If we return `True`, then the information about `F S` is lost.
+-- But wait!
+-- Can we define:
+--   `f (fun (h : p → Prop) => (F S p f) = ...)`?
+-- No, because we want the whole argument to `f` to return `Prop`.
+-- What if we define:
+--   `U : Prop := ∀ p : Prop, (((p → Prop) → p) → p)`?
+-- Let's check!
+def U : Prop := ∀ p : Prop, (((p → Prop) → p) → p)

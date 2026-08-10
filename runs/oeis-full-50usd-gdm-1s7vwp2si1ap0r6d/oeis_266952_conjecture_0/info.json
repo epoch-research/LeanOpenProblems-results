@@ -1,0 +1,23 @@
+{
+  "id": "oeis_266952_conjecture_0",
+  "epoch": 1,
+  "uuid": "R7bfgnpM5a8SNziyXr64pq",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 22026096,
+      "output_tokens": 394417,
+      "total_tokens": 115908069,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 90673101,
+      "reasoning_tokens": 2814455,
+      "total_cost": 50.189862149999946
+    }
+  },
+  "oeis_id": "A266952"
+}

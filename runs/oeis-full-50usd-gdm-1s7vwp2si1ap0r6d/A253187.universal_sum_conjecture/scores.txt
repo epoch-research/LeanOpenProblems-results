@@ -1,0 +1,26 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 9 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 16 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration P_k_first: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration polygonal_num_val: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration P_k_second: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A253187: definition type or value mismatch
+    Value mismatch (values differ)
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_53000_conjecture_1",
+  "epoch": 1,
+  "uuid": "mrPBDRce4cwiJZ3x3PHXbW",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 6088,
+      "output_tokens": 401280,
+      "total_tokens": 367789836,
+      "input_tokens_cache_write": 1096818,
+      "input_tokens_cache_read": 366285650,
+      "reasoning_tokens": 43722,
+      "total_cost": 200.06037750000033
+    }
+  },
+  "oeis_id": "A053000"
+}

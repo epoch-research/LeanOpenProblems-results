@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1008:42: error(lean.unknownIdentifier): Unknown identifier `nth_prime_bound`
+

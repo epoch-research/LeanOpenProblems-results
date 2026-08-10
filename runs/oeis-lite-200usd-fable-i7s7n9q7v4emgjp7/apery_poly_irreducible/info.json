@@ -1,0 +1,23 @@
+{
+  "id": "apery_poly_irreducible",
+  "epoch": 1,
+  "uuid": "F4vjSQFaFgqgeDhqes7Xcb",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1829,
+      "output_tokens": 229283,
+      "total_tokens": 172631370,
+      "input_tokens_cache_write": 1410584,
+      "input_tokens_cache_read": 170989674,
+      "reasoning_tokens": 62947,
+      "total_cost": 200.10441400000005
+    }
+  },
+  "oeis_id": "A005258"
+}

@@ -1,0 +1,40 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:235:17: error: Application type mismatch: The argument
+    h
+  has type
+    check_range.loop B P fuel' (n + 1) = true
+  of sort `Prop` but is expected to have type
+    ℕ
+  of sort `Type` in the application
+    ih h
+  Submission/Spec.lean:236:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 0
+    c ≥ 0
+    b ≥ 0
+    b - c ≤ -1
+    b - c + d ≥ 0
+    a ≥ 0
+    a - b ≥ 0
+    a - c ≥ 0
+  where
+   a := ↑B
+   b := ↑n
+   c := ↑m
+   d := ↑fuel'
+  Submission/Spec.lean:237:4: error: No goals to be solved
+  Submission/Spec.lean:265:81: error: Application type mismatch: The argument
+    h_bool
+  has type
+    (fun n => decide ((my_loop n n == 1) = true ∨ A273110_super_fast n ≠ 1)) n = true
+  but is expected to have type
+    decide (my_loop n n = 1 ∨ A273110_super_fast n ≠ 1) = true
+  in the application
+    of_decide_eq_true h_bool
+  Submission/Spec.lean:270:27: warning: unused name: h_ex
+  Submission/Spec.lean:271:14: error(lean.unknownIdentifier): Unknown identifier `h_ex`
+  Submission/Spec.lean:272:6: error: No goals to be solved
+  Submission/Spec.lean:301:6: error: No goals to be solved
+

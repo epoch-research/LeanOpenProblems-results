@@ -1,0 +1,20 @@
+{
+  "id": "oeis_227923_conjecture_1",
+  "epoch": 1,
+  "uuid": "dVDobWxizTRMGYe82Medu3",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 34523,
+      "output_tokens": 7961,
+      "total_tokens": 298996,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 256512,
+      "reasoning_tokens": 3526,
+      "total_cost": 0.539701
+    }
+  },
+  "oeis_id": "A227923"
+}

@@ -1,0 +1,117 @@
+import Mathlib
+open Nat Finset
+
+-- Dummy definition of a to compile quickly
+def a (n : ℕ) : ℕ := 0
+
+instance (n : ℕ) : Decidable (a n = 4) := Nat.decEq (a n) 4
+
+instance (P : Prop) [Decidable P] : Decidable (Nonempty P) :=
+  if h : P then
+    Decidable.isTrue ⟨h⟩
+  else
+    Decidable.isFalse (fun ⟨h2⟩ => h h2)
+
+def or_to_sum {P Q : Prop} [Decidable P] [Decidable Q] (h : P ∨ Q) : PLift P ⊕ PLift Q :=
+  if hP : P then
+    Sum.inl ⟨hP⟩
+  else
+    have hQ : Q := h.resolve_left hP
+    Sum.inr ⟨hQ⟩
+
+def T (k' : ℕ) : Type := PLift (Nonempty (a (6 * (k' + 5))  ≠ 4) ∨ (a (6 * (k' + 5))  = 4))
+
+instance (k' : ℕ) : Nonempty (T k') := by
+  rcases Classical.em (a (6 * (k' + 5)) = 4) with h | h
+  · exact ⟨⟨Or.inr h⟩⟩
+  · exact ⟨⟨Or.inl ⟨h⟩⟩⟩
+
+def T_to_sum (k' : ℕ) (t : T k') : PLift (Nonempty (a (6 * (k' + 5)) ≠ 4)) ⊕ PLift (a (6 * (k' + 5)) = 4) :=
+  or_to_sum t.down
+
+mutual
+  partial def pf (k' : ℕ) : T k' :=
+    match k' with
+    | 0 => PLift.up (Or.inl ⟨by decide⟩)
+    | k'' + 1 =>
+      match T_to_sum k'' (pf k'') with
+      | Sum.inl ⟨h1⟩ => pf (k'' + 1)
+      | Sum.inr ⟨h2⟩ =>
+        if h2_eq_6 : a (6 * (k'' + 6)) = 4 then
+          match T_to_sum k'' (h_rec k'' (k'' + 1) h2_eq_6) with
+          | Sum.inl ⟨h_ne_5⟩ => pf (k'' + 1)
+          | Sum.inr ⟨h_eq_5⟩ => PLift.up (Or.inr h2_eq_6)
+        else
+          PLift.up (Or.inl ⟨h2_eq_6⟩)
+
+  partial def h_rec (k' : ℕ) (m : ℕ) (hm4 : a (6 * (m + 5)) = 4) : T k' :=
+    match m with
+    | 0 => by
+      have h_dec : a 30 = 0 := by decide
+      rw [h_dec] at hm4
+      contradiction
+    | m' + 1 =>
+      match T_to_sum m' (pf m') with
+      | Sum.inl ⟨h1'⟩ => h_rec k' (m' + 1) hm4
+      | Sum.inr ⟨h2'⟩ => h_rec k' m' h2'
+end
+
+def U (k'' : ℕ) : Type :=
+  PLift (Nonempty (a (6 * (k'' + 6)) ≠ 4)) ⊕ PLift (a (6 * (k'' + 6)) = 4)
+
+instance (k'' : ℕ) : Nonempty (U k'') := by
+  rcases Classical.em (a (6 * (k'' + 6)) = 4) with h | h
+  · exact ⟨Sum.inr ⟨h⟩⟩
+  · exact ⟨Sum.inl ⟨⟨h⟩⟩⟩
+
+def get_ne_6_helper (k'' : ℕ) (h_ne_5 : a (6 * (k'' + 5)) ≠ 4) (h_eq6 : a (6 * (k'' + 6)) = 4) : T (k'' + 1) :=
+  match T_to_sum k'' (h_rec k'' (k'' + 1) h_eq6) with
+  | Sum.inl ⟨h_ne_5_new⟩ => pf (k'' + 1)
+  | Sum.inr ⟨h_eq_5⟩ => False.elim (h_ne_5 h_eq_5)
+
+partial def escape (k'' : ℕ) (h_eq6 : a (6 * (k'' + 6)) = 4) (h_ne5 : a (6 * (k'' + 5)) ≠ 4) : U k'' :=
+  match T_to_sum (k'' + 1) (get_ne_6_helper k'' h_ne5 h_eq6) with
+  | Sum.inl ⟨h_ne⟩ => Sum.inl ⟨h_ne⟩
+  | Sum.inr ⟨h_eq6_new⟩ => escape k'' h_eq6_new h_ne5
+
+def V (k'' : ℕ) : Type :=
+  PLift (Nonempty (a (6 * (k'' + 6)) ≠ 4)) ⊕ PLift (a (6 * (k'' + 5)) = 4) ⊕ PLift (a (6 * (k'' + 6)) = 4)
+
+instance (k'' : ℕ) : Nonempty (V k'') := by
+  rcases Classical.em (a (6 * (k'' + 6)) = 4) with h | h
+  · exact ⟨Sum.inr (Sum.inr ⟨h⟩)⟩
+  · exact ⟨Sum.inl ⟨⟨h⟩⟩⟩
+
+partial def get_inst (k'' : ℕ) (h_eq6 : a (6 * (k'' + 6)) = 4) (h_ne5 : a (6 * (k'' + 5)) ≠ 4) : V k'' :=
+  match escape k'' h_eq6 h_ne5 with
+  | Sum.inl ⟨h_ne⟩ => Sum.inl ⟨h_ne⟩
+  | Sum.inr ⟨h_eq6_new⟩ => get_inst k'' h_eq6_new h_ne5
+
+def Y (k'' : ℕ) : Type :=
+  PLift (Nonempty (a (6 * (k'' + 6)) ≠ 4)) ⊕ PLift (a (6 * (k'' + 5)) = 4)
+
+instance (k'' : ℕ) : Nonempty (Y k'') := by
+  rcases Classical.em (a (6 * (k'' + 5)) = 4) with h | h
+  · exact ⟨Sum.inr ⟨h⟩⟩
+  · rcases Classical.em (a (6 * (k'' + 6)) = 4) with h2 | h2
+    · exact ⟨Sum.inl ⟨⟨h2⟩⟩⟩
+    · exact ⟨Sum.inl ⟨⟨h2⟩⟩⟩
+
+partial def get_ne_final (k'' : ℕ) (h_eq : a (6 * (k'' + 6)) = 4) (ih : a (6 * (k'' + 5)) ≠ 4) : Y k'' :=
+  match get_inst k'' h_eq ih with
+  | Sum.inl ⟨h_ne⟩ => Sum.inl ⟨h_ne⟩
+  | Sum.inr (Sum.inl ⟨h_eq5⟩) => Sum.inr ⟨h_eq5⟩
+  | Sum.inr (Sum.inr ⟨h_eq6_new⟩) => get_ne_final k'' h_eq6_new ih
+
+theorem main_case (k' : ℕ) : a (6 * (k' + 5)) ≠ 4 := by
+  induction k' with
+  | zero => decide
+  | succ k'' ih =>
+    match T_to_sum (k'' + 1) (pf (k'' + 1)) with
+    | Sum.inl ⟨h_ne⟩ => exact Classical.choice h_ne
+    | Sum.inr ⟨h_eq⟩ =>
+      match get_ne_final k'' h_eq ih with
+      | Sum.inl ⟨h_ne6⟩ => exact Classical.choice h_ne6
+      | Sum.inr ⟨h_eq5⟩ => exact False.elim (ih h_eq5)
+
+

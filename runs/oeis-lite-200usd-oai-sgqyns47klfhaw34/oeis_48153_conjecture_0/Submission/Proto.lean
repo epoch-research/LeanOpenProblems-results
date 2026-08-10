@@ -1,0 +1,19 @@
+import FormalConjectures.Util.ProblemImports
+open Finset
+
+#check Finset.sum_range_id
+#check Finset.sum_range_sq
+#check sum_range_sq
+#check Nat.sum_range_square
+#check Finset.sum_range_cube
+#check Nat.div_add_mod
+#check Nat.add_mul_div_left
+#check Nat.mul_add_div
+#check Nat.div_eq_of_lt
+#check Nat.div_le_iff_mul_le
+#check Nat.le_div_iff_mul_le
+#check Nat.div_lt_iff_lt_mul
+#check Nat.mul_div_right
+#check Nat.mul_div_left
+#check Nat.mul_div_cancel_left
+#check Nat.div_eq_sub_mod_div

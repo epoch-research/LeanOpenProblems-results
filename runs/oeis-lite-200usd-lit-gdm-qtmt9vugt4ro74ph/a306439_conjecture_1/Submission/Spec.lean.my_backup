@@ -1,0 +1,272 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset Set
+
+/--
+The generalized pentagonal number (3k+1)/2$ for  \ge 0$.
+-/
+noncomputable def P3 (k : ℕ) : ℕ := k * (3 * k + 1) / 2
+
+/--
+A306439: Number of ways to write $ as (3x+1)/2 + y(3y+1)/2 + z(3z+1) + 3w(3w+1)/2$,
+where ,y,z,w$ are nonnegative integers with  \le y$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  let B := n + 1
+  let RangeB := range B
+
+  -- The domain of search is (RangeB x RangeB) x (RangeB x RangeB).
+  let search_space : Finset ((ℕ × ℕ) × (ℕ × ℕ)) :=
+    (RangeB.product RangeB).product (RangeB.product RangeB)
+
+  (search_space.filter (fun p =>
+    let x := p.fst.fst
+    let y := p.fst.snd
+    let z := p.snd.fst
+    let w := p.snd.snd
+    -- The equation is P3(x) + P3(y) + 2*P3(z) + 3*P3(w) = n.
+    x ≤ y ∧ n = P3 x + P3 y + 2 * P3 z + 3 * P3 w
+  )).card
+
+lemma P3_mono {a b : ℕ} (h : a ≤ b) : P3 a ≤ P3 b := by
+  unfold P3
+  apply Nat.div_le_div_right
+  apply Nat.mul_le_mul h
+  omega
+
+lemma a_eq_card_filter_small {n X Y Z W : ℕ}
+  (hX_le : X ≤ n + 1) (hY_le : Y ≤ n + 1) (hZ_le : Z ≤ n + 1) (hW_le : W ≤ n + 1)
+  (hX : P3 X > n) (hY : P3 Y > n) (hZ : 2 * P3 Z > n) (hW : 3 * P3 W > n) :
+  let small_space : Finset ((ℕ × ℕ) × (ℕ × ℕ)) :=
+    ((Finset.range X).product (Finset.range Y)).product ((Finset.range Z).product (Finset.range W))
+  a n = (small_space.filter (fun p =>
+    let x := p.fst.fst
+    let y := p.fst.snd
+    let z := p.snd.fst
+    let w := p.snd.snd
+    x ≤ y ∧ n = P3 x + P3 y + 2 * P3 z + 3 * P3 w
+  )).card := by
+  intro small_space
+  unfold a
+  change
+    (Finset.filter (fun (p : (ℕ × ℕ) × (ℕ × ℕ)) =>
+      let x := p.fst.fst
+      let y := p.fst.snd
+      let z := p.snd.fst
+      let w := p.snd.snd
+      x ≤ y ∧ n = P3 x + P3 y + 2 * P3 z + 3 * P3 w
+    ) (((Finset.range (n+1) ×ˢ Finset.range (n+1)) ×ˢ (Finset.range (n+1) ×ˢ Finset.range (n+1))))).card =
+    (Finset.filter (fun (p : (ℕ × ℕ) × (ℕ × ℕ)) =>
+      let x := p.fst.fst
+      let y := p.fst.snd
+      let z := p.snd.fst
+      let w := p.snd.snd
+      x ≤ y ∧ n = P3 x + P3 y + 2 * P3 z + 3 * P3 w
+    ) (((Finset.range X ×ˢ Finset.range Y) ×ˢ (Finset.range Z ×ˢ Finset.range W)))).card
+  apply congrArg Finset.card
+  ext p
+  rcases p with ⟨⟨x, y⟩, ⟨z, w⟩⟩
+  simp only [mem_filter, Finset.mem_product, Finset.mem_range]
+  constructor
+  · rintro ⟨⟨⟨hx, hy⟩, ⟨hz, hw⟩⟩, h_xy, h_eq⟩
+    refine ⟨⟨⟨?_, ?_⟩, ⟨?_, ?_⟩⟩, h_xy, h_eq⟩
+    · by_contra! h
+      have h1 : P3 X ≤ P3 x := P3_mono h
+      have h2 : P3 x ≤ n := by omega
+      omega
+    · by_contra! h
+      have h1 : P3 Y ≤ P3 y := P3_mono h
+      have h2 : P3 y ≤ n := by omega
+      omega
+    · by_contra! h
+      have h1 : P3 Z ≤ P3 z := P3_mono h
+      have h2 : 2 * P3 Z ≤ 2 * P3 z := by omega
+      have h3 : 2 * P3 z ≤ n := by omega
+      omega
+    · by_contra! h
+      have h1 : P3 W ≤ P3 w := P3_mono h
+      have h2 : 3 * P3 W ≤ 3 * P3 w := by omega
+      have h3 : 3 * P3 w ≤ n := by omega
+      omega
+  · rintro ⟨⟨⟨hx, hy⟩, ⟨hz, hw⟩⟩, h_xy, h_eq⟩
+    refine ⟨⟨⟨?_, ?_⟩, ⟨?_, ?_⟩⟩, h_xy, h_eq⟩
+    · omega
+    · omega
+    · omega
+    · omega
+
+/--
+OEIS A306439 Conjecture 1: a(n) > 0 for all n > 5, and a(n) = 1 only for n = 0, 2, 7, 9, 11, 12, 16, 31, 33, 41.
+-/
+theorem a306439_conjecture_1 :
+  (∀ n, 5 < n → a n > 0) ∧
+  (∀ n, a n = 1 ↔ n ∈ ({0, 2, 7, 9, 11, 12, 16, 31, 33, 41} : Set ℕ))
+:= by
+  constructor
+  · intro n hn
+    by_cases h41 : n ≤ 41
+    · interval_cases n
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by decide : P3 2 > 6) (by decide : P3 2 > 6) (by decide : 2 * P3 2 > 6) (by decide : 3 * P3 2 > 6)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 7 + 1) (by omega : 3 ≤ 7 + 1) (by omega : 2 ≤ 7 + 1) (by omega : 2 ≤ 7 + 1) (by decide : P3 3 > 7) (by decide : P3 3 > 7) (by decide : 2 * P3 2 > 7) (by decide : 3 * P3 2 > 7)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 8 + 1) (by omega : 3 ≤ 8 + 1) (by omega : 2 ≤ 8 + 1) (by omega : 2 ≤ 8 + 1) (by decide : P3 3 > 8) (by decide : P3 3 > 8) (by decide : 2 * P3 2 > 8) (by decide : 3 * P3 2 > 8)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 9 + 1) (by omega : 3 ≤ 9 + 1) (by omega : 2 ≤ 9 + 1) (by omega : 2 ≤ 9 + 1) (by decide : P3 3 > 9) (by decide : P3 3 > 9) (by decide : 2 * P3 2 > 9) (by decide : 3 * P3 2 > 9)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 10 + 1) (by omega : 3 ≤ 10 + 1) (by omega : 2 ≤ 10 + 1) (by omega : 2 ≤ 10 + 1) (by decide : P3 3 > 10) (by decide : P3 3 > 10) (by decide : 2 * P3 2 > 10) (by decide : 3 * P3 2 > 10)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 11 + 1) (by omega : 3 ≤ 11 + 1) (by omega : 2 ≤ 11 + 1) (by omega : 2 ≤ 11 + 1) (by decide : P3 3 > 11) (by decide : P3 3 > 11) (by decide : 2 * P3 2 > 11) (by decide : 3 * P3 2 > 11)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 12 + 1) (by omega : 3 ≤ 12 + 1) (by omega : 2 ≤ 12 + 1) (by omega : 2 ≤ 12 + 1) (by decide : P3 3 > 12) (by decide : P3 3 > 12) (by decide : 2 * P3 2 > 12) (by decide : 3 * P3 2 > 12)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 13 + 1) (by omega : 3 ≤ 13 + 1) (by omega : 2 ≤ 13 + 1) (by omega : 2 ≤ 13 + 1) (by decide : P3 3 > 13) (by decide : P3 3 > 13) (by decide : 2 * P3 2 > 13) (by decide : 3 * P3 2 > 13)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 14 + 1) (by omega : 3 ≤ 14 + 1) (by omega : 3 ≤ 14 + 1) (by omega : 2 ≤ 14 + 1) (by decide : P3 3 > 14) (by decide : P3 3 > 14) (by decide : 2 * P3 3 > 14) (by decide : 3 * P3 2 > 14)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 15 + 1) (by omega : 4 ≤ 15 + 1) (by omega : 3 ≤ 15 + 1) (by omega : 2 ≤ 15 + 1) (by decide : P3 4 > 15) (by decide : P3 4 > 15) (by decide : 2 * P3 3 > 15) (by decide : 3 * P3 2 > 15)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 16 + 1) (by omega : 4 ≤ 16 + 1) (by omega : 3 ≤ 16 + 1) (by omega : 2 ≤ 16 + 1) (by decide : P3 4 > 16) (by decide : P3 4 > 16) (by decide : 2 * P3 3 > 16) (by decide : 3 * P3 2 > 16)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 17 + 1) (by omega : 4 ≤ 17 + 1) (by omega : 3 ≤ 17 + 1) (by omega : 2 ≤ 17 + 1) (by decide : P3 4 > 17) (by decide : P3 4 > 17) (by decide : 2 * P3 3 > 17) (by decide : 3 * P3 2 > 17)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 18 + 1) (by omega : 4 ≤ 18 + 1) (by omega : 3 ≤ 18 + 1) (by omega : 2 ≤ 18 + 1) (by decide : P3 4 > 18) (by decide : P3 4 > 18) (by decide : 2 * P3 3 > 18) (by decide : 3 * P3 2 > 18)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 19 + 1) (by omega : 4 ≤ 19 + 1) (by omega : 3 ≤ 19 + 1) (by omega : 2 ≤ 19 + 1) (by decide : P3 4 > 19) (by decide : P3 4 > 19) (by decide : 2 * P3 3 > 19) (by decide : 3 * P3 2 > 19)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 20 + 1) (by omega : 4 ≤ 20 + 1) (by omega : 3 ≤ 20 + 1) (by omega : 2 ≤ 20 + 1) (by decide : P3 4 > 20) (by decide : P3 4 > 20) (by decide : 2 * P3 3 > 20) (by decide : 3 * P3 2 > 20)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 21 + 1) (by omega : 4 ≤ 21 + 1) (by omega : 3 ≤ 21 + 1) (by omega : 3 ≤ 21 + 1) (by decide : P3 4 > 21) (by decide : P3 4 > 21) (by decide : 2 * P3 3 > 21) (by decide : 3 * P3 3 > 21)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 22 + 1) (by omega : 4 ≤ 22 + 1) (by omega : 3 ≤ 22 + 1) (by omega : 3 ≤ 22 + 1) (by decide : P3 4 > 22) (by decide : P3 4 > 22) (by decide : 2 * P3 3 > 22) (by decide : 3 * P3 3 > 22)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 23 + 1) (by omega : 4 ≤ 23 + 1) (by omega : 3 ≤ 23 + 1) (by omega : 3 ≤ 23 + 1) (by decide : P3 4 > 23) (by decide : P3 4 > 23) (by decide : 2 * P3 3 > 23) (by decide : 3 * P3 3 > 23)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 24 + 1) (by omega : 4 ≤ 24 + 1) (by omega : 3 ≤ 24 + 1) (by omega : 3 ≤ 24 + 1) (by decide : P3 4 > 24) (by decide : P3 4 > 24) (by decide : 2 * P3 3 > 24) (by decide : 3 * P3 3 > 24)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 25 + 1) (by omega : 4 ≤ 25 + 1) (by omega : 3 ≤ 25 + 1) (by omega : 3 ≤ 25 + 1) (by decide : P3 4 > 25) (by decide : P3 4 > 25) (by decide : 2 * P3 3 > 25) (by decide : 3 * P3 3 > 25)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 26 + 1) (by omega : 5 ≤ 26 + 1) (by omega : 3 ≤ 26 + 1) (by omega : 3 ≤ 26 + 1) (by decide : P3 5 > 26) (by decide : P3 5 > 26) (by decide : 2 * P3 3 > 26) (by decide : 3 * P3 3 > 26)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 27 + 1) (by omega : 5 ≤ 27 + 1) (by omega : 3 ≤ 27 + 1) (by omega : 3 ≤ 27 + 1) (by decide : P3 5 > 27) (by decide : P3 5 > 27) (by decide : 2 * P3 3 > 27) (by decide : 3 * P3 3 > 27)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 28 + 1) (by omega : 5 ≤ 28 + 1) (by omega : 3 ≤ 28 + 1) (by omega : 3 ≤ 28 + 1) (by decide : P3 5 > 28) (by decide : P3 5 > 28) (by decide : 2 * P3 3 > 28) (by decide : 3 * P3 3 > 28)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 29 + 1) (by omega : 5 ≤ 29 + 1) (by omega : 3 ≤ 29 + 1) (by omega : 3 ≤ 29 + 1) (by decide : P3 5 > 29) (by decide : P3 5 > 29) (by decide : 2 * P3 3 > 29) (by decide : 3 * P3 3 > 29)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 30 + 1) (by omega : 5 ≤ 30 + 1) (by omega : 4 ≤ 30 + 1) (by omega : 3 ≤ 30 + 1) (by decide : P3 5 > 30) (by decide : P3 5 > 30) (by decide : 2 * P3 4 > 30) (by decide : 3 * P3 3 > 30)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 31 + 1) (by omega : 5 ≤ 31 + 1) (by omega : 4 ≤ 31 + 1) (by omega : 3 ≤ 31 + 1) (by decide : P3 5 > 31) (by decide : P3 5 > 31) (by decide : 2 * P3 4 > 31) (by decide : 3 * P3 3 > 31)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 32 + 1) (by omega : 5 ≤ 32 + 1) (by omega : 4 ≤ 32 + 1) (by omega : 3 ≤ 32 + 1) (by decide : P3 5 > 32) (by decide : P3 5 > 32) (by decide : 2 * P3 4 > 32) (by decide : 3 * P3 3 > 32)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 33 + 1) (by omega : 5 ≤ 33 + 1) (by omega : 4 ≤ 33 + 1) (by omega : 3 ≤ 33 + 1) (by decide : P3 5 > 33) (by decide : P3 5 > 33) (by decide : 2 * P3 4 > 33) (by decide : 3 * P3 3 > 33)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 34 + 1) (by omega : 5 ≤ 34 + 1) (by omega : 4 ≤ 34 + 1) (by omega : 3 ≤ 34 + 1) (by decide : P3 5 > 34) (by decide : P3 5 > 34) (by decide : 2 * P3 4 > 34) (by decide : 3 * P3 3 > 34)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 35 + 1) (by omega : 5 ≤ 35 + 1) (by omega : 4 ≤ 35 + 1) (by omega : 3 ≤ 35 + 1) (by decide : P3 5 > 35) (by decide : P3 5 > 35) (by decide : 2 * P3 4 > 35) (by decide : 3 * P3 3 > 35)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 36 + 1) (by omega : 5 ≤ 36 + 1) (by omega : 4 ≤ 36 + 1) (by omega : 3 ≤ 36 + 1) (by decide : P3 5 > 36) (by decide : P3 5 > 36) (by decide : 2 * P3 4 > 36) (by decide : 3 * P3 3 > 36)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 37 + 1) (by omega : 5 ≤ 37 + 1) (by omega : 4 ≤ 37 + 1) (by omega : 3 ≤ 37 + 1) (by decide : P3 5 > 37) (by decide : P3 5 > 37) (by decide : 2 * P3 4 > 37) (by decide : 3 * P3 3 > 37)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 38 + 1) (by omega : 5 ≤ 38 + 1) (by omega : 4 ≤ 38 + 1) (by omega : 3 ≤ 38 + 1) (by decide : P3 5 > 38) (by decide : P3 5 > 38) (by decide : 2 * P3 4 > 38) (by decide : 3 * P3 3 > 38)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 39 + 1) (by omega : 5 ≤ 39 + 1) (by omega : 4 ≤ 39 + 1) (by omega : 3 ≤ 39 + 1) (by decide : P3 5 > 39) (by decide : P3 5 > 39) (by decide : 2 * P3 4 > 39) (by decide : 3 * P3 3 > 39)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 6 ≤ 40 + 1) (by omega : 6 ≤ 40 + 1) (by omega : 4 ≤ 40 + 1) (by omega : 3 ≤ 40 + 1) (by decide : P3 6 > 40) (by decide : P3 6 > 40) (by decide : 2 * P3 4 > 40) (by decide : 3 * P3 3 > 40)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 6 ≤ 41 + 1) (by omega : 6 ≤ 41 + 1) (by omega : 4 ≤ 41 + 1) (by omega : 3 ≤ 41 + 1) (by decide : P3 6 > 41) (by decide : P3 6 > 41) (by decide : 2 * P3 4 > 41) (by decide : 3 * P3 3 > 41)]
+        decide
+    · sorry
+  · intro n
+    by_cases h41 : n ≤ 41
+    · interval_cases n
+      · rw [a_eq_card_filter_small (by omega : 1 ≤ 0 + 1) (by omega : 1 ≤ 0 + 1) (by omega : 1 ≤ 0 + 1) (by omega : 1 ≤ 0 + 1) (by decide : P3 1 > 0) (by decide : P3 1 > 0) (by decide : 2 * P3 1 > 0) (by decide : 3 * P3 1 > 0)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 1 ≤ 1 + 1) (by omega : 1 ≤ 1 + 1) (by omega : 1 ≤ 1 + 1) (by omega : 1 ≤ 1 + 1) (by decide : P3 1 > 1) (by decide : P3 1 > 1) (by decide : 2 * P3 1 > 1) (by decide : 3 * P3 1 > 1)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 2 + 1) (by omega : 2 ≤ 2 + 1) (by omega : 1 ≤ 2 + 1) (by omega : 1 ≤ 2 + 1) (by decide : P3 2 > 2) (by decide : P3 2 > 2) (by decide : 2 * P3 1 > 2) (by decide : 3 * P3 1 > 2)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 3 + 1) (by omega : 2 ≤ 3 + 1) (by omega : 1 ≤ 3 + 1) (by omega : 1 ≤ 3 + 1) (by decide : P3 2 > 3) (by decide : P3 2 > 3) (by decide : 2 * P3 1 > 3) (by decide : 3 * P3 1 > 3)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 4 + 1) (by omega : 2 ≤ 4 + 1) (by omega : 2 ≤ 4 + 1) (by omega : 1 ≤ 4 + 1) (by decide : P3 2 > 4) (by decide : P3 2 > 4) (by decide : 2 * P3 2 > 4) (by decide : 3 * P3 1 > 4)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 5 + 1) (by omega : 2 ≤ 5 + 1) (by omega : 2 ≤ 5 + 1) (by omega : 1 ≤ 5 + 1) (by decide : P3 2 > 5) (by decide : P3 2 > 5) (by decide : 2 * P3 2 > 5) (by decide : 3 * P3 1 > 5)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by omega : 2 ≤ 6 + 1) (by decide : P3 2 > 6) (by decide : P3 2 > 6) (by decide : 2 * P3 2 > 6) (by decide : 3 * P3 2 > 6)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 7 + 1) (by omega : 3 ≤ 7 + 1) (by omega : 2 ≤ 7 + 1) (by omega : 2 ≤ 7 + 1) (by decide : P3 3 > 7) (by decide : P3 3 > 7) (by decide : 2 * P3 2 > 7) (by decide : 3 * P3 2 > 7)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 8 + 1) (by omega : 3 ≤ 8 + 1) (by omega : 2 ≤ 8 + 1) (by omega : 2 ≤ 8 + 1) (by decide : P3 3 > 8) (by decide : P3 3 > 8) (by decide : 2 * P3 2 > 8) (by decide : 3 * P3 2 > 8)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 9 + 1) (by omega : 3 ≤ 9 + 1) (by omega : 2 ≤ 9 + 1) (by omega : 2 ≤ 9 + 1) (by decide : P3 3 > 9) (by decide : P3 3 > 9) (by decide : 2 * P3 2 > 9) (by decide : 3 * P3 2 > 9)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 10 + 1) (by omega : 3 ≤ 10 + 1) (by omega : 2 ≤ 10 + 1) (by omega : 2 ≤ 10 + 1) (by decide : P3 3 > 10) (by decide : P3 3 > 10) (by decide : 2 * P3 2 > 10) (by decide : 3 * P3 2 > 10)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 11 + 1) (by omega : 3 ≤ 11 + 1) (by omega : 2 ≤ 11 + 1) (by omega : 2 ≤ 11 + 1) (by decide : P3 3 > 11) (by decide : P3 3 > 11) (by decide : 2 * P3 2 > 11) (by decide : 3 * P3 2 > 11)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 12 + 1) (by omega : 3 ≤ 12 + 1) (by omega : 2 ≤ 12 + 1) (by omega : 2 ≤ 12 + 1) (by decide : P3 3 > 12) (by decide : P3 3 > 12) (by decide : 2 * P3 2 > 12) (by decide : 3 * P3 2 > 12)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 13 + 1) (by omega : 3 ≤ 13 + 1) (by omega : 2 ≤ 13 + 1) (by omega : 2 ≤ 13 + 1) (by decide : P3 3 > 13) (by decide : P3 3 > 13) (by decide : 2 * P3 2 > 13) (by decide : 3 * P3 2 > 13)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 3 ≤ 14 + 1) (by omega : 3 ≤ 14 + 1) (by omega : 3 ≤ 14 + 1) (by omega : 2 ≤ 14 + 1) (by decide : P3 3 > 14) (by decide : P3 3 > 14) (by decide : 2 * P3 3 > 14) (by decide : 3 * P3 2 > 14)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 15 + 1) (by omega : 4 ≤ 15 + 1) (by omega : 3 ≤ 15 + 1) (by omega : 2 ≤ 15 + 1) (by decide : P3 4 > 15) (by decide : P3 4 > 15) (by decide : 2 * P3 3 > 15) (by decide : 3 * P3 2 > 15)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 16 + 1) (by omega : 4 ≤ 16 + 1) (by omega : 3 ≤ 16 + 1) (by omega : 2 ≤ 16 + 1) (by decide : P3 4 > 16) (by decide : P3 4 > 16) (by decide : 2 * P3 3 > 16) (by decide : 3 * P3 2 > 16)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 17 + 1) (by omega : 4 ≤ 17 + 1) (by omega : 3 ≤ 17 + 1) (by omega : 2 ≤ 17 + 1) (by decide : P3 4 > 17) (by decide : P3 4 > 17) (by decide : 2 * P3 3 > 17) (by decide : 3 * P3 2 > 17)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 18 + 1) (by omega : 4 ≤ 18 + 1) (by omega : 3 ≤ 18 + 1) (by omega : 2 ≤ 18 + 1) (by decide : P3 4 > 18) (by decide : P3 4 > 18) (by decide : 2 * P3 3 > 18) (by decide : 3 * P3 2 > 18)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 19 + 1) (by omega : 4 ≤ 19 + 1) (by omega : 3 ≤ 19 + 1) (by omega : 2 ≤ 19 + 1) (by decide : P3 4 > 19) (by decide : P3 4 > 19) (by decide : 2 * P3 3 > 19) (by decide : 3 * P3 2 > 19)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 20 + 1) (by omega : 4 ≤ 20 + 1) (by omega : 3 ≤ 20 + 1) (by omega : 2 ≤ 20 + 1) (by decide : P3 4 > 20) (by decide : P3 4 > 20) (by decide : 2 * P3 3 > 20) (by decide : 3 * P3 2 > 20)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 21 + 1) (by omega : 4 ≤ 21 + 1) (by omega : 3 ≤ 21 + 1) (by omega : 3 ≤ 21 + 1) (by decide : P3 4 > 21) (by decide : P3 4 > 21) (by decide : 2 * P3 3 > 21) (by decide : 3 * P3 3 > 21)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 22 + 1) (by omega : 4 ≤ 22 + 1) (by omega : 3 ≤ 22 + 1) (by omega : 3 ≤ 22 + 1) (by decide : P3 4 > 22) (by decide : P3 4 > 22) (by decide : 2 * P3 3 > 22) (by decide : 3 * P3 3 > 22)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 23 + 1) (by omega : 4 ≤ 23 + 1) (by omega : 3 ≤ 23 + 1) (by omega : 3 ≤ 23 + 1) (by decide : P3 4 > 23) (by decide : P3 4 > 23) (by decide : 2 * P3 3 > 23) (by decide : 3 * P3 3 > 23)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 24 + 1) (by omega : 4 ≤ 24 + 1) (by omega : 3 ≤ 24 + 1) (by omega : 3 ≤ 24 + 1) (by decide : P3 4 > 24) (by decide : P3 4 > 24) (by decide : 2 * P3 3 > 24) (by decide : 3 * P3 3 > 24)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 4 ≤ 25 + 1) (by omega : 4 ≤ 25 + 1) (by omega : 3 ≤ 25 + 1) (by omega : 3 ≤ 25 + 1) (by decide : P3 4 > 25) (by decide : P3 4 > 25) (by decide : 2 * P3 3 > 25) (by decide : 3 * P3 3 > 25)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 26 + 1) (by omega : 5 ≤ 26 + 1) (by omega : 3 ≤ 26 + 1) (by omega : 3 ≤ 26 + 1) (by decide : P3 5 > 26) (by decide : P3 5 > 26) (by decide : 2 * P3 3 > 26) (by decide : 3 * P3 3 > 26)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 27 + 1) (by omega : 5 ≤ 27 + 1) (by omega : 3 ≤ 27 + 1) (by omega : 3 ≤ 27 + 1) (by decide : P3 5 > 27) (by decide : P3 5 > 27) (by decide : 2 * P3 3 > 27) (by decide : 3 * P3 3 > 27)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 28 + 1) (by omega : 5 ≤ 28 + 1) (by omega : 3 ≤ 28 + 1) (by omega : 3 ≤ 28 + 1) (by decide : P3 5 > 28) (by decide : P3 5 > 28) (by decide : 2 * P3 3 > 28) (by decide : 3 * P3 3 > 28)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 29 + 1) (by omega : 5 ≤ 29 + 1) (by omega : 3 ≤ 29 + 1) (by omega : 3 ≤ 29 + 1) (by decide : P3 5 > 29) (by decide : P3 5 > 29) (by decide : 2 * P3 3 > 29) (by decide : 3 * P3 3 > 29)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 30 + 1) (by omega : 5 ≤ 30 + 1) (by omega : 4 ≤ 30 + 1) (by omega : 3 ≤ 30 + 1) (by decide : P3 5 > 30) (by decide : P3 5 > 30) (by decide : 2 * P3 4 > 30) (by decide : 3 * P3 3 > 30)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 31 + 1) (by omega : 5 ≤ 31 + 1) (by omega : 4 ≤ 31 + 1) (by omega : 3 ≤ 31 + 1) (by decide : P3 5 > 31) (by decide : P3 5 > 31) (by decide : 2 * P3 4 > 31) (by decide : 3 * P3 3 > 31)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 32 + 1) (by omega : 5 ≤ 32 + 1) (by omega : 4 ≤ 32 + 1) (by omega : 3 ≤ 32 + 1) (by decide : P3 5 > 32) (by decide : P3 5 > 32) (by decide : 2 * P3 4 > 32) (by decide : 3 * P3 3 > 32)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 33 + 1) (by omega : 5 ≤ 33 + 1) (by omega : 4 ≤ 33 + 1) (by omega : 3 ≤ 33 + 1) (by decide : P3 5 > 33) (by decide : P3 5 > 33) (by decide : 2 * P3 4 > 33) (by decide : 3 * P3 3 > 33)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 34 + 1) (by omega : 5 ≤ 34 + 1) (by omega : 4 ≤ 34 + 1) (by omega : 3 ≤ 34 + 1) (by decide : P3 5 > 34) (by decide : P3 5 > 34) (by decide : 2 * P3 4 > 34) (by decide : 3 * P3 3 > 34)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 35 + 1) (by omega : 5 ≤ 35 + 1) (by omega : 4 ≤ 35 + 1) (by omega : 3 ≤ 35 + 1) (by decide : P3 5 > 35) (by decide : P3 5 > 35) (by decide : 2 * P3 4 > 35) (by decide : 3 * P3 3 > 35)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 36 + 1) (by omega : 5 ≤ 36 + 1) (by omega : 4 ≤ 36 + 1) (by omega : 3 ≤ 36 + 1) (by decide : P3 5 > 36) (by decide : P3 5 > 36) (by decide : 2 * P3 4 > 36) (by decide : 3 * P3 3 > 36)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 37 + 1) (by omega : 5 ≤ 37 + 1) (by omega : 4 ≤ 37 + 1) (by omega : 3 ≤ 37 + 1) (by decide : P3 5 > 37) (by decide : P3 5 > 37) (by decide : 2 * P3 4 > 37) (by decide : 3 * P3 3 > 37)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 38 + 1) (by omega : 5 ≤ 38 + 1) (by omega : 4 ≤ 38 + 1) (by omega : 3 ≤ 38 + 1) (by decide : P3 5 > 38) (by decide : P3 5 > 38) (by decide : 2 * P3 4 > 38) (by decide : 3 * P3 3 > 38)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 5 ≤ 39 + 1) (by omega : 5 ≤ 39 + 1) (by omega : 4 ≤ 39 + 1) (by omega : 3 ≤ 39 + 1) (by decide : P3 5 > 39) (by decide : P3 5 > 39) (by decide : 2 * P3 4 > 39) (by decide : 3 * P3 3 > 39)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 6 ≤ 40 + 1) (by omega : 6 ≤ 40 + 1) (by omega : 4 ≤ 40 + 1) (by omega : 3 ≤ 40 + 1) (by decide : P3 6 > 40) (by decide : P3 6 > 40) (by decide : 2 * P3 4 > 40) (by decide : 3 * P3 3 > 40)]
+        decide
+      · rw [a_eq_card_filter_small (by omega : 6 ≤ 41 + 1) (by omega : 6 ≤ 41 + 1) (by omega : 4 ≤ 41 + 1) (by omega : 3 ≤ 41 + 1) (by decide : P3 6 > 41) (by decide : P3 6 > 41) (by decide : 2 * P3 4 > 41) (by decide : 3 * P3 3 > 41)]
+        decide
+    · sorry
+
+
+

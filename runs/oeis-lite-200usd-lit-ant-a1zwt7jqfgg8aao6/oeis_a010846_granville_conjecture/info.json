@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a010846_granville_conjecture",
+  "epoch": 1,
+  "uuid": "8PMmfJ6YQppUWHjg44C7mm",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 35,
+      "output_tokens": 28426,
+      "total_tokens": 550820,
+      "input_tokens_cache_write": 37375,
+      "input_tokens_cache_read": 484984,
+      "reasoning_tokens": 3960,
+      "total_cost": 1.18691075
+    }
+  },
+  "oeis_id": "A010846"
+}

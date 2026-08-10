@@ -1,0 +1,1143 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat List
+
+/--
+A326746: $a(n) = (\text{sum of digits of } n) \bmod (\text{sum of digits of } n+1)$.
+-/
+def a (n : ℕ) : ℕ :=
+  (Nat.digits 10 n).sum % (Nat.digits 10 (n + 1)).sum
+
+/-- The count of non-negative integers $n < N$ such that $a(n) = m$. -/
+def count_a_eq (N m : ℕ) : ℕ :=
+  (List.range N).countP fun n => a n = m
+
+open Filter Real
+
+def my_sum_digits (fuel : ℕ) (n : ℕ) : ℕ :=
+  match fuel with
+  | 0 => 0
+  | f + 1 => if n = 0 then 0 else n % 10 + my_sum_digits f (n / 10)
+
+def a_fast (n : ℕ) : ℕ :=
+  my_sum_digits 75 n % my_sum_digits 75 (n + 1)
+
+def count_a_fast (N m : ℕ) : ℕ :=
+  (List.range N).countP fun n => a_fast n = m
+
+lemma a_fast_lt_18 (n : ℕ) (hn : n < 72) : a_fast n < 18 := by
+  revert n hn; decide
+
+lemma count_a_fast_eq_zero (m : ℕ) (hm : 18 ≤ m) : count_a_fast 72 m = 0 := by
+  unfold count_a_fast
+  rw [List.countP_eq_zero]
+  intro n hn
+  rw [List.mem_range] at hn
+  have h_lt := a_fast_lt_18 n hn
+  intro h_eq
+  rw [decide_eq_true_iff] at h_eq
+  omega
+
+theorem digits_sum_eq_my_sum (fuel : ℕ) : ∀ n : ℕ, n < fuel → (Nat.digits 10 n).sum = my_sum_digits fuel n := by
+  induction fuel with
+  | zero =>
+    intro n hn
+    omega
+  | succ f ih =>
+    intro n hn
+    by_cases hn0 : n = 0
+    · subst hn0
+      simp [my_sum_digits, Nat.digits_zero]
+    · rw [my_sum_digits]
+      simp only [hn0, ↓reduceIte]
+      have h10 : 1 < 10 := by decide
+      rw [Nat.digits_eq_cons_digits_div h10 hn0]
+      simp only [List.sum_cons]
+      have h_div_lt : n / 10 < f := by
+        have : n / 10 < n := Nat.div_lt_self (Nat.pos_of_ne_zero hn0) (by decide)
+        omega
+      rw [ih (n / 10) h_div_lt]
+
+lemma a_eq_a_fast (n : ℕ) (hn : n < 72) : a n = a_fast n := by
+  unfold a a_fast
+  have h1 : (Nat.digits 10 n).sum = my_sum_digits 75 n := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 (n + 1)).sum = my_sum_digits 75 (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2]
+
+lemma count_a_eq_eq_count_a_fast (m : ℕ) : count_a_eq 72 m = count_a_fast 72 m := by
+  unfold count_a_eq count_a_fast
+  apply List.countP_congr
+  intro n hn
+  rw [List.mem_range] at hn
+  rw [a_eq_a_fast n hn]
+
+lemma count_a_fast_le_eight (m : ℕ) : count_a_fast 72 m ≤ count_a_fast 72 8 := by
+  by_cases h : m < 18
+  · revert m h; decide
+  · have hm : 18 ≤ m := by omega
+    rw [count_a_fast_eq_zero m hm]
+    omega
+
+lemma count_a_eq_72_le (m : ℕ) : count_a_eq 72 m ≤ count_a_eq 72 8 := by
+  rw [count_a_eq_eq_count_a_fast m, count_a_eq_eq_count_a_fast 8]
+  exact count_a_fast_le_eight m
+
+lemma count_a_eq_le_self (N m : ℕ) : count_a_eq N m ≤ N := by
+  unfold count_a_eq
+  have h : List.countP (fun n => a n = m) (List.range N) ≤ (List.range N).length := List.countP_le_length
+  rw [List.length_range] at h
+  exact h
+
+lemma count_div_le_one (N m : ℕ) : (count_a_eq N m : ℝ) / N ≤ 1 := by
+  by_cases hN : N = 0
+  · subst hN
+    simp
+  · have h_pos : (N : ℝ) > 0 := by
+      exact Nat.cast_pos.mpr (by omega)
+    have h_le := count_a_eq_le_self N m
+    rw [div_le_iff₀ h_pos]
+    simp
+    exact h_le
+
+lemma count_div_nonneg (N m : ℕ) : 0 ≤ (count_a_eq N m : ℝ) / N := by
+  apply div_nonneg
+  · exact Nat.cast_nonneg _
+  · exact Nat.cast_nonneg _
+
+
+lemma my_sum_le_ofDigits (L : List ℕ) : L.sum ≤ Nat.ofDigits 10 L := by
+  induction L with
+  | nil => simp [Nat.ofDigits]
+  | cons x xs ih =>
+    simp [Nat.ofDigits]
+    have h1 : xs.sum ≤ Nat.ofDigits 10 xs := ih
+    have h2 : Nat.ofDigits 10 xs ≤ 10 * Nat.ofDigits 10 xs := by omega
+    omega
+
+lemma sum_digits_le (n : ℕ) : (Nat.digits 10 n).sum ≤ n := by
+  have h := my_sum_le_ofDigits (Nat.digits 10 n)
+  rw [Nat.ofDigits_digits] at h
+  exact h
+
+lemma ofDigits_eq_zero_of_sum_eq_zero (L : List ℕ) (h : L.sum = 0) : Nat.ofDigits 10 L = 0 := by
+  induction L with
+  | nil => rfl
+  | cons x xs ih =>
+    simp only [List.sum_cons] at h
+    have hx : x = 0 := by omega
+    have hxs : xs.sum = 0 := by omega
+    subst hx
+    unfold Nat.ofDigits
+    rw [ih hxs]
+    omega
+
+lemma digits_sum_pos (n : ℕ) (hn : n ≠ 0) : 0 < (Nat.digits 10 n).sum := by
+  have h : (Nat.digits 10 n).sum ≠ 0 := by
+    intro h_sum
+    have h_of := ofDigits_eq_zero_of_sum_eq_zero (Nat.digits 10 n) h_sum
+    rw [Nat.ofDigits_digits] at h_of
+    exact hn h_of
+  omega
+
+lemma my_sum_digits_zero (fuel : ℕ) : my_sum_digits fuel 0 = 0 := by
+  induction fuel with
+  | zero => rfl
+  | succ f ih =>
+    unfold my_sum_digits
+    rfl
+
+lemma my_sum_digits_succ_le (fuel : ℕ) : ∀ n : ℕ, my_sum_digits fuel (n + 1) ≤ my_sum_digits fuel n + 1 := by
+  induction fuel with
+  | zero =>
+    intro n
+    unfold my_sum_digits
+    omega
+  | succ f ih =>
+    intro n
+    by_cases hn0 : n = 0
+    · subst hn0
+      unfold my_sum_digits
+      rw [my_sum_digits_zero f]
+      simp
+    · unfold my_sum_digits
+      simp only [hn0, ↓reduceIte]
+      have h1 : n + 1 ≠ 0 := by omega
+      simp only [h1, ↓reduceIte]
+      by_cases h_mod : (n + 1) % 10 = 0
+      · have hn9 : n % 10 = 9 := by omega
+        have h_div : (n + 1) / 10 = n / 10 + 1 := by omega
+        rw [hn9, h_mod, h_div]
+        have h_ih := ih (n / 10)
+        omega
+      · have h_mod2 : (n + 1) % 10 = n % 10 + 1 := by omega
+        have h_div2 : (n + 1) / 10 = n / 10 := by omega
+        rw [h_mod2, h_div2]
+        omega
+
+lemma digits_sum_succ_le (n : ℕ) : (Nat.digits 10 (n + 1)).sum ≤ (Nat.digits 10 n).sum + 1 := by
+  have h1 : (Nat.digits 10 (n + 1)).sum = my_sum_digits (n + 2) (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 n).sum = my_sum_digits (n + 2) n := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2]
+  apply my_sum_digits_succ_le
+
+lemma my_sum_digits_succ_of_mod_ten (f : ℕ) (n : ℕ) (h : (n + 1) % 10 = 0) : my_sum_digits (f + 1) (n + 2) = my_sum_digits (f + 1) (n + 1) + 1 := by
+  have h_div : (n + 2) / 10 = (n + 1) / 10 := by omega
+  have h_mod1 : (n + 2) % 10 = 1 := by omega
+  have h_mod2 : (n + 1) % 10 = 0 := by omega
+  unfold my_sum_digits
+  have hn2 : n + 2 ≠ 0 := by omega
+  have hn1 : n + 1 ≠ 0 := by omega
+  simp only [hn2, hn1, ↓reduceIte]
+  rw [h_div, h_mod1, h_mod2]
+  omega
+
+lemma digits_sum_succ_of_mod_ten (n : ℕ) (h : (n + 1) % 10 = 0) : (Nat.digits 10 (n + 2)).sum = (Nat.digits 10 (n + 1)).sum + 1 := by
+  have h1 : (Nat.digits 10 (n + 2)).sum = my_sum_digits (n + 2 + 1) (n + 2) := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 (n + 1)).sum = my_sum_digits (n + 2 + 1) (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2]
+  apply my_sum_digits_succ_of_mod_ten
+  exact h
+
+lemma my_sum_digits_not_carry (f : ℕ) (n : ℕ) (h : (n + 1) % 10 ≠ 0) : my_sum_digits (f + 1) (n + 1) = my_sum_digits (f + 1) n + 1 := by
+  by_cases hn0 : n = 0
+  · subst hn0
+    unfold my_sum_digits
+    rw [my_sum_digits_zero f]
+    simp
+  · unfold my_sum_digits
+    simp only [hn0, ↓reduceIte]
+    have h1 : n + 1 ≠ 0 := by omega
+    simp only [h1, ↓reduceIte]
+    have h_mod2 : (n + 1) % 10 = n % 10 + 1 := by omega
+    have h_div2 : (n + 1) / 10 = n / 10 := by omega
+    rw [h_mod2, h_div2]
+    omega
+
+lemma my_sum_digits_cases (f : ℕ) : ∀ n : ℕ, my_sum_digits (f + 1) (n + 1) = my_sum_digits (f + 1) n + 1 ∨ my_sum_digits (f + 1) (n + 1) + 8 ≤ my_sum_digits (f + 1) n := by
+  induction f with
+  | zero =>
+    intro n
+    by_cases hn0 : n = 0
+    · subst hn0
+      simp [my_sum_digits]
+    · simp [my_sum_digits, hn0]
+      by_cases h_mod : (n + 1) % 10 = 0
+      · omega
+      · omega
+  | succ f ih =>
+    intro n
+    by_cases hn0 : n = 0
+    · subst hn0
+      unfold my_sum_digits
+      rw [my_sum_digits_zero (f + 1)]
+      simp
+    · unfold my_sum_digits
+      simp only [hn0, ↓reduceIte]
+      have h1 : n + 1 ≠ 0 := by omega
+      simp only [h1, ↓reduceIte]
+      by_cases h_mod : (n + 1) % 10 = 0
+      · have hn9 : n % 10 = 9 := by omega
+        have h_div : (n + 1) / 10 = n / 10 + 1 := by omega
+        rw [hn9, h_mod, h_div]
+        have h_le := my_sum_digits_succ_le (f + 1) (n / 10)
+        omega
+      · have h_mod2 : (n + 1) % 10 = n % 10 + 1 := by omega
+        have h_div2 : (n + 1) / 10 = n / 10 := by omega
+        rw [h_mod2, h_div2]
+        omega
+
+lemma digits_sum_cases (n : ℕ) : (Nat.digits 10 (n + 1)).sum = (Nat.digits 10 n).sum + 1 ∨ (Nat.digits 10 (n + 1)).sum + 8 ≤ (Nat.digits 10 n).sum := by
+  have h1 : (Nat.digits 10 (n + 1)).sum = my_sum_digits (n + 1 + 1) (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 n).sum = my_sum_digits (n + 1 + 1) n := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2]
+  apply my_sum_digits_cases
+
+lemma mod_ten_of_carry_fuel (f : ℕ) (n : ℕ) (h : my_sum_digits (f + 1) (n + 1) + 8 ≤ my_sum_digits (f + 1) n) : (n + 1) % 10 = 0 := by
+  by_cases h_mod : (n + 1) % 10 = 0
+  · exact h_mod
+  · have h_nc := my_sum_digits_not_carry f n h_mod
+    omega
+
+lemma mod_ten_of_carry (n : ℕ) (h : (Nat.digits 10 (n + 1)).sum + 8 ≤ (Nat.digits 10 n).sum) : (n + 1) % 10 = 0 := by
+  have h1 : (Nat.digits 10 (n + 1)).sum = my_sum_digits (n + 2) (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 n).sum = my_sum_digits (n + 2) n := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2] at h
+  apply mod_ten_of_carry_fuel (n + 1) n h
+
+lemma le_sub_eight_of_modEq_add_one {x y : ℕ} (h_mod : (x + 1) % 9 = y % 9) (h_le : y ≤ x) : y + 8 ≤ x := by
+  omega
+
+lemma digits_sum_pos_succ (n : ℕ) : 0 < (Nat.digits 10 (n + 1)).sum := by
+  apply digits_sum_pos
+  omega
+
+lemma a_ne_a_succ (n : ℕ) : a n ≠ a (n + 1) := by
+  intro h
+  unfold a at h
+  set s1 := (Nat.digits 10 n).sum
+  set s2 := (Nat.digits 10 (n + 1)).sum
+  set s3 := (Nat.digits 10 (n + 2)).sum
+  have hs2 : 0 < s2 := digits_sum_pos_succ n
+  have hs3 : 0 < s3 := digits_sum_pos_succ (n + 1)
+  have h1 : s1 % s2 < s2 := Nat.mod_lt s1 hs2
+  have h2 : s2 % s3 = s1 % s2 := h.symm
+  by_cases hlt : s2 < s3
+  · rw [Nat.mod_eq_of_lt hlt] at h2
+    omega
+  · have hge : s3 ≤ s2 := by omega
+    have h_mod1 : s1 % 9 = n % 9 := (Nat.modEq_nine_digits_sum n).symm
+    have h_mod2 : s2 % 9 = (n + 1) % 9 := (Nat.modEq_nine_digits_sum (n + 1)).symm
+    have h_mod3 : s3 % 9 = (n + 2) % 9 := (Nat.modEq_nine_digits_sum (n + 2)).symm
+    have h_le12 : s2 ≤ s1 + 1 := digits_sum_succ_le n
+    have h_mod_add : (s2 + 1) % 9 = s3 % 9 := by omega
+    have h_le32 : s3 + 8 ≤ s2 := le_sub_eight_of_modEq_add_one h_mod_add hge
+    have h_v2 : s2 % s3 = s1 % s2 := h2
+    have h_cases : s2 = s1 + 1 ∨ s2 + 8 ≤ s1 := digits_sum_cases n
+    rcases h_cases with h_eq | h_le
+    · have h_s1_mod : s1 % s2 = s1 := Nat.mod_eq_of_lt (by omega)
+      rw [h_s1_mod] at h_v2
+      have h_s2_mod : s2 % s3 < s3 := Nat.mod_lt s2 hs3
+      omega
+    · have h_mod_ten : (n + 1) % 10 = 0 := mod_ten_of_carry n h_le
+      have h_s3_eq : s3 = s2 + 1 := digits_sum_succ_of_mod_ten n h_mod_ten
+      omega
+
+lemma a_ne_a_succ_succ (n : ℕ) : a n ≠ a (n + 2) := by
+  intro h
+  unfold a at h
+  set s1 := (Nat.digits 10 n).sum
+  set s2 := (Nat.digits 10 (n + 1)).sum
+  set s3 := (Nat.digits 10 (n + 2)).sum
+  set s4 := (Nat.digits 10 (n + 3)).sum
+  have hs2 : 0 < s2 := digits_sum_pos_succ n
+  have hs3 : 0 < s3 := digits_sum_pos_succ (n + 1)
+  have hs4 : 0 < s4 := digits_sum_pos_succ (n + 2)
+  have h_cases1 : s2 = s1 + 1 ∨ s2 + 8 ≤ s1 := digits_sum_cases n
+  have h_cases2 : s3 = s2 + 1 ∨ s3 + 8 ≤ s2 := digits_sum_cases (n + 1)
+  have h_cases3 : s4 = s3 + 1 ∨ s4 + 8 ≤ s3 := digits_sum_cases (n + 2)
+  rcases h_cases1 with h_eq1 | h_le1
+  · rcases h_cases2 with h_eq2 | h_le2
+    · rcases h_cases3 with h_eq3 | h_le3
+      · have h_mod1 : s1 % s2 = s1 := Nat.mod_eq_of_lt (by omega)
+        have h_mod2 : s3 % s4 = s3 := Nat.mod_eq_of_lt (by omega)
+        omega
+      · have h_mod1 : s1 % s2 = s1 := Nat.mod_eq_of_lt (by omega)
+        have h_mod2 : s3 % s4 < s4 := Nat.mod_lt s3 hs4
+        omega
+    · rcases h_cases3 with h_eq3 | h_le3
+      · have h_mod1 : s1 % s2 = s1 := Nat.mod_eq_of_lt (by omega)
+        have h_mod2 : s3 % s4 = s3 := Nat.mod_eq_of_lt (by omega)
+        rw [h_mod1, h_mod2] at h
+        omega
+      · have h_mod_ten1 : (n + 2) % 10 = 0 := mod_ten_of_carry (n + 1) h_le2
+        have h_mod_ten2 : (n + 3) % 10 = 0 := mod_ten_of_carry (n + 2) h_le3
+        omega
+  · have h_mod_ten : (n + 1) % 10 = 0 := mod_ten_of_carry n h_le1
+    have h_s3 : s3 = s2 + 1 := digits_sum_succ_of_mod_ten n h_mod_ten
+    have h_mod_ten2 : (n + 2) % 10 = 1 := by omega
+    have h_mod_ten3 : (n + 2 + 1) % 10 ≠ 0 := by omega
+    have h_s4 : s4 = s3 + 1 := by
+      have h_not := my_sum_digits_not_carry (n + 3) (n + 2) h_mod_ten3
+      have h_digits3 : (Nat.digits 10 (n + 3)).sum = my_sum_digits (n + 4) (n + 3) := by
+        apply digits_sum_eq_my_sum; omega
+      have h_digits2 : (Nat.digits 10 (n + 2)).sum = my_sum_digits (n + 4) (n + 2) := by
+        apply digits_sum_eq_my_sum; omega
+      change (Nat.digits 10 (n + 3)).sum = (Nat.digits 10 (n + 2)).sum + 1
+      rw [h_digits3, h_digits2]
+      apply my_sum_digits_not_carry (n + 3) (n + 2)
+      exact h_mod_ten3
+    have h_mod2 : s3 % s4 = s3 := Nat.mod_eq_of_lt (by omega)
+    have h_mod1 : s1 % s2 < s2 := Nat.mod_lt s1 hs2
+    omega
+
+def a_fast_200 (n : ℕ) : ℕ :=
+  my_sum_digits 200 n % my_sum_digits 200 (n + 1)
+
+def count_a_fast_200 (N m : ℕ) : ℕ :=
+  (List.range N).countP fun n => a_fast_200 n = m
+
+lemma a_eq_a_fast_200 (n : ℕ) (hn : n < 199) : a n = a_fast_200 n := by
+  unfold a a_fast_200
+  have h1 : (Nat.digits 10 n).sum = my_sum_digits 200 n := by
+    apply digits_sum_eq_my_sum
+    omega
+  have h2 : (Nat.digits 10 (n + 1)).sum = my_sum_digits 200 (n + 1) := by
+    apply digits_sum_eq_my_sum
+    omega
+  rw [h1, h2]
+
+set_option maxRecDepth 1000000
+
+lemma a_fast_200_lt_18 (n : ℕ) (hn : n < 180) : a_fast_200 n < 18 := by
+  revert n hn; decide
+
+lemma count_a_fast_200_eq_zero (m : ℕ) (hm : 18 ≤ m) (N : ℕ) (hN : N ≤ 180) : count_a_fast_200 N m = 0 := by
+  unfold count_a_fast_200
+  rw [List.countP_eq_zero]
+  intro n hn
+  rw [List.mem_range] at hn
+  have hn_lt : n < 180 := by omega
+  have h_lt := a_fast_200_lt_18 n hn_lt
+  intro h_eq
+  rw [decide_eq_true_iff] at h_eq
+  omega
+
+lemma count_a_eq_eq_count_a_fast_200 (m : ℕ) (N : ℕ) (hN : N ≤ 140) : count_a_eq N m = count_a_fast_200 N m := by
+  unfold count_a_eq count_a_fast_200
+  apply List.countP_congr
+  intro n hn
+  rw [List.mem_range] at hn
+  have hn_lt : n < 199 := by omega
+  rw [a_eq_a_fast_200 n hn_lt]
+
+lemma count_a_eq_le_72_120 (m : ℕ) (N : ℕ) (h72 : 72 ≤ N) (h120 : N ≤ 120) : count_a_eq N m ≤ count_a_eq N 8 := by
+  have hN_fast : count_a_eq N m = count_a_fast_200 N m := count_a_eq_eq_count_a_fast_200 m N (by omega)
+  have h8_fast : count_a_eq N 8 = count_a_fast_200 N 8 := count_a_eq_eq_count_a_fast_200 8 N (by omega)
+  rw [hN_fast, h8_fast]
+  have hN : N = 72 ∨ N = 73 ∨ N = 74 ∨ N = 75 ∨ N = 76 ∨ N = 77 ∨ N = 78 ∨ N = 79 ∨ N = 80 ∨
+            N = 81 ∨ N = 82 ∨ N = 83 ∨ N = 84 ∨ N = 85 ∨ N = 86 ∨ N = 87 ∨ N = 88 ∨ N = 89 ∨ N = 90 ∨
+            N = 91 ∨ N = 92 ∨ N = 93 ∨ N = 94 ∨ N = 95 ∨ N = 96 ∨ N = 97 ∨ N = 98 ∨ N = 99 ∨ N = 100 ∨
+            N = 101 ∨ N = 102 ∨ N = 103 ∨ N = 104 ∨ N = 105 ∨ N = 106 ∨ N = 107 ∨ N = 108 ∨ N = 109 ∨ N = 110 ∨
+            N = 111 ∨ N = 112 ∨ N = 113 ∨ N = 114 ∨ N = 115 ∨ N = 116 ∨ N = 117 ∨ N = 118 ∨ N = 119 ∨ N = 120 := by omega
+  rcases hN with rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl
+  all_goals
+    clear hN_fast h8_fast
+    by_cases h : m < 18
+    · revert m h; decide
+    · have hm : 18 ≤ m := by omega
+      rw [count_a_fast_200_eq_zero m hm _ (by omega)]
+      omega
+
+lemma count_a_eq_succ (n m : ℕ) : count_a_eq (n + 1) m = count_a_eq n m + (if a n = m then 1 else 0) := by
+  unfold count_a_eq
+  simp [List.range_succ]
+
+
+lemma count_a_eq_eq_of_ne (m : ℕ) (n : ℕ) (k : ℕ) (hk : k ≤ n) (h_ne : ∀ i, k ≤ i ∧ i < n → a i ≠ m) : count_a_eq n m = count_a_eq k m := by
+  induction n, hk using Nat.le_induction with
+  | base => rfl
+  | succ i hi ih =>
+    rw [count_a_eq_succ i m]
+    have h_nei : a i ≠ m := by
+      apply h_ne
+      omega
+    rw [if_neg h_nei]
+    apply ih
+    intro j hj
+    apply h_ne
+    omega
+
+lemma count_a_eq_eq_of_one_eight (n : ℕ) (k : ℕ) (hk : k < n) (h_8 : a k = 8) (h_ne : ∀ i, k < i ∧ i < n → a i ≠ 8) : count_a_eq n 8 = count_a_eq k 8 + 1 := by
+  have h_eq : count_a_eq n 8 = count_a_eq (k + 1) 8 := by
+    apply count_a_eq_eq_of_ne 8 n (k + 1) (by omega)
+    intro i hi
+    apply h_ne
+    omega
+  rw [h_eq]
+  rw [count_a_eq_succ k 8]
+  rw [if_pos h_8]
+
+
+lemma count_a_eq_invariant_small (m : ℕ) (hm : m ≠ 8) (N : ℕ) (hN : 120 ≤ N) (h140 : N ≤ 140) : count_a_eq N m + (if a N = m then 2 else 1) ≤ count_a_eq N 8 := by
+  have hN_fast : count_a_eq N m = count_a_fast_200 N m := count_a_eq_eq_count_a_fast_200 m N h140
+  have h8_fast : count_a_eq N 8 = count_a_fast_200 N 8 := count_a_eq_eq_count_a_fast_200 8 N h140
+  rw [hN_fast, h8_fast]
+  have h_a_fast : a N = a_fast_200 N := by
+    by_cases h_N199 : N < 199
+    · apply a_eq_a_fast_200 N h_N199
+    · omega
+  have h_lt : a_fast_200 N < 18 := a_fast_200_lt_18 N (by omega)
+  rw [h_a_fast]
+  have hN_cases : N = 120 ∨ N = 121 ∨ N = 122 ∨ N = 123 ∨ N = 124 ∨ N = 125 ∨ N = 126 ∨ N = 127 ∨ N = 128 ∨ N = 129 ∨ N = 130 ∨
+            N = 131 ∨ N = 132 ∨ N = 133 ∨ N = 134 ∨ N = 135 ∨ N = 136 ∨ N = 137 ∨ N = 138 ∨ N = 139 ∨ N = 140 := by omega
+  rcases hN_cases with rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl
+  all_goals
+    clear hN_fast h8_fast
+    by_cases h : m < 18
+    · revert hm
+      revert h
+      revert m
+      decide
+    · have hm18 : 18 ≤ m := by omega
+      rw [count_a_fast_200_eq_zero m hm18 _ (by omega)]
+      split_ifs with h_eq
+      · omega
+      · decide
+
+lemma count_a_eq_le_eight_large_base (m : ℕ) (hm : m ≠ 8) (k : ℕ) (hk1 : 130 ≤ k) (hk2 : k ≤ 140) : count_a_eq k m + 1 ≤ count_a_eq k 8 := by
+  have hk_fast : count_a_eq k m = count_a_fast_200 k m := count_a_eq_eq_count_a_fast_200 m k hk2
+  have h8_fast : count_a_eq k 8 = count_a_fast_200 k 8 := count_a_eq_eq_count_a_fast_200 8 k hk2
+  rw [hk_fast, h8_fast]
+  have hk_cases : k = 130 ∨ k = 131 ∨ k = 132 ∨ k = 133 ∨ k = 134 ∨ k = 135 ∨ k = 136 ∨ k = 137 ∨ k = 138 ∨ k = 139 ∨ k = 140 := by omega
+  rcases hk_cases with rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl
+  all_goals
+    clear hk_fast h8_fast
+    by_cases h : m < 18
+    · revert hm
+      revert h
+      revert m
+      decide
+    · have hm18 : 18 ≤ m := by omega
+      rw [count_a_fast_200_eq_zero m hm18 _ (by omega)]
+      decide
+
+lemma count_a_eq_invariant_step_back_small (m : ℕ) (hm : m ≠ 8) (n : ℕ) (hn : 72 ≤ n) (h140 : n ≤ 140) (ha : a (n + 1) = m) : count_a_eq n m + 1 ≤ count_a_eq n 8 := by
+  have hn_fast : count_a_eq n m = count_a_fast_200 n m := count_a_eq_eq_count_a_fast_200 m n h140
+  have h8_fast : count_a_eq n 8 = count_a_fast_200 n 8 := count_a_eq_eq_count_a_fast_200 8 n h140
+  rw [hn_fast, h8_fast]
+  have ha_fast : a (n + 1) = a_fast_200 (n + 1) := by
+    apply a_eq_a_fast_200 (n + 1) (by omega)
+  rw [ha_fast] at ha
+  have hn_cases : n = 72 ∨ n = 73 ∨ n = 74 ∨ n = 75 ∨ n = 76 ∨ n = 77 ∨ n = 78 ∨ n = 79 ∨ n = 80 ∨
+            n = 81 ∨ n = 82 ∨ n = 83 ∨ n = 84 ∨ n = 85 ∨ n = 86 ∨ n = 87 ∨ n = 88 ∨ n = 89 ∨ n = 90 ∨
+            n = 91 ∨ n = 92 ∨ n = 93 ∨ n = 94 ∨ n = 95 ∨ n = 96 ∨ n = 97 ∨ n = 98 ∨ n = 99 ∨ n = 100 ∨
+            n = 101 ∨ n = 102 ∨ n = 103 ∨ n = 104 ∨ n = 105 ∨ n = 106 ∨ n = 107 ∨ n = 108 ∨ n = 109 ∨ n = 110 ∨
+            n = 111 ∨ n = 112 ∨ n = 113 ∨ n = 114 ∨ n = 115 ∨ n = 116 ∨ n = 117 ∨ n = 118 ∨ n = 119 ∨ n = 120 ∨
+            n = 121 ∨ n = 122 ∨ n = 123 ∨ n = 124 ∨ n = 125 ∨ n = 126 ∨ n = 127 ∨ n = 128 ∨ n = 129 ∨ n = 130 ∨
+            n = 131 ∨ n = 132 ∨ n = 133 ∨ n = 134 ∨ n = 135 ∨ n = 136 ∨ n = 137 ∨ n = 138 ∨ n = 139 ∨ n = 140 := by omega
+  rcases hn_cases with rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl
+  all_goals
+    clear hn_fast h8_fast ha_fast
+    by_cases h : m < 18
+    · revert ha
+      revert hm
+      revert h
+      revert m
+      decide
+    · have hm18 : 18 ≤ m := by omega
+      rw [count_a_fast_200_eq_zero m hm18 _ (by omega)]
+      decide
+
+
+lemma count_a_eq_invariant_strong_pos (m : ℕ) (hm : m ≠ 8) (N : ℕ) (hN : 140 < N) (ha : a N = m) (ih : ∀ y < N, 120 ≤ y → count_a_eq y m + (if a y = m then 2 else 1) ≤ count_a_eq y 8) : count_a_eq N m + 2 ≤ count_a_eq N 8 := by
+  have h_eq_1 : N = (N - 1) + 1 := by omega
+  rw [h_eq_1, count_a_eq_succ (N - 1) m, count_a_eq_succ (N - 1) 8]
+  by_cases h_8_1 : a (N - 1) = 8
+  · have h_m_1 : a (N - 1) ≠ m := by omega
+    rw [if_neg h_m_1, if_pos h_8_1]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 1) (by omega) h_m_1 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_1]
+  have h_eq_2 : N - 1 = (N - 2) + 1 := by omega
+  rw [h_eq_2, count_a_eq_succ (N - 2) m, count_a_eq_succ (N - 2) 8]
+  by_cases h_8_2 : a (N - 2) = 8
+  · have h_m_2 : a (N - 2) ≠ m := by omega
+    rw [if_neg h_m_2, if_pos h_8_2]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 2) (by omega) h_m_2 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_2]
+  have h_eq_3 : N - 2 = (N - 3) + 1 := by omega
+  rw [h_eq_3, count_a_eq_succ (N - 3) m, count_a_eq_succ (N - 3) 8]
+  by_cases h_8_3 : a (N - 3) = 8
+  · have h_m_3 : a (N - 3) ≠ m := by omega
+    rw [if_neg h_m_3, if_pos h_8_3]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 3) (by omega) h_m_3 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_3]
+  have h_eq_4 : N - 3 = (N - 4) + 1 := by omega
+  rw [h_eq_4, count_a_eq_succ (N - 4) m, count_a_eq_succ (N - 4) 8]
+  by_cases h_8_4 : a (N - 4) = 8
+  · have h_m_4 : a (N - 4) ≠ m := by omega
+    rw [if_neg h_m_4, if_pos h_8_4]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 4) (by omega) h_m_4 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_4]
+  have h_eq_5 : N - 4 = (N - 5) + 1 := by omega
+  rw [h_eq_5, count_a_eq_succ (N - 5) m, count_a_eq_succ (N - 5) 8]
+  by_cases h_8_5 : a (N - 5) = 8
+  · have h_m_5 : a (N - 5) ≠ m := by omega
+    rw [if_neg h_m_5, if_pos h_8_5]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 5) (by omega) h_m_5 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_5]
+  have h_eq_6 : N - 5 = (N - 6) + 1 := by omega
+  rw [h_eq_6, count_a_eq_succ (N - 6) m, count_a_eq_succ (N - 6) 8]
+  by_cases h_8_6 : a (N - 6) = 8
+  · have h_m_6 : a (N - 6) ≠ m := by omega
+    rw [if_neg h_m_6, if_pos h_8_6]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 6) (by omega) h_m_6 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_6]
+  have h_eq_7 : N - 6 = (N - 7) + 1 := by omega
+  rw [h_eq_7, count_a_eq_succ (N - 7) m, count_a_eq_succ (N - 7) 8]
+  by_cases h_8_7 : a (N - 7) = 8
+  · have h_m_7 : a (N - 7) ≠ m := by omega
+    rw [if_neg h_m_7, if_pos h_8_7]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 7) (by omega) h_m_7 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_7]
+  have h_eq_8 : N - 7 = (N - 8) + 1 := by omega
+  rw [h_eq_8, count_a_eq_succ (N - 8) m, count_a_eq_succ (N - 8) 8]
+  by_cases h_8_8 : a (N - 8) = 8
+  · have h_m_8 : a (N - 8) ≠ m := by omega
+    rw [if_neg h_m_8, if_pos h_8_8]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 8) (by omega) h_m_8 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_8]
+  have h_eq_9 : N - 8 = (N - 9) + 1 := by omega
+  rw [h_eq_9, count_a_eq_succ (N - 9) m, count_a_eq_succ (N - 9) 8]
+  by_cases h_8_9 : a (N - 9) = 8
+  · have h_m_9 : a (N - 9) ≠ m := by omega
+    rw [if_neg h_m_9, if_pos h_8_9]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 9) (by omega) h_m_9 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_9]
+  have h_eq_10 : N - 9 = (N - 10) + 1 := by omega
+  rw [h_eq_10, count_a_eq_succ (N - 10) m, count_a_eq_succ (N - 10) 8]
+  by_cases h_8_10 : a (N - 10) = 8
+  · have h_m_10 : a (N - 10) ≠ m := by omega
+    rw [if_neg h_m_10, if_pos h_8_10]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 10) (by omega) h_m_10 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_10]
+  have h_eq_11 : N - 10 = (N - 11) + 1 := by omega
+  rw [h_eq_11, count_a_eq_succ (N - 11) m, count_a_eq_succ (N - 11) 8]
+  by_cases h_8_11 : a (N - 11) = 8
+  · have h_m_11 : a (N - 11) ≠ m := by omega
+    rw [if_neg h_m_11, if_pos h_8_11]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 11) (by omega) h_m_11 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_11]
+  have h_eq_12 : N - 11 = (N - 12) + 1 := by omega
+  rw [h_eq_12, count_a_eq_succ (N - 12) m, count_a_eq_succ (N - 12) 8]
+  by_cases h_8_12 : a (N - 12) = 8
+  · have h_m_12 : a (N - 12) ≠ m := by omega
+    rw [if_neg h_m_12, if_pos h_8_12]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 12) (by omega) h_m_12 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_12]
+  have h_eq_13 : N - 12 = (N - 13) + 1 := by omega
+  rw [h_eq_13, count_a_eq_succ (N - 13) m, count_a_eq_succ (N - 13) 8]
+  by_cases h_8_13 : a (N - 13) = 8
+  · have h_m_13 : a (N - 13) ≠ m := by omega
+    rw [if_neg h_m_13, if_pos h_8_13]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 13) (by omega) h_m_13 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_13]
+  have h_eq_14 : N - 13 = (N - 14) + 1 := by omega
+  rw [h_eq_14, count_a_eq_succ (N - 14) m, count_a_eq_succ (N - 14) 8]
+  by_cases h_8_14 : a (N - 14) = 8
+  · have h_m_14 : a (N - 14) ≠ m := by omega
+    rw [if_neg h_m_14, if_pos h_8_14]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 14) (by omega) h_m_14 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_14]
+  have h_eq_15 : N - 14 = (N - 15) + 1 := by omega
+  rw [h_eq_15, count_a_eq_succ (N - 15) m, count_a_eq_succ (N - 15) 8]
+  by_cases h_8_15 : a (N - 15) = 8
+  · have h_m_15 : a (N - 15) ≠ m := by omega
+    rw [if_neg h_m_15, if_pos h_8_15]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 15) (by omega) h_m_15 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_15]
+  have h_eq_16 : N - 15 = (N - 16) + 1 := by omega
+  rw [h_eq_16, count_a_eq_succ (N - 16) m, count_a_eq_succ (N - 16) 8]
+  by_cases h_8_16 : a (N - 16) = 8
+  · have h_m_16 : a (N - 16) ≠ m := by omega
+    rw [if_neg h_m_16, if_pos h_8_16]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 16) (by omega) h_m_16 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_16]
+  have h_eq_17 : N - 16 = (N - 17) + 1 := by omega
+  rw [h_eq_17, count_a_eq_succ (N - 17) m, count_a_eq_succ (N - 17) 8]
+  by_cases h_8_17 : a (N - 17) = 8
+  · have h_m_17 : a (N - 17) ≠ m := by omega
+    rw [if_neg h_m_17, if_pos h_8_17]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 17) (by omega) h_m_17 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_17]
+  have h_eq_18 : N - 17 = (N - 18) + 1 := by omega
+  rw [h_eq_18, count_a_eq_succ (N - 18) m, count_a_eq_succ (N - 18) 8]
+  by_cases h_8_18 : a (N - 18) = 8
+  · have h_m_18 : a (N - 18) ≠ m := by omega
+    rw [if_neg h_m_18, if_pos h_8_18]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 18) (by omega) h_m_18 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_18]
+  have h_eq_19 : N - 18 = (N - 19) + 1 := by omega
+  rw [h_eq_19, count_a_eq_succ (N - 19) m, count_a_eq_succ (N - 19) 8]
+  by_cases h_8_19 : a (N - 19) = 8
+  · have h_m_19 : a (N - 19) ≠ m := by omega
+    rw [if_neg h_m_19, if_pos h_8_19]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 19) (by omega) h_m_19 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_19]
+  have h_eq_20 : N - 19 = (N - 20) + 1 := by omega
+  rw [h_eq_20, count_a_eq_succ (N - 20) m, count_a_eq_succ (N - 20) 8]
+  by_cases h_8_20 : a (N - 20) = 8
+  · have h_m_20 : a (N - 20) ≠ m := by omega
+    rw [if_neg h_m_20, if_pos h_8_20]
+    have h_ih := count_a_eq_invariant_strong_neg m hm (N - 20) (by omega) h_m_20 ih
+    omega
+  rw [if_neg (by omega), if_neg h_8_20]
+  have h_eq_21 : N - 20 = (N - 21) + 1 := by omega
+  rw [h_eq_21, count_a_eq_succ (N - 21) m, count_a_eq_succ (N - 21) 8]
+  by_cases h_m_lim : a (N - 21) = m
+  · have h_ih := ih (N - 21) (by omega) (by omega)
+    rw [if_pos h_m_lim] at h_ih
+    omega
+  · have h_ih := count_a_eq_invariant_strong_neg m hm (N - 21) (by omega) h_m_lim ih
+    omega
+
+
+lemma count_a_eq_invariant_strong_neg (m : ℕ) (hm : m ≠ 8) (N : ℕ) (hN : 140 < N) (ha : a N ≠ m) (ih : ∀ y < N, 120 ≤ y → count_a_eq y m + (if a y = m then 2 else 1) ≤ count_a_eq y 8) : count_a_eq N m + 1 ≤ count_a_eq N 8 := by
+  have h_eq_1 : N = (N - 1) + 1 := by omega
+  rw [h_eq_1, count_a_eq_succ (N - 1) m, count_a_eq_succ (N - 1) 8]
+  by_cases h_8_1 : a (N - 1) = 8
+  · have h_m_1 : a (N - 1) ≠ m := by omega
+    rw [if_neg h_m_1, if_pos h_8_1]
+    have h_ih := ih (N - 1) (by omega) (by omega)
+    rw [if_neg h_m_1] at h_ih
+    omega
+  by_cases h_m_1 : a (N - 1) = m
+  · rw [if_pos h_m_1, if_neg h_8_1]
+    have h_ih := ih (N - 1) (by omega) (by omega)
+    rw [if_pos h_m_1] at h_ih
+    have h_ne := a_ne_a_succ (N - 1)
+    have h_ne2 := a_ne_a_succ_succ (N - 1)
+    omega
+  rw [if_neg h_m_1, if_neg h_8_1]
+  have h_eq_2 : N - 1 = (N - 2) + 1 := by omega
+  rw [h_eq_2, count_a_eq_succ (N - 2) m, count_a_eq_succ (N - 2) 8]
+  by_cases h_8_2 : a (N - 2) = 8
+  · have h_m_2 : a (N - 2) ≠ m := by omega
+    rw [if_neg h_m_2, if_pos h_8_2]
+    have h_ih := ih (N - 2) (by omega) (by omega)
+    rw [if_neg h_m_2] at h_ih
+    omega
+  by_cases h_m_2 : a (N - 2) = m
+  · rw [if_pos h_m_2, if_neg h_8_2]
+    have h_ih := ih (N - 2) (by omega) (by omega)
+    rw [if_pos h_m_2] at h_ih
+    have h_ne := a_ne_a_succ (N - 2)
+    have h_ne2 := a_ne_a_succ_succ (N - 2)
+    omega
+  rw [if_neg h_m_2, if_neg h_8_2]
+  have h_eq_3 : N - 2 = (N - 3) + 1 := by omega
+  rw [h_eq_3, count_a_eq_succ (N - 3) m, count_a_eq_succ (N - 3) 8]
+  by_cases h_8_3 : a (N - 3) = 8
+  · have h_m_3 : a (N - 3) ≠ m := by omega
+    rw [if_neg h_m_3, if_pos h_8_3]
+    have h_ih := ih (N - 3) (by omega) (by omega)
+    rw [if_neg h_m_3] at h_ih
+    omega
+  by_cases h_m_3 : a (N - 3) = m
+  · rw [if_pos h_m_3, if_neg h_8_3]
+    have h_ih := ih (N - 3) (by omega) (by omega)
+    rw [if_pos h_m_3] at h_ih
+    have h_ne := a_ne_a_succ (N - 3)
+    have h_ne2 := a_ne_a_succ_succ (N - 3)
+    omega
+  rw [if_neg h_m_3, if_neg h_8_3]
+  have h_eq_4 : N - 3 = (N - 4) + 1 := by omega
+  rw [h_eq_4, count_a_eq_succ (N - 4) m, count_a_eq_succ (N - 4) 8]
+  by_cases h_8_4 : a (N - 4) = 8
+  · have h_m_4 : a (N - 4) ≠ m := by omega
+    rw [if_neg h_m_4, if_pos h_8_4]
+    have h_ih := ih (N - 4) (by omega) (by omega)
+    rw [if_neg h_m_4] at h_ih
+    omega
+  by_cases h_m_4 : a (N - 4) = m
+  · rw [if_pos h_m_4, if_neg h_8_4]
+    have h_ih := ih (N - 4) (by omega) (by omega)
+    rw [if_pos h_m_4] at h_ih
+    have h_ne := a_ne_a_succ (N - 4)
+    have h_ne2 := a_ne_a_succ_succ (N - 4)
+    omega
+  rw [if_neg h_m_4, if_neg h_8_4]
+  have h_eq_5 : N - 4 = (N - 5) + 1 := by omega
+  rw [h_eq_5, count_a_eq_succ (N - 5) m, count_a_eq_succ (N - 5) 8]
+  by_cases h_8_5 : a (N - 5) = 8
+  · have h_m_5 : a (N - 5) ≠ m := by omega
+    rw [if_neg h_m_5, if_pos h_8_5]
+    have h_ih := ih (N - 5) (by omega) (by omega)
+    rw [if_neg h_m_5] at h_ih
+    omega
+  by_cases h_m_5 : a (N - 5) = m
+  · rw [if_pos h_m_5, if_neg h_8_5]
+    have h_ih := ih (N - 5) (by omega) (by omega)
+    rw [if_pos h_m_5] at h_ih
+    have h_ne := a_ne_a_succ (N - 5)
+    have h_ne2 := a_ne_a_succ_succ (N - 5)
+    omega
+  rw [if_neg h_m_5, if_neg h_8_5]
+  have h_eq_6 : N - 5 = (N - 6) + 1 := by omega
+  rw [h_eq_6, count_a_eq_succ (N - 6) m, count_a_eq_succ (N - 6) 8]
+  by_cases h_8_6 : a (N - 6) = 8
+  · have h_m_6 : a (N - 6) ≠ m := by omega
+    rw [if_neg h_m_6, if_pos h_8_6]
+    have h_ih := ih (N - 6) (by omega) (by omega)
+    rw [if_neg h_m_6] at h_ih
+    omega
+  by_cases h_m_6 : a (N - 6) = m
+  · rw [if_pos h_m_6, if_neg h_8_6]
+    have h_ih := ih (N - 6) (by omega) (by omega)
+    rw [if_pos h_m_6] at h_ih
+    have h_ne := a_ne_a_succ (N - 6)
+    have h_ne2 := a_ne_a_succ_succ (N - 6)
+    omega
+  rw [if_neg h_m_6, if_neg h_8_6]
+  have h_eq_7 : N - 6 = (N - 7) + 1 := by omega
+  rw [h_eq_7, count_a_eq_succ (N - 7) m, count_a_eq_succ (N - 7) 8]
+  by_cases h_8_7 : a (N - 7) = 8
+  · have h_m_7 : a (N - 7) ≠ m := by omega
+    rw [if_neg h_m_7, if_pos h_8_7]
+    have h_ih := ih (N - 7) (by omega) (by omega)
+    rw [if_neg h_m_7] at h_ih
+    omega
+  by_cases h_m_7 : a (N - 7) = m
+  · rw [if_pos h_m_7, if_neg h_8_7]
+    have h_ih := ih (N - 7) (by omega) (by omega)
+    rw [if_pos h_m_7] at h_ih
+    have h_ne := a_ne_a_succ (N - 7)
+    have h_ne2 := a_ne_a_succ_succ (N - 7)
+    omega
+  rw [if_neg h_m_7, if_neg h_8_7]
+  have h_eq_8 : N - 7 = (N - 8) + 1 := by omega
+  rw [h_eq_8, count_a_eq_succ (N - 8) m, count_a_eq_succ (N - 8) 8]
+  by_cases h_8_8 : a (N - 8) = 8
+  · have h_m_8 : a (N - 8) ≠ m := by omega
+    rw [if_neg h_m_8, if_pos h_8_8]
+    have h_ih := ih (N - 8) (by omega) (by omega)
+    rw [if_neg h_m_8] at h_ih
+    omega
+  by_cases h_m_8 : a (N - 8) = m
+  · rw [if_pos h_m_8, if_neg h_8_8]
+    have h_ih := ih (N - 8) (by omega) (by omega)
+    rw [if_pos h_m_8] at h_ih
+    have h_ne := a_ne_a_succ (N - 8)
+    have h_ne2 := a_ne_a_succ_succ (N - 8)
+    omega
+  rw [if_neg h_m_8, if_neg h_8_8]
+  have h_eq_9 : N - 8 = (N - 9) + 1 := by omega
+  rw [h_eq_9, count_a_eq_succ (N - 9) m, count_a_eq_succ (N - 9) 8]
+  by_cases h_8_9 : a (N - 9) = 8
+  · have h_m_9 : a (N - 9) ≠ m := by omega
+    rw [if_neg h_m_9, if_pos h_8_9]
+    have h_ih := ih (N - 9) (by omega) (by omega)
+    rw [if_neg h_m_9] at h_ih
+    omega
+  by_cases h_m_9 : a (N - 9) = m
+  · rw [if_pos h_m_9, if_neg h_8_9]
+    have h_ih := ih (N - 9) (by omega) (by omega)
+    rw [if_pos h_m_9] at h_ih
+    have h_ne := a_ne_a_succ (N - 9)
+    have h_ne2 := a_ne_a_succ_succ (N - 9)
+    omega
+  rw [if_neg h_m_9, if_neg h_8_9]
+  have h_eq_10 : N - 9 = (N - 10) + 1 := by omega
+  rw [h_eq_10, count_a_eq_succ (N - 10) m, count_a_eq_succ (N - 10) 8]
+  by_cases h_8_10 : a (N - 10) = 8
+  · have h_m_10 : a (N - 10) ≠ m := by omega
+    rw [if_neg h_m_10, if_pos h_8_10]
+    have h_ih := ih (N - 10) (by omega) (by omega)
+    rw [if_neg h_m_10] at h_ih
+    omega
+  by_cases h_m_10 : a (N - 10) = m
+  · rw [if_pos h_m_10, if_neg h_8_10]
+    have h_ih := ih (N - 10) (by omega) (by omega)
+    rw [if_pos h_m_10] at h_ih
+    have h_ne := a_ne_a_succ (N - 10)
+    have h_ne2 := a_ne_a_succ_succ (N - 10)
+    omega
+  rw [if_neg h_m_10, if_neg h_8_10]
+  have h_eq_11 : N - 10 = (N - 11) + 1 := by omega
+  rw [h_eq_11, count_a_eq_succ (N - 11) m, count_a_eq_succ (N - 11) 8]
+  by_cases h_8_11 : a (N - 11) = 8
+  · have h_m_11 : a (N - 11) ≠ m := by omega
+    rw [if_neg h_m_11, if_pos h_8_11]
+    have h_ih := ih (N - 11) (by omega) (by omega)
+    rw [if_neg h_m_11] at h_ih
+    omega
+  by_cases h_m_11 : a (N - 11) = m
+  · rw [if_pos h_m_11, if_neg h_8_11]
+    have h_ih := ih (N - 11) (by omega) (by omega)
+    rw [if_pos h_m_11] at h_ih
+    have h_ne := a_ne_a_succ (N - 11)
+    have h_ne2 := a_ne_a_succ_succ (N - 11)
+    omega
+  rw [if_neg h_m_11, if_neg h_8_11]
+  have h_eq_12 : N - 11 = (N - 12) + 1 := by omega
+  rw [h_eq_12, count_a_eq_succ (N - 12) m, count_a_eq_succ (N - 12) 8]
+  by_cases h_8_12 : a (N - 12) = 8
+  · have h_m_12 : a (N - 12) ≠ m := by omega
+    rw [if_neg h_m_12, if_pos h_8_12]
+    have h_ih := ih (N - 12) (by omega) (by omega)
+    rw [if_neg h_m_12] at h_ih
+    omega
+  by_cases h_m_12 : a (N - 12) = m
+  · rw [if_pos h_m_12, if_neg h_8_12]
+    have h_ih := ih (N - 12) (by omega) (by omega)
+    rw [if_pos h_m_12] at h_ih
+    have h_ne := a_ne_a_succ (N - 12)
+    have h_ne2 := a_ne_a_succ_succ (N - 12)
+    omega
+  rw [if_neg h_m_12, if_neg h_8_12]
+  have h_eq_13 : N - 12 = (N - 13) + 1 := by omega
+  rw [h_eq_13, count_a_eq_succ (N - 13) m, count_a_eq_succ (N - 13) 8]
+  by_cases h_8_13 : a (N - 13) = 8
+  · have h_m_13 : a (N - 13) ≠ m := by omega
+    rw [if_neg h_m_13, if_pos h_8_13]
+    have h_ih := ih (N - 13) (by omega) (by omega)
+    rw [if_neg h_m_13] at h_ih
+    omega
+  by_cases h_m_13 : a (N - 13) = m
+  · rw [if_pos h_m_13, if_neg h_8_13]
+    have h_ih := ih (N - 13) (by omega) (by omega)
+    rw [if_pos h_m_13] at h_ih
+    have h_ne := a_ne_a_succ (N - 13)
+    have h_ne2 := a_ne_a_succ_succ (N - 13)
+    omega
+  rw [if_neg h_m_13, if_neg h_8_13]
+  have h_eq_14 : N - 13 = (N - 14) + 1 := by omega
+  rw [h_eq_14, count_a_eq_succ (N - 14) m, count_a_eq_succ (N - 14) 8]
+  by_cases h_8_14 : a (N - 14) = 8
+  · have h_m_14 : a (N - 14) ≠ m := by omega
+    rw [if_neg h_m_14, if_pos h_8_14]
+    have h_ih := ih (N - 14) (by omega) (by omega)
+    rw [if_neg h_m_14] at h_ih
+    omega
+  by_cases h_m_14 : a (N - 14) = m
+  · rw [if_pos h_m_14, if_neg h_8_14]
+    have h_ih := ih (N - 14) (by omega) (by omega)
+    rw [if_pos h_m_14] at h_ih
+    have h_ne := a_ne_a_succ (N - 14)
+    have h_ne2 := a_ne_a_succ_succ (N - 14)
+    omega
+  rw [if_neg h_m_14, if_neg h_8_14]
+  have h_eq_15 : N - 14 = (N - 15) + 1 := by omega
+  rw [h_eq_15, count_a_eq_succ (N - 15) m, count_a_eq_succ (N - 15) 8]
+  by_cases h_8_15 : a (N - 15) = 8
+  · have h_m_15 : a (N - 15) ≠ m := by omega
+    rw [if_neg h_m_15, if_pos h_8_15]
+    have h_ih := ih (N - 15) (by omega) (by omega)
+    rw [if_neg h_m_15] at h_ih
+    omega
+  by_cases h_m_15 : a (N - 15) = m
+  · rw [if_pos h_m_15, if_neg h_8_15]
+    have h_ih := ih (N - 15) (by omega) (by omega)
+    rw [if_pos h_m_15] at h_ih
+    have h_ne := a_ne_a_succ (N - 15)
+    have h_ne2 := a_ne_a_succ_succ (N - 15)
+    omega
+  rw [if_neg h_m_15, if_neg h_8_15]
+  have h_eq_16 : N - 15 = (N - 16) + 1 := by omega
+  rw [h_eq_16, count_a_eq_succ (N - 16) m, count_a_eq_succ (N - 16) 8]
+  by_cases h_8_16 : a (N - 16) = 8
+  · have h_m_16 : a (N - 16) ≠ m := by omega
+    rw [if_neg h_m_16, if_pos h_8_16]
+    have h_ih := ih (N - 16) (by omega) (by omega)
+    rw [if_neg h_m_16] at h_ih
+    omega
+  by_cases h_m_16 : a (N - 16) = m
+  · rw [if_pos h_m_16, if_neg h_8_16]
+    have h_ih := ih (N - 16) (by omega) (by omega)
+    rw [if_pos h_m_16] at h_ih
+    have h_ne := a_ne_a_succ (N - 16)
+    have h_ne2 := a_ne_a_succ_succ (N - 16)
+    omega
+  rw [if_neg h_m_16, if_neg h_8_16]
+  have h_eq_17 : N - 16 = (N - 17) + 1 := by omega
+  rw [h_eq_17, count_a_eq_succ (N - 17) m, count_a_eq_succ (N - 17) 8]
+  by_cases h_8_17 : a (N - 17) = 8
+  · have h_m_17 : a (N - 17) ≠ m := by omega
+    rw [if_neg h_m_17, if_pos h_8_17]
+    have h_ih := ih (N - 17) (by omega) (by omega)
+    rw [if_neg h_m_17] at h_ih
+    omega
+  by_cases h_m_17 : a (N - 17) = m
+  · rw [if_pos h_m_17, if_neg h_8_17]
+    have h_ih := ih (N - 17) (by omega) (by omega)
+    rw [if_pos h_m_17] at h_ih
+    have h_ne := a_ne_a_succ (N - 17)
+    have h_ne2 := a_ne_a_succ_succ (N - 17)
+    omega
+  rw [if_neg h_m_17, if_neg h_8_17]
+  have h_eq_18 : N - 17 = (N - 18) + 1 := by omega
+  rw [h_eq_18, count_a_eq_succ (N - 18) m, count_a_eq_succ (N - 18) 8]
+  by_cases h_8_18 : a (N - 18) = 8
+  · have h_m_18 : a (N - 18) ≠ m := by omega
+    rw [if_neg h_m_18, if_pos h_8_18]
+    have h_ih := ih (N - 18) (by omega) (by omega)
+    rw [if_neg h_m_18] at h_ih
+    omega
+  by_cases h_m_18 : a (N - 18) = m
+  · rw [if_pos h_m_18, if_neg h_8_18]
+    have h_ih := ih (N - 18) (by omega) (by omega)
+    rw [if_pos h_m_18] at h_ih
+    have h_ne := a_ne_a_succ (N - 18)
+    have h_ne2 := a_ne_a_succ_succ (N - 18)
+    omega
+  rw [if_neg h_m_18, if_neg h_8_18]
+  have h_eq_19 : N - 18 = (N - 19) + 1 := by omega
+  rw [h_eq_19, count_a_eq_succ (N - 19) m, count_a_eq_succ (N - 19) 8]
+  by_cases h_8_19 : a (N - 19) = 8
+  · have h_m_19 : a (N - 19) ≠ m := by omega
+    rw [if_neg h_m_19, if_pos h_8_19]
+    have h_ih := ih (N - 19) (by omega) (by omega)
+    rw [if_neg h_m_19] at h_ih
+    omega
+  by_cases h_m_19 : a (N - 19) = m
+  · rw [if_pos h_m_19, if_neg h_8_19]
+    have h_ih := ih (N - 19) (by omega) (by omega)
+    rw [if_pos h_m_19] at h_ih
+    have h_ne := a_ne_a_succ (N - 19)
+    have h_ne2 := a_ne_a_succ_succ (N - 19)
+    omega
+  rw [if_neg h_m_19, if_neg h_8_19]
+  have h_eq_20 : N - 19 = (N - 20) + 1 := by omega
+  rw [h_eq_20, count_a_eq_succ (N - 20) m, count_a_eq_succ (N - 20) 8]
+  by_cases h_8_20 : a (N - 20) = 8
+  · have h_m_20 : a (N - 20) ≠ m := by omega
+    rw [if_neg h_m_20, if_pos h_8_20]
+    have h_ih := ih (N - 20) (by omega) (by omega)
+    rw [if_neg h_m_20] at h_ih
+    omega
+  by_cases h_m_20 : a (N - 20) = m
+  · rw [if_pos h_m_20, if_neg h_8_20]
+    have h_ih := ih (N - 20) (by omega) (by omega)
+    rw [if_pos h_m_20] at h_ih
+    have h_ne := a_ne_a_succ (N - 20)
+    have h_ne2 := a_ne_a_succ_succ (N - 20)
+    omega
+  rw [if_neg h_m_20, if_neg h_8_20]
+  have h_eq_21 : N - 20 = (N - 21) + 1 := by omega
+  rw [h_eq_21, count_a_eq_succ (N - 21) m, count_a_eq_succ (N - 21) 8]
+  have h_ih := ih (N - 21) (by omega) (by omega)
+  by_cases h_m_lim : a (N - 21) = m
+  · rw [if_pos h_m_lim] at h_ih
+    have h_ne := a_ne_a_succ (N - 21)
+    have h_ne2 := a_ne_a_succ_succ (N - 21)
+    omega
+  · rw [if_neg h_m_lim] at h_ih
+    omega
+
+
+lemma count_a_eq_invariant_strong (m : ℕ) (hm : m ≠ 8) (N : ℕ) (hN : 120 ≤ N) : count_a_eq N m + (if a N = m then 2 else 1) ≤ count_a_eq N 8 := by
+  induction' N using Nat.strong_induction_on with N ih
+  by_cases h_small : N ≤ 140
+  · exact count_a_eq_invariant_small m hm N (by omega) h_small
+  · have h_gt : N > 140 := by omega
+    by_cases h_m : a N = m
+    · rw [if_pos h_m]
+      exact count_a_eq_invariant_strong_pos m hm N h_gt h_m ih
+    · rw [if_neg h_m]
+      exact count_a_eq_invariant_strong_neg m hm N h_gt h_m ih
+
+
+lemma count_a_eq_invariant_step_back (m : ℕ) (hm : m ≠ 8) (n : ℕ) (hn : 72 ≤ n) (ha : a (n + 1) = m) : count_a_eq n m + 1 ≤ count_a_eq n 8 := by
+  by_cases hn120 : n < 120
+  · have hn_le : n ≤ 140 := by omega
+    exact count_a_eq_invariant_step_back_small m hm n hn hn_le ha
+  · have hn120_ge : 120 ≤ n := by omega
+    have h_inv := count_a_eq_invariant_strong m hm n hn120_ge
+    have h_nm : a n ≠ m := by
+      have h_ne := a_ne_a_succ n
+      rw [ha] at h_ne
+      exact h_ne
+    rw [if_neg h_nm] at h_inv
+    omega
+
+lemma count_a_eq_invariant (m : ℕ) (hm : m ≠ 8) (N : ℕ) (hN : 72 ≤ N) : count_a_eq N m + (if a N = m then 1 else 0) ≤ count_a_eq N 8 := by
+  induction N, hN using Nat.le_induction with
+  | base =>
+    have h_le := count_a_eq_le_72_120 m 72 (by omega) (by omega)
+    have h_a : a 72 = 9 := by
+      rw [a_eq_a_fast_200 72 (by omega)]
+      decide
+    rw [h_a]
+    by_cases h9 : m = 9
+    · subst h9
+      have h_72 : count_a_eq 72 9 = 6 := by
+        rw [count_a_eq_eq_count_a_fast_200 9 72 (by omega)]
+        decide
+      have h_72_8 : count_a_eq 72 8 = 8 := by
+        rw [count_a_eq_eq_count_a_fast_200 8 72 (by omega)]
+        decide
+      rw [h_72, h_72_8]
+      simp
+    · have h9_symm : 9 ≠ m := Ne.symm h9
+      rw [if_neg h9_symm]
+      exact h_le
+  | succ n hn ih =>
+    rw [count_a_eq_succ n m, count_a_eq_succ n 8]
+    by_cases h1 : a n = m
+    · have h2 : a n ≠ 8 := by omega
+      rw [if_pos h1] at ih
+      rw [if_pos h1, if_neg h2]
+      have h_ne := a_ne_a_succ n
+      rw [h1] at h_ne
+      have h_ne2 : a (n + 1) ≠ m := h_ne.symm
+      rw [if_neg h_ne2]
+      omega
+    · rw [if_neg h1] at ih
+      by_cases h2 : a n = 8
+      · rw [if_neg h1, if_pos h2]
+        split_ifs <;> omega
+      · rw [if_neg h1, if_neg h2]
+        by_cases h3 : a (n + 1) = m
+        · rw [if_pos h3]
+          have h_sb := count_a_eq_invariant_step_back m hm n hn h3
+          omega
+        · rw [if_neg h3]
+          omega
+
+lemma count_a_eq_le (m : ℕ) (N : ℕ) (hN : 72 ≤ N) : count_a_eq N m ≤ count_a_eq N 8 := by
+  by_cases hm : m = 8
+  · subst hm
+    omega
+  · have h_inv := count_a_eq_invariant m hm N hN
+    split_ifs at h_inv <;> omega
+
+
+/--
+oeis_326746_conjecture_0:
+The frequency of occurrence for the values of a(n) for large values of n has an interesting distribution - it is a bell-shaped curve but with large increases for a(n) = 8, and a smaller increase for a(n) = 17. The value a(n) = 8 is likely the most common value as every time n increases by 100 the value of a(n) goes through ten smaller cycles, and 8 appears to be the only value that is present in all ten cycles. The reason a(n) = 17 also appears more often is not clear, although the distribution for n up to 10^10 also shows a slight increase in the number of occurrences for a(n) = 26, suggesting that a(n) values of the form a(n) = 8 + 9 * k, where k >= 0, occur more frequently than one would predicted from the surrounding bell-curve distribution.
+
+We formalize the core claim that 8 is the most common value by asserting that its asymptotic frequency is at least that of any other value $m$.
+The asymptotic frequency is captured by the $\limsup$ of the proportion of occurrences up to $N$.
+-/
+theorem oeis_326746_conjecture_0 :
+  ∀ m : ℕ,
+    Filter.limsup (fun N : ℕ => (count_a_eq N 8 : ℝ) / N) atTop
+    ≥
+    Filter.limsup (fun N : ℕ => (count_a_eq N m : ℝ) / N) atTop
+    := by
+  intro m
+  have hu0 : IsBoundedUnder (fun x y => y ≤ x) atTop (fun N => (count_a_eq N m : ℝ) / N) := isBoundedUnder_of (f := atTop) (r := fun x y => y ≤ x) ⟨0, fun N => count_div_nonneg N m⟩
+  have hu : IsCoboundedUnder (fun x1 x2 => x1 ≤ x2) atTop (fun N => (count_a_eq N m : ℝ) / N) := IsBoundedUnder.isCoboundedUnder_le hu0
+  have hv : IsBoundedUnder (fun x1 x2 => x1 ≤ x2) atTop (fun N => (count_a_eq N 8 : ℝ) / N) := isBoundedUnder_of (f := atTop) (r := fun x y => x ≤ y) ⟨1, fun N => count_div_le_one N 8⟩
+  apply limsup_le_limsup (hu := hu) (hv := hv)
+  · rw [Filter.EventuallyLE]
+    rw [eventually_atTop]
+    use 72
+    intro N hN
+    have h1 : 72 ≤ N := hN
+    have h2 := count_a_eq_le m N h1
+    have h3 : (count_a_eq N m : ℝ) ≤ (count_a_eq N 8 : ℝ) := by
+      exact Nat.cast_le.mpr h2
+    have h_N_pos : (N : ℝ) > 0 := by
+      have : N ≥ 72 := h1
+      have : N > 0 := by omega
+      exact Nat.cast_pos.mpr this
+    exact div_le_div_of_nonneg_right h3 (by linarith)

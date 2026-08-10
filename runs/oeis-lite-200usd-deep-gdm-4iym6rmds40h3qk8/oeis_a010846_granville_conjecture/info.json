@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a010846_granville_conjecture",
+  "epoch": 1,
+  "uuid": "52EBfMkij9X3Cxd3fshN6a",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 476232,
+      "output_tokens": 5235,
+      "total_tokens": 1976623,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1479347,
+      "reasoning_tokens": 15809,
+      "total_cost": 0.9833650499999999
+    }
+  },
+  "oeis_id": "A010846"
+}

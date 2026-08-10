@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1:564: error: object file '/workspace/leanproject/.lake/build/lib/lean/FormalConjectures/Util/ProblemImportsset_option.olean' of module FormalConjectures.Util.ProblemImportsset_option does not exist
+

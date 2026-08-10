@@ -1,0 +1,21 @@
+Starting smooth BFS search in C++ up to 100000000000000...
+Processed 5000000 smooth numbers, current g = 28351078272
+Processed 10000000 smooth numbers, current g = 168662625453
+Processed 15000000 smooth numbers, current g = 496250551672
+Processed 20000000 smooth numbers, current g = 1084956173946
+Processed 25000000 smooth numbers, current g = 2009405867040
+Processed 30000000 smooth numbers, current g = 3345678336000
+Processed 35000000 smooth numbers, current g = 5171557242852
+Processed 40000000 smooth numbers, current g = 7566658633728
+Processed 45000000 smooth numbers, current g = 10612376139456
+Processed 50000000 smooth numbers, current g = 14391989904225
+Processed 55000000 smooth numbers, current g = 18990658367850
+Processed 60000000 smooth numbers, current g = 24495395085000
+Processed 65000000 smooth numbers, current g = 30994952231250
+Processed 70000000 smooth numbers, current g = 38579981347292
+Processed 75000000 smooth numbers, current g = 47342880079872
+Processed 80000000 smooth numbers, current g = 57377938864783
+Processed 85000000 smooth numbers, current g = 68781155691150
+Processed 90000000 smooth numbers, current g = 81649899927552
+Processed 95000000 smooth numbers, current g = 96084065674376
+Finished BFS. Found 0/2

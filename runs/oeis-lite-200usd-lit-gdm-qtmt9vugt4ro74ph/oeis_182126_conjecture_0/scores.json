@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:66:9: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  0 < Finset.card ?m.97\nin the target expression\n  {n ∈ Finset.range (x + 1) | 1 ≤ n ∧ a n = v₀}.card ≥ 1\n\nx : ℕ\nhx : x > 10 ^ 9\nv₀ : ℕ\nhf : is_most_frequent x v₀\nh_pos : count_a x 120 ≥ 1\nh_freq : count_a x 120 ≤ count_a x v₀\nh_v0_pos : {n ∈ Finset.range (x + 1) | 1 ≤ n ∧ a n = v₀}.card ≥ 1\n⊢ {n ∈ Finset.range (x + 1) | 1 ≤ n ∧ a n = v₀}.Nonempty",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nSubmission/Spec.lean:1823:27: error(lean.unknownIdentifier): Unknown identifier `h_two_pow_lt`\nSubmission/Spec.lean:1832:27: error(lean.unknownIdentifier): Unknown identifier `h_m_gt`\nSubmission/Spec.lean:1851:12: error: invalid 'calc' step, failed to synthesize `Trans` instance\n  Trans GT.gt LT.lt ?m.2377\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nSubmission/Spec.lean:1855:52: error(lean.invalidField): Invalid field `mp`: The environment does not contain `Function.mp`, so it is not possible to project the field `mp` from an expression\n  mul_lt_mul_left ?m.2479\nof type\n  ∀ (a : ?m.2473), ?m.2477 * a < ?m.2478 * a\nSubmission/Spec.lean:1855:39: error: failed to synthesize\n  Zero ?m.2473\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nSubmission/Spec.lean:1870:45: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  q ≥ 1\n  o ≥ 1\n  l ≥ 1\n  i ≥ 0\n  h ≥ 1\n  g ≥ 1\n  f ≥ 0\n  e ≥ 1\n  d - e ≤ -1\n  d ≥ 0\n  c ≤ -1\n  b ≥ 0\nwhere\n b := ↑p / 2\n c := ↑m / 2\n d := padicValRat 2 (S_arith n)\n e := padicValRat 2 (S_arith (2 ^ a))\n f := ↑a / 2\n g := ↑B * ↑k\n h := ↑D * ↑j\n i := ↑((S_arith n).num.natAbs * B) * ↑D\n l := ↑j\n o := ↑k\n q := ↑n / 2",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

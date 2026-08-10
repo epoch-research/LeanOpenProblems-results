@@ -1,0 +1,65 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:970:34: warning: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1139:19: error(lean.unknownIdentifier): Unknown identifier `div_ge_universal`
+  Submission/Spec.lean:1147:14: error: Ambiguous term
+    sum_range_id_mul_two
+  Possible interpretations:
+    _root_.sum_range_id_mul_two H : 2 * ∑ i ∈ range H, i = H * (H - 1)
+    
+    Finset.sum_range_id_mul_two H : (∑ i ∈ range H, i) * 2 = H * (H - 1)
+  Submission/Spec.lean:1159:2: error: linarith failed to find a contradiction
+  case h
+  H : ℕ
+  hH_pos : 0 < H
+  h_term1 : ∀ d ∈ range H, 12 * ((H + d) ^ 2 / (4 * H)) + 9 ≥ 3 * (d ^ 2 / H) + 6 * d + 3 * H
+  h_term2 : ∀ k ∈ range H, 12 * (k ^ 2 / (4 * H)) + 9 ≥ 3 * (k ^ 2 / H)
+  h_pull : ∑ x ∈ range H, 6 * x = 6 * ∑ x ∈ range H, x
+  h_sub1 : 1 ≤ H
+  h_sub2 : 1 ≤ H - 1
+  hH_sub : 18 * H ≤ 8 * H ^ 2
+  h_cast3 : ↑(8 * H ^ 2 - 18 * H) = 8 * ↑H ^ 2 - 18 * ↑H
+  hH : 25 ≤ ↑H
+  h_sum1 :
+    3 * ∑ x ∈ range H, ↑x ^ 2 / ↑H + 6 * ∑ x ∈ range H, ↑x + ↑H * (3 * ↑H) ≤
+      12 * ∑ x ∈ range H, (↑H + ↑x) ^ 2 / (4 * ↑H) + ↑H * 9
+  h_sum2 : 3 * ∑ x ∈ range H, ↑x ^ 2 / ↑H ≤ 12 * ∑ x ∈ range H, ↑x ^ 2 / (4 * ↑H) + ↑H * 9
+  h_id_sum : 2 * ∑ x ∈ range H, ↑x = ↑H * (↑H - 1)
+  h_half : 2 * ↑H ^ 2 + 7 ≤ 6 * ∑ x ∈ range H, ↑x ^ 2 / ↑H + 9 * ↑H
+  a✝ : 12 * ∑ x ∈ range H, ↑x ^ 2 / (4 * ↑H) + 12 * ∑ x ∈ range H, (↑H + ↑x) ^ 2 / (4 * ↑H) < 4 + (8 * ↑H ^ 2 - 18 * ↑H)
+  ⊢ False
+  failed
+  Submission/Spec.lean:1177:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1237:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1371:36: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1454:10: error(lean.unknownIdentifier): Unknown identifier `sum_div_mod_two_le_decide_2`
+  Submission/Spec.lean:1477:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:1484:2: error: maximum recursion depth has been reached
+  use `set_option maxRecDepth <num>` to increase limit
+  use `set_option diagnostics true` to get diagnostic information
+  Submission/Spec.lean:1559:4: error: unsolved goals
+  case pos
+  hH_ge : 1001 ≤ 0
+  ⊢ A048153 1 = 0
+  Submission/Spec.lean:1561:18: error(lean.unknownIdentifier): Unknown identifier `S_bound_inductive`
+  Submission/Spec.lean:1582:35: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    201 ≤ a ≤ 500
+  where
+   a := ↑n
+  Submission/Spec.lean:1672:34: warning: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1676:35: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+

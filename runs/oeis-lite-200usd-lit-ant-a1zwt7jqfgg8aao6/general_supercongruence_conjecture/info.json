@@ -1,0 +1,23 @@
+{
+  "id": "general_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "32qeB2MMDMSy7kSELT2mQx",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 2271,
+      "output_tokens": 2301655,
+      "total_tokens": 217290923,
+      "input_tokens_cache_write": 6087448,
+      "input_tokens_cache_read": 208899549,
+      "reasoning_tokens": 518202,
+      "total_cost": 200.04905449999853
+    }
+  },
+  "oeis_id": "A333042"
+}

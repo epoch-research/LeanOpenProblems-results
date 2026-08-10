@@ -1,0 +1,20 @@
+{
+  "id": "oeis_372761_conjecture_2",
+  "epoch": 1,
+  "uuid": "jibCz2Au8ByYotAzRsMQPd",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 320,
+      "output_tokens": 373017,
+      "total_tokens": 20843240,
+      "input_tokens_cache_write": 968794,
+      "input_tokens_cache_read": 19501109,
+      "reasoning_tokens": 74850,
+      "total_cost": 25.132542000000008
+    }
+  },
+  "oeis_id": "A372761"
+}

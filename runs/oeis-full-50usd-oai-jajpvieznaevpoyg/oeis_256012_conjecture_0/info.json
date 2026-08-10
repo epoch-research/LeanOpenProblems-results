@@ -1,0 +1,20 @@
+{
+  "id": "oeis_256012_conjecture_0",
+  "epoch": 1,
+  "uuid": "95M9B64pDYpwZK8fVV6Hz6",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 27966,
+      "output_tokens": 7173,
+      "total_tokens": 244035,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 208896,
+      "reasoning_tokens": 1821,
+      "total_cost": 0.45946800000000004
+    }
+  },
+  "oeis_id": "A256012"
+}

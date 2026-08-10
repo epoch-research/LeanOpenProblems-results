@@ -1,0 +1,20 @@
+{
+  "id": "a084046_conjecture_0",
+  "epoch": 1,
+  "uuid": "NR6MGB6a7zcopWGo6W4MPC",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 584501,
+      "output_tokens": 9995,
+      "total_tokens": 2456887,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1843367,
+      "reasoning_tokens": 19024,
+      "total_cost": 1.24321155
+    }
+  },
+  "oeis_id": "A084046"
+}

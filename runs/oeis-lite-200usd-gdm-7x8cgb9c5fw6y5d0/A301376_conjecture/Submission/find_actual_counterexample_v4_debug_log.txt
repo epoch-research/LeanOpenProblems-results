@@ -1,0 +1,22 @@
+V_target size for 10^10: 305
+Selected Prime 3, Residue 1 (uncovered remaining: 191)
+Selected Prime 11, Residue 2 (uncovered remaining: 166)
+Selected Prime 31, Residue 4 (uncovered remaining: 142)
+Selected Prime 19, Residue 5 (uncovered remaining: 136)
+Selected Prime 23, Residue 2 (uncovered remaining: 130)
+CRT base: N0 = 36181
+prod = 894102 (digits: 6)
+Searching for counterexample...
+k = 5000, N = 4470546181: checked 273 elements, elapsed: 2.36s
+k = 10000, N = 8941056181: checked 290 elements, elapsed: 6.27s
+k = 15000, N = 13411566181: checked 306 elements, elapsed: 10.61s
+k = 20000, N = 17882076181: checked 307 elements, elapsed: 15.21s
+k = 25000, N = 22352586181: checked 324 elements, elapsed: 20.35s
+k = 30000, N = 26823096181: checked 324 elements, elapsed: 26.09s
+k = 35000, N = 31293606181: checked 324 elements, elapsed: 31.90s
+k = 40000, N = 35764116181: checked 325 elements, elapsed: 37.77s
+k = 45000, N = 40234626181: checked 341 elements, elapsed: 43.82s
+k = 50000, N = 44705136181: checked 342 elements, elapsed: 50.12s
+k = 55000, N = 49175646181: checked 342 elements, elapsed: 55.97s
+k = 60000, N = 53646156181: checked 342 elements, elapsed: 61.84s
+k = 65000, N = 58116666181: checked 342 elements, elapsed: 67.74s

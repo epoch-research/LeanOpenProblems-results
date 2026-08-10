@@ -1,0 +1,20 @@
+{
+  "id": "A275460_is_integral",
+  "epoch": 1,
+  "uuid": "DGS3ifcHGZzomDPizzHVzs",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 151,
+      "output_tokens": 164243,
+      "total_tokens": 9486724,
+      "input_tokens_cache_write": 197102,
+      "input_tokens_cache_read": 9125228,
+      "reasoning_tokens": 31966,
+      "total_cost": 9.901331500000005
+    }
+  },
+  "oeis_id": "A275460"
+}

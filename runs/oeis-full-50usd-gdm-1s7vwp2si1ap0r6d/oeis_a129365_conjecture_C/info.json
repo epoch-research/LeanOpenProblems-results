@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "HcR2jmWaNK5PEWk5AB8yi9",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 2877703,
+      "output_tokens": 45524,
+      "total_tokens": 31672046,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 28666744,
+      "reasoning_tokens": 82075,
+      "total_cost": 9.026282099999998
+    }
+  },
+  "oeis_id": "A129365"
+}

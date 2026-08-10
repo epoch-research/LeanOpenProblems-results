@@ -1,0 +1,20 @@
+{
+  "id": "poincare_series_conjecture",
+  "epoch": 1,
+  "uuid": "JKeGz79kLkXkgwzBJZYLLd",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 11993,
+      "output_tokens": 2727,
+      "total_tokens": 21376,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 6656,
+      "reasoning_tokens": 2126,
+      "total_cost": 0.145103
+    }
+  },
+  "oeis_id": "A097913"
+}

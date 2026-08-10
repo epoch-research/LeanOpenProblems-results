@@ -1,0 +1,20 @@
+{
+  "id": "oeis_108_conjecture_2",
+  "epoch": 1,
+  "uuid": "eo39QmmfLFW7PSkQAiP29X",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 226785,
+      "output_tokens": 39479,
+      "total_tokens": 6127640,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 5861376,
+      "reasoning_tokens": 14197,
+      "total_cost": 5.248983
+    }
+  },
+  "oeis_id": "A000108"
+}

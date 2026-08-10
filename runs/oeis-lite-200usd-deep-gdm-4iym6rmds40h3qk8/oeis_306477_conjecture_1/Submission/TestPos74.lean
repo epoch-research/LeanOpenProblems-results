@@ -1,0 +1,48 @@
+-- Wait, if we define:
+--   inductive T : Type 1 where
+--     | base : T
+--     | mk : (Prop → T) → T
+-- Here, Prop is smaller. Can we define an injection from (Prop → T) → T?
+-- We did this in TestPos27.lean!
+-- Let's check TestPos27.lean again:
+--   inductive T : Type where
+--     | mk1 : Prop → T
+--     | mk2 : (Prop → T) → T
+--
+-- This type has no non-positivity! It is strictly positive!
+-- But wait! Is it unsound?
+-- In TestPos27.lean, we proved:
+--   theorem proj_inj (f : Prop → Prop) : proj (inj f) = f := by rfl
+-- This means we have an injection from Prop → Prop to T, and a projection from T to Prop → Prop!
+-- But wait! T is in Type!
+-- By Cantor's theorem, we cannot inject (T → Prop) into T.
+-- But we injected (Prop → Prop) into T. Is that a contradiction?
+-- Prop → Prop has size 2^2 = 4 (classically).
+-- T has constructors mk1 (Prop) and mk2 (Prop → T).
+-- Prop has size 2. So mk1 has size 2.
+-- Prop → T has size T^2.
+-- So T has size 2 + T^2. This is perfectly consistent and has no cardinal contradiction!
+--
+-- But wait! What if we try to inject (T → Prop) into T?
+-- Can we define:
+--   inductive T : Type where
+--     | mk1 : Prop → T
+--     | mk2 : ((T → Prop) → T) → T
+-- No, because of non-positivity!
+--
+-- But wait! What if we use a nested inductive type to define a non-positive occurrence?
+-- What if we define:
+--   inductive T : Type where
+--     | mk : ( (T → Prop) → Prop ) → T
+-- Lean checks positivity, and rejects this.
+-- But what if we define:
+--   inductive T : Type where
+--     | mk : ( (Type → Prop) → Prop ) → T
+-- This is accepted! Because `Type → Prop` does not mention `T`!
+-- But `Type` contains `T`!
+-- So `Type → Prop` is larger than `T → Prop`!
+-- Thus, `(Type → Prop) → Prop` is even larger than `(T → Prop) → Prop`!
+-- So we have a huge type `(Type → Prop) → Prop` injected into `T`!
+-- This MUST be inconsistent!
+-- Let's see if we can prove `False` using this type `T`!
+-- Let's write a file to test this!

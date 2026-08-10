@@ -1,0 +1,20 @@
+{
+  "id": "oeis_227582_conjecture_0",
+  "epoch": 1,
+  "uuid": "AwTxSiLAgzPTEXXAwxaBYs",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 248,
+      "output_tokens": 276120,
+      "total_tokens": 16409252,
+      "input_tokens_cache_write": 641827,
+      "input_tokens_cache_read": 15491057,
+      "reasoning_tokens": 49326,
+      "total_cost": 18.661187249999994
+    }
+  },
+  "oeis_id": "A227582"
+}

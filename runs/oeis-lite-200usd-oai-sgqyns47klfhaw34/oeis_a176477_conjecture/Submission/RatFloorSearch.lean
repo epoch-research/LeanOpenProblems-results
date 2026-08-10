@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Rat.floor_intCast
+#check Rat.floor_natCast
+#check Rat.floor_ofInt
+#check Rat.floor_mk
+#check Rat.floor_eq_iff
+#check Rat.floor_eq
+#check Rat.floor_def
+#check Int.toNat_of_nonneg

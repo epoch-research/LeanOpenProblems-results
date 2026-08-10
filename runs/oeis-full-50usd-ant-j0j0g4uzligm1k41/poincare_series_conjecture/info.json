@@ -1,0 +1,20 @@
+{
+  "id": "poincare_series_conjecture",
+  "epoch": 1,
+  "uuid": "bgkVZubEsUNqcNB6eUL8WP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 37,
+      "output_tokens": 64881,
+      "total_tokens": 746148,
+      "input_tokens_cache_write": 72915,
+      "input_tokens_cache_read": 608315,
+      "reasoning_tokens": 14174,
+      "total_cost": 2.38208625
+    }
+  },
+  "oeis_id": "A097913"
+}

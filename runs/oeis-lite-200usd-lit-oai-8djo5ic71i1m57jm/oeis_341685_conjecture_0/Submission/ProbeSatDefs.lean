@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#print Sat.Fmla.proof
+#print Sat.Fmla.reify
+#print Sat.Clause.reify
+#print Sat.Literal.reify
+#print Sat.Valuation.implies
+#print Sat.Valuation.neg
+#print Sat.Literal.negate
+#print Sat.Fmla.refute

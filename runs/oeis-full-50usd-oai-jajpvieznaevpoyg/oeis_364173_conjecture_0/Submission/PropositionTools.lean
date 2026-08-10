@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check cast_eq
+#check eq_rec_constant
+#check eqRec_heq
+#check eq_mp_eq_cast
+#check cast_heq
+#check proof_irrel_heq
+#check propext
+#check eq_mpr_eq_cast
+#check cast_eq_iff_heq
+#check heq_iff_eq
+#check Classical.choice_eq
+#check dif_pos
+#check dif_neg

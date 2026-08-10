@@ -1,0 +1,1256 @@
+/workspace/leanproject/Submission/Spec.lean:1912:82: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 * ↑q
+in the target expression
+  π * 10 ^ (n + 1) < ↑k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk0 : k % 10 = 0
+q : ℤ
+hq : k = 10 * q
+this : ↑k = 10 * ↑q
+⊢ π * 10 ^ (n + 1) < 10 * ↑q
+/workspace/leanproject/Submission/Spec.lean:1915:12: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:1921:116: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 * ↑q
+in the target expression
+  ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk0 : k % 10 = 0
+q : ℤ
+hq : k = 10 * q
+h_q_gt : π * 10 ^ n < ↑q
+this : ↑k = 10 * ↑q
+⊢ 10 * ↑q < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+/workspace/leanproject/Submission/Spec.lean:1924:12: error: No goals to be solved
+/workspace/leanproject/Submission/Spec.lean:1932:88: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk0 : k % 10 = 0
+q : ℤ
+hq : k = 10 * q
+h_q_gt : π * 10 ^ n < ↑q
+this✝ : ↑k = 10 * ↑q
+h_lt_simp : 10 * ↑q < π * (10 ^ n * 10) + 2 * (10 ^ (-↑n) / 10)
+h_pow_eq_10_mul : 10 ^ (n + 1) = 10 ^ n * 10
+h_zpow_eq_10_div : 10 ^ (-(↑n + 1)) = 10 ^ (-↑n) / 10
+h_q_lt_linear : ↑q < π * 10 ^ n + 0.2 * 10 ^ (-↑n)
+h_arctan_lower : π * 10 ^ n + 2 * 10 ^ (-(↑n + 2)) < π / arctan (1 / 10 ^ n)
+this : -(↑n + 2) = -↑n + -2
+⊢ (10 ^ n)⁻¹ * (1 / 100) = 1 / 100 * (10 ^ n)⁻¹
+/workspace/leanproject/Submission/Spec.lean:1939:60: error(lean.invalidField): Invalid field notation: Type of
+  k'
+is not known; cannot resolve field `cast`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `cast`
+  • `AddEquiv.cast`
+  • `AlgEquiv.cast`
+  • `Algebra.cast`
+  • `BitVec.cast`
+  • `Composition.cast`
+  • `ContinuousAlgEquiv.cast`
+  • `CurveIntegrable.cast`
+  • `Equiv.cast`
+  • `Fin.cast`
+  • `Int.cast`
+  • `LinearEquiv.cast`
+  • `MeasurableEquiv.cast`
+  • `MulEquiv.cast`
+  • `Multiset.cast`
+  • `NNRat.cast`
+  • `Nat.cast`
+  • `Path.cast`
+  • `Rat.cast`
+  • `RelIso.cast`
+  • `RingEquiv.cast`
+  • `SignType.cast`
+  • `Sym.cast`
+  • `TensorPower.cast`
+  • `Vector.cast`
+  • `ZMod.cast`
+  • `ContinuousMap.Homotopy.cast`
+  • `ContinuousMap.HomotopyRel.cast`
+  • `ContinuousMap.HomotopyWith.cast`
+  • `MeasureTheory.AEEqFun.cast`
+  • `Nat.Coprime.cast`
+  • `Path.Homotopy.cast`
+  • `Quiver.Hom.cast`
+  • `Quiver.Path.cast`
+  • `SSet.N.cast`
+  • `SSet.S.cast`
+  • `String.Pos.cast`
+  • `localCohomology.SelfLERadical.cast`
+  • `Lean.Doc.Block.cast`
+  • `Lean.Doc.Inline.cast`
+  • `Lean.Doc.Part.cast`
+  • `Lean.Meta.CongrArgKind.cast`
+  • `Path.Homotopic.Quotient.cast`
+  • `SSet.S.IsUniquelyCodimOneFace.cast`
+  • `SSet.Subcomplex.N.cast`
+  • `String.Pos.Splits.cast`
+  • `String.Slice.Pos.cast`
+  • `Mathlib.Tactic.Ring.ExBase.cast`
+  • `Mathlib.Tactic.Ring.ExProd.cast`
+  • `Mathlib.Tactic.Ring.ExSum.cast`
+  • `Std.Sat.AIG.BinaryInput.cast`
+  • `Std.Sat.AIG.BinaryRefVec.cast`
+  • `Std.Sat.AIG.Ref.cast`
+  • `Std.Sat.AIG.RefVec.cast`
+  • `Std.Sat.AIG.TernaryInput.cast`
+  • `Std.Time.Internal.Bounded.cast`
+  • `Std.Time.Internal.UnitVal.cast`
+  • `String.Slice.Pos.Splits.cast`
+  • `Std.Tactic.BVDecide.BVExpr.Cache.cast`
+  • `Std.Tactic.BVDecide.BVExpr.bitblast.FullAdderInput.cast`
+/workspace/leanproject/Submission/Spec.lean:1939:70: error(lean.invalidField): Invalid field notation: Type of
+  k'
+is not known; cannot resolve field `cast`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `cast`
+  • `AddEquiv.cast`
+  • `AlgEquiv.cast`
+  • `Algebra.cast`
+  • `BitVec.cast`
+  • `Composition.cast`
+  • `ContinuousAlgEquiv.cast`
+  • `CurveIntegrable.cast`
+  • `Equiv.cast`
+  • `Fin.cast`
+  • `Int.cast`
+  • `LinearEquiv.cast`
+  • `MeasurableEquiv.cast`
+  • `MulEquiv.cast`
+  • `Multiset.cast`
+  • `NNRat.cast`
+  • `Nat.cast`
+  • `Path.cast`
+  • `Rat.cast`
+  • `RelIso.cast`
+  • `RingEquiv.cast`
+  • `SignType.cast`
+  • `Sym.cast`
+  • `TensorPower.cast`
+  • `Vector.cast`
+  • `ZMod.cast`
+  • `ContinuousMap.Homotopy.cast`
+  • `ContinuousMap.HomotopyRel.cast`
+  • `ContinuousMap.HomotopyWith.cast`
+  • `MeasureTheory.AEEqFun.cast`
+  • `Nat.Coprime.cast`
+  • `Path.Homotopy.cast`
+  • `Quiver.Hom.cast`
+  • `Quiver.Path.cast`
+  • `SSet.N.cast`
+  • `SSet.S.cast`
+  • `String.Pos.cast`
+  • `localCohomology.SelfLERadical.cast`
+  • `Lean.Doc.Block.cast`
+  • `Lean.Doc.Inline.cast`
+  • `Lean.Doc.Part.cast`
+  • `Lean.Meta.CongrArgKind.cast`
+  • `Path.Homotopic.Quotient.cast`
+  • `SSet.S.IsUniquelyCodimOneFace.cast`
+  • `SSet.Subcomplex.N.cast`
+  • `String.Pos.Splits.cast`
+  • `String.Slice.Pos.cast`
+  • `Mathlib.Tactic.Ring.ExBase.cast`
+  • `Mathlib.Tactic.Ring.ExProd.cast`
+  • `Mathlib.Tactic.Ring.ExSum.cast`
+  • `Std.Sat.AIG.BinaryInput.cast`
+  • `Std.Sat.AIG.BinaryRefVec.cast`
+  • `Std.Sat.AIG.Ref.cast`
+  • `Std.Sat.AIG.RefVec.cast`
+  • `Std.Sat.AIG.TernaryInput.cast`
+  • `Std.Time.Internal.Bounded.cast`
+  • `Std.Time.Internal.UnitVal.cast`
+  • `String.Slice.Pos.Splits.cast`
+  • `Std.Tactic.BVDecide.BVExpr.Cache.cast`
+  • `Std.Tactic.BVDecide.BVExpr.bitblast.FullAdderInput.cast`
+/workspace/leanproject/Submission/Spec.lean:1984:57: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  60 ≤ a ≤ 61
+where
+ a := ↑n
+/workspace/leanproject/Submission/Spec.lean:1989:20: error: invalid 'calc' step, left-hand side is
+  ↑?m.4034 : ℝ
+but previous right-hand side is
+  1000 / 10 ^ 60 : ℕ
+/workspace/leanproject/Submission/Spec.lean:1988:40: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_pi_diff : 1 / 10 ^ 63 ≤ 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 - π
+hn_ge_limit_plus : 63 ≤ n + 1
+h_ten_n_ge_plus : 10 ^ 63 ≤ 10 ^ (n + 1)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:1995:88: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+this : n + 1 = 60 + (n + 1 - 60)
+⊢ 10 ^ 60 * 10 ^ (n + 1 - 60) = 10 ^ 60 * 10 ^ (60 + (n + 1 - 60) - 60)
+/workspace/leanproject/Submission/Spec.lean:2026:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -1
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2030:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  31415926535897932384626433832795028841971693993751058209749440 ≤ a ≤ 31415926535897932384626433832795028841971693993751058209749459
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -1
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2034:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  314159265358979323846264338327950288419716939937510582097494400 ≤ a ≤ 314159265358979323846264338327950288419716939937510582097494599
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -1
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2038:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944000 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945999
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -1
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/Spec.lean:2039:75: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+this : n + 1 - 60 = n + 1 - 60 - 1 + 1
+⊢ 10 ^ (1 + n - 60 - 1) * 10 = 10 ^ (1 + (1 + n - 60 - 1) - 1) * 10
+/workspace/leanproject/Submission/Spec.lean:2045:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+/workspace/leanproject/Submission/Spec.lean:2049:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+⊢ k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+/workspace/leanproject/Submission/Spec.lean:2058:18: error(lean.unknownIdentifier): Unknown identifier `one_le_pow_of_one_le`
+/workspace/leanproject/Submission/Spec.lean:2062:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 1
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 1
+/workspace/leanproject/Submission/Spec.lean:2067:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk1 : k % 10 = 1
+q : ℤ
+hq : k = 10 * q + 1
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 1
+h_gt_final : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 1
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+⊢ 10 * q + 1 < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ 4 * ↑Y
+/workspace/leanproject/Submission/Spec.lean:2070:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 1
+  c ≥ 5
+  a - 3141592653589793238462643383279502884197169399375105820974946*d ≤ -1
+  a - 3141592653589793238462643383279502884197169399375105820974944*d ≥ 0
+  a - 31415926535897932384626433832795028841971693993751058209749460000*e ≤ -1
+  a - 31415926535897932384626433832795028841971693993751058209749440000*e ≥ 0
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -1
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+ c := ↑(n + 1 - 60)
+ d := 10 ^ (n + 1 - 60 - 1)
+ e := ↑Y
+/workspace/leanproject/Submission/Spec.lean:2110:57: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  60 ≤ a ≤ 61
+where
+ a := ↑n
+/workspace/leanproject/Submission/Spec.lean:2115:20: error: invalid 'calc' step, left-hand side is
+  ↑?m.7077 : ℝ
+but previous right-hand side is
+  1000 / 10 ^ 60 : ℕ
+/workspace/leanproject/Submission/Spec.lean:2114:40: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_pi_diff : 1 / 10 ^ 63 ≤ 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 - π
+hn_ge_limit_plus : 63 ≤ n + 1
+h_ten_n_ge_plus : 10 ^ 63 ≤ 10 ^ (n + 1)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:2121:88: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+this : n + 1 = 60 + (n + 1 - 60)
+⊢ 10 ^ 60 * 10 ^ (n + 1 - 60) = 10 ^ 60 * 10 ^ (60 + (n + 1 - 60) - 60)
+/workspace/leanproject/Submission/Spec.lean:2152:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2156:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  31415926535897932384626433832795028841971693993751058209749440 ≤ a ≤ 31415926535897932384626433832795028841971693993751058209749459
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2160:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  314159265358979323846264338327950288419716939937510582097494400 ≤ a ≤ 314159265358979323846264338327950288419716939937510582097494599
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2164:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944000 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945999
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/Spec.lean:2165:75: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+this : n + 1 - 60 = n + 1 - 60 - 1 + 1
+⊢ 10 ^ (1 + n - 60 - 1) * 10 = 10 ^ (1 + (1 + n - 60 - 1) - 1) * 10
+/workspace/leanproject/Submission/Spec.lean:2171:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+/workspace/leanproject/Submission/Spec.lean:2175:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+⊢ k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+/workspace/leanproject/Submission/Spec.lean:2184:18: error(lean.unknownIdentifier): Unknown identifier `one_le_pow_of_one_le`
+/workspace/leanproject/Submission/Spec.lean:2188:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 2
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 2
+/workspace/leanproject/Submission/Spec.lean:2193:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk2 : k % 10 = 2
+q : ℤ
+hq : k = 10 * q + 2
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 2
+h_gt_final : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 2
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+⊢ 10 * q + 2 < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ 4 * ↑Y
+/workspace/leanproject/Submission/Spec.lean:2196:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 1
+  c ≥ 5
+  a - 3141592653589793238462643383279502884197169399375105820974946*d ≤ -1
+  a - 3141592653589793238462643383279502884197169399375105820974944*d ≥ 0
+  a - 31415926535897932384626433832795028841971693993751058209749460000*e ≤ -1
+  a - 31415926535897932384626433832795028841971693993751058209749440000*e ≥ 0
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ 0
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+ c := ↑(n + 1 - 60)
+ d := 10 ^ (n + 1 - 60 - 1)
+ e := ↑Y
+/workspace/leanproject/Submission/Spec.lean:2236:57: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  60 ≤ a ≤ 61
+where
+ a := ↑n
+/workspace/leanproject/Submission/Spec.lean:2241:20: error: invalid 'calc' step, left-hand side is
+  ↑?m.10120 : ℝ
+but previous right-hand side is
+  1000 / 10 ^ 60 : ℕ
+/workspace/leanproject/Submission/Spec.lean:2240:40: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_pi_diff : 1 / 10 ^ 63 ≤ 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 - π
+hn_ge_limit_plus : 63 ≤ n + 1
+h_ten_n_ge_plus : 10 ^ 63 ≤ 10 ^ (n + 1)
+⊢ False
+/workspace/leanproject/Submission/Spec.lean:2247:88: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+this : n + 1 = 60 + (n + 1 - 60)
+⊢ 10 ^ 60 * 10 ^ (n + 1 - 60) = 10 ^ 60 * 10 ^ (60 + (n + 1 - 60) - 60)
+/workspace/leanproject/Submission/Spec.lean:2278:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ -1
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2282:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  31415926535897932384626433832795028841971693993751058209749440 ≤ a ≤ 31415926535897932384626433832795028841971693993751058209749459
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ -1
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2286:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  314159265358979323846264338327950288419716939937510582097494400 ≤ a ≤ 314159265358979323846264338327950288419716939937510582097494599
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ -1
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+/workspace/leanproject/Submission/Spec.lean:2290:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  3141592653589793238462643383279502884197169399375105820974944000 ≤ a ≤ 3141592653589793238462643383279502884197169399375105820974945999
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ -1
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/workspace/leanproject/Submission/Spec.lean:2291:75: error: unsolved goals
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+this : n + 1 - 60 = n + 1 - 60 - 1 + 1
+⊢ 10 ^ (1 + n - 60 - 1) * 10 = 10 ^ (1 + (1 + n - 60 - 1) - 1) * 10
+/workspace/leanproject/Submission/Spec.lean:2297:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+/workspace/leanproject/Submission/Spec.lean:2301:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+⊢ k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+/workspace/leanproject/Submission/Spec.lean:2310:18: error(lean.unknownIdentifier): Unknown identifier `one_le_pow_of_one_le`
+/workspace/leanproject/Submission/Spec.lean:2314:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 3
+h_rw : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+⊢ 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 3
+/workspace/leanproject/Submission/Spec.lean:2319:16: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ (n + 1 - 60 - 1)
+in the target expression
+  k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+
+n : ℕ
+hn_ge : 60 ≤ n
+k : ℤ
+h1 : π * 10 ^ ↑(n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+h_lt : ↑k < π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1))
+h_gt : π * 10 ^ (n + 1) < ↑k
+hn_ge_limit : 60 ≤ n
+hn_ge_limit1 : 61 ≤ n + 1
+h_ten_neg : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_le : 2 * 10 ^ (-61) < 1
+h_lt' : ↑k < π * 10 ^ (n + 1) + 1
+hk3 : k % 10 = 3
+q : ℤ
+hq : k = 10 * q + 3
+h_pow_eq_10 : 10 ^ (n + 1) = 10 ^ 61 * 10 ^ (n - 60)
+hn_ge_limit_use : 60 ≤ n
+h_ten_neg_limit : 2 * 10 ^ (-(↑n + 1)) ≤ 2 * 10 ^ (-61)
+h_ten_neg_limit_le : 2 * 10 ^ (-61) < 1 / 10 ^ 60
+h_lt_limit : ↑k < π * 10 ^ (n + 1) + 1 / 10 ^ 60
+h_pi_limit_gt : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 < π
+h_pi_limit_lt : π < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60
+h_gt_mul : 3141592653589793238462643383279502884197169399375105820974944 / 10 ^ 60 * 10 ^ (n + 1) < ↑k
+h_lt_mul : ↑k < 3141592653589793238462643383279502884197169399375105820974946 / 10 ^ 60 * 10 ^ (n + 1)
+h_pow_eq : 10 ^ (n + 1) = 10 ^ 60 * 10 ^ (n + 1 - 60)
+h_gt_mul_simp : ↑3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < ↑k
+h_lt_mul_simp : ↑k < ↑3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hk_gt' : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ (n + 1 - 60) < k
+hk_lt' : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 ^ (n + 1 - 60)
+hM5 : 5 ≤ n + 1 - 60
+h_pow_M : 10 ^ (n + 1 - 60) = 10 ^ (n + 1 - 60 - 1) * 10
+hk_gt_M : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ (n + 1 - 60 - 1) < k
+hk_lt_M : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+Y : ℕ
+hY_val : 10 ^ (n + 1 - 60 - 1) = 10 ^ 4 * Y
+h_Y_pos : 1 ≤ Y
+this : k = 10 * q + 3
+h_gt_final : 3141592653589793238462643383279502884197169399375105820974944 * 10 * 10 ^ 4 * ↑Y < 10 * q + 3
+h_rw : k < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ (n + 1 - 60 - 1)
+⊢ 10 * q + 3 < 3141592653589793238462643383279502884197169399375105820974946 * 10 * 10 ^ 4 * ↑Y
+/workspace/leanproject/Submission/Spec.lean:2322:10: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  e ≥ 1
+  c ≥ 5
+  a - 3141592653589793238462643383279502884197169399375105820974946*d ≤ -1
+  a - 3141592653589793238462643383279502884197169399375105820974944*d ≥ 0
+  a - 31415926535897932384626433832795028841971693993751058209749460000*e ≤ -1
+  a - 31415926535897932384626433832795028841971693993751058209749440000*e ≥ 0
+  5*a - 1570796326794896619231321691639751442098584699687552910487473*b ≤ -2
+  5*a - 1570796326794896619231321691639751442098584699687552910487472*b ≥ -1
+where
+ a := q
+ b := 10 ^ (n + 1 - 60)
+ c := ↑(n + 1 - 60)
+ d := 10 ^ (n + 1 - 60 - 1)
+ e := ↑Y
+/workspace/leanproject/Submission/Spec.lean:2361:131: error: Tactic `simp` failed with a nested error:
+(deterministic) timeout at `isDefEq`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:2363:16: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:2359:112: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:2377:8: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:2576:6: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:3080:0: error: unexpected token '}'; expected command
+'oeis_a011545_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

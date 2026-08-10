@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:175:27: error: unexpected token '@['; expected 'lemma'
+  Submission/Spec.lean:176:9: error: unexpected token '/--'; expected 'lemma'
+

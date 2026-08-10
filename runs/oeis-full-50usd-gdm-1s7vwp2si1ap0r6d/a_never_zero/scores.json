@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1755:8: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  q ≥ 1\n  p ≥ 4\n  o ≥ 0\n  l ≥ 2\n  l - o ≤ 0\n  l - p ≤ 9\n  l ≥ 2\n  j ≥ 1\n  j - p ≥ 10\n  i ≥ 1\n  i ≥ 0\n  i + l - p ≤ 8\n  h ≥ 3\n  h ≥ 1\n  h + l - p ≥ 10\n  h + i + l - p ≥ 10\n  g ≥ 0\n  g - h + j ≥ 1\n  g ≥ 1\n  g + j ≥ 45\n  g + j - p ≥ 10\n  g + h ≥ 0\n  g + h + j ≥ 0\n  f ≥ 1\n  e ≥ 1\n  c ≥ 0\n  c - g - h - j ≤ 0\n  c - h ≥ 1\n  c - h ≥ 1\n  c - p ≤ 0\n  b ≥ 0\n  b - g - j ≥ 0\nwhere\n b := ↑(S h_exists_S_ge.choose)\n c := ↑(a (k - 1))\n e := ↑((Finset.range d).sup fun i =>\n    (Finset.range d).sup fun j =>\n      if i ≤ j then\n        if (take (j - i + 1) (drop i (ofFn fun k => a ↑k))).sum = d then\n          countP (fun x => decide ¬x = 0) (take (j - i + 1) (drop i (ofFn fun k => a ↑k)))\n        else 0\n      else 0)\n f := ↑((Finset.range d).sup fun i =>\n    (Finset.range d).sup fun j =>\n      if i ≤ j then\n        if (take (j - i + 1) (drop i (ofFn fun k => a ↑k))).sum = d then\n          countP (fun x => decide (x ≠ 0)) (take (j - i + 1) (drop i (ofFn fun k => a ↑k)))\n        else 0\n      else 0)\n g := ↑(S i_d)\n h := ↑(S (j_d + 1) - S i_d)\n i := ↑(j_d - i_d)\n j := ↑(take (k - 1 - (j_d + 1) + 1) (drop (j_d + 1) (ofFn fun k => a ↑k))).sum\n l := ↑(k - (1 + j_d))\n o := ↑(a m)\n p := ↑(k - 10)\n q := ↑(a d)",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

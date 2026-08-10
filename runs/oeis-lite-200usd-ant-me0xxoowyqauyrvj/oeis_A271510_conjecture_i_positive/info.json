@@ -1,0 +1,23 @@
+{
+  "id": "oeis_A271510_conjecture_i_positive",
+  "epoch": 1,
+  "uuid": "7UUrwEkvU7Q5nHxYLoxxrG",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 3566,
+      "output_tokens": 1020723,
+      "total_tokens": 312333147,
+      "input_tokens_cache_write": 3275596,
+      "input_tokens_cache_read": 308033262,
+      "reasoning_tokens": 184208,
+      "total_cost": 200.0250110000001
+    }
+  },
+  "oeis_id": "A271510"
+}

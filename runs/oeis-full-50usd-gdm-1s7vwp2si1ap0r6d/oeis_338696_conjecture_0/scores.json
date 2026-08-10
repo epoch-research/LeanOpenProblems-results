@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:128:4: error: Tactic `rfl` failed: The left-hand side\n  check_range 999\nis not definitionally equal to the right-hand side\n  true\n\ncase h.h\nn : ℕ\nhn : n < 1000\nh19 : n ≠ 19\n⊢ check_range 999 = true",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

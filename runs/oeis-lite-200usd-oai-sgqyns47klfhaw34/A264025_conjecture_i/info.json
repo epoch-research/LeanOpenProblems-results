@@ -1,0 +1,23 @@
+{
+  "id": "A264025_conjecture_i",
+  "epoch": 1,
+  "uuid": "KviXSzaFYJ9ycyFBaExiFy",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 10086506,
+      "output_tokens": 1534007,
+      "total_tokens": 219548833,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 207928320,
+      "reasoning_tokens": 992684,
+      "total_cost": 200.41690000000006
+    }
+  },
+  "oeis_id": "A264025"
+}

@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Int.dvd_ediv_mul_self
+#check Int.ediv_mul_cancel
+#check Int.dvd_mul_ediv
+#check Int.emod_eq_zero_of_dvd
+#check Int.dvd_of_emod_eq_zero
+#check Int.modEq_iff_dvd
+#check Int.ModEq
+#check dvd_mul_right
+#check dvd_zero
+#check Int.dvd_sub_of_emod_eq
+#check Int.natCast_dvd_natCast
+#check Nat.cast_dvd_cast

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_333562_conjecture_0_congruence",
+  "epoch": 1,
+  "uuid": "JF9xGM47Ye3USRWpEWG7kP",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2074753,
+      "output_tokens": 499228,
+      "total_tokens": 52017309,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 49443328,
+      "reasoning_tokens": 368015,
+      "total_cost": 50.072269
+    }
+  },
+  "oeis_id": "A333562"
+}

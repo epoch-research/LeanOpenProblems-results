@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 7 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 13 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A338238_infinitely_often_primorial_conjecture: theorem type mismatch
+    Expected type: Set.Infinite.{0} Nat (setOf.{0} Nat (fun (val : Nat) => And (Exists.{1} Nat (fun (n : Nat) => And (GE.ge.{0} Nat instLENat n (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) (Eq.{1} Nat val (A338238 n)))) (Exists.{1} Nat (fun (m : Nat) => Eq.{1} Nat val (Nat_primorial m)))))
+    Got type:      True
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

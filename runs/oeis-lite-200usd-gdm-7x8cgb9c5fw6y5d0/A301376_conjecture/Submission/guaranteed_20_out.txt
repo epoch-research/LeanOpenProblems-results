@@ -1,0 +1,9 @@
+
+Iteration 1, blocked count: 12
+Candidate n digits: 42
+V_all size: 3920
+Failed: 1686 failing v's. First few: [106496, 293096, 425984, 1286144, 1703936]
+Added 1686 new v's to blocked.
+
+Iteration 2, blocked count: 1698
+ERROR: Could not find prime to block v = 1585830769673288756868977748197814626529837056

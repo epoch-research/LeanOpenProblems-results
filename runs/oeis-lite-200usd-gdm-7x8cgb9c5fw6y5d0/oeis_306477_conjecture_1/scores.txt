@@ -1,0 +1,49 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:36:15: warning: unused variable `n`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:65:19: warning: unused variable `n`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:91:18: warning: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:358:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    f_not_inr n (Quot.mk (R_not_inr n) (get_proof_not_inr_sum_loop n h))
+  in the target expression
+    PLift (f_raw_not_inr n (get_proof_not_inr_sum_loop n h)) ⊕ Unit
+  
+  n : ℕ
+  h : get_proof n (inst_pos n) = Sum.inr ()
+  h_eq : Quot.mk (R_not_inr n) (get_proof_not_inr_sum_loop n h) = default_Q_not_inr n
+  h_f_eq : f_not_inr n (Quot.mk (R_not_inr n) (get_proof_not_inr_sum_loop n h)) = False
+  h_res : PLift (f_raw_not_inr n (get_proof_not_inr_sum_loop n h)) ⊕ Unit
+  ⊢ PLift False ⊕ Unit
+  Submission/Spec.lean:362:23: error: fail to show termination for
+    inst_f_raw_Z3
+  with errors
+  failed to infer structural recursion:
+  Not considering parameter n of inst_f_raw_Z3:
+    it is unchanged in the recursive calls
+  Not considering parameter h of inst_f_raw_Z3:
+    it is unchanged in the recursive calls
+  Not considering parameter y of inst_f_raw_Z3:
+    it is unchanged in the recursive calls
+  no parameters suitable for structural recursion
+  
+  well-founded recursion cannot be used, `inst_f_raw_Z3` does not take any (non-fixed) arguments
+  Submission/Spec.lean:398:0: error: failed to compile 'partial' definition `get_proof_not_inr`, could not prove that the type
+    ∀ (n : ℕ), get_proof n (inst_pos n) = Sum.inr () → False
+  is nonempty.
+  
+  This process uses multiple strategies:
+  - It looks for a parameter that matches the return type.
+  - It tries synthesizing 'Inhabited' and 'Nonempty' instances for the return type, while making every parameter into a local 'Inhabited' instance.
+  - It tries unfolding the return type.
+  
+  If the return type is defined using the 'structure' or 'inductive' command, you can try adding a 'deriving Nonempty' clause to it.
+  Submission/Spec.lean:409:22: error(lean.unknownIdentifier): Unknown identifier `get_proof_not_inr`
+  'oeis_306477_conjecture_1' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

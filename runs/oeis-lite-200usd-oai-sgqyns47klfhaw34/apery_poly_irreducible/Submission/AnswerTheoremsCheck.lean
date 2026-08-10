@@ -1,0 +1,7 @@
+import FormalConjectures.Util.ProblemImports
+#check AnswerLinter.flagged_by_linter
+#check AnswerLinter.not_flagged_no_arguments
+#check AnswerLinter.not_flagged_non_prop_answer
+#print axioms AnswerLinter.flagged_by_linter
+#print axioms AnswerLinter.not_flagged_no_arguments
+#print axioms AnswerLinter.not_flagged_non_prop_answer

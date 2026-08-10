@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.eq_sq_add_sq_iff
+#check Nat.eq_sq_add_two_mul_sq_iff
+#check Nat.eq_sq_add_mul_sq_iff
+#check Nat.eq_sq_add_two_sq_iff
+#check Int.eq_sq_add_two_mul_sq_iff
+#check sq_add_two_mul_sq
+#check Nat.Prime.sq_add_sq
+#check Nat.Prime.sq_add_two_mul_sq
+#check ZMod.exists_sq_eq_neg_two_iff
+#check legendreSym.at_neg_two

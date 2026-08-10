@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:22:0: error: Unknown option `warning`\nSubmission/Spec.lean:235:2: warning: If a problem has a sorry-free proof, it should not be categorised as `open`.",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

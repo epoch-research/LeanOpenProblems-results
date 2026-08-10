@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:51:0: error: failed to compile 'partial' definition `loop_fallback.fallback`, could not prove that the type\n  (m : ℕ) → m > 0 → Inhabited (A308584 m > 0)\nis nonempty.\n\nThis process uses multiple strategies:\n- It looks for a parameter that matches the return type.\n- It tries synthesizing 'Inhabited' and 'Nonempty' instances for the return type, while making every parameter into a local 'Inhabited' instance.\n- It tries unfolding the return type.\n\nIf the return type is defined using the 'structure' or 'inductive' command, you can try adding a 'deriving Nonempty' clause to it.\nSubmission/Spec.lean:92:27: error(lean.unknownIdentifier): Unknown identifier `loop_fallback`\nSubmission/Spec.lean:93:27: error(lean.unknownIdentifier): Unknown identifier `loop_fallback`\n'oeis_308584_conjecture_1' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

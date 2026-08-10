@@ -1,0 +1,105 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_resource
+  killed (exit 137)
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:462:73: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 6 = true
+  is false
+  Submission/Spec.lean:464:73: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 8 = true
+  is false
+  Submission/Spec.lean:465:73: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 9 = true
+  is false
+  Submission/Spec.lean:466:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 10 = true
+  is false
+  Submission/Spec.lean:468:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 12 = true
+  is false
+  Submission/Spec.lean:469:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 13 = true
+  is false
+  Submission/Spec.lean:472:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 16 = true
+  is false
+  Submission/Spec.lean:473:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 17 = true
+  is false
+  Submission/Spec.lean:474:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 18 = true
+  is false
+  Submission/Spec.lean:475:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 19 = true
+  is false
+  Submission/Spec.lean:476:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 20 = true
+  is false
+  Submission/Spec.lean:477:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 21 = true
+  is false
+  Submission/Spec.lean:479:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 23 = true
+  is false
+  Submission/Spec.lean:480:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 24 = true
+  is false
+  Submission/Spec.lean:481:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 25 = true
+  is false
+  Submission/Spec.lean:482:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 26 = true
+  is false
+  Submission/Spec.lean:483:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 27 = true
+  is false
+  Submission/Spec.lean:484:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 28 = true
+  is false
+  Submission/Spec.lean:485:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 29 = true
+  is false
+  Submission/Spec.lean:486:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 30 = true
+  is false
+  Submission/Spec.lean:487:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 31 = true
+  is false
+  Submission/Spec.lean:488:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 32 = true
+  is false
+  Submission/Spec.lean:489:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 33 = true
+  is false
+  Submission/Spec.lean:490:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 34 = true
+  is false
+  Submission/Spec.lean:491:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 35 = true
+  is false
+  Submission/Spec.lean:492:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 36 = true
+  is false
+  Submission/Spec.lean:493:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 37 = true
+  is false
+  Submission/Spec.lean:494:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 38 = true
+  is false
+  Submission/Spec.lean:495:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 39 = true
+  is false
+  Submission/Spec.lean:496:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 40 = true
+  is false
+  Submission/Spec.lean:497:75: error: Tactic `decide` proved that the proposition
+    A281977_block10Bool 41 = true
+  is false
+  Submission/Spec.lean:498:75: error: Tactic `decid
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a160324_conjecture_3",
+  "epoch": 1,
+  "uuid": "QmFoeihpUuyHyuHhtYRwvD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1793229,
+      "output_tokens": 514847,
+      "total_tokens": 53629420,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 51321344,
+      "reasoning_tokens": 376142,
+      "total_cost": 50.072227000000005
+    }
+  },
+  "oeis_id": "A160324"
+}

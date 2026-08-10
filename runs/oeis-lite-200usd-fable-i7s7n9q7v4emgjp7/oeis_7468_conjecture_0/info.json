@@ -1,0 +1,23 @@
+{
+  "id": "oeis_7468_conjecture_0",
+  "epoch": 1,
+  "uuid": "c3Njpqgxpp4YTj3q2mp7RH",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1937,
+      "output_tokens": 198217,
+      "total_tokens": 152066344,
+      "input_tokens_cache_write": 870506,
+      "input_tokens_cache_read": 150995684,
+      "reasoning_tokens": 50299,
+      "total_cost": 171.8072290000003
+    }
+  },
+  "oeis_id": "A007468"
+}

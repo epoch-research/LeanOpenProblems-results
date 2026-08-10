@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:5:20: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:11:0: error: failed to compile 'partial' definition `f`, could not prove that the type
+    (n : ℕ) → (hn : n > 0) → MyProp n hn ⊕' (MyProp n hn → False)
+  is nonempty.
+  
+  This process uses multiple strategies:
+  - It looks for a parameter that matches the return type.
+  - It tries synthesizing 'Inhabited' and 'Nonempty' instances for the return type, while making every parameter into a local 'Inhabited' instance.
+  - It tries unfolding the return type.
+  
+  If the return type is defined using the 'structure' or 'inductive' command, you can try adding a 'deriving Nonempty' clause to it.
+  Submission/Spec.lean:15:58: warning: unused variable `y`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:20:8: error(lean.unknownIdentifier): Unknown identifier `f`
+  Submission/Spec.lean:43:8: error(lean.unknownIdentifier): Unknown identifier `f`
+  Submission/Spec.lean:87:80: error(lean.unknownIdentifier): Unknown identifier `h15`
+  'oeis_214497_conjecture_0' depends on axioms: [propext, sorryAx]
+

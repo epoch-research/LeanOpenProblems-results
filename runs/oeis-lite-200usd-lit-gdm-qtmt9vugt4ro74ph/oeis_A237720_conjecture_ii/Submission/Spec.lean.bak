@@ -1,0 +1,164 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+open scoped Nat.Prime
+
+/--
+A237720: Number of primes $p \le \lfloor (n+1)/2 \rfloor$ with $\lfloor \sqrt{n-p} \rfloor$ prime.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  Finset.card (Finset.filter (fun p : ℕ =>
+    p.Prime ∧
+    2 * p ≤ n + 1 ∧
+    (Nat.sqrt (n - p)).Prime
+  ) (Finset.range (n + 1)))
+
+/-- OEIS A237720 Conjecture (ii): For any integer $n > 2$, there is a prime $p < n$ with $\lfloor\sqrt{n+p}\rfloor$ prime. -/
+theorem oeis_A237720_conjecture_ii (n : ℕ) (hn : n > 2) :
+    ∃ p, p.Prime ∧ p < n ∧ (Nat.sqrt (n + p)).Prime := by
+  rcases n with _ | _ | _ | m
+  · contradiction
+  · contradiction
+  · contradiction
+  · rcases m with _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | _ | k
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 7
+      refine ⟨by decide, by decide, by decide⟩
+    · use 7
+      refine ⟨by decide, by decide, by decide⟩
+    · use 5
+      refine ⟨by decide, by decide, by decide⟩
+    · use 5
+      refine ⟨by decide, by decide, by decide⟩
+    · use 3
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 17
+      refine ⟨by decide, by decide, by decide⟩
+    · use 17
+      refine ⟨by decide, by decide, by decide⟩
+    · use 13
+      refine ⟨by decide, by decide, by decide⟩
+    · use 13
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 11
+      refine ⟨by decide, by decide, by decide⟩
+    · use 7
+      refine ⟨by decide, by decide, by decide⟩
+    · use 7
+      refine ⟨by decide, by decide, by decide⟩
+    · use 5
+      refine ⟨by decide, by decide, by decide⟩
+    · use 5
+      refine ⟨by decide, by decide, by decide⟩
+    · use 3
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 2
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 59
+      refine ⟨by decide, by decide, by decide⟩
+    · use 53
+      refine ⟨by decide, by decide, by decide⟩
+    · use 53
+      refine ⟨by decide, by decide, by decide⟩
+    · use 53
+      refine ⟨by decide, by decide, by decide⟩
+    · use 53
+      refine ⟨by decide, by decide, by decide⟩
+    · sorry
+
+

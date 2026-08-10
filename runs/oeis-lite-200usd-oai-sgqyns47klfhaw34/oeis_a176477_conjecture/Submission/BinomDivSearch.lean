@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.catalan
+#check Nat.catalan_eq
+#check Nat.catalan_eq_sub
+#check Nat.dvd_choose_self
+#check Nat.dvd_choose_self
+#check Nat.choose_dvd_mul
+#check Nat.choose_mul_factorial_mul_factorial
+#check Nat.choose_eq_factorial_div_factorial
+#check Nat.factorial_mul_factorial_dvd_factorial
+#check Nat.centralBinom
+#check Nat.superCatalan

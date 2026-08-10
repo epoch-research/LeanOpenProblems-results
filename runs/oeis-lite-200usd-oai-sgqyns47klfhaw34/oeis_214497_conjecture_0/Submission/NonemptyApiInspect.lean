@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check nonempty_fintype
+#check Fintype.ofFinite
+#check Finite.exists_equiv_fin
+#check Finite.exists_equiv_fin_of_fintype
+#check Finite.exists_univ_list
+#check Finite.exists_univ_finset
+#check Finite.of_fintype
+#check Finite.of_subsingleton
+#check Finite.of_injective
+#check Nonempty.intro
+#check Classical.choice

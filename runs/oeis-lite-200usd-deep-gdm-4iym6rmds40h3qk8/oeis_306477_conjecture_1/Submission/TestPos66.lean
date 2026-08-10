@@ -1,0 +1,14 @@
+-- Oh my god! U : Prop := ∀ p : Prop, (((p → Prop) → Prop) → p) IS IN Prop!
+-- Let's check if this is true! Yes, it compiled successfully!
+-- Let's see: this means we have an impredicative Prop-level definition that has a negative occurrence of `p → Prop`!
+-- Wait, let's write the constructors for this U!
+-- A term of U is a function `fun p => fun (f : ((p → Prop) → Prop) → p) => ...` which returns `p`.
+-- Let's see if we can define:
+--   lam (F : ((U → Prop) → Prop) → U) : U
+-- Wait, F has type ((U → Prop) → Prop) → U.
+-- Can we define `lam F : U`?
+-- A term of U is: fun p => fun (f : ((p → Prop) → Prop) → p) => ...
+-- We want to define `lam F p f : p`.
+-- We have F : ((U → Prop) → Prop) → U.
+-- Let's see if we can do this!
+-- Let's write a file to test.

@@ -1,0 +1,573 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.style.copyright.formalConjectures false
+set_option linter.style.namespace false
+
+
+
+open Nat
+
+def x_seq : ℕ → ℕ
+| 0 => 0
+| 1 => 1
+| n + 1 => 2 * (x_seq n) + Nat.lcm (x_seq n) (n + 1)
+
+def A135508 (n : ℕ) : ℕ :=
+  if n = 0 then 0
+  else
+    let x_n_plus_1 := x_seq (n + 1)
+    let x_n := x_seq n
+    (x_n_plus_1 / x_n) - 2
+
+theorem x_seq_pos (n : ℕ) (hn : n ≥ 1) : x_seq n > 0 := by
+  induction n with
+  | zero => contradiction
+  | succ n ih =>
+    by_cases h : n = 0
+    · subst h
+      simp [x_seq]
+    · have h1 : n ≥ 1 := Nat.succ_le_of_lt (Nat.pos_of_ne_zero h)
+      have ih' := ih h1
+      simp [x_seq]
+      omega
+
+
+lemma x_seq_mod_self (n : ℕ) (hn : n ≥ 1) : (x_seq (n + 1)) % (n + 1) = (2 * x_seq n) % (n + 1) := by
+  have h_seq : x_seq (n + 1) = 2 * x_seq n + Nat.lcm (x_seq n) (n + 1) := by
+    rw [x_seq]
+    intro hz
+    have : n ≠ 0 := by omega
+    contradiction
+  rw [h_seq]
+  have h_lcm : Nat.lcm (x_seq n) (n + 1) % (n + 1) = 0 := Nat.dvd_iff_mod_eq_zero.mp (Nat.dvd_lcm_right _ _)
+  rw [Nat.add_mod, h_lcm, Nat.add_zero, Nat.mod_mod]
+
+theorem lcm_div_self (a b : ℕ) (ha : a > 0) : Nat.lcm a b / a = b / Nat.gcd a b := by
+  have hgcd : Nat.gcd a b > 0 := Nat.gcd_pos_of_pos_left b ha
+  have hdvd : Nat.gcd a b ∣ b := Nat.gcd_dvd_right a b
+  have hmul : b = Nat.gcd a b * (b / Nat.gcd a b) := (Nat.mul_div_cancel' hdvd).symm
+  have hmul2 : a * b = a * (Nat.gcd a b * (b / Nat.gcd a b)) := congrArg (fun x => a * x) hmul
+  have h_lcm_gcd : Nat.lcm a b * Nat.gcd a b = a * b := by
+    rw [Nat.mul_comm, Nat.gcd_mul_lcm]
+  have h_eq : Nat.lcm a b * Nat.gcd a b = (a * (b / Nat.gcd a b)) * Nat.gcd a b := by
+    rw [h_lcm_gcd, hmul2]
+    ring
+  have h_lcm : Nat.lcm a b = a * (b / Nat.gcd a b) := Nat.eq_of_mul_eq_mul_right hgcd h_eq
+  rw [h_lcm, Nat.mul_div_cancel_left _ ha]
+
+lemma A135508_eq (n : ℕ) (h : n ≠ 0) : A135508 n = (n + 1) / Nat.gcd (x_seq n) (n + 1) := by
+  unfold A135508
+  split_ifs with h0
+  · contradiction
+  · simp only
+    have h_pos : x_seq n > 0 := x_seq_pos n (Nat.pos_of_ne_zero h)
+    have hdvd : x_seq n ∣ Nat.lcm (x_seq n) (n + 1) := Nat.dvd_lcm_left _ _
+    have h_add : (2 * x_seq n + Nat.lcm (x_seq n) (n + 1)) / x_seq n =
+        (2 * x_seq n) / x_seq n + Nat.lcm (x_seq n) (n + 1) / x_seq n := Nat.add_div_of_dvd_left hdvd
+    have h_div_self : (2 * x_seq n) / x_seq n = 2 := by
+      rw [Nat.mul_comm, Nat.mul_div_cancel_left 2 h_pos]
+    have h_lcm_div : Nat.lcm (x_seq n) (n + 1) / x_seq n = (n + 1) / Nat.gcd (x_seq n) (n + 1) := lcm_div_self (x_seq n) (n + 1) h_pos
+    have h_seq_eq : x_seq (n + 1) = 2 * x_seq n + Nat.lcm (x_seq n) (n + 1) := by
+      rw [x_seq]
+      intro h_zero
+      exact h h_zero
+    rw [h_seq_eq, h_add, h_div_self, h_lcm_div]
+    generalize (n + 1) / (x_seq n).gcd (n + 1) = X
+    omega
+
+lemma x_seq_step_factor (n : ℕ) (hn : n ≥ 1) : x_seq (n + 1) = x_seq n * (2 + (n + 1) / Nat.gcd (x_seq n) (n + 1)) := by
+  have h_pos : x_seq n > 0 := x_seq_pos n hn
+  have hdvd_lcm : x_seq n ∣ Nat.lcm (x_seq n) (n + 1) := Nat.dvd_lcm_left _ _
+  have h_add : (2 * x_seq n + Nat.lcm (x_seq n) (n + 1)) / x_seq n =
+      (2 * x_seq n) / x_seq n + Nat.lcm (x_seq n) (n + 1) / x_seq n := Nat.add_div_of_dvd_left hdvd_lcm
+  have h_div_self : (2 * x_seq n) / x_seq n = 2 := by
+    rw [Nat.mul_comm, Nat.mul_div_cancel_left 2 h_pos]
+  have h_lcm_div : Nat.lcm (x_seq n) (n + 1) / x_seq n = (n + 1) / Nat.gcd (x_seq n) (n + 1) := lcm_div_self (x_seq n) (n + 1) h_pos
+  have h_sum_div : (2 * x_seq n + Nat.lcm (x_seq n) (n + 1)) / x_seq n = 2 + (n + 1) / Nat.gcd (x_seq n) (n + 1) := by
+    rw [h_add, h_div_self, h_lcm_div]
+  have h_seq : x_seq (n + 1) = 2 * x_seq n + Nat.lcm (x_seq n) (n + 1) := by
+    rw [x_seq]
+    intro hz
+    omega
+  have hdvd_seq : x_seq n ∣ x_seq (n + 1) := by
+    rw [h_seq]
+    exact Nat.dvd_add (Nat.dvd_mul_left (x_seq n) 2) hdvd_lcm
+  have h_factor : x_seq (n + 1) = x_seq n * (x_seq (n + 1) / x_seq n) := (Nat.mul_div_cancel' hdvd_seq).symm
+  rw [h_factor, h_seq]
+  exact congrArg (fun x => x_seq n * x) h_sum_div
+
+lemma x_seq_prime_factor_le (n : ℕ) (hn : n ≥ 1) (q : ℕ) (hq : Nat.Prime q) (hdvd : q ∣ x_seq n) : q ≤ n + 2 := by
+  induction n with
+  | zero => contradiction
+  | succ n ih =>
+    by_cases h0 : n = 0
+    · subst h0
+      have hq1 : q ∣ 1 := hdvd
+      have hq_pos : q ≤ 1 := Nat.le_of_dvd (by decide) hq1
+      have hq2 : q ≥ 2 := Nat.Prime.two_le hq
+      omega
+    · have hn1 : n ≥ 1 := Nat.succ_le_of_lt (Nat.pos_of_ne_zero h0)
+      have h_seq_eq : x_seq (n + 1) = x_seq n * (2 + (n + 1) / Nat.gcd (x_seq n) (n + 1)) := x_seq_step_factor n hn1
+      have hdvd_mul : q ∣ x_seq n * (2 + (n + 1) / Nat.gcd (x_seq n) (n + 1)) := by
+        rwa [← h_seq_eq]
+      have h_or := (Nat.Prime.dvd_mul hq).mp hdvd_mul
+      cases h_or with
+      | inl h1 =>
+        have hq_le : q ≤ n + 2 := ih hn1 h1
+        omega
+      | inr h2 =>
+        have h_div_le : (n + 1) / Nat.gcd (x_seq n) (n + 1) ≤ n + 1 := Nat.div_le_self _ _
+        generalize h_div : (n + 1) / Nat.gcd (x_seq n) (n + 1) = D at h2 h_div_le
+        have h_M_pos : 2 + D > 0 := by omega
+        have hq_le_M : q ≤ 2 + D := Nat.le_of_dvd h_M_pos h2
+        omega
+
+lemma not_dvd_of_lt (p : ℕ) (hp : Nat.Prime p) (n : ℕ) (hn : n ≥ 1) (hlt : n < p - 2) : ¬ (p ∣ x_seq n) := by
+  intro hdvd
+  have h_le : p ≤ n + 2 := x_seq_prime_factor_le n hn p hp hdvd
+  omega
+
+lemma x_seq_even (n : ℕ) (hn : n ≥ 2) : 2 ∣ x_seq n := by
+  induction n with
+  | zero => contradiction
+  | succ n ih =>
+    by_cases h2 : n = 1
+    · subst h2
+      have h_seq : x_seq 2 = 4 := rfl
+      rw [h_seq]
+      decide
+    · by_cases h0 : n = 0
+      · subst h0
+        omega
+      · have hn2 : n ≥ 2 := Nat.succ_le_of_lt (by omega)
+        have ih' : 2 ∣ x_seq n := ih hn2
+        have h_seq : x_seq (n + 1) = 2 * x_seq n + Nat.lcm (x_seq n) (n + 1) := by
+          rw [x_seq]
+          intro hz
+          exact h0 hz
+        rw [h_seq]
+        have hdvd1 : 2 ∣ 2 * x_seq n := Nat.dvd_mul_right 2 _
+        have hdvd2 : 2 ∣ Nat.lcm (x_seq n) (n + 1) := by
+          have hdvd : x_seq n ∣ Nat.lcm (x_seq n) (n + 1) := Nat.dvd_lcm_left _ _
+          exact ih'.trans hdvd
+        exact Nat.dvd_add hdvd1 hdvd2
+
+lemma even_p_minus_1 (p : ℕ) (hp : Nat.Prime p) (hp5 : p ≥ 5) : 2 ∣ p - 1 := by
+  have h_mod : p % 2 = 1 := by
+    by_contra h
+    have h2 : p % 2 = 0 := by omega
+    have hdvd : 2 ∣ p := Nat.dvd_of_mod_eq_zero h2
+    cases Nat.Prime.eq_one_or_self_of_dvd hp 2 hdvd with
+    | inl h_one => contradiction
+    | inr h_self => omega
+  have h_div : p - 1 = 2 * (p / 2) := by
+    rw [← Nat.mod_add_div p 2, h_mod]
+    omega
+  rw [h_div]
+  exact Nat.dvd_mul_right 2 _
+
+lemma dvd_prev_of_dvd (p : ℕ) (hp : Nat.Prime p) (hp5 : p ≥ 5) (hdvd : p ∣ x_seq (p - 1)) : p ∣ x_seq (p - 2) := by
+  have hp2 : p - 2 ≥ 1 := by omega
+  have h_eq : p - 1 = (p - 2) + 1 := by omega
+  have h_seq_eq : x_seq (p - 1) = x_seq (p - 2) * (2 + (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1)) := by
+    have h_step := x_seq_step_factor (p - 2) hp2
+    have h_p1 : (p - 2) + 1 = p - 1 := by omega
+    rw [h_p1] at h_step
+    exact h_step
+  have hdvd_mul : p ∣ x_seq (p - 2) * (2 + (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1)) := by
+    rwa [← h_seq_eq]
+  have h_or := (Nat.Prime.dvd_mul hp).mp hdvd_mul
+  cases h_or with
+  | inl h1 => exact h1
+  | inr h2 =>
+    have hgcd_pos : Nat.gcd (x_seq (p - 2)) (p - 1) ≥ 2 := by
+      have hdvd_left : 2 ∣ x_seq (p - 2) := x_seq_even (p - 2) (by omega)
+      have hdvd_right : 2 ∣ p - 1 := even_p_minus_1 p hp hp5
+      have hdvd_gcd : 2 ∣ Nat.gcd (x_seq (p - 2)) (p - 1) := Nat.dvd_gcd hdvd_left hdvd_right
+      have hgcd_gt0 : Nat.gcd (x_seq (p - 2)) (p - 1) > 0 := Nat.gcd_pos_of_pos_right _ (by omega)
+      exact Nat.le_of_dvd hgcd_gt0 hdvd_gcd
+    have h_div_le : (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1) ≤ (p - 1) / 2 := Nat.div_le_div_left hgcd_pos (by decide)
+    have hdvd_ge0 : 0 ≤ (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1) := Nat.zero_le _
+    have hp_le_M : p ≤ 2 + (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1) := by
+      have h_pos : 2 + (p - 1) / Nat.gcd (x_seq (p - 2)) (p - 1) > 0 := by omega
+      exact Nat.le_of_dvd h_pos h2
+    have h_lt : 2 + (p - 1) / 2 < p := by omega
+    omega
+
+lemma dvd_p_sub_2_iff (p : ℕ) (hp : Nat.Prime p) (hp5 : p ≥ 5) :
+    p ∣ x_seq (p - 2) ↔ Nat.gcd (x_seq (p - 3)) (p - 2) = 1 := by
+  have hp3 : p - 3 ≥ 1 := by omega
+  have h_eq : p - 2 = (p - 3) + 1 := by omega
+  have h_seq_eq : x_seq (p - 2) = x_seq (p - 3) * (2 + (p - 2) / Nat.gcd (x_seq (p - 3)) (p - 2)) := by
+    have h_step := x_seq_step_factor (p - 3) hp3
+    have h_p2 : (p - 3) + 1 = p - 2 := by omega
+    rw [h_p2] at h_step
+    exact h_step
+  constructor
+  · intro hdvd
+    have hdvd_mul : p ∣ x_seq (p - 3) * (2 + (p - 2) / Nat.gcd (x_seq (p - 3)) (p - 2)) := by
+      rwa [← h_seq_eq]
+    have h_or := (Nat.Prime.dvd_mul hp).mp hdvd_mul
+    cases h_or with
+    | inl h1 =>
+      have h_not := not_dvd_of_lt p hp (p - 3) hp3 (by omega)
+      contradiction
+    | inr h2 =>
+      generalize hg : Nat.gcd (x_seq (p - 3)) (p - 2) = g
+      rw [hg] at h2
+      by_contra hg1
+      have hg_dvd : g ∣ p - 2 := by
+        rw [← hg]
+        exact Nat.gcd_dvd_right _ _
+      have hp_odd : p % 2 = 1 := by
+        by_contra h
+        have h2 : p % 2 = 0 := by omega
+        have hdvd_2 : 2 ∣ p := Nat.dvd_of_mod_eq_zero h2
+        cases Nat.Prime.eq_one_or_self_of_dvd hp 2 hdvd_2 with
+        | inl h_one => contradiction
+        | inr h_self => omega
+      have hp2_odd : (p - 2) % 2 = 1 := by omega
+      have hg_not_2 : g ≠ 2 := by
+        intro hg2
+        subst hg2
+        have h_even : 2 ∣ p - 2 := hg_dvd
+        have h_mod_zero : (p - 2) % 2 = 0 := Nat.mod_eq_zero_of_dvd h_even
+        omega
+      have hg3 : g ≥ 3 := by
+        have h_pos : g > 0 := by
+          have h_gcd_pos : Nat.gcd (x_seq (p - 3)) (p - 2) > 0 := Nat.gcd_pos_of_pos_right _ (by omega)
+          rwa [hg] at h_gcd_pos
+        omega
+      have h_div_le : (p - 2) / g ≤ (p - 2) / 3 := Nat.div_le_div_left hg3 (by decide)
+      generalize hd_val : (p - 2) / g = d_val
+      rw [hd_val] at h_div_le h2
+      have h_sum_lt : 2 + d_val < p := by omega
+      have h_sum_pos : 2 + d_val > 0 := by omega
+      have h_le_p : p ≤ 2 + d_val := Nat.le_of_dvd h_sum_pos h2
+      omega
+  · intro hg
+    rw [h_seq_eq, hg]
+    simp only [Nat.div_one]
+    have h_eq2 : 2 + (p - 2) = p := by omega
+    rw [h_eq2]
+    exact Nat.dvd_mul_left _ _
+
+lemma A135508_of_gcd_gt_one (p : ℕ) (hp : Nat.Prime p) (hp5 : p ≥ 5)
+    (h_gcd : Nat.gcd (x_seq (p - 3)) (p - 2) > 1) : A135508 (p - 1) = p := by
+  have hp1 : p - 1 ≠ 0 := by omega
+  rw [A135508_eq (p - 1) hp1]
+  have h_eq : p - 1 + 1 = p := by omega
+  rw [h_eq]
+  have hgcd_dvd : Nat.gcd (x_seq (p - 1)) p ∣ p := Nat.gcd_dvd_right _ _
+  cases (Nat.dvd_prime hp).mp hgcd_dvd with
+  | inl h1 =>
+    rw [h1]
+    exact Nat.div_one p
+  | inr h2 =>
+    have hdvd : p ∣ x_seq (p - 1) := by
+      have h_gcd_left : Nat.gcd (x_seq (p - 1)) p ∣ x_seq (p - 1) := Nat.gcd_dvd_left _ _
+      rw [h2] at h_gcd_left
+      exact h_gcd_left
+    have hdvd2 : p ∣ x_seq (p - 2) := dvd_prev_of_dvd p hp hp5 hdvd
+    have h_gcd1 : Nat.gcd (x_seq (p - 3)) (p - 2) = 1 := (dvd_p_sub_2_iff p hp hp5).mp hdvd2
+    omega
+
+lemma minFac_le_sub_3 (p : ℕ) (hp : Nat.Prime p) (hp11 : p ≥ 11) (hc : ¬ Nat.Prime (p - 2)) :
+    Nat.minFac (p - 2) ≤ p - 3 := by
+  have h_pos : p - 2 > 0 := by omega
+  have h_sq := Nat.minFac_sq_le_self h_pos hc
+  have h_prime : Nat.Prime (Nat.minFac (p - 2)) := Nat.minFac_prime (by omega)
+  have h_odd : Nat.minFac (p - 2) % 2 = 1 := by
+    by_contra h_even
+    have h2 : Nat.minFac (p - 2) % 2 = 0 := by omega
+    have hdvd : 2 ∣ Nat.minFac (p - 2) := Nat.dvd_of_mod_eq_zero h2
+    have h_eq := (Nat.Prime.eq_one_or_self_of_dvd h_prime 2 hdvd).resolve_left (by decide)
+    have hdvd_p2 : Nat.minFac (p - 2) ∣ p - 2 := Nat.minFac_dvd (p - 2)
+    rw [← h_eq] at hdvd_p2
+    have hdvd_p : 2 ∣ p := by
+      have : 2 ∣ (p - 2) + 2 := Nat.dvd_add hdvd_p2 (by decide)
+      have h_eq2 : (p - 2) + 2 = p := by omega
+      rwa [h_eq2] at this
+    cases Nat.Prime.eq_one_or_self_of_dvd hp 2 hdvd_p with
+    | inl h_one => contradiction
+    | inr h_self => omega
+  have h_ge3 : Nat.minFac (p - 2) ≥ 3 := by
+    have h_two := Nat.Prime.two_le h_prime
+    omega
+  have h_bound : 3 * Nat.minFac (p - 2) ≤ p - 2 := by
+    have h_sq_prime : Nat.minFac (p - 2) * Nat.minFac (p - 2) ≤ p - 2 := by
+      have h_mul : Nat.minFac (p - 2) ^ 2 = Nat.minFac (p - 2) * Nat.minFac (p - 2) := by ring
+      rwa [h_mul] at h_sq
+    have h_le_mul : 3 * Nat.minFac (p - 2) ≤ Nat.minFac (p - 2) * Nat.minFac (p - 2) :=
+      Nat.mul_le_mul_right (Nat.minFac (p - 2)) h_ge3
+    exact h_le_mul.trans h_sq_prime
+  omega
+
+lemma x_seq_dvd_of_le (a b : ℕ) (ha : a ≥ 1) (hab : a ≤ b) : x_seq a ∣ x_seq b := by
+  have : ∃ k, b = a + k := ⟨b - a, by omega⟩
+  rcases this with ⟨k, rfl⟩
+  induction k with
+  | zero =>
+    simp only [Nat.add_zero]
+    exact Nat.dvd_refl _
+  | succ k ih =>
+    have ih_dvd := ih (by omega)
+    have h_step : x_seq (a + k) ∣ x_seq (a + k + 1) := by
+      have hk : a + k ≥ 1 := by omega
+      have h_eq := x_seq_step_factor (a + k) hk
+      rw [h_eq]
+      exact Nat.dvd_mul_right _ _
+    exact Nat.dvd_trans ih_dvd h_step
+
+def x_seq_loop : ℕ → ℕ → ℕ → ℕ
+| 0, _, acc => acc
+| steps + 1, i, acc => x_seq_loop steps (i + 1) (2 * acc + Nat.lcm acc (i + 1))
+
+lemma x_seq_loop_eq (steps : ℕ) (i : ℕ) (acc : ℕ) (hi : i ≥ 1) (hacc : acc = x_seq i) :
+    x_seq_loop steps i acc = x_seq (i + steps) := by
+  induction steps generalizing i acc with
+  | zero =>
+    simp [x_seq_loop]
+    rw [hacc]
+  | succ steps ih =>
+    simp [x_seq_loop]
+    have h_next : 2 * acc + Nat.lcm acc (i + 1) = x_seq (i + 1) := by
+      rw [hacc]
+      have h_seq : x_seq (i + 1) = 2 * (x_seq i) + Nat.lcm (x_seq i) (i + 1) := by
+        rw [x_seq]
+        intro hz
+        omega
+      rw [h_seq]
+    have ih_val := ih (i + 1) (2 * acc + Nat.lcm acc (i + 1)) (by omega) h_next
+    rw [ih_val]
+    have : i + 1 + steps = i + (steps + 1) := by omega
+    rw [this]
+
+lemma x_seq_eq_loop (n : ℕ) (hn : n ≥ 1) : x_seq n = x_seq_loop (n - 1) 1 1 := by
+  have h_eq : x_seq_loop (n - 1) 1 1 = x_seq (1 + (n - 1)) := by
+    apply x_seq_loop_eq
+    · omega
+    · rfl
+  rw [h_eq]
+  have : 1 + (n - 1) = n := by omega
+  rw [this]
+
+
+lemma m_q_le_under_11 (q : ℕ) (hq : Nat.Prime q) (hq3 : q ≥ 3) (hq11 : q < 11) :
+    ∃ m ≤ q^2 - 2, m ≥ 1 ∧ q ∣ x_seq m := by
+  interval_cases q
+  · use 4; decide
+  · contradiction
+  · use 3; decide
+  · contradiction
+  · use 47; decide
+  · contradiction
+  · contradiction
+  · contradiction
+
+
+lemma prime_sub_4_composite (q : ℕ) (hq : Nat.Prime q) (hq2 : Nat.Prime (q - 2)) (hq11_ge : q ≥ 11) :
+    ¬ Nat.Prime (q - 4) := by
+  intro hq4
+  have hq_gt3 : q > 3 := by omega
+  have hq2_gt3 : q - 2 > 3 := by omega
+  have hq4_gt3 : q - 4 > 3 := by omega
+  have h_mod : (q - 4) % 3 = 0 := by
+    have hq_mod3 : q % 3 ≠ 0 := by
+      intro hc
+      have hdvd : 3 ∣ q := Nat.dvd_of_mod_eq_zero hc
+      cases (Nat.dvd_prime hq).mp hdvd with
+      | inl h1 => contradiction
+      | inr h2 => omega
+    have hq2_mod3 : (q - 2) % 3 ≠ 0 := by
+      intro hc
+      have hdvd : 3 ∣ q - 2 := Nat.dvd_of_mod_eq_zero hc
+      cases (Nat.dvd_prime hq2).mp hdvd with
+      | inl h1 => contradiction
+      | inr h2 => omega
+    omega
+  have hdvd : 3 ∣ q - 4 := Nat.dvd_of_mod_eq_zero h_mod
+  cases (Nat.dvd_prime hq4).mp hdvd with
+  | inl h1 => omega
+  | inr h2 => omega
+
+
+
+lemma test_ineq (q : ℕ) (hq : q ≥ 11) : (q - 2) * q - 1 ≤ q^2 - 2 := by
+  have h_eq : (q - 2) + 2 = q := by omega
+  have h_mul : ((q - 2) * q) + 2 * q = q^2 := by
+    nth_rw 2 [← h_eq]
+    nth_rw 3 [← h_eq]
+    generalize h_x : q - 2 = x
+    have hq_eq2 : q = x + 2 := by omega
+    rw [hq_eq2]
+    ring
+  omega
+
+lemma test_ge (q : ℕ) (hq : q ≥ 11) : (q - 2) * q - 1 ≥ 1 := by
+  have h_le_mul : 1 * q ≤ (q - 2) * q := Nat.mul_le_mul_right q (by omega)
+  rw [Nat.one_mul] at h_le_mul
+  omega
+
+lemma mod_mod_of_dvd (a b c : ℕ) : a % b = (a % (b * c)) % b := by
+  have h1 : a = (b * c) * (a / (b * c)) + a % (b * c) := (Nat.div_add_mod a (b * c)).symm
+  nth_rw 1 [h1]
+  have h2 : (b * c) * (a / (b * c)) = b * (c * (a / (b * c))) := by ring
+  rw [h2]
+  rw [Nat.mul_add_mod_self_left]
+
+lemma x_seq_mod_q (k q : ℕ) (hq : q ≥ 2) (hk : k ≥ 1) :
+    (x_seq (k * q)) % q = (2 * x_seq (k * q - 1)) % q := by
+  have h_kq_ge2 : k * q ≥ 2 := by
+    have h_le := Nat.mul_le_mul_right q hk
+    rw [Nat.one_mul] at h_le
+    omega
+  have h_sub : k * q - 1 + 1 = k * q := by omega
+  have h_self : (x_seq (k * q)) % (k * q) = (2 * x_seq (k * q - 1)) % (k * q) := by
+    have h_step := x_seq_mod_self (k * q - 1) (by omega)
+    rwa [h_sub] at h_step
+  have h_mod1 : (x_seq (k * q)) % q = ((x_seq (k * q)) % (q * k)) % q := mod_mod_of_dvd _ _ _
+  have h_mod2 : (2 * x_seq (k * q - 1)) % q = ((2 * x_seq (k * q - 1)) % (q * k)) % q := mod_mod_of_dvd _ _ _
+  have h_mul_comm : q * k = k * q := Nat.mul_comm q k
+  rw [h_mul_comm] at h_mod1 h_mod2
+  rw [h_mod1, h_mod2, h_self]
+
+lemma gcd_dvd_of_not_dvd (a b q : ℕ) (hq : Nat.Prime q) (h_not : ¬ q ∣ a) : Nat.gcd a (b * q) ∣ b := by
+  have h_gcd : Nat.gcd a q = 1 := by
+    cases (Nat.dvd_prime hq).mp (Nat.gcd_dvd_right a q) with
+    | inl h1 => exact h1
+    | inr h2 =>
+      have h_dvd_left : Nat.gcd a q ∣ a := Nat.gcd_dvd_left a q
+      rw [h2] at h_dvd_left
+      contradiction
+  have h_coprime : Nat.Coprime (Nat.gcd a (b * q)) q := by
+    have h_dvd_gcd : Nat.gcd (Nat.gcd a (b * q)) q ∣ Nat.gcd a q := by
+      apply Nat.dvd_gcd
+      · have h_dvd_left : Nat.gcd a (b * q) ∣ a := Nat.gcd_dvd_left a (b * q)
+        exact (Nat.gcd_dvd_left (Nat.gcd a (b * q)) q).trans h_dvd_left
+      · exact Nat.gcd_dvd_right (Nat.gcd a (b * q)) q
+    rw [h_gcd] at h_dvd_gcd
+    exact Nat.eq_one_of_dvd_one h_dvd_gcd
+  have h_dvd : Nat.gcd a (b * q) ∣ b * q := Nat.gcd_dvd_right a (b * q)
+  exact Nat.Coprime.dvd_of_dvd_mul_right h_coprime h_dvd
+
+
+mutual
+
+lemma m_q_le (q : ℕ) (hq : Nat.Prime q) (hq3 : q ≥ 3) : ∃ m ≤ q^2 - 2, m ≥ 1 ∧ q ∣ x_seq m := by
+  by_cases hq11 : q < 11
+  · exact m_q_le_under_11 q hq hq3 hq11
+  · by_cases hq2_prime : Nat.Prime (q - 2)
+    · use q - 2
+      have h_le : q - 2 ≤ q^2 - 2 := by
+        have h_sq : q ≤ q^2 := by
+          have h_mul : q^2 = q * q := by ring
+          rw [h_mul]
+          exact Nat.le_mul_self q
+        omega
+      have h_ge : q - 2 ≥ 1 := by omega
+      refine ⟨h_le, h_ge, ?_⟩
+      by_contra h_not
+      have h_gcd_ne_1 : Nat.gcd (x_seq (q - 3)) (q - 2) ≠ 1 := by
+        intro hc
+        have h_dvd := (dvd_p_sub_2_iff q hq (by omega)).mpr hc
+        exact h_not h_dvd
+      have h_gcd_dvd : Nat.gcd (x_seq (q - 3)) (q - 2) ∣ q - 2 := Nat.gcd_dvd_right _ _
+      have h_gcd_eq : Nat.gcd (x_seq (q - 3)) (q - 2) = q - 2 := by
+        cases (Nat.dvd_prime hq2_prime).mp h_gcd_dvd with
+        | inl h1 => contradiction
+        | inr h2 => exact h2
+      have h_gcd_dvd_seq : Nat.gcd (x_seq (q - 3)) (q - 2) ∣ x_seq (q - 3) := Nat.gcd_dvd_left _ _
+      rw [h_gcd_eq] at h_gcd_dvd_seq
+      have h_dvd_prev : q - 2 ∣ x_seq (q - 4) := by
+        have hq2_ge5 : q - 2 ≥ 5 := by omega
+        exact dvd_prev_of_dvd (q - 2) hq2_prime hq2_ge5 h_gcd_dvd_seq
+      have hq4_composite : ¬ Nat.Prime (q - 4) := prime_sub_4_composite q hq hq2_prime (by omega)
+      have h_A : A135508 (q - 3) = q - 2 := oeis_135508_conjecture_0 (q - 2) hq2_prime hq4_composite
+      have h_eq_A : A135508 (q - 3) = (q - 2) / Nat.gcd (x_seq (q - 3)) (q - 2) := by
+        have h_eq_A' := A135508_eq (q - 3) (by omega)
+        have h_step : q - 3 + 1 = q - 2 := by omega
+        rwa [h_step] at h_eq_A'
+      rw [h_A] at h_eq_A
+      rw [h_gcd_eq] at h_eq_A
+      have h_div_self : (q - 2) / (q - 2) = 1 := Nat.div_self (by omega)
+      rw [h_div_self] at h_eq_A
+      omega
+    · sorry
+termination_by (q, 1)
+
+theorem oeis_135508_conjecture_0 :
+  ∀ p : ℕ, Nat.Prime p → ¬ (Nat.Prime (p - 2)) → A135508 (p - 1) = p := by
+  intro p hp hc
+  by_cases hp5 : p < 5
+  · interval_cases p
+    · contradiction -- p = 0
+    · contradiction -- p = 1
+    · rfl -- p = 2
+    · rfl -- p = 3
+    · contradiction -- p = 4
+  · have hp5_ge : p ≥ 5 := by omega
+    by_cases hp11 : p < 11
+    · interval_cases p
+      · have : Nat.Prime (5 - 2) := by decide
+        contradiction
+      · have : Nat.Prime (7 - 2) := by decide
+        contradiction
+      · contradiction -- 6
+      · contradiction -- 8
+      · contradiction -- 9
+      · contradiction -- 10
+    · have hp11_ge : p ≥ 11 := by omega
+      apply A135508_of_gcd_gt_one p hp hp5_ge
+      let q := Nat.minFac (p - 2)
+      have hq_le : q ≤ p - 3 := minFac_le_sub_3 p hp hp11_ge hc
+      have hq_dvd : q ∣ p - 2 := Nat.minFac_dvd (p - 2)
+      have hq_prime : Nat.Prime q := Nat.minFac_prime (by omega)
+      have hq3 : q ≥ 3 := by
+        have hp_odd : p % 2 = 1 := by
+          by_contra h
+          have h2 : p % 2 = 0 := by omega
+          have hdvd : 2 ∣ p := Nat.dvd_of_mod_eq_zero h2
+          cases Nat.Prime.eq_one_or_self_of_dvd hp 2 hdvd with
+          | inl h_one => contradiction
+          | inr h_self => omega
+        have hp2_odd : (p - 2) % 2 = 1 := by omega
+        by_contra h_even
+        have hq_ge2 := Nat.Prime.two_le hq_prime
+        have h2 : q % 2 = 0 := by omega
+        have hdvd_2 : 2 ∣ q := Nat.dvd_of_mod_eq_zero h2
+        have h_eq := (Nat.Prime.eq_one_or_self_of_dvd hq_prime 2 hdvd_2).resolve_left (by decide)
+        have hdvd_p2 : Nat.minFac (p - 2) ∣ p - 2 := Nat.minFac_dvd (p - 2)
+        change q ∣ p - 2 at hdvd_p2
+        rw [← h_eq] at hdvd_p2
+        have hdvd_p : 2 ∣ p := by
+          have : 2 ∣ (p - 2) + 2 := Nat.dvd_add hdvd_p2 (by decide)
+          have h_eq2 : (p - 2) + 2 = p := by omega
+          rwa [h_eq2] at this
+        cases Nat.Prime.eq_one_or_self_of_dvd hp 2 hdvd_p with
+        | inl h_one => contradiction
+        | inr h_self => omega
+      have hq_dvd_seq : q ∣ x_seq (p - 3) := by
+        have h_sq : q * q ≤ p - 2 := by
+          have h_pos : p - 2 > 0 := by omega
+          have h_sq_pow := Nat.minFac_sq_le_self h_pos hc
+          have h_pow : q^2 = q * q := by ring
+          have h_sq_q : q^2 ≤ p - 2 := h_sq_pow
+          rwa [h_pow] at h_sq_q
+        rcases m_q_le q hq_prime hq3 with ⟨m, hm_le, hm_ge, hq_dvd_m⟩
+        have h_le : m ≤ p - 3 := by
+          have h_sq_pow := Nat.minFac_sq_le_self (by omega) hc
+          have h_pow2 : q^2 = q * q := by ring
+          have h_sq : q^2 ≤ p - 2 := h_sq_pow
+          omega
+        have h_seq_dvd := x_seq_dvd_of_le m (p - 3) hm_ge h_le
+        exact Nat.dvd_trans hq_dvd_m h_seq_dvd
+      have h_gcd_gt1 : Nat.gcd (x_seq (p - 3)) (p - 2) > 1 := by
+        have h_gcd_gt0 : Nat.gcd (x_seq (p - 3)) (p - 2) > 0 := Nat.gcd_pos_of_pos_right _ (by omega)
+        have h_dvd_gcd : q ∣ Nat.gcd (x_seq (p - 3)) (p - 2) := Nat.dvd_gcd hq_dvd_seq hq_dvd
+        have hq_le_gcd := Nat.le_of_dvd h_gcd_gt0 h_dvd_gcd
+        omega
+      exact h_gcd_gt1
+termination_by p _ _ => (p, 0)
+
+end

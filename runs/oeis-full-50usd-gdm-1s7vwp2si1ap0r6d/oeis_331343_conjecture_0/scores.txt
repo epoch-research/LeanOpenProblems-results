@@ -1,0 +1,41 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:97:31: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:110:31: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:345:2: warning: Try this: intro L g h_eq
+  Submission/Spec.lean:440:53: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:452:57: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:865:10: error: Tactic `contradiction` failed
+  
+  case neg.inl
+  n : ℕ
+  hn : n > 3
+  h_div : n ^ 3 ∣ a n
+  hp : ¬Nat.Prime n
+  h_div' : n ^ 3 ∣ a n
+  h_odd : n % 2 = 1
+  hn9 : ¬n = 9
+  hn15 : n ≥ 15
+  p : ℕ := n.minFac
+  hp_prime : Nat.Prime p
+  this : Fact (Nat.Prime p)
+  k : ℕ := padicValNat p n
+  hk : k ≥ 1
+  h_val_ge : padicValNat p (a n) ≥ 3 * k
+  L : ℕ
+  h_L : L_seq (n - 1) = L
+  g : ℕ
+  h_g : L.gcd n = g
+  h_rec : a n = n / g * a (n - 1) + L / g * (2 ^ (n - 1) - 1)
+  h_case1 : padicValNat n.minFac (n / g) = 0 ∧ padicValNat n.minFac (L / g) > 0
+  ⊢ False
+

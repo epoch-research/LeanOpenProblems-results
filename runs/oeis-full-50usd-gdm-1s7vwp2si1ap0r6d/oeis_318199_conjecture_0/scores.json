@@ -1,0 +1,65 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 635 declarations.\n------------------\nstep_proof_6 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_13 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_7 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_12 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_6 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_12_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_16 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_3_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_8 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_5 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_7_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_8 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_15 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_11 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_13 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_8 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_15 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\ncount_relation_14 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_9 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_6 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_5_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_14 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_0_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_8_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_15 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_11 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_13 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_16 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_9 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_2 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_2_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_13_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_4 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_9_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_17 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_2 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_14_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_15_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_5 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\noeis_318199_conjecture_0.disproof used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_3 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\ncount_relation_1 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_16_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_14 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_12 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_12 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_3 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_11 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_10_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_10 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_1 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_4 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_1_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_10 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_16 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_11_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nstep_proof_10 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_5 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_4_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_0 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_7 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nnth_prime_step_4 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_7 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_9 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_0 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nbase_count used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nstep_proof_3 used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\nnth_prime_step_6_next used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\ncount_relation_2 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\ncount_relation_17 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_318199_conjecture_0: uses disallowed axioms\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "oeis_318199_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound",
+                "sorryAx"
+              ]
+            },
+            "failureMode": "axioms"
+          }
+        ],
+        [
+          "A318199",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

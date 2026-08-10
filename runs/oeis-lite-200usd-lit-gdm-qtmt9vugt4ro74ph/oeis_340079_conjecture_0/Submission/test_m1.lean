@@ -1,0 +1,32 @@
+import Mathlib
+
+lemma test_contradiction
+    (p q r s : ℕ)
+    (hp_prime : Nat.Prime p)
+    (hq_prime : Nat.Prime q)
+    (hr_prime : Nat.Prime r)
+    (hs_prime : Nat.Prime s)
+    (hp_lt_q : p < q)
+    (hq_lt_r : q < r)
+    (hr_lt_s : r < s)
+    (A B C : ℕ)
+    (hA : A = 2 * p - 1)
+    (hB : B = 2 * q - 1)
+    (hC : C = 2 * r - 1)
+    (Y' : ℕ)
+    (hY' : Y' = 1)
+    (Y : ℕ)
+    (hY : Y = (2 * s - 1) * Y')
+    (c : ℕ)
+    (hc_eq : c * r + 1 = A * B * Y)
+    (k_s : ℕ)
+    (hk_s : c + 2 * A * B * Y' = s * k_s)
+    (h_le_ks : k_s ≤ 4 * A * B * Y')
+    (g_s : ℕ)
+    (h_alg_s : c * C + 2 = q * s * g_s)
+    (hp_dvd_g_s : p ∣ g_s)
+    (a_s : ℕ)
+    (ha_s : A * B * C * Y' - 1 = s * a_s)
+    (h_rk_eq : r * k_s = 2 * (A * B * Y') + a_s)
+    (h_q_g_s : q * g_s = 4 * A * B * Y' - k_s) : False := by
+  sorry

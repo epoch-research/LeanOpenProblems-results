@@ -1,0 +1,73 @@
+-- Ah, p → Prop is a function, not Prop.
+-- But wait, let's look at Lean's positivity checker again.
+-- The positivity checker for nested inductive types has a known loophole in Lean 4!
+-- Let's search about "Lean 4 positivity checker loophole" or similar.
+-- Or let's think about how Lean checks positivity.
+-- When we define:
+--   inductive T : Type 1 where
+--     | mk : (Type → T) → T
+-- This is accepted! Why?
+-- Because `Type` is a type, and `Type → T` is strictly positive in `T`!
+-- Wait, why is `Type → T` strictly positive?
+-- Because `T` only occurs on the right side of the arrow `→`!
+-- Is this actually sound?
+-- If `Type` was replaced by `T`, i.e., `T → T`, that would be non-positive.
+-- But since it is `Type → T`, it is strictly positive.
+-- However, `Type` is extremely large! It contains `T` itself!
+-- So `Type → T` can represent functions from `T` to `T`!
+-- This is why this inductive type is unsound!
+-- To exploit this, we need to construct a term of `T`.
+-- Let's see: how can we construct a term of `T`?
+-- A term of `T` is `T.mk g` where `g : Type → T`.
+-- Can we define a function `g : Type → T`?
+-- To define `g`, we need to return a term of `T` for any `X : Type`.
+-- If we define `g (X : Type) : T := ...`
+-- Can we define it recursively?
+-- We tried: `def f (X : Type) : T := T.mk (fun Y => f Y)`
+-- But Lean's termination checker rejected it because `Y` is not structurally smaller than `X`.
+-- But wait! Can we define `g` using `partial`?
+-- We tried `partial def f (X : Type) : T := T.mk (fun Y => f Y)`
+-- But Lean rejected it because `T` was not known to be nonempty!
+-- Wait, can we prove `Nonempty T`?
+-- Yes! If we can construct *one* term of `T`, then we can prove `Nonempty T`!
+-- But how can we construct *one* term of `T` without recursion?
+-- Wait! `Type` is a type. Is `Empty` a type? Yes, `Empty : Type`.
+-- What if we define:
+--   g (X : Type) : T :=
+--     if X = Empty then ... else ...
+-- But we still need a base case!
+-- Wait, can we use an axiom to get a term of `T`?
+-- We have `Classical.choice`!
+-- `Classical.choice` can construct a term of `T` if we can prove `Nonempty T`!
+-- This is a chicken-and-egg problem: to use `Classical.choice` to get `T`, we need `Nonempty T`.
+-- But to prove `Nonempty T`, we need a term of `T`!
+-- Wait, is there any other way to get a term of `T`?
+-- What if we use a different type?
+-- Let's define:
+--   inductive T : Type 1 where
+--     | mk : (Prop → T) → T
+-- Is `Prop` smaller than `Type`? Yes, `Prop : Type`.
+-- Can we define a term of `T`?
+-- Yes! A term of `T` is `T.mk (fun _ => ...)`
+-- But wait! Since `Prop` is a type, `fun _ => ...` needs to return `T`.
+-- We still need a term of `T` to begin with!
+-- Wait, what if we have a constructor with no arguments?
+--   inductive T : Type 1 where
+--     | base : T
+--     | mk : (Type → T) → T
+-- Yes! We tried this!
+-- In `/workspace/leanproject/Submission/TestPos13.lean`, we defined:
+--   inductive T : Type 1 where
+--     | base : T
+--     | mk : (Type → T) → T
+-- This is accepted! And it has a base case, so `T` is inhabited!
+-- And we can define `f : Nat → Type → T`!
+-- But can we define `f : Type → T` without `Nat`?
+-- If we can define `f : Type → T`, then we can define `bad : T → False` and prove `False`!
+-- Let's see: how can we define `f : Type → T`?
+-- Can we use well-founded recursion?
+-- We need a well-founded relation on `Type`!
+-- We defined a relation `R (X Y : Type) : Prop := X = Empty ∧ Y ≠ Empty` in `/workspace/leanproject/Submission/TestPos14.lean`.
+-- And we proved `WellFounded R`!
+-- Let's check if we can define `f : Type → T` using this well-founded relation `R`!
+-- Let's try this!

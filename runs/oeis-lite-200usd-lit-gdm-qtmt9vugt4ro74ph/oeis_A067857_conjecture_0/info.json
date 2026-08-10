@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A067857_conjecture_0",
+  "epoch": 1,
+  "uuid": "CNwEyzYQPS4n29tugdJnDg",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 704845,
+      "output_tokens": 11242,
+      "total_tokens": 2639378,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1908908,
+      "reasoning_tokens": 14383,
+      "total_cost": 1.4447817000000003
+    }
+  },
+  "oeis_id": "A067857"
+}

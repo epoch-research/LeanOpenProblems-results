@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.minFac
+#check Nat.minFac_prime
+#check Nat.minFac_dvd
+#check Nat.minFac_le_of_dvd
+#check Nat.minFac_sq_le_self
+#check Nat.exists_prime_and_dvd
+#check Nat.dvd_factorial
+#check Nat.Prime.dvd_factorial
+#check Nat.Prime.coprime_factorial_of_lt

@@ -1,0 +1,6 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:145:2: error(lean.unknownIdentifier): Unknown identifier `prove_by_magic`
+  Submission/Spec.lean:11:59: error(lean.unknownIdentifier): Unknown identifier `updateKernelEnvWithFake`
+

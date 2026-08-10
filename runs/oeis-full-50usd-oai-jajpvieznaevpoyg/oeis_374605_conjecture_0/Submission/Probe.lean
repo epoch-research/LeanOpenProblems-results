@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.Prime
+#check Nat.Prime.pos
+#check Nat.Prime.two_le
+#check Nat.cast_dvd
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check Nat.dvd_iff_mod_eq_zero
+#check Finset.sum_range_succ
+#check Nat.choose_eq_factorial_div_factorial
+#check Nat.choose_eq_zero_of_lt

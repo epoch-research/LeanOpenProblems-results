@@ -1,0 +1,20 @@
+{
+  "id": "oeis_338777_conjecture_0",
+  "epoch": 1,
+  "uuid": "jxoRBNwPFRCXEJSBthVfCy",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 909236,
+      "output_tokens": 14102,
+      "total_tokens": 4786403,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3835441,
+      "reasoning_tokens": 27624,
+      "total_cost": 2.0660881499999997
+    }
+  },
+  "oeis_id": "A338777"
+}

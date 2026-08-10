@@ -1,0 +1,20 @@
+{
+  "id": "oeis_181830_conjecture_0",
+  "epoch": 1,
+  "uuid": "SiRuRtgvEvi3qtn9Mye3Yc",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 21457,
+      "output_tokens": 3652,
+      "total_tokens": 61973,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 36864,
+      "reasoning_tokens": 2477,
+      "total_cost": 0.23527699999999996
+    }
+  },
+  "oeis_id": "A181830"
+}

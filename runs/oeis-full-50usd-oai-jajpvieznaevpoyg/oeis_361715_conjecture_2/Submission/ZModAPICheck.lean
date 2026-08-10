@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check ZMod.natCast_eq_natCast_iff
+#check ZMod.natCast_eq_zero_iff
+#check ZMod.intCast_eq_intCast_iff
+#check ZMod.intCast_zmod_eq_zero_iff_dvd
+#check CharP.cast_eq_zero_iff
+#check Int.ModEq.of_dvd
+#check Nat.Prime.pow_dvd_iff_le_factorization
+#check padicValNat_dvd_iff_le
+#check padicValNat_dvd_iff
+#check Nat.factorization_choose_prime_pow

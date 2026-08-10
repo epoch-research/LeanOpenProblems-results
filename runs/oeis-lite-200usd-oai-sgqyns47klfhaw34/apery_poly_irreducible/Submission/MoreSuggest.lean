@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+open Nat Polynomial
+#check irreducible_of_degree_eq_one_of_isRelPrime_coeff
+#check of_irreducible_expand
+#check of_irreducible_expand_pow
+#check irreducible_of_dvd_cyclotomic_of_natDegree
+#check Polynomial.irreducible_of_degree_le_three_of_not_isRoot
+#check Polynomial.Monic.irreducible_iff_roots_eq_zero_of_degree_le_three
+#print of_irreducible_expand
+#print of_irreducible_expand_pow

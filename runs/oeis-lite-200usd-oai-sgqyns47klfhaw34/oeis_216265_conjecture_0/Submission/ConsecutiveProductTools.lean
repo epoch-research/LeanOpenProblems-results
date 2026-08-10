@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.descFactorial
+#check Nat.ascFactorial
+#check Nat.factorial_dvd_descFactorial
+#check Nat.coprime_descFactorial_of_lt_of_le
+#check Nat.Prime.coprime_descFactorial_of_lt_of_le
+#check Nat.descFactorial_eq_factorial_mul_choose
+#check Nat.factorial_mul_descFactorial
+#check Nat.factorial_mul_factorial_dvd_factorial_add
+#check Nat.exists_prime_and_dvd
+#check Nat.ne_one_iff_exists_prime_dvd

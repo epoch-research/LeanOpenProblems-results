@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a374265_conjecture_1_boundedness",
+  "epoch": 1,
+  "uuid": "V679ahGRC7E2bjpChwqePY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 81,
+      "output_tokens": 107258,
+      "total_tokens": 3506322,
+      "input_tokens_cache_write": 139167,
+      "input_tokens_cache_read": 3259816,
+      "reasoning_tokens": 19895,
+      "total_cost": 5.1815567499999995
+    }
+  },
+  "oeis_id": "A374265"
+}

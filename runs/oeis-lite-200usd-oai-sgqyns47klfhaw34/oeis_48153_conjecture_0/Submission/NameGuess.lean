@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check LegendreSymbol.quadratic_reciprocity
+#check legendreSym.card_sqrts
+#check quadraticChar_sum_zero
+#check Nat.Prime.sq_add_sq
+#check ZMod.exists_sq_eq_neg_one_iff
+#check ZMod.isSquare_neg_one_iff
+#check NumberField.dedekindZeta_residue_pos
+#check DirichletCharacter.LFunction_apply_one_ne_zero
+#check ZMod.LFunction_apply_zero_of_even
+#check ZMod.LFunction_neg_two_mul_nat_add_one

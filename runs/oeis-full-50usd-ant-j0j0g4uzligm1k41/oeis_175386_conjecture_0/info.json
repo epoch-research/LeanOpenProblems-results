@@ -1,0 +1,20 @@
+{
+  "id": "oeis_175386_conjecture_0",
+  "epoch": 1,
+  "uuid": "LqxnVm7AeJDBVeLq9fCsNz",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 191,
+      "output_tokens": 241509,
+      "total_tokens": 15141535,
+      "input_tokens_cache_write": 567055,
+      "input_tokens_cache_read": 14332780,
+      "reasoning_tokens": 50546,
+      "total_cost": 16.749163749999997
+    }
+  },
+  "oeis_id": "A175386"
+}

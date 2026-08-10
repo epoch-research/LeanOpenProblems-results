@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check padicValNat
+#check padicValInt
+#check padicValRat
+#check Nat.factorization
+#check Nat.factorization_choose
+#check padicValNat.mul
+#check padicValNat.pow
+#check padicValNat.dvd_iff_le_padicValNat
+#check padicValNat.prime
+#check Nat.Prime.factorization_choose
+#check Nat.Prime.dvd_iff_not_coprime
+#check sub_one_mul_padicValNat_choose_eq_sub_sum_digits'
+#check padicValNat.choose

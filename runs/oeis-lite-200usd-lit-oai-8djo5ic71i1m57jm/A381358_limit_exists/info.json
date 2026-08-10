@@ -1,0 +1,23 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "nd7ufWSYzNqu7hg5QGGWZb",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 7658470,
+      "output_tokens": 1657551,
+      "total_tokens": 233410229,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 224094208,
+      "reasoning_tokens": 1105249,
+      "total_cost": 200.0659840000004
+    }
+  },
+  "oeis_id": "A381358"
+}

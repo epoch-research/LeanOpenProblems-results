@@ -1,0 +1,28 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 15 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 324 declarations.
+  ------------------
+  L_mul_le used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  L_and_R_bound used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  R_step_ge used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  R_bound_L_L used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  L_mono_step used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  L_bound used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  R_bound_L_L_base used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]
+  A381358_limit_exists used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A381358_limit_exists: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

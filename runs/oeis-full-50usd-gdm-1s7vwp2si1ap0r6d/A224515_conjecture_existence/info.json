@@ -1,0 +1,20 @@
+{
+  "id": "A224515_conjecture_existence",
+  "epoch": 1,
+  "uuid": "SFGKeZpdpJDHNxC4sthBMm",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 11404511,
+      "output_tokens": 245543,
+      "total_tokens": 78096933,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 65462158,
+      "reasoning_tokens": 984721,
+      "total_cost": 29.13597719999998
+    }
+  },
+  "oeis_id": "A224515"
+}

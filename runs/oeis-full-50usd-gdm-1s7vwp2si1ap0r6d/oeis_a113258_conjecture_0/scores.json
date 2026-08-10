@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:580:32: warning: unused variable `hb`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:1319:56: error: Type mismatch\n  chinese_remainder_X (b ^ (e / p)) h_B_mod3 h_B_mod5 hB16_1\nhas type\n  b ^ (e / p) % 480 ≠ 449 → b ^ (e / p) % 32 = 17\nbut is expected to have type\n  b ^ (e / p) % 32 = 17",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

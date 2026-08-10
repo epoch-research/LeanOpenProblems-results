@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:309:8: error(lean.unknownIdentifier): Unknown identifier `B_A279056_scale`
+  Submission/Spec.lean:1102:4: error: Type mismatch
+    h_yes
+  has type
+    ¬0 < B_A279056 n
+  but is expected to have type
+    B_A279056 n > 0
+

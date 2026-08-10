@@ -1,0 +1,23 @@
+{
+  "id": "oeis_361883_conjecture_0",
+  "epoch": 1,
+  "uuid": "bSok4AQ4ZmpkDMMqbUVtqA",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 2255708,
+      "output_tokens": 409160,
+      "total_tokens": 55772068,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 53107200,
+      "reasoning_tokens": 245413,
+      "total_cost": 50.10693999999998
+    }
+  },
+  "oeis_id": "A361883"
+}

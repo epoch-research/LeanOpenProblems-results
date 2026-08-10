@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361713_conjecture_2",
+  "epoch": 1,
+  "uuid": "U5RgtyUC89T8aTaZ7FaKFh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 9221279,
+      "output_tokens": 151384,
+      "total_tokens": 55025164,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 45463796,
+      "reasoning_tokens": 188705,
+      "total_cost": 22.013943900000015
+    }
+  },
+  "oeis_id": "A361713"
+}

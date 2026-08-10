@@ -1,0 +1,54 @@
+Submission/test_lemma_proof.lean:7:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_lemma_proof.lean:8:15: error(lean.unknownIdentifier): Unknown identifier `A355898_loop`
+Submission/test_lemma_proof.lean:15:8: warning: declaration uses 'sorry'
+Submission/test_lemma_proof.lean:42:21: error: Tactic `rfl` failed: The left-hand side
+  B (k - 1 - j + 2)
+is not definitionally equal to the right-hand side
+  B (k - j) + B (k - 1 - j)
+
+k d : ℕ
+hd_Bkp1 : d ∣ B (k + 1)
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+j : ℕ
+ih : ∀ m < j + 1 + 1, m ≤ k + 1 → ↑d ∣ ↑(B (k + 1 - m)) + (-1) ^ m * ↑(fib m)
+hj : j + 1 + 1 ≤ k + 1
+ih1 : ↑d ∣ ↑(B (k + 1 - j)) + (-1) ^ j * ↑(fib j)
+ih2 : ↑d ∣ ↑(B (k + 1 - (j + 1))) + (-1) ^ (j + 1) * ↑(fib (j + 1))
+this : k + 1 - j = k - 1 - j + 2
+⊢ B (k - 1 - j + 2) = B (k - j) + B (k - 1 - j)
+Submission/test_lemma_proof.lean:53:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ↑(B (k - 1 - j)) + (-1) ^ (j + 2) * ↑(fib (j + 2))
+in the target expression
+  ↑d ∣ ↑(B (k + 1 - (j + 1 + 1))) + (-1) ^ (j + 1 + 1) * ↑(fib (j + 1 + 1))
+
+case h.succ.succ
+k d : ℕ
+hd_Bkp1 : d ∣ B (k + 1)
+hd_B_sub_1 : ↑d ∣ ↑(B k) - 1
+j : ℕ
+ih : ∀ m < j + 1 + 1, m ≤ k + 1 → ↑d ∣ ↑(B (k + 1 - m)) + (-1) ^ m * ↑(fib m)
+hj : j + 1 + 1 ≤ k + 1
+ih1 : ↑d ∣ ↑(B (k + 1 - j)) + (-1) ^ j * ↑(fib j)
+ih2 : ↑d ∣ ↑(B (k + 1 - (j + 1))) + (-1) ^ (j + 1) * ↑(fib (j + 1))
+h_rec_B : B (k + 1 - j) = B (k - j) + B (k - 1 - j)
+h_rec_B_z : ↑(B (k + 1 - j)) = ↑(B (k - j)) + ↑(B (k - 1 - j))
+h_fib : fib (j + 2) = fib j + fib (j + 1)
+h_fib_z : ↑(fib (j + 2)) = ↑(fib j) + ↑(fib (j + 1))
+h_comb :
+  ↑(B (k - 1 - j)) + (-1) ^ (j + 2) * ↑(fib (j + 2)) =
+    ↑(B (k + 1 - j)) + (-1) ^ j * ↑(fib j) - (↑(B (k - j)) + (-1) ^ (j + 1) * ↑(fib (j + 1)))
+⊢ ↑d ∣ ↑(B (k + 1 - (j + 1 + 1))) + (-1) ^ (j + 1 + 1) * ↑(fib (j + 1 + 1))
+Submission/test_lemma_proof.lean:35:12: warning: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/test_lemma_proof.lean:37:14: warning: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

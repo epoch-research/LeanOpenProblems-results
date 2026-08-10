@@ -1,0 +1,20 @@
+{
+  "id": "oeis_206911_conjecture",
+  "epoch": 1,
+  "uuid": "SLpVxhrY2cEWgNdowXWxqh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 12378278,
+      "output_tokens": 283491,
+      "total_tokens": 102733135,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 89259125,
+      "reasoning_tokens": 812241,
+      "total_cost": 34.507704749999995
+    }
+  },
+  "oeis_id": "A206911"
+}

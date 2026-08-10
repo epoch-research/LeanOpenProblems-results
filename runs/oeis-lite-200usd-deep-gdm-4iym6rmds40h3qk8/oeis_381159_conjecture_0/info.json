@@ -1,0 +1,20 @@
+{
+  "id": "oeis_381159_conjecture_0",
+  "epoch": 1,
+  "uuid": "TPwPwBw4NhGWrNfTVK5GBs",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 1811402,
+      "output_tokens": 97076,
+      "total_tokens": 17226998,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 15246362,
+      "reasoning_tokens": 72158,
+      "total_cost": 5.877741300000001
+    }
+  },
+  "oeis_id": "A381159"
+}

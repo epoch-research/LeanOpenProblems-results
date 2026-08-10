@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check List.length_drop
+#check List.drop_eq_nil_of_le
+#check List.drop_eq_nil_iff
+#check List.sum_eq_zero_iff
+#check List.eq_replicate_iff
+#check List.get_eq_getElem
+#check List.length_pos_iff_exists_cons
+#check List.exists_cons_of_ne_nil
+#check List.length_le_sum_of_forall_pos
+#check List.eq_replicate_of_mem

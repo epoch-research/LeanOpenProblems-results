@@ -1,0 +1,17 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#check Polynomial.irreducible_of_eisenstein_criterion
+#check Polynomial.IsEisensteinAt
+#check Polynomial.Monic.isEisensteinAt_of_mem_of_notMem
+#check Polynomial.IsEisensteinAt.irreducible
+#check Ideal.span_singleton_prime
+#check Ideal.span_singleton_prime.mpr
+#check Int.prime_two
+#check Nat.prime_two
+#check Prime.irreducible
+#check Polynomial.IsPrimitive.Int.irreducible_iff_irreducible_map_cast
+#check Polynomial.irreducible_of_mirror
+#check Polynomial.reverse
+#check Polynomial.mirror
+#check Polynomial.map_reverse
+#check Polynomial.reverse_mul_of_domain

@@ -1,0 +1,23 @@
+{
+  "id": "A273110_conjecture",
+  "epoch": 1,
+  "uuid": "UzFpr2T9kdij3xdX579bR2",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 263,
+      "output_tokens": 168724,
+      "total_tokens": 18391791,
+      "input_tokens_cache_write": 15143677,
+      "input_tokens_cache_read": 3079127,
+      "reasoning_tokens": 67616,
+      "total_cost": 200.8139195
+    }
+  },
+  "oeis_id": "A273110"
+}

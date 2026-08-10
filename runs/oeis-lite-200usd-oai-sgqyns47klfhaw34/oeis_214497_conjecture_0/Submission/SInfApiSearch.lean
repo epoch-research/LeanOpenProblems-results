@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.sInf
+#check Nat.sInf_mem
+#check Nat.sInf_le
+#check Nat.sInf_eq_zero
+#check csInf_mem
+#check Nat.find
+#check Nat.find_spec
+#check Nat.findX
+#check WellFounded.fix
+#check WellFounded.fix_eq

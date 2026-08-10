@@ -1,0 +1,46 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:58:46: warning: unused variable `hp_odd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:243:50: warning: unused variable `hp_odd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:448:58: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:636:57: warning: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:685:158: error: Tactic `decide` failed for proposition
+    ((List.filter (fun p => decide (Nat.Prime p ∧ p ≠ 2 ∧ orderOf 2 = orderOf 2)) (List.range 3512)).all fun p =>
+        decide (p = 1093 ∨ p = 3511)) =
+      true
+  because its `Decidable` instance
+    instDecidableEqBool
+      ((List.filter (fun p => decide (Nat.Prime p ∧ p ≠ 2 ∧ orderOf 2 = orderOf 2)) (List.range 3512)).all fun p =>
+        decide (p = 1093 ∨ p = 3511))
+      true
+  did not reduce to `isTrue` or `isFalse`.
+  
+  After unfolding the instances `decidable_of_decidable_of_iff`, `decidable_of_iff`, `decidable_of_iff'`, `instDecidableAnd`, `instDecidableEqBool`, `instDecidableEqNat`, `instDecidableNot`, `Bool.decEq`, `Classical.propDecidable`, `Nat.decEq`, `decLe`, `decidableBallLT`, `decidableLoHi`, `decidablePrime`, and `decidable_dvd`, reduction got stuck at the `Decidable` instance
+    match
+      (List.filter (fun p => decide (Nat.Prime p ∧ p ≠ 2 ∧ orderOf 2 = orderOf 2)) (List.range 3512)).all fun p =>
+        decide (p = 1093 ∨ p = 3511),
+      true with
+    | false, false => isTrue ⋯
+    | false, true => isFalse ⋯
+    | true, false => isFalse ⋯
+    | true, true => isTrue ⋯
+  Submission/Spec.lean:690:10: error: Tactic `left` failed: left tactic works for inductive types with exactly 2 constructors
+  
+  case pos.h
+  p : ℕ
+  hp_prime : Nat.Prime p
+  hp_odd : p ≠ 2
+  h_wief : orderOf 2 = orderOf 2
+  hp_lt : p < 3512
+  ⊢ p = 1093
+  Submission/Spec.lean:704:8: warning: declaration uses 'sorry'
+

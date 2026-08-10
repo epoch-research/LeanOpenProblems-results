@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.ofDigits_cons
+#check Nat.ofDigits_append
+#check Nat.ofDigits_singleton
+#check Nat.ofDigits_zero_cons
+#check Nat.ofDigits_one_cons
+#check Nat.ofDigits
+#check List.sum_eq_zero_iff
+#check List.sum_eq_zero
+#check List.eq_replicate_iff

@@ -1,0 +1,496 @@
+import FormalConjectures.Util.ProblemImports
+
+open List Nat Function Set
+
+/--
+A300997: $a(n)$ is the number of steps needed to reach a stable configuration in the 1D cellular automaton initialized with one cell with mass $n$ and based on the rule "each cell gives half of its mass, rounded down, to its right neighbor".
+The stable configuration is $n$ cells with mass 1.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  let half_ceil (m : ℕ) : ℕ := (m + 1) / 2
+  let half_floor (m : ℕ) : ℕ := m / 2
+
+  let trim_trailing_zeros (l : List ℕ) : List ℕ :=
+    (List.reverse l).dropWhile (fun x => x = 0) |>.reverse
+
+  let ca_step (config : List ℕ) : List ℕ :=
+    let base_masses := config.map half_ceil ++ [0]
+    let received_masses := 0 :: config.map half_floor
+
+    let next_config_long := List.zipWith Nat.add base_masses received_masses
+
+    trim_trailing_zeros next_config_long
+
+  if n = 0 then
+    0
+  else
+    let initial_config : List ℕ := [n]
+    let target_config : List ℕ := List.replicate n 1
+
+    -- State after t steps, computed by folding ca_step t times using foldl over a range.
+    let S (t : ℕ) : List ℕ := (List.range t).foldl (fun acc _ => ca_step acc) initial_config
+
+    -- The set of time steps k at which the configuration is stable.
+    let stable_steps : Set ℕ := {k | S k = target_config}
+
+    -- a(n) is the smallest k in this set, defined by the set infimum (sInf).
+    sInf stable_steps
+
+def half_ceil (m : ℕ) : ℕ := (m + 1) / 2
+def half_floor (m : ℕ) : ℕ := m / 2
+
+def trim_trailing_zeros (l : List ℕ) : List ℕ :=
+  (List.reverse l).dropWhile (fun x => x = 0) |>.reverse
+
+def ca_step_global (config : List ℕ) : List ℕ :=
+  let base_masses := config.map half_ceil ++ [0]
+  let received_masses := 0 :: config.map half_floor
+  let next_config_long := List.zipWith Nat.add base_masses received_masses
+  trim_trailing_zeros next_config_long
+
+def config_step (C : ℕ → ℕ) : ℕ → ℕ := fun j =>
+  if j = 0 then
+    (C 0 + 1) / 2
+  else
+    (C j + 1) / 2 + C (j - 1) / 2
+
+lemma getD_zero_list (B : List ℕ) (hB : ∀ x ∈ B, x = 0) (j : ℕ) :
+  B[j]?.getD 0 = 0 := by
+  induction' B with y ys ih generalizing j
+  · rfl
+  · have hy : y = 0 := hB y (by simp)
+    have hys : ∀ x ∈ ys, x = 0 := fun x hx => hB x (by simp [hx])
+    subst hy
+    cases j
+    · rfl
+    · exact ih hys _
+
+lemma getD_append_zero_list (A B : List ℕ) (hB : ∀ x ∈ B, x = 0) (j : ℕ) :
+  (A ++ B)[j]?.getD 0 = A[j]?.getD 0 := by
+  induction' A with x xs ih generalizing j
+  · dsimp
+    exact getD_zero_list B hB j
+  · dsimp
+    cases j
+    · rfl
+    · exact ih _
+
+lemma takeWhile_append_dropWhile {α : Type _} (p : α → Bool) (l : List α) :
+  l.takeWhile p ++ l.dropWhile p = l := by
+  induction l with
+  | nil => rfl
+  | cons x xs ih =>
+    dsimp [List.takeWhile, List.dropWhile]
+    split
+    · dsimp
+      rw [ih]
+    · rfl
+
+lemma trim_trailing_zeros_append (l : List ℕ) :
+  (trim_trailing_zeros l) ++ (l.reverse.takeWhile (fun y => y = 0)).reverse = l := by
+  have h := takeWhile_append_dropWhile (fun y => y = 0) l.reverse
+  have h_rev := congr_arg List.reverse h
+  rw [List.reverse_append, List.reverse_reverse] at h_rev
+  exact h_rev
+
+lemma B_all_zero (l : List ℕ) (x : ℕ) (hx : x ∈ (l.reverse.takeWhile (fun y => y = 0)).reverse) :
+  x = 0 := by
+  rw [List.mem_reverse] at hx
+  have h_dec := List.mem_takeWhile_imp hx
+  exact of_decide_eq_true h_dec
+
+lemma getD_trim_trailing_zeros (l : List ℕ) (j : ℕ) :
+  (trim_trailing_zeros l)[j]?.getD 0 = l[j]?.getD 0 := by
+  have h_eq := trim_trailing_zeros_append l
+  nth_rw 2 [← h_eq]
+  rw [getD_append_zero_list _ _ (B_all_zero l)]
+
+lemma getD_zipWith_add (A B : List ℕ) (h : A.length = B.length) (j : ℕ) :
+  (List.zipWith Nat.add A B)[j]?.getD 0 = A[j]?.getD 0 + B[j]?.getD 0 := by
+  induction' A with x xs ih generalizing B j
+  · dsimp at h
+    have : B = [] := by cases B <;> [rfl; contradiction]
+    subst this
+    rfl
+  · cases B with
+    | nil => contradiction
+    | cons y ys =>
+      dsimp at h
+      have hlen : xs.length = ys.length := by omega
+      cases j with
+      | zero => rfl
+      | succ j =>
+        dsimp
+        exact ih ys hlen j
+
+lemma getD_concat_zero (A : List ℕ) (j : ℕ) :
+  (A ++ [0])[j]?.getD 0 = A[j]?.getD 0 := by
+  induction' A with x xs ih generalizing j
+  · cases j <;> rfl
+  · dsimp
+    cases j
+    · rfl
+    · exact ih _
+
+lemma getD_map_zero {α β : Type _} (f : α → β) (dα : α) (dβ : β) (h_f : f dα = dβ) (L : List α) (j : ℕ) :
+  (L.map f)[j]?.getD dβ = f (L[j]?.getD dα) := by
+  induction' L with x xs ih generalizing j
+  · dsimp
+    rw [h_f]
+  · cases j
+    · rfl
+    · exact ih _
+
+lemma ca_step_global_eq_config_step (L : List ℕ) (j : ℕ) :
+  (ca_step_global L)[j]?.getD 0 = config_step (fun x => L[x]?.getD 0) j := by
+  unfold ca_step_global config_step
+  dsimp
+  rw [getD_trim_trailing_zeros]
+  have hlen : (L.map half_ceil ++ [0]).length = (0 :: L.map half_floor).length := by
+    simp
+  rw [getD_zipWith_add _ _ hlen j]
+  rw [getD_concat_zero]
+  have h_ceil : half_ceil 0 = 0 := rfl
+  have h_floor : half_floor 0 = 0 := rfl
+  rw [getD_map_zero half_ceil 0 0 h_ceil]
+  cases j
+  · dsimp
+    rfl
+  · dsimp [getD]
+    rw [getD_map_zero half_floor 0 0 h_floor]
+    rfl
+
+def S_global (n : ℕ) (t : ℕ) : List ℕ :=
+  (List.range t).foldl (fun acc _ => ca_step_global acc) [n]
+
+def S_func : ℕ → ℕ → ℕ → ℕ
+  | n, 0 => fun j => if j = 0 then n else 0
+  | n, t + 1 => config_step (S_func n t)
+
+lemma S_global_succ (n t : ℕ) : S_global n (t + 1) = ca_step_global (S_global n t) := by
+  unfold S_global
+  rw [List.range_succ, List.foldl_append]
+  rfl
+
+lemma S_global_eq_S_func (n t : ℕ) (j : ℕ) :
+  (S_global n t)[j]?.getD 0 = S_func n t j := by
+  induction' t with t ih generalizing j
+  · dsimp [S_global, S_func]
+    cases j
+    · rfl
+    · rfl
+  · rw [S_global_succ, ca_step_global_eq_config_step]
+    have h_fun : (fun x => (S_global n t)[x]?.getD 0) = S_func n t := by
+      ext x
+      exact ih x
+    rw [h_fun]
+    rfl
+
+lemma config_step_mono (C1 C2 : ℕ → ℕ) (h : ∀ j, C1 j ≤ C2 j) :
+  ∀ j, config_step C1 j ≤ config_step C2 j := by
+  intro j
+  unfold config_step
+  split_ifs
+  · have h0 := h 0
+    omega
+  · have h1 := h j
+    have h2 := h (j - 1)
+    omega
+
+lemma config_step_add_one (C : ℕ → ℕ) (p : ℕ) :
+  ∃ p', config_step (fun j => C j + (if j = p then 1 else 0)) =
+       fun j => config_step C j + (if j = p' then 1 else 0) := by
+  use (if C p % 2 = 0 then p else p + 1)
+  ext j
+  unfold config_step
+  dsimp
+  split_ifs <;> (try subst_vars) <;> omega
+
+lemma S_func_add_one (n : ℕ) (t : ℕ) :
+  ∃ p, S_func (n + 1) t = fun j => S_func n t j + (if j = p then 1 else 0) := by
+  induction' t with t ih
+  · use 0
+    ext j
+    dsimp [S_func]
+    split_ifs <;> omega
+  · rcases ih with ⟨p, hp⟩
+    dsimp [S_func]
+    rw [hp]
+    exact config_step_add_one (S_func n t) p
+
+lemma config_step_stable (n : ℕ) :
+  config_step (fun j => if j < n then 1 else 0) = fun j => if j < n then 1 else 0 := by
+  ext j
+  unfold config_step
+  dsimp
+  split_ifs <;> omega
+
+def initial_segment (C : ℕ → ℕ) : Prop :=
+  ∀ i j, i < j → C j > 0 → C i > 0
+
+lemma initial_segment_step (C : ℕ → ℕ) (hC : initial_segment C) :
+  initial_segment (config_step C) := by
+  intro i j hij hj
+  unfold config_step at hj ⊢
+  split_ifs at hj ⊢ <;> (try subst_vars) <;> (try omega)
+  · -- j > 0, i = 0
+    have h_or : C j > 0 ∨ C (j - 1) > 0 := by
+      by_contra! h_and
+      have h1 : C j = 0 := by omega
+      have h2 : C (j - 1) = 0 := by omega
+      rw [h1, h2] at hj
+      revert hj
+      decide
+    have hk : ∃ k, (k = j ∨ k = j - 1) ∧ C k > 0 := by
+      rcases h_or with h1 | h2
+      · use j; omega
+      · use j - 1; omega
+    rcases hk with ⟨k, hk_eq, hk_gt⟩
+    have hC0 : C 0 > 0 := by
+      rcases eq_or_lt_of_le (Nat.zero_le k) with rfl | hk_pos
+      · exact hk_gt
+      · exact hC 0 k hk_pos hk_gt
+    generalize hC0_val : C 0 = x at hC0 ⊢
+    omega
+  · -- j > 0, i > 0
+    have h_or : C j > 0 ∨ C (j - 1) > 0 := by
+      by_contra! h_and
+      have h1 : C j = 0 := by omega
+      have h2 : C (j - 1) = 0 := by omega
+      rw [h1, h2] at hj
+      revert hj
+      decide
+    have hk : ∃ k, (k = j ∨ k = j - 1) ∧ C k > 0 := by
+      rcases h_or with h1 | h2
+      · use j; omega
+      · use j - 1; omega
+    rcases hk with ⟨k, hk_eq, hk_gt⟩
+    have hC_i : C i > 0 := by
+      rcases lt_or_ge i k with hik | h_ge
+      · exact hC i k hik hk_gt
+      · have : i = k := by omega
+        subst this
+        exact hk_gt
+    generalize hC_val : C i = x at hC_i ⊢
+    omega
+
+lemma S_func_initial_segment (n t : ℕ) :
+  initial_segment (S_func n t) := by
+  induction' t with t ih
+  · dsimp [S_func, initial_segment]
+    intro i j hij hj
+    split_ifs at hj ⊢ <;> (try subst_vars) <;> omega
+  · exact initial_segment_step (S_func n t) ih
+
+lemma sum_ge_getD (L : List ℕ) (j : ℕ) : L.sum ≥ L[j]?.getD 0 := by
+  induction' L with x xs ih generalizing j
+  · rfl
+  · cases j with
+    | zero =>
+      change x + xs.sum ≥ x
+      omega
+    | succ r =>
+      change x + xs.sum ≥ xs[r]?.getD 0
+      have := ih r
+      omega
+
+lemma sum_ge_of_ge_one (L : List ℕ) (n : ℕ) (h : ∀ j < n, L[j]?.getD 0 ≥ 1) : L.sum ≥ n := by
+  induction' L with x xs ih generalizing n
+  · by_cases hn : n = 0
+    · subst hn; rfl
+    · have h0 : ([] : List ℕ)[0]?.getD 0 ≥ 1 := h 0 (by omega)
+      dsimp at h0
+      omega
+  · cases n with
+    | zero => omega
+    | succ s =>
+      dsimp
+      have hx : x ≥ 1 := h 0 (by omega)
+      have h_xs : ∀ j < s, xs[j]?.getD 0 ≥ 1 := by
+        intro j hj
+        have h_j1 := h (j + 1) (by omega)
+        exact h_j1
+      have ih_s := ih s h_xs
+      omega
+
+lemma sum_gt_of_extra_gt (L : List ℕ) (n : ℕ) (h : ∀ j < n, L[j]?.getD 0 ≥ 1)
+  (j : ℕ) (hj : j ≥ n) (hj2 : L[j]?.getD 0 ≥ 1) : L.sum ≥ n + 1 := by
+  induction' L with x xs ih generalizing n j
+  · have h0 : ([] : List ℕ)[j]?.getD 0 ≥ 1 := hj2
+    dsimp at h0
+    omega
+  · cases n with
+    | zero =>
+      have h_sum_ge := sum_ge_getD (x :: xs) j
+      omega
+    | succ s =>
+      cases j with
+      | zero => omega
+      | succ r =>
+        change x + xs.sum ≥ s + 2
+        have hx : x ≥ 1 := h 0 (by omega)
+        have h_xs : ∀ j < s, xs[j]?.getD 0 ≥ 1 := by
+          intro j hj
+          have h_j1 := h (j + 1) (by omega)
+          exact h_j1
+        have hj_r : r ≥ s := by omega
+        have hj2_r : xs[r]?.getD 0 ≥ 1 := by
+          change (x :: xs)[r + 1]?.getD 0 ≥ 1 at hj2
+          exact hj2
+        have ih_s := ih s h_xs r hj_r hj2_r
+        omega
+
+lemma sum_gt_of_any_gt (L : List ℕ) (n : ℕ) (h : ∀ j < n, L[j]?.getD 0 ≥ 1)
+  (k : ℕ) (hk : k < n) (hk2 : L[k]?.getD 0 ≥ 2) : L.sum ≥ n + 1 := by
+  induction' L with x xs ih generalizing n k
+  · have h0 : ([] : List ℕ)[k]?.getD 0 ≥ 2 := hk2
+    dsimp at h0
+    omega
+  · cases n with
+    | zero => omega
+    | succ s =>
+      dsimp
+      cases k with
+      | zero =>
+        have hx : x ≥ 2 := hk2
+        have h_xs : ∀ j < s, xs[j]?.getD 0 ≥ 1 := by
+          intro j hj
+          have h_j1 := h (j + 1) (by omega)
+          exact h_j1
+        have h_xs_sum := sum_ge_of_ge_one xs s h_xs
+        omega
+      | succ r =>
+        have hx : x ≥ 1 := h 0 (by omega)
+        have h_xs : ∀ j < s, xs[j]?.getD 0 ≥ 1 := by
+          intro j hj
+          have h_j1 := h (j + 1) (by omega)
+          exact h_j1
+        have h_xs_gt : xs[r]?.getD 0 ≥ 2 := hk2
+        have h_xs_sum := ih s h_xs r (by omega) h_xs_gt
+        omega
+
+lemma sum_zero_list (B : List ℕ) (hB : ∀ x ∈ B, x = 0) : B.sum = 0 := by
+  induction' B with y ys ih
+  · rfl
+  · have hy : y = 0 := hB y (by simp)
+    have hys : ∀ x ∈ ys, x = 0 := fun x hx => hB x (by simp [hx])
+    subst hy
+    dsimp
+    have := ih hys
+    omega
+
+lemma sum_append_zero_list (A B : List ℕ) (hB : ∀ x ∈ B, x = 0) :
+  (A ++ B).sum = A.sum := by
+  rw [List.sum_append, sum_zero_list B hB]
+  omega
+
+lemma trim_trailing_zeros_sum (l : List ℕ) : (trim_trailing_zeros l).sum = l.sum := by
+  have h_eq := trim_trailing_zeros_append l
+  nth_rw 2 [← h_eq]
+  rw [sum_append_zero_list _ _ (B_all_zero l)]
+
+lemma sum_zipWith_add (A B : List ℕ) (h : A.length = B.length) :
+  (List.zipWith Nat.add A B).sum = A.sum + B.sum := by
+  induction' A with x xs ih generalizing B
+  · dsimp at h
+    have : B = [] := by cases B <;> [rfl; contradiction]
+    subst this
+    rfl
+  · cases B with
+    | nil => contradiction
+    | cons y ys =>
+      dsimp at h
+      have hlen : xs.length = ys.length := by omega
+      dsimp
+      rw [ih ys hlen]
+      omega
+
+lemma sum_map_ceil_floor (L : List ℕ) :
+  (L.map half_ceil).sum + (L.map half_floor).sum = L.sum := by
+  induction' L with x xs ih
+  · rfl
+  · dsimp
+    have h_ceil_floor : half_ceil x + half_floor x = x := by
+      unfold half_ceil half_floor
+      omega
+    omega
+
+lemma ca_step_global_sum (L : List ℕ) : (ca_step_global L).sum = L.sum := by
+  unfold ca_step_global
+  rw [trim_trailing_zeros_sum]
+  have hlen : (L.map half_ceil ++ [0]).length = (0 :: L.map half_floor).length := by
+    simp
+  rw [sum_zipWith_add _ _ hlen]
+  have h1 := sum_map_ceil_floor L
+  simp
+  omega
+
+lemma S_global_sum (n t : ℕ) : (S_global n t).sum = n := by
+  induction' t with t ih
+  · dsimp [S_global]
+  · rw [S_global_succ, ca_step_global_sum, ih]
+
+lemma eq_zero_of_sum_and_ge (L : List ℕ) (n : ℕ) (h_sum : L.sum = n) (h : ∀ j < n, L[j]?.getD 0 ≥ 1) :
+  ∀ j ≥ n, L[j]?.getD 0 = 0 := by
+  intro j hj
+  by_contra h_ne
+  have h_gt : L[j]?.getD 0 ≥ 1 := by omega
+  have h_sum_gt := sum_gt_of_extra_gt L n h j hj h_gt
+  omega
+
+lemma eq_one_of_sum_and_ge (L : List ℕ) (n : ℕ) (h_sum : L.sum = n) (h : ∀ j < n, L[j]?.getD 0 ≥ 1) :
+  ∀ j < n, L[j]?.getD 0 = 1 := by
+  intro j hj
+  by_contra h_ne
+  have hj_ge := h j hj
+  have h_gt : L[j]?.getD 0 ≥ 2 := by omega
+  have h_sum_gt := sum_gt_of_any_gt L n h j hj h_gt
+  omega
+
+lemma a_mono_helper (n t : ℕ) (p : ℕ)
+  (h_eq : ∀ j, S_func n t j + (if j = p then 1 else 0) = if j < n + 1 then 1 else 0) :
+  S_func n t n = 0 := by
+  by_contra h_gt
+  have h_gt0 : S_func n t n > 0 := by omega
+  have h_p_ge : p ≥ n := by
+    by_contra h_lt
+    have hp_lt : p < n := by omega
+    have h_pos : S_func n t p > 0 := S_func_initial_segment n t p n hp_lt h_gt0
+    have h_eq_p := h_eq p
+    split_ifs at h_eq_p <;> omega
+  have hp_eq : p = n := by
+    by_contra hp_ne
+    have hp_gt : p > n := by omega
+    have h_eq_p := h_eq p
+    split_ifs at h_eq_p <;> omega
+  have h_eq_n := h_eq n
+  split_ifs at h_eq_n <;> omega
+
+lemma a_mono_helper_2 (n t : ℕ) (p : ℕ)
+  (h_eq : ∀ j, S_func n t j + (if j = p then 1 else 0) = if j < n + 1 then 1 else 0)
+  (h_sn_n : S_func n t n = 0) :
+  p = n ∧ S_func n t = fun j => if j < n then 1 else 0 := by
+  have hp_eq : p = n := by
+    have h_eq_n := h_eq n
+    split_ifs at h_eq_n <;> omega
+  constructor
+  · exact hp_eq
+  · ext j
+    have h_eq_j := h_eq j
+    split_ifs at h_eq_j ⊢ <;> omega
+
+/--
+Conjecture A300997: The finite difference of this sequence only contains 1's and 2's.
+Specifically, $\forall n \ge 1, a(n+1) - a(n) \in \{1, 2\}$.
+It is also conjectured that $a(n) = 2n - \sum_{k=1}^{n} I(k}$ where $I(n)$ is the indicator function of some other sequence (A305992).
+-/
+lemma S_func_stable_ind (n : ℕ) (k : ℕ) (hk : S_func n k = fun j => if j < n then 1 else 0) (p : ℕ) (hp : p ≤ n) (d : ℕ) :
+  S_func (n + 1) (k + d) = fun j => (if j < n then 1 else 0) + (if j = if p + d < n then p + d else n then 1 else 0) := by
+  induction' d with d ih
+  · dsimp
+    have h_min : (if p + 0 < n then p + 0 else n) = p := by
+      split_ifs <;> omega
+    rw [h_min]
+    -- wait, we need to connect S_func (n+1) k to C_stable, n + e_p
+    sorry
+

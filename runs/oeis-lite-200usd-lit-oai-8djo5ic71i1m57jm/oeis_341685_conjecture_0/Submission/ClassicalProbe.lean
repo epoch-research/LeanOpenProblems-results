@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check Classical.choice
+#check Classical.decEq
+#check Classical.propComplete
+#check Classical.em
+#check Classical.dec
+#check Classical.indefiniteDescription
+#check Classical.choice_of_decidable
+#check propComplete
+#check choice
+#check epsilon

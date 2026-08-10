@@ -1,0 +1,23 @@
+Precomputing cell values for M = 720 (excluding prime 3)...
+Precomputation done. Total subgrid cells: 129600
+--- Run 0 ---
+Run 0 finished. Best uncovered: 19780
+--- Run 1 ---
+Run 1 finished. Best uncovered: 22187
+--- Run 2 ---
+Run 2 finished. Best uncovered: 19773
+--- Run 3 ---
+Run 3 finished. Best uncovered: 22244
+--- Run 4 ---
+Run 4 finished. Best uncovered: 22478
+--- Run 5 ---
+Run 5 finished. Best uncovered: 19736
+--- Run 6 ---
+Run 6 finished. Best uncovered: 19793
+--- Run 7 ---
+Run 7 finished. Best uncovered: 22519
+--- Run 8 ---
+Run 8 finished. Best uncovered: 20684
+--- Run 9 ---
+Run 9 finished. Best uncovered: 19794
+Total time: 330 seconds.

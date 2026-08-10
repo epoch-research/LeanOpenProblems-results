@@ -1,0 +1,22 @@
+
+theorem key : ∀ n : ℕ, 45 ≤ n → 2 ≤ a n := by
+  sorry
+
+theorem oeis_238585_conjecture_i :
+  (∀ n : ℕ, n > 0 → (a n > 0 ↔ ¬ (n ∣ 6))) ∧
+  (∀ n : ℕ, n > 0 → (a n = 1 ↔ n = 4 ∨ n = 5 ∨ n = 7 ∨ n = 10 ∨ n = 11 ∨ n = 12 ∨ n = 19 ∨ n = 21 ∨ n = 22 ∨ n = 31 ∨ n = 42 ∨ n = 44)) := by
+  refine ⟨?_, ?_⟩
+  · intro n hn
+    rcases lt_or_ge n 45 with h | h
+    · interval_cases n <;> simp_all [ha1, ha2, ha3, ha4, ha5, ha6, ha7, ha8, ha9, ha10, ha11, ha12, ha13, ha14, ha15, ha16, ha17, ha18, ha19, ha20, ha21, ha22, ha23, ha24, ha25, ha26, ha27, ha28, ha29, ha30, ha31, ha32, ha33, ha34, ha35, ha36, ha37, ha38, ha39, ha40, ha41, ha42, ha43, ha44]
+    · have hk := key n h
+      refine ⟨fun _ hdvd => ?_, fun _ => ?_⟩
+      · have hle := Nat.le_of_dvd (by norm_num) hdvd; omega
+      · omega
+  · intro n hn
+    rcases lt_or_ge n 45 with h | h
+    · interval_cases n <;> simp_all [ha1, ha2, ha3, ha4, ha5, ha6, ha7, ha8, ha9, ha10, ha11, ha12, ha13, ha14, ha15, ha16, ha17, ha18, ha19, ha20, ha21, ha22, ha23, ha24, ha25, ha26, ha27, ha28, ha29, ha30, ha31, ha32, ha33, ha34, ha35, ha36, ha37, ha38, ha39, ha40, ha41, ha42, ha43, ha44]
+    · have hk := key n h
+      refine ⟨fun h1 => ?_, fun hmem => ?_⟩
+      · omega
+      · rcases hmem with rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl|rfl <;> omega

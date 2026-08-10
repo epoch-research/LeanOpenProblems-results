@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Transcendental.of_aeval
+#check Transcendental.aeval
+#check Transcendental.aeval_of_transcendental
+#check IsAlgebraic.of_aeval
+#check IsAlgebraic.of_aeval_of_transcendental
+#check Polynomial.transcendental_X
+#print Transcendental.of_aeval
+#print IsAlgebraic.of_aeval_of_transcendental

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_179537_conjecture_sun_part2b_mod_p_sq",
+  "epoch": 1,
+  "uuid": "fgP9xtZbRGrZqjN7hXNy5G",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 191000,
+      "output_tokens": 6686,
+      "total_tokens": 537437,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 331139,
+      "reasoning_tokens": 8612,
+      "total_cost": 0.39634484999999997
+    }
+  },
+  "oeis_id": "A179537"
+}

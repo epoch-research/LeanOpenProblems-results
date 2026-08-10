@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.ModEq
+#check Nat.ModEq.pow
+#check Nat.ModEq.mul
+#check Nat.ModEq.add
+#check Nat.ModEq.symm
+#check Nat.ModEq.trans
+#check Nat.ModEq.of_dvd
+#check Nat.ModEq.dvd
+#check Nat.ModEq_iff_dvd
+#check Int.ModEq
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check Nat.choose_modEq_prod_range_choose_nat
+#check Choose.lucas_theorem_nat

@@ -1,0 +1,12 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  oeis_352627_conjecture_1 : ∀ (n : ℕ), 0 < a n
+  Submission/Spec.lean:127:7: error: Type mismatch
+    representation_exists
+  has type
+    ∀ (n : ℕ),
+      ∃ x y z w, (fun x y => if y < 75 then x = y else True) (x ^ 2 + 2 * y ^ 2 + z ^ 4 + 4 * w ^ 4 + z ^ 2 * w ^ 2) n
+  but is expected to have type
+    ∀ (n : ℕ), ∃ x y z w, x ^ 2 + 2 * y ^ 2 + z ^ 4 + 4 * w ^ 4 + z ^ 2 * w ^ 2 = n
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_53000_conjecture_1",
+  "epoch": 1,
+  "uuid": "Xj86cSC3UdxKSDWNfh2r3p",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 80561139,
+      "output_tokens": 903650,
+      "total_tokens": 561951932,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 474410859,
+      "reasoning_tokens": 6076284,
+      "total_cost": 200.13618735000085
+    }
+  },
+  "oeis_id": "A053000"
+}

@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.ModEq
+#check Nat.ModEq.pow
+#check Nat.ModEq.add
+#check Nat.ModEq.mul
+#check Nat.ModEq.of_dvd
+#check Nat.modEq_iff_dvd
+#check Nat.dvd_iff_mod_eq_zero
+#check pow_dvd_pow
+#check Nat.pow_dvd_pow
+#check Nat.mod_eq_of_lt
+#check Nat.mod_eq_of_lt
+#check Nat.testBit_mod_two_pow

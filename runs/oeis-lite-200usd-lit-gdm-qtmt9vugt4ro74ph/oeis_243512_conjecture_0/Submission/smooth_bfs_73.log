@@ -1,0 +1,6 @@
+Starting smooth BFS search with 25 primes up to 500000000000...
+Processed 10000000 smooth numbers, current g = 13191441120
+Processed 20000000 smooth numbers, current g = 61065874144
+Processed 30000000 smooth numbers, current g = 153315169623
+Processed 40000000 smooth numbers, current g = 297840541365
+Finished BFS. Found 0/2

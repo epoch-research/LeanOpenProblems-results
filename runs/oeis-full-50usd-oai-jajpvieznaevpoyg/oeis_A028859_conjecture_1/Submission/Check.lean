@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Finset.mem_disjUnion
+#check Finset.coe_disjUnion
+#check Finset.card_disjUnion
+#check Finset.card_map
+#check Finset.coe_map
+#check Finset.mem_map
+#check Finset.disjoint_left
+#check disjoint_left
+#check Set.ext

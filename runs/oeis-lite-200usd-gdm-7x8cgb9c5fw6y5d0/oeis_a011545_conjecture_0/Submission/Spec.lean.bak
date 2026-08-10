@@ -1,0 +1,149 @@
+import FormalConjectures.Util.ProblemImports
+
+
+open Real Int
+
+/--
+A011545: $a(n)$ is the integer whose decimal digits are the first $n+1$ decimal digits of $\pi$.
+This is equivalent to $a(n) = \lfloor \pi \cdot 10^n \rfloor$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  -- The calculation is $\lfloor \pi \cdot 10^n \rfloor$.
+  -- We use Real.floor, which returns an Int, and convert it to a natural number.
+  (floor (Real.pi * (10 : ℝ) ^ n.cast)).toNat
+
+lemma unique_integer (x : ℝ) (k : ℤ) (h1 : x < (k : ℝ)) (h2 : (k : ℝ) < x + 1) : k = ⌊x⌋ + 1 := by
+  have h_floor : ⌊x⌋ = k - 1 := by
+    rw [Int.floor_eq_iff]
+    push_cast
+    constructor
+    · linarith [h2]
+    · linarith [h1]
+  omega
+
+theorem arctan_gt_rational_bound (x : ℝ) (hx : 0 < x) :
+    x / (1 + x ^ 2) < Real.arctan x := by
+  let z := Real.arctan x
+  have h_pos : 0 < z := by
+    rw [← arctan_zero]
+    exact arctan_strictMono hx
+  have h_lt : z < π / 2 := arctan_lt_pi_div_two x
+  have h_two_z_pos : 0 < 2 * z := mul_pos zero_lt_two h_pos
+  have h_sin := sin_lt h_two_z_pos
+  have h_sin_double : sin (2 * z) = 2 * sin z * cos z := sin_two_mul z
+  rw [h_sin_double] at h_sin
+  have h_div : sin z * cos z < z := by
+    linarith [h_sin]
+  have h_sin_eq : sin z = x / √(1 + x ^ 2) := sin_arctan x
+  have h_cos_eq : cos z = 1 / √(1 + x ^ 2) := cos_arctan x
+  have h_mul : sin z * cos z = x / (1 + x ^ 2) := by
+    rw [h_sin_eq, h_cos_eq]
+    have h_sqrt_pos : 0 ≤ 1 + x ^ 2 := by positivity
+    rw [div_mul_div_comm, mul_one, mul_self_sqrt h_sqrt_pos]
+  rw [h_mul] at h_div
+  exact h_div
+
+theorem pi_div_arctan_lt (x : ℝ) (hx : 0 < x) :
+    Real.pi / Real.arctan x < Real.pi / x + Real.pi * x := by
+  have h_arctan_pos : 0 < Real.arctan x := by
+    rw [← Real.arctan_zero]
+    exact Real.arctan_strictMono hx
+  have h_bound := arctan_gt_rational_bound x hx
+  have h_rational_pos : 0 < x / (1 + x ^ 2) := by positivity
+  have h_inv : (Real.arctan x)⁻¹ < (x / (1 + x ^ 2))⁻¹ := by
+    rwa [inv_lt_inv₀ h_arctan_pos h_rational_pos]
+  have h_inv_eq : (x / (1 + x ^ 2))⁻¹ = 1 / x + x := by
+    rw [inv_div]
+    have hx_ne : x ≠ 0 := ne_of_gt hx
+    field_simp
+  rw [h_inv_eq] at h_inv
+  have h_pi_pos : 0 < Real.pi := Real.pi_pos
+  have h_mul : (Real.arctan x)⁻¹ * Real.pi < (1 / x + x) * Real.pi := by
+    exact mul_lt_mul_of_pos_right h_inv h_pi_pos
+  rw [div_eq_mul_inv, mul_comm]
+  have h_target : (1 / x + x) * Real.pi = Real.pi / x + Real.pi * x := by
+    rw [add_mul, one_div, mul_comm x, mul_comm (x⁻¹)]
+    rfl
+  rw [h_target] at h_mul
+  exact h_mul
+
+lemma pi_div_arctan_lt_pi_mul_add_one (n : ℕ) (hn : 1 ≤ n) :
+    Real.pi / Real.arctan (1 / (10 : ℝ) ^ (n : ℝ)) < Real.pi * (10 : ℝ) ^ (n : ℝ) + 1 := by
+  let x := (1 / (10 : ℝ) ^ (n : ℝ))
+  have hx_pos : 0 < x := by positivity
+  have h_bound := pi_div_arctan_lt x hx_pos
+  have h_div_x : Real.pi / x = Real.pi * (10 : ℝ) ^ (n : ℝ) := by
+    rw [div_eq_mul_one_div]
+    have h_one_div : 1 / x = (10 : ℝ) ^ (n : ℝ) := by
+      rw [one_div_one_div]
+    rw [h_one_div]
+  rw [h_div_x] at h_bound
+  have h_mul_x : Real.pi * x = Real.pi / (10 : ℝ) ^ (n : ℝ) := by
+    rw [mul_one_div]
+  rw [h_mul_x] at h_bound
+  have h_pi_div_lt : Real.pi / (10 : ℝ) ^ (n : ℝ) < 1 := by
+    have h_ten_pow : 10 ≤ (10 : ℝ) ^ (n : ℝ) := by
+      have h_cast : (1 : ℝ) ≤ (n : ℝ) := by exact_mod_cast hn
+      have h_mono : (10 : ℝ) ^ (1 : ℝ) ≤ (10 : ℝ) ^ (n : ℝ) := by
+        exact rpow_le_rpow_of_exponent_le (x := 10) (by norm_num) h_cast
+      rwa [rpow_one] at h_mono
+    have h_pi_lt : Real.pi < 10 := by
+      have h_four : Real.pi < 4 := Real.pi_lt_four
+      linarith
+    have h_pi_lt_ten_pow : Real.pi < (10 : ℝ) ^ (n : ℝ) := by
+      linarith
+    exact (div_lt_one (by positivity)).mpr h_pi_lt_ten_pow
+  linarith [h_bound, h_pi_div_lt]
+
+/--
+A property which is equivalent to the conjecture that the number of collisions
+in the described physical system (with mass ratio $10^{2n}$) is $a(n)$:
+the interval $(\pi \cdot 10^n, \pi / \arctan(1/10^n))$ does not contain an integer.
+The mass ratio $m$ in the comment is interpreted as $\frac{M}{m}$ in the physics setup,
+which is $10^{2n}$, so $\sqrt{m}=10^n$.
+
+Note: The OEIS comment uses $m=10^n$ for the $R^2$ term where $R=10^n$ in the physics formula.
+We formalize the statement $\forall n \in \mathbb{N}, \nexists k \in \mathbb{Z}$ such that
+$\pi \cdot 10^n < k < \pi / \arctan(1/10^n)$.
+-/
+theorem oeis_a011545_conjecture_0 (n : ℕ) :
+    ¬ ∃ (k : ℤ),
+      (Real.pi * (10 : ℝ) ^ n.cast < k.cast) ∧
+      (k.cast < Real.pi / Real.arctan (1 / (10 : ℝ) ^ n.cast)) := by
+  rcases n with _ | n
+  · -- Case n = 0
+    intro h
+    rcases h with ⟨k, hk1, hk2⟩
+    norm_num at hk1 hk2
+    have hk1' : 3 < (k : ℝ) := by
+      have h_pi_gt_three : 3 < Real.pi := Real.pi_gt_three
+      linarith
+    have hk_int : 3 < k ∧ k < 4 := by
+      constructor
+      · exact_mod_cast hk1'
+      · exact_mod_cast hk2
+    omega
+  · -- Case n >= 1
+    intro h
+    rcases h with ⟨k, hk1, hk2⟩
+    rw [Nat.cast_id] at hk1 hk2
+    rw [← Real.rpow_natCast] at hk1 hk2
+    have h_n_cast : ((n + 1 : ℕ) : ℝ) = (n : ℝ) + 1 := by norm_cast
+    rw [h_n_cast] at hk1 hk2
+    have h_bound := pi_div_arctan_lt_pi_mul_add_one (n + 1) (by omega)
+    rw [h_n_cast] at h_bound
+    have hk2_trans := hk2.trans h_bound
+    -- Now hk2_trans : k.cast < Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1) + 1
+    have hk_diff_pos : 0 < (k : ℝ) - Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1) := by linarith [hk1]
+    have hk_diff_lt : (k : ℝ) - Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1) < Real.pi / (10 : ℝ) ^ ((n : ℝ) + 1) := by
+      have hx_pos : 0 < 1 / (10 : ℝ) ^ ((n : ℝ) + 1) := by positivity
+      have h_bound' := pi_div_arctan_lt (1 / (10 : ℝ) ^ ((n : ℝ) + 1)) hx_pos
+      have h_div_x : Real.pi / (1 / (10 : ℝ) ^ ((n : ℝ) + 1)) = Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1) := by
+        rw [div_eq_mul_one_div, one_div_one_div]
+      have h_mul_x : Real.pi * (1 / (10 : ℝ) ^ ((n : ℝ) + 1)) = Real.pi / (10 : ℝ) ^ ((n : ℝ) + 1) := by
+        rw [mul_one_div]
+      rw [h_div_x, h_mul_x] at h_bound'
+      have hk2_lt : (k : ℝ) < Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1) + Real.pi / (10 : ℝ) ^ ((n : ℝ) + 1) := hk2.trans h_bound'
+      linarith
+    have hk_eq : k = ⌊Real.pi * (10 : ℝ) ^ ((n : ℝ) + 1)⌋ + 1 := unique_integer _ k hk1 hk2_trans
+    sorry

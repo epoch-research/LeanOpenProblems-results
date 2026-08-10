@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 5 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 33 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A274274_conjecture_i: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration A274274: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration representable_type_iii: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration has_form_two_pow_k_times_four_m_plus_one: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration representable_type_ii: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

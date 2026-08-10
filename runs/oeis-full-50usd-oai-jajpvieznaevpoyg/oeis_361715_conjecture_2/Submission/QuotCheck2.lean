@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Quotient.eq
+#check Quotient.eq'
+#check Quotient.eq''
+#check Quotient.exact
+#check Quotient.exact'
+#check Quotient.sound
+#check Quotient.sound'
+#print Quotient.eq
+#print Quotient.exact'

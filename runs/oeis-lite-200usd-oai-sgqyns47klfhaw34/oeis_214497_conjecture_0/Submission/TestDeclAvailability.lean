@@ -1,0 +1,8 @@
+import FormalConjectures.Util.ProblemImports
+
+#check ProblemAttributes.a_test_to_sanity_check_some_definition
+#check a_test_to_sanity_check_some_definition
+#print axioms ProblemAttributes.a_test_to_sanity_check_some_definition
+#print axioms a_test_to_sanity_check_some_definition
+#check AnswerLinter.flagged_by_linter
+#check flagged_by_linter

@@ -1,0 +1,23 @@
+{
+  "id": "A338238_infinitely_often_primorial_conjecture",
+  "epoch": 1,
+  "uuid": "JtJXXGJRSsBgKAWARfYJsN",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 636,
+      "output_tokens": 496517,
+      "total_tokens": 63468442,
+      "input_tokens_cache_write": 1071620,
+      "input_tokens_cache_read": 61899669,
+      "reasoning_tokens": 106496,
+      "total_cost": 50.06356450000003
+    }
+  },
+  "oeis_id": "A338238"
+}

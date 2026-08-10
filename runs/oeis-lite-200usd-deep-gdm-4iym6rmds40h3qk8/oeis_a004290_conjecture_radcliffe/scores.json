@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1182:18: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  u ≥ 1\n  t ≥ 1\n  s ≥ 1\n  r ≥ 1\n  q ≥ 1\n  p ≥ 1\n  o ≥ 0\n  m ≥ 1\n  -9 ≤ 9*m - p ≤ -1\n  l ≥ 1\n  j ≥ 1\n  j - o ≥ 0\n  -9 ≤ 9*i - q ≤ -1\n  -9 ≤ 9*i + 9*j - r ≤ -1\n  h ≥ 0\n  h - u ≤ -2\n  h + l ≥ 0\n  h + l - u ≤ -2\n  g ≥ 0\n  f ≥ 0\n  e - f ≥ 0\n  -9 ≤ 9*e - t ≤ -1\n  d ≥ 2\n  d ≥ 1\n  9*d - h - l ≤ 0\n  9*d - l ≤ 0\n  c ≥ 1\n  c - 9*d ≥ 0\n  c - s ≤ -2\n  c - u ≤ -2\nwhere\n c := ↑n\n d := ↑k\n e := ↑(10 ^ n - 1) / 9\n f := ↑(A004290 n)\n g := ↑((10 ^ ↑b - 1) / 9) % ↑n\n h := ↑↑a\n i := ↑(10 ^ ↑a - 1) / 9\n j := ↑(10 ^ ↑a) * ↑((10 ^ (↑b - ↑a) - 1) / 9)\n l := ↑(↑b - ↑a)\n m := ↑(10 ^ (↑b - ↑a) - 1) / 9\n o := ↑(sInf {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1})\n p := ↑10 ^ (↑b - ↑a)\n q := ↑10 ^ ↑a\n r := ↑10 ^ ↑b\n s := ↑2 ^ (9 * k - 1)\n t := ↑10 ^ n\n u := ↑10 ^ k\nSubmission/Spec.lean:1168:14: error: unsolved goals\ncase neg\nk n : ℕ\nhn : n < 10 ^ k - 1\nhk : ¬k = 0\nhk_pos : k > 0\nhn_zero : ¬n = 0\nhn_pos : n > 0\nh_le : A004290 n ≤ (10 ^ n - 1) / 9\nhn_lt : ¬n < 9 * k\nhk2 : k ≥ 2\nh_2pow : 2 ^ (9 * k - 1) - 1 > n\na b : Fin (10 ^ k - 1)\nhne : a ≠ b\nhab_mod : (10 ^ ↑a - 1) / 9 % n = (10 ^ ↑b - 1) / 9 % n\nhlt : ↑a < ↑b\nA : ℕ := (10 ^ ↑b - 1) / 9\nB : ℕ := (10 ^ ↑a - 1) / 9\nh_le_val : B ≤ A\nhdvd : n ∣ A - B\nM : ℕ := A - B\nh_M_eq : M = 10 ^ ↑a * ((10 ^ (↑b - ↑a) - 1) / 9)\nh_sub_pos : ↑b - ↑a > 0\nh_rep_pos : (10 ^ (↑b - ↑a) - 1) / 9 > 0\nh_M_pos : M > 0\nh_digits : ∀ d ∈ digits 10 M, d = 0 ∨ d = 1\nh_mem : M ∈ {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1}\nh_sInf : sInf {m | 0 < m ∧ n ∣ m ∧ ∀ d ∈ digits 10 m, d = 0 ∨ d = 1} ≤ M\nh_b_le : ¬↑b ≤ 9 * k - 1\nh_lt_nine_k : ↑b - ↑a < 9 * k\nM_small : ℕ := (10 ^ (↑b - ↑a) - 1) / 9\nhdvd_small : n ∣ M_small\n⊢ A004290 n ≤ (10 ^ (9 * k - 1) - 1) / 9\n'radcliffe_part3' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

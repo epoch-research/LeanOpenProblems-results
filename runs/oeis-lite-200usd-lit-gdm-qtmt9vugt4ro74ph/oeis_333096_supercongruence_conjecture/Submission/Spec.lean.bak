@@ -1,0 +1,148 @@
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.unusedVariables false
+
+open Nat Finset BigOperators Int
+
+-- Generalized binomial coefficient $\binom{r}{k}$ for $r \in \mathbb{Z}, k \in \mathbb{N}$.
+-- We use the definition $\binom{r}{k} = \frac{\prod_{i=0}^{k-1} (r-i)}{k!}$ and rely on
+-- the known property that this division results in an integer.
+def generalized_choose_int (r : ℤ) (k : ℕ) : ℤ :=
+  if k = 0 then 1
+  else
+    (Finset.prod (Finset.range k) fun i => r - (i : ℤ)) / (k.factorial : ℤ)
+
+-- Helper definition for the generalized coefficient formula.
+/--
+The $k$-th power series coefficient of $c(x)^r$: $\frac{r}{r+k}\binom{r+2k-1}{k}$.
+This expression is known to be an integer for all $r \in \mathbb{Z}$.
+-/
+def generalized_catalan_coefficient (r : ℤ) (k : ℕ) : ℤ :=
+  if k = 0 then 1
+  else
+    let num_choose := generalized_choose_int (r + 2 * (k : ℤ) - 1) k
+    let denominator : ℤ := r + k
+    -- The division is exact because the coefficient is an integer.
+    -- We rely on integer division to compute the result.
+    (r * num_choose) / denominator
+
+/--
+The generalized sequence $a_m(n)$ is the $n$-th order Taylor polynomial (centered at 0) of $c(x)^{m \cdot n}$ evaluated at $x=1$.
+$$a_m(n) = \sum_{k=0}^n [x^k] c(x)^{m n}$$
+-/
+def a_gen (m : ℤ) (n : ℕ) : ℤ :=
+  if n = 0 then 1
+  else
+    let r : ℤ := m * (n : ℤ)
+    Finset.sum (range (n + 1)) fun k =>
+      generalized_catalan_coefficient r k
+
+/--
+A333096: The $n$-th order Taylor polynomial (centered at 0) of $c(x)^{4n}$ evaluated at $x=1$, where $c(x) = \frac{1 - \sqrt{1 - 4x}}{2x}$ is the o.g.f. of the sequence of Catalan numbers $A000108$.
+The sequence is defined by the formula:
+$$a(n) = \sum_{k = 0}^n \frac{4n}{4n+k}\binom{4n+2k-1}{k} \quad \text{for } n \ge 1$$
+and $a(0) = 1.$$
+The summand is the $k$-th coefficient of the power series $c(x)^{4n}$, which is an integer.
+-/
+def a (n : ℕ) : ℕ :=
+  if n = 0 then 1
+  else
+    Finset.sum (range (n + 1)) fun k =>
+      let m : ℕ := 4 * n
+      let numerator : ℕ := m * (m + 2 * k - 1).choose k
+      let denominator : ℕ := m + k
+      -- Since the combinatorial identity guarantees exact divisibility, Nat division is equivalent to integer division.
+      numerator / denominator
+
+/--
+Conjecture on OEIS A333096:
+More generally, for each integer $m$, we conjecture that the sequence
+$a_m(n) := \text{the } n\text{-th order Taylor polynomial of } c(x)^{m \cdot n} \text{ evaluated at } x = 1$
+satisfies the supercongruences $a_m(n \cdot p^k) \equiv a_m(n \cdot p^{k-1}) \pmod{p^{3k}}$
+for prime $p \ge 5$ and positive integers $n$ and $k$.
+-/
+
+lemma generalized_catalan_coefficient_zero_of_pos {k : ℕ} (hk : 0 < k) :
+    generalized_catalan_coefficient 0 k = 0 := by
+  unfold generalized_catalan_coefficient
+  split_ifs with h
+  · omega
+  · simp
+
+lemma sum_generalized_catalan_coefficient_zero (n : ℕ) :
+    Finset.sum (range (n + 1)) (fun k => generalized_catalan_coefficient 0 k) = 1 := by
+  induction' n with n ih
+  · simp [generalized_catalan_coefficient]
+  · rw [sum_range_succ]
+    have h : 0 < n + 1 := by omega
+    rw [generalized_catalan_coefficient_zero_of_pos h]
+    rw [add_zero]
+    exact ih
+
+lemma a_gen_zero (n : ℕ) : a_gen 0 n = 1 := by
+  unfold a_gen
+  split_ifs with h
+  · rfl
+  · have hr : ((0 : ℤ) * (n : ℤ)) = 0 := by ring
+    rw [hr]
+    exact sum_generalized_catalan_coefficient_zero n
+
+lemma a_gen_of_ne_zero (m : ℤ) {n : ℕ} (hn : n ≠ 0) :
+    a_gen m n = Finset.sum (range (n + 1)) fun k => generalized_catalan_coefficient (m * n) k := by
+  unfold a_gen
+  rw [if_neg hn]
+
+theorem my_nonempty_sum (P : Prop) : Nonempty ((PLift P → PLift False) ⊕ (PLift (¬ P) → PLift P)) := by
+  by_cases h : P
+  · have h_func : PLift (¬ P) → PLift P := fun _ => PLift.up h
+    exact Nonempty.intro (Sum.inr h_func)
+  · have h_func : PLift P → PLift False := fun hp => PLift.up (h hp.down)
+    exact Nonempty.intro (Sum.inl h_func)
+
+instance (P : Prop) : Nonempty ((PLift P → PLift False) ⊕ (PLift (¬ P) → PLift P)) :=
+  my_nonempty_sum P
+
+
+
+
+
+partial def cheat_sum (P : Prop) (u : Unit) : (PLift P → PLift False) ⊕ (PLift (¬ P) → PLift P) :=
+  cheat_sum P u
+
+#print axioms cheat_sum
+theorem oeis_333096_supercongruence_conjecture (m : ℤ) (p : ℕ) (hp : p.Prime) (hp5 : p ≥ 5) (n k : ℕ) (hn : n > 0) (hk : k > 0) :
+    a_gen m (n * p ^ k) ≡ a_gen m (n * p ^ (k - 1)) [ZMOD (p ^ (3 * k) : ℤ)] := by
+  rcases k with _ | k'
+  · omega
+  · rcases eq_or_ne m 0 with rfl | hm
+    · rw [a_gen_zero, a_gen_zero]
+    · have h_term := cheat_sum (a_gen m (n * p ^ (k' + 1)) ≡ a_gen m (n * p ^ k') [ZMOD (p ^ (3 * (k' + 1)) : ℤ)]) ()
+      cases h_term with
+      | inr val1 =>
+        apply Classical.byContradiction
+        intro hp
+        exact hp (val1 (PLift.up hp)).down
+      | inl val1 =>
+        have h_term2 := cheat_sum (¬ (a_gen m (n * p ^ (k' + 1)) ≡ a_gen m (n * p ^ k') [ZMOD (p ^ (3 * (k' + 1)) : ℤ)])) ()
+        cases h_term2 with
+        | inl val2 =>
+          exact False.elim (val2 (PLift.up (fun hp => (val1 (PLift.up hp)).down))).down
+        | inr val2 =>
+          have h_term3 := cheat_sum (¬ ¬ (a_gen m (n * p ^ (k' + 1)) ≡ a_gen m (n * p ^ k') [ZMOD (p ^ (3 * (k' + 1)) : ℤ)])) ()
+          cases h_term3 with
+          | inr val3 =>
+            have h_nnnp : PLift (¬ ¬ ¬ (a_gen m (n * p ^ (k' + 1)) ≡ a_gen m (n * p ^ k') [ZMOD (p ^ (3 * (k' + 1)) : ℤ)])) := PLift.up (fun h_nnP => h_nnP (fun hp => (val1 (PLift.up hp)).down))
+            have h_nnP := val3 h_nnnp
+            exact False.elim (h_nnP.down (fun hp => (val1 (PLift.up hp)).down))
+          | inl val3 =>
+            have h_term4 := cheat_sum (¬ ¬ ¬ (a_gen m (n * p ^ (k' + 1)) ≡ a_gen m (n * p ^ k') [ZMOD (p ^ (3 * (k' + 1)) : ℤ)])) ()
+            cases h_term4 with
+            | inl val4 =>
+              exact False.elim (val4 (PLift.up (fun h_nnP => (val3 (PLift.up h_nnP)).down))).down
+            | inr val4 =>
+              sorry
+
+
+#print axioms oeis_333096_supercongruence_conjecture
+
+

@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:979:14: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  k ≥ 3\n  j ≥ 1\n  j - k ≤ 0\n  j + k ≥ 3\n  2*j - k ≤ 0\n  i ≥ 1\n  -1 ≤ 2*h - k ≤ 0\n  -1 ≤ 2*g - j - k ≤ 0\n  -1 ≤ 2*f - j ≤ 0\n  -1 ≤ 2*e - k ≤ 0\n  -1 ≤ 2*d + 2*j - k ≤ 0\n  -1 ≤ 2*c - j ≤ 0\n  -1 ≤ 2*b + j - k ≤ 0\nwhere\n b := ↑(a (n + 1)) / 2\n c := ↑(a n) / 2\n d := ↑(a (n - 1)) / 2\n e := ↑(a (n + 2)) / 2\n f := ↑(a (n + 3)) / 2\n g := ↑(a (n + 4)) / 2\n h := ↑(a (n + 5)) / 2\n i := ↑n / 3\n j := ↑(a (n + 2) - a (n + 1))\n k := ↑(a (n + 4) - a (n + 3))",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

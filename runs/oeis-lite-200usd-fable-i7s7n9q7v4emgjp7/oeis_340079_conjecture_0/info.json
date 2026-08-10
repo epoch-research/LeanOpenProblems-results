@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340079_conjecture_0",
+  "epoch": 1,
+  "uuid": "nxrkkFT7N652d6c7b3L5uh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 215,
+      "output_tokens": 156079,
+      "total_tokens": 10644517,
+      "input_tokens_cache_write": 568294,
+      "input_tokens_cache_read": 9919929,
+      "reasoning_tokens": 45926,
+      "total_cost": 24.829703999999992
+    }
+  },
+  "oeis_id": "A340079"
+}

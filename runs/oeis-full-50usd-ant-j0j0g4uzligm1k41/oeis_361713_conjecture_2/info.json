@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361713_conjecture_2",
+  "epoch": 1,
+  "uuid": "e7oyKfGbmPyMpDwdgPvbkV",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 405,
+      "output_tokens": 544686,
+      "total_tokens": 29367446,
+      "input_tokens_cache_write": 1229715,
+      "input_tokens_cache_read": 27592640,
+      "reasoning_tokens": 107457,
+      "total_cost": 35.10121374999999
+    }
+  },
+  "oeis_id": "A361713"
+}

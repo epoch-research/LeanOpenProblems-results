@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check ArithmeticFunction.vonMangoldt_sum
+#check ArithmeticFunction.vonMangoldt_pos_iff
+#check ArithmeticFunction.vonMangoldt_nonneg
+#check Chebyshev.psi_le
+#check Chebyshev.theta_pos
+#check Chebyshev.theta_le_log4_mul_x
+#check Chebyshev.theta_eq_sum_Icc
+#check Chebyshev.psi_eq_sum_theta
+#check Chebyshev.theta_mono

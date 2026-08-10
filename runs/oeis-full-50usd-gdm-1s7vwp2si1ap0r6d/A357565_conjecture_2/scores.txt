@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:49:4: error: (kernel) invalid declaration, it uses unsafe declaration 'Lean.evalConst'
+

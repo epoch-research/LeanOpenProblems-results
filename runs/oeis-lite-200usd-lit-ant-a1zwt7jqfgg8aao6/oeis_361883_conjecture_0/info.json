@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361883_conjecture_0",
+  "epoch": 1,
+  "uuid": "G4iWuVjm5Jygga8B2k5rNw",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 1207,
+      "output_tokens": 1775789,
+      "total_tokens": 88087652,
+      "input_tokens_cache_write": 4637568,
+      "input_tokens_cache_read": 81673088,
+      "reasoning_tokens": 365047,
+      "total_cost": 114.22210399999996
+    }
+  },
+  "oeis_id": "A361883"
+}

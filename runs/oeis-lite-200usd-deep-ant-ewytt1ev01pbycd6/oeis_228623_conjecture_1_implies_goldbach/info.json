@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228623_conjecture_1_implies_goldbach",
+  "epoch": 1,
+  "uuid": "XDR8sLDnnPUDXVrQGrRahL",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 29,
+      "output_tokens": 15473,
+      "total_tokens": 299175,
+      "input_tokens_cache_write": 18529,
+      "input_tokens_cache_read": 265144,
+      "reasoning_tokens": 1796,
+      "total_cost": 0.6353482500000001
+    }
+  },
+  "oeis_id": "A228623"
+}

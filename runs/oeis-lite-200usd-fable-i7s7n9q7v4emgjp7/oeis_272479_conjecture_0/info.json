@@ -1,0 +1,20 @@
+{
+  "id": "oeis_272479_conjecture_0",
+  "epoch": 1,
+  "uuid": "DutTh3DsTvtst6zPft8oek",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 29,
+      "output_tokens": 70471,
+      "total_tokens": 980027,
+      "input_tokens_cache_write": 77693,
+      "input_tokens_cache_read": 831834,
+      "reasoning_tokens": 17429,
+      "total_cost": 5.3268365
+    }
+  },
+  "oeis_id": "A272479"
+}

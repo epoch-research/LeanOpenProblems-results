@@ -1,0 +1,20 @@
+{
+  "id": "A211420_general_divisibility_conjecture",
+  "epoch": 1,
+  "uuid": "ZDLfqxi7wfptv7CZZ7jKof",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 53,
+      "output_tokens": 105508,
+      "total_tokens": 2247672,
+      "input_tokens_cache_write": 123351,
+      "input_tokens_cache_read": 2018760,
+      "reasoning_tokens": 23159,
+      "total_cost": 8.836577499999999
+    }
+  },
+  "oeis_id": "A211420"
+}

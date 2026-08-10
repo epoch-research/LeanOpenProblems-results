@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.superCatalan
+#check Nat.superCatalan_eq
+#check Nat.superCatalan_mul
+#check Nat.centralBinom
+#check Nat.succ_dvd_centralBinom
+#check Nat.succ_mul_centralBinom_succ
+#check Nat.succ_dvd_centralBinom
+#check Nat.dvd_factorial
+#print Nat.superCatalan

@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check Rat.floor_div_int
+#check Rat.floor_div_nat
+#check Rat.floor_intCast
+#check Rat.floor_add_int
+#check Rat.floor_eq_iff
+#check Rat.floor_mono
+#check Rat.floor_eq_zero
+#check Int.toNat_of_nonneg
+#check Rat.floor_def
+#check Rat.num_div_den
+#check Rat.den_nz
+#check Rat.floor

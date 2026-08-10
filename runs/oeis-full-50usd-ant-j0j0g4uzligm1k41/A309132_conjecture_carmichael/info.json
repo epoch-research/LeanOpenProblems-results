@@ -1,0 +1,20 @@
+{
+  "id": "A309132_conjecture_carmichael",
+  "epoch": 1,
+  "uuid": "H4FGnMb3F2fAvZvdEtHGXE",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 207,
+      "output_tokens": 207903,
+      "total_tokens": 15354908,
+      "input_tokens_cache_write": 257186,
+      "input_tokens_cache_read": 14889612,
+      "reasoning_tokens": 39255,
+      "total_cost": 14.250828499999994
+    }
+  },
+  "oeis_id": "A309132"
+}

@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Classical.choice
+#check Classical.decEq
+#check Classical.propDecidable
+#check Classical.decPred
+#check Classical.em
+#check Classical.byContradiction
+#check propext
+#check Quot.sound
+#check Quot.ind
+#check Quot.lift
+#check Quot.rec
+#print Classical.propDecidable
+#print Classical.choice

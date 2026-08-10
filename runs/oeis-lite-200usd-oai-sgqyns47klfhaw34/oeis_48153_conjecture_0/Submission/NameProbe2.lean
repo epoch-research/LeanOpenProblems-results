@@ -1,0 +1,13 @@
+import FormalConjectures.Util.ProblemImports
+#check ZMod.sum_val
+#check ZMod.sum_val_units
+#check ZMod.sum_val_squares
+#check ZMod.sum_quadraticResidues
+#check ZMod.quadraticResidues
+#check quadraticResidues
+#check IsSquare.sum
+#check quadraticChar_sum_zero
+#check LegendreSymbol.sum
+#check legendreSym.sum
+#check ZMod.card_sqrts
+#check legendreSym.card_sqrts

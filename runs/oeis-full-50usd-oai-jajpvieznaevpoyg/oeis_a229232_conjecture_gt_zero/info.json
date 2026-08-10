@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a229232_conjecture_gt_zero",
+  "epoch": 1,
+  "uuid": "KRd3FyMc57ne2WDnEBMtRF",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1898492,
+      "output_tokens": 505681,
+      "total_tokens": 53163341,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 50759168,
+      "reasoning_tokens": 365422,
+      "total_cost": 50.04247399999996
+    }
+  },
+  "oeis_id": "A229232"
+}

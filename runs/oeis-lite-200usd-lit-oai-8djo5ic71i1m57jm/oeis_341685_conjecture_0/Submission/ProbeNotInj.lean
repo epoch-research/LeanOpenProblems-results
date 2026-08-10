@@ -1,0 +1,3 @@
+import FormalConjectures.Util.ProblemImports
+#check Algebra.isAlgebraic_of_not_injective
+#print Algebra.isAlgebraic_of_not_injective

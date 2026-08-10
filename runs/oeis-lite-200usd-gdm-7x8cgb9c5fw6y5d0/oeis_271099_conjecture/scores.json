@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:90:22: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  b ≥ 0\n  a ≥ 3\n  a ≥ 1\n  a ≥ 1\n  2*a - b ≥ 2\nwhere\n a := ↑k\n b := ↑↑⟨0, h_pos⟩\nSubmission/Spec.lean:90:22: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  b ≥ 0\n  a ≥ 3\n  a ≥ 1\n  2*a - b ≥ 2\nwhere\n a := ↑k\n b := ↑↑⟨0, h_pos⟩\nSubmission/Spec.lean:91:6: error: unsolved goals\ncase h.h₀\nk : ℕ\nhk : k > 2\nn : ℕ\nh_pos : 2 * k - 1 > 0\nzero : Fin (2 * k - 1) := ⟨0, h_pos⟩\nb : Fin (2 * k - 1)\na✝ : b ∈ univ\nhb : b ≠ zero\n⊢ (1 * if 0 = 2 then 2 * k + 1 else if 0 = 3 then 0 else 0) = 0\nSubmission/Spec.lean:101:6: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  b ≥ 0\n  b + c ≥ 2\n  a ≥ 3\n  a ≥ 1\n  2*a - b - c ≤ -2\nwhere\n a := ↑k\n b := ↑(Monoid.npow k 2)\n c := ↑(Monoid.npow k 3) / ↑(Monoid.npow k 2)\nSubmission/Spec.lean:66:21: warning: This simp argument is unused:\n  iff_true\n\nHint: Omit it from the simp argument list.\n  simp only [hn,̵ ̵i̵f̵f̵_̵t̵r̵u̵e̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nSubmission/Spec.lean:93:35: warning: This simp argument is unused:\n  mul_zero\n\nHint: Omit it from the simp argument list.\n  simp only [hb, ↓reduceIte,̵ ̵m̵u̵l̵_̵z̵e̵r̵o̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,47 @@
+V_target size for 10^15: 650
+Prime 3, Residue 1 (covers 234). Uncovered remaining: 416
+Prime 11, Residue 1 (covers 50). Uncovered remaining: 366
+Prime 31, Residue 2 (covers 50). Uncovered remaining: 316
+Prime 23, Residue 4 (covers 15). Uncovered remaining: 301
+Prime 43, Residue 3 (covers 14). Uncovered remaining: 287
+Prime 19, Residue 8 (covers 14). Uncovered remaining: 273
+Prime 127, Residue 9 (covers 14). Uncovered remaining: 259
+Prime 59, Residue 4 (covers 8). Uncovered remaining: 251
+Prime 47, Residue 1 (covers 7). Uncovered remaining: 244
+Prime 67, Residue 32 (covers 7). Uncovered remaining: 237
+CRT base: N0 = 743704724131909
+prod = 907160047668402 (digits: 15)
+Worker 0 started: k in [0, 15625]
+Worker 1 started: k in [15625, 31250]
+Worker 2 started: k in [31250, 46875]
+Worker 3 started: k in [46875, 62500]
+Worker 4 started: k in [62500, 78125]
+Worker 5 started: k in [78125, 93750]
+Worker 6 started: k in [93750, 109375]
+Worker 7 started: k in [109375, 125000]
+Worker 8 started: k in [125000, 140625]
+Worker 9 started: k in [140625, 156250]
+Worker 10 started: k in [156250, 171875]
+Worker 11 started: k in [171875, 187500]
+Worker 12 started: k in [187500, 203125]
+Worker 13 started: k in [203125, 218750]
+Worker 14 started: k in [218750, 234375]
+Worker 15 started: k in [234375, 250000]
+Worker 16 started: k in [250000, 265625]
+Worker 17 started: k in [265625, 281250]
+Worker 18 started: k in [281250, 296875]
+Worker 19 started: k in [296875, 312500]
+Worker 20 started: k in [312500, 328125]
+Worker 22 started: k in [343750, 359375]
+Worker 21 started: k in [328125, 343750]
+Worker 23 started: k in [359375, 375000]
+Worker 24 started: k in [375000, 390625]
+Worker 25 started: k in [390625, 406250]
+Worker 26 started: k in [406250, 421875]
+Worker 27 started: k in [421875, 437500]
+Worker 28 started: k in [437500, 453125]
+Worker 29 started: k in [453125, 468750]
+Worker 31 started: k in [484375, 500000]
+Worker 30 started: k in [468750, 484375]
+All processes finished search.
+Done in 1369.40s.

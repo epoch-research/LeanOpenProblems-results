@@ -1,0 +1,235 @@
+/workspace/leanproject/Submission/Spec.lean:1816:4: error: linarith failed to find a contradiction
+case h
+Y : ℕ
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+q : ℤ
+h1 : π * 10 ^ (60 + Y) - ↑r / 10 < ↑q
+h2 : ↑q < π * (10 ^ 60 * 10 ^ Y) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+a✝ : π * 10 ^ 60 * 10 ^ Y - ↑r / 10 + 2 * 10 ^ (-62) ≤ ↑q
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:1818:4: error: Tactic `assumption` failed
+
+Y : ℕ
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+q : ℤ
+h1 : π * (10 ^ 60 * 10 ^ Y) - ↑r / 10 < ↑q
+h2 : ↑q < π * 10 ^ (60 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+h_lt_62 : ↑q < π * 10 ^ 60 * 10 ^ Y - ↑r / 10 + 2 * 10 ^ (-62)
+⊢ π * 10 ^ 60 * 10 ^ Y - ↑r / 10 < ↑q
+/workspace/leanproject/Submission/Spec.lean:1819:51: error: Tactic `decide` failed for proposition
+  1 ≤ 10
+because its `Decidable` instance
+  decidableLE 1 10
+did not reduce to `isTrue` or `isFalse`.
+
+After unfolding the instances `Classical.propDecidable`, `LinearOrder.toDecidableLE`, and `decidableLE`, reduction got stuck at the `Decidable` instance
+  Classical.choice ⋯
+
+Hint: Reduction got stuck on `Classical.choice`, which indicates that a `Decidable` instance is defined using classical reasoning, proving an instance exists rather than giving a concrete construction. The `decide` tactic works by evaluating a decision procedure via reduction, and it cannot make progress with such instances. This can occur due to the `open scoped Classical` command, which enables the instance `Classical.propDecidable`.
+/workspace/leanproject/Submission/Spec.lean:1821:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ 60
+in the target expression
+  3141592653589793238462643383279502884197169399375105820974944.592307816406286208 * 10 ^ Y <
+    π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y
+
+Y : ℕ
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+q : ℤ
+h1 : π * 10 ^ (60 + Y) - ↑r / 10 < ↑q
+h2 : ↑q < π * 10 ^ (60 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+h_lt_62 : ↑q < π * 10 ^ 60 * 10 ^ Y - ↑r / 10 + 2 * 10 ^ (-62)
+h_gt_62 : π * 10 ^ 60 * 10 ^ Y - ↑r / 10 < ↑q
+hY_ge : 10 ^ Y ≥ 1
+⊢ 3141592653589793238462643383279502884197169399375105820974944.592307816406286208 * 10 ^ Y <
+    π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y
+/workspace/leanproject/Submission/Spec.lean:1824:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  10 ^ 60
+in the target expression
+  π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y <
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 * 10 ^ Y
+
+Y : ℕ
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+q : ℤ
+h1 : π * 10 ^ (60 + Y) - ↑r / 10 < ↑q
+h2 : ↑q < π * 10 ^ (60 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+h_lt_62 : ↑q < π * 10 ^ 60 * 10 ^ Y - ↑r / 10 + 2 * 10 ^ (-62)
+h_gt_62 : π * 10 ^ 60 * 10 ^ Y - ↑r / 10 < ↑q
+hY_ge : 10 ^ Y ≥ 1
+h_pi_scaled_gt :
+  3141592653589793238462643383279502884197169399375105820974944.592307816406286208 * 10 ^ Y <
+    π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y
+⊢ π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y <
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 * 10 ^ Y
+/workspace/leanproject/Submission/Spec.lean:1841:23: error: Type mismatch
+  h_gt_62
+has type
+  π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑1 / 10 < ↑q
+but is expected to have type
+  π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - 1 / 10 < ↑q
+/workspace/leanproject/Submission/Spec.lean:1844:144: error: Type mismatch
+  h_lt_62
+has type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑1 / 10 + 2 * 10 ^ (-62)
+but is expected to have type
+  ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - 1 / 10 + 2 * 10 ^ (-62)
+/workspace/leanproject/Submission/Spec.lean:1848:12: error: linarith failed to find a contradiction
+case h
+Y : ℕ
+r q : ℤ
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+hY_ge : 10 ^ Y ≥ 1
+h_pi_scaled_gt :
+  3141592653589793238462643383279502884197169399375105820974944.592307816406286208 * 10 ^ Y <
+    π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y
+h_pi_scaled_lt :
+  π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y <
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 * 10 ^ Y
+hr1 : 1 ≤ 1
+hr2 : 1 ≤ 9
+h1 : π * 10 ^ (60 + Y) - ↑1 / 10 < ↑q
+h2 : ↑q < π * 10 ^ (60 + Y) - ↑1 / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_lt_62 : ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑1 / 10 + 2 * 10 ^ (-62)
+h_gt_62 : π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑1 / 10 < ↑q
+h_q_gt : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ Y < ↑q
+this : 1 ≤ 10 ^ Y
+a✝ : 1 / 10 < 1 / 10 * 10 ^ Y
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:1867:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 1
+  a - 3141592653589793238462643383279502884197169399375105820974945*b ≤ -1
+  a - 3141592653589793238462643383279502884197169399375105820974944*b ≥ 1
+where
+ a := q
+ b := 10 ^ Y
+/workspace/leanproject/Submission/Spec.lean:1888:12: error: linarith failed to find a contradiction
+case h
+Y : ℕ
+r q : ℤ
+h_pi_gt : 3.141592653589793238462643383279502884197169399375105820974944592307816406286208 < π
+h_pi_lt : π < 3.141592653589793238462643383279502884197169399375105820974944592307816406286210
+h_pow_cast_real : 10 ^ (60 + Y) = 10 ^ 60 * 10 ^ Y
+h_pow_cast_real_60 : 10 ^ 60 = 1000000000000000000000000000000000000000000000000000000000000
+h_ten_neg : 2 * 10 ^ (-(60 + ↑Y + 2)) ≤ 2 * 10 ^ (-62)
+h_ten_neg_val : 2 * 10 ^ (-62) = 2 / 100000000000000000000000000000000000000000000000000000000000000
+hY_ge : 10 ^ Y ≥ 1
+h_pi_scaled_gt :
+  3141592653589793238462643383279502884197169399375105820974944.592307816406286208 * 10 ^ Y <
+    π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y
+h_pi_scaled_lt :
+  π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y <
+    3141592653589793238462643383279502884197169399375105820974944.592307816406286210 * 10 ^ Y
+hr1 : 1 ≤ 2
+hr2 : 2 ≤ 9
+h1 : π * 10 ^ (60 + Y) - ↑2 / 10 < ↑q
+h2 : ↑q < π * 10 ^ (60 + Y) - ↑2 / 10 + 2 * 10 ^ (-(↑60 + ↑Y + 2))
+h_lt_62 : ↑q < π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑2 / 10 + 2 * 10 ^ (-62)
+h_gt_62 : π * 1000000000000000000000000000000000000000000000000000000000000 * 10 ^ Y - ↑2 / 10 < ↑q
+h_q_gt : 3141592653589793238462643383279502884197169399375105820974944 * 10 ^ Y < ↑q
+this : 1 ≤ 10 ^ Y
+a✝ : 2 / 10 < 2 / 10 * 10 ^ Y
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:1907:4: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  b ≥ 1
+  a - 3141592653589793238462643383279502884197169399375105820974945*b ≤ -1
+  a - 3141592653589793238462643383279502884197169399375105820974944*b ≥ 1
+where
+ a := q
+ b := 10 ^ Y
+/workspace/leanproject/Submission/Spec.lean:1911:128: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:1942:4: error: (deterministic) timeout at `«tactic execution»`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:1802:0: error: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/workspace/leanproject/Submission/Spec.lean:2199:8: error: linarith failed to find a contradiction
+case h
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+k : ℤ
+h1 : π * 10 ^ (n + 1) < ↑k
+h2 : ↑k < π / arctan (1 / 10 ^ (n + 1))
+h_ub : π / arctan (1 / 10 ^ (n + 1)) < π * 10 ^ (n + 1) + 2 * 10 ^ (-↑(n + 1))
+a✝ : π * 10 ^ (n + 1) + 2 * 10 ^ (-(↑n + 1)) ≤ ↑k
+⊢ False
+failed
+/workspace/leanproject/Submission/Spec.lean:2260:17: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  -(↑n + (↑Y + 1) + 2)
+in the target expression
+  ¬∃ q,
+      π * 10 ^ (n + 1 + Y) - ↑r / 10 < ↑q ∧ ↑q < π * 10 ^ (n + 1 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑(60 + m) + ↑(Y + 1) + 2))
+
+m : ℕ
+IH : S_prop (60 + m) ∧ T_prop (60 + m)
+n : ℕ := 60 + m
+hS : S_prop (n + 1)
+Y : ℕ
+r : ℤ
+hr1 : 1 ≤ r
+hr2 : r ≤ 9
+h_T_n :
+  ¬∃ q,
+      π * 10 ^ (n + 1 + Y) - ↑r / 10 < ↑q ∧ ↑q < π * 10 ^ (n + 1 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑(60 + m) + ↑(Y + 1) + 2))
+h_eq1 : n + (Y + 1) = n + 1 + Y
+h_eq2 : -(↑n + (↑Y + 1) + 2) = -(↑n + 1 + ↑Y + 2)
+⊢ ¬∃ q, π * 10 ^ (n + 1 + Y) - ↑r / 10 < ↑q ∧ ↑q < π * 10 ^ (n + 1 + Y) - ↑r / 10 + 2 * 10 ^ (-(↑(n + 1) + ↑Y + 2))
+/workspace/leanproject/Submission/Spec.lean:2191:6: error: (kernel) unknown constant 'subgoal_T_60'
+/workspace/leanproject/Submission/Spec.lean:2350:6: error: Type mismatch
+  h_ind.left
+has type
+  S_prop n
+but is expected to have type
+  ¬∃ k, π * 10 ^ ↑(n + 1) < ↑k ∧ ↑k < π / arctan (1 / 10 ^ ↑(n + 1))
+'oeis_a011545_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

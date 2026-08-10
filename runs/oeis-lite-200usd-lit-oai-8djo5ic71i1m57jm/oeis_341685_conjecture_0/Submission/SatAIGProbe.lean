@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Std.Sat.AIG
+#check Std.Sat.AIG.empty
+#check Std.Sat.AIG.Decl
+#check Std.Sat.AIG.mk
+#check Std.Sat.AIG.idx_trichotomy
+#print Std.Sat.AIG
+#print Std.Sat.AIG.Decl
+#print Std.Sat.AIG.idx_trichotomy

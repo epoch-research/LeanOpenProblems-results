@@ -1,0 +1,20 @@
+{
+  "id": "a_n_is_defined_for_all_n",
+  "epoch": 1,
+  "uuid": "5nhFDkijuqr4yCjs9ZSvvT",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 350746,
+      "output_tokens": 4459,
+      "total_tokens": 921573,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 558870,
+      "reasoning_tokens": 7498,
+      "total_cost": 0.6500805
+    }
+  },
+  "oeis_id": "A117545"
+}

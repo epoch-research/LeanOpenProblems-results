@@ -1,0 +1,20 @@
+{
+  "id": "A224515_conjecture_existence",
+  "epoch": 1,
+  "uuid": "FDTYnvpr7mjuHUE8rbx8T8",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 291654,
+      "output_tokens": 89349,
+      "total_tokens": 10053707,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 9672704,
+      "reasoning_tokens": 57213,
+      "total_cost": 8.975092
+    }
+  },
+  "oeis_id": "A224515"
+}

@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:330:34: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1773:38: warning: unused variable `hq1_pos`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1793:32: warning: unused variable `h_cop`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1954:36: error: Application type mismatch: The argument
+    hA_even
+  has type
+    A_int % 2 = 0
+  but is expected to have type
+    2 ∣ A_int
+  in the application
+    dvd_mul_of_dvd_left hA_even
+

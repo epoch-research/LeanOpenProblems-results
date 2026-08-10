@@ -1,0 +1,20 @@
+{
+  "id": "a091669_conjecture_primitive_root",
+  "epoch": 1,
+  "uuid": "86k6DTPaRZM2A6HjSNvt8D",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 6862577,
+      "output_tokens": 105249,
+      "total_tokens": 59904865,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 52420791,
+      "reasoning_tokens": 516248,
+      "total_cost": 19.10422514999998
+    }
+  },
+  "oeis_id": "A091669"
+}

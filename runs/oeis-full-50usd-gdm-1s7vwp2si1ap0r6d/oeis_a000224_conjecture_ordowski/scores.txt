@@ -1,0 +1,67 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:255:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (p + 1) % 2
+  in the target expression
+    2 * m = p + 1
+  
+  p : ℕ
+  inst✝ : NeZero p
+  hp : Nat.Prime p
+  hp2 : p ≠ 2
+  hp_odd : p % 2 = 1
+  h_div : (p + 1) % 2 = 0
+  m : ℕ := (p + 1) / 2
+  h_mul_div : 2 * m = p + 1
+  x : ZMod p
+  h_lt : ¬x.val < m
+  hx_lt : x.val < p
+  ⊢ p - x.val < m
+  Submission/Spec.lean:467:4: error: unsolved goals
+  case neg
+  n : ℕ
+  hn : n < 500
+  h1 : 1 < n
+  hp : ¬Nat.Prime n
+  hn_odd : Odd n
+  h_congr : n * n ≡ 1 [MOD A000224 n * (A000224 n - 1)]
+  h15 : ¬n < 15
+  h_ge15 : 15 ≤ n
+  h100 : ¬n < 100
+  h_ge100 : 100 ≤ n
+  ⊢ False
+  Submission/Spec.lean:468:4: error: No goals to be solved
+  Submission/Spec.lean:675:37: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 499
+    e ≥ 0
+    -1 ≤ 2*e - f ≤ 0
+    d ≥ 1
+    c ≥ 0
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑n.minFac
+   b := ↑A * ↑(A - 1)
+   c := ↑(n * n - 1)
+   d := ↑M % ↑p
+   e := ↑(n - 1) / 2
+   f := ↑(n - 1)
+  Submission/Spec.lean:677:37: error: Application type mismatch: The argument
+    h_sub
+  has type
+    n * n - 1 = M * (n * n / M)
+  but is expected to have type
+    n * n - 1 = 4 * (A * (A - 1))
+  in the application
+    k_ne_4 h_A_le rfl h_sub
+  Submission/Spec.lean:690:48: error: Application type mismatch: The argument
+    h_sub
+  has type
+    n * n - 1 = M * (n * n / M)
+  but is expected to have type
+    n * n - 1 = (n * n - 1) / M * (A * (A - 1))
+  in the application
+    k_lt_4_impossible h_A_le rfl h_sub
+

@@ -1,0 +1,9 @@
+import FormalConjectures.Util.ProblemImports
+#check Quot.out
+#check Quot.out_eq
+#check Quot.out_eq'
+#check Quot.exists_rep
+#check Quot.inductionOn
+#check Quot.lift
+#check Quot.exact
+#check Quot.sound

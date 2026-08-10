@@ -1,0 +1,264 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 16 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 244 declarations.\n------------------\nj_seq_lt_n used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\noeis_a356026_conjecture_1_part_b used disallowed axioms. #[Classical.choice, propext, Quot.sound, sorryAx]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array._unary._proof_1: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.KL_array.match_1.splitter: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array._unary: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_a356026_conjecture_1_part_b: uses disallowed axioms\n  Disallowed axioms used: #[sorryAx]\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.KL_array.match_1.eq_1: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array.eq_def: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.PSigma.casesOn._arg_pusher: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.KL_array.match_1.eq_3: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.KL_array.match_1.eq_2: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration _private.Submission.Spec.0.KL_array.match_1._arg_pusher: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array._unary._proof_2: declaration not found in submission\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array: definition type or value mismatch\n  Value mismatch (values differ)\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array.match_1: definition type or value mismatch\n  Type mismatch:\n    Expected: forall (motive : Nat -> Nat -> Sort.{u_1}) (x._@.Submission.Spec.2311273973._hygCtx.13.Submission.Spec.2311273973._hygCtx._hyg.33 : Nat) (x._@.Submission.Spec.2311273973._hygCtx.14.Submission.Spec.2311273973._hygCtx._hyg.36 : Nat), (forall (x._@.Submission.Spec.2311273973._hygCtx._hyg.42 : Nat), motive (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) x._@.Submission.Spec.2311273973._hygCtx._hyg.42) -> (forall (x._@.Submission.Spec.2311273973._hygCtx._hyg.51 : Nat), motive x._@.Submission.Spec.2311273973._hygCtx._hyg.51 (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) -> (forall (i : Nat) (j : Nat), motive i j) -> (motive x._@.Submission.Spec.2311273973._hygCtx.13.Submission.Spec.2311273973._hygCtx._hyg.33 x._@.Submission.Spec.2311273973._hygCtx.14.Submission.Spec.2311273973._hygCtx._hyg.36)\n    Got:      forall (motive : Nat -> Nat -> Sort.{u_1}) (x._@.Submission.Spec.2311273973._hygCtx.13.Submission.Spec.2311273973._hygCtx._hyg.33 : Nat) (x._@.Submission.Spec.2311273973._hygCtx.14.Submission.Spec.2311273973._hygCtx._hyg.36 : Nat), (forall (x._@.Submission.Spec.2311273973._hygCtx._hyg.44 : Nat), motive (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)) x._@.Submission.Spec.2311273973._hygCtx._hyg.44) -> (forall (n._@.Submission.Spec.2311273973._hygCtx._hyg.57 : Nat), motive (Nat.succ n._@.Submission.Spec.2311273973._hygCtx._hyg.57) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0))) -> (forall (i : Nat) (j : Nat), motive (Nat.succ i) j) -> (motive x._@.Submission.Spec.2311273973._hygCtx.13.Submission.Spec.2311273973._hygCtx._hyg.33 x._@.Submission.Spec.2311273973._hygCtx.14.Submission.Spec.2311273973._hygCtx._hyg.36)\n  Value mismatch (values differ)\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration KL_array._unary.eq_def: declaration not found in submission\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "KL_array._unary._proof_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.KL_array.match_1.splitter",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "KL_array._unary",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "oeis_a356026_conjecture_1_part_b",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound",
+                "sorryAx"
+              ]
+            },
+            "failureMode": "axioms"
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.KL_array.match_1.eq_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "KL_array.eq_def",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.PSigma.casesOn._arg_pusher",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.KL_array.match_1.eq_3",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.KL_array.match_1.eq_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "a",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": null
+          }
+        ],
+        [
+          "_private.Submission.Spec.0.KL_array.match_1._arg_pusher",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": []
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "KL_array._unary._proof_2",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ],
+        [
+          "KL_array",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": "defnCheck"
+          }
+        ],
+        [
+          "KL_array.match_1",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": []
+            },
+            "failureMode": "defnCheck"
+          }
+        ],
+        [
+          "KL_array._unary.eq_def",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "Classical.choice",
+                "propext",
+                "Quot.sound"
+              ]
+            },
+            "solutionInfo": null,
+            "failureMode": "notFound"
+          }
+        ]
+      ]
+    }
+  }
+}

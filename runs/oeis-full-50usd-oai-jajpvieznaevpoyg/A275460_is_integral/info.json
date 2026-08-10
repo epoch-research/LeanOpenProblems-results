@@ -1,0 +1,20 @@
+{
+  "id": "A275460_is_integral",
+  "epoch": 1,
+  "uuid": "nuv9fTtz3oiqQZCPQL8npf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1009712,
+      "output_tokens": 209933,
+      "total_tokens": 35334205,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 34114560,
+      "reasoning_tokens": 140535,
+      "total_cost": 28.403830000000013
+    }
+  },
+  "oeis_id": "A275460"
+}

@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 9 declarations.
+  ------------------
+  oeis_83753_conjecture_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, Nat.digits.palindrome_axiom]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_83753_conjecture_0: uses disallowed axioms
+    Disallowed axioms used: #[Nat.digits.palindrome_axiom]
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: definition type or value mismatch
+    Value mismatch (values differ)
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,7 @@
+import FormalConjectures.Util.ProblemImports
+#check Set.isAsymptoticAddBasisOfOrder_one_iff_Ici
+#check Set.isAsymptoticAddBasisOfOrder_zero_iff_Ici
+#check Set.isAsymptoticAddBasisOfOrder_one_iff_Ioi
+#check Set.isAsymptoticAddBasisOfOrder_iff_atTop
+#print axioms Set.isAsymptoticAddBasisOfOrder_zero_iff_Ici
+#print Set.isAsymptoticAddBasisOfOrder_zero_iff_Ici

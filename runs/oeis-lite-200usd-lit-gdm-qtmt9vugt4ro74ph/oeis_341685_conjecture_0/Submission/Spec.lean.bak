@@ -1,0 +1,552 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat BigOperators Filter Topology Polynomial
+
+instance : Fact (Nat.Prime 3) := by
+  constructor
+  decide
+
+lemma padicValNat_factorial_ge (k : ℕ) : padicValNat 3 k.factorial ≥ k / 3 := by
+  by_cases h : k < 3
+  · -- Case k < 3
+    have hk : k / 3 = 0 := Nat.div_eq_of_lt h
+    rw [hk]
+    exact Nat.zero_le _
+  · -- Case k ≥ 3
+    push_neg at h
+    let b := log 3 k + 1
+    have hlog : log 3 k < b := lt_add_one (log 3 k)
+    have h_eq : padicValNat 3 k.factorial = ∑ i ∈ Finset.Ico 1 b, k / 3 ^ i := padicValNat_factorial hlog
+    rw [h_eq]
+    have h1 : 1 ∈ Finset.Ico 1 b := by
+      rw [Finset.mem_Ico]
+      constructor
+      · exact le_refl 1
+      · -- we need to show 1 < b = log 3 k + 1
+        -- since k ≥ 3, log 3 k ≥ 1
+        have hk3 : 3 ≤ k := h
+        have h_log_ge : 1 ≤ log 3 k := by
+          have h_pow : 3 ^ 1 ≤ k := by simpa using hk3
+          exact le_log_of_pow_le (by norm_num) h_pow
+        linarith
+    have h_le := Finset.single_le_sum (f := fun i => k / 3 ^ i) (hf := fun i _ => Nat.zero_le _) h1
+    dsimp at h_le
+    exact h_le
+
+lemma norm_factorial_eq (k : ℕ) : ‖(k.factorial : Padic 3)‖ = (3 : ℝ) ^ (- (padicValNat 3 k.factorial : ℤ)) := by
+  have h_cast : (k.factorial : Padic 3) = ((k.factorial : ℚ) : Padic 3) := by
+    push_cast; rfl
+  rw [h_cast]
+  rw [Padic.eq_padicNorm]
+  have hnz : (k.factorial : ℚ) ≠ 0 := by
+    exact_mod_cast factorial_ne_zero k
+  rw [padicNorm.eq_zpow_of_nonzero hnz]
+  rw [← padicValRat_of_nat]
+  push_cast
+  rfl
+
+lemma norm_factorial_le (k : ℕ) : ‖(k.factorial : Padic 3)‖ ≤ (3 : ℝ) ^ (- ( (k / 3 : ℕ) : ℤ )) := by
+  rw [norm_factorial_eq]
+  have h_ge := padicValNat_factorial_ge k
+  have h_ge_z : (padicValNat 3 k.factorial : ℤ) ≥ ( (k / 3 : ℕ) : ℤ ) := by
+    exact_mod_cast h_ge
+  have h_neg : - (padicValNat 3 k.factorial : ℤ) ≤ - ( (k / 3 : ℕ) : ℤ ) := by
+    linarith
+  exact zpow_le_zpow_right₀ (by norm_num) h_neg
+
+lemma tendsto_div_three : Tendsto (fun k : ℕ => k / 3) atTop atTop := by
+  rw [tendsto_atTop_atTop]
+  intro M
+  use 3 * M
+  intro k hk
+  rw [Nat.le_div_iff_mul_le (by norm_num)]
+  linarith
+
+lemma tendsto_upper_bound : Tendsto (fun k : ℕ => (3 : ℝ) ^ (- ( (k / 3 : ℕ) : ℤ ))) atTop (𝓝 0) := by
+  have h_pow : Tendsto (fun m : ℕ => ((3 : ℝ)⁻¹) ^ m) atTop (𝓝 0) := by
+    apply tendsto_pow_atTop_nhds_zero_of_lt_one
+    · norm_num
+    · norm_num
+  have h_comp := Tendsto.comp h_pow tendsto_div_three
+  have h_eq : (fun k : ℕ => (3 : ℝ) ^ (- ( (k / 3 : ℕ) : ℤ ))) = (fun k : ℕ => (3⁻¹ : ℝ) ^ (k / 3)) := by
+    funext k
+    rw [zpow_neg]
+    rw [zpow_natCast]
+    rw [inv_pow]
+  rw [h_eq]
+  exact h_comp
+
+lemma tendsto_norm_factorial_zero : Tendsto (fun k : ℕ => ‖(k.factorial : Padic 3)‖) atTop (𝓝 0) := by
+  apply tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds tendsto_upper_bound
+  · intro k
+    exact norm_nonneg _
+  · intro k
+    exact norm_factorial_le k
+
+theorem summable_factorial : Summable (fun k : ℕ => (Nat.factorial k : Padic 3)) := by
+  rw [NonarchimedeanAddGroup.summable_iff_tendsto_cofinite_zero]
+  rw [Nat.cofinite_eq_atTop]
+  rw [tendsto_zero_iff_norm_tendsto_zero]
+  exact tendsto_norm_factorial_zero
+
+noncomputable def xi_3 : Padic 3 :=
+  tsum (fun k : ℕ => (Nat.factorial k : Padic 3))
+
+def s_nat (n : ℕ) : ℕ := ∑ i ∈ Finset.range (n + 1), i.factorial
+
+lemma s_nat_succ (n : ℕ) : s_nat (n + 1) = s_nat n + (n + 1).factorial := by
+  dsimp [s_nat]
+  rw [Finset.sum_range_succ]
+
+lemma s_nat_strictMono : StrictMono s_nat := by
+  apply strictMono_nat_of_lt_succ
+  intro n
+  rw [s_nat_succ]
+  have h_fact : (n + 1).factorial > 0 := Nat.factorial_pos (n + 1)
+  omega
+
+lemma s_nat_injective : Function.Injective s_nat :=
+  s_nat_strictMono.injective
+
+def s (n : ℕ) : Padic 3 := (s_nat n : Padic 3)
+
+lemma s_eq_sum (n : ℕ) : s n = ∑ i ∈ Finset.range (n + 1), (i.factorial : Padic 3) := by
+  dsimp [s, s_nat]
+  push_cast
+  rfl
+
+lemma s_injective : Function.Injective s := by
+  intro x y h
+  have h_cast : ((s_nat x : Padic 3) = (s_nat y : Padic 3)) := h
+  rw [Nat.cast_inj] at h_cast
+  exact s_nat_injective h_cast
+
+noncomputable local instance : DecidableEq (Padic 3) := Classical.decEq _
+
+lemma eventually_ne_zero (q : (Padic 3)[X]) (hq : q ≠ 0) :
+    ∃ N : ℕ, ∀ n ≥ N, q.eval (s n) ≠ 0 := by
+  let R : Finset (Padic 3) := q.roots.toFinset
+  let I : Finset ℕ := R.preimage s (fun _ _ _ _ h => s_injective h)
+  let N := I.sup id + 1
+  use N
+  intro n hn
+  by_contra hc
+  have h_root : s n ∈ R := by
+    dsimp [R]
+    rw [Multiset.mem_toFinset]
+    rw [mem_roots hq]
+    exact hc
+  have h_mem : n ∈ I := by
+    dsimp [I]
+    rw [Finset.mem_preimage]
+    exact h_root
+  have h_le := Finset.le_sup (f := id) h_mem
+  dsimp at h_le
+  omega
+
+lemma s_succ_sub_one (n : ℕ) (hn : n > 0) : s n = s (n-1) + (n.factorial : Padic 3) := by
+  have h_sub : n = (n-1) + 1 := (Nat.sub_add_cancel hn).symm
+  have h_eq : s_nat n = s_nat (n-1) + n.factorial := by
+    conv_lhs => rw [h_sub]
+    conv_rhs => rw [h_sub]
+    exact s_nat_succ (n-1)
+  dsimp [s]
+  rw [h_eq]
+  push_cast
+  rfl
+
+lemma norm_natCast_le_one (m : ℕ) : ‖(m : Padic 3)‖ ≤ 1 := by
+  have h : (m : Padic 3) = ((m : ℤ) : Padic 3) := by push_cast; rfl
+  rw [h]
+  exact Padic.norm_int_le_one (m : ℤ)
+
+lemma pow_add_divisibility_bound (x y : Padic 3) (hx : ‖x‖ ≤ 2) (hy : ‖y‖ ≤ 2) (n : ℕ) :
+    ∃ d : Padic 3, (x + y)^n = x^n + y * d ∧ ‖d‖ ≤ (4 : ℝ)^n := by
+  induction n with
+  | zero =>
+    use 0
+    constructor
+    · simp
+    · simp
+  | succ n ih =>
+    rcases ih with ⟨dn, hdn, hdn_norm⟩
+    use x^n + dn * (x + y)
+    constructor
+    · rw [pow_succ, hdn]
+      ring
+    · have h_max : ‖x^n + dn * (x + y)‖ ≤ max ‖x^n‖ ‖dn * (x + y)‖ := by
+        exact Padic.nonarchimedean _ _
+      have h_xn : ‖x^n‖ ≤ (4 : ℝ)^n := by
+        rw [norm_pow]
+        have h1 : ‖x‖^n ≤ (2 : ℝ)^n := by gcongr
+        have h2 : (2 : ℝ)^n ≤ 4^n := by gcongr; norm_num
+        linarith
+      have h_dn_xy : ‖dn * (x + y)‖ ≤ (4 : ℝ)^n * 2 := by
+        rw [norm_mul]
+        have h_xy : ‖x + y‖ ≤ 2 := by
+          have h_max_xy := Padic.nonarchimedean x y
+          have h_le : max ‖x‖ ‖y‖ ≤ 2 := max_le hx hy
+          exact le_trans h_max_xy h_le
+        apply mul_le_mul hdn_norm h_xy (norm_nonneg _) (by positivity)
+      have h_max_le : max ‖x^n‖ ‖dn * (x + y)‖ ≤ (4 : ℝ)^(n + 1) := by
+        apply max_le
+        · rw [pow_succ]
+          have h_pos : 0 ≤ (4 : ℝ)^n := by positivity
+          nlinarith
+        · rw [pow_succ]
+          have h_pos : 0 ≤ (4 : ℝ)^n := by positivity
+          nlinarith
+      linarith
+
+lemma eval_add_divisibility_bound (p : (Padic 3)[X]) :
+    ∃ C : ℝ, C > 0 ∧ ∀ (x y : Padic 3) (hx : ‖x‖ ≤ 2) (hy : ‖y‖ ≤ 2),
+      ∃ d : Padic 3, p.eval (x + y) = p.eval x + y * d ∧ ‖d‖ ≤ C := by
+  induction p using Polynomial.induction_on with
+  | C a =>
+    use 1
+    constructor
+    · norm_num
+    · intro x y _ _
+      use 0
+      constructor
+      · simp
+      · norm_num
+  | add p g ih_p ih_g =>
+    rcases ih_p with ⟨Cp, hCp_pos, hp_bound⟩
+    rcases ih_g with ⟨Cg, hCg_pos, hg_bound⟩
+    use Cp + Cg
+    constructor
+    · linarith
+    · intro x y hx hy
+      rcases hp_bound x y hx hy with ⟨dp, hdp, hdp_norm⟩
+      rcases hg_bound x y hx hy with ⟨dg, hdg, hdg_norm⟩
+      use dp + dg
+      constructor
+      · rw [eval_add, eval_add, hdp, hdg]
+        ring
+      · have h_add := Padic.nonarchimedean dp dg
+        have h_max : max ‖dp‖ ‖dg‖ ≤ Cp + Cg := by
+          apply max_le
+          · linarith
+          · linarith
+        exact le_trans h_add h_max
+  | monomial n a ih =>
+    use ‖a‖ * 4^(n + 1) + 1
+    constructor
+    · positivity
+    · intro x y hx hy
+      rcases pow_add_divisibility_bound x y hx hy (n + 1) with ⟨d, hd, hd_norm⟩
+      use a * d
+      constructor
+      · simp [hd]
+        ring
+      · rw [norm_mul]
+        have h_d_le : ‖a‖ * ‖d‖ ≤ ‖a‖ * 4^(n+1) := by
+          apply mul_le_mul_of_nonneg_left hd_norm (norm_nonneg a)
+        linarith
+
+lemma h_bound_step (q : (Padic 3)[X]) (C : ℝ)
+    (h_bound_all : ∀ (x y : Padic 3) (hx : ‖x‖ ≤ 2) (hy : ‖y‖ ≤ 2), ∃ (d : Padic 3), q.eval (x + y) = q.eval x + y * d ∧ ‖d‖ ≤ C) :
+    ∀ n > 0, ∃ d : Padic 3, q.eval (s n) = q.eval (s (n-1)) + (n.factorial : Padic 3) * d ∧ ‖d‖ ≤ C := by
+  intro n hn
+  have h_s := s_succ_sub_one n hn
+  have hx_le : ‖s (n-1)‖ ≤ 2 := by
+    have h_le : ‖s (n-1)‖ ≤ 1 := norm_natCast_le_one (s_nat (n-1))
+    linarith
+  have hy_le : ‖(n.factorial : Padic 3)‖ ≤ 2 := by
+    have h_le : ‖(n.factorial : Padic 3)‖ ≤ 1 := norm_natCast_le_one (n.factorial)
+    linarith
+  rcases h_bound_all (s (n-1)) (n.factorial : Padic 3) hx_le hy_le with ⟨d, hd1, hd2⟩
+  use d
+  constructor
+  · rw [← h_s] at hd1
+    exact hd1
+  · exact hd2
+
+lemma tendsto_s : Tendsto s atTop (𝓝 xi_3) := by
+  have h_sum := summable_factorial.hasSum
+  have h_tendsto := h_sum.tendsto_sum_nat
+  have h_shift : Tendsto (fun n ↦ n + 1) atTop atTop := tendsto_add_atTop_nat 1
+  have h_comp := Tendsto.comp h_tendsto h_shift
+  have h_eq : s = fun n ↦ ∑ i ∈ Finset.range (n + 1), (i.factorial : Padic 3) := by
+    funext n
+    exact s_eq_sum n
+  rw [h_eq]
+  exact h_comp
+
+lemma norm_add_eq_max_of_norm_ne {x y : Padic 3} (h : ‖x‖ ≠ ‖y‖) : ‖x + y‖ = max ‖x‖ ‖y‖ := by
+  have h_dist : dist (x + y) 0 = max (dist (x + y) x) (dist x 0) := by
+    apply IsUltrametricDist.dist_eq_max_of_dist_ne_dist
+    simp [h.symm]
+  simp only [dist_eq_norm_sub, sub_zero, add_sub_cancel_left] at h_dist
+  rw [h_dist]
+  exact max_comm ‖y‖ ‖x‖
+
+lemma norm_eval_s_constant_simple (q : (Padic 3)[X]) (C : ℝ) (N : ℕ) (_h_eval : q.eval (s N) ≠ 0)
+    (h_bound : ∀ n > N, ∃ d : Padic 3, q.eval (s n) = q.eval (s (n-1)) + (n.factorial : Padic 3) * d ∧ ‖d‖ ≤ C)
+    (N_1 : ℕ) (hN_ge : N ≥ N_1) (h_limit : ∀ n ≥ N_1, ‖(n.factorial : Padic 3)‖ * C < ‖q.eval (s N)‖) :
+    ∀ n ≥ N, ‖q.eval (s n)‖ = ‖q.eval (s N)‖ := by
+  intro n hn
+  induction n, hn using Nat.le_induction with
+  | base => rfl
+  | succ n hn' ih =>
+    have h_succ_gt : n + 1 > N := by omega
+    rcases h_bound (n + 1) h_succ_gt with ⟨d, h_eq, hd_norm⟩
+    have h_succ_sub : n + 1 - 1 = n := by omega
+    rw [h_succ_sub] at h_eq
+    have h_norm_eq : ‖q.eval (s (n + 1))‖ = ‖q.eval (s n) + ((n + 1).factorial : Padic 3) * d‖ := by
+      rw [h_eq]
+    have h_lt : ‖((n + 1).factorial : Padic 3) * d‖ < ‖q.eval (s n)‖ := by
+      rw [norm_mul]
+      rw [ih]
+      have h_ge : n + 1 ≥ N_1 := by omega
+      have h_lim := h_limit (n + 1) h_ge
+      have h_mul_le : ‖((n + 1).factorial : Padic 3)‖ * ‖d‖ ≤ ‖((n + 1).factorial : Padic 3)‖ * C := by
+        apply mul_le_mul_of_nonneg_left hd_norm (norm_nonneg _)
+      linarith
+    have h_ne : ‖q.eval (s n)‖ ≠ ‖((n + 1).factorial : Padic 3) * d‖ := ne_of_gt h_lt
+    have h_ult := norm_add_eq_max_of_norm_ne h_ne
+    rw [h_norm_eq, h_ult]
+    rw [max_eq_left (le_of_lt h_lt)]
+    exact ih
+
+lemma factorial_limit_step (C : ℝ) (hC : C > 0) (V : ℝ) (hV : V > 0) :
+    ∃ N_1 : ℕ, ∀ n ≥ N_1, ‖(n.factorial : Padic 3)‖ * C < V := by
+  have h_lim : Tendsto (fun n : ℕ ↦ ‖((n.factorial : ℕ) : Padic 3)‖ * C) atTop (𝓝 0) := by
+    have h_mul := Tendsto.mul_const C tendsto_norm_factorial_zero
+    rw [zero_mul] at h_mul
+    exact h_mul
+  rw [Metric.tendsto_atTop] at h_lim
+  rcases h_lim V hV with ⟨N_1, hN1⟩
+  use N_1
+  intro n hn
+  have h_dist := hN1 n hn
+  rw [Real.dist_0_eq_abs] at h_dist
+  have h_nonneg : ‖((n.factorial : ℕ) : Padic 3)‖ * C ≥ 0 := by
+    have h1 : ‖((n.factorial : ℕ) : Padic 3)‖ ≥ 0 := norm_nonneg _
+    have h2 : C ≥ 0 := le_of_lt hC
+    positivity
+  rw [abs_of_nonneg h_nonneg] at h_dist
+  exact h_dist
+
+lemma eventually_constant_zero {f : ℕ → ℝ} {c : ℝ} {N : ℕ} (hc : ∀ n ≥ N, f n = c) (hl : Tendsto f atTop (𝓝 0)) : c = 0 := by
+  have hl' : Tendsto (fun n : ℕ ↦ c) atTop (𝓝 0) := by
+    apply Tendsto.congr' _ hl
+    have h_ev := eventually_ge_atTop N
+    filter_upwards [h_ev] with n hn
+    exact hc n hn
+  have hc_lim : Tendsto (fun n : ℕ ↦ c) atTop (𝓝 c) := tendsto_const_nhds
+  exact tendsto_nhds_unique hc_lim hl'
+
+lemma tendsto_eval (q : (Padic 3)[X]) : Tendsto (fun n ↦ q.eval (s n)) atTop (𝓝 (q.eval xi_3)) := by
+  have hc : Continuous (fun x ↦ q.eval x) := q.continuous
+  exact (hc.tendsto xi_3).comp tendsto_s
+
+theorem oeis_341685_conjecture_0 : ¬ IsAlgebraic ℚ (xi_3) := by
+  intro h
+  rcases h with ⟨p, hp1, hp2⟩
+  let q := p.map (algebraMap ℚ (Padic 3))
+  have hq_eval : q.eval xi_3 = 0 := by
+    rw [aeval_def, ← eval_map] at hp2
+    exact hp2
+  have hq : q ≠ 0 := by
+    rw [ne_eq, Polynomial.map_eq_zero_iff]
+    · exact hp1
+    · exact FaithfulSMul.algebraMap_injective ℚ (Padic 3)
+  have h_lim_zero : Tendsto (fun n ↦ ‖q.eval (s n)‖) atTop (𝓝 0) := by
+    have h_lim := tendsto_eval q
+    rw [hq_eval] at h_lim
+    rw [tendsto_zero_iff_norm_tendsto_zero] at h_lim
+    exact h_lim
+
+  rcases eventually_ne_zero q hq with ⟨N_ev, hNev⟩
+  rcases eval_add_divisibility_bound q with ⟨C, hC_pos, h_bound_all⟩
+  have h_bound : ∀ n > 0, ∃ d : Padic 3, q.eval (s n) = q.eval (s (n-1)) + (n.factorial : Padic 3) * d ∧ ‖d‖ ≤ C :=
+    h_bound_step q C h_bound_all
+  have hNev_ne : q.eval (s N_ev) ≠ 0 := hNev N_ev (le_refl N_ev)
+  let V_ev_0 := ‖q.eval (s N_ev)‖
+  have hVev0_pos : V_ev_0 > 0 := norm_pos_iff.mpr hNev_ne
+  rcases factorial_limit_step C hC_pos V_ev_0 hVev0_pos with ⟨N_2, hN2⟩
+  let N := max (N_ev + 1) N_2
+  have hN_ge_Nev : N ≥ N_ev := by omega
+  let V_N := ‖q.eval (s N)‖
+  have hN_ne : q.eval (s N) ≠ 0 := hNev N hN_ge_Nev
+  have hVN_pos : V_N > 0 := norm_pos_iff.mpr hN_ne
+  rcases factorial_limit_step C hC_pos V_N hVN_pos with ⟨N_3_raw, hN3_raw⟩
+  let N_3 := max N N_3_raw
+  have hN3_ge_N : N_3 ≥ N := le_max_left _ _
+  have hN3_limit : ∀ n ≥ N_3, ‖(n.factorial : Padic 3)‖ * C < V_N := by
+    intro n hn
+    have h1 : n ≥ N_3_raw := by
+      have h2 : N_3_raw ≤ N_3 := le_max_right _ _
+      omega
+    exact hN3_raw n h1
+
+  have hN3_norm_ge : ‖q.eval (s N_3)‖ ≥ V_N := by
+    by_cases h_N3 : N_3 = N
+    · rw [h_N3]
+      exact le_refl _
+    · have h_N3_gt : N_3 > N := by
+        have h1 : N_3 ≥ N := hN3_ge_N
+        omega
+      by_contra h_lt
+      push_neg at h_lt
+      have h_sub_gt : N_3 > 0 := by omega
+      rcases h_bound N_3 h_sub_gt with ⟨d, hd, hd_norm⟩
+      have h_norm_eq : ‖q.eval (s N_3)‖ = ‖q.eval (s (N_3-1)) + (N_3.factorial : Padic 3) * d‖ := by
+        rw [hd]
+      have h_sub_ge : N_3 - 1 ≥ N := by omega
+      have h_sub_ne : q.eval (s (N_3-1)) ≠ 0 := hNev (N_3-1) (by omega)
+      have h_lim := hN3_raw N_3 (by
+        have h1 : N_3_raw ≤ N_3 := le_max_right _ _
+        omega)
+      have h_lt_V_N : ‖((N_3.factorial : Padic 3) * d)‖ < V_N := by
+        rw [norm_mul]
+        have h_mul_le : ‖(N_3.factorial : Padic 3)‖ * ‖d‖ ≤ ‖(N_3.factorial : Padic 3)‖ * C := by
+          apply mul_le_mul_of_nonneg_left hd_norm (norm_nonneg _)
+        linarith
+      have h_add_eq : q.eval (s (N_3 - 1)) = - ((N_3.factorial : Padic 3) * d) + q.eval (s N_3) := by
+        rw [hd]
+        ring
+      have h_sub_lt : ‖q.eval (s (N_3 - 1))‖ < V_N := by
+        have h_norm_le : ‖q.eval (s (N_3 - 1))‖ ≤ max ‖- ((N_3.factorial : Padic 3) * d)‖ ‖q.eval (s N_3)‖ := by
+          nth_rw 1 [h_add_eq]
+          exact Padic.nonarchimedean (- ((N_3.factorial : Padic 3) * d)) (q.eval (s N_3))
+        rw [norm_neg] at h_norm_le
+        apply lt_of_le_of_lt h_norm_le
+        apply max_lt
+        · exact h_lt_V_N
+        · exact h_lt
+      have h_exists_N3 : ∃ m, m > N ∧ ‖q.eval (s m)‖ < V_N := by
+        use N_3
+        constructor
+        · omega
+        · exact h_lt
+      let M_N3 := Nat.find h_exists_N3
+      have hM_prop := Nat.find_spec h_exists_N3
+      have hM_gt : M_N3 > N := hM_prop.1
+      have hM_lt : ‖q.eval (s M_N3)‖ < V_N := hM_prop.2
+      have hM_sub : ‖q.eval (s (M_N3 - 1))‖ ≥ V_N := by
+        by_cases h_sub : M_N3 - 1 = N
+        · rw [h_sub]
+        · have h_sub_gt : M_N3 - 1 > N := by omega
+          have h_not_P := Nat.find_min h_exists_N3 (by omega : M_N3 - 1 < M_N3)
+          push_neg at h_not_P
+          exact h_not_P h_sub_gt
+      have h_diff_le : ‖q.eval (s M_N3) - q.eval (s (M_N3 - 1))‖ ≤ ‖(M_N3.factorial : Padic 3)‖ * C := by
+        have h_succ_gt : M_N3 > 0 := by omega
+        rcases h_bound M_N3 h_succ_gt with ⟨d, h_eq, hd_norm⟩
+        rw [h_eq]
+        have h_simp : q.eval (s (M_N3 - 1)) + (M_N3.factorial : Padic 3) * d - q.eval (s (M_N3 - 1)) = (M_N3.factorial : Padic 3) * d := by ring
+        rw [h_simp]
+        rw [norm_mul]
+        exact mul_le_mul_of_nonneg_left hd_norm (norm_nonneg _)
+      have h_add_eq' : q.eval (s (M_N3 - 1)) = - (q.eval (s M_N3) - q.eval (s (M_N3 - 1))) + q.eval (s M_N3) := by ring
+      have h_norm_le' : ‖q.eval (s (M_N3 - 1))‖ ≤ max ‖- (q.eval (s M_N3) - q.eval (s (M_N3 - 1)))‖ ‖q.eval (s M_N3)‖ := by
+        nth_rw 1 [h_add_eq']
+        exact Padic.nonarchimedean (- (q.eval (s M_N3) - q.eval (s (M_N3 - 1)))) (q.eval (s M_N3))
+      rw [norm_neg] at h_norm_le'
+
+      have h_diff_eq' : ‖q.eval (s M_N3) - q.eval (s (M_N3 - 1))‖ = ‖q.eval (s (M_N3 - 1))‖ := by
+        have h_ne : ‖q.eval (s M_N3)‖ ≠ ‖- q.eval (s (M_N3 - 1))‖ := by
+          rw [norm_neg]
+          linarith
+        have h_add := norm_add_eq_max_of_norm_ne h_ne
+        have h_sub_eq' : q.eval (s M_N3) - q.eval (s (M_N3 - 1)) = q.eval (s M_N3) + - q.eval (s (M_N3 - 1)) := by ring
+        rw [h_sub_eq', h_add]
+        rw [norm_neg]
+        apply max_eq_right
+        linarith
+      have h_max_eq : max ‖q.eval (s M_N3) - q.eval (s (M_N3 - 1))‖ ‖q.eval (s M_N3)‖ = ‖q.eval (s M_N3) - q.eval (s (M_N3 - 1))‖ := by
+        apply max_eq_left
+        linarith
+      rw [h_max_eq] at h_norm_le'
+
+      have h_witness : N_3 - 1 > N ∧ ‖q.eval (s (N_3 - 1))‖ < V_N := by
+        constructor
+        · omega
+        · exact h_sub_lt
+      have h_le_N3_sub := Nat.find_le h_witness
+      have h_ge_N3_raw : M_N3 ≥ N_3_raw := by
+        have h1 : N_3_raw ≤ N_3 := le_max_right _ _
+        omega
+      have h_fact_lt' := hN3_raw M_N3 h_ge_N3_raw
+      linarith
+
+  let N_new := N_3 + 1
+  have hN_new_ge_N : N_new ≥ N := by omega
+  have hN_new_ge_Nev : N_new ≥ N_ev := by omega
+  have hN_new_ne : q.eval (s N_new) ≠ 0 := hNev N_new hN_new_ge_Nev
+  have hVN_new_pos : ‖q.eval (s N_new)‖ > 0 := norm_pos_iff.mpr hN_new_ne
+
+  have h_ge_VN : ∀ n ≥ N_new, ‖q.eval (s n)‖ ≥ V_N := by
+    intro n hn
+    by_contra h_lt
+    push_neg at h_lt
+    have h_exists : ∃ m ≥ N_new, ‖q.eval (s m)‖ < V_N := by
+      use n
+    let M := Nat.find h_exists
+    have hM_prop := Nat.find_spec h_exists
+    have hM_ge : M ≥ N_new := hM_prop.1
+    have hM_lt : ‖q.eval (s M)‖ < V_N := hM_prop.2
+    have hM_sub : ‖q.eval (s (M - 1))‖ ≥ V_N := by
+      by_cases h_sub : M = N_new
+      · rw [h_sub]
+        have h_eq : N_new - 1 = N_3 := by omega
+        rw [h_eq]
+        exact hN3_norm_ge
+      · have h_sub_gt : M - 1 ≥ N_new := by omega
+        have h_not_P := Nat.find_min h_exists (by omega : M - 1 < M)
+        push_neg at h_not_P
+        exact h_not_P h_sub_gt
+    have h_diff_le : ‖q.eval (s M) - q.eval (s (M - 1))‖ ≤ ‖(M.factorial : Padic 3)‖ * C := by
+      have h_succ_gt : M > 0 := by omega
+      rcases h_bound M h_succ_gt with ⟨d, h_eq, hd_norm⟩
+      rw [h_eq]
+      have h_simp : q.eval (s (M - 1)) + (M.factorial : Padic 3) * d - q.eval (s (M - 1)) = (M.factorial : Padic 3) * d := by ring
+      rw [h_simp]
+      rw [norm_mul]
+      exact mul_le_mul_of_nonneg_left hd_norm (norm_nonneg _)
+    have h_add_eq : q.eval (s (M - 1)) = - (q.eval (s M) - q.eval (s (M - 1))) + q.eval (s M) := by ring
+    have h_norm_le : ‖q.eval (s (M - 1))‖ ≤ max ‖- (q.eval (s M) - q.eval (s (M - 1)))‖ ‖q.eval (s M)‖ := by
+      nth_rw 1 [h_add_eq]
+      exact Padic.nonarchimedean (- (q.eval (s M) - q.eval (s (M - 1)))) (q.eval (s M))
+    rw [norm_neg] at h_norm_le
+
+    have h_diff_eq : ‖q.eval (s M) - q.eval (s (M - 1))‖ = ‖q.eval (s (M - 1))‖ := by
+      have h_ne : ‖q.eval (s M)‖ ≠ ‖- q.eval (s (M - 1))‖ := by
+        rw [norm_neg]
+        linarith
+      have h_add := norm_add_eq_max_of_norm_ne h_ne
+      have h_sub_eq : q.eval (s M) - q.eval (s (M - 1)) = q.eval (s M) + - q.eval (s (M - 1)) := by ring
+      rw [h_sub_eq, h_add]
+      rw [norm_neg]
+      apply max_eq_right
+      linarith
+    have h_max_eq : max ‖q.eval (s M) - q.eval (s (M - 1))‖ ‖q.eval (s M)‖ = ‖q.eval (s M) - q.eval (s (M - 1))‖ := by
+      apply max_eq_left
+      linarith
+    rw [h_max_eq] at h_norm_le
+
+    have h_ge_N3 : M ≥ N_3 := by omega
+    have h_fact_lt := hN3_limit M h_ge_N3
+    have h_ge_N : M - 1 ≥ N := by omega
+    linarith
+
+  have h_bound_N_new : ∀ n > N_new, ∃ d : Padic 3, q.eval (s n) = q.eval (s (n-1)) + (n.factorial : Padic 3) * d ∧ ‖d‖ ≤ C := by
+    intro n hn
+    have hn_pos : n > 0 := by omega
+    exact h_bound n hn_pos
+
+  have h_const : ∀ n ≥ N_new, ‖q.eval (s n)‖ = ‖q.eval (s N_new)‖ := by
+    apply norm_eval_s_constant_simple q C N_new hN_new_ne h_bound_N_new N_3 (by omega)
+    intro n hn
+    have h_lim := hN3_limit n hn
+    have h_ge_N_val : ‖q.eval (s N_new)‖ ≥ V_N := h_ge_VN N_new (by omega)
+    linarith
+
+  have h_const_val : ‖q.eval (s N_new)‖ = 0 :=
+    eventually_constant_zero h_const h_lim_zero
+  have h_VN_new_pos_contra : ‖q.eval (s N_new)‖ > 0 := hVN_new_pos
+  linarith
+

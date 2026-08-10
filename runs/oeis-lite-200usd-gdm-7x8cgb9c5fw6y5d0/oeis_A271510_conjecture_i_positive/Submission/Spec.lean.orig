@@ -1,0 +1,101 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat
+
+/--
+A271510: Number of ordered ways to write $n$ as $x^2 + y^2 + z^2 + w^2$ with $x \ge y \ge 0$, $z \ge 0$ and $w \ge 0$ such that $x^2 + 8y^2 + 16z^2$ is a square.
+-/
+def A271510 (n : ℕ) : ℕ :=
+  -- Define the decidable predicate for being a perfect square in ℕ.
+  let is_square (k : ℕ) : Prop := k.sqrt * k.sqrt = k
+
+  -- The maximum value for any variable is $\lfloor\sqrt{n}\rfloor$.
+  let bound := n.sqrt
+  let R : Finset ℕ := Finset.range (bound + 1)
+
+  -- The search space is the Cartesian product R x R x R x R, structured as (((ℕ × ℕ) × ℕ) × ℕ).
+  let search_space : Finset (((ℕ × ℕ) × ℕ) × ℕ) := R.product R |>.product R |>.product R
+
+  Finset.card $ search_space.filter fun p =>
+    -- Decompose the nested product tuple p = (((x, y), z), w)
+    let x := p.fst.fst.fst
+    let y := p.fst.fst.snd
+    let z := p.fst.snd
+    let w := p.snd
+
+    -- Constraint 1: sum of squares equals n
+    x ^ 2 + y ^ 2 + z ^ 2 + w ^ 2 = n ∧
+    -- Constraint 2: $x \ge y$
+    x ≥ y ∧
+    -- Constraint 3: $x^2 + 8y^2 + 16z^2$ is a square.
+    is_square (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2)
+
+-- A standard definition for "is a square" on ℕ
+def is_square (k : ℕ) : Prop := ∃ m : ℕ, k = m^2
+
+
+
+lemma nonempty_filter_of_mem {α : Type*} [DecidableEq α] {s : Finset α} {p : α → Prop} [DecidablePred p] {x : α} (hx : x ∈ s) (hp : p x) : 0 < (s.filter p).card := by
+  rw [Finset.card_pos]
+  exact ⟨x, Finset.mem_filter.mpr ⟨hx, hp⟩⟩
+
+
+
+
+lemma A271510_pos_of_exists (n : ℕ) (x y z w : ℕ)
+    (h_sum : x ^ 2 + y ^ 2 + z ^ 2 + w ^ 2 = n)
+    (h_ge : x ≥ y)
+    (h_sq : (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2).sqrt * (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2).sqrt = x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2) :
+    0 < A271510 n := by
+  unfold A271510
+  have h_x : x ^ 2 ≤ n := by omega
+  have h_y : y ^ 2 ≤ n := by omega
+  have h_z : z ^ 2 ≤ n := by omega
+  have h_w : w ^ 2 ≤ n := by omega
+  have h_x_bound : x ≤ n.sqrt := Nat.le_sqrt'.mpr h_x
+  have h_y_bound : y ≤ n.sqrt := Nat.le_sqrt'.mpr h_y
+  have h_z_bound : z ≤ n.sqrt := Nat.le_sqrt'.mpr h_z
+  have h_w_bound : w ≤ n.sqrt := Nat.le_sqrt'.mpr h_w
+  let R := Finset.range (n.sqrt + 1)
+  have h_mem : (((x, y), z), w) ∈ ((R.product R).product R).product R :=
+    Finset.mk_mem_product
+      (Finset.mk_mem_product
+        (Finset.mk_mem_product
+          (Finset.mem_range.mpr (by omega))
+          (Finset.mem_range.mpr (by omega)))
+        (Finset.mem_range.mpr (by omega)))
+      (Finset.mem_range.mpr (by omega))
+  have h_sq' : (fun k => k.sqrt * k.sqrt = k) (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2) := h_sq
+  exact nonempty_filter_of_mem h_mem ⟨h_sum, h_ge, h_sq'⟩
+
+
+lemma A271510_pos_iff_exists (n : ℕ) :
+    0 < A271510 n ↔ ∃ x y z w, x ^ 2 + y ^ 2 + z ^ 2 + w ^ 2 = n ∧ x ≥ y ∧ (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2).sqrt * (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2).sqrt = x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2 := by
+  constructor
+  · intro h
+    unfold A271510 at h
+    rw [Finset.card_pos] at h
+    obtain ⟨p, hp⟩ := h
+    rw [Finset.mem_filter] at hp
+    let x := p.fst.fst.fst
+    let y := p.fst.fst.snd
+    let z := p.fst.snd
+    let w := p.snd
+    use x, y, z, w
+    exact hp.2
+  · rintro ⟨x, y, z, w, h_sum, h_ge, h_sq⟩
+    exact A271510_pos_of_exists n x y z w h_sum h_ge h_sq
+
+
+lemma A271510_pos_of_four_mul (n : ℕ) (h : 0 < A271510 n) : 0 < A271510 (4 * n) := by
+  rw [A271510_pos_iff_exists] at h ⊢
+  obtain ⟨x, y, z, w, h_sum, h_ge, h_sq⟩ := h
+  use 2 * x, 2 * y, 2 * z, 2 * w
+  refine ⟨?_, by omega, ?_⟩
+  · linarith [h_sum]
+  · rw [← Nat.exists_mul_self] at h_sq ⊢
+    obtain ⟨K, hK⟩ := h_sq
+    use 2 * K
+    calc (2 * K) * (2 * K) = 4 * (K * K) := by ring
+    _ = 4 * (x ^ 2 + 8 * y ^ 2 + 16 * z ^ 2) := by rw [hK]
+    _ = (2 * x) ^ 2 + 8 * (2 * y) ^ 2 + 16 * (2 * z) ^ 2 := by ring

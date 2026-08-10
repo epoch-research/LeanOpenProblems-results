@@ -1,0 +1,11 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:208:0: error: Type mismatch
+    rfl
+  has type
+    ?m.27 = ?m.27
+  but is expected to have type
+    Real.pi = 5390 / ∑' (k : ℕ), t k
+  Real.pi value in env': (some (HMul.hMul.{0, 0, 0} Real Real Real (instHMul.{0} Real Real.instMul) (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast Real.pi._proof_1)) (Classical.choose.{1} Real (fun (x : Real) => And (Membership.mem.{0, 0} Real (Set.{0} Real) (Set.instMembership.{0} Real) (Set.Icc.{0} Real Real.instPreorder (OfNat.ofNat.{0} Real 1 (One.toOfNat1.{0} Real Real.instOne)) (OfNat.ofNat.{0} Real 2 (instOfNatAtLeastTwo.{0} Real 2 Real.instNatCast Real.pi._proof_1))) x) (Eq.{1} Real (Real.cos x) (OfNat.ofNat.{0} Real 0 (Zero.toOfNat0.{0} Real Real.instZero)))) Real.exists_cos_eq_zero)))
+

@@ -1,0 +1,349 @@
+import FormalConjectures.Util.ProblemImports
+
+open Real Int
+
+/--
+A011545: $a(n)$ is the integer whose decimal digits are the first $n+1$ decimal digits of $\pi$.
+This is equivalent to $a(n) = \lfloor \pi \cdot 10^n \rfloor$.
+-/
+noncomputable def a (n : ℕ) : ℕ :=
+  -- The calculation is $\lfloor \pi \cdot 10^n \rfloor$.
+  -- We use Real.floor, which returns an Int, and convert it to a natural number.
+  (floor (Real.pi * (10 : ℝ) ^ n.cast)).toNat
+
+lemma eq_floor_add_one_of_lt_of_lt {x : ℝ} {k : ℤ} (h1 : x < k) (h2 : (k : ℝ) < x + 1) : k = ⌊x⌋ + 1 := by
+  have h3 : ⌊x⌋ < k := by
+    rw [Int.floor_lt]
+    exact h1
+  have h4 : k - 1 <= ⌊x⌋ := by
+    rw [Int.le_floor]
+    push_cast
+    linarith
+  omega
+
+lemma arctan_gt_rational_frac (x : ℝ) (hx : 0 < x) :
+    x / (1 + x ^ 2) < arctan x := by
+  let y := arctan x
+  have hy_pos : 0 < y := arctan_pos.mpr hx
+  have hy_lt : y < π / 2 := arctan_lt_pi_div_two x
+  have h2y_pos : 0 < 2 * y := by linarith
+  have h_sin_lt : sin (2 * y) < 2 * y := sin_lt h2y_pos
+  have h_sin_double : sin (2 * y) = 2 * sin y * cos y := sin_two_mul y
+  rw [h_sin_double] at h_sin_lt
+  have h_sin_cos_lt : sin y * cos y < y := by linarith
+  have h_sin_y : sin y = x / √(1 + x ^ 2) := sin_arctan x
+  have h_cos_y : cos y = 1 / √(1 + x ^ 2) := cos_arctan x
+  have h_mul : sin y * cos y = x / (1 + x ^ 2) := by
+    rw [h_sin_y, h_cos_y]
+    have h_sq_pos : 0 < 1 + x ^ 2 := by positivity
+    have h_sqrt_sq : √(1 + x ^ 2) * √(1 + x ^ 2) = 1 + x ^ 2 := mul_self_sqrt h_sq_pos.le
+    have h_eq : (x / √(1 + x ^ 2)) * (1 / √(1 + x ^ 2)) = (x * 1) / (√(1 + x ^ 2) * √(1 + x ^ 2)) := by ring
+    rw [h_eq, mul_one, h_sqrt_sq]
+  rw [h_mul] at h_sin_cos_lt
+  exact h_sin_cos_lt
+
+lemma pi_div_arctan_lt_pi_mul_inv_add_one {x : ℝ} (hx : 0 < x) (h_pi_x : π * x <= 1) :
+    π / arctan x < π / x + 1 := by
+  have h_rat : x / (1 + x ^ 2) < arctan x := arctan_gt_rational_frac x hx
+  have h_ineq1 : π * (1 + x ^ 2) <= π + x := by
+    calc
+      π * (1 + x ^ 2) = π + π * x ^ 2 := by ring
+      _ <= π + x := by
+        have h_pi_x2 : π * x ^ 2 <= x := by
+          calc
+            π * x ^ 2 = (π * x) * x := by ring
+            _ <= 1 * x := by nlinarith
+            _ = x := by ring
+        linarith
+  have h_ineq2 : π * x / (π + x) <= x / (1 + x ^ 2) := by
+    have h1 : 0 < π + x := by positivity
+    have h2 : 0 < 1 + x ^ 2 := by positivity
+    rw [div_le_div_iff₀ h1 h2]
+    nlinarith [h_ineq1]
+  have h_lt : π * x / (π + x) < arctan x := lt_of_le_of_lt h_ineq2 h_rat
+  have h_pos : 0 < arctan x := by
+    have h_rat_pos : 0 < x / (1 + x ^ 2) := div_pos hx (by positivity)
+    exact lt_trans h_rat_pos h_rat
+  have h_div : π / arctan x < (π + x) / x := by
+    have h_lt' : π * x < arctan x * (π + x) := by
+      have h1 : 0 < π + x := by positivity
+      rwa [div_lt_iff₀ h1] at h_lt
+    rw [div_lt_div_iff₀ h_pos hx]
+    nlinarith [h_lt']
+  have h_split : (π + x) / x = π / x + 1 := by
+    have h_ne : x ≠ 0 := hx.ne'
+    field_simp
+  rwa [h_split] at h_div
+
+lemma pi_div_arctan_lt_pi_mul_ten_pow_add_one_all (n : ℕ) :
+    π / arctan (1 / (10 : ℝ) ^ n.cast) < π * (10 : ℝ) ^ n.cast + 1 := by
+  cases n with
+  | zero =>
+    have h_ten : (10 : ℝ) ^ ((0 : ℕ).cast) = 1 := by simp
+    rw [h_ten]
+    have h1 : 1 / (1 : ℝ) = 1 := by norm_num
+    rw [h1]
+    have h_art : arctan 1 = π / 4 := arctan_one
+    rw [h_art]
+    have h_div : π / (π / 4) = 4 := by
+      have : π ≠ 0 := pi_ne_zero
+      field_simp
+    rw [h_div]
+    have h_pi : 3 < π := pi_gt_three
+    linarith
+  | succ m =>
+    have hn : m + 1 >= 1 := by omega
+    have h_pi_div : π / arctan (1 / (10 : ℝ) ^ ((m + 1 : ℕ).cast)) < π / (1 / (10 : ℝ) ^ ((m + 1 : ℕ).cast)) + 1 := by
+      let x := 1 / (10 : ℝ) ^ ((m + 1 : ℕ).cast)
+      have hx : 0 < x := by
+        have : 0 < (10 : ℝ) ^ ((m + 1 : ℕ).cast) := by positivity
+        positivity
+      have h_pi_x : π * x <= 1 := by
+        have h_pi : π < 4 := pi_lt_four
+        have h_ten : (10 : ℝ) ^ ((m + 1 : ℕ).cast) >= 10 := by
+          have : (10 : ℝ) ^ 1 <= (10 : ℝ) ^ (m + 1) := pow_le_pow_right₀ (by norm_num) hn
+          simpa using this
+        have hx_le : x <= 1 / 10 := by
+          change (1 / (10 : ℝ) ^ ((m + 1 : ℕ).cast)) <= 1 / 10
+          rw [one_div, one_div, inv_le_inv₀ (by positivity) (by positivity)]
+          exact h_ten
+        calc
+          π * x <= 4 * x := mul_le_mul_of_nonneg_right h_pi.le (by positivity)
+          _ <= 4 * (1 / 10) := mul_le_mul_of_nonneg_left hx_le (by norm_num)
+          _ <= 1 := by norm_num
+      exact pi_div_arctan_lt_pi_mul_inv_add_one hx h_pi_x
+    have h_inv : π / (1 / (10 : ℝ) ^ ((m + 1 : ℕ).cast)) = π * (10 : ℝ) ^ ((m + 1 : ℕ).cast) := by
+      have : (10 : ℝ) ^ ((m + 1 : ℕ).cast) ≠ 0 := by positivity
+      field_simp
+    rw [h_inv] at h_pi_div
+    exact h_pi_div
+
+theorem oeis_a011545_conjecture_reduction (n : ℕ) :
+    (¬ ∃ (k : ℤ),
+      (Real.pi * (10 : ℝ) ^ n.cast < k.cast) ∧
+      (k.cast < Real.pi / Real.arctan (1 / (10 : ℝ) ^ n.cast))) ↔
+    ¬ ((floor (Real.pi * (10 : ℝ) ^ n.cast) + 1 : ℝ) < Real.pi / Real.arctan (1 / (10 : ℝ) ^ n.cast)) := by
+  constructor
+  · intro h h_cond
+    have hk2 : ((⌊Real.pi * (10 : ℝ) ^ n.cast⌋ + 1 : ℤ) : ℝ) < Real.pi / Real.arctan (1 / (10 : ℝ) ^ n.cast) := by
+      push_cast
+      exact h_cond
+    have hk1 : Real.pi * (10 : ℝ) ^ n.cast < ((⌊Real.pi * (10 : ℝ) ^ n.cast⌋ + 1 : ℤ) : ℝ) := by
+      push_cast
+      exact lt_floor_add_one _
+    exact h ⟨_, hk1, hk2⟩
+  · intro h ⟨k, hk1, hk2⟩
+    have h_upper := pi_div_arctan_lt_pi_mul_ten_pow_add_one_all n
+    have hk2' : (k : ℝ) < Real.pi * (10 : ℝ) ^ n.cast + 1 := lt_trans hk2 h_upper
+    have hk_eq : k = ⌊Real.pi * (10 : ℝ) ^ n.cast⌋ + 1 := eq_floor_add_one_of_lt_of_lt hk1 hk2'
+    have hk_cast : (k : ℝ) = (⌊Real.pi * (10 : ℝ) ^ n.cast⌋ + 1 : ℝ) := by exact_mod_cast hk_eq
+    rw [hk_cast] at hk2
+    exact h hk2
+
+theorem oeis_a011545_conjecture_0 (n : ℕ) :
+    ¬ ∃ (k : ℤ),
+      (Real.pi * (10 : ℝ) ^ n.cast < k.cast) ∧
+      (k.cast < Real.pi / Real.arctan (1 / (10 : ℝ) ^ n.cast)) := by
+  cases n with
+  | zero =>
+    intro h
+    rcases h with ⟨k, hk1, hk2⟩
+    push_cast at hk1 hk2
+    norm_num at hk1 hk2
+    have h_pi_gt_three : 3 < Real.pi := Real.pi_gt_three
+    have hk_gt_three : 3 < (k : ℝ) := lt_trans h_pi_gt_three hk1
+    have hk_gt_three_int : 3 < k := by exact_mod_cast hk_gt_three
+    have hk_lt_four : k < 4 := by exact_mod_cast hk2
+    omega
+  | succ m =>
+    cases m with
+    | zero =>
+      intro h
+      rcases h with ⟨k, hk1, hk2⟩
+      push_cast at hk1 hk2
+      norm_num at hk1 hk2
+      have h_pi_gt : 3.14 < Real.pi := Real.pi_gt_d2
+      have h_pi_lt : Real.pi < 3.15 := Real.pi_lt_d2
+      have hk1_bound : 31.4 < (k : ℝ) := by
+        calc
+          31.4 = 3.14 * 10 := by norm_num
+          _ < Real.pi * 10 := by linarith [h_pi_gt]
+          _ < (k : ℝ) := hk1
+      have h_art : (10 / 101 : ℝ) < Real.arctan (1 / 10) := by
+        have h_gt : (1 / 10) / (1 + (1 / 10)^2) < Real.arctan (1 / 10) := arctan_gt_rational_frac (1 / 10) (by norm_num)
+        have h_eq : (10 / 101 : ℝ) = (1 / 10) / (1 + (1 / 10)^2) := by norm_num
+        rwa [← h_eq] at h_gt
+      have h_art_pos : 0 < Real.arctan (1/10) := by positivity
+      have hk2_bound : (k : ℝ) < 31.815 := by
+        calc
+          (k : ℝ) < Real.pi / Real.arctan (1 / 10) := hk2
+          _ < 3.15 / (10 / 101) := by
+            rw [div_lt_div_iff₀ h_art_pos (by norm_num)]
+            have : Real.pi * (10 / 101) < 3.15 * Real.arctan (1 / 10) := by
+              calc
+                Real.pi * (10 / 101) < 3.15 * (10 / 101) := by gcongr
+                _ < 3.15 * Real.arctan (1 / 10) := by gcongr
+            linarith
+          _ = 31.815 := by norm_num
+      have hk_gt : 31 < k := by
+        have : (31 : ℝ) < (k : ℝ) := by linarith
+        exact_mod_cast this
+      have hk_lt : k < 32 := by
+        have : (k : ℝ) < (32 : ℝ) := by linarith
+        exact_mod_cast this
+      omega
+    | succ l =>
+      cases l with
+      | zero =>
+        intro h
+        rcases h with ⟨k, hk1, hk2⟩
+        push_cast at hk1 hk2
+        norm_num at hk1 hk2
+        have h_pi_gt : 3.1415 < Real.pi := Real.pi_gt_d4
+        have h_pi_lt : Real.pi < 3.1416 := Real.pi_lt_d4
+        have hk1_bound : 314.15 < (k : ℝ) := by
+          calc
+            314.15 = 3.1415 * 100 := by norm_num
+            _ < Real.pi * 100 := by linarith [h_pi_gt]
+            _ < (k : ℝ) := hk1
+        have h_art : 100 / 10001 < Real.arctan (1 / 100) := by
+          have h_gt : (1/100) / (1 + (1/100)^2) < Real.arctan (1/100) := arctan_gt_rational_frac (1/100) (by norm_num)
+          have h_eq : (100 / 10001 : ℝ) = (1 / 100) / (1 + (1 / 100)^2) := by norm_num
+          rwa [← h_eq] at h_gt
+        have h_art_pos : 0 < Real.arctan (1/100) := by positivity
+        have hk2_bound : (k : ℝ) < 314.1915 := by
+          calc
+            (k : ℝ) < Real.pi / Real.arctan (1 / 100) := hk2
+            _ < 3.1416 / (100 / 10001) := by
+              rw [div_lt_div_iff₀ h_art_pos (by norm_num)]
+              have : Real.pi * (100 / 10001) < 3.1416 * Real.arctan (1 / 100) := by
+                calc
+                  Real.pi * (100 / 10001) < 3.1416 * (100 / 10001) := by gcongr
+                  _ < 3.1416 * Real.arctan (1 / 100) := by gcongr
+              linarith
+            _ = 314.191416 := by norm_num
+            _ < 314.1915 := by norm_num
+        have hk_gt : 314 < k := by
+          have : (314 : ℝ) < (k : ℝ) := by linarith
+          exact_mod_cast this
+        have hk_lt : k < 315 := by
+          have : (k : ℝ) < (315 : ℝ) := by linarith
+          exact_mod_cast this
+        omega
+      | succ j =>
+        cases j with
+        | zero =>
+          intro h
+          rcases h with ⟨k, hk1, hk2⟩
+          have h_ten : (10 : ℝ) ^ ((3 : ℕ).cast) = 1000 := by norm_num
+          rw [h_ten] at hk1 hk2
+          have h_pi_gt : 3.141592 < Real.pi := Real.pi_gt_d6
+          have h_pi_lt : Real.pi < 3.141593 := Real.pi_lt_d6
+          have hk1_bound : 3141.592 < (k : ℝ) := by
+            calc
+              3141.592 = 3.141592 * 1000 := by norm_num
+              _ < Real.pi * 1000 := by linarith [h_pi_gt]
+              _ < (k : ℝ) := hk1
+          have h_art : 1000 / 1000001 < Real.arctan (1 / 1000) := by
+            have h_gt : (1/1000) / (1 + (1/1000)^2) < Real.arctan (1/1000) := arctan_gt_rational_frac (1/1000) (by norm_num)
+            have h_eq : (1000 / 1000001 : ℝ) = (1 / 1000) / (1 + (1 / 1000)^2) := by norm_num
+            rwa [← h_eq] at h_gt
+          have h_art_pos : 0 < Real.arctan (1/1000) := by positivity
+          have hk2_bound : (k : ℝ) < 3141.596142 := by
+            calc
+              (k : ℝ) < Real.pi / Real.arctan (1 / 1000) := hk2
+              _ < 3.141593 / (1000 / 1000001) := by
+                rw [div_lt_div_iff₀ h_art_pos (by norm_num)]
+                have : Real.pi * (1000 / 1000001) < 3.141593 * Real.arctan (1 / 1000) := by
+                  calc
+                    Real.pi * (1000 / 1000001) < 3.141593 * (1000 / 1000001) := by gcongr
+                    _ < 3.141593 * Real.arctan (1 / 1000) := by gcongr
+                linarith
+              _ = 3141.596141593 := by norm_num
+              _ < 3141.596142 := by norm_num
+          have hk_gt : 3141 < k := by
+            have : (3141 : ℝ) < (k : ℝ) := by linarith
+            exact_mod_cast this
+          have hk_lt : k < 3142 := by
+            have : (k : ℝ) < (3142 : ℝ) := by linarith
+            exact_mod_cast this
+          omega
+        | succ i =>
+          cases i with
+          | zero =>
+            intro h
+            rcases h with ⟨k, hk1, hk2⟩
+            have h_ten : (10 : ℝ) ^ ((4 : ℕ).cast) = 10000 := by norm_num
+            rw [h_ten] at hk1 hk2
+            have h_pi_gt : 3.14159265358979323846 < Real.pi := Real.pi_gt_d20
+            have h_pi_lt : Real.pi < 3.14159265358979323847 := Real.pi_lt_d20
+            have hk1_bound : 31415.9265358979323846 < (k : ℝ) := by
+              calc
+                31415.9265358979323846 = 3.14159265358979323846 * 10000 := by norm_num
+                _ < Real.pi * 10000 := by linarith [h_pi_gt]
+                _ < (k : ℝ) := hk1
+            have h_art : 10000 / 100000001 < Real.arctan (1 / 10000) := by
+              have h_gt : (1/10000) / (1 + (1/10000)^2) < Real.arctan (1/10000) := arctan_gt_rational_frac (1/10000) (by norm_num)
+              have h_eq : (10000 / 100000001 : ℝ) = (1 / 10000) / (1 + (1 / 10000)^2) := by norm_num
+              rwa [← h_eq] at h_gt
+            have h_art_pos : 0 < Real.arctan (1/10000) := by positivity
+            have hk2_bound : (k : ℝ) < 31416 := by
+              calc
+                (k : ℝ) < Real.pi / Real.arctan (1 / 10000) := hk2
+                _ < 3.14159265358979323847 / (10000 / 100000001) := by
+                  rw [div_lt_div_iff₀ h_art_pos (by norm_num)]
+                  have : Real.pi * (10000 / 100000001) < 3.14159265358979323847 * Real.arctan (1 / 10000) := by
+                    calc
+                      Real.pi * (10000 / 100000001) < 3.14159265358979323847 * (10000 / 100000001) := by gcongr
+                      _ < 3.14159265358979323847 * Real.arctan (1 / 10000) := by gcongr
+                  linarith
+                _ = 31415.926850057197743679323847 := by norm_num
+                _ < 31416 := by norm_num
+            have hk_gt : 31415 < k := by
+              have : (31415 : ℝ) < (k : ℝ) := by linarith
+              exact_mod_cast this
+            have hk_lt : k < 31416 := by
+              have : (k : ℝ) < (31416 : ℝ) := by linarith
+              exact_mod_cast this
+            omega
+          | succ h =>
+            cases h with
+            | zero =>
+              intro h
+              rcases h with ⟨k, hk1, hk2⟩
+              have h_ten : (10 : ℝ) ^ ((5 : ℕ).cast) = 100000 := by norm_num
+              rw [h_ten] at hk1 hk2
+              have h_pi_gt : 3.14159265358979323846 < Real.pi := Real.pi_gt_d20
+              have h_pi_lt : Real.pi < 3.14159265358979323847 := Real.pi_lt_d20
+              have hk1_bound : 314159.265358979323846 < (k : ℝ) := by
+                calc
+                  314159.265358979323846 = 3.14159265358979323846 * 100000 := by norm_num
+                  _ < Real.pi * 100000 := by linarith [h_pi_gt]
+                  _ < (k : ℝ) := hk1
+              have h_art : 100000 / 10000000001 < Real.arctan (1 / 100000) := by
+                have h_gt : (1/100000) / (1 + (1/100000)^2) < Real.arctan (1/100000) := arctan_gt_rational_frac (1/100000) (by norm_num)
+                have h_eq : (100000 / 10000000001 : ℝ) = (1 / 100000) / (1 + (1 / 100000)^2) := by norm_num
+                rwa [← h_eq] at h_gt
+              have h_art_pos : 0 < Real.arctan (1/100000) := by positivity
+              have hk2_bound : (k : ℝ) < 314160 := by
+                calc
+                  (k : ℝ) < Real.pi / Real.arctan (1 / 100000) := hk2
+                  _ < 3.14159265358979323847 / (100000 / 10000000001) := by
+                    rw [div_lt_div_iff₀ h_art_pos (by norm_num)]
+                    have : Real.pi * (100000 / 10000000001) < 3.14159265358979323847 * Real.arctan (1 / 100000) := by
+                      calc
+                        Real.pi * (100000 / 10000000001) < 3.14159265358979323847 * (100000 / 10000000001) := by gcongr
+                        _ < 3.14159265358979323847 * Real.arctan (1 / 100000) := by gcongr
+                    linarith
+                  _ < 314160 := by norm_num
+              have hk_gt : 314159 < k := by
+                have : (314159 : ℝ) < (k : ℝ) := by linarith
+                exact_mod_cast this
+              have hk_lt : k < 314160 := by
+                have : (k : ℝ) < (314160 : ℝ) := by linarith
+                exact_mod_cast this
+              omega
+            | succ g =>
+              sorry
+
+#print axioms oeis_a011545_conjecture_0

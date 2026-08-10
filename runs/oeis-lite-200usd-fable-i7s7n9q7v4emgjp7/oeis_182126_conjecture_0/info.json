@@ -1,0 +1,23 @@
+{
+  "id": "oeis_182126_conjecture_0",
+  "epoch": 1,
+  "uuid": "nDaeoKRDL6MYAxSsQnUPGY",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 1183,
+      "output_tokens": 261455,
+      "total_tokens": 149965480,
+      "input_tokens_cache_write": 3236735,
+      "input_tokens_cache_read": 146466107,
+      "reasoning_tokens": 82149,
+      "total_cost": 200.0098745
+    }
+  },
+  "oeis_id": "A182126"
+}

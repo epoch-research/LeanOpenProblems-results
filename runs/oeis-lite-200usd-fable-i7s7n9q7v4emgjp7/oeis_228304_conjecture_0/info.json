@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "JQY9Xfj9dFedoEfFXsbmSF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5": {
+      "input_tokens": 57,
+      "output_tokens": 137351,
+      "total_tokens": 2935141,
+      "input_tokens_cache_write": 254586,
+      "input_tokens_cache_read": 2543147,
+      "reasoning_tokens": 35055,
+      "total_cost": 12.593591999999997
+    }
+  },
+  "oeis_id": "A228304"
+}

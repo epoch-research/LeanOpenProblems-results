@@ -1,0 +1,8 @@
+Sieve complete. Found 332398 primes congruent to 3 mod 4.
+Starting 100% exact search up to n = 10,000,000...
+Checked up to 999999
+Checked up to 2999997
+Checked up to 4999995
+Checked up to 6999993
+Checked up to 8999991
+No counterexample found up to 10,000,000!

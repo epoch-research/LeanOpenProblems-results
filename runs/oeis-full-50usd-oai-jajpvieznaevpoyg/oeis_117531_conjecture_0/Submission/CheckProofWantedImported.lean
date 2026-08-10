@@ -1,0 +1,4 @@
+import FormalConjectures.Util.ProblemImports
+#check TM2ComputableInPolyTime.comp
+#check IsPreprimitive.is_two_pretransitive'
+#check is_two_preprimitive_strong_jordan

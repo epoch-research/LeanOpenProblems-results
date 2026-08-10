@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#print Erased
+#print Erased.out_proof
+#print Plausible.TestResult
+#print Plausible.instInhabitedTestResult
+#check Plausible.TestResult.success
+#check Plausible.TestResult.failure
+#check Plausible.TestResult.gaveUp
+#print Part
+#print Part.unwrap
+#print Trunc
+#check Trunc.out
+#print Trunc.out
+#check Nonempty

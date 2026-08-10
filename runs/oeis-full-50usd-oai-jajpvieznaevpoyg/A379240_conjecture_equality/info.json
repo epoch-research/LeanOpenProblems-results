@@ -1,0 +1,20 @@
+{
+  "id": "A379240_conjecture_equality",
+  "epoch": 1,
+  "uuid": "gDBpXzmPTxzABXksuibQZC",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 85229,
+      "output_tokens": 21625,
+      "total_tokens": 880998,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 774144,
+      "reasoning_tokens": 5115,
+      "total_cost": 1.4619670000000002
+    }
+  },
+  "oeis_id": "A379240"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "a251758_conjecture_first_occurrences",
+  "epoch": 1,
+  "uuid": "TPhiLjptmsv85eWWCoyKyG",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 356,
+      "output_tokens": 512465,
+      "total_tokens": 30321057,
+      "input_tokens_cache_write": 965203,
+      "input_tokens_cache_read": 28843033,
+      "reasoning_tokens": 98394,
+      "total_cost": 33.267440249999986
+    }
+  },
+  "oeis_id": "A251758"
+}

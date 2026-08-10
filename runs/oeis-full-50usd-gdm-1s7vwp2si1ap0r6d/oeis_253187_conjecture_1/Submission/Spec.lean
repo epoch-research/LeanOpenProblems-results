@@ -1,0 +1,65 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+/--
+The $x$-th pentagonal number, $\frac{x(3x-1)}{2}$, for $x \ge 0$.
+-/
+private def pentagonal_first (x : ℕ) : ℕ := (x * (3 * x - 1)) / 2
+
+/--
+The $y$-th "second pentagonal number", $\frac{y(3y+1)}{2}$, for $y \ge 0$.
+-/
+private def pentagonal_second (y : ℕ) : ℕ := (y * (3 * y + 1)) / 2
+
+/--
+The number of $\mathbb{Z}$ indices $m$ such that $m(4m-3)=r$. This is 1 if $r$ is a
+generalized decagonal number (i.e., $16r+9$ is a perfect square), and 0 otherwise.
+-/
+private def count_generalized_decagonal_index (r : ℕ) : ℕ :=
+  if Nat.sqrt (16 * r + 9) * Nat.sqrt (16 * r + 9) = 16 * r + 9 then 1 else 0
+
+/--
+A253187: Number of ordered ways to write $n$ as the sum of a pentagonal number, a second pentagonal number and a generalized decagonal number.
+$$a(n) = \# \{ (x, y, m) \in \mathbb{N} \times \mathbb{N} \times \mathbb{Z} \mid n = \frac{x(3x-1)}{2} + \frac{y(3y+1)}{2} + m(4m-3) \}$$
+-/
+def A253187 (n : ℕ) : ℕ :=
+  -- Iterate x and y up to n, which is a sufficient bound.
+  (range (n + 1)).sum fun x =>
+    (range (n + 1)).sum fun y =>
+      let sum_pent := pentagonal_first x + pentagonal_second y
+      if sum_pent <= n then
+        count_generalized_decagonal_index (n - sum_pent)
+      else
+        0
+
+/-- Conjecture: a(n) > 0 for all n.
+See also the author's similar conjectures in A254574, A254631, A255916 and the two linked papers. -/
+theorem oeis_253187_conjecture_1 (n : ℕ) : A253187 n > 0 := by
+  rcases n with _ | n_1
+  · -- n = 0
+    unfold A253187
+    simp [pentagonal_first, pentagonal_second, count_generalized_decagonal_index]
+    have h_sqrt : Nat.sqrt 9 = 3 := by
+      symm
+      rw [Nat.eq_sqrt]
+      decide
+    rw [h_sqrt]
+    decide
+  · rcases n_1 with _ | n_2
+    · -- n = 1
+      unfold A253187
+      rw [sum_range_succ, sum_range_succ]
+      have h_sqrt25 : Nat.sqrt 25 = 5 := by
+        symm
+        rw [Nat.eq_sqrt]
+        decide
+      have h_sqrt9 : Nat.sqrt 9 = 3 := by
+        symm
+        rw [Nat.eq_sqrt]
+        decide
+      simp [sum_range_succ, pentagonal_first, pentagonal_second, count_generalized_decagonal_index, h_sqrt25, h_sqrt9]
+    · -- n >= 2
+      sorry
+
+

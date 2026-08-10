@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:394:77: error: mod_cast has type\n  a n ≤ n / 4 + n.primeCounting + 1\nbut is expected to have type\n  ↑(a n) ≤ ↑n / 4 + ↑n.primeCounting + 1",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

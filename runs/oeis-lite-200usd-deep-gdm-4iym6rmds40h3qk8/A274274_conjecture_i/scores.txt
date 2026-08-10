@@ -1,0 +1,7 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:16:124: error: don't know how to synthesize placeholder for argument `synthetic`
+  context:
+  ⊢ Bool
+

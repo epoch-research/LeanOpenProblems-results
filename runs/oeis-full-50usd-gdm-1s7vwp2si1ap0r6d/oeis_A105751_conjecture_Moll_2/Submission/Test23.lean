@@ -1,0 +1,180 @@
+import Mathlib
+
+def P : ℕ → ℤ × ℤ
+  | 0 => (1, 0)
+  | n + 1 =>
+    let (x, y) := P n
+    (x - (n + 1) * y, (n + 1) * x + y)
+
+theorem P_norm_pos (n : ℕ) : (P n).1^2 + (P n).2^2 > 0 := by
+  induction n with
+  | zero =>
+    simp [P]
+  | succ n ih =>
+    have h_eq : (P (n + 1)).1^2 + (P (n + 1)).2^2 = (1 + ((n + 1 : ℕ) : ℤ)^2) * ((P n).1^2 + (P n).2^2) := by
+      simp [P]
+      ring
+    rw [h_eq]
+    have h_sq_pos : 1 + ((n + 1 : ℕ) : ℤ)^2 > 0 := by
+      have : ((n + 1 : ℕ) : ℤ)^2 ≥ 0 := sq_nonneg _
+      omega
+    exact mul_pos h_sq_pos ih
+
+theorem valuation_one_add_sq_even (m : ℤ) (h : m % 2 = 0) : padicValInt 2 (1 + m^2) = 0 := by
+  unfold padicValInt
+  apply padicValNat.eq_zero_of_not_dvd
+  intro hc
+  have h_dvd : (2 : ℤ) ∣ (1 + m^2) := by
+    rwa [← Int.ofNat_dvd_left] at hc
+  have h_mod : (1 + m^2) % 2 = 1 := by
+    have hm : m = 2 * (m / 2) := by omega
+    set k := m / 2
+    rw [hm]
+    have : 1 + (2 * k)^2 = 2 * (2 * k^2) + 1 := by ring
+    rw [this]
+    omega
+  have h_hc : (1 + m^2) % 2 = 0 := Int.dvd_iff_emod_eq_zero.mp h_dvd
+  omega
+
+theorem valuation_one_add_sq_odd (m : ℤ) (h : m % 2 = 1) : padicValInt 2 (1 + m^2) = 1 := by
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have h_eq : 1 + m^2 = 2 * (2 * (m / 2)^2 + 2 * (m / 2) + 1) := by
+    have : m = 2 * (m / 2) + 1 := by omega
+    nth_rw 1 [this]
+    ring
+  have h_odd : ¬ (2 : ℤ) ∣ (2 * (m / 2)^2 + 2 * (m / 2) + 1) := by
+    intro hc
+    rcases hc with ⟨d, hd⟩
+    omega
+  have h_eq_zero : padicValInt 2 (2 * (m / 2)^2 + 2 * (m / 2) + 1) = 0 := by
+    unfold padicValInt
+    apply padicValNat.eq_zero_of_not_dvd
+    intro hc
+    apply h_odd
+    rwa [← Int.ofNat_dvd_left] at hc
+  rw [h_eq]
+  rw [padicValInt.mul]
+  · have h2 : padicValInt 2 2 = 1 := by
+      unfold padicValInt
+      norm_num
+    rw [h2, h_eq_zero, add_zero]
+  · norm_num
+  · intro hc
+    have h_mod : (2 * (m / 2)^2 + 2 * (m / 2) + 1) % 2 = 1 := by
+      set k := m / 2
+      have : 2 * k^2 + 2 * k + 1 = 2 * (k^2 + k) + 1 := by ring
+      rw [this]
+      omega
+    rw [hc] at h_mod
+    norm_num at h_mod
+
+theorem valuation_one_add_sq (m : ℤ) : padicValInt 2 (1 + m^2) = if m % 2 = 0 then 0 else 1 := by
+  by_cases h : m % 2 = 0
+  · rw [if_pos h]
+    exact valuation_one_add_sq_even m h
+  · have h_odd : m % 2 = 1 := by omega
+    rw [if_neg h]
+    exact valuation_one_add_sq_odd m h_odd
+
+theorem valuation_P_norm (n : ℕ) : padicValInt 2 ((P n).1^2 + (P n).2^2) = (n + 1) / 2 := by
+  induction n with
+  | zero =>
+    simp [P, valuation_one_add_sq]
+  | succ n ih =>
+    have h_eq : (P (n + 1)).1^2 + (P (n + 1)).2^2 = (1 + ((n + 1 : ℕ) : ℤ)^2) * ((P n).1^2 + (P n).2^2) := by
+      simp [P]
+      ring
+    rw [h_eq]
+    rw [padicValInt.mul]
+    · have h_val : padicValInt 2 (1 + ((n + 1 : ℕ) : ℤ)^2) = if (n + 1) % 2 = 0 then 0 else 1 := by
+        have h_eq2 : (1 + ((n + 1 : ℕ) : ℤ)^2) = 1 + (n + 1 : ℤ)^2 := by push_cast; rfl
+        rw [h_eq2, valuation_one_add_sq (n + 1 : ℤ)]
+        have h_mod : (n + 1 : ℤ) % 2 = ↑((n + 1) % 2) := by simp
+        rw [h_mod]
+        split_ifs with h1 h2 h2
+        · rfl
+        · exfalso; omega
+        · exfalso; omega
+        · rfl
+      rw [h_val, ih]
+      split_ifs with h
+      · have : (n + 1) % 2 = 0 := h
+        omega
+      · have : (n + 1) % 2 = 1 := by omega
+        omega
+    · have : 1 + ((n + 1 : ℕ) : ℤ)^2 ≥ 1 := by
+        have : ((n + 1 : ℕ) : ℤ)^2 ≥ 0 := sq_nonneg _
+        omega
+      omega
+    · exact ne_of_gt (P_norm_pos n)
+
+def InductionHyp (n : ℕ) : Prop :=
+  let k := n / 4
+  match n % 4 with
+  | 0 => 2^k ∣ (P n).1 ∧ 2^k ∣ (P n).2
+  | 1 => 2^k ∣ (P n).1 ∧ 2^k ∣ (P n).2 ∧ 2^(k+1) ∣ ((P n).1 - (P n).2)
+  | 2 => 2^k ∣ (P n).1 ∧ 2^k ∣ (P n).2 ∧ 2^(k+1) ∣ ((P n).1 - (P n).2)
+  | _ => 2^(k+1) ∣ (P n).1 ∧ 2^(k+1) ∣ (P n).2
+
+theorem val_eq_of_dvd_not_dvd {y : ℤ} {k : ℕ} (hy0 : y ≠ 0) (h1 : (2:ℤ)^k ∣ y) (h2 : ¬ (2:ℤ)^(k+1) ∣ y) : padicValInt 2 y = k := by
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  have hy0' : y.natAbs ≠ 0 := Int.natAbs_ne_zero.mpr hy0
+  have hd1 : 2^k ∣ y.natAbs := by
+    have h_eq : (2:ℤ)^k = ((2^k : ℕ) : ℤ) := by simp
+    rw [h_eq] at h1
+    rwa [Int.ofNat_dvd_left] at h1
+  have hd2 : ¬ 2^(k+1) ∣ y.natAbs := by
+    intro hc
+    apply h2
+    have h_eq : (2:ℤ)^(k+1) = ((2^(k+1) : ℕ) : ℤ) := by simp
+    rw [h_eq]
+    rwa [Int.ofNat_dvd_left]
+  unfold padicValInt
+  rw [padicValNat_dvd_iff_le hy0'] at hd1 hd2
+  omega
+
+theorem valuation_a_eq_k (n : ℕ) (h_ih : InductionHyp n) (h_mod : n % 4 = 1 ∨ n % 4 = 2) :
+    padicValInt 2 (P n).2 = n / 4 := by
+  have h_prime : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+  set k := n / 4
+  have h_cases : n % 4 = 1 ∨ n % 4 = 2 := h_mod
+  have h_ih_cases : 2^k ∣ (P n).1 ∧ 2^k ∣ (P n).2 ∧ 2^(k+1) ∣ ((P n).1 - (P n).2) := by
+    unfold InductionHyp at h_ih
+    rcases h_cases with h1 | h2
+    · rw [h1] at h_ih; exact h_ih
+    · rw [h2] at h_ih; exact h_ih
+  rcases h_ih_cases with ⟨h_x, h_y, h_xy⟩
+  have h_not_div_y : ¬ (2:ℤ)^(k+1) ∣ (P n).2 := by
+    intro h_div_y
+    have h_div_x : (2:ℤ)^(k+1) ∣ (P n).1 := by
+      have h_eq : (P n).1 = ((P n).1 - (P n).2) + (P n).2 := by ring
+      rw [h_eq]
+      exact dvd_add h_xy h_div_y
+    have h_div_norm : (2:ℤ)^(2*k + 2) ∣ ((P n).1^2 + (P n).2^2) := by
+      rcases h_div_x with ⟨A, hA⟩
+      rcases h_div_y with ⟨B, hB⟩
+      use A^2 + B^2
+      rw [hA, hB]
+      ring
+    have hd_nat : 2^(2*k + 2) ∣ ((P n).1^2 + (P n).2^2).natAbs := by
+      have h_eq : (2:ℤ)^(2*k + 2) = ((2^(2*k + 2) : ℕ) : ℤ) := by simp
+      rw [h_eq] at h_div_norm
+      rwa [Int.ofNat_dvd_left] at h_div_norm
+    have h_pos : ((P n).1^2 + (P n).2^2).natAbs ≠ 0 := by
+      have : ((P n).1^2 + (P n).2^2) > 0 := P_norm_pos n
+      omega
+    rw [padicValNat_dvd_iff_le h_pos] at hd_nat
+    have h_val : padicValInt 2 ((P n).1^2 + (P n).2^2) = (n + 1) / 2 := valuation_P_norm n
+    unfold padicValInt at h_val
+    rw [h_val] at hd_nat
+    rcases h_cases with h1 | h2
+    · have : (n + 1) / 2 = 2 * k + 1 := by omega
+      omega
+    · have : (n + 1) / 2 = 2 * k + 1 := by omega
+      omega
+  have hy_ne_zero : (P n).2 ≠ 0 := by
+    intro hc
+    apply h_not_div_y
+    rw [hc]
+    exact dvd_zero _
+  exact val_eq_of_dvd_not_dvd hy_ne_zero h_y h_not_div_y

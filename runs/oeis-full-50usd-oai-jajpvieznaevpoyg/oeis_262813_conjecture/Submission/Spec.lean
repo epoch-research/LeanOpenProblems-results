@@ -1,0 +1,28 @@
+import FormalConjectures.Util.ProblemImports
+
+open Finset Nat
+
+/-- The $z$-th triangular number $\frac{z(z+1)}{2}$. -/
+def triangular (z : ℕ) : ℕ := z * (z + 1) / 2
+
+/--
+A262813: Number of ordered ways to write $n$ as $x^3 + y^2 + z(z+1)/2$ with $x \ge 0$, $y \ge 0$ and $z > 0$.
+-/
+def a (n : ℕ) : ℕ :=
+  -- The summation range can be safely finite, as x^3, y^2, and triangular z must be <= n.
+  (range (n + 1)).sum fun x =>
+  (range (n + 1)).sum fun y =>
+  (range (n + 1)).sum fun z =>
+    -- Count only if z > 0 and the equation holds.
+    if z > 0 ∧ x^3 + y^2 + triangular z = n then 1 else 0
+
+/--
+A262813 Conjecture: a(n) > 0 for all n > 0, and a(n) = 1 only for n = 1, 9, 21, 35, 98, 152, 306.
+-/
+
+theorem oeis_262813_conjecture :
+  -- Define the set of exceptional natural numbers where a(n) = 1.
+  let S : Finset ℕ := {1, 9, 21, 35, 98, 152, 306}
+  -- The conjecture is formally stated as a conjunction of two properties for all n > 0.
+  ∀ n : ℕ, n > 0 → (a n > 0 ∧ (a n = 1 ↔ n ∈ S)) := by
+  sorry

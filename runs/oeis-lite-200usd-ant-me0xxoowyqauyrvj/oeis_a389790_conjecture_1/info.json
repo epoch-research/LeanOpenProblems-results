@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a389790_conjecture_1",
+  "epoch": 1,
+  "uuid": "7s64fGqUZabiTW9Yupgcug",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 3935,
+      "output_tokens": 820648,
+      "total_tokens": 338978095,
+      "input_tokens_cache_write": 1809148,
+      "input_tokens_cache_read": 336344364,
+      "reasoning_tokens": 90518,
+      "total_cost": 200.015232
+    }
+  },
+  "oeis_id": "A389790"
+}

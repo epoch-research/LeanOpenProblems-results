@@ -1,0 +1,21 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1133:59: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 1
+    b - c ≤ 0
+  where
+   b := ↑(p_index n (a (n - 1) + 1))
+   c := ↑(n - 4)
+  Submission/Spec.lean:1152:36: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 1
+    b - c ≤ -1
+  where
+   b := ↑(p_index n (a (n - 1) + 1))
+   c := ↑(n - 2)
+  Submission/Spec.lean:1190:2: warning: unused termination hints, function is not recursive
+

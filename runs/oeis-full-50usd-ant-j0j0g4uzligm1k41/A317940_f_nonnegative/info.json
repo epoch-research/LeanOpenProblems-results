@@ -1,0 +1,20 @@
+{
+  "id": "A317940_f_nonnegative",
+  "epoch": 1,
+  "uuid": "PzisFL8evaUufjWwgPZFma",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 231,
+      "output_tokens": 234589,
+      "total_tokens": 19580600,
+      "input_tokens_cache_write": 331482,
+      "input_tokens_cache_read": 19014298,
+      "reasoning_tokens": 42842,
+      "total_cost": 17.4447915
+    }
+  },
+  "oeis_id": "A317940"
+}

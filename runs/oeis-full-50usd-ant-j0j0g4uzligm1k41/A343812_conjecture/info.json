@@ -1,0 +1,23 @@
+{
+  "id": "A343812_conjecture",
+  "epoch": 1,
+  "uuid": "Dpe94bQGFjAP3piUav5cvx",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 512,
+      "output_tokens": 507082,
+      "total_tokens": 43211544,
+      "input_tokens_cache_write": 2791129,
+      "input_tokens_cache_read": 39912821,
+      "reasoning_tokens": 109738,
+      "total_cost": 50.080576750000034
+    }
+  },
+  "oeis_id": "A343812"
+}

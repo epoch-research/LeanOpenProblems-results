@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a368692_conjecture_integrality",
+  "epoch": 1,
+  "uuid": "LrjUaLuYfJPGLdZWxUdb6m",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 404053,
+      "output_tokens": 52158,
+      "total_tokens": 10922515,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 10466304,
+      "reasoning_tokens": 17214,
+      "total_cost": 8.818157000000003
+    }
+  },
+  "oeis_id": "A368692"
+}

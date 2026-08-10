@@ -1,0 +1,23 @@
+{
+  "id": "oeis_361715_conjecture_2",
+  "epoch": 1,
+  "uuid": "iP2HVpVsgDZBasoh7jszNK",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "openai/gpt-5.5": {
+      "input_tokens": 1918890,
+      "output_tokens": 355110,
+      "total_tokens": 61887184,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 59613184,
+      "reasoning_tokens": 243231,
+      "total_cost": 50.05434199999998
+    }
+  },
+  "oeis_id": "A361715"
+}

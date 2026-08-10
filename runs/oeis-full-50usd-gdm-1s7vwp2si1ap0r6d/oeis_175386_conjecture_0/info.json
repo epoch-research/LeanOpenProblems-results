@@ -1,0 +1,20 @@
+{
+  "id": "oeis_175386_conjecture_0",
+  "epoch": 1,
+  "uuid": "9WkfT7bwk7fGcrNd3bBFvE",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 14315095,
+      "output_tokens": 377399,
+      "total_tokens": 130332602,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 114391199,
+      "reasoning_tokens": 1248909,
+      "total_cost": 42.02791335000006
+    }
+  },
+  "oeis_id": "A175386"
+}

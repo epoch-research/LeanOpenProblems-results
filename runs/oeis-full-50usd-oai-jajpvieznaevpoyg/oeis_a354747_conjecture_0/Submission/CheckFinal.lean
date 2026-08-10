@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check orderOf_dvd_iff_pow_eq_one
+#check orderOf_le_card_univ
+#check Nat.minFac_prime
+#check Nat.minFac_dvd
+#check Nat.minFac_sq_le_self
+#check Nat.Prime.eq_one_or_self_of_dvd
+#check Nat.Prime.ne_one
+#check Nat.Prime.one_lt
+#check Nat.Prime.pos
+#check Nat.sInf_mem

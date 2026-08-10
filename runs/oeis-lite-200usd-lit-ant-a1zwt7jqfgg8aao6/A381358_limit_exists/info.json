@@ -1,0 +1,20 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "oHUEL8xJAUSfDk6VUxfNE8",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 437,
+      "output_tokens": 527906,
+      "total_tokens": 34599955,
+      "input_tokens_cache_write": 1372297,
+      "input_tokens_cache_read": 32699315,
+      "reasoning_tokens": 100232,
+      "total_cost": 38.12634875000003
+    }
+  },
+  "oeis_id": "A381358"
+}

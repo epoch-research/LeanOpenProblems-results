@@ -1,0 +1,52 @@
+import FormalConjectures.Util.ProblemImports
+
+open Nat Finset
+
+def triangular_number (k : ℕ) : ℕ := k * (k + 1) / 2
+
+def A308584 (n : ℕ) : ℕ :=
+  have T := triangular_number;
+  have bound := n + 1;
+  have R := Finset.range bound;
+  have search_space := ((R.product R).product R).product R;
+  {t ∈ search_space |
+      have ab_pair := t.1.1;
+      have c := t.1.2;
+      have d := t.2;
+      have a := ab_pair.1;
+      have b := ab_pair.2;
+      a ≤ b ∧ T a + T b + 5 ^ c * 8 ^ d = n}.card
+
+def GoalProp (n : ℕ) : Prop := ∀ m, m ≤ n → m > 0 → A308584 m > 0
+
+partial def cast_proof (n : ℕ) (hn : n > 0) (h : Nonempty (GoalProp n)) : A308584 n > 0 :=
+  have h_val := Classical.choice h
+  h_val n (Nat.le_refl n) hn
+
+theorem h_one_pos : A308584 1 > 0 := by
+  unfold A308584
+  dsimp only
+  apply Finset.card_pos.mpr
+  let witness : ((ℕ × ℕ) × ℕ) × ℕ := (((0, 0), 0), 0)
+  refine ⟨witness, ?_⟩
+  rw [Finset.mem_filter]
+  refine ⟨?_, by decide⟩
+  simp [witness, Finset.mem_product, Finset.mem_range]
+
+theorem GoalProp_step (n : ℕ) (h : GoalProp n) (h_next : A308584 (n + 1) > 0) : GoalProp (n + 1) := by
+  intro m hm hm_pos
+  have h_cases : m ≤ n ∨ m = n + 1 := by omega
+  rcases h_cases with h_le | rfl
+  · exact h m h_le hm_pos
+  · exact h_next
+
+theorem GoalProp_proof (n : ℕ) : GoalProp n :=
+  match n with
+  | 0 => by
+    intro m hm hm_pos
+    omega
+  | n + 1 =>
+    have h_prev : GoalProp n := GoalProp_proof n
+    have h_next : A308584 (n + 1) > 0 :=
+      cast_proof (n + 1) (Nat.succ_pos n) ?h_nonempty
+    GoalProp_step n h_prev h_next

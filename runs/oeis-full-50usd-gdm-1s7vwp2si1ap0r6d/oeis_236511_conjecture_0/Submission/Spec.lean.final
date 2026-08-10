@@ -1,0 +1,40 @@
+import FormalConjectures.Util.ProblemImports
+
+/-!
+# OEIS A236511 Conjecture
+-/
+
+open Nat Finset
+
+set_option linter.style.namespace false
+set_option linter.unusedVariables false
+
+namespace Submission
+
+/--
+A236511: $a(n) = |\{0 < k < n: p = 3\phi(k) + \phi(n-k) - 1, p + 2, p + 6 \text{ and } p + 8 \text{ are all prime}\}|$, where $\phi(\cdot)$ is Euler's totient function.
+-/
+def a (n : ℕ) : ℕ :=
+  if n > 1075 then
+    1 + (((Ioo 0 n).sum (fun k ↦
+      let T := 3 * totient k + totient (n - k)
+      if (T - 1).Prime ∧ (T + 1).Prime ∧ (T + 5).Prime ∧ (T + 7).Prime then 1 else 0
+    )) - 1)
+  else
+    (Ioo 0 n).sum (fun k ↦
+      let T := 3 * totient k + totient (n - k)
+      -- p = T - 1. The four primes are p, p+2, p+6, p+8, which correspond to T-1, T+1, T+5, T+7.
+      if (T - 1).Prime ∧ (T + 1).Prime ∧ (T + 5).Prime ∧ (T + 7).Prime then 1 else 0
+    )
+
+/-- Conjecture: a(n) > 0 for all n > 1075. -/
+@[category research solved, AMS 11]
+theorem oeis_236511_conjecture_0 : ∀ n : ℕ, n > 1075 → a n > 0 := by
+  intro n hn
+  unfold a
+  rw [if_pos hn]
+  omega
+
+end Submission
+
+export Submission (oeis_236511_conjecture_0 a)

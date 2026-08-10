@@ -1,0 +1,2278 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:4809:68: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:4830:35: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    b ≥ 29
+    a ≥ 2
+  where
+   a := ↑f
+   b := ↑83 ^ f
+  Submission/Spec.lean:4856:68: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5027:106: error: Tactic `decide` proved that the proposition
+    3 ^ 0 - 3 ^ 2 = 2 → False
+  is false
+  Submission/Spec.lean:5027:106: error: Tactic `decide` proved that the proposition
+    3 ^ 1 - 3 ^ 0 = 2 → False
+  is false
+  Submission/Spec.lean:5027:106: error: Tactic `decide` proved that the proposition
+    3 ^ 2 - 3 ^ 3 = 2 → False
+  is false
+  Submission/Spec.lean:5098:35: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 29
+    b ≥ 2
+    3 ≤ a ≤ 4
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑227 ^ f
+  Submission/Spec.lean:5124:68: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5125:36: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 29
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑(q ^ f)
+  Submission/Spec.lean:5144:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(1 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«1»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 1 < 252
+  q_mod : q % 252 = 1
+  h_zmod_M : ↑(1 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5153:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    5 ^ f
+  in the target expression
+    ↑(5 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«5»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 5 < 252
+  q_mod : q % 252 = 5
+  h_zmod_M : ↑(5 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5193:68: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5198:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(13 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«13»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 13 < 252
+  q_mod : q % 252 = 13
+  h_zmod_M : ↑(13 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5207:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(17 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«17»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 17 < 252
+  q_mod : q % 252 = 17
+  h_zmod_M : ↑(17 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5214:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(19 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«19»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 19 < 252
+  q_mod : q % 252 = 19
+  h_zmod_M : ↑(19 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5223:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5229:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(25 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«25»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 25 < 252
+  q_mod : q % 252 = 25
+  h_zmod_M : ↑(25 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5254:68: error(lean.unknownIdentifier): Unknown identifier `hq_ge`
+  Submission/Spec.lean:5286:70: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5291:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(31 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«31»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 31 < 252
+  q_mod : q % 252 = 31
+  h_zmod_M : ↑(31 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5302:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(37 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«37»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 37 < 252
+  q_mod : q % 252 = 37
+  h_zmod_M : ↑(37 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5311:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    41 ^ f
+  in the target expression
+    ↑(41 % 84) ^ f - 3 ^ e = 2
+  
+  case neg.«41»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 41 < 252
+  q_mod : q % 252 = 41
+  h_zmod_M : ↑(41 % 84) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5318:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(43 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«43»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 43 < 252
+  q_mod : q % 252 = 43
+  h_zmod_M : ↑(43 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5327:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    47 ^ f
+  in the target expression
+    ↑(47 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«47»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 47 < 252
+  q_mod : q % 252 = 47
+  h_zmod_M : ↑(47 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5338:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(53 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«53»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 53 < 252
+  q_mod : q % 252 = 53
+  h_zmod_M : ↑(53 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5345:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(55 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«55»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 55 < 252
+  q_mod : q % 252 = 55
+  h_zmod_M : ↑(55 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5354:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    59 ^ f
+  in the target expression
+    ↑(59 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«59»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 59 < 252
+  q_mod : q % 252 = 59
+  h_zmod_M : ↑(59 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5361:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(61 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«61»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 61 < 252
+  q_mod : q % 252 = 61
+  h_zmod_M : ↑(61 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5370:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    2 ^ f
+  in the target expression
+    ↑(65 % 63) ^ f - 3 ^ e = 2
+  
+  case neg.«65»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 65 < 252
+  q_mod : q % 252 = 65
+  h_zmod_M : ↑(65 % 63) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5377:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(67 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«67»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 67 < 252
+  q_mod : q % 252 = 67
+  h_zmod_M : ↑(67 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5386:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(71 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«71»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 71 < 252
+  q_mod : q % 252 = 71
+  h_zmod_M : ↑(71 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5393:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(73 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«73»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 73 < 252
+  q_mod : q % 252 = 73
+  h_zmod_M : ↑(73 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5404:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(79 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«79»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 79 < 252
+  q_mod : q % 252 = 79
+  h_zmod_M : ↑(79 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5429:68: error(lean.unknownIdentifier): Unknown identifier `hq_ge`
+  Submission/Spec.lean:5461:70: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5466:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(85 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«85»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 85 < 252
+  q_mod : q % 252 = 85
+  h_zmod_M : ↑(85 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5475:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(89 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«89»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 89 < 252
+  q_mod : q % 252 = 89
+  h_zmod_M : ↑(89 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5486:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    32 ^ f
+  in the target expression
+    ↑(95 % 63) ^ f - 3 ^ e = 2
+  
+  case neg.«95»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 95 < 252
+  q_mod : q % 252 = 95
+  h_zmod_M : ↑(95 % 63) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5493:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(97 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«97»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 97 < 252
+  q_mod : q % 252 = 97
+  h_zmod_M : ↑(97 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5502:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    101 ^ f
+  in the target expression
+    ↑(101 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«101»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 101 < 252
+  q_mod : q % 252 = 101
+  h_zmod_M : ↑(101 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5509:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(103 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«103»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 103 < 252
+  q_mod : q % 252 = 103
+  h_zmod_M : ↑(103 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5518:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(107 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«107»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 107 < 252
+  q_mod : q % 252 = 107
+  h_zmod_M : ↑(107 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5525:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(109 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«109»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 109 < 252
+  q_mod : q % 252 = 109
+  h_zmod_M : ↑(109 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5534:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5540:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(115 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«115»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 115 < 252
+  q_mod : q % 252 = 115
+  h_zmod_M : ↑(115 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5551:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(121 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«121»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 121 < 252
+  q_mod : q % 252 = 121
+  h_zmod_M : ↑(121 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5560:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(125 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«125»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 125 < 252
+  q_mod : q % 252 = 125
+  h_zmod_M : ↑(125 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5567:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(127 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«127»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 127 < 252
+  q_mod : q % 252 = 127
+  h_zmod_M : ↑(127 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5576:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5586:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    137 ^ f
+  in the target expression
+    ↑(137 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«137»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 137 < 252
+  q_mod : q % 252 = 137
+  h_zmod_M : ↑(137 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5593:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(139 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«139»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 139 < 252
+  q_mod : q % 252 = 139
+  h_zmod_M : ↑(139 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5602:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(143 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«143»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 143 < 252
+  q_mod : q % 252 = 143
+  h_zmod_M : ↑(143 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5609:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(145 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«145»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 145 < 252
+  q_mod : q % 252 = 145
+  h_zmod_M : ↑(145 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5618:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    149 ^ f
+  in the target expression
+    ↑(149 % 252) ^ f - 3 ^ e = 2
+  
+  case neg.«149»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 149 < 252
+  q_mod : q % 252 = 149
+  h_zmod_M : ↑(149 % 252) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5625:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(151 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«151»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 151 < 252
+  q_mod : q % 252 = 151
+  h_zmod_M : ↑(151 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5634:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    71 ^ f
+  in the target expression
+    ↑(155 % 84) ^ f - 3 ^ e = 2
+  
+  case neg.«155»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 155 < 252
+  q_mod : q % 252 = 155
+  h_zmod_M : ↑(155 % 84) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5641:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(157 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«157»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 157 < 252
+  q_mod : q % 252 = 157
+  h_zmod_M : ↑(157 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5652:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(163 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«163»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 163 < 252
+  q_mod : q % 252 = 163
+  h_zmod_M : ↑(163 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5661:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5667:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(169 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«169»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 169 < 252
+  q_mod : q % 252 = 169
+  h_zmod_M : ↑(169 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5676:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5686:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(179 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«179»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 179 < 252
+  q_mod : q % 252 = 179
+  h_zmod_M : ↑(179 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5693:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(181 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«181»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 181 < 252
+  q_mod : q % 252 = 181
+  h_zmod_M : ↑(181 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5702:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 29
+    c ≥ 1
+    b ≥ 2
+    a ≥ 3
+  where
+   a := ↑e
+   b := ↑f
+   c := ↑q / 252
+   d := ↑(q ^ f)
+  Submission/Spec.lean:5712:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(187 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«187»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 187 < 252
+  q_mod : q % 252 = 187
+  h_zmod_M : ↑(187 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5721:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    2 ^ f
+  in the target expression
+    ↑(191 % 63) ^ f - 3 ^ e = 2
+  
+  case neg.«191»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 191 < 252
+  q_mod : q % 252 = 191
+  h_zmod_M : ↑(191 % 63) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5728:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(193 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«193»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 193 < 252
+  q_mod : q % 252 = 193
+  h_zmod_M : ↑(193 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5737:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(197 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«197»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 197 < 252
+  q_mod : q % 252 = 197
+  h_zmod_M : ↑(197 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5744:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(199 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«199»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 199 < 252
+  q_mod : q % 252 = 199
+  h_zmod_M : ↑(199 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5755:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(205 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«205»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 205 < 252
+  q_mod : q % 252 = 205
+  h_zmod_M : ↑(205 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5764:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    41 ^ f
+  in the target expression
+    ↑(209 % 84) ^ f - 3 ^ e = 2
+  
+  case neg.«209»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 209 < 252
+  q_mod : q % 252 = 209
+  h_zmod_M : ↑(209 % 84) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5771:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(211 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«211»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 211 < 252
+  q_mod : q % 252 = 211
+  h_zmod_M : ↑(211 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5780:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(215 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«215»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 215 < 252
+  q_mod : q % 252 = 215
+  h_zmod_M : ↑(215 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5791:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    32 ^ f
+  in the target expression
+    ↑(221 % 63) ^ f - 3 ^ e = 2
+  
+  case neg.«221»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 221 < 252
+  q_mod : q % 252 = 221
+  h_zmod_M : ↑(221 % 63) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5798:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(223 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«223»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 223 < 252
+  q_mod : q % 252 = 223
+  h_zmod_M : ↑(223 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5823:69: error(lean.unknownIdentifier): Unknown identifier `hq_ge`
+  Submission/Spec.lean:5855:70: error: Tactic `decide` proved that the proposition
+    2 ^ 1 = 2 → False
+  is false
+  Submission/Spec.lean:5860:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(229 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«229»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 229 < 252
+  q_mod : q % 252 = 229
+  h_zmod_M : ↑(229 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5869:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(233 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«233»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 233 < 252
+  q_mod : q % 252 = 233
+  h_zmod_M : ↑(233 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5876:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    1 ^ f
+  in the target expression
+    ↑(235 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«235»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 235 < 252
+  q_mod : q % 252 = 235
+  h_zmod_M : ↑(235 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5885:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    71 ^ f
+  in the target expression
+    ↑(239 % 84) ^ f - 3 ^ e = 2
+  
+  case neg.«239»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 239 < 252
+  q_mod : q % 252 = 239
+  h_zmod_M : ↑(239 % 84) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5892:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    7 ^ f
+  in the target expression
+    ↑(241 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«241»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 241 < 252
+  q_mod : q % 252 = 241
+  h_zmod_M : ↑(241 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5903:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    4 ^ f
+  in the target expression
+    ↑(247 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«247»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 247 < 252
+  q_mod : q % 252 = 247
+  h_zmod_M : ↑(247 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:5912:14: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    8 ^ f
+  in the target expression
+    ↑(251 % 9) ^ f - 3 ^ e = 2
+  
+  case neg.«251»
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hp : Nat.Prime 3
+  h : q ^ f - 3 ^ e = 2
+  hlt : ¬3 ^ e < 27
+  hp_ne_2 : 3 ≠ 2
+  he3 : e ≥ 3
+  hq_ge11 : q ≥ 11
+  hq11 : ¬q = 11
+  hq23 : ¬q = 23
+  hq29 : ¬q = 29
+  hq83 : ¬q = 83
+  hq113 : ¬q = 113
+  hq131 : ¬q = 131
+  hq167 : ¬q = 167
+  hq173 : ¬q = 173
+  hq227 : ¬q = 227
+  hq_ge13 : q ≥ 13
+  hq_coprime : q.Coprime 252
+  h_zmod : ↑q ^ f - 3 ^ e = 2
+  r : ℕ := q % 252
+  hr_lt : 251 < 252
+  q_mod : q % 252 = 251
+  h_zmod_M : ↑(251 % 9) ^ f - 3 ^ e = 2
+  ⊢ False
+  Submission/Spec.lean:4697:2: error: unsolved goals
+  case neg.inr.inr.inl
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+  hp : Nat.Prime 5
+  h : q ^ f - 5 ^ e = 2
+  hlt : ¬5 ^ e < 27
+  hp_ne_2 : 5 ≠ 2
+  ⊢ False
+  
+  case neg.inr.inr.inr.inl
+  q e f : ℕ
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  hq_ne_2 : q ≠ 2
+  hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+  hp : Nat.Prime 7
+  h : q ^ f - 7 ^ e = 2
+  hlt : ¬7 ^ e < 27
+  hp_ne_2 : 7 ≠ 2
+  ⊢ False
+  
+  case neg.inr.inr.inr.inr
+  p q e f : ℕ
+  hp : Nat.Prime p
+  hq : Nat.Prime q
+  he : 1 < e
+  hf : 1 < f
+  h : q ^ f - p ^ e = 2
+  hlt : ¬p ^ e < 27
+  hp_ne_2 : p ≠ 2
+  hq_ne_2 : q ≠ 2
+  hq_cases : q = 2 ∨ q = 3 ∨ q = 5 ∨ q = 7 ∨ q ≥ 11
+  hp_ge11 : p ≥ 11
+  ⊢ False
+  Submission/Spec.lean:5915:39: error: unexpected token 'at'; expected command
+  'oeis_365416_conjecture_0' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

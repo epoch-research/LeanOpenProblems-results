@@ -1,0 +1,23 @@
+{
+  "id": "oeis_308950_conjecture",
+  "epoch": 1,
+  "uuid": "AsSET9BFZURctPCSXeqRrg",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 2139,
+      "output_tokens": 614992,
+      "total_tokens": 163989960,
+      "input_tokens_cache_write": 11644655,
+      "input_tokens_cache_read": 151728174,
+      "reasoning_tokens": 120700,
+      "total_cost": 164.02867575000005
+    }
+  },
+  "oeis_id": "A308950"
+}

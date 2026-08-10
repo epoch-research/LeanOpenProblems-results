@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check Int.ModEq
+#check Int.ModEq.pow
+#check Int.ModEq.mul
+#check Int.ModEq.add
+#check Int.ModEq.sub
+#check Int.modEq_iff_dvd
+#check Int.natCast_emod
+#check Int.ofNat_eq_coe
+#check Nat.ModEq
+#check Nat.ModEq.add
+#check Nat.ModEq.mul
+#check Nat.ModEq.pow
+#check Nat.ModEq.trans

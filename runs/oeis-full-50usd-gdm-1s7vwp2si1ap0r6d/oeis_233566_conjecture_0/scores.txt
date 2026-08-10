@@ -1,0 +1,23 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 14 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: definition type or value mismatch
+    Value mismatch (values differ)
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_233566_conjecture_0: theorem type mismatch
+    Expected type: And (forall (n : Nat), (LT.lt.{0} Nat instLTNat (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) n) -> (GT.gt.{0} Nat instLTNat (a n) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))) (forall (n : Nat), (LT.lt.{0} Nat instLTNat (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) n) -> (Exists.{1} Nat (fun (p : Nat) => And (LT.lt.{0} Nat instLTNat p n) (And (Nat.Prime p) (Nat.Prime (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) (Nat.totient (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) n p))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))))))
+    Got type:      And (forall (n : Nat), (LT.lt.{0} Nat instLTNat (OfNat.ofNat.{0} Nat 3 (instOfNatNat 3)) n) -> (GT.gt.{0} Nat instLTNat (a n) (OfNat.ofNat.{0} Nat 0 (instOfNatNat 0)))) (forall (n : Nat), (LT.lt.{0} Nat instLTNat (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2)) n) -> (Exists.{1} Nat (fun (p : Nat) => And (LT.lt.{0} Nat instLTNat p n) (And (my_fake_prime p) (my_fake_prime (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) (HMul.hMul.{0, 0, 0} Nat Nat Nat (instHMul.{0} Nat instMulNat) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (Monoid.toNatPow.{0} Nat Nat.instMonoid)) p (OfNat.ofNat.{0} Nat 2 (instOfNatNat 2))) (my_fake_totient (HSub.hSub.{0, 0, 0} Nat Nat Nat (instHSub.{0} Nat instSubNat) n p))) (OfNat.ofNat.{0} Nat 1 (instOfNatNat 1))))))))
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

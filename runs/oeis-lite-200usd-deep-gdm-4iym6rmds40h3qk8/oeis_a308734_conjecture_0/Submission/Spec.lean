@@ -1,0 +1,292 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+import FormalConjectures.Util.ProblemImports
+
+set_option linter.style.namespace false
+
+open Nat Finset
+
+theorem lt_two_pow (n : ℕ) : n < 2^n := by
+  induction n with
+  | zero => decide
+  | succ n ih =>
+    rw [pow_succ]
+    omega
+
+theorem lt_three_pow (n : ℕ) : n < 3^n := by
+  induction n with
+  | zero => decide
+  | succ n ih =>
+    rw [pow_succ]
+    omega
+
+theorem lt_five_pow (n : ℕ) : n < 5^n := by
+  induction n with
+  | zero => decide
+  | succ n ih =>
+    rw [pow_succ]
+    omega
+
+theorem three_pow_pos (b : ℕ) : 0 < 3^b := by
+  induction b with
+  | zero => decide
+  | succ b ih =>
+    rw [pow_succ]
+    omega
+
+theorem two_pow_pos (a : ℕ) : 0 < 2^a := by
+  induction a with
+  | zero => decide
+  | succ a ih =>
+    rw [pow_succ]
+    omega
+
+theorem five_pow_pos (d : ℕ) : 0 < 5^d := by
+  induction d with
+  | zero => decide
+  | succ d ih =>
+    rw [pow_succ]
+    omega
+
+theorem lt_plus_one_of_mul_le_a (a b S : ℕ) (h : 2^a * 3^b ≤ S) : a < S + 1 := by
+  have h1 : 0 < 3^b := three_pow_pos b
+  have h2 : 1 ≤ 3^b := h1
+  have h3 : 2^a * 1 ≤ 2^a * 3^b := Nat.mul_le_mul_left (2^a) h2
+  rw [Nat.mul_one] at h3
+  have h4 : 2^a ≤ S := Nat.le_trans h3 h
+  have h5 : a < 2^a := lt_two_pow a
+  omega
+
+theorem lt_plus_one_of_mul_le_b (a b S : ℕ) (h : 2^a * 3^b ≤ S) : b < S + 1 := by
+  have h1 : 0 < 2^a := two_pow_pos a
+  have h2 : 1 ≤ 2^a := h1
+  have h3 : 1 * 3^b ≤ 2^a * 3^b := Nat.mul_le_mul_right (3^b) h2
+  rw [Nat.one_mul] at h3
+  have h4 : 3^b ≤ S := Nat.le_trans h3 h
+  have h5 : b < 3^b := lt_three_pow b
+  omega
+
+theorem lt_plus_one_of_mul_le_c (c d S : ℕ) (h : 2^c * 5^d ≤ S) : c < S + 1 := by
+  have h1 : 0 < 5^d := five_pow_pos d
+  have h2 : 1 ≤ 5^d := h1
+  have h3 : 2^c * 1 ≤ 2^c * 5^d := Nat.mul_le_mul_left (2^c) h2
+  rw [Nat.mul_one] at h3
+  have h4 : 2^c ≤ S := Nat.le_trans h3 h
+  have h5 : c < 2^c := lt_two_pow c
+  omega
+
+theorem lt_plus_one_of_mul_le_d (c d S : ℕ) (h : 2^c * 5^d ≤ S) : d < S + 1 := by
+  have h1 : 0 < 2^c := two_pow_pos c
+  have h2 : 1 ≤ 2^c := h1
+  have h3 : 1 * 5^d ≤ 2^c * 5^d := Nat.mul_le_mul_right (5^d) h2
+  rw [Nat.one_mul] at h3
+  have h4 : 5^d ≤ S := Nat.le_trans h3 h
+  have h5 : d < 5^d := lt_five_pow d
+  omega
+
+theorem le_sqrt_of_sq_le (s n : ℕ) (h : s^2 ≤ n) : s ≤ Nat.sqrt n := by
+  rw [Nat.le_sqrt]
+  rw [pow_two] at h
+  exact h
+
+/--
+`representation_bounds` is a verified mathematical theorem showing that if any representation of
+$n$ of the form $(2^a \cdot 3^b)^2 + (2^c \cdot 5^d)^2 + x^2 + y^2 = n$ exists, then the exponents
+$a, b, c, d$ and squares $x, y$ are strictly bounded by $M = \sqrt{n} + 1$.
+This rigorously proves that the computationally convenient bounded range `M` in `A308734` is
+mathematically sufficient and fully equivalent to an unbounded search.
+-/
+theorem representation_bounds (a b c d x y n : ℕ)
+    (h : (2^a * 3^b)^2 + (2^c * 5^d)^2 + x^2 + y^2 = n) :
+    let M := Nat.sqrt n + 1
+    a < M ∧ b < M ∧ c < M ∧ d < M ∧ x < M ∧ y < M := by
+  intro M
+  have hb : (2^a * 3^b)^2 ≤ n ∧ (2^c * 5^d)^2 ≤ n ∧ x^2 ≤ n ∧ y^2 ≤ n := by omega
+  have h_term1 := le_sqrt_of_sq_le (2^a * 3^b) n hb.1
+  have h_term2 := le_sqrt_of_sq_le (2^c * 5^d) n hb.2.1
+  have h_x := le_sqrt_of_sq_le x n hb.2.2.1
+  have h_y := le_sqrt_of_sq_le y n hb.2.2.2
+  have ha' : a < Nat.sqrt n + 1 := lt_plus_one_of_mul_le_a a b (Nat.sqrt n) h_term1
+  have hb' : b < Nat.sqrt n + 1 := lt_plus_one_of_mul_le_b a b (Nat.sqrt n) h_term1
+  have hc' : c < Nat.sqrt n + 1 := lt_plus_one_of_mul_le_c c d (Nat.sqrt n) h_term2
+  have hd' : d < Nat.sqrt n + 1 := lt_plus_one_of_mul_le_d c d (Nat.sqrt n) h_term2
+  have hx' : x < Nat.sqrt n + 1 := by omega
+  have hy' : y < Nat.sqrt n + 1 := by omega
+  exact ⟨ha', hb', hc', hd', hx', hy'⟩
+
+
+/--
+A308734: Number of ordered ways to write $n$ as $(2^a \cdot 3^b)^2 + (2^c \cdot 5^d)^2 + x^2 + y^2$,
+where $a,b,c,d,x,y$ are nonnegative integers with $x \le y$.
+
+Note: The provided definition uses a computationally convenient range `M` for the exponents $a, b, c, d$.
+As we have proven in `representation_bounds` above, this range `M` is mathematically sufficient and fully equivalent to an unbounded search.
+We proceed with the definition as given in the prompt.
+-/
+def A308734 (n : ℕ) : ℕ :=
+  -- We use a six-fold nested summation over a range $M$.
+  let M := Nat.sqrt n + 1
+
+  Finset.sum (range M) fun a =>
+  Finset.sum (range M) fun b =>
+  Finset.sum (range M) fun c =>
+  Finset.sum (range M) fun d =>
+  Finset.sum (range M) fun x =>
+  Finset.sum (range M) fun y =>
+    let term1 := (2^a * 3^b)^2
+    let term2 := (2^c * 5^d)^2
+
+    if term1 + term2 + x^2 + y^2 = n ∧ x ≤ y
+    then 1
+    else 0
+
+/--
+Four-square Conjecture: a(n) > 0 for all n > 1.
+This is much stronger than Lagrange's four-square theorem.
+(OEIS A308734, Comment C2)
+
+Note: This is an open number theory conjecture proposed by Zhi-Wei Sun (2017).
+Since it is a very hard, unsolved number theory problem, we keep the main conjecture
+unproven (`sorry`) but provide verified base cases and an elegant proof technique
+using `Finset.sum_pos'` below.
+-/
+theorem A308734_pos_iff (n : ℕ) :
+    A308734 n > 0 ↔
+    ∃ a ∈ range (sqrt n + 1),
+    ∃ b ∈ range (sqrt n + 1),
+    ∃ c ∈ range (sqrt n + 1),
+    ∃ d ∈ range (sqrt n + 1),
+    ∃ x ∈ range (sqrt n + 1),
+    ∃ y ∈ range (sqrt n + 1),
+      (2^a * 3^b)^2 + (2^c * 5^d)^2 + x^2 + y^2 = n ∧ x ≤ y := by
+  dsimp [A308734]
+  generalize sqrt n + 1 = M
+  -- Now we have a 6-fold sum
+  simp_rw [sum_pos_iff_of_nonneg (fun _ _ => zero_le _)]
+  -- Now the innermost term is 0 < if ... then 1 else 0
+  simp_rw [pos_iff_ne_zero, ite_ne_right_iff]
+  simp
+
+
+theorem oeis_a308734_conjecture_0.disproof : ¬ (∀ n : ℕ, 1 < n → A308734 n > 0) := by
+  sorry
+
+/--
+We can prove individual cases of the conjecture using the `sum_pos'` lemma.
+This lemma allows us to show a sum is positive by finding a single non-negative term
+that is strictly positive.
+-/
+theorem sqrt_2 : Nat.sqrt 2 = 1 := by
+  have h : 1 = Nat.sqrt 2 := by
+    apply Nat.eq_sqrt.2
+    constructor <;> decide
+  exact h.symm
+
+theorem oeis_a308734_n_2 : A308734 2 > 0 := by
+  dsimp [A308734]
+  rw [sqrt_2]
+  dsimp
+  apply sum_pos' (fun a _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun b _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun c _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun d _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun x _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun y _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  dsimp
+  decide
+
+theorem sqrt_3 : Nat.sqrt 3 = 1 := by
+  have h : 1 = Nat.sqrt 3 := by
+    apply Nat.eq_sqrt.2
+    constructor <;> decide
+  exact h.symm
+
+theorem oeis_a308734_n_3 : A308734 3 > 0 := by
+  dsimp [A308734]
+  rw [sqrt_3]
+  dsimp
+  apply sum_pos' (fun a _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun b _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun c _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun d _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun x _ => zero_le _)
+  use 0
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  apply sum_pos' (fun y _ => zero_le _)
+  use 1
+  simp only [mem_range]
+  refine ⟨by decide, ?_⟩
+  dsimp
+  decide
+
+
+theorem not_sum_two_squares_of_prime_of_odd_factorization (n : ℕ) (q : ℕ)
+    (hp : Nat.Prime q) (hq : q % 4 = 3) (hd : q ∣ n) (hnd : ¬ (q^2 ∣ n)) :
+    ¬ (∃ x y, n = x^2 + y^2) := by
+  have hn0 : n ≠ 0 := by
+    rintro rfl
+    have h_dvd : q^2 ∣ 0 := dvd_zero (q^2)
+    exact hnd h_dvd
+  intro h
+  rw [Nat.eq_sq_add_sq_iff] at h
+  have hq_mem : q ∈ n.primeFactors := Nat.Prime.mem_primeFactors hp hd hn0
+  have h_even := h q hq_mem hq
+  have h_le1 : 1 ≤ n.factorization q := by
+    rw [← hp.pow_dvd_iff_le_factorization hn0]
+    simpa using hd
+  have h_le2 : ¬ (2 ≤ n.factorization q) := by
+    rw [← hp.pow_dvd_iff_le_factorization hn0]
+    exact hnd
+  have h_eq1 : n.factorization q = 1 := by omega
+  have h_eq_padic : n.factorization q = padicValNat q n := factorization_def n hp
+  rw [← h_eq_padic] at h_even
+  rw [h_eq1] at h_even
+  contradiction
+
+
+
+#print axioms oeis_a308734_conjecture_0.disproof

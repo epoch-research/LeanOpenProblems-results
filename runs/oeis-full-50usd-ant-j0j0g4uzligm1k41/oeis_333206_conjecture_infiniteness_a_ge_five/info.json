@@ -1,0 +1,23 @@
+{
+  "id": "oeis_333206_conjecture_infiniteness_a_ge_five",
+  "epoch": 1,
+  "uuid": "N88DJaxs28zmQxzjYqkcUw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0
+  },
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 701,
+      "output_tokens": 256742,
+      "total_tokens": 81912932,
+      "input_tokens_cache_write": 478954,
+      "input_tokens_cache_read": 81176535,
+      "reasoning_tokens": 44167,
+      "total_cost": 50.003785
+    }
+  },
+  "oeis_id": "A333206"
+}

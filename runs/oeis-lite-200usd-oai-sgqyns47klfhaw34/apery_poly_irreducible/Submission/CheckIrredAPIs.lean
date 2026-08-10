@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+open Polynomial
+#check irreducible_iff_prime
+#check Polynomial.irreducible_iff_lt_natDegree_lt
+#check Polynomial.Monic.irreducible_iff_natDegree
+#check Polynomial.Monic.irreducible_of_irreducible_map
+#check Polynomial.IsPrimitive.Int.irreducible_iff_irreducible_map_cast
+#check Polynomial.IsPrimitive.irreducible_of_irreducible_map_of_injective
+#check Polynomial.IsPrimitive.irreducible_iff_irreducible_map_fraction_map
+#check Polynomial.irreducible_of_eisenstein_criterion
+#check Polynomial.generalizedEisenstein
+#check Polynomial.IsEisensteinAt.irreducible
+#check Polynomial.irreducible_of_degree_eq_one
+#check Polynomial.irreducible_iff_degree_lt
+#check Polynomial.exists_monic_irreducible_factor
+#check Polynomial.mem_normalizedFactors_iff

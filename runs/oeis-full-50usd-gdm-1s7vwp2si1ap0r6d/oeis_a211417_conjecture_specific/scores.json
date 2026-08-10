@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:30:4: error: expected '{' or indented tactic sequence\nSubmission/Spec.lean:29:49: error: unsolved goals\nn x : ℕ\n⊢ x < 2 ^ (x + 1)\nSubmission/Spec.lean:27:133: error: unsolved goals\nn : ℕ\nlt_two_pow : ∀ (x : ℕ), x < 2 ^ (x + 1)\n⊢ 30 * ↑n - 1 ∣ ↑(30 * n)! * ↑n ! / (↑(15 * n)! * ↑(10 * n)! * ↑(6 * n)!)",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a300997_finite_difference_is_one_or_two",
+  "epoch": 1,
+  "uuid": "GDYbLNBZavfcSWtjS9pvUU",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "google/gemini-3.5-flash": {
+      "input_tokens": 78421564,
+      "output_tokens": 1228120,
+      "total_tokens": 569325787,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 478397365,
+      "reasoning_tokens": 11278738,
+      "total_cost": 200.44503075000017
+    }
+  },
+  "oeis_id": "A300997"
+}

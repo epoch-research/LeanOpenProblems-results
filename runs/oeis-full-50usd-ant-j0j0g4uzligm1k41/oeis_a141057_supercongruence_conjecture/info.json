@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a141057_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "gb438eJaGcY46ccYMuMmzr",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 427,
+      "output_tokens": 582451,
+      "total_tokens": 33344929,
+      "input_tokens_cache_write": 1317612,
+      "input_tokens_cache_read": 31444439,
+      "reasoning_tokens": 120516,
+      "total_cost": 38.52070450000002
+    }
+  },
+  "oeis_id": "A141057"
+}

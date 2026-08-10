@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+#check Nat.nth
+#check Nat.Prime
+#check Nat.prime_nth
+#check Nat.nth_pos
+#check Nat.nth_le_nth
+#check Nat.exists_prime_and_dvd
+#check Nat.minFac
+#check Nat.minFac_prime
+#check Nat.minFac_dvd
+#check Nat.prime_def_minFac
+#check Nat.prime_iff

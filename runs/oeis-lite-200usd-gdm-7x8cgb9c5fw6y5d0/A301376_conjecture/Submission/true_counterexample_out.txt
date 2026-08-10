@@ -1,0 +1,186 @@
+
+--- Step 1 ---
+Current prod: 441 (digits: 3)
+V_all size: 25
+Currently unblocked count: 15
+Best prime to add: 11 with residue 13 (blocks 3 elements)
+
+--- Step 2 ---
+Current prod: 53361 (digits: 5)
+V_all size: 72
+Currently unblocked count: 36
+Best prime to add: 19 with residue 5 (blocks 2 elements)
+
+--- Step 3 ---
+Current prod: 19263321 (digits: 8)
+V_all size: 168
+Currently unblocked count: 88
+Best prime to add: 31 with residue 15 (blocks 13 elements)
+
+--- Step 4 ---
+Current prod: 18512051481 (digits: 11)
+V_all size: 322
+Currently unblocked count: 151
+Best prime to add: 23 with residue 24 (blocks 7 elements)
+
+--- Step 5 ---
+Current prod: 9792875233449 (digits: 13)
+V_all size: 505
+Currently unblocked count: 229
+Best prime to add: 43 with residue 3 (blocks 11 elements)
+
+--- Step 6 ---
+Current prod: 18107026306647201 (digits: 17)
+V_all size: 757
+Currently unblocked count: 340
+Best prime to add: 59 with residue 64 (blocks 9 elements)
+
+--- Step 7 ---
+Current prod: 63030558573438906681 (digits: 20)
+V_all size: 1122
+Currently unblocked count: 493
+Best prime to add: 47 with residue 62 (blocks 11 elements)
+
+--- Step 8 ---
+Current prod: 139234503888726544858329 (digits: 24)
+V_all size: 1521
+Currently unblocked count: 661
+Best prime to add: 71 with residue 11 (blocks 15 elements)
+
+--- Step 9 ---
+Current prod: 701881134103070512630836489 (digits: 27)
+V_all size: 2039
+Currently unblocked count: 872
+Best prime to add: 79 with residue 8 (blocks 18 elements)
+
+--- Step 10 ---
+Current prod: 4380440157937263069329050527849 (digits: 31)
+V_all size: 2520
+Currently unblocked count: 1067
+Best prime to add: 67 with residue 68 (blocks 18 elements)
+
+--- Step 11 ---
+Current prod: 19663795868980373918218107819514161 (digits: 35)
+V_all size: 3000
+Currently unblocked count: 1244
+Best prime to add: 83 with residue 13 (blocks 21 elements)
+
+--- Step 12 ---
+Current prod: 135463889741405795922604544768633055129 (digits: 39)
+V_all size: 3520
+Currently unblocked count: 1451
+Best prime to add: 103 with residue 1 (blocks 24 elements)
+
+--- Step 13 ---
+Current prod: 1437136406266574088942911615450428081863561 (digits: 43)
+V_all size: 4041
+Currently unblocked count: 1641
+Best prime to add: 127 with residue 146 (blocks 86 elements)
+
+--- Step 14 ---
+Current prod: 23179573096673573480560221445599954532377375369 (digits: 47)
+V_all size: 4601
+Currently unblocked count: 1778
+Best prime to add: 107 with residue 4 (blocks 25 elements)
+
+--- Step 15 ---
+Current prod: 265382932383815742778933975330673879441188570599681 (digits: 51)
+V_all size: 5141
+Currently unblocked count: 1969
+Best prime to add: 131 with residue 40 (blocks 23 elements)
+
+--- Step 16 ---
+Current prod: 4554236502638661961829285950649694445090237060061125641 (digits: 55)
+V_all size: 5589
+Currently unblocked count: 2126
+Best prime to add: 151 with residue 188 (blocks 38 elements)
+
+--- Step 17 ---
+Current prod: 103841146496664131391669548960763683042502495206453725740441 (digits: 60)
+V_all size: 5939
+Currently unblocked count: 2216
+Best prime to add: 139 with residue 206 (blocks 20 elements)
+
+--- Step 18 ---
+Current prod: 2006314791462047682618447355470915120064190709883892435031060561 (digits: 64)
+V_all size: 6205
+Currently unblocked count: 2298
+Best prime to add: 167 with residue 30 (blocks 22 elements)
+
+--- Step 19 ---
+Current prod: 55954113219085047820545878296728351783470214707951876120581247985729 (digits: 68)
+V_all size: 6352
+Currently unblocked count: 2330
+Best prime to add: 163 with residue 64 (blocks 19 elements)
+
+--- Step 20 ---
+Current prod: 1486644834117870635544083440465775578535020134575573396647723177732833801 (digits: 73)
+V_all size: 6401
+Currently unblocked count: 2324
+Best prime to add: 179 with residue 20 (blocks 19 elements)
+
+--- Step 21 ---
+Current prod: 47633587129970693033467977515963915311840580131935947201989698337737727817841 (digits: 77)
+V_all size: 6401
+Currently unblocked count: 2305
+Best prime to add: 191 with residue 86 (blocks 19 elements)
+
+--- Step 22 ---
+Current prod: 1737720892088460852553945287759879594491256203793155289875786185059010048522657521 (digits: 82)
+V_all size: 6401
+Currently unblocked count: 2286
+Best prime to add: 211 with residue 54 (blocks 20 elements)
+
+--- Step 23 ---
+Current prod: 77365071836670365616554198156357599426345217449075066660559876745012186370277235492441 (digits: 86)
+V_all size: 6401
+Currently unblocked count: 2266
+Best prime to add: 223 with residue 41 (blocks 19 elements)
+
+--- Step 24 ---
+Current prod: 3847287657365780611745623720117507061872721318525053989962982110652711016007516643803598489 (digits: 91)
+V_all size: 6401
+Currently unblocked count: 2247
+Best prime to add: 199 with residue 33 (blocks 18 elements)
+
+--- Step 25 ---
+Current prod: 152356438519342278005738444940373397157221636934910663056524054563958008944913666611266303762889 (digits: 96)
+V_all size: 6401
+Currently unblocked count: 2229
+Best prime to add: 227 with residue 73 (blocks 16 elements)
+
+--- Step 26 ---
+Current prod: 7850774920463188243357696329332500782114473729619011556639628007626192242922456326811941366597907281 (digits: 100)
+V_all size: 6401
+Currently unblocked count: 2213
+Best prime to add: 251 with residue 73 (blocks 24 elements)
+
+--- Step 27 ---
+Current prod: 494606670764101322519778226444276881773993959439727347079853204108457737496357671045479118037034756610281 (digits: 105)
+V_all size: 6401
+Currently unblocked count: 2189
+Best prime to add: 263 with residue 32 (blocks 14 elements)
+
+--- Step 28 ---
+Current prod: 34211448810082124377370540144924187635425388180486500870166366274977913244885563748544745115503657079976526489 (digits: 110)
+V_all size: 6401
+Currently unblocked count: 2175
+Best prime to add: 239 with residue 8 (blocks 13 elements)
+
+--- Step 29 ---
+Current prod: 1954192167480701026559782623618214521923133598257569416204773007993013382461108286880624385742684396065339169578169 (digits: 115)
+V_all size: 6401
+Currently unblocked count: 2162
+Best prime to add: 283 with residue 67 (blocks 16 elements)
+
+--- Step 30 ---
+Current prod: 156509296501361864516146430542959182846301846750850476974424065437152448787927701587982326429745850596476948752345977041 (digits: 120)
+V_all size: 6401
+Currently unblocked count: 2146
+Best prime to add: 271 with residue 107 (blocks 13 elements)
+
+--- Step 31 ---
+Current prod: 11494199244356516691930310005505465347415253927229209879478677789769912991434198332323010035326965013655863593321040899868081 (digits: 125)
+V_all size: 6401
+Currently unblocked count: 2133
+No more available primes under 300! Failed to block all elements.

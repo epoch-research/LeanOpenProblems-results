@@ -1,0 +1,45 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1697:2: error: unsolved goals
+  case h.inr
+  n : ℕ
+  ih :
+    ∀ m < n,
+      4 ≤ m →
+        p_seq m (_root_.a m - 1) ≥ m - 3 ∧
+          p_seq m (_root_.a m) ≥ m - 2 ∧ (m ≥ 5 → p_seq m (_root_.a (m - 1)) + 1 ≥ p_seq (m - 1) (_root_.a (m - 1)))
+  hn : 4 ≤ n
+  hn_gt : n > 4
+  hn_prev : 4 ≤ n - 1
+  ih_val :
+    p_seq (n - 1) (a (n - 1) - 1) ≥ n - 1 - 3 ∧
+      p_seq (n - 1) (a (n - 1)) ≥ n - 1 - 2 ∧
+        (n - 1 ≥ 5 → p_seq (n - 1) (_root_.a (n - 1 - 1)) + 1 ≥ p_seq (n - 1 - 1) (_root_.a (n - 1 - 1)))
+  h_ge_prev_3 : p_seq (n - 1) (a (n - 1) - 1) ≥ n - 1 - 3
+  h_ge_prev : p_seq (n - 1) (a (n - 1)) ≥ n - 1 - 2
+  hn1_prev : 1 ≤ n - 1
+  h_eq_prev_a_raw : a (n - 1 + 1) = a (n - 1) + (n - 1 - p_seq (n - 1) (a (n - 1)))
+  h_n_sub_1_add_1 : n - 1 + 1 = n
+  h_eq_prev_a : a n = a (n - 1) + (n - 1 - p_seq (n - 1) (a (n - 1)))
+  h_lt_prev_a : p_seq (n - 1) (a (n - 1)) < n - 1
+  h_fd_prev : a n = a (n - 1) + 1 ∨ a n = a (n - 1) + 2
+  ⊢ p_seq n (a n - 1) ≥ n - 3 ∧
+      p_seq n (a n) ≥ n - 2 ∧ (n ≥ 5 → p_seq n (_root_.a (n - 1)) + 1 ≥ p_seq (n - 1) (_root_.a (n - 1)))
+  Submission/Spec.lean:1729:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    e ≥ 0
+    d ≥ 0
+    d + e ≤ 0
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ 1
+  where
+   b := ↑(p_seq n t)
+   c := ↑n
+   d := ↑(S_func n t (p_seq n t))
+   e := ↑(if p_seq n t = p_seq n t then 1 else 0)
+  Submission/Spec.lean:1744:2: error: `dsimp` made no progress
+  Submission/Spec.lean:1751:4: error: unexpected token 'have'; expected command
+  'oeis_a300997_finite_difference_is_one_or_two' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+

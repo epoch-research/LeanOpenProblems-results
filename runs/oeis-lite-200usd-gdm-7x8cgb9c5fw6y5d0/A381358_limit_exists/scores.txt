@@ -1,0 +1,60 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:860:6: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    i ≥ 0
+    h ≥ 0
+    h - i ≥ -1
+    g ≥ 0
+    f ≥ 0
+    e ≥ 0
+    e - g + h ≤ 1
+    d ≥ 0
+    c ≥ 0
+    c + e - g ≥ 1
+    b ≥ 0
+    b - c - d ≥ 0
+    b - e + f ≤ 0
+    a ≥ 0
+  where
+   a := ↑j
+   b := ↑(run_lengths_nat (A381587_T (j + 7)).reverse).length
+   c := ↑(run_lengths_nat (A381587_T (j + 6)).reverse).length
+   d := ↑(run_lengths_nat (A381587_T (j + 4)).reverse).length
+   e := ↑(run_lengths_nat (A381587_T (j + 8)).reverse).length
+   f := ↑(run_lengths_nat (A381587_T (j + 5)).reverse).length
+   g := ↑(run_lengths_nat (A381587_T (j + 9)).reverse).length
+   h := ↑(run_lengths_nat (run_lengths_nat (A381587_T (j + 8)).reverse).reverse).length
+   i := ↑(run_lengths_nat (run_lengths_nat (A381587_T (j + 6)).reverse).reverse).length
+  Submission/Spec.lean:1122:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    l ≥ 0
+    j ≥ 0
+    i ≥ 0
+    h ≥ 0
+    g ≥ 0
+    g - h ≥ 5
+    g ≥ 0
+    f ≥ 0
+    f - j ≥ 0
+    e ≥ 0
+    e - i ≥ 0
+    c ≥ 0
+    c - e - f ≥ 0
+    c - i - l ≤ -1
+    b ≥ 0
+    a ≥ 0
+    a + b ≥ 0
+  where
+   a := ↑(run_lengths_nat (A381587_T (d + 4)).reverse).length
+   b := ↑(A381587_T (3 + d + 1)).length
+   c := ↑(run_lengths_nat (A381587_T (3 + (d + 2) + k)).reverse).length
+   e := ↑(run_lengths_nat (A381587_T (3 + d + 1 + k)).reverse).length
+   f := ↑(run_lengths_nat (A381587_T (d + 2 + k)).reverse).length
+   g := ↑(3 + d + k - 1)
+   h := ↑d
+   i := ↑(A381587_T (3 + d + 1)).length * ↑(A381587_T k).length
+   j := ↑(run_lengths_nat (A381587_T (d + 2)).reverse).length * ↑(A381587_T k).length
+   l := ↑(run_lengths_nat (A381587_T (d + 4)).reverse).length * ↑(A381587_T k).length
+

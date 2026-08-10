@@ -1,0 +1,20 @@
+{
+  "id": "oeis_22030_original_conjecture",
+  "epoch": 1,
+  "uuid": "k4zKBqCR4zhuMfQ4uHQXvF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "anthropic/claude-opus-4-8": {
+      "input_tokens": 89,
+      "output_tokens": 64428,
+      "total_tokens": 2427055,
+      "input_tokens_cache_write": 83474,
+      "input_tokens_cache_read": 2279064,
+      "reasoning_tokens": 12116,
+      "total_cost": 3.2723895
+    }
+  },
+  "oeis_id": "A022030"
+}
