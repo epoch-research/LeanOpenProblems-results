@@ -32,5 +32,8 @@ aggregate `scores.json`:
 - `scores.json`, `scores.txt` — the SafeVerify verdict, including the failure
   stage and checker output for rejected submissions
 
+Proofs that passed the verifier are the samples whose `scores.json` has
+`.proof_scorer.value == "C"`.
+
 The full-set runs contain a directory only for samples where the agent
 produced a submission.
