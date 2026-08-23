@@ -1,0 +1,23 @@
+{
+  "id": "general_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "HhENsbG2avq9xrwxKhSXEP",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 38149649,
+      "output_tokens": 2852370,
+      "total_tokens": 254242083,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 213240064,
+      "reasoning_tokens": 1784150,
+      "total_cost": 200.0335499999998
+    }
+  },
+  "oeis_id": "A333042"
+}

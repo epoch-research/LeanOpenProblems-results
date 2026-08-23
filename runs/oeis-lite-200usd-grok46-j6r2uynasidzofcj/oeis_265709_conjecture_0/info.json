@@ -1,0 +1,23 @@
+{
+  "id": "oeis_265709_conjecture_0",
+  "epoch": 1,
+  "uuid": "hsPPeEnRWTMzCgCKX54VNG",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 37555121,
+      "output_tokens": 2228725,
+      "total_tokens": 262872230,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 223088384,
+      "reasoning_tokens": 1004248,
+      "total_cost": 200.02678399999982
+    }
+  },
+  "oeis_id": "A265709"
+}

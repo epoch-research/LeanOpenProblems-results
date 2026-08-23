@@ -1,0 +1,23 @@
+{
+  "id": "oeis_374605_conjecture_0",
+  "epoch": 1,
+  "uuid": "jQqsq29nqzQ6tVgyMsimFH",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 35848783,
+      "output_tokens": 2255639,
+      "total_tokens": 267811046,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 229706624,
+      "reasoning_tokens": 1101426,
+      "total_cost": 200.08471199999994
+    }
+  },
+  "oeis_id": "A374605"
+}

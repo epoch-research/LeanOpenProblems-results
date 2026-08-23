@@ -1,0 +1,20 @@
+{
+  "id": "oeis_22030_original_conjecture",
+  "epoch": 1,
+  "uuid": "an5HbzhwwXQV759tgs8ZyH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 650095,
+      "output_tokens": 58717,
+      "total_tokens": 3743692,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3034880,
+      "reasoning_tokens": 35396,
+      "total_cost": 3.1699319999999997
+    }
+  },
+  "oeis_id": "A022030"
+}

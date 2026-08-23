@@ -1,0 +1,340 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:224:2: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:228:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:312:36: warning: This simp argument is unused:
+    ZMod.natCast_zmod_val
+  
+  Hint: Omit it from the simp argument list.
+    simp [ZMod.coe_unitOfCoprime,̵ ̵Z̵M̵o̵d̵.̵n̵a̵t̵C̵a̵s̵t̵_̵z̵m̵o̵d̵_̵v̵a̵l̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:322:33: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:327:49: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:438:58: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:542:32: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:564:26: warning: This simp argument is unused:
+    one_div
+  
+  Hint: Omit it from the simp argument list.
+    simp [div_eq_mul_inv, o̵n̵e̵_̵d̵i̵v̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:797:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1012:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1039:31: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1269:2: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:1295:4: warning: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:1338:28: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [risingF, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1402:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1405:24: warning: unused variable `hr0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1467:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1906:26: warning: This simp argument is unused:
+    C_comp
+  
+  Hint: Omit it from the simp argument list.
+    simp [add_comp, X_comp,̵ ̵C̵_̵c̵o̵m̵p̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1930:30: warning: This simp argument is unused:
+    add_comp
+  
+  Hint: Omit it from the simp argument list.
+    simp [neg_comp, X_comp, a̵d̵d̵_̵c̵o̵m̵p̵,̵ ̵C_comp]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1930:40: warning: This simp argument is unused:
+    C_comp
+  
+  Hint: Omit it from the simp argument list.
+    simp [neg_comp, X_comp, add_comp,̵ ̵C̵_̵c̵o̵m̵p̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2057:41: warning: This simp argument is unused:
+    Nat.cast_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [nsmul_eq_mul, zsmul_eq_mul, N̵a̵t̵.̵c̵a̵s̵t̵_̵z̵e̵r̵o̵,̵ ̵zero_add]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2106:13: warning: This simp argument is unused:
+    smul_eq_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵,̵ ̵nsmul_eq_mul, Nat.cast_one, mul_one, add_zero] at hshift
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2106:40: warning: This simp argument is unused:
+    Nat.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [smul_eq_mul, nsmul_eq_mul, N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵,̵ ̵mul_one, add_zero] at hshift
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2106:63: warning: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [smul_eq_mul, nsmul_eq_mul, Nat.cast_one, mul_one,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵] at hshift
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2205:66: warning: unused variable `h5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2485:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2573:25: warning: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [pow_zero,̵ ̵z̵e̵r̵o̵_̵m̵u̵l̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2774:36: warning: unused variable `hx`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2852:12: warning: `Nat.succ_mul_choose_eq` has been deprecated: Use `Nat.add_one_mul_choose_eq` instead
+  Submission/Spec.lean:3287:5: warning: unused variable `hKm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3704:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:4070:35: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [Finset.mul_sum, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:4161:0: warning: automatically included section variable(s) unused in theorem `valGe_of_int`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4218:28: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4221:29: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4224:0: warning: automatically included section variable(s) unused in theorem `risingF_factorial`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4394:0: warning: automatically included section variable(s) unused in theorem `risingF_eq_factorial_ratio`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4404:0: warning: automatically included section variable(s) unused in theorem `extraOdd_eq`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4404:27: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4404:40: warning: unused variable `h5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4410:0: warning: automatically included section variable(s) unused in theorem `four_pow_odd_ratio`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4631:0: warning: automatically included section variable(s) unused in theorem `choose_ratio_risingF'`:
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  Submission/Spec.lean:4691:40: warning: unused variable `h5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4932:35: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [Finset.mul_sum, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5204:53: warning: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_mul, derivative_C, zero_mul, a̵dd̵_̵z̵ero̵,̵ ̵d̵e̵r̵ivative_pow,
+    ̵  ̵ ̵ ̵hderivg]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5206:28: warning: This simp argument is unused:
+    eval_C
+  
+  Hint: Omit it from the simp argument list.
+    simp [eval_add, eval_mul, eval_C̵,̵ ̵e̵v̵a̵l̵_̵pow, eval_X, hg'0, hg, eval_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5206:54: warning: This simp argument is unused:
+    hg'0
+  
+  Hint: Omit it from the simp argument list.
+    simp [eval_add, eval_mul, eval_C, eval_pow, eval_X, hg'̵0̵, h̵g̵,̵ ̵eval_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5206:60: warning: This simp argument is unused:
+    hg
+  
+  Hint: Omit it from the simp argument list.
+    simp [eval_add, eval_mul, eval_C, eval_pow, eval_X, hg'0, h̵g̵,̵ ̵eval_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:5360:29: error(lean.unknownIdentifier): Unknown constant `ZMod.natCast_zmod_eq_zero_iff_dvd`
+  Submission/Spec.lean:5368:6: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:5438:6: error: Type mismatch
+    valGeP_of_valGe hv
+  has type
+    valGeP 1 ↑(↑(p * A + k) / ↑(p * B + k) - 1)
+  but is expected to have type
+    valGeP 1 (↑↑(p * A + k) / ↑↑(p * B + k) - 1)
+  Submission/Spec.lean:5635:49: error: Application type mismatch: The argument
+    hQlog
+  has type
+    valGeP 2 (padicLog ↑Q)
+  but is expected to have type
+    valGeP 3 ?m.3338
+  in the application
+    valGeP_mono ?m.3345 hQlog
+  Submission/Spec.lean:5632:14: error: Application type mismatch: The argument
+    h4log
+  has type
+    valGeP 1 (padicLog ↑(fourPowOdd N))
+  but is expected to have type
+    valGeP 3 ?m.3363
+  in the application
+    valGeP_mono ?m.3370 h4log
+  Submission/Spec.lean:5633:39: error: Application type mismatch: The argument
+    hElog
+  has type
+    valGeP 1 (padicLog ↑(extraOdd N))
+  but is expected to have type
+    valGeP 3 ?m.3384
+  in the application
+    valGeP_mono ?m.3391 hElog
+  Submission/Spec.lean:5638:23: error: Application type mismatch: The argument
+    Decidable.byContradiction fun a => valGe_part1._proof_1_20 a
+  has type
+    1 ≤ 3
+  but is expected to have type
+    3 ≤ 1
+  in the application
+    valGeP_mono (Decidable.byContradiction fun a => valGe_part1._proof_1_20 a)
+  Submission/Spec.lean:5640:6: error: linarith failed to find a contradiction
+  case h
+  p : ℕ
+  hp : Fact (Nat.Prime p)
+  N : ℕ
+  hN : Odd N
+  h5 : 5 ≤ p
+  hpodd : Odd p
+  hp1 : 1 < p
+  A : ℕ := oddHalf 9 N
+  B : ℕ := oddHalf 3 N
+  τ : ℕ := (p - 1) / 2
+  hA' : oddHalf 9 (N * p) = p * A + τ
+  hB' : oddHalf 3 (N * p) = p * B + τ
+  hAB : A = B + 3 * N
+  hleAB : B ≤ A
+  hp0 : ↑p ≠ 0
+  hf : ∀ (n : ℕ), ↑n ! ≠ 0
+  hchAB : ↑(A.choose B) ≠ 0
+  hextra_ch : ↑((p * A + τ).choose (p * B + τ)) / ↑(A.choose B) = extraOdd N * ↑((A * p).choose (B * p)) / ↑(A.choose B)
+  hkazAB : ↑((A * p).choose (B * p)) / ↑(A.choose B) = risingF p A / (risingF p B * risingF p (3 * N))
+  hpart : part1Odd N = fourPowOdd N * extraOdd N * (risingF p A / (risingF p B * risingF p (3 * N)))
+  Q : ℚ := ∏ i ∈ Icc 1 ((p - 1) / 2), Fprod (gammaI p i) A / (Fprod (gammaI p i) B * Fprod (gammaI p i) (3 * N))
+  hRF : risingF p A / (risingF p B * risingF p (3 * N)) = Q
+  hγ : ∀ i ∈ Icc 1 ((p - 1) / 2), valGe p 2 (gammaI p i)
+  hγ0 : ∀ i ∈ Icc 1 ((p - 1) / 2), 0 ≤ gammaI p i
+  hQunit : valGeP 1 (↑Q - 1)
+  h4unit : valGeP 1 (↑(fourPowOdd N) - 1)
+  hEunit : valGeP 1 (↑(extraOdd N) - 1)
+  hprod_unit : valGeP 1 (↑(fourPowOdd N) * ↑(extraOdd N) * ↑Q - 1)
+  hlog : padicLog (↑(fourPowOdd N) * ↑(extraOdd N) * ↑Q) = padicLog ↑(fourPowOdd N) + padicLog ↑(extraOdd N) + padicLog ↑Q
+  hs : 0 ≤ ↑(padicValNat p N)
+  htarget : 3 ≤ 3 + 3 * ↑(padicValNat p N)
+  h4log : valGeP 1 (padicLog ↑(fourPowOdd N))
+  hElog : valGeP 1 (padicLog ↑(extraOdd N))
+  hQlog : valGeP 2 (padicLog ↑Q)
+  hN3 : valGeP (3 * ↑(padicValNat p N)) (↑N ^ 3)
+  hunit3 : valGeP 3 (padicLog ↑(fourPowOdd N) + padicLog ↑(extraOdd N) + padicLog ↑Q)
+  a✝ : 3 < 3 + 3 * ↑(padicValNat p N)
+  ⊢ False
+  failed
+  Submission/Spec.lean:5690:13: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5690:32: warning: unused variable `h_p_ge_5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5691:15: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5691:28: warning: unused variable `hr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+

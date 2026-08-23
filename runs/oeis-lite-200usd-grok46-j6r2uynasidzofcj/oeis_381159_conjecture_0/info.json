@@ -1,0 +1,20 @@
+{
+  "id": "oeis_381159_conjecture_0",
+  "epoch": 1,
+  "uuid": "YmcBcLXhEdD2dLh7UkuqdJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 1655116,
+      "output_tokens": 129952,
+      "total_tokens": 10546284,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 8761216,
+      "reasoning_tokens": 68414,
+      "total_cost": 8.470552000000001
+    }
+  },
+  "oeis_id": "A381159"
+}

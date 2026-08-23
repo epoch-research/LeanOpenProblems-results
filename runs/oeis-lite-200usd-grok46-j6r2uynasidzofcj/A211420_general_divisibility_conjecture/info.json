@@ -1,0 +1,20 @@
+{
+  "id": "A211420_general_divisibility_conjecture",
+  "epoch": 1,
+  "uuid": "EY2rCzKRrJbzNC8B2Dgi75",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 775545,
+      "output_tokens": 83295,
+      "total_tokens": 5990488,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 5131648,
+      "reasoning_tokens": 50977,
+      "total_cost": 4.616684
+    }
+  },
+  "oeis_id": "A211420"
+}

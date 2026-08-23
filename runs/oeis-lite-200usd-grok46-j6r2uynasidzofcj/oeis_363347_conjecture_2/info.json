@@ -1,0 +1,20 @@
+{
+  "id": "oeis_363347_conjecture_2",
+  "epoch": 1,
+  "uuid": "bCc9rW556N6rm5WCpb2tDu",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 2001411,
+      "output_tokens": 171220,
+      "total_tokens": 17608151,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 15435520,
+      "reasoning_tokens": 103448,
+      "total_cost": 12.74790200000001
+    }
+  },
+  "oeis_id": "A363347"
+}

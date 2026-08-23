@@ -1,0 +1,23 @@
+{
+  "id": "oeis_216265_conjecture_0",
+  "epoch": 1,
+  "uuid": "esjEZoy8TC6UTeh8rmnc7C",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 50404133,
+      "output_tokens": 3458667,
+      "total_tokens": 210931600,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 157068800,
+      "reasoning_tokens": 2957124,
+      "total_cost": 200.09466799999996
+    }
+  },
+  "oeis_id": "A216265"
+}

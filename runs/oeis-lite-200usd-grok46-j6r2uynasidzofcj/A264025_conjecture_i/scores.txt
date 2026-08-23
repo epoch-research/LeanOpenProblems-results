@@ -1,0 +1,967 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:872:100: error: unsolved goals
+  ⊢ (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+        (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData0 →
+          (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+      (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+          (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData1 →
+            (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+        (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+            (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData2 →
+              (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+          (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+              (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData3 →
+                (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+            (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData4 →
+                  (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+              (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                  (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData5 →
+                    (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                    (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData6 →
+                      (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                  (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                      (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData7 →
+                        (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                    (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                        (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData8 →
+                          (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧ (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                      (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                          (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData9 →
+                            (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                              (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                        (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                            (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData10 →
+                              (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                          (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                              (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData11 →
+                                (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                  (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                            (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData12 →
+                                  (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                    (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                              (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                  (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData13 →
+                                    (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                      (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                    (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData14 →
+                                      (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                        (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                  (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                      (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData15 →
+                                        (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                          (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                    (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                        (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData16 →
+                                          (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                            (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                      (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                          (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData17 →
+                                            (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                              (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                        (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                            (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData18 →
+                                              (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                          (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                              (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData19 →
+                                                (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                  (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                            (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData20 →
+                                                  (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                    (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                              (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                  (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData21 →
+                                                    (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                      (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                    (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData22 →
+                                                      (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                        (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                  (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                      (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData23 →
+                                                        (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                          (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                    (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                        (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData24 →
+                                                          (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                            (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                      (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                          (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData25 →
+                                                            (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                              (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                        (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                            (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData26 →
+                                                              (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                                (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                          (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                              (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData27 →
+                                                                (isRep a a_1 a_2 a_3 = true ∧ isRep a a_4 a_5 b = true) ∧
+                                                                  (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                            (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData28 →
+                                                                  (isRep a a_1 a_2 a_3 = true ∧
+                                                                      isRep a a_4 a_5 b = true) ∧
+                                                                    (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                              (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                  (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData29 →
+                                                                    (isRep a a_1 a_2 a_3 = true ∧
+                                                                        isRep a a_4 a_5 b = true) ∧
+                                                                      (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                    (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData30 →
+                                                                      (isRep a a_1 a_2 a_3 = true ∧
+                                                                          isRep a a_4 a_5 b = true) ∧
+                                                                        (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                  (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                      (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData31 →
+                                                                        (isRep a a_1 a_2 a_3 = true ∧
+                                                                            isRep a a_4 a_5 b = true) ∧
+                                                                          (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                    (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                        (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData32 →
+                                                                          (isRep a a_1 a_2 a_3 = true ∧
+                                                                              isRep a a_4 a_5 b = true) ∧
+                                                                            (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                      (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                          (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData33 →
+                                                                            (isRep a a_1 a_2 a_3 = true ∧
+                                                                                isRep a a_4 a_5 b = true) ∧
+                                                                              (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                        (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                            (a, a_1, a_2, a_3, a_4, a_5, b) ∈ twoData34 →
+                                                                              (isRep a a_1 a_2 a_3 = true ∧
+                                                                                  isRep a a_4 a_5 b = true) ∧
+                                                                                (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                          (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                              (a, a_1, a_2, a_3, a_4, a_5, b) ∈
+                                                                                  twoData35 →
+                                                                                (isRep a a_1 a_2 a_3 = true ∧
+                                                                                    isRep a a_4 a_5 b = true) ∧
+                                                                                  (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                            (∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                                (a, a_1, a_2, a_3, a_4, a_5, b) ∈
+                                                                                    twoData36 →
+                                                                                  (isRep a a_1 a_2 a_3 = true ∧
+                                                                                      isRep a a_4 a_5 b = true) ∧
+                                                                                    (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)) ∧
+                                                                              ∀ (a a_1 a_2 a_3 a_4 a_5 b : ℕ),
+                                                                                (a, a_1, a_2, a_3, a_4, a_5, b) ∈
+                                                                                    twoData37 →
+                                                                                  (isRep a a_1 a_2 a_3 = true ∧
+                                                                                      isRep a a_4 a_5 b = true) ∧
+                                                                                    (a_1 = a_4 → a_2 = a_5 → ¬a_3 = b)
+  Submission/Spec.lean:873:33: warning: This simp argument is unused:
+    twoData0_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1_ok, twoData2_ok, twoData3_ok, twoData4_ok, twoData5_ok,
+    ̲  ̲ ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:46: warning: This simp argument is unused:
+    twoData1_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2_ok, twoData3_ok, twoData4_ok, twoData5_ok,
+    ̲  ̲ ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:59: warning: This simp argument is unused:
+    twoData2_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵3_ok, twoData4_ok, twoData5_ok,
+    ̲  ̲ ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:72: warning: This simp argument is unused:
+    twoData3_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵4_ok, twoData5_ok,
+    ̲  ̲ ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:85: warning: This simp argument is unused:
+    twoData4_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4̵5̲_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵5̵_̵o̵k̵,̵  ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:98: warning: This simp argument is unused:
+    twoData5_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵5̵_̵o̵k̵,̵  ̲ ̲twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:111: warning: This simp argument is unused:
+    twoData6_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:124: warning: This simp argument is unused:
+    twoData7_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵8_ok, twoData9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:137: warning: This simp argument is unused:
+    twoData8_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵9_ok, twoData10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:150: warning: This simp argument is unused:
+    twoData9_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵10_ok, twoData11_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:163: warning: This simp argument is unused:
+    twoData10_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵11̵_ok, twoData12_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:177: warning: This simp argument is unused:
+    twoData11_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1̵2_ok,
+    ̲  ̲ ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:191: warning: This simp argument is unused:
+    twoData12_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵1̵2̵_̵o̵k̵,̵  ̲ ̲twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:205: warning: This simp argument is unused:
+    twoData13_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1̵4_ok, twoData15_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:219: warning: This simp argument is unused:
+    twoData14_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1̵5_ok, twoData16_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:233: warning: This simp argument is unused:
+    twoData15_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1̵6_ok, twoData17_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:247: warning: This simp argument is unused:
+    twoData16_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵1̵7_ok, twoData18_ok,
+    ̲  ̲ ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:261: warning: This simp argument is unused:
+    twoData17_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17̵8̲_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵1̵8̵_̵o̵k̵,̵  ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:275: warning: This simp argument is unused:
+    twoData18_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵1̵8̵_̵o̵k̵,̵  ̲ ̲twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:289: warning: This simp argument is unused:
+    twoData19_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData1̵9̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵20_ok, twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:303: warning: This simp argument is unused:
+    twoData20_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, t̵w̵o̵D̵a̵t̵a̵2̵0̵_̵o̵k̵,̵ ̵twoData21_ok, twoData22_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:317: warning: This simp argument is unused:
+    twoData21_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵22̵_ok, twoData23_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:331: warning: This simp argument is unused:
+    twoData22_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2̵3_ok, twoData24_ok,
+    ̲  ̲ ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:345: warning: This simp argument is unused:
+    twoData23_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23̵4̲_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵2̵4̵_̵o̵k̵,̵  ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:359: warning: This simp argument is unused:
+    twoData24_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵2̵4̵_̵o̵k̵,̵  ̲ ̲twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:373: warning: This simp argument is unused:
+    twoData25_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2̵6_ok, twoData27_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:387: warning: This simp argument is unused:
+    twoData26_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2̵7_ok, twoData28_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:401: warning: This simp argument is unused:
+    twoData27_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2̵8_ok, twoData29_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:415: warning: This simp argument is unused:
+    twoData28_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵2̵9_ok, twoData30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:429: warning: This simp argument is unused:
+    twoData29_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData2̵9̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵30_ok,
+    ̲  ̲ ̲ ̲twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:443: warning: This simp argument is unused:
+    twoData30_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲t̵w̵o̵D̵a̵t̵a̵3̵0̵_̵o̵k̵,̵ ̵twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:457: warning: This simp argument is unused:
+    twoData31_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵3̵2_ok, twoData33_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:471: warning: This simp argument is unused:
+    twoData32_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵33̵_ok, twoData34_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:485: warning: This simp argument is unused:
+    twoData33_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32_ok, twoData33̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵3̵4_ok, twoData35_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:499: warning: This simp argument is unused:
+    twoData34_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32_ok, twoData33_ok, twoData34̵_̵o̵k̵,̵ ̵t̵w̵o̵D̵a̵t̵a̵3̵5_ok, twoData36_ok,
+    ̲  ̲ ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:513: warning: This simp argument is unused:
+    twoData35_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35̵6̲_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵3̵6̵_̵o̵k̵,̵  ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:527: warning: This simp argument is unused:
+    twoData36_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok,
+    ̲ t̵w̵o̵D̵a̵t̵a̵3̵6̵_̵o̵k̵,̵  ̲ ̲twoData37_ok]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:873:541: warning: This simp argument is unused:
+    twoData37_ok
+  
+  Hint: Omit it from the simp argument list.
+    simp [twoAll, List.all_append, twoData0_ok, twoData1_ok, twoData2_ok, twoData3_ok, twoData4_ok,
+    ̲  ̲ ̲ ̲twoData5_ok, twoData6_ok, twoData7_ok, twoData8_ok, twoData9_ok, twoData10_ok, twoData11_ok,
+    ̲  ̲ ̲ ̲twoData12_ok, twoData13_ok, twoData14_ok, twoData15_ok, twoData16_ok, twoData17_ok,
+    ̲  ̲ ̲ ̲twoData18_ok, twoData19_ok, twoData20_ok, twoData21_ok, twoData22_ok, twoData23_ok,
+    ̲  ̲ ̲ ̲twoData24_ok, twoData25_ok, twoData26_ok, twoData27_ok, twoData28_ok, twoData29_ok,
+    ̲  ̲ ̲ ̲twoData30_ok, twoData31_ok, twoData32_ok, twoData33_ok, twoData34_ok, twoData35_ok,
+    ̲  ̲ ̲ ̲twoData36_ok,̵ ̵t̵w̵o̵D̵a̵t̵a̵3̵7̵_̵o̵k̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:900:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:984:76: error: unsolved goals
+  n : ℕ
+  hn : 1 ≤ n
+  h : InS (n - 1)
+  ⊢ 1 ≤ n
+  Submission/Spec.lean:989:76: error: unsolved goals
+  n : ℕ
+  hn : 3 ≤ n
+  h : InS (n - 3)
+  ⊢ 3 ≤ n
+  Submission/Spec.lean:994:81: error: Expected type must not contain free variables
+    3 * (3 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1004:60: error: Ambiguous term
+    prime_five
+  Possible interpretations:
+    _root_.prime_five : Nat.Prime 5
+    
+    Nat.prime_five : Nat.Prime 5
+  Submission/Spec.lean:1004:76: error: Expected type must not contain free variables
+    4 * (4 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1009:60: error: Ambiguous term
+    prime_five
+  Possible interpretations:
+    _root_.prime_five : Nat.Prime 5
+    
+    Nat.prime_five : Nat.Prime 5
+  Submission/Spec.lean:1009:76: error: Expected type must not contain free variables
+    5 * (5 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1014:60: error: Ambiguous term
+    prime_seven
+  Possible interpretations:
+    _root_.prime_seven : Nat.Prime 7
+    
+    Nat.prime_seven : Nat.Prime 7
+  Submission/Spec.lean:1014:77: error: Expected type must not contain free variables
+    6 * (6 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1058:4: error: Type mismatch: After simplification, term
+    this
+   has type
+    n = x * x + p ^ 2
+  but is expected to have type
+    x ^ 2 + p ^ 2 = n
+  Submission/Spec.lean:1117:18: error: Type mismatch: After simplification, term
+    hz
+   has type
+    Nat.Prime (p - 1) ∨ Nat.Prime p
+  but is expected to have type
+    Nat.Prime (p - 1) ∨ Nat.Prime (p - 1 + 1)
+  Submission/Spec.lean:1119:2: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 0
+    -1 ≤ 2*e - f ≤ 0
+    d ≥ 0
+    c ≥ 0
+    b ≥ 0
+    a - b ≤ 0
+    a - e ≥ 1
+    -1 ≤ 2*a - c ≤ 0
+  where
+   a := ↑((p - 1) * p) / 2
+   b := ↑p * ↑(p - 1)
+   c := ↑(p - 1) * ↑p
+   d := ↑(x ^ 2)
+   e := ↑((p - 1) * (p - 1 + 1)) / 2
+   f := ↑(p - 1) * ↑(p - 1 + 1)
+  Submission/Spec.lean:1151:4: error: Tactic `apply` failed: could not unify the conclusion of `Nat.add_right_cancel`
+    p = ?m.724
+  with the goal
+    (p + 1) * (p + 2) + (p - 1) * p = 2 * (p ^ 2 + p + 1)
+  
+  Note: The full type of `Nat.add_right_cancel` is
+    p + ?m.723 = ?m.724 + ?m.723 → p = ?m.724
+  
+  p : ℕ
+  hp : Odd p
+  hp0 : 0 < p
+  hdiv : 2 * ((p + 1) / 2) = p + 1
+  hT : 2 * ((p - 1) * p / 2) = (p - 1) * p
+  hlhs : 2 * ((p + 1) / 2 * (2 * ((p + 1) / 2) + 1) + (p - 1) * p / 2) = (p + 1) * (p + 2) + (p - 1) * p
+  hp1 : 1 ≤ p
+  hadd : (p - 1) * p + p = p * p
+  ⊢ (p + 1) * (p + 2) + (p - 1) * p = 2 * (p ^ 2 + p + 1)
+  Submission/Spec.lean:1163:26: error: Type mismatch: After simplification, term
+    hp
+   has type
+    Nat.Prime p
+  but is expected to have type
+    Nat.Prime (p - 1 + 1)
+  Submission/Spec.lean:1165:2: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 0
+    -1 ≤ 2*e - f ≤ 0
+    d ≥ 0
+    c ≥ 0
+    b ≥ 0
+    a - b ≤ 2
+    a - e ≥ 1
+    -1 ≤ 2*a - c ≤ 0
+  where
+   a := ↑((p - 1) * p) / 2
+   b := ↑(p ^ 2)
+   c := ↑(p - 1) * ↑p
+   d := ↑(x ^ 2)
+   e := ↑((p - 1) * (p - 1 + 1)) / 2
+   f := ↑(p - 1) * ↑(p - 1 + 1)
+  Submission/Spec.lean:1175:4: error: Type mismatch: After simplification, term
+    this
+   has type
+    n = x * x + (p + 1) ^ 2
+  but is expected to have type
+    x ^ 2 + (p + 1) ^ 2 = n
+  Submission/Spec.lean:1186:4: error: Type mismatch: After simplification, term
+    this
+   has type
+    n = x * x + p * (p - 1)
+  but is expected to have type
+    x ^ 2 + p * (p - 1) = n
+  Submission/Spec.lean:1197:4: error: Type mismatch: After simplification, term
+    this
+   has type
+    n - (p ^ 2 + (p + 1)) = x * x
+  but is expected to have type
+    x ^ 2 + (p ^ 2 + (p + 1)) = n
+  Submission/Spec.lean:1217:66: error: Ambiguous term
+    prime_seven
+  Possible interpretations:
+    _root_.prime_seven : Nat.Prime 7
+    
+    Nat.prime_seven : Nat.Prime 7
+  Submission/Spec.lean:1218:66: error: Ambiguous term
+    prime_eleven
+  Possible interpretations:
+    _root_.prime_eleven : Nat.Prime 11
+    
+    Nat.prime_eleven : Nat.Prime 11
+  Submission/Spec.lean:1219:69: error: Ambiguous term
+    prime_eleven
+  Possible interpretations:
+    _root_.prime_eleven : Nat.Prime 11
+    
+    Nat.prime_eleven : Nat.Prime 11
+  Submission/Spec.lean:1257:72: error: Expected type must not contain free variables
+    7 * (7 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1262:71: error: Expected type must not contain free variables
+    10 * (10 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1267:74: error: Expected type must not contain free variables
+    11 * (11 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1272:74: error: Expected type must not contain free variables
+    12 * (12 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1277:75: error: Expected type must not contain free variables
+    16 * (16 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1282:77: error: Expected type must not contain free variables
+    17 * (17 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1287:76: error: Expected type must not contain free variables
+    18 * (18 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1292:77: error: Expected type must not contain free variables
+    22 * (22 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1297:79: error: Expected type must not contain free variables
+    23 * (23 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1302:79: error: Expected type must not contain free variables
+    28 * (28 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1307:78: error: Expected type must not contain free variables
+    29 * (29 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1312:74: error: Expected type must not contain free variables
+    30 * (30 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1317:76: error: Expected type must not contain free variables
+    13 * (13 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1322:76: error: Expected type must not contain free variables
+    19 * (19 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1327:77: error: Expected type must not contain free variables
+    31 * (31 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1332:77: error: Expected type must not contain free variables
+    36 * (36 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1337:79: error: Expected type must not contain free variables
+    37 * (37 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1342:73: error: Expected type must not contain free variables
+    40 * (40 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1347:76: error: Expected type must not contain free variables
+    41 * (41 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1352:76: error: Expected type must not contain free variables
+    42 * (42 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1357:78: error: Expected type must not contain free variables
+    43 * (43 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1362:76: error: Expected type must not contain free variables
+    46 * (46 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1367:78: error: Expected type must not contain free variables
+    47 * (47 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1372:76: error: Expected type must not contain free variables
+    52 * (52 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1377:78: error: Expected type must not contain free variables
+    53 * (53 + 1) / 2 ≤ n
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:1573:47: error: Ambiguous term
+    ne_of_gt
+  Possible interpretations:
+    _root_.ne_of_gt hsqpos : n.sqrt ≠ 0
+    
+    Nat.ne_of_gt hsqpos : n.sqrt ≠ 0
+  Submission/Spec.lean:1578:25: error: Type mismatch
+    le_sqrt.mp ?m.1697
+  has type
+    ?m.1693 * ?m.1693 ≤ ?m.1694
+  but is expected to have type
+    n ≤ 1
+  Submission/Spec.lean:1598:53: error: Ambiguous term
+    ne_of_gt
+  Possible interpretations:
+    _root_.ne_of_gt hhalfpos : n.sqrt / 2 ≠ 0
+    
+    Nat.ne_of_gt hhalfpos : n.sqrt / 2 ≠ 0
+  Submission/Spec.lean:1618:53: error: Ambiguous term
+    ne_of_gt
+  Possible interpretations:
+    _root_.ne_of_gt h2pos : (2 * n).sqrt ≠ 0
+    
+    Nat.ne_of_gt h2pos : (2 * n).sqrt ≠ 0
+  Submission/Spec.lean:1623:24: error: Type mismatch
+    le_sqrt.mp ?m.2561
+  has type
+    ?m.2557 * ?m.2557 ≤ ?m.2558
+  but is expected to have type
+    2 * n ≤ 1
+  Submission/Spec.lean:1642:53: error: Ambiguous term
+    ne_of_gt
+  Possible interpretations:
+    _root_.ne_of_gt hsqrt4 : n.sqrt / 4 ≠ 0
+    
+    Nat.ne_of_gt hsqrt4 : n.sqrt / 4 ≠ 0
+  Submission/Spec.lean:1655:53: error: Ambiguous term
+    ne_of_gt
+  Possible interpretations:
+    _root_.ne_of_gt hsqrt8 : n.sqrt / 8 ≠ 0
+    
+    Nat.ne_of_gt hsqrt8 : n.sqrt / 8 ≠ 0
+  Submission/Spec.lean:1699:40: error: Ambiguous term
+    prime_five
+  Possible interpretations:
+    _root_.prime_five : Nat.Prime 5
+    
+    Nat.prime_five : Nat.Prime 5
+  Submission/Spec.lean:1701:40: error: Ambiguous term
+    prime_five
+  Possible interpretations:
+    _root_.prime_five : Nat.Prime 5
+    
+    Nat.prime_five : Nat.Prime 5
+  Submission/Spec.lean:1703:40: error: Ambiguous term
+    prime_seven
+  Possible interpretations:
+    _root_.prime_seven : Nat.Prime 7
+    
+    Nat.prime_seven : Nat.Prime 7
+

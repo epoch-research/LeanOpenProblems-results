@@ -1,0 +1,104 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1576:40: error: unsolved goals
+  n : ℕ
+  hodd : Odd n
+  hn : 200 ≤ n
+  hid : ¬∃ a, n = 2 * a ^ 2 + 1
+  hid2 : ¬∃ m, n = m ^ 2 + 2
+  hid5 : ¬∃ m, n = m ^ 2 + 5
+  hid15 : ¬∃ m, n = 2 * m ^ 2 + 15
+  hidp : ¬∃ m k, Odd k ∧ n = m ^ 2 + 2 ^ k
+  h64 : ¬IsSumTwoSq (n ^ 2 - 64)
+  h256 : ¬IsSumTwoSq (n ^ 2 - 256)
+  h1024 : ¬IsSumTwoSq (n ^ 2 - 1024)
+  h1664 : ¬IsSumTwoSq (n ^ 2 - 1664)
+  h1256 : IsSumTwoSq (n ^ 2 - 1256)
+  hx : 17 * 2 ^ 1 ≤ n
+  this✝ : 18 ≤ n
+  this : 18 ^ 2 ≤ n ^ 2
+  ⊢ False
+  Submission/Spec.lean:1583:42: error: unsolved goals
+  n : ℕ
+  hodd : Odd n
+  hn : 200 ≤ n
+  hid : ¬∃ a, n = 2 * a ^ 2 + 1
+  hid2 : ¬∃ m, n = m ^ 2 + 2
+  hid5 : ¬∃ m, n = m ^ 2 + 5
+  hid15 : ¬∃ m, n = 2 * m ^ 2 + 15
+  hidp : ¬∃ m k, Odd k ∧ n = m ^ 2 + 2 ^ k
+  h64 : ¬IsSumTwoSq (n ^ 2 - 64)
+  h256 : ¬IsSumTwoSq (n ^ 2 - 256)
+  h1024 : ¬IsSumTwoSq (n ^ 2 - 1024)
+  h1664 : ¬IsSumTwoSq (n ^ 2 - 1664)
+  h1256 : ¬IsSumTwoSq (n ^ 2 - 1256)
+  h5024 : IsSumTwoSq (n ^ 2 - 5024)
+  hx : 17 * 2 ^ 2 ≤ n
+  this✝ : 36 ≤ n
+  this : 36 ^ 2 ≤ n ^ 2
+  ⊢ False
+  Submission/Spec.lean:1590:44: error: unsolved goals
+  n : ℕ
+  hodd : Odd n
+  hn : 200 ≤ n
+  hid : ¬∃ a, n = 2 * a ^ 2 + 1
+  hid2 : ¬∃ m, n = m ^ 2 + 2
+  hid5 : ¬∃ m, n = m ^ 2 + 5
+  hid15 : ¬∃ m, n = 2 * m ^ 2 + 15
+  hidp : ¬∃ m k, Odd k ∧ n = m ^ 2 + 2 ^ k
+  h64 : ¬IsSumTwoSq (n ^ 2 - 64)
+  h256 : ¬IsSumTwoSq (n ^ 2 - 256)
+  h1024 : ¬IsSumTwoSq (n ^ 2 - 1024)
+  h1664 : ¬IsSumTwoSq (n ^ 2 - 1664)
+  h1256 : ¬IsSumTwoSq (n ^ 2 - 1256)
+  h5024 : ¬IsSumTwoSq (n ^ 2 - 5024)
+  h6656 : IsSumTwoSq (n ^ 2 - 6656)
+  hx : 5 * 2 ^ 4 ≤ n
+  this✝ : 81 ≤ n
+  this : 81 ^ 2 ≤ n ^ 2
+  ⊢ False
+  Submission/Spec.lean:1597:46: error: unsolved goals
+  n : ℕ
+  hodd : Odd n
+  hn : 200 ≤ n
+  hid : ¬∃ a, n = 2 * a ^ 2 + 1
+  hid2 : ¬∃ m, n = m ^ 2 + 2
+  hid5 : ¬∃ m, n = m ^ 2 + 5
+  hid15 : ¬∃ m, n = 2 * m ^ 2 + 15
+  hidp : ¬∃ m k, Odd k ∧ n = m ^ 2 + 2 ^ k
+  h64 : ¬IsSumTwoSq (n ^ 2 - 64)
+  h256 : ¬IsSumTwoSq (n ^ 2 - 256)
+  h1024 : ¬IsSumTwoSq (n ^ 2 - 1024)
+  h1664 : ¬IsSumTwoSq (n ^ 2 - 1664)
+  h1256 : ¬IsSumTwoSq (n ^ 2 - 1256)
+  h5024 : ¬IsSumTwoSq (n ^ 2 - 5024)
+  h6656 : ¬IsSumTwoSq (n ^ 2 - 6656)
+  h20096 : IsSumTwoSq (n ^ 2 - 20096)
+  hx : 17 * 2 ^ 3 ≤ n
+  this✝ : 72 ≤ n
+  this : 72 ^ 2 ≤ n ^ 2
+  ⊢ False
+  Submission/Spec.lean:1604:46: error: unsolved goals
+  n : ℕ
+  hodd : Odd n
+  hn : 200 ≤ n
+  hid : ¬∃ a, n = 2 * a ^ 2 + 1
+  hid2 : ¬∃ m, n = m ^ 2 + 2
+  hid5 : ¬∃ m, n = m ^ 2 + 5
+  hid15 : ¬∃ m, n = 2 * m ^ 2 + 15
+  hidp : ¬∃ m k, Odd k ∧ n = m ^ 2 + 2 ^ k
+  h64 : ¬IsSumTwoSq (n ^ 2 - 64)
+  h256 : ¬IsSumTwoSq (n ^ 2 - 256)
+  h1024 : ¬IsSumTwoSq (n ^ 2 - 1024)
+  h1664 : ¬IsSumTwoSq (n ^ 2 - 1664)
+  h1256 : ¬IsSumTwoSq (n ^ 2 - 1256)
+  h5024 : ¬IsSumTwoSq (n ^ 2 - 5024)
+  h6656 : ¬IsSumTwoSq (n ^ 2 - 6656)
+  h20096 : ¬IsSumTwoSq (n ^ 2 - 20096)
+  hx : 5 * 2 ^ 5 ≤ n
+  this✝ : 161 ≤ n
+  this : 161 ^ 2 ≤ n ^ 2
+  ⊢ False
+  Submission/Spec.lean:1606:65: error(lean.unknownIdentifier): Unknown constant `Nat.mul_self_sqrt_eq`
+

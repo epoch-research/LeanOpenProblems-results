@@ -1,0 +1,23 @@
+{
+  "id": "oeis_365416_conjecture_0",
+  "epoch": 1,
+  "uuid": "NC8nLc3e7oTKGR46ni7urj",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 40124899,
+      "output_tokens": 3309298,
+      "total_tokens": 243252437,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 199818240,
+      "reasoning_tokens": 2394062,
+      "total_cost": 200.01470599999962
+    }
+  },
+  "oeis_id": "A365416"
+}

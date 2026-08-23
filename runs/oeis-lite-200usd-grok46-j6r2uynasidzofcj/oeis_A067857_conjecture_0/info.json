@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A067857_conjecture_0",
+  "epoch": 1,
+  "uuid": "X6rFRXpvm4gia8oUNd3TBb",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 441337,
+      "output_tokens": 16800,
+      "total_tokens": 1126041,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 667904,
+      "reasoning_tokens": 8256,
+      "total_cost": 1.317426
+    }
+  },
+  "oeis_id": "A067857"
+}

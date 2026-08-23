@@ -1,0 +1,20 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "NDar3Jo9miaj9hgyD6WqQJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 12933531,
+      "output_tokens": 822141,
+      "total_tokens": 95535512,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 81779840,
+      "reasoning_tokens": 476110,
+      "total_cost": 71.68982799999998
+    }
+  },
+  "oeis_id": "A381358"
+}

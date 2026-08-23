@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a176477_conjecture",
+  "epoch": 1,
+  "uuid": "LWgfviBdLp3ydaQxoPSXtd",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 46554860,
+      "output_tokens": 3455247,
+      "total_tokens": 222364283,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 172354176,
+      "reasoning_tokens": 2390921,
+      "total_cost": 200.0182899999996
+    }
+  },
+  "oeis_id": "A176477"
+}

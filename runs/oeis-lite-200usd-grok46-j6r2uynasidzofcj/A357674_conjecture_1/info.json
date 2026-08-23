@@ -1,0 +1,23 @@
+{
+  "id": "A357674_conjecture_1",
+  "epoch": 1,
+  "uuid": "4vfe8q7oLhg7JY5tHDrtP7",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 39237734,
+      "output_tokens": 2587544,
+      "total_tokens": 254302590,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 212477312,
+      "reasoning_tokens": 1770529,
+      "total_cost": 200.2393880000001
+    }
+  },
+  "oeis_id": "A357674"
+}

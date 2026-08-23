@@ -1,0 +1,20 @@
+{
+  "id": "oeis_17666_conjecture_0",
+  "epoch": 1,
+  "uuid": "6qpcR7buQFZ8ejNvBhf3DJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 181997,
+      "output_tokens": 11537,
+      "total_tokens": 532990,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 339456,
+      "reasoning_tokens": 6213,
+      "total_cost": 0.6029439999999999
+    }
+  },
+  "oeis_id": "A017666"
+}

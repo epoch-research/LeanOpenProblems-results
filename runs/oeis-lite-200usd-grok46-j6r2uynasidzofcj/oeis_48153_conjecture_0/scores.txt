@@ -1,0 +1,29 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 2 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 437 declarations.
+  ------------------
+  highBitCount_le_of_four_dvd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  highBitCount_eight_mul_odd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  A048153_le_mul_sub_one used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  highBitCount_le_four_mul_odd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  A048153_prime_three_mod_four used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  oeis_48153_conjecture_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  charSum_nonpos used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  highBitCount_le_four_or_eight used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  halfCharSum_pos used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_48153_conjecture_0: uses disallowed axioms
+    Disallowed axioms used: #[sorryAx]
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

@@ -1,0 +1,22 @@
+=== SCORES ===
+proof_scorer: I
+  stage: safeverify
+  Currently running on Lean v4.27.0
+  Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/target.olean
+  Finished setting up the environment.
+  Finished replay. Found 4 declarations.
+  ------------------
+  Replaying /workspace/leanproject/_apn_score/submission.olean
+  Finished setting up the environment.
+  Finished replay. Found 1 declarations.
+  ------------------
+  ------------------
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a_generalized: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration a: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration prime_k_1indexed: declaration not found in submission
+  Found a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_237348_conjecture_0: declaration not found in submission
+  ------------------
+  uncaught exception: SafeVerify check failed.
+

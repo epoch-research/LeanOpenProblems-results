@@ -1,0 +1,215 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:442:10: warning: This simp argument is unused:
+    p.choose_self
+  
+  Hint: Omit it from the simp argument list.
+    simp [p̵.̵c̵h̵o̵o̵s̵e̵_̵s̵e̵l̵f̵,̵ ̵← Polynomial.C_mul_X_pow_eq_monomial]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:515:2: warning: `Finset.disjoint_filter_filter_neg` has been deprecated: Use `Finset.disjoint_filter_filter_not` instead
+  Submission/Spec.lean:561:28: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:561:64: warning: unused variable `hjp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:715:29: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:855:10: warning: This simp argument is unused:
+    Polynomial.C_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵C̵_̵m̵u̵l̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:974:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:988:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1094:10: warning: This simp argument is unused:
+    ZMod.castHom_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵Z̵M̵o̵d̵.̵c̵a̵s̵t̵H̵o̵m̵_̵a̵p̵p̵l̵y̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1151:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1332:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1388:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1440:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1488:23: warning: This simp argument is unused:
+    pow_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [alphaN, p̵o̵w̵_̵o̵n̵e̵,̵ ̵Nat.cast_add, Nat.cast_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:1736:10: warning: This simp argument is unused:
+    mul_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵[̲m̲u̲l̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲,̲ mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1904:28: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [pow_two, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1913:28: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [pow_two, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1915:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1922:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1999:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2005:39: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2153:27: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:2153:27: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:2204:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2260:42: warning: unused variable `hy`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2297:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:2892:31: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2906:20: error(lean.invalidField): Invalid field `eq_or_lt_of_le`: The environment does not contain `Irreducible.eq_or_lt_of_le`, so it is not possible to project the field `eq_or_lt_of_le` from an expression
+    hprime
+  of type `Irreducible p`
+  Submission/Spec.lean:3018:10: warning: This simp argument is unused:
+    this
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵t̵h̵i̵s̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3051:10: warning: This simp argument is unused:
+    Polynomial.coeff_X_mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵_̵m̵u̵l̵_̵z̵e̵r̵o̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3053:10: warning: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3071:31: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3079:30: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3138:39: warning: unused variable `hj`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3209:30: warning: unused variable `hj`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3292:34: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3357:25: warning: unused variable `N`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3363:48: warning: unused variable `hp5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3504:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:3526:32: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3599:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:3640:28: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [mul_sum, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3640:43: warning: This simp argument is unused:
+    mul_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [mul_sum, mul_assoc, mul_left_comm,̵ ̵m̵u̵l̵_̵c̵o̵m̵m̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3680:28: warning: This simp argument is unused:
+    mul_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [mul_sum, mul_assoc, m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3713:43: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3739:36: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3759:49: warning: unused variable `hq5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3790:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:3803:8: warning: declaration uses 'sorry'
+

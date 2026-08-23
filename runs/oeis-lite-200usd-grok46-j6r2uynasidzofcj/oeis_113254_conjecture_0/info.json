@@ -1,0 +1,20 @@
+{
+  "id": "oeis_113254_conjecture_0",
+  "epoch": 1,
+  "uuid": "emC42urD6YNAjnecWRUfEe",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 416842,
+      "output_tokens": 52267,
+      "total_tokens": 1707893,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1238784,
+      "reasoning_tokens": 34328,
+      "total_cost": 1.7666779999999997
+    }
+  },
+  "oeis_id": "A113254"
+}

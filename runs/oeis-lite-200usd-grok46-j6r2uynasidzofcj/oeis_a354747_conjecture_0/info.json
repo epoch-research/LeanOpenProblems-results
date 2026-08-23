@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a354747_conjecture_0",
+  "epoch": 1,
+  "uuid": "Vn27ErEuRmGfmEs62GCwxY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 13693329,
+      "output_tokens": 345398,
+      "total_tokens": 49412807,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 35374080,
+      "reasoning_tokens": 185704,
+      "total_cost": 47.14608600000002
+    }
+  },
+  "oeis_id": "A354747"
+}

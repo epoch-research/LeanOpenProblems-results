@@ -1,0 +1,23 @@
+{
+  "id": "apery_poly_irreducible",
+  "epoch": 1,
+  "uuid": "SPhwDkVPFEAG7wtjvgubGy",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 38170197,
+      "output_tokens": 2574273,
+      "total_tokens": 257225110,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 216480640,
+      "reasoning_tokens": 1531376,
+      "total_cost": 200.02635199999958
+    }
+  },
+  "oeis_id": "A005258"
+}

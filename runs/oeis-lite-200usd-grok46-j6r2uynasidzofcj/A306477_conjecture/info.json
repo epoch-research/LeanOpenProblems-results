@@ -1,0 +1,23 @@
+{
+  "id": "A306477_conjecture",
+  "epoch": 1,
+  "uuid": "VaSmYPyJJpn3DhEoDcEMeP",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 49408393,
+      "output_tokens": 3649504,
+      "total_tokens": 211727465,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 158669568,
+      "reasoning_tokens": 2679843,
+      "total_cost": 200.04859399999992
+    }
+  },
+  "oeis_id": "A306477"
+}

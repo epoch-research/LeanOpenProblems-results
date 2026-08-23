@@ -1,0 +1,25 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:342:2: error: Expected type must not contain free variables
+    9 + (a + 7).choose 8 = (a + 7).choose 8 + 9
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:348:2: error: Expected type must not contain free variables
+    Nat.choose 10 2 + (a + 7).choose 8 = (a + 7).choose 8 + 45
+  
+  Hint: Use the `+revert` option to automatically clean up and revert free variables
+  Submission/Spec.lean:350:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:371:44: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:441:2: error: Type mismatch
+    Eq.symm (eight_mul_tri_add_one w)
+  has type
+    (2 * w + 3) * (2 * w + 3) = 8 * ((w + 1) * (w + 2) / 2) + 1
+  but is expected to have type
+    8 * ((w + 1) * (w + 2) / 2) + 1 = (2 * w + 3) * (2 * w + 3)
+  Submission/Spec.lean:538:8: warning: declaration uses 'sorry'
+

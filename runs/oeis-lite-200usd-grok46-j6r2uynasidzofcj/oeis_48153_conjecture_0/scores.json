@@ -1,0 +1,65 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Currently running on Lean v4.27.0\nRunning SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean.\n------------------\nReplaying /workspace/leanproject/_apn_score/target.olean\nFinished setting up the environment.\nFinished replay. Found 2 declarations.\n------------------\nReplaying /workspace/leanproject/_apn_score/submission.olean\nFinished setting up the environment.\nFinished replay. Found 437 declarations.\n------------------\nhighBitCount_le_of_four_dvd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nhighBitCount_eight_mul_odd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nA048153_le_mul_sub_one used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nhighBitCount_le_four_mul_odd used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nA048153_prime_three_mod_four used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\noeis_48153_conjecture_0 used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\ncharSum_nonpos used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nhighBitCount_le_four_or_eight used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\nhalfCharSum_pos used disallowed axioms. #[propext, Quot.sound, Classical.choice, sorryAx]\n------------------\nFound a problem in /workspace/leanproject/_apn_score/submission.olean with declaration oeis_48153_conjecture_0: uses disallowed axioms\n  Disallowed axioms used: #[sorryAx]\n------------------\nuncaught exception: SafeVerify check failed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": [
+        [
+          "oeis_48153_conjecture_0",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "theorem"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice",
+                "sorryAx"
+              ]
+            },
+            "failureMode": "axioms"
+          }
+        ],
+        [
+          "A048153",
+          {
+            "targetInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "solutionInfo": {
+              "constInfo": {
+                "kind": "definition"
+              },
+              "axioms": [
+                "propext",
+                "Quot.sound",
+                "Classical.choice"
+              ]
+            },
+            "failureMode": null
+          }
+        ]
+      ]
+    }
+  }
+}

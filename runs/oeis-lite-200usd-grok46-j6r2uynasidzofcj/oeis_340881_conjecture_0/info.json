@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340881_conjecture_0",
+  "epoch": 1,
+  "uuid": "h4MCD5uAYkCma5RmhMBKiA",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 593539,
+      "output_tokens": 51623,
+      "total_tokens": 2483242,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1838080,
+      "reasoning_tokens": 36067,
+      "total_cost": 2.4158560000000007
+    }
+  },
+  "oeis_id": "A340881"
+}

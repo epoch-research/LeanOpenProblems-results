@@ -1,0 +1,20 @@
+{
+  "id": "oeis_219055_conjecture_1",
+  "epoch": 1,
+  "uuid": "Uavk6DCFaKKpqyp8dUxdTR",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 1796537,
+      "output_tokens": 74048,
+      "total_tokens": 6398329,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 4527744,
+      "reasoning_tokens": 38288,
+      "total_cost": 6.3012339999999964
+    }
+  },
+  "oeis_id": "A219055"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a355898_conjecture",
+  "epoch": 1,
+  "uuid": "SxmQuAE3qffkEp5GPRo4nv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 1547114,
+      "output_tokens": 109782,
+      "total_tokens": 7574848,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 5917952,
+      "reasoning_tokens": 65144,
+      "total_cost": 6.711896000000002
+    }
+  },
+  "oeis_id": "A355898"
+}

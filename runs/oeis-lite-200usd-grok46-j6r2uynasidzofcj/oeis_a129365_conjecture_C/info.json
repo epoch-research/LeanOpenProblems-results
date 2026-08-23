@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "bFwbmrSoBULY6nUdw9RAxh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 703835,
+      "output_tokens": 52593,
+      "total_tokens": 3107404,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2350976,
+      "reasoning_tokens": 32865,
+      "total_cost": 2.8987159999999994
+    }
+  },
+  "oeis_id": "A129365"
+}

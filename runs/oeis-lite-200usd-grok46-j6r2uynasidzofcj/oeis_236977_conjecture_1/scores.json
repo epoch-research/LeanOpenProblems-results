@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:1129:66: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1135:66: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1143:66: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1151:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1157:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1165:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1173:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1181:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1189:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1195:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1205:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1213:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1219:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1225:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29\nSubmission/Spec.lean:1235:68: error: Expected type must not contain metavariables\n  ?m.28 ∣ ?m.29",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

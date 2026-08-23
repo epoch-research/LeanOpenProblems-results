@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "U3sqe8eQSmqQPmAz5iN9fw",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 1081090,
+      "output_tokens": 92532,
+      "total_tokens": 14126582,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 12952960,
+      "reasoning_tokens": 50129,
+      "total_cost": 9.193852
+    }
+  },
+  "oeis_id": "A228304"
+}

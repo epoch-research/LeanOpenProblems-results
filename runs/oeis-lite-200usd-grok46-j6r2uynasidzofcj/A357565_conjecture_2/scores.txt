@@ -1,0 +1,37 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:890:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:891:2: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:3219:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:6265:34: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:6265:34: warning: 'omega' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:6654:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:6638:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:7356:18: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:7356:18: warning: 'omega' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:7458:4: error: Type mismatch
+    (ZMod.natCast_eq_natCast_iff ((p + j).choose j) 1 p).mpr hmod
+  has type
+    ↑((p + j).choose j) = ↑1
+  but is expected to have type
+    ↑((p + j).choose j) = 1
+

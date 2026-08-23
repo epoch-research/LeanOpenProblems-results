@@ -1,0 +1,23 @@
+{
+  "id": "A357565_conjecture_2",
+  "epoch": 1,
+  "uuid": "QdbT9jWoefy9WwtPoJDfAQ",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 33806605,
+      "output_tokens": 1927572,
+      "total_tokens": 277478049,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 241743872,
+      "reasoning_tokens": 1029286,
+      "total_cost": 200.0505779999996
+    }
+  },
+  "oeis_id": "A357565"
+}

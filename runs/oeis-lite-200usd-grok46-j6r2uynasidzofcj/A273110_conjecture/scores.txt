@@ -1,0 +1,91 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission_resource
+  killed (exit 137)
+  Submission/Spec.lean:318:31: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:662:5: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:681:34: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:729:5: warning: unused variable `hz`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:782:13: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:817:33: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1132:27: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1149:28: warning: unused variable `hu`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1194:12: warning: This simp argument is unused:
+    zmod_cast_int_fst hcop n
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵z̵m̵o̵d̵_̵c̵a̵s̵t̵_̵i̵n̵t̵_̵f̵s̵t̵ ̵h̵c̵o̵p̵ ̵n̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1195:12: warning: This simp argument is unused:
+    zmod_cast_int_snd hcop n
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵z̵m̵o̵d̵_̵c̵a̵s̵t̵_̵i̵n̵t̵_̵s̵n̵d̵ ̵h̵c̵o̵p̵ ̵n̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1452:33: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1519:2: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:1519:46: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:1519:46: warning: 'decide' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:1521:43: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1536:43: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1754:38: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1945:5: warning: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1945:18: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1982:34: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2015:37: warning: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2496:21: warning: unused variable `hεlt`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2623:49: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2648:12: warning: This simp argument is unused:
+    not_mem_primeFactors_of_not_dvd hq hq_ndvd
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵n̵o̵t̵_̵m̵e̵m̵_̵p̵r̵i̵m̵e̵F̵a̵c̵t̵o̵r̵s̵_̵o̵f̵_̵n̵o̵t̵_̵d̵v̵d̵ ̵h̵q̵ ̵h̵q̵_̵n̵d̵v̵d̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2675:12: warning: This simp argument is unused:
+    not_mem_primeFactors_of_n
+

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_71532_conjecture_0",
+  "epoch": 1,
+  "uuid": "Sd3FmyFfYsZKHthZEEjt6Z",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 44783600,
+      "output_tokens": 3113607,
+      "total_tokens": 231488247,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 183591040,
+      "reasoning_tokens": 2217727,
+      "total_cost": 200.044362
+    }
+  },
+  "oeis_id": "A071532"
+}

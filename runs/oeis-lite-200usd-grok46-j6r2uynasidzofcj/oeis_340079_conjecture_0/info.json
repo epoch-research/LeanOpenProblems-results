@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340079_conjecture_0",
+  "epoch": 1,
+  "uuid": "iUW3cYUy3eFajSPrvoWjkF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 18100434,
+      "output_tokens": 1375356,
+      "total_tokens": 131326542,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 111850752,
+      "reasoning_tokens": 673761,
+      "total_cost": 100.37837999999996
+    }
+  },
+  "oeis_id": "A340079"
+}

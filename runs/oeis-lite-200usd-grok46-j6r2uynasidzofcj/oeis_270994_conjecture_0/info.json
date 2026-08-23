@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "AnRyFBKH7vmXJUS6zk9y3q",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 520453,
+      "output_tokens": 31358,
+      "total_tokens": 2026499,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1474688,
+      "reasoning_tokens": 18247,
+      "total_cost": 1.966398
+    }
+  },
+  "oeis_id": "A270994"
+}

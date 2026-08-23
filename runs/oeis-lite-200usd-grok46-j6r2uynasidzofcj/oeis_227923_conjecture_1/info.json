@@ -1,0 +1,20 @@
+{
+  "id": "oeis_227923_conjecture_1",
+  "epoch": 1,
+  "uuid": "VNPUgkissfgdeXVLWUvxxX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 311843,
+      "output_tokens": 28669,
+      "total_tokens": 937248,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 596736,
+      "reasoning_tokens": 17483,
+      "total_cost": 1.0940679999999998
+    }
+  },
+  "oeis_id": "A227923"
+}

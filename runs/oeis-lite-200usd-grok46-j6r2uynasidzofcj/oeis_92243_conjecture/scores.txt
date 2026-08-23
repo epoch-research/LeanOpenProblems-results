@@ -1,0 +1,242 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:203:64: warning: This simp argument is unused:
+    Nat.lt_succ_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵l̵t̵_̵s̵u̵c̵c̵_̵i̵f̵f̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:722:17: warning: This simp argument is unused:
+    card_Icc_one
+  
+  Hint: Omit it from the simp argument list.
+    simp [eH_zero,̵ ̵c̵a̵r̵d̵_̵I̵c̵c̵_̵o̵n̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:749:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:1191:17: warning: This simp argument is unused:
+    card_Icc_one
+  
+  Hint: Omit it from the simp argument list.
+    simp [eH_zero,̵ ̵c̵a̵r̵d̵_̵I̵c̵c̵_̵o̵n̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1587:45: warning: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1787:6: warning: unused variable `p`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1787:11: warning: unused variable `q`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1838:61: warning: unused variable `h1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1913:8: warning: This simp argument is unused:
+    deriv_sub_const
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵d̵e̵r̵i̵v̵_̵s̵u̵b̵_̵c̵o̵n̵s̵t̵,̵ ̵d̵e̵r̵i̵v̵_̵i̵d̵'̵'̵]̵[̲d̲e̲r̲i̲v̲_̲i̲d̲'̲'̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2031:8: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2033:8: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2044:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2052:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2114:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2132:8: warning: This simp argument is unused:
+    truncAF_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵t̵r̵u̵n̵c̵A̵F̵_̵a̵p̵p̵l̵y̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2153:10: warning: This simp argument is unused:
+    truncAF_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵t̵r̵u̵n̵c̵A̵F̵_̵a̵p̵p̵l̵y̵,̵ ̵t̵a̵i̵l̵A̵F̵_̵a̵p̵p̵l̵y̵]̵[̲t̲a̲i̲l̲A̲F̲_̲a̲p̲p̲l̲y̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2153:25: warning: This simp argument is unused:
+    tailAF_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [truncAF_apply,̵ ̵t̵a̵i̵l̵A̵F̵_̵a̵p̵p̵l̵y̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2292:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2480:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2482:38: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2562:10: warning: This simp argument is unused:
+    card_Icc_one
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵c̵a̵r̵d̵_̵I̵c̵c̵_̵o̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2676:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2680:67: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2725:58: warning: unused variable `hAdm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2738:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2813:6: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2778:56: warning: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2796:26: warning: This simp argument is unused:
+    Nat.mul_mod
+  
+  Hint: Omit it from the simp argument list.
+    simp [b, Nat.add_mod,̵ ̵N̵a̵t̵.̵m̵u̵l̵_̵m̵o̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2816:12: warning: This simp argument is unused:
+    ← ht0
+  
+  Hint: Omit it from the simp argument list.
+    simp [← ht̵0̵,̵ ̵←̵ ̵h̵b, ← Nat.cast_add] at hz
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2816:19: warning: This simp argument is unused:
+    ← hb
+  
+  Hint: Omit it from the simp argument list.
+    simp [← ht0, ← h̵b̵,̵ ̵←̵ ̵Nat.cast_add] at hz
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2816:25: warning: This simp argument is unused:
+    ← Nat.cast_add
+  
+  Hint: Omit it from the simp argument list.
+    simp [← ht0, ← hb,̵ ̵←̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵a̵d̵d̵] at hz
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2820:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:2926:22: warning: This simp argument is unused:
+    le_max_right
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵l̵e̵_̵m̵a̵x̵_̵r̵i̵g̵h̵t̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3802:34: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3808:42: warning: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4051:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:4143:50: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:4406:27: warning: This simp argument is unused:
+    hcond
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hdr, hes, h̵c̵o̵n̵d̵,̵ ̵and_true, ite_true]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:4419:22: warning: This simp argument is unused:
+    hcond
+  
+  Hint: Omit it from the simp argument list.
+    simp [hdr, hes,̵ ̵h̵c̵o̵n̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:4891:17: warning: This simp argument is unused:
+    this
+  
+  Hint: Omit it from the simp argument list.
+    simp [hsf,̵ ̵t̵h̵i̵s̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:4972:23: error: Application type mismatch: The argument
+    succ_le_of_lt
+      (succ_le_iff.mp
+        (Nat.lt_of_lt_of_le
+          (Mathlib.Meta.NormNum.isNat_lt_true (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 1))
+            (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 2)) (Eq.refl false))
+          hm))
+  has type
+    Nat.succ 1 ≤ m
+  but is expected to have type
+    m ≤ 160
+  in the application
+    le_trans
+      (succ_le_of_lt
+        (succ_le_iff.mp
+          (Nat.lt_of_lt_of_le
+            (Mathlib.Meta.NormNum.isNat_lt_true (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 1))
+              (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 2)) (Eq.refl false))
+            hm)))
+  Submission/Spec.lean:4999:27: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    h ≥ 1
+    g ≥ 0
+    f ≥ 0
+    f - g ≥ 1
+    e ≥ 1
+    c ≥ 0
+    c - d ≥ 0
+    b ≥ 161
+  where
+   b := ↑m
+   c := ↑H.card
+   d := ↑2 ^ 2 ^ (m + 8)
+   e := ↑q
+   f := ↑t
+   g := ↑T
+   h := ↑{h ∈ H | Nat.Prime (q * t + a + h)}.card
+  Submission/Spec.lean:5000:17: error: Application type mismatch: The argument
+    h1'
+  has type
+    1 ≤ {h ∈ H | Nat.Prime (q * t + a + h)}.card
+  but is expected to have type
+    m ≤ {h ∈ H | Nat.Prime (q * t + a + h)}.card
+  in the application
+    le_trans h1'
+  Submission/Spec.lean:5076:6: warning: Try `simp at h0` instead of `simpa using h0`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+

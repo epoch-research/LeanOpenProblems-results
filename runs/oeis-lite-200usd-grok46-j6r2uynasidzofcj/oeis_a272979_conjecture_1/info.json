@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a272979_conjecture_1",
+  "epoch": 1,
+  "uuid": "X44hwVotE5FfLT4h8FsYCJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 152200,
+      "output_tokens": 18960,
+      "total_tokens": 454808,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 283648,
+      "reasoning_tokens": 10996,
+      "total_cost": 0.5599840000000001
+    }
+  },
+  "oeis_id": "A272979"
+}

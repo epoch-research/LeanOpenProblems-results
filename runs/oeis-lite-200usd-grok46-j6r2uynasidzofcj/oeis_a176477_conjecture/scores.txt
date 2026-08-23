@@ -1,0 +1,352 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:1011:64: warning: unused variable `hodd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1096:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:1150:6: error: Tactic `rfl` failed: equality lhs
+    ∑ x ∈ Finset.range p, Pnat (N + (x + 1)) * ((2 * (N + (x + 1))).choose (N + (x + 1)) ^ 7 * 256 ^ (p - 1 - x)) +
+      T N * 256 ^ p
+  is not definitionally equal to rhs
+    ∑ x ∈ Finset.range p, Pnat (N + (x + 1)) * ((2 * (N + (x + 1))).choose (N + (x + 1)) ^ 7 * 256 ^ (p - 1 - x)) +
+      (∑ x ∈ Finset.range (N + 1), Pnat x * ((x * 2).choose x ^ 7 * 256 ^ (N - x))) * 256 ^ p
+  
+  p : ℕ
+  hp : Fact (Nat.Prime p)
+  hodd : p ≠ 2
+  t : ℕ
+  n0 : ℕ := (p - 1) / 2
+  hpodd : Odd p
+  hp_mod : p % 2 = 1
+  h2n0 : 2 * n0 + 1 = p
+  hTne : T (n0 + (t + 1) * p) ≠ 0
+  N : ℕ := n0 + t * p
+  ih : padicValNat p (T N) ≥ padicValNat p (T n0) + padicValNat p (T t)
+  hidx : n0 + (t + 1) * p = N + p
+  hsplit :
+    ∑ x ∈ Finset.range (N + 1 + p), Pnat x * (2 * x).choose x ^ 7 * 256 ^ (N + p - x) =
+      ∑ x ∈ Finset.range (N + 1), Pnat x * (2 * x).choose x ^ 7 * 256 ^ (N + p - x) +
+        ∑ x ∈ Finset.range p, Pnat (N + 1 + x) * (2 * (N + 1 + x)).choose (N + 1 + x) ^ 7 * 256 ^ (N + p - (N + 1 + x))
+  hlen : N + p + 1 = N + 1 + p
+  hpow : ∀ m ≤ N, 256 ^ (N + p - m) = 256 ^ p * 256 ^ (N - m)
+  hhead : ∑ m ∈ Finset.range (N + 1), Pnat m * (2 * m).choose m ^ 7 * 256 ^ (N + p - m) = 256 ^ p * T N
+  htail :
+    ∑ j ∈ Finset.range p, Pnat (N + 1 + j) * (2 * (N + 1 + j)).choose (N + 1 + j) ^ 7 * 256 ^ (N + p - (N + 1 + j)) =
+      ∑ j ∈ Finset.range p, Pnat (N + 1 + j) * (2 * (N + 1 + j)).choose (N + 1 + j) ^ 7 * 256 ^ (p - 1 - j)
+  ⊢ ∑ x ∈ Finset.range p, Pnat (N + (x + 1)) * ((2 * (N + (x + 1))).choose (N + (x + 1)) ^ 7 * 256 ^ (p - 1 - x)) +
+        T N * 256 ^ p =
+      ∑ x ∈ Finset.range p, Pnat (N + (x + 1)) * ((2 * (N + (x + 1))).choose (N + (x + 1)) ^ 7 * 256 ^ (p - 1 - x)) +
+        (∑ x ∈ Finset.range (N + 1), Pnat x * ((x * 2).choose x ^ 7 * 256 ^ (N - x))) * 256 ^ p
+  Submission/Spec.lean:1223:12: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    o ≥ 1
+    n ≥ 1
+    m ≥ 0
+    l ≥ 1
+    256*l + m ≥ 1
+    k ≥ 0
+    j ≥ 0
+    i ≥ 0
+    i - k ≤ 0
+    h ≥ 0
+    h - i ≥ 0
+    g ≥ 0
+    g - j ≤ 0
+    f ≥ 0
+    f - g ≥ 0
+    f - g - j ≥ 1
+    e ≥ 0
+    d ≥ 0
+    d + e ≥ 1
+    c ≥ 0
+    b ≥ 0
+    b + g - i ≤ 0
+  where
+   b := ↑(padicValNat p (T n0))
+   c := ↑t * ↑p
+   d := ↑(256 ^ p) * ↑(T (n0 + t * p))
+   e := ↑(∑ j ∈ Finset.range p,
+      Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j))
+   f := ↑(padicValNat p (T (t + 1)))
+   g := if ↑(padicValNat p (256 * T t)) ≤ ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7)) then
+    ↑(padicValNat p (256 * T t))
+  else ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   h := ↑(padicValNat p (T (n0 + t * p + p)))
+   i := if
+      ↑(padicValNat p (256 ^ p * T (n0 + t * p))) ≤
+        ↑(padicValNat p
+            (∑ j ∈ Finset.range p,
+              Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 *
+                256 ^ (p - 1 - j))) then
+    ↑(padicValNat p (256 ^ p * T (n0 + t * p)))
+  else
+    ↑(padicValNat p
+        (∑ j ∈ Finset.range p,
+          Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   j := ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   k := ↑(padicValNat p
+      (∑ j ∈ Finset.range p,
+        Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   l := ↑(T t)
+   m := ↑(Pnat (t + 1)) * ↑((2 * (t + 1)).choose (t + 1) ^ 7)
+   n := ↑(T (t + 1))
+   o := ↑(T (n0 + (t + 1) * p))
+  Submission/Spec.lean:1224:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    o ≥ 1
+    n ≥ 1
+    m ≥ 0
+    l ≥ 1
+    256*l + m ≥ 1
+    k ≥ 0
+    j ≥ 0
+    i ≥ 0
+    i - k ≤ 0
+    h ≥ 0
+    h - i ≥ 0
+    g ≥ 0
+    g - j ≤ 0
+    f ≥ 0
+    f - g ≥ 0
+    f - g - j ≤ 0
+    e ≥ 0
+    d ≥ 0
+    d + e ≥ 1
+    c ≥ 0
+    b ≥ 0
+    b + g - i ≤ 0
+    b + f - i ≥ 1
+  where
+   b := ↑(padicValNat p (T n0))
+   c := ↑t * ↑p
+   d := ↑(256 ^ p) * ↑(T (n0 + t * p))
+   e := ↑(∑ j ∈ Finset.range p,
+      Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j))
+   f := ↑(padicValNat p (T (t + 1)))
+   g := if ↑(padicValNat p (256 * T t)) ≤ ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7)) then
+    ↑(padicValNat p (256 * T t))
+  else ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   h := ↑(padicValNat p (T (n0 + t * p + p)))
+   i := if
+      ↑(padicValNat p (256 ^ p * T (n0 + t * p))) ≤
+        ↑(padicValNat p
+            (∑ j ∈ Finset.range p,
+              Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 *
+                256 ^ (p - 1 - j))) then
+    ↑(padicValNat p (256 ^ p * T (n0 + t * p)))
+  else
+    ↑(padicValNat p
+        (∑ j ∈ Finset.range p,
+          Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   j := ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   k := ↑(padicValNat p
+      (∑ j ∈ Finset.range p,
+        Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   l := ↑(T t)
+   m := ↑(Pnat (t + 1)) * ↑((2 * (t + 1)).choose (t + 1) ^ 7)
+   n := ↑(T (t + 1))
+   o := ↑(T (n0 + (t + 1) * p))
+  Submission/Spec.lean:1225:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    o ≥ 1
+    n ≥ 1
+    m ≥ 0
+    l ≥ 1
+    256*l + m ≥ 1
+    k ≥ 0
+    j ≥ 0
+    i ≥ 0
+    i - j ≤ 0
+    h ≥ 0
+    h - i ≥ 0
+    g ≥ 0
+    g - k ≤ 0
+    f ≥ 0
+    f - g ≥ 0
+    e ≥ 0
+    d ≥ 0
+    d + e ≥ 1
+    c ≥ 0
+    b ≥ 0
+    b + g - i ≤ 0
+    b + f - j ≥ 1
+  where
+   b := ↑(padicValNat p (T n0))
+   c := ↑t * ↑p
+   d := ↑(256 ^ p) * ↑(T (n0 + t * p))
+   e := ↑(∑ j ∈ Finset.range p,
+      Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j))
+   f := ↑(padicValNat p (T (t + 1)))
+   g := if ↑(padicValNat p (256 * T t)) ≤ ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7)) then
+    ↑(padicValNat p (256 * T t))
+  else ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   h := ↑(padicValNat p (T (n0 + t * p + p)))
+   i := if
+      ↑(padicValNat p (256 ^ p * T (n0 + t * p))) ≤
+        ↑(padicValNat p
+            (∑ j ∈ Finset.range p,
+              Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 *
+                256 ^ (p - 1 - j))) then
+    ↑(padicValNat p (256 ^ p * T (n0 + t * p)))
+  else
+    ↑(padicValNat p
+        (∑ j ∈ Finset.range p,
+          Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   j := ↑(padicValNat p
+      (∑ j ∈ Finset.range p,
+        Pnat (n0 + t * p + 1 + j) * (2 * (n0 + t * p + 1 + j)).choose (n0 + t * p + 1 + j) ^ 7 * 256 ^ (p - 1 - j)))
+   k := ↑(padicValNat p (Pnat (t + 1) * (2 * (t + 1)).choose (t + 1) ^ 7))
+   l := ↑(T t)
+   m := ↑(Pnat (t + 1)) * ↑((2 * (t + 1)).choose (t + 1) ^ 7)
+   n := ↑(T (t + 1))
+   o := ↑(T (n0 + (t + 1) * p))
+  Submission/Spec.lean:1410:10: error: invalid 'calc' step, left-hand side is
+    256 * ((-4) ^ 7 * Ring.inverse 256) : ZMod p
+  but is expected to be
+    256 * -64 : ZMod p
+  Submission/Spec.lean:1415:10: error: invalid 'calc' step, right-hand side is
+    256 * -64 : ZMod p
+  but is expected to be
+    256 * ((-4) ^ 7 * Ring.inverse 256) : ZMod p
+  Submission/Spec.lean:1406:71: error: unsolved goals
+  p : ℕ
+  hp : Fact (Nat.Prime p)
+  hodd : p ≠ 2
+  n : ℕ
+  hn : 2 * n + 1 = p
+  this✝ : NeZero (p ^ 3)
+  hp2 : 2 < p
+  hn0 : n ≠ 0
+  hn1 : 1 ≤ n
+  h3 : ¬p = 3
+  hp5 : 5 ≤ p
+  h5 : ¬p = 5
+  hp7 : 7 ≤ p
+  h7 : ¬p = 7
+  hp11 : 11 ≤ p
+  h11 : ¬p = 11
+  h13 : ¬p = 13
+  h17 : ¬p = 17
+  h19 : ¬p = 19
+  h23 : ¬p = 23
+  h29 : ¬p = 29
+  h31 : ¬p = 31
+  h37 : ¬p = 37
+  h41 : ¬p = 41
+  h43 : ¬p = 43
+  h47 : ¬p = 47
+  h53 : ¬p = 53
+  h59 : ¬p = 59
+  h61 : ¬p = 61
+  h67 : ¬p = 67
+  h71 : ¬p = 71
+  h73 : ¬p = 73
+  h79 : ¬p = 79
+  h83 : ¬p = 83
+  h89 : ¬p = 89
+  h97 : ¬p = 97
+  hp101 : 101 ≤ p
+  h2n : 2 * n = p - 1
+  hnlt : n < p
+  hTne : T n ≠ 0
+  hch : ∀ k ≤ n, ↑((2 * k).choose k) = ↑(n.choose k) * (-4) ^ k
+  h256ne : 256 ≠ 0
+  h256u : IsUnit 256
+  k : ℕ
+  hk : k ∈ Finset.range (n + 1)
+  hk' : k ≤ n
+  hc : ↑((2 * k).choose k) = ↑(n.choose k) * (-4) ^ k
+  hpow : 256 ^ (n - k) = 256 ^ n * Ring.inverse (256 ^ k)
+  h64 : 256 * -64 = (-4) ^ 7
+  this : -64 = (-4) ^ 7 * Ring.inverse 256
+  ⊢ ((-4) ^ 7) ^ k * Ring.inverse 256 ^ k = ((-4) ^ k) ^ 7 * Ring.inverse 256 ^ k
+  Submission/Spec.lean:1417:12: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    256 ^ (n - k)
+  in the target expression
+    ↑(Pnat k) * (↑(n.choose k) * (-4) ^ k) ^ 7 * ↑256 ^ (n - k) = 256 ^ n * (↑(Pnat k) * ↑(n.choose k) ^ 7 * (-64) ^ k)
+  
+  p : ℕ
+  hp : Fact (Nat.Prime p)
+  hodd : p ≠ 2
+  n : ℕ
+  hn : 2 * n + 1 = p
+  this : NeZero (p ^ 3)
+  hp2 : 2 < p
+  hn0 : n ≠ 0
+  hn1 : 1 ≤ n
+  h3 : ¬p = 3
+  hp5 : 5 ≤ p
+  h5 : ¬p = 5
+  hp7 : 7 ≤ p
+  h7 : ¬p = 7
+  hp11 : 11 ≤ p
+  h11 : ¬p = 11
+  h13 : ¬p = 13
+  h17 : ¬p = 17
+  h19 : ¬p = 19
+  h23 : ¬p = 23
+  h29 : ¬p = 29
+  h31 : ¬p = 31
+  h37 : ¬p = 37
+  h41 : ¬p = 41
+  h43 : ¬p = 43
+  h47 : ¬p = 47
+  h53 : ¬p = 53
+  h59 : ¬p = 59
+  h61 : ¬p = 61
+  h67 : ¬p = 67
+  h71 : ¬p = 71
+  h73 : ¬p = 73
+  h79 : ¬p = 79
+  h83 : ¬p = 83
+  h89 : ¬p = 89
+  h97 : ¬p = 97
+  hp101 : 101 ≤ p
+  h2n : 2 * n = p - 1
+  hnlt : n < p
+  hTne : T n ≠ 0
+  hch : ∀ k ≤ n, ↑((2 * k).choose k) = ↑(n.choose k) * (-4) ^ k
+  h256ne : 256 ≠ 0
+  h256u : IsUnit 256
+  k : ℕ
+  hk : k ∈ Finset.range (n + 1)
+  hk' : k ≤ n
+  hc : ↑((2 * k).choose k) = ↑(n.choose k) * (-4) ^ k
+  hpow : 256 ^ (n - k) = 256 ^ n * Ring.inverse (256 ^ k)
+  h64 : 256 * -64 = (-4) ^ 7
+  h64' : (-64) ^ k = ((-4) ^ k) ^ 7 * Ring.inverse (256 ^ k)
+  ⊢ ↑(Pnat k) * (↑(n.choose k) * (-4) ^ k) ^ 7 * ↑256 ^ (n - k) = 256 ^ n * (↑(Pnat k) * ↑(n.choose k) ^ 7 * (-64) ^ k)
+  Submission/Spec.lean:1450:8: error: Type mismatch: After simplification, term
+    Eq.symm this
+   has type
+    ∑ x ∈ Finset.range (n + 1), ↑(n.choose x) * (-64) ^ (n - x) = (1 + -64) ^ n
+  but is expected to have type
+    ∑ x ∈ Finset.range (n + 1), ↑(n.choose x) * (-64) ^ x = (1 + -64) ^ n
+  Submission/Spec.lean:1452:8: error: Type mismatch
+    Finset.sum_congr rfl fun k hk => ?m.4126
+  has type
+    Finset.sum ?m.4123 ?m.4120 = Finset.sum ?m.4123 ?m.4121
+  but is expected to have type
+    ↑(n.choose x✝) * (-64) ^ x✝ = (-64) ^ x✝ * ↑(n.choose x✝)
+  Submission/Spec.lean:1478:28: error: No goals to be solved
+  Submission/Spec.lean:1532:10: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    d ≥ 1
+    1 ≤ c ≤ 2
+    b ≥ 1
+    b ≥ 50
+    b ≥ 0
+  where
+   b := ↑n
+   c := ↑(padicValNat p (T n))
+   d := ↑(T n)
+  Submission/Spec.lean:1693:14: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:1875:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+

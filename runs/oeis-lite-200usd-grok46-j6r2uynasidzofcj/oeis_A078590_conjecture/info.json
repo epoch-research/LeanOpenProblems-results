@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A078590_conjecture",
+  "epoch": 1,
+  "uuid": "idJGEU6W6B8YdQnsUvevee",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 261155,
+      "output_tokens": 36942,
+      "total_tokens": 1288433,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 990336,
+      "reasoning_tokens": 21411,
+      "total_cost": 1.23913
+    }
+  },
+  "oeis_id": "A078590"
+}

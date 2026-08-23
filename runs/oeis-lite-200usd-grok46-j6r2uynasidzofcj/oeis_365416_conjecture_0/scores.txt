@@ -1,0 +1,126 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:2593:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:2827:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:2832:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:2859:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:2866:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:2874:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:3347:28: warning: `pow_eq_zero` has been deprecated: Use `eq_zero_of_pow_eq_zero` instead
+  Submission/Spec.lean:3732:42: warning: `Int.ediv_add_emod` has been deprecated: Use `Int.mul_ediv_add_emod` instead
+  Submission/Spec.lean:4010:31: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:4012:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:4042:30: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:4103:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:4179:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:4304:45: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 13
+    e ≤ 12
+    1 ≤ d ≤ 12
+    c ≥ 1
+    c - 3*d ≤ -1
+    c - d ≥ 1
+    2*c - 5*d ≥ 1
+  where
+   c := m
+   d := b
+   e := |(-m)|
+   f := |b|
+  Submission/Spec.lean:4322:17: error(lean.unknownIdentifier): Unknown constant `abs_eq.mp`
+  Submission/Spec.lean:4322:37: error: Tactic `rcases` failed: `x✝ : ?m.1228` is not an inductive datatype
+  Submission/Spec.lean:4389:14: error: linarith failed to find a contradiction
+  case h
+  a b : ℤ
+  h : thue2 a b = 1 ∨ thue2 a b = -1
+  habs : |thue2 a b| = 1
+  hb0 : ¬b = 0
+  ha0 : ¬a = 0
+  heq : ¬a + b = 0
+  hbox : ¬(|a| ≤ 12 ∧ |b| ≤ 12)
+  h25 : ¬2 * a + 5 * b = 0
+  hsp : 0 ≤ a * b
+  haP : 0 ≤ a
+  a✝ : b < 0
+  ⊢ False
+  failed
+  Submission/Spec.lean:4399:35: error: linarith failed to find a contradiction
+  case h
+  a b : ℤ
+  h : thue2 a b = 1 ∨ thue2 a b = -1
+  habs : |thue2 a b| = 1
+  hb0 : ¬b = 0
+  ha0 : ¬a = 0
+  heq : ¬a + b = 0
+  hbox : ¬(|a| ≤ 12 ∧ |b| ≤ 12)
+  h25 : ¬2 * a + 5 * b = 0
+  hsp : 0 ≤ a * b
+  haN : a ≤ 0
+  a✝ : 0 < b
+  ⊢ False
+  failed
+  Submission/Spec.lean:4408:51: error: Type mismatch
+    Eq.symm (thue2_neg' a b)
+  has type
+    -thue2 a b = thue2 (-a) (-b)
+  but is expected to have type
+    thue2 a b = -thue2 (-a) (-b)
+  Submission/Spec.lean:4420:12: error: Type mismatch
+    this habs
+  has type
+    False
+  but is expected to have type
+    a = 1 ∧ b = -1 ∨ a = -1 ∧ b = 1
+  Submission/Spec.lean:4426:39: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    i ≥ 13
+    g ≤ 12
+    f ≤ 12
+    e ≤ -1
+    d ≥ 1
+    d + e ≤ -1
+    2*d + 5*e ≤ -1
+    c ≤ -1
+  where
+   c := a * b
+   d := a
+   e := b
+   f := |(-a)|
+   g := |(-b)|
+   i := |a|
+  Submission/Spec.lean:4426:49: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    j ≥ 13
+    i ≥ 13
+    g ≤ 12
+    f ≤ 12
+    e ≤ -1
+    d ≥ 1
+    d + e ≤ -1
+    2*d + 5*e ≤ -1
+    c ≤ -1
+  where
+   c := a * b
+   d := a
+   e := b
+   f := |(-a)|
+   g := |(-b)|
+   i := |b|
+   j := |a|
+  Submission/Spec.lean:4433:12: error: Type mismatch
+    this habs
+  has type
+    False
+  but is expected to have type
+    a = 1 ∧ b = -1 ∨ a = -1 ∧ b = 1
+  Submission/Spec.lean:4439:6: warning: declaration uses 'sorry'
+

@@ -1,0 +1,301 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:210:10: warning: This simp argument is unused:
+    choose_four_four
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵c̵h̵o̵o̵s̵e̵_̵f̵o̵u̵r̵_̵f̵o̵u̵r̵,̵ ̵h̵,̵[̲h̲,̲ Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:210:46: warning: This simp argument is unused:
+    Nat.add_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_four_four, h, Nat.add_assoc, N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:217:10: warning: This simp argument is unused:
+    choose_six_six
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵c̵h̵o̵o̵s̵e̵_̵s̵i̵x̵_̵s̵i̵x̵,̵ ̵h̵,̵[̲h̲,̲ Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:217:44: warning: This simp argument is unused:
+    Nat.add_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_six_six, h, Nat.add_assoc, N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:224:10: warning: This simp argument is unused:
+    choose_eight_eight
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵c̵h̵o̵o̵s̵e̵_̵e̵i̵g̵h̵t̵_̵e̵i̵g̵h̵t̵,̵ ̵h̵,̵[̲h̲,̲ Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:224:33: warning: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_eight_eight, h, Nat.add_a̵s̵s̵o̵c̵,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:224:48: warning: This simp argument is unused:
+    Nat.add_left_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_eight_eight, h, Nat.add_assoc, N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵ ̵Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:224:67: warning: This simp argument is unused:
+    Nat.add_comm
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_eight_eight, h, Nat.add_assoc, Nat.add_left_comm,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵c̵o̵m̵m̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:584:42: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:584:55: warning: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:585:5: warning: unused variable `heq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:586:5: warning: unused variable `hnot`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:635:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:900:57: warning: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1617:6: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:1736:49: error: Application type mismatch: The argument
+    h13
+  has type
+    ¬Is246 (n - Nat.choose 13 8)
+  but is expected to have type
+    Is246 (n - Nat.choose 13 8)
+  in the application
+    leftover_try h13le h13
+  Submission/Spec.lean:1740:22: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    q ≥ 0
+    p ≥ 0
+    o ≥ 8
+    m ≥ 0
+    l ≥ 0
+    j ≥ 0
+    i ≥ 0
+    i + j + l + m ≥ 1
+    h ≥ 2
+    g ≥ 1
+    f ≥ 0
+    f ≥ 1
+    f + i + j + l + m ≥ 3004
+    f + i + j + l + m - p ≥ 0
+    f + i + j + l + m - q ≥ 0
+    f + i + j + l + m ≥ 3003
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c + d + e - f - i - j - l - m ≤ -1
+    b ≥ 2
+    a ≥ 1
+  where
+   a := ↑(A306477 (n - 1))
+   b := ↑a0
+   c := ↑(b0.choose 4)
+   d := ↑(c0.choose 6)
+   e := ↑(d0.choose 8)
+   f := ↑((k - 1).choose 8)
+   g := ↑(A306477 ((k - 1).choose 7))
+   h := ↑aa
+   i := ↑(aa.choose 2)
+   j := ↑(bb.choose 4)
+   l := ↑(cc.choose 6)
+   m := ↑(dd.choose 8)
+   o := ↑dd
+   p := ↑((k - 2).choose 8)
+   q := ↑(Nat.choose 13 8)
+  Submission/Spec.lean:1746:18: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    p ≥ 0
+    o ≥ 8
+    m ≥ 0
+    l ≥ 0
+    j ≥ 0
+    i ≥ 0
+    i + j + l + m ≥ 1
+    h ≥ 2
+    g ≥ 1
+    f ≥ 0
+    f ≥ 1
+    f + i + j + l + m ≥ 1288
+    f + i + j + l + m - p ≥ 0
+    f + i + j + l + m ≥ 1287
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c + d + e - f - i - j - l - m ≤ -1
+    b ≥ 2
+    a ≥ 1
+  where
+   a := ↑(A306477 (n - 1))
+   b := ↑a0
+   c := ↑(b0.choose 4)
+   d := ↑(c0.choose 6)
+   e := ↑(d0.choose 8)
+   f := ↑((k - 1).choose 8)
+   g := ↑(A306477 ((k - 1).choose 7))
+   h := ↑aa
+   i := ↑(aa.choose 2)
+   j := ↑(bb.choose 4)
+   l := ↑(cc.choose 6)
+   m := ↑(dd.choose 8)
+   o := ↑dd
+   p := ↑((k - 2).choose 8)
+  Submission/Spec.lean:1773:20: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    r ≥ 0
+    q ≥ 8
+    p ≥ 0
+    o ≥ 0
+    m ≥ 0
+    l ≥ 0
+    l + m + o + p ≥ 1
+    j ≥ 2
+    i ≥ 1
+    h ≥ 0
+    g ≥ 8
+    f ≥ 0
+    f - h + l + m + o + p ≥ 0
+    f ≥ 1
+    f + l + m + o ≥ 0
+    f + l + m + o + p ≥ 511
+    f + l + m + o + p - r ≥ 0
+    f + l + m + o + p ≥ 1287
+    f + l + m + o + p ≤ 3002
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c + d + e - f - l - m - o - p ≤ -1
+    b ≥ 2
+    a ≥ 1
+  where
+   a := ↑(A306477 (n - 1))
+   b := ↑a0
+   c := ↑(b0.choose 4)
+   d := ↑(c0.choose 6)
+   e := ↑(d0.choose 8)
+   f := ↑(k.choose 8)
+   g := ↑k
+   h := ↑((k - 1).choose 8)
+   i := ↑(A306477 (n - k.choose 8))
+   j := ↑aa
+   l := ↑(aa.choose 2)
+   m := ↑(bb.choose 4)
+   o := ↑(cc.choose 6)
+   p := ↑(dd.choose 8)
+   q := ↑dd
+   r := ↑((k - 2).choose 8)
+  Submission/Spec.lean:1778:51: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    s ≥ 0
+    r ≥ 0
+    q ≥ 8
+    p ≥ 0
+    o ≥ 0
+    m ≥ 0
+    l ≥ 0
+    l + m + o + p ≥ 1
+    j ≥ 2
+    i ≥ 1
+    h ≥ 0
+    g ≥ 8
+    f ≥ 0
+    f - h + l + m + o + p ≥ 0
+    f ≥ 1
+    f + p ≥ 1
+    f + l + m + o ≥ 0
+    f + l + m + o + p ≥ 511
+    f + l + m + o + p - r ≥ 0
+    f + l + m + o + p ≥ 1287
+    f + l + m + o + p - s ≥ 0
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c + d + e - f - l - m - o - p ≤ -1
+    b ≥ 2
+    a ≥ 1
+  where
+   a := ↑(A306477 (n - 1))
+   b := ↑a0
+   c := ↑(b0.choose 4)
+   d := ↑(c0.choose 6)
+   e := ↑(d0.choose 8)
+   f := ↑(k.choose 8)
+   g := ↑k
+   h := ↑((k - 1).choose 8)
+   i := ↑(A306477 (n - k.choose 8))
+   j := ↑aa
+   l := ↑(aa.choose 2)
+   m := ↑(bb.choose 4)
+   o := ↑(cc.choose 6)
+   p := ↑(dd.choose 8)
+   q := ↑dd
+   r := ↑((k - 2).choose 8)
+   s := ↑(Nat.choose 14 8)
+  Submission/Spec.lean:1779:47: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    r ≥ 0
+    q ≥ 8
+    p ≥ 0
+    o ≥ 0
+    m ≥ 0
+    l ≥ 0
+    l + m + o + p ≥ 1
+    j ≥ 2
+    i ≥ 1
+    h ≥ 0
+    g ≥ 8
+    f ≥ 0
+    f - h + l + m + o + p ≥ 0
+    f ≥ 1
+    f + p ≥ 1
+    f + l + m + o ≥ 0
+    f + l + m + o + p ≥ 511
+    f + l + m + o + p - r ≥ 0
+    f + l + m + o + p ≤ 1286
+    e ≥ 0
+    d ≥ 0
+    c ≥ 0
+    c + d + e - f - l - m - o - p ≤ -1
+    b ≥ 2
+    a ≥ 1
+  where
+   a := ↑(A306477 (n - 1))
+   b := ↑a0
+   c := ↑(b0.choose 4)
+   d := ↑(c0.choose 6)
+   e := ↑(d0.choose 8)
+   f := ↑(k.choose 8)
+   g := ↑k
+   h := ↑((k - 1).choose 8)
+   i := ↑(A306477 (n - k.choose 8))
+   j := ↑aa
+   l := ↑(aa.choose 2)
+   m := ↑(bb.choose 4)
+   o := ↑(cc.choose 6)
+   p := ↑(dd.choose 8)
+   q := ↑dd
+   r := ↑((k - 2).choose 8)
+

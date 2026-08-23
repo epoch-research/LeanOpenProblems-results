@@ -1,0 +1,23 @@
+{
+  "id": "oeis_7468_conjecture_0",
+  "epoch": 1,
+  "uuid": "HfpMFBNTMBp4ixc8SdZVa2",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 50014233,
+      "output_tokens": 1541796,
+      "total_tokens": 233009469,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 181453440,
+      "reasoning_tokens": 1108968,
+      "total_cost": 200.00596200000027
+    }
+  },
+  "oeis_id": "A007468"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_296075_conjecture_0",
+  "epoch": 1,
+  "uuid": "hWQzTW36bMdDCepSqQZuMM",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 5236143,
+      "output_tokens": 366268,
+      "total_tokens": 24895979,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 19293568,
+      "reasoning_tokens": 238484,
+      "total_cost": 22.31667800000001
+    }
+  },
+  "oeis_id": "A296075"
+}

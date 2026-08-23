@@ -1,0 +1,20 @@
+{
+  "id": "oeis_271513_conjecture_3",
+  "epoch": 1,
+  "uuid": "ZXxa4hX9auFm3fnzwUzuMq",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 23487,
+      "output_tokens": 2111,
+      "total_tokens": 54270,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 28672,
+      "reasoning_tokens": 1459,
+      "total_cost": 0.073976
+    }
+  },
+  "oeis_id": "A271513"
+}

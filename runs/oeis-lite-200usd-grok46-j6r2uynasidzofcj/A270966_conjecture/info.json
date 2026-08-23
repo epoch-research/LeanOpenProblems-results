@@ -1,0 +1,23 @@
+{
+  "id": "A270966_conjecture",
+  "epoch": 1,
+  "uuid": "9MqxPgEKeYgnhF6J4huXBm",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 45017252,
+      "output_tokens": 2384106,
+      "total_tokens": 238913806,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 191512448,
+      "reasoning_tokens": 1619712,
+      "total_cost": 200.0953639999998
+    }
+  },
+  "oeis_id": "A270966"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_185895_conjecture_1",
+  "epoch": 1,
+  "uuid": "N5Avke3T7WNZSjsLpb8JuX",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 39642114,
+      "output_tokens": 2561984,
+      "total_tokens": 253155906,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 210951808,
+      "reasoning_tokens": 1548360,
+      "total_cost": 200.13203600000003
+    }
+  },
+  "oeis_id": "A185895"
+}

@@ -1,0 +1,43 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:264:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:50918:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:50933:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:51083:46: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:51303:8: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    g ≥ 2
+    f ≥ 2
+    e ≥ 0
+    e ≥ 0
+    3*e - f ≤ -4
+    3*e - g ≥ -3
+    d ≥ 0
+    c ≥ 49998
+    c - 2*d ≥ -1
+    c - 3*e ≤ 2
+    b ≥ 0
+    b ≥ 0
+    b - e ≤ 0
+    3*b - c ≥ -2
+    3*b - g ≥ -3
+    a ≥ 0
+    2*a - c ≥ 2
+  where
+   a := ↑t / 2
+   b := ↑(r - 2) / 3
+   c := ↑(q - 2)
+   d := ↑t0 / 2
+   e := ↑(t0 * q - 4) / 3
+   f := ↑q * ↑q
+   g := ↑(q ^ 2)
+

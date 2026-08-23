@@ -1,0 +1,259 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:450:43: warning: unused variable `hk`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:640:24: warning: This simp argument is unused:
+    CharP.cast_eq_zero (R := ZMod p) p
+  
+  Hint: Omit it from the simp argument list.
+    simp [Nat.cast_mul,̵ ̵C̵h̵a̵r̵P̵.̵c̵a̵s̵t̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵(̵R̵ ̵:̵=̵ ̵Z̵M̵o̵d̵ ̵p̵)̵ ̵p̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:707:51: warning: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:707:61: warning: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:735:53: warning: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:735:63: warning: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:870:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:1013:51: warning: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵mul_zero, zero_pow (by decide : (3 : ℕ) ≠ 0),
+    ̲  ̲ ̲ ̲ ̲ ̲zero_add, add_zero, zero_sub]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1014:42: warning: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [CharP.cast_eq_zero (R := ZMod p) p, zero_mul, mul_zero,
+          zero_pow (by decide : (3 : ℕ) ≠ 0), z̵e̵r̵o̵_̵add,̵ ̵a̵d̵d̵_zero, zero_sub]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1142:34: warning: unused variable `ha`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1179:8: warning: This simp argument is unused:
+    CharP.cast_eq_zero (R := ZMod p) p
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵C̵h̵a̵r̵P̵.̵c̵a̵s̵t̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵(̵R̵ ̵:̵=̵ ̵Z̵M̵o̵d̵ ̵p̵)̵ ̵p̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1300:12: warning: This simp argument is unused:
+    disjoint_left
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵d̵i̵s̵j̵o̵i̵n̵t̵_̵l̵e̵f̵t̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1467:39: warning: unused variable `hr0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1845:33: warning: unused variable `hq0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1845:47: warning: unused variable `hqp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:1888:24: warning: This simp argument is unused:
+    CharP.cast_eq_zero (R := ZMod p) p
+  
+  Hint: Omit it from the simp argument list.
+    simp [Nat.cast_mul,̵ ̵C̵h̵a̵r̵P̵.̵c̵a̵s̵t̵_̵e̵q̵_̵z̵e̵r̵o̵ ̵(̵R̵ ̵:̵=̵ ̵Z̵M̵o̵d̵ ̵p̵)̵ ̵p̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:2051:50: warning: unused variable `hkr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2477:18: warning: unused variable `hp5`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2477:32: warning: unused variable `hp2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:2713:29: warning: This simp argument is unused:
+    Nat.cast_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.cast_one,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3022:66: warning: unused variable `hab`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3069:29: warning: This simp argument is unused:
+    pow_two
+  
+  Hint: Omit it from the simp argument list.
+    simp [choose_zero_right,̵ ̵p̵o̵w̵_̵t̵w̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:3226:48: warning: unused variable `hab`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4004:32: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4004:50: warning: unused variable `hkn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4143:31: warning: unused variable `hr0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4257:39: warning: unused variable `hr2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4257:53: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4333:76: warning: unused variable `hk`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4456:43: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4470:52: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4681:27: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4681:62: warning: unused variable `hkn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4688:36: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4689:5: warning: unused variable `hkn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4727:37: warning: unused variable `hkr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4731:35: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4731:63: warning: unused variable `hkp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4967:39: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5101:58: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5114:42: warning: unused variable `hv`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5174:46: warning: unused variable `hr2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5355:47: warning: This simp argument is unused:
+    Nat.lt_succ_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_union, mem_filter, poleIdx,̵ ̵N̵a̵t̵.̵l̵t̵_̵s̵u̵c̵c̵_̵i̵f̵f̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5433:2: warning: Try this: intro μ hμ h0
+  Submission/Spec.lean:5445:34: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5448:2: warning: Try this: intro i hi h0
+  Submission/Spec.lean:5703:42: warning: unused variable `hr0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5815:5: warning: unused variable `hμ`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5863:29: warning: unused variable `hr0`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5925:54: warning: unused variable `hrp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:6520:28: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:6929:37: error: don't know how to synthesize placeholder
+  context:
+  p : ℕ
+  inst✝ : Fact (Nat.Prime p)
+  r : ℕ
+  hr0 : 0 < r
+  hr2 : 2 ≤ r
+  hrp : 3 * r < p
+  hp11 : 11 ≤ p
+  hp5 : 5 ≤ p
+  hpr : Nat.Prime p
+  hfilter : {k ∈ poleReps r | k ≤ p - r} = poleIdx r
+  hMain0 : ∑ k ∈ poleIdx r, Main2 r k = 0
+  hsumP : ∑ i ∈ poles r, eval i (Ppoly r) * (∏ j ∈ (poles r).erase i, (i - j))⁻¹ = 0
+  hsumP2 : ∑ k ∈ poleReps r, eval (↑k) (Ppoly2 r) * Ring.inverse (∏ j ∈ (poleReps r).erase k, (↑k - ↑j)) = 0
+  hα : ∑ k ∈ poleIdx r, ↑(term (p - r) k / p) = 0
+  hsum_div : p ∣ ∑ k ∈ poleIdx r, term (p - r) k / p
+  hCE :
+    ∑ k ∈ range (p - r + 1) with 3 * r ≤ 2 * k ∧ 2 * k < p + 2 * r,
+          3 * eval (↑k) (Ppoly r) * (∏ i ∈ range r, (↑k - ↑i))⁻¹ * (∏ μ ∈ Icc (2 * r) (3 * r - 1), (2 * ↑k - ↑μ))⁻¹ +
+        ∑ k ∈ range (p - r + 1) with p + 3 * r ≤ 2 * k,
+          4 * eval (↑k) (Ppoly r) * (∏ i ∈ range r, (↑k - ↑i))⁻¹ * (∏ μ ∈ Icc (2 * r) (3 * r - 1), (2 * ↑k - ↑μ))⁻¹ =
+      ∑ k ∈ range (p - r + 1) with 3 * r ≤ 2 * k ∧ 2 * k < p + 2 * r, 3 * fCE r k +
+        ∑ k ∈ range (p - r + 1) with p + 3 * r ≤ 2 * k, 4 * fCE r k
+  hdeg : (Ppoly r).natDegree = 2 * (r - 1)
+  hcard : #(poles r) = 2 * r
+  hdeg_lt : (Ppoly r).natDegree + 1 < #(poles r)
+  this✝² : ∑ i ∈ poles r, eval i (Ppoly r) * (∏ j ∈ (poles r).erase i, (i - j))⁻¹ = 0
+  this✝¹ : ∑ k ∈ poleReps r, eval (↑k) (Ppoly2 r) * Ring.inverse (∏ j ∈ (poleReps r).erase k, (↑k - ↑j)) = 0
+  this✝ : ∑ k ∈ poleIdx r, Main2 r k = 0
+  this : (Ppoly r).natDegree + 1 < #(poles r)
+  hcard2✝ : #(poleReps r) = 2 * r
+  hPdeg✝ : (Ppoly2 r).natDegree = 2 * (r - 1)
+  hlead0 : (Ppoly2 r).coeff (#(poleReps r) - 1) = 0
+  hred : (∑ k ∈ poleReps r, Main2 r k).cast = 0
+  hP2 : ∑ k ∈ poleReps r, eval (↑k) (Ppoly2 r) * Ring.inverse (∏ j ∈ (poleReps r).erase k, (↑k - ↑j)) = 0
+  hconst : 2 ≠ 0
+  hunique :
+    ∀ (s : Finset (ZMod (p ^ 2))) (P Q : (ZMod (p ^ 2))[X]),
+      P.degree < ↑(#s) →
+        Q.degree < ↑(#s) → (∀ x ∈ s, ∀ y ∈ s, x ≠ y → IsUnit (x - y)) → (∀ x ∈ s, eval x P = eval x Q) → P = Q
+  hcard2 : #(poleReps r) = 2 * r
+  hPdeg : (Ppoly2 r).natDegree = 2 * (r - 1)
+  ⊢ ↑((∑ k ∈ poleIdx r, term (p - r) k / p) / p) =
+      -(∑ k ∈ range (p - r + 1) with 3 * r ≤ 2 * k ∧ 2 * k < p + 2 * r, 3 * fCE r k +
+          ∑ k ∈ range (p - r + 1) with p + 3 * r ≤ 2 * k, 4 * fCE r k)
+

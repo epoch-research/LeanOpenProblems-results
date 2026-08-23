@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "ZPcjxG4P6F9Y7H4aozeizL",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 796710,
+      "output_tokens": 104217,
+      "total_tokens": 9214271,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 8313344,
+      "reasoning_tokens": 64007,
+      "total_cost": 6.375394000000002
+    }
+  },
+  "oeis_id": "A053576"
+}

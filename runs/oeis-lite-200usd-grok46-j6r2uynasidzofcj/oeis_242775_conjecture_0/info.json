@@ -1,0 +1,23 @@
+{
+  "id": "oeis_242775_conjecture_0",
+  "epoch": 1,
+  "uuid": "dhvugZ7DdGTsFM3xt4FsLw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 36897348,
+      "output_tokens": 1473189,
+      "total_tokens": 273126889,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 234756352,
+      "reasoning_tokens": 763932,
+      "total_cost": 200.01200599999964
+    }
+  },
+  "oeis_id": "A242775"
+}

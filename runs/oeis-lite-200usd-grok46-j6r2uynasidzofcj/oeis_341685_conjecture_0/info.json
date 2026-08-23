@@ -1,0 +1,23 @@
+{
+  "id": "oeis_341685_conjecture_0",
+  "epoch": 1,
+  "uuid": "nZH5MLQGP7HpoWo5LubTCU",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 50799476,
+      "output_tokens": 5137099,
+      "total_tokens": 191118655,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 135182080,
+      "reasoning_tokens": 4368264,
+      "total_cost": 200.0125860000003
+    }
+  },
+  "oeis_id": "A341685"
+}

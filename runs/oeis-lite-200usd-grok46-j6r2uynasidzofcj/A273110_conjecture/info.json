@@ -1,0 +1,23 @@
+{
+  "id": "A273110_conjecture",
+  "epoch": 1,
+  "uuid": "8Gs6MqB3zsmkryjZzVkzqb",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 37054818,
+      "output_tokens": 2655809,
+      "total_tokens": 259667235,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 219956608,
+      "reasoning_tokens": 1761322,
+      "total_cost": 200.02279400000015
+    }
+  },
+  "oeis_id": "A273110"
+}

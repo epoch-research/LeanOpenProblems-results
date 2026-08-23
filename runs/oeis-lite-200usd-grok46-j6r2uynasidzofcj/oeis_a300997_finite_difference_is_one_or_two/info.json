@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a300997_finite_difference_is_one_or_two",
+  "epoch": 1,
+  "uuid": "YeKwy7g4mKsCqiE9G3GXfB",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 3457416,
+      "output_tokens": 236032,
+      "total_tokens": 33974280,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 30280832,
+      "reasoning_tokens": 122947,
+      "total_cost": 23.47144
+    }
+  },
+  "oeis_id": "A300997"
+}

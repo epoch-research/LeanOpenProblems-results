@@ -1,0 +1,20 @@
+{
+  "id": "oeis_238281_conjecture_0",
+  "epoch": 1,
+  "uuid": "h5tnE35Cihb2foLbqjsv3Y",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 421617,
+      "output_tokens": 22900,
+      "total_tokens": 975845,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 531328,
+      "reasoning_tokens": 13561,
+      "total_cost": 1.246298
+    }
+  },
+  "oeis_id": "A238281"
+}

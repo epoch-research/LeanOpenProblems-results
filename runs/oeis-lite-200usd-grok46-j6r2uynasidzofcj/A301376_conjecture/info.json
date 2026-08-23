@@ -1,0 +1,23 @@
+{
+  "id": "A301376_conjecture",
+  "epoch": 1,
+  "uuid": "NgskBjfQsFZR6Z59Sm5yC4",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 51257777,
+      "output_tokens": 3744204,
+      "total_tokens": 205053693,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 150051712,
+      "reasoning_tokens": 2668901,
+      "total_cost": 200.00663399999945
+    }
+  },
+  "oeis_id": "A301376"
+}

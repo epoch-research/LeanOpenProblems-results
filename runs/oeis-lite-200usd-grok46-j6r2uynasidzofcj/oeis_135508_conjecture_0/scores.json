@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "I",
+    "explanation": "Submission/Spec.lean:264:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).\n\nNote: This linter can be disabled with `set_option linter.style.moduleDocstring false`\nSubmission/Spec.lean:50918:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).\n\nNote: This linter can be disabled with `set_option linter.style.moduleDocstring false`\nSubmission/Spec.lean:50933:4: warning: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\nSubmission/Spec.lean:51083:46: warning: unused variable `hrp`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nSubmission/Spec.lean:51303:8: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  g ≥ 2\n  f ≥ 2\n  e ≥ 0\n  e ≥ 0\n  3*e - f ≤ -4\n  3*e - g ≥ -3\n  d ≥ 0\n  c ≥ 49998\n  c - 2*d ≥ -1\n  c - 3*e ≤ 2\n  b ≥ 0\n  b ≥ 0\n  b - e ≤ 0\n  3*b - c ≥ -2\n  3*b - g ≥ -3\n  a ≥ 0\n  2*a - c ≥ 2\nwhere\n a := ↑t / 2\n b := ↑(r - 2) / 3\n c := ↑(q - 2)\n d := ↑t0 / 2\n e := ↑(t0 * q - 4) / 3\n f := ↑q * ↑q\n g := ↑(q ^ 2)",
+    "metadata": {
+      "stage": "compile_submission",
+      "safeverify_report": null
+    }
+  }
+}

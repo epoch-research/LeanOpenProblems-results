@@ -1,0 +1,23 @@
+{
+  "id": "oeis_48153_conjecture_0",
+  "epoch": 1,
+  "uuid": "PHBcffRSxdrENmkAbqfNWD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 45691372,
+      "output_tokens": 1936220,
+      "total_tokens": 241781064,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 194153472,
+      "reasoning_tokens": 1226410,
+      "total_cost": 200.07680000000042
+    }
+  },
+  "oeis_id": "A048153"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_135508_conjecture_0",
+  "epoch": 1,
+  "uuid": "JuhxREckkgNpVhuWfabjV9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 48492129,
+      "output_tokens": 3327340,
+      "total_tokens": 217956301,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 166136832,
+      "reasoning_tokens": 2666073,
+      "total_cost": 200.016714
+    }
+  },
+  "oeis_id": "A135508"
+}

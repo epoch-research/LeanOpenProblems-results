@@ -1,0 +1,20 @@
+{
+  "id": "oeis_232616_conjecture_i",
+  "epoch": 1,
+  "uuid": "kA2rUrrfvCX9rfZ6VrZqB7",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 34582982,
+      "output_tokens": 1233464,
+      "total_tokens": 197681022,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 161864576,
+      "reasoning_tokens": 597262,
+      "total_cost": 157.49903600000022
+    }
+  },
+  "oeis_id": "A232616"
+}

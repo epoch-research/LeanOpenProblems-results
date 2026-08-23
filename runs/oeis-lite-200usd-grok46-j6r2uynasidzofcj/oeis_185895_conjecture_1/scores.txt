@@ -1,0 +1,504 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:514:33: warning: This simp argument is unused:
+    ih
+  
+  Hint: Omit it from the simp argument list.
+    simp [alphaRow,̵ ̵i̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:522:40: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [alphaRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:534:42: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [alphaRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:580:10: warning: This simp argument is unused:
+    this
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵t̵h̵i̵s̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:652:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:1052:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1131:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1214:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1261:31: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:1261:31: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:1608:10: warning: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1781:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1890:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:1919:10: warning: This simp argument is unused:
+    nat_pow_succ_left
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵n̵a̵t̵_̵p̵o̵w̵_̵s̵u̵c̵c̵_̵l̵e̵f̵t̵,̵ ̵p̵o̵w̵_̵z̵e̵r̵o̵,̵[̲p̲o̲w̲_̲z̲e̲r̲o̲,̲ pow_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:1939:29: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:1939:29: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:2146:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:2179:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2491:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:2498:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:2745:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:2760:4: warning: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  Submission/Spec.lean:3446:33: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:3446:33: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:3625:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:3729:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:3736:38: warning: unused variable `hj`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3792:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:3797:28: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:3804:46: warning: unused variable `hhi`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3881:40: warning: unused variable `ht`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:3899:46: warning: unused variable `hhi`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4030:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:4069:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:4076:40: warning: unused variable `hstart`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:4233:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:4908:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:5166:10: warning: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:5254:29: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:5255:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:5254:29: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:5615:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:5759:29: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:5763:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:5759:29: warning: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  Submission/Spec.lean:5800:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:5816:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:6010:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:6024:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  Submission/Spec.lean:6143:45: error: unsolved goals
+  k : ℕ
+  ⊢ (k - 2) * (k - 1) / 2 - (3 * k - 2) = (k - 2) * (k - 2 + 1) / 2 - (3 * k - 2)
+  Submission/Spec.lean:6167:2: error: Type mismatch: After simplification, term
+    this
+   has type
+    3 * k ≤ (k - 2) * (k - 1) / 2 + 2
+  but is expected to have type
+    3 * k ≤ (k - 2) * (k - 2 + 1) / 2 + 2
+  Submission/Spec.lean:6189:6: error: Type mismatch
+    prod_pow_eq_pow_sum (Icc 1 m) fun j => j
+  has type
+    ∀ (a : ?m.225), ∏ i ∈ Icc 1 m, a ^ i = a ^ ∑ i ∈ Icc 1 m, i
+  but is expected to have type
+    ∏ j ∈ Icc 1 m, ↑b ^ j = ↑b ^ ∑ j ∈ Icc 1 m, j
+  Submission/Spec.lean:6170:48: error: unsolved goals
+  n m b : ℕ
+  hb : 0 < b
+  hn : n ≤ tri m
+  hb0 : ↑b ≠ 0
+  hbpos : 0 < ↑b
+  hr : 0 < (↑b)⁻¹
+  hreal : ↑(W n m) ≤ (∏ j ∈ Icc 1 m, (1 + ↑j ! * (↑b)⁻¹ ^ j)) / (↑b)⁻¹ ^ n
+  hterm : ∀ j ∈ Icc 1 m, 1 + ↑j ! * (↑b)⁻¹ ^ j = ↑(b ^ j + j !) / ↑b ^ j
+  hprod : ∏ j ∈ Icc 1 m, (1 + ↑j ! * (↑b)⁻¹ ^ j) = ↑(cauchyProd m b) / ↑b ^ tri m
+  hdiv : ↑(W n m) ≤ ↑(cauchyProd m b) / ↑b ^ tri m * ↑b ^ n
+  hexp : ↑b ^ (tri m - n) = ↑b ^ tri m / ↑b ^ n
+  hmain : ↑(W n m) ≤ ↑(cauchyProd m b) / ↑b ^ (tri m - n)
+  ⊢ W n m * b ^ (tri m - n) ≤ cauchyProd m b
+  Submission/Spec.lean:6249:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    c ≤ 0
+    b ≥ 0
+    b - c ≥ 0
+    0 ≤ a ≤ 2
+    a - b + c ≤ -1
+    a ≤ 0
+    2*a - c ≤ 0
+  where
+   a := ↑k
+   b := ↑(tri k)
+   c := ↑(tri k - n)
+  Submission/Spec.lean:6278:49: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 1
+    e ≥ 0
+    d ≥ 0
+    d - e ≥ 0
+    c ≥ 4
+    c + d ≥ -4
+    c + d - f ≤ -5
+    b ≥ 0
+    b - c - d ≤ 0
+    b - d ≤ 0
+    a ≥ 0
+    a - 3*c ≤ 2
+    a - 2*c ≥ 6
+    a ≥ 0
+    a + c + d ≥ -4
+  where
+   a := ↑(tri k - n)
+   b := ↑(tri (k - 3))
+   c := ↑(k - 3)
+   d := ↑(n - (k + 1))
+   e := ↑(tri (k - 4))
+   f := ↑(tri (k - 2))
+  Submission/Spec.lean:6289:4: error: Type mismatch
+    Nat.even_add_one
+  has type
+    Even (?m.647 + 1) ↔ ¬Even ?m.647
+  but is expected to have type
+    ¬(Even (midx (n - (k + 1)) + 1) ↔ Even (midx (n - (k + 1))))
+  Submission/Spec.lean:6315:39: warning: This simp argument is unused:
+    ih
+  
+  Hint: Omit it from the simp argument list.
+    simp [wRow, nextWRow,̵ ̵i̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6320:43: warning: This simp argument is unused:
+    ih
+  
+  Hint: Omit it from the simp argument list.
+    simp [tauRow, nextTauRow,̵ ̵i̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6328:36: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [wRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6340:48: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [wRow, nextWRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6361:38: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [tauRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6373:52: warning: This simp argument is unused:
+    Array.size_ofFn
+  
+  Hint: Omit it from the simp argument list.
+    simp [tauRow, nextTauRow, Array.getElem_ofFn,̵ ̵A̵r̵r̵a̵y̵.̵s̵i̵z̵e̵_̵o̵f̵F̵n̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6403:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:6427:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (wRow (3 * k) k)[3 * k - 2]!
+  in the target expression
+    ((wRow (3 * k) k)[2 * k - 3 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3]!.natAbs * (k + 1)! ∧
+        (wRow (3 * k) k)[2 * k - 3 + 1 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3 + 1]!.natAbs * (k + 1)!) ∧
+      (wRow (3 * k) k)[2 * k - 3 + 2 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3 + 2]!.natAbs * (k + 1)!
+  
+  k : ℕ
+  hk : 2 ≤ k
+  h : checkCluster2 k = true
+  hdec :
+    ((wRow (3 * k) k)[2 * k - 3 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3]!.natAbs * (k + 1)! ∧
+        (wRow (3 * k) k)[2 * k - 3 + 1 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3 + 1]!.natAbs * (k + 1)!) ∧
+      (wRow (3 * k) k)[2 * k - 3 + 2 + k + 1]! < (tauRow (3 * k) k)[2 * k - 3 + 2]!.natAbs * (k + 1)!
+  hn0 : 2 * k - 3 ≤ 3 * k
+  hn1 : 2 * k - 2 ≤ 3 * k
+  hn2 : 2 * k - 1 ≤ 3 * k
+  hc0 : 3 * k - 2 ≤ 3 * k
+  hc1 : 3 * k - 1 ≤ 3 * k
+  hc2 : 3 * k ≤ 3 * k
+  e0 : 2 * k - 3 + (k + 1) = 3 * k - 2
+  e1 : 2 * k - 2 + (k + 1) = 3 * k - 1
+  e2 : 2 * k - 1 + (k + 1) = 3 * k
+  ⊢ W (3 * k - 2) k < (tau (2 * k - 3) k).natAbs * (k + 1)! ∧
+      W (3 * k - 1) k < (tau (2 * k - 2) k).natAbs * (k + 1)! ∧ W (3 * k) k < (tau (2 * k - 1) k).natAbs * (k + 1)!
+  Submission/Spec.lean:6451:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:6479:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (wRow (4 * k) k)[4 * k - 5]!
+  in the target expression
+    (((wRow (4 * k) k)[3 * k - 6 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6]!.natAbs * (k + 1)! ∧
+          (wRow (4 * k) k)[3 * k - 6 + 1 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 1]!.natAbs * (k + 1)!) ∧
+        (wRow (4 * k) k)[3 * k - 6 + 2 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 2]!.natAbs * (k + 1)!) ∧
+      (wRow (4 * k) k)[3 * k - 6 + 3 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 3]!.natAbs * (k + 1)!
+  
+  k : ℕ
+  hk : 6 ≤ k
+  h : checkCluster3 k = true
+  hdec :
+    (((wRow (4 * k) k)[3 * k - 6 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6]!.natAbs * (k + 1)! ∧
+          (wRow (4 * k) k)[3 * k - 6 + 1 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 1]!.natAbs * (k + 1)!) ∧
+        (wRow (4 * k) k)[3 * k - 6 + 2 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 2]!.natAbs * (k + 1)!) ∧
+      (wRow (4 * k) k)[3 * k - 6 + 3 + k + 1]! < (tauRow (4 * k) k)[3 * k - 6 + 3]!.natAbs * (k + 1)!
+  hn0 : 3 * k - 6 ≤ 4 * k
+  hn1 : 3 * k - 5 ≤ 4 * k
+  hn2 : 3 * k - 4 ≤ 4 * k
+  hn3 : 3 * k - 3 ≤ 4 * k
+  hc0 : 4 * k - 5 ≤ 4 * k
+  hc1 : 4 * k - 4 ≤ 4 * k
+  hc2 : 4 * k - 3 ≤ 4 * k
+  hc3 : 4 * k - 2 ≤ 4 * k
+  e0 : 3 * k - 6 + (k + 1) = 4 * k - 5
+  e1 : 3 * k - 5 + (k + 1) = 4 * k - 4
+  e2 : 3 * k - 4 + (k + 1) = 4 * k - 3
+  e3 : 3 * k - 3 + (k + 1) = 4 * k - 2
+  ⊢ W (4 * k - 5) k < (tau (3 * k - 6) k).natAbs * (k + 1)! ∧
+      W (4 * k - 4) k < (tau (3 * k - 5) k).natAbs * (k + 1)! ∧
+        W (4 * k - 3) k < (tau (3 * k - 4) k).natAbs * (k + 1)! ∧ W (4 * k - 2) k < (tau (3 * k - 3) k).natAbs * (k + 1)!
+  Submission/Spec.lean:6497:4: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    c ≥ 0
+    b ≥ 0
+    b - c ≥ 0
+    3 ≤ a ≤ 10
+    a - b + c ≤ -1
+    a ≥ 1
+    a ≥ 9
+    3*a - c ≤ 2
+    4*a - c ≥ 11
+  where
+   a := ↑k
+   b := ↑(tri k)
+   c := ↑(tri k - n)
+  Submission/Spec.lean:6533:17: error: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 1
+    e ≥ 6
+    d ≥ 0
+    c ≥ 0
+    c - d ≥ 0
+    c ≥ 0
+    c + e ≥ -6
+    c + e - f ≤ -7
+    b ≥ 0
+    b - c ≤ 0
+    b - c - e ≤ 1
+    a ≥ 0
+    a - 4*e ≤ 9
+    a - 3*e ≥ 13
+    a ≥ 0
+    a + c + e ≥ -6
+  where
+   a := ↑(tri k - n)
+   b := ↑(tri (k - 4))
+   c := ↑(n - (k + 1))
+   d := ↑(tri (k - 5))
+   e := ↑(k - 5)
+   f := ↑(tri (k - 3))
+  Submission/Spec.lean:6538:4: error: Type mismatch
+    Nat.even_add_one
+  has type
+    Even (?m.709 + 1) ↔ ¬Even ?m.709
+  but is expected to have type
+    ¬(Even (midx (n - (k + 1)) + 1) ↔ Even (midx (n - (k + 1))))
+  Submission/Spec.lean:6561:6: warning: declaration uses 'sorry'
+  Submission/Spec.lean:6589:9: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    (wRow (tri k + k + 1) k)[tri k - n + (k + 1)]!
+  in the target expression
+    (wRow (tri k + k + 1) k)[tri k - n + k + 1]! < (tauRow (tri k + k + 1) k)[tri k - n]!.natAbs * (k + 1)!
+  
+  k n : ℕ
+  hk : 2 ≤ k
+  hn1 : k + 1 ≤ n
+  hn2 : n ≤ tri k
+  hpar : Even (midx n) ↔ Even (midx (n - (k + 1)))
+  hΔ : 2 * k - 3 ≤ tri k - n
+  h : checkAllPar k = true
+  hall :
+    ∀ x ∈ List.range (tri k + 1),
+      (if k + 1 ≤ x then
+          have rest := x - (k + 1);
+          if decide (Even (midx x) ↔ Even (midx rest)) = true then
+            have d := tri k - x;
+            if 2 * k - 3 ≤ d then
+              decide ((wRow (tri k + k + 1) k)[d + k + 1]! < (tauRow (tri k + k + 1) k)[d]!.natAbs * (k + 1)!)
+            else true
+          else true
+        else true) =
+        true
+  hn' : n ∈ List.range (tri k + 1)
+  hcell :
+    decide ((wRow (tri k + k + 1) k)[tri k - n + k + 1]! < (tauRow (tri k + k + 1) k)[tri k - n]!.natAbs * (k + 1)!) =
+      true
+  hd : tri k - n ≤ tri k + k + 1
+  hc : tri k - n + (k + 1) ≤ tri k + k + 1
+  hdec : (wRow (tri k + k + 1) k)[tri k - n + k + 1]! < (tauRow (tri k + k + 1) k)[tri k - n]!.natAbs * (k + 1)!
+  ⊢ W (tri k - n + (k + 1)) k < (tau (tri k - n) k).natAbs * (k + 1)!
+  Submission/Spec.lean:6584:15: warning: This simp argument is unused:
+    checkAllPar
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵c̵h̵e̵c̵k̵A̵l̵l̵P̵a̵r̵,̵ ̵h̵n̵1̵,̵[̲h̲n̲1̲,̲ ↓reduceIte, hpar, decide_true, ↓reduceIte, hΔ, ↓reduceIte] at hcell
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:6642:53: error: Application type mismatch: The argument
+    h
+  has type
+    200 < k
+  but is expected to have type
+    k < 200
+  in the application
+    le_of_lt h
+  Submission/Spec.lean:6656:64: error: Application type mismatch: The argument
+    h
+  has type
+    200 < k
+  but is expected to have type
+    k < 200
+  in the application
+    le_of_lt h
+  Submission/Spec.lean:6666:64: error: Application type mismatch: The argument
+    h
+  has type
+    200 < k
+  but is expected to have type
+    k < 200
+  in the application
+    le_of_lt h
+  Submission/Spec.lean:6671:58: error: Type mismatch
+    hk100
+  has type
+    ¬k ≤ 100
+  but is expected to have type
+    ?m.628 ≤ 100
+  Submission/Spec.lean:6671:47: error: Application type mismatch: The argument
+    hk101
+  has type
+    101 ≤ k
+  but is expected to have type
+    k < ?m.628
+  in the application
+    le_of_lt hk101
+  Submission/Spec.lean:6673:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    tri k - n
+  in the target expression
+    (tau (Δ + (k + 1)) k).natAbs < (tau Δ k).natAbs * (k + 1)!
+  
+  case neg
+  k n : ℕ
+  hk : 81 ≤ k
+  hn1 : k + 1 ≤ n
+  hn2 : n ≤ tri k
+  hpar : Even (midx n) ↔ Even (midx (n - (k + 1)))
+  hk100 : ¬k ≤ 100
+  hk101 : 101 ≤ k
+  Δ : ℕ := tri k - n
+  hΔ : 2 * k - 3 ≤ Δ
+  hΔdef : Δ = tri k - n
+  hWbound : W (Δ + (k + 1)) k < (tau Δ k).natAbs * (k + 1)!
+  ⊢ (tau (Δ + (k + 1)) k).natAbs < (tau Δ k).natAbs * (k + 1)!
+  Submission/Spec.lean:6809:18: warning: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  Submission/Spec.lean:6809:18: warning: 'assumption' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+

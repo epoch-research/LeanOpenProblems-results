@@ -1,0 +1,210 @@
+=== SCORES ===
+proof_scorer: I
+  stage: compile_submission
+  Submission/Spec.lean:125:43: warning: This simp argument is unused:
+    h
+  
+  Hint: Omit it from the simp argument list.
+    simp [this,̵ ̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  Submission/Spec.lean:4590:35: warning: unused variable `hN`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5124:38: warning: unused variable `he`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5129:38: warning: unused variable `hh`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5582:60: error: Invalid `⟨...⟩` notation: The expected type `p % 4 = 3 → False` is not an inductive type
+  
+  Note: This notation can only be used when the expected type is an inductive type with a single constructor
+  Submission/Spec.lean:5582:9: error: Tactic `rcases` failed: `x✝ : ?m.87` is not an inductive datatype
+  Submission/Spec.lean:5597:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  Submission/Spec.lean:5646:66: error: unsolved goals
+  y z : ℕ
+  hy : y % 8 < 8
+  hz : z % 8 < 8
+  ⊢ ((y % 8 % 8) ^ 2 % 8 + z ^ 2 % 8) % 8 = ((y % 8) ^ 2 + (z % 8) ^ 2) % 8
+  Submission/Spec.lean:5673:18: error: Application type mismatch: The argument
+    Eq.symm (Nat.le_antisymm (Nat.sub_eq_zero_iff_le.mp h0) hXle)
+  has type
+    X ^ 3 = n
+  but is expected to have type
+    n = X ^ 3
+  in the application
+    hcube (Eq.symm (Nat.le_antisymm (Nat.sub_eq_zero_iff_le.mp h0) hXle))
+  Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  Submission/Spec.lean:5685:67: error: unsolved goals
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  this : n < (X + 1) ^ 3
+  hsub : n - X ^ 3 < (X + 1) ^ 3 - X ^ 3
+  ⊢ 1 + X * 3 + X ^ 2 * 3 + X ^ 3 - X ^ 3 = 1 + X * 3 + X ^ 2 * 3
+  Submission/Spec.lean:5703:16: error(lean.unknownIdentifier): Unknown constant `Nat.sub_mod`
+  Submission/Spec.lean:5696:35: error: unsolved goals
+  case inl.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 0
+  hx : X ^ 3 % 8 = 1
+  ⊢ False
+  
+  case inl.inr.inr.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 0
+  hx : X ^ 3 % 8 = 5
+  ⊢ False
+  
+  case inr.inl.inr.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 1
+  hx : X ^ 3 % 8 = 3
+  ⊢ False
+  
+  case inr.inr.inl.inr.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 2
+  hx : X ^ 3 % 8 = 3
+  ⊢ False
+  
+  case inr.inr.inl.inr.inr.inr.inr
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 2
+  hx : X ^ 3 % 8 = 7
+  ⊢ False
+  
+  case inr.inr.inr.inl.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 4
+  hx : X ^ 3 % 8 = 1
+  ⊢ False
+  
+  case inr.inr.inr.inl.inr.inr.inr.inl
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 4
+  hx : X ^ 3 % 8 = 5
+  ⊢ False
+  
+  case inr.inr.inr.inr.inr.inr.inr.inr
+  n : ℕ
+  heasy : IsEasy n
+  hn : 47984 < n
+  X : ℕ
+  hXle : X ^ 3 ≤ n
+  hXlt : n < (X + 1) ^ 3
+  hcube : ¬n = X ^ 3
+  hne : n - X ^ 3 ≠ 0
+  hgap : n - X ^ 3 < 3 * X ^ 2 + 3 * X + 1
+  hX8 : X ^ 3 % 8 = 0 ∨ X ^ 3 % 8 = 1 ∨ X ^ 3 % 8 = 3 ∨ X ^ 3 % 8 = 5 ∨ X ^ 3 % 8 = 7
+  hn8 : n % 8 = 0 ∨ n % 8 = 1 ∨ n % 8 = 2 ∨ n % 8 = 4 ∨ n % 8 = 5
+  hsubmod : (n - X ^ 3) % 8 = (n % 8 + 8 - X ^ 3 % 8) % 8
+  h : n % 8 = 5
+  hx : X ^ 3 % 8 = 7
+  ⊢ False
+  Submission/Spec.lean:5715:6: error: Type mismatch
+    eq_sq_add_sq_iff.mp ?m.1107
+  has type
+    ∀ q ∈ primeFactors ?m.1104, q % 4 = 3 → Even (padicValNat q ?m.1104)
+  but is expected to have type
+    ∃ y z, y ^ 2 + z ^ 2 = n - X ^ 3
+  Submission/Spec.lean:5748:37: warning: unused variable `hk`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5749:5: warning: unused variable `hS`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Submission/Spec.lean:5817:39: warning: unused variable `hh`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+

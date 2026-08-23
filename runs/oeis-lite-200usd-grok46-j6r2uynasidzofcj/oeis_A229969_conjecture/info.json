@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A229969_conjecture",
+  "epoch": 1,
+  "uuid": "HrKWEHMukdqELtA5FDgSFp",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/grok-4.6": {
+      "input_tokens": 34508,
+      "output_tokens": 7981,
+      "total_tokens": 146681,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 104192,
+      "reasoning_tokens": 5181,
+      "total_cost": 0.168998
+    }
+  },
+  "oeis_id": "A229969"
+}
