@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Integer-square bounds give \\(\\lfloor n\\sqrt{5/4}\\rfloor=156,160,175,180\\) for \\(n=140,144,157,161\\), respectively, yielding values \\(471,484,528,542\\). At \\(n=140\\), the proposed right-hand side is \\(528+484-471=541\\), not \\(542\\), so this is a counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "At \\(n=140\\), comparison of \\(5n^2\\) with \\(4z^2\\) and \\(4(z+1)^2\\) gives the needed floors \\(180,175,160,156\\), hence \\(a(161)=542\\), \\(a(157)=528\\), \\(a(144)=484\\), and \\(a(140)=471\\). The proposed recurrence would therefore require \\(542=528+484-471=541\\), a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor\n\\qquad(n\\ge 1).\n\\]\nWe disprove the proposed recurrence by exhibiting a failure at \\(n=140\\).\n\nFirst, we record how the irrational floor terms will be evaluated without using decimal approximations. Put\n\\[\n\\alpha=\\sqrt{\\frac54}.\n\\]\nFor nonnegative integers \\(n\\) and \\(z\\), if\n\\[\n4z^2\\le 5n^2<4(z+1)^2,\n\\]\nthen\n\\[\nz\\le n\\alpha<z+1.\n\\]\nIndeed, all the quantities involved are nonnegative, so inequalities may be compared by squaring. Since \\(\\alpha^2=5/4\\), the first integer inequality gives\n\\[\nz^2\\le \\frac{5n^2}{4}=(n\\alpha)^2,\n\\]\nand hence \\(z\\le n\\alpha\\). The second gives\n\\[\n(n\\alpha)^2=\\frac{5n^2}{4}<(z+1)^2,\n\\]\nand hence \\(n\\alpha<z+1\\). Thus \\(z\\le n\\alpha<z+1\\), which is precisely the assertion\n\\[\n\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor=z.\n\\]\n\nWe apply this criterion to the four sequence terms occurring in the recurrence at \\(n=140\\).\n\nFor \\(n=161\\), take \\(z=180\\). Direct integer arithmetic gives\n\\[\n4\\cdot 180^2=129600,\n\\qquad\n5\\cdot 161^2=129605,\n\\qquad\n4\\cdot 181^2=131044.\n\\]\nTherefore\n\\[\n4\\cdot180^2\\le 5\\cdot161^2<4\\cdot181^2,\n\\]\nso\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAlso \\(\\lfloor161/4\\rfloor=40\\). Consequently,\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nFor \\(n=157\\), take \\(z=175\\). We have\n\\[\n4\\cdot175^2=122500,\n\\qquad\n5\\cdot157^2=123245,\n\\qquad\n4\\cdot176^2=123904.\n\\]\nHence\n\\[\n4\\cdot175^2\\le 5\\cdot157^2<4\\cdot176^2,\n\\]\nand therefore\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nSince \\(\\lfloor157/4\\rfloor=39\\), it follows that\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFor \\(n=144\\), take \\(z=160\\). The relevant integer values are\n\\[\n4\\cdot160^2=102400,\n\\qquad\n5\\cdot144^2=103680,\n\\qquad\n4\\cdot161^2=103684.\n\\]\nThus\n\\[\n4\\cdot160^2\\le 5\\cdot144^2<4\\cdot161^2,\n\\]\nwhich yields\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nMoreover, \\(\\lfloor144/4\\rfloor=36\\), so\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nFinally, for \\(n=140\\), take \\(z=156\\). We calculate\n\\[\n4\\cdot156^2=97344,\n\\qquad\n5\\cdot140^2=98000,\n\\qquad\n4\\cdot157^2=98596.\n\\]\nIt follows that\n\\[\n4\\cdot156^2\\le 5\\cdot140^2<4\\cdot157^2,\n\\]\nso\n\\[\n\\left\\lfloor140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor140/4\\rfloor=35\\). Hence\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nThe conjectured recurrence, specialized to \\(n=140\\), asserts\n\\[\na(140+21)=a(140+17)+a(140+4)-a(140),\n\\]\nthat is,\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nBut the values just established give\n\\[\na(157)+a(144)-a(140)=528+484-471=541,\n\\]\nwhereas\n\\[\na(161)=542.\n\\]\nThus the two sides differ by \\(1\\). The recurrence fails at the admissible index \\(n=140\\), and therefore the claim that it holds for every \\(n\\ge1\\) is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

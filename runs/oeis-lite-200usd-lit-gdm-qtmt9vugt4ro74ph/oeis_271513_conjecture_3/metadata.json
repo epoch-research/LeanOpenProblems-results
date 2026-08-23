@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so its proof is immediate and contains no mathematical argument about the claimed coprimality obstruction.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "The proved statement is the tautology \\(\\mathrm{True}\\), so it holds unconditionally by its canonical witness. No argument about four-square representations or pairwise coprimality is involved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition asserted is simply \\(\\mathrm{True}\\).\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally. It requires no hypotheses and has an immediate witness: the unique elementary proof of truth. Therefore \\(\\mathrm{True}\\) holds, which proves the stated theorem.\n\nNo case split, modular computation, or construction of a four-square representation is involved. In particular, although the surrounding material defines the counting function for ordered nonnegative representations\n\\[\nn=w^2+x^2+y^2+z^2\n\\]\nsubject to \\(3x^2+4y^2+9z^2\\) being a square, and also defines a predicate concerning refinements with coefficients \\(a,b,c\\), none of those definitions occurs in the proposition being proved. Thus the accepted theorem does not assert—and this argument does not establish—the number-theoretic claim that universal representability forces \\(a,b,c\\) not to be pairwise coprime. Its mathematical content is only the unconditional truth of \\(\\mathrm{True}\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the counterexample index $27$: for every base $k\\ge2$, $k^{27}-27=(k^9-3)(k^{18}+3k^9+9)$ is a product of two factors greater than $1$, while $k=0,1$ cannot yield a prime of the required form, so no such prime exists. Yet $27$ is not the square of an even integer (every such square is divisible by $4$).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Take the index \\(27\\): for every \\(k\\ge2\\), \\(k^{27}-27=(k^9-3)(k^{18}+3k^9+9)\\), with both factors greater than \\(1\\), while \\(k=0,1\\) cannot yield a nonnegative prime, so no prime of the required form exists. Thus the value is \\(0\\) at \\(27\\), yet \\(27\\) is not the square of an even integer.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS_n=\\{p\\in\\mathbb N: p\\text{ is prime and }b^n=p+n\\text{ for some }b\\in\\mathbb N\\}.\n\\]\nThus \\(a(n)\\) is the least element of \\(S_n\\), with the stipulated value \\(a(n)=0\\) when \\(S_n\\) is empty. We will show that \\(S_{27}\\) is empty, although \\(27\\) is not the square of an even integer. This gives the required counterexample.\n\nWe first prove that no prime can have the form \\(b^{27}-27\\). Suppose, toward a contradiction, that there are natural numbers \\(b,p\\) such that \\(p\\) is prime and\n\\[\nb^{27}=p+27. \\tag{1}\n\\]\nWe divide the argument according as \\(b\\ge 2\\) or \\(b<2\\).\n\nAssume first that \\(b\\ge 2\\). Then \\(b^9\\ge 2^9=512\\), so in particular \\(b^9\\ge 3\\), and the following difference-of-cubes factorization involves only nonnegative integers:\n\\[\n\\begin{aligned}\nb^{27}-27\n  &= (b^9)^3-3^3\\\\\n  &= (b^9-3)\\bigl((b^9)^2+3b^9+3^2\\bigr)\\\\\n  &= (b^9-3)(b^{18}+3b^9+9).\n\\end{aligned} \\tag{2}\n\\]\nEquivalently,\n\\[\nb^{27}=(b^9-3)(b^{18}+3b^9+9)+27. \\tag{3}\n\\]\nComparing (1) and (3), and cancelling the added \\(27\\), gives\n\\[\np=(b^9-3)(b^{18}+3b^9+9). \\tag{4}\n\\]\nSet\n\\[\nA=b^9-3,\\qquad B=b^{18}+3b^9+9.\n\\]\nThen \\(A\\mid p\\). Since \\(p\\) is prime, every natural-number divisor of \\(p\\) is either \\(1\\) or \\(p\\). We consider these two possibilities.\n\nIf \\(A=1\\), then \\(b^9-3=1\\), so \\(b^9=4\\). But \\(b\\ge2\\) implies \\(b^9\\ge512\\), a contradiction.\n\nIf \\(A=p\\), then (4) becomes\n\\[\np=pB.\n\\]\nA prime is positive, so cancellation of the positive factor \\(p\\) yields \\(B=1\\). This is also impossible, since\n\\[\nB=b^{18}+3b^9+9\\ge9>1.\n\\]\nThus (1) cannot hold when \\(b\\ge2\\).\n\nIt remains to consider \\(b<2\\). Since \\(b\\) is a natural number, there are exactly two cases.\n\n* If \\(b=0\\), then (1) says \\(0=p+27\\), impossible because \\(p+27\\ge27>0\\).\n* If \\(b=1\\), then (1) says \\(1=p+27\\), impossible because again \\(p+27\\ge27\\).\n\nConsequently there are no natural numbers \\(b,p\\) with \\(p\\) prime and \\(b^{27}=p+27\\). Hence\n\\[\nS_{27}=\\varnothing,\n\\]\nand by the definition of the sequence in the empty case,\n\\[\na(27)=0. \\tag{5}\n\\]\n\nFinally, \\(27\\) is not the square of an even integer. Indeed, for every \\(m\\in\\mathbb N\\),\n\\[\n(2m)^2=4m^2\n\\]\nis divisible by \\(4\\), whereas \\(27\\equiv3\\pmod4\\). Therefore\n\\[\n27\\ne(2m)^2\n\\]\nfor every natural number \\(m\\).\n\nThus the index \\(27\\) satisfies \\(a(27)=0\\) but is not the square of an even integer. It is therefore a counterexample to the conjecture that every \\(k\\) with \\(a(k)=0\\) must be of the form \\((2m)^2\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

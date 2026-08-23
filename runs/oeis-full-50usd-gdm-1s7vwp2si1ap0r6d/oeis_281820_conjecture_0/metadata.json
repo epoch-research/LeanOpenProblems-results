@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Specializing to \\(k=2\\) and expanding the two binomial coefficients shows that every summand in the binomial-form series is exactly \\(16\\) times the corresponding summand in the product-form series. The product-form series converges and has a strictly positive sum, since its terms are nonnegative and its \\(n=3\\) term is positive, so the two sums cannot be equal.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "At \\(k=2\\), using \\(\\binom n2=n(n-1)/2\\) and \\(\\binom{n+2}2=(n+2)(n+1)/2\\), every term of the binomial-denominator tail is exactly \\(16\\) times the corresponding product-denominator term. The latter tail converges and is strictly positive (already its \\(n=3\\) term is positive), so it cannot equal sixteen times itself, disproving the asserted equality of the two tails.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "We disprove the universal statement by taking \\(k=2\\). For this value of \\(k\\), the first series in the conjecture is\n\\[\nS:=\\sum_{n=3}^{\\infty}\n \\frac{1}{n^3(n^2-1)^2(n^2-4)^2},\n\\]\nand the second is\n\\[\nT:=\\sum_{n=3}^{\\infty}\n \\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2}.\n\\]\nWe will show that \\(T=16S\\), while \\(S>0\\). Consequently \\(S\\ne T\\).\n\nFirst simplify the summand of \\(T\\). For every integer \\(n\\ge 3\\),\n\\[\n\\binom n2=\\frac{n(n-1)}2\n\\qquad\\text{and}\\qquad\n\\binom{n+2}2=\\frac{(n+2)(n+1)}2.\n\\]\nIt follows that the denominator in the \\(n\\)-th summand of \\(T\\) is\n\\[\n\\begin{aligned}\n n\\binom n2^2\\binom{n+2}2^2(n-2)^2\n &=n\\left(\\frac{n(n-1)}2\\right)^2\n      \\left(\\frac{(n+2)(n+1)}2\\right)^2(n-2)^2\\\\\n &=\\frac1{16}n^3(n-1)^2(n+1)^2(n-2)^2(n+2)^2\\\\\n &=\\frac1{16}n^3(n^2-1)^2(n^2-4)^2.\n\\end{aligned}\n\\]\nAll these factors are nonzero when \\(n\\ge3\\), so taking reciprocals gives\n\\[\n\\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2}\n=\n16\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}.\n\\]\nThus the second summand is exactly sixteen times the first summand for every index in the tail.\n\nFor completeness, these series converge. Indeed, for \\(n\\ge3\\), both \\((n^2-1)^2\\) and \\((n^2-4)^2\\) are positive integers and in particular are at least \\(1\\). Hence\n\\[\n0<\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}\\le \\frac1{n^3}.\n\\]\nThe \\(p\\)-series \\(\\sum_{n=3}^{\\infty}n^{-3}\\) converges, so comparison proves that \\(S\\) converges. The termwise identity above then also proves convergence of \\(T\\), and linearity of convergent series yields\n\\[\nT=16S.\n\\]\n\nMoreover, \\(S\\) is strictly positive. Every summand is nonnegative, and already the first one is\n\\[\n\\frac{1}{3^3(3^2-1)^2(3^2-4)^2}\n=\n\\frac{1}{27\\cdot64\\cdot25}\n=\n\\frac1{43200}>0.\n\\]\nTherefore \\(S\\ge 1/43200>0\\). In particular, \\(16S>S\\), and hence\n\\[\nT=16S\\ne S.\n\\]\n\nThe conjecture asserts, for every integer \\(k\\ge1\\), that these two series are equal (and also that their common value equals a specified expression involving \\(\\zeta(3)\\) and the OEIS numerator and denominator). The admissible value \\(k=2\\) already violates the first asserted equality. Therefore the entire universally quantified conjecture is false, irrespective of the additional claimed equality with \\(\\zeta(3)-a(k)/A281821(k)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

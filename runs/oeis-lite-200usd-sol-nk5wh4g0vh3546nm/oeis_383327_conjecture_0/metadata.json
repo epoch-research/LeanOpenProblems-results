@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=67\\), the two distinct inputs \\(147\\) and \\(2055\\) both have residue sum \\(67\\): respectively \\(1+3+3+3+19+19+19=67\\) and \\(1+3+9\\cdot7=67\\). Thus there are at least two occurrences, contradicting the asserted uniqueness.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "For \\(n=67\\), two distinct inputs give the required residue sum: \\(147\\) yields \\(1+3+3+3+19+19+19=67\\), while \\(2055\\) yields \\(1+3+7+8\\cdot7=67\\). Hence the multiplicity at \\(67\\) is at least two, rather than one.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nF(m)=\\sum_{k=1}^{\\lfloor \\log_2 m\\rfloor}(m\\bmod 2^k)\n\\]\nbe the sequence A049802. Thus A383327 is\n\\[\na(n)=\\#\\{m:F(m)=n\\}.\n\\]\nTo disprove the conjecture, it is enough to find one number in the displayed set for which the multiplicity is not one. We use the listed number \\(n=67\\), and exhibit two distinct indices at which A049802 has value \\(67\\).\n\nFirst take \\(m=147\\). Since\n\\[\n2^7=128\\le 147<256=2^8,\n\\]\nwe have \\(\\lfloor\\log_2 147\\rfloor=7\\). Therefore\n\\[\nF(147)=\\sum_{k=1}^{7}(147\\bmod 2^k).\n\\]\nNow \\(147=128+19\\), and \\(128\\) is divisible by every \\(2^k\\) for \\(1\\le k\\le 7\\). Hence, over this range, the residue of \\(147\\) modulo \\(2^k\\) is the same as that of \\(19\\). The seven residues are\n\\[\n\\begin{array}{c|ccccccc}\nk&1&2&3&4&5&6&7\\\\ \\hline\n147\\bmod 2^k&1&3&3&3&19&19&19.\n\\end{array}\n\\]\nIndeed, \\(19\\equiv 1\\pmod 2\\), \\(19\\equiv3\\pmod4\\), \\(19\\equiv3\\pmod8\\), \\(19\\equiv3\\pmod{16}\\), and \\(19<2^k\\) for \\(k=5,6,7\\). Consequently,\n\\[\nF(147)=1+3+3+3+19+19+19=67.\n\\]\n\nNext take \\(m=2055\\). Since\n\\[\n2^{11}=2048\\le2055<4096=2^{12},\n\\]\nwe have \\(\\lfloor\\log_2 2055\\rfloor=11\\), and thus\n\\[\nF(2055)=\\sum_{k=1}^{11}(2055\\bmod 2^k).\n\\]\nWrite \\(2055=2048+7\\). For every \\(1\\le k\\le11\\), the number \\(2048=2^{11}\\) is divisible by \\(2^k\\). The residues are therefore the residues of \\(7\\) modulo these powers of two. They are \\(1\\) modulo \\(2\\), \\(3\\) modulo \\(4\\), and \\(7\\) modulo every \\(2^k\\) with \\(3\\le k\\le11\\), because \\(7<2^k\\) in that range. There are nine integers \\(k\\) from \\(3\\) through \\(11\\), so\n\\[\nF(2055)=1+3+9\\cdot7=1+3+63=67.\n\\]\n\nThus A049802 takes the value \\(67\\) at each of the two distinct indices\n\\[\n147\\ne2055.\n\\]\nIt follows immediately that the number of occurrences of \\(67\\) in A049802 satisfies\n\\[\na(67)\\ge2,\n\\]\nand in particular \\(a(67)\\ne1\\).\n\nIf the multiplicity is expressed using the finite search range in the stated definition, the same conclusion holds directly: both indices lie in that range, since\n\\[\n147<2055<2^{12}<2^{68}=2^{67+1}.\n\\]\nHence the filtered set used to define \\(a(67)\\) contains at least the two distinct elements \\(147\\) and \\(2055\\), so its cardinality cannot be one.\n\nFinally, \\(67\\) is one of\n\\[\n\\{1,3,5,9,15,23,35,63,65,67\\}.\n\\]\nTherefore the assertion that \\(a(n)=1\\) for every \\(n\\) in this set fails at \\(n=67\\), which disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\). Then \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\) the constant term gives \\(\\Phi_k(0)=1\\), so the absolute value is always \\(1\\) and hence never prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), and for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\); hence \\(|\\Phi_k(0)|=1\\) for all positive \\(k\\), so none is prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. The statement that was formalized quantifies over every natural number \\(n\\), with no hypothesis \\(n>0\\). Since the natural numbers in that statement include \\(0\\), take\n\\[\nn=0.\n\\]\nWe prove that no positive integer \\(k\\) makes \\(\\Phi_k(0)\\) prime (or makes its absolute value prime).\n\nWe first recall and justify the needed constant-term property of cyclotomic polynomials:\n\\[\n\\Phi_1(0)=-1,\\qquad \\Phi_k(0)=1\\quad\\text{for every }k>1.\n\\]\nThe first equality is immediate from\n\\[\n\\Phi_1(X)=X-1.\n\\]\nFor completeness, the second equality follows by strong induction from the standard cyclotomic factorization\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X)\\qquad(m\\ge 1).\n\\]\nSuppose \\(m>1\\), and assume that \\(\\Phi_d(0)=1\\) for every integer \\(d\\) with \\(1<d<m\\). Evaluating the factorization at \\(X=0\\) gives\n\\[\n-1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nSeparate from this product the factor corresponding to \\(d=m\\). Among the proper positive divisors of \\(m\\), the divisor \\(1\\) contributes\n\\[\n\\Phi_1(0)=-1.\n\\]\nEvery other proper divisor \\(d\\) satisfies \\(1<d<m\\), and hence contributes \\(\\Phi_d(0)=1\\) by the induction hypothesis. Therefore the product over all proper divisors of \\(m\\) is \\(-1\\). It follows that\n\\[\n-1=\\Phi_m(0)(-1),\n\\]\nand consequently\n\\[\n\\Phi_m(0)=1.\n\\]\nThis completes the induction and proves the constant-term property for every \\(m>1\\).\n\nNow let \\(k\\) be any positive integer. There are two exhaustive cases.\n\n1. If \\(k=1\\), then\n\\[\n\\Phi_k(0)=\\Phi_1(0)=-1,\n\\]\nso\n\\[\n|\\Phi_k(0)|=1.\n\\]\n\n2. If \\(k>1\\), the constant-term result above gives\n\\[\n\\Phi_k(0)=1,\n\\]\nso again\n\\[\n|\\Phi_k(0)|=1.\n\\]\n\nThus, for every positive integer \\(k\\),\n\\[\n|\\Phi_k(0)|=1.\n\\]\nBut \\(1\\) is not prime: by definition, a prime natural number must be greater than \\(1\\). Hence there is no positive integer \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime. In symbols,\n\\[\n\\neg\\exists k\\in\\mathbb N\\;\\bigl(k>0\\ \\text{and}\\ |\\Phi_k(0)|\\text{ is prime}\\bigr).\n\\]\nTherefore \\(n=0\\) is a counterexample to the zero-inclusive statement\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n\\quad k>0\\ \\text{and}\\ |\\Phi_k(n)|\\text{ is prime}.\n\\]\nThis disproves the statement accepted in the supplied formalization.\n\nThere is an essential domain qualification: this argument uses \\(n=0\\). Therefore it refutes the formal statement over all natural numbers when \\(0\\in\\mathbb N\\), but it does not refute the OEIS conjecture if “positive integer \\(n\\)” is interpreted strictly as \\(n\\ge 1\\). The latter formulation excludes this counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\). Since \\(\\Phi_1(0)=-1\\) and \\(\\Phi_k(0)=1\\) for every \\(k\\ge 2\\), the absolute value is always \\(1\\), hence never prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
+  "summary": {
+    "text": "At \\(n=0\\), \\(\\Phi_1(0)=-1\\), while \\(\\Phi_k(0)=1\\) for every \\(k\\ge 2\\). Thus for every positive \\(k\\), \\(|\\Phi_k(0)|=1\\), which is not prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. The formal statement under consideration is\n\\[\n \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) includes \\(0\\). We show that this statement is false by taking \\(n=0\\).\n\nWe first establish the cyclotomic constant-term fact needed in the argument:\n\\[\n \\Phi_1(0)=-1,\n \\qquad\n \\Phi_k(0)=1\\quad\\text{for every }k\\ge 2.\n\\]\nThe first equality is immediate from\n\\[\n \\Phi_1(X)=X-1.\n\\]\nFor completeness, the second equality can be derived from the standard cyclotomic factorization\n\\[\n X^m-1=\\prod_{d\\mid m}\\Phi_d(X) \\qquad (m\\ge1).\n\\]\nWe prove by strong induction on \\(m\\ge2\\) that \\(\\Phi_m(0)=1\\). Suppose the assertion is already known for every integer \\(d\\) with \\(2\\le d<m\\). Evaluating the factorization at \\(X=0\\) gives\n\\[\n -1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nAmong the positive divisors of \\(m\\), the divisor \\(1\\) contributes \\(\\Phi_1(0)=-1\\). Every proper divisor \\(d>1\\) of \\(m\\) satisfies \\(2\\le d<m\\), and hence contributes \\(1\\) by the induction hypothesis. The only remaining divisor is \\(m\\) itself. Consequently,\n\\[\n -1=(-1)\\left(\\prod_{\\substack{d\\mid m\\\\1<d<m}}1\\right)\\Phi_m(0)\n    =-\\Phi_m(0),\n\\]\nso \\(\\Phi_m(0)=1\\). This proves the claimed constant-term formula for all \\(m\\ge2\\).\n\nNow suppose, for contradiction, that the displayed universal statement were true. Apply it to \\(n=0\\). There would then be a positive integer \\(k\\) such that\n\\[\n |\\Phi_k(0)|\n\\]\nis prime. There are two exhaustive cases.\n\n1. If \\(k<2\\), then the conditions \\(k>0\\) and \\(k<2\\) force \\(k=1\\). Thus\n\\[\n |\\Phi_k(0)|=|\\Phi_1(0)|=|-1|=1.\n\\]\nBut \\(1\\) is not prime.\n\n2. If \\(k\\ge2\\), the constant-term result proved above gives\n\\[\n |\\Phi_k(0)|=|1|=1,\n\\]\nwhich again is not prime.\n\nThus no positive \\(k\\) makes \\(|\\Phi_k(0)|\\) prime. This contradicts the asserted existence of such a \\(k\\) at \\(n=0\\). Therefore\n\\[\n \\neg\\left(\\forall n\\in\\mathbb N\\;\\exists k>0,\n \\ |\\Phi_k(n)|\\text{ is prime}\\right).\n\\]\nEquivalently, for the version of the sequence extended to all nonnegative integer inputs, the set from which \\(a(0)\\) would have to select its least element is empty, so \\(a(0)\\) is not defined in the intended sense.\n\nThere is an essential domain qualification. The counterexample is \\(n=0\\). Hence this argument disproves the formal statement quantifying over all natural numbers when \\(0\\in\\mathbb N\\), exactly as written above. It does not, by itself, disprove the canonical OEIS conjecture restricted to positive integers \\(n\\ge1\\), because \\(0\\) is outside that domain.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
   }
 }

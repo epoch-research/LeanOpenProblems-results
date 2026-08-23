@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The modeled region count is truncation at \\(a(n)\\), so it is always at most \\(a(n)\\), while every \\(x\\le a(n)\\) is attained by taking the configuration parameter to be \\(x\\). Hence the attainable counts form the initial interval \\(\\{x:x\\le a(n)\\}\\), whose supremum is \\(a(n)\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Since the region count assigned to a configuration indexed by \\(k\\) is \\(\\min(k,a(n))\\), the attainable counts are exactly the natural numbers \\(x\\le a(n)\\): every assigned count is bounded by \\(a(n)\\), and each such \\(x\\) is attained by taking \\(k=x\\). This set has greatest element, and hence supremum, \\(a(n)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "For each natural number \\(n\\), define\n\\[\na(0)=1,\n\\]\nand, if \\(n=k+1>0\\), define\n\\[\na(n)=5n(2n-1)+2=10n^2-5n+2.\n\\]\n\nWe use the precise abstract model in the statement. For a fixed \\(n\\), a pentagram configuration is represented by a natural number \\(C\\). Its number of regions is defined to be\n\\[\nR_n(C):=\\min\\{C,a(n)\\}.\n\\]\nThus all values larger than \\(a(n)\\) are capped at \\(a(n)\\), while every value at most \\(a(n)\\) is unchanged. We prove that\n\\[\na(n)=\\sup\\{R_n(C):C\\in\\mathbb N\\}.\n\\]\n\nFix \\(n\\), and abbreviate \\(A=a(n)\\). Let\n\\[\nS=\\{R_n(C):C\\in\\mathbb N\\}\n  =\\{\\min(C,A):C\\in\\mathbb N\\}.\n\\]\nWe first identify this set exactly. We claim that\n\\[\nS=\\{x\\in\\mathbb N:x\\le A\\}.\n\\]\n\nFor the first inclusion, take any \\(x\\in S\\). By the definition of the range, there is some natural number \\(C\\) such that\n\\[\nx=R_n(C)=\\min(C,A).\n\\]\nThe minimum of two numbers is no larger than either of them, so\n\\[\nx=\\min(C,A)\\le A.\n\\]\nHence every member of \\(S\\) is a natural number at most \\(A\\).\n\nFor the reverse inclusion, let \\(x\\in\\mathbb N\\) satisfy \\(x\\le A\\). Choose the configuration represented by the natural number \\(C=x\\). Since \\(x\\le A\\), taking the minimum with \\(A\\) does not change \\(x\\), and therefore\n\\[\nR_n(C)=R_n(x)=\\min(x,A)=x.\n\\]\nThus \\(x\\in S\\). This proves the claimed equality\n\\[\nS=\\{x\\in\\mathbb N:x\\le A\\}=\\{0,1,\\ldots,A\\}.\n\\]\n\nIt remains to compute the supremum of this set. Every \\(x\\in S\\) satisfies \\(x\\le A\\), so \\(A\\) is an upper bound for \\(S\\). Moreover, \\(A\\) itself belongs to \\(S\\): indeed, choosing \\(C=A\\) gives\n\\[\nR_n(A)=\\min(A,A)=A.\n\\]\nConsequently, if \\(B\\) is any upper bound for \\(S\\), then in particular it must bound the member \\(A\\in S\\), so \\(A\\le B\\). Therefore \\(A\\) is not merely an upper bound but the least upper bound of \\(S\\). Hence\n\\[\n\\sup S=A=a(n).\n\\]\nEquivalently,\n\\[\na(n)=\\sup\\{\\operatorname{number\\_of\\_regions}(C):C\\text{ is a configuration of }n\\text{ pentagrams}\\},\n\\]\nas claimed.\n\nThis argument includes \\(n=0\\): in that case \\(A=a(0)=1\\), the range of \\(C\\mapsto\\min(C,1)\\) is \\(\\{0,1\\}\\), and its supremum is \\(1\\). For every \\(n>0\\), the same argument applies with \\(A=5n(2n-1)+2\\).\n\nIt is important to note exactly what has been established by this formulation. The configuration space is defined abstractly as \\(\\mathbb N\\), and the region-count function is defined in advance by capping at \\(a(n)\\). Accordingly, the conclusion follows from those definitions. No geometric assertion about actual regular pentagrams—such as an upper bound on intersections for arbitrary centers and radii, or a construction attaining that bound—is needed or derived in this proof.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

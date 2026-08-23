@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), the constant term gives \\(\\Phi_k(0)=1\\); hence every absolute value is \\(1\\), which is not prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). Then \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), \\(\\Phi_k(0)=1\\) because the constant term of the \\(k\\)-th cyclotomic polynomial is \\(1\\); hence the absolute value is always \\(1\\), which is not prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\) denote the \\(k\\)-th cyclotomic polynomial, and let \\(|m|\\) denote the ordinary absolute value of an integer \\(m\\). Consider the assertion as it is formally quantified: for every natural number \\(n\\), including \\(0\\), there is a positive integer \\(k\\) for which \\(|\\Phi_k(n)|\\) is prime. We show that \\(n=0\\) is a counterexample.\n\nWe first record the constant terms of the cyclotomic polynomials. For \\(k=1\\),\n\\[\n\\Phi_1(X)=X-1,\n\\]\nso\n\\[\n\\Phi_1(0)=-1.\n\\]\nFor every \\(k>1\\), one has\n\\[\n\\Phi_k(0)=1.\n\\]\nHere is a direct justification of the latter standard fact. For \\(k=2\\), \\(\\Phi_2(X)=X+1\\), so the result is immediate. Now suppose \\(k>2\\), and let \\(\\zeta\\) be a primitive \\(k\\)-th root of unity. The roots of \\(\\Phi_k\\) are precisely \\(\\zeta^j\\), where \\(1\\leq j\\leq k\\) and \\(\\gcd(j,k)=1\\). Hence its constant term is\n\\[\n(-1)^{\\varphi(k)}\\zeta^S,\n\\qquad\nS=\\sum_{\\substack{1\\leq j\\leq k\\\\ \\gcd(j,k)=1}}j.\n\\]\nWhen \\(k>2\\), the reduced residue classes pair as \\(j\\) and \\(k-j\\). There is no fixed point in this pairing: a fixed point would satisfy \\(2j=k\\), but then \\(j=k/2\\) would not be relatively prime to \\(k\\). Thus \\(\\varphi(k)\\) is even, and each of the \\(\\varphi(k)/2\\) pairs has sum \\(k\\). Consequently\n\\[\nS=\\frac{k\\varphi(k)}2.\n\\]\nIt follows that\n\\[\n\\zeta^S=(\\zeta^k)^{\\varphi(k)/2}=1,\n\\]\nand, because \\(\\varphi(k)\\) is even, \\((-1)^{\\varphi(k)}=1\\). Therefore \\(\\Phi_k(0)=1\\), as claimed.\n\nAssume, toward a contradiction, that the asserted universal existence statement holds. Applying it to the natural number \\(n=0\\), we obtain a positive integer \\(k\\) such that\n\\[\n|\\Phi_k(0)|\n\\]\nis prime. There are two exhaustive cases.\n\nFirst suppose \\(k=1\\). Then\n\\[\n|\\Phi_k(0)|=|\\Phi_1(0)|=|-1|=1.\n\\]\nBut \\(1\\) is not prime, contradicting the required primality.\n\nNow suppose \\(k\\neq1\\). Since \\(k\\) is a positive integer, this implies \\(k>1\\). By the constant-term result proved above,\n\\[\n\\Phi_k(0)=1,\n\\]\nand therefore\n\\[\n|\\Phi_k(0)|=1.\n\\]\nAgain, \\(1\\) is not prime, giving the same contradiction.\n\nThus no positive integer \\(k\\) makes \\(|\\Phi_k(0)|\\) prime. Hence the statement\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k>0:\\ |\\Phi_k(n)|\\text{ is prime}\n\\]\nis false when \\(\\mathbb N\\) includes \\(0\\); its counterexample is \\(n=0\\).\n\nThere is an important domain qualification. The argument above is exactly a disproof of the formal statement, whose quantifier ranges over all natural numbers and therefore includes \\(0\\). If the canonical OEIS question is instead read literally as quantifying only over positive integers \\(n\\geq1\\), then \\(n=0\\) lies outside its domain, and this argument does not disprove that positive-integer version. It establishes only that the formal all-natural-numbers formulation is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

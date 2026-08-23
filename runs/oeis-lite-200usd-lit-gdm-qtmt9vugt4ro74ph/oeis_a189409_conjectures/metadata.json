@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=9\\), direct calculation gives \\((2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23)^2+1=49{,}770{,}428{,}644{,}836{,}901=29^2\\cdot59{,}180{,}057{,}841{,}661\\). Thus this term is not squarefree, which already falsifies the conjunction regardless of the infinitude claim.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "At \\(n=9\\), direct calculation gives \\(a(9)=49{,}770{,}428{,}644{,}836{,}901=29^2\\cdot59{,}180{,}057{,}841{,}661\\), so this term is not squarefree. Thus the universal squarefreeness claim—and therefore the conjunction—fails, irrespective of the infinitude claim.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the primes in increasing order, indexed from zero, be\n\\[\np_0=2,\\quad p_1=3,\\quad p_2=5,\\quad \\ldots,\n\\]\nand define the primorial\n\\[\nP_n=\\prod_{k=0}^{n-1}p_k.\n\\]\nThus the sequence in question is\n\\[\na(n)=P_n^2+1.\n\\]\n(The product is empty when \\(n=0\\), giving \\(a(0)=2\\), in agreement with the stated indexing.)\n\nWe disprove the assertion that every term is squarefree by considering \\(n=9\\). The first nine primes are\n\\[\n2,3,5,7,11,13,17,19,23.\n\\]\nFor completeness, these are indeed precisely the primes up to \\(23\\): their primality follows by trial division by primes no larger than their square roots, and every other integer from \\(2\\) through \\(23\\) is visibly composite. Explicitly, the omitted integers are\n\\[\n4,6,8,9,10,12,14,15,16,18,20,21,22,\n\\]\nwith respective evident factors among \\(2,3,5,7,11\\). Therefore\n\\[\nP_9=2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23.\n\\]\nComputing this product in stages gives\n\\[\n2\\cdot3\\cdot5\\cdot7=210,\n\\]\n\\[\n11\\cdot13=143,\\qquad 17\\cdot19=323,\n\\]\nand hence\n\\[\n210\\cdot143=30030,\n\\]\n\\[\n30030\\cdot323=9{,}699{,}690,\n\\]\n\\[\nP_9=9{,}699{,}690\\cdot23=223{,}092{,}870.\n\\]\n\nNow consider the square of the prime \\(29\\). We have \\(29^2=841\\), and\n\\[\n223{,}092{,}870=841\\cdot265{,}271-41.\n\\]\nIndeed,\n\\[\n841\\cdot265{,}271\n=(800+40+1)\\cdot265{,}271\n=212{,}216{,}800+10{,}610{,}840+265{,}271\n=223{,}092{,}911.\n\\]\nThus\n\\[\nP_9\\equiv -41\\pmod{841}.\n\\]\nSquaring and adding one yields\n\\[\nP_9^2+1\\equiv (-41)^2+1=1681+1=1682=2\\cdot841\\equiv0\\pmod{841}.\n\\]\nConsequently,\n\\[\n29^2=841\\mid P_9^2+1=a(9).\n\\]\n\nThe same calculation may be written as an exact factorization. Since \\(P_9=841m-41\\) with \\(m=265{,}271\\),\n\\[\n\\begin{aligned}\na(9)\n  &=(841m-41)^2+1\\\\\n  &=841^2m^2-82\\cdot841m+1682\\\\\n  &=841\\bigl(841m^2-82m+2\\bigr).\n\\end{aligned}\n\\]\nSubstitution of \\(m=265{,}271\\) gives\n\\[\na(9)=841\\cdot59{,}180{,}057{,}841{,}661\n     =49{,}770{,}428{,}644{,}836{,}901.\n\\]\nThis is exactly the sequence term obtained directly from\n\\[\n223{,}092{,}870^2+1=49{,}770{,}428{,}644{,}836{,}901.\n\\]\n\nIt remains only to connect this divisibility to squarefreeness. An integer is squarefree precisely when no square of a prime divides it (equivalently, no square \\(d^2\\) with \\(d>1\\) divides it). The integer \\(29\\) is prime: it has no divisor among \\(2,3,5\\), the only primes not exceeding \\(\\sqrt{29}\\). Since\n\\[\n29^2\\mid a(9),\n\\]\nthe term \\(a(9)\\) is not squarefree.\n\nTherefore the universal claim\n\\[\n\\forall n,\\quad a(n)\\text{ is squarefree}\n\\]\nis false. The conjecture under consideration is the conjunction of this universal squarefreeness claim with the assertion that \\(a(n)\\) is prime for infinitely many \\(n\\). A conjunction is false as soon as either conjunct is false. Hence the explicit counterexample at \\(n=9\\) disproves the combined conjecture, independently of whether infinitely many prime terms exist.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

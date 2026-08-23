@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Swapping the two square variables shows that universality is invariant under exchanging the first two coefficients. The list contains \\((1,2,1,1)\\) but omits \\((2,1,1,1)\\), so it cannot characterize universality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  "summary": {
+    "text": "Swapping the variables \\(x\\) and \\(y\\) shows that the forms with coefficient quadruples \\((1,2,1,1)\\) and \\((2,1,1,1)\\) are universal simultaneously. Since the proposed list contains the former but omits the latter, the claimed equivalence yields a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nU(a,b,c,d)\n\\]\ndenote the assertion that all four coefficients are positive and that every nonnegative integer is represented by the form\n\\[\na x^2+b y^2+c z^3+d w^4\n\\]\nwith \\(x,y,z,w\\) nonnegative integers. Thus\n\\[\nU(a,b,c,d)\\iff a,b,c,d>0\\quad\\text{and}\\quad\n(\\forall n\\ge 0)(\\exists x,y,z,w\\ge 0)\\;\n a x^2+b y^2+c z^3+d w^4=n.\n\\]\nLet \\(S\\) be the finite set of quadruples displayed in the conjecture.\n\nThe key point is that universality is unchanged when the first two coefficients are interchanged:\n\\[\nU(a,b,c,d)\\iff U(b,a,c,d).\n\\]\nIndeed, suppose first that \\(U(a,b,c,d)\\) holds. The positivity conditions for \\(b,a,c,d\\) follow immediately from those for \\(a,b,c,d\\). Now fix an arbitrary nonnegative integer \\(n\\). By \\(U(a,b,c,d)\\), there are nonnegative integers \\(x,y,z,w\\) such that\n\\[\na x^2+b y^2+c z^3+d w^4=n.\n\\]\nFor the form with the first two coefficients swapped, choose\n\\[\nX=y,\\qquad Y=x,\\qquad Z=z,\\qquad W=w.\n\\]\nThen\n\\[\n\\begin{aligned}\nbX^2+aY^2+cZ^3+dW^4\n &=b y^2+a x^2+c z^3+d w^4\\\\\n &=a x^2+b y^2+c z^3+d w^4\\\\\n &=n.\n\\end{aligned}\n\\]\nThus every \\(n\\) is represented by the swapped form, proving \\(U(b,a,c,d)\\). Applying the same argument a second time, or simply reversing the roles of \\(a\\) and \\(b\\), proves the converse. This establishes the claimed symmetry.\n\nNow inspect the conjectured list \\(S\\). It explicitly contains\n\\[\n(1,2,1,1).\n\\]\nOn the other hand, it does not contain\n\\[\n(2,1,1,1).\n\\]\nFor completeness, among the entries in the displayed list whose last two coordinates are both \\(1\\), the possibilities are exactly\n\\[\n(1,2,1,1),\\ (1,3,1,1),\\ (1,6,1,1),\\ (2,3,1,1),\\ (2,4,1,1).\n\\]\nNone of these is \\((2,1,1,1)\\), and every later displayed entry has at least one of the last two coordinates different from the corresponding coordinates of \\((2,1,1,1)\\). Hence\n\\[\n(1,2,1,1)\\in S,\n\\qquad\n(2,1,1,1)\\notin S.\n\\]\n\nAssume, for contradiction, that the conjectured equivalence were true for every positive coefficient quadruple; that is, assume\n\\[\nU(a,b,c,d)\\iff (a,b,c,d)\\in S\n\\]\nfor all nonnegative integers \\(a,b,c,d\\) (with positivity already included in \\(U\\)). Since \\((1,2,1,1)\\in S\\), this equivalence implies\n\\[\nU(1,2,1,1).\n\\]\nBy the symmetry just proved, swapping the two square variables and their coefficients gives\n\\[\nU(2,1,1,1).\n\\]\nApplying the alleged equivalence to the quadruple \\((2,1,1,1)\\) would then imply\n\\[\n(2,1,1,1)\\in S.\n\\]\nThis contradicts the direct inspection of the displayed list above.\n\nTherefore it is impossible for full representability to be equivalent to membership in the stated list for every positive quadruple. In particular, the proposed “if and only if” classification is false. Notice that the contradiction does not require deciding independently whether the form\n\\[\nx^2+2y^2+z^3+w^4\n\\]\nis in fact universal: the two forms associated with \\((1,2,1,1)\\) and \\((2,1,1,1)\\) necessarily have exactly the same representability behavior under the substitution \\((x,y)\\mapsto(y,x)\\), whereas the proposed list assigns different membership status to the two coefficient quadruples.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
   }
 }

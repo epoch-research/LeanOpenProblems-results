@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For \\(k=31\\) and \\(s=1\\), the distinct inputs \\(5\\) and \\(1829=31\\cdot59\\) both give \\(17/288\\): after canceling their common \\(1/32\\) term, this is the identity \\(1/36=1/62+1/90+1/1860\\). Thus the two values—and hence their fractional parts—coincide.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "For \\(k=31\\) and \\(s=1\\), the sums at \\(n=5\\) and \\(n=1829=31\\cdot59\\) are both \\(17/288\\): indeed, \\(1/62+1/1860=1/60\\) and \\(1/60+1/90=1/36\\), leaving \\(1/32+1/36\\) in each case. Hence the distinct inputs \\(5\\) and \\(1829\\) have equal fractional parts.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "For positive integers \\(n,k,s\\), write\n\\[\nS_{k,s}(n)=\\sum_{d\\mid n}\\frac{1}{(d+k)^s},\n\\]\nwhere the sum is over the positive divisors of \\(n\\). The conjecture asserts, in particular, that for every fixed pair of positive integers \\(k,s\\), the fractional parts of the values \\(S_{k,s}(n)\\) are pairwise distinct as \\(n\\) ranges over the positive integers. We disprove this assertion by taking\n\\[\nk=31,\\qquad s=1,\n\\]\nand exhibiting the two distinct positive integers\n\\[\nn_1=5,\n\\qquad\nn_2=1829.\n\\]\nIn fact, the corresponding sums are equal as rational numbers, which is stronger than merely having equal fractional parts.\n\nFirst consider \\(n_1=5\\). Since \\(5\\) is prime, its positive divisors are exactly \\(1\\) and \\(5\\). Therefore\n\\[\n\\begin{aligned}\nS_{31,1}(5)\n &=\\sum_{d\\mid 5}\\frac1{d+31}\\\\\n &=\\frac1{1+31}+\\frac1{5+31}\\\\\n &=\\frac1{32}+\\frac1{36}.\n\\end{aligned}\n\\]\nUsing the common denominator \\(288\\), this is\n\\[\nS_{31,1}(5)=\\frac9{288}+\\frac8{288}=\\frac{17}{288}.\n\\]\n\nNow factor the second integer:\n\\[\n1829=31\\cdot 59.\n\\]\nBoth factors are prime and they are distinct. Indeed, to check that \\(31\\) is prime it suffices to test prime divisors not exceeding \\(\\sqrt{31}<6\\), namely \\(2,3,5\\), and none divides \\(31\\). Similarly, \\(\\sqrt{59}<8\\), and none of \\(2,3,5,7\\) divides \\(59\\), so \\(59\\) is prime. Consequently the positive divisors of \\(1829=31\\cdot59\\) are exactly\n\\[\n1,\\ 31,\\ 59,\\ 31\\cdot59=1829.\n\\]\nThus\n\\[\n\\begin{aligned}\nS_{31,1}(1829)\n &=\\sum_{d\\mid1829}\\frac1{d+31}\\\\\n &=\\frac1{1+31}+\\frac1{31+31}\n   +\\frac1{59+31}+\\frac1{1829+31}\\\\\n &=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\n\\end{aligned}\n\\]\nThe last three terms combine to \\(1/36\\). Explicitly, \\(5580\\) is a common denominator, and\n\\[\n\\frac1{62}+\\frac1{90}+\\frac1{1860}\n =\\frac{90}{5580}+\\frac{62}{5580}+\\frac3{5580}\n =\\frac{155}{5580}\n =\\frac1{36}.\n\\]\nIt follows that\n\\[\nS_{31,1}(1829)\n =\\frac1{32}+\\frac1{36}\n =\\frac{17}{288}.\n\\]\nTherefore\n\\[\nS_{31,1}(5)=S_{31,1}(1829)=\\frac{17}{288}.\n\\]\nEqual rational numbers necessarily have equal fractional parts. In fact, because \\(0<17/288<1\\), the fractional part of each of these two sums is itself \\(17/288\\). Hence\n\\[\n\\operatorname{frac}\\bigl(S_{31,1}(5)\\bigr)\n=\n\\operatorname{frac}\\bigl(S_{31,1}(1829)\\bigr).\n\\]\nBut \\(5\\ne1829\\), while both indices are positive, and \\(k=31\\) and \\(s=1\\) are also positive. Thus, for the fixed positive parameters \\((k,s)=(31,1)\\), two distinct positive indices give the same fractional part. This directly contradicts the conjectured pairwise distinctness.\n\nThe conjecture is a conjunction of pairwise distinctness and the additional assertion that none of the sums is an integer. A failure of the pairwise-distinctness clause alone suffices to falsify the whole conjecture. Therefore the stated generalized conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

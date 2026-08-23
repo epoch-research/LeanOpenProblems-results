@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The region-count function is assumed to equal \\(a(n)\\) for every admissible configuration, so the set of attainable counts is the singleton \\(\\{a(n)\\}\\) (with attainability witnessed by the unique configuration). The supremum of this singleton is therefore \\(a(n)\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "The model has only one admissible configuration for each \\(n\\), and its region count is defined to be \\(a(n)\\). Hence the set of attainable region counts is the singleton \\(\\{a(n)\\}\\), whose supremum is \\(a(n)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Fix a nonnegative integer \\(n\\). Define\n\\[\na(0)=1,\n\\]\nand, for \\(n\\ge 1\\), define\n\\[\na(n)=5n(2n-1)+2=10n^2-5n+2.\n\\]\n(The second clause is equivalently written by expressing \\(n=k+1\\) for some \\(k\\ge0\\). Since \\(n\\ge1\\), the subtraction in \\(2n-1\\) is the usual nonnegative integer subtraction.)\n\nThe abstract model used in the statement has the following two defining properties.\n\n1. For each \\(n\\), the collection \\(C_n\\) of configurations of \\(n\\) regular pentagrams is a one-element set. Denote its unique element by \\(*\\).\n2. The region-count function\n\\[\nR_n:C_n\\longrightarrow \\mathbb N\n\\]\nis defined to have the constant value\n\\[\nR_n(c)=a(n)\n\\]\nfor every \\(c\\in C_n\\).\n\nWe prove that\n\\[\na(n)=\\sup\\{R_n(c):c\\in C_n\\}.\n\\]\n\nLet\n\\[\nS_n=\\{R_n(c):c\\in C_n\\}\n\\]\nbe the set of all region counts arising from configurations in this model. We first show that\n\\[\nS_n=\\{a(n)\\}.\n\\]\nIndeed, if \\(x\\in S_n\\), then by the definition of an image there is some \\(c\\in C_n\\) such that \\(x=R_n(c)\\). The region-count function is constant with value \\(a(n)\\), so \\(x=a(n)\\). This proves \\(S_n\\subseteq\\{a(n)\\}\\).\n\nConversely, the unique object \\(*\\) belongs to \\(C_n\\), and by definition\n\\[\nR_n(*)=a(n).\n\\]\nThus \\(a(n)\\in S_n\\), proving \\(\\{a(n)\\}\\subseteq S_n\\). Hence \\(S_n=\\{a(n)\\}\\), as claimed.\n\nIt remains only to evaluate the supremum. For any natural number \\(m\\), the supremum of the singleton \\(\\{m\\}\\) is \\(m\\): first, \\(m\\) is an upper bound because the sole member of the set is \\(m\\); second, every upper bound \\(u\\) of the singleton satisfies \\(m\\le u\\), because \\(m\\) itself belongs to the singleton. Therefore \\(m\\) is its least upper bound. Applying this with \\(m=a(n)\\) gives\n\\[\n\\sup S_n=\\sup\\{a(n)\\}=a(n).\n\\]\nEquivalently,\n\\[\na(n)=\\sup\\{R_n(c):c\\in C_n\\},\n\\]\nwhich is the stated result for every \\(n\\ge0\\).\n\nThere are no further geometric constructions, intersection estimates, planar-graph arguments, or geometric case splits in this proof. In particular, the conclusion follows because the model defines \\(C_n\\) to be a singleton and defines every modeled region count to be \\(a(n)\\). Consequently, while the displayed supremum identity is proved for that abstract model, this argument by itself does not establish that actual configurations of regular pentagrams with arbitrary centers and radii have at most \\(10n^2-5n+2\\) regions, nor does it construct an actual configuration attaining that bound. Those geometric assertions would require additional definitions and arguments not present among the premises used here.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

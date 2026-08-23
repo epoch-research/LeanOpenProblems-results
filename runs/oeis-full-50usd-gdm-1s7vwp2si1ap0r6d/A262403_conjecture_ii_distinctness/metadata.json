@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The argument exhibits the collision at indices 0 and 1: since \\(T(0)=0\\) and \\(T(1)=1\\), both contain no primes, so \\(\\pi(T(0))=\\pi(T(1))=0\\) despite \\(0\\ne1\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "The indices $0$ and $1$ give triangular numbers $0$ and $1$, respectively, and both have prime count $0$, so the map is not injective on $\\mathbb N$. Thus the accepted argument exploits the formal statement’s inclusion of $n=0$ and does not produce a collision between two positive indices.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nT(n)=\\frac{n(n+1)}2\n\\]\nbe the \\(n\\)-th triangular number, and let \\(\\pi(x)\\) denote the number of primes not exceeding \\(x\\). Define\n\\[\nf(n)=\\pi(T(n)).\n\\]\n\nThe statement actually formalized in the accepted disproof is that \\(f\\) is injective on all nonnegative integers \\(\\mathbb N=\\{0,1,2,\\ldots\\}\\). We disprove that statement by comparing the two distinct indices \\(0\\) and \\(1\\).\n\nFirst,\n\\[\nT(0)=\\frac{0(0+1)}2=0.\n\\]\nThere are no primes less than or equal to \\(0\\), so \\(\\pi(0)=0\\). Consequently,\n\\[\nf(0)=\\pi(T(0))=\\pi(0)=0.\n\\]\n\nSecond,\n\\[\nT(1)=\\frac{1(1+1)}2=1.\n\\]\nThere are also no primes less than or equal to \\(1\\), since the smallest prime is \\(2\\). Thus \\(\\pi(1)=0\\), and hence\n\\[\nf(1)=\\pi(T(1))=\\pi(1)=0.\n\\]\n\nIt follows that\n\\[\nf(0)=0=f(1),\n\\]\neven though \\(0\\ne 1\\). This is exactly a failure of injectivity. Therefore the map\n\\[\nn\\longmapsto \\pi\\!\\left(\\frac{n(n+1)}2\\right)\n\\]\nis not injective when its domain is all nonnegative integers.\n\nThere is an important domain qualification. The canonical OEIS conjecture says that the values \\(\\pi(T(n))\\) are pairwise distinct for \\(n\\ge 1\\). The counterexample above uses \\(n=0\\), so it does not disprove that canonical statement. It disproves only the stronger formalized assertion of injectivity on all of \\(\\mathbb N\\). Thus the accepted disproof rests on a mismatch between the formalized domain and the OEIS domain: including the extra index \\(0\\) creates the collision \\(\\pi(T(0))=\\pi(T(1))=0\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

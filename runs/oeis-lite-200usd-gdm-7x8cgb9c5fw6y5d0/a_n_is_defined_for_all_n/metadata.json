@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\): \\(\\Phi_1(0)=-1\\), and for every \\(k>1\\), \\(\\Phi_k(0)=1\\) because its constant coefficient is \\(1\\). Thus for every positive \\(k\\), \\(|\\Phi_k(0)|=1\\), which is not prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  "summary": {
+    "text": "Take the boundary case \\(n=0\\): \\(\\Phi_1(0)=-1\\), while every cyclotomic polynomial \\(\\Phi_k\\) with \\(k>1\\) has constant term \\(1\\). Hence \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), so no such value is prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\) denote the \\(k\\)-th cyclotomic polynomial. Consider the universally quantified assertion in the accepted formal statement:\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\quad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) contains \\(0\\). We disprove this assertion by taking\n\\[\n n=0.\n\\]\nWe will show that for every allowed index \\(k>0\\),\n\\[\n |\\Phi_k(0)|=1.\n\\]\nSince \\(1\\) is not prime, no such \\(k\\) can work.\n\nWe first recall the needed fact about the constant terms of cyclotomic polynomials. For \\(k=1\\),\n\\[\n \\Phi_1(X)=X-1,\n\\]\nso\n\\[\n \\Phi_1(0)=-1.\n\\]\nFor every integer \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\), and hence\n\\[\n \\Phi_k(0)=1.\n\\]\nFor completeness, this constant-term assertion follows directly by induction from the standard cyclotomic factorization\n\\[\n X^m-1=\\prod_{d\\mid m}\\Phi_d(X).\n\\]\nIndeed, evaluate this identity at \\(X=0\\). Its left-hand side is \\(-1\\). The factor belonging to \\(d=1\\) is \\(\\Phi_1(0)=-1\\). If \\(m>1\\), every divisor \\(d\\) of \\(m\\) other than \\(1\\) and \\(m\\) satisfies \\(1<d<m\\). Assuming inductively that \\(\\Phi_d(0)=1\\) for those proper divisors, evaluation at zero gives\n\\[\n -1\n =\\prod_{d\\mid m}\\Phi_d(0)\n =\\Phi_1(0)\n   \\left(\\prod_{\\substack{d\\mid m\\\\1<d<m}}\\Phi_d(0)\\right)\n   \\Phi_m(0)\n =(-1)\\cdot 1\\cdot\\Phi_m(0).\n\\]\nTherefore \\(\\Phi_m(0)=1\\). This proves the claim for every \\(m>1\\), beginning with \\(m=2\\), where the product over intermediate divisors is empty and is therefore \\(1\\).\n\nNow suppose, toward a contradiction, that the asserted universal existence statement holds. Applying it to \\(n=0\\), there must be a positive integer \\(k\\) such that \\(|\\Phi_k(0)|\\) is prime. Because \\(k>0\\), there are exactly two relevant cases.\n\n1. If \\(k=1\\), then\n\\[\n |\\Phi_k(0)|=|\\Phi_1(0)|=|-1|=1.\n\\]\n\n2. If \\(k>1\\), then the constant-term result above yields\n\\[\n |\\Phi_k(0)|=|1|=1.\n\\]\n\nThus in every case permitted by \\(k>0\\), one has \\(|\\Phi_k(0)|=1\\). But a prime natural number must be greater than \\(1\\), so \\(1\\) is not prime. This contradicts the required primality of \\(|\\Phi_k(0)|\\). Consequently, for \\(n=0\\) there is no positive index \\(k\\) for which \\(\\Phi_k(0)\\), in absolute value, is prime. Hence the universally quantified assertion over all natural numbers is false, and the corresponding least index \\(a(0)\\) is not defined.\n\nThere is an important scope distinction. This counterexample disproves the accepted formal statement because that statement quantifies over all natural numbers and therefore includes \\(0\\). If the canonical phrase “for every positive integer \\(n\\)” is instead read strictly as \\(n\\ge 1\\), then \\(n=0\\) is outside its domain, and this argument by itself does not disprove that differently restricted conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
   }
 }

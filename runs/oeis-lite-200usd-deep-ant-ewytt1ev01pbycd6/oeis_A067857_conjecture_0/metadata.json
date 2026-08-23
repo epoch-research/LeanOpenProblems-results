@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\), which is odd and at least three. In the Möbius sum the squareful quotient terms vanish, giving \\(a(8)=8!(H_8-H_4)=25584>0\\), so this value has the required factor-count parity but not the asserted negative sign.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  "summary": {
+    "text": "The counterexample is \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since \\(\\mu(8)=\\mu(4)=0\\), \\(\\mu(2)=-1\\), and \\(\\mu(1)=1\\), the divisor sum gives \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negative sign.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_m=\\sum_{j=1}^m \\frac1j\n\\]\ndenote the \\(m\\)-th harmonic number. The sequence is defined by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nIf we put \\(b(k)=a(k)/k!\\), this becomes\n\\[\n\\sum_{k\\mid n}b(k)=H_n.\n\\]\nMöbius inversion therefore gives\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nwhere \\(\\mu\\) is the ordinary Möbius function. Recall that \\(\\mu(m)=0\\) when a square of a prime divides \\(m\\), while for a product of \\(r\\) distinct primes it equals \\((-1)^r\\), and \\(\\mu(1)=1\\).\n\nWe disprove the conjecture by taking \\(n=8\\). This is a positive integer, and its positive divisors are exactly\n\\[\n1,2,4,8.\n\\]\nFor these four divisors, the arguments \\(8/d\\) occurring in the Möbius coefficients are respectively \\(8,4,2,1\\). Their Möbius values are\n\\[\n\\mu(8)=0,\n\\qquad\n\\mu(4)=0,\n\\qquad\n\\mu(2)=-1,\n\\qquad\n\\mu(1)=1.\n\\]\nIndeed, both \\(8\\) and \\(4\\) are divisible by the square \\(2^2\\), so their Möbius values vanish; \\(2\\) is a product of one distinct prime, so its value is \\(-1\\); and the value at \\(1\\) is \\(1\\).\n\nConsequently, the factorial-scaled Möbius transform at \\(8\\) reduces to\n\\[\n\\begin{aligned}\na(8)\n&=8!\\bigl(\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8\\bigr)\\\\\n&=8!\\bigl(0\\cdot H_1+0\\cdot H_2-H_4+H_8\\bigr)\\\\\n&=8!(H_8-H_4).\n\\end{aligned}\n\\]\nThe terms through \\(1/4\\) cancel in this difference, leaving\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nSince \\(8!=40320=48\\cdot840\\), we obtain\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nOn the other hand,\n\\[\n8=2^3.\n\\]\nThus the total number of prime factors of \\(8\\), counted with multiplicity, is\n\\[\n\\Omega(8)=3.\n\\]\nThis number is odd and is at least \\(3\\). Therefore the right-hand side of the conjectured equivalence,\n\\[\n\\Omega(8)\\text{ is odd and }\\Omega(8)\\ge 3,\n\\]\nis true, whereas its left-hand side, \\(a(8)<0\\), is false.\n\nHence the proposed equivalence fails at the positive integer \\(n=8\\), and the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
   }
 }

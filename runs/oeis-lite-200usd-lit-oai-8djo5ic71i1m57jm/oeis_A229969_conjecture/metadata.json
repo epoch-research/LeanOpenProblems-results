@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\). Since the prescribed value of \\(x\\) is at least \\(3\\) and \\(x\\le y\\le z\\), all three summands are at least \\(3\\), so their sum is at least \\(9\\), contradicting \\(x+y+z=7\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "Take \\(n=7\\). Since the prescribed \\(x\\) lies in \\(\\{3,4,6,10,15\\}\\), we have \\(x\\ge 3\\); the ordering \\(x\\le y\\le z\\) then forces \\(x+y+z\\ge 9\\), so no such triple can sum to \\(7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(a(n)\\) count the positive integer triples\n\\[\n0<x\\le y\\le z,\\qquad x+y+z=n,\n\\]\nfor which all six integers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare prime. The conjecture consists of the assertion that \\(a(n)>0\\) for every \\(n>5\\), together with the stronger assertion that whenever \\(n>6\\), one can choose such a triple with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\n\nWe disprove the strengthened assertion at \\(n=7\\).\n\nSuppose, for contradiction, that the claimed representation existed for \\(n=7\\). Then there would be positive integers \\(x,y,z\\) satisfying\n\\[\nx\\le y\\le z,\\qquad x+y+z=7,\n\\]\nand\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nEvery member of the displayed finite set is at least \\(3\\), so \\(x\\ge 3\\). Since \\(x\\le y\\), it follows that \\(y\\ge 3\\); and since \\(y\\le z\\), it follows that \\(z\\ge 3\\). Consequently\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nThis contradicts the required equality \\(x+y+z=7\\). Thus no ordered positive triple representing \\(7\\) can have its first coordinate in \\(\\{3,4,6,10,15\\}\\). This obstruction arises before any primality conditions need to be considered.\n\nBecause \\(7>6\\), the conjecture explicitly requires such a representation for \\(n=7\\). Its nonexistence therefore disproves the universal conjecture.\n\nFor completeness, this counterexample targets the “moreover” clause rather than the basic positivity claim. Indeed, \\(7\\) itself does have a triple counted by \\(a(7)\\), namely\n\\[\n7=2+2+3.\n\\]\nIt is ordered as \\(2\\le2\\le3\\), and the six required numbers are\n\\[\n2\\cdot2-1=3,\\quad 2\\cdot2-1=3,\\quad 2\\cdot3-1=5,\n\\]\n\\[\n2\\cdot2\\cdot2-1=7,\\quad\n2\\cdot2\\cdot3-1=11,\\quad\n2\\cdot2\\cdot3-1=11,\n\\]\nall of which are prime. Hence \\(a(7)>0\\), but the valid least coordinate is \\(2\\), which is not in the prescribed set. The strengthened representation claim, and therefore the stated conjunction as a whole, is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

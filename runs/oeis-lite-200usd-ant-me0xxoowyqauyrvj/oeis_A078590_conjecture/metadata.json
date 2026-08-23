@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Computing the initial terms gives \\(a(5)=171\\) and \\(a(6)=N=332572817028187686275682948600327513806149983112761\\). Since \\(N\\equiv3\\pmod{18}\\) and \\(2^{18}\\equiv1\\pmod{171}\\), one has \\(2^N+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the division defining \\(a(7)\\) is not exact.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "The relevant earlier terms are \\(a(5)=171\\) and \\(a(6)=332572817028187686275682948600327513806149983112761\\), with \\(a(6)\\equiv3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{171}\\), it follows that \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the next required division is not exact.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the sequence be defined by\n\\[\na(1)=a(2)=1,\\qquad a(n)=\\frac{2^{a(n-1)}+1}{a(n-2)}\\quad(n\\ge 3).\n\\]\nWe will show that the term obtained at the seventh step is not an integer. Equivalently, we will show that, although all the divisions through the computation of \\(a(6)\\) are exact, the positive integer \\(a(5)\\) does not divide \\(2^{a(6)}+1\\).\n\nFirst compute the initial terms. The recurrence gives\n\\[\n a(3)=\\frac{2^{a(2)}+1}{a(1)}=\\frac{2^1+1}{1}=3,\n\\]\n\\[\n a(4)=\\frac{2^{a(3)}+1}{a(2)}=\\frac{2^3+1}{1}=9,\n\\]\nand\n\\[\n a(5)=\\frac{2^{a(4)}+1}{a(3)}\n      =\\frac{2^9+1}{3}\n      =\\frac{513}{3}=171.\n\\]\nThus the next term is\n\\[\n a(6)=\\frac{2^{171}+1}{9}.\n\\]\nThis division is exact. In fact, direct integer exponentiation gives\n\\[\n2^{171}=2993155353253689176481146537402947624255349848014848,\n\\]\nso\n\\[\n2^{171}+1\n =2993155353253689176481146537402947624255349848014849\n =9N,\n\\]\nwhere\n\\[\nN=332572817028187686275682948600327513806149983112761.\n\\]\nConsequently \\(a(6)=N\\). (The displayed power identity can, for example, be obtained by repeated squaring or repeated doubling; multiplying the displayed value of \\(N\\) by \\(9\\) gives exactly the displayed value of \\(2^{171}+1\\).)\n\nWe now determine the residue of the exponent \\(N\\) modulo \\(18\\). The exact identity\n\\[\nN=18\\cdot18476267612677093681982386033351528544786110172931+3\n\\]\nshows that\n\\[\nN\\equiv 3\\pmod {18}.\n\\]\nThere is also a purely modular way to see why this residue occurs. Since \\(\\varphi(81)=54\\), Euler's theorem gives \\(2^{54}\\equiv1\\pmod{81}\\). As \\(171=3\\cdot54+9\\),\n\\[\n2^{171}\\equiv2^9=512\\equiv26\\pmod{81}.\n\\]\nBoth \\(2^{171}\\) and \\(26\\) are even, so their difference, already divisible by the odd number \\(81\\), is in fact divisible by \\(162\\). Hence\n\\[\n2^{171}\\equiv26\\pmod{162}.\n\\]\nBecause \\(9N=2^{171}+1\\), this yields \\(9N\\equiv27\\pmod{162}\\), or \\(162\\mid9(N-3)\\). Cancelling the factor \\(9\\) gives \\(18\\mid N-3\\), again proving \\(N\\equiv3\\pmod{18}\\).\n\nNext observe that \\(18\\) is a period for powers of \\(2\\) modulo \\(171\\), because\n\\[\n2^{18}=262144=171\\cdot1533+1.\n\\]\nThus\n\\[\n2^{18}\\equiv1\\pmod{171}.\n\\]\nFor completeness, the exponent reduction used here is the following elementary fact: if \\(x^d\\equiv1\\pmod m\\) and an exponent is written as \\(dq+r\\), then\n\\[\nx^{dq+r}=(x^d)^q x^r\\equiv1^q x^r=x^r\\pmod m.\n\\]\nApply this with \\(x=2\\), \\(d=18\\), \\(m=171\\), and with the above expression \\(N=18q+3\\). It follows that\n\\[\n2^N\\equiv2^3=8\\pmod{171}.\n\\]\nTherefore\n\\[\n2^N+1\\equiv9\\pmod{171}.\n\\]\nSince \\(0<9<171\\), this residue is nonzero; hence\n\\[\n171\\nmid 2^N+1.\n\\]\n\nFinally, the recurrence at the next index would require\n\\[\na(7)=\\frac{2^{a(6)}+1}{a(5)}=\\frac{2^N+1}{171}.\n\\]\nA quotient of integers with positive denominator \\(171\\) is an integer exactly when \\(171\\) divides its numerator. We have just proved that this divisibility fails. Therefore \\(a(7)\\) is not an integer, and the conjecture that every term of the sequence is an integer is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(k=31\\) and \\(s=1\\): the divisor sets of \\(5\\) and \\(1829=31\\cdot59\\) give\n\\[\\frac1{32}+\\frac1{36}=\\frac{17}{288}=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\\]\nThus the two distinct positive inputs \\(5\\) and \\(1829\\) have equal sums (hence equal fractional parts), contradicting pairwise distinctness.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take \\(k=31\\), \\(s=1\\), and the distinct integers \\(5\\) and \\(1829=31\\cdot59\\). Their divisor sums are exactly equal: \\(1/32+1/36=17/288\\), while \\(1/32+1/62+1/90+1/1860=17/288\\), so their fractional parts coincide.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS_{k,s}(n)=\\sum_{d\\mid n}\\frac{1}{(d+k)^s}\n\\]\nfor positive integers \\(n,k,s\\). The conjecture asserts, in particular, that for each fixed pair of positive integers \\(k,s\\), distinct positive integers \\(n\\) always give distinct fractional parts of \\(S_{k,s}(n)\\).\n\nWe disprove this assertion by taking\n\\[\nk=31,\\qquad s=1,\n\\]\nand comparing the two distinct positive integers\n\\[\nn_1=5,\\qquad n_2=1829.\n\\]\nIn fact, the corresponding sums will turn out to be exactly equal, which is stronger than merely having equal fractional parts.\n\nFirst determine the divisor sets. The integer \\(5\\) is prime, so its positive divisors are precisely\n\\[\n1,5.\n\\]\nAlso,\n\\[\n1829=31\\cdot 59.\n\\]\nBoth factors are prime. Indeed, to check that \\(31\\) is prime it suffices to test the primes not exceeding \\(\\sqrt{31}<6\\), namely \\(2,3,5\\); none divides \\(31\\). Similarly, to check that \\(59\\) is prime it suffices to test \\(2,3,5,7\\), the primes not exceeding \\(\\sqrt{59}<8\\); none divides \\(59\\). Since \\(31\\) and \\(59\\) are distinct primes, the positive divisors of their product are exactly\n\\[\n1,31,59,31\\cdot 59,\n\\]\nthat is,\n\\[\n1,31,59,1829.\n\\]\n\nWe now evaluate the first sum. Because the positive divisors of \\(5\\) are \\(1\\) and \\(5\\),\n\\[\n\\begin{aligned}\nS_{31,1}(5)\n  &=\\frac{1}{1+31}+\\frac{1}{5+31}\\\\\n  &=\\frac1{32}+\\frac1{36}\\\\\n  &=\\frac9{288}+\\frac8{288}\\\\\n  &=\\frac{17}{288}.\n\\end{aligned}\n\\]\n\nFor \\(1829\\), using its four positive divisors gives\n\\[\n\\begin{aligned}\nS_{31,1}(1829)\n &=\\frac{1}{1+31}+\\frac{1}{31+31}\n   +\\frac{1}{59+31}+\\frac{1}{1829+31}\\\\\n &=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\n\\end{aligned}\n\\]\nThe last three terms combine to \\(1/36\\). Explicitly, a common denominator is \\(5580\\), and\n\\[\n\\frac1{62}+\\frac1{90}+\\frac1{1860}\n =\\frac{90}{5580}+\\frac{62}{5580}+\\frac3{5580}\n =\\frac{155}{5580}\n =\\frac1{36},\n\\]\nsince \\(5580=36\\cdot155\\). Consequently,\n\\[\nS_{31,1}(1829)\n =\\frac1{32}+\\frac1{36}\n =\\frac{17}{288}.\n\\]\nThus\n\\[\nS_{31,1}(5)=S_{31,1}(1829).\n\\]\nEqual rational numbers necessarily have equal fractional parts; indeed, both fractional parts here are \\(17/288\\), since \\(0<17/288<1\\). On the other hand,\n\\[\n5\\ne1829.\n\\]\nTherefore, for the positive parameters \\(k=31\\) and \\(s=1\\), two distinct positive inputs have the same fractional part. This contradicts the conjectured pairwise distinctness. Because the original statement universally quantifies over all positive \\(k\\) and \\(s\\) and includes pairwise distinctness as one of its required conclusions, this single counterexample disproves the conjecture, regardless of whether its separate nonintegrality assertion might hold in other cases.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

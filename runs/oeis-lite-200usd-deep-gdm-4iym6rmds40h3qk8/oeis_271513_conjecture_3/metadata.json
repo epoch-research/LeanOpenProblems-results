@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The proved statement is simply the tautology \\(\\mathrm{True}\\), so it holds immediately and uses no number-theoretic argument or assumptions.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  "summary": {
+    "text": "No mathematical argument about representations or coprimality is present: the accepted statement is merely the tautology \\(\\mathrm{True}\\), which holds unconditionally. Thus the proof does not establish the stated coprimality obstruction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition asserted by the accepted theorem is simply\n\\[\n\\top,\n\\]\nthe always-true proposition. It does not quantify over positive integers \\(a,b,c\\), does not assume that every natural number has a four-square representation of the stated kind, and does not assert any conclusion about pairwise coprimality.\n\nBy the definition of the truth proposition \\(\\top\\), it has an unconditional proof: its sole assertion is that “true” holds. Therefore \\(\\top\\) is true, with no hypotheses and no cases to consider. This proves the proposition asserted by the theorem.\n\nIn particular, the accepted theorem as stated does not constitute a proof of the canonical number-theoretic conjecture that suitable positive integers \\(a,b,c\\) cannot be pairwise coprime; that conjecture is absent from the proposition being proved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
   }
 }

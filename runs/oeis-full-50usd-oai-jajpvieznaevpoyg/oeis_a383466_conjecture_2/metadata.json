@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "By definition, every admissible configuration has region count \\(a(n)\\), so the set of attainable counts is the singleton \\(\\{a(n)\\}\\). Its supremum is therefore \\(a(n)\\); the proof uses no geometric comparison or intersection counting.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "The modeled configuration space has only one element, whose number of regions is stipulated to be \\(a(n)\\), so the set of possible region counts is the singleton \\(\\{a(n)\\}\\). The supremum of this singleton is \\(a(n)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Fix a nonnegative integer \\(n\\). Define the numerical sequence \\(a\\) by\n\\[\na(0)=1,\n\\]\nand, when \\(n=k+1\\ge 1\\), by\n\\[\na(n)=5n(2n-1)+2=10n^2-5n+2.\n\\]\n(The displayed formula for positive \\(n\\) is exactly the same as \\(5(k+1)(2(k+1)-1)+2\\).)\n\nIn the mathematical model used in the accepted statement, the collection of configurations of \\(n\\) pentagrams is defined to be a one-element set. Denote its unique element by \\(\\ast\\). The region-counting function\n\\[\nR_n:\\{\\ast\\}\\longrightarrow \\mathbb N\n\\]\nis then defined by\n\\[\nR_n(C)=a(n)\n\\]\nfor every \\(C\\in\\{\\ast\\}\\). In particular, the function is constant; it does not depend on the purported configuration.\n\nWe determine its set of possible values. First, if \\(r\\) lies in the range of \\(R_n\\), then by the definition of range there is some \\(C\\in\\{\\ast\\}\\) such that\n\\[\nr=R_n(C).\n\\]\nBy the definition of \\(R_n\\), the right-hand side is \\(a(n)\\), so \\(r=a(n)\\). This proves\n\\[\n\\operatorname{range}(R_n)\\subseteq \\{a(n)\\}.\n\\]\nConversely, the one-element configuration space is nonempty: it contains \\(\\ast\\). Evaluating the region-counting function there gives\n\\[\nR_n(\\ast)=a(n),\n\\]\nso \\(a(n)\\) belongs to the range. Hence\n\\[\n\\{a(n)\\}\\subseteq \\operatorname{range}(R_n).\n\\]\nCombining the two inclusions yields\n\\[\n\\operatorname{range}(R_n)=\\{a(n)\\}.\n\\]\n\nThe supremum of a singleton set \\(\\{m\\}\\) of natural numbers is \\(m\\): indeed, \\(m\\) is an upper bound because the only member of the set is \\(m\\), and every upper bound \\(u\\) of the set must satisfy \\(m\\le u\\), again because \\(m\\) itself is a member. Applying this with \\(m=a(n)\\) gives\n\\[\n\\sup\\operatorname{range}(R_n)\n =\\sup\\{a(n)\\}\n =a(n).\n\\]\nTherefore, for every \\(n\\in\\mathbb N\\),\n\\[\na(n)=\\sup\\{R_n(C):C\\text{ is a configuration in the stated model}\\}.\n\\]\nThis is the claimed equality.\n\nIt is important to identify the scope of this argument. Under the definitions in the accepted statement, “configuration” is merely an element of a singleton and “number of regions” is stipulated to equal \\(a(n)\\). Consequently, the proof establishes the supremum assertion for that abstract singleton model. It does not supply a geometric proof that actual regular pentagrams with arbitrary centers and radii have at most \\(10n^2-5n+2\\) regions, nor does it construct an actual configuration attaining that bound; those geometric facts are not encoded in the definitions used by the accepted statement.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

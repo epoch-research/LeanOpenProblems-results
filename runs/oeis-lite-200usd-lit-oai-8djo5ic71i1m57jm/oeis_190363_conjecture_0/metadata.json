@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=140\\), exact floor evaluations \\(\\lfloor k\\sqrt{5/4}\\rfloor=(156,160,175,180)\\) for \\(k=(140,144,157,161)\\) give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). But \\(528+484-471=541\\ne542\\), so this index is a counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "At \\(n=140\\), rational bounds on \\(\\sqrt5\\) give the exact values \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). The proposed relation would instead require \\(a(161)=528+484-471=541\\), contradicting \\(a(161)=542\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor,\n\\qquad n\\ge 1.\n\\]\nWe disprove the proposed identity\n\\[\na(n+21)=a(n+17)+a(n+4)-a(n)\n\\]\nby evaluating it at the single admissible value \\(n=140\\).\n\nPut\n\\[\n\\alpha=\\sqrt{\\frac54}.\n\\]\nSince \\(\\alpha\\ge 0\\) and \\(\\alpha^2=5/4\\), for every positive integer \\(m\\), if \\(x=m\\alpha\\), then\n\\[\n(2x)^2=4m^2\\alpha^2=5m^2.\n\\]\nThus, to prove \\(\\lfloor m\\alpha\\rfloor=k\\), it suffices to prove\n\\[\n(2k)^2\\le 5m^2<\\bigl(2(k+1)\\bigr)^2.\n\\]\nIndeed, all quantities involved are nonnegative, so these inequalities between squares imply\n\\[\n2k\\le 2m\\alpha<2(k+1),\n\\]\nand hence\n\\[\nk\\le m\\alpha<k+1.\n\\]\nThis is exactly the condition that \\(\\lfloor m\\alpha\\rfloor=k\\).\n\nWe now carry this out for the four indices occurring when \\(n=140\\).\n\nFirst, for \\(m=140\\) and \\(k=156\\),\n\\[\n(2\\cdot156)^2=312^2=97344,\n\\]\n\\[\n5\\cdot140^2=5\\cdot19600=98000,\n\\]\nand\n\\[\n(2\\cdot157)^2=314^2=98596.\n\\]\nTherefore\n\\[\n97344\\le 98000<98596,\n\\]\nso\n\\[\n\\left\\lfloor140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor140/4\\rfloor=35\\). Consequently,\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nSecond, for \\(m=144\\) and \\(k=160\\),\n\\[\n(2\\cdot160)^2=320^2=102400,\n\\]\n\\[\n5\\cdot144^2=5\\cdot20736=103680,\n\\]\nand\n\\[\n(2\\cdot161)^2=322^2=103684.\n\\]\nHence\n\\[\n102400\\le 103680<103684,\n\\]\nwhich gives\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nSince \\(\\lfloor144/4\\rfloor=36\\), we obtain\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nThird, for \\(m=157\\) and \\(k=175\\),\n\\[\n(2\\cdot175)^2=350^2=122500,\n\\]\n\\[\n5\\cdot157^2=5\\cdot24649=123245,\n\\]\nand\n\\[\n(2\\cdot176)^2=352^2=123904.\n\\]\nThus\n\\[\n122500\\le 123245<123904,\n\\]\nso\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nMoreover, \\(157=4\\cdot39+1\\), and therefore \\(\\lfloor157/4\\rfloor=39\\). It follows that\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFinally, for \\(m=161\\) and \\(k=180\\),\n\\[\n(2\\cdot180)^2=360^2=129600,\n\\]\n\\[\n5\\cdot161^2=5\\cdot25921=129605,\n\\]\nand\n\\[\n(2\\cdot181)^2=362^2=131044.\n\\]\nTherefore\n\\[\n129600\\le129605<131044,\n\\]\nand hence\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAs \\(161=4\\cdot40+1\\), we also have \\(\\lfloor161/4\\rfloor=40\\). Consequently,\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nNow specialize the conjectured recurrence to \\(n=140\\). Since\n\\[\n140+21=161,\\qquad 140+17=157,\\qquad 140+4=144,\n\\]\nit would assert\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nBut the exact values found above give\n\\[\na(157)+a(144)-a(140)=528+484-471=541,\n\\]\nwhereas\n\\[\na(161)=542.\n\\]\nThus the proposed equality at \\(n=140\\) would be \\(542=541\\), which is false. Since \\(140\\ge1\\), this is a valid counterexample to the universal claim. Therefore the conjectured recurrence does not hold for every \\(n\\ge1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

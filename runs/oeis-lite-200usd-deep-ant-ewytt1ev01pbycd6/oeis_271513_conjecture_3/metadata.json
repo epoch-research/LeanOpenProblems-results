@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so its proof requires no mathematical argument. In particular, it does not establish the claimed obstruction to pairwise coprimality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  "summary": {
+    "text": "The formal statement is merely the tautology \\(\\mathrm{True}\\), so the proof is immediate and contains no number-theoretic argument. In particular, it does not establish the claimed obstruction to pairwise coprimality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition to be proved is simply \\(\\mathrm{True}\\).\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally: it has a canonical witness, requiring no assumptions and no subsidiary construction. Taking this witness proves \\(\\mathrm{True}\\).\n\nTherefore the stated theorem holds.\n\nNo assertion about four-square representations, the coefficients \\(a,b,c\\), or pairwise coprimality occurs in the theorem statement, so those notions play no role in this proof.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
   }
 }

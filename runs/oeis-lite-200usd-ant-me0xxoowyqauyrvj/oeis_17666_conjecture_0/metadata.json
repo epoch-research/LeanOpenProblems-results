@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=18\\): since \\(\\sigma(18)=39\\), its reduced denominator is \\(18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\) makes the corresponding denominator at \\(6\\) equal to \\(1=2^0\\). Thus the premise holds at \\(18\\), but the conclusion would require \\(6\\) to be a power of two, which it is not.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "Take \\(n=18\\): since \\(\\sigma(18)=39\\), its denominator is \\(18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\) makes the denominator at \\(6\\) equal to \\(1=2^0\\), so \\(a(18)=6\\) belongs to A005153. However, \\(18\\) does not belong to A005153 because its denominator \\(6\\) is not a power of two.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS(n)=\\sum_{d\\mid n}\\frac1d\n\\]\nand let \\(a(n)\\) be the denominator of \\(S(n)\\) after the fraction has been reduced to lowest terms. Thus \\(a\\) is sequence A017666.\n\nFor completeness, if \\(\\sigma(n)=\\sum_{d\\mid n}d\\), then\n\\[\nS(n)=\\frac{\\sigma(n)}{n}.\n\\]\nIndeed, the map \\(d\\mapsto n/d\\) permutes the positive divisors of \\(n\\), and hence\n\\[\n\\sum_{d\\mid n}\\frac1d\n =\\frac1n\\sum_{d\\mid n}\\frac nd\n =\\frac1n\\sum_{e\\mid n}e\n =\\frac{\\sigma(n)}n.\n\\]\nConsequently,\n\\[\na(n)=\\frac{n}{\\gcd(n,\\sigma(n))}.\n\\]\n\nIn the formulation under consideration, membership in A005153 is the following predicate: an integer \\(m\\) belongs to A005153 precisely when \\(a(m)\\) is a power of two. In symbols, writing \\(P(m)\\) for “\\(m\\) belongs to A005153,”\n\\[\nP(m)\\quad\\Longleftrightarrow\\quad \\exists k\\in\\mathbb N\\text{ such that }a(m)=2^k.\n\\]\nThe conjecture therefore asserts\n\\[\n\\forall n\\in\\mathbb N,\\qquad P(a(n))\\Longrightarrow P(n).\n\\]\nWe disprove this universal implication with \\(n=18\\).\n\nThe positive divisors of \\(18\\) are\n\\[\n1,2,3,6,9,18,\n\\]\nso\n\\[\n\\sigma(18)=1+2+3+6+9+18=39.\n\\]\nIt follows that\n\\[\nS(18)=\\frac{39}{18}=\\frac{13}{6}.\n\\]\nSince \\(13\\) and \\(6\\) are relatively prime, this is in lowest terms, and therefore\n\\[\na(18)=6.\n\\]\nEquivalently, the denominator formula gives the same result because\n\\(\n\\gcd(18,39)=3\n\\), and hence \\(a(18)=18/3=6\\).\n\nNext consider \\(6\\). Its positive divisors are\n\\[\n1,2,3,6,\n\\]\nand therefore\n\\[\n\\sigma(6)=1+2+3+6=12.\n\\]\nThus\n\\[\nS(6)=\\frac{12}{6}=2=\\frac21,\n\\]\nso its reduced denominator is\n\\[\na(6)=1.\n\\]\n\nWe can now check the hypothesis of the conjectured implication at \\(n=18\\). Since \\(a(18)=6\\), the statement \\(P(a(18))\\) is the statement \\(P(6)\\). By the definition of \\(P\\), this asks whether \\(a(6)\\) is a power of two. We have just shown that\n\\[\na(6)=1=2^0.\n\\]\nHence \\(P(6)\\), and therefore \\(P(a(18))\\), is true.\n\nOn the other hand, \\(P(18)\\) is false. If it were true, then by definition there would be some \\(k\\in\\mathbb N\\) such that\n\\[\na(18)=2^k.\n\\]\nUsing \\(a(18)=6\\), this would say\n\\[\n6=2^k.\n\\]\nNo such nonnegative integer \\(k\\) exists. Exhaustively: if \\(k=0\\), then \\(2^k=1\\); if \\(k=1\\), then \\(2^k=2\\); if \\(k=2\\), then \\(2^k=4\\). In the remaining case \\(k\\ge 3\\), write \\(k=3+r\\) with \\(r\\in\\mathbb N\\). Then\n\\[\n2^k=2^{3+r}=8\\cdot 2^r\\ge 8>6.\n\\]\nThus \\(6\\) is not a power of two, proving \\(\\neg P(18)\\).\n\nWe have therefore exhibited an integer \\(18\\) for which\n\\[\nP(a(18))\\quad\\text{is true, but}\\quad P(18)\\quad\\text{is false}.\n\\]\nSpecifically,\n\\[\na(18)=6,\\qquad a(a(18))=a(6)=1=2^0,\n\\]\nwhile \\(a(18)=6\\) itself is not a power of two. Hence the implication “if \\(a(n)\\) belongs to A005153, then \\(n\\) belongs to A005153” fails at \\(n=18\\), and the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

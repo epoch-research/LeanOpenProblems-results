@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so it holds immediately and uses no number-theoretic argument or properties of the coefficients.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  "summary": {
+    "text": "The statement proved is simply \u000127True\u000127, which holds unconditionally by its sole canonical witness. Thus the proof contains no mathematical argument about coprimality or four-square representations.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition asserted by `oeis_271513_conjecture_3` is simply\n\\[\n\\mathrm{True}.\n\\]\nIt has no hypotheses and contains no quantified variables. By the meaning of the proposition \\(\\mathrm{True}\\), it is unconditionally valid. Therefore \\(\\mathrm{True}\\) holds, which proves the stated theorem.\n\nNo property of four-square representations, square values of \\(ax^2+by^2+cz^2\\), or pairwise coprimality is needed, because none of those conditions occurs in the proposition being proved. In particular, this accepted theorem, as stated, does not establish the stronger number-theoretic assertion that positive integers \\(a,b,c\\) with the universal representation property cannot be pairwise coprime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
   }
 }

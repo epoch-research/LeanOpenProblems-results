@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The formal statement is simply the proposition \\(\\mathrm{True}\\), so it follows immediately and contains no mathematical argument about the claimed number-theoretic conjecture.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "The accepted statement is simply the tautology \\(\\mathrm{True}\\), so it holds unconditionally and requires no number-theoretic argument. Consequently, this proof does not establish the claimed implication about pairwise coprimality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition asserted is simply \\(\\mathrm{True}\\).\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally: it has a distinguished witness, independent of any assumptions or mathematical data. Choose that witness. This establishes \\(\\mathrm{True}\\), and hence proves the stated theorem.\n\nThere are no hypotheses to use, no variables to specialize, and no cases to consider. In particular, the theorem as stated contains no assertion about positive integers \\(a,b,c\\), four-square representations, squares of the form \\(ax^2+by^2+cz^2\\), or pairwise coprimality. Thus the argument above is a complete proof of the accepted theorem statement, but it does not constitute a proof of the canonical number-theoretic conjecture described in the OEIS record.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

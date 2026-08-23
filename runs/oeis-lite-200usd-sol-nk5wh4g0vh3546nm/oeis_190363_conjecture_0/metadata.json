@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=140\\), direct floor evaluations give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\); hence \\(a(157)+a(144)-a(140)=541\\neq542=a(161)\\), providing a counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "At \\(n=140\\), the floor evaluations \\(\\lfloor140\\sqrt{5/4}\\rfloor=156\\), \\(\\lfloor144\\sqrt{5/4}\\rfloor=160\\), \\(\\lfloor157\\sqrt{5/4}\\rfloor=175\\), and \\(\\lfloor161\\sqrt{5/4}\\rfloor=180\\) give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). Thus the proposed recurrence would require \\(542=528+484-471=541\\), a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\n\\alpha=\\sqrt{\\frac54}\n\\qquad\\text{and}\\qquad\na(m)=2m+\\lfloor m\\alpha\\rfloor+\\left\\lfloor\\frac m4\\right\\rfloor\n\\quad(m\\ge 1).\n\\]\nWe disprove the proposed recurrence\n\\[\na(n+21)=a(n+17)+a(n+4)-a(n)\n\\]\nby evaluating both sides at \\(n=140\\).\n\nWe first compute the four sequence values that occur in this instance of the recurrence. Since \\(\\alpha\\ge 0\\) and\n\\[\n\\alpha^2=\\frac54,\n\\]\nthe floor of each relevant multiple of \\(\\alpha\\) can be determined by comparing squares. For nonnegative real numbers, squaring is strictly increasing, so inequalities between the corresponding squares imply the desired inequalities between the numbers themselves.\n\nFor \\(m=140\\),\n\\[\n(140\\alpha)^2=140^2\\cdot\\frac54=24500.\n\\]\nOn the other hand,\n\\[\n156^2=24336<24500<24649=157^2.\n\\]\nAll three quantities being compared before squaring are nonnegative, this gives\n\\[\n156<140\\alpha<157.\n\\]\nConsequently,\n\\[\n\\lfloor140\\alpha\\rfloor=156.\n\\]\nAlso \\(140/4=35\\), and hence\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nFor \\(m=144\\),\n\\[\n(144\\alpha)^2=144^2\\cdot\\frac54=25920.\n\\]\nMoreover,\n\\[\n160^2=25600<25920<25921=161^2.\n\\]\nThus\n\\[\n160<144\\alpha<161,\n\\]\nso\n\\[\n\\lfloor144\\alpha\\rfloor=160.\n\\]\nSince \\(144/4=36\\), it follows that\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nFor \\(m=157\\), it is convenient to keep the square as a fraction:\n\\[\n(157\\alpha)^2=157^2\\cdot\\frac54\n=24649\\cdot\\frac54\n=\\frac{123245}{4}.\n\\]\nThe neighboring integer squares satisfy\n\\[\n175^2=30625=\\frac{122500}{4}\n<\\frac{123245}{4}\n<\\frac{123904}{4}=30976=176^2.\n\\]\nTherefore\n\\[\n175<157\\alpha<176,\n\\]\nand hence\n\\[\n\\lfloor157\\alpha\\rfloor=175.\n\\]\nFurthermore,\n\\[\n39\\le \\frac{157}{4}<40,\n\\]\nso \\(\\lfloor157/4\\rfloor=39\\). We obtain\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFinally, for \\(m=161\\),\n\\[\n(161\\alpha)^2=161^2\\cdot\\frac54\n=25921\\cdot\\frac54\n=\\frac{129605}{4}.\n\\]\nHere\n\\[\n180^2=32400=\\frac{129600}{4}\n<\\frac{129605}{4}\n<\\frac{131044}{4}=32761=181^2.\n\\]\nIt follows that\n\\[\n180<161\\alpha<181,\n\\]\nso\n\\[\n\\lfloor161\\alpha\\rfloor=180.\n\\]\nAlso,\n\\[\n40\\le \\frac{161}{4}<41,\n\\]\nwhence \\(\\lfloor161/4\\rfloor=40\\). Thus\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nNow specialize the conjectured recurrence to \\(n=140\\). Since\n\\[\nn+21=161,\\qquad n+17=157,\\qquad n+4=144,\n\\]\nit would require\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nBut the right-hand side is\n\\[\n528+484-471=541,\n\\]\nwhereas the left-hand side is\n\\[\na(161)=542.\n\\]\nThus the proposed equality at \\(n=140\\) would assert \\(542=541\\), which is false. Since \\(140\\ge1\\), this is an admissible index in the conjecture. Therefore the claimed recurrence does not hold for every \\(n\\ge1\\), and the conjecture is disproved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

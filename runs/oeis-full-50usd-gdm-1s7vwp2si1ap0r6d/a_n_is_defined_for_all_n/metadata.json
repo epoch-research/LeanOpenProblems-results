@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\) the cyclotomic polynomial has constant coefficient \\(1\\), so \\(\\Phi_k(0)=1\\); hence its absolute value is always \\(1\\), never prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). Then \\(\\Phi_1(0)=-1\\), and for every \\(k>1\\) the constant term gives \\(\\Phi_k(0)=1\\), so \\(|\\Phi_k(0)|=1\\) is never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. The formally stated universal assertion ranges over all natural numbers \\(n\\), with \\(0\\) included. We show that \\(n=0\\) is a counterexample: for every positive integer \\(k\\), the integer \\(\\Phi_k(0)\\) has absolute value \\(1\\), and hence is not prime.\n\nWe first recall the constant terms of cyclotomic polynomials. For \\(k=1\\),\n\\[\n\\Phi_1(X)=X-1,\n\\]\nso\n\\[\n\\Phi_1(0)=-1.\n\\]\nFor every \\(k>1\\), one has\n\\[\n\\Phi_k(0)=1.\n\\]\nHere is a derivation of the latter fact. The standard cyclotomic factorization says that, for every positive integer \\(m\\),\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X).\n\\]\nEvaluating at \\(X=0\\) gives\n\\[\n-1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nWe prove by strong induction on \\(m>1\\) that \\(\\Phi_m(0)=1\\). Among the divisors of \\(m\\), the divisor \\(1\\) contributes \\(\\Phi_1(0)=-1\\). Every divisor \\(d\\) satisfying \\(1<d<m\\) is covered by the induction hypothesis and contributes \\(1\\). Thus the displayed product becomes\n\\[\n-1=\\Phi_1(0)\\,\\Phi_m(0)\\prod_{\\substack{d\\mid m\\\\1<d<m}}\\Phi_d(0)\n   =(-1)\\Phi_m(0),\n\\]\nwhich forces \\(\\Phi_m(0)=1\\). This also covers the case in which there are no intermediate divisors, since then the empty product is \\(1\\).\n\nNow suppose, toward a contradiction, that for every natural number \\(n\\) there exists a positive integer \\(k\\) such that \\(\\lvert\\Phi_k(n)\\rvert\\) is prime. Apply this assertion to \\(n=0\\). It would provide some \\(k>0\\) for which\n\\[\n\\lvert\\Phi_k(0)\\rvert\n\\]\nis prime.\n\nThere are exactly two cases.\n\n1. If \\(k=1\\), then \\(\\Phi_1(0)=-1\\), and therefore\n\\[\n\\lvert\\Phi_1(0)\\rvert=|-1|=1.\n\\]\n\n2. If \\(k>1\\), the constant-term result above gives \\(\\Phi_k(0)=1\\), and therefore\n\\[\n\\lvert\\Phi_k(0)\\rvert=|1|=1.\n\\]\n\nThus in every case \\(\\lvert\\Phi_k(0)\\rvert=1\\). But \\(1\\) is not prime: a prime natural number must be greater than \\(1\\) (equivalently, \\(1\\) has only one positive divisor rather than two). This contradicts the asserted primality.\n\nConsequently there is no positive \\(k\\) for which \\(\\Phi_k(0)\\) has prime absolute value. Hence the assertion\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k>0:\\ \\lvert\\Phi_k(n)\\rvert\\text{ is prime}\n\\]\nis false, with \\(n=0\\) as a counterexample.\n\nThere is an important domain qualification. This is a disproof of the accepted formal statement because that statement quantifies over natural numbers including \\(0\\). If “positive integer \\(n\\)” in the canonical OEIS formulation is interpreted strictly as \\(n\\ge 1\\), then \\(n=0\\) is outside its domain, and this argument by itself does not disprove that restricted formulation.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

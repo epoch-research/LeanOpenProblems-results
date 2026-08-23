@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), and for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\); hence \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), so no such value is prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "Take \\(n=0\\): \\(\\Phi_1(0)=-1\\), while every cyclotomic polynomial \\(\\Phi_k\\) with \\(k>1\\) has constant term \\(1\\). Thus \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), which is never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(x)\\in\\mathbb Z[x]\\) denote the \\(k\\)-th cyclotomic polynomial. Consider the statement\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) includes \\(0\\), and primality is being applied to the nonnegative integer obtained by taking the absolute value of the integer evaluation.\n\nWe show that this statement is false by taking \\(n=0\\). The key fact is\n\\[\n |\\Phi_k(0)|=1\n \\qquad\\text{for every positive integer }k.\n\\]\nWe establish this fact, including the necessary distinction between \\(k=1\\) and \\(k>1\\).\n\nFirst, the first cyclotomic polynomial is\n\\[\n \\Phi_1(x)=x-1.\n\\]\nConsequently,\n\\[\n \\Phi_1(0)=-1,\n \\qquad\\text{so}\\qquad\n |\\Phi_1(0)|=1.\n\\]\n\nFor every \\(k>1\\), the constant coefficient of \\(\\Phi_k(x)\\) is \\(1\\), and hence \\(\\Phi_k(0)=1\\). For completeness, this standard constant-term fact follows from the cyclotomic factorization\n\\[\n x^k-1=\\prod_{d\\mid k}\\Phi_d(x).\n\\]\nIt may be proved by strong induction on \\(k>1\\). Evaluating the displayed factorization at \\(x=0\\) gives\n\\[\n -1=\\prod_{d\\mid k}\\Phi_d(0).\n\\]\nAmong the positive divisors of \\(k\\), the divisor \\(1\\) contributes\n\\(\\Phi_1(0)=-1\\). The divisor \\(k\\) contributes \\(\\Phi_k(0)\\). Every remaining divisor \\(d\\) satisfies \\(1<d<k\\), so by the induction hypothesis it contributes \\(\\Phi_d(0)=1\\). Thus\n\\[\n -1=(-1)\\Phi_k(0),\n\\]\nand therefore \\(\\Phi_k(0)=1\\), as claimed. It follows in this second case as well that \\(|\\Phi_k(0)|=1\\).\n\nNow suppose, for contradiction, that the all-natural-numbers statement above were true. Apply it to \\(n=0\\). We would obtain a positive integer \\(k\\) such that \\(|\\Phi_k(0)|\\) is prime. Since \\(k>0\\), either \\(k=1\\) or \\(k>1\\). In the first case \\(\\Phi_k(0)=-1\\); in the second case \\(\\Phi_k(0)=1\\). Hence in both cases\n\\[\n |\\Phi_k(0)|=1.\n\\]\nBut \\(1\\) is not prime: by definition, a prime natural number must be at least \\(2\\) (equivalently, it must have exactly two positive divisors), whereas \\(1\nsatisfies neither condition. This contradicts the asserted primality of \\(|\\Phi_k(0)|\\).\n\nTherefore\n\\[\n \\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\n |\\Phi_k(n)|\\text{ is prime}\\Bigr)\n\\]\nwhen \\(\\mathbb N\\) includes zero.\n\nThere is an essential domain qualification. The counterexample is \\(n=0\\). Thus this argument disproves the formal statement quantified over all natural numbers including zero, but it does not disprove the canonical OEIS conjecture as stated for every positive integer \\(n\\). If \\(n\\) is required to satisfy \\(n\\ge 1\\), the value \\(n=0\\) is unavailable, and no counterexample to that positive-integer statement is supplied by this argument.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the quantified value \\(n=0\\): under the stated divisor-sum and totient conventions, \\(a(0)=0\\), but \\(0\\neq1\\) and \\(0\\) is not prime, contradicting the asserted characterization of the zero values.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Taking \\(n=0\\), the divisor sums and totient in the given natural-number extension make \\(a(0)=0\\). Since \\(0\\) is neither \\(1\\) nor prime, this contradicts the asserted characterization of equality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nD(n)=\\{d\\in\\mathbb N:1\\le d<n+1\\text{ and }d\\mid n\\}.\n\\]\nThus, for positive \\(n\\), \\(D(n)\\) is precisely the set of positive divisors of \\(n\\). Define\n\\[\n\\sigma_1(n)=\\sum_{d\\in D(n)}d,\n\\qquad\n\\sigma_2(n)=\\sum_{d\\in D(n)}d^2,\n\\]\nand let \\(\\varphi(n)\\) be the number of natural numbers \\(r<n\\) that are coprime to \\(n\\). The natural-number-valued function in the assertion is the nonnegative truncation of\n\\[\n\\sigma_2(n)+\\varphi(n)\\sigma_1(n)-2n^2;\n\\]\nthat is,\n\\[\na(n)=\\max\\bigl(\\sigma_2(n)+\\varphi(n)\\sigma_1(n)-2n^2,0\\bigr).\n\\]\nFor positive \\(n\\), this is the stated OEIS expression whenever that expression is nonnegative.\n\nThe assertion to be disproved quantifies over every natural number \\(n\\), without imposing \\(n\\ge 1\\), and asserts in particular\n\\[\na(n)=0\\quad\\Longleftrightarrow\\quad n=1\\ \\text{or}\\ n\\text{ is prime}.\n\\]\nWe show that its value at \\(n=0\\) contradicts this equivalence.\n\nFirst compute \\(a(0)\\). By the definition of \\(D(n)\\), an element of \\(D(0)\\) would have to satisfy\n\\[\n1\\le d<0+1=1,\n\\]\nwhich is impossible. Hence\n\\[\nD(0)=\\varnothing.\n\\]\nBoth divisor sums over this empty set therefore vanish:\n\\[\n\\sigma_1(0)=0,\n\\qquad\n\\sigma_2(0)=0.\n\\]\nLikewise, there are no natural numbers \\(r<0\\), so the set counted by the totient at zero is empty and\n\\[\n\\varphi(0)=0.\n\\]\nFinally, \\(0^2=0\\). Consequently the integer expression defining the sequence at zero is\n\\[\n\\sigma_2(0)+\\varphi(0)\\sigma_1(0)-2\\cdot0^2\n =0+0\\cdot0-0\n =0.\n\\]\nIts nonnegative truncation is still zero, and therefore\n\\[\na(0)=0.\n\\]\n\nNow suppose, for contradiction, that the asserted universal characterization were true. Applying its first equivalence at \\(n=0\\), the equality \\(a(0)=0\\) would imply\n\\[\n0=1\\quad\\text{or}\\quad 0\\text{ is prime}.\n\\]\nThere are two cases.\n\n* The first alternative, \\(0=1\\), is false because zero and one are distinct natural numbers.\n* The second alternative is also false. Every prime natural number is at least \\(2\\), whereas \\(0<2\\); equivalently, zero has none of the defining properties of a prime number.\n\nThus both alternatives are impossible, giving a contradiction. Hence the universally quantified conjunction is false. It is unnecessary to examine the second conjunct, which characterizes the value \\(2\\), because one false conjunct at the single input \\(n=0\\) already refutes the universal conjunction.\n\nTherefore the accepted formulation is disproved by the counterexample\n\\[\n\\boxed{n=0},\n\\qquad\n\\boxed{a(0)=0},\n\\]\neven though \\(0\\ne1\\) and \\(0\\) is not prime.\n\nThe restriction in the canonical OEIS wording, “for every \\(n\\ge1\\),” excludes this counterexample. Thus this argument disproves the accepted all-natural-numbers formulation, whose missing positivity condition is essential; by itself it does not disprove the domain-restricted statement for \\(n\\ge1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

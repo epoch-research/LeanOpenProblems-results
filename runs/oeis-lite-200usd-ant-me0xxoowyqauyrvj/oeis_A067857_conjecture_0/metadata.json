@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\): Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\), whereas \\(\\Omega(8)=3\\) is odd and at least three. Thus the proposed criterion predicts a negative value at \\(8\\), yielding a counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\). In the Möbius sum only the \\(d=4,8\\) terms survive, giving \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_n=\\sum_{j=1}^n\\frac1j\n\\]\ndenote the \\(n\\)-th harmonic number. The sequence \\(a(n)\\) is characterized by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nSet \\(b(k)=a(k)/k!\\). Then the defining relation is\n\\[\n\\sum_{k\\mid n}b(k)=H_n.\n\\]\nBy Möbius inversion,\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nwhere \\(\\mu\\) is the Möbius function. Consequently,\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d.\n\\]\n\nWe disprove the proposed equivalence by taking \\(n=8\\).\n\nThe positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nThus the Möbius-inversion formula gives\n\\[\n\\frac{a(8)}{8!}\n =\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8.\n\\]\nThe relevant Möbius values are\n\\[\n\\mu(8)=0,\\qquad \\mu(4)=0,\\qquad \\mu(2)=-1,\\qquad \\mu(1)=1.\n\\]\nIndeed, \\(8\\) and \\(4\\) are divisible by the square \\(2^2\\), so their Möbius values vanish; \\(2\\) is a product of one distinct prime, so \\(\\mu(2)=-1\\); and by definition \\(\\mu(1)=1\\). Therefore\n\\[\n\\frac{a(8)}{8!}=H_8-H_4.\n\\]\nThe terms through \\(1/4\\) cancel in this difference, leaving\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nSince\n\\[\n8!=40320=48\\cdot 840,\n\\]\nwe obtain\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nOn the other hand,\n\\[\n8=2^3.\n\\]\nHence the total number of prime factors of \\(8\\), counted with multiplicity, is\n\\[\n\\Omega(8)=3.\n\\]\nThis number is odd, and it is at least \\(3\\). Thus the condition\n\\[\n\\Omega(8)\\text{ is odd and }\\Omega(8)\\ge 3\n\\]\nis true, while \\(a(8)<0\\) is false.\n\nTherefore, at the positive integer \\(n=8\\), the two sides of the proposed equivalence have different truth values. It is consequently false that for every positive integer \\(n\\),\n\\[\na(n)<0\\quad\\Longleftrightarrow\\quad \\Omega(n)\\text{ is odd and at least }3.\n\\]",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since the other Möbius terms vanish, \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negative sign.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "Take the counterexample \\(n=8\\): Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\), since the terms involving \\(\\mu(8)\\) and \\(\\mu(4)\\) vanish. But \\(8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\), contradicting the asserted equivalence.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_m=\\sum_{j=1}^m \\frac1j\n\\]\ndenote the \\(m\\)-th harmonic number. The sequence is defined by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n\n\\qquad(n\\ge 1).\n\\]\nPut \\(b(k)=a(k)/k!\\). Then the defining relation says\n\\[\n\\sum_{k\\mid n}b(k)=H_n.\n\\]\nBy Möbius inversion,\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nwhere \\(\\mu\\) is the Möbius function.\n\nWe disprove the conjecture with the positive integer\n\\[\nn=8.\n\\]\nFirst consider the conjecture's condition involving the number of prime factors. Since\n\\[\n8=2^3,\n\\]\nthe total number of prime factors counted with multiplicity is\n\\[\n\\Omega(8)=3.\n\\]\nThus \\(\\Omega(8)\\) is odd and is at least \\(3\\). Consequently, the right-hand side of the proposed equivalence\n\\[\na(8)<0\\quad\\Longleftrightarrow\\quad \\bigl(\\Omega(8)\\text{ is odd and }\\Omega(8)\\ge 3\\bigr)\n\\]\nis true.\n\nIt remains to compute the sign of \\(a(8)\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nTherefore the Möbius-inversion formula gives\n\\[\n\\begin{aligned}\na(8)\n &=8!\\left(\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8\\right).\n\\end{aligned}\n\\]\nThe needed Möbius values are\n\\[\n\\mu(8)=0,\\qquad \\mu(4)=0,\\qquad \\mu(2)=-1,\\qquad \\mu(1)=1.\n\\]\nIndeed, \\(4\\) and \\(8\\) are divisible by the square \\(2^2\\), so their Möbius values are zero; \\(2\\) is a product of one distinct prime, so its Möbius value is \\(-1\\); and by definition \\(\\mu(1)=1\\). It follows that\n\\[\na(8)=8!\\,(H_8-H_4).\n\\]\nThe difference of the harmonic numbers consists exactly of the terms from \\(1/5\\) through \\(1/8\\):\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\),\n\\[\n\\frac15+\\frac16+\\frac17+\\frac18\n =\\frac{168+140+120+105}{840}\n =\\frac{533}{840}.\n\\]\nSince \\(8!=40320\\) and \\(40320/840=48\\), we obtain\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nThus, at \\(n=8\\), the condition “\\(\\Omega(n)\\) is odd and at least \\(3\\)” is true, whereas \\(a(n)<0\\) is false. The claimed equivalence therefore fails at the positive integer \\(8\\), disproving the universal conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

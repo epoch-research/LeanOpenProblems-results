@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The theorem’s conclusion is simply the tautology \\(True\\), so the proof is the immediate observation that \\(True\\) holds. It contains no argument about four-square representations or pairwise coprimality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "The proved statement is simply \\(\\mathrm{True}\\), so the argument is tautological and establishes no number-theoretic claim about the coefficients or their common divisors.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition actually asserted by `oeis_271513_conjecture_3` is simply\n\\[\n\\mathrm{True}.\n\\]\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that is unconditionally valid: it has a proof without requiring any hypotheses, constructions, calculations, or case distinctions. Therefore \\(\\mathrm{True}\\) holds, which proves the asserted theorem.\n\nThe preceding number-theoretic definitions do not alter this argument, because none of them occurs in the theorem statement. In particular, the theorem as stated does not quantify over positive integers \\(a,b,c\\), does not assume that every natural number has a four-square representation satisfying a square constraint, and does not assert that \\(a,b,c\\) fail to be pairwise coprime. Consequently, this is a complete proof of the accepted proposition, but it is not a proof of the canonical conjecture that if every natural number admits such a refined four-square representation, then \\(a,b,c\\) are not pairwise coprime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose the shift \\(k=0\\). Since \\(s(m)\\) is defined as \\(a(m.toNat)\\), and converting any natural-number index to an integer and back gives the original index, \\(s(n)=a(n)\\) for every \\(n\\ge 0\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Choose the shift \\(k=0\\). Since \\(s(m)\\) is defined as \\(a(m)\\) on nonnegative integer indices, for every \\(n\\ge 0\\) one immediately has \\(s(n+0)=a(n)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the level-step weight at height \\(j\\in\\mathbb N\\) be\n\\[\nb_j=\n\\begin{cases}\n1,&j=0,\\\\\n\\dfrac j2+1,&j>0\\text{ and }j\\text{ is even},\\\\\n0,&j>0\\text{ and }j\\text{ is odd}.\n\\end{cases}\n\\]\nThus the sequence of level-step weights begins\n\\[\n1,0,2,0,3,0,4,0,\\ldots.\n\\]\n\nDefine numbers \\(A(n,j)\\), for \\(n,j\\in\\mathbb N\\), recursively as follows. At length zero set\n\\[\nA(0,0)=1,\n\\qquad\nA(0,j)=0\\quad(j>0).\n\\]\nFor every \\(n,j\\in\\mathbb N\\), set\n\\[\nA(n+1,j)\n =A(n,j+1)\n  +\\begin{cases}\n     0,&j=0,\\\\\n     A(n,j-1),&j>0,\n   \\end{cases}\n  +b_jA(n,j).\n\\]\nThis is the weighted Motzkin-path recurrence: a path ending at height \\(j\\) either descends from height \\(j+1\\), ascends from height \\(j-1\\) (which is impossible when \\(j=0\\)), or makes a level step at height \\(j\\), with that level step carrying weight \\(b_j\\). The initial condition represents the unique empty path at height zero and no empty path at a positive height.\n\nThe generalized Bessel sequence in the statement is\n\\[\na(n)=A(n,0)\\qquad(n\\in\\mathbb N).\n\\]\n\nIt remains to spell out precisely the integer-indexed sequence called \\(s\\) in the conjecture. For an integer \\(m\\), let\n\\[\n\\tau(m)=\n\\begin{cases}\nm,&m\\ge 0,\\\\\n0,&m<0,\n\\end{cases}\n\\]\nwhere in the first case the nonnegative integer \\(m\\) is regarded as a natural number. The sequence \\(s:\\mathbb Z\\to\\mathbb N\\) used in the statement is defined by\n\\[\ns(m)=a\\bigl(\\tau(m)\\bigr).\n\\]\nIn other words, on nonnegative integer arguments, \\(s\\) is exactly the sequence \\(a\\); the truncation convention only specifies its values at negative integer arguments.\n\nWe now prove the desired shifted equality. Choose the integer shift\n\\[\nk=0.\n\\]\nLet \\(n\\in\\mathbb N\\) be arbitrary, and regard \\(n\\) as the corresponding nonnegative integer when forming \\(n+k\\). Since \\(k=0\\),\n\\[\nn+k=n+0=n.\n\\]\nBecause this integer is nonnegative, truncation back to the natural numbers does nothing:\n\\[\n\\tau(n+k)=\\tau(n)=n.\n\\]\nTherefore, directly from the definition of \\(s\\),\n\\[\ns(n+k)\n =a\\bigl(\\tau(n+k)\\bigr)\n =a(n).\n\\]\nEquivalently,\n\\[\na(n)=s(n+k).\n\\]\nAs \\(n\\) was arbitrary, this equality holds for every \\(n\\ge 0\\). Hence\n\\[\n\\exists k\\in\\mathbb Z\\;\\forall n\\in\\mathbb N,\\qquad a(n)=s(n+k),\n\\]\nwith the witness \\(k=0\\), as required.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

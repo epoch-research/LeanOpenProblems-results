@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose \\(C(k,r)=0\\). Then the required product divides \\(0=C(k,r)a(n)\\) for every \\(n\\), so the divisibility follows without using any property of the factorial ratio.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "Choose the constant to be \\(C(k,r)=0\\). Then the right-hand side is zero for every \\(n\\), and every integer divides zero.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\nfor \\(n\\ge 0\\), regarded as a natural number as in the statement.\n\nFix arbitrary natural numbers \\(k\\) and \\(r\\) satisfying\n\\[\nk\\in\\{1,2,3\\}\\qquad\\text{and}\\qquad r\\ge 1.\n\\]\nWe must exhibit a natural number \\(C=C(k,r)\\) such that, for every \\(n\\ge 0\\),\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid C\\,a(n).\n\\]\n\nChoose\n\\[\nC(k,r)=0.\n\\]\nThis is permitted because the statement asks only for a natural-number constant and does not require that constant to be positive or nonzero.\n\nNow let \\(n\\ge 0\\) be arbitrary, and put\n\\[\nD=\\prod_{i=1}^{r}(kn+i).\n\\]\nEquivalently, \\(D\\) is the rising factorial\n\\[\n(kn+1)^{\\overline r}=(kn+1)(kn+2)\\cdots(kn+r).\n\\]\nWith the chosen constant,\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero: indeed,\n\\[\n0=D\\cdot 0,\n\\]\nso by the definition of divisibility there exists a natural number (namely \\(0\\)) whose product with \\(D\\) is \\(0\\). Hence\n\\[\nD\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge 0\\). Since \\(k\\) and \\(r\\) were arbitrary subject to the stated hypotheses, the required existential assertion follows for every \\(k\\in\\{1,2,3\\}\\) and every \\(r\\ge 1\\).\n\nNo case split among \\(k=1,2,3\\), and no special use of \\(r\\ge1\\), is needed: the same choice \\(C=0\\) works for all natural \\(k,r\\). Thus the theorem as stated is true. (The argument depends essentially on the absence of a condition \\(C(k,r)>0\\); a strengthened statement requiring a nonzero constant would require a different proof.)",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

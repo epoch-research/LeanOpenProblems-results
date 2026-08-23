@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "There is no mathematical argument about Benford behavior: the asserted property is taken to be the tautology \\(\\mathrm{True}\\), so the conclusion follows immediately.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "There is no mathematical argument about leading-digit frequencies: the asserted Benford property is defined to be the proposition \\(\\mathrm{True}\\), so the conclusion follows vacuously. Thus this proof does not establish Benford’s law for the actual absolute values.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\((a_n)_{n\\ge 0}\\) be the integer sequence defined by\n\\[\na_0=1,\\qquad a_1=1,\\qquad a_{n+2}=-3a_n+2a_{n+1}\\quad(n\\ge 0).\n\\]\nEquivalently,\n\\[\na_{n+2}=2a_{n+1}-3a_n.\n\\]\nThis is indeed the sequence whose ordinary generating function is\n\\((1-x)/(1-2x+3x^2)\\). To see this, put\n\\(A(x)=\\sum_{n\\ge0}a_nx^n\\). Then\n\\[\n\\begin{aligned}\n(1-2x+3x^2)A(x)\n &=a_0+(a_1-2a_0)x\n   +\\sum_{n\\ge2}(a_n-2a_{n-1}+3a_{n-2})x^n.\n\\end{aligned}\n\\]\nThe recurrence makes every coefficient in the sum vanish, while\n\\(a_0=1\\) and \\(a_1-2a_0=-1\\). Hence\n\\[\n(1-2x+3x^2)A(x)=1-x,\n\\]\nand therefore\n\\[\nA(x)=\\frac{1-x}{1-2x+3x^2}.\n\\]\nThus the sequence introduced in the statement is A087455.\n\nHowever, the purported Benford predicate used in the accepted statement is not the usual mathematical assertion that the leading digits of \\(|a_n|\\) have the Benford frequencies. It is defined simply to be the proposition\n\\[\n\\mathrm{True}.\n\\]\nConsequently the theorem called `oeis_87455_conjecture_0` has, after unfolding that definition, no dependence on the sequence at all. Its entire mathematical content is the proposition\n\\[\n\\mathrm{True}.\n\\]\n\nThe proposition \\(\\mathrm{True}\\) holds by definition: it is the always-valid proposition, with its canonical proof. Therefore the predicate assigned the name “A087455 satisfies Benford’s law” holds, and this proves the theorem exactly as stated in the accepted file.\n\nThis argument does **not** prove the canonical number-theoretic conjecture. In the genuine Benford assertion, one would have to show, for every \\(t\\in[1,10)\\), that\n\\[\n\\lim_{N\\to\\infty}\\frac1N\n \\#\\left\\{0\\le n<N:\n \\text{the base-10 significand of }|a_n|\\text{ is less than }t\n \\right\\}\n =\\log_{10}t,\n\\]\nwith an appropriate treatment of any zero terms. No such definition, limit, digit-frequency assertion, or mathematical reduction appears in the accepted proof. Since the named predicate was replaced by \\(\\mathrm{True}\\), the tautological proof above is the complete proof of the accepted theorem, but it supplies no proof of the actual statement that the absolute values of A087455 satisfy Benford’s law.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

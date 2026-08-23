@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\): \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\), so \\(\\Phi_k(0)=1\\). Hence the absolute value is always \\(1\\), never a prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). Then \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), \\(\\Phi_k(0)=1\\) because the constant term of such a cyclotomic polynomial is \\(1\\); thus every absolute value is \\(1\\), which is not prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. The statement that was accepted for disproof is\n\\[\n \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere the absolute value is taken because the polynomial is evaluated in \\(\\mathbb Z\\), and primality is then tested in \\(\\mathbb N\\).\n\nWe disprove this quantified statement by taking\n\\[\n n=0.\n\\]\nWe will show that no positive index \\(k\\) makes \\(|\\Phi_k(0)|\\) prime.\n\nFirst recall the following facts about the constant terms of cyclotomic polynomials:\n\\[\n \\Phi_1(X)=X-1,\n\\]\nand, for every integer \\(m>1\\),\n\\[\n \\Phi_m(0)=1.\n\\]\nFor completeness, the second fact follows from the standard cyclotomic factorization\n\\[\n X^m-1=\\prod_{d\\mid m}\\Phi_d(X) \\qquad (m\\ge1).\n\\]\nIndeed, put \\(c_d=\\Phi_d(0)\\). Evaluating the factorization at \\(X=0\\) gives\n\\[\n -1=\\prod_{d\\mid m}c_d.\n\\]\nAlso \\(c_1=\\Phi_1(0)=-1\\). We prove by strong induction on \\(m>1\\) that \\(c_m=1\\). Every proper divisor \\(d\\) of \\(m\\) is either \\(1\\), in which case \\(c_d=-1\\), or satisfies \\(1<d<m\\), in which case the induction hypothesis gives \\(c_d=1\\). Separating the factor corresponding to \\(d=m\\) in the preceding product therefore yields\n\\[\n -1=c_1\\left(\\prod_{\\substack{d\\mid m\\\\1<d<m}}c_d\\right)c_m\n     =(-1)\\cdot 1\\cdot c_m.\n\\]\nConsequently \\(c_m=1\\), as claimed.\n\nNow consider every possible natural-number index \\(k\\).\n\n* If \\(k=0\\), then it cannot be a witness because the required condition \\(k>0\\) fails.\n\n* If \\(k=1\\), then\n  \\[\n  \\Phi_1(0)=0-1=-1,\n  \\]\n  and hence\n  \\[\n  |\\Phi_1(0)|=|-1|=1.\n  \\]\n  The number \\(1\\) is not prime.\n\n* If \\(k\\ge2\\), the constant-term result above gives\n  \\[\n  \\Phi_k(0)=1,\n  \\]\n  so again\n  \\[\n  |\\Phi_k(0)|=1,\n  \\]\n  which is not prime.\n\nThese cases exhaust all \\(k\\in\\mathbb N\\). Thus there is no positive \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime. Therefore\n\\[\n \\neg\\left(\\forall n\\in\\mathbb N\\;\\exists k>0:\n |\\Phi_k(n)|\\text{ is prime}\\right).\n\\]\nEquivalently, for the version of the sequence definition whose domain includes \\(0\\), the value \\(a(0)\\) is not defined by the stated least-index condition.\n\nThere is an essential domain caveat. The counterexample is \\(n=0\\). Hence this argument disproves the accepted formal statement, which quantifies over all natural numbers including \\(0\\), but it does not disprove the literally stated canonical conjecture restricted to positive integers \\(n\\ge1\\). Under that positive-domain wording, \\(0\\) is not an admissible input, so an additional positive counterexample would be required to disprove it.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
   }
 }

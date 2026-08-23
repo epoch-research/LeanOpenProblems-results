@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The purported Benford-law statement is reduced to the tautology \\(\\mathrm{True}\\), so it follows immediately. Consequently, the proof contains no mathematical argument about leading-digit distribution or the recurrence.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "There is no substantive mathematical argument: the asserted Benford property is taken to be unconditionally true, so the conclusion follows tautologically without using the recurrence or analyzing leading-digit frequencies.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(a(n)\\) denote the integer sequence initialized by\n\\[\na(0)=1,\\qquad a(1)=1,\n\\]\nand continued by\n\\[\na(n+2)=-3a(n)+2a(n+1).\n\\]\nEquivalently, this is the coefficient sequence of\n\\[\n\\frac{1-x}{1-2x+3x^2},\n\\]\nsince multiplying \\(\\sum_{n\\ge 0}a(n)x^n\\) by \\(1-2x+3x^2\\) gives constant coefficient \\(a(0)=1\\), coefficient of \\(x\\) equal to \\(a(1)-2a(0)=-1\\), and all subsequent coefficients equal to\n\\(a(n)-2a(n-1)+3a(n-2)=0\\). Thus the product is \\(1-x\\).\n\nHowever, in the statement being proved, the proposition named “\\(A087455\\) satisfies Benford’s law” is defined simply to be the always-true proposition \\(\\mathrm{True}\\). It contains no condition involving \\(a(n)\\), its absolute values, leading digits, natural densities, logarithms, or equidistribution.\n\nTherefore the asserted theorem reduces exactly to the proposition \\(\\mathrm{True}\\). The proposition \\(\\mathrm{True}\\) holds unconditionally, by its defining truth. Hence the proposition named “\\(A087455\\) satisfies Benford’s law” holds, which is precisely the theorem as stated.\n\nThis proves the accepted theorem. It is important that this argument proves only that formally stated proposition: because that proposition was defined as \\(\\mathrm{True}\\), it does not establish the substantive mathematical claim that the sequence \\((|a(n)|)\\) obeys Benford’s law.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

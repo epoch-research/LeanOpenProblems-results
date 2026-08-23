@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8\\): Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\). But \\(8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\), contradicting the proposed equivalence.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_n=\\sum_{j=1}^n \\frac1j\n\\]\ndenote the \\(n\\)-th harmonic number, and let \\(\\mu\\) be the Möbius function. The sequence is defined by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nIf we write \\(b(k)=a(k)/k!\\), this becomes\n\\[\nH_n=\\sum_{k\\mid n}b(k).\n\\]\nMöbius inversion therefore gives\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d.\n\\]\n\nWe disprove the proposed equivalence by taking \\(n=8\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nConsequently,\n\\[\n\\frac{a(8)}{8!}\n =\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8.\n\\]\nNow \\(8\\) and \\(4\\) are divisible by the square \\(2^2\\), so\n\\[\n\\mu(8)=\\mu(4)=0.\n\\]\nAlso, \\(2\\) is prime and therefore \\(\\mu(2)=-1\\), while \\(\\mu(1)=1\\). Thus\n\\[\n\\frac{a(8)}{8!}=H_8-H_4.\n\\]\nThe difference of these harmonic numbers is\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nSince \\(8!=40320=48\\cdot840\\), it follows that\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nOn the other hand,\n\\[\n8=2^3.\n\\]\nTherefore the total number of prime factors of \\(8\\), counted with multiplicity, is\n\\[\n\\Omega(8)=3.\n\\]\nThis number is odd and is at least \\(3\\). Hence, at \\(n=8\\), the condition\n\\[\n\\Omega(n)\\text{ is odd and }\\Omega(n)\\ge 3\n\\]\nis true, whereas the condition \\(a(n)<0\\) is false.\n\nThus the two conditions are not equivalent for every positive integer \\(n\\). The counterexample \\(n=8\\) disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

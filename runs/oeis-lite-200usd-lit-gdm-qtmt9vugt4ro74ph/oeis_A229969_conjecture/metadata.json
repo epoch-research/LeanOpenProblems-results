@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\). Since the distinguished value \\(x\\in\\{3,4,6,10,15\\}\\) has \\(x\\ge3\\) and the required ordering gives \\(x\\le y\\le z\\), one has \\(x+y+z\\ge9\\), contradicting \\(x+y+z=7\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "At \\(n=7\\), the prescribed choice \\(x\\in\\{3,4,6,10,15\\}\\) forces \\(x\\ge3\\); since \\(x\\le y\\le z\\), all three summands are at least \\(3\\), so their sum is at least \\(9\\), contradicting \\(x+y+z=7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(a(n)\\) denote the number of triples of positive integers\n\\[\nx\\le y\\le z,\\qquad x+y+z=n,\n\\]\nfor which all six integers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare prime. The conjecture consists of two assertions: first, that \\(a(n)>0\\) for every \\(n>5\\); and second, the stronger “moreover” assertion that for every \\(n>6\\) there is such an ordered triple with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nWe disprove the combined conjecture by showing that its “moreover” assertion already fails for \\(n=7\\).\n\nSuppose, for contradiction, that the asserted representation existed for \\(n=7\\). Then there would be positive integers \\(x,y,z\\) satisfying\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\nwith \\(x\\in\\{3,4,6,10,15\\}\\), as well as the six stated primality conditions.\n\nMembership in the displayed five-element set gives the finite list of possibilities\n\\[\nx=3,\\quad x=4,\\quad x=6,\\quad x=10,\\quad\\text{or}\\quad x=15.\n\\]\nIn every case, \\(x\\ge 3\\). Since the triple is ordered and \\(x\\le y\\le z\\), we also have\n\\[\ny\\ge x\\ge 3\\qquad\\text{and}\\qquad z\\ge y\\ge x\\ge 3.\n\\]\nConsequently,\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nEquivalently, one may inspect the five possible values of \\(x\\): they force the sum to be at least \\(9,12,18,30,45\\), respectively. Each lower bound is strictly greater than \\(7\\). This contradicts the required equality \\(x+y+z=7\\).\n\nThus no positive ordered triple summing to \\(7\\) can have its least entry \\(x\\) in \\(\\{3,4,6,10,15\\}\\). In particular, no such triple can satisfy all six primality conditions; those conditions need not even be examined, because the elementary size constraints are already inconsistent.\n\nFinally, \\(7>6\\), so \\(n=7\\) lies in the claimed range of the “moreover” assertion. Hence that universal assertion is false. Since the stated conjecture includes this assertion as a conjunct, the entire conjecture is false, independently of whether its separate claim \\(a(n)>0\\) for every \\(n>5\\) might hold.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=144\\), exact squared bounds give the relevant floor values and hence \\(a(144)=484\\), \\(a(148)=498\\), \\(a(161)=542\\), and \\(a(165)=555\\). The proposed right-hand side is therefore \\(542+498-484=556\\), differing from \\(a(165)\\) by one.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
+  "summary": {
+    "text": "At \\(n=144\\), integer square bounds give \\(\\lfloor n\\sqrt{5/4}\\rfloor=160,165,180,184\\) for \\(n=144,148,161,165\\), respectively, hence \\(a(144)=484\\), \\(a(148)=498\\), \\(a(161)=542\\), and \\(a(165)=555\\). Thus the proposed right-hand side is \\(542+498-484=556\\), not \\(a(165)=555\\), providing a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor,\n\\qquad n\\ge 1.\n\\]\nWe disprove the proposed recurrence by evaluating it at the single index \\(n=144\\).\n\nWe first record how the required irrational floor terms will be evaluated. If \\(n,k\\) are nonnegative integers and\n\\[\n4k^2\\le 5n^2<4(k+1)^2,\n\\]\nthen, after division by \\(4\\),\n\\[\nk^2\\le \\frac{5n^2}{4}<(k+1)^2.\n\\]\nAll quantities involved are nonnegative, and\n\\[\n\\left(n\\sqrt{\\frac54}\\right)^2=\\frac{5n^2}{4}.\n\\]\nSince squaring is increasing on the nonnegative real numbers, the preceding inequalities imply\n\\[\nk\\le n\\sqrt{\\frac54}<k+1.\n\\]\nConsequently,\n\\[\n\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor=k.\n\\]\nThus each floor evaluation below follows from entirely integral square comparisons.\n\nWe need the values at \\(144,148,161,165\\). For \\(n=144\\) and \\(k=160\\), the relevant integers are\n\\[\n4\\cdot160^2=102400,\n\\qquad\n5\\cdot144^2=103680,\n\\qquad\n4\\cdot161^2=103684.\n\\]\nHence\n\\[\n4\\cdot160^2\\le 5\\cdot144^2<4\\cdot161^2,\n\\]\nso\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nAlso \\(\\lfloor144/4\\rfloor=36\\). Therefore\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nFor \\(n=148\\) and \\(k=165\\), we have\n\\[\n4\\cdot165^2=108900,\n\\qquad\n5\\cdot148^2=109520,\n\\qquad\n4\\cdot166^2=110224.\n\\]\nThus\n\\[\n4\\cdot165^2\\le 5\\cdot148^2<4\\cdot166^2,\n\\]\nand hence\n\\[\n\\left\\lfloor148\\sqrt{\\frac54}\\right\\rfloor=165.\n\\]\nSince \\(\\lfloor148/4\\rfloor=37\\), it follows that\n\\[\na(148)=2\\cdot148+165+37=296+165+37=498.\n\\]\n\nFor \\(n=161\\) and \\(k=180\\), the square comparison is\n\\[\n4\\cdot180^2=129600,\n\\qquad\n5\\cdot161^2=129605,\n\\qquad\n4\\cdot181^2=131044.\n\\]\nIn particular,\n\\[\n4\\cdot180^2\\le 5\\cdot161^2<4\\cdot181^2,\n\\]\nso\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nMoreover, \\(161=4\\cdot40+1\\), so \\(\\lfloor161/4\\rfloor=40\\). Therefore\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nFinally, for \\(n=165\\) and \\(k=184\\),\n\\[\n4\\cdot184^2=135424,\n\\qquad\n5\\cdot165^2=136125,\n\\qquad\n4\\cdot185^2=136900.\n\\]\nIt follows that\n\\[\n4\\cdot184^2\\le 5\\cdot165^2<4\\cdot185^2,\n\\]\nand consequently\n\\[\n\\left\\lfloor165\\sqrt{\\frac54}\\right\\rfloor=184.\n\\]\nBecause \\(165=4\\cdot41+1\\), we also have \\(\\lfloor165/4\\rfloor=41\\). Hence\n\\[\na(165)=2\\cdot165+184+41=330+184+41=555.\n\\]\n\nThe conjectured identity at \\(n=144\\) would assert\n\\[\na(144+21)=a(144+17)+a(144+4)-a(144),\n\\]\nthat is,\n\\[\na(165)=a(161)+a(148)-a(144).\n\\]\nBut the left-hand side is\n\\[\na(165)=555,\n\\]\nwhereas the right-hand side is\n\\[\na(161)+a(148)-a(144)=542+498-484=556.\n\\]\nThus the proposed equality would require \\(555=556\\), which is false. Therefore the claimed recurrence does not hold for every \\(n\\ge1\\); \\(n=144\\) is a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
   }
 }

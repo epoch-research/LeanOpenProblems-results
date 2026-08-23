@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The universal quantifier includes the boundary case \\(n=0\\), for which direct evaluation gives \\(a(0)=0\\). Since \\(0\\) is neither \\(1\\) nor prime, this contradicts the asserted characterization of the zero cases.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "At the quantified value \\(n=0\\), the divisor sums and totient contribution vanish, so \\(a(0)=0\\); however, \\(0\\) is neither \\(1\\) nor prime, contradicting the asserted characterization of the zeros.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\n a(n)=\\Bigl(\\sigma_2(n)+\\varphi(n)\\sigma(n)-2n^2\\Bigr)_{\\!+},\n\\]\nwhere \\(\\sigma(n)=\\sum_{d\\mid n}d\\), \\(\\sigma_2(n)=\\sum_{d\\mid n}d^2\\), and \\(x_+=\\max(x,0)\\) denotes conversion of the integer expression to a natural number. For positive \\(n\\), this is the expression appearing in A072780 whenever that expression is nonnegative. In the formal statement under consideration, these functions are also assigned values at \\(n=0\\): the finite set of divisors of \\(0\\) is, by convention, taken to be empty, and Euler's totient is defined as the number of natural numbers less than \\(n\\) and coprime to \\(n\\). Consequently,\n\\[\n \\sigma(0)=\\sum_{d\\in\\varnothing}d=0,\n \\qquad\n \\sigma_2(0)=\\sum_{d\\in\\varnothing}d^2=0,\n \\qquad\n \\varphi(0)=0,\n\\]\nthe last equality holding because there are no natural numbers strictly less than \\(0\\).\n\nIt follows immediately that\n\\[\n\\begin{aligned}\n a(0)\n &=\\Bigl(\\sigma_2(0)+\\varphi(0)\\sigma(0)-2\\cdot0^2\\Bigr)_+\\\\\n &=\\bigl(0+0\\cdot0-0\\bigr)_+\\\\\n &=0.\n\\end{aligned}\n\\]\n\nNow consider the universally quantified assertion that was formalized:\n\\[\n\\forall n\\in\\mathbb N,\\quad\n\\bigl(a(n)=0\\iff n=1\\text{ or }n\\text{ is prime}\\bigr)\n\\quad\\text{and}\\quad\n\\bigl(a(n)=2\\iff n=pq\\text{ for two distinct primes }p,q\\bigr).\n\\]\nIf this assertion were true, its first equivalence could be applied at \\(n=0\\). Since the calculation above gives \\(a(0)=0\\), the forward implication in that equivalence would yield\n\\[\n 0=1\\quad\\text{or}\\quad 0\\text{ is prime}.\n\\]\nBoth alternatives are false. Clearly \\(0\\ne1\\). Also \\(0\\) is not prime: every prime natural number is at least \\(2\\) (equivalently, \\(0\\) fails the defining lower-bound condition for primality). Thus the right-hand side of the claimed equivalence is false while its left-hand side is true. The equivalence fails at \\(n=0\\), and hence the conjunction asserted for every natural number is false. There is no need to examine the second, value-\\(2\\) equivalence, since failure of the first conjunct already refutes the universal conjunction.\n\nThis is the complete counterexample to the accepted formal statement. There is, however, an essential domain distinction: the canonical OEIS conjecture is stated only for \\(n\\ge1\\), whereas the formal statement quantified over every natural number without imposing \\(n\\ge1\\). The counterexample \\(n=0\\) therefore disproves that stronger all-natural-numbers formulation, but it does not by itself disprove the canonical positive-index conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

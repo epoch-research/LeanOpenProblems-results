@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The proof exhibits the distinct indices \\(0\\) and \\(1\\): since \\(T(0)=0\\) and \\(T(1)=1\\), both prime-counting values are \\(0\\), giving an explicit collision.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "The counterexample uses the distinct indices \\(0\\) and \\(1\\): their triangular numbers are \\(0\\) and \\(1\\), respectively, and both have prime-counting value \\(0\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nT(n)=\\frac{n(n+1)}2\n\\]\nbe the \\(n\\)-th triangular number, and let \\(\\pi(x)\\) denote the number of primes not exceeding \\(x\\). Define\n\\[\nf(n)=\\pi(T(n)).\n\\]\n\nThe injectivity assertion on the set of all nonnegative integers is false. Indeed, take the two distinct indices\n\\[\nn=0\\qquad\\text{and}\\qquad m=1.\n\\]\nTheir triangular numbers are\n\\[\nT(0)=\\frac{0\\cdot 1}{2}=0\n\\]\nand\n\\[\nT(1)=\\frac{1\\cdot 2}{2}=1.\n\\]\nThere is no prime not exceeding \\(0\\), so \\(\\pi(0)=0\\). There is likewise no prime not exceeding \\(1\\), since every prime is at least \\(2\\), so \\(\\pi(1)=0\\). Consequently,\n\\[\nf(0)=\\pi(T(0))=\\pi(0)=0\n\\]\nand\n\\[\nf(1)=\\pi(T(1))=\\pi(1)=0.\n\\]\nThus\n\\[\nf(0)=f(1),\n\\]\neven though \\(0\\ne 1\\). This directly violates the definition of injectivity: an injective function must satisfy \\(f(a)=f(b)\\Rightarrow a=b\\). Equivalently, if one assumes that \\(f\\) is injective, the displayed equality forces \\(0=1\\), an immediate contradiction. Therefore the map\n\\[\nn\\longmapsto \\pi\\!\\left(\\frac{n(n+1)}2\\right)\n\\]\nis not injective on the nonnegative integers.\n\nThere is an important domain qualification. The canonical OEIS conjecture says that the values \\(\\pi(T(n))\\) are pairwise distinct for \\(n\\ge 1\\). The counterexample above uses \\(n=0\\), which lies outside that range. Hence it is a complete disproof of the assertion that \\(f\\) is injective on all nonnegative integers, but it does not by itself disprove the original pairwise-distinctness assertion restricted to positive indices \\(n\\ge 1\\). In particular, among the two colliding indices, only \\(1\\) belongs to the canonical sequence domain.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

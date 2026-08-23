@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At the included natural-number input \\(n=0\\), the divisor sums are empty and \\(\\varphi(0)=0\\), so the defining expression has value \\(0\\). But \\(0\\) is neither \\(1\\) nor prime, contradicting the claimed characterization of the zero values.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
+  "summary": {
+    "text": "Taking \\(n=0\\), the divisor sums and totient all vanish, so \\(a(0)=0\\). But \\(0\\neq1\\) and \\(0\\) is not prime, contradicting the asserted characterization of the zero values over all natural numbers.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\sigma_2(n)+\\varphi(n)\\sigma(n)-2n^2,\n\\]\nwhere \\(\\sigma_2(n)\\) is the sum of the squares of the positive divisors of \\(n\\), \\(\\sigma(n)\\) is the sum of its positive divisors, and \\(\\varphi(n)\\) is Euler's totient. In the formulation being disproved, these functions are extended to all natural numbers and the assertion is quantified over every \\(n\\in\\mathbb N\\), with no hypothesis \\(n\\ge 1\\). At \\(n=0\\), the set of positive natural-number divisors used in the definition is taken to be empty, and \\(\\varphi(0)=0\\). Consequently\n\\[\n\\sigma_2(0)=\\sum_{d\\mid 0}d^2=0,\n\\qquad\n\\sigma(0)=\\sum_{d\\mid 0}d=0,\n\\qquad\n\\varphi(0)=0.\n\\]\nAlso \\(2\\cdot 0^2=0\\). Therefore\n\\[\na(0)=0+0\\cdot 0-0=0.\n\\]\n(The formal definition performs the subtraction in the integers and then takes the natural-number part; here the integer expression is already exactly zero, so this detail changes nothing.)\n\nNow consider the first claimed equivalence in the universally quantified formulation:\n\\[\na(n)=0\\quad\\Longleftrightarrow\\quad n=1\\ \\text{or}\\ n\\text{ is prime}.\n\\]\nIts left-hand side is true for \\(n=0\\), by the computation above. Its right-hand side is false: \\(0\\ne1\\), and \\(0\\) is not prime. Indeed, a prime natural number must be at least \\(2\\), whereas \\(0<2\\). Thus at \\(n=0\\) the equivalence specializes to a true statement if and only if a false statement, so it fails.\n\nEquivalently, if one assumes the full universal assertion, applying its forward implication at \\(n=0\\) to \\(a(0)=0\\) gives\n\\[\n0=1\\quad\\text{or}\\quad 0\\text{ is prime}.\n\\]\nBoth alternatives are impossible, yielding a contradiction. Since the proposed statement is a conjunction whose first component already fails at \\(n=0\\), there is no need to examine the separate characterization of the value \\(2\\).\n\nHence the assertion quantified over all natural numbers is false, with counterexample \\(n=0\\).\n\nThis counterexample depends essentially on the missing lower-bound hypothesis. It disproves the unguarded all-natural-numbers formulation appearing in the accepted statement; it does not, by itself, refute the OEIS formulation restricted to \\(n\\ge1\\), since \\(0\\) is outside that stated domain.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The quadratic terms are symmetric under swapping the coefficients and variables: any representation for \u0001((1,2,1,1)\u0001) yields one for \u0001((2,1,1,1)\u0001) by exchanging \u0001(x\u0001) and \u0001(y\u0001). Since the proposed list contains the former quadruple but omits the latter, its claimed biconditional classification is inconsistent.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Exchanging the two square variables shows that the forms with coefficient quadruples \\((1,2,1,1)\\) and \\((2,1,1,1)\\) represent exactly the same natural numbers. The proposed list contains the former but omits the latter, so it cannot classify the universal forms.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nR(a,b,c,d;n)\n\\]\nmean that there exist nonnegative integers \\(x,y,z,w\\) such that\n\\[\nn=ax^2+by^2+cz^3+dw^4,\n\\]\nand let \\(U(a,b,c,d)\\) mean that \\(R(a,b,c,d;n)\\) holds for every natural number \\(n\\). Let \\(S\\) denote the displayed list of 49 coefficient quadruples in the conjecture.\n\nWe disprove the asserted equivalence\n\\[\nU(a,b,c,d)\\quad\\Longleftrightarrow\\quad (a,b,c,d)\\in S\n\\]\nfor all positive integers \\(a,b,c,d\\).\n\nThe key observation is that the two quadratic variables play symmetric roles. In particular, for every natural number \\(n\\),\n\\[\nR(2,1,1,1;n)\\quad\\Longleftrightarrow\\quad R(1,2,1,1;n).\n\\]\nIndeed, suppose first that\n\\[\nn=2x^2+y^2+z^3+w^4\n\\]\nfor some nonnegative integers \\(x,y,z,w\\). Interchanging the two square variables gives\n\\[\nn=y^2+2x^2+z^3+w^4,\n\\]\nwhich is a representation with coefficient quadruple \\((1,2,1,1)\\). Conversely, if\n\\[\nn=x^2+2y^2+z^3+w^4,\n\\]\nthen, after interchanging \\(x\\) and \\(y\\),\n\\[\nn=2y^2+x^2+z^3+w^4,\n\\]\nwhich is a representation with coefficient quadruple \\((2,1,1,1)\\). Thus the representability statements are equivalent for each \\(n\\). Quantifying over all natural numbers therefore yields\n\\[\nU(2,1,1,1)\\quad\\Longleftrightarrow\\quad U(1,2,1,1). \\tag{1}\n\\]\n\nNow inspect the proposed list \\(S\\). The quadruple\n\\[\n(1,2,1,1)\n\\]\nis in \\(S\\): it is the first quadruple in the displayed list. On the other hand,\n\\[\n(2,1,1,1)\n\\]\nis not in \\(S\\). This is a direct finite inspection of the list. More explicitly, the entries of \\(S\\) whose first coordinate is \\(2\\) are\n\\[\n(2,3,1,1),\\ (2,4,1,1),\\ (2,4,1,2),\\ (2,3,1,4),\\ (2,3,1,5),\\ (2,4,1,5),\\ (2,4,1,11),\n\\]\nand none has second coordinate \\(1\\). Hence\n\\[\n(1,2,1,1)\\in S,\n\\qquad\n(2,1,1,1)\\notin S. \\tag{2}\n\\]\n\nAssume, for contradiction, that the conjecture is true. All four coefficients in both quadruples under consideration are positive, so the conjectured equivalence applies to each of them.\n\nApplying the “if” direction of the conjecture to the membership\n\\((1,2,1,1)\\in S\\) from (2), we obtain\n\\[\nU(1,2,1,1). \\tag{3}\n\\]\nBy the symmetry equivalence (1), statement (3) implies\n\\[\nU(2,1,1,1). \\tag{4}\n\\]\nApplying the “only if” direction of the conjecture to (4) now gives\n\\[\n(2,1,1,1)\\in S.\n\\]\nThis contradicts the second assertion in (2), namely that \\((2,1,1,1)\\notin S\\).\n\nTherefore the proposed classification cannot be true. The contradiction does not require deciding independently which of the two symmetric quadruples is universal: the conjecture itself asserts that the listed quadruple \\((1,2,1,1)\\) is universal, while symmetry forces \\((2,1,1,1)\\) to have exactly the same universality property, even though the latter is omitted from the list. Hence the claimed “if and only if” characterization by the 49 displayed quadruples is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

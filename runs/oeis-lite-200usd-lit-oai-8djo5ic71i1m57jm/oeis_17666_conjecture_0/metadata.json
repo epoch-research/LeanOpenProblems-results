@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=18\\): \\(\\sigma(18)=39\\), so its reduced denominator is \\(18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\), so the corresponding denominator for \\(6\\) is \\(1=2^0\\). Hence the required property holds after applying the map to \\(18\\), but not for \\(18\\) itself, since \\(6\\) is divisible by \\(3\\) and therefore is not a power of \\(2\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "Take \\(n=18\\): since \\(\\sigma(18)=39\\) and \\(\\sigma(6)=12\\), the successive denominator values are \\(a(18)=6\\) and \\(a(6)=1=2^0\\), so \\(a(18)\\) has the required property. But \\(18\\) does not, because that would require \\(a(18)=6\\) to be a power of two, whereas \\(3\\mid 6\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\operatorname{denom}\\!\\left(\\sum_{d\\mid n}\\frac1d\\right)\n\\]\nbe A017666, where the denominator is taken after the fraction has been reduced to lowest terms. Equivalently, if \\(\\sigma(n)=\\sum_{d\\mid n}d\\), then\n\\[\n\\sum_{d\\mid n}\\frac1d=\\frac{\\sigma(n)}n\n\\quad\\text{and hence}\\quad\na(n)=\\frac{n}{\\gcd(n,\\sigma(n))}.\n\\]\nIndeed, the divisors are permuted by \\(d\\mapsto n/d\\), so\n\\(\n\\sum_{d\\mid n}1/d=(1/n)\\sum_{d\\mid n}n/d=\\sigma(n)/n\n\\), and cancellation by \\(\\gcd(n,\\sigma(n))\\) gives the displayed denominator.\n\nIn the formulation of the conjecture under consideration, membership in A005153 is the condition that the A017666 value is a power of two. Thus, writing \\(P(m)\\) for “\\(m\\) belongs to A005153,” we have\n\\[\nP(m)\\quad\\Longleftrightarrow\\quad \\exists k\\in\\mathbb N\\text{ such that }a(m)=2^k.\n\\]\nThe conjecture is therefore\n\\[\n\\forall n\\in\\mathbb N,\\qquad P(a(n))\\Longrightarrow P(n).\n\\]\nWe disprove it with \\(n=18\\).\n\nFirst compute \\(a(18)\\). The positive divisors of \\(18\\) are\n\\[\n1,2,3,6,9,18,\n\\]\nso\n\\[\n\\sigma(18)=1+2+3+6+9+18=39.\n\\]\nSince \\(\\gcd(18,39)=3\\),\n\\[\na(18)=\\frac{18}{\\gcd(18,39)}=\\frac{18}{3}=6.\n\\]\nEquivalently, the reciprocal-divisor sum itself is\n\\[\n1+\\frac12+\\frac13+\\frac16+\\frac19+\\frac1{18}\n =\\frac{39}{18}=\\frac{13}{6},\n\\]\nwhose reduced denominator is indeed \\(6\\).\n\nWe must now check the antecedent \\(P(a(18))\\). Since \\(a(18)=6\\), this is just \\(P(6)\\). The positive divisors of \\(6\\) are\n\\[\n1,2,3,6,\n\\]\nand therefore\n\\[\n\\sigma(6)=1+2+3+6=12.\n\\]\nConsequently,\n\\[\na(6)=\\frac{6}{\\gcd(6,12)}=\\frac66=1.\n\\]\nThis also follows directly from\n\\[\n1+\\frac12+\\frac13+\\frac16=2,\n\\]\nwhose reduced denominator is \\(1\\). Since \\(1=2^0\\), the value \\(a(6)\\) is a power of two. Hence \\(P(6)\\) holds, and because \\(a(18)=6\\), we have established\n\\[\nP(a(18)).\n\\]\nThus the antecedent of the conjectured implication is true at \\(n=18\\).\n\nIt remains to show that its conclusion is false there. If \\(P(18)\\) held, then by the definition of \\(P\\) there would be some \\(k\\in\\mathbb N\\) such that\n\\[\na(18)=2^k.\n\\]\nBut \\(a(18)=6\\), so this would say\n\\[\n6=2^k.\n\\]\nThis is impossible. Indeed, \\(3\\mid 6\\), so the equality would imply \\(3\\mid 2^k\\). Since \\(3\\) is prime, Euclid's lemma applied repeatedly to the product of \\(k\\) copies of \\(2\\) says that a prime dividing \\(2^k\\) must divide \\(2\\). (For \\(k=0\\), \\(2^k=1\\), which is not divisible by \\(3\\), so that case is impossible as well.) We would therefore obtain \\(3\\mid2\\), a contradiction. Hence \\(6\\) is not a power of two, and so \\(P(18)\\) is false.\n\nWe have therefore found a specific integer, namely \\(18\\), for which\n\\[\nP(a(18))\\quad\\text{is true but}\\quad P(18)\\quad\\text{is false}.\n\\]\nAccordingly, the universal implication “if \\(a(n)\\) belongs to A005153, then \\(n\\) belongs to A005153” is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For the product of the first nine primes, \\(223092870^2+1=49770428644836901\\), and \\(29^2\\) divides this value. Thus this term is not squarefree, which falsifies the first conjunct and hence the combined conjecture.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
+  "summary": {
+    "text": "For \\(n=9\\), the value is \\(223092870^2+1=49770428644836901=29^2\\cdot59180057841661\\). Thus it has the squared prime divisor \\(29^2\\) and is not squarefree, so the conjunction fails regardless of the infinitude claim.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(p_0=2,p_1=3,p_2=5,\\ldots\\) denote the primes in increasing order, and define the \\(n\\)-th primorial in the indexing used here by\n\\[\nP_n=\\prod_{k=0}^{n-1}p_k,\n\\]\nwith the empty product \\(P_0=1\\). Thus the sequence is\n\\[\na(n)=P_n^2+1.\n\\]\nThe conjecture is the conjunction of the following two assertions:\n\n1. \\(a(n)\\) is squarefree for every nonnegative integer \\(n\\);\n2. the set of \\(n\\) for which \\(a(n)\\) is prime is infinite.\n\nIt suffices to disprove the first assertion, since a conjunction is false whenever either one of its conjuncts is false.\n\nConsider the term with index \\(n=9\\). The first nine primes are\n\\[\n2,3,5,7,11,13,17,19,23.\n\\]\nTheir product can be evaluated successively as\n\\[\n\\begin{aligned}\n2\\cdot3&=6,\\\\\n6\\cdot5&=30,\\\\\n30\\cdot7&=210,\\\\\n210\\cdot11&=2310,\\\\\n2310\\cdot13&=30030,\\\\\n30030\\cdot17&=510510,\\\\\n510510\\cdot19&=9699690,\\\\\n9699690\\cdot23&=223092870.\n\\end{aligned}\n\\]\nConsequently,\n\\[\nP_9=223092870\n\\]\nand hence\n\\[\na(9)=223092870^2+1=49{,}770{,}428{,}644{,}836{,}901.\n\\]\n\nWe now show that this number has a nontrivial square divisor. Modulo \\(29^2=841\\), the primorial has the decomposition\n\\[\n223092870=841\\cdot265270+800.\n\\]\nSince \\(800\\equiv-41\\pmod{841}\\), it follows that\n\\[\n\\begin{aligned}\na(9)\n  &=223092870^2+1\\\\\n  &\\equiv(-41)^2+1\\\\\n  &=1681+1\\\\\n  &=1682\\\\\n  &=2\\cdot841\n  \\equiv0\\pmod{841}.\n\\end{aligned}\n\\]\nThus \\(841=29^2\\) divides \\(a(9)\\). The exact division is\n\\[\n49{,}770{,}428{,}644{,}836{,}901\n =841\\cdot59{,}180{,}057{,}841{,}661.\n\\]\nEquivalently, one may display the factorization\n\\[\na(9)=29^2\\cdot53\\cdot1{,}116{,}604{,}864{,}937,\n\\]\nsince\n\\[\n53\\cdot1{,}116{,}604{,}864{,}937\n=59{,}180{,}057{,}841{,}661.\n\\]\n\nA positive integer is squarefree precisely when no square \\(d^2\\) with \\(d>1\\) divides it; equivalently, no square of a prime divides it. Here \\(29>1\\) and \\(29^2\\mid a(9)\\), so \\(a(9)\\) is not squarefree. If one uses the prime-square formulation directly, note that \\(29\\) is prime: any proper prime divisor would be at most \\(\\sqrt{29}<6\\), while \\(29\\) is divisible by none of \\(2,3,5\\).\n\nTherefore the universal claim that every \\(a(n)\\) is squarefree already fails at \\(n=9\\). Hence the conjunction\n\\[\n\\bigl(\\forall n,\\ a(n)\\text{ is squarefree}\\bigr)\n\\quad\\land\\quad\n\\bigl(\\text{infinitely many }n\\text{ have }a(n)\\text{ prime}\\bigr)\n\\]\nis false, independently of whether the second, infinitude assertion is true or false. This disproves the stated conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
   }
 }

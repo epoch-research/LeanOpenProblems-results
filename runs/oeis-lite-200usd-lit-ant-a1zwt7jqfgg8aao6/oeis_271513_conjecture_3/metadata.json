@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "There is no substantive mathematical argument: the theorem is stated only as the tautology \\(\\mathrm{True}\\), so it follows immediately and does not use any properties of four-square representations or pairwise coprimality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "The formal statement is simply the tautology \\(\\mathrm{True}\\), so it holds unconditionally and no number-theoretic argument is involved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition to be proved is simply \\(\\mathrm{True}\\).\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally: it requires no hypotheses, imposes no constraints, and has its canonical proof merely by virtue of being the true proposition. Therefore \\(\\mathrm{True}\\) holds.\n\nThis completes the proof.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

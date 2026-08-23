@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=140\\), squared rational bounds for the relevant multiples of \\(\\sqrt{5/4}\\) give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). Thus the required right-hand side is \\(528+484-471=541\\), not \\(542\\), furnishing an explicit counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "At \\(n=140\\), squaring bounds show that the relevant \\(\\lfloor m\\sqrt{5/4}\\rfloor\\) values for \\(m=140,144,157,161\\) are respectively \\(156,160,175,180\\), giving \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). Thus the claimed relation would require \\(542=528+484-471=541\\), so it fails.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor\n\\qquad(n\\ge 1).\n\\]\nWe disprove the proposed identity\n\\[\na(n+21)=a(n+17)+a(n+4)-a(n)\n\\]\nby evaluating both sides at \\(n=140\\).\n\nWe first record how the irrational floor terms will be evaluated without using decimal approximations. Since\n\\[\n\\sqrt{\\frac54}=\\frac{\\sqrt5}{2}>0,\n\\]\nfor nonnegative integers \\(n,k\\), the two inequalities\n\\[\n4k^2\\le 5n^2<4(k+1)^2\n\\]\nimply\n\\[\nk\\le n\\sqrt{\\frac54}<k+1.\n\\]\nIndeed, all quantities involved are nonnegative, so each comparison can be squared without changing its direction: the first displayed inequality is exactly the squared form of\n\\(k\\le n\\sqrt{5/4}\\), and the second is exactly the squared form of\n\\(n\\sqrt{5/4}<k+1\\). Consequently,\n\\[\n\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor=k.\n\\]\nWe apply this criterion separately to the four indices appearing when \\(n=140\\), namely \\(140,144,157,161\\).\n\nFor \\(n=140\\), take \\(k=156\\). The exact comparisons are\n\\[\n4\\cdot156^2=97{,}344\n\\le 98{,}000=5\\cdot140^2\n<98{,}596=4\\cdot157^2.\n\\]\nThus\n\\[\n\\left\\lfloor140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor140/4\\rfloor=35\\). Hence\n\\[\na(140)=2\\cdot140+156+35=471.\n\\]\n\nFor \\(n=144\\), take \\(k=160\\). We have\n\\[\n4\\cdot160^2=102{,}400\n\\le 103{,}680=5\\cdot144^2\n<103{,}684=4\\cdot161^2.\n\\]\nTherefore\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nSince \\(\\lfloor144/4\\rfloor=36\\), it follows that\n\\[\na(144)=2\\cdot144+160+36=484.\n\\]\n\nFor \\(n=157\\), take \\(k=175\\). The relevant integer inequalities are\n\\[\n4\\cdot175^2=122{,}500\n\\le 123{,}245=5\\cdot157^2\n<123{,}904=4\\cdot176^2.\n\\]\nThus\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nMoreover, \\(157=4\\cdot39+1\\), so \\(\\lfloor157/4\\rfloor=39\\). Consequently,\n\\[\na(157)=2\\cdot157+175+39=528.\n\\]\n\nFinally, for \\(n=161\\), take \\(k=180\\). We have\n\\[\n4\\cdot180^2=129{,}600\n\\le 129{,}605=5\\cdot161^2\n<131{,}044=4\\cdot181^2.\n\\]\nIt follows that\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAs \\(161=4\\cdot40+1\\), we also have \\(\\lfloor161/4\\rfloor=40\\), and hence\n\\[\na(161)=2\\cdot161+180+40=542.\n\\]\n\nNow substitute \\(n=140\\) into the conjectured recurrence. Its left-hand side is\n\\[\na(140+21)=a(161)=542.\n\\]\nIts right-hand side is\n\\[\n\\begin{aligned}\na(140+17)+a(140+4)-a(140)\n&=a(157)+a(144)-a(140)\\\\\n&=528+484-471\\\\\n&=541.\n\\end{aligned}\n\\]\nThus the proposed equality at \\(n=140\\) would assert \\(542=541\\), which is false. Since \\(140\\ge1\\), this is an admissible index in the universal claim. Therefore the conjecture that\n\\(a(n+21)=a(n+17)+a(n+4)-a(n)\\) for every \\(n\\ge1\\) is disproved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

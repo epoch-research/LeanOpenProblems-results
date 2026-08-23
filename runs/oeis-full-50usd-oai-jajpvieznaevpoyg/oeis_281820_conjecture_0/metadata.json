@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(k=2\\), expanding \\(\\binom n2\\) and \\(\\binom{n+2}2\\) shows that every summand in the second series is exactly \\(16\\) times the corresponding summand in the first. The first series converges and has nonnegative terms with a positive \\(n=3\\) term, so its sum is strictly positive and cannot equal sixteen times itself.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Specializing to \\(k=2\\), expanding the binomial coefficients shows that the second summand is exactly \\(16\\) times the first for every \\(n\\). The first series is convergent and strictly positive, so the asserted equality would give \\(S=16S\\), forcing \\(S=0\\), a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "We disprove the universal assertion by taking \\(k=2\\). Only the conjecture’s claimed equality between its first two infinite series is needed; consequently, no evaluation of \\(\\zeta(3)\\), \\(a(2)\\), or \\(A281821(2)\\) is required.\n\nFor \\(n\\ge 3\\), define\n\\[\nu_n=\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}\n\\]\nand\n\\[\nv_n=\\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2}.\n\\]\nThese are precisely the summands of the first and second series, respectively, when \\(k=2\\). We first compare them directly.\n\nThe elementary binomial formulas\n\\[\n\\binom n2=\\frac{n(n-1)}2,\n\\qquad\n\\binom{n+2}2=\\frac{(n+2)(n+1)}2\n\\]\ngive\n\\[\n\\begin{aligned}\n&n\\binom n2^2\\binom{n+2}2^2(n-2)^2\\\\\n&\\quad=n\\left(\\frac{n(n-1)}2\\right)^2\n          \\left(\\frac{(n+2)(n+1)}2\\right)^2(n-2)^2\\\\\n&\\quad=\\frac1{16}n^3(n-1)^2(n+1)^2(n-2)^2(n+2)^2\\\\\n&\\quad=\\frac1{16}n^3(n^2-1)^2(n^2-4)^2.\n\\end{aligned}\n\\]\nAll these denominators are nonzero for \\(n\\ge3\\). Taking reciprocals therefore yields the pointwise identity\n\\[\nv_n=16u_n \\qquad(n\\ge3).\n\\]\nThus the two displayed summands in the conjecture are not the same for \\(k=2\\); they differ by a constant factor of \\(16\\).\n\nWe next justify summing this identity and, crucially, show that the resulting first sum is not zero. Every \\(u_n\\) is positive for \\(n\\ge3\\). Moreover,\n\\[\n(n^2-1)^2\\ge1,\n\\qquad\n(n^2-4)^2\\ge1\n\\]\nfor every integer \\(n\\ge3\\), so\n\\[\n0<u_n\\le \\frac1{n^3}.\n\\]\nSince the \\(p\\)-series \\(\\sum_{n=3}^{\\infty}n^{-3}\\) converges, comparison shows that\n\\[\nS:=\\sum_{n=3}^{\\infty}u_n\n\na convergent finite real number. In addition, it is strictly positive. For example, its first term is\n\\[\nu_3=\\frac{1}{3^3(3^2-1)^2(3^2-4)^2}\n    =\\frac{1}{27\\cdot64\\cdot25}\n    =\\frac1{43200}>0,\n\\]\nand all subsequent terms are nonnegative. Hence\n\\[\nS\\ge u_3=\\frac1{43200}>0.\n\\]\n\nBecause \\(v_n=16u_n\\), the second series also converges, and linearity of limits of partial sums gives\n\\[\nT:=\\sum_{n=3}^{\\infty}v_n\n  =\\sum_{n=3}^{\\infty}16u_n\n  =16\\sum_{n=3}^{\\infty}u_n\n  =16S.\n\\]\n\nNow suppose the conjecture were true for every integer \\(k\\ge1\\). Applying its first asserted equality at \\(k=2\\) would give\n\\[\n\\sum_{n=3}^{\\infty}\n\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}\n=\n\\sum_{n=3}^{\\infty}\n\\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2},\n\\]\nthat is, \\(S=T\\). But the calculation above gives \\(T=16S\\). Therefore\n\\[\nS=16S,\n\\]\nso \\(15S=0\\), and hence \\(S=0\\). This contradicts \\(S\\ge1/43200>0\\).\n\nThus the conjectured equality already fails at \\(k=2\\). Since the stated conjecture requires both that equality and the further equality with\n\\(\\zeta(3)-a(k)/A281821(k)\\) for every \\(k\\ge1\\), failure of the first equality at \\(k=2\\) disproves the entire conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

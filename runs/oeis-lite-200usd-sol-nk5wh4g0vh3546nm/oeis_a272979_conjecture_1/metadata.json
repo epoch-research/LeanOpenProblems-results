@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The list contains \\((1,2,1,1)\\), so the asserted equivalence would make its form universal; swapping the two squared variables then makes the form for \\((2,1,1,1)\\) universal as well. Since \\((2,1,1,1)\\) is absent from the list, this contradicts the claimed only-if direction.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "Universality is preserved by swapping the two quadratic variables together with their coefficients. Thus the inclusion of \\((1,2,1,1)\\) forces \\((2,1,1,1)\\) to be universal as well, but the latter quadruple is absent from the proposed list.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(S\\) denote the displayed set of 49 ordered quadruples, and for positive integers \\(a,b,c,d\\) let \\(R(a,b,c,d)\\) be the assertion that every nonnegative integer \\(n\\) has a representation\n\\[\n n=a x^2+b y^2+c z^3+d w^4\n\\]\nwith \\(x,y,z,w\\) nonnegative integers. The conjecture asserts, simultaneously for all positive \\(a,b,c,d\\), the equivalence\n\\[\nR(a,b,c,d)\\quad\\Longleftrightarrow\\quad (a,b,c,d)\\in S.\n\\]\nWe show that this equivalence is internally inconsistent because the two square variables may be interchanged, whereas the proposed set \\(S\\) is not closed under the corresponding interchange of its first two entries.\n\nAssume for contradiction that the conjectured equivalence is true for every quadruple.\n\nThe ordered quadruple\n\\[\n(1,2,1,1)\n\\]\nappears in the proposed list (indeed, it is the first listed quadruple). Therefore, applying the “membership implies representability” direction of the conjectured equivalence gives \\(R(1,2,1,1)\\). Explicitly, we have obtained the assertion that for every \\(n\\ge 0\\), there are nonnegative integers \\(x,y,z,w\\) such that\n\\[\n n=x^2+2y^2+z^3+w^4. \\tag{1}\n\\]\n\nWe now prove that this assertion implies \\(R(2,1,1,1)\\). Fix an arbitrary nonnegative integer \\(n\\). By (1), choose nonnegative integers \\(x,y,z,w\\) satisfying (1). Set\n\\[\nX=y,\\qquad Y=x,\\qquad Z=z,\\qquad W=w.\n\\]\nThese new variables are still nonnegative. By commutativity of addition,\n\\[\n\\begin{aligned}\n2X^2+Y^2+Z^3+W^4\n  &=2y^2+x^2+z^3+w^4\\\\\n  &=x^2+2y^2+z^3+w^4\\\\\n  &=n.\n\\end{aligned}\n\\]\nThus every nonnegative \\(n\\) is represented by\n\\[\n2X^2+Y^2+Z^3+W^4.\n\\]\nThe four coefficients \\(2,1,1,1\\) are all positive, so this is precisely the full-representability assertion \\(R(2,1,1,1)\\).\n\nApply now the opposite, “representability implies membership,” direction of the conjectured equivalence to the positive quadruple \\((2,1,1,1)\\). It follows that\n\\[\n(2,1,1,1)\\in S. \\tag{2}\n\\]\nBut direct inspection of the displayed finite list shows that \\((2,1,1,1)\\) is not present. In particular, among the entries whose first coordinate is \\(2\\), the list contains\n\\[\n(2,3,1,1),\\ (2,4,1,1),\\ (2,4,1,2),\\ (2,3,1,4),\\ (2,3,1,5),\\ (2,4,1,5),\\ (2,4,1,11),\n\\]\nand no others; none has second coordinate \\(1\\). Hence\n\\[\n(2,1,1,1)\\notin S,\n\\]\ncontradicting (2).\n\nTherefore the claimed universal equivalence cannot hold. Consequently, the proposed “if and only if” classification of fully representable forms by the displayed 49 quadruples is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\). Every permitted value has \\(x\\ge 3\\), and the required ordering \\(x\\le y\\le z\\) forces \\(x+y+z\\ge 3x\\ge 9\\), contradicting \\(x+y+z=7\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  "summary": {
+    "text": "Take \\(n=7\\). Since the prescribed choices force \\(x\\ge 3\\) and \\(x\\le y\\le z\\), one has \\(x+y+z\\ge 9\\), contradicting the required sum \\(x+y+z=7\\); the primality conditions are therefore irrelevant.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\#\\{(x,y,z)\\in\\mathbb N_{>0}^3:x\\le y\\le z,\\ x+y+z=n,\n\\]\n\\[\n2x-1,\\ 2y-1,\\ 2z-1,\\ 2xy-1,\\ 2xz-1,\\ 2yz-1\\text{ are all prime}\\}.\n\\]\nThe conjecture is the conjunction of two universal assertions: first, that \\(a(n)>0\\) for every \\(n>5\\), and second, that for every \\(n>6\\) there is such an ordered representation with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nWe disprove the combined conjecture by showing that its second assertion already fails for \\(n=7\\).\n\nSuppose, toward a contradiction, that the conjecture were true. Apply its “moreover” assertion to \\(n=7\\), which is permitted because \\(7>6\\). We would obtain positive integers \\(x,y,z\\) satisfying\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\ntogether with\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nand with the six required numbers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nall prime.\n\nThe primality conditions are not even reached, because the elementary size conditions are inconsistent. Indeed, from \\(x\\le y\\) and \\(x\\le y\\le z\\), we have \\(y\\ge x\\) and \\(z\\ge x\\). Hence\n\\[\nx+y+z\\ge x+x+x=3x.\n\\]\nMembership in the displayed five-element set gives the exhaustive case split\n\\[\nx=3,\\quad x=4,\\quad x=6,\\quad x=10,\\quad\\text{or}\\quad x=15.\n\\]\nIn each case the lower bound contradicts the required sum \\(x+y+z=7\\):\n\n* If \\(x=3\\), then \\(x+y+z\\ge 3x=9>7\\).\n* If \\(x=4\\), then \\(x+y+z\\ge 3x=12>7\\).\n* If \\(x=6\\), then \\(x+y+z\\ge 3x=18>7\\).\n* If \\(x=10\\), then \\(x+y+z\\ge 3x=30>7\\).\n* If \\(x=15\\), then \\(x+y+z\\ge 3x=45>7\\).\n\nEquivalently, all five cases are covered at once by observing that every allowed value has \\(x\\ge3\\), so the order conditions force\n\\[\n7=x+y+z\\ge3x\\ge9,\n\\]\nwhich is impossible.\n\nThus no positive ordered triple \\(x\\le y\\le z\\) summing to \\(7\\) can have \\(x\\in\\{3,4,6,10,15\\}\\), regardless of any primality requirements. Therefore the asserted representation does not exist for the integer \\(7>6\\). This falsifies the “moreover” clause, and hence falsifies the full conjunction claimed for every integer \\(n\\). Consequently, the stated conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
   }
 }

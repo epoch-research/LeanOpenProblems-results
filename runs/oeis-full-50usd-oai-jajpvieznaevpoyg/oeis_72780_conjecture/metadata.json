@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Evaluate at \\(n=0\\): the divisor sums and totient vanish, so the expression equals \\(0\\). Yet \\(0\\) is neither \\(1\\) nor prime, contradicting the asserted characterization of equality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "The quantified domain includes the counterexample \\(n=0\\): with the divisor sums at zero empty and \\(\\varphi(0)=0\\), one gets \\(a(0)=0\\). But \\(0\\) is neither \\(1\\) nor prime, contradicting the asserted characterization of the zero values.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\n a(n)=\\Bigl(\\sigma_2(n)+\\varphi(n)\\sigma(n)-2n^2\\Bigr)_{\\ge 0},\n\\]\nwhere\n\\[\n \\sigma_2(n)=\\sum_{d\\mid n}d^2,\\qquad \\sigma(n)=\\sum_{d\\mid n}d,\n\\]\nand where the subscript indicates the definition used in the statement: the integer in parentheses is converted to a natural number, with a nonpositive integer being sent to zero. For positive inputs this is intended to represent the usual expression \\(\\sigma_2(n)+\\varphi(n)\\sigma(n)-2n^2\\).\n\nThe formal assertion under consideration quantifies over every natural number \\(n\\), with no hypothesis \\(n\\ge 1\\). We disprove that assertion by taking\n\\[\n n=0.\n\\]\n\nWe first compute \\(a(0)\\). Under the divisor-set convention in the statement, the divisors of \\(n\\) are selected from the integers in the interval\n\\[\n 1\\le d<n+1.\n\\]\nFor \\(n=0\\), this interval is empty: it would require \\(1\\le d<1\\). Consequently the divisor set of zero used here is empty. Both divisor sums are therefore empty sums, so\n\\[\n \\sigma_2(0)=\\sum_{d\\mid 0}d^2=0\n \\quad\\text{and}\\quad\n \\sigma(0)=\\sum_{d\\mid 0}d=0\n\\]\nwith this convention.\n\nLikewise, \\(\\varphi(n)\\) is defined by counting the natural numbers in the range \\(0\\le k<n\\) which are coprime to \\(n\\). At \\(n=0\\) this range is empty, and hence\n\\[\n \\varphi(0)=0.\n\\]\nAlso, of course, \\(0^2=0\\). Substitution gives\n\\[\n \\sigma_2(0)+\\varphi(0)\\sigma(0)-2\\cdot 0^2\n =0+0\\cdot0-0\n =0.\n\\]\nConverting this integer zero to a natural number leaves it unchanged. Thus\n\\[\n a(0)=0.\n\\]\n\nNow consider the first biconditional claimed by the formal conjecture:\n\\[\n a(n)=0\\quad\\Longleftrightarrow\\quad n=1\\ \\text{or}\\ n\\text{ is prime}.\n\\]\nAt \\(n=0\\), its left-hand side is true by the computation above. Its right-hand side is false. Indeed, \\(0\\ne1\\), and \\(0\\) is not prime: every natural prime is at least \\(2\\) (equivalently, zero cannot satisfy the defining primality condition).\nTherefore\n\\[\n a(0)=0\n \\quad\\text{but}\\quad\n \\neg\\bigl(0=1\\ \\text{or}\\ 0\\text{ is prime}\\bigr).\n\\]\nThe two sides of the asserted equivalence consequently have different truth values at \\(n=0\\), so that equivalence is false.\n\nThe formal conjecture requires, for every natural number \\(n\\), the conjunction of this zero-value equivalence and the further assertion\n\\[\n a(n)=2\\quad\\Longleftrightarrow\\quad\n n=pq\\text{ for two distinct primes }p,q.\n\\]\nA conjunction is false as soon as either conjunct is false. Since the first conjunct already fails at \\(n=0\\), there is no need to analyze the second conjunct. Hence it is false that the displayed pair of equivalences holds for every natural number.\n\nThis counterexample depends essentially on the missing lower-bound hypothesis in the formal statement. The canonical OEIS conjecture is worded only for \\(n\\ge1\\). Since \\(0\\) is outside that domain, the argument above disproves the all-natural-numbers formulation appearing in the accepted disproof, but it does not by itself disprove the original positive-integer assertion.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

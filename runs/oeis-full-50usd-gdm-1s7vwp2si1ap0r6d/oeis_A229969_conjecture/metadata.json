@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Taking \\(n=7\\), positivity and \\(x\\le y\\le z\\) force \\(3x\\le x+y+z=7\\), so \\(x\\le2\\). This contradicts \\(x\\in\\{3,4,6,10,15\\}\\), independently of all primality conditions.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Take \\(n=7\\). Since \\(x\\le y\\le z\\) and every permitted value of \\(x\\) is at least \\(3\\), one has \\(x+y+z\\ge 3x\\ge 9\\), contradicting \\(x+y+z=7\\); hence the strengthened representation claim fails independently of primality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\#\\bigl\\{(x,y,z)\\in\\mathbb Z_{>0}^3:x\\le y\\le z,\\ x+y+z=n,\n\\]\n\\[\n2x-1,\\ 2y-1,\\ 2z-1,\\ 2xy-1,\\ 2xz-1,\\ 2yz-1\\text{ are all prime}\\bigr\\}.\n\\]\nThe conjecture consists of two assertions: first, that \\(a(n)>0\\) for every \\(n>5\\); and, moreover, that for every \\(n>6\\) there is such an ordered positive triple \\(x\\le y\\le z\\) in which\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nWe disprove the combined conjecture by showing that its “moreover” assertion already fails for \\(n=7\\).\n\nSuppose, for contradiction, that the conjecture is true. Since \\(7>6\\), its stronger clause supplies positive integers \\(x,y,z\\) satisfying\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\nwith\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nand with all six required numbers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nprime.\n\nThe primality conditions will not even be needed. From \\(x\\le y\\le z\\), we have \\(y\\ge x\\) and \\(z\\ge x\\). Consequently\n\\[\nx+y+z\\ge x+x+x=3x.\n\\]\nEvery member of \\(\\{3,4,6,10,15\\}\\) is at least \\(3\\), so this gives\n\\[\n7=x+y+z\\ge 3x\\ge 9,\n\\]\nwhich is impossible.\n\nEquivalently, one can display the entire finite case split forced by the allowed set. If \\(x=3\\), then \\(y,z\\ge3\\), so the sum is at least \\(3+3+3=9\\). If \\(x=4\\), the sum is at least \\(12\\). If \\(x=6\\), it is at least \\(18\\). If \\(x=10\\), it is at least \\(30\\). If \\(x=15\\), it is at least \\(45\\). None of these possibilities can have sum \\(7\\).\n\nThus there is no ordered positive triple summing to \\(7\\) whose least entry \\(x\\) belongs to \\(\\{3,4,6,10,15\\}\\), regardless of any primality requirements. Since \\(7>6\\), this is a counterexample to the “moreover” assertion. Therefore the conjunction asserted in the conjecture is false. This argument does not claim that the separate statement \\(a(n)>0\\) fails at \\(n=7\\); failure of the stronger universally quantified clause is by itself sufficient to disprove the stated combined conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

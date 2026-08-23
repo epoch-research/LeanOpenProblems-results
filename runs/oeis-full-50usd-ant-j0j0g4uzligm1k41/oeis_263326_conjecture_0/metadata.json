@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For \\(k=31\\) and \\(s=1\\), the divisor sums for two distinct inputs coincide: \\(S(5,31,1)=1/32+1/36=17/288\\), while \\(S(1829,31,1)=1/32+1/62+1/90+1/1860=17/288\\), using \\(1829=31\\cdot59\\). Thus their fractional parts are equal, disproving pairwise distinctness.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Taking \\(k=31\\) and \\(s=1\\), the divisor sets of \\(5\\) and \\(1829=31\\cdot59\\) give \\(1/32+1/36=17/288\\) and \\(1/32+1/62+1/90+1/1860=17/288\\), respectively. Thus the distinct positive integers \\(5\\) and \\(1829\\) yield identical fractional parts, contradicting pairwise distinctness.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS(n;k,s)=\\sum_{d\\mid n}\\frac{1}{(d+k)^s},\n\\]\nwhere the sum is over the positive divisors of the positive integer \\(n\\). The conjecture asserts, in particular, that for every pair of positive integers \\(k,s\\), distinct positive integers \\(n_1,n_2\\) give distinct fractional parts of \\(S(n_1;k,s)\\).\n\nWe disprove this pairwise-distinctness assertion by taking\n\\[\nk=31,\\qquad s=1,\n\\]\nand exhibiting the two distinct positive integers\n\\[\nn_1=5,\\qquad n_2=1829.\n\\]\n\nFirst consider \\(n_1=5\\). Since \\(5\\) is prime, its positive divisors are exactly \\(1\\) and \\(5\\). Therefore\n\\[\n\\begin{aligned}\nS(5;31,1)\n &=\\frac{1}{1+31}+\\frac{1}{5+31}\\\\\n &=\\frac1{32}+\\frac1{36}\\\\\n &=\\frac9{288}+\\frac8{288}\\\\\n &=\\frac{17}{288}.\n\\end{aligned}\n\\]\n\nNow consider \\(n_2=1829\\). We have\n\\[\n1829=31\\cdot 59.\n\\]\nBoth factors are prime. Indeed, to test \\(31\\) for primality it is enough to test primes at most \\(\\sqrt{31}<6\\), namely \\(2,3,5\\), and none divides \\(31\\). Similarly, it is enough to test \\(59\\) against the primes at most \\(\\sqrt{59}<8\\), namely \\(2,3,5,7\\); none divides \\(59\\) (in particular, \\(59=7\\cdot8+3\\)). The primes \\(31\\) and \\(59\\) are distinct. Thus the prime factorization of \\(1829\\) is \\(31^1 59^1\\), so every positive divisor is obtained by independently choosing exponent \\(0\\) or \\(1\\) for each of these two primes. Consequently the complete list of positive divisors is\n\\[\n1,\\quad 31,\\quad 59,\\quad 31\\cdot59=1829.\n\\]\nIt follows that\n\\[\n\\begin{aligned}\nS(1829;31,1)\n &=\\frac{1}{1+31}+\\frac{1}{31+31}\n   +\\frac{1}{59+31}+\\frac{1}{1829+31}\\\\\n &=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\n\\end{aligned}\n\\]\nUsing the common denominator \\(44640\\), these four terms become\n\\[\n\\frac1{32}=\\frac{1395}{44640},\\qquad\n\\frac1{62}=\\frac{720}{44640},\\qquad\n\\frac1{90}=\\frac{496}{44640},\\qquad\n\\frac1{1860}=\\frac{24}{44640}.\n\\]\nHence\n\\[\n\\begin{aligned}\nS(1829;31,1)\n &=\\frac{1395+720+496+24}{44640}\\\\\n &=\\frac{2635}{44640}.\n\\end{aligned}\n\\]\nSince\n\\[\n2635=17\\cdot155\n\\quad\\text{and}\\quad\n44640=288\\cdot155,\n\\]\nthis reduces to\n\\[\nS(1829;31,1)=\\frac{17}{288}.\n\\]\nWe have therefore obtained the exact equality\n\\[\nS(5;31,1)=S(1829;31,1)=\\frac{17}{288}.\n\\]\nIn particular, the two values have the same fractional part. More explicitly, because \\(0<17/288<1\\), the fractional part of each value is itself, namely \\(17/288\\).\n\nFinally, \\(k=31\\) and \\(s=1\\) are positive, while \\(5\\) and \\(1829\\) are positive and unequal. Thus this is a direct counterexample to the conjecture's assertion that, for every positive \\(k,s\\), the values associated with distinct positive integers \\(n\\) have pairwise distinct fractional parts. It is irrelevant that the conjecture also asserts that none of the sums is an integer: the conjecture is a conjunction, and its pairwise-distinctness component already fails for the displayed choice. Therefore the stated conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since the nonsquarefree Möbius terms vanish, the divisor sum reduces to \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least three. Since \\(\\mu(4)=\\mu(8)=0\\), Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negative sign.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-50-53-00-00_summarize-proofs_i82VPVAEWbGpSrurUizXoX.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_n=\\sum_{j=1}^n \\frac1j\n\\]\nbe the \\(n\\)-th harmonic number. The sequence \\(a(n)\\) is defined by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nIf we put \\(b(k)=a(k)/k!\\), this relation becomes\n\\[\n\\sum_{k\\mid n}b(k)=H_n.\n\\]\nMöbius inversion therefore gives\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nwhere \\(\\mu\\) is the ordinary Möbius function.\n\nWe disprove the conjectured sign criterion by taking\n\\[\nn=8.\n\\]\nThis is a positive integer, and its prime factorization is\n\\[\n8=2^3.\n\\]\nConsequently, the total number of prime factors counted with multiplicity is\n\\[\n\\Omega(8)=3.\n\\]\nThus \\(\\Omega(8)\\) is odd and is at least \\(3\\). In other words, the right-hand side of the proposed equivalence\n\\[\na(n)<0\\quad\\Longleftrightarrow\\quad \\bigl(\\Omega(n)\\text{ is odd and }\\Omega(n)\\ge 3\\bigr)\n\\]\nis true at \\(n=8\\).\n\nIt remains to determine the sign of \\(a(8)\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nTherefore the Möbius-transform formula gives\n\\[\na(8)=8!\\left(\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8\\right).\n\\]\nThe integers \\(8\\) and \\(4\\) are both divisible by the square \\(2^2\\), so they are not squarefree. By the definition of the Möbius function,\n\\[\n\\mu(8)=0,\\qquad \\mu(4)=0.\n\\]\nAlso, \\(2\\) is prime, so\n\\[\n\\mu(2)=-1,\n\\]\nand, as always,\n\\[\n\\mu(1)=1.\n\\]\nSubstitution reduces the expression to\n\\[\na(8)=8!\\bigl(H_8-H_4\\bigr).\n\\]\nThe difference of the harmonic numbers consists precisely of the terms from \\(1/5\\) through \\(1/8\\):\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nSince \\(8!=40320\\) and \\(40320/840=48\\), we obtain\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nThus, for the positive integer \\(8\\), the condition on the number of prime factors is true—indeed, \\(\\Omega(8)=3\\) is odd and at least \\(3\\)—while \\(a(8)<0\\) is false. Hence the two conditions are not equivalent for every positive integer. This counterexample disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-50-53-00-00_summarize-proofs_i82VPVAEWbGpSrurUizXoX.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\). Since \\(x\\in\\{3,4,6,10,15\\}\\) and \\(x\\le y\\le z\\), one has \\(x+y+z\\ge 3x\\ge 9\\), so no such triple can sum to \\(7\\), independently of the primality conditions.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  "summary": {
+    "text": "Taking \\(n=7\\), the strengthened clause would require \\(x\\in\\{3,4,6,10,15\\}\\) and \\(x\\le y\\le z\\), so \\(x,y,z\\ge3\\) and hence \\(x+y+z\\ge9\\), contradicting \\(x+y+z=7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-50-53-00-00_summarize-proofs_i82VPVAEWbGpSrurUizXoX.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let a valid representation of an integer \\(n\\) mean a triple of positive integers\n\\[\nx\\le y\\le z,\\qquad x+y+z=n,\n\\]\nfor which all six integers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare prime. The conjecture has two assertions for each \\(n\\): first, that such a representation exists whenever \\(n>5\\), and second, that whenever \\(n>6\\), one can choose such a representation with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nWe disprove the combined conjecture by showing that its second assertion already fails at \\(n=7\\).\n\nSuppose, for contradiction, that the conjecture were true. Since \\(7>6\\), its “moreover” assertion would provide positive integers \\(x,y,z\\) such that\n\\[\nx+y+z=7,\n\\qquad x\\le y\\le z,\n\\qquad x\\in\\{3,4,6,10,15\\},\n\\]\nand such that the six specified numbers are prime.\n\nEvery member of \\(\\{3,4,6,10,15\\}\\) is at least \\(3\\), so \\(x\\ge 3\\). The ordering \\(x\\le y\\le z\\) implies separately that \\(y\\ge x\\) and \\(z\\ge y\\ge x\\). Consequently,\n\\[\nx+y+z\\ge x+x+x=3x\\ge 3\\cdot 3=9.\n\\]\nOn the other hand, the required sum is \\(x+y+z=7\\). This would give \\(7\\ge 9\\), an impossibility.\n\nEquivalently, one may see the contradiction case by case: if \\(x=3\\), then \\(y,z\\ge3\\), so the sum is at least \\(9\\); and if \\(x\\) is any of \\(4,6,10,15\\), the sum is at least \\(3x\\), hence at least \\(12\\). Thus none of the five permitted values of \\(x\\) can occur in an ordered positive triple summing to \\(7\\).\n\nThe contradiction arises before any primality condition is considered: there is no triple satisfying even the sum, ordering, and prescribed-value conditions. Therefore the claimed special representation does not exist for \\(n=7\\), despite \\(7>6\\). Since the conjecture universally asserts both its positivity clause and this special-representation clause, the failure of the latter at \\(n=7\\) disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-50-53-00-00_summarize-proofs_i82VPVAEWbGpSrurUizXoX.eval"
+    }
   }
 }

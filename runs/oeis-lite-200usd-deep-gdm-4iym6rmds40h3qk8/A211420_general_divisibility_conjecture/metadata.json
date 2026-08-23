@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose the allowed constant to be \\(C(k,r)=0\\). Then the required product divides \\(C(k,r)a(n)=0\\) for every \\(n\\), since every natural number divides zero.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  "summary": {
+    "text": "The proof chooses the permitted constant $C(k,r)=0$; then the product on the left divides $0=C(k,r)a(n)$ for every $n$. Thus the argument relies solely on the absence of a nonzero or positive requirement on $C(k,r)$.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\n(as in the statement), and for natural numbers \\(k,n,r\\) write\n\\[\nD_{k,r}(n)=\\prod_{i=1}^{r}(kn+i).\n\\]\nEquivalently, this is the rising factorial beginning at \\(kn+1\\):\n\\[\nD_{k,r}(n)=(kn+1)(kn+2)\\cdots(kn+r).\n\\]\n\nFix any \\(k\\in\\{1,2,3\\}\\) and any \\(r\\ge 1\\). The statement asks only for a natural-number constant \\(C(k,r)\\); it does not require this constant to be positive or nonzero. Choose\n\\[\nC(k,r)=0.\n\\]\n\nNow let \\(n\\ge 0\\) be arbitrary. Then\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero: indeed, for any natural number \\(d\\), the equality\n\\[\n0=d\\cdot 0\n\\]\nexhibits \\(0\\) as a multiple of \\(d\\). Applying this with\n\\[\nd=D_{k,r}(n)=\\prod_{i=1}^{r}(kn+i)\n\\]\ngives\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge 0\\).\n\nThus, for every allowed \\(k\\) and every \\(r\\ge 1\\), the choice \\(C(k,r)=0\\) satisfies the asserted divisibility. No split among the cases \\(k=1,2,3\\) is needed, because the same choice works for all natural \\(k\\) and \\(r\\). Likewise, no property of the factorial ratio is needed for this formulation of the claim. Therefore the conjecture, exactly as stated, follows.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
   }
 }

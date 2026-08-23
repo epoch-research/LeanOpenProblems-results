@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(k=27\\): any putative prime has the factorization \\(x^{27}-27=(x^9-3)(x^{18}+3x^9+9)\\), and for every possible base \\(x\\ge2\\) both factors exceed \\(1\\), so no prime occurs. Thus the value at \\(27\\) is \\(0\\), while \\(27\\) is not the square of an even integer.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take the index $27$: every candidate factors as $x^{27}-27=(x^9-3)(x^{18}+3x^9+9)$, and whenever it could be positive prime-valued one has $x\\ge2$, making both factors greater than $1$; hence no such prime exists. But $27$ is not the square of an even integer, so it is a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "For each positive integer \\(n\\), let\n\\[\nS_n=\\{p\\in\\mathbb N: p\\text{ is prime and there is some }x\\in\\mathbb N\n\\text{ with }x^n=p+n\\}.\n\\]\nThus \\(S_n\\) is exactly the set of primes of the form \\(x^n-n\\), and \\(a(n)\\) is the least member of \\(S_n\\), with the stipulated value \\(a(n)=0\\) when \\(S_n\\) is empty.\n\nWe disprove the conjecture by taking \\(n=27\\). We first prove that \\(S_{27}\\) is empty.\n\nSuppose, to the contrary, that \\(p\\in S_{27}\\). Then \\(p\\) is prime and there is a natural number \\(x\\) such that\n\\[\nx^{27}=p+27. \\tag{1}\n\\]\nThe cases \\(x=0\\) and \\(x=1\\) are impossible: in either case \\(x^{27}\\leq 1\\), whereas \\(p+27\\geq 29\\), since a prime natural number is at least \\(2\\). Consequently,\n\\[\nx\\geq 2.\n\\]\nPut\n\\[\ny=x^9.\n\\]\nThen \\(y\\geq 2^9=512\\), so in particular \\(y-3>1\\). Moreover,\n\\[\nx^{27}=(x^9)^3=y^3.\n\\]\nThe difference-of-cubes identity gives\n\\[\ny^3-3^3=(y-3)(y^2+3y+9).\n\\]\nEquivalently,\n\\[\ny^3=(y-3)(y^2+3y+9)+27. \\tag{2}\n\\]\nCombining (1) and (2), and cancelling \\(27\\), yields\n\\[\np=(y-3)(y^2+3y+9). \\tag{3}\n\\]\nBoth factors on the right are nontrivial positive integers. Indeed, as observed above,\n\\[\ny-3\\geq 509>1,\n\\]\nand plainly\n\\[\ny^2+3y+9\\geq 9>1.\n\\]\nThus (3) expresses \\(p\\) as a product of two integers greater than \\(1\\), contradicting the primality of \\(p\\). More explicitly, \\(y-3\\) divides \\(p\\); a positive divisor of a prime must be either \\(1\\) or the prime itself. It is not \\(1\\), and it cannot equal \\(p\\), because (3) multiplies it by the second factor, which is greater than \\(1\\). This contradiction proves that no such \\(p\\) and \\(x\\) exist.\n\nTherefore \\(S_{27}=\\varnothing\\), and by the definition of the sequence in the no-candidate case,\n\\[\na(27)=0. \\tag{4}\n\\]\n\nIt remains to check that the index \\(27\\) is not the square of an even integer. Every square of an even natural number has the form\n\\[\n(2m)^2=4m^2\n\\]\nand hence is divisible by \\(4\\). But \\(27\\equiv 3\\pmod 4\\), so there is no natural number \\(m\\) for which\n\\[\n27=(2m)^2. \\tag{5}\n\\]\n\nEquations (4) and (5) give a direct counterexample to the proposed universal implication: \\(a(27)=0\\), yet \\(27\\) is not the square of an even integer. Hence the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

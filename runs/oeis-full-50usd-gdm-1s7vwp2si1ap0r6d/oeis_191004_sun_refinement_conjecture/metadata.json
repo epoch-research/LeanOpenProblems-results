@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the admissible even value \\(m=10\\): the bound \\(q\\le \\lfloor 10/4\\rfloor=2\\) forces the prime \\(q=2\\), so \\(p=10-q=8\\) is composite. Hence no required representation exists, independently of the Jacobi-symbol condition.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "The disproof uses the even admissible value \\(m=10\\): the size bound forces any prime \\(q\\le \\lfloor 10/4\\rfloor\\) to equal \\(2\\), after which \\(p=10-q=8\\) is not prime, so no required representation exists.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "We disprove the even part of the conjecture by taking\n\\[\nm=10.\n\\]\nThis integer is within the asserted range: it is even, it satisfies \\(10>8\\), and it is neither of the two listed exceptions \\(32\\) and \\(152\\).\n\nSuppose, for contradiction, that \\(10\\) had the representation required by the even refinement. Then there would be primes \\(p\\) and \\(q\\) such that\n\\[\n10=p+q,\n\\qquad q\\le \\frac{10}{4},\n\\]\nand, in addition,\n\\[\n\\left(\\frac{(q+1)/2}{r}\\right)=1\n\\]\nfor every prime divisor \\(r\\) of \\(10+1=11\\).\n\nThe size condition alone makes the representation impossible. Since \\(q\\) is an integer and\n\\[\nq\\le \\frac{10}{4}=\\frac52,\n\\]\nwe have \\(q\\le 2\\). Equivalently, if the quotient is interpreted as natural-number division as in the formal statement, then \\(10/4=2\\), giving the same conclusion. The only nonnegative integers at most \\(2\\) are \\(0,1,2\\). Neither \\(0\\) nor \\(1\\) is prime, so the assumption that \\(q\\) is prime forces\n\\[\nq=2.\n\\]\nThe equation \\(10=p+q\\) then forces\n\\[\np=10-2=8.\n\\]\nBut \\(8\\) is not prime, since \\(8=2\\cdot4\\). This contradicts the requirement that \\(p\\) be prime.\n\nThus no primes \\(p,q\\) satisfy even the representation and size conditions for \\(m=10\\). Consequently there certainly cannot be such primes satisfying the additional Jacobi-symbol conditions. (The only prime divisor of \\(11\\) is \\(11\\), but its associated symbol condition is immaterial because there is no admissible prime representation to test.) Therefore the required even refinement fails at \\(m=10\\).\n\nSince \\(10\\) is an even integer greater than \\(8\\) and is not one of the conjecture's stated exceptions \\(32,152\\), it is a counterexample to the universal assertion in the even half of the conjecture. The full refinement is the conjunction of its odd and even universal assertions; a conjunction is false when either conjunct is false. Hence Sun's stated refinement conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

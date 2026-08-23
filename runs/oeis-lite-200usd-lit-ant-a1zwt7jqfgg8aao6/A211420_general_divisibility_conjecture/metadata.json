@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose the allowed constant to be \\(C(k,r)=0\\); then the right-hand side is zero, and every denominator product divides zero. Thus no property of the factorial ratio, or of \\(k\\) and \\(r\\), is needed.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "Because the statement does not require the constant to be nonzero, choose \\(C(k,r)=0\\); then the right-hand side is zero, and every denominator product divides it.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\\qquad(n\\ge 0),\n\\]\nregarded as a natural number, and fix natural numbers \\(k,r\\) satisfying\n\\[\nk\\in\\{1,2,3\\},\\qquad r\\ge 1.\n\\]\nWe must exhibit a natural number \\(C=C(k,r)\\) such that, for every natural number \\(n\\),\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid C\\,a(n).\n\\]\n\nChoose\n\\[\nC(k,r)=0.\n\\]\nThis is an admissible natural-number constant under the statement of the conjecture, which does not require \\(C(k,r)\\) to be positive or nonzero.\n\nNow let \\(n\\ge 0\\) be arbitrary and put\n\\[\nD=\\prod_{i=1}^{r}(kn+i)\n  =(kn+1)(kn+2)\\cdots(kn+r).\n\\]\n(The same number is the ascending factorial \\((kn+1)^{\\overline r}\\).) With the above choice of \\(C\\),\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero: indeed, by the definition of divisibility,\n\\[\nD\\mid 0\n\\]\nbecause\n\\[\n0=D\\cdot 0.\n\\]\nConsequently,\n\\[\n\\prod_{i=1}^{r}(kn+i)=D\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge 0\\). Since the same construction works for every \\(k\\) and \\(r\\), it works in particular for all \\(k\\in\\{1,2,3\\}\\) and all \\(r\\ge 1\\).\n\nThus the required constant exists, namely \\(C(k,r)=0\\). No property of the factorial ratio and no separate case split among \\(k=1,2,3\\) is needed. (A stronger formulation requiring \\(C(k,r)>0\\) would not follow from this argument, but that condition is absent from the stated theorem.)",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

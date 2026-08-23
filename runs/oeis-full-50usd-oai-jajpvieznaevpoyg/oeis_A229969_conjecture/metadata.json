@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=7\\), the prescribed choices force \\(x\\ge 3\\), while \\(x\\le y\\le z\\) implies \\(x+y+z\\ge 3x\\ge 9\\), contradicting \\(x+y+z=7\\). Thus the strengthened representation claim already fails independently of any primality conditions.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take \\(n=7\\). Since the prescribed choices force \\(x\\ge 3\\), the ordering \\(x\\le y\\le z\\) implies \\(x+y+z\\ge 3x\\ge 9\\), contradicting \\(x+y+z=7\\); thus the strengthened representation claim already fails before any primality conditions are considered.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS=\\{3,4,6,10,15\\}.\n\\]\nThe conjecture is a conjunction of two universal claims. Its second, stronger-looking clause says that for every integer \\(n>6\\), there exist positive integers \\(x,y,z\\) such that\n\\[\nx+y+z=n,\\qquad x\\le y\\le z,\\qquad x\\in S,\n\\]\nand such that the six numbers\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare prime. We disprove this clause, and hence the whole conjecture, by taking \\(n=7\\).\n\nCertainly \\(7>6\\). Suppose, for contradiction, that the asserted representation existed for \\(n=7\\). Thus there would be positive integers \\(x,y,z\\) satisfying\n\\[\nx+y+z=7,\n\\]\nwith\n\\[\nx\\le y\\le z\n\\]\nand\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nThe primality assumptions may also be included, but they will not be needed: the elementary size conditions alone are impossible.\n\nSince every member of \\(S\\) is at least \\(3\\), membership \\(x\\in S\\) implies\n\\[\nx\\ge 3.\n\\]\nBecause \\(x\\le y\\), we also have \\(y\\ge x\\ge 3\\). Moreover, from \\(x\\le y\\le z\\) we obtain \\(z\\ge y\\ge x\\ge 3\\). Therefore\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nEquivalently, since both \\(y\\) and \\(z\\) are at least \\(x\\),\n\\[\nx+y+z\\ge x+x+x=3x\\ge 9.\n\\]\nBut the required sum is \\(x+y+z=7\\), which would give \\(9\\le 7\\), an impossibility.\n\nThe same contradiction can be displayed as the finite case split forced by the allowed set. If \\(x=3\\), then \\(y,z\\ge3\\), so the sum is at least \\(9\\). If \\(x=4\\), the sum is at least \\(12\\); if \\(x=6\\), it is at least \\(18\\); if \\(x=10\\), it is at least \\(30\\); and if \\(x=15\\), it is at least \\(45\\). None of these can equal \\(7\\). Thus no possible value of \\(x\\) in the prescribed set can occur.\n\nConsequently, \\(n=7\\) has no representation satisfying the “moreover” clause, before one even asks whether the associated six numbers are prime. Since \\(7>6\\), this is a direct counterexample to the assertion that every integer greater than \\(6\\) has such a representation. The full conjecture asserts this clause together with the positivity claim \\(a(n)>0\\) for every \\(n>5\\); a conjunction is false as soon as one of its clauses is false. Hence the stated conjecture is disproved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

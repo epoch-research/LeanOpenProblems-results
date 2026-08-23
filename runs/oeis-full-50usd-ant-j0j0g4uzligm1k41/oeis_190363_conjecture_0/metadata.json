@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At indices \\(140,144,157,161\\), integer-square bounds \\(4k^2\\le 5n^2<4(k+1)^2\\) give the relevant floor values and hence sequence values \\(471,484,528,542\\), respectively. Thus the claimed identity at \\(n=140\\) would require \\(542=528+484-471=541\\), a contradiction.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "At \\(n=140\\), square bounds give the relevant floor values \\(156,160,175,180\\), yielding \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). The claimed recurrence would therefore require \\(542=528+484-471=541\\), a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor\n\\qquad(n\\geq 1).\n\\]\nWe disprove the proposed identity\n\\[\na(n+21)=a(n+17)+a(n+4)-a(n)\n\\]\nby evaluating it at \\(n=140\\).\n\nWe first record how the needed square-root floors can be determined using integer arithmetic. For nonnegative integers \\(n,k\\), if\n\\[\n4k^2\\leq 5n^2<4(k+1)^2,\n\\]\nthen\n\\[\nk\\leq n\\sqrt{\\frac54}<k+1.\n\\]\nIndeed, all quantities concerned are nonnegative, and\n\\[\n\\left(n\\sqrt{\\frac54}\\right)^2=\\frac{5n^2}{4}.\n\\]\nAfter dividing the displayed integer inequalities by \\(4\\), they say\n\\[\nk^2\\leq \\left(n\\sqrt{\\frac54}\\right)^2<(k+1)^2.\n\\]\nSince squaring is increasing on the nonnegative real numbers, taking nonnegative square roots gives the claimed bounds. Consequently,\n\\[\n\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor=k.\n\\]\n\nWe apply this observation to the four indices appearing when \\(n=140\\), namely \\(140\\), \\(144=140+4\\), \\(157=140+17\\), and \\(161=140+21\\).\n\nFor \\(n=140\\) and \\(k=156\\), direct integer calculation gives\n\\[\n4\\cdot156^2=97344\\leq 98000=5\\cdot140^2\n <98596=4\\cdot157^2.\n\\]\nTherefore\n\\[\n\\left\\lfloor140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor140/4\\rfloor=35\\), so\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nFor \\(n=144\\) and \\(k=160\\), we have\n\\[\n4\\cdot160^2=102400\\leq 103680=5\\cdot144^2\n <103684=4\\cdot161^2.\n\\]\nThus\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nSince \\(\\lfloor144/4\\rfloor=36\\), it follows that\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nFor \\(n=157\\) and \\(k=175\\), the relevant bounds are\n\\[\n4\\cdot175^2=122500\\leq 123245=5\\cdot157^2\n <123904=4\\cdot176^2.\n\\]\nHence\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nMoreover, \\(157=4\\cdot39+1\\), so \\(\\lfloor157/4\\rfloor=39\\). Therefore\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFinally, for \\(n=161\\) and \\(k=180\\), we find\n\\[\n4\\cdot180^2=129600\\leq 129605=5\\cdot161^2\n <131044=4\\cdot181^2.\n\\]\nIt follows that\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAs \\(161=4\\cdot40+1\\), we also have \\(\\lfloor161/4\\rfloor=40\\), and consequently\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nIf the conjectured recurrence held for every \\(n\\geq1\\), then at \\(n=140\\) it would give\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nBut the explicit values above make the left-hand side equal to\n\\[\na(161)=542,\n\\]\nwhereas the right-hand side equals\n\\[\na(157)+a(144)-a(140)=528+484-471=1012-471=541.\n\\]\nThus the proposed equation at \\(n=140\\) would assert \\(542=541\\), which is false. Therefore the recurrence does not hold for every \\(n\\geq1\\), and the conjecture is disproved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

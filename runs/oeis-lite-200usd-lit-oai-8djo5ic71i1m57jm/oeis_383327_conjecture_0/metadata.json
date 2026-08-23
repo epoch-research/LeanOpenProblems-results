@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For \\(n=67\\), the two distinct inputs \\(147\\) and \\(2055\\) both give residue sum \\(67\\): respectively \\(1+3+3+3+19+19+19\\) and \\(1+3+9\\cdot7\\). Thus the relevant multiplicity is at least two, contradicting the claimed value one.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "At \\(n=67\\), the distinct indices \\(147\\) and \\(2055\\) both give residue sums equal to \\(67\\): respectively \\(1+3+3+3+19+19+19\\) and \\(1+3+7+7+7+7+7+7+7+7+7\\). Thus there are at least two occurrences at \\(67\\), contradicting the claimed value of one.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nF(m)=\\sum_{k=1}^{\\lfloor\\log_2 m\\rfloor}(m\\bmod 2^k)\n\\]\nbe the sequence A049802. Thus A383327 is the multiplicity function\n\\[\na(n)=\\#\\{m:F(m)=n\\}.\n\\]\nFor positive \\(n\\), the definition used here may equivalently count only indices \\(m<2^{n+1}\\), since that is a sufficient bound for every index at which \\(F(m)=n\\). In particular, for \\(n=67\\), the set whose cardinality defines \\(a(67)\\) is\n\\[\nE_{67}=\\left\\{m<2^{68}:\\sum_{k=1}^{\\lfloor\\log_2m\\rfloor}(m\\bmod 2^k)=67\\right\\}.\n\\]\nWe will exhibit two distinct elements of this set.\n\nFirst take \\(m=147\\). Since\n\\[\n2^7=128\\le 147<256=2^8,\n\\]\nwe have \\(\\lfloor\\log_2 147\\rfloor=7\\). The seven remainders occurring in \\(F(147)\\) are as follows:\n\\[\n\\begin{array}{c|c|c}\nk&2^k&147\\bmod 2^k\\\\ \\hline\n1&2&1\\\\\n2&4&3\\\\\n3&8&3\\\\\n4&16&3\\\\\n5&32&19\\\\\n6&64&19\\\\\n7&128&19.\n\\end{array}\n\\]\nThese values can also be read directly from \\(147=128+19=128+16+3\\). For example, reduction modulo \\(2,4,8,16\\) gives respectively \\(1,3,3,3\\), while reduction modulo each of \\(32,64,128\\) leaves \\(19\\). Consequently,\n\\[\nF(147)=1+3+3+3+19+19+19=10+57=67.\n\\]\nMoreover, \\(147<256=2^8<2^{68}\\). Hence \\(147\\in E_{67}\\).\n\nNow take \\(m=2055\\). We have\n\\[\n2055=2048+7=2^{11}+7\n\\]\nand\n\\[\n2^{11}=2048\\le2055<4096=2^{12},\n\\]\nso \\(\\lfloor\\log_2 2055\\rfloor=11\\). Modulo \\(2\\), the remainder is \\(1\\), and modulo \\(4\\), it is \\(3\\). For every \\(k\\) from \\(3\\) through \\(11\\), the number \\(2^k\\) divides \\(2^{11}\\), while \\(0\\le7<2^k\\). Therefore\n\\[\n2055\\bmod 2^k=7\\qquad(3\\le k\\le11).\n\\]\nThere are \\(11-3+1=9\\) such values of \\(k\\). It follows that\n\\[\nF(2055)=1+3+\\underbrace{7+\\cdots+7}_{9\\text{ terms}}\n       =1+3+9\\cdot7\n       =4+63\n       =67.\n\\]\nAlso, \\(2055<4096=2^{12}<2^{68}\\), so \\(2055\\in E_{67}\\).\n\nThe two exhibited indices are distinct, since \\(147\\ne2055\\). Thus the two-element set\n\\[\nU=\\{147,2055\\}\n\\]\nis a subset of \\(E_{67}\\). To spell out the only membership case split involved: if \\(x\\in U\\), then either \\(x=147\\), in which case the first calculation gives \\(x\\in E_{67}\\), or \\(x=2055\\), in which case the second calculation gives \\(x\\in E_{67}\\). Hence\n\\[\n2=\\#U\\le \\#E_{67}=a(67).\n\\]\nIn particular, \\(a(67)\\ne1\\).\n\nFinally, \\(67\\) is one of the numbers in the conjecture's specified set\n\\[\n\\{1,3,5,9,15,23,35,63,65,67\\}.\n\\]\nIf the conjecture were true, applying it to this member would give \\(a(67)=1\\). But the two explicit occurrences above give \\(a(67)\\ge2\\), which is incompatible with \\(a(67)=1\\). Therefore the assertion that \\(a(n)=1\\) for every \\(n\\) in the displayed set is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

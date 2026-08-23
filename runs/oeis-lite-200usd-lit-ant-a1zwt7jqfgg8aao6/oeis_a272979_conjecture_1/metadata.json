@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Swapping the two square variables shows that representability is invariant under exchanging the first two coefficients. Thus the listed quadruple \\((1,2,1,1)\\) would force \\((2,1,1,1)\\) to be fully representable as well, but the latter is absent from the proposed list, contradicting the claimed equivalence.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "Swapping the two square variables shows that full representability for \u001b(a,b,c,d)\u001b is equivalent to that for \u001b(b,a,c,d)\u001b. The proposed list contains \u001b(1,2,1,1)\u001b but omits its swap \u001b(2,1,1,1)\u001b, so the claimed equivalence cannot hold.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nR(a,b,c,d)\n\\]\ndenote the assertion that every nonnegative integer is representable in the form\n\\[\na x^2+b y^2+c z^3+d w^4\n\\]\nwith \\(x,y,z,w\\) nonnegative integers (and with \\(a,b,c,d\\) positive). Let \\(S\\) be the set of the 49 quadruples displayed in the conjecture. The conjecture asserts that, for every positive quadruple \\((a,b,c,d)\\),\n\\[\nR(a,b,c,d)\\quad\\Longleftrightarrow\\quad (a,b,c,d)\\in S.\n\\]\nWe prove that this assertion is impossible.\n\nThe key observation is that the two square terms are symmetric. More precisely, for all positive integers \\(a,b,c,d\\),\n\\[\nR(a,b,c,d)\\Longrightarrow R(b,a,c,d).\n\\]\nIndeed, suppose \\(R(a,b,c,d)\\) holds, and let \\(n\\ge 0\\) be arbitrary. By the definition of \\(R(a,b,c,d)\\), there are nonnegative integers \\(x,y,z,w\\) such that\n\\[\nn=a x^2+b y^2+c z^3+d w^4.\n\\]\nInterchanging the two square variables gives\n\\[\nn=b y^2+a x^2+c z^3+d w^4.\n\\]\nThus, for the coefficients \\((b,a,c,d)\\), the nonnegative quadruple of variables \\((y,x,z,w)\\) represents the same integer \\(n\\). Since \\(n\\) was arbitrary, \\(R(b,a,c,d)\\) follows. Applying the same argument in the other direction shows, in fact, the equivalence\n\\[\nR(a,b,c,d)\\Longleftrightarrow R(b,a,c,d).\n\\]\nConsequently, any exact list of all fully representable coefficient quadruples must be closed under swapping its first two coordinates.\n\nNow assume, for contradiction, that the stated conjecture is true. The quadruple\n\\[\n(1,2,1,1)\n\\]\nappears explicitly in the proposed set \\(S\\). Therefore the right-to-left implication in the conjectured equivalence yields\n\\[\nR(1,2,1,1).\n\\]\nIn concrete terms, under the assumed conjecture every nonnegative integer \\(n\\) has a representation\n\\[\nn=x^2+2y^2+z^3+w^4\n\\]\nwith \\(x,y,z,w\\ge 0\\).\n\nBy the square-variable symmetry just proved, this implies\n\\[\nR(2,1,1,1).\n\\]\nExplicitly, whenever\n\\[\nn=x^2+2y^2+z^3+w^4,\n\\]\nwe can rewrite the same equality as\n\\[\nn=2y^2+x^2+z^3+w^4,\n\\]\nwhich is a representation for the coefficient quadruple \\((2,1,1,1)\\), using the variables \\((y,x,z,w)\\).\n\nThe left-to-right implication in the conjectured equivalence would now force\n\\[\n(2,1,1,1)\\in S.\n\\]\nBut this quadruple is not in the displayed list. To make this finite check explicit, the entries in the proposed list whose first coordinate is \\(2\\) are\n\\[\n(2,3,1,1),\\quad (2,4,1,1),\\quad (2,4,1,2),\\quad\n(2,3,1,4),\\quad (2,3,1,5),\\quad (2,4,1,5),\\quad\n(2,4,1,11).\n\\]\nEvery one of these has second coordinate \\(3\\) or \\(4\\), never \\(1\\). All other displayed entries have first coordinate different from \\(2\\). Hence \\((2,1,1,1)\\notin S\\), contradicting the conclusion forced by the conjecture.\n\nTherefore the proposed biconditional classification is false. The failure is caused by the omission of the swapped quadruple \\((2,1,1,1)\\): the forms attached to \\((1,2,1,1)\\) and \\((2,1,1,1)\\) represent exactly the same nonnegative integers, since their square variables can be interchanged, while the proposed list contains the first quadruple but not the second.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

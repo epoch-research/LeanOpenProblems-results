@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\): the Möbius sum reduces to \\(8!(H_8-H_4)=25584>0\\). But \\(\\Omega(8)=3\\), which is odd and at least \\(3\\), so this gives a counterexample to the claimed sign criterion.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\). The Möbius sum over the divisors of \\(8\\) reduces to \\(8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_m=\\sum_{j=1}^m\\frac1j\n\\]\nbe the \\(m\\)-th harmonic number, and let \\(\\mu\\) denote the Möbius function. The sequence is characterized by\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nApplying Möbius inversion to the arithmetic function \\(b(k)=a(k)/k!\\) gives\n\\[\n\\frac{a(n)}{n!}=\\sum_{d\\mid n}\\mu\\!\\left(\\frac nd\\right)H_d,\n\\]\nand therefore\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu\\!\\left(\\frac nd\\right)H_d.\n\\]\n\nWe disprove the proposed equivalence by taking \\(n=8\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nThus the Möbius-transform formula becomes\n\\[\n\\frac{a(8)}{8!}\n =\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8.\n\\]\nRecall that \\(\\mu(m)=0\\) whenever \\(m\\) is divisible by the square of a prime, that \\(\\mu(p)=-1\\) for a prime \\(p\\), and that \\(\\mu(1)=1\\). Since \\(8=2^3\\) and \\(4=2^2\\) are divisible by \\(2^2\\), while \\(2\\) is prime, we have\n\\[\n\\mu(8)=0,\\qquad \\mu(4)=0,\\qquad \\mu(2)=-1,\\qquad \\mu(1)=1.\n\\]\nConsequently,\n\\[\n\\frac{a(8)}{8!}=H_8-H_4.\n\\]\nThe terms through \\(1/4\\) cancel, so\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nSince \\(8!=40320=48\\cdot840\\), it follows that\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nOn the other hand,\n\\[\n8=2^3.\n\\]\nThe function \\(\\Omega(n)\\) counts prime factors with multiplicity, so this factorization gives\n\\[\n\\Omega(8)=3.\n\\]\nHence \\(\\Omega(8)\\) is odd and is at least \\(3\\). Thus, at \\(n=8\\), the right-hand side of the conjectured equivalence is true, whereas the left-hand side is false:\n\\[\na(8)<0\\quad\\text{is false},\n\\qquad\n\\bigl(\\Omega(8)\\text{ is odd and }\\Omega(8)\\ge3\\bigr)\\quad\\text{is true}.\n\\]\nTherefore the claimed equivalence does not hold for every positive integer \\(n\\), and the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

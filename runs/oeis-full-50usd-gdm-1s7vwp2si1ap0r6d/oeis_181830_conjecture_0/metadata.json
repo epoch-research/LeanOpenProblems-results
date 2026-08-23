@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The cardboard-braid count is defined to equal the arithmetic function \\(a(n)\\) for every \\(n\\), so the claimed equality holds immediately by definition; no independent counting argument or bijection is provided.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "There is no independent combinatorial argument: the cardboard-braid count is stipulated to equal \\(a(n)\\), so the claimed equality is tautological.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\varphi(n)\\) denote Euler’s totient function, and for a positive integer \\(m\\), let\n\\[\nD(m)=\\{d\\in\\mathbb N_{>0}:d\\mid m\\}\n\\]\nbe the set of positive divisors of \\(m\\). Thus \\(|D(m)|=\\tau(m)\\), the divisor-counting function.\n\nDefine the sequence \\(a(n)\\), for every nonnegative integer \\(n\\), by\n\\[\na(n)=\n\\begin{cases}\n0,&n\\le 1,\\\\[2mm]\n\\varphi(n)-|D(n-1)|,&n>1.\n\\end{cases}\n\\]\nThis formula indeed gives the number of positive integers at most \\(n\\) that are strongly prime to \\(n\\). To see this, suppose first that \\(n>1\\). There are exactly \\(\\varphi(n)\\) positive integers \\(k\\le n\\) satisfying \\(\\gcd(k,n)=1\\): these are precisely the usual reduced residue representatives \\(1\\le k<n\\), since \\(n\\) itself is not relatively prime to \\(n\\) when \\(n>1\\).\n\nAmong these relatively prime integers, the ones which fail to be strongly prime to \\(n\\) are exactly those which divide \\(n-1\\). Every positive divisor \\(d\\) of \\(n-1\\) satisfies \\(d\\le n-1<n\\). Moreover, it is automatically relatively prime to \\(n\\): if an integer \\(c\\) divides both \\(d\\) and \\(n\\), then, because \\(d\\mid n-1\\), the integer \\(c\\) divides both \\(n\\) and \\(n-1\\), and hence divides their difference \\(1\\). Therefore \\(c=1\\), so \\(\\gcd(d,n)=1\\). Consequently, the divisors of \\(n-1\\) form a subset of the \\(\\varphi(n)\\) integers relatively prime to \\(n\\). Removing precisely these \\(|D(n-1)|\\) integers leaves\n\\[\n\\varphi(n)-|D(n-1)|\n\\]\nstrongly prime integers. For \\(n=0\\), there are no positive integers at most \\(n\\). For \\(n=1\\), the only candidate is \\(1\\), but it divides \\(n-1=0\\), so it is not strongly prime to \\(1\\). Thus the value \\(0\\) for \\(n\\le1\\) is also correct.\n\nNow define the cardboard-braid count \\(B(n)\\) by\n\\[\nB(n):=a(n).\n\\]\nThis is the entire mathematical specification of the cardboard-braid count used in the stated result; no separate set of braids or independent criterion for a braid to work is introduced.\n\nWe prove that \\(a(n)=B(n)\\) for every \\(n\\ge0\\). Fix such an \\(n\\). By the defining equation for \\(B\\),\n\\[\nB(n)=a(n),\n\\]\nand therefore\n\\[\na(n)=B(n).\n\\]\nExplicitly, if \\(n\\le1\\), both sides are \\(0\\). If \\(n>1\\), both sides are the same number\n\\[\n\\varphi(n)-|D(n-1)|.\n\\]\nThese cases exhaust all nonnegative integers \\(n\\), proving the claimed equality.\n\nThus, under the given definition of the cardboard-braid count, \\(a(n)\\) is the number of cardboard braids that work with \\(n\\) slots for every nonnegative integer \\(n\\). The equality is definitional rather than a consequence of an independently specified combinatorial model of cardboard braids.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

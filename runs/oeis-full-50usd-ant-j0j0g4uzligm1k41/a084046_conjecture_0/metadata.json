@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the index 27: bases below 2 cannot yield a prime of the required form, while for every base \\(j\\ge2\\), \\(j^{27}-27=(j^9-3)(j^{18}+3j^9+9)\\) has both factors greater than 1, so no such prime exists. Yet 27 is not an even square, since every even square is divisible by 4.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Take the counterexample exponent $27$: any putative prime $j^{27}-27$ forces $j\\ge 2$, but it factors as $(j^9-3)(j^{18}+3j^9+9)$, with both factors greater than $1$, so no such prime exists. Yet $27$ is not the square of an even integer (every such square is divisible by $4$).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS_n=\\{p\\in\\mathbb N: p\\text{ is prime and there is some }j\\in\\mathbb N\n\\text{ such that }j^n=p+n\\}.\n\\]\nThus the sequence value \\(a(n)\\) is the least element of \\(S_n\\), with the stipulated value \\(a(n)=0\\) when \\(S_n\\) is empty. We will show that \\(S_{27}\\) is empty, although \\(27\\) is not the square of an even integer. This gives a counterexample to the conjecture.\n\nSuppose, toward proving that \\(S_{27}\\) is empty, that \\(p\\in S_{27}\\). Then \\(p\\) is prime and there is a natural number \\(j\\) satisfying\n\\[\nj^{27}=p+27. \\tag{1}\n\\]\nWe split according to the size of \\(j\\).\n\nFirst suppose \\(j<2\\). Since \\(j\\) is a natural number, this means \\(j=0\\) or \\(j=1\\), and in either case \\(j^{27}\\leq 1\\). On the other hand, \\(p+27\\geq 27\\), because \\(p\\) is a natural number. This contradicts (1). Consequently any possible \\(j\\) in (1) would have to satisfy\n\\[\nj\\geq 2. \\tag{2}\n\\]\n\nNow assume (2). Then\n\\[\nj^9\\geq 2^9=512.\n\\]\nIn particular, if we set\n\\[\nb=j^9-3,\n\\]\nthen \\(b\\geq 509>1\\). Also set\n\\[\nc=j^{18}+3j^9+9.\n\\]\nCertainly \\(c\\geq 9>1\\).\n\nThe standard difference-of-cubes identity\n\\[\nx^3-y^3=(x-y)(x^2+xy+y^2)\n\\]\napplied with \\(x=j^9\\) and \\(y=3\\) gives\n\\[\n\\begin{aligned}\nj^{27}-27\n&=(j^9)^3-3^3\\\\\n&=(j^9-3)(j^{18}+3j^9+9)\\\\\n&=bc. \\tag{3}\n\\end{aligned}\n\\]\nEquation (1) says precisely that \\(p=j^{27}-27\\), so (3) yields\n\\[\np=bc.\n\\]\nBut both factors \\(b\\) and \\(c\\) are natural numbers strictly greater than \\(1\\). Hence \\(p\\) is composite, contradicting the assumption that \\(p\\) is prime. Equivalently, \\(b\\) is a divisor of \\(p\\) with \\(1<b<p\\), since \\(c>1\\).\n\nBoth possible cases for the base \\(j\\) have therefore led to contradictions. There is no prime \\(p\\) and no natural number \\(j\\) for which \\(j^{27}=p+27\\). Thus\n\\[\nS_{27}=\\varnothing,\n\\]\nand by the definition of the sequence in the empty case,\n\\[\na(27)=0. \\tag{4}\n\\]\n\nIt remains to check that the exponent \\(27\\) does not have the form required by the conjecture. If it were the square of an even natural number, there would be an \\(m\\in\\mathbb N\\) such that\n\\[\n27=(2m)^2=4m^2.\n\\]\nThis would make \\(27\\) divisible by \\(4\\). However, \\(27\\equiv 3\\pmod 4\\), so \\(4\\nmid 27\\). Therefore no such \\(m\\) exists.\n\nWe have exhibited \\(k=27\\) for which \\(a(k)=0\\), by (4), but for which \\(k\\) is not the square of an even integer. Hence the assertion\n\\[\n\\forall k\\in\\mathbb N,\\qquad a(k)=0\\Longrightarrow \\exists m\\in\\mathbb N\\; k=(2m)^2\n\\]\nis false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

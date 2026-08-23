@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Apply excluded middle to whether the sequence is eventually strictly below the threshold \\(k\\). If it is not, then for every cutoff \\(M\\) there is some \\(n\\ge M\\) with \\(a(n)\\ge k\\), which is exactly the other alternative.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "For a fixed threshold \\(k>1\\), apply excluded middle to whether all sufficiently large \\(n\\) satisfy \\(a(n)<k\\). If this eventual bound fails, then for every cutoff \\(M\\) there is some \\(n\\ge M\\) with \\(a(n)\\ge k\\), which is exactly the other alternative.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\min\\{d:d\\text{ is a decimal digit occurring in }n^3\\},\n\\]\nwith the convention \\(a(0)=0\\). (Indeed, the usual decimal digit list of \\(0\\) is represented as empty in the definition, and its default minimum is declared to be \\(0\\).)\n\nThe proposition actually proved is the following dichotomy. For every natural number \\(k>1\\), either\n\\[\n\\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n   \\quad N\\le n\\Longrightarrow a(n)<k, \\tag{1}\n\\]\nor\n\\[\n\\forall M\\in\\mathbb N\\;\\exists n\\in\\mathbb N,\n   \\quad M\\le n\\ \\text{ and }\\ k\\le a(n). \\tag{2}\n\\]\n\nFix a natural number \\(k>1\\). Consider the assertion\n\\[\nP:\\qquad \\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n   \\quad N\\le n\\Longrightarrow a(n)<k.\n\\]\nBy the law of excluded middle, either \\(P\\) is true or \\(P\\) is false.\n\nIf \\(P\\) is true, then (1) holds immediately, so the first alternative of the required dichotomy holds.\n\nNow suppose that \\(P\\) is false. We prove (2). Let \\(M\\) be an arbitrary natural number. We claim that there is some \\(n\\ge M\\) for which \\(a(n)\\ge k\\). Suppose, to the contrary, that no such \\(n\\) exists. Then, for every natural number \\(n\\), if \\(M\\le n\\), it is not the case that \\(k\\le a(n)\\). Since the natural numbers are linearly ordered, the negation of \\(k\\le a(n)\\) is exactly the strict inequality \\(a(n)<k\\). Consequently,\n\\[\n\\forall n\\in\\mathbb N,\n   \\quad M\\le n\\Longrightarrow a(n)<k.\n\\]\nTaking \\(N=M\\), this proves \\(P\\), contradicting our assumption that \\(P\\) is false. Therefore the supposition was impossible, and there must be an \\(n\\) such that\n\\[\nM\\le n\\quad\\text{and}\\quad k\\le a(n).\n\\]\nBecause \\(M\\) was arbitrary, (2) follows.\n\nThis completes the case split and proves the stated dichotomy for every \\(k>1\\).\n\nIt is worth being precise about what this establishes. Condition (2) says that values \\(a(n)\\ge k\\) occur beyond every bound and hence at infinitely many indices. Condition (1) says that only indices below some fixed bound can have \\(a(n)\\ge k\\). Thus the proved statement is the general logical fact that this set of indices is either bounded (and therefore finite) or unbounded (and therefore infinite). No property of decimal digits or cubes is used in the argument, and the hypothesis \\(k>1\\) is not needed for the dichotomy itself. In particular, this proof does not decide which alternative holds when \\(k=2\\); therefore it does not, by itself, establish the stronger canonical claim that infinitely many \\(n\\) satisfy \\(a(n)>1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

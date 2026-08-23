@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\): the prescribed value of \\(x\\) is at least \\(3\\), and \\(x\\le y\\le z\\) then forces \\(x+y+z\\ge 9\\), contradicting \\(x+y+z=7\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "Take \\(n=7\\). Since every permitted value of \\(x\\) is at least \\(3\\), the ordering \\(x\\le y\\le z\\) forces \\(x+y+z\\ge 9\\), contradicting the required sum \\(x+y+z=7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\#\\bigl\\{(x,y,z)\\in\\mathbb Z_{>0}^3:\n x\\le y\\le z,\\ x+y+z=n,\n\\]\n\\[\n2x-1,\\ 2y-1,\\ 2z-1,\\ 2xy-1,\\ 2xz-1,\\ 2yz-1\n\\text{ are all prime}\\bigr\\}.\n\\]\nThe conjecture asserts two things simultaneously for every integer \\(n\\): first, if \\(n>5\\), then \\(a(n)>0\\); and second, if \\(n>6\\), then there is such a positive ordered representation\n\\[\nn=x+y+z,\\qquad x\\le y\\le z,\n\\]\nin which\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\n(The phrase “such a representation” includes the positivity, ordering, and six primality conditions from the definition.)\n\nWe disprove the universal assertion by taking\n\\[\nn=7.\n\\]\nCertainly \\(7>6\\). Therefore, if the conjecture were true, its second, “moreover” clause would provide positive integers \\(x,y,z\\) satisfying\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\nand\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nas well as the six stated primality conditions.\n\nMembership in the displayed finite set leaves the five cases\n\\[\nx=3,\\quad x=4,\\quad x=6,\\quad x=10,\\quad x=15.\n\\]\nIn every case, \\(x\\ge 3\\). Because \\(x\\le y\\le z\\), it follows that\n\\[\ny\\ge x\\ge 3\\qquad\\text{and}\\qquad z\\ge y\\ge x\\ge 3.\n\\]\nConsequently,\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nThis contradicts the required equation \\(x+y+z=7\\).\n\nEquivalently, one may see the contradiction in each of the five possible cases directly. If \\(x=3\\), ordering gives \\(x+y+z\\ge 9\\); if \\(x=4\\), it gives \\(x+y+z\\ge 12\\); for \\(x=6,10,15\\), it gives the respective lower bounds \\(18,30,45\\). None can equal \\(7\\).\n\nThus no positive ordered triple summing to \\(7\\) can have its least entry \\(x\\) in \\(\\{3,4,6,10,15\\}\\). This obstruction occurs before any primality condition is considered, so the primality requirements cannot rescue the representation. Hence the “moreover” clause is false at \\(n=7\\). Since the conjecture requires both clauses for every \\(n\\), failure of this clause at a single value disproves the entire conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

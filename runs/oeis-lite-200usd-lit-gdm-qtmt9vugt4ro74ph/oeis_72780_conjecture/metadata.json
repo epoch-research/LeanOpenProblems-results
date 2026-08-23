@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\): the defined value is \\(a(0)=0\\), but \\(0\\) is neither \\(1\\) nor prime, contradicting the claimed characterization of the zeros.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "Taking \\(n=0\\), the divisor sums are empty and the remaining terms vanish, so \\(a(0)=0\\). But \\(0\\neq1\\) and \\(0\\) is not prime, contradicting the asserted characterization of the zeros.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nD(n)=\\{d\\in\\mathbb N:1\\le d<n+1\\text{ and }d\\mid n\\}.\n\\]\nThus, for positive \\(n\\), \\(D(n)\\) is the usual finite set of positive divisors of \\(n\\). The extension to zero used in the statement has\n\\[\nD(0)=\\varnothing,\n\\]\nbecause there is no natural number \\(d\\) satisfying \\(1\\le d<1\\). Define\n\\[\n\\sigma(n)=\\sum_{d\\in D(n)}d,\n\\qquad\n\\sigma_2(n)=\\sum_{d\\in D(n)}d^2.\n\\]\nEuler's totient is taken to be the number of natural numbers less than \\(n\\) and coprime to \\(n\\). In particular, there are no natural numbers less than \\(0\\), so\n\\[\n\\varphi(0)=0.\n\\]\nThe sequence value in the statement is obtained from the integer\n\\[\n\\sigma_2(n)+\\varphi(n)\\sigma(n)-2n^2\n\\]\nby taking its nonnegative natural-number part. This last convention has no effect in the calculation below, because the integer obtained is exactly zero.\n\nWe disprove the asserted universal statement by taking\n\\[\nn=0.\n\\]\nSince \\(D(0)=\\varnothing\\), both divisor sums at zero are empty sums. Hence\n\\[\n\\sigma(0)=\\sum_{d\\in\\varnothing}d=0\n\\quad\\text{and}\\quad\n\\sigma_2(0)=\\sum_{d\\in\\varnothing}d^2=0.\n\\]\nTogether with \\(\\varphi(0)=0\\), this gives\n\\[\n\\begin{aligned}\na(0)\n&=\\sigma_2(0)+\\varphi(0)\\sigma(0)-2\\cdot 0^2\\\\\n&=0+0\\cdot0-0\\\\\n&=0.\n\\end{aligned}\n\\]\nConsequently the left-hand side of the claimed equivalence\n\\[\na(n)=0\\quad\\Longleftrightarrow\\quad n=1\\ \\text{or}\\ n\\text{ is prime}\n\\]\nis true at \\(n=0\\).\n\nIts right-hand side, however, is false at \\(n=0\\). Indeed, the two alternatives are exhausted as follows:\n\n1. The alternative \\(0=1\\) is false.\n2. The alternative that \\(0\\) is prime is also false. A prime natural number is, in particular, at least \\(2\\); since \\(0<2\\), zero cannot be prime.\n\nThus\n\\[\na(0)=0\n\\]\nbut\n\\[\n\\neg\\bigl(0=1\\ \\text{or}\\ 0\\text{ is prime}\\bigr).\n\\]\nThe first required biconditional therefore fails at \\(n=0\\). Since the proposed statement requires, for every natural number \\(n\\), the conjunction of this biconditional with the further assertion characterizing the value \\(a(n)=2\\), failure of the first member of the conjunction at one value already makes the whole universal assertion false. No analysis of the second biconditional is needed.\n\nEquivalently, if one assumes the universal assertion and specializes it to \\(n=0\\), the equality \\(a(0)=0\\) forces the disjunction\n\\[\n0=1\\quad\\text{or}\\quad 0\\text{ is prime}.\n\\]\nThe first case contradicts the distinctness of zero and one, while the second contradicts the elementary fact that every prime is at least two. Both cases are impossible, yielding the desired contradiction.\n\nThis counterexample has an important domain qualification. It disproves the unguarded statement quantified over every \\(n\\in\\mathbb N\\), because that statement includes \\(n=0\\). The canonical OEIS conjecture is stated only for \\(n\\ge1\\). Since \\(0\\) does not satisfy that hypothesis—and the usual divisor sums are ordinarily discussed only for positive arguments—this particular counterexample does not by itself refute the positive-integer version of the OEIS conjecture. It refutes precisely the all-natural-numbers formulation given above, in which the condition \\(n\\ge1\\) was omitted.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

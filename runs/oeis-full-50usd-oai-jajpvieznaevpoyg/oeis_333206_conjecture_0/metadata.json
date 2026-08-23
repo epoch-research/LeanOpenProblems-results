@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The proof splits on whether there is a cutoff beyond which all values are less than \\(k\\). If no such cutoff exists, then every \\(M\\) has some \\(n\\ge M\\) with value at least \\(k\\), since otherwise \\(M\\) itself would provide the cutoff.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "By excluded middle, either there is a cutoff beyond which no index satisfies the threshold, or no such cutoff exists. In the latter case, negating the cutoff statement and using the complementary natural-number inequalities yields, beyond every bound, an index satisfying the threshold.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "For a nonnegative integer \\(n\\), write the base-10 digits of \\(n^3\\), and define\n\\[\na(n)=\\min\\{d:d\\text{ is a decimal digit occurring in }n^3\\}.\n\\]\nFor \\(n=0\\), where the underlying digit-list convention may represent zero by an empty list, take the default value \\(a(0)=0\\). Thus \\(a(n)\\) is the smallest decimal digit appearing in \\(n^3\\).\n\nThe statement proved is the following dichotomy. For every natural number \\(k>1\\), either\n\\[\n\\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n   \\quad N\\le n\\implies a(n)<k,\n\\tag{1}\n\\]\nor\n\\[\n\\forall M\\in\\mathbb N\\;\\exists n\\in\\mathbb N,\n   \\quad M\\le n\\ \\text{ and }\\ k\\le a(n).\n\\tag{2}\n\\]\nEquivalently, if\n\\[\nS_k=\\{n\\in\\mathbb N:k\\le a(n)\\},\n\\]\nthen either \\(S_k\\) is bounded (and hence finite), or \\(S_k\\) contains an element at least as large as every prescribed bound, i.e. it is unbounded (and hence infinite).\n\nFix \\(k>1\\). Consider the assertion\n\\[\nE:\\qquad \\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n       \\quad N\\le n\\implies a(n)<k.\n\\]\nBy the law of excluded middle, either \\(E\\) holds or it does not.\n\nIf \\(E\\) holds, then its witness \\(N\\) gives (1) immediately, so the first alternative of the desired dichotomy holds.\n\nIt remains to treat the case in which \\(E\\) does not hold. We prove (2). Let an arbitrary bound \\(M\\in\\mathbb N\\) be given. Suppose, for contradiction, that there is no \\(n\\) satisfying both \\(M\\le n\\) and \\(k\\le a(n)\\). Then for every \\(n\\ge M\\), the inequality \\(k\\le a(n)\\) is false. Since the natural numbers are linearly ordered, the negation of \\(k\\le a(n)\\) is exactly\n\\[\na(n)<k.\n\\]\nConsequently,\n\\[\n\\forall n\\in\\mathbb N,\n   \\quad M\\le n\\implies a(n)<k.\n\\]\nTaking \\(N=M\\), this is precisely the assertion \\(E\\), contradicting the assumption that \\(E\\) does not hold. Therefore our supposition was false, and there must be some \\(n\\) such that\n\\[\nM\\le n\\qquad\\text{and}\\qquad k\\le a(n).\n\\]\nBecause \\(M\\) was arbitrary, (2) follows.\n\nThis proves the stated finite/unbounded dichotomy for every \\(k>1\\). In fact, the condition \\(k>1\\), as well as the particular definition of \\(a(n)\\) using decimal digits of cubes, is not needed for this dichotomy; the same argument applies to any function \\(a:\\mathbb N\\to\\mathbb N\\) and any threshold \\(k\\).\n\nAccordingly, the proved formal statement does not by itself establish the stronger informal OEIS conjecture that there are infinitely many \\(n\\) with \\(a(n)>1\\). At \\(k=2\\), it establishes only that the set of such \\(n\\) is either eventually absent or unbounded; it does not rule out the first alternative.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since \\(\\mu(8)=\\mu(4)=0\\), the Möbius sum reduces to \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\).  In the Möbius sum the quotients \\(8\\) and \\(4\\) contribute zero, so \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_m=\\sum_{j=1}^m \\frac1j\n\\]\nbe the \\(m\\)-th harmonic number, and let \\(\\mu\\) denote the Möbius function. The sequence in question is given by the factorial-scaled Möbius transform\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu\\!\\left(\\frac nd\\right)H_d\n\\qquad(n\\ge 1).\n\\]\nRecall that \\(\\mu(1)=1\\); if an integer is divisible by the square of a prime, then its Möbius value is \\(0\\); and if it is a product of \\(r\\) distinct primes, then its Möbius value is \\((-1)^r\\).\n\nWe disprove the proposed equivalence by taking\n\\[\nn=8=2^3.\n\\]\nFirst consider its number of prime factors counted with multiplicity. Since its prime factorization consists of three copies of \\(2\\),\n\\[\n\\Omega(8)=3.\n\\]\nThus \\(\\Omega(8)\\) is odd and is at least \\(3\\). Consequently, the right-hand side of the conjectured equivalence is true at \\(n=8\\).\n\nIt remains to compute the sign of \\(a(8)\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nTherefore the defining divisor sum is\n\\[\n\\sum_{d\\mid 8}\\mu\\!\\left(\\frac8d\\right)H_d\n =\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8.\n\\]\nNow \\(8\\) and \\(4\\) are both divisible by \\(2^2\\), so\n\\[\n\\mu(8)=\\mu(4)=0.\n\\]\nAlso, \\(2\\) is a product of one distinct prime, so \\(\\mu(2)=-1\\), while \\(\\mu(1)=1\\). Hence\n\\[\n\\sum_{d\\mid 8}\\mu\\!\\left(\\frac8d\\right)H_d\n=-H_4+H_8=H_8-H_4.\n\\]\nThe first four terms in \\(H_8\\) are exactly \\(H_4\\), and so\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nEvery summand here is positive, already showing that \\(a(8)>0\\). For an exact evaluation, using denominator \\(840\\),\n\\[\n\\frac15+\\frac16+\\frac17+\\frac18\n =\\frac{168+140+120+105}{840}\n =\\frac{533}{840}.\n\\]\nSince \\(8!=40320=48\\cdot840\\), it follows that\n\\[\na(8)=8!\\,(H_8-H_4)\n =40320\\cdot\\frac{533}{840}\n =48\\cdot533\n =25584.\n\\]\nIn particular,\n\\[\na(8)=25584>0,\n\\]\nso the assertion \\(a(8)<0\\) is false.\n\nThus, for the positive integer \\(8\\), the condition “\\(\\Omega(8)\\) is odd and at least \\(3\\)” is true, whereas the condition “\\(a(8)<0\\)” is false. The two conditions are therefore not equivalent for every positive integer, which disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

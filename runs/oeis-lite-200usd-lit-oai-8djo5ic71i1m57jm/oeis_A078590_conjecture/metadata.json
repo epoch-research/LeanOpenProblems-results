@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At the seventh step, the denominator is \\(a(5)=171\\), which is divisible by \\(19\\), while \\(a(6)\\equiv3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{19}\\), the numerator satisfies \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\), so it cannot be divisible by \\(171\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "Direct calculation gives \\(a(5)=171\\) and \\(a(6)\\equiv3\\pmod{18}\\). Since \\(19\\mid171\\) and \\(2^{18}\\equiv1\\pmod{19}\\), one has \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\), so the division defining \\(a(7)\\) is not exact.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the sequence be defined, as long as the indicated divisions make sense in the integers, by\n\\[\na(1)=a(2)=1,\\qquad a(n)=\\frac{2^{a(n-1)}+1}{a(n-2)}\\quad(n\\geq 3).\n\\]\nWe will show that the first six terms are integers but that the division defining \\(a(7)\\) is not exact. Thus \\(a(7)\\) is not an integer, disproving the conjecture.\n\nThe first few terms follow directly from the recurrence:\n\\[\n a(3)=\\frac{2^1+1}{1}=3,\n\\]\n\\[\n a(4)=\\frac{2^3+1}{1}=9,\n\\]\nand\n\\[\n a(5)=\\frac{2^9+1}{3}=\\frac{513}{3}=171.\n\\]\nIn particular,\n\\[\n a(5)=171=9\\cdot 19,\n\\]\nso \\(19\\mid a(5)\\).\n\nWe next establish both the integrality of \\(a(6)\\) and the particular residue of \\(a(6)\\) that will be needed. By the recurrence,\n\\[\n a(6)=\\frac{2^{171}+1}{9}.\n\\]\nWe claim that\n\\[\n 2^{171}\\equiv 26\\pmod{162}.\n\\]\nTo prove this without evaluating the enormous power, first work modulo \\(81\\). Since \\(2\\) is relatively prime to \\(81\\), Euler's theorem gives\n\\[\n 2^{\\varphi(81)}=2^{54}\\equiv 1\\pmod{81},\n\\]\nbecause \\(\\varphi(81)=81-27=54\\). Now\n\\[\n 171=3\\cdot54+9,\n\\]\nso\n\\[\n 2^{171}=(2^{54})^3 2^9\\equiv 2^9=512\\equiv 26\\pmod{81},\n\\]\nthe last congruence following from \\(512=6\\cdot81+26\\).\n\nMoreover, both \\(2^{171}\\) and \\(26\\) are even. Hence their difference is divisible by \\(2\\), while the congruence just proved says that their difference is divisible by \\(81\\). Since \\(2\\) and \\(81\\) are coprime, their difference is divisible by \\(2\\cdot81=162\\). This proves\n\\[\n 2^{171}\\equiv26\\pmod{162}.\n\\]\nAdding one gives\n\\[\n 2^{171}+1\\equiv27\\pmod{162}.\n\\]\nConsequently there is an integer \\(t\\) such that\n\\[\n 2^{171}+1=162t+27=9(18t+3).\n\\]\nThis has two consequences. First, \\(9\\mid 2^{171}+1\\), so the division defining \\(a(6)\\) is exact. Second, after dividing the displayed identity by \\(9\\), we obtain\n\\[\n a(6)=\\frac{2^{171}+1}{9}=18t+3.\n\\]\nThus\n\\[\n a(6)\\equiv3\\pmod{18}.\n\\]\n(Indeed, its exact value is the listed sixth term\n\\(332572817028187686275682948600327513806149983112761\\), but only its residue modulo \\(18\\) is relevant.)\n\nWe now examine the numerator that would be divided by \\(a(5)\\) to produce \\(a(7)\\). Since \\(19\\) is prime and \\(2\\) is not divisible by \\(19\\), Fermat's little theorem gives\n\\[\n 2^{18}\\equiv1\\pmod{19}.\n\\]\nWriting \\(a(6)=18t+3\\), as above, we therefore find\n\\[\n 2^{a(6)}+1\n =2^{18t+3}+1\n =(2^{18})^t2^3+1\n \\equiv 1^t\\cdot8+1\n \\equiv9\\pmod{19}.\n\\]\nBecause \\(9\\not\\equiv0\\pmod{19}\\), it follows that\n\\[\n 19\\nmid 2^{a(6)}+1.\n\\]\n\nOn the other hand, the denominator in the next recurrence step is\n\\[\n a(5)=171,\n\\]\nand \\(19\\mid171\\). If \\(171\\) divided \\(2^{a(6)}+1\\), then every divisor of \\(171\\), in particular \\(19\\), would also divide \\(2^{a(6)}+1\\). The preceding congruence shows that this is impossible. Hence\n\\[\n 171\\nmid 2^{a(6)}+1.\n\\]\nTherefore\n\\[\n a(7)=\\frac{2^{a(6)}+1}{a(5)}\n     =\\frac{2^{a(6)}+1}{171}\n\\]\nis not an integer. Thus not every term of the recurrence is an integer, and the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

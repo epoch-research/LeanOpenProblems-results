@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "By definition, \\(s(z)=a(\\max(z,0))\\); hence for every natural number \\(n\\), \\(s(n)=a(n)\\). Taking the shift \\(k=0\\) therefore proves the claim.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "The chosen shift is \\(k=0\\). Since \\(s(z)\\) is defined as \\(a(\\max(z,0))\\), every \\(n\\ge 0\\) satisfies \\(s(n+0)=a(n)\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Define the height-dependent level-step weights \\(b_k\\) for \\(k\\in\\mathbb N\\) by\n\\[\nb_0=1,\n\\]\nand, for \\(k\\ge 1\\), by\n\\[\nb_k=\\begin{cases}\n\\dfrac{k}{2}+1,&k\\text{ is even},\\\\[4pt]\n0,&k\\text{ is odd}.\n\\end{cases}\n\\]\nThus the weights begin\n\\[\n1,0,2,0,3,0,4,0,\\ldots.\n\\]\n\nUsing these weights, define numbers \\(A(n,k)\\), for \\(n,k\\in\\mathbb N\\), recursively as follows. The initial values are\n\\[\nA(0,0)=1,\\qquad A(0,k)=0\\quad(k>0),\n\\]\nand the recurrence is\n\\[\nA(n+1,k)\n =A(n,k+1)\n +\\begin{cases}0,&k=0,\\\\ A(n,k-1),&k>0,\\end{cases}\n +b_kA(n,k).\n\\]\nCombinatorially, \\(A(n,k)\\) is the total weight of the Motzkin paths of length \\(n\\) from height \\(0\\) to height \\(k\\): the three terms in the recurrence account respectively for a final down-step from height \\(k+1\\), a final up-step from height \\(k-1\\) (which is impossible when \\(k=0\\)), and a final level-step at height \\(k\\), whose weight is \\(b_k\\). The generalized Bessel-number sequence in the statement is\n\\[\na(n)=A(n,0)\\qquad(n\\in\\mathbb N).\n\\]\n\nThe integer-indexed sequence denoted by \\(s\\) in the statement is defined from this same sequence \\(a\\). For an integer \\(z\\), let\n\\[\nz_{\\mathbb N}=\\begin{cases}\nz,&z\\ge 0,\\\\\n0,&z<0,\n\\end{cases}\n\\]\nwhere in the first case the nonnegative integer \\(z\\) is regarded as a natural number. Then\n\\[\ns(z)=a(z_{\\mathbb N}).\n\\]\nIn particular, for every natural number \\(n\\), viewed as a nonnegative integer, one has\n\\[\nn_{\\mathbb N}=n.\n\\]\n\nWe now exhibit the required integer shift. Take\n\\[\nk=0.\n\\]\nLet \\(n\\ge 0\\) be arbitrary. Since adding zero does not change an integer and the integer corresponding to the natural number \\(n\\) is nonnegative,\n\\[\n(n+k)_{\\mathbb N}=(n+0)_{\\mathbb N}=n_{\\mathbb N}=n.\n\\]\nConsequently, by the definition of \\(s\\),\n\\[\ns(n+k)=a\\bigl((n+k)_{\\mathbb N}\\bigr)=a(n).\n\\]\nEquivalently,\n\\[\na(n)=s(n+k).\n\\]\nBecause this holds for every \\(n\\in\\mathbb N\\), the integer \\(k=0\\) satisfies\n\\[\n\\forall n\\ge 0,\\qquad a(n)=s(n+k).\n\\]\nHence there exists an integer shift with the required property.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

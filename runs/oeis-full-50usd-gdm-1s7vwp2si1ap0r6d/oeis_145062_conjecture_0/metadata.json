@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The comparison sequence is defined by \\(s(z)=a(z.toNat)\\). Taking \\(k=0\\) therefore gives the result immediately, since \\((n:\\mathbb Z).toNat=n\\) for every natural number \\(n\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "The purported external sequence is taken to equal \\(a\\) at every nonnegative integer index. Choosing \\(k=0\\) therefore gives the claimed equality immediately, since converting the index \\(n+0\\) back to a natural number returns \\(n\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Define the level-step weight at height \\(j\\in\\mathbb N\\) by\n\\[\nb_j=\\begin{cases}\n1,&j=0,\\\\\n\\frac j2+1,&j>0\\text{ and }j\\text{ is even},\\\\\n0,&j\\text{ is odd}.\n\\end{cases}\n\\]\nThus the weights are\n\\[\n b_0,b_1,b_2,b_3,b_4,b_5,\\ldots=1,0,2,0,3,0,\\ldots.\n\\]\n\nLet \\(A(n,j)\\) denote the weighted number of Motzkin paths of length \\(n\\) which start at height \\(0\\) and end at height \\(j\\). Equivalently, define these numbers recursively by\n\\[\nA(0,0)=1,\\qquad A(0,j)=0\\quad(j>0),\n\\]\nand, for \\(n,j\\geq 0\\),\n\\[\nA(n+1,j)=A(n,j+1)+\n\\begin{cases}\n0,&j=0,\\\\\nA(n,j-1),&j>0,\n\\end{cases}\n+b_jA(n,j).\n\\]\nThe three terms respectively count paths whose final step is a down step from height \\(j+1\\), an up step from height \\(j-1\\), or a level step at height \\(j\\), with a level step at that height carrying weight \\(b_j\\). The generalized Bessel sequence A145062 is then\n\\[\na(n)=A(n,0).\n\\]\n\nThe integer-indexed sequence used in the statement is defined by\n\\[\ns(z)=a(z_{\\mathbb N})\\qquad(z\\in\\mathbb Z),\n\\]\nwhere\n\\[\nz_{\\mathbb N}=\\begin{cases}\nz,&z\\geq 0,\\\\\n0,&z<0\n\\end{cases}\n\\]\nis the natural-number truncation of the integer \\(z\\). In particular, if a natural number \\(n\\) is regarded as an integer, then it is nonnegative and hence\n\\[\n n_{\\mathbb N}=n.\n\\]\n\nWe now prove the claimed shifted equality. Choose the integer shift\n\\[\nk=0.\n\\]\nLet \\(n\\geq 0\\) be arbitrary. Regarding \\(n\\) as an integer, we have \\(n+k=n+0=n\\). This integer is nonnegative, so its natural-number truncation is again \\(n\\). Therefore, directly from the definition of \\(s\\),\n\\[\ns(n+k)=s(n+0)=a\\bigl((n+0)_{\\mathbb N}\\bigr)=a(n).\n\\]\nThus \\(a(n)=s(n+k)\\) for every \\(n\\in\\mathbb N\\). Consequently,\n\\[\n\\exists k\\in\\mathbb Z\\;\\forall n\\in\\mathbb N,\\qquad a(n)=s(n+k),\n\\]\nwith \\(k=0\\), as required.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

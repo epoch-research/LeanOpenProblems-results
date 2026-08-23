@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The theorem is stated merely as the tautology \\(\\mathrm{True}\\), so its proof is immediate. It contains no mathematical argument establishing the claimed restriction on pairwise coprimality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
+  "summary": {
+    "text": "The accepted statement is simply the tautology \\(\\mathrm{True}\\), so its proof is immediate and uses no facts about four-square representations, coprimality, or quadratic residues.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The theorem actually stated is the proposition\n\\[\n\\mathrm{True}.\n\\]\nIt has no hypotheses and makes no assertion about four-square representations, the coefficients \\(a,b,c\\), or pairwise coprimality.\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that is unconditionally valid: it has a canonical proof requiring no assumptions or constructions. Taking that canonical proof establishes \\(\\mathrm{True}\\), and hence proves the stated theorem.\n\nNone of the preceding number-theoretic definitions is needed for this argument. In particular, this theorem as stated does not imply the canonical conjecture that positive integers \\(a,b,c\\) with the asserted universal four-square refinement cannot be pairwise coprime; that conjecture is not present in the theorem’s formal proposition.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-13-59-00-00_summarize-proofs_FkRUws5rf37AKJd8kSsGCC.eval"
+    }
   }
 }

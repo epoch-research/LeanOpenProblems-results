@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The proof chooses the permitted constant \\(C=0\\); the resulting product is zero, and every natural number divides zero.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Choose \\(C(k,r)=0\\); then \\(C(k,r)a(n)=0\\), which is divisible by every positive-integer product, so the conclusion follows without using any special property of the factorial ratio.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\nfor \\(n\\ge 0\\), regarded as a natural number as in the statement. For natural numbers \\(k,n,r\\), write\n\\[\nD_{k,r}(n)=\\prod_{i=1}^{r}(kn+i).\n\\]\nEquivalently,\n\\[\nD_{k,r}(n)=(kn+1)(kn+2)\\cdots(kn+r),\n\\]\nwith the usual convention that an empty product is \\(1\\), though here the hypothesis is \\(r\\ge 1\\).\n\nWe prove the asserted existence statement for every allowed pair \\((k,r)\\). Fix \\(k\\in\\{1,2,3\\}\\) and \\(r\\ge 1\\). Choose\n\\[\nC(k,r)=0.\n\\]\nThis is an admissible constant because the statement asks only for a natural-number constant; it does not require that the constant be positive or nonzero.\n\nNow let \\(n\\ge 0\\) be arbitrary. Then\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero. Indeed, for any natural number \\(d\\), the definition of divisibility is that \\(d\\mid m\\) when there is a natural number \\(q\\) such that \\(m=dq\\). Taking \\(q=0\\) gives\n\\[\n0=d\\cdot 0,\n\\]\nso \\(d\\mid 0\\). Applying this with \\(d=D_{k,r}(n)\\), we obtain\n\\[\n\\prod_{i=1}^{r}(kn+i)=D_{k,r}(n)\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge 0\\).\n\nNo distinction among the three cases \\(k=1,2,3\\) is needed, and the assumption \\(r\\ge 1\\) is not used: the same choice \\(C=0\\) works for every natural \\(k\\) and \\(r\\). In particular, it works under the hypotheses in the conjecture. Therefore, for every \\(k\\in\\{1,2,3\\}\\) and every \\(r\\ge 1\\), there exists a natural-number constant \\(C(k,r)\\) such that\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid C(k,r)a(n)\n\\qquad\\text{for all }n\\ge 0.\n\\]\nThis proves the statement as formulated.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

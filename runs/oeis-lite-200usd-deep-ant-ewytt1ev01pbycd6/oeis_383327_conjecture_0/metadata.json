@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For \\(n=67\\), the two distinct values \\(m=147\\) and \\(m=2055\\) both have \\(\\sum_{k=1}^{\\lfloor\\log_2 m\\rfloor}(m\\bmod 2^k)=67\\): their residue lists are respectively \\((1,3,3,3,19,19,19)\\) and \\((1,3,7,7,7,7,7,7,7,7,7)\\). Thus there are at least two occurrences, contradicting the claimed uniqueness.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  "summary": {
+    "text": "At \\(n=67\\), the distinct values \\(m=147\\) and \\(m=2055\\) both contribute: their residue lists modulo successive powers of two are respectively \\((1,3,3,3,19,19,19)\\) and \\((1,3,7,7,7,7,7,7,7,7,7)\\), each summing to \\(67\\). Since both lie below the sufficient bound \\(2^{68}\\), the number of occurrences at \\(67\\) is at least two, contradicting the claimed value one.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nF(m)=\\sum_{k=1}^{\\lfloor \\log_2 m\\rfloor}(m\\bmod 2^k),\n\\]\nwhere \\(m\\bmod 2^k\\) is the least nonnegative residue of \\(m\\) modulo \\(2^k\\). Thus \\(F\\) is sequence A049802, and \\(a(n)\\), sequence A383327, is the number of integers \\(m\\) for which \\(F(m)=n\\).\n\nWe disprove the conjecture at the listed value \\(n=67\\). It suffices to exhibit two distinct integers \\(m\\) for which \\(F(m)=67\\). We will use\n\\[\nm_1=147\\qquad\\text{and}\\qquad m_2=2055.\n\\]\n\nFirst consider \\(m_1=147\\). Since\n\\[\n2^7=128\\le 147<256=2^8,\n\\]\nwe have \\(\\lfloor\\log_2 147\\rfloor=7\\). Its residues modulo the powers \\(2^k\\), for \\(1\\le k\\le 7\\), are\n\\[\n\\begin{array}{c|c|c}\nk&2^k&147\\bmod 2^k\\\\ \\hline\n1&2&1\\\\\n2&4&3\\\\\n3&8&3\\\\\n4&16&3\\\\\n5&32&19\\\\\n6&64&19\\\\\n7&128&19\n\\end{array}\n\\]\nIndeed, the first four entries follow from \\(147=144+3\\), with \\(144\\) divisible by \\(2,4,8,16\\) except that modulo \\(2\\) the residue of the odd number \\(147\\) is \\(1\\); and the last three follow from \\(147=128+19\\), with \\(128\\) divisible by \\(32,64,128\\). Consequently,\n\\[\nF(147)=1+3+3+3+19+19+19=67.\n\\]\n\nNow consider \\(m_2=2055\\). Since\n\\[\n2^{11}=2048\\le 2055<4096=2^{12},\n\\]\nwe have \\(\\lfloor\\log_2 2055\\rfloor=11\\). Also\n\\[\n2055=2048+7=2^{11}+7.\n\\]\nTherefore its residues are\n\\[\n2055\\bmod 2=1,\n\\qquad\n2055\\bmod 4=3,\n\\]\nand\n\\[\n2055\\bmod 2^k=7\\quad\\text{for every }k=3,4,\\ldots,11.\n\\]\nFor \\(k=3,\\ldots,11\\), this last assertion holds because \\(2^k\\) divides \\(2^{11}=2048\\), while \\(0\\le 7<2^k\\). There are nine values of \\(k\\) from \\(3\\) through \\(11\\). Hence\n\\[\nF(2055)=1+3+9\\cdot 7=4+63=67.\n\\]\n\nThus both \\(147\\) and \\(2055\\) are indices at which A049802 has value \\(67\\). They are distinct, so the number of occurrences of \\(67\\) is at least two:\n\\[\na(67)\\ge 2.\n\\]\n\nEquivalently, if one uses the finite counting range \\(0\\le m<2^{67+1}=2^{68}\\) supplied by the standard bound for this sequence, both witnesses are included: indeed,\n\\[\n147<2055<2^{12}<2^{68}.\n\\]\nThus even within that finite range the set of indices producing \\(67\\) contains the two-element subset \\(\\{147,2055\\}\\), and therefore its cardinality is at least two. In particular it cannot have cardinality one.\n\nFinally, \\(67\\) belongs to the conjecture's specified set\n\\[\n\\{1,3,5,9,15,23,35,63,65,67\\}.\n\\]\nThe conjecture asserts, among other things, that \\(a(67)=1\\), whereas the two explicit occurrences above give \\(a(67)\\ge 2\\). This contradiction disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
   }
 }

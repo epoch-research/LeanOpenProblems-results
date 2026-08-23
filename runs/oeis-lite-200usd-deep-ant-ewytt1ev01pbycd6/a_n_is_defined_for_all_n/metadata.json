@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the counterexample \\(n=0\\): \\(\\Phi_1(0)=-1\\), while \\(\\Phi_k(0)=1\\) for every \\(k\\ge 2\\), by the constant terms of the cyclotomic polynomials. Thus \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), and hence none of these values is prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). Then \\(\\Phi_1(0)=-1\\), and for every \\(k\\ge 2\\) the constant term gives \\(\\Phi_k(0)=1\\), so in all cases \\(|\\Phi_k(0)|=1\\), which is not prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\) denote the \\(k\\)-th cyclotomic polynomial. Consider the statement\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n\\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) includes \\(0\\). We show that \\(n=0\\) is a counterexample.\n\nWe first determine the value of every positive-index cyclotomic polynomial at zero. Recall the cyclotomic factorization\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X)\n\\qquad(m\\ge 1).\n\\]\nWrite \\(c_m=\\Phi_m(0)\\), the constant coefficient of \\(\\Phi_m\\). Taking constant coefficients in the displayed factorization gives\n\\[\n-1=\\prod_{d\\mid m}c_d.\n\\]\nFor \\(m=1\\), one has \\(\\Phi_1(X)=X-1\\), and hence\n\\[\nc_1=\\Phi_1(0)=-1.\n\\]\nWe now prove that \\(c_m=1\\) for every \\(m>1\\). This follows by strong induction on \\(m\\). Suppose \\(m>1\\), and assume the assertion for all indices strictly between \\(1\\) and \\(m\\). In the product over the divisors of \\(m\\), isolate the divisor \\(m\\):\n\\[\n-1=c_m\\prod_{\\substack{d\\mid m\\\\d<m}}c_d.\n\\]\nEvery proper positive divisor \\(d\\) of \\(m\\) is less than \\(m\\). Among these proper divisors, \\(d=1\\) contributes \\(c_1=-1\\), while every proper divisor \\(d>1\\) contributes \\(c_d=1\\) by the induction hypothesis. Therefore\n\\[\n\\prod_{\\substack{d\\mid m\\\\d<m}}c_d=-1.\n\\]\nConsequently\n\\[\n-1=(-1)c_m,\n\\]\nso \\(c_m=1\\), as required. Thus, for every positive integer \\(k\\),\n\\[\n\\Phi_k(0)=\n\\begin{cases}\n-1,&k=1,\\\\\n1,&k>1.\n\\end{cases}\n\\]\nIn particular,\n\\[\n|\\Phi_k(0)|=1\n\\]\nfor every \\(k>0\\).\n\nBut \\(1\\) is not prime: by definition a prime natural number must be strictly greater than \\(1\\) (equivalently, \\(1\\) is a unit and therefore not a prime). Hence there is no positive integer \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime. This contradicts the asserted existence of such a \\(k\\) at \\(n=0\\). Therefore\n\\[\n\\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\\ |\\Phi_k(n)|\\text{ is prime}\\Bigr).\n\\]\n\nThere is an essential qualification concerning the stated OEIS conjecture. The counterexample above uses \\(n=0\\). Thus it disproves the formulation whose universal quantifier ranges over all natural numbers including zero. It does not, by itself, disprove the canonical conjecture “for every positive integer \\(n\\), \\(a(n)\\) is defined,” because \\(0\\) is not positive. For the positive-integer formulation, the argument supplies no counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-04-09-00-00_summarize-proofs_KWpDTZEh2xH5VYoR83bX6T.eval"
+    }
   }
 }

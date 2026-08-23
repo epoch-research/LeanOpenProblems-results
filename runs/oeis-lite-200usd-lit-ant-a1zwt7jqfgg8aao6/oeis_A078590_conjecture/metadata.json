@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At the seventh step, the denominator is \\(a(5)=171\\), while \\(N=a(6)\\equiv3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{171}\\), it follows that \\(2^N+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the required division is not exact.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  "summary": {
+    "text": "The preceding integer terms give \\(a(5)=171\\) and \\(a(6)=N=(2^{171}+1)/9\\), with the modular computation \\(N\\equiv3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{171}\\), it follows that \\(2^N+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the division defining \\(a(7)\\) is not exact.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
+  },
+  "full_proof": {
+    "text": "We show that the recurrence already fails to produce an integer at the seventh term.\n\nLet\n\\[\na(1)=a(2)=1,\\qquad a(n)=\\frac{2^{a(n-1)}+1}{a(n-2)}.\n\\]\nThe first few terms are obtained by direct substitution:\n\\[\na(3)=\\frac{2^1+1}{1}=3,\n\\]\n\\[\na(4)=\\frac{2^3+1}{1}=9,\n\\]\nand\n\\[\na(5)=\\frac{2^9+1}{3}=\\frac{513}{3}=171.\n\\]\nThus the next term is\n\\[\na(6)=N:=\\frac{2^{171}+1}{9}.\n\\]\nThis quotient is an integer. Indeed, the stronger congruence established below gives\n\\(2^{171}\\equiv 26\\pmod{162}\\), and in particular\n\\(2^{171}\\equiv26\\equiv-1\\pmod 9\\). Hence \\(9\\mid 2^{171}+1\\). Explicitly,\n\\[\nN=332572817028187686275682948600327513806149983112761,\n\\]\nalthough the decimal expansion is not needed for the argument.\n\nWe first determine the residue of \\(N\\) modulo \\(18\\). For this purpose, it is enough to determine \\(2^{171}+1\\) modulo \\(9\\cdot18=162\\). We begin modulo \\(81\\). Since\n\\[\n2^9=512\\equiv26\\pmod{81},\n\\]\nwe obtain\n\\[\n2^{18}\\equiv26^2=676\\equiv28\\pmod{81}.\n\\]\nConsequently,\n\\[\n2^{27}=2^{18}2^9\\equiv28\\cdot26=728\\equiv-1\\pmod{81},\n\\]\nbecause \\(728=9\\cdot81-1\\). Squaring gives\n\\[\n2^{54}\\equiv1\\pmod{81}.\n\\]\nAs \\(171=3\\cdot54+9\\), it follows that\n\\[\n2^{171}=(2^{54})^3 2^9\\equiv 1^3\\cdot26=26\\pmod{81}.\n\\]\nMoreover, both \\(2^{171}\\) and \\(26\\) are even. Therefore their difference is divisible by both \\(81\\) and \\(2\\). Since \\(81\\) and \\(2\\) are coprime, their difference is divisible by \\(162\\), so\n\\[\n2^{171}\\equiv26\\pmod{162}.\n\\]\nHence\n\\[\n2^{171}+1\\equiv27\\pmod{162}.\n\\]\nUsing the exact equality \\(9N=2^{171}+1\\), this says\n\\[\n9N\\equiv27=9\\cdot3\\pmod{162}.\n\\]\nEquivalently, \\(162\\mid9(N-3)\\). Dividing this divisibility relation by \\(9\\) yields\n\\[\n18\\mid N-3,\n\\]\nand therefore\n\\[\nN\\equiv3\\pmod{18}.\n\\]\n\nNow consider the division required to define the seventh term. Since \\(a(5)=171\\) and \\(a(6)=N\\), the recurrence would require\n\\[\na(7)=\\frac{2^N+1}{171}.\n\\]\nWe compute the numerator modulo \\(171\\). The elementary identity\n\\[\n2^9=512=3\\cdot171-1\n\\]\nshows that\n\\[\n2^9\\equiv-1\\pmod{171}.\n\\]\nAfter squaring,\n\\[\n2^{18}\\equiv1\\pmod{171}.\n\\]\nBecause \\(N\\equiv3\\pmod{18}\\), there is an integer \\(q\\ge0\\) such that \\(N=18q+3\\). Thus\n\\[\n2^N=2^{18q+3}=(2^{18})^q2^3\\equiv1^q\\cdot8=8\\pmod{171}.\n\\]\nIt follows that\n\\[\n2^N+1\\equiv9\\pmod{171}.\n\\]\nSince \\(9\\ne0\\pmod{171}\\), the integer \\(171\\) does not divide \\(2^N+1\\). Therefore\n\\[\n\\frac{2^N+1}{171}\n\\]\nis not an integer. In other words, \\(a(7)\\) is nonintegral even though all the preceding terms through \\(a(6)\\) are integers. This is a counterexample to the conjecture that every term of the recurrence is an integer.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-15-00-00-00_summarize-proofs_79TAPLEwmfaTiym27c53Jq.eval"
+    }
   }
 }

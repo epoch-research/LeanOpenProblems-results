@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so it follows immediately and contains no mathematical argument about coprimality or four-square representations.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "The accepted statement is simply the tautology \\(\\mathrm{True}\\), proved by its immediate truth. Consequently, it contains no mathematical argument about the coefficients or their coprimality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "**Proposition.** \\(\\mathrm{True}\\).\n\n**Proof.** The proposition \\(\\mathrm{True}\\) is, by definition, the always-valid proposition: it has an unconditional canonical proof and requires no hypotheses or witnesses. Taking that canonical proof establishes \\(\\mathrm{True}\\), as required. \\(\\square\\)\n\nThis exhausts the accepted statement. In particular, the accepted proposition contains no variables \\(a,b,c\\), no assumption about four-square representations, and no conclusion concerning pairwise coprimality. Thus the number-theoretic assertion that positive integers \\(a,b,c\\) with the stated universal representation property cannot be pairwise coprime is not a consequence asserted by this proposition and is not part of the proof above.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

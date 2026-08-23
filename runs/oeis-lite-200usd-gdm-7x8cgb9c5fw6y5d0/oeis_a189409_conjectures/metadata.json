@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=9\\), direct calculation gives \\(223092870^2+1=49770428644836901=29^2\\cdot59180057841661\\). Thus this term has the nontrivial square divisor \\(29^2\\), providing a counterexample to squarefreeness and hence refuting the conjunction.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  "summary": {
+    "text": "For \\(n=9\\), direct multiplication gives \\((2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23)^2+1=29^2\\cdot59180057841661\\), so this term is not squarefree. Thus the combined claim is false, independently of whether infinitely many other terms are prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(p_0=2,p_1=3,p_2=5,\\ldots\\) denote the primes in increasing order, and define\n\\[\nP_n=\\prod_{k=0}^{n-1}p_k,\n\\qquad\na(n)=P_n^2+1.\n\\]\n(For \\(n=0\\), the empty product is \\(1\\), so \\(a(0)=2\\), in agreement with the stated indexing.) We will disprove the assertion that every \\(a(n)\\) is squarefree by exhibiting a square divisor of \\(a(9)\\).\n\nThe first nine primes are\n\\[\n2,3,5,7,11,13,17,19,23.\n\\]\nIndeed, these are prime, and every positive integer strictly between consecutive entries in this list, beginning after \\(2\\), is composite. Their cumulative products are\n\\[\n\\begin{aligned}\n2&=2,\\\\\n2\\cdot3&=6,\\\\\n2\\cdot3\\cdot5&=30,\\\\\n2\\cdot3\\cdot5\\cdot7&=210,\\\\\n2\\cdot3\\cdot5\\cdot7\\cdot11&=2310,\\\\\n2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13&=30030,\\\\\n2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17&=510510,\\\\\n2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19&=9699690,\\\\\n2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23&=223092870.\n\\end{aligned}\n\\]\nConsequently,\n\\[\nP_9=223092870\n\\]\nand hence\n\\[\n\\begin{aligned}\na(9)\n  &=223092870^2+1\\\\\n  &=49{,}770{,}428{,}644{,}836{,}901.\n\\end{aligned}\n\\]\nThis integer has the exact factorization\n\\[\n49{,}770{,}428{,}644{,}836{,}901\n =841\\cdot59{,}180{,}057{,}841{,}661.\n\\]\nThe displayed multiplication can be checked directly:\n\\[\n\\begin{aligned}\n59{,}180{,}057{,}841{,}661\\cdot841\n&=59{,}180{,}057{,}841{,}661\\cdot(800+40+1)\\\\\n&=47{,}344{,}046{,}273{,}328{,}800\\\\\n&\\quad+2{,}367{,}202{,}313{,}666{,}440\\\\\n&\\quad+59{,}180{,}057{,}841{,}661\\\\\n&=49{,}770{,}428{,}644{,}836{,}901.\n\\end{aligned}\n\\]\nSince \\(841=29^2\\), it follows that\n\\[\n29^2\\mid a(9).\n\\]\nMoreover, \\(29>1\\).\n\nRecall that a positive integer is squarefree precisely when it is not divisible by the square of any integer greater than \\(1\\). Equivalently, if \\(N\\) is squarefree and \\(d^2\\mid N\\), then \\(d\\) must be a unit; among the natural numbers the only unit is \\(1\\). Applying this with \\(N=a(9)\\) and \\(d=29\\) would force \\(29=1\\), which is impossible. Therefore\n\\[\na(9)\\text{ is not squarefree}.\n\\]\n\nThus the universal claim\n\\[\n\\forall n\\in\\mathbb N,\\quad a(n)\\text{ is squarefree}\n\\]\nis false. The conjecture in question asserts the conjunction of this universal squarefreeness claim with the claim that \\(a(n)\\) is prime for infinitely many \\(n\\). A conjunction is false as soon as either one of its components is false. Hence the explicit counterexample \\(n=9\\) disproves the combined conjecture, independently of whether infinitely many terms of the sequence are prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-16-00-00_summarize-proofs_j3G3Lcs5ZzUtV8jMgPt3a8.eval"
+    }
   }
 }

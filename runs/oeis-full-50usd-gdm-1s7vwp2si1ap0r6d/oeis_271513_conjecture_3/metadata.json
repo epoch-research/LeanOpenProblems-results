@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The proposition actually proved is the tautology \\(\\mathrm{True}\\), which holds immediately by truth introduction. Consequently, the proof contains no number-theoretic argument and does not establish the stated canonical conjecture.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "The stated proposition is simply the tautology \\(\\mathrm{True}\\), independent of the number-theoretic hypotheses. Hence the proof only establishes this tautology and contains no mathematical argument about pairwise coprimality or four-square representations.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The statement to be proved is the proposition \\(\\mathrm{True}\\).\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally: it has a canonical proof and requires no assumptions, witnesses, reductions, or case distinctions. Taking that canonical proof establishes \\(\\mathrm{True}\\), and hence proves the stated theorem.\n\nThe definitions concerning four-square representations, the condition that \\(a x^2+b y^2+c z^2\\) be a square, and pairwise coprimality play no role in this theorem, because none of them occurs in its statement. Thus this proves only the stated tautology \\(\\mathrm{True}\\); it does not establish the separate number-theoretic assertion that positive integers \\(a,b,c\\) having the universal representation property cannot be pairwise coprime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

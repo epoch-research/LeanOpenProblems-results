@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose \\(C(k,r)=0\\); then the product in the denominator divides \\(C(k,r)a(n)=0\\) for every \\(n\\), since every natural number divides zero.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "The proof chooses the permitted degenerate constant \\(C(k,r)=0\\); the conclusion then follows immediately because every natural number divides \\(0\\), independently of the factorial ratio.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\nbe the sequence A211420, regarded as a sequence of natural numbers. For natural numbers \\(k,r,n\\), write\n\\[\nD_{k,r}(n)=\\prod_{i=1}^{r}(kn+i).\n\\]\nEquivalently, this is the rising factorial\n\\[\nD_{k,r}(n)=(kn+1)(kn+2)\\cdots(kn+r).\n\\]\n\nFix any \\(k\\in\\{1,2,3\\}\\) and any \\(r\\ge 1\\). We claim that the constant\n\\[\nC(k,r)=0\n\\]\nsatisfies the stated divisibility condition. Indeed, let \\(n\\ge 0\\) be arbitrary. Then\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero: explicitly, for any natural number \\(d\\), the equality\n\\[\n0=d\\cdot 0\n\\]\nexhibits \\(0\\) as a multiple of \\(d\\). Applying this with\n\\[\nd=D_{k,r}(n)=\\prod_{i=1}^{r}(kn+i)\n\\]\ngives\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge0\\). Therefore, for every \\(k\\in\\{1,2,3\\}\\) and every \\(r\\ge1\\), there exists a natural-number constant \\(C(k,r)\\), namely \\(0\\), such that\n\\[\n\\prod_{i=1}^{r}(kn+i)\\mid C(k,r)a(n)\n\\qquad\\text{for all }n\\ge0.\n\\]\n\nNo distinction among the three possible values of \\(k\\) is needed, and neither the factorial formula nor any special divisibility property of \\(a(n)\\) enters the argument. The reason is that the formal statement permits the constant \\(C(k,r)\\) to be zero. Thus this proves the conjecture exactly as stated; a strengthened formulation requiring \\(C(k,r)>0\\) or \\(C(k,r)\\ne0\\) would not follow from this argument.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

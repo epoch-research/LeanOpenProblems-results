@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The disproof exhibits the collision at indices 0 and 1: since \\(T(0)=0\\) and \\(T(1)=1\\), both contain no primes up to them, so \\(\\pi(T(0))=\\pi(T(1))=0\\) despite \\(0\\ne1\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "It uses the collision at indices \\(0\\) and \\(1\\): \\(T(0)=0\\) and \\(T(1)=1\\), and there are no primes at most either number, so \\(\\pi(T(0))=\\pi(T(1))=0\\) despite \\(0\\ne1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nT(n)=\\frac{n(n+1)}2\n\\]\nbe the \\(n\\)-th triangular number, and let \\(\\pi(x)\\) denote the number of primes not exceeding \\(x\\). Define\n\\[\nf(n)=\\pi(T(n)).\n\\]\nConsider this function on the set \\(\\mathbb N=\\{0,1,2,\\ldots\\}\\) of all nonnegative integers.\n\nWe exhibit two distinct inputs having the same value. First,\n\\[\nT(0)=\\frac{0(0+1)}2=0.\n\\]\nThere are no primes not exceeding \\(0\\), so \\(\\pi(0)=0\\). Hence\n\\[\nf(0)=\\pi(T(0))=\\pi(0)=0.\n\\]\nSecond,\n\\[\nT(1)=\\frac{1(1+1)}2=1.\n\\]\nThere are also no primes not exceeding \\(1\\), because every prime is at least \\(2\\). Therefore \\(\\pi(1)=0\\), and hence\n\\[\nf(1)=\\pi(T(1))=\\pi(1)=0.\n\\]\nConsequently,\n\\[\nf(0)=f(1),\n\\]\nalthough \\(0\\ne 1\\). Thus the map\n\\[\nn\\longmapsto \\pi(T(n))\n\\]\nis not injective when its domain is all nonnegative integers. This disproves the formal assertion that this map is injective on \\(\\mathbb N\\).\n\nThere is, however, an essential qualification concerning the stated OEIS conjecture. The canonical conjecture says that the values \\(\\pi(T(n))\\) are pairwise distinct for \\(n\\ge 1\\). The collision above uses the index \\(0\\), which is outside that range. It therefore does not disprove pairwise distinctness on the positive integers. Indeed, among the two indices in the collision, only \\(1\\) is permitted by the literal OEIS assertion. Accordingly, the accepted argument is a complete disproof of injectivity on all nonnegative integers, but it is not a disproof of the canonical conjecture restricted to \\(n\\ge 1\\); the difference arises from the inclusion of \\(0\\) in the domain of the formal statement.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

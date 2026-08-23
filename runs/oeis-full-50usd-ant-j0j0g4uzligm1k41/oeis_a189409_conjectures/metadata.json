@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=9\\), direct computation gives \\(a(9)=223092870^2+1=49{,}770{,}428{,}644{,}836{,}901=29^2\\cdot 59{,}180{,}057{,}841{,}661\\). Thus this term is not squarefree, so the universal squarefreeness conjunct—and hence the conjunction—fails, regardless of the infinitude claim.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "For \\(n=9\\), the product of the first nine primes is \\(223092870\\), and \\(223092870^2+1=49770428644836901=29^2\\cdot59180057841661\\). Thus this term is not squarefree, so the conjunction fails regardless of the infinitude claim.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the primes in increasing order be\n\\[\np_0=2,\\quad p_1=3,\\quad p_2=5,\\quad p_3=7,\\quad p_4=11,\\quad\np_5=13,\\quad p_6=17,\\quad p_7=19,\\quad p_8=23,\\ldots,\n\\]\nso that, with the indexing in the question,\n\\[\na(n)=\\left(\\prod_{k=0}^{n-1}p_k\\right)^2+1.\n\\]\nIn particular, because the sequence is indexed starting at \\(n=0\\), the value \\(a(9)\\) uses the first nine primes, from \\(2\\) through \\(23\\).\n\nFor completeness, these really are the first nine primes. Each number displayed is prime by trial division by primes not exceeding its square root. The remaining integers from \\(2\\) through \\(23\\) are composite:\n\\[\n4,6,8,9,10,12,14,15,16,18,20,21,22.\n\\]\nThus no prime has been omitted from the displayed list.\n\nCompute the corresponding primorial in stages:\n\\[\n\\begin{aligned}\n2\\cdot3&=6,\\\\\n6\\cdot5&=30,\\\\\n30\\cdot7&=210,\\\\\n210\\cdot11&=2310,\\\\\n2310\\cdot13&=30030,\\\\\n30030\\cdot17&=510510,\\\\\n510510\\cdot19&=9699690,\\\\\n9699690\\cdot23&=223092870.\n\\end{aligned}\n\\]\nConsequently,\n\\[\n\\begin{aligned}\na(9)\n &= (2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23)^2+1\\\\\n &=223092870^2+1\\\\\n &=49{,}770{,}428{,}644{,}836{,}901.\n\\end{aligned}\n\\]\n\nThis number has a repeated square factor. Indeed,\n\\[\n29^2=841\n\\]\nand direct multiplication gives\n\\[\n841\\cdot59{,}180{,}057{,}841{,}661\n =49{,}770{,}428{,}644{,}836{,}901.\n\\]\nTherefore\n\\[\n29^2\\mid a(9).\n\\]\nEquivalently, one can see why this divisibility occurs before carrying out the large square. We have\n\\[\n223092870=841\\cdot265270+800\n          =841\\cdot265271-41.\n\\]\nHence\n\\[\n223092870\\equiv -41\\pmod{841},\n\\]\nand so\n\\[\n223092870^2+1\\equiv (-41)^2+1=1682=2\\cdot841\\equiv0\\pmod{841}.\n\\]\nThis again proves that \\(29^2\\) divides \\(a(9)\\). If desired, the quotient can also be decomposed as\n\\[\n59{,}180{,}057{,}841{,}661\n =53\\cdot1{,}116{,}604{,}864{,}937,\n\\]\nso the same equality may be written\n\\[\na(9)=29^2\\cdot53\\cdot1{,}116{,}604{,}864{,}937.\n\\]\nNo claim about the primality of the last factor is needed.\n\nRecall that a positive integer is squarefree precisely when it is not divisible by the square of any prime; equivalently, whenever \\(d^2\\) divides it, \\(d\\) must be a unit, and the only positive integer unit is \\(1\\). The integer \\(29\\) is prime: since \\(\\sqrt{29}<6\\), it suffices to test the primes \\(2,3,5\\), none of which divides \\(29\\). In particular, \\(29>1\\) is not a unit. Since \\(29^2\\mid a(9)\\), it follows immediately that \\(a(9)\\) is not squarefree.\n\nNow consider the full conjecture, which is the conjunction of the assertions\n\\[\n\\text{(i) } \\forall n\\ge0,\\ a(n)\\text{ is squarefree},\n\\qquad\n\\text{and}\n\\qquad\n\\text{(ii) } a(n)\\text{ is prime for infinitely many }n.\n\\]\nAssertion (i) would in particular imply that \\(a(9)\\) is squarefree, whereas the explicit calculation above proves that it is not. Thus assertion (i) is false. A conjunction is false as soon as either one of its conjuncts is false, regardless of the truth or falsity of the other conjunct. Therefore the combined conjecture that every term is squarefree and that infinitely many terms are prime is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

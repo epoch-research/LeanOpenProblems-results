@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The even case fails at \\(m=10\\): the bound \\(q\\le m/4\\) forces the prime \\(q\\) to equal \\(2\\), and then \\(p+q=10\\) forces \\(p=8\\), which is not prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "Take the admissible even value \\(m=10\\). The bound \\(q\\le \\lfloor 10/4\\rfloor=2\\) forces the prime \\(q=2\\), hence \\(p=10-q=8\\), which is not prime; thus no required representation exists, independently of the Jacobi condition.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "We disprove the refinement by exhibiting an admissible even integer for which the required representation cannot exist. Take\n\\[\nm=10.\n\\]\nThis integer satisfies all the hypotheses in the even part of the conjecture: it is even, it is greater than \\(8\\), and it is neither \\(32\\) nor \\(152\\).\n\nSuppose, for contradiction, that the claimed even refinement holds for \\(m=10\\). Then there must exist primes \\(p\\) and \\(q\\) such that\n\\[\n10=p+q,\n\\]\nwith\n\\[\nq\\leq \\frac{10}{4},\n\\]\nwhere the quotient is the integer quotient appearing in the conjecture. Thus\n\\[\nq\\leq \\left\\lfloor\\frac{10}{4}\\right\\rfloor=2.\n\\]\nOn the other hand, every prime natural number is at least \\(2\\). Since \\(q\\) is prime, we therefore have \\(q\\geq 2\\). Combining this with \\(q\\leq 2\\) gives\n\\[\nq=2.\n\\]\nSubstituting this into the required equation \\(10=p+q\\) yields\n\\[\n10=p+2,\n\\]\nand hence\n\\[\np=8.\n\\]\nBut \\(8\\) is not prime, since \\(8=2\\cdot4\\). This contradicts the requirement that \\(p\\) be prime.\n\nConsequently, no pair of primes \\(p,q\\) can satisfy even the additive equation and size bound required by the refinement at \\(m=10\\). In particular, there cannot be such a pair also satisfying the additional Jacobi-symbol condition\n\\[\n\\left(\\frac{(q+1)/2}{r}\\right)=1\n\\quad\\text{for every prime divisor }r\\mid 11.\n\\]\nThe Jacobi condition therefore requires no separate analysis: the necessary prime representation already does not exist.\n\nThus \\(10\\) is an even integer greater than \\(8\\), outside the stated exceptional set \\(\\{32,152\\}\\), for which the conjectured representation is impossible. Hence the even clause is false, and therefore the conjunction of the odd and even clauses in Sun's refinement conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

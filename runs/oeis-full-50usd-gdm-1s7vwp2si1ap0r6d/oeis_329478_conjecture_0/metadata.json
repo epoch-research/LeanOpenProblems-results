@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At $n=1$, the defining sum has only the $k=0$ term, with $\\beta(0)=t(0)=1$, so $a(1)=8/2=4$. Thus $a(1)$ is even although $1=2^0$ is a power of two, contradicting the claimed parity equivalence.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "At \\(n=1\\), the single summand has \\(\\beta(0)=t(0)=1\\), so \\(a(1)=8/2=4\\). But \\(1=2^0\\) is a power of two while \\(4\\) is even, contradicting the claimed parity equivalence.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\n\\beta(k)=\\sum_{j=0}^{k}\\binom{k}{j}^{2}\\binom{k+j}{j}\n\\]\nbe the Apéry-number factor, and let\n\\[\nt(k)=[x^k](x^2+4x-1)^k\n\\]\nbe the coefficient of \\(x^k\\) in \\((x^2+4x-1)^k\\). The sequence in the conjecture is\n\\[\na(n)=\\frac{1}{2n}\\sum_{k=0}^{n-1}(-1)^k(15k+8)\\beta(k)t(k)\n\\qquad(n>0).\n\\]\nWe disprove the asserted parity characterization by taking \\(n=1\\).\n\nFirst compute all the quantities occurring in the sum. Since the sum defining \\(\\beta(0)\\) has only the index \\(j=0\\),\n\\[\n\\beta(0)=\\binom00^2\\binom00=1.\n\\]\nAlso,\n\\[\n(x^2+4x-1)^0=1,\n\\]\nso the coefficient of \\(x^0\\) is\n\\[\nt(0)=1.\n\\]\nFor \\(n=1\\), the weighted sum has only the index \\(k=0\\). Consequently its sole summand is\n\\[\n(-1)^0(15\\cdot0+8)\\beta(0)t(0)\n=1\\cdot8\\cdot1\\cdot1\n=8.\n\\]\nThe normalizing denominator is \\(2n=2\\). Hence\n\\[\na(1)=\\frac{8}{2}=4.\n\\]\n(In particular, the integrality part of the conjecture happens to hold at this value; it is the claimed parity equivalence that fails.)\n\nThe integer \\(4\\) is even, since \\(4=2\\cdot2\\), and therefore it is not odd. On the other hand, \\(1\\) is a positive power of two in the usual sense relevant here, because\n\\[\n1=2^0.\n\\]\nThus, at the positive integer \\(n=1\\), the assertion “\\(a(n)\\) is odd” is false while the assertion “\\(n\\) is a power of two” is true. Therefore the claimed equivalence\n\\[\na(n)\\text{ is odd}\\quad\\Longleftrightarrow\\quad n\\text{ is a power of two}\n\\]\nfails at \\(n=1\\). Since the conjecture requires this equivalence (together with integrality) for every integer \\(n>0\\), this single counterexample disproves it.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

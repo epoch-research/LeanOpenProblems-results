@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose the constant universally as \\(C(k,r)=0\\); then the right-hand side is zero, and every natural number (hence the required product) divides zero.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  "summary": {
+    "text": "Choose the constant \\(C(k,r)=0\\). Then the right-hand side is zero, and every natural number divides zero, so the required divisibility follows for every \\(n\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\n(as in the statement), and for natural numbers \\(k,r,n\\) write\n\\[\nD_{k,r}(n)=\\prod_{i=1}^{r}(kn+i).\n\\]\nThus, when \\(r\\ge 1\\),\n\\[\nD_{k,r}(n)=(kn+1)(kn+2)\\cdots(kn+r).\n\\]\n\nWe prove the quantified statement exactly as given. Fix \\(k\\in\\{1,2,3\\}\\) and \\(r\\ge 1\\). Choose\n\\[\nC(k,r)=0.\n\\]\nThis is an admissible choice because the asserted constant is only required to be a natural number; the statement does not require it to be positive or nonzero.\n\nNow let \\(n\\ge 0\\) be arbitrary. Then\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero. Indeed, for any natural number \\(d\\), the definition of divisibility is that \\(d\\mid m\\) if there is a natural number \\(q\\) such that \\(m=dq\\); taking \\(q=0\\) gives\n\\[\n0=d\\cdot 0,\n\\]\nso \\(d\\mid 0\\). Applying this with \\(d=D_{k,r}(n)\\), we obtain\n\\[\n\\prod_{i=1}^{r}(kn+i)=D_{k,r}(n)\\mid 0=C(k,r)a(n).\n\\]\nSince \\(n\\) was arbitrary, this divisibility holds for every \\(n\\ge0\\). Since the same choice \\(C(k,r)=0\\) works for every \\(k\\) and \\(r\\), it works in particular for every \\(k\\in\\{1,2,3\\}\\) and every \\(r\\ge1\\), proving the stated conjecture.\n\nNo case split among \\(k=1,2,3\\) is necessary: all three cases have the identical choice \\(C=0\\). Likewise, the condition \\(r\\ge1\\) and the particular formula for \\(a(n)\\) play no role in this proof.\n\nConsequently, this proves the formal assertion as written, but it does not establish the stronger, presumably intended claim in which \\(C(k,r)\\) must be positive (or nonzero). Such an additional condition would rule out the choice \\(C=0\\) and would require a substantive divisibility argument.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-57-46-00-00_summarize-proofs_PfwntDwmyeCPL2DYcvE8KC.eval"
+    }
   }
 }

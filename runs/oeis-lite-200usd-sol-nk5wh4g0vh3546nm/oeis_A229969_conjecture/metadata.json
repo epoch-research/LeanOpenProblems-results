@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=7\\). Since the allowed values force \\(x\\ge 3\\) and the ordering \\(x\\le y\\le z\\) gives \\(x+y+z\\ge 3x\\ge 9\\), no such triple can sum to \\(7\\), independently of the primality conditions.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  "summary": {
+    "text": "At \\(n=7\\), every permitted value of \\(x\\) is at least \\(3\\); since \\(x\\le y\\le z\\), this forces \\(x+y+z\\ge 3x\\ge 9\\), contradicting the required sum of \\(7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS=\\{3,4,6,10,15\\}.\n\\]\nThe conjecture is a conjunction of two assertions for every natural number \\(n\\):\n\n1. if \\(n>5\\), then \\(a(n)>0\\), where \\(a(n)\\) counts ordered-by-size positive triples \\(x\\le y\\le z\\) with \\(x+y+z=n\\) for which\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare all prime; and\n\n2. if \\(n>6\\), then there is such a positive triple \\(x\\le y\\le z\\) with the additional condition \\(x\\in S\\).\n\nWe disprove the second assertion at \\(n=7\\). Since \\(7>6\\), the conjecture would provide natural numbers \\(x,y,z\\) satisfying\n\\[\nx>0,\\qquad y>0,\\qquad z>0,\n\\]\n\\[\nx+y+z=7,\n\\]\n\\[\nx\\le y\\le z,\n\\]\nand\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nas well as all six primality conditions. We will obtain a contradiction before the primality conditions are even relevant.\n\nMembership in the displayed finite set gives the exhaustive alternatives\n\\[\nx=3,\\quad x=4,\\quad x=6,\\quad x=10,\\quad\\text{or}\\quad x=15.\n\\]\nIn every case, \\(x\\ge 3\\). Because \\(x\\le y\\), we have \\(y\\ge x\\ge3\\). Also, from \\(x\\le y\\le z\\), transitivity gives \\(x\\le z\\), so \\(z\\ge x\\ge3\\). Consequently,\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nEquivalently, one may add the inequalities \\(x\\le y\\) and \\(x\\le z\\) to obtain\n\\[\nx+y+z\\ge x+x+x=3x\\ge9.\n\\]\nThis contradicts the required equality \\(x+y+z=7\\).\n\nThus no positive ordered triple \\(x\\le y\\le z\\) summing to \\(7\\) can have its least entry \\(x\\) in \\(\\{3,4,6,10,15\\}\\). In particular, no such triple can satisfy the additional six primality requirements. Hence the “moreover” implication is false for \\(n=7\\).\n\nThe original statement universally asserts, for each \\(n\\), the conjunction of the positivity claim for \\(a(n)\\) and this additional representation claim. A conjunction is false if either conjunct is false. Therefore the failure of the additional representation claim at \\(n=7\\) disproves the entire conjecture, independently of whether \\(a(7)>0\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-22-36-00-00_summarize-proofs_3YuAaAwos4VnkN2EfUEhpT.eval"
+    }
   }
 }

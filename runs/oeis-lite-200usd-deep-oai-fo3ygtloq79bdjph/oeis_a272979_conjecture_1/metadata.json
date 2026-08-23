@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Universality for the listed tuple \\((1,2,1,1)\\) transfers to \\((2,1,1,1)\\) by swapping the two quadratic variables \\(x\\) and \\(y\\). Since \\((2,1,1,1)\\) is absent from the proposed list, the claimed classification cannot be correct.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  "summary": {
+    "text": "The listed quadruple $(1,2,1,1)$ would be universally representing, and swapping the variables $x$ and $y$ shows that $(2,1,1,1)$ is universally representing as well. But $(2,1,1,1)$ is absent from the proposed list, contradicting the claimed classification.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nR(a,b,c,d)\n\\]\ndenote the assertion that \\(a,b,c,d\\) are positive integers and that every nonnegative integer \\(n\\) has a representation\n\\[\nn=ax^2+by^2+cz^3+dw^4\n\\]\nwith \\(x,y,z,w\\) nonnegative integers. Let \\(S\\) be the set of the 49 quadruples displayed in the conjecture.\n\nThe key observation is that the first two terms have the same exponent. Consequently, full representability is unchanged when the first two coefficients are interchanged:\n\\[\nR(a,b,c,d)\\quad\\Longrightarrow\\quad R(b,a,c,d).\n\\]\nIndeed, suppose \\(R(a,b,c,d)\\) holds. The positivity requirements remain true after interchanging \\(a\\) and \\(b\\). Now take any nonnegative integer \\(n\\). By \\(R(a,b,c,d)\\), there are nonnegative integers \\(x,y,z,w\\) such that\n\\[\nn=ax^2+by^2+cz^3+dw^4.\n\\]\nSet\n\\[\nX=y,\\qquad Y=x,\\qquad Z=z,\\qquad W=w.\n\\]\nThen all four new variables are nonnegative, and commutativity of addition gives\n\\[\n\\begin{aligned}\nbX^2+aY^2+cZ^3+dW^4\n &=by^2+ax^2+cz^3+dw^4\\\\\n &=ax^2+by^2+cz^3+dw^4\\\\\n &=n.\n\\end{aligned}\n\\]\nThus every \\(n\\) is represented with coefficients \\((b,a,c,d)\\), proving the claimed symmetry. The same argument in reverse in fact gives the equivalence\n\\[\nR(a,b,c,d)\\iff R(b,a,c,d).\n\\]\n\nWe now show that the proposed characterization cannot be true. Assume, for contradiction, the conjectured universal biconditional\n\\[\nR(a,b,c,d)\\iff (a,b,c,d)\\in S\n\\]\nfor every quadruple of nonnegative integers \\((a,b,c,d)\\) (with positivity already included in \\(R\\)).\n\nThe quadruple\n\\[\n(1,2,1,1)\n\\]\nis explicitly one of the 49 members of \\(S\\). Therefore the right-to-left direction of the assumed biconditional implies\n\\[\nR(1,2,1,1).\n\\]\nConcretely, under the conjecture this says that the coefficients are positive and every nonnegative integer \\(n\\) can be written as\n\\[\nn=x^2+2y^2+z^3+w^4\n\\]\nwith \\(x,y,z,w\\ge 0\\).\n\nApply the square-variable symmetry just proved. Given such a representation, interchange \\(x\\) and \\(y\\). If \\(X=y\\) and \\(Y=x\\), then\n\\[\nn=x^2+2y^2+z^3+w^4\n  =2X^2+Y^2+Z^3+W^4,\n\\]\nwhere \\(Z=z\\) and \\(W=w\\). Hence\n\\[\nR(2,1,1,1)\n\\]\nholds.\n\nThe left-to-right direction of the assumed biconditional would now force\n\\[\n(2,1,1,1)\\in S.\n\\]\nBut inspection of the explicitly stated 49-element set shows that \\((2,1,1,1)\\) is not present. In particular, although \\((1,2,1,1)\\) occurs, its first-two-coordinate transpose \\((2,1,1,1)\\) does not; none of the listed entries is equal to it coordinate by coordinate. Thus\n\\[\n(2,1,1,1)\\notin S,\n\\]\na contradiction.\n\nTherefore it is impossible that, for every positive coefficient quadruple, full representability is equivalent to membership in the displayed list of 49 quadruples. This disproves the conjecture as stated.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Choose the constant to be \\(C(k,r)=0\\). Then the right-hand side is zero, and every natural number divides zero.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  "summary": {
+    "text": "Choose the constant universally as \\(C(k,r)=0\\); then the target multiple is zero, and every natural number divides zero, so the required divisibility follows independently of \\(k,r,n\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\frac{(8n)!\\,n!}{(4n)!(3n)!(2n)!}\n\\]\n(as in the statement, this is regarded as a natural number), and for natural numbers \\(k,r,n\\) put\n\\[\nP_{k,r}(n)=\\prod_{i=1}^{r}(kn+i).\n\\]\nEquivalently, \\(P_{k,r}(n)\\) is the rising factorial\n\\[\n(kn+1)(kn+2)\\cdots(kn+r).\n\\]\n\nFix any \\(k\\in\\{1,2,3\\}\\) and any \\(r\\ge 1\\). We must exhibit a natural-number constant \\(C=C(k,r)\\), independent of \\(n\\), such that\n\\[\nP_{k,r}(n)\\mid C\\,a(n)\n\\]\nfor every natural number \\(n\\).\n\nChoose\n\\[\nC(k,r)=0.\n\\]\nThis is a natural number and is independent of \\(n\\). Now let \\(n\\ge 0\\) be arbitrary. Then\n\\[\nC(k,r)a(n)=0\\cdot a(n)=0.\n\\]\nEvery natural number divides zero: indeed, for any natural number \\(d\\), the definition of divisibility is that \\(d\\mid 0\\) if there is a natural number \\(q\\) such that \\(0=dq\\), and one may take \\(q=0\\), since \\(d\\cdot0=0\\). Applying this with\n\\[\nd=P_{k,r}(n)\n\\]\ngives\n\\[\nP_{k,r}(n)\\mid 0=C(k,r)a(n).\n\\]\nBecause \\(n\\) was arbitrary, this holds for every \\(n\\ge0\\). Thus the required constant exists for every permitted \\(k\\) and every \\(r\\ge1\\).\n\nNo distinction among the cases \\(k=1,2,3\\), no use of the assumption \\(r\\ge1\\), and no arithmetic property of the factorial ratio is needed for this argument. The reason is that the stated assertion permits \\(C=0\\). Consequently, this proves the theorem exactly as stated. If “constant” were additionally required to mean a positive or nonzero integer, this argument would no longer apply, and that stronger formulation is not established by the present proof.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
   }
 }

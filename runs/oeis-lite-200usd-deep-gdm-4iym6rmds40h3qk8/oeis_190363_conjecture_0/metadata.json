@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=140\\), elementary squared bounds give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). The proposed recurrence would instead require \\(a(161)=484+528-471=541\\), so it fails by \\(1\\).",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  "summary": {
+    "text": "At \\(n=140\\), consecutive-square bounds determine \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). Thus the proposed right-hand side is \\(528+484-471=541\\), not \\(542\\), giving a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor,\n\\qquad n\\ge 1.\n\\]\nWe disprove the proposed recurrence\n\\[\na(n+21)=a(n+17)+a(n+4)-a(n)\n\\]\nby exhibiting a counterexample at \\(n=140\\).\n\nWe will need the values of \\(a(140),a(144),a(157)\\), and \\(a(161)\\). To evaluate their irrational floor terms exactly, use the following elementary observation. If \\(m\\) and \\(z\\) are nonnegative integers and\n\\[\nz^2\\le m^2\\frac54<(z+1)^2,\n\\]\nthen\n\\[\nz\\le m\\sqrt{\\frac54}<z+1,\n\\]\nand hence\n\\[\n\\left\\lfloor m\\sqrt{\\frac54}\\right\\rfloor=z.\n\\]\nIndeed, all quantities being compared are nonnegative, so squaring preserves their order, and\n\\[\n\\left(m\\sqrt{\\frac54}\\right)^2=m^2\\frac54.\n\\]\nThus the two displayed squared inequalities are exactly the squared forms of the inequalities needed to identify the floor.\n\nWe now perform the four required evaluations.\n\nFirst, for \\(m=140\\),\n\\[\n140^2\\frac54=19600\\cdot\\frac54=24500.\n\\]\nMoreover,\n\\[\n156^2=24336\\le 24500<24649=157^2.\n\\]\nTherefore\n\\[\n\\left\\lfloor 140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor 140/4\\rfloor=35\\). Consequently,\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nSecond, for \\(m=144\\),\n\\[\n144^2\\frac54=20736\\cdot\\frac54=25920.\n\\]\nHere\n\\[\n160^2=25600\\le25920<25921=161^2.\n\\]\nIt follows that\n\\[\n\\left\\lfloor 144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nSince \\(\\lfloor144/4\\rfloor=36\\), we get\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nThird, for \\(m=157\\),\n\\[\n157^2\\frac54=24649\\cdot\\frac54=\\frac{123245}{4}=30811\\frac14.\n\\]\nThe neighboring relevant squares satisfy\n\\[\n175^2=30625\\le \\frac{123245}{4}<30976=176^2.\n\\]\nFor completeness, these inequalities can be checked without decimals by multiplying through by \\(4\\):\n\\[\n122500\\le123245<123904.\n\\]\nHence\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nFurthermore, \\(157=4\\cdot39+1\\), so \\(\\lfloor157/4\\rfloor=39\\). Therefore\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFinally, for \\(m=161\\),\n\\[\n161^2\\frac54=25921\\cdot\\frac54=\\frac{129605}{4}=32401\\frac14.\n\\]\nWe have\n\\[\n180^2=32400\\le\\frac{129605}{4}<32761=181^2.\n\\]\nEquivalently, after multiplication by \\(4\\),\n\\[\n129600\\le129605<131044.\n\\]\nThus\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAs \\(161=4\\cdot40+1\\), we also have \\(\\lfloor161/4\\rfloor=40\\). It follows that\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nNow apply the conjectured identity at the admissible index \\(n=140\\). Since\n\\[\n140+21=161,\\qquad 140+17=157,\\qquad 140+4=144,\n\\]\nit would assert\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nBut the values just established give\n\\[\na(157)+a(144)-a(140)=528+484-471=1012-471=541,\n\\]\nwhereas\n\\[\na(161)=542.\n\\]\nThus the proposed equality would require \\(542=541\\), which is false. Therefore the recurrence fails at \\(n=140\\), and the conjecture that it holds for every \\(n\\ge1\\) is disproved.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-30-00-00_summarize-proofs_c7ew9sCXoNZXp5UyY2kxag.eval"
+    }
   }
 }

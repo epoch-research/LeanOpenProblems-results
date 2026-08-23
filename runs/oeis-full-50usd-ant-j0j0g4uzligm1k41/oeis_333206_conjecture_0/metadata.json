@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "Apply excluded middle to whether the values are eventually below a fixed threshold \\(k\\). Negating that eventual bound and distributing the negation through the quantifiers yields: for every \\(M\\), some \\(n\\ge M\\) satisfies \\(a(n)\\ge k\\), which is exactly the other side of the dichotomy.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "For each fixed threshold \\(k\\), excluded middle says either all sufficiently large values are below \\(k\\), or this eventual bound fails. Negating the latter condition yields, for every cutoff \\(M\\), some \\(n\\ge M\\) with \\(a(n)\\ge k\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(a(n)\\) denote the smallest decimal digit occurring in the ordinary decimal expansion of \\(n^3\\). (For \\(n=0\\), take \\(a(0)=0\\).) We prove the statement actually asserted by the theorem: for every natural number \\(k>1\\), exactly one of the following alternatives must occur (although only their disjunction is needed):\n\n1. there is a natural number \\(N\\) such that, for every \\(n\\ge N\\), one has \\(a(n)<k\\); or\n2. for every natural number \\(M\\), there is some \\(n\\ge M\\) such that \\(a(n)\\ge k\\).\n\nFix a natural number \\(k>1\\). Consider the proposition\n\\[\nP:\\qquad \\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\\quad N\\le n\\Longrightarrow a(n)<k.\n\\]\nBy the law of excluded middle, either \\(P\\) holds or \\(P\\) does not hold.\n\nIf \\(P\\) holds, then its witness \\(N\\) has precisely the property required in the first alternative, so the first alternative follows immediately.\n\nIt remains to handle the case in which \\(P\\) is false. Thus assume\n\\[\n\\neg\\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n\\quad N\\le n\\Longrightarrow a(n)<k. \\tag{1}\n\\]\nWe must prove the second alternative. Let \\(M\\in\\mathbb N\\) be arbitrary. Applying (1) with the proposed cutoff \\(N=M\\), it cannot be true that every \\(n\\ge M\\) satisfies \\(a(n)<k\\). Consequently there exists a natural number \\(n\\) for which the implication\n\\[\nM\\le n\\Longrightarrow a(n)<k\n\\]\nis false. An implication is false only when its premise is true and its conclusion is false. Hence this \\(n\\) satisfies\n\\[\nM\\le n\n\\qquad\\text{and}\\qquad\n\\neg\\bigl(a(n)<k\\bigr).\n\\]\nThe natural numbers are linearly ordered, so the negation of \\(a(n)<k\\) is equivalent to\n\\[\nk\\le a(n).\n\\]\nTherefore, for the arbitrary bound \\(M\\), we have found an \\(n\\) such that\n\\[\nM\\le n\\quad\\text{and}\\quad k\\le a(n).\n\\]\nSince \\(M\\) was arbitrary, this proves\n\\[\n\\forall M\\in\\mathbb N\\;\\exists n\\in\\mathbb N,\n\\quad M\\le n\\ \\wedge\\ k\\le a(n),\n\\]\nwhich is exactly the second alternative.\n\nThus, for every \\(k>1\\), either all sufficiently large \\(n\\) have \\(a(n)<k\\), or there are arbitrarily large \\(n\\) with \\(a(n)\\ge k\\), as required.\n\nNotice that the hypothesis \\(k>1\\) is not used in this logical dichotomy; the same dichotomy holds for every natural number \\(k\\) and, indeed, for any function in place of \\(a\\). In particular, at \\(k=2\\), the second alternative would say that there are arbitrarily large—and hence infinitely many—\\(n\\) with \\(a(n)>1\\). However, the proved disjunction does not determine whether that second alternative or the first alternative holds. Thus the accepted theorem establishes the stated finite-versus-unbounded dichotomy, not by itself the stronger assertion that infinitely many \\(n\\) satisfy \\(a(n)>1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

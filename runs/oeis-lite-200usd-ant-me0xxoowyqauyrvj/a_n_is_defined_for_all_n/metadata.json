@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the counterexample \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k\\ge 2\\) the constant term of \\(\\Phi_k\\) is \\(1\\); thus \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), so none is prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k\\ge 2\\) the cyclotomic polynomial has constant term \\(1\\), so \\(|\\Phi_k(0)|=1\\) is never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. Consider the universally quantified statement\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere primality is primality of the nonnegative integer \\(|\\Phi_k(n)|\\).\n\nWe disprove this statement by taking \\(n=0\\). For every positive integer \\(k\\), evaluating a polynomial at zero gives its constant coefficient, so\n\\[\n\\Phi_k(0)=[X^0]\\Phi_k(X).\n\\]\nThe relevant constant coefficients of the cyclotomic polynomials are\n\\[\n\\Phi_1(0)=-1,\n\\qquad\n\\Phi_k(0)=1\\quad(k\\ge 2).\n\\]\nFor completeness, the first equality follows immediately from\n\\(\\Phi_1(X)=X-1\\). The second is the standard constant-term property of cyclotomic polynomials, and it can also be derived directly from the cyclotomic factorization\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X).\n\\]\nIndeed, use strong induction on \\(m>1\\). Upon setting \\(X=0\\), the displayed factorization gives\n\\[\n-1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nAmong the divisors is \\(d=1\\), whose factor is \\(\\Phi_1(0)=-1\\). Every divisor \\(d\\) satisfying \\(1<d<m\\) has \\(\\Phi_d(0)=1\\) by the induction hypothesis. The only remaining factor is \\(\\Phi_m(0)\\). Thus\n\\[\n-1=(-1)\\cdot 1\\cdots 1\\cdot\\Phi_m(0),\n\\]\nwhich forces \\(\\Phi_m(0)=1\\). This proves the asserted constant-term property for every \\(m\\ge2\\).\n\nNow suppose, for contradiction, that the universal statement above were true. Applying it to \\(n=0\\) would provide a positive integer \\(k\\) such that \\(|\\Phi_k(0)|\\) is prime. There are exactly two cases.\n\n1. If \\(k=1\\), then\n\\[\n|\\Phi_k(0)|=|\\Phi_1(0)|=|-1|=1.\n\\]\n\n2. If \\(k\\ge2\\), then\n\\[\n|\\Phi_k(0)|=|1|=1.\n\\]\n\nThus in every case \\(|\\Phi_k(0)|=1\\). But \\(1\\) is not prime: a prime natural number must be greater than \\(1\\) (equivalently, \\(1\\) has only one positive divisor rather than two distinct positive divisors). This contradicts the required primality. Consequently no positive \\(k\\) works when \\(n=0\\), and therefore\n\\[\n\\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\\ |\\Phi_k(n)|\\text{ is prime}\\Bigr).\n\\]\n\nThere is an essential scope qualification. This counterexample disproves the accepted formal statement because that statement quantifies over all natural numbers and hence includes \\(n=0\\). It does not, by itself, disprove the literally stated OEIS conjecture restricted to positive integers \\(n\\ge1\\), since \\(0\\) is not positive. Thus, if “for every positive integer \\(n\\)” is enforced literally, the argument establishes no counterexample to that restricted conjecture; it only disproves its extension to all nonnegative integers.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-01-55-00-00_summarize-proofs_7ZgptgZt3L5r2krxqXoqYi.eval"
+    }
   }
 }

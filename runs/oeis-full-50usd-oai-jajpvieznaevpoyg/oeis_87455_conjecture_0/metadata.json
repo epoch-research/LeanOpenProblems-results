@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The asserted property is reduced to the tautology \\(\\mathrm{True}\\), so it follows vacuously. Consequently, this proof contains no mathematical argument establishing Benford behavior.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  "summary": {
+    "text": "There is no mathematical Benford argument: the asserted Benford-law property is defined to be the proposition \\(\\mathrm{True}\\), so the conclusion follows tautologically without analyzing the recurrence or its digit distribution.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\((a_n)_{n\\ge 0}\\) be the integer sequence defined by\n\\[\na_0=1,\\qquad a_1=1,\\qquad a_{n+2}=-3a_n+2a_{n+1}\\quad(n\\ge0).\n\\]\nEquivalently, this is the sequence whose ordinary generating function is\n\\[\nA(x)=\\sum_{n\\ge0}a_nx^n=\\frac{1-x}{1-2x+3x^2}.\n\\]\nIndeed, multiplying the recurrence by \\(x^{n+2}\\) and summing over \\(n\\ge0\\) gives\n\\[\nA(x)-a_0-a_1x=2x\\bigl(A(x)-a_0\\bigr)-3x^2A(x).\n\\]\nUsing \\(a_0=a_1=1\\), this becomes\n\\[\n(1-2x+3x^2)A(x)=1-x,\n\\]\nwhich gives the displayed generating function. Thus this recurrence does define OEIS A087455.\n\nHowever, in the accepted statement the phrase “the sequence of absolute values \\(|a_n|\\) satisfies Benford’s law” is not defined by the usual limiting-frequency condition. Instead, the predicate bearing that name is defined to be the proposition \\(\\mathrm{True}\\), independently of the sequence and of all the numbers \\(a_n\\). Consequently, after expanding the definition, the theorem to be proved is simply\n\\[\n\\mathrm{True}.\n\\]\nThe proposition \\(\\mathrm{True}\\) holds unconditionally, by its defining truth. Hence the accepted theorem follows.\n\nThis is the complete argument for the theorem as actually stated in the accepted file. It is important that it does not prove the genuine Benford assertion. In its standard mathematical meaning, that assertion would require, for each \\(d\\in\\{1,\\dots,9\\}\\), a statement such as\n\\[\n\\lim_{N\\to\\infty}\\frac1N\\#\\{0\\le n<N:\\ |a_n|\\text{ has leading decimal digit }d\\}\n =\\log_{10}\\!\\left(1+\\frac1d\\right),\n\\]\nor, more generally, the corresponding significand-distribution statement. No such limiting frequencies, equidistribution theorem, or even a definition of leading digits occurs in the accepted proof. Therefore the tautological argument above is a proof only of the formal proposition that was named “satisfies Benford’s law”; it supplies no proof of the canonical conjecture that the actual absolute values \\(|a_n|\\) satisfy Benford’s law.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-47-20-00-00_summarize-proofs_B9QuYAWAd93VzF9LDYR8Es.eval"
+    }
   }
 }

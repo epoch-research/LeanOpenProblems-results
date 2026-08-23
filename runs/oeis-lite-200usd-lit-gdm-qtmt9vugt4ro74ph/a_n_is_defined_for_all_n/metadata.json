@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=0\\): for \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), the cyclotomic polynomial has constant term \\(1\\), so in all cases \\(|\\Phi_k(0)|=1\\), which is not prime.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), and for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\); hence \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), which is never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\in\\mathbb Z[X]\\) denote the \\(k\\)-th cyclotomic polynomial. The formal universal assertion being refuted is\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nWe disprove this assertion by taking \\(n=0\\).\n\nWe first determine \\(\\Phi_k(0)\\) for every positive integer \\(k\\). For \\(k=1\\),\n\\[\n  \\Phi_1(X)=X-1,\n\\]\nso\n\\[\n  \\Phi_1(0)=-1.\n\\]\nFor every \\(k>1\\), one has\n\\[\n  \\Phi_k(0)=1.\n\\]\nHere is a derivation of this standard constant-term property. The cyclotomic polynomials satisfy\n\\[\n  X^k-1=\\prod_{d\\mid k}\\Phi_d(X).\n\\]\nWe prove by strong induction on \\(k>1\\) that \\(\\Phi_k(0)=1\\). Evaluating the displayed factorization at \\(X=0\\) gives\n\\[\n  -1=\\prod_{d\\mid k}\\Phi_d(0).\n\\]\nAmong the positive divisors of \\(k\\) are \\(1\\) and \\(k\\). Every other divisor \\(d\\) satisfies \\(1<d<k\\), so by the strong induction hypothesis its factor has value \\(\\Phi_d(0)=1\\). Since \\(\\Phi_1(0)=-1\\), the preceding product therefore reduces to\n\\[\n  -1=\\Phi_1(0)\\Phi_k(0)\n     =(-1)\\Phi_k(0).\n\\]\nConsequently \\(\\Phi_k(0)=1\\), as claimed. This argument also covers the first case \\(k=2\\), for which there are no divisors strictly between \\(1\\) and \\(2\\).\n\nIt follows that for every positive integer \\(k\\),\n\\[\n  |\\Phi_k(0)|=1:\n\\]\nwhen \\(k=1\\), the value is \\(|-1|=1\\), and when \\(k>1\\), it is \\(|1|=1\\). But \\(1\\) is not a prime number, since a prime natural number must be strictly greater than \\(1\\). Thus there is no positive integer \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime.\n\nTherefore the instance \\(n=0\\) makes the existential assertion fail, and hence\n\\[\n  \\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\n       |\\Phi_k(n)|\\text{ is prime}\\Bigr).\n\\]\n\nThere is an essential scope issue. This argument is a disproof of the formal assertion above because that assertion quantifies over all natural numbers and therefore includes \\(0\\). It is not a disproof of the canonical OEIS conjecture if that conjecture is stated only for positive integers \\(n\\), because \\(0\\) is not positive. The accepted counterexample exposes the missing hypothesis \\(n>0\\) in the formal statement; it does not supply a counterexample among positive integers.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-27-00-00_summarize-proofs_AzYfgCuChFoRDCR6AbzuhK.eval"
+    }
   }
 }

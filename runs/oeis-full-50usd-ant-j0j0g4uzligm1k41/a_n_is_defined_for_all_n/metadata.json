@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the counterexample \\(n=0\\): \\(\\Phi_1(0)=-1\\), while every \\(\\Phi_k\\) with \\(k>1\\) has constant term \\(1\\), so \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\). Since \\(1\\) is not prime, no such \\(k\\) exists.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\); hence \\(|\\Phi_k(0)|=1\\) for all positive \\(k\\), and this is never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(X)\\) denote the \\(k\\)-th cyclotomic polynomial. Consider the statement actually formalized in the accepted disproof:\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) contains \\(0\\). We disprove this statement by taking \\(n=0\\).\n\nWe first establish the value of every positive-index cyclotomic polynomial at zero. Recall that\n\\[\n\\Phi_1(X)=X-1,\n\\]\nso\n\\[\n\\Phi_1(0)=-1.\n\\]\nFor every integer \\(k>1\\), one has\n\\[\n\\Phi_k(0)=1.\n\\]\nFor completeness, this standard constant-term property follows from the cyclotomic factorization\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X).\n\\]\nIndeed, evaluating at \\(X=0\\) gives\n\\[\n-1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nWe may prove the assertion \\(\\Phi_m(0)=1\\) for \\(m>1\\) by strong induction on \\(m\\). For such an \\(m\\), every proper divisor \\(d>1\\) of \\(m\\) satisfies \\(\\Phi_d(0)=1\\) by the induction hypothesis, while the factor belonging to \\(d=1\\) is \\(\\Phi_1(0)=-1\\). Separating from the product the factor corresponding to \\(d=m\\), we therefore obtain\n\\[\n-1\n =\\Phi_1(0)\n   \\left(\\prod_{\\substack{d\\mid m\\\\1<d<m}}\\Phi_d(0)\\right)\n   \\Phi_m(0)\n =(-1)\\cdot 1\\cdot\\Phi_m(0).\n\\]\nConsequently \\(\\Phi_m(0)=1\\), as claimed. This induction also covers the base case \\(m=2\\), for which the middle product is empty and hence equals \\(1\\).\n\nNow let \\(k\\) be any positive integer. There are exactly two cases.\n\n* If \\(k=1\\), then \\(\\Phi_k(0)=-1\\), and therefore\n  \\[\n  |\\Phi_k(0)|=|-1|=1.\n  \\]\n\n* If \\(k>1\\), then the constant-term result above gives \\(\\Phi_k(0)=1\\), and therefore\n  \\[\n  |\\Phi_k(0)|=|1|=1.\n  \\]\n\nThus, for every \\(k>0\\),\n\\[\n|\\Phi_k(0)|=1.\n\\]\nBut \\(1\\) is not prime: by definition a prime natural number must be at least \\(2\\) (equivalently, \\(1\\) is a unit and does not satisfy the defining nontrivial-divisor property of a prime). Hence there is no positive integer \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime.\n\nTherefore\n\\[\n\\neg\\left(\\forall n\\in\\mathbb N\\;\\exists k>0:\n|\\Phi_k(n)|\\text{ is prime}\\right),\n\\]\nwith \\(n=0\\) as a counterexample.\n\nThere is an important scope distinction. The counterexample just given is exactly the accepted disproof of the formal statement, whose quantifier ranges over all natural numbers and includes \\(0\\). If the canonical OEIS conjecture is instead read literally as ranging only over positive integers \\(n\\ge 1\\), then \\(n=0\\) is outside its domain, and this argument does not disprove that positive-integer version.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

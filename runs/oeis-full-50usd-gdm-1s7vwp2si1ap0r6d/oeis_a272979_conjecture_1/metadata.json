@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Swapping the two quadratic variables shows that universal representability is invariant under exchanging the first two coefficients. Thus the listed quadruple \\((1,2,1,1)\\) would force \\((2,1,1,1)\\) to be universally representable as well, but the latter is omitted from the proposed list, contradicting the claimed equivalence.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  "summary": {
+    "text": "Swapping the two squared variables shows that full representability for \u0001((a,b,c,d)\\) is equivalent to that for \u0001((b,a,c,d)\\). The proposed list contains \u0001((1,2,1,1)\\) but omits its symmetric counterpart \u0001((2,1,1,1)\\), so it cannot characterize full representability.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nR(a,b,c,d)\n\\]\ndenote the assertion that the coefficients \\(a,b,c,d\\) are positive integers and that every nonnegative integer \\(n\\) has a representation\n\\[\nn=ax^2+by^2+cz^3+dw^4\n\\]\nwith \\(x,y,z,w\\) nonnegative integers. Let \\(S\\) be the set of 49 quadruples displayed in the conjecture.\n\nThe key observation is that universal representability is symmetric in the first two coefficients:\n\\[\nR(a,b,c,d)\\quad\\Longleftrightarrow\\quad R(b,a,c,d).\n\\]\nIndeed, positivity is unaffected by interchanging \\(a\\) and \\(b\\). Suppose first that \\(R(a,b,c,d)\\) holds. Given any nonnegative integer \\(n\\), choose nonnegative integers \\(x,y,z,w\\) such that\n\\[\nn=ax^2+by^2+cz^3+dw^4.\n\\]\nSet\n\\[\nx'=y,\\qquad y'=x,\\qquad z'=z,\\qquad w'=w.\n\\]\nThen\n\\[\n\\begin{aligned}\nb(x')^2+a(y')^2+c(z')^3+d(w')^4\n &=by^2+ax^2+cz^3+dw^4\\\\\n &=ax^2+by^2+cz^3+dw^4\\\\\n &=n.\n\\end{aligned}\n\\]\nThus every \\(n\\) is represented with coefficients \\((b,a,c,d)\\), proving \\(R(b,a,c,d)\\). The reverse implication is the same argument with \\(a\\) and \\(b\\) interchanged. This establishes the claimed equivalence.\n\nNow examine the proposed set \\(S\\). It contains\n\\[\n(1,2,1,1).\n\\]\nThis is the very first quadruple in the displayed list. On the other hand,\n\\[\n(2,1,1,1)\\notin S.\n\\]\nTo see the latter directly, among the listed quadruples whose last two coordinates are both \\(1\\), the possibilities are\n\\[\n(1,2,1,1),\\ (1,3,1,1),\\ (1,6,1,1),\\ (2,3,1,1),\\ (2,4,1,1),\n\\]\nand none is \\((2,1,1,1)\\). The remaining displayed quadruples have either third coordinate different from \\(1\\) or fourth coordinate different from \\(1\\), so they cannot equal \\((2,1,1,1)\\).\n\nThese two membership facts are incompatible with the proposed classification. This can be seen directly by splitting into the two possible cases concerning \\(R(1,2,1,1)\\).\n\nFirst suppose that \\(R(1,2,1,1)\\) is false. Since \\((1,2,1,1)\\in S\\), this quadruple itself contradicts the “if” direction of the conjecture, which says that every quadruple in \\(S\\) has full representability.\n\nAlternatively, suppose that \\(R(1,2,1,1)\\) is true. By the symmetry just proved,\n\\[\nR(2,1,1,1)\n\\]\nis then true as well: in every representation\n\\[\nn=x^2+2y^2+z^3+w^4,\n\\]\ninterchanging \\(x\\) and \\(y\\) gives\n\\[\nn=2y^2+x^2+z^3+w^4,\n\\]\nwhich is a representation by the form with coefficient quadruple \\((2,1,1,1)\\). But \\((2,1,1,1)\\notin S\\), so this contradicts the “only if” direction of the conjecture, which says that every fully representable positive coefficient quadruple belongs to \\(S\\).\n\nThus, whether \\((1,2,1,1)\\) is fully representable or not, one direction of the proposed equivalence fails. Equivalently, if one assumes the conjectured equivalence for every quadruple, membership of \\((1,2,1,1)\\) forces \\(R(1,2,1,1)\\); symmetry then forces \\(R(2,1,1,1)\\); and the conjectured equivalence forces \\((2,1,1,1)\\in S\\), contradicting its explicit omission from the list. Therefore the stated classification, and hence the conjecture, is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-56-50-00-00_summarize-proofs_RVJBVhteR6mPARx6jraSwD.eval"
+    }
   }
 }

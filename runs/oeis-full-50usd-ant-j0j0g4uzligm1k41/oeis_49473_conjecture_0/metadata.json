@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=5\\), direct evaluation gives \\(a(5)=4\\) and \\(a(4)=3\\), so the difference is \\(1\\), not \\(0\\). Yet \\(5=\\lfloor 2\\phi^2\\rfloor\\) (since \\(2\\phi^2=3+\\sqrt5\\)), so \\(5\\) lies in the Beatty set asserted to characterize the zero differences, yielding a counterexample.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "At \\(n=5\\), direct evaluation gives \\(a(4)=3\\) and \\(a(5)=4\\), so the difference is \\(1\\); however, \\(2\\phi^2=3+\\sqrt5\\) has floor \\(5\\), placing \\(5\\) in the Beatty set where the difference was claimed to be \\(0\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\left\\lfloor \\frac{n}{\\sqrt2}+\\frac12\\right\\rfloor,\n\\]\nwhich is the nearest integer to \\(n/\\sqrt2\\). Also let\n\\[\n\\phi=\\frac{1+\\sqrt5}{2}.\n\\]\nThe conjecture includes the assertion that, for every integer \\(n\\ge 1\\),\n\\[\na(n)-a(n-1)=0\n\\quad\\Longleftrightarrow\\quad\nn=\\lfloor k\\phi^2\\rfloor\\text{ for some integer }k\\ge1.\n\\]\nWe disprove this assertion at \\(n=5\\). Since this assertion is one of the conjuncts of the full conjecture, its failure disproves the entire conjecture, independently of the claims involving the zeta tail \\(s(m)\\).\n\nFirst we calculate \\(a(4)\\) and \\(a(5)\\). We will use the elementary bounds\n\\[\n\\frac75<\\sqrt2<\\frac{71}{50}.\n\\]\nIndeed, all quantities are positive, and\n\\[\n\\left(\\frac75\\right)^2=\\frac{49}{25}=1.96<2,\n\\qquad\n\\left(\\frac{71}{50}\\right)^2=\\frac{5041}{2500}=2.0164>2.\n\\]\nTaking positive square roots gives the displayed bounds.\n\nFor \\(n=4\\), consider\n\\[\nx_4=\\frac4{\\sqrt2}+\\frac12.\n\\]\nWe claim that \\(3<x_4<4\\). For the lower bound, \\(\\sqrt2<71/50\\), so, because the denominators are positive,\n\\[\n\\frac4{\\sqrt2}>\\frac4{71/50}=\\frac{200}{71}>\\frac52.\n\\]\nConsequently \\(x_4>5/2+1/2=3\\). For the upper bound, \\(\\sqrt2>7/5\\), and hence\n\\[\n\\frac4{\\sqrt2}<\\frac4{7/5}=\\frac{20}{7}<\\frac72.\n\\]\nThus \\(x_4<7/2+1/2=4\\). It follows that\n\\[\na(4)=\\lfloor x_4\\rfloor=3.\n\\]\n\nFor \\(n=5\\), put\n\\[\nx_5=\\frac5{\\sqrt2}+\\frac12.\n\\]\nAgain using \\(\\sqrt2<71/50\\), we obtain\n\\[\n\\frac5{\\sqrt2}>\\frac5{71/50}=\\frac{250}{71}>\\frac72,\n\\]\nbecause \\(500>497\\). Therefore \\(x_5>7/2+1/2=4\\). On the other hand, \\(\\sqrt2>7/5\\) gives\n\\[\n\\frac5{\\sqrt2}<\\frac5{7/5}=\\frac{25}{7}<\\frac92,\n\\]\nso \\(x_5<9/2+1/2=5\\). Hence\n\\[\na(5)=\\lfloor x_5\\rfloor=4.\n\\]\nIt follows that the difference at position \\(5\\) is\n\\[\na(5)-a(4)=4-3=1,\n\\]\nnot \\(0\\).\n\nIt remains to show that \\(5\\) nevertheless belongs to the claimed zero-position Beatty sequence \\(\\{\\lfloor k\\phi^2\\rfloor:k\\ge1\\}\\). Take \\(k=2\\). Since \\((\\sqrt5)^2=5\\),\n\\[\n\\phi^2\n =\\left(\\frac{1+\\sqrt5}{2}\\right)^2\n =\\frac{1+2\\sqrt5+5}{4}\n =\\frac{3+\\sqrt5}{2}.\n\\]\nTherefore\n\\[\n2\\phi^2=3+\\sqrt5.\n\\]\nThe elementary inequalities\n\\[\n2\\le\\sqrt5<3\n\\]\nfollow by comparing squares: \\(4\\le5<9\\), with all terms nonnegative. Thus\n\\[\n5\\le 3+\\sqrt5<6,\n\\]\nand consequently\n\\[\n\\lfloor2\\phi^2\\rfloor=\\lfloor3+\\sqrt5\\rfloor=5.\n\\]\nHence \\(5\\) is indeed of the form \\(\\lfloor k\\phi^2\\rfloor\\) with the positive integer \\(k=2\\).\n\nThe conjectured equivalence at \\(n=5\\) would therefore force\n\\[\na(5)-a(4)=0,\n\\]\nbecause \\(5=\\lfloor2\\phi^2\\rfloor\\). But the direct calculation above gives\n\\[\na(5)-a(4)=1.\n\\]\nThis contradiction disproves the claimed characterization of the zero differences, and therefore disproves the full conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }

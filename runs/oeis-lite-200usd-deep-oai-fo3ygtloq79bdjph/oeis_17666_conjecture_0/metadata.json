@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take \\(n=18\\): direct divisor-sum calculations give \\(a(18)=6\\) and \\(a(6)=1=2^0\\), so \\(a(18)\\) has the required property. But \\(18\\) does not, since its associated value \\(6\\) is divisible by \\(3\\) and hence is not a power of two.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  "summary": {
+    "text": "Take \\(n=18\\): \\(\\sigma(18)=39\\) gives \\(a(18)=18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\) gives \\(a(6)=1=2^0\\), so \\(a(18)\\) belongs to the target class. However, \\(18\\) does not belong to it because its associated denominator is \\(6\\), which is not a power of \\(2\\) (it is divisible by \\(3\\)).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\operatorname{denom}\\!\\left(\\sum_{d\\mid n}\\frac1d\\right)\n\\]\nbe A017666, where the denominator is taken after reducing the rational number to lowest terms. For positive \\(n\\), the map \\(d\\mapsto n/d\\) permutes the positive divisors of \\(n\\), so\n\\[\n\\sum_{d\\mid n}\\frac1d\n =\\frac1n\\sum_{d\\mid n}\\frac nd\n =\\frac1n\\sum_{e\\mid n}e\n =\\frac{\\sigma(n)}n.\n\\]\nConsequently,\n\\[\na(n)=\\frac{n}{\\gcd(n,\\sigma(n))}.\n\\]\n\nIn the formulation under consideration, an integer \\(m\\) belongs to A005153 precisely when the denominator \\(a(m)\\) is a power of two. Thus\n\\[\nm\\in\\mathrm{A005153}\n\\quad\\Longleftrightarrow\\quad\n\\text{there is some }k\\ge 0\\text{ such that }a(m)=2^k.\n\\]\nWe disprove the proposed implication\n\\[\na(n)\\in\\mathrm{A005153}\\Longrightarrow n\\in\\mathrm{A005153}\n\\]\nby taking \\(n=18\\).\n\nFirst compute \\(a(18)\\). The positive divisors of \\(18\\) are\n\\[\n1,2,3,6,9,18,\n\\]\nand hence\n\\[\n\\sigma(18)=1+2+3+6+9+18=39.\n\\]\nSince \\(\\gcd(18,39)=3\\), it follows that\n\\[\na(18)=\\frac{18}{3}=6.\n\\]\nEquivalently, one can see the same reduction directly from\n\\[\n\\sum_{d\\mid18}\\frac1d=\\frac{\\sigma(18)}{18}\n =\\frac{39}{18}=\\frac{13}{6},\n\\]\nwhose reduced denominator is \\(6\\).\n\nWe next show that the antecedent of the conjectured implication holds. Since \\(a(18)=6\\), this means showing that the integer \\(6\\) belongs to A005153. The positive divisors of \\(6\\) are \\(1,2,3,6\\), so\n\\[\n\\sigma(6)=1+2+3+6=12.\n\\]\nTherefore\n\\[\na(6)=\\frac{6}{\\gcd(6,12)}=\\frac66=1.\n\\]\nEquivalently,\n\\[\n\\sum_{d\\mid6}\\frac1d=\\frac{12}{6}=2,\n\\]\nwhich has denominator \\(1\\). But \\(1=2^0\\), so \\(a(6)\\) is a power of two. By the stated membership criterion, \\(6\\in\\mathrm{A005153}\\). Since \\(a(18)=6\\), this proves\n\\[\na(18)\\in\\mathrm{A005153}.\n\\]\n\nIt remains to show that the conclusion fails, namely that \\(18\\notin\\mathrm{A005153}\\). Membership of \\(18\\) would require \\(a(18)\\) to be a power of two. We already computed \\(a(18)=6\\), so this would require\n\\[\n6=2^k\n\\]\nfor some integer \\(k\\ge0\\). No such \\(k\\) exists. Indeed, if \\(6=2^k\\), then \\(3\\mid 2^k\\). Since \\(3\\) is prime, a prime dividing a power must divide its base, so this would imply \\(3\\mid2\\), which is impossible. Hence \\(6\\) is not a power of two, and therefore\n\\[\n18\\notin\\mathrm{A005153}.\n\\]\n\nThus, for \\(n=18\\), the integer \\(a(n)=6\\) belongs to A005153 because \\(a(6)=1=2^0\\), whereas \\(n=18\\) itself does not belong to A005153 because \\(a(18)=6\\) is not a power of two. This is a counterexample to the universal implication, so the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-05-08-00-00_summarize-proofs_cWUU9KJqpLxFPJ2wF9jZbe.eval"
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the nonexceptional even value $m=10$. Since a prime $q$ must satisfy $q\\le \\lfloor 10/4\\rfloor=2$, necessarily $q=2$, forcing $p=10-q=8$, which is not prime; hence no required representation exists.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  "summary": {
+    "text": "Take the unlisted even case \\(m=10\\): the bound \\(q\\le m/4=2\\) and primality force \\(q=2\\), while \\(10=p+q\\) then forces \\(p=8\\), which is not prime. Thus no required representation exists, independently of the Jacobi condition.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The conjecture is false because its even assertion fails at\n\\[\nm=10.\n\\]\n\nIndeed, the even assertion says that every even integer \\(m>8\\), except for \\(32\\) and \\(152\\), admits primes \\(p,q\\) such that\n\\[\nm=p+q,\\qquad q\\le \\left\\lfloor\\frac m4\\right\\rfloor,\n\\]\nand, in addition,\n\\[\n\\left(\\frac{(q+1)/2}{r}\\right)=1\n\\]\nfor every prime divisor \\(r\\) of \\(m+1\\). Here the divisions in the displayed size condition and in \\((q+1)/2\\) are integer divisions, as appropriate for the stated integer formulation.\n\nNow \\(10\\) satisfies every hypothesis to which the even assertion applies: it is even, \\(10>8\\), and \\(10\\) is neither \\(32\\) nor \\(152\\). Suppose, for contradiction, that the required representation existed for \\(m=10\\). Then there would be primes \\(p,q\\) satisfying\n\\[\n10=p+q\n\\]\nand\n\\[\nq\\le \\left\\lfloor\\frac{10}{4}\\right\\rfloor=2.\n\\]\nEvery prime natural number is at least \\(2\\). Since \\(q\\) is prime, we therefore also have \\(2\\le q\\). Combining the two inequalities gives\n\\[\nq=2.\n\\]\nSubstitution into the additive representation yields\n\\[\n10=p+2,\n\\]\nso necessarily\n\\[\np=8.\n\\]\nBut \\(8=2\\cdot4\\) is composite and hence is not prime. This contradicts the required primality of \\(p\\).\n\nThus no pair of primes \\(p,q\\) can satisfy even the additive and size requirements for \\(m=10\\). Consequently, no pair can satisfy those requirements together with the further Jacobi-symbol conditions. (In particular, it is unnecessary to analyze the prime divisors of \\(10+1=11\\): the representation has already been ruled out.)\n\nTherefore the claimed universal even refinement is false. Since Sun's stated refinement is the conjunction of the universal odd assertion and this universal even assertion, failure of the even assertion at \\(m=10\\) disproves the entire conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T19-43-26-00-00_summarize-proofs_fHXfWVtLaPG3S4KWBA8qLt.eval"
+    }
   }
 }
