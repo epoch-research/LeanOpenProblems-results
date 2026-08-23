@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+#check integrableOn_Ioi_inv_one_add_sq
+#check integrableOn_Ici_inv_one_add_sq
+#check integrable_inv_one_add_sq
+#check MeasureTheory.Integrable.mono
+#check MeasureTheory.IntegrableOn.mono
+#check intervalIntegral_tendsto_integral_Ioi
+#check intervalIntegral.integral_comp_mul_deriv
+#check intervalIntegral.integral_comp_mul_deriv'
+#check Real.hasDerivAt_tan
+#check Real.tendsto_tan_nhdsWithin_pi_div_two
+#check Real.inv_one_add_tan_sq
+#check Real.tendsto_tan_pi_div_two
+#check MeasureTheory.intervalIntegral_tendsto_integral_Ioi
+#check Real.sqrt_div
+#check Real.sqrt_div'

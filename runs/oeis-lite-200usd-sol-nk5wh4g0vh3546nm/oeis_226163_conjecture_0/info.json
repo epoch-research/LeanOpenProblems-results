@@ -1,0 +1,20 @@
+{
+  "id": "oeis_226163_conjecture_0",
+  "epoch": 1,
+  "uuid": "9YALjfEr6GUrNUpZYRfaH7",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 2692,
+      "output_tokens": 81878,
+      "total_tokens": 32963168,
+      "input_tokens_cache_write": 2538212,
+      "input_tokens_cache_read": 30340386,
+      "reasoning_tokens": 32466,
+      "total_cost": 33.50381799999998
+    }
+  },
+  "oeis_id": "A226163"
+}

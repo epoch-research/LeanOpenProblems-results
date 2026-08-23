@@ -1,0 +1,23 @@
+{
+  "id": "A273110_conjecture",
+  "epoch": 1,
+  "uuid": "heSHzXyJgaJZqmCH8UucL2",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 115763,
+      "output_tokens": 838447,
+      "total_tokens": 244653416,
+      "input_tokens_cache_write": 9118596,
+      "input_tokens_cache_read": 234580610,
+      "reasoning_tokens": 620766,
+      "total_cost": 200.01375499999983
+    }
+  },
+  "oeis_id": "A273110"
+}

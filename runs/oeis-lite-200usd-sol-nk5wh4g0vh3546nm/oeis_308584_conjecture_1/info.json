@@ -1,0 +1,23 @@
+{
+  "id": "oeis_308584_conjecture_1",
+  "epoch": 1,
+  "uuid": "DW7PZ5suS5YW42ndgMGNuq",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 515524,
+      "output_tokens": 531950,
+      "total_tokens": 278485656,
+      "input_tokens_cache_write": 7373862,
+      "input_tokens_cache_read": 270064320,
+      "reasoning_tokens": 319526,
+      "total_cost": 199.65491749999975
+    }
+  },
+  "oeis_id": "A308584"
+}

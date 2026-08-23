@@ -1,0 +1,23 @@
+{
+  "id": "oeis_352627_conjecture_1",
+  "epoch": 1,
+  "uuid": "6xmWn5npaxYJPBarrLn5e3",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 251922,
+      "output_tokens": 1370601,
+      "total_tokens": 237436073,
+      "input_tokens_cache_write": 6911633,
+      "input_tokens_cache_read": 228901917,
+      "reasoning_tokens": 700365,
+      "total_cost": 200.0263047499996
+    }
+  },
+  "oeis_id": "A352627"
+}

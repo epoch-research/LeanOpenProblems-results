@@ -1,0 +1,20 @@
+{
+  "id": "oeis_364173_conjecture_0",
+  "epoch": 1,
+  "uuid": "iBNMrRTWwDhyWqwaoHCogL",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 4408,
+      "output_tokens": 196076,
+      "total_tokens": 69155883,
+      "input_tokens_cache_write": 2213644,
+      "input_tokens_cache_read": 66741755,
+      "reasoning_tokens": 84490,
+      "total_cost": 53.110472499999986
+    }
+  },
+  "oeis_id": "A364173"
+}

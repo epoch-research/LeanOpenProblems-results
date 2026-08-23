@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check Finset.prod_pow_eq_pow_sum
+#check Finset.prod_pow
+#check Finset.prod_const
+#check Finset.prod_neg
+#check Finset.prod_mul_distrib
+#check Finset.sum_mul
+#check Finset.sum_range_id
+#check Finset.sum_range_succ
+#check Finset.sum_range_id_eq_natDegree

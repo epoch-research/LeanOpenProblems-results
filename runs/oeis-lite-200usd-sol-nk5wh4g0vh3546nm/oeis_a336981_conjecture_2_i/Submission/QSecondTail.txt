@@ -1,0 +1,247 @@
+noncomputable def quinExactNorm (u : ℝ) : ℝ :=
+  quinMul/2 * quinRfun (mm1/(u^2+1)) *
+    (mm1*u*(u^2+(1-mm1))/((u^2+1) *
+      Real.sqrt ((u^2+1)*(u^2+(1-mm1)))))
+
+lemma quinExact_eq_norm {t : ℝ} (ht : 0 < t) : quinExact t = quinExactNorm t⁻¹ := by
+  have ht0 := ht.ne'
+  have h1 : 1+t^2 = t^2*((t⁻¹)^2+1) := by field_simp [ht0]
+  have hL : 1+(1-mm1)*t^2 = t^2*((t⁻¹)^2+(1-mm1)) := by
+    field_simp [ht0]
+  have hx : quinSourceX t = mm1/((t⁻¹)^2+1) := by
+    unfold quinSourceX
+    rw [h1]
+    field_simp [ht0]
+  have hs : Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)) =
+      t^2 * Real.sqrt (((t⁻¹)^2+1)*((t⁻¹)^2+(1-mm1))) := by
+    rw [h1, hL]
+    rw [show t^2*(t⁻¹^2+1)*(t^2*(t⁻¹^2+(1-mm1))) =
+      t^4*((t⁻¹)^2+1)*((t⁻¹)^2+(1-mm1)) by ring]
+    rw [show t^4*((t⁻¹)^2+1)*((t⁻¹)^2+(1-mm1)) =
+      t^4*(((t⁻¹)^2+1)*((t⁻¹)^2+(1-mm1))) by ring,
+      Real.sqrt_mul (by positivity : (0:ℝ) ≤ t^4)]
+    rw [show t^4=(t^2)^2 by ring, Real.sqrt_sq_eq_abs,
+      abs_of_nonneg (sq_nonneg t)]
+  unfold quinExact quinQR quinExactNorm
+  rw [hx, hs, hL, h1]
+  have hs0 : Real.sqrt (((t⁻¹)^2+1)*((t⁻¹)^2+(1-mm1))) ≠ 0 := by
+    apply (Real.sqrt_pos.2 ?_).ne'
+    have hm := mm_bounds.2.1
+    apply mul_pos <;> nlinarith [sq_nonneg t⁻¹]
+  field_simp [ht0, hs0]
+
+lemma quinExactNorm_continuous : Continuous quinExactNorm := by
+  unfold quinExactNorm
+  have hx : Continuous (fun u : ℝ => mm1/(u^2+1)) := by
+    apply continuous_const.div₀ (continuous_id.pow 2 |>.add continuous_const)
+    intro u; positivity
+  apply Continuous.mul
+  · apply Continuous.mul continuous_const
+    unfold quinRfun
+    apply Continuous.div₀
+    · exact continuous_const.mul (hx.sub continuous_const)
+    · exact (hx.pow 2).add (continuous_const.mul hx) |>.add continuous_const
+    · intro u
+      apply (quinR_den_pos _ ?_).ne'
+      exact div_nonneg mm_bounds.1 (by positivity)
+  · apply Continuous.div₀
+    · fun_prop
+    · fun_prop
+    · intro u
+      have hm := mm_bounds.2.1
+      have hr : 0 < (u^2+1)*(u^2+(1-mm1)) := by
+        apply mul_pos <;> nlinarith [sq_nonneg u]
+      exact (mul_pos (by positivity) (Real.sqrt_pos.2 hr)).ne'
+
+lemma quinExact_tendsto_zero : Tendsto quinExact atTop (nhds 0) := by
+  have heq : quinExact =ᶠ[atTop] fun t => quinExactNorm t⁻¹ := by
+    filter_upwards [eventually_gt_atTop (0:ℝ)] with t ht
+    exact quinExact_eq_norm ht
+  have hc : Tendsto (fun t : ℝ => quinExactNorm t⁻¹) atTop (nhds (quinExactNorm 0)) :=
+    quinExactNorm_continuous.continuousAt.tendsto.comp tendsto_inv_atTop_zero
+  have hz : quinExactNorm 0 = 0 := by simp [quinExactNorm]
+  rw [hz] at hc
+  exact hc.congr' heq.symm
+
+noncomputable def quinDerivFun (t : ℝ) : ℝ :=
+  quinMul*(quinTargetX t-quinAlpha-quinBeta*quinSourceX t) *
+    (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹
+
+lemma quinTargetX_bounds (t : ℝ) : 0 ≤ quinTargetX t ∧ quinTargetX t ≤ 1 := by
+  unfold quinTargetX
+  have hm0 := mm2c_bounds.1
+  have hm1 := mm2c_bounds.2
+  have hd : 0 < 1+(quinS t)^2 := by positivity
+  constructor
+  · positivity
+  apply (div_le_one hd).2
+  nlinarith [mul_le_mul_of_nonneg_right hm1.le (sq_nonneg (quinS t))]
+
+lemma quinTarget_integrand_continuous : Continuous (fun t => quinTargetX t *
+    (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹) := by
+  apply Continuous.mul
+  · unfold quinTargetX
+    apply Continuous.div₀
+    · exact continuous_const.mul (quinS_continuous.pow 2)
+    · exact continuous_const.add (quinS_continuous.pow 2)
+    · intro t; positivity
+  · exact tangent_K_integrand_continuous mm_bounds.2.1
+
+
+lemma integrableOn_quinTarget : IntegrableOn (fun t => quinTargetX t *
+    (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹) (Ioi 0) := by
+  apply (integrableOn_Ki mm_bounds.1 mm_bounds.2.1).mono'
+    quinTarget_integrand_continuous.aestronglyMeasurable
+  filter_upwards [] with t
+  rw [norm_mul, Real.norm_eq_abs, abs_of_nonneg (quinTargetX_bounds t).1]
+  let z : ℝ := (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹
+  calc
+    quinTargetX t * ‖z‖ ≤ ‖z‖ := by
+      simpa using mul_le_mul_of_nonneg_right (quinTargetX_bounds t).2 (norm_nonneg z)
+    _ = z := by rw [Real.norm_eq_abs, abs_of_nonneg] <;> positivity
+
+lemma integrableOn_quinDeriv : IntegrableOn quinDerivFun (Ioi 0) := by
+  have ht := integrableOn_quinTarget
+  have hg := (integrableOn_Ki mm_bounds.1 mm_bounds.2.1).const_mul quinAlpha
+  have hj := (integrableOn_Jfun mm_bounds.1 mm_bounds.2.1).const_mul quinBeta
+  have hi := (ht.sub hg).sub hj |>.const_mul quinMul
+  exact (integrableOn_congr_fun (fun x hx => by
+    unfold quinDerivFun quinSourceX Jfun
+    simp only [Pi.sub_apply]
+    ring) measurableSet_Ioi).2 hi
+
+lemma integral_quinDeriv_zero : ∫ t in Ioi (0:ℝ), quinDerivFun t = 0 := by
+  have h := MeasureTheory.integral_Ioi_of_hasDerivAt_of_tendsto'
+    (f := quinExact) (f' := quinDerivFun) (a := 0) (m := 0)
+    (by intro x hx; simpa [quinDerivFun] using quinExact_deriv x)
+    integrableOn_quinDeriv quinExact_tendsto_zero
+  simpa [quinExact, quinQR] using h
+
+lemma Ji_quintic_isogeny :
+    Ji mm2c = quinMul*(quinAlpha*Ki mm1+quinBeta*Ji mm1) := by
+  let jt : ℝ → ℝ := Jfun mm2c
+  have hsub := MeasureTheory.integral_comp_mul_deriv_Ioi
+    (f := quinS) (f' := quinD) (g := jt) (a := 0)
+    quinS_continuous.continuousOn quinS_tendsto
+    (by intro x hx; simpa [quinD] using (quinS_deriv x).hasDerivWithinAt)
+    (by exact (Jfun_continuous mm2c_bounds.2).continuousOn)
+    (by
+      have hi : IntegrableOn jt (Ici 0) :=
+        (integrableOn_Ici_iff_integrableOn_Ioi).2 (by
+          simpa [jt] using integrableOn_Jfun mm2c_bounds.1 mm2c_bounds.2)
+      apply hi.mono_set
+      rintro y ⟨x,hx,rfl⟩
+      have hs0 : quinS 0 = 0 := by simp [quinS]
+      calc 0 = quinS 0 := hs0.symm
+           _ ≤ quinS x := quinS_strictMono.monotone hx)
+    (by
+      rw [integrableOn_Ici_iff_integrableOn_Ioi]
+      have hi := integrableOn_quinTarget.const_mul quinMul
+      exact (integrableOn_congr_fun (fun x hx => by
+        change jt (quinS x) * quinD x = _
+        rw [show jt (quinS x) = quinTargetX x *
+          (Real.sqrt ((1+(quinS x)^2)*(1+(1-mm2c)*(quinS x)^2)))⁻¹ by
+            rfl]
+        rw [mul_assoc, quin_pullback]
+        ring) measurableSet_Ioi).2 hi)
+  have hs0 : quinS 0 = 0 := by simp [quinS]
+  rw [hs0] at hsub
+  have hpull : (∫ x in Ioi (0:ℝ), (jt ∘ quinS) x * quinD x) =
+      quinMul * ∫ x in Ioi (0:ℝ), quinTargetX x *
+        (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹ := by
+    calc
+      _ = ∫ x in Ioi (0:ℝ), quinMul * (quinTargetX x *
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) := by
+            apply integral_congr_ae
+            filter_upwards [] with x
+            change jt (quinS x) * quinD x = _
+            rw [show jt (quinS x) = quinTargetX x *
+              (Real.sqrt ((1+(quinS x)^2)*(1+(1-mm2c)*(quinS x)^2)))⁻¹ by
+                rfl]
+            rw [mul_assoc, quin_pullback]
+            ring
+      _ = _ := by rw [MeasureTheory.integral_const_mul]
+  rw [hpull] at hsub
+  have hzero := integral_quinDeriv_zero
+  unfold quinDerivFun at hzero
+  rw [show (fun t : ℝ => quinMul *
+      (quinTargetX t - quinAlpha - quinBeta * quinSourceX t) *
+        (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹) =
+      (fun t => quinMul * ((quinTargetX t - quinAlpha - quinBeta * quinSourceX t) *
+        (Real.sqrt ((1+t^2)*(1+(1-mm1)*t^2)))⁻¹)) by
+      funext t; ring] at hzero
+  have hint : (∫ x in Ioi (0:ℝ), quinTargetX x *
+      (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) =
+      quinAlpha*Ki mm1+quinBeta*Ji mm1 := by
+    rw [MeasureTheory.integral_const_mul] at hzero
+    have hc := quinMul_pos
+    have hinner : ∫ x in Ioi (0:ℝ),
+        (quinTargetX x-quinAlpha-quinBeta*quinSourceX x) *
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹ = 0 := by
+      nlinarith
+    have heq : (∫ x in Ioi (0:ℝ),
+        (quinTargetX x-quinAlpha-quinBeta*quinSourceX x) *
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) =
+        (∫ x in Ioi (0:ℝ), quinTargetX x *
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) -
+        (∫ x in Ioi (0:ℝ), quinAlpha *
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) -
+        (∫ x in Ioi (0:ℝ), quinBeta * Jfun mm1 x) := by
+      calc
+        _ = ∫ x in Ioi (0:ℝ),
+            (quinTargetX x * (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹ -
+              quinAlpha * (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) -
+              quinBeta * Jfun mm1 x := by
+                apply integral_congr_ae
+                filter_upwards [] with x
+                unfold quinSourceX Jfun
+                ring
+        _ = (∫ x in Ioi (0:ℝ),
+              quinTargetX x * (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹ -
+              quinAlpha * (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) -
+              (∫ x in Ioi (0:ℝ), quinBeta * Jfun mm1 x) := by
+                simpa only [Pi.sub_apply] using
+                  (MeasureTheory.integral_sub
+                    (integrableOn_quinTarget.sub
+                      ((integrableOn_Ki mm_bounds.1 mm_bounds.2.1).const_mul quinAlpha))
+                    ((integrableOn_Jfun mm_bounds.1 mm_bounds.2.1).const_mul quinBeta))
+        _ = _ := by
+          congr 1
+          simpa only [Pi.sub_apply] using
+            (MeasureTheory.integral_sub integrableOn_quinTarget
+              ((integrableOn_Ki mm_bounds.1 mm_bounds.2.1).const_mul quinAlpha))
+    rw [heq, MeasureTheory.integral_const_mul,
+      MeasureTheory.integral_const_mul] at hinner
+    simpa [Ki, Ji] using (show
+      (∫ x in Ioi (0:ℝ), quinTargetX x *
+        (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) =
+        quinAlpha*(∫ x in Ioi (0:ℝ),
+          (Real.sqrt ((1+x^2)*(1+(1-mm1)*x^2)))⁻¹) +
+        quinBeta*(∫ x in Ioi (0:ℝ), Jfun mm1 x) by linarith)
+  rw [hint] at hsub
+  simpa [Ji, jt] using hsub.symm
+
+
+
+
+
+
+lemma HE_quintic_isogeny :
+    H mm2c - En mm2c = quinMul *
+      (quinAlpha * H mm1 + quinBeta * (H mm1 - En mm1)) := by
+  unfold H En
+  rw [K_eq_Ki mm2c_bounds.1 mm2c_bounds.2,
+    E_eq_Ei mm2c_bounds.1 mm2c_bounds.2.le,
+    K_eq_Ki mm_bounds.1 mm_bounds.2.1,
+    E_eq_Ei mm_bounds.1 mm_bounds.2.1.le]
+  have h2 := Ki_sub_Ei_eq_Ji mm2c_bounds.1 mm2c_bounds.2
+  have h1 := Ki_sub_Ei_eq_Ji mm_bounds.1 mm_bounds.2.1
+  have hj := Ji_quintic_isogeny
+  rw [show (2 / Real.pi) * Ki mm2c - (2 / Real.pi) * Ei mm2c =
+      (2 / Real.pi) * (Ki mm2c - Ei mm2c) by ring,
+    h2,
+    show (2 / Real.pi) * Ki mm1 - (2 / Real.pi) * Ei mm1 =
+      (2 / Real.pi) * (Ki mm1 - Ei mm1) by ring,
+    h1, hj]
+  ring
+

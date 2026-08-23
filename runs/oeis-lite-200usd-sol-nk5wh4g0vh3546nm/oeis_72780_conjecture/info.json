@@ -1,0 +1,20 @@
+{
+  "id": "oeis_72780_conjecture",
+  "epoch": 1,
+  "uuid": "4FfTWSJAfCpWp2VCgV5nTF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 235,
+      "output_tokens": 1893,
+      "total_tokens": 45100,
+      "input_tokens_cache_write": 5425,
+      "input_tokens_cache_read": 37547,
+      "reasoning_tokens": 510,
+      "total_cost": 0.11064475
+    }
+  },
+  "oeis_id": "A072780"
+}

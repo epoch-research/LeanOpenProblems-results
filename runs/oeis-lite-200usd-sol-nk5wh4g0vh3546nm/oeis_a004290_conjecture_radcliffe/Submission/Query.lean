@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+#print Nat.ofDigits_digits
+#print Nat.digits_ofDigits
+#print Nat.ofDigits_append
+#print Nat.ofDigits_eq_sum_mapIdx
+#print Nat.digits_len
+#print Nat.lt_base_pow_length_digits
+#print Nat.digits_zero
+#check Nat.digits_len
+#check Nat.digits_len_le_digits_len
+#check Nat.digits_mono
+#check Nat.digits_lt_base
+#check Nat.ofDigits_lt_base_pow_length
+#check Nat.dvd_sub'
+#check Nat.dvd_of_mod_eq_zero
+#check Nat.mod_eq_zero_of_dvd

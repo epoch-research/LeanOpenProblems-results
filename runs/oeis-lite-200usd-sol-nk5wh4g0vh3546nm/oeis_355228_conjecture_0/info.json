@@ -1,0 +1,23 @@
+{
+  "id": "oeis_355228_conjecture_0",
+  "epoch": 1,
+  "uuid": "knXDQJbiAFSn5scSiHZTuw",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 399937,
+      "output_tokens": 1581759,
+      "total_tokens": 193279911,
+      "input_tokens_cache_write": 9719075,
+      "input_tokens_cache_read": 181579140,
+      "reasoning_tokens": 1267830,
+      "total_cost": 200.9862437500001
+    }
+  },
+  "oeis_id": "A355228"
+}

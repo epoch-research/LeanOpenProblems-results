@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340881_conjecture_0",
+  "epoch": 1,
+  "uuid": "2AXNqPDK3ERDRVVWtkdCxP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 274,
+      "output_tokens": 12009,
+      "total_tokens": 729228,
+      "input_tokens_cache_write": 90064,
+      "input_tokens_cache_read": 626881,
+      "reasoning_tokens": 3911,
+      "total_cost": 1.2379805000000004
+    }
+  },
+  "oeis_id": "A340881"
+}

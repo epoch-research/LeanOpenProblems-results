@@ -1,0 +1,14 @@
+import FormalConjectures.Util.ProblemImports
+#check geom_sum_mul
+#check geom_sum_mul_neg
+#check geom_sum_mul_add
+#check Finset.geom_sum_mul
+#check Nat.geomSum_mul
+#check Nat.geomSum_eq
+#check pow_sub_one
+#check sub_dvd_pow_sub_pow
+#check Nat.sub_one_dvd_pow_sub_one
+#check Nat.dvd_sub'
+#check Nat.mul_div_cancel'
+#check Nat.mul_div_cancel_left
+#check Nat.div_eq_iff_eq_mul_left

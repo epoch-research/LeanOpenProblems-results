@@ -1,0 +1,10 @@
+import FormalConjectures.Util.ProblemImports
+#check List.sum_mapIdx
+#check List.sum_mapIdx_eq_sum_range
+#check List.getD
+#check List.getElem?_eq_getElem
+#check Finset.sum_bij
+#check Finset.sum_fin_eq_sum_range
+#check Nat.digits_length_le_iff
+#check Nat.lt_base_pow_length_digits
+#check Nat.digits_len_le_iff

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361883_conjecture_0",
+  "epoch": 1,
+  "uuid": "du7kSNkVZb9pCRHao4xtsX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 240957,
+      "output_tokens": 120153,
+      "total_tokens": 35262348,
+      "input_tokens_cache_write": 2368891,
+      "input_tokens_cache_read": 32532347,
+      "reasoning_tokens": 52629,
+      "total_cost": 35.88111725000001
+    }
+  },
+  "oeis_id": "A361883"
+}

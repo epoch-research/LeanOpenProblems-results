@@ -1,0 +1,20 @@
+{
+  "id": "oeis_227923_conjecture_1",
+  "epoch": 1,
+  "uuid": "UpbazKfzzsXJLzqTXemsCf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 307,
+      "output_tokens": 8250,
+      "total_tokens": 490780,
+      "input_tokens_cache_write": 27224,
+      "input_tokens_cache_read": 454999,
+      "reasoning_tokens": 3035,
+      "total_cost": 0.6466845
+    }
+  },
+  "oeis_id": "A227923"
+}

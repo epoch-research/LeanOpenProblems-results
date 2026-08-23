@@ -1,0 +1,20 @@
+{
+  "id": "oeis_374605_conjecture_0",
+  "epoch": 1,
+  "uuid": "eYijWBjHeUz8NjrrGHnda7",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 2667,
+      "output_tokens": 141057,
+      "total_tokens": 57062039,
+      "input_tokens_cache_write": 1991601,
+      "input_tokens_cache_read": 54926714,
+      "reasoning_tokens": 67727,
+      "total_cost": 44.15590824999998
+    }
+  },
+  "oeis_id": "A374605"
+}

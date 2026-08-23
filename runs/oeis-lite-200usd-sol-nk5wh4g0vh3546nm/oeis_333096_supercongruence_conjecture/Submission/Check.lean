@@ -1,0 +1,14 @@
+import Submission.Generic
+#check Finset.sum_involution
+#check Finset.sum_ninvolution
+#check Int.cast_eq_zero
+#check ZMod.intCast_zmod_eq_zero_iff_dvd
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check Int.ModEq.eq_iff_dvd
+#check Int.modEq_zero_iff_dvd
+#check Int.cast_zmod_eq_zero_iff_dvd
+#check Int.cast_eq_zero
+#check Nat.choose_mul_choose
+#check Nat.choose_mul_choose_mul
+#check Nat.choose_mul_choose_mul
+#check Nat.choose_mul_choose

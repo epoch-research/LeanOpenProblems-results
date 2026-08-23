@@ -1,0 +1,11 @@
+import FormalConjectures.Util.ProblemImports
+#check MonoidHom.pow
+#check MonoidHom.power
+#check QuotientGroup.mk
+#check QuotientGroup.mk'
+#check QuotientGroup.eq_one_iff
+#check QuotientGroup.quotientKerEquivRange
+#check Additive
+#check Additive.ofMul
+#check Multiplicative.toAdd
+#check AddChar.sum_apply_eq_ite

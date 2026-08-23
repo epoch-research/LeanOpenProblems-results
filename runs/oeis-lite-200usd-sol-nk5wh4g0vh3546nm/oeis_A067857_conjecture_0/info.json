@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A067857_conjecture_0",
+  "epoch": 1,
+  "uuid": "585ExNshiWTWvyWT3akRga",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 95,
+      "output_tokens": 4912,
+      "total_tokens": 255077,
+      "input_tokens_cache_write": 38997,
+      "input_tokens_cache_read": 211073,
+      "reasoning_tokens": 1738,
+      "total_cost": 0.49710275
+    }
+  },
+  "oeis_id": "A067857"
+}

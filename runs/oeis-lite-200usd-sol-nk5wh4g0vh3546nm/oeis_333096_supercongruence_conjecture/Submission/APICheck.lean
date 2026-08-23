@@ -1,0 +1,13 @@
+import Submission.CorePositive
+#check Polynomial.coeff_one_add_X_pow
+#check Polynomial.coeff_add_pow
+#check add_pow
+#check Polynomial.coeff_pow
+#check PowerSeries.coeff_coe
+#check PowerSeries.coeff_mul
+#check Finset.antidiagonal_eq_map
+#check Nat.choose_mul_factorial_mul_factorial
+#check Nat.choose_mul_choose
+#check Nat.choose_mul
+#check Nat.choose_mul_choose_mul
+#check Nat.choose_mul_factorial_mul_factorial

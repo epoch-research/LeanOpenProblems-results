@@ -1,0 +1,16 @@
+import FormalConjectures.Util.ProblemImports
+#check tendsto_sum_mul_atTop_nhds_one_sub_integral₀
+#check hasSum_iff_tendsto_nat
+#check hasSum_iff_tendsto_nat_of_nonneg
+#check geom_sum_mul
+#check geom_sum_mul_neg
+#check geom_sum_eq
+#check Complex.tendsto_tsum_powerSeries_nhdsWithin_lt
+#check Complex.hasSum_taylorSeries_neg_log
+#check Complex.log_im
+#check Complex.arg_mul
+#check Complex.arg_exp
+#check Complex.arg_ofReal_of_pos
+#check integrableAtFilter_rpow_atTop_iff
+#check Asymptotics.isBigO_one_nat_atTop_iff
+#check isBigO_iff

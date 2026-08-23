@@ -1,0 +1,23 @@
+{
+  "id": "oeis_378143_conjecture_claim",
+  "epoch": 1,
+  "uuid": "apQyfEpaNLSARCWTjdt6Zd",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 8227,
+      "output_tokens": 105228,
+      "total_tokens": 283781752,
+      "input_tokens_cache_write": 9569242,
+      "input_tokens_cache_read": 274099055,
+      "reasoning_tokens": 60019,
+      "total_cost": 200.05526499999988
+    }
+  },
+  "oeis_id": "A378143"
+}

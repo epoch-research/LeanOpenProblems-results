@@ -1,0 +1,12 @@
+import FormalConjectures.Util.ProblemImports
+open Set MeasureTheory intervalIntegral
+#check intervalIntegral.integral_comp_mul_deriv
+#check intervalIntegral.integral_comp_mul_deriv'
+#check MeasureTheory.integral_comp_of_monotone
+#check MeasureTheory.integral_comp_mul_deriv_Icc
+#check intervalIntegral.integral_deriv_eq_sub
+#check intervalIntegrable_iff
+#check MeasureTheory.IntegrableOn.comp_subtype_map
+#check MeasureTheory.integral_comp_smul_deriv_Ioi
+#check MeasureTheory.integral_comp_mul_deriv_Ioi
+#check MeasureTheory.integral_comp_rpow_Ioi_of_pos

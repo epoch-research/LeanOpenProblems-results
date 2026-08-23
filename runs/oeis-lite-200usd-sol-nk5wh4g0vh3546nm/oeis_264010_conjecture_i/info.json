@@ -1,0 +1,23 @@
+{
+  "id": "oeis_264010_conjecture_i",
+  "epoch": 1,
+  "uuid": "SjRG9MucEtkBcFZubsLGBf",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-5.6-sol": {
+      "input_tokens": 12546,
+      "output_tokens": 104651,
+      "total_tokens": 294863423,
+      "input_tokens_cache_write": 8669279,
+      "input_tokens_cache_read": 286076947,
+      "reasoning_tokens": 59777,
+      "total_cost": 200.42372725000018
+    }
+  },
+  "oeis_id": "A264010"
+}
