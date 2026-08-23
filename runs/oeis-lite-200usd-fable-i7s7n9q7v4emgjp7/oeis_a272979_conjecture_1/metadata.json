@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Swapping the two square variables shows that \u0012full representability is invariant under exchanging the first two coefficients. Hence the listed quadruple \\((1,2,1,1)\\) and the omitted quadruple \\((2,1,1,1)\\) have the same representability property, contradicting the proposed classification.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

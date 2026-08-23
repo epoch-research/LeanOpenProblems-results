@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(p\\equiv3\\pmod4\\), reindexing rows and columns by the nonzero quadratic residues rewrites the character matrix, up to a nonzero scalar, as \\(U-U^{T}D\\), where a multiplicative reindexing shows \\(U\\) is normal and \\(D\\) is a symmetric involution of determinant \\(1\\); an odd-dimensional determinant-symmetry argument then forces singularity. For \\(p\\equiv1\\pmod4\\), Euler’s criterion and the binomial theorem factor the matrix modulo \\(p\\) into invertible Vandermonde-type factors and a rank-one perturbation; Lagrange interpolation computes its remaining determinant factor, and Wilson’s theorem gives \\(((p-1)/2)!^2=-1\\), ruling out that factor’s vanishing.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

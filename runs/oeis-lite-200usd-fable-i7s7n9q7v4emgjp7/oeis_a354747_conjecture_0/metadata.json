@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(N=2\\cdot100943\\cdot3^{39101}-1\\), modular binary exponentiation in \\(\\mathbb Z[\\sqrt3]/N\\), using \\(N+1=2\\cdot100943\\cdot3^{39101}\\), shows that \\(2+\\sqrt3\\) has exact order \\(N+1\\) in \\(((\\mathbb Z/p\\mathbb Z)[\\sqrt3])^\\times\\) for every prime \\(p\\mid N\\), with the proper-order checks corresponding to the prime divisors \\(2,3,100943\\). Hence \\(N+1<p^2\\) for every prime divisor \\(p\\) of \\(N\\), contradicting \\(p^2\\le N\\) for the least prime factor if \\(N\\) were composite; thus \\(N\\) is prime and \\(m=39101\\) supplies a positive witness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Letting \\(d=D(n)\\), the facts \\(d\\le n\\) and \\(n\\equiv d\\pmod 9\\) give \\(n=d+9q\\); eventual periodicity of powers of \\(10\\) modulo \\(d\\) constructs \\(n\\) distinct positive exponents whose powers sum to a multiple of \\(d\\), starting with \\(d\\) congruent powers and repeatedly replacing one power by ten higher congruent powers to increase the count by nine. The resulting number \\(k\\), a sum of those distinct powers of \\(10\\), has digit sum exactly \\(n\\), is divisible by \\(D(n)\\), and satisfies \\(k\\ge 10n>n\\), so it is a distinct amicable partner.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

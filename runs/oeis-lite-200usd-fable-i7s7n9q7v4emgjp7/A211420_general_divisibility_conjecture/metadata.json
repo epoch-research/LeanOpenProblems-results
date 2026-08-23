@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Legendre’s formula reduces the divisibility to floor inequalities at each prime-power level: the nonnegative Landau function \\(L_m(n)=\\lfloor8n/m\\rfloor+\\lfloor n/m\\rfloor-\\lfloor4n/m\\rfloor-\\lfloor3n/m\\rfloor-\\lfloor2n/m\\rfloor\\) is at least \\(1\\) whenever \\(m\\ge 8r\\) and a multiple of \\(m\\) lies in \\((kn,kn+r]\\), as follows by analyzing \\(n\\bmod m\\) for \\(k=1,2,3\\). Hence only levels \\(p^j<8r\\) incur a defect—at most \\(r\\) per level and over at most \\(r+2\\) levels—and \\(C=((8r)!)^{r(r+3)}\\) supplies enough valuation at every such small prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

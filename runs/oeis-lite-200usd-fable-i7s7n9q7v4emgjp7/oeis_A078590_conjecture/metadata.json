@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=7\\), direct recurrence computation gives \\(a(5)=171\\) and \\(a(6)=332572817028187686275682948600327513806149983112761\\equiv3\\pmod{18}\\). Since \\(19\\mid171\\) and \\(2^{18}\\equiv1\\pmod{19}\\), one has \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\), so \\(171\\nmid2^{a(6)}+1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

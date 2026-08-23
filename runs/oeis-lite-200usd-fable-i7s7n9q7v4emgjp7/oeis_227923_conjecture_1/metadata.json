@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Apply the assumed decomposition to $(N+4)!/6$, obtaining $(N+4)!=(6x-1)+(6y+1)$. If either prime family were bounded by $N$, the corresponding summand (or, for twins, its upper partner) would divide the factorial and hence the other prime summand; primality would force it to be $1$ or equal to that summand, both impossible from positivity and the incompatible residues modulo $6$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

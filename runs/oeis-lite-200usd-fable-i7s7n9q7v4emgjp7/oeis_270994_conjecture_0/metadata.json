@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=162178349052694\\), the intermediate integer \\(a(n)+4=1813934020268071832273\\) lies strictly between the proposed consecutive pair. It is a Sierpiński number because the exponent classes \\(0\\bmod2,3\\bmod4,1\\bmod8,5\\bmod16,29\\bmod32,45\\bmod48,29\\bmod48,13\\bmod96\\) cover all exponents and make \\(k2^e+1\\) divisible respectively by \\(3,5,17,257,65537,97,673,193\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

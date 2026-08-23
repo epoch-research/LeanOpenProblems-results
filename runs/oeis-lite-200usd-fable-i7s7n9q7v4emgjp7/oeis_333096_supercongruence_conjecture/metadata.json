@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The relevant difference is rewritten using \\(\\beta(S,N)=[X^N]\\,\\frac{1-2X}{(1-X)(1-X+X^2)}(1-X)^{-S}\\), and a Dwork–Cartier expansion based on \\(\\Delta=X^p+(1-X)^p=1+ph\\) and \\(h=(1-X)(1-X+X^2)\\eta\\) yields a double-sum identity in which the low-order moments vanish by a Cartier fixed-point relation and the involution \\(X\\mapsto1-X\\). Kummer–Legendre and Stirling-number valuation bounds, combined with a product identity for the remaining inner sums, show every term has \\(p\\)-adic valuation at least \\(3(v+1)\\) when \\(p^v\\mid S,N\\); taking \\(v=k-1\\) gives the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

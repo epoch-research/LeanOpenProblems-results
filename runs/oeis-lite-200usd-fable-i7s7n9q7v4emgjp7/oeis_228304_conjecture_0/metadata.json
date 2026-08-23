@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(p=2m+1\\), Lucas congruences pair the \\(k<p\\) and \\(k\\ge p\\) parts of each defining sum with opposite contributions, giving \\(f(p+r)\\equiv0\\pmod p\\) for \\(0\\le r<p\\); at \\(n=p-1\\) they give \\(a(p-1)\\equiv1\\) and \\(c(p-1)\\equiv(-1)^m\\), since in the latter sum a central binomial factor vanishes except at \\(k=m\\). Thus both Hankel matrices are anti-triangular modulo \\(p\\), and column reversal evaluates their determinants as \\((-1)^m f(p-1)^p=(-1)^m f(p-1)\\), making the second reversal sign cancel while the first remains.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

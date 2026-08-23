@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=9\\), the value is \\(49770428644836901=29^2\\cdot 59180057841661\\) (equivalently \\(29^2\\cdot53\\cdot1116604864937\\)). Thus it has the nontrivial square divisor \\(29^2\\), so it is not squarefree and the conjunctive claim is false.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

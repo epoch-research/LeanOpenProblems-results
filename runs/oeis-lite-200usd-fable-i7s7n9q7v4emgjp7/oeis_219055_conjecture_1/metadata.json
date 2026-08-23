@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Above the respective thresholds, positivity supplies primes with \\(p=n-q\\) for even \\(n\\) and \\(p=n-2q\\) for odd \\(n\\), giving the desired decompositions directly; explicit finite witness checks cover all smaller admissible integers. For any bound \\(A\\), applying the even case to \\(N=2A+8014\\) yields \\(2q<N\\) and primes \\(N-q-6\\) and \\(N-q\\), so the former exceeds \\(A\\) and the two differ by 6, proving that such prime pairs are unbounded and hence infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

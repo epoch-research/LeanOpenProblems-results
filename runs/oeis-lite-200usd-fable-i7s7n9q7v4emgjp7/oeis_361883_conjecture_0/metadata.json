@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Working p-adically, the proof factors each relevant binomial coefficient into a lower-level binomial coefficient times \\(E=\\prod_{p\\nmid i}(1+N/i)\\), and combines a second-order expansion of \\(E\\) with Wolstenholme-type bounds on \\(\\sum 1/i\\) and \\(\\sum 1/i^2\\) to control the terms whose indices are multiples of \\(p\\). The remaining indices are grouped into residue blocks and controlled by a recursive descent for weighted inverse-square sums; the two estimates give divisibility by \\(p^{3r}\\) when \\(p\\nmid n\\), and extracting the full \\(p\\)-power from \\(n\\) yields the general case.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

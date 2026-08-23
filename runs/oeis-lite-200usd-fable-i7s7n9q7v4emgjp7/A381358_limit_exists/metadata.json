@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A pair-word renormalization of the run-length recursion yields positive auxiliary sequences satisfying exact coupled recurrences, from which one obtains \\(p(m+n)\\le 16p(m)p(n)\\) and the bounds \\(2p(n-11)\\le a_n\\le17664p(n-11)\\). Hence \\(\\log(16p(n))\\) is subadditive, so Fekete’s lemma gives convergence of \\(\\log p(n)/n\\); the constant-factor bounds transfer this limit to \\(\\log a_n/n\\), and exponentiation gives the desired root limit.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

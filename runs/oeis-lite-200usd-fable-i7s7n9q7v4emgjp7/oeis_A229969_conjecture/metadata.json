@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=7\\). Since \\(x\\in\\{3,4,6,10,15\\}\\) gives \\(x\\ge 3\\) and \\(x\\le y\\le z\\), any such decomposition would satisfy \\(x+y+z\\ge 3x\\ge 9\\), contradicting \\(x+y+z=7\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

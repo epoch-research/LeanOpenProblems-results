@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Couple the evolutions from masses \\(n\\) and \\(n+1\\) by a single extra grain, which moves one site right exactly when the mass beneath it is odd; the larger system is stable precisely when the smaller one is stable and this grain has reached site \\(n\\). Hole-freeness, mass conservation, an invariant locating a non-unit cell near the grain, and the classification of the unique nonstable predecessor as \\([1^{n-2},2]\\) force the grain to be at \\(n-1\\) or \\(n-2\\) when the smaller system first stabilizes, after which it moves right once per step and reaches \\(n\\) exactly one or two steps later.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

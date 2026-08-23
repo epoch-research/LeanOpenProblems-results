@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Dwork’s criterion, using Gauss congruences for the factorial ratios, gives integrality; a level-\u001b[1mρ\u001b[0m logarithmic splitting then factors the exponential into a dilated part and a correction part, whose tuple expansion is controlled for \\(m\\ge3\\) by Legendre carry counts and the cubic Kazandzidis congruence to obtain the required \\(p^{3r}\\)-divisibility. The exceptional cases reduce to \\(b_1(N)=\\tfrac12\\binom{2N}{N}\\) and \\(b_2(N)=\\tfrac12\\binom{4N}{N}\\) (the latter via the Catalan series), after which Kazandzidis applies directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

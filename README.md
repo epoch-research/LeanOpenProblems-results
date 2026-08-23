@@ -21,7 +21,7 @@ conjectures can language models turn into theorems?* (Adamczewski, 2026).
 | `oeis-lite-200usd-lit-oai-…` | Lite (100) | GPT-5.5 | literature | $200 |
 | `oeis-lite-200usd-lit-gdm-…` | Lite (100) | Gemini 3.5 Flash | literature | $200 |
 
-## Contents
+### Contents
 
 Each run directory contains one directory per attempted conjecture, plus an
 aggregate `scores.json`:
@@ -34,3 +34,12 @@ aggregate `scores.json`:
 
 Proofs that passed the verifier are the samples whose `scores.json` has
 `.proof_scorer.value == "C"`.
+
+Accepted samples may also include `metadata.json`, containing an LLM-written proof summary. 
+
+## Metadata
+The root `metadata/` directory contains run-independent sequence descriptions
+(`sequences.json`) and conjecture statements and provenance (`conjectures.json`).
+
+## Source and methodology
+Data in this repo is typically generated using code in `epoch-research/LeanOpenProblems`. See that repo for methodology.  

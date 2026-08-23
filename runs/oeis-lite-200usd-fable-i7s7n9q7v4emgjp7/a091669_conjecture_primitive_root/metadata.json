@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an odd prime \\(p\\) and \\(t\\ge2\\), counting the factors \\(2^{jd}-1\\), where \\(d=\\operatorname{ord}_p(2)\\mid p-1\\), and comparing their \\(p\\)-adic contribution with that of \\((pt-1)!\\) shows \\(p\\mid a(pt-1)\\); thus a proper odd prime divisor of \\(n\\) would force \\(p\\mid2^{n-2}\\), while \\(v_2(a(2^v-1))=v-1\\) excludes the remaining composite case \\(n=2^v\\). Once \\(n\\) is prime, if \\(d=\\operatorname{ord}_n(2)<n-1\\), then the factor \\(2^d-1\\) makes \\(n\\) divide the numerator but not \\((n-1)!\\), forcing \\(n\\mid a(n-1)\\) and hence \\(n\\mid2^{n-2}\\), a contradiction; therefore \\(d=n-1=\\varphi(n)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

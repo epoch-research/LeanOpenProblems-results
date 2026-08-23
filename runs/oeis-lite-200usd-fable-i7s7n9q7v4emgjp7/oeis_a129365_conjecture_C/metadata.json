@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Counting pairs whose gcd is divisible by each \\(p^i\\) gives numerator valuation \\(\\sum_{i\\ge1}\\lfloor N/p^i\\rfloor^2\\), while Legendre’s formula gives denominator valuation \\(\\sum_{i\\ge1}S(\\lfloor N/p^i\\rfloor)\\), with \\(S(q)=\\sum_{j=1}^q j\\lfloor q/j\\rfloor\\); the bound \\(S(q)\\le q^2\\) also establishes exact divisibility. For \\(N=np+k\\) with \\(0\\le k<p\\), every \\(\\lfloor N/p^i\\rfloor\\) for \\(i\\ge1\\) equals \\(\\lfloor np/p^i\\rfloor\\), so the resulting valuation differences are identical.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

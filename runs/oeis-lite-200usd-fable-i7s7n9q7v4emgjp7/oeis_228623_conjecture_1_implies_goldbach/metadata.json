@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(k\\ge 60\\), set \\(n=2k+1\\); any nonzero matrix entry yields primes \\(n+i-j\\) and \\(n+j-i\\) whose sum is \\(2n=4k+2\\), so if no such decomposition existed the entire matrix would be zero, contradicting its nonzero determinant. The remaining cases \\(1\\le k<60\\) are settled by explicit prime decompositions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

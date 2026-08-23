@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=550172\\), the congruence \\(2^{k+29400}\\equiv2^k\\pmod{550172}\\) for \\(k\\ge2\\), together with a finite modular avoidance computation over one period, shows that the residue \\(63945\\) is not attained before \\(k=17135927\\), so the required least index is at least \\(17135927\\). A bit-sieve counts more than \\(550171\\) primes below \\(8567965\\), implying that the \\(550172\\)-nd prime is below this number and hence \\(2(p-1)\\le17135926\\), producing the counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=14\\); the values \\(0<k<14\\) for which \\(2k+1\\) is prime are \\(k\\in\\{1,2,3,5,6,8,9,11\\}\\). The prime-count increments over successive length-14 intervals are \\(6,3,4,3,3,4,2,4,1,4,2,3\\), and for every such \\(k\\) the increments in positions \\(k-1\\) and \\(k\\) differ, so no required \\(k\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

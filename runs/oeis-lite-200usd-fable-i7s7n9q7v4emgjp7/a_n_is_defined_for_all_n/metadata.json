@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=0\\): \\(\\Phi_1(0)=-1\\), while every \\(\\Phi_k\\) with \\(k\\ge 2\\) has constant term \\(1\\), so \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\) and is therefore never prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}

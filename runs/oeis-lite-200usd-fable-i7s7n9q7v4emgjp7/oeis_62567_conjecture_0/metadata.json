@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the exceptional exponents, writing a number and its reversal modulo 27 or 81 via \\(10^i\\equiv1+9i\\) gives \\(S(9m-7)\\equiv0\\), forcing the digit sum \\(S\\) to be divisible by the modulus; the bounds \\(m\\le3\\) and \\(m\\le9\\) then force the only positive extremal candidates to be \\(999\\) and \\(999999999\\), while the case modulo 9 is immediate. For every larger exponent, the palindromic multiple \\(29799999792\\) of \\(3^5\\) is repeatedly concatenated threefold, gaining a factor of 3 each time and producing a palindromic multiple of \\(3^{5+p}\\) with only \\(11\\cdot3^p<27\\cdot3^p\\) digits, hence strictly smaller than the corresponding all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+  }
+}
