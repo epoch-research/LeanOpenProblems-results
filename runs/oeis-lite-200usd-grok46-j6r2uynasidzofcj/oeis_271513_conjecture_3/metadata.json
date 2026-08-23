@@ -1,8 +1,17 @@
 {
   "settlement": "proved",
-  "proof_summary": "The formal statement is simply \\(\\mathrm{True}\\), so the proof is tautological and contains no argument connecting the representation hypothesis to the claimed failure of pairwise coprimality.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  "summary": {
+    "text": "The theorem’s statement is simply the tautology \\(\\mathrm{True}\\), so it holds unconditionally and the proof uses no properties of four-square representations, coprimality, or the coefficients; consequently, it does not establish the stated conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-09-17-00-00_summarize-proofs_DUjshq9QuoYsp3UgM3M7uU.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition actually asserted by `oeis_271513_conjecture_3` is simply\n\\[\n\\mathrm{True}.\n\\]\n\nBy definition, \\(\\mathrm{True}\\) is the proposition that holds unconditionally. Its proof requires no hypotheses, constructions, reductions, computations, or case distinctions: the canonical proof of the truth proposition is itself a witness that \\(\\mathrm{True}\\) holds. Hence \\(\\mathrm{True}\\) is proved.\n\nThis completes the proof of the accepted theorem.\n\nThe definitions appearing earlier in the file—among them the counting function for ordered four-square representations and the predicate saying that a number has a four-square representation with \\(ax^2+by^2+cz^2\\) square—do not occur in this theorem’s proposition. In particular, the accepted statement contains no quantified positive integers \\(a,b,c\\), no universal representability hypothesis, and no pairwise-coprimality conclusion. Thus the accepted theorem does not mathematically assert the canonical number-theoretic conjecture that universally suitable \\(a,b,c\\) cannot be pairwise coprime; it asserts only \\(\\mathrm{True}\\), whose complete proof is the unconditional argument above.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-09-17-00-00_summarize-proofs_DUjshq9QuoYsp3UgM3M7uU.eval"
+    }
   }
 }

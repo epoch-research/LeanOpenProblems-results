@@ -1,8 +1,17 @@
 {
   "settlement": "disproved",
-  "proof_summary": "The congruence \\(2^{171}+1\\equiv27\\pmod{162}\\) gives \\(a(6)=(2^{171}+1)/9\\equiv3\\pmod{18}\\). Thus \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\), using \\(2^{18}\\equiv1\\pmod{19}\\); since \\(19\\mid171\\), the required divisibility by \\(171\\) fails.",
-  "generation": {
-    "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  "summary": {
+    "text": "From \\(2^{171}+1\\equiv27\\pmod{162}\\), the sixth term \\((2^{171}+1)/9\\) is congruent to \\(3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{19}\\), this gives \\(2^{a(6)}+1\\equiv9\\pmod{19}\\); thus it is not divisible by \\(19\\), and hence not by \\(a(5)=171\\), so the next recurrence step is nonintegral.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-09-17-00-00_summarize-proofs_DUjshq9QuoYsp3UgM3M7uU.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the sequence be defined by\n\\[\na(1)=a(2)=1,\\qquad a(n)=\\frac{2^{a(n-1)}+1}{a(n-2)}\\quad(n\\ge 3).\n\\]\nThe assertion that every term is an integer is false. In fact, all the divisions through the construction of \\(a(6)\\) are exact, but the division defining \\(a(7)\\) is not exact.\n\nWe first calculate the initial terms directly:\n\\[\na(3)=\\frac{2^{a(2)}+1}{a(1)}=\\frac{2^1+1}{1}=3,\n\\]\n\\[\na(4)=\\frac{2^{a(3)}+1}{a(2)}=\\frac{2^3+1}{1}=9,\n\\]\nand\n\\[\na(5)=\\frac{2^{a(4)}+1}{a(3)}=\\frac{2^9+1}{3}\n     =\\frac{513}{3}=171.\n\\]\nConsequently,\n\\[\na(6)=\\frac{2^{171}+1}{9}.\n\\]\nWe will determine the residue of this integer modulo \\(18\\). To do so, first compute \\(2^{171}+1\\) modulo \\(162=9\\cdot18\\).\n\nEuler's theorem modulo \\(81\\) gives\n\\[\n2^{\\varphi(81)}=2^{54}\\equiv 1\\pmod{81},\n\\]\nsince \\(2\\) is relatively prime to \\(81\\). As \\(171=3\\cdot54+9\\), it follows that\n\\[\n2^{171}\\equiv 2^9=512\\equiv 26\\pmod{81}.\n\\]\nAlso, \\(2^{171}\\) is even. The two residues modulo \\(162\\) that are congruent to \\(26\\) modulo \\(81\\) are \\(26\\) and \\(107\\), and only \\(26\\) is even. Hence\n\\[\n2^{171}\\equiv 26\\pmod{162},\n\\]\nso\n\\[\n2^{171}+1\\equiv 27\\pmod{162}.\n\\]\nBy the division algorithm, there is therefore a nonnegative integer\n\\[\nq=\\left\\lfloor\\frac{2^{171}+1}{162}\\right\\rfloor\n\\]\nsuch that\n\\[\n2^{171}+1=162q+27.\n\\]\nIn particular, the right-hand side is divisible by \\(9\\), so the division defining \\(a(6)\\) is exact. Dividing this identity by \\(9\\) gives\n\\[\na(6)=\\frac{2^{171}+1}{9}=18q+3.\n\\]\nThus the only property of the enormous sixth term that we need is\n\\[\na(6)\\equiv 3\\pmod{18}.\n\\]\n\nNow consider the next recurrence step. Since \\(a(5)=171\\), it would define an integer \\(a(7)\\) only if\n\\[\n171\\mid 2^{a(6)}+1.\n\\]\nBut \\(171=9\\cdot19\\), so such divisibility would in particular imply\n\\[\n19\\mid 2^{a(6)}+1.\n\\]\nWe show that this is impossible.\n\nBy Fermat's little theorem,\n\\[\n2^{18}\\equiv 1\\pmod{19}.\n\\]\nUsing \\(a(6)=18q+3\\), we obtain\n\\[\n2^{a(6)}=2^{18q+3}=(2^{18})^q2^3\n   \\equiv 1^q\\cdot 8\n   \\equiv 8\\pmod{19}.\n\\]\nTherefore\n\\[\n2^{a(6)}+1\\equiv 9\\pmod{19}.\n\\]\nSince \\(9\\not\\equiv0\\pmod{19}\\), the integer \\(2^{a(6)}+1\\) is not divisible by \\(19\\). It follows a fortiori that it is not divisible by \\(171\\).\n\nThus the quotient\n\\[\na(7)=\\frac{2^{a(6)}+1}{a(5)}\n     =\\frac{2^{a(6)}+1}{171}\n\\]\nis not an integer. Hence not every term produced by the recurrence is an integer, disproving the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-08-23T20-09-17-00-00_summarize-proofs_DUjshq9QuoYsp3UgM3M7uU.eval"
+    }
   }
 }
