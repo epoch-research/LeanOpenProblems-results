@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After clearing the factorial denominator, the proof rules out composite moduli by comparing \\(p\\)-adic valuations: multiples of \\(\\operatorname{ord}_p(2)\\) among the exponents (with an extra contribution from \\(2^{p\\operatorname{ord}_p(2)}-1\\)) force more divisibility than the factorial can have, while powers of two are excluded by an exact \\(2\\)-adic calculation. Once primality is known, a nonmaximal order \\(d<n-1\\) would make the prime divide the factor \\(2^d-1\\) in the product, and the assumed congruence would then force it to divide \\((n-1)!\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=7\\). Since the distinguished value \\(x\\in\\{3,4,6,10,15\\}\\) has \\(x\\ge3\\) and the required ordering gives \\(x\\le y\\le z\\), one has \\(x+y+z\\ge9\\), contradicting \\(x+y+z=7\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

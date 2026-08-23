@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each prime \\(p\\), valuation counting gives the numerator contribution \\(\\sum_{i\\ge1}\\lfloor n/p^i\\rfloor^2\\) and the denominator contribution \\(\\sum_{i\\ge1}\\sum_{k=1}^{M_i} k\\lfloor M_i/k\\rfloor\\), where \\(M_i=\\lfloor n/p^i\\rfloor\\). The inequality \\(\\sum_{k=1}^M k\\lfloor M/k\\rfloor\\le M^2\\) is an equality exactly for \\(M\\le2\\), so the quotient has positive \\(p\\)-adic valuation exactly when some \\(M_i\\ge3\\), equivalently \\(M_1\\ge3\\), which yields the stated threshold.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=140\\), bounding the relevant square roots by squaring shows \\(\\lfloor140\\sqrt{5/4}\\rfloor=156\\), \\(\\lfloor144\\sqrt{5/4}\\rfloor=160\\), \\(\\lfloor157\\sqrt{5/4}\\rfloor=175\\), and \\(\\lfloor161\\sqrt{5/4}\\rfloor=180\\). Hence the four terms are respectively \\(471,484,528,542\\), so the claimed right-hand side is \\(528+484-471=541\\neq542\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

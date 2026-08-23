@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "An identity for the factorial sums, followed by parity and coprimality cancellations, rewrites the term as \\(Q=B/\\gcd(B,(n-3)!)\\), where \\(B=(n^2-2)/\\gcd(n^2-2,2)\\). Every prime divisor \\(p\\mid B\\) is at least \\(7\\); if \\(Q\\) were composite, its least prime divisor would give \\(p^2\\le Q\\), while factorial valuations and \\(((k+1)p+2)^2<p^{k+2}\\) for \\(k=\\lfloor(n-3)/p\\rfloor\\) contradict \\(B<n^2\\), with the remaining near-\\(n\\) prime cases excluded directly by divisibility.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

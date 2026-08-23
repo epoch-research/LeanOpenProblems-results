@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "If the relevant Fermat number is prime, its totient is exactly $2^{2^{33}}$, and the general bound $2^{2^{33}}\\mid\\varphi(m)\\Rightarrow m\\ge 2^{2^{33}}+1$ makes it minimal. Otherwise, even candidates satisfy $\\varphi(m)\\le m/2$, while any smaller odd candidate would have totient exactly $2^{2^{33}}$ and hence be squarefree with distinct Fermat-prime factors; uniqueness of binary expansion forces the sole factor to be the index-$33$ Fermat number, contradicting its nonprimality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

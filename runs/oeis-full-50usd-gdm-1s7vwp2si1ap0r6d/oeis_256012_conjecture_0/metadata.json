@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof uses a binary-expansion construction: the set of numbers \\(4\\cdot 2^i\\) corresponding to the nonzero binary digits of \\(m\\) consists of distinct nonsquarefree parts and sums to \\(4m\\). Splitting by \\(n\\bmod 4\\), it applies this construction to the remaining multiple of \\(4\\) after adjoining respectively no extra part, \\(9\\), \\(18\\), or \\(27\\); the bound \\(n\\ge 24\\) makes each remainder nonnegative, and the adjoined part is distinct and nonsquarefree because it is divisible by \\(9\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

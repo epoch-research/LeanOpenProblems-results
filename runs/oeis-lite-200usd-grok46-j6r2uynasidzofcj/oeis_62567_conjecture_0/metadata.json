@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the small cases, direct minimality handles 9 and 27, while for 81 the congruence \\(10^i\\equiv1+9i\\pmod{81}\\), applied to a number and its reversal, forces the digit sum of any sub-\\(10^9\\) solution to be 0 or 81, hence the number is 0 or nine 9s. For \\(n\\ge5\\), concatenate \\(3^{n-5}\\) copies of a 10-digit block whose value and reversal both have exact 3-adic valuation 5; the geometric repetition factor raises both valuations to \\(n\\), and the resulting \\(10\\cdot3^{n-5}\\)-digit solution is shorter than the \\(3^{n-2}\\)-digit all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

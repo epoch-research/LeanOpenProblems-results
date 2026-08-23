@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For odd primes, Fermat’s theorem makes the powers of 2 periodic modulo \\(p\\) with exponent period \\(p-1\\), so shifting indices by \\(2(p-1)\\) preserves each old summand, including its triangular exponent; every newly introduced summand vanishes because its product contains the factor at index \\(p-1\\) or \\(2(p-1)\\). For \\(p=2\\), all summands except the initial one vanish modulo 2, leaving the constant residue 1.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

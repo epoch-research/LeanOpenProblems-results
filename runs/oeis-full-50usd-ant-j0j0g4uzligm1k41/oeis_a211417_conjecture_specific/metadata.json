@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using Legendre’s formula, the proof reduces each prime-power valuation comparison to a strengthened floor inequality; when the prime power divides \\(30n-1\\), reduction modulo it yields \\(j<30\\) that is odd and not divisible by \\(3\\) or \\(5\\), providing the required extra unit. Summing over prime powers shows the factorial numerator is divisible by the denominator times \\(30n-1\\), and cancellation completes the argument.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

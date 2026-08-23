@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof establishes the stronger termwise divisibility by comparing prime-adic valuations: for every prime other than $3$, Kummer carry counts at each prime power and a residue argument force any denominator contribution to be matched by a carry in one of the four numerator binomial coefficients. The prime $3$ is handled separately using Legendre’s ternary digit-sum formula and $2n-1\\mid\\binom{2n}{n}$; summing the termwise multiples then gives the desired divisibility.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

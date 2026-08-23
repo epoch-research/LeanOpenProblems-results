@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Above the respective thresholds, a witness gives Goldbach as \\(n=(n-q)+q\\) in the even case and Lemoine as \\(n=(n-2q)+2q\\) in the odd case, while direct finite searches handle all smaller required inputs. For any bound \\(M\\), apply the even case to \\(n=2M+8014\\): either \\(q>M\\), yielding the cousin pair \\((q,q+6)\\), or \\(q\\le M\\), in which case \\((n-q-6,n-q)\\) is a cousin pair above \\(M\\), proving infinitude.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

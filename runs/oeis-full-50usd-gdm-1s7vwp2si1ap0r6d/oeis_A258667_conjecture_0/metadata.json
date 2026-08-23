@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After normalizing the inclusion–exclusion formula by \\((n-1)!\\), the fixed-\\(k\\) summand tends to \\((-2)^k/k!\\): the \\(j=0\\) contribution gives \\(2^k/k!\\), while every \\(j\\ge1\\) contribution vanishes; domination by the summable series \\(3^k/k!\\) then makes the normalized sum tend to \\(\\sum_k(-2)^k/k!=e^{-2}\\). Separately, the correction series is bounded by \\(1/(n-1)+1/(n-3)\\) and hence tends to zero, while \\(n/(n-2)\\to1\\), so the proposed comparison term has the same leading asymptotic.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

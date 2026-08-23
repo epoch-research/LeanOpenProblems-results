@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Induct backward along a finite Collatz trajectory to 1, using composability of encoded paths to extend a representation of each parent to the appropriate child. For even \\(m\\), doubling the parent \\(m/2\\) recovers \\(m\\); for odd \\(m\\ne1\\), the parent \\(3m+1\\) is a branching node whose inverse tripling child is \\(m\\), with \\(1\\) as the base case.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

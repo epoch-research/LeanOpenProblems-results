@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For triples satisfying \\(m=n(k+1)+(n+1)j\\), the involution \\((n,k,j)\\mapsto(k+j,k,n-k)\\) pairs contributions with equal binomial weight modulo \\(2\\), so nonfixed terms cancel. A fixed point has \\(n=k+j\\): if \\(j=0\\) then \\(m=n(n+1)\\), while for \\(j>0\\) its weight is even because it contains, via a binomial product identity, the even central binomial coefficient \\(\\binom{2j}{j}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

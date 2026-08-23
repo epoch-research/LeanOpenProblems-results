@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Set \\(K_n=\\lfloor\\log_2 T_n\\rfloor-1\\); then the bit is determined by whether \\(T_n\\) lies below or above \\(3\\cdot2^{K_n}\\), while the recurrence yields \\(1.83\\le T_{n+1}/T_n\\le 923/500\\) and makes each \\(K_n\\) increase by at most one. Exhausting these possible exponent increments with the ratio bounds and Tribonacci recurrence forces at least three further zeros after a \\(1\\to0\\) transition and two further ones after a \\(0\\to1\\) transition, but excludes six consecutive zeros and five consecutive ones; direct computation handles run starts below 25.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

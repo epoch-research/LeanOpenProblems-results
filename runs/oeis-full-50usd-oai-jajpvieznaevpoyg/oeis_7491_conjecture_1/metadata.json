@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using the infinitude of primes and the prime-counting index, the proof shows that \\(a(n)\\) is the least prime strictly greater than \\(n^2\\). Hence any prime between the consecutive squares gives the required upper bound on \\(a(n)\\), while conversely that upper bound makes \\(a(n)\\) itself a prime lying between the squares.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

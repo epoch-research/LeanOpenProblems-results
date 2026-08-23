@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes 5 a square modulo p; choosing an even root r and setting n=r-1 gives the continuant numerator P₂=r²-5=pM with M<n. A telescoping continuant identity involving (n-1)! shows that M divides P₃ (using parity and coprimality with 2(n-2)), whereas p cannot divide P₃ since p>n, so reducing P₂/P₃ leaves numerator exactly p.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

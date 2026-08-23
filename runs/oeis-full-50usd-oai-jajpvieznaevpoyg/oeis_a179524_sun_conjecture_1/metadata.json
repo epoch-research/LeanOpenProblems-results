@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(p=41=6^2+5\\cdot1^2\\). Since the representation hypothesis is not tied to the universally quantified \\(x,y\\), choosing \\(x=0\\) and \\(x=1\\) forces the same sum to be congruent to both \\(-82\\) and \\(-78\\) modulo \\(41^2\\), which is impossible.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

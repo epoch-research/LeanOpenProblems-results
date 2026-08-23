@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Successive binomial coefficients are factored into products \\(F_c=\\prod_{p\\nmid i}(1+c p^r/i)\\) for \\(c=1,2\\); pairing \\(i\\) with \\(p^r-i\\) and expanding through the second elementary symmetric term reduces the needed valuation to reciprocal power-sum divisibilities obtained from inversion and Faulhaber formulas. An inductively established auxiliary divisibility \\(p^3\\mid 2\\binom{3p^{r-1}}{p^{r-1}}^2-9\\binom{2p^{r-1}}{p^{r-1}}\\) supplies the remaining powers of \\(p\\), after which a factor congruent to \\(2\\pmod p\\) is canceled.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the explicit case $p=7$, $r=6$. A modular recurrence that tracks the powers of $7$ and unit parts in the binomial factors computes $a(7^6)-a(7^5)\\equiv -7^{24}\\pmod{7^{25}}$, so its $7$-adic valuation is exactly $24<25$ and the required congruence fails.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

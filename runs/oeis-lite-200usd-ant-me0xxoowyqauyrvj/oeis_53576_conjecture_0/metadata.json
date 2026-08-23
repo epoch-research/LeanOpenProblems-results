@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an admissible integer, the even case follows from \\(2\\varphi(x)\\le x\\), while for odd \\(x\\) one writes \\(v_2(\\varphi(x))=\\sum_{p\\mid x}v_2(p-1)\\): a non-Fermat-form prime factor yields the required product lower bound, and if all factors are Fermat primes then their distinct valuations are powers of two, so a sum at least \\(2^{33}\\) forces one valuation at least \\(2^{33}\\). That factor is either \\(2^{2^{33}}+1\\), excluded in the composite case, or already large enough; together with the direct totient values of the two proposed candidates, this proves minimality in both cases.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Since \\(2^{10n+2}\\equiv4\\pmod{66}\\), the outer exponent is congruent to \\(6\\pmod{66}\\), so Fermat-period reduction gives divisibility by \\(67\\). For every prime below \\(67\\), the proof similarly reduces the nested exponent using a short modular period (handling \\(17\\) separately) and checks the finitely many resulting residues, showing that none divides; hence \\(67\\) is the least prime factor.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

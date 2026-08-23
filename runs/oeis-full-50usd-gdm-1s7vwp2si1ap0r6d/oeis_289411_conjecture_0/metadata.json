@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(D\\) for decimal digit sum and \\(N=10^k-1\\), induction on the decimal digits proves \\(D(x)+D(N-x)=9k\\) and \\(D(5x)+D(5(N-x))=9k\\); for the latter, the last-digit contribution \\(g(r)=\\lfloor r/2\\rfloor+5(r\\bmod 2)\\) satisfies \\(g(r)+g(9-r)=9\\). Thus the digit-sum differences at \\(x\\) and \\(N-x\\) have opposite signs, so complementary terms pairwise cancel across the central interval, making the corresponding endpoint cumulative sums equal.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Both quantities are expressed as one plus a count of breakpoints between consecutive divisors. For consecutive divisors \\(x<y\\), the condition that \\(y\\) is odd and \\(y\\ge 2x\\) is equivalent to \\(y>2x\\): equality would make \\(y\\) even, while an even \\(y>2x\\) would make \\(y/2\\) a divisor strictly between \\(x\\) and \\(y\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

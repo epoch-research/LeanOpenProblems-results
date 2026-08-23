@@ -1,8 +1,8 @@
 {
   "settlement": "disproved",
-  "proof_summary": "At \\(n=144\\), integer-square bounds give the required floor values and hence \\(a(144)=484\\), \\(a(148)=498\\), \\(a(161)=542\\), and \\(a(165)=555\\). Thus the proposed recurrence would require \\(555=542+498-484=556\\), a contradiction.",
+  "proof_summary": "At \\(n=144\\), exact squared bounds give the relevant floor values and hence \\(a(144)=484\\), \\(a(148)=498\\), \\(a(161)=542\\), and \\(a(165)=555\\). The proposed right-hand side is therefore \\(542+498-484=556\\), differing from \\(a(165)\\) by one.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

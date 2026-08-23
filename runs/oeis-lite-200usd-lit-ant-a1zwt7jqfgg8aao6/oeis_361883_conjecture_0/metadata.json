@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the numerator as \\(f(N)=N a(N)\\), the proof splits \\(f(pm)-p f(m)\\) into indices divisible by \\(p\\) and those not divisible by \\(p\\); product expansions together with Wolstenholme-type harmonic-sum bounds control the aligned part, while generalized Lucas lifting, a finite Taylor expansion of inverse squares, vanishing finite-field power sums, and an inductive weighted-binomial valuation bound control the nonaligned part, giving divisibility by \\(p^{4(v_p(m)+1)}\\). Cancelling the factor \\(pm\\) yields the one-step modulus \\(p^{3(v_p(m)+1)}\\), and taking \\(m=np^{r-1}\\) gives the required modulus.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

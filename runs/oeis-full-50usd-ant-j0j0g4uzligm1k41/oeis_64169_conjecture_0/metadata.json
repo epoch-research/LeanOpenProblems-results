@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Letting \\(p=16843\\), a finite recurrence modulo \\(p^3\\) shows that the unreduced numerator of \\(H_{p-1}\\) is divisible by \\(p^3\\), hence \\(v_p(H_{p-1})\\ge3\\). Splitting \\(H_{p^2-2}\\) into terms with denominators divisible by \\(p\\) and those without, and pairing the latter via \\(k\\leftrightarrow p^2-k\\), gives \\(v_p(H_{p^2-2}-1)\\ge2\\); thus the composite \\(p^2\\) divides the relevant numerator-minus-denominator.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

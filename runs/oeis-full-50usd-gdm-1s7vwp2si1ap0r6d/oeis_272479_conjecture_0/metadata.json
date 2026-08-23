@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(D\\) for decimal digit sum, the easy cases use \\(10n\\), a power of ten, or \\(D(n)\\) followed by zeros, while the only small residual values \\(15,16,25\\) are handled by explicit auxiliary multiples \\(12,35,14\\). In the general case, with \\(d=D(n)\\), \\(e=D(d)\\), \\(M=(n-e)/9\\), and \\(A\\) the digit length of \\(d\\), digit-sum congruences and decimal-complement bounds show that \\(m=d(10^M-1)10^A+d\\) is divisible by \\(d\\) and has \\(D(m)=9M+e=n\\); appending enough zeros makes it distinct from \\(n\\) without changing its digit sum.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

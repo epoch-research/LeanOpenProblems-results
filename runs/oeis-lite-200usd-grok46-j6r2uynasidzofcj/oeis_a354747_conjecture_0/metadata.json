@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(m=39101\\) and \\(N=2\\cdot100943\\cdot3^{39101}-1\\); a Brillhart–Lehmer–Selfridge \\(N+1\\) test with the Lucas sequence \\(U_k(6,3)\\) proves \\(N\\) prime, using the complete factorization \\(N+1=2\\cdot100943\\cdot3^{39101}\\). Modular exponentiation in \\(\\mathbb Z[\\sqrt{24}]\\) establishes \\(N\\mid U_{N+1}\\) and \\(\\gcd(U_{(N+1)/q},N)=1\\) for the only prime divisors \\(q=2,3,100943\\), so this positive exponent supplies the required counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=14\\), a finite prime-count computation shows that the adjacent intervals have equal prime counts only for \\(k=4\\) and \\(k=12\\). In those cases \\(2k+1\\) is respectively \\(9\\) and \\(25\\), both composite, so no admissible \\(k\\) satisfies the strengthened requirement.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

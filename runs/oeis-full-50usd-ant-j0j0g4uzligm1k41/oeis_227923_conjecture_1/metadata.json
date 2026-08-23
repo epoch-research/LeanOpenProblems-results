@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Choose a large factorial and use positivity at \\(n=M!/6\\) to obtain \\(M!=(6x-1)+(6y+1)\\), with both summands prime and lying in the required Sophie-Germain/twin configurations. If either family were bounded, choosing \\(M\\) beyond its bound makes the corresponding prime (or the upper member of the bounded twin pair) divide \\(M!\\), hence divide the other prime; primality forces equality, which is impossible because the two summands are congruent to \\(-1\\) and \\(1\\pmod 6\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

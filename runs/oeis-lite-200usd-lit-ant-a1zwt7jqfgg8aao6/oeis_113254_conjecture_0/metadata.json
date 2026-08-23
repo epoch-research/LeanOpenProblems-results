@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce the auxiliary sequence \\(c_0=2,\\ c_1=56\\), \\(c_{n+2}=-4c_{n+1}-64c_n\\), and derive a step-two recurrence \\(a_{m+6}=-48a_{m+4}+3072a_{m+2}+262144a_m\\). Algebra shows that \\(c_n^2\\) satisfies the corresponding recurrence, so agreement of the first three odd-indexed terms extends by a three-term sliding induction to \\(a_{2n+1}=c_n^2\\) for every \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

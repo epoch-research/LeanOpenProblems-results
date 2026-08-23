@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Define a candidate sequence by the linear recurrence and track the defect \\(D_{n+1}=a_{n+1}^2-a_na_{n+2}\\); induction gives a recurrence for \\(D\\), positivity/growth bounds, and \\(1\\le D_{n+1}\\le a_n\\). These bounds show \\(\\lceil a_{n+1}^2/a_n\\rceil-1=a_{n+2}\\), so the original nonlinear sequence equals the linear-recurrence sequence, yielding the generating function.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

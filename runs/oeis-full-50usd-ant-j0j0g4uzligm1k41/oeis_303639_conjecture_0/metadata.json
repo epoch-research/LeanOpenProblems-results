@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take $N=800{,}322{,}180$; monotonicity of $\\binom{2k+1}{k}$ and $\\binom{33}{16}=1{,}166{,}803{,}110>N$ restrict both binomial indices to $0,\\ldots,15$. For every resulting pair, a finite factorization check shows that the residual either has the form $2^v t$ with $t\\equiv3\\pmod4$, or is divisible exactly once by a prime $p\\equiv3\\pmod4$, so it cannot be a sum of two squares.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

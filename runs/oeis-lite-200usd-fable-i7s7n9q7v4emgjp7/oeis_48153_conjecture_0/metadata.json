@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "A finite cotangent Fourier identity expresses the difference between the negative-residue mirror sum and the original sum as a divisor sum of local cotangent-weighted imaginary quadratic Gauss sums. Explicit Gauss-sum evaluations reduce each local term to zero or a nonnegative multiple of an odd real character cotangent sum, whose positivity follows from the Euler product for its Dirichlet series and passage to \\(s=1\\); hence the original sum is at most its mirror, and pairing every residue with its negative gives \\(2a(n)\\le n(n-1)\\le n^2-1\\).",
+  "proof_summary": "A finite cotangent Fourier identity expresses the difference between the sum of negative quadratic residues and the original residue sum as a divisor sum of cotangent-weighted imaginary parts of quadratic Gauss sums. Explicit Gauss-sum evaluations reduce every local term to a nonnegative multiple of an odd character cotangent sum—whose nonnegativity follows from the positive Euler product for its Dirichlet series and the cotangent partial-fraction limit—and comparison with the mirror sum then gives the bound.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

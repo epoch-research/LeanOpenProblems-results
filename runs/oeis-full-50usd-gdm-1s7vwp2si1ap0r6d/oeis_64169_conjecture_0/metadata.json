@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the prime \\(p=16843\\): a modular harmonic-sum computation shows \\(H_{p-1}=p^3R\\) with \\(p\\nmid\\operatorname{den}(R)\\). Pairing each nonmultiple \\(x\\) of \\(p\\) below \\(p^2\\) with \\(p^2-x\\), and separating the multiples of \\(p\\), gives \\(H_{p^2-2}-1=p^2Y\\) with \\(p\\nmid\\operatorname{den}(Y)\\), so the composite \\(p^2\\) divides the reduced numerator-minus-denominator.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

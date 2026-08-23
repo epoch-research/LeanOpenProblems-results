@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite case check shows that for every \\(1\\le d\\le2025\\) there are primes \\(p,q<18\\) with different final digits, \\(pq\\le150\\), and neither dividing \\(d\\). Since \\(d\\) is invertible modulo \\(pq\\), some term among the first \\(pq\\) terms is divisible by both \\(p\\) and \\(q\\), so that term has prime divisors with different final digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

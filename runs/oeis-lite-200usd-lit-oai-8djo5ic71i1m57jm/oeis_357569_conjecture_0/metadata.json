@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof relates successive prime-power binomial coefficients through the unit products \\(P_t=\\prod_{1\\le u\\le p^r,\\,p\\nmid u}(u+t p^r)\\), whose first and second finite differences gain high \\(p\\)-adic divisibility by pairing \\(u\\) with \\(p^r-u\\) and exploiting vanishing reciprocal-power sums over the units. Prime-power stability of the lower-level binomial coefficients then makes the leading terms cancel, with direct finite modular calculations handling the boundary cases \\((p,r)=(3,2)\\) and \\((5,2)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

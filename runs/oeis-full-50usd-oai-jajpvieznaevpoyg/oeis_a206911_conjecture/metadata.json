@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the rank as \\(n+\\lfloor e^{H_n}-1\\rfloor\\), the proof shows for \\(n\\ge5\\) that \\(1<e^{H_{n+1}}-e^{H_n}<2\\), so the floor rises by one or two (with the initial cases handled by direct exponential bounds). Telescoping gives \\(\\#3=F(N+1)-N-1\\) and \\(\\#2=2N+1-F(N+1)\\), where \\(F(n)=\\lfloor e^{H_n}-1\\rfloor\\); since \\(F(n)/n\\to e^\\gamma\\), the ratio tends to \\((e^\\gamma-1)/(2-e^\\gamma)\\), and monotone harmonic-error bounds evaluated at \\(n=7\\), together with exponential-series estimates, give \\(16/9<e^\\gamma<41/23\\), placing this limit between \\(3.5\\) and \\(3.6\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

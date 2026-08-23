@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=2^{14}\\cdot4409\\cdot458009=33085221781504\\), whose prime-power factors are pairwise coprime. Multiplicativity gives \\(\\sigma(n)=66183576284700\\) and \\(\\sum_{d\\mid n}\\sigma(d)=132367152569399\\), so \\(a(n)=2\\sigma(n)-\\sum_{d\\mid n}\\sigma(d)=1\\), although \\(n\\ne1,12\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

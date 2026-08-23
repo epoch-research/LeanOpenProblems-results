@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(\\theta=nr-\\lfloor nr\\rfloor\\); irrationality gives \\(0<\\theta<1\\), and the identity \\(r^2=2r+\\tfrac14\\) reduces the error, with \\(m=n\\bmod 4\\), to \\(2\\theta+\\tfrac m4-\\left\\lfloor\\tfrac m4+\\theta(2-r)\\right\\rfloor\\). Since \\(-\\tfrac14<\\theta(2-r)<0\\), the floor is \\(-1\\) for \\(m=0\\) and \\(0\\) for \\(m=1,2,3\\), after which the desired strict bounds follow directly from \\(0<\\theta<1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

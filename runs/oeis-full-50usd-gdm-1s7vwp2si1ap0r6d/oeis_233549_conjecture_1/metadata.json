@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assume the primes in question are bounded by \\(M\\), and apply positivity at \\(n=M+3+2M^2\\); for the resulting decomposition, \\(x=\\phi(p)\\phi(q)\\) satisfies \\(x^4+1\\le M\\), hence \\(x\\le M\\). Positivity of the totients, \\(p=\\phi(p)+1\\), and the general estimate \\(q\\le 2\\phi(q)^2\\) then give \\(p\\le M+1\\) and \\(q\\le2M^2\\), contradicting the chosen value of \\(n=p+q\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

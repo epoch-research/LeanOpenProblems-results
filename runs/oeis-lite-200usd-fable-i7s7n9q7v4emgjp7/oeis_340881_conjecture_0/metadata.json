@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "The defining sum gives the recurrence \\(a(n+1)=(2^n-1)a(n)+2^{\\binom{n+1}{2}}\\); for odd \\(p\\), Fermat’s theorem and the shift formula for the triangular exponent make its coefficients periodic modulo \\(p\\), while a direct evaluation of the shifted base case kills every summand but the last, so induction propagates the congruence. For \\(p=2\\), the same recurrence shows inductively that every term from index \\(1\\) onward is odd.",
+  "proof_summary": "For odd primes, the recurrence \\(a(n+1)=(2^n-1)a(n)+2^{\\binom{n+1}{2}}\\) has both its coefficient and forcing term unchanged modulo \\(p\\) after shifting by \\(2(p-1)\\), by Fermat’s theorem; the base congruence follows because every nonfinal summand contains \\(2^{2(p-1)}-1\\), while the final summand is \\(1\\) modulo \\(p\\), so induction gives the result. For \\(p=2\\), the same recurrence shows inductively that every \\(a(n)\\) with \\(n\\ge1\\) is odd.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

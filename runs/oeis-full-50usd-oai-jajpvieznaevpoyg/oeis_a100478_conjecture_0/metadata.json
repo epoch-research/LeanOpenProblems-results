@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A residue-class count modulo the primorial $30030$ (with $\\varphi(30030)=5760$) yields the linear estimate $\\pi(5M)\\le M$ for $M\\ge10^6$; induction therefore bounds every term by $B=10^6+\\sum_i v_i$. Consequently only finitely many five-term windows can occur, so two windows repeat by pigeonhole, and the deterministic order-five recurrence propagates that equality forever, giving eventual periodicity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

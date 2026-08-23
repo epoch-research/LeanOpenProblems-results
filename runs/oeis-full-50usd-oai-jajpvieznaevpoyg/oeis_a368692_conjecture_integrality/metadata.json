@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using Legendre’s formula, the proof reduces divisibility to floor-sum inequalities and proves the general bound \\(K!L!((K+L)!)^2\\mid(3K)!(3L)!\\) by checking the corresponding inequality on residues modulo each prime power. For \\(K=4n+2\\) and \\(L=2n+3\\), strengthened 2-adic inequalities at the first two powers of 2 supply the extra \\(2^2\\), while \\(v_3((3a+2)!)=v_3(a!)+a\\) together with \\(v_3(a!)\\le\\lfloor a/2\\rfloor\\) for \\(a=2n+1\\) supplies the extra \\(3^3\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

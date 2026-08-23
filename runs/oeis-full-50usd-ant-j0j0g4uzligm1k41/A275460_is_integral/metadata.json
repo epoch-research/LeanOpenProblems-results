@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write the coefficient as \\(3^n\\prod_{j<n}(9j+2)(9j+4)(9j+7)/((n!)^2\\prod_{j<n}(3j+1))\\), and for each prime \\(p\\ne3\\) sum divisibility counts over \\(p^i\\); a six-case residue analysis modulo \\(9\\), together with monotonicity of counts by least residue, shows the numerator’s three classes dominate the two factorial classes and the \\(3j+1\\) class. For \\(p=3\\), the explicit \\(3^n\\) factor covers the denominator because \\(2v_3(n!)\\le n\\), so the denominator divides the numerator.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

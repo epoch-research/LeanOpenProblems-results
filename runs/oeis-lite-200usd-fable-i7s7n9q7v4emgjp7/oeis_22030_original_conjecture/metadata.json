@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "For the candidate linear-recurrence sequence \\(c_n\\), the proof studies the defect \\(d_n=c_{n+1}^2-c_nc_{n+2}\\): induction gives rapid positive growth of \\(c_n\\), the recurrence \\(d_{n+3}=4d_{n+1}+d_n\\), and hence \\(0<d_n\\le c_n\\). Thus \\(c_n c_{n+2}<c_{n+1}^2\\le c_n(c_{n+2}+1)\\), which forces the prescribed ceiling-minus-one step to equal \\(c_{n+2}\\); induction then identifies the nonlinearly defined terms with the candidate sequence.",
+  "proof_summary": "Introduce the linear-recurrence candidate \\(c_{n+3}=4c_{n+2}-c_n\\) and the discrepancy \\(d_n=c_{n+1}^2-c_nc_{n+2}\\); induction gives \\(c_{n+1}\\ge 3c_n>0\\), \\(d_{n+3}=4d_{n+1}+d_n\\), and \\(0<d_n\\le c_n\\). These bounds force \\(\\lceil c_{n+1}^2/c_n\\rceil-1=c_{n+2}\\), so strong induction identifies the sequence defined by the extremal ratio rule with the linear-recurrence candidate.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

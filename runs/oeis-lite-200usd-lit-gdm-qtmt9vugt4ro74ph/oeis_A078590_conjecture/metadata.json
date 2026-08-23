@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Writing \\(a_6=(2^{171}+1)/9\\), reduction modulo \\(81\\) together with parity gives \\(a_6\\equiv3\\pmod{18}\\). Hence \\(2^{a_6}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\), so it is not divisible by \\(171=9\\cdot19\\), and the next recurrence step is nonintegral.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

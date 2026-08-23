@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=7\\), the preceding terms are \\(a(5)=171\\) and \\(a(6)=N=332572817028187686275682948600327513806149983112761\\). Since \\(N\\equiv3\\pmod{18}\\) and \\(2^{18}\\equiv1\\pmod{171}\\), one gets \\(2^N+1\\equiv9\\not\\equiv0\\pmod{171}\\), so the next recurrence division is not exact.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

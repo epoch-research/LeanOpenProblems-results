@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the target as \\(4n(n+1)+1\\) reduces the problem to an XOR of consecutive quadratic products; a greedy bit lift, using \\(g(m+2^s)\\equiv g(m)+2^s\\pmod{2^{s+1}}\\), constructs \\(M<2^{n+1}\\) with \\(g(M)\\equiv n(n+1)\\pmod{2^{n+1}}\\). According as adding \\(M\\) to \\(M^2\\bmod 2^{n+1}\\) creates a carry, one takes the even candidate built from \\(M\\) or the odd candidate built from its complement \\(2^{n+1}-M\\); in either case the two XOR inputs have equal high parts, so the XOR is below the modulus and the modular equality becomes exact.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

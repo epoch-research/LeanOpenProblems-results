@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The truncated Catalan sum is rewritten as \\(U(n,n(m+2))=[x^n]g(x)(1+x)^{n(m+2)}\\), where \\(g(x)=(1-x)^2(1+x)/(1-x^3)\\) has period-three coefficients.  Expanding \\((1+x)^p=1+x^p+p\\Phi_p(x)\\), one shows \\(1+x+x^2\\mid\\Phi_p\\), so \\(g\\Phi_p^t\\) is anti-palindromic; pairing its coefficients makes the relevant binomial differences highly \\(p\\)-divisible, and combined valuation estimates (with the \\(t=1,2\\) terms vanishing and binomial/Mahler interpolation handling integer exponents) yield the required cubic gain at every prime-power step.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

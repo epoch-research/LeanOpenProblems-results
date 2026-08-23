@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas-type binomial congruences pair the two halves of each defining sum to show that the relevant values at \\(p+r\\) vanish for \\(0\\le r<p-1\\); at \\(p-1\\), they give \\(a(p-1)=1\\), while vanishing central binomial coefficients leave only the middle term and give \\(c(p-1)=(-1)^{(p-1)/2}\\). Thus both Hankel matrices are anti-triangular modulo \\(p\\); reversing the columns and combining the reversal sign \\((-1)^{p(p-1)/2}\\) with the anti-diagonal products yields the two determinant congruences.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

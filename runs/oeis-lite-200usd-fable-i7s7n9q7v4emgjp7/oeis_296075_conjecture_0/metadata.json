@@ -1,8 +1,8 @@
 {
   "settlement": "disproved",
-  "proof_summary": "Take the explicit counterexample \\(n=33085221781504=2^{14}\\cdot4409\\cdot458009\\), where the latter two factors are prime. Writing \\(b(n)=\\sum_{d\\mid n}\\sigma_1(d)\\), use \\(a(n)=2\\sigma_1(n)-b(n)\\) and multiplicativity to obtain \\(a(n)=2\\cdot32767\\cdot4410\\cdot458010-65519\\cdot4411\\cdot458011=1\\), although \\(n\\ne1,12\\).",
+  "proof_summary": "Take \\(n=33085221781504=2^{14}\\cdot4409\\cdot458009\\), where both odd factors are prime. Writing \\(b(n)=\\sum_{d\\mid n}\\sigma_1(d)\\), the identity \\(a(n)=2\\sigma_1(n)-b(n)\\) and multiplicativity give \\(a(n)=2\\cdot32767\\cdot4410\\cdot458010-65519\\cdot4411\\cdot458011=1\\), while this \\(n\\) is neither \\(1\\) nor \\(12\\).",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

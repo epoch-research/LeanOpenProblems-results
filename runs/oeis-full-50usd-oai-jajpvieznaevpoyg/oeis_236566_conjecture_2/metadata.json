@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For Lemoine’s conjecture, an odd \\(k>61\\) is written as \\(2n+1\\), so the assumed representation immediately gives \\(k=q+2p\\), while the remaining odd values are handled by a finite check. For twin primes, if only finitely many admissible \\(p\\) existed, the Chinese remainder theorem would produce a sufficiently large odd \\(M\\) with \\(M\\equiv2p\\pmod{\\ell_p}\\) for each of them, where \\(\\ell_p\\) is the next indexed prime; the assumed decomposition would then make its prime remainder \\(q=M-2p\\) a proper multiple of \\(\\ell_p\\), a contradiction, and injectively mapping the resulting infinitely many \\(p\\) to the indexed primes yields infinitely many prime pairs differing by two.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

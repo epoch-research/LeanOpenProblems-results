@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Split into the cases \\(n\\le 122\\) and \\(n>122\\): for the finite initial range, explicit prime witnesses are exhibited between each pair of consecutive squares. For \\(n>122\\), positivity of the count yields a twin-prime pair whose smaller member \\(p\\) satisfies \\(n^2<p\\) and \\(p+2<(n+1)^2\\), so \\(p\\) itself is the required prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For a prime \\(p\\ge 23\\), choose the first triangular block whose upper endpoint reaches \\(2p\\); then \\(2p\\) lies in that block, so \\(p\\) divides its composite product, while elementary bounds put the entire next block strictly between \\(2p\\) and \\(3p\\), so none of its factors is divisible by \\(p\\). Taking arbitrarily large primes makes the resulting nondivisibility indices unbounded, hence infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

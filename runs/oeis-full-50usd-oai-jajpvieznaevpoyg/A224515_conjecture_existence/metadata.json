@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Set \\(M=(2n+1)^2=2t+1\\) with \\(t=2n(n+1)\\), and iterate \\(F(x)=(x-t)^2\\mathbin{\\mathrm{AND}}M\\) from \\(0\\); divisibility by \\(16\\), boundedness by \\(M\\), and a 2-adic contraction improving congruence by three bits force the iteration to reach a fixed point. Splitting according as the fixed point lies below or above \\(t\\) produces \\(k=t-x\\) or \\(k=x-t-1\\), and the identity \\(a\\mathbin{\\mathrm{XOR}}b+2(a\\mathbin{\\mathrm{AND}}b)=a+b\\) converts the fixed-point equation into the required XOR equality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

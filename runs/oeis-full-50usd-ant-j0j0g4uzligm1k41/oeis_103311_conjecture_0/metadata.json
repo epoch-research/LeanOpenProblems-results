@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof constructs an explicit mod-\\(10\\) closed form whose values, according to the residue of \\(n\\), are \\(0\\), \\(\\pm F_n\\), or \\(\\pm F_{n-1}\\). The Fibonacci recurrence shows residue-by-residue that this form satisfies the same fourth-order recurrence and initial conditions, so induction identifies it with the given sequence and absolute values remove the signs.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

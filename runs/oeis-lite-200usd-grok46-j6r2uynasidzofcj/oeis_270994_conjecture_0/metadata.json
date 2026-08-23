@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the intermediate value \\(a(n)+4=5292270077783\\) lies strictly between the proposed pair. It is itself a Sierpiński number: a period-48 covering congruence using \\(\\{3,5,7,17,97,257,673\\}\\) gives a proper divisor of \\(5292270077783\\cdot2^m+1\\) for every positive exponent \\(m\\), so the pair is not consecutive.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

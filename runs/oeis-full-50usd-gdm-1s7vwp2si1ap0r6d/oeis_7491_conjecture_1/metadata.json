@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using the prime-counting index and the infinitude of primes, the proof shows that \\(a(n)\\) is the least prime strictly greater than \\(n^2\\). Thus any prime between \\(n^2\\) and \\((n+1)^2\\) bounds \\(a(n)\\) above, while conversely \\(a(n)\\) itself supplies such a prime whenever it lies below \\((n+1)^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

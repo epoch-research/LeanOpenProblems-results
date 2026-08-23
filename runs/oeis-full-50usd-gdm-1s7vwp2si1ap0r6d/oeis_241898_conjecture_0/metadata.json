@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The counterexample is \\(736\\): an exhaustive finite search over nondecreasing sums of at most four squares rules out every representation whose bases are all at least \\(8\\) (while, for example, \\(736=4^2+12^2+24^2\\)). Thus every admissible representation has least base at most \\(7\\), so the largest possible least base is at most \\(7\\) even though \\(736>599\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

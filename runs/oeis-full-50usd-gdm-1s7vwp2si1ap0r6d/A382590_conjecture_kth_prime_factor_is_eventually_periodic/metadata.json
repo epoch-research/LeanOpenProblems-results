@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A Fibonacci-type sequence of exponents is shown inductively to tend to infinity and to satisfy $2^{f(n)}\\mid a_n,b_n$, since each recurrence term is a product of the two preceding pairs. A finite 12-cycle computation modulo $15$ shows $a_n\\ne0$; hence, for each fixed $k>1$, eventually $a_n$ has at least $k$ factors equal to $2$, so its $k$-th prime factor is constantly $2$ (period $1$).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

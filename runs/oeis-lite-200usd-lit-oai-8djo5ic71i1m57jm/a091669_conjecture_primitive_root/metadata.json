@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Prime-adic valuation bounds—using Fermat to obtain factors from Mersenne terms indexed by multiples of \\(q-1\\) and Legendre’s formula for factorials—show that every odd proper prime divisor \\(p\\mid n\\) divides \\(a(n-1)\\); this contradicts \\(p\\nmid2^{n-2}\\), while the remaining composite case \\(n=2^e\\) is excluded by the exact calculation \\(v_2(a(2^e-1))=e-1\\). Once \\(n\\) is prime, if \\(r=\\operatorname{ord}_n(2)<n-1\\), the factor \\(2^r-1\\) forces \\(n\\mid a(n-1)\\) (as \\(n\\nmid(n-1)!\\)), again forcing the impossible divisibility \\(n\\mid2^{n-2}\\); hence \\(r=n-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

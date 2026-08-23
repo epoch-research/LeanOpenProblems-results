@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A telescoping identity rewrites the truncation sum as a coefficient against a period-three series; factoring \\((1+x)^p\\) and applying a Cartier operator gives an error expansion whose first two terms vanish by residue-class binomial identities, while anti-palindromic coefficient structure, Abel summation, and factorial valuation bounds make every remaining term divisible by the required power of \\(p\\). The exceptional parameter where the telescoping denominator vanishes is evaluated explicitly as a function of the index modulo \\(6\\), so multiplication by any prime \\(p\\ge5\\) leaves its value unchanged.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At the seventh step, the denominator is \\(a(5)=171\\), while \\(N=a(6)\\equiv3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{171}\\), it follows that \\(2^N+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the required division is not exact.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

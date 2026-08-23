@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write each summand as \\(\\binom nj\\,n^{\\overline j}\\). Rising and falling factorials are unchanged modulo \\(k\\) when \\(n\\) is replaced by \\(n+k\\); using \\(n^{\\overline j}=j!\\binom{n+j-1}{j}\\) and \\(j!\\binom nj=n^{\\underline j}\\) gives termwise congruence, and the extra terms after extending the shorter sum to \\(n+k\\) vanish because \\(\\binom nj=0\\) for \\(j>n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

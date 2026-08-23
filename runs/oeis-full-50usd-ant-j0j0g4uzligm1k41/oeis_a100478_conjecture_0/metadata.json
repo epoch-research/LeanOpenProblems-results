@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A residue-class sieve modulo $30030=2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13$, whose coprime density is $5760/30030<1/5$, gives $\\pi(5M)\\le M$ for $M\\ge10^6$; monotonicity below that threshold then makes the maximum of the initial values and $\\pi(5\\cdot10^6)$ an invariant upper bound. Hence only finitely many five-term windows can occur, so two coincide, and determinism of the recurrence propagates this equality forever with period equal to the gap between them.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

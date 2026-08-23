@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write \\(m=\\lfloor rn\\rfloor\\) and \\(f=rn-m\\); irrationality gives \\(0<f<1\\), and \\(r^2=2r+\\tfrac14\\) gives \\(rm=2m+\\tfrac n4-(r-2)f\\) with \\(0<r-2<\\tfrac14\\). Splitting \\(n\\) modulo \\(4\\) evaluates the remaining floor and makes the error respectively \\(1+2f,\\ \\tfrac14+2f,\\ \\tfrac12+2f,\\ \\tfrac34+2f\\), from which the strict bounds follow.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

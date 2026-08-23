@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A binomial identity and the Fibonacci sum formula give \\(2nS(n)=L_{2n}-1\\), so integrality would imply \\(2n\\mid L_{2n}-1\\). Residues modulo \\(4\\) and \\(5\\) eliminate the cases where \\(n\\) has a factor \\(2,3,\\) or \\(5\\); otherwise, for the least prime divisor \\(p\\ge7\\), roots of \\(x^2-x-1\\) in a splitting field modulo \\(p\\) and a multiplicative-order argument force their order to be \\(12\\), whence \\(p\\mid L_{12}-2=320\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

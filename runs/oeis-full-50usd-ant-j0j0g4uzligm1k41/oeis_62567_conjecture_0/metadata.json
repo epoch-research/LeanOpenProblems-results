@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For exponents 2–4, expanding a decimal number and its reversal modulo the relevant divisor of 81 and combining weighted digit sums shows that their common divisibility forces the ordinary digit sum to be divisible by \\(3^n\\); the digit bound then forces every digit of any smaller candidate to be 9, while the all-nines candidate is divisible by the required power of 3. For \\(n\\ge5\\), repeating a fixed 27-digit palindromic block \\(3^{n-5}\\) times gives a palindrome divisible by \\(3^n\\): the block supplies \\(3^5\\), a geometric sum supplies the remaining power, and the presence of zero digits makes it strictly smaller than the same-length all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

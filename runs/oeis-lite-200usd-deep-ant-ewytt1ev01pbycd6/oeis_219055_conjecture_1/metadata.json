@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Exhaustive primality-and-decomposition searches handle Goldbach for even \\(4\\le n\\le8012\\) and Lemoine for odd \\(7\\le n\\le15727\\); above those bounds, positivity supplies a witness \\(q\\), giving the required decompositions with \\(p=n-q\\) or \\(p=n-2q\\). For any bound \\(N\\), applying the hypothesis to \\(n=2N+8014\\) yields \\(2q<n\\), so \\(r=n-q-6>N\\) while both \\(r\\) and \\(r+6=n-q\\) are prime, proving the cousin-prime set is unbounded and hence infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

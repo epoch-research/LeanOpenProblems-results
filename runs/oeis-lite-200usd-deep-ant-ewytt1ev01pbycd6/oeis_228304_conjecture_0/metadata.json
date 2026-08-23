@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences show that for \\(0\\le m<p-1\\) both relevant sums at \\(p+m\\) vanish modulo \\(p\\) (pairing the \\(k\\) and \\(p+k\\) terms), while at \\(p-1\\) their values are respectively \\(1\\) and \\((-1)^{(p-1)/2}\\), the latter because only the middle term survives. Thus the Hankel matrices are anti-triangular modulo \\(p\\); reversing the columns contributes sign \\((-1)^{(p-1)/2}\\), and multiplying the constant anti-diagonal entries gives the two claimed determinant residues.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

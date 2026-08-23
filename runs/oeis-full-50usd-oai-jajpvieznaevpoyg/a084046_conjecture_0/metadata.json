@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(k=27\\): any putative prime has the factorization \\(x^{27}-27=(x^9-3)(x^{18}+3x^9+9)\\), and for every possible base \\(x\\ge2\\) both factors exceed \\(1\\), so no prime occurs. Thus the value at \\(27\\) is \\(0\\), while \\(27\\) is not the square of an even integer.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

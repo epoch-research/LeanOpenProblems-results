@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing each prime-power binomial step as the previous coefficient times \\(\\prod_{(i,p)=1}(1+mq/i)\\), with \\(q=p^r\\), and pairing \\(i\\) with \\(q-i\\) reduces the needed comparison to reciprocal-square sums: these give \\(U^2-1=6q^2T\\) and \\(V-1=q^2T\\), with enough divisibility of \\(T\\); at \\(r=2\\), the otherwise surviving quadratic product term vanishes by an elementary-symmetric cancellation among lifted unit classes. The remaining coefficient vanishes modulo \\(p^3\\) for \\(p\\ge5\\) from the residues \\(\\binom{3p^s}{p^s}\\equiv3\\), \\(\\binom{2p^s}{p^s}\\equiv2\\), while for \\(p=3\\) the stable residues \\(84,20\\pmod{3^5}\\) combine with a unit-class lifting argument for \\(T\\); the lone \\(p=3,r=2\\) case is settled by direct finite computation.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

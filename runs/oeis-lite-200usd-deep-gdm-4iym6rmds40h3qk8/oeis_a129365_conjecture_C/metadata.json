@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the gcd numerator, the added integers \\(np+1,\\ldots,np+k\\) contain no multiple of \\(p\\), so every newly introduced gcd has zero \\(p\\)-adic valuation. For the factorial denominator, Legendre’s formula rewrites its valuation as \\(\\sum_{i\\ge1}\\sum_{m\\le \\lfloor N/p^i\\rfloor}m\\lfloor\\lfloor N/p^i\\rfloor/m\\rfloor\\), which is unchanged because \\(\\lfloor(np+k)/p^i\\rfloor=\\lfloor np/p^i\\rfloor\\) for \\(k<p\\); comparison with the numerator’s corresponding terms \\(\\lfloor N/p^i\\rfloor^2\\) also proves the denominator divides the numerator, allowing subtraction of valuations.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

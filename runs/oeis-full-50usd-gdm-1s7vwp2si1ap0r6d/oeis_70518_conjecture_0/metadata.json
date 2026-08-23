@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Modular exponentiation and gcd computations show that \\(28341\\) has exact multiplicative order \\(28341\\) modulo \\(283411^2\\): its \\(28341\\)-st power is \\(1\\), while \\(28341^d-1\\) is a unit for every proper divisor \\(d\\mid 28341\\). Evaluating \\(x^{28341}-1=\\prod_{d\\mid 28341}\\Phi_d(x)\\) at \\(x=28341\\), the proper-divisor cyclotomic factors are units, so the remaining factor must vanish modulo \\(283411^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

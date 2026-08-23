@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(b_0=-2, b_1=56\\) and \\(b_{n+2}=4b_{n+1}-64b_n\\); algebra shows that \\(b_n^2\\) and the odd-indexed terms satisfy the same third-order recurrence \\(x_{n+3}=-48x_{n+2}+3072x_{n+1}+262144x_n\\). Their first three values agree, so induction gives each odd-indexed term as \\(b_n^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

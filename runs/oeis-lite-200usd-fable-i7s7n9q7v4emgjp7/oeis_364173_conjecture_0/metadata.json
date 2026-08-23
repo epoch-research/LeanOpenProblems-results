@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "Gamma duplication and shift formulas convert the gamma quotient into a factorial/odd-product quotient; removing the factors divisible by \\(p\\) then expresses its successive ratio as shifted blocks of \\(p\\)-adic units, with a parity split and an exact Morley-type half-system product identity absorbing the odd-product and powers-of-two terms. Reindexing the units by \\(u\\mapsto 2u\\pmod{p^r}\\) and \\(u\\mapsto p^r-u\\) gives valuations at least \\(r\\) and \\(2r\\) for the reciprocal-square and reciprocal sums, respectively, so the quadratic expansion of every block \\(\\prod_u(1+\\Delta/u)\\), where \\(p^r\\mid\\Delta\\), is \\(1\\) modulo \\(p^{3r}\\); combining the blocks and using integrality gives the desired divisibility.",
+  "proof_summary": "Gamma duplication and shift formulas rewrite the terms as a quotient of ordinary factorials and an odd arithmetic-progression product; removing the factors divisible by $p$ and splitting the remaining products into residue blocks modulo $p^r$ reduces the successive-term ratio to shifted unit products, with a Morley-type parity identity handling the half-integer product.  Pairing and permuting residues gives $\\sum u^{-1}=O(p^{2r})$ and $\\sum u^{-2}=O(p^r)$, so a second-order product expansion makes every required block $1+O(p^{3r})$; the resulting $p$-adic estimate, together with integrality, yields the divisibility of the difference.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

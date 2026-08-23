@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Letting \\(d=D(n)\\), when \\(d\\mid n\\) appending a zero gives the partner \\(10n\\). Otherwise congruence of a number with its digit sum modulo \\(9\\) makes \\(a=(n-D(d))/9\\) integral; after establishing \\(d<10^a\\), the construction \\(k=d(10^a-1)10^{a+\\ell(d)}+d\\) satisfies \\(d\\mid k\\), and the decimal-complement identity \\(D(10^a-d)+D(d-1)=9a\\) gives \\(D(k)=D(d)+9a=n\\), while \\(k\\ne n\\) follows from \\(d\\nmid n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

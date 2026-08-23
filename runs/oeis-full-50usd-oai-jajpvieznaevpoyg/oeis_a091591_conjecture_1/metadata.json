@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Split into the cases \\(n>122\\) and \\(1\\le n\\le122\\). In the first case, positivity supplies a counted twin pair whose smaller prime \\(p\\) satisfies \\(n^2+1\\le p\\le (n+1)^2-3\\), hence \\(n^2<p<(n+1)^2\\); in the second, a finite list of explicit prime witnesses establishes the same bounds for every \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof constructs prime-power coefficients \\(a_e\\) via \\(a_0=1\\) and \\(e a_e=\\sum_{k=1}^e u_k a_{e-k}\\), proving \\(u_k\\ge0\\) from explicit odd/even recurrences and the inductive bound \\(c_k\\ge 2^{k-1}/k\\) for \\(u_k=kc_k\\), hence \\(a_e\\ge0\\). It then shows \\(\\sum_{j=0}^e a_j a_{e-j}=2^{A005187(e)}\\) by matching recurrences using \\(A005187(e)=e+A005187(\\lfloor e/2\\rfloor)\\), and extends these coefficients multiplicatively, making every value a product of nonnegative prime-power factors.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

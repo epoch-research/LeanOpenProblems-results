@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=1\\), the sole \\(k=0\\) summand gives \\(a(1)=8/2=4\\), which is even. But \\(1=2^0\\) is a power of two, so the claimed parity equivalence fails.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At the seventh step, the relevant terms are \\(171\\) and \\(X=332572817028187686275682948600327513806149983112761\\). Since \\(X\\equiv3\\pmod{18}\\) and \\(2^{18}\\equiv1\\pmod{171}\\), one gets \\(2^X+1\\equiv2^3+1=9\\not\\equiv0\\pmod{171}\\), so the required divisibility fails.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

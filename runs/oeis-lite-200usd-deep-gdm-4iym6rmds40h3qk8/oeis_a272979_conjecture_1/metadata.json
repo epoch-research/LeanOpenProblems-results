@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The form is invariant under swapping the two square variables together with their coefficients, so full representability for \\((1,2,1,1)\\) implies it for \\((2,1,1,1)\\). The proposed list contains the former quadruple but omits the latter, contradicting the claimed equivalence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

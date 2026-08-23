@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Prime-adic bounds, obtained by counting multiples of \\(d=\\operatorname{ord}_p(2)\\) among the exponents and comparing with Legendre’s factorial valuation, show that any odd prime divisor \\(p\\) of a composite \\(n\\) divides \\(a(n-1)\\); the assumed divisibility would then force \\(p\\mid 2^{n-2}\\), a contradiction. Powers \\(n=2^r\\) are excluded by the exact value \\(v_2(a(2^r-1))=r-1\\), while for prime \\(n\\), a proper order \\(d<n-1\\) makes the factor \\(2^d-1\\) force the same contradiction, so \\(2\\) has full order.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At the instance involving indices \\(140,144,157,161\\), square inequalities give the exact floor terms and hence \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). The asserted identity would therefore require \\(542=528+484-471=541\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Rewrite each summand as \\(\\binom Nj N^{\\overline j}\\): shifting \\(N\\) by \\(k\\) leaves the rising factorial unchanged modulo \\(k\\), while Vandermonde’s identity reduces the binomial change to terms divisible by \\(k\\), using \\(\\binom{k}{i}i=k\\binom{k-1}{i-1}\\) and \\(i\\mid N^{\\overline i}\\). Extending the shorter sum by zero binomial terms then allows these termwise congruences to be summed.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

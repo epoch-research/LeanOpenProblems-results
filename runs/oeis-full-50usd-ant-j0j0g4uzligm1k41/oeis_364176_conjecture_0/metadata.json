@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The gamma recurrence converts the fractional-factorial contribution into a finite arithmetic-progression product, after which all factorials are split into their multiples-of-\u001b[1mp\u001b[0m and \u001b[1mp\u001b[0m-unit parts. Pairing \u001b[1me\u001b[0m with \u001b[1mp^r-e\u001b[0m makes the inverse-square correction vanish modulo \u001b[1mp^r\u001b[0m, so translated ordinary and doubled unit blocks are unchanged modulo \u001b[1mp^{3r}\u001b[0m; matching their multiplicities and powers of \u001b[1m2\u001b[0m, then cancelling a factor coprime to \u001b[1mp\u001b[0m, gives the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

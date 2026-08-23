@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Choose the first time the Collatz orbit of a positive integer reaches 1, and reverse those steps inductively through the encoded tree. An even predecessor is the halving child of its image (with the code adjusted according to whether that image branches), while an odd predecessor before the first hit is at least 3, so its image is a branching node and it is recovered as the tripling child; hence the reversed path supplies an index for the original integer.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

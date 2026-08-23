@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For the prime \\(p=16843\\), a blockwise modular computation gives \\(\\sum_{r=1}^{p-1}r^{-1}\\equiv0\\pmod{p^3}\\); splitting \\(H_{p^2-1}\\) into terms divisible and not divisible by \\(p\\), and using \\((ap+r)^{-1}\\equiv r^{-1}-ap/r^2\\pmod{p^2}\\), shows that \\(p^2\\) divides the reduced numerator of \\(H_{p^2-2}-1\\). Hence for the composite \\(n=p^2=283686649\\), the relevant numerator-minus-denominator is divisible by \\(n\\), so the defining gcd equals \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

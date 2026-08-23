@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Factor the successive binomial ratios into products over the residues prime to \\(p\\), expand in elementary symmetric sums of reciprocals, and use residue pairing, power-sum identities, and lifting in \\(r\\) to bound the harmonic sums and all terms beyond the isolated quadratic main term. Congruences of the lower-level binomial coefficients make that main term’s coefficient gain the remaining powers of \\(p\\); the case \\(p=3\\) is handled by stronger pairing and coefficient estimates.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

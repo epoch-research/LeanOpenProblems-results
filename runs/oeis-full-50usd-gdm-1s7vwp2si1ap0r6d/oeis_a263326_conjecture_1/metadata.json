@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(k=31\\) and \\(s=1\\), the distinct inputs \\(5\\) and \\(1829=31\\cdot59\\) both give \\(17/288\\): after canceling their common \\(1/32\\) term, this is the identity \\(1/36=1/62+1/90+1/1860\\). Thus the two values—and hence their fractional parts—coincide.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

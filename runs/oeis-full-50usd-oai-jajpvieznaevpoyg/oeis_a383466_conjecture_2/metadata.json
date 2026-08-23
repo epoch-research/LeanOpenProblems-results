@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "By definition, every admissible configuration has region count \\(a(n)\\), so the set of attainable counts is the singleton \\(\\{a(n)\\}\\). Its supremum is therefore \\(a(n)\\); the proof uses no geometric comparison or intersection counting.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

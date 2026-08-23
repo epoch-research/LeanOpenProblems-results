@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The purported Poincaré series is defined to be exactly the displayed rational power series, so the claimed equality is tautological. No independent argument concerning Siegel theta series or odd unimodular lattices is supplied.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

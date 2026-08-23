@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "From the defining sum one obtains \\(a(n+1)=(2^n-1)a(n)+2^{\\binom{n+1}{2}}\\); for an odd prime, Fermat’s theorem and \\(\\binom{n+2(p-1)+1}{2}-\\binom{n+1}{2}=(p-1)(2n+2(p-1)+1)\\) make both recurrence terms invariant under the shift, while the shifted base value is forced to equal \\(a(1)=1\\), so induction applies. For \\(p=2\\), the recurrence directly shows every \\(a(n)\\) with \\(n\\ge1\\) is odd.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

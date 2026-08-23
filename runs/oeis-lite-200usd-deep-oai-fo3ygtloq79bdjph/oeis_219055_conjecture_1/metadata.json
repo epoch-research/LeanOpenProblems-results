@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For integers above the respective thresholds, positivity supplies primes whose parity-specialized representation is directly a Goldbach decomposition (even case) or a Lemoine decomposition (odd case), while explicit finite tables of prime decompositions handle all smaller admissible integers. For any bound, applying the even case to \\(2m\\) with \\(m=\\max(4007,a+7)\\) yields primes \\(2m-q-6\\) and \\(2m-q\\), and the inequality \\(q<m\\) makes this cousin-prime pair exceed the bound, proving infinitude.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

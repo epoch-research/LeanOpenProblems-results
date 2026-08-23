@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Prime counting and the existence of arbitrarily large primes show that the indexed term is the least prime strictly greater than \\(n^2\\). Thus any prime between the consecutive squares bounds this least prime from above, while conversely the least prime itself supplies the required prime when it lies below \\((n+1)^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

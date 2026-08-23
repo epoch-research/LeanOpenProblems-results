@@ -1,8 +1,8 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For primes \\(p,q\\) with different last digits and \\(pq\\le150\\), if neither divides \\(d\\), then \\(d\\) is invertible modulo \\(pq\\), so one of the first \\(pq\\) progression terms is divisible by both primes, a contradiction; hence \\(p\\mid d\\) or \\(q\\mid d\\). Applying this to selected pairs among \\(2,3,5,7,11,13,17\\) forces \\(2\\cdot3\\cdot5\\cdot7\\mid d\\) and then either \\(11\\mid d\\) or \\(13\\mid d\\), making \\(2310\\) or \\(2730\\) divide \\(d\\), contrary to \\(d\\le2025\\).",
+  "proof_summary": "For primes \\(p,q\\) with different last digits and \\(pq\\le150\\), if neither divides \\(d\\), invertibility of \\(d\\bmod pq\\) makes one of the first \\(150\\) terms divisible by both \\(p\\) and \\(q\\), contradicting the required prime-factor pattern. Applying this obstruction to selected pairs among \\(2,3,5,7,11,13,17\\) forces \\(2\\cdot3\\cdot5\\cdot7\\mid d\\) and either \\(11\\mid d\\) or \\(13\\mid d\\), hence \\(d\\ge2310>2025\\).",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

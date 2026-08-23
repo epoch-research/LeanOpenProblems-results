@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write \\(n=2^k m\\) with \\(m\\) odd and group middle divisors by their odd part \\(o\\mid m\\); successive multiples \\(2^j o\\) have squares differing by a factor of four, so exactly one is middle precisely when both \\(o^2\\) and \\((m/o)^2\\) are below \\(2n\\). Pairing divisors \\(o\\leftrightarrow m/o\\) then shows that the non-middle contribution is counted twice by those complementary divisors whose square exceeds \\(2n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

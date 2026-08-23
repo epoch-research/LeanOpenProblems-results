@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Specializing to \\(k=2\\) and expanding the two binomial coefficients shows that every summand in the binomial-form series is exactly \\(16\\) times the corresponding summand in the product-form series. The product-form series converges and has a strictly positive sum, since its terms are nonnegative and its \\(n=3\\) term is positive, so the two sums cannot be equal.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

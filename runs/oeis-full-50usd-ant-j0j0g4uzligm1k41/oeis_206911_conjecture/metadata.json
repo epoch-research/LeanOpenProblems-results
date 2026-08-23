@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the rank as \\(n+\\lfloor e^{H_n}-1\\rfloor\\), bounds on \\(e^{H_n}\\) together with \\(e^t\\ge 1+t\\) and the Padé inequality \\(e^t(2-t)\\le 2+t\\) give \\(1\\le e^{H_{n+1}}-e^{H_n}<2\\), so the floor increment has only the two required possibilities.  Telescoping their counts and using \\(e^{H_n}/n\\to e^\\gamma\\) yields the limiting quotient \\((e^\\gamma-1)/(2-e^\\gamma)\\); monotone harmonic–log bounds and finite series estimates give \\(16/9<e^\\gamma<41/23\\), placing this quotient strictly between \\(3.5\\) and \\(3.6\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

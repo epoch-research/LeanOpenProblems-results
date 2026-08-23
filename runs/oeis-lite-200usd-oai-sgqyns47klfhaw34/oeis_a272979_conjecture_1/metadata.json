@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Universal representability is invariant under swapping the two square variables and their coefficients. Hence the listed quadruple \\((1,2,1,1)\\) would make the omitted quadruple \\((2,1,1,1)\\) universally representable, contradicting the claimed classification.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

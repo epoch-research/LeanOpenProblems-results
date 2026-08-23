@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assuming either family is bounded by \\(N\\), apply the decomposition hypothesis to \\((N+2)!/6\\), obtaining \\((N+2)!=(6x-1)+(6y+1)\\) with the indicated terms prime. Boundedness makes \\(6x-1\\) (in the Sophie Germain case), or \\(6y+1\\) (in the twin-prime case), divide the factorial and hence the complementary prime; primality forces equality or a divisor of \\(1\\), both impossible from positivity and their distinct residues modulo \\(6\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

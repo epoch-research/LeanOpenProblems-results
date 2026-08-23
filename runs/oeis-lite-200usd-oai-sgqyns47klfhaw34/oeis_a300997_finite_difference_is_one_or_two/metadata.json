@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Track the tail masses via the averaging recurrence \\(F(n,t+1,i+1)=\\lfloor(F(n,t,i)+F(n,t,i+1))/2\\rfloor\\); conservation and positivity show that stability is equivalent to positivity of the last relevant tail, and an induction also gives stabilization by time \\(2(n-1)\\). Shift comparisons show that positivity for mass \\(n\\) at time \\(t\\) implies positivity for mass \\(n+1\\) at time \\(t+2\\), while positivity for mass \\(n+1\\) at time \\(t+1\\) forces it for mass \\(n\\) at time \\(t\\), sandwiching the two minimal stabilization times one or two steps apart.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

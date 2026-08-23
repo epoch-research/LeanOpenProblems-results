@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce the auxiliary recurrence \\(x_0=1,\\ x_1=-2,\\ x_{n+2}=-4x_{n+1}-64x_n\\); algebra shows that both \\(x_{n+1}^2\\) and the odd-indexed subsequence satisfy \\(u_{n+3}=-48u_{n+2}+3072u_{n+1}+262144u_n\\). Their first three values agree, so induction gives the desired square representation at every index.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

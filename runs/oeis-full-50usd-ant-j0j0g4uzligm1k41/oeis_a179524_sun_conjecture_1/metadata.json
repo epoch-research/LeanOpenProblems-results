@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(p=3\\): the representation premise holds since \\(6=1^2+5\\cdot1^2\\), while \\(a(0)+a(1)+a(2)=1+1-15=-13\\). Because the quantified \\(x\\) is not tied to that representation, choosing \\(x=0\\) would force \\(-13\\equiv-6\\pmod 9\\), which is false.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

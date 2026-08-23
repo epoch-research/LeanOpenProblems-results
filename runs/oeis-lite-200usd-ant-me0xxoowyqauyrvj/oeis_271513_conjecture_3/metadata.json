@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The theorem’s conclusion is simply the tautology \\(True\\), so the proof is the immediate observation that \\(True\\) holds. It contains no argument about four-square representations or pairwise coprimality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the asserted tail relation, the shifted values \\(c_s=a_{3773+s}+1\\) obey a Fibonacci recurrence; modular Fibonacci computation modulo \\(195318521017\\) then shows that \\(a_{249580077006}\\) and \\(a_{249580077007}\\) are both divisible by this modulus. Thus their gcd is greater than one, while equality of the asserted next value with the defining recurrence would force \\((g-1)((a+b)/g-1)=0\\); the alternative \\((a+b)/g=1\\) is impossible for positive \\(a,b\\) because \\(g\\le a<a+b\\), giving a contradiction at \\(n=249580077008\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=550172=4\\cdot343\\cdot401\\), the period \\(29400\\) reduces the search to finitely many exponent classes; a modular computation shows that residue \\(13573\\) is not attained for any \\(k\\le16{,}331{,}503\\), while a 196-entry table and the Chinese remainder theorem show that every residue is attained by \\(k\\le82{,}496{,}875\\), so the least covering index is at least \\(16{,}331{,}504\\). A finite sieve and composite-count bound show that at least \\(550172\\) primes lie below \\(8{,}165{,}754\\), hence \\(2(p_{550172}-1)\\le16{,}331{,}504\\), contradicting the proposed strict inequality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

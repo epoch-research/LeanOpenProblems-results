@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(N=28996592704045424640=2^{13}3^6\\cdot5\\cdot7^6\\cdot13^4\\cdot17^2\\). Multiplicativity gives \\(\\sigma(N)=140078688585537333726=2\\cdot3^2\\cdot29\\cdot43\\cdot127\\cdot307\\cdot1093\\cdot4733\\cdot30941\\), and replacing each prime power \\(p^e\\) by \\((p-1)^e\\) yields exactly \\(N\\), making this unlisted positive number a fixed point.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

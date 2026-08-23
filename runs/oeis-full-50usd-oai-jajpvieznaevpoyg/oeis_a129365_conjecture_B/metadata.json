@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each prime \\(p\\), counting pairs divisible by \\(p^i\\) and applying Legendre’s factorial-valuation formula expresses the quotient’s \\(p\\)-adic valuation as \\(\\sum_{i\\ge1}\\delta(\\lfloor n/p^i\\rfloor)\\), where \\(\\delta(m)=m^2-\\sum_{k=1}^m k\\lfloor m/k\\rfloor\\). Each summand is nonnegative, and \\(\\delta(m)>0\\) exactly when \\(m\\ge3\\) (strictness comes from \\(k=m-1\\)); hence the valuation is positive exactly when \\(\\lfloor n/p\\rfloor\\ge3\\), equivalently \\(p\\le\\lfloor n/3\\rfloor\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

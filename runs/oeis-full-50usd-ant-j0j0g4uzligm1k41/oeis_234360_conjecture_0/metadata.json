@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=1408\\) and exhaust all \\(1\\le k<1408\\): after computing \\(\\phi(1408-k)/2\\), almost every resulting number is shown composite by an explicit proper divisor, while exceptional cases are eliminated by a base-2 Fermat congruence failure or direct evaluation of the tiny endpoint values. Thus none of the 1407 possible choices of \\(k\\) yields a prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

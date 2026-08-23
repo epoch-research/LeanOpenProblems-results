@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Letting \\(d=D(n)\\), strip off its factors of \\(2\\) and \\(5\\) to obtain \\(d'\\mid d\\), coprime to \\(10\\), with \\(d\\mid 10^P d'\\); since \\(n\\equiv d\\pmod 9\\), the congruence \\(9a\\equiv10n\\pmod{d'}\\) has a solution \\(0\\le a<d'\\le n\\). Using \\(a\\) fixed-width decimal blocks of value \\(1\\) and \\(n-a\\) blocks of value \\(10\\), with width \\(2\\varphi(d')\\), constructs a number \\(V\\) with digit sum \\(n\\) and \\(d'\\mid V\\); multiplying by a sufficiently large power of \\(10\\) preserves that digit sum, makes the result exceed \\(n\\), and makes it divisible by \\(d\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

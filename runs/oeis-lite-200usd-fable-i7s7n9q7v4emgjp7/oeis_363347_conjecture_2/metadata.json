@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "An explicit evaluation of the continued-fraction recurrence gives a numerator involving \\(T(n)=(n+1)^2-5\\); when \\(T(n)=pm\\) with \\(n<p\\), factorial divisibility and parity show that the denominator cancels exactly the factor \\(2m\\), while \\(p\\) cannot cancel, leaving reduced numerator \\(p\\). Quadratic reciprocity makes \\(5\\) a square modulo \\(p\\), so a root \\(x\\) and the choice \\(n=x-1\\) ensure \\(p\\mid T(n)\\); the exceptional possibility \\(n=6\\) is excluded by divisibility, with \\(p=11\\) handled separately.",
+  "proof_summary": "The continued fraction is evaluated as a rational expression with numerator proportional to \\(T(n)=(n+1)^2-5\\); if \\(T(n)=pm\\), size, factorial-divisibility, and parity arguments show that reduction cancels exactly the factor \\(2m\\) but not \\(p\\), leaving numerator \\(p\\). Quadratic reciprocity makes \\(5\\) a square modulo every such \\(p\\), so choosing \\(n=x-1\\) from \\(x^2\\equiv5\\pmod p\\) gives \\(p\\mid T(n)\\), with the small exceptional case handled directly.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

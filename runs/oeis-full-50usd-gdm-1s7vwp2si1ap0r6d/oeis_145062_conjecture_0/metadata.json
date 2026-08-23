@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The comparison sequence is defined by \\(s(z)=a(z.toNat)\\). Taking \\(k=0\\) therefore gives the result immediately, since \\((n:\\mathbb Z).toNat=n\\) for every natural number \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

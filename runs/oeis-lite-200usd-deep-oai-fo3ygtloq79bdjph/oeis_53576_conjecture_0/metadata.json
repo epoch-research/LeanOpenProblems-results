@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(X=2^{2^{33}}\\), the inequality \\(\\varphi(m)<m\\) gives the lower bound \\(m\\ge X+1=F_{33}\\), attained when \\(F_{33}\\) is prime. If \\(F_{33}\\) is composite, assuming \\(m<2X\\) forces \\(\\varphi(m)=X\\); after writing \\(m=2^k r\\) with \\(r\\) odd, \\(k\\ge2\\) contradicts this bound using \\(\\varphi(r)<r\\), while \\(k\\le1\\) would make \\(r\\) squarefree with all prime factors among the Fermat primes \\(F_i\\) for \\(i<33\\), so \\(r\\le\\prod_{i<33}F_i=F_{33}-2<X<r\\); hence the attainable candidate \\(2X\\) is minimal.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

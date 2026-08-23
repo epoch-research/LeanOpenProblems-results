@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For the first nine primes, the primorial is \\(P=223092870\\equiv -41\\pmod{29^2}\\), so \\(P^2+1\\equiv 0\\pmod{29^2}\\). Thus the \\(n=9\\) term is divisible by \\(29^2\\) and is not squarefree, disproving the conjunction regardless of the infinitude claim.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

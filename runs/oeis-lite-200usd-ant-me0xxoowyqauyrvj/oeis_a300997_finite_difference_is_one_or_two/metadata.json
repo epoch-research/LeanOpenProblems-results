@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Mass conservation and gaplessness, together with a bounded first moment that increases strictly before stability, ensure that every trajectory stabilizes. Coupling the mass-\u001d\\(n+1\\) trajectory to the mass-\u001d\\(n\\) trajectory plus one moving token, a leading-ones-front invariant places the token at position \\(n-2\\) or \\(n-1\\) when the latter stabilizes; it then walks one site per step to position \\(n\\), so the additional hitting time is respectively \\(2\\) or \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

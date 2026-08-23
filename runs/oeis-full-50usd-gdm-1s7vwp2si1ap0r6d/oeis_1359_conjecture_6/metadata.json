@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Factoring Wilson’s congruence for the next prime gives \\(p_k!\\,\\prod_{j=p_k+1}^{p_{k+1}-2}j\\equiv1\\pmod{p_{k+1}}\\); parity makes every gap at least two, and gap two is exactly the twin-prime case, where the intervening product is empty, while otherwise this identity yields the stated equivalence. A finite prime-counting sieve identifies the primes at indices 991 and 992 as 7841 and 7853, and direct modular computation shows that their intervening product is \\(1\\bmod 7853\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For even inputs, a positive representation directly gives the Goldbach decomposition \\(n=(n-q)+q\\), while for odd inputs it gives the Lemoine decomposition \\(n=(n-2q)+2q\\); direct finite searches establish all cases below the respective thresholds. For any bound \\(N\\), applying the hypothesis to \\(n=2N+8014\\) produces a witness with \\(2q<n\\), so \\(p=n-q\\) has \\(p-6>N\\), and the primality of \\(p-6\\) and \\(p\\) gives arbitrarily large cousin-prime pairs.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

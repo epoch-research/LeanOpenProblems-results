@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(U=1+x\\), \\(V=y+z\\), and \\(W=y-z\\), binomial expansion and homogeneity isolate the \\(x^ny^nz^n\\)-coefficient as \\(\\binom{2n}{n}\\) times a single sum of coefficients \\([y^nz^n]V^{2n-2j}W^{2j}\\).  The relation \\(W^2=V^2-4yz\\), together with induction and binomial recurrences, gives \\(\\binom{2n}{2j}[y^nz^n]V^{2n-2j}W^{2j}=(-1)^j\\binom{2n}{n}\\binom nj\\); substituting makes the sum a multiple of \\(\\sum_j\\binom nj^2=\\binom{2n}{n}\\), yielding the cube.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

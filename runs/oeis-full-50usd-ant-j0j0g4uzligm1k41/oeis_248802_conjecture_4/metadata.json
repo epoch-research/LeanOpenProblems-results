@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The congruences $2^{58}\\equiv1\\pmod{233}$, $2^{233}\\equiv1\\pmod{1399}$, and $2^{206}\\equiv-3\\pmod{1399}$ show that $1399$ divides every relevant term. The noncoverage assumptions give $n\\not\\equiv2\\pmod5$, $n\\not\\equiv11\\pmod{18}$, and $n\\not\\equiv26\\pmod{42}$; multiplicative-order periodicity then reduces divisibility by each prime below $1399$ to finite modular checks over residue classes of $n$, excluding them all (including $67,271,523$ via those three restrictions), so $1399$ is the least prime factor.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming both assertions, eventual density bounds and the monovariant \\(a_k+2a_{k+1}\\) give exponential lower bounds on earlier terms. A sufficiently late gap-one event then forces an integer first-difference to double repeatedly backward, producing an all-even block of length about \\(n/36\\); counting this block contradicts the simultaneous eventual lower and upper density bounds.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

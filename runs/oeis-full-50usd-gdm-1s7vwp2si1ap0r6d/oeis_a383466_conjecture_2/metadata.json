@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The region-count function is assumed to equal \\(a(n)\\) for every admissible configuration, so the set of attainable counts is the singleton \\(\\{a(n)\\}\\) (with attainability witnessed by the unique configuration). The supremum of this singleton is therefore \\(a(n)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Counting pairs divisible by each power of \\(p\\) gives the numerator valuation \\(\\sum_{i\\ge1}\\lfloor N/p^i\\rfloor^2\\), while Legendre’s formula rewrites the denominator valuation in terms of the same floors; a termwise bound also establishes the required exact divisibility. Thus the quotient’s valuation depends only on \\(\\lfloor N/p^i\\rfloor\\) for \\(i\\ge1\\), and these are unchanged when \\(N=np\\) is replaced by \\(np+k\\) with \\(0\\le k<p\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

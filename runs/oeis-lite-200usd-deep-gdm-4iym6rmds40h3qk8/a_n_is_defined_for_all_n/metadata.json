@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=0\\): \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\), the constant term of \\(\\Phi_k\\) is \\(1\\), so \\(\\Phi_k(0)=1\\). Hence the absolute value is always \\(1\\), never a prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

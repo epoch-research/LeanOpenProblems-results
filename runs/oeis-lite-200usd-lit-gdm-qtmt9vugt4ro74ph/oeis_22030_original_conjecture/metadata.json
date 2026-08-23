@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The central device is the determinant-like error \\(D_n=L_{n-1}^2-L_nL_{n-2}\\): for the candidate linear-recurrence solution, growth estimates \\(L_{n+1}\\ge 3L_n>0\\) and the relation \\(D_{m+5}=4D_{m+3}+D_{m+2}\\) give \\(1\\le D_n\\le L_{n-2}\\) by induction. Hence \\(L_{n+1}^2=L_{n+2}L_n+D_{n+2}\\) lies in the precise interval forcing \\(\\lceil L_{n+1}^2/L_n\\rceil-1=L_{n+2}\\), so induction identifies the extremally defined sequence with the linear-recurrence solution.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

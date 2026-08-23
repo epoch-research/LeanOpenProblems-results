@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct divisor-and-modular-power enumeration establishes each proposed value and excludes every smaller modulus, with the large final search pruned by the bound that every qualifying divisor \\(d\\mid k\\) is unitary: writing \\(k=dq\\), the congruence forces \\(d^{d-1}\\equiv1\\pmod q\\), hence \\(\\gcd(d,q)=1\\). A square-root divisor count discards moduli having fewer than ten unitary divisors, and direct modular computation handles the remaining candidates below \\(2310\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

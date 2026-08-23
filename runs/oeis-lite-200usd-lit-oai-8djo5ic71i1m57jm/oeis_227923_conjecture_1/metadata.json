@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an arbitrary bound \\(B\\), set \\(M=B+6\\) and apply the hypothesis to \\(n=M!/6=x+y\\), obtaining primes \\(p=6x-1\\) (Sophie Germain) and \\(q=6y+1\\) (the upper member of a twin pair) with \\(M!=p+q\\). If \\(p\\le B\\), then \\(p\\mid M!\\) forces \\(p\\mid q\\), while if the lower twin prime \\(6y-1\\le B\\), then \\(q\\le M\\) and \\(q\\mid M!\\) forces \\(q\\mid p\\); primality gives equality in either case, contradicting their residues \\(-1\\) and \\(1\\pmod 6\\), so both sets are unbounded and hence infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

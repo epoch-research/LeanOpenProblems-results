@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The order-7 recurrence is solved as a quadratic with a period-5 correction, reducing the sequence values to five residue-dependent polynomial formulas. Truncated \\(\\operatorname{artanh}\\) expansions and monotone Euler–Maclaurin tails bound the harmonic expression between explicit rational functions; positive-coefficient rational inequalities in each residue class then place its reciprocal in the unique unit interval determining the required floor.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

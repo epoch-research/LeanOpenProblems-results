@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(d=D(n)=ge\\), where \\(g\\) contains the factors 2 and 5 and \\(\\gcd(e,10)=1\\), the proof solves \\(n+9B\\equiv0\\pmod e\\) and uses repeated decimal blocks of length \\(L\\) with \\(10^L\\equiv1\\pmod e\\) to construct \\(C\\) with \\(D(C)=n\\) and \\(e\\mid C\\). Then \\(k=10^dC\\) has \\(D(k)=n\\) and \\(d\\mid k\\) because \\(g\\mid10^d\\); moreover \\(k\\ne n\\), since a positive multiple of 10 has digit sum strictly smaller than itself.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

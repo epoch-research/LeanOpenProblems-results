@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(n>0\\), if \\(2n\\) had no decomposition into two primes, every entry in the matrix’s zeroth row would vanish, since a nonzero entry in column \\(j\\) would give primes \\(n-j\\) and \\(n+j\\) summing to \\(2n\\); thus the determinant would be zero. Taking \\(n=2k+1\\), the nonvanishing hypothesis gives the result for \\(k\\ge 60\\), while explicit prime decompositions handle \\(1\\le k<60\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

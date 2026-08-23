@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since the nonsquarefree Möbius terms vanish, the divisor sum reduces to \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

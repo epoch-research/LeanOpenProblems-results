@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=236791\\), a \\(p\\)-adic analysis of \\(B_{473582}\\), using Faulhaber’s identity and modular power-sum computations at the relevant primes, gives \\(a(n)=14172=12\\cdot1181\\) with \\(1181\\) prime, while also showing the two required neighboring denominators are divisible by \\(12\\). The middle conclusion nevertheless fails because \\(1181-236791=-235610\\not\\equiv0\\pmod 6\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

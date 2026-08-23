@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite number \\(n=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\). Using \\(\\sum_{k=1}^n\\gcd(k,n)=\\sum_{d\\mid n}d\\varphi(n/d)\\) and multiplicativity, the sum is \\(\\prod_{p\\mid n}(2p-1)=610815156979325\\), so one plus it equals \\(26n\\), making the defining gcd equal to \\(n\\) and the quotient equal to \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

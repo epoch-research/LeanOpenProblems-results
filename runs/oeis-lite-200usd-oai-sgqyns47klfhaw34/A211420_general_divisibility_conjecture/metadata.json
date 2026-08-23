@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Choose \\(C(k,r)=0\\) for every \\(k,r\\). Then the required right-hand side is zero, and every natural number divides zero.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

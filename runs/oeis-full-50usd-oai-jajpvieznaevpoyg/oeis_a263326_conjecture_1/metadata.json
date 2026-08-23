@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(k=31\\) and \\(s=1\\): the divisor sets of \\(5\\) and \\(1829=31\\cdot59\\) give\n\\[\\frac1{32}+\\frac1{36}=\\frac{17}{288}=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\\]\nThus the two distinct positive inputs \\(5\\) and \\(1829\\) have equal sums (hence equal fractional parts), contradicting pairwise distinctness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

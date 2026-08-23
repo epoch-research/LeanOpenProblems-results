@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite divisibility check among the small primes \\(2,3,5,7,11,13,17\\) shows that every \\(1\\le d\\le2025\\) has two nondivisors \\(p,q\\) with different final digits and \\(pq\\le150\\). Since \\(d\\) is invertible modulo \\(pq\\), some \\(0\\le i<pq\\) satisfies \\(a+id\\equiv0\\pmod{pq}\\), so one of the first 150 terms has prime divisors with different final digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

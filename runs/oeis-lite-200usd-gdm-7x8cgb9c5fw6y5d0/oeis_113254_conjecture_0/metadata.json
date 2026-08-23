@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce two auxiliary sequences, both satisfying \\(u_{k+2}=112u_{k+1}-4096u_k\\), with initial values chosen so that the first odd terms are their squares; linear relations between the two sequences yield squared recurrences matching the derived stride-two recurrence \\(a_{n+6}=-48a_{n+4}+3072a_{n+2}+262144a_n\\). Induction over a three-term window then proves \\(a_{4k+1}=y_k^2\\) and \\(a_{4k+3}=z_k^2\\), which covers every odd index.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

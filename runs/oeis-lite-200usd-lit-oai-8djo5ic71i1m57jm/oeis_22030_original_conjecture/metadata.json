@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Define the candidate sequence by \\(B_0=4,B_1=16,B_2=63\\) and \\(B_{n+3}=4B_{n+2}-B_n\\), and study \\(\\Delta_n=B_n^2-B_{n-1}B_{n+1}\\). Positivity and growth of \\(B_n\\), together with \\(\\Delta_{k+4}=4\\Delta_{k+2}+\\Delta_{k+1}\\), give \\(0<\\Delta_n<B_{n-1}\\); hence \\(B_{n+1}B_{n-1}<B_n^2\\le (B_{n+1}+1)B_{n-1}\\), so the ceiling-minus-one rule produces \\(B_{n+1}\\), and induction identifies the original sequence with the linear-recurrence sequence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For odd \\(m\\) with \\(\\varphi(m)=2^{2^{33}}\\), the totient product formula forces every prime factor to occur once and be a Fermat prime \\(F_j\\); the resulting sum of distinct \\(2^j\\)'s equals \\(2^{33}\\), so only \\(j=33\\) occurs and \\(m=F_{33}\\). Totient bounds—\\(\\varphi(m)<m\\) for \\(m>2\\) and \\(2\\varphi(m)\\le m\\) for even \\(m\\)—then establish minimality, while any smaller odd candidate in the composite case would force \\(\\varphi(F_{33})=F_{33}-1\\) and hence contradict compositeness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

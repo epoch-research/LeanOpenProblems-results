@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(N=2^{t+3}\\), every even number in the relevant intervals is composite, so Legendre’s formula \\(v_2(m!)=m-s_2(m)\\) and the binary forms of the endpoints give \\(v_2(a(N))=N+t+1\\) but \\(v_2(a(N+1))=N-1\\). Thus \\(a(N)\\nmid a(N+1)\\) for every \\(t\\), and the distinct indices \\(N+1\\) form an infinite family of exceptions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

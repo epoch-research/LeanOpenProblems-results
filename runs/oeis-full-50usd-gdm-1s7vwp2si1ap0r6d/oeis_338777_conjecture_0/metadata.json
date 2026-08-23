@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Since a nonunit product cannot come from an empty associated-prime set, choose its maximum element \\(m\\). If a prime \\(q\\le\\sqrt{2n-m}\\) divided \\(2n-m\\), then \\(q\\le\\sqrt{2n}\\) and \\(m\\equiv2n\\pmod q\\), contradicting the defining residue-avoidance condition; hence \\(2n-m\\) is prime, and together with the primality of \\(m\\) this gives the required partition.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

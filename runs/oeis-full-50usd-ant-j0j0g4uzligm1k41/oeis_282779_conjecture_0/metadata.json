@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proposed period is valid by a binomial expansion: when \\(p^2\\mid n\\), writing \\(n=pm\\) with \\(p\\mid m\\) makes every term of \\((k+m)^p-k^p\\) divisible by \\(n\\), while translation by \\(n\\) is immediate otherwise. For minimality, translation modulo each prime \\(q\\mid n\\) first forces \\(q\\mid T\\), and the cases \\(k=0,1\\) together with a binomial valuation argument give \\(v_q(n)\\le v_q(p)+v_q(T)\\), implying that the proposed period divides every positive period.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

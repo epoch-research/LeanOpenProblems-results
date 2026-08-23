@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using Pascal’s identity modulo 2, the proof inductively characterizes Rule 167’s zero cells by odd binomial coefficients; Lucas-type parity reductions then show that the center is zero exactly at times that are powers of two. The divisibility condition in the floor term is likewise equivalent to being a power of two, and appending the new center bit to a binary prefix yields the recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

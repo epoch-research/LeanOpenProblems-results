@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce companion sequences \\(c,s\\) satisfying the same second-order recurrence and prove their addition formula and norm identity \\(c_n^2+15s_n^2=64^n\\), alongside the recurrence-derived formula \\(2a_n=4\\cdot8^n-4\\cdot(-8)^n+c_{n+1}\\). At an odd index, the power terms combine to \\(64^{n+1}\\), while the doubling formula gives \\(c_{2n+2}=c_{n+1}^2-15s_{n+1}^2\\); the norm identity then yields \\(a_{2n+1}=c_{n+1}^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

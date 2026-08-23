@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the claimed affine recurrence, the shifted pairs \\((a_{3773+t}+1,a_{3774+t}+1)\\) evolve by the Fibonacci map \\((x,y)\\mapsto(y,x+y)\\); modular exponentiation modulo \\(195318521017\\), starting from the directly computed initial residues, shows that at \\(t=249580073233\\) both corresponding consecutive terms are divisible by this modulus. Their gcd is therefore at least \\(2\\), so the defining gcd recurrence makes the next term at most the sum of those two terms, contradicting the claimed value of one plus their sum.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

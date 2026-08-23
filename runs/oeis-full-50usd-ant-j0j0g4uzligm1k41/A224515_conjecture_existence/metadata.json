@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using the carry identity for XOR, the target is converted to \\(k+(k^2\\mathbin{\\mathrm{AND}}M)=N\\), where \\(M=2N+1\\) and \\(N\\) is even; this congruence is solved bit by bit modulo \\(2^w\\), since adding \\(2^i\\) to \\(k\\) toggles exactly the next bit of the left side. Taking \\(w=M+1\\) leaves only the exact value or one overflow by \\(2^w\\); in the overflow case the reflected choice \\(2^w-1-k\\), together with complementary-square and AND/XOR identities, removes the overflow and yields an exact solution.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

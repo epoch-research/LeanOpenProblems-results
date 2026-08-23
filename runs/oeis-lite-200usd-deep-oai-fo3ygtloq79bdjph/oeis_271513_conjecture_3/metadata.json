@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so it holds immediately and uses no number-theoretic argument or properties of the coefficients.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

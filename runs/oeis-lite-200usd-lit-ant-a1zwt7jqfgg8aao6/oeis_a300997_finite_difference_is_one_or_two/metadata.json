@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Couple the evolutions from initial masses \\(n\\) and \\(n+1\\): their difference remains a single “defect” unit, which moves one cell right exactly when the underlying cell has odd mass. A contiguity-and-mass invariant forces this defect to be at \\(n-2\\) or \\(n-1\\) when the \\(n\\)-process stabilizes; on the all-ones stable background it then moves right once per step, so the larger process stabilizes two or one steps later, respectively.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

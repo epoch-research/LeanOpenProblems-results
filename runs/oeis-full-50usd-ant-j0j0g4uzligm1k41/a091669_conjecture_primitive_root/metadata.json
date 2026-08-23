@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For every odd prime divisor \\(p\\) of a composite \\(n=pc\\), Fermat’s theorem makes the factors indexed by multiples of \\(p-1\\) provide more powers of \\(p\\) than occur in \\((n-1)!\\), forcing \\(p\\mid a(n-1)\\) and hence the impossible \\(p\\mid 2^{n-2}\\); if \\(n=2^e\\), the oddness of the product and Legendre’s binary digit-sum formula give \\(v_2(a(2^e-1))=e-1\\), yielding the analogous contradiction. Thus \\(n\\) is prime, and if the order \\(d\\) of \\(2\\bmod n\\) were less than \\(n-1\\), the factor \\(2^d-1\\) would survive division by \\((n-1)!\\) and force \\(n\\mid a(n-1)\\), again contradicting that an odd prime cannot divide \\(2^{n-2}\\); hence the order is \\(n-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

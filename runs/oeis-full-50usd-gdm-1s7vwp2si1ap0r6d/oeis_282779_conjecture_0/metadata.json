@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the candidate shift, the binomial expansion shows all nonconstant terms are divisible by the modulus: when \\(p^2\\mid n\\), taking \\(T=n/p\\) makes the linear term a multiple of \\(n\\) and every higher term contains enough powers of \\(T\\), while the shift \\(n\\) always works. For any period \\(T\\), testing shifts at \\(0\\) and \\(1\\) gives \\(n\\mid T^p\\) and \\(n\\mid pTU\\), where \\(U\\equiv1\\) modulo every prime divisor forced into \\(T\\); hence \\(\\gcd(n,U)=1\\) and \\(n\\mid pT\\), from which prime-divisibility arguments yield the corresponding sharp lower bound on \\(T\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

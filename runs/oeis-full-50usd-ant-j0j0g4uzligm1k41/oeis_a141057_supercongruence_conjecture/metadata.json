@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A strengthened Jacobsthal-type congruence for \\(\\binom{Ap}{Bp}-\\binom AB\\) is proved by separating the \\(p\\)-free factorial factors, expanding the resulting shifted unit product, and using vanishing sums of reciprocals and reciprocal squares modulo powers of \\(p\\) to gain the required three powers. The multinomial sum is then split according to whether both lower indices are divisible by \\(p\\): the other terms vanish by binomial-valuation bounds, while the divisible-index terms reduce termwise via that congruence, yielding the one-step modulus \\(p^{3(v_p(m)+1)}\\), which implies the desired modulus after taking \\(m=np^{k-1}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

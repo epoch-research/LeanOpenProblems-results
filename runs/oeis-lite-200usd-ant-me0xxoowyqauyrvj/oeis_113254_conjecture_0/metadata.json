@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(c_0=2,c_1=56\\) and \\(c_{n+2}=-4c_{n+1}-64c_n\\); eliminating the even-indexed terms from the original recurrence shows that the odd subsequence satisfies \\(b_{n+3}=-48b_{n+2}+3072b_{n+1}+262144b_n\\). The squares \\(c_n^2\\) satisfy this same relation algebraically, and agreement for the first three terms yields \\(a_{2n+1}=c_n^2\\) by induction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

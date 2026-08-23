@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(k=31\\) and \\(s=1\\), the divisor sums for two distinct inputs coincide: \\(S(5,31,1)=1/32+1/36=17/288\\), while \\(S(1829,31,1)=1/32+1/62+1/90+1/1860=17/288\\), using \\(1829=31\\cdot59\\). Thus their fractional parts are equal, disproving pairwise distinctness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Taking \\(n=7\\), positivity and \\(x\\le y\\le z\\) force \\(3x\\le x+y+z=7\\), so \\(x\\le2\\). This contradicts \\(x\\in\\{3,4,6,10,15\\}\\), independently of all primality conditions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

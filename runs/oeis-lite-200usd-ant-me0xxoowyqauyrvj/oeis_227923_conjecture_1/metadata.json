@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an arbitrary bound \\(B\\), apply the hypothesis at \\(n=(6(B+1)+1)!/6\\) to obtain \\(n=x+y\\) with the required primes and the identity \\((6(B+1)+1)!=(6x-1)+(6y+1)\\). If either \\(6x-1\\) or the lower twin prime \\(6y-1\\) were at most \\(6(B+1)\\), then respectively \\(6x-1\\) or \\(6y+1\\) would divide the factorial and hence the prime on the other side of the identity, forcing it to be \\(1\\) or equal to that prime; positivity and their incompatible residues modulo \\(6\\) rule this out, so both prime families are unbounded and therefore infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

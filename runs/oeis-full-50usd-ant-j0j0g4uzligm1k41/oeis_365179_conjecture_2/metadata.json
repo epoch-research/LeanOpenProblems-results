@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "An explicit two-generator group \\(P\\) of order \\(3^6\\), with relations \\(a^{27}=1\\), \\(b^{-1}ab=a^4\\), and \\(b^{27}=a^9\\), has exactly \\(3^7\\) automorphisms by counting the admissible generating image-pairs of \\(a,b\\). The coprime direct product \\(C_2\\times P\\) has the same automorphism group because both factors are characteristic and \\(\\operatorname{Aut}(C_2)\\) is trivial, but its order is \\(2\\cdot3^6\\), giving the counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

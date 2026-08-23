@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Pell pairs \\((p_n,q_n)\\) satisfying \\(p_n^2+2p_nq_n-q_n^2=1\\) give upper approximations \\(p_n/q_n\\) to \\(\\sqrt2-1\\) with error below \\(1/q_n^2\\), so for \\(1\\le k\\le q_n\\) the relevant floor is exactly \\(\\lfloor(kp_n-1)/q_n\\rfloor\\). Grouping these rationalized terms by exponent and using the oddness of \\(p_n\\) yields the recurrence \\(a(q_{n+1})=a(q_n)+2\\), hence \\(a(q_n)=2(n+1)\\) and the values are unbounded.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

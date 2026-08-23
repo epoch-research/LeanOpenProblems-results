@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Explicit finite witness tables handle the bounded Goldbach and Lemoine cases, while above the thresholds positivity supplies a prime \\(q\\) such that \\(n-q\\) (for even \\(n\\)) or \\(n-2q\\) (for odd \\(n\\)) is prime, yielding the required decompositions. For any bound \\(N\\), applying the even case to \\(n=2N+8028\\) gives \\(2q<n\\), so \\((n-q-6,n-q)\\) is a cousin-prime pair whose first member exceeds \\(N\\), proving infinitude.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

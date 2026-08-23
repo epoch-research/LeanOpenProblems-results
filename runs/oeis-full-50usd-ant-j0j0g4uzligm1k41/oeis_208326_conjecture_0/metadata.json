@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Jointly order the points \\(n/5\\), \\(n/\\varphi\\), and \\(n/(1/\\varphi)\\); irrationality of \\(\\varphi\\) (together with \\(1/\\varphi=\\varphi-1\\)) shows that no two such points coincide. The cumulative count \\(\\sum_i\\lfloor d_i x\\rfloor\\) increases by exactly one at each next point, so the resulting ranks exhaust the positive integers uniquely, and evaluating the ranks gives the three floor formulas.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

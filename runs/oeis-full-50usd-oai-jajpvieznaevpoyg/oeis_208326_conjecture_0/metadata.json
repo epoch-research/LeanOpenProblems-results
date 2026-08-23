@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Set \\(x=\\varphi/5\\) and \\(y=\\varphi^{-1}/5\\), jointly order the three event families \\(m,\\ m/x,\\ m/y\\), and observe that the number of events up to \\(T\\) is \\(\\lfloor T\\rfloor+\\lfloor Tx\\rfloor+\\lfloor Ty\\rfloor\\), whose values at the three kinds of events are exactly the three sequence terms. Irrationality of \\(x\\), \\(y\\), and \\(y/x\\) prevents ties, while successive events increase this count by one, so their ranks exhaust the positive integers uniquely.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

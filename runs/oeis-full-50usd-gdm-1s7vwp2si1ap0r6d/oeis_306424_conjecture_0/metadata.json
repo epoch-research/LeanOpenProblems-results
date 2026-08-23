@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct finite calculation shows that 43 has the required property and supplies a violating base for every \\(44\\le k<289\\). For \\(k\\ge289\\), write \\(k=b^2+d\\) with \\(b=\\lfloor\\sqrt{k}\\rfloor\\) and \\(0\\le d\\le2b\\); splitting according to \\(d\\) produces a nearby base among \\(b,b-1,b-2,b-3\\) in which explicit quotient-and-remainder formulas give three pairwise distinct digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

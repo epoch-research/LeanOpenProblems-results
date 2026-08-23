@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The case n=0 is evaluated directly; for n>0, the outer exponent is reduced modulo a suitable exponent d for 2 modulo each candidate prime, and the factorization d=2^a m makes 2^{10n+2} periodic modulo d. Finite residue checks then exclude every prime below 67 while showing that 67 always divides the number, so 67 is its least prime factor.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

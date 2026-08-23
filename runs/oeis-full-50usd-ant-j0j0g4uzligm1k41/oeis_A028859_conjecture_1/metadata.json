@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Partition by whether the first two terms form a non-ascent or an ascent: in the former case deleting the first term is reversible in two ways (it is the tail maximum or one more), while in the latter coverage forces the first two terms to be \\(v,v+1\\), and deleting them is again reversible in two ways according as \\(v\\) is the remaining maximum or one more. Thus the counts satisfy the same recurrence \\(b_L=2b_{L-1}+2b_{L-2}\\), and the initial counts \\(b_1=1,b_2=3\\) identify them with the required values.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

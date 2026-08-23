@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Swapping the two square variables shows that \u001b[1m(a,b,c,d)\u001b[0m and \u001b[1m(b,a,c,d)\u001b[0m represent exactly the same natural numbers. Yet the proposed list contains \\((1,2,1,1)\\) but not \\((2,1,1,1)\\), so no biconditional between universality and membership in that list can hold.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

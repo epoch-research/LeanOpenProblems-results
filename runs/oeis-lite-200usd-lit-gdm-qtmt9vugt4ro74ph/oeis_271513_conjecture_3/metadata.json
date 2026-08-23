@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The accepted statement is the tautology \\(\\mathrm{True}\\), so its proof is immediate and contains no mathematical argument about the claimed coprimality obstruction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=14\\): the condition that \\(2k+1\\) be prime restricts \\(0<k<14\\) to \\(k=1,2,3,5,6,8,9,11\\), for which the adjacent prime-count pairs are respectively \\((6,3),(3,4),(4,3),(3,4),(4,2),(4,1),(1,4),(2,3)\\). Thus none of these candidates has equal counts, so the required witness does not exist even though \\(14>1\\) and \\(14\\ne8\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

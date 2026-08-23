@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For every prime \\(q\\), counting pairs divisible by \\(q^i\\) gives the numerator valuation \\(\\sum_i\\lfloor N/q^i\\rfloor^2\\), while Legendre’s formula and an elementary floor-sum bound place the denominator valuation below the same sum, proving the quotient is integral. Between \\(np\\) and \\(np+k\\) with \\(k<p\\) there is no new multiple of \\(p\\), so added gcd factors have zero \\(p\\)-valuation and the relevant factorial valuations remain unchanged; subtracting numerator and denominator valuations therefore gives the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

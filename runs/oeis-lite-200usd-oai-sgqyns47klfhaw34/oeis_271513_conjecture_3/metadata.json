@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The stated theorem is merely the tautology \\(\\mathrm{True}\\), so its proof is immediate and uses no properties of four-square representations or the coefficients. Consequently, it supplies no mathematical argument for the pairwise-coprimality conclusion.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

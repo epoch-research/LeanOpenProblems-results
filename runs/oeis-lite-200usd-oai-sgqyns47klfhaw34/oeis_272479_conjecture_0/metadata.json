@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(n\\ge100\\), let \\(d=D(n)\\), \\(e=D(d)\\), and \\(T=(n-e)/9\\); digit-sum congruences modulo \\(9\\) and elementary bounds show that \\(T\\) is integral and long enough to pad the digits of \\(d-1\\), whose padded block and digitwise \\(9\\)-complement are then concatenated with a zero and the digits of \\(d\\). The resulting \\(k\\) has \\(D(k)=9T+e=n\\) and is divisible by \\(d\\), since the complementary blocks represent \\(d(10^T-1)\\); also \\(k\\ne n\\) because \\(D(n)<n\\), while explicit witnesses handle \\(1\\le n<100\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

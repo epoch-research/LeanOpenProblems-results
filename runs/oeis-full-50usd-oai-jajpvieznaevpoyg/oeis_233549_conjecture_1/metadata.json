@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each bound $B$, only finitely many pairs $(p,q)$ with $p$ prime, $q>0$, and $\\phi(p)\\phi(q)\\le B$ exist: bounded totient forces bounds on every prime divisor and its exponent, hence on the integer itself. Choosing $n>2$ outside the finite set of sums $p+q$ of such pairs, the assumed decomposition yields a prime $(\\phi(p)\\phi(q))^4+1>B$, so primes of the required form are arbitrarily large.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

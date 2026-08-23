@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\), which is odd and at least three. In the Möbius sum the squareful quotient terms vanish, giving \\(a(8)=8!(H_8-H_4)=25584>0\\), so this value has the required factor-count parity but not the asserted negative sign.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

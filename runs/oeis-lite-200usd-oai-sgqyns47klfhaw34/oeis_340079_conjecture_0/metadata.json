@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite number \\(N=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\), whose five factors are distinct primes. Using \\(\\sum_{k=1}^n\\gcd(k,n)=\\sum_{d\\mid n}d\\varphi(n/d)\\), the multiplicativity of this divisor sum, and its prime value \\(2p-1\\), one obtains \\(\\sum_{k=1}^N\\gcd(k,N)=26N-1\\); hence adding \\(1\\) gives \\(26N\\), so the relevant gcd is \\(N\\) and the quotient is \\(1\\) despite \\(N\\) being composite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

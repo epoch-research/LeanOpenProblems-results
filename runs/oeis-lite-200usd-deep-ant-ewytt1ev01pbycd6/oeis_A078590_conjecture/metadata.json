@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At the seventh step, exact division would require \\(171\\mid 2^{a(6)}+1\\), hence also divisibility by \\(19\\). But \\(2^{18}\\equiv1\\pmod{19}\\) and the explicit value of \\(a(6)\\) is \\(3\\pmod{18}\\), so \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

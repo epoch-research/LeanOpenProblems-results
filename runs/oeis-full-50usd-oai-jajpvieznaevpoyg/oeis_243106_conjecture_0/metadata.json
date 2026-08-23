@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After negating the signed expansion when necessary, the proof inductively extracts its least-significant digit while maintaining a carry in \\(\\{0,-1\\}\\); the four coefficient/carry cases yield exactly \\(1,b-1,0,b-2\\), and nonnegativity passes to the quotient. Factoring \\(b\\) from the original sum then merely adds a zero as its least-significant digit.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

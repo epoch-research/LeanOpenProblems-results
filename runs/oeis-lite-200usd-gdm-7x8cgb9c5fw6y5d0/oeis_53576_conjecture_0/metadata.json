@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "If the relevant Fermat number is prime, its totient equals the required power of two and the bound \\(\\varphi(m)<m\\) proves minimality; if it is composite, \\(\\varphi(2^{N+1})=2^N\\), and totient bounds force any smaller candidate to be odd with totient exactly \\(2^N\\). Every prime divisor of such an odd composite must be a distinct Fermat prime \\(1+2^{2^a}\\), so the totient factorization would express \\(N=2^{33}\\) as a sum of distinct powers \\(2^a\\) with \\(a<33\\), whose total is at most \\(2^{33}-1\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

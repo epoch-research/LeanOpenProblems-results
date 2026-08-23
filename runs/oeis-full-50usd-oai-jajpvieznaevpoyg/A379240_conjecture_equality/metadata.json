@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=56\\) and \\(n=60\\), direct arithmetic gives the same triple \\((92,4,2)\\), whereas \\(2^2\\) divides both numbers, so the original construction treats them as the distinct values \\(56\\) and \\(60\\). Consequently the triple transform reuses at \\(60\\) the first-appearance label from \\(56\\), namely \\(41\\), while the original transform assigns the new label \\(42\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

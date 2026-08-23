@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(r\\in[1/2,1]\\) satisfy \\(H(r)=r\\log 2\\), where \\(H\\) is binary entropy; bounding each residue by both \\(2^k\\) and \\(\\binom nk\\) gives \\(a(n)\\le n\\exp(nH(r))\\). For the reverse exponential bound, choose \\(k=\\lfloor yn\\rfloor\\) with \\(y>r\\) arbitrarily close to \\(r\\): then \\(H(y)<y\\log2\\), so eventually \\(\\binom nk<2^k\\) and that residue equals \\(\\binom nk\\), while the entropy lower bound \\(\\binom nk\\ge \\exp(nH(k/n))/(n+1)\\) shows \\(\\log a(n)/n\\to H(r)\\), hence the roots tend to \\(e^{H(r)}=2^r\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

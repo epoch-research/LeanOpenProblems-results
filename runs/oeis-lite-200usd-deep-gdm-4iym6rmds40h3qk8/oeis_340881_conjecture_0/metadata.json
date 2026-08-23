@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an odd prime, set \\(T=2(p-1)\\): Fermat’s theorem makes the product factors and triangular-power coefficients invariant under a shift by \\(T\\), while each extra term with index below \\(T\\) vanishes because its product contains \\(2^T-1\\). For \\(p=2\\), every positive-index summand vanishes and the remaining summand is \\(1\\), so the result follows separately.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

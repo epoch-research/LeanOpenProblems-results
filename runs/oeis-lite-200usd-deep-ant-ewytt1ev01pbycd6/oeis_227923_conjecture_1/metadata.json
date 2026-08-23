@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assuming either prime family is finite, bound it by $N$ and apply the hypothesis to $(N+2)!/6=x+y$, obtaining primes $p=6x-1$ and $q+2=6y+1$ with $p+(q+2)=(N+2)!$. The bound makes the appropriate one of $p$ or $q+2$ divide the factorial, so the identity forces it to divide the other prime; primality then forces equality (the unit case is impossible), contradicting $p\\equiv5\\pmod6$ and $q+2\\equiv1\\pmod6$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

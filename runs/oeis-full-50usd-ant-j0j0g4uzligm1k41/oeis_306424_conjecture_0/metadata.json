@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct finite checks show that 43 has the required property and that every integer from 44 through 288 fails it. For \\(k\\ge289\\), write \\(k=m^2+s\\) with \\(m=\\lfloor\\sqrt{k}\\rfloor\\) and \\(0\\le s\\le2m\\); a case split on \\(s\\) selects one of the nearby bases \\(m,m-1,m-2,m-3\\) in which the three-digit expansion of \\(k\\) has three pairwise distinct digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

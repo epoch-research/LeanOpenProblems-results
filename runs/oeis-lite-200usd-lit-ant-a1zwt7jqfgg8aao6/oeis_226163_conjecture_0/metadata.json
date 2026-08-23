@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic-character sum identities show that for \\(p\\equiv3\\pmod4\\), the product of the matrices with constants \\(C=m!\\) and \\(-C\\) (the latter transposed) is skew-symmetric of odd order, so its determinant vanishes; Wilson’s half-factorial identity and a polynomial/Vandermonde moment argument make the \\(-C\\) factor nonsingular, forcing the first determinant to vanish. For \\(p\\equiv1\\pmod4\\), Euler’s criterion reduces the matrix modulo \\(p\\) to an \\(m\\)-th-power matrix, whose nonsingularity follows from the same moment argument and Wilson identity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

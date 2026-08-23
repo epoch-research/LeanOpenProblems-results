@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8=2^3\\): the Möbius sum reduces to \\(8!(H_8-H_4)=25584>0\\). But \\(\\Omega(8)=3\\), which is odd and at least \\(3\\), so this gives a counterexample to the claimed sign criterion.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

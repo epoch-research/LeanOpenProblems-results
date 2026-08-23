@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Matching Rule 167’s zero update with the XOR form of Pascal’s recursion shows that its zero cells at time \\(t\\) occur exactly at \\(x=2-t+2j\\) where \\(\\binom{t-1}{j}\\) is odd; parity reduction of the resulting near-central binomial coefficient shows that the middle bit is zero exactly when \\(t\\) is a power of two. Since \\(n\\mid 2^{n+1}\\) holds exactly when \\(n\\) is a power of two, the floor term detects precisely that zero bit, and appending the bit to a binary prefix gives the claimed recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

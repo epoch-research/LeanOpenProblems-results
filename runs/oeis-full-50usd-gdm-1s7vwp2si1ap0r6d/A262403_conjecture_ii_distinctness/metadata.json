@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The argument exhibits the collision at indices 0 and 1: since \\(T(0)=0\\) and \\(T(1)=1\\), both contain no primes, so \\(\\pi(T(0))=\\pi(T(1))=0\\) despite \\(0\\ne1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

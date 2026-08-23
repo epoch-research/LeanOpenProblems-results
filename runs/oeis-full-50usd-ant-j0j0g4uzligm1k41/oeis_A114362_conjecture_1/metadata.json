@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Expand both zeta values into their Dirichlet series, isolate the terms through 10 for \\(\\zeta(n)\\) and through 3 for \\(\\zeta(2n)\\), and use algebraic cancellation to show that after subtracting the four leading terms every remaining finite product is \\(O(11^{-n})\\). The positive tails are bounded by comparison with the inverse-square series, while the resulting quotient denominator is at least \\(2\\), yielding the claimed error bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

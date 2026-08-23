@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(n=100q+r\\), explicit digit-sum formulas give a uniform block estimate: nine carry positions produce \\(8\\), while columnwise injectivity, control of the block endpoint, and a finite analysis of small prefix digit sums show that every other fixed value occurs at most nine times per block. Summing over complete blocks and bounding the final partial block gives frequencies \\(\\ge 9/100-O(1/N)\\) for \\(8\\) and \\(\\le 9/100+O(1/N)\\) otherwise, yielding the limsup comparison.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

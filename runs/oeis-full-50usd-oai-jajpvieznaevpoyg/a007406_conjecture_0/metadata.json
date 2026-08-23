@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=4\\), \\(1+\\frac14+\\frac19=\\frac{49}{36}\\), so the left side is \\(\\gcd(4,49)=1\\), whereas the square root of the largest square divisor of \\(4\\) is \\(2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

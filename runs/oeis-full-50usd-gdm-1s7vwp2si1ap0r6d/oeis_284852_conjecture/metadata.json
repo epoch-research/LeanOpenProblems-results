@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The tenth substitution prefix has length at most \\(4^{10}=1{,}048{,}576\\), and all positions beyond it are taken to be nonzero, so there are at most \\(1{,}048{,}577\\) zero positions and the fallback convention gives \\(a(1{,}048{,}578)=1\\). Since \\(r=(3+\\sqrt3)/3\\ge1\\), this makes \\(1{,}048{,}578r-a(1{,}048{,}578)\\ge1{,}048{,}577>2\\), contradicting the proposed bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

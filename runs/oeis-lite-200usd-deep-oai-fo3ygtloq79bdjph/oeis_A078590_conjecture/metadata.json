@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The seventh step is a counterexample: the fifth term is divisible by \\(19\\), while a direct computation gives the sixth term congruent to \\(3\\pmod{18}\\). Since \\(2^{18}\\equiv1\\pmod{19}\\), the next numerator is \\(2^3+1\\equiv9\\not\\equiv0\\pmod{19}\\), so it cannot be divisible by the fifth term.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

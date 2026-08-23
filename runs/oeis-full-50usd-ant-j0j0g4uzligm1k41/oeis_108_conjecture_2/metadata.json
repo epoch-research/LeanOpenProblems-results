@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The Catalan recurrence shows that from index 2 onward each reciprocal is at most \\(2/5\\) of its predecessor, so the entire later tail is smaller than the current term; this makes interval sums strictly ordered by their first index and, for a fixed first index, by their last index. These sums all lie strictly between \\(0\\) and \\(1\\), while the sole exceptional initial interval has sum \\(1\\) and fractional part \\(0\\), so equality of fractional parts forces equality of the intervals.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

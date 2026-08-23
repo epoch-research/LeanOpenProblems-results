@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite check shows that for every \\(1\\le d\\le2025\\) there are primes \\(p,q\\nmid d\\) with different final digits and \\(pq\\le150\\). Since \\(d\\) is invertible modulo \\(pq\\), some \\(0\\le i<pq\\) makes \\(a+id\\) divisible by both \\(p\\) and \\(q\\), so that term has prime divisors with different final digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

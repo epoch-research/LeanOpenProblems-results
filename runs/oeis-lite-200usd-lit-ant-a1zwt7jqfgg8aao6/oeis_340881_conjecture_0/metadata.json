@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Derive the recurrence \\(a_{m+1}=(2^m-1)a_m+2^{\\binom{m+1}{2}}\\); for odd \\(p\\), Fermat’s theorem and \\(\\binom{m+2(p-1)+1}{2}-\\binom{m+1}{2}=(p-1)(2m+2(p-1)+1)\\) make both the coefficient and forcing term invariant under the shift, and induction applies with a base case forced by the vanishing coefficient at the shifted \\(m=0\\). For \\(p=2\\), the recurrence shows the values are constant modulo 2 from index 1 onward.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

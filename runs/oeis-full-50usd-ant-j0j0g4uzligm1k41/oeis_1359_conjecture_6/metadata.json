@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Wilson’s theorem factors \\((p_{k+1}-1)!\\) to show that \\(p_k!\\equiv1\\pmod{p_{k+1}}\\) is equivalent to the intervening product being \\(1\\); when the prime gap is two this product is empty, while otherwise it is exactly the stated exceptional condition. A finite prime count identifies the primes at the exceptional index as \\(7841\\) and \\(7853\\), and direct modular computation shows their intervening product is \\(1\\pmod{7853}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The \\(\\pm1\\) condition implies every unit has \\((m-1)\\)-st power \\(1\\), so the Carmichael exponent divides \\(m-1\\); if \\(p^2\\mid m\\), the factor \\(p\\) in \\(\\lambda(p^2)=p(p-1)\\) would then divide both \\(m\\) and \\(m-1\\), proving that \\(m\\) is squarefree. Thus a composite odd \\(m\\) factors as coprime \\(d e\\) with \\(d,e\\ge3\\), and any hypothetical \\(b^n=-1\\) yields via CRT the unit \\(x=(b,1)\\), whose \\(n\\)-th power is \\((-1,1)\\), neither \\(1\\) nor \\(-1\\), contradicting the defining condition.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Split by parity, rewrite the Gamma factors using factorial and double-factorial identities, and decompose each factorial into a balanced power of \\(p\\), an earlier factorial, and full or half blocks of residues prime to \\(p\\). Full shifted blocks are unchanged modulo \\(p^{3r}\\) by a degree-two product expansion and reciprocal-sum vanishing (the linear sum modulo \\(p^{2r}\\), the pair sum modulo \\(p^r\\)); in the odd case a prime-power Lehmer–Morley half-block identity supplies the compensating powers of \\(4\\), after which the remaining unit factors cancel.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=7\\). Membership \\(x\\in\\{3,4,6,10,15\\}\\) gives \\(x\\ge3\\), while \\(x\\le y\\le z\\) forces \\(x+y+z\\ge3x\\ge9\\), so no such representation of \\(7>6\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

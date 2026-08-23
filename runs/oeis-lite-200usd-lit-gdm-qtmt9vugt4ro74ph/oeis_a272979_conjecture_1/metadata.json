@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Swapping the two quadratic variables shows that universal representability is unchanged when the coefficients \\(a\\) and \\(b\\) are exchanged. The proposed list contains \\((1,2,1,1)\\) but omits its necessarily equivalent swap \\((2,1,1,1)\\), contradicting the claimed classification.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

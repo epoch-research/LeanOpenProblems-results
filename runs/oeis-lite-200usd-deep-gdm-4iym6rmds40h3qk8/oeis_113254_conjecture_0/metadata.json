@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Define an auxiliary sequence by \\(u_0=1, u_1=-2\\) and \\(u_{n+2}=-4u_{n+1}-64u_n\\); eliminating the mixed products shows that \\(u_{n+1}^2\\) and the odd-indexed terms satisfy the same third-order recurrence. Agreement of the first three values then gives \\(a_{2n+1}=u_{n+1}^2\\) for all \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

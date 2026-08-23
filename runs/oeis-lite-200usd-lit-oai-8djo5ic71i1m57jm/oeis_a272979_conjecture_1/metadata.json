@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Swapping the two quadratic variables shows that universal representability for coefficients \\((a,b,c,d)\\) is equivalent to that for \\((b,a,c,d)\\). The proposed list contains \\((1,2,1,1)\\) but omits its equally representable swap \\((2,1,1,1)\\), contradicting the claimed classification.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

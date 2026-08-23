@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite divisibility check shows that for every \\(1\\le d\\le2025\\), one of the prime pairs \\((11,13),(7,19),(5,29),(3,17),(2,17)\\) has neither member dividing \\(d\\); each pair has distinct final digits and product at most \\(150\\). Since \\(d\\) is invertible modulo that product, some \\(0\\le i<pq\\le150\\) makes \\(a+id\\) divisible by both primes, so that term has prime divisors with different final digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

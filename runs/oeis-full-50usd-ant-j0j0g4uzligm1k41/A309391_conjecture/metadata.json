@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite square \\(n=p^2=16843^2\\): a finite modular inverse-sum computation gives \\(v_p(H_{p-1})\\ge3\\), while splitting \\(H_{p^2-1}\\) according to divisibility by \\(p\\) and pairing \\(j\\) with \\(p^2-j\\) gives \\(v_p(H_{p^2-1})\\ge2\\). The identity \\(H_{p^2-2}-1=H_{p^2-1}-p^2/(p^2-1)\\) then shows that \\(p^2\\) divides the numerator-minus-denominator of \\(H_{p^2-2}\\), so the relevant gcd is all of \\(p^2\\) although \\(p^2\\) is composite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

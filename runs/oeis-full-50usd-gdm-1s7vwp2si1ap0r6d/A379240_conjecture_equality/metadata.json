@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=60\\), direct evaluation of the prefix gives label \\(42\\) for the original transform but \\(41\\) for the triple transform. The discrepancy comes from \\(56\\) and \\(60\\): both are divisible by \\(2^2\\) and have triple \\((92,4,2)\\), so the original defining function keeps them distinct as the values \\(56\\) and \\(60\\), whereas the triple transform makes \\(60\\) reuse the earlier label of \\(56\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

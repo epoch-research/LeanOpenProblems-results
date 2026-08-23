@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The recurrence \\(a_{n+1}=(2^n-1)a_n+2^{\\binom{n+1}{2}}\\), Fermat’s theorem, and the triangular-number shift identity show that both its coefficient and inhomogeneous term repeat after \\(2(p-1)\\), so a base case and induction give the result for odd primes. For \\(p=2\\), the recurrence directly shows that every term from \\(a_1\\) onward is odd.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=9\\), the product of the first nine primes is \\(223092870\\), and \\(223092870^2+1=49770428644836901=29^2\\cdot59180057841661\\). Thus this term has the nontrivial square divisor \\(29^2\\) and is not squarefree, which already falsifies the conjunction irrespective of the infinitude claim.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

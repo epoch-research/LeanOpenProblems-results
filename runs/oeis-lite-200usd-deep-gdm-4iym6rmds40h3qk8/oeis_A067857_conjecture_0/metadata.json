@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=27=3^3\\), so \\(\\Omega(27)=3\\). Since \\(\\mu(27)=\\mu(9)=0\\), \\(\\mu(3)=-1\\), and \\(\\mu(1)=1\\), the Möbius sum gives \\(a(27)=27!\\,(H_{27}-H_9)>0\\), providing the required counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=14\\). A finite count of primes in the adjacent length-14 intervals shows that equality occurs only for \\(k=4\\) and \\(k=12\\); but \\(2k+1\\) is then respectively \\(9\\) or \\(25\\), both composite, so no admissible \\(k\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

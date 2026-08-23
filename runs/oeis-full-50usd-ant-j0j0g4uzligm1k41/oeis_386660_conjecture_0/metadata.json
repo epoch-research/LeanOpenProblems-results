@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(H\\) be binary entropy and choose \\(x_*\\in(1/2,1)\\) with \\(H(x_*)=x_*\\log 2=:c\\); splitting according to whether \\(k/n\\le x_*\\) and using the bounds from \\(2^k\\) and \\(\\binom nk\\) shows every summand is at most \\(e^{cn}\\), hence the whole sum is at most \\(n e^{cn}\\). For \\(k=\\lfloor x_*n\\rfloor+1\\), entropy monotonicity gives \\(\\binom nk<2^k\\), so this residue equals \\(\\binom nk\\), while the binomial theorem gives \\(\\binom nk\\ge e^{nH(k/n)}/(n+1)\\); since \\(k/n\\to x_*\\), taking logarithms and squeezing yields the limit \\(e^c\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

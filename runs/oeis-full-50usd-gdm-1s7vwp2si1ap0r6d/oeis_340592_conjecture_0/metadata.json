@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Trial-division factorization and decimal concatenation are exhaustively evaluated for every smaller integer in finite blocks; the bounds \\(2^{15}>28749\\) and \\(\\sqrt n<171\\) ensure that at most 15 factors and trial divisors below 171 suffice. At the endpoint, \\(28749=3\\cdot7\\cdot37^2\\), and the concatenation is \\(373737=13\\cdot28749\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

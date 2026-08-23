@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The Catalan recurrence gives \\(C_{n+1}\\ge (5/2)C_n\\) for \\(n\\ge2\\), so the reciprocals are geometrically dominated and \\(1/C_m\\) exceeds the entire later tail; hence the least index in the symmetric difference of two intervals forces their sums to differ. Every nonexceptional sum lies strictly between \\(0\\) and \\(1\\), so it equals its fractional part, while the exceptional sum is \\(1\\) and has fractional part \\(0\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Factorials are split into their p-divisible and reduced-residue parts, expressing adjacent binomial coefficients through block products \\(G_c=\\prod_{p\\nmid t<p^r}(t+cp^r)\\); p-adic product expansions, with reciprocal-square sum divisibility and a mod-\\(p\\) vanishing sum, give \\(G_c\\equiv G_0\\pmod{p^{3r-v_p(3)}}\\) and \\(G_2G_0^2\\equiv G_1^3\\pmod{p^{3r+3}}\\). Telescoping supplies the needed mod-\\(p^3\\) base approximations, and an algebraic combination of these estimates cancels the first-order increments while all higher-order terms have sufficient p-adic valuation.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

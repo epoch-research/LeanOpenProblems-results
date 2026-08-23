@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Specializing to \\(k=2\\) and expanding \\(\\binom n2\\) and \\(\\binom{n+2}2\\) shows that every term of the second series is \\(16=(2!)^4\\) times the corresponding term of the first. The first series converges and has a positive term (hence a positive sum), so the claimed equality would force \\(S=16S\\) with \\(S>0\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

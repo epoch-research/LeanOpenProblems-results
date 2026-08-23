@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At exponent \\(m=39101\\), the candidate \\(N=201886\\cdot3^{39101}-1\\) is shown prime using the Lucas recurrence \\(U_{k+2}=U_{k+1}-3U_k\\): modular calculations force the associated period modulo every prime divisor \\(p\\mid N\\) to be divisible by \\(F=100943\\cdot3^{39101}\\), while that period is at most \\(p+1\\). Since \\(N=2F-1\\) and \\(F>\\sqrt N+1\\), no prime divisor can be at most \\(\\sqrt N\\), proving primality and furnishing the required positive exponent.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

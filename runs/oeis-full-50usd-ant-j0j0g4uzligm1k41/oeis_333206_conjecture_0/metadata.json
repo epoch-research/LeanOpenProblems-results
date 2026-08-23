@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Apply excluded middle to whether the values are eventually below a fixed threshold \\(k\\). Negating that eventual bound and distributing the negation through the quantifiers yields: for every \\(M\\), some \\(n\\ge M\\) satisfies \\(a(n)\\ge k\\), which is exactly the other side of the dichotomy.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

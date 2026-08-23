@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the intermediate value \\(a(n)+4=5292270077783\\) is itself a Sierpiński number. A period-48 covering argument shows that for every exponent \\(m>0\\), one of \\(3,5,7,17,97,257,673\\) properly divides \\(5292270077783\\cdot2^m+1\\), so this value lies strictly between the two proposed consecutive numbers.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

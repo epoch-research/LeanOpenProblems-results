@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the term as \\(q=((m+7)^2-2)/\\gcd((m+7)^2-2,\\,2(m+6)(m+4)!)\\), factorial divisibility and growth estimates show—after finitely many exceptional cases—that every prime \\(p\\mid q\\) either satisfies \\(p\\ge m+7\\) or already has \\(q=p\\). If \\(q\\) were composite and not 1, two prime factors would therefore have product at least \\((m+7)^2\\), contradicting both their product dividing \\(q\\) and \\(q\\mid (m+7)^2-2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

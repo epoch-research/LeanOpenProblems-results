@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof’s core is the decomposition \\(4a_k=8\\cdot8^k-8(-8)^k+c_k\\), where \\(c_0=-4,\\ c_1=-112\\) and \\(c_{k+2}=-4c_{k+1}-64c_k\\); expressing \\(c_k\\) via the two roots of \\(x^2+4x+64\\) yields the doubling identity \\(c_n^2=c_{2n+1}+128\\cdot64^n\\). At odd indices the \\(\\pm8\\) power terms supply exactly \\(128\\cdot64^n\\), and since \\(c_n=2d_n\\) for an integer sequence \\(d\\), cancellation gives \\(a_{2n+1}=d_n^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

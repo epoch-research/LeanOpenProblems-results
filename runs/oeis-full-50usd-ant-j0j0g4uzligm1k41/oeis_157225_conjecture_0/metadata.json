@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=716993899\\), so \\(2n-1=1433987797\\), size bounds force any possible exponents to satisfy \\(1\\le x,y\\le30\\). Exhausting these pairs shows each candidate \\(1433987797-2^x-7\\cdot2^y\\) is nonpositive, has the wrong residue modulo \\(6\\), or is composite, while this \\(n\\) is not among the proposed exceptions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the prime $p=11$, for which $\\left(\\frac{11}{7}\\right)=-1$. Direct evaluation of the finite weighted sum gives residue $44\\pmod{121}$, whereas the claimed right-hand side is $11(21(-1)+16)=-55\\equiv66\\pmod{121}$, so the congruence fails.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

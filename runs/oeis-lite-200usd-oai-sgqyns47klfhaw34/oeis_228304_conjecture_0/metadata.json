@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(p=2h+1\\), reflection and the congruence \\((1+X)^p\\equiv1+X^p\\pmod p\\) show that all entries with \\(p\\le i+j<2p-1\\) vanish: odd-index sums cancel by reflection, while the remaining sums cancel after pairing their \\(k\\) and \\(p+k\\) parts (with the corresponding central-binomial congruences for the second sum). At index \\(p-1\\), \\(\\binom{p-1}{k}\\equiv(-1)^k\\) gives the values \\(1\\) and \\((-1)^h\\), respectively (only the middle term survives in the latter); reversing the columns therefore makes each Hankel matrix triangular, and its reversal sign \\((-1)^h\\) together with the constant diagonal gives the claimed residues.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

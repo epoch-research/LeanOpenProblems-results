@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cases \\(1\\le k\\le 59\\) are settled by explicit prime decompositions. For \\(k\\ge 60\\), set \\(n=2k+1\\); if \\(4k+2=2n\\) were not a sum of two primes, every matrix entry would be zero because its two candidate primes sum to \\(2n\\), forcing the determinant to vanish and contradicting the hypothesis.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

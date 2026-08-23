@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the quotient as \\(U(m)/D(m)\\), exactness follows from \\(v_q(U(m))=\\sum_{s\\ge1}\\lfloor m/q^s\\rfloor^2\\) (counting pairs whose gcd is divisible by \\(q^s\\)) and \\(v_q(D(m))=\\sum_i i\\sum_{s\\ge1}\\lfloor m/(iq^s)\\rfloor\\), together with \\(\\sum_i i\\lfloor N/i\\rfloor\\le N^2\\). For \\(m=np+k\\) with \\(k<p\\), the new rows and columns contribute no \\(p\\)-factor to \\(U\\), while Legendre’s formula shows every term of \\(v_p(D)\\) is unchanged since \\(\\lfloor(np+k)/(ip^s)\\rfloor=\\lfloor np/(ip^s)\\rfloor\\), and the newly indexed factorials have valuation zero; subtracting these equal valuations proves the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

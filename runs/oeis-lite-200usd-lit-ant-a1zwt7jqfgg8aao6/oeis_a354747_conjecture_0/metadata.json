@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Set \\(m=39101\\) and \\(M=2\\cdot100943\\cdot3^{39101}-1\\). Modular computations in \\((\\mathbb Z/M\\mathbb Z)[\\sqrt3]\\) give a Lucas–Pocklington certificate showing that \\(2+\\sqrt3\\) has order \\(M+1\\) after reduction modulo every prime divisor of \\(M\\), using the prime factors \\(2,3,100943\\) of \\(M+1\\); Frobenius forces that order to divide \\(p\\pm1\\), contradicting \\(p^2\\le M\\) if \\(M\\) were composite, so \\(M\\) is prime and \\(m\\) is a positive witness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

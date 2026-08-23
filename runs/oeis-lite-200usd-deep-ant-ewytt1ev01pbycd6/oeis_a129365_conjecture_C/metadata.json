@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the numerator and denominator as \\(N_m,D_m\\), the proof derives \\(v_p(N_m)=\\sum_{i\\ge1}\\lfloor m/p^i\\rfloor^2\\) and \\(v_p(D_m)=\\sum_{i\\ge1}\\sum_{c\\ge1}c\\lfloor m/(cp^i)\\rfloor\\), with termwise bounds also establishing \\(D_m\\mid N_m\\). For \\(m=np+k\\) with \\(k<p\\), every relevant quotient by \\(p^i\\) agrees with that for \\(np\\), while the extra range terms vanish, so both valuations—and hence their difference, the valuation of the quotient—are unchanged.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

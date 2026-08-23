@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(2\\le n\\le4\\), the congruence \\(10^i\\equiv1+9i\\pmod{81}\\), combined with reversal, shows that any number and its reverse both divisible by \\(3^n\\) must have digit sum divisible by \\(3^n\\); the digit-sum bound then forces the minimal candidate to be the corresponding all-nines number. For \\(n\\ge5\\), a fixed 11-digit palindromic multiple of \\(3^5\\) is recursively concatenated threefold, each step adding a factor divisible by 3, producing a qualifying palindrome of length \\(11\\cdot3^{n-5}<3^{n-2}\\) and hence strictly smaller than the all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

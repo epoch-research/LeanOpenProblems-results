@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(Q_n+P_n\\sqrt2=(1+\\sqrt2)^n\\), so \\(Q_n^2-2P_n^2=(-1)^n\\); Pell-approximation bounds give the no-carry identity \\(\\lfloor\\sqrt2(P_n+j)\\rfloor=Q_n+\\lfloor\\sqrt2j\\rfloor\\) for \\(1\\le j\\le Q_n\\), making each shifted sign block a copy of the initial block with a parity-determined sign. Splitting into these blocks and inducting yields the exact values \\(a(P_{2k})=2k\\) (and \\(a(P_{2k+1})=1\\)), from which arbitrarily large values follow.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

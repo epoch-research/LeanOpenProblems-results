@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A continuant invariant and a congruence modulo \\(5n-4\\) yield \\(a(n)=(5n-4)/\\gcd(5n-4,3\\cdot4\\cdots n)\\). For each residue of \\(p\\bmod 5\\), one chooses \\(c\\in\\{1,2,3,4\\}\\) and \\(n=(cp+4)/5<p\\) (with \\(p=11\\) handled at \\(n=3\\)); conversely, the product formula forces every occurrence to satisfy \\(5n-4=cp\\), \\(1\\le c<5\\), and \\(n<p\\), so the residue modulo \\(5\\) determines \\(c\\) and then \\(n\\) uniquely.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

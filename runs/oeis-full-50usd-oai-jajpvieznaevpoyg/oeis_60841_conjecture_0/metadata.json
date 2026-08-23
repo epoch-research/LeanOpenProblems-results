@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=1807\\), direct evaluation and reduction of \\(\\prod_{k=1}^{1807} k^2/\\varphi(k)\\) gives denominator \\(3\\cdot 2^{2342}\\). Its factor of \\(3\\) shows that the denominator is not a power of two, providing a counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

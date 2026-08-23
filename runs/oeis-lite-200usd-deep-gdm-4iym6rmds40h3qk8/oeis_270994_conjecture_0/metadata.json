@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For every exponent residue modulo 48, one of \\(3,5,7,17,97,257,673\\) divides \\(5292270077783\\cdot 2^m+1\\), so \\(5292270077783\\) is a Sierpiński number. At \\(n=473165\\), the endpoints are \\(5292270077779\\) and \\(5292270077807\\), and this Sierpiński number lies strictly between them, disproving consecutiveness.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

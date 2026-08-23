@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write the diagonal coefficient as \\([x^M]F(x)^M\\) and study the Frobenius quotient \\(\\Phi=F(x)^p/F(x^p)\\); the divisor-sum identity controlling \\(\\sigma_2(ps)-\\sigma_2(s)\\) gives strong \\(p\\)-adic bounds on its logarithmic derivative. Expanding \\(\\Phi^M\\) exponentially and combining factorial and coefficient valuation bounds proves divisibility by \\(p^{2v_p(M)+2}\\), which yields the claimed modulus on taking \\(M=np^{k-1}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

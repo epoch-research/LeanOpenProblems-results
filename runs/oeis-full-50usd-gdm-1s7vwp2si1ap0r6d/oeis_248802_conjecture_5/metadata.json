@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the admissible value \\(n=51\\), giving index \\(7044\\). Modular computation shows \\(2^{7044}+2\\equiv672\\pmod{1398}\\), \\(2^{1398}\\equiv1\\pmod{1399}\\), and \\(2^{672}+3\\equiv0\\pmod{1399}\\), so \\(1399\\) divides the relevant number and its smallest prime factor is at most \\(1399<1669\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

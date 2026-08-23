@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences pair the terms in the two base-\u001b[1mp\u001b[0m blocks to show both sequences vanish modulo \\(p\\) at every index \\(p+r\\) with \\(0\\le r<p\\), making the Hankel matrices anti-triangular; meanwhile \\(\\binom{p-1}{k}\\equiv(-1)^k\\) gives anti-diagonal values \\(1\\) and \\((-1)^{(p-1)/2}\\), respectively (in the latter case all but the middle term vanish through a central-binomial divisibility argument). The determinant is therefore the product of the constant anti-diagonal and the reversal sign \\((-1)^{p(p-1)/2}\\), yielding the two claimed residues after sign cancellation.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

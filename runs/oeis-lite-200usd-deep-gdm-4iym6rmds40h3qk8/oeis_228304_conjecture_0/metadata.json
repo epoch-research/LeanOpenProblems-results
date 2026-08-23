@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas-type binomial congruences, divisibility of central binomial coefficients, and pairing the terms indexed by \\(k\\) and \\(p+k\\) show that both sequences vanish modulo \\(p\\) from indices \\(p\\) through \\(2p-2\\), while at index \\(p-1\\) their values are respectively \\(1\\) and \\((-1)^{(p-1)/2}\\). Thus each Hankel matrix is anti-triangular modulo \\(p\\), so only the reversal permutation survives in the determinant expansion; its sign is \\((-1)^{(p-1)/2}\\), and the constant antidiagonal products give the two claimed residues (with the second sign product cancelling to \\(1\\)).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

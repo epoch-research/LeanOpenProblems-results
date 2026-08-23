@@ -1,8 +1,8 @@
 {
   "settlement": "disproved",
-  "proof_summary": "For the composite squarefree number \\(n=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\), the identity \\(\\sum_{k=1}^n\\gcd(k,n)=\\sum_{d\\mid n}\\varphi(d)(n/d)\\) and multiplicativity give the value \\(610815156979325\\). Thus one plus this gcd-sum is \\(610815156979326=26n\\), so its gcd with \\(n\\) is \\(n\\), producing the required composite counterexample.",
+  "proof_summary": "Take the composite squarefree number \\(n=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\). Using \\(\\sum_{k=1}^n\\gcd(k,n)=\\prod_{p\\mid n}(2p-1)\\), one gets \\(610815156979325=26n-1\\), so \\(n\\mid 1+\\sum_{k=1}^n\\gcd(k,n)\\) and hence the quotient is \\(1\\) despite \\(n\\) being composite.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

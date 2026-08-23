@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(J(a,b)=\\int_0^1 e^x x^a(1-x)^b\\,dx\\); integration by parts shows that the odd and even linear errors are respectively signed factorial multiples of \\(J(m+1,m+1)\\) and \\(J(m,m+2)\\), by matching their recurrences and initial values. Since \\(|J(a,b)|\\le e\\), these errors tend to zero, and positivity (indeed, monotonicity) of the denominators makes the quotient error no larger than the linear error.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

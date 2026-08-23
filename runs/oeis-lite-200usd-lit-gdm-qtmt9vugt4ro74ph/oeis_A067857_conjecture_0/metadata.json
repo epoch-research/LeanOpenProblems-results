@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\). Since \\(\\mu(8)=\\mu(4)=0\\), \\(\\mu(2)=-1\\), and \\(\\mu(1)=1\\), the divisor sum gives \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negative sign.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

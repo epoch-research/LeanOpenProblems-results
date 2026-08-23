@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the odd-indexed terms, the error \\(b_{2m+1}e-a_{2m+1}\\) is identified, via matching initial values and a recurrence obtained by twice integrating by parts, with \\((-1)^{m+1}(m+1)!^{-1}\\int_0^1 e^x(x(1-x))^{m+1}\\,dx\\); bounding the integral by \\(e\\) makes this error (even after multiplication by a linear factor) tend to zero. A bridge identity expresses each even-indexed error as a linear combination of two odd-indexed errors, so both parity subsequences of the ratios converge to \\(e\\), and hence so does the full sequence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

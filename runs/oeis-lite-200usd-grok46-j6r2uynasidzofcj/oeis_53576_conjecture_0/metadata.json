@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using the prime factorization formula for $v_2(\\varphi(m))$, the proof bounds each odd prime factor $p$ in terms of $c=v_2(p-1)$: equality in $p\\ge 2^c+1$ forces a Fermat prime, while otherwise $p\\ge 3\\cdot2^c+1$. Product and geometric-sum bounds then show that any admissible $m<2^{2^{33}+1}$ must equal $F_{33}$ and make it prime; since both $2^{2^{33}+1}$ and, when prime, $F_{33}$ are admissible, the two cases follow by minimality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

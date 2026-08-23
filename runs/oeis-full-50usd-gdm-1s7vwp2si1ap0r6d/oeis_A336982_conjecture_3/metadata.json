@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the prime \\(p=13=3\\cdot1^2+10\\cdot1^2\\), for which the required quadratic-character conditions in the third case hold and \\(\\left(\\frac{-1}{13}\\right)=1\\); moreover, every representation \\(13=3x^2+10y^2\\) forces \\(x^2=1\\), so the claimed residue is \\(2\\cdot13-12=14\\pmod{169}\\). Direct evaluation of the finite sum instead gives \\(S(13)\\equiv138\\pmod{169}\\), yielding the contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

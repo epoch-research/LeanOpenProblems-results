@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=5\\), direct evaluation gives \\(a(5)=4\\) and \\(a(4)=3\\), so the difference is \\(1\\); but \\(5=\\lfloor 2\\phi^2\\rfloor\\), and the conjectured \\(\\phi^2\\)-Beatty characterization requires that same difference to be \\(0\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

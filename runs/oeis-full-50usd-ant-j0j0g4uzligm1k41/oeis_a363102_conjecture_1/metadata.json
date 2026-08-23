@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The identity \\(2D=2(n-1)(n-3)!+(n^2-2)\\sum_{j<n-3}j!\\), together with Legendre’s bound, shows that if an odd prime power \\(p^j\\) survives the gcd quotient then \\(p^{\\lfloor(n-3)/p\\rfloor+j}\\mid n^2-2\\). If the quotient were composite, its first two prime factors (with parity and congruences excluding 2 and 3) would, whether equal or distinct, force a divisor of \\(n^2-2\\) at least \\(n^2\\), contradicting \\(n^2-2<n^2\\); the lone boundary case is computed directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

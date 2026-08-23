@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "An odd integer with power-of-two totient is shown to be a squarefree product of Fermat primes, with the totient exponent equal to the sum of the corresponding distinct powers of two; uniqueness of binary expansion then forces an odd solution at exponent \\(2^K\\) to be exactly \\(F_K\\), and hence requires \\(F_K\\) to be prime. Using \\(\\varphi(m)<m\\), any putative smaller solution in the composite case must satisfy \\(\\varphi(m)=2^{2^K}\\); writing \\(m=2^a r\\) with \\(r\\) odd and applying the classification or the bound \\(\\varphi(r)<r\\) forces \\(m\\ge 2^{2^K+1}\\), while \\(F_K\\) when prime and this power of two otherwise attain the respective bounds.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

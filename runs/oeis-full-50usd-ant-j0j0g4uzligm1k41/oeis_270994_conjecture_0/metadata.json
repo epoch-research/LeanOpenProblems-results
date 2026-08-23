@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the interior value \\(K=a(n)+4=5292270077783\\) is itself a Sierpiński number.  Indeed, the primes \\(\\{3,5,7,17,97,257,673\\}\\) form a period-48 covering: \\(2^{48}\\equiv1\\) modulo each, and a finite check of all exponent residues modulo \\(48\\) shows that one of them properly divides \\(K2^m+1\\) for every positive \\(m\\), making every such number composite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

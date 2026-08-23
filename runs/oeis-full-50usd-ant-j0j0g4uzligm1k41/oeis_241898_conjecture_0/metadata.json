@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=736>599\\). For each possible number of summands from one to four, the equation expressing \\(736\\) as a sum of nondecreasing squares bounds the bases to a finite range, and exhaustive checking shows there is no such representation whose smallest base is at least \\(8\\); hence \\(a(736)\\le 7\\), contradicting the proposed inequality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

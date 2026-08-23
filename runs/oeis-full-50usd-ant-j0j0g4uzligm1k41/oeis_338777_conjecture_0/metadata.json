@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Since a product unequal to one cannot be indexed by the empty set, an associated prime exists (and the finite set has a maximum). For any such prime \\(p\\), if \\(2n-p\\) were composite, its least prime factor would be at most \\(\\sqrt{2n-p}\\le\\sqrt{2n}\\) and would force \\(p\\equiv 2n\\pmod q\\), contradicting the defining exclusion; hence \\(p\\) and \\(2n-p\\) form a Goldbach partition, in particular when \\(p\\) is the maximum.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

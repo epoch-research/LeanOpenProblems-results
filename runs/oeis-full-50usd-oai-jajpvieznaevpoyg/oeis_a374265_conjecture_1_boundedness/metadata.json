@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming a bound \\(B\\), let \\(L\\) be its decimal digit length and choose the stage \\(n=10^{L+1}-1\\); retaining the final product makes the resulting value at least \\(n>B\\). If zeros are deleted instead, the product is a positive multiple of \\(10^{L+1}-1\\), whose digit sum is at least \\(9(L+1)\\), while zero deletion preserves digit sum and every number at most \\(B\\) has digit sum at most \\(9L\\), again a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

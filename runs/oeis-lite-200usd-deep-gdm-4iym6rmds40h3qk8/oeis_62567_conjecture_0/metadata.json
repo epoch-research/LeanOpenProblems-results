@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cases \\(3^2\\) and \\(3^3\\) are settled by direct minimality checks, while for \\(81\\) the congruence \\(N+\\operatorname{rev}(N)\\equiv(2+9(\\ell-1))S\\pmod{81}\\) forces any smaller qualifying number to have nine digits of sum \\(81\\), hence to be all nines. For \\(n\\ge5\\), start with a 19-digit palindrome divisible by \\(3^5\\) and repeatedly concatenate three copies: each step preserves palindromicity and gains a factor of \\(3\\), while its length \\(19\\cdot3^{n-5}<3^{n-2}\\) makes it smaller than the all-nines candidate.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

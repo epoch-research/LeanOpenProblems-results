@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(m=\\lfloor rn\\rfloor\\) and \\(\\alpha=rn-m\\); irrationality gives \\(0<\\alpha<1\\), while \\(r^2=2r+\\tfrac14\\) yields \\(a(n)=2m+K\\) with \\(K=\\left\\lfloor \\tfrac n4+(2-r)\\alpha\\right\\rfloor\\), hence \\(nr^2-a(n)=2\\alpha+\\tfrac n4-K\\). Since \\(-\\tfrac14<(2-r)\\alpha<0\\), splitting according to \\(n\\bmod 4\\) shows \\(\\tfrac14\\le \\tfrac n4-K\\le1\\); combining this with \\(0<\\alpha<1\\) gives the two strict bounds.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

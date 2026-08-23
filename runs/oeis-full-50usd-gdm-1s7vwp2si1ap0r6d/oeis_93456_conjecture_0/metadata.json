@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assume divisibility holds eventually, and use Bertrand’s postulate to choose a sufficiently large prime \\(p\\); the minimal triangular-number block reaching \\(2p\\) contains the composite \\(2p\\), so its product is divisible by \\(p\\). A later block is arranged to lie strictly between \\(2p\\) and \\(3p\\), hence contains no multiple of \\(p\\), while eventual divisibility propagates the earlier product into the later one, giving a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

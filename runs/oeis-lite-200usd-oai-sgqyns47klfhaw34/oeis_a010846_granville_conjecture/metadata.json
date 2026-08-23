@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For every prime \\(p\\), the only admissible integers at most \\(p\\) are \\(1\\) and \\(p\\), so the value is always \\(2\\). Taking \\(\\epsilon=\\tfrac12\\) and an arbitrarily large prime \\(p>e^4\\) makes the proposed lower bound \\(\\sqrt{\\log p}>2\\), yielding a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "If \\(F_{33}\\) is prime, then \\(\\varphi(F_{33})=2^{2^{33}}\\), while every smaller positive candidate has totient too small (including the endpoint power of two), so \\(F_{33}\\) is minimal. If \\(F_{33}\\) is composite, even candidates below \\(2^{2^{33}+1}\\) are excluded by writing them as \\(2^k d\\) with \\(d\\) odd and bounding \\(\\varphi(d)<d\\); an odd candidate would be squarefree with prime factors among \\(2^{2^j}+1\\) for \\(j<33\\), whose totient contributions multiply to at most \\(2^{\\sum_{j<33}2^j}=2^{2^{33}-1}\\), contradicting the required divisibility, while the stated power of two itself has the required totient.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

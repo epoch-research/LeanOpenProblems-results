@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "Define an auxiliary sequence by \\(b_0=2\\), \\(b_1=56\\), and \\(b_{n+2}=-4b_{n+1}-64b_n\\). A simultaneous induction using the fourth-order recurrence proves \\(a_{2n+1}=b_n^2\\) together with the bridging identities \\(a_{2n+2}=b_nb_{n+1}+64^{n+1}\\) (and their one-step shifts), from which every odd-indexed term is a square.",
+  "proof_summary": "Introduce an auxiliary sequence with \\(b_0=2\\), \\(b_1=56\\), and \\(b_{n+2}=-4b_{n+1}-64b_n\\). A simultaneous induction on a four-term window proves \\(a_{2n+1}=b_n^2\\), \\(a_{2n+2}=b_nb_{n+1}+64^{n+1}\\), \\(a_{2n+3}=b_{n+1}^2\\), and \\(a_{2n+4}=b_{n+1}b_{n+2}+64^{n+2}\\); substituting both recurrences advances the window by two terms and yields the square identity.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

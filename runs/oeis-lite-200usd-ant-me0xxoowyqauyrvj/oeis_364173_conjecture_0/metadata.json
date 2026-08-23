@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Factoring each factorial into its powers of \\(p\\) and its \\(p\\)-free part reduces the even-index case to a lifted Wilson congruence modulo \\(q^3\\), \\(q=p^{t+1}\\); this congruence follows by pairing reduced residues under \\(u\\mapsto q-u\\) and using \\(\\sum u^{-2}=0\\pmod q\\) to eliminate the quadratic error. For odd indices, splitting the reduced residues into half-ranges and applying doubling yields a generalized Morley relation between the central shifted block and the ordinary reduced-residue block, which cancels the extra powers of \\(2\\) and gives the same one-step congruence; taking \\(t=r-1\\) completes the argument.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

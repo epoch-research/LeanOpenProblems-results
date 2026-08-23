@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The recurrence is converted into a formula for each prime-adic valuation; for \\(p\\ne3\\), expanding valuations as counts of divisibility by \\(p^j\\) and comparing the corresponding residue classes modulo \\(p^j\\) shows that the three numerator progressions dominate the denominator progression and two factorial contributions. For \\(p=3\\), the progression terms are all prime to 3 and \\(2v_3(n!)<n\\), so every prime-adic valuation is nonnegative and the rational coefficient is integral.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

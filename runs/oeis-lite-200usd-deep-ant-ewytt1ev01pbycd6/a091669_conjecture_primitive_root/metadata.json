@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Composite moduli are excluded by splitting off powers of two: for a proper odd prime divisor \\(p\\mid n\\), multiplicative-order counts and Legendre’s formula give the strict \\(p\\)-adic valuation needed to show \\(p\\mid a(n-1)\\), contradicting divisibility of the sum, while for \\(n=2^k\\) a binary-digit valuation calculation gives \\(v_2(a(n-1))=k-1\\). For prime \\(n\\), the defining product identity, Wilson’s theorem, and the assumed congruence yield \\(\\prod_{j=1}^{n-2}(2^j-1)\\equiv1\\pmod n\\); hence the order of \\(2\\) cannot be less than \\(n-1\\), since its corresponding factor would vanish, so it equals \\(n-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

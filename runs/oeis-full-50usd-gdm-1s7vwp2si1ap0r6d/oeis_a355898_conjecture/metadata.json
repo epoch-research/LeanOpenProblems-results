@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the first claimed identity, the shifted values \\(Y_k=a(3773+k)+1\\) obey the Fibonacci recurrence; a modular matrix computation with \\(p=195318521017\\) and \\(j=249580073232\\) gives \\(Y_j\\equiv0\\) and \\(Y_{j+1}\\equiv1\\pmod p\\), forcing both \\(a_{3774+j}\\) and \\(a_{3775+j}\\) to be divisible by \\(p\\). Their gcd is therefore at least \\(2\\), so the defining recurrence makes the next term strictly smaller than \\(1+a_{3775+j}+a_{3774+j}\\), contradicting the asserted identity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

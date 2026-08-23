@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=7\\), the relevant preceding values are \\(171\\) and \\(E=(2^{171}+1)/9\\). A modular calculation gives \\(E\\equiv3\\pmod{18}\\), so \\(2^E+1\\equiv 9\\not\\equiv0\\pmod{19}\\); since \\(19\\mid171\\), divisibility by \\(171\\) fails.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

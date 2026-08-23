@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite exhaustive count shows that at \\(n=69383\\) there is exactly one qualifying representation, namely \\(69383=187^2+147^2+6^2+113^2\\), with the auxiliary product equal to \\(16968^2\\). Yet \\(69383\\equiv3\\pmod 4\\), so it cannot have a positive power of \\(4\\) as a factor, and for exponent zero it is not one of the five proposed base values.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

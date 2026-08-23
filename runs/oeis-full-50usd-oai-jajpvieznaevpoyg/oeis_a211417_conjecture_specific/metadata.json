@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Legendre’s formula reduces the claim prime by prime to \\(\\lfloor15n/q\\rfloor+\\lfloor10n/q\\rfloor+\\lfloor6n/q\\rfloor+\\mathbf1_{q\\mid30n-1}\\le\\lfloor30n/q\\rfloor+\\lfloor n/q\\rfloor\\) for every prime power \\(q\\). Writing \\(n=qs+r\\) and \\(t=\\lfloor30r/q\\rfloor<30\\), the inequality follows from the finite floor relations for \\(t\\); when \\(q\\mid30n-1\\), the equation \\(30r=qt+1\\) makes \\(t\\) coprime to \\(30\\), yielding the extra unit, and summing over prime powers proves the divisibility.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

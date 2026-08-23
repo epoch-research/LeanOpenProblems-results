@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity shows that for such a prime \\(p\\), \\(5\\) is a square modulo \\(p\\); choosing a suitable square root \\(x\\) and setting \\(n=x-1\\) gives \\(3\\le n<p\\) and \\(p\\mid n^2+2n-4\\). Writing the continued fraction as \\(N_2/N_3\\) with \\(N_2=n^2+2n-4=pq\\), recurrence divisibility identities show that \\(q\\) divides \\(N_3\\) while \\(p\\) does not, so reduction cancels exactly the cofactor \\(q\\) and leaves numerator magnitude \\(p\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

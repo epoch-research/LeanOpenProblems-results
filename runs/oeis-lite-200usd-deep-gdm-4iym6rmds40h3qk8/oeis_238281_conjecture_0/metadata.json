@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=14\\). A finite count of primes in consecutive length-14 intervals shows that equality occurs among \\(1\\le k<14\\) only for \\(k=4,12\\), but \\(2k+1\\) is respectively \\(9\\) or \\(25\\), both composite; hence no prime-qualified \\(k\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A direct computation to index 3774, followed by Fibonacci matrix exponentiation modulo \\(195318521017\\), shows that if the asserted linear relation persisted then the consecutive terms at indices \\(249580077006\\) and \\(249580077007\\) would both be divisible by that modulus. Their gcd would therefore exceed 1, making the defining recurrence at index \\(249580077008\\) strictly smaller than one plus their sum, contradicting the asserted relation.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

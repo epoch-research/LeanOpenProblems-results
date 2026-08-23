@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample index $27$: for every base $k\\ge2$, $k^{27}-27=(k^9-3)(k^{18}+3k^9+9)$ is a product of two factors greater than $1$, while $k=0,1$ cannot yield a prime of the required form, so no such prime exists. Yet $27$ is not the square of an even integer (every such square is divisible by $4$).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

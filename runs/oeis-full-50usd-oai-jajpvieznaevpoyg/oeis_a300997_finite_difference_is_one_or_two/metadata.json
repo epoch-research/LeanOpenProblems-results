@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Couple the evolutions from masses differing by one by tracking the extra unit as a marker that stays within two positions of the initial block of unit cells; when the smaller evolution stabilizes, the three possible marker positions show that the larger one stabilizes within two more steps. Conversely, classifying positive predecessors of an all-ones configuration as either already stable or a block of ones ending in a single 2, together with the marker invariant, rules out simultaneous first stabilization, giving a strict delay of at least one step.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

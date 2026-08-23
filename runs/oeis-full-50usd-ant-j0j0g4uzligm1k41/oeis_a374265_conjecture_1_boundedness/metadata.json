@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At index \\(10^k-1\\), the final product is a positive multiple of \\(10^k-1\\); every such multiple has decimal digit sum at least \\(9k\\) (via base-10 block folding and digit-sum subadditivity), and deleting zeros preserves this sum. Hence every reachable value there is at least \\(10^{k-1}\\), so the successive minima are unbounded.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

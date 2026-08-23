@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes 5 a quadratic residue modulo p; choosing a root y≤p/2 and setting n=y−1 gives p∣D(n,2)=n²+2n−4=y²−5, with 3≤n≤p−2. Writing D(n,2)=pm, a continuant/factorial identity and the resulting size bound show m∣(n−3)! and D(n,3)=m(2(n−1)Q+Kp); the parenthesized factor is coprime to p since otherwise p would divide 2(n−1)(n−3)!, so reducing D(n,2)/D(n,3) leaves numerator p.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

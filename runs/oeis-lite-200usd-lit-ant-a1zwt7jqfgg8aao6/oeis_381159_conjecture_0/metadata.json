@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For primes \\(p,q\\) with different final digits and \\(pq\\le150\\), if neither divides the common difference then modular inversion produces one of the 150 terms divisible by both, contradicting the required prime-divisor condition; hence \\(p\\mid d\\) or \\(q\\mid d\\). Applying this obstruction to selected pairs among \\(2,3,5,7,11,13,17\\) and splitting according to which small primes divide \\(d\\) forces in every case a product of distinct primes greater than \\(2025\\) to divide the positive \\(d\\), contradicting \\(d\\le2025\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

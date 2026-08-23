@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=800322180\\). Monotonicity of \\(\\binom{2k+1}{k}\\), together with \\(\\binom{33}{16}=1166803110>n\\), reduces both indices to \\(0\\le c,d\\le15\\); a finite factorization check then shows that every residual \\(n-\\binom{2c+1}{c}-\\binom{2d+1}{d}\\) contains a prime \\(p\\equiv3\\pmod4\\) to an odd exponent, so by the sum-of-two-squares obstruction none can equal \\(a^2+b^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

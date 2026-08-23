@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For primes \\(p,q\\) with different final digits, \\(pq\\le150\\), and neither dividing \\(d\\), invertibility of \\(d\\bmod pq\\) yields an \\(i<pq\\) for which \\(pq\\mid a+id\\), making that term inadmissible. A finite divisibility case analysis using \\(2,3,5,7,11,13,17\\) shows that covering all such prime pairs would force \\(d\\) to contain a product of distinct prime factors exceeding \\(2025\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

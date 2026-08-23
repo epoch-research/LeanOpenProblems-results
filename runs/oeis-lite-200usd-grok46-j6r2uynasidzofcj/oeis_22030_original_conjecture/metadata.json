@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the candidate linear-recurrence sequence, introduce the Cassini-type determinant \\(\\delta_n=L_{n+1}^2-L_{n+2}L_n\\); its recurrence \\(\\delta_{n+3}=4\\delta_{n+1}+\\delta_n\\), together with the growth bound \\(L_{n+1}\\ge 3L_n\\), yields \\(0<\\delta_n\\le L_n\\) by induction. These bounds force \\(\\lceil L_{n+1}^2/L_n\\rceil-1=L_{n+2}\\), so equality of the initial terms and induction identify the original nonlinear sequence with the linear one.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-30-12-00-00_summarize-proofs_2NAdKmyb2L2xF6GQ9RPFpH.eval"
+  }
+}

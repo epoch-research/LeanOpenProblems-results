@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For consecutive primes \\(p<q\\), Wilson’s theorem and the factorization \\((q-1)!=p!\\bigl(\\prod_{j=p+1}^{q-2}j\\bigr)(q-1)\\) give \\(p!\\prod_{j=p+1}^{q-2}j\\equiv1\\pmod q\\), so either factor is \\(1\\) exactly when the other is. A gap of two makes the intervening product empty (and primality of \\(p+2\\) forces this gap), while a finite prime sieve identifies the 991st and 992nd primes as \\(7841,7853\\), and direct modular computation gives \\(\\prod_{j=7842}^{7851}j\\equiv1\\pmod{7853}\\) for the exceptional index.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

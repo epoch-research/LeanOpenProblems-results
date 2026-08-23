@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=9\\), the primorial is \\(2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23=223092870\\), giving \\(49770428644836901\\); since \\(29^2\\mid 49770428644836901\\) (with quotient \\(59180057841661\\)), this term is not squarefree.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

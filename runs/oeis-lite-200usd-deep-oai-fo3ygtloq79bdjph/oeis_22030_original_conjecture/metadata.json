@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Define the candidate sequence by \\(b_{n+3}=4b_{n+2}-b_n\\) and track the residual \\(r_n=b_{n+1}^2-b_nb_{n+2}\\); induction gives \\(r_{n+3}=4r_{n+1}+r_n\\) together with \\(0<r_n\\le b_n\\), using positivity and the growth bound \\(b_{n+1}\\ge2b_n\\). Hence \\(b_{n+1}^2=b_nb_{n+2}+r_n\\) has a positive remainder no larger than the divisor, so \\(\\lceil b_{n+1}^2/b_n\\rceil-1=b_{n+2}\\), proving that the original nonlinear recurrence coincides with the linear one.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

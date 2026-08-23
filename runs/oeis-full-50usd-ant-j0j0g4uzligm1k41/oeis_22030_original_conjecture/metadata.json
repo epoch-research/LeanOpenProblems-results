@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the candidate linear-recurrence sequence \\(L\\), the proof studies the defect \\(f_k=L_{k+1}^2-L_{k+2}L_k\\): its recurrence \\(f_{k+3}=4f_{k+1}+f_k\\), together with monotonicity and a growth bound for \\(L\\), inductively gives \\(0<f_k\\le L_k\\). Hence \\(L_{k+1}^2=L_{k+2}L_k+f_k\\) has a positive remainder no larger than the denominator, so the ceiling-minus-one rule returns exactly \\(L_{k+2}\\); strong induction then identifies the originally defined sequence with \\(L\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the sequence defined by the candidate linear recurrence, the proof studies the Hankel-type error \\(F_n=L_{n+1}^2-L_{n+2}L_n\\), showing from \\(F_{n+3}=4F_{n+1}+F_n\\) and growth bounds that \\(0<F_n\\le L_n\\). Hence \\(L_{n+2}L_n<L_{n+1}^2\\le (L_{n+2}+1)L_n\\), so the ceiling-minus-one rule returns exactly \\(L_{n+2}\\); induction then identifies the nonlinear and linear sequences.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

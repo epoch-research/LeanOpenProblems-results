@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=18\\): since \\(\\sigma(18)=39\\), its reduced denominator is \\(18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\) makes the reduced denominator at \\(6\\) equal to \\(1=2^0\\). Thus \\(6\\) has the required power-of-two denominator property, whereas \\(18\\) does not because its denominator is \\(6\\), which is not a power of two.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(N=201886\\cdot3^{39101}-1\\), modular computations with the norm-one element \\(x=2+\\sqrt3\\) show \\(x^{N+1}=1\\) and a gcd condition shows that, modulo every prime divisor \\(p\\mid N\\), \\(x^{(N+1)/3^{19545}}\\ne1\\); hence \\(3^{19557}\\) divides the order of \\(x\\). If \\(N\\) were composite, its least prime divisor would satisfy \\(p\\le\\sqrt N\\), while that order is at most the size \\(2p\\) of the relevant norm-one group, contradicting \\(2p<3^{19557}\\); thus the exponent \\(39101\\) yields a prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

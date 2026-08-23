@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=7\\), every allowed value of \\(x\\) is at least \\(3\\); since \\(x\\le y\\le z\\), this forces \\(x+y+z\\ge 3+3+3=9\\). Hence the strengthened representation already fails at \\(n=7\\), independently of the primality conditions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the nonexceptional even value $m=10$. Since a prime $q$ must satisfy $q\\le \\lfloor 10/4\\rfloor=2$, necessarily $q=2$, forcing $p=10-q=8$, which is not prime; hence no required representation exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

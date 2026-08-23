@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A recurrence invariant rewrites the continued fraction as \\(B_n(3)/(5n-4)\\), so its reduced denominator is \\((5n-4)/\\gcd(B_n(3),5n-4)\\). For each prime \\(p\\ge7\\), choose the unique \\(3\\le n<p\\) with \\(5n\\equiv4\\pmod p\\); factorial-sum congruences show that the cofactor \\((5n-4)/p\\) cancels but \\(p\\) does not, while a prime-power valuation bound via \\((n-1)!\\) forces every occurrence to have \\(n<p\\), giving uniqueness modulo \\(p\\) (with the \\(p=11,n=3\\) case handled directly).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

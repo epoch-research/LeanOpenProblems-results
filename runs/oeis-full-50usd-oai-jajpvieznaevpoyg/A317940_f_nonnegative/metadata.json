@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Binary digit-sum recurrences show that the local series \\(B(x)=\\sum_{e\\ge0}2^{A005187(e)}x^e\\) has logarithmic derivative \\(D=B'/B\\) with nonnegative coefficients; defining \\(C(0)=1\\) by \\(2C'=DC\\) therefore gives nonnegative coefficients, and uniqueness for the resulting differential equation yields \\(C^2=B\\). Multiplicativity then identifies the desired value at \\(n\\) with \\(\\prod_p C_{v_p(n)}\\), a product of nonnegative local coefficients.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

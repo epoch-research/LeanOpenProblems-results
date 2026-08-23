@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For the counterexample $n=800{,}322{,}180$, monotonicity and $\\binom{33}{16}=1{,}166{,}803{,}110>n$ force $0\\le c\\le d\\le15$. For each of these finitely many pairs, $n-\\binom{2c+1}{c}-\\binom{2d+1}{d}$ has a prime congruent to $3\\pmod4$ to an odd exponent, so it cannot be a sum of two squares.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

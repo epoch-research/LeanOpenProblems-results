@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After division by \\((n-1)!\\), each fixed inclusion–exclusion summand tends to \\((-2)^k/k!\\); a summable exponential bound permits passage through the sum, yielding the positive limit \\(e^{-2}\\) (and hence the same limit after taking the absolute value). The correction series tends to zero by a second dominated-convergence argument, while \\(n/(n-2)\\to1\\), so the proposed expression has the same normalized nonzero limit and their ratio tends to one.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

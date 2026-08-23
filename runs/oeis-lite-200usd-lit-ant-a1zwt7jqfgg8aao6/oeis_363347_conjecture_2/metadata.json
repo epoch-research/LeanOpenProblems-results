@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes \\(5\\) a square modulo \\(p\\); choosing the larger of the two square roots and setting \\(n=s-1\\) gives \\(p\\mid n^2+2n-4\\) while ensuring the needed size bounds. Writing \\(n^2+2n-4=pc\\), recurrence identities express the continued fraction as \\(U_2/U_3\\) with \\(U_2=n^2+2n-4\\), show \\(c\\mid U_3\\) via \\(c\\le n-3\\) and a factorial formula for \\(U_3\\), and show \\(p\\nmid U_3\\), so reduction leaves numerator exactly \\(p\\); the lone small case \\(p=11\\) is computed directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

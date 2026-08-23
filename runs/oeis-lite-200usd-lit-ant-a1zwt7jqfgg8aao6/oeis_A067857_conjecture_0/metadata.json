@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8\\): Möbius inversion gives \\(a(8)=8!(H_8-H_4)=25584>0\\). But \\(8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\), contradicting the proposed equivalence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

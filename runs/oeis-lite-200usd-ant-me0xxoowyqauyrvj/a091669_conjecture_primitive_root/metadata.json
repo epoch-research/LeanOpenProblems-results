@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After establishing integrality by prime-adic valuation estimates (using multiplicative orders, LTE, and Legendre’s formula), the recurrence \\((m+1)a(m+1)=2(2^m-1)a(m)\\) is telescoped over \\(p-1\\) terms: every odd prime \\(p\\mid n\\) of a composite \\(n\\) is thereby forced to divide \\(a(n-1)\\), contradicting the hypothesis, while the remaining powers of two are excluded by \\(v_2(a(2^e-1))=e-1\\). Once \\(n\\) is prime, an order \\(d=\\operatorname{ord}_n(2)<n-1\\) makes the factor \\(2^d-1\\) force \\(n\\mid a(n-1)\\), giving the same contradiction, so \\(d=n-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

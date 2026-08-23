@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Legendre’s formula expresses each prime-adic valuation as a sum of nonnegative floor-function defects; when a prime power dividing one of the odd linear factors exceeds \\(3(2r+1)\\), the resulting congruence and parity conditions force the corresponding defect to be at least one. Such a large prime power can divide at most one factor, while all smaller prime-power contributions are absorbed by choosing \\(K=((3(2r+1))!)^r\\), so summing valuations yields the required divisibility.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

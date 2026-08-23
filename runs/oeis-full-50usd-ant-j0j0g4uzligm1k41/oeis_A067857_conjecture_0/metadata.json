@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Direct evaluation of the Möbius–harmonic divisor sum gives \\(a(8)=25584>0\\), contradicting the predicted negative sign.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Letting \\(d=D(n)\\), the congruence \\(n\\equiv d\\pmod 9\\) gives \\(\\gcd(9,d)\\mid n\\), so one can choose \\(m\\) with \\(d\\mid n+9m\\); periodicity of powers of \\(10\\) modulo \\(d\\) then lets one place \\(n-m\\) digits \\(1\\) in one congruence class of positions and \\(m\\) in positions shifted by one, producing a multiple \\(k_0\\) of \\(d\\) with digit sum exactly \\(n\\). Multiplying \\(k_0\\) by a sufficiently large power of \\(10\\) preserves these properties while making it larger than \\(n\\), hence it is a distinct partner since \\(D(n)\\mid k\\) and \\(D(k)=n\\mid n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

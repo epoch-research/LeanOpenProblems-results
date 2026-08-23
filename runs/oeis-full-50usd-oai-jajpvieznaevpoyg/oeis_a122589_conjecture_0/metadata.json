@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using \\(4\\cos^2\\theta-2=2\\cos(2\\theta)\\) and \\(C_{13}(2\\cos\\theta)=2\\cos(13\\theta)\\), the proof makes the six cosine values roots of a monic degree-six polynomial via the explicit identities \\(C_{13}(x)-2=(x-2)Q(x)^2\\) and \\(P(t)=Q(t-2)\\). Cosine’s injectivity on \\([0,\\pi]\\) makes these roots distinct, so they exhaust the roots of \\(P\\); reversing coefficients then gives the desired denominator factorization.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

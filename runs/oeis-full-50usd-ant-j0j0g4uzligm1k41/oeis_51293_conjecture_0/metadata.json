@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Partitioning by subset size, a roots-of-unity filter shows that the count for size \\(k\\) differs from \\(\\binom nk/k\\) by an exponentially smaller amount, using factorization into complete root-of-unity blocks to bound the nontrivial Fourier coefficients. The resulting main sum is rewritten as \\(\\sum_{j\\le n}(2^j-1)/j\\); reflecting it about \\(j=n\\), expanding \\(1/(n-i)\\) through degree five, and evaluating the geometric moments \\(\\sum i^t2^{-i}\\) yields the stated coefficients, while geometric tail and remainder bounds are negligible.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

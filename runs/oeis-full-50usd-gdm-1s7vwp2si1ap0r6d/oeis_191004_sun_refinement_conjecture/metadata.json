@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the admissible even value \\(m=10\\): the bound \\(q\\le \\lfloor 10/4\\rfloor=2\\) forces the prime \\(q=2\\), so \\(p=10-q=8\\) is composite. Hence no required representation exists, independently of the Jacobi-symbol condition.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

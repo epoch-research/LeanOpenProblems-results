@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Counting pairs divisible by each power of \\(p\\) and applying Legendre’s formula gives \\(v_p(\\mathrm{num}(N))=\\sum_{i\\ge1}\\lfloor N/p^i\\rfloor^2\\) and \\(v_p(\\mathrm{den}(N))=\\sum_{i\\ge1}\\sum_{r\\le \\lfloor N/p^i\\rfloor} r\\lfloor \\lfloor N/p^i\\rfloor/r\\rfloor\\); the bound on each inner sum by the corresponding square also proves the quotient is integral. For \\(0\\le k<p\\), every \\(\\lfloor(np+k)/p^i\\rfloor\\) with \\(i\\ge1\\) equals \\(\\lfloor np/p^i\\rfloor\\), so both valuations—and hence their difference—are constant across the block.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

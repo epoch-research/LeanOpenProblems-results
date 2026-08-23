@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A simultaneous induction on five-term blocks, using the sequence recurrence and the Fibonacci recurrence, proves that for \\(\\varepsilon_k=(-1)^k\\), the values at \\(5k,\\ldots,5k+4\\) are \\(\\varepsilon_kF_{5k},\\varepsilon_kF_{5k+1},\\varepsilon_kF_{5k+1},0,-\\varepsilon_kF_{5k+3}\\). Splitting an arbitrary index modulo \\(5\\) and taking absolute values removes the signs (with \\(0=F_0\\)), yielding a Fibonacci number in every case.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

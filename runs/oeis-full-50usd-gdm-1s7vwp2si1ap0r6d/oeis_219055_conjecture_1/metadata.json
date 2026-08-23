@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct finite tables provide Goldbach and Lemoine representations up to the two cutoffs, while above them a positive count supplies a witness giving respectively \\(n=(n-q)+q\\) or \\(n=(n-2q)+2q\\). For any bound \\(a\\), applying the even case to \\(n=2(a+4010)\\) and using \\(2q<n\\) makes \\(n-q-6>a\\), so the guaranteed primes \\(n-q-6\\) and \\(n-q\\) form a cousin-prime pair beyond \\(a\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

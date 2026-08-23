@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "A finite modular computation shows the alternating harmonic sum through 1092 is congruent to zero modulo 1093; splitting the sum through \\(1093^2-1\\) into multiples and nonmultiples of 1093 then proves its reduced denominator is coprime to \\(1093^2\\). Applying the auxiliary sum recurrence and elementary gcd identities gives \\(a(1093^2-1)=1\\), although \\(1093^2\\) is composite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

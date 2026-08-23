@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using the Euclid–Euler form, write an even perfect number as \\(n=2^kq\\), where \\(q=2^{k+1}-1\\) is prime.  The proper divisors contain the disjoint families \\(1,2,\\ldots,2^k\\) and \\(q,2q,\\ldots,2^{k-1}q\\), so binary expansions of the quotient and remainder modulo \\(q\\) represent every integer below \\(n\\) as a subset sum; perfectness represents \\(n\\) itself and bounds all subset sums by \\(n\\), making the attainable sums exactly \\(0,\\ldots,n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

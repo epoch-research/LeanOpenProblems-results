@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Faulhaber’s formula and the finite-field power-sum congruence give the von Staudt–Clausen valuation criterion, from which a prime-by-prime analysis shows that squarefreeness of the denominator is equivalent (for odd composite \\(n\\)) to \\(n\\) being squarefree and every prime \\(p\\mid n\\) satisfying \\(p-1\\mid n-1\\); Korselt’s criterion then identifies these conditions with the Carmichael property. For even composite \\(n\\), \\(B_{n-1}=0\\), so the denominator has a repeated factor of \\(2\\), while the base \\(-1\\) also rules out the Carmichael congruence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

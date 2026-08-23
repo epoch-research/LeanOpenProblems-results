@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For odd \\(p\\), Fermat’s theorem gives \\(2^{p-1}=1\\pmod p\\); after splitting the shifted sum, every term in its initial block vanishes because its product contains \\(2^{2(p-1)}-1\\), while the remaining terms match termwise since both the product factors and the triangular exponent are unchanged modulo the period. For \\(p=2\\), all summands except \\(k=0\\) vanish and that surviving summand equals \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

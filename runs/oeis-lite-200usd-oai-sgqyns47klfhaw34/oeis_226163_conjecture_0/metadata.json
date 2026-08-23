@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For $p\\equiv3\\pmod4$, reindexing by quadratic residues turns the matrix into columns drawn from the commuting Paley matrices $\\chi(r-s)$ and $\\chi(r+s)$; a product-parity count makes the skew-symmetric principal part odd-dimensional, forcing the determinant to vanish. For $p\\equiv1\\pmod4$, Euler’s criterion reduces the entries modulo $p$ to $(x_i-Cy_j)^m$, whose binomial expansion factors the matrix into a nonsingular Vandermonde matrix and a nonsingular moment matrix, with Wilson’s theorem ($C^2=-1$) ensuring the remaining scalar obstruction is nonzero.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

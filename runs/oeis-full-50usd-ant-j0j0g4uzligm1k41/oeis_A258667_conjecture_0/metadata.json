@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "After dividing the inclusion–exclusion formula by \\((n-1)!\\), the fixed-\\(k\\) inner sum is asymptotic to \\(2^k n^k/k!\\) (only its \\(j=0\\) term contributes at leading order), while \\((n-1)_k\\sim n^k\\), so the normalized summands tend to \\((-2)^k/k!\\). A summable exponential majorant permits passage of the limit through the sum, giving \\(e^{-2}\\); separately, the correction sum tends to zero and \\(n!/(n-2)\\sim(n-1)!\\), so both expressions have the same asymptotic.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

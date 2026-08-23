@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For every prime \\(p\\), the only admissible integers up to \\(p\\) are \\(1\\) and \\(p\\), so the relevant value is \\(2\\) along arbitrarily large prime inputs. Taking \\(\\epsilon=\\tfrac12\\) and a prime \\(p\\ge55\\) beyond the proposed threshold gives \\(\\sqrt{\\log p}>2\\), contradicting the asserted lower bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

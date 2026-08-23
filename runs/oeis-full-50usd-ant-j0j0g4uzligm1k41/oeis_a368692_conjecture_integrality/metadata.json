@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Legendre’s formula reduces the divisibility prime by prime to a uniform floor-sum inequality for \\(K=4n+2\\), \\(L=2n+3\\), and \\(K+L=6n+5\\). The extra valuation of \\(108=2^2 3^3\\) comes from strengthened binary inequalities at powers \\(2\\) and \\(4\\) (using \\(n\\bmod 4\\)), and from \\(2v_3((6n+5)!)=6n+5-s_3(6n+5)\\) together with \\(s_3(6n+5)\\ge3\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

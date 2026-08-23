@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write \\(n=2^a m\\) with \\(m\\) odd, and split the odd divisors below \\(\\sqrt{2n}\\) according as \\(m\\le 2^{a+1}d^2\\) or not.  In the first class, multiplying by the unique power of two that places the divisor in the middle interval gives a bijection with middle divisors; in the second, the complementary-divisor involution \\(d\\mapsto m/d\\) gives a bijection with odd divisors above \\(\\sqrt{2n}\\), and the resulting cardinality identities yield the claim.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

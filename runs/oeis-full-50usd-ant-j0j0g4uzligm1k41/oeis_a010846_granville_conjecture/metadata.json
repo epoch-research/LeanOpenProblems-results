@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(\\epsilon=\\tfrac12\\) and choose an arbitrarily large prime \\(p\\). The only integers at most \\(p\\) whose prime factors are all \\(p\\) are \\(1\\) and \\(p\\), so the relevant count is at most \\(2\\), while \\(p\\ge55\\) gives \\(\\sqrt{\\log p}>2\\), contradicting the claimed eventual lower bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

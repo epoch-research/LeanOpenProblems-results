@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The block \\([2,4,2,4,2]\\) beginning at index \\(3\\) can occur only once: an occurrence would make \\(q,q+2,q+6,q+8,q+12,q+14\\) all prime, but these numbers cover every residue modulo \\(5\\), so one must equal \\(5\\). The resulting cases force \\(q=5\\) and hence the original starting index (while \\(q=3\\) would require \\(9\\) to be prime), proving uniqueness rather than infinite recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

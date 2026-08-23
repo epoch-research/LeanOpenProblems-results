@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each \\(k\\ge 60\\), set \\(n=2k+1\\); every nonzero matrix entry supplies two primes whose sum is \\(2n=4k+2\\), so if no such prime pair existed the entire matrix—and hence its determinant—would be zero, contradicting the assumed nonvanishing. The finitely many cases \\(1\\le k<60\\) are handled by explicit prime decompositions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

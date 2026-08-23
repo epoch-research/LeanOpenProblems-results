@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the three exceptional exponents, direct calculation handles 9, while digit-sum and weighted-digit-sum congruences modulo 27 and 81 force every smaller positive candidate (and its reversal) to have all digits equal to 9, proving minimality. For every larger exponent, repeating the block 4899999987 exactly $3^t$ times gives a number and reversal divisible by $3^{t+5}$—tripling the repetitions introduces the factor $1+10^L+10^{2L}$, divisible by 3—and its $10\\cdot3^t$ digits make it strictly smaller than the target with $27\\cdot3^t$ digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

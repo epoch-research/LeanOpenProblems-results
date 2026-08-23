@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(B_0=4,B_1=16,B_2=63\\) and \\(B_{n+3}=4B_{n+2}-B_n\\); an auxiliary sequence \\(D\\) is used to prove \\(B_{k+1}^2=B_{k+2}B_k+D_k\\) with \\(0<D_k\\le B_k\\), using positivity and growth estimates for \\(B\\). Hence \\(\\lceil B_{k+1}^2/B_k\\rceil-1=B_{k+2}\\), so induction identifies the original nonlinear recurrence with \\(B\\) and yields the claimed linear recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

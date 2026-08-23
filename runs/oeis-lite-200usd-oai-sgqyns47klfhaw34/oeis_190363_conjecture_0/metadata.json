@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Taking \\(n=140\\) gives a counterexample: direct floor evaluations yield \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). Hence the proposed right-hand side is \\(528+484-471=541\\), not \\(a(161)=542\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

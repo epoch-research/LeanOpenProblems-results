@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Factoring the odd composite modulus as \\(m=pv\\), the case \\(p\\mid v\\) is ruled out using the unit \\(1+v\\): since \\(v^2=0\\pmod m\\), its power is \\(1+nv\\), and either permitted sign forces either \\(p=2\\) or \\(p\\mid n\\), both impossible. When \\(p\\) and \\(v\\) are coprime, a hypothetical solution is combined by the Chinese remainder theorem with \\(1\\bmod p\\) to produce a unit whose \\(n\\)-th power is \\((1,-1)\\), which is neither globally \\(1\\) nor globally \\(-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

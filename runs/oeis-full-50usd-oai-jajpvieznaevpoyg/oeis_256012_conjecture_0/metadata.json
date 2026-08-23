@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Split into cases modulo 4 and exhibit the partition \\(\\{n\\}\\), \\(\\{9,n-9\\}\\), \\(\\{18,n-18\\}\\), or \\(\\{27,n-27\\}\\), with \\(n=27\\) handled by \\(\\{27\\}\\). The fixed parts are divisible by \\(9\\), while each complementary part is divisible by \\(4\\), so all parts are nonsquarefree; the bound \\(n>23\\) ensures they are positive and distinct.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

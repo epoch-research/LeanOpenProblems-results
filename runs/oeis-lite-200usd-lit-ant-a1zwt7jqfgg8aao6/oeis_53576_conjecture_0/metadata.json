@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The candidates follow from \\(\\varphi(F_{33})=2^{2^{33}}\\) when \\(F_{33}\\) is prime and \\(\\varphi(2^{2^{33}+1})=2^{2^{33}}\\), while elementary totient bounds exclude smaller candidates in the prime case and smaller even candidates in the composite case. For a smaller odd candidate, decomposing its totient over its prime divisors forces every divisor to be a Fermat prime; compositeness of \\(F_{33}\\) then limits the total possible 2-adic contribution to \\(\\sum_{j=0}^{32}2^j=2^{33}-1\\), contradicting the required contribution \\(2^{33}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

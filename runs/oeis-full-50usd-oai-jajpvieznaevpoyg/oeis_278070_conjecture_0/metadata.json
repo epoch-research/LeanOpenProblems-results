@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A Vandermonde expansion of \\(\\binom{x+k}{j}\\) shows that, after multiplication by \\(j!\\), every term involving a positive contribution from \\(k\\) is divisible by \\(k\\), since \\(k\\mid \\binom{k}{r}r!\\) and \\(r!\\mid j!\\). Applying this congruence to both binomial factors gives equality termwise modulo \\(k\\), and the shorter sum may be extended to the common range because its extra terms vanish when \\(\\binom{n}{j}=0\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

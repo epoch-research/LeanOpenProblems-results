@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Take \\(K=(8r)!\\). For \\(r\\le 4n\\), Legendre’s formula together with a residue-class floor inequality proves \\((2n)!(3n)!(4n-r)!\\mid(8r)!n!(8n-2r)!\\), and combining this with \\((8n)!(4n-r)!=\\bigl(\\prod_{k<r}(8n-(2k+1))\\bigr)2^r(4n)!(8n-2r)!\\) gives the claim; for \\(r>4n\\), the absolute value of the product splits into two products of consecutive odd numbers, each controlled by a suitable factorial and hence dividing \\((8r)!\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

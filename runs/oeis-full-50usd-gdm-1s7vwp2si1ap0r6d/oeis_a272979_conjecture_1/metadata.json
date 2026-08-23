@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Swapping the two quadratic variables shows that universal representability is invariant under exchanging the first two coefficients. Thus the listed quadruple \\((1,2,1,1)\\) would force \\((2,1,1,1)\\) to be universally representable as well, but the latter is omitted from the proposed list, contradicting the claimed equivalence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "An eventual prefix/suffix invariant yields recurrences \\(\\ell_{n+1}=\\ell_n+r_n\\), \\(r_{n+1}=r_n+q_n-1\\), and \\(q_{n+5}=q_{n+4}+\\ell_n\\), with \\(0\\le q_n\\le r_n\\le\\ell_n\\). For \\(1<\\lambda<2\\) satisfying \\(\\lambda^4(\\lambda-1)^3=1\\), a positive weighted linear functional of these quantities obeys an affine first-order recurrence, giving two-sided \\(\\lambda^n\\) bounds; the relation \\(a_{n+1}=a_n+\\ell_n\\) transfers these bounds to \\(a_n\\), and squeezing the \\(n\\)-th roots gives convergence to \\(\\lambda\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

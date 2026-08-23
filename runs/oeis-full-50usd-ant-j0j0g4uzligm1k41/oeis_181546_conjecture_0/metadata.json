@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The adjacent-summand ratio shows that the binomial weights concentrate around \\(k=((5-\\sqrt5)/10)n\\), with geometrically negligible tails; on this central window the exact multiplier from \\(n\\) to \\(n+1\\), \\((n+1-k)/(n+1-2k)\\), converges uniformly to the golden ratio, so its \\(L\\)-th power controls the ratio of the sums. Binet’s formulas identify \\(\\varphi^L\\) with the stated Fibonacci–Lucas expression, while \\(L=0\\) is handled directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof’s core is a one-step compatibility between a forward Collatz move and the reverse-tree encoding: after \\(m\\mapsto p\\), the residual code \\(r\\) is changed to \\(2r+1\\) for an even predecessor at a branch, \\(2r+2\\) for an odd predecessor, and \\(r+1\\) at a nonbranch, so decoding from \\(p\\) first returns to \\(m\\). Induction along a finite Collatz trajectory from \\(m\\) to \\(1\\) then builds a code at the root whose decoded endpoint is \\(m\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

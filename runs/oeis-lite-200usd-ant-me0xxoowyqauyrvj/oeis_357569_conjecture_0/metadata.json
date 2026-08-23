@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Split the factorial ratios into their multiples-of-\u001b[1mp\u001b[0m and \u001b[1mp\u001b[0m-free parts, pair the latter by \\(x\\leftrightarrow p^r-x\\), and truncate the resulting product in elementary symmetric sums; Faulhaber/power-sum identities show the first symmetric coefficient is divisible by \\(p^r\\) (by \\(3^{r-1}\\) when \\(p=3\\)) and the second by \\(p\\) for \\(p\\ge5\\). Telescoping the same products gives \\(p^3\\mid 2\\binom{3p^{r-1}}{p^{r-1}}^2-9\\binom{2p^{r-1}}{p^{r-1}}\\) (with the base case computed separately at \\(p=3\\)); these bounds make every surviving expansion term divisible by the target power, after which the coprime \\(p\\)-free product is canceled.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For inputs above the thresholds, a positive count supplies primes giving the required Goldbach or Lemoine decomposition directly, while finite tables of explicit prime decompositions cover all smaller admissible inputs. If cousin-prime pairs were bounded by \\(B\\), applying the hypothesis to a sufficiently large even \\(n\\) would produce two such pairs based at \\(q\\) and \\(p-6\\), forcing \\(n=q+(p-6)+6\\le 2B+6\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

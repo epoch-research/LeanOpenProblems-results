@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The modeled region count is truncation at \\(a(n)\\), so it is always at most \\(a(n)\\), while every \\(x\\le a(n)\\) is attained by taking the configuration parameter to be \\(x\\). Hence the attainable counts form the initial interval \\(\\{x:x\\le a(n)\\}\\), whose supremum is \\(a(n)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

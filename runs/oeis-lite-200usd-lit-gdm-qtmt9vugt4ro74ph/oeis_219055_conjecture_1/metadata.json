@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Finite tables give Goldbach decompositions through 8012 and Lemoine decompositions through 15727; above those bounds, a counted witness has coefficient 1 for even inputs and 2 for odd inputs, directly yielding the required prime sums. For any bound \\(a\\), applying the hypothesis to \\(n=2(a+8018)\\) produces primes \\(p\\) and \\(p-6\\), and the witness inequality forces \\(p-6>a\\), proving cousin-prime pairs are unbounded and hence infinite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

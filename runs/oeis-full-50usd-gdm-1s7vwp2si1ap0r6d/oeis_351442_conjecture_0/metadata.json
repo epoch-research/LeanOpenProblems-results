@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(N=2^{13}3^6 5\\,7^6 13^4 17^2=28996592704045424640\\); multiplicativity of \\(\\sigma\\) gives \\(\\sigma(N)=2\\cdot3^2\\cdot29\\cdot43\\cdot127\\cdot307\\cdot1093\\cdot4733\\cdot30941\\). Hence multiplying \\((p-1)^e\\) over this prime factorization yields \\(N\\), so \\(N\\) is a positive fixed point absent from the proposed list.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

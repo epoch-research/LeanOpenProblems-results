@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "Writing \\(v=v_2(\\varphi(m))\\), a prime-factor induction shows that any \\(m<2^{v+1}\\) is a squarefree product of Fermat primes \\(F_j\\), with \\(v=\\sum_{j\\in S}2^j\\); the size bound rules out a factor of \\(2\\), higher odd prime powers, and odd primes for which \\(p-1\\) has a nontrivial odd part. For an admissible \\(m<2^{N+1}\\), where \\(N=2^{33}\\), product bounds force \\(v=N\\), so uniqueness of binary expansion gives \\(S=\\{33\\}\\); meanwhile \\(\\varphi(m)<m\\) gives the lower bound \\(m>2^N\\), and \\(2^{N+1}\\) supplies the fallback candidate.",
+  "proof_summary": "Inductively stripping off least prime factors shows that any $m<2\\cdot2^{v_2(\\phi(m))}$ is a squarefree product of Fermat primes $F_j$, with $v_2(\\phi(m))=\\sum_j2^j$. For a candidate below $2^{2^{33}+1}$, the divisibility and size bounds force this valuation to be $2^{33}$, whose unique sum of distinct powers of two selects only $F_{33}$; the explicit candidates $F_{33}$ when prime and $2^{2^{33}+1}$ otherwise then establish minimality.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

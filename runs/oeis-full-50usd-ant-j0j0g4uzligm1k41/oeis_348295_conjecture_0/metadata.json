@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Pell and companion Pell identities, together with their unimodular determinant, give a best-approximation bound for \\(\\sqrt2\\); this controls fractional parts and yields a floor-shift identity, hence self-similarity of the summands on Pell-number blocks. Summing that identity gives \\(b_{m+2}=(1+(-1)^m)b_{m+1}+b_m\\) for \\(b_m=a(P_m)\\), from which induction yields \\(b_{2t}=2t\\) and \\(b_{2t+1}=1\\), providing arbitrarily large values.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

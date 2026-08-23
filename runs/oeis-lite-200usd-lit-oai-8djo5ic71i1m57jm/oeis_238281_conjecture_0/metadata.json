@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For \\(n=14\\), a direct prime-count computation in the successive length-14 intervals shows that equality across a boundary \\(1\\le k<14\\) occurs only for \\(k=4\\) and \\(k=12\\). In those cases \\(2k+1\\) is respectively \\(9\\) and \\(25\\), both composite, so no qualifying \\(k\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

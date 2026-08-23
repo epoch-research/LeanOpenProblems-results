@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof handles \\(1\\le k\\le 60\\) by explicit prime decompositions, and for larger \\(k\\) applies the hypothesis to the odd integer \\(n=2k+1\\). A nonzero determinant forces some matrix entry to be \\(1\\), yielding primes \\(n+i-j\\) and \\(n+j-i\\) whose sum is \\(2n=4k+2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

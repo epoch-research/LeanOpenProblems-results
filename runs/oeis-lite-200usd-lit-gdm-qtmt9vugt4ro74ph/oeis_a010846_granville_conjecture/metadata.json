@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For every prime \\(p\\), the only admissible integers up to \\(p\\) are \\(1\\) and \\(p\\), so \\(a(p)=2\\). Since primes are arbitrarily large, taking \\(\\epsilon=\\tfrac12\\) and a prime \\(p\\ge e^5\\) makes \\((\\log p)^{1/2}>2=a(p)\\), contradicting the proposed eventual lower bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

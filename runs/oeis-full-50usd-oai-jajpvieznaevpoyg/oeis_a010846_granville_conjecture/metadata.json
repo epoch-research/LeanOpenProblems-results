@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(\\epsilon=\\tfrac12\\) and choose an arbitrarily large prime \\(p>e^4\\). Since every integer at most \\(p\\) whose prime factors lie among those of \\(p\\) is either \\(1\\) or \\(p\\), one has \\(a(p)\\le 2\\), whereas \\((\\log p)^{1/2}>2\\), contradicting the proposed eventual lower bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

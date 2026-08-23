@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Successive binomial coefficients are factored into their multiples-of-\u0018p part and products over residues prime to \u0018p; pairing \u0018j with \u0018p^r-j and expanding these unit products reduces the required valuations to reciprocal power sums over the units, whose vanishing supplies the extra powers of \u0018p. An algebraic cancellation among the shifted products then combines these valuations with \u0018\\binom{2p^L}{p^L}\\equiv2 and \u0018\\binom{3p^L}{p^L}\\equiv3, using sharper separate exponents when \u0018p=3, to obtain the claimed modulus.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

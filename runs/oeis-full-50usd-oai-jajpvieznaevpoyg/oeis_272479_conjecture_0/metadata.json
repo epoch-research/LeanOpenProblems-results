@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(n\\ge 20\\), writing \\(d=s(n)\\), \\(e=s(d)\\), and \\(M=(n-e)/9\\), digit-sum congruences and elementary bounds make \\(M\\) a positive integer and allow one to pad \\(d-1\\) to \\(M\\) digits; adjoining its digitwise 9-complement and the digits of \\(d\\) produces \\(q=d\\bigl(10^M(10^M+1)-1\\bigr)\\) with \\(s(q)=9M+e=n\\). Thus \\(k=10^nq>n\\) satisfies \\(d\\mid k\\) and \\(s(k)=n\\mid n\\), while the positive cases below 20 are checked directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

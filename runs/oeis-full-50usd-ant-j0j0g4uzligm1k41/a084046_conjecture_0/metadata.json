@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the index 27: bases below 2 cannot yield a prime of the required form, while for every base \\(j\\ge2\\), \\(j^{27}-27=(j^9-3)(j^{18}+3j^9+9)\\) has both factors greater than 1, so no such prime exists. Yet 27 is not an even square, since every even square is divisible by 4.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

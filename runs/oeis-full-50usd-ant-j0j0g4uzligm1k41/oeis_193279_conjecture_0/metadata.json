@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Write the even perfect number in Euclid–Euler form \\(2^kq\\), where \\(q=2^{k+1}-1\\) is prime; its proper divisors are exactly \\(2^i\\) for \\(i\\le k\\) and \\(2^iq\\) for \\(i<k\\), and geometric-series identities show that each divisor is at most one plus the sum of the smaller ones. The standard no-gap subset-sum induction therefore gives every value from \\(0\\) through the sum of the proper divisors, which equals the number by perfection; removing the empty sum leaves the required count.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

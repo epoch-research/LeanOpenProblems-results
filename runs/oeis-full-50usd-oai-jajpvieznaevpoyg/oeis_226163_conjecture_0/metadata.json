@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing $p=2m+1$, Euler’s criterion and a binomial/Vandermonde factorization show that the determinant modulo $p$ vanishes exactly when $(m!)^{m+1}=1$; Wilson’s theorem gives $(m!)^2=(-1)^{m+1}$, making this equivalent to $m$ being odd. Conversely, when $m$ is odd, a quadratic-character sum shows that the product of the original matrix with the transpose of its factorial-sign-reversed analogue is skew-symmetric; the latter matrix has nonzero determinant by the modular criterion, so odd-dimensional skew-symmetry forces the original determinant to vanish.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

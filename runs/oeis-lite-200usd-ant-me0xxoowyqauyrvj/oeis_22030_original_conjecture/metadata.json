@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the auxiliary linear-recurrence sequence, the proof studies the quadratic remainder \\(D_n=b_{n+1}^2-b_nb_{n+2}\\), deriving \\(D_{n+3}=4D_{n+1}+D_n\\) and using positivity and growth bounds for \\(b_n\\) to show \\(1\\le D_n\\le b_n\\). Thus \\(b_{n+1}^2=b_nb_{n+2}+D_n\\) has remainder in exactly the range that makes \\(\\lceil b_{n+1}^2/b_n\\rceil-1=b_{n+2}\\), so induction identifies the originally defined sequence with the linear-recurrence sequence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

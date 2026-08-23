@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cardboard-braid count is defined to equal the arithmetic function \\(a(n)\\) for every \\(n\\), so the claimed equality holds immediately by definition; no independent counting argument or bijection is provided.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

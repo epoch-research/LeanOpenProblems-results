@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A stable run-length shape invariant gives an exact third-run-length identity and hence, for the row sums shifted by 3, a linear recurrence whose finite-difference state evolves under a fixed nonnegative $7\\times7$ matrix. The relevant coordinate is bounded within constant factors of the orbit’s total mass, whose logarithm is almost subadditive, so Fekete’s lemma yields root-growth convergence; adding 3 and shifting indices do not affect the limit.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

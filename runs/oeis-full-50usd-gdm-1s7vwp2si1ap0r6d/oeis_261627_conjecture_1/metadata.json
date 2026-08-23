@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For even \\(m\\ge 8\\), set \\(n=m-1\\); since \\(n\\) is odd, a witness prime \\(p\\) makes \\(n-(p-1)=m-p\\) prime, yielding \\(m=p+(m-p)\\). For odd \\(m\\ge 9\\), set \\(n=m-1\\); since \\(n\\) is even, a witness prime \\(q\\) makes \\(n-(2q-1)=m-2q\\) prime, yielding \\(m=(m-2q)+2q\\), while \\(4,6,7\\) are handled by explicit prime decompositions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

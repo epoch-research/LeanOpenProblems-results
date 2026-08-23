@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Set \\(\\epsilon=\\tfrac12\\) and choose an arbitrarily large prime \\(p\\); the only positive integers \\(k\\le p\\) whose prime factors all lie among those of \\(p\\) are \\(1\\) and \\(p\\), so \\(a(p)=2\\). For sufficiently large \\(p\\) (explicitly, \\(p\\ge81\\) suffices), \\(\\sqrt{\\log p}>2\\), contradicting the asserted eventual lower bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

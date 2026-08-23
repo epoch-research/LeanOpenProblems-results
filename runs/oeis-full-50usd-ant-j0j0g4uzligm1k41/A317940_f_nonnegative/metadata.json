@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the prime-power coefficients, the proof constructs a nonnegative sequence \\(c_e\\) from a nonnegative auxiliary sequence \\(\\mu_e\\) via \\(2e\\,c_e=(\\mu*c)_e\\), and formal power-series logarithmic-derivative identities show that \\(c*c\\) equals the required local factor \\(2^{\\sum_k\\lfloor e/2^k\\rfloor}\\). Extending the \\(c_e\\) multiplicatively gives a nonnegative convolution square root globally, and uniqueness of the defining divisor recurrence identifies it with the desired function.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Apply the positivity hypothesis at a factorial index to obtain primes \\(p=6x-1\\) and \\(r=6y+1\\) with \\(p+r=6M!\\). If either the Sophie Germain primes or twin-prime pairs were bounded, choose \\(M\\) above that bound; then the corresponding bounded prime divides \\(M!\\), hence divides the other prime, so primality forces them equal, contradicting the strict inequality between the bounded summand and the other summand.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

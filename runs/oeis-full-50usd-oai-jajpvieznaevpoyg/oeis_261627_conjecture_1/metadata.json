@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an even integer \\(m=2N\\), a witness at the midpoint \\(N\\) supplies primes \\(N-k\\) and \\(N+k\\), whose sum is \\(m\\); the finitely many cases \\(2\\le N\\le6\\) are handled directly. For odd \\(n>7\\), applying the hypothesis to the even number \\(n-1\\) gives a prime \\(p\\) and the prime \\((n-1)-(2p-1)=n-2p\\), hence \\(n=(n-2p)+2p\\), with \\(n=7\\) handled separately.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

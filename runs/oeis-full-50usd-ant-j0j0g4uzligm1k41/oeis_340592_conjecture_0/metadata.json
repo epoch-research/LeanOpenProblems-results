@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A trial-division factorization and decimal-concatenation computation exhausts all \\(n<28749\\), showing that each has either at most one prime factor or a nonzero remainder, which excludes every smaller composite. At the endpoint, \\(28749=3\\cdot7\\cdot37^2\\) and the factors concatenate to \\(373737=13\\cdot28749\\), establishing the required zero remainder.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

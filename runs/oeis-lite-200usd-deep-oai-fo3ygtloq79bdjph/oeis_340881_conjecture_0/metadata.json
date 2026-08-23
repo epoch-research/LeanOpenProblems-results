@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The defining sum satisfies \\(a(n+1)=(2^n-1)a(n)+2^{\\binom{n+1}{2}}\\); for odd prime \\(p\\), Fermat’s theorem and the identity for \\(\\binom{n+2(p-1)+1}{2}\\) make both the coefficient and forcing term periodic modulo \\(p\\), so induction applies once the shifted initial value is shown to be \\(1\\) by vanishing product factors at indices \\(p-1\\) or \\(2(p-1)\\). For \\(p=2\\), the same recurrence directly gives \\(a(n)\\equiv1\\pmod2\\) for every \\(n\\ge1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

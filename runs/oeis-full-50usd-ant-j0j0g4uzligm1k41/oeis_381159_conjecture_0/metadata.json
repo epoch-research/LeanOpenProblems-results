@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For the graph on primes \\(\\{2,3,5,7,11,13,19\\}\\), joining differently ending pairs with product at most \\(150\\), every vertex cover has product at least \\(2\\cdot3\\cdot5\\cdot7\\cdot11=2310\\); hence any \\(d\\le2025\\) misses both endpoints \\(p,q\\) of some edge. Since \\(d\\) is then invertible modulo \\(pq\\), some \\(i<pq\\le150\\) makes \\(pq\\mid a+id\\), giving that term two prime divisors with different final digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

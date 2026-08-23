@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=0\\): \\(\\Phi_1(0)=-1\\), while \\(\\Phi_k(0)=1\\) for every \\(k\\ge 2\\), by the constant terms of the cyclotomic polynomials. Thus \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), and hence none of these values is prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

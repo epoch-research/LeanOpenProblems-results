@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For adjacent divisors \\(x,y\\), the condition that \\(y\\) is odd and \\(y\\ge 2x\\) is equivalent to \\(y>2x\\): oddness rules out equality, while if \\(y>2x\\) were even, the divisor \\(y/2\\) would lie strictly between \\(x\\) and \\(y\\), contradicting adjacency. Thus the two formulas count exactly the same breaks between consecutive divisors.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

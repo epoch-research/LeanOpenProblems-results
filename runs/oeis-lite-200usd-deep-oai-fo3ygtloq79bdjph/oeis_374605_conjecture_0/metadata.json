@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A terminating Sears/Pfaff–Saalschütz hypergeometric transformation rewrites the sum as\n\\((3n+1)a(n)=(n+1)\\sum_{2j\\le n+1}\\binom{3n+1}{n+1-2j}\\binom{n+j}{j}\\binom{2n-j}{n}^{2}.\\)\nFor each summand, carry criteria for binomial coefficients give \\(p\\mid\\binom{2n-j}{n}\\) and an additional factor of \\(p\\) from one of \\(n+1,\\binom{n+j}{j},\\binom{3n+1}{n+1-2j}\\); hence the right side is divisible by \\(p^3\\), and since \\(2p<3n+1<3p\\), the factor \\(3n+1\\) is coprime to \\(p\\) and can be cancelled.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

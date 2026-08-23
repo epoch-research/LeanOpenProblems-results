@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each prime-power layer, the numerator contributes \\(\\lfloor n/p^i\\rfloor^2\\), while the denominator contributes \\(S(\\lfloor n/p^i\\rfloor)\\), where \\(S(m)=\\sum_{k=1}^m k\\lfloor m/k\\rfloor\\). The bound \\(S(m)\\le m^2\\), with equality exactly for \\(m\\le2\\) and strict inequality for \\(m\\ge3\\), proves exact divisibility and makes the quotient’s \\(p\\)-adic valuation positive exactly when \\(\\lfloor n/p\\rfloor\\ge3\\), equivalently \\(p\\le\\lfloor n/3\\rfloor\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

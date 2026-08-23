@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=602191\\), the intermediate odd number \\(k=a(n)+4=6735401372843\\) lies strictly between the two proposed consecutive values. The residue classes \\(m\\equiv0\\pmod2,\\ 3\\pmod4,\\ 1\\pmod3,\\ 1\\pmod8,\\ 13\\pmod{16},\\ 21\\pmod{48},\\ 5\\pmod{48}\\) cover every positive exponent, and modular computation shows that in these cases \\(k2^m+1\\) is divisible respectively by \\(3,5,7,17,257,97,673\\), so \\(k\\) is itself a Sierpiński number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

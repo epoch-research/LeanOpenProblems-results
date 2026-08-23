@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Taking \\(p=3\\) and \\(r=2\\), direct evaluation gives \\(a(9)-a(3)=2^3\\cdot3^9\\cdot17\\cdot875491\\), so its \\(3\\)-adic valuation is exactly \\(9\\) and it is not divisible by the formally required \\(3^{12}\\). Thus this counterexample refutes only the stronger formal modulus (which contains an extra factor \\(3^3\\)); it does not refute the intended modulus \\(3^9\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

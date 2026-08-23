@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=9\\), direct calculation gives \\((2\\cdot3\\cdot5\\cdot7\\cdot11\\cdot13\\cdot17\\cdot19\\cdot23)^2+1=49{,}770{,}428{,}644{,}836{,}901=29^2\\cdot59{,}180{,}057{,}841{,}661\\). Thus this term is not squarefree, which already falsifies the conjunction regardless of the infinitude claim.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

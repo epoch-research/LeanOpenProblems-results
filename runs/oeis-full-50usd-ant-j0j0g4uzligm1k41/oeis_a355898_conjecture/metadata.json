@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the first claimed identity holds from index 3775 makes the shifted terms \\(a_n+1\\) satisfy the Fibonacci recurrence, yielding a Fibonacci linear form from the computed seed values. Modular fast-doubling modulo \\(195318521017\\) shows that the resulting terms at indices \\(249580077006\\) and \\(249580077007\\) are both divisible by this number, so their gcd is greater than one; at the next step the defining recurrence cannot equal \\(1+a_{n-1}+a_{n-2}\\), since writing the sum as \\(gt\\) would force \\((g-1)(t-1)=0\\) although \\(g,t\\ge2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Define an auxiliary sequence \\(L_0=2, L_1=1, L_{n+2}=L_{n+1}-4L_n\\) and set \\(Y_n=2^{2n+1}L_{n+1}\\). Algebra shows that both the odd subsequence \\(a_{2n+1}\\) and \\(Y_n^2\\) satisfy the same third-order recurrence \\(X_{n+3}=-48X_{n+2}+3072X_{n+1}+262144X_n\\); their first three values agree, so induction gives \\(a_{2n+1}=Y_n^2\\) for all \\(n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

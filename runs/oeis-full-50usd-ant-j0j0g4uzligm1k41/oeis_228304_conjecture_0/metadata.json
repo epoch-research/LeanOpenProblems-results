@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences split the relevant sums into two blocks whose terms cancel, giving vanishing for all indices strictly above the Hankel anti-diagonal; for the second family, complementary central-binomial factors provide the cancellation, while at index \\(p-1\\) only the midpoint survives. Thus both Hankel matrices are anti-triangular modulo \\(p\\); evaluating their constant anti-diagonals and the reversal-permutation sign \\((-1)^{\\binom p2}\\) yields the two claimed determinant residues, with the signs canceling in the second case.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

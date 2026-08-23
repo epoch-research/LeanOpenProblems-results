@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "An odd integer with totient a power of two is shown to be a squarefree product of Fermat primes, with the totient exponent equal to the sum of their distinct power-of-two indices; hence a sum equal to $2^{33}$ forces the sole factor to be $F_{33}$. Using $\\varphi(m)<m$ and the decomposition of $m$ into its $2$-part and odd part, any admissible $m<2^{2^{33}+1}$ must therefore equal the prime $F_{33}$, while the general lower bound and $\\varphi(2^{2^{33}+1})=2^{2^{33}}$ establish the two cases.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

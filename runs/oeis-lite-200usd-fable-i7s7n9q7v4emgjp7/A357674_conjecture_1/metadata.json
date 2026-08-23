@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "For \\(p\\ge7\\), the hockey-stick identity and product expansions of the binomial coefficients, together with a five-block decomposition of the squared-binomial sum, give fifth-order approximations \\(\\binom{3p}{p}=3+a\\) and \\(S_2(p)=3+b\\), where \\(a=6pH_1-6p^2H_2\\) and \\(b=6pH_1+10p^3T_1\\). Harmonic-sum reflection and alternating-binomial/Vandermonde identities imply \\(a,b=O(p^3)\\) and \\(4a+3b=O(p^5)\\), so \\((3+a)^4(3+b)^3\\equiv3^7\\pmod{p^5}\\); the cases \\(p=3,5\\) are computed directly.",
+  "proof_summary": "For \\(p\\ge7\\), finite-field power-sum divisibility, reflection \\(k\\mapsto p-k\\), and truncated product identities give \\(\\binom{3p}{p}\\equiv3+6pH_1-6p^2H_2\\) and the squared-binomial sum \\(\\equiv3+6pH_1+10p^3T\\pmod{p^5}\\), where \\(T=\\sum_{k=1}^{p-1}H_{k-1}/k^2\\). Further harmonic, alternating-binomial, and Vandermonde identities show both corrections are divisible by \\(p^3\\) and their weighted linear combination \\(4c+3s\\) vanishes modulo \\(p^5\\), so all nonlinear terms also vanish; the primes \\(3\\) and \\(5\\) are handled by direct computation.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

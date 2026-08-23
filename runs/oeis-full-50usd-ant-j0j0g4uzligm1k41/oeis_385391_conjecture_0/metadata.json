@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Pairing every divisor up to \\(\\sqrt{k}\\) with its complementary divisor gives a finite divisor-sum computation that verifies the required count at each proposed minimum; exhaustive computation excludes every smaller \\(k\\), with the largest range partitioned into blocks of length \\(330\\). The corresponding primorials are obtained directly by multiplying the first few primes.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=716{,}993{,}899\\), so \\(2n-1=1{,}433{,}987{,}797\\); size bounds force any possible exponents to lie between \\(1\\) and \\(30\\). An exhaustive check of these exponent pairs shows that every residual \\(1{,}433{,}987{,}797-2^x-7\\cdot2^y\\) is either ineligible by size, composite, or not congruent to \\(5\\pmod 6\\), so this unlisted \\(n\\) has value zero.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

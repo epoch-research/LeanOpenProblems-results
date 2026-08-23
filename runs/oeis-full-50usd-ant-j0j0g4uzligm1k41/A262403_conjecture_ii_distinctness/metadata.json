@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The proof exhibits the distinct indices \\(0\\) and \\(1\\): since \\(T(0)=0\\) and \\(T(1)=1\\), both prime-counting values are \\(0\\), giving an explicit collision.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

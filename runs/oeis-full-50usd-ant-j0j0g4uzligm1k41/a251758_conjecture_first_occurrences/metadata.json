@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct divisor enumeration evaluates every claimed witness and rules out all smaller candidates except in the large value-\u0014 case. There, divisor reflection forces any smaller hypothetical example to have least prime factor at least \\(17\\) and at most four distinct prime factors; AM–GM on reciprocal adjacent-divisor products, combined with the multiplicative bound \\(\\sum_{d\\mid n}d^{-2}\\le\\prod_{q\\mid n}q^2/(q^2-1)\\), yields \\(s/n^2\\le 1/15\\), contradicting \\(\\lfloor n^2/s\\rfloor=14\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

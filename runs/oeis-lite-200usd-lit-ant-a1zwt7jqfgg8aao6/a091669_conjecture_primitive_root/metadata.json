@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an odd proper prime divisor \\(p\\mid n\\), LTE applied at multiples of \\(d=\\operatorname{ord}_p(2)\\) gives enough \\(p\\)-adic valuation to prove \\(p\\mid a(n-1)\\), contradicting the assumed divisibility; composites with no odd prime divisor are powers \\(2^s\\), excluded by the exact valuation \\(v_2(a(2^s-1))=s-1\\). Once \\(n=p\\) is prime, Wilson’s theorem turns the congruence into \\(\\prod_{k=1}^{p-2}(2^k-1)=1\\pmod p\\); since \\(\\operatorname{ord}_p(2)\\mid p-1\\), any smaller order would make one factor zero, so the order is \\(p-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

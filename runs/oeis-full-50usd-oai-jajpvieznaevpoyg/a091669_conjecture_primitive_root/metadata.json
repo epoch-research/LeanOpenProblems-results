@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For composite \\(n\\), an odd prime divisor \\(p\\) is shown—using Fermat factors and Legendre’s digit-sum formula—to divide \\(a(n-1)\\), forcing the impossible \\(p\\mid 2^{n-2}\\); if \\(n=2^k\\), the exact valuation \\(v_2(a(2^k-1))=k-1\\) gives the analogous contradiction. Once \\(n\\) is prime, any proper order \\(d<n-1\\) of \\(2\\) makes the factor \\(2^d-1\\) force \\(n\\mid a(n-1)\\) (uncancelled by \\((n-1)!\\)), again impossibly implying \\(n\\mid 2^{n-2}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

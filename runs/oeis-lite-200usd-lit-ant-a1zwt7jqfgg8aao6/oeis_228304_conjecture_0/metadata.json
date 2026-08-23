@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences pair the summands indexed by \\(k\\) and \\(p+k\\) with opposite signs, showing both sequences vanish modulo \\(p\\) at every \\(p+r\\) with \\(0\\le r<p\\); at \\(p-1\\), \\(\\binom{p-1}{k}\\equiv(-1)^k\\), giving boundary values \\(1\\) for the first sum and \\((-1)^{(p-1)/2}\\) for the second, where central-binomial vanishing leaves only the midpoint. Thus each Hankel matrix is anti-triangular modulo \\(p\\), and expanding its determinant along the last nonzero anti-diagonal gives the requisite sign times the \\(p\\)-th power of that boundary value, which simplifies to the two claimed residues.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

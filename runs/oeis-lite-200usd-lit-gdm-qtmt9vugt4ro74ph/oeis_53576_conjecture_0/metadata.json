@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing $N=2^K$ and $X=2^N$, totient bounds show that every admissible $m$ is at least $X+1$; moreover, $X+1$ is admissible exactly when it is prime, while $2X$ always has totient $X$. In the nonprime case, a hypothetical $m<2X$ must be odd and squarefree with $\\phi(m)=X$; every prime divisor is then a distinct Fermat-form prime $1+2^{2^c}$, so multiplicativity forces distinct powers $2^c$ to sum to $N=2^K$, which is impossible because factoring out the least summand leaves an odd factor greater than $1$ dividing a power of two.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

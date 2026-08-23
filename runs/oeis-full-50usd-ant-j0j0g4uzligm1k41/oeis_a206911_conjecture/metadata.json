@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the ranks via \\(f_n=\\lfloor e^{H_n}\\rfloor\\), analytic bounds show \\(1\\le e^{H_{n+1}}-e^{H_n}<2\\), so \\(f_{n+1}-f_n\\in\\{1,2\\}\\) and hence every rank increment is \\(2\\) or \\(3\\).  The indicators then telescope to \\(\\#3=f_{N+1}-N-2\\) and \\(\\#2=2N+2-f_{N+1}\\); since \\(f_{N+1}/(N+1)\\to e^\\gamma\\), their ratio tends to \\((e^\\gamma-1)/(2-e^\\gamma)\\), which lies in \\((3.5,3.6)\\) from the explicit bounds \\(16/9<e^\\gamma<41/23\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

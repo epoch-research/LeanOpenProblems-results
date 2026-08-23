@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(p=3\\) and \\(r=2\\): direct evaluation gives \\(a(9)=2343591359499\\) and \\(a(3)=7491\\), with difference \\(2^3\\cdot3^9\\cdot17\\cdot875491\\). Thus its 3-adic valuation is exactly \\(9\\), so the difference is not divisible by the formal statement’s modulus \\(3^{12}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

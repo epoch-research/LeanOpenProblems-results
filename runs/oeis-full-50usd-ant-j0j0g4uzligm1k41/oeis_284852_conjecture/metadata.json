@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The word used in the statement is the tenth substitution iterate padded by 1’s; its length is at most \\(4^{10}\\), so it has at most \\(4^{10}\\) zeros and the definition yields \\(a(4^{10}+1)=1\\). Since \\(r=(3+\\sqrt3)/3\\ge1\\), this gives \\((4^{10}+1)r-a(4^{10}+1)\\ge4^{10}>2\\), contradicting the proposed upper bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

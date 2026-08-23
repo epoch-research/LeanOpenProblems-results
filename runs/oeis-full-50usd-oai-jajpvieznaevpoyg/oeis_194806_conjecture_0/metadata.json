@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(B=\\lfloor n^{1/4}\\rfloor+1\\) and \\(T=B^3\\), and take all integers up to \\(T\\) together with all primes up to \\(n\\): an integer whose largest prime factor exceeds \\(B\\) is that prime times a factor at most \\(T\\), while a \\(B\\)-smooth integer can be split into two factors at most \\(T\\), so this set has size at most \\(T+\\pi(n)\\). The estimates \\(4^m\\le m\\binom{2m}{m}\\le m(2m)^{\\pi(2m)}\\), together with logarithmic growth, imply eventually \\(\\pi(2m)\\ge m^{3/4}\\), hence \\(T\\le 32\\pi(n)\\); the remaining finite range is bounded separately.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

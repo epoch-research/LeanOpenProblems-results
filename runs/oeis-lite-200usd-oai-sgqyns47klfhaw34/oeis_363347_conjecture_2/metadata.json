@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes 5 a quadratic residue modulo p; choosing the even root r among complementary roots and setting n=r-1 and q=(r^2-5)/p gives q odd, q≤n-1, and gcd(q,2(n-2))=1 (a common divisor of q and r-3 must divide 4). An integer recurrence for the continued fraction gives its relevant numerator as n^2+2n-4=pq and shows that q divides the accompanying denominator while p does not, so reduction cancels exactly q and leaves p.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

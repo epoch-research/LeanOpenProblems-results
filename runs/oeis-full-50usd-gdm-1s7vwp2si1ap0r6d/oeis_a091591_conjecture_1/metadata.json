@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For each \\(1\\le n\\le122\\), an explicit prime is exhibited strictly between the consecutive squares. For \\(n>122\\), positivity of the count yields a twin-prime pair wholly inside the interval, so the lower member of that pair is the required prime.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

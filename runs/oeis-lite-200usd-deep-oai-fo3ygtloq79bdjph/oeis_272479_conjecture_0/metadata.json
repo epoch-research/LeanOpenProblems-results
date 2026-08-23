@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Let \\(d=D(n)\\), \\(e=D(d)\\), and \\(q=(n-e)/9\\); invariance of decimal digit sum modulo 9 makes \\(q\\) integral, and digit-sum bounds give \\(d\\le 10^q\\) when \\(q>0\\). If \\(q=0\\), then \\(d=e=n\\) and \\(10n\\) is a partner; otherwise, pad the \\(q\\)-digit expansion of \\(d-1\\), adjoin its digitwise 9-complement to obtain a block of digit sum \\(9q\\) whose value is divisible by \\(d\\), and combine it (separated by zeros) with the digits of \\(d\\), producing a distinct \\(k\\) with \\(D(k)=9q+e=n\\) and \\(d\\mid k\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

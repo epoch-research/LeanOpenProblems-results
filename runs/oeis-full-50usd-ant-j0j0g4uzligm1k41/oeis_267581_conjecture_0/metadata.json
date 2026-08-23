@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof’s central invariant is that, for \\(t\\ge1\\), a cell at \\((t,x)\\) is zero exactly when \\(x=t-2v\\) for some \\(v\\) with \\(\\binom{t-1}{v}\\) odd; this is propagated through Rule 167 using Pascal’s identity and parity. At \\(x=0\\), a Lucas-theorem parity argument shows this occurs exactly when \\(t\\) is a power of two, equivalently \\(t\\mid2^{t+1}\\), and appending the resulting center bit to the binary prefix gives the recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For the block \\((2,4,2,4,2)\\), an occurrence starting from a prime \\(q\\) would make \\(q,q+2,q+6,q+8,q+12,q+14\\) all prime. Their residues force one to be divisible by \\(5\\); analyzing the exceptional possibility forces \\(q=5\\) (the alternative \\(q=3\\) would require \\(9\\) to be prime), so the block occurs only once and hence not infinitely often.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

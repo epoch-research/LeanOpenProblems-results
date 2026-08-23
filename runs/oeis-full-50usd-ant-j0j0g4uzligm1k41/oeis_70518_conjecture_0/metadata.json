@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A modular computation shows that \\(28341^{28341}\\equiv1\\pmod{283411^2}\\), while checking all proper divisors of \\(28341\\) shows that \\(28341\\) has exact multiplicative order \\(28341\\) modulo the prime \\(283411\\). In the factorization \\(28341^{28341}-1=\\prod_{d\\mid28341}\\Phi_d(28341)\\), this order computation excludes \\(283411\\) from every proper-divisor factor, so coprimality forces the full square factor into the top cyclotomic factor.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

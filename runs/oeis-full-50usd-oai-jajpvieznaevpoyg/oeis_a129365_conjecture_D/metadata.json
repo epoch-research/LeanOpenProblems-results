@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=p=2\\): at argument \\(4\\), the numerator and denominator products both equal \\(96\\), so \\(a(4)=1\\) and hence \\(\\operatorname{ord}_2(a(4))=0\\). On the proposed right-hand side only the \\(i=0\\) term is nonzero, giving \\(\\lfloor 2/2\\rfloor=1\\), so the two sides disagree.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the interior value \\(k=a(n)+4=5292270077783\\) is odd and greater than 1. A covering of all exponent classes modulo \\(48\\) shows that every \\(k2^m+1\\) is divisible by one of \\(3,5,7,17,97,257,673\\), so it is composite; thus \\(k\\) is a Sierpiński number strictly between the two proposed consecutive values.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

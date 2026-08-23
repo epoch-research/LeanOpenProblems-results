@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(p=3\\) and \\(r=2\\): direct evaluation gives \\(a(3)=7491\\) and \\(a(9)=2343591359499\\), with \\(a(9)-a(3)=3^9\\cdot119066776\\). Since \\(119066776\\) is not divisible by \\(3\\), the difference is not divisible by the formal statement’s modulus \\(3^{12}\\), providing the counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

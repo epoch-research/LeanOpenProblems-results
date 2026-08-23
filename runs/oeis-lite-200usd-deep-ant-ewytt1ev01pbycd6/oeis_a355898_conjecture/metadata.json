@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the first claimed identity, the shifted pairs \\((a_n+1,a_{n+1}+1)\\) follow the Fibonacci matrix recurrence; modular matrix exponentiation modulo \\(p=195318521017\\) shows that both \\(a_{249580077006}\\) and \\(a_{249580077007}\\) are divisible by \\(p\\). Their gcd is therefore greater than 1, but for positive \\(x,y\\) the defining value \\(g+(x+y)/g\\), with \\(g=\\gcd(x,y)>1\\), cannot equal \\(1+x+y\\), contradicting the claimed identity at the next index.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

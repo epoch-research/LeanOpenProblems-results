@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The sum satisfies the recurrence \\(a_{n+1}=2^{\\binom{n+1}{2}}+(2^n-1)a_n\\); for odd prime \\(p\\), Fermat’s theorem makes both coefficients repeat after \\(2(p-1)\\), while at the initial shifted step \\(2^{2(p-1)}-1\\equiv0\\) and the remaining power is \\(1\\), so induction propagates the congruence. For \\(p=2\\), the same recurrence shows every \\(a_n\\) with \\(n\\ge1\\) is odd.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

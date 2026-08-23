@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof derives a five-residue closed form: for each block indexed by \\(q\\), the five terms are \\((-1)^qF_{5q},\\,(-1)^qF_{5q+1},\\,(-1)^qF_{5q+1},\\,0,\\,(-1)^{q+1}F_{5q+3}\\). Standard Fibonacci recurrence identities show that this formula satisfies the defining fourth-order recurrence and initial values; splitting by the index modulo five then makes the absolute-value conclusion immediate.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

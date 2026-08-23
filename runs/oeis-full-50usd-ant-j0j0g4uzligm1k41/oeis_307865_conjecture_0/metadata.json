@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A repeated prime factor is ruled out by taking the square-zero perturbation \\(1+m/p\\): its order divides both that prime and \\(2n\\), hence is trivial, contradicting \\(0<m/p<m\\). For a coprime factorization \\(m=pd\\), a hypothetical base with \\(b^n=-1\\) is spliced by the Chinese remainder theorem with \\(b\\) modulo \\(p\\) and \\(1\\) modulo \\(d\\); its \\(n\\)-th power can then be neither \\(+1\\) nor \\(-1\\), contradicting the absolute Euler condition.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

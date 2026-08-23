@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Choose the shift \\(k=0\\). Since \\(s(m)\\) is defined as \\(a(m.toNat)\\), and converting any natural-number index to an integer and back gives the original index, \\(s(n)=a(n)\\) for every \\(n\\ge 0\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

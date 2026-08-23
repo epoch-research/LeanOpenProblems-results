@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite number \\(n=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\), whose displayed factors are prime. Multiplicativity of the Pillai gcd-sum gives \\(\\sum_{k=1}^n\\gcd(k,n)=\\prod_{p\\mid n}(2p-1)=610815156979325\\), and this sum plus one equals \\(26n\\), so its gcd with \\(n\\) is \\(n\\) and the resulting quotient is \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

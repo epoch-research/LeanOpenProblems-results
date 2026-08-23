@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "Dwork’s criterion, using Gauss congruences for the factorial ratios, gives integrality; a level-\u001b[1mρ\u001b[0m logarithmic splitting then factors the exponential into a dilated part and a correction part, whose tuple expansion is controlled for \\(m\\ge3\\) by Legendre carry counts and the cubic Kazandzidis congruence to obtain the required \\(p^{3r}\\)-divisibility. The exceptional cases reduce to \\(b_1(N)=\\tfrac12\\binom{2N}{N}\\) and \\(b_2(N)=\\tfrac12\\binom{4N}{N}\\) (the latter via the Catalan series), after which Kazandzidis applies directly.",
+  "proof_summary": "Integrality follows from Dwork’s criterion applied to the logarithmic series, using Gauss congruences for the multinomial coefficients, together with nonnegativity of the exponential coefficients. For the supercongruence, the cases $m=1,2$ reduce to the closed forms $\\binom{2N}{N}/2$ and $\\binom{4N}{N}/2$ and Kazandzidis’ congruence, while for $m\\ge3$ a $p^r$-dilation/correction decomposition of the logarithm, the strong estimate for $c_m(pJ)-c_m(J)$, and tuple carry-valuation bounds show that the resulting convolution changes by a multiple of $p^{3r}$.",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

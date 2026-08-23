@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "The relevant difference is rewritten using \\(\\beta(S,N)=[X^N]\\,\\frac{1-2X}{(1-X)(1-X+X^2)}(1-X)^{-S}\\), and a Dwork–Cartier expansion based on \\(\\Delta=X^p+(1-X)^p=1+ph\\) and \\(h=(1-X)(1-X+X^2)\\eta\\) yields a double-sum identity in which the low-order moments vanish by a Cartier fixed-point relation and the involution \\(X\\mapsto1-X\\). Kummer–Legendre and Stirling-number valuation bounds, combined with a product identity for the remaining inner sums, show every term has \\(p\\)-adic valuation at least \\(3(v+1)\\) when \\(p^v\\mid S,N\\); taking \\(v=k-1\\) gives the result.",
+  "proof_summary": "Binomial absorption and coefficient extraction rewrite the relevant difference as \\(\\beta(pS,pN)-\\beta(S,N)\\), where \\(\\beta(S,N)=[x^N]\\,G(x)(1-x)^{-S}\\) and \\(G(x)=(1-2x)/((1-x)(1-x+x^2))\\). Expanding with \\(\\Delta=x^p+(1-x)^p=1+ph\\), a Cartier fixed-point identity for \\(G\\), the factorization \\(h=(1-x)(1-x+x^2)\\eta\\), and an antisymmetry cancellation remove the low-order terms; Kummer–Legendre/Stirling valuation bounds together with a product identity for the remaining Stirling-binomial sums then give every error term valuation at least \\(3(v+1)\\), applied with \\(v=k-1\\).",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

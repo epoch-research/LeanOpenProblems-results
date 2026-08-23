@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity gives a square root of \\(5\\) modulo \\(p\\); choosing the even root \\(2<r<p\\) and setting \\(n=r-1\\) yields the continuant numerator \\(r^2-5=pm\\), where \\(m\\) is odd and sufficiently small. Scaled-continuant identities show that this small cofactor \\(m\\) divides the adjacent continuant, whereas \\(p>n+1\\) cannot divide it since any such common divisor would divide \\(4(n-1)!\\), so reduction cancels exactly \\(m\\) and leaves \\(p\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

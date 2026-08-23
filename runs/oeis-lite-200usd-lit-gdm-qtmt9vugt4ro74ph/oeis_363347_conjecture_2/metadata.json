@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity shows that 5 is a quadratic residue modulo p; choosing the even root x with 0<x<p and setting n=x-1 gives n^2+2n-4=x^2-5=cp, where c is positive, odd, and c<n. Writing the continued fraction as P_2/P_3, a factorial identity for the recurrence shows c∣P_3, while p cannot divide P_3/c because the recurrence would then force p∣P_n=4; hence the reduced numerator of P_2/P_3 is exactly p.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

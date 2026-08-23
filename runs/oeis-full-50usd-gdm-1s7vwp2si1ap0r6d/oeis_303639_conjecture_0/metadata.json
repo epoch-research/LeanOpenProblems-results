@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The counterexample is $n=800{,}322{,}180$: monotonicity of $\\binom{2k+1}{k}$ forces $0\\le c\\le d<16$, reducing the problem to 136 pairs $(c,d)$. For every pair, the remainder after subtracting the two binomial terms is ruled out as a sum of two squares either by an impossible residue modulo $4,8,9,$ or $16$, or because some prime congruent to $3\\pmod 4$ occurs to an odd exponent.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof splits on whether there is a cutoff beyond which all values are less than \\(k\\). If no such cutoff exists, then every \\(M\\) has some \\(n\\ge M\\) with value at least \\(k\\), since otherwise \\(M\\) itself would provide the cutoff.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

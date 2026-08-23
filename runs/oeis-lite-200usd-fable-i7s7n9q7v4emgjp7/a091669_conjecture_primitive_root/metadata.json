@@ -1,8 +1,8 @@
 {
   "settlement": "proved",
-  "proof_summary": "For an odd prime \\(p\\) and \\(t\\ge2\\), counting the factors \\(2^{jd}-1\\), where \\(d=\\operatorname{ord}_p(2)\\mid p-1\\), and comparing their \\(p\\)-adic contribution with that of \\((pt-1)!\\) shows \\(p\\mid a(pt-1)\\); thus a proper odd prime divisor of \\(n\\) would force \\(p\\mid2^{n-2}\\), while \\(v_2(a(2^v-1))=v-1\\) excludes the remaining composite case \\(n=2^v\\). Once \\(n\\) is prime, if \\(d=\\operatorname{ord}_n(2)<n-1\\), then the factor \\(2^d-1\\) makes \\(n\\) divide the numerator but not \\((n-1)!\\), forcing \\(n\\mid a(n-1)\\) and hence \\(n\\mid2^{n-2}\\), a contradiction; therefore \\(d=n-1=\\varphi(n)\\).",
+  "proof_summary": "For an odd prime divisor \\(p\\mid n\\), multiplicative-order factors \\(2^{jd}-1\\) and factorial valuation bounds show that if \\(n=pt\\) with \\(t\\ge2\\), then \\(p\\mid a(n-1)\\), forcing the impossible conclusion \\(p\\mid2\\); hence a composite candidate could only be \\(2^v\\), but the exact calculation \\(v_2(a(2^v-1))=v-1\\) rules this out. Once \\(n\\) is prime, if the order \\(d\\) of \\(2\\bmod n\\) were less than \\(n-1\\), the factor \\(2^d-1\\) in the defining product would force \\(n\\) to divide its numerator, contradicting the original divisibility together with \\(n\\nmid a(n-1)\\); thus \\(d=n-1\\).",
   "generation": {
     "model": "openai/gpt-5.6-sol",
-    "source_eval": "2026-08-23T12-16-15-00-00_summarize-proofs_8nNMGJHqWwqsJJPeB45JL7.eval"
+    "source_eval": "2026-08-23T13-18-15-00-00_summarize-proofs_YgMvVeVDxqnKAdqT3Sa5MN.eval"
   }
 }

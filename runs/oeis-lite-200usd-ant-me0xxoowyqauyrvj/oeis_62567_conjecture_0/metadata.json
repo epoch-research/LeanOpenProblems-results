@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the three small exponents, the congruence \\(10^i\\equiv1+9i\\pmod M\\) for \\(M\\mid81\\), applied to a number and its reversal, forces \\(M\\) to divide its digit sum; the digit bound then gives the all-9s number as a lower bound, matching the divisibility-based upper bound. For every larger exponent, repeating the palindromic block \\(29799999792\\) exactly \\(3^{n-5}\\) times produces a shorter palindrome divisible by \\(3^n\\), since each tripling of the block repetition contributes another factor of \\(3\\), and hence gives a strictly smaller admissible value.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

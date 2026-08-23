@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The Catalan recurrence gives reciprocal ratio at most \\(1/3\\) from index \\(4\\) onward; a geometric-tail bound, completed using the first few values, shows that each reciprocal strictly exceeds the sum of all later reciprocals, so interval sums are strictly ordered by their starting index and, for a common start, by their endpoint. The sole admissible interval starting at \\(1\\) has sum \\(1\\), while every other sum lies strictly between \\(0\\) and \\(1\\), reducing fractional-part distinctness to the established distinctness of the sums themselves.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Partition the avoiding sequences by their maximum \\(M\\), excess length \\(s\\), and initial strictly decreasing run; the maximum occurs once or twice, and deleting it gives a reversible insertion recursion governed by that run. The resulting ballot-number recurrence has total \\(\\mathrm{Cat}_M\\) and factors the count as \\(\\mathrm{Cat}_M\\binom{M}{s}\\); summing over \\(M\\) yields the required Catalan–binomial formula.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

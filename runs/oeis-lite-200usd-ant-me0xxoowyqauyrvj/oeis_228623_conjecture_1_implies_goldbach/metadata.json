@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cases \\(1\\le k\\le59\\) are checked directly. For \\(k\\ge60\\), set \\(n=2k+1\\); a nonzero determinant forces some matrix entry to be \\(1\\), giving primes \\(n+i-j\\) and \\(n+j-i\\), and the index bounds make the subtractions exact so their sum is \\(2n=4k+2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

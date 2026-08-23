@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing a composite \\(n=2^e m\\), an odd prime divisor \\(p\\mid m\\) is handled by selecting the factors \\(2^{(p-1)j}-1\\) and applying LTE to show that enough \\(p\\)-adic valuation survives division by \\((n-1)!\\), forcing \\(p\\mid a(n-1)\\) and hence impossibly \\(p\\mid2^{n-2}\\); the pure power-of-two case is excluded by the exact value \\(v_2(a(2^e-1))=e-1\\). For prime \\(p\\), reduction modulo \\(p\\) and Wilson’s theorem turn the hypothesis into \\(\\prod_{1\\le k<p-1}(2^k-1)=1\\), so none of the powers \\(2^k\\) with \\(0<k<p-1\\) equals \\(1\\), while Fermat’s theorem gives \\(2^{p-1}=1\\), proving that the order is exactly \\(p-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

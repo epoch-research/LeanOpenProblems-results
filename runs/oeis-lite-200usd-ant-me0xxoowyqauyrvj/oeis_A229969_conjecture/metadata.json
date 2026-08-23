@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=7\\): the prescribed value of \\(x\\) is at least \\(3\\), and \\(x\\le y\\le z\\) then forces \\(x+y+z\\ge 9\\), contradicting \\(x+y+z=7\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

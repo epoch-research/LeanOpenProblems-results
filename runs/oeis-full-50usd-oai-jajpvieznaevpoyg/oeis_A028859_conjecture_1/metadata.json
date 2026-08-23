@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The final entry is forced to be either \\(1\\) or \\(2\\), and if it is \\(2\\) the penultimate entry must be \\(1\\). Splitting further according as the preceding prefix already contains \\(1\\) (respectively \\(2\\)) gives four disjoint reversible constructions—shifting the prefix by \\(0\\) or \\(1\\) before appending \\(1\\), or by \\(1\\) or \\(2\\) before appending \\((1,2)\\)—so the counts satisfy \\(b_L=2b_{L-1}+2b_{L-2}\\); the directly determined initial counts then identify them with the recurrence-defined numbers.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

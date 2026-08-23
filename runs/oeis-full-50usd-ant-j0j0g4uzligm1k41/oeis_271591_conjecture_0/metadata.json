@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Normalize \\(T_n\\) to \\(u_n=T_n/2^{\\lfloor\\log_2T_n\\rfloor}\\in[1,2)\\), so the bit is determined by whether \\(u_n\\) is below or above \\(3/2\\); the recurrence gives \\(1.836\\le T_{n+1}/T_n\\le1.842\\), hence each normalized step either multiplies by this ratio or by half of it. Threshold-crossing and repeated-contraction estimates then force at least four but at most five steps below \\(3/2\\), and at least three but at most four above it, with the finitely many initial cases handled directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

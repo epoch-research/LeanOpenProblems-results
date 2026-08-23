@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=5\\), direct evaluation gives \\(a(5)=4\\) and \\(a(4)=3\\), so the difference is \\(1\\), not \\(0\\). Yet \\(5=\\lfloor 2\\phi^2\\rfloor\\) (since \\(2\\phi^2=3+\\sqrt5\\)), so \\(5\\) lies in the Beatty set asserted to characterize the zero differences, yielding a counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

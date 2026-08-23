@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For a composite with an odd prime divisor \\(q\\), counting multiples of \\(\\operatorname{ord}_q(2)\\) among the product factors and applying Legendre’s digit-sum formula gives strictly more \\(q\\)-adic valuation in the product than in \\((n-1)!\\), forcing \\(q\\mid a(n-1)\\) and contradicting the hypothesis; the remaining case \\(n=2^j\\) is excluded by the exact computation \\(v_2(a(2^j-1))=j-1\\). Once \\(n\\) is prime, if \\(\\operatorname{ord}_n(2)<n-1\\), then \\(2^{\\operatorname{ord}_n(2)}-1\\) occurs in the defining product, so cancellation against \\((n-1)!\\) forces \\(n\\mid a(n-1)\\), again contradicting the hypothesis; hence the order is \\(n-1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-32-21-00-00_summarize-proofs_gf4wp3ZypyDvEbBGqD8yLp.eval"
+  }
+}

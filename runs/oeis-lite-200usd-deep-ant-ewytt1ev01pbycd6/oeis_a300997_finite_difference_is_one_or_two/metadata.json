@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Couple the mass-\u0000n and mass-\u0000n+1 evolutions by tracking the single extra unit as a chip that stays put or moves one cell right according to the parity of its current cell. An invariant relating the chip to the leading run of ones, together with the penultimate shape \\([1,\\ldots,1,2]\\), puts the chip one or two sites short of position \\(n\\) when the \\(n\\)-system settles; thereafter it advances one site per step, giving the exact delay \\(n-q\\in\\{1,2\\}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

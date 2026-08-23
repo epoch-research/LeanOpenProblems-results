@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=14\\). The condition that \\(2k+1\\) be prime leaves only \\(k=1,2,3,5,6,8,9,11\\), and direct prime counting gives adjacent-interval count pairs \\((6,3),(3,4),(4,3),(3,4),(4,2),(4,1),(1,4),(2,3)\\), respectively, so none has equal counts.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

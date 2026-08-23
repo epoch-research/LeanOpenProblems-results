@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Induction through the product recurrence shows that both components at index \\(n\\) are divisible by \\(2^k\\) whenever \\(n\\ge 2k+4\\), since eventual evenness propagates and each new sum or difference is built from products of highly \\(2\\)-divisible earlier components. A period-12 computation modulo 15 shows the first component never vanishes, so its first \\(k\\) prime factors are all 2 and the \\(k\\)-th prime factor is eventually constant (hence periodic with period 1).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

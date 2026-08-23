@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For a bound $N$, choose $M\\ge N+2$ and apply the hypothesis to $n=(M+1)!/6$, obtaining primes with $(M+1)!=(6x-1)+(6(n-x)+1)$. If the Sophie Germain prime $6x-1$ were at most $N$, it would divide the factorial and hence the complementary prime, forcing an impossible equality modulo $6$; similarly, if the lower twin prime were at most $N$, its upper partner would divide the factorial and hence $6x-1$, again forcing an impossible equality modulo $6$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-29-13-00-00_summarize-proofs_nrtAzCPR5fQwbbuemkVthv.eval"
+  }
+}

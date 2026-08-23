@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Taking \\(p=11\\), direct evaluation of the finite weighted sum gives \\(44\\pmod{121}\\). The character used in the formal statement is \\(\\left(\\frac{7}{11}\\right)=-1\\) (the arguments are reversed from the canonical \\(\\left(\\frac{11}{7}\\right)\\)), so the claimed right-hand side is \\(11(21(-1)+16)=-55\\equiv66\\pmod{121}\\), yielding a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

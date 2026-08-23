@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce auxiliary recurrences \\(d_0=1,d_1=7,d_{n+2}=-d_{n+1}-4d_n\\) and \\(e_0=1,e_1=-11,e_{n+2}=-7e_{n+1}-16e_n\\); a quadratic invariant relating \\(d\\) and \\(e\\) yields, by induction through the original recurrence, \\(a(2n)=-16^n e_n\\) and \\(a(2n+1)=4\\cdot16^n d_n^2\\). Consequently \\(a(2n+1)=(2\\cdot4^n d_n)^2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=18\\): \\(\\sigma(18)=39\\) gives \\(a(18)=18/\\gcd(18,39)=6\\), while \\(\\sigma(6)=12\\) gives \\(a(6)=1=2^0\\). Thus \\(6\\) satisfies the defining power-of-two condition used for membership, whereas \\(18\\) does not because \\(6\\) is not a power of two, providing the counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

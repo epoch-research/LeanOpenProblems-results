@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A binomial–Fibonacci identity gives \\(2nS(n)=L_{2n}-1\\), so integrality would force \\(2n\\mid L_{2n}-1\\); congruences modulo \\(4\\) eliminate the cases \\(3\\mid n\\) and even \\(n\\). For odd \\(n\\) with \\(3\\nmid n\\), the identity \\(L_{2n}-1=L_n^2+1\\) rules out prime divisors \\(p\\equiv3\\pmod4\\), explicit recurrences modulo \\(5,13,17\\) handle the small exceptions, and a Fibonacci rank-of-apparition bound produces a smaller prime divisor of \\(n\\) from any remaining smallest prime, a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

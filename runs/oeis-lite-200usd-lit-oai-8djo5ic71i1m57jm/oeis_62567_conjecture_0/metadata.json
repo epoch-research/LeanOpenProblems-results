@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cases \\(n=2,3\\) are computed directly, while for \\(n=4\\) the congruence \\(10^i\\equiv1+9i\\pmod{81}\\), applied to a number and its reversal, forces any positive common multiple below nine digits to have digit sum divisible by \\(81\\); the digit bound then forces all nine digits to be \\(9\\), proving minimality. For \\(n\\ge5\\), the palindrome \\(68899199886\\) handles \\(5\\le n\\le12\\), and for larger \\(n\\) concatenating this 11-digit block \\(3^{n-12}\\) times gives a smaller palindrome divisible by \\(3^n\\), since its geometric-series factor gains one factor of \\(3\\) at each tripling.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

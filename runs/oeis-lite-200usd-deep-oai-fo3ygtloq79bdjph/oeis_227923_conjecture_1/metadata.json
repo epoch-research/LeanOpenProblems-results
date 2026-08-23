@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assume either family is finite and bounded by B, take n=(B+3)!, and choose a corresponding decomposition n=x+y. Since (6x-1)+(6y+1)=6n, factorial divisibility forces 6x-1 to divide the distinct prime 6y+1 when the Sophie Germain primes are bounded, and forces 6y+1 to divide the distinct prime 6x-1 when the twin pairs are bounded; either case contradicts primality.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

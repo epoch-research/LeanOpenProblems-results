@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=51156\\), a sieve computation of the relevant prime counts, followed by finite convolution, finds the unique solution \\((k,m)=(16,1119)\\), with \\(\\pi(272)=58\\) and \\(\\pi(626640)=51098\\). Monotonicity and the prime-count thresholds at \\(k=792\\) and \\(m=1120\\) exclude all larger candidates, so this gives a singleton count at a nonexceptional index.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

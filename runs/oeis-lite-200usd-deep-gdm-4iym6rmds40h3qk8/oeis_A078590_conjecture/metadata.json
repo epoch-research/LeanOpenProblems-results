@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At the seventh step, the denominator is \\(a(5)=171\\), which is divisible by \\(19\\). But \\(a(6)\\equiv3\\pmod{18}\\), so Fermat-periodicity gives \\(2^{a(6)}+1\\equiv2^3+1=9\\not\\equiv0\\pmod{19}\\); hence \\(171\\) does not divide that numerator.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

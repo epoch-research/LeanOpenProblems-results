@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Since the product is not \\(1\\), the finite associated-prime set is nonempty and therefore has a maximum \\(m\\). Membership makes \\(m\\) prime, while any prime divisor \\(q\\le\\sqrt{2n-m}\\le\\sqrt{2n}\\) witnessing that \\(2n-m\\) is composite would imply \\(m\\equiv 2n\\pmod q\\), contradicting the defining modular exclusion; hence the complement is prime and the two terms sum to \\(2n\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

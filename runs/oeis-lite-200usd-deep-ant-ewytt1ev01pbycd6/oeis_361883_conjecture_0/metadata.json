@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing \\(M=p^e u\\), the proof splits the numerator difference \\(B(M)-pB(M/p)\\) by whether \\(p\\mid k\\) and proves divisibility by \\(p^{4e}\\): the coprime-index part uses block cancellation of inverse-square sums and a peeled binomial-ratio recurrence, while the divisible-index part uses paired product expansions and valuation bounds for binomial cube differences. Since \\(B(M)=M a(M)\\), canceling the \\(p^e\\)-part of \\(M\\) yields divisibility by \\(p^{3e}\\), which suffices because \\(e=v_p(np^r)\\ge r\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

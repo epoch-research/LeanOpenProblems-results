@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=33085221781504=2^{14}\\cdot4409\\cdot458009\\), where the two odd factors are prime. Writing \\(T(n)=\\sum_{d\\mid n}\\sigma_1(d)\\), the identity \\(a(n)=2\\sigma_1(n)-T(n)\\) and multiplicativity give \\(\\sigma_1(n)=32767\\cdot4410\\cdot458010=66183576284700\\) and \\(T(n)=65519\\cdot4411\\cdot458011=132367152569399\\), so \\(a(n)=1\\) although \\(n\\ne1,12\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

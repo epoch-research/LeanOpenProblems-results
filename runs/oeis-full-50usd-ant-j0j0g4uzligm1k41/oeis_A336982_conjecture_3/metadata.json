@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the prime \\(p=41\\): \\(\\left(\\frac{-30}{41}\\right)=-1\\), but direct evaluation of the finite sum gives \\(S(41)\\equiv 899\\pmod{41^2}\\). Since \\(899\\not\\equiv0\\pmod{1681}\\), this contradicts the first asserted congruence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

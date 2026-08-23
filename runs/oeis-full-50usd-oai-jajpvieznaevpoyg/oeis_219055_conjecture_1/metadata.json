@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Positivity yields a witness whose parity-dependent representation directly gives Goldbach or Lemoine decompositions above the respective thresholds, while explicit finite decompositions handle all smaller admissible integers. For any bound \\(B\\), applying the even case to \\(2(B+8013)\\) produces two cousin-prime pairs \\((q,q+6)\\) and \\((p-6,p)\\); if \\(q\\le B\\), the size relation forces \\(p-6>B\\), so one pair always lies beyond \\(B\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

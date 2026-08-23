@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A roots-of-unity Fourier identity expresses \\(nW-2A\\), where \\(W\\) counts residues with nonzero square modulo \\(n\\), as a cotangent-weighted quadratic Gauss sum; grouping by gcd and evaluating the Gauss sums reduces its nonnegativity to parity cancellation for even quadratic characters and positivity of \\(L(1,\\chi)\\) for odd ones. Thus \\(2A\\le nW\\), and the elementary bound \\(W\\le n-1\\) yields the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

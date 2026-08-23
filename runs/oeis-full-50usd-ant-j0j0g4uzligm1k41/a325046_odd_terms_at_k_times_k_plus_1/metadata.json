@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas’s parity criterion converts oddness of the two binomial factors into disjointness conditions on binary digits, which show that each odd summand indexed by \\((n,k)\\), with \\(j=(N-n(k+1))/(n+1)\\), is paired involutively with the summand indexed by \\((j+k,k)\\). Any fixed point forces \\(j=0\\) and \\(n=k\\), hence \\(N=k(k+1)\\); otherwise all odd summands cancel in pairs modulo \\(2\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

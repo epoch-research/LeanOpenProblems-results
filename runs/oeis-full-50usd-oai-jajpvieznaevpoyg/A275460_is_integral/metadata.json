@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Rewrite the coefficient as \\(3^n\\prod_{t=0}^{n-1}(9t+2)(9t+4)(9t+6)(9t+7)/((3n)!n!)\\), and prove denominator divisibility prime by prime. For \\(p\\ne3\\), Legendre’s floor sums are bounded by counting the four corresponding residue classes modulo each \\(p^i\\) (split according to the modulus modulo \\(9\\)); for \\(p=3\\), the factor \\(3^n\\) together with the factors \\(9t+6\\) supplies enough powers of \\(3\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

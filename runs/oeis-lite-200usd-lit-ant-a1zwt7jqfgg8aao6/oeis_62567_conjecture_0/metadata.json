@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(2\\le n\\le4\\), a congruence modulo \\(3^n\\mid81\\) combining the weighted digit sums of a number and its reversal forces its digit sum to be \\(3^n\\), hence it has exactly \\(3^{n-2}\\) digits, all equal to 9. For \\(n\\ge5\\), repeating the 11-digit palindromic block \\(29799999792\\) exactly \\(3^{n-5}\\) times gives a smaller palindrome divisible by \\(3^n\\): the block supplies \\(3^5\\), and a geometric-sum factor supplies the remaining power of 3.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

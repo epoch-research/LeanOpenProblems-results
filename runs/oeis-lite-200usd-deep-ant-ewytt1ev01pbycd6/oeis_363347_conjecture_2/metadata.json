@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes 5 a square modulo such a prime; choosing an even root \\(e\\) and setting \\(n=e-1\\) gives an odd \\(n<p\\) with \\(p\\mid (n+1)^2-5\\) (with \\(p=11\\) handled directly). Writing the continued fraction as a ratio of adjacent terms of a second-order recurrence, a Casoratian/factorial identity and prime-power valuation bounds show that the entire cofactor of \\(p\\) cancels with the adjacent term, while recurrence propagation shows \\(p\\) itself cannot cancel, so the reduced denominator is exactly \\(p\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

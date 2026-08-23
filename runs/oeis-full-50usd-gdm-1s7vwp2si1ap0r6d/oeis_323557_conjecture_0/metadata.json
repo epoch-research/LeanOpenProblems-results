@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Modulo 2, Lucas’s theorem characterizes a contributing triple \\((n,k,j)\\), with \\(m=n(k+1)+j(n+1)\\), by the bit conditions \\(k\\mathbin{\\&}n=k\\) and \\(n\\mathbin{\\&}j=0\\). The involution sending it to the triple whose first two coordinates are \\((k+j,\\,n\\mathbin{\\&}(k+j))\\) preserves the contribution and pairs all terms except fixed points, which force \\(k=n\\) and \\(j=0\\), hence \\(m=n(n+1)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

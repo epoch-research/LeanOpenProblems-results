@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Apply the mixed derivative \\((\\partial_y\\partial_z)^n\\) and then set \\(y=z=0\\): a product-rule recurrence turns this into an alternating binomial sum, while \\((1+x+y-z)(1+x-y+z)=(1+x)^2-(y-z)^2\\) evaluates its terms explicitly and cancels the signs. The remaining sum is \\(\\sum_{k=0}^n\\binom nk^2=\\binom{2n}{n}\\) by Vandermonde, and the derivative factorials cancel to give the required cube.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

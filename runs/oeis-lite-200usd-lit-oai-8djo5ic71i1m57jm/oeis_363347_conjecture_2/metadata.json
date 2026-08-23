@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity makes 5 a quadratic residue modulo p; choosing the smaller of the two roots gives 4 ≤ r ≤ p/2 and r²−5=pm with m≤r−2. A continuant identity gives the raw numerator r²−5, while divisibility propagation through the recurrence shows that m divides the adjacent continuant but p does not (using the terminal value 4 and the bound r<p), so reduction cancels exactly the cofactor m and leaves p.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

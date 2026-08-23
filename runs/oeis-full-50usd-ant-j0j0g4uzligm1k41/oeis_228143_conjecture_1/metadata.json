@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas’s theorem modulo \\(3\\) and parity of central binomial coefficients give \\(A_n\\equiv(-1)^n\\pmod 3\\) and \\(A_n\\equiv1\\pmod4\\); subtracting suitable multiples of the first Hankel column then extracts factors \\(3^n\\) and \\(4^n\\), with the initial determinant supplying \\(16\\mid a(n)\\) also in the remaining case. In the binomial expansion of \\((1+u)^{1/8}\\), the \\(3^m\\)-divisibility cancels the degree-\\(m\\) scaling denominator, while \\(16^d\\)-divisibility cancels the \\(2\\)-adic denominators of \\(\\binom{1/8}{d}\\); all odd-prime denominators are absent, so every coefficient is integral and the binomial identity gives the required eighth power.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

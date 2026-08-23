@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Pascal’s identity and the adjacent-binomial relation rewrite the summand in the denominator-free form \\(T_N(k)=A^2(A+2C)\\); setting \\(M=np^{r-1}\\) and splitting \\(k\\) into \\(pj\\) and \\(pj+t\\), p-adic unit-part product congruences for adjacent binomial coefficients (with valuation-dependent mixed precision) show that every diagonal term \\(T_{Mp}(pj)\\) matches \\(T_M(j)\\) modulo \\(p^{3r}\\). The off-diagonal blocks reduce to \\(2(Mp)^2\\) times a binomial-cube-weighted inverse-square moment, and recursive grouping into unit blocks of increasing powers of \\(p\\), together with cancellation of inverse and inverse-square sums, makes this moment vanish modulo \\(p^r\\), supplying the remaining factor needed for divisibility by \\(p^{3r}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

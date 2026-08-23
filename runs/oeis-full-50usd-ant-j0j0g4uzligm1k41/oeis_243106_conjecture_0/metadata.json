@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof inducts through a signed base-$b$ representation while tracking a borrow in $\\{-1,0\\}$: stripping the lowest coefficient, the six coefficient/borrow cases produce a digit in $\\{0,1,b-2,b-1\\}$ and a quotient of the same form. If the original sum is negative, all coefficients are negated so the argument applies to its absolute value.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

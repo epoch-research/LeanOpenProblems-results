@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Using \\(4\\cos^2\\theta=2+2\\cos(2\\theta)\\), product-to-sum identities, and reduction of angles modulo \\(2\\pi\\), the proof recursively expresses the six elementary symmetric sums of the proposed roots in terms of \\(\\sum_{j=1}^6\\cos(2j\\pi/13)\\). A telescoping sine identity gives this sum as \\(-\\tfrac12\\), yielding the symmetric sums \\(11,45,84,70,21,1\\), after which expansion of the product gives the result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

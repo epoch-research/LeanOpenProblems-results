@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Positivity supplies a decomposition whose associated Sophie Germain prime is \\(p=6x-1\\) and whose twin pair is \\((t,r)=(6y-1,6y+1)\\), with \\(p+r=6n\\). Taking \\(n=(N+6)!\\), if \\(p\\le N\\) then \\(p\\mid 6n\\) and hence \\(p\\mid r\\), contradicting the primality and size of \\(r\\); similarly, if \\(t\\le N\\), then \\(r\\le N+2\\), so \\(r\\mid 6n\\) and hence \\(r\\mid p\\), again contradicting primality and size—thus both kinds of primes occur above every bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

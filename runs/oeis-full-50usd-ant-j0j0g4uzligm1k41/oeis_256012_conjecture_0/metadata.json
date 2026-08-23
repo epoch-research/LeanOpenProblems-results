@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Positivity follows by explicitly constructing a partition according to \\(n\\bmod 4\\): use \\(\\{n\\}\\), \\(\\{9,n-9\\}\\), \\(\\{18,n-18\\}\\), or \\(\\{27,n-27\\}\\) in residue classes \\(0,1,2,3\\), with the special case \\(n=27\\) handled by \\(\\{27\\}\\). The fixed parts are divisible by \\(9\\), while each complementary part is divisible by \\(4\\), so all parts are nonsquarefree; the bound \\(n>23\\) ensures they are positive and distinct.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

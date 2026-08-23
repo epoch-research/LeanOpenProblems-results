@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take $n=800322180$; monotonicity of $B(k)=\\binom{2k+1}{k}$ and $B(16)>n$ force any putative representation to have $c,d\\le 15$. A finite factorization check shows that for every such pair, $n-B(c)-B(d)$ contains a prime congruent to $3\\pmod 4$ to an odd exponent, so the sum-of-two-squares criterion rules out the remaining two square terms.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

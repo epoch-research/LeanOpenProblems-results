@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A binomial reindexing gives \\(2nS_n=F_{2n+1}+F_{2n-1}-1\\), so integrality would force \\(2n\\) to divide the right-hand side; Fibonacci periodicity modulo \\(4,3,5\\) rules this out when \\(n\\) has one of those small prime factors. Otherwise, for the least prime \\(p\\mid n\\), roots of \\(X^2-X-1\\) over a splitting field of \\(\\mathbb F_p\\) turn the assumed divisibility into an order dividing both \\(12n\\) and \\(p^2-1\\); minimality of \\(p\\) reduces this order to a divisor of \\(12\\), while a polynomial Bézout identity forces \\(p\\mid320\\), contradicting \\(p>5\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

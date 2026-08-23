@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The quadratic terms are symmetric under swapping the coefficients and variables: any representation for \u0001((1,2,1,1)\u0001) yields one for \u0001((2,1,1,1)\u0001) by exchanging \u0001(x\u0001) and \u0001(y\u0001). Since the proposed list contains the former quadruple but omits the latter, its claimed biconditional classification is inconsistent.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

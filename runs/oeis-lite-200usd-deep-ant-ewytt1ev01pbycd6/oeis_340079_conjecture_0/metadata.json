@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite squarefree number \\(n=23492890653051=3\\cdot37\\cdot43\\cdot42307\\cdot116341\\). The gcd-sum is multiplicative and equals \\(2p-1\\) on primes, so it is \\(610815156979325\\) at this \\(n\\); since this value plus one is \\(26n\\), the relevant gcd is \\(n\\) and hence the quotient is \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

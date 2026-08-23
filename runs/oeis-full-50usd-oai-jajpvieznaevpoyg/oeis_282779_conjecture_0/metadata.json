@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A period \\(T\\) is characterized by \\(n\\mid T^p\\) and \\(n\\mid pT\\): necessity follows by testing shifts at \\(0\\) and \\(1\\), factoring the latter binomial difference and canceling a factor coprime to \\(T\\), while sufficiency follows from divisibility of the intermediate binomial coefficients by the prime \\(p\\). Prime-factor divisibility then shows every period is a multiple of \\(n/p\\) when \\(p^2\\mid n\\), and a multiple of \\(n\\) otherwise, with those respective bounds themselves satisfying the two conditions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

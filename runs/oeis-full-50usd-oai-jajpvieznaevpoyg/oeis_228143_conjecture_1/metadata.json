@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences modulo $3$ give $A_{3m}\\equiv A_m$, $A_{3m+1}\\equiv-A_m$, and $A_{3m+2}\\equiv A_m$, while every Apéry number is odd; hence each adjacent sum is divisible by $6$, and adding each Hankel row to its predecessor shows its determinant is divisible by $6^n$, yielding $16\\cdot3^n$ after checking the small indices separately. Thus the scaled series is $1+16D$, and its integral eighth root is built recursively: the next root coefficient changes the relevant coefficient of the eighth power by $8c$, while the previously determined contribution is divisible by $16$ because all earlier nonconstant root coefficients are even.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

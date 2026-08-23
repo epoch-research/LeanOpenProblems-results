@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Positivity supplies, for every center \\(n>6\\), a prime \\(p\\) and a symmetric prime pair \\(n-k,n+k\\), with \\(k=p n'-1\\). For Goldbach one takes \\(n=m/2\\), so the pair sums to \\(m\\); for Lemoine one takes the even center \\(n=N-1\\), giving \\(k=2p-1\\) and \\(N=(n-(2p-1))+2p\\), while the finitely many small boundary cases are handled directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

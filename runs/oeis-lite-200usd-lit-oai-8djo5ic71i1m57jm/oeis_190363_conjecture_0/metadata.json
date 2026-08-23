@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=140\\), exact floor evaluations \\(\\lfloor k\\sqrt{5/4}\\rfloor=(156,160,175,180)\\) for \\(k=(140,144,157,161)\\) give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). But \\(528+484-471=541\\ne542\\), so this index is a counterexample.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

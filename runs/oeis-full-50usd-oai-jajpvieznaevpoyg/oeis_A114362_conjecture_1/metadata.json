@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Expand the two zeta values as Dirichlet series, split off the terms with denominators at most 10, and bound both remaining tails by $O(11^{-n})$. An exact polynomial cancellation after subtracting the four displayed terms leaves only monomials whose combined bases are at least 11, while the quotient denominator tends to $2$, so the resulting error remains $O(11^{-n})$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

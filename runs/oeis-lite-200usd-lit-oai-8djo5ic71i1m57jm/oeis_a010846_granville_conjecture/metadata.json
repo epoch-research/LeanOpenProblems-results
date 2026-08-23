@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "For every prime \\(p\\), the only eligible integers up to \\(p\\) are \\(1\\) and \\(p\\), so \\(a(p)=2\\). Taking \\(\\epsilon=\\tfrac12\\) and an arbitrarily large prime \\(p>e^4\\) would require \\(a(p)\\ge\\sqrt{\\log p}>2\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-33-11-00-00_summarize-proofs_4TJRqSYBiFPoiH4qEShj4c.eval"
+  }
+}

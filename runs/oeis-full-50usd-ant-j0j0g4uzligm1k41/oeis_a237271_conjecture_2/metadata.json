@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For consecutive divisors \\(a<b\\), a break \\(b>2a\\) is equivalent to \\(b\\) being odd and satisfying \\(b\\ge 2a\\): equality is impossible for odd \\(b\\), while if a breaking \\(b\\) were even, then \\(b/2\\) would be a divisor strictly between \\(a\\) and \\(b\\). Thus the two descriptions count the same breaks, and adding one counts the resulting maximal blocks.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

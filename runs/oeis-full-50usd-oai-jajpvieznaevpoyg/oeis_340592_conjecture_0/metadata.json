@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Ascending trial division is shown to produce the ordered prime factorization, with every composite characterized here by a factor list of length at least two; exhaustive blockwise modular evaluation then shows that every such case below the bound has nonzero remainder. At the endpoint, \\(28749=3\\cdot7\\cdot37^2\\) and \\(373737=13\\cdot28749\\), giving the required zero remainder.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

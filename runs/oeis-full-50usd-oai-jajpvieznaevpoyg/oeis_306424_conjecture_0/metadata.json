@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct calculation checks the required expansions for \\(43\\) and exhibits a base with three distinct digits for every \\(44\\le k\\le399\\). For \\(k\\ge400\\), write \\(k=n^2+x\\) with \\(n=\\lfloor\\sqrt{k}\\rfloor\\) and \\(0\\le x\\le2n\\); a case split on \\(x\\) chooses a base among \\(n,n-1,n-2,n-3\\) in which \\(k\\) has three pairwise distinct digits.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

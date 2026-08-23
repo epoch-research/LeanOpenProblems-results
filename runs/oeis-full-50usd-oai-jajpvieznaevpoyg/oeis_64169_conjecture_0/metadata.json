@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the composite counterexample \\(n=p^2\\) with \\(p=16843\\); a modular reciprocal-sum computation shows \\(H_{p-1}\\equiv0\\pmod{p^3}\\). Splitting \\(H_{p^2-2}-1\\) into terms whose indices are multiples of \\(p\\) and the remaining terms, the former equal \\(p^{-1}H_{p-1}\\), while pairing each latter index \\(k\\) with \\(p^2-k\\) supplies a factor \\(p^2\\); hence \\(v_p(H_{p^2-2}-1)\\ge2\\), so \\(p^2\\) divides the reduced numerator-minus-denominator despite \\(p^2\\) being composite.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

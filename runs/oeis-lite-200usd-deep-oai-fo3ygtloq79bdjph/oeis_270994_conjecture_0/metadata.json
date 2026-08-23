@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the interior number \\(K=a(n)+4=5292270077783\\) is odd and lies strictly between the two proposed endpoints.  A covering of all exponents modulo \\(48\\) shows that \\(K2^m+1\\) has a proper divisor among \\(3,5,7,17,257,97,673\\): these apply respectively when \\(m\\equiv0\\pmod2,\\ 3\\pmod4,\\ 1\\pmod3,\\ 1\\pmod8,\\ 5\\pmod{16},\\ 29\\pmod{48},\\ 45\\pmod{48}\\), so \\(K\\) is itself a Sierpiński number and the endpoints are not consecutive.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Lucas congruences modulo p pair the terms for indices k and p+k to show both sequences vanish at p+m for 0≤m≤p−2; at p−1, \\(\\binom{p-1}{k}\\equiv(-1)^k\\) gives the first boundary value 1, while divisibility of central binomial coefficients leaves only \\(k=(p-1)/2\\) in the second sum, giving \\((-1)^{(p-1)/2}\\). Thus each Hankel matrix is anti-triangular modulo p; reversing its columns makes it triangular with constant diagonal, and the reversal sign together with \\(x^p=x\\) modulo p yields the two determinant congruences.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-25-35-00-00_summarize-proofs_DPHNi2rn9g2L3UzfNMAvHB.eval"
+  }
+}

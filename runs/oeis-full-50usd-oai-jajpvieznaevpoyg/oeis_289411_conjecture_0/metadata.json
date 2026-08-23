@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Digit-by-digit induction, including the carries created by multiplication by 5, shows that complementing an integer by \\(q\\mapsto 10^L-1-q\\) negates the digit-sum difference \\(s(5q)-s(q)\\), so the corresponding signed terms cancel in pairs. Since \\(2m_k+1=10^k-1\\), the terms immediately outward from the center are such complementary pairs, and induction on the distance from the center gives equality of the two partial sums.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

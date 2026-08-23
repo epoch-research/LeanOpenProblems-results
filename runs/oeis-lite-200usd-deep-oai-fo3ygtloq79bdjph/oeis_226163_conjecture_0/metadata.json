@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Euler’s criterion and a binomial expansion factor the reduction modulo $p$ into Vandermonde and diagonal factors, while the half-Wilson identity $C^2=(-1)^{(p+1)/2}$ makes the remaining scalar nonzero when $p\\equiv1\\pmod4$ and also proves nonsingularity of the auxiliary matrix with coefficient $-C$ when $p\\equiv3\\pmod4$. In the latter case $C=\\pm1$, and a quadratic-character sum yields $AB^T+BA^T=0$ for the target matrix $A$ and that auxiliary matrix $B$; since the dimension is odd and $B$ is nonsingular, taking determinants forces $\\det A=0$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}

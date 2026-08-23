@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "The specialization \\(p=7, r=6\\) is a counterexample: direct computation using the recurrences \\(\\binom n{k+1}=\\binom nk(n-k)/(k+1)\\) and \\(\\binom{n+k}{k+1}=\\binom{n+k-1}k(n+k)/(k+1)\\) shows that \\(a(117649)\\not\\equiv a(16807)\\pmod{7^{25}}\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

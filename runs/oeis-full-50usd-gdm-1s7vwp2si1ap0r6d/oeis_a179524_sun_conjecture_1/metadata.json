@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the prime \\(p=29\\equiv9\\pmod{20}\\), which satisfies \\(29=3^2+5\\cdot2^2\\). Because the stated quadratic-form condition only asserts the existence of some representation and is not tied to the quantified \\(x,y\\), choosing \\(x=0\\) and \\(x=1\\) forces the same sum to be congruent to both \\(-58\\) and \\(-54\\) modulo \\(29^2=841\\), impossible since their difference is \\(4\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Pair the valid summands by the involution \\((n,k,j)\\mapsto(j+k,k,n-k)\\), which preserves \\(N=n(k+1)+(n+1)j\\) and the binomial weight, so nonfixed pairs cancel modulo 2. At a fixed point, either \\(k=n\\) and \\(j=0\\), giving \\(N=n(n+1)\\), or the weight contains the even central binomial coefficient \\(\\binom{2(n-k)}{n-k}\\); hence an odd total forces the former case.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Generalized Wolstenholme identities make the reciprocal and reciprocal-square terms vanish in the degree-two expansion of each block of residues prime to \\(p\\), so every length-\\(p^r\\) block has the same product modulo \\(p^{3r}\\); splitting each factorial into its \\(p\\)-divisible and prime-to-\\(p\\) parts then proves the even case by cancellation. For odd indices, the half-integer gamma factors are rewritten using half-factorial formulas, and reflection/doubling of the lower half of the reduced residues gives a telescoping factor \\(4^{\\varphi(p^r)}\\) that exactly cancels the additional power of \\(4\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-31-22-00-00_summarize-proofs_doHkvDjcpz2HZCVm44DqtU.eval"
+  }
+}

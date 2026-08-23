@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Legendre’s formula reduces divisibility to prime-adic inequalities, whose baseline follows termwise from \\(\\lfloor3K/d\\rfloor+\\lfloor3L/d\\rfloor\\ge\\lfloor K/d\\rfloor+\\lfloor L/d\\rfloor+2\\lfloor(K+L)/d\\rfloor\\) with \\(K=4n+2\\) and \\(L=2n+3\\). The extra \\(2^2\\) margin comes from analyzing the first two binary powers (by \\(n\\bmod4\\)), while the extra \\(3^3\\) margin follows from the ternary digit-sum form of Legendre’s formula and the identities induced by multiplication by \\(3\\) and \\(6n+5=2+3(2n+1)\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

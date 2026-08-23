@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(k=31\\), \\(s=1\\), and the distinct integers \\(5\\) and \\(1829=31\\cdot59\\). Their sums are equal since \\(1/32+1/36=1/32+1/62+1/90+1/1860\\), so in particular their fractional parts coincide.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

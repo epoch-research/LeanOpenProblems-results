@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The proof reduces the digit-sum difference to a sum of independent decimal-digit contributions: multiplication by \\(5\\) yields a contribution \\(h(r)\\) for each digit \\(r\\), and \\(h(9-r)=-h(r)\\) makes the difference negate under \\(k\\)-digit 9’s complementation. Pairing the resulting opposite signs at positions symmetric about the midpoint then shows that the two corresponding partial sums are equal.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

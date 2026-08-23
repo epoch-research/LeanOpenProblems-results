@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(n=0\\): \\(\\Phi_1(0)=-1\\), while every \\(\\Phi_k\\) with \\(k>1\\) has constant term \\(1\\), so \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\). Since \\(1\\) is not prime, no such \\(k\\) exists.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

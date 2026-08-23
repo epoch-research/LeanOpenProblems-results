@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "At \\(n=473165\\), the integer \\(5292270077783=a(n)+4\\) lies strictly between the two proposed consecutive values. A finite check of exponent classes modulo \\(48\\), together with \\(2^{48}\\equiv1\\) modulo each prime in \\(\\{3,5,7,17,97,257,673\\}\\), shows that one of these primes properly divides \\(5292270077783\\cdot2^j+1\\) for every \\(j>0\\), so the intervening integer is Sierpiński.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

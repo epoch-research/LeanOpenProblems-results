@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "If $F_{33}$ is prime, its totient is $2^{2^{33}}$, and every smaller positive integer has totient too small, so it is minimal. Otherwise, a smaller witness than $2^{2^{33}+1}$ would have totient exactly $2^{2^{33}}$; even witnesses contradict $2\\varphi(m)\\le m$, while an odd witness has distinct Fermat-prime divisors whose $2$-adic totient contributions must sum to $2^{33}$, impossible without the index-$33$ contribution since all lower distinct powers sum to only $2^{33}-1$.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

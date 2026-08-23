@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take the counterexample \\(N=2^{14}\\cdot4409\\cdot458009\\), whose three factors are pairwise coprime prime powers. Using \\(a(N)=2\\sigma(N)-\\sum_{d\\mid N}\\sigma(d)\\) and multiplicativity gives \\(\\sigma(N)=66183576284700\\) and \\(\\sum_{d\\mid N}\\sigma(d)=132367152569399\\), so \\(a(N)=1\\) although \\(N\\ne1,12\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

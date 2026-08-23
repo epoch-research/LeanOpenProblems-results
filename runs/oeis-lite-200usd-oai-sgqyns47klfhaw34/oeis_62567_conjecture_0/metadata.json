@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The cases \\(n=2,3,4\\) are settled directly and by combining the congruence \\(10^i\\equiv1+9i\\pmod{27,81}\\) for a number and its reversal, which forces any smaller candidate’s digit sum to be maximal and hence all its digits to be 9. For \\(n\\ge5\\), repeating a fixed 10-digit block \\(3^{n-5}\\) times gives a number and reversal both divisible by \\(3^n\\): the block values supply \\(3^5\\), a lifting-the-exponent calculation supplies the remaining power from the geometric sum, and the resulting \\(10\\cdot3^{n-5}\\)-digit witness is smaller than the all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-35-32-00-00_summarize-proofs_jBaopCDyJz5DnBG46DytUH.eval"
+  }
+}

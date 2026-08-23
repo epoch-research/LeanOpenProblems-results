@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The weak-decrease and interval-cover conditions force the final entry to be either 1, or 2 preceded by 1; according as the relevant prefix contains 1 (respectively 2), deleting the suffix and either leaving the prefix unchanged or subtracting 1 or 2 gives four disjoint, exhaustive bijective cases. Thus the counts satisfy \\(b_N=2b_{N-1}+2b_{N-2}\\), and the directly enumerated initial values \\(b_1=1\\), \\(b_2=3\\) identify them with the same recurrence.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

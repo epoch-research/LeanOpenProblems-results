@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For a composite with a proper odd prime divisor \\(p\\), Fermat’s theorem gives the product enough \\(p\\)-adic valuation beyond that of \\((n-1)!\\), forcing \\(p\\mid a(n-1)\\) and hence impossibly \\(p\\mid 2^{n-2}\\); the remaining case \\(n=2^r\\) is excluded by Legendre’s binary digit-sum formula, which gives \\(v_2(a(2^r-1))=r-1<r\\). Once \\(n\\) is prime, if the order \\(d\\) of 2 were less than \\(n-1\\), then \\(n\\mid 2^d-1\\) would make \\(n\\) divide the defining product, while the assumed divisibility and the factorial–product identity would then force \\(n\\mid(n-1)!\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For $p\\equiv3\\pmod4$, splitting the nonzero residues into squares and negatives and evaluating quadratic character sums yields matrix identities that turn the determinant, after a column permutation, into that of $S-S^{T}Z$; here $S$ is invertible and normal and $Z$ is a determinant-one symmetric involution, so odd-dimensional orthogonality forces singularity. For $p\\equiv1\\pmod4$, reduction modulo $p$, Wilson’s theorem, binomial expansion, and Vandermonde moment arguments show that any kernel vector must vanish, proving nonsingularity modulo $p$ and hence nonvanishing of the integer determinant.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-26-32-00-00_summarize-proofs_dSNzfTvLciJugwxYkEKpPB.eval"
+  }
+}

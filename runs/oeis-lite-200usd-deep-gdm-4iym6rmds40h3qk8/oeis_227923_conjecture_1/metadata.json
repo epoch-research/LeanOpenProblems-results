@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assume either prime family is finite and choose \\(N\\ge5\\) bounding the relevant prime (enlarged by 2 for the upper member of a twin pair); applying the hypothesis to \\((N+1)!/6\\) yields primes \\(p=6x-1\\) and \\(q=6y+1\\) with \\((N+1)!=p+q\\). The bounded summand divides the factorial and therefore the other prime, forcing \\(p=q\\), so \\((N+1)!\\le2N\\), contradicting \\((N+1)!>2N\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-27-29-00-00_summarize-proofs_nvANufbrtbsXZpYphDvAG8.eval"
+  }
+}

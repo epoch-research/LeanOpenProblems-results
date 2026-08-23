@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For \\(I_n=\\int_0^1(x(1-x))^n e^x\\,dx\\), integration by parts gives a recurrence showing that \\((-1)^n I_{n+1}/(n+1)!\\) equals the odd-index numerator-minus-\\(e\\)-times-denominator error; positivity and a uniform bound on \\(I_n\\), together with denominator growth, make the odd-index errors tend to zero. An alternating unit Casoratian shows each adjacent even–odd difference is the reciprocal (up to sign) of the product of their growing denominators, so the even subsequence has the same limit and the two parity subsequences combine.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

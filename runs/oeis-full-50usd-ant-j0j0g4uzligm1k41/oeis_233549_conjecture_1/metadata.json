@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Assuming finiteness bounds all bases \\(x\\) for which \\(x^4+1\\) is prime; positivity then gives, for every \\(n>2\\), a decomposition \\(n=p+q\\) with \\(x=\\phi(p)\\phi(q)\\) under that bound. Since \\(\\phi(p)=p-1\\) and \\(q\\le 2\\phi(q)^2\\), both \\(p\\) and \\(q\\) are uniformly bounded, contradicting the existence of arbitrarily large \\(n=p+q\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

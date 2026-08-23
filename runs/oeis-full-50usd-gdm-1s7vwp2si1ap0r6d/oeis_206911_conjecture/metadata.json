@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Writing the rank as \\(n+\\lfloor e^{H_n}-1\\rfloor\\), the proof establishes \\(1<e^{H_{n+1}}-e^{H_n}<2\\) using \\(e^x>1+x\\), monotonic control of \\(e^{H_n}/n\\), and finitely many initial estimates, so each floor increment is 1 or 2 and each rank increment is 2 or 3. Telescoping gives \\(\\#3=\\lfloor e^{H_{N+1}}-1\\rfloor-N-1\\) and the complementary formula for \\(\\#2\\); then \\(H_n-\\log n\\to\\gamma\\) yields the ratio limit \\((e^\\gamma-1)/(2-e^\\gamma)\\), and explicit harmonic/logarithm and exponential-series bounds \\(16/9<e^\\gamma<41/23\\) place it strictly between 3.5 and 3.6.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

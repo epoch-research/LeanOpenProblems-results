@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Direct exhaustive modular counts establish the first five minima. For the last, the congruence forces every counted divisor \\(d\\) to be unitary—otherwise a common prime factor of \\(d\\) and \\(k/d\\) would divide both \\(d^{d-1}\\) and \\(d^{d-1}-1\\)—so the count is at most \\(2^{\\omega(k)}\\); a prime-factor sieve below \\(2310\\) leaves only the integers with at least four distinct prime factors, and finite modular computation excludes these candidates while showing that \\(2310\\) attains the required count.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-23-41-00-00_summarize-proofs_EHMsPCs9fZxEyQDfRD38Wr.eval"
+  }
+}

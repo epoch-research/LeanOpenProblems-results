@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Counting possible primes via reduced residue classes modulo \\(210\\) and \\(30030\\) yields \\(\\pi(5X)\\le X\\) for \\(X\\ge175000\\); hence induction bounds every term by \\(B=175000+\\sum_i v_i\\). The consecutive five-term blocks therefore range over a finite state space, so two coincide by pigeonhole, and determinism of the order-five recurrence propagates that equality forever to give eventual periodicity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-21-50-00-00_summarize-proofs_NCHUjF7AcX5Bjx8QGqVr2V.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Fixed bounded digit-sum sets have density zero, via an \\(O((\\log N)^B)\\) counting bound; splitting by the last two digits then shows every competing value has limsup frequency at most \\(1/100\\), since only numbers ending in \\(99\\) remain non-negligible. Conversely, numbers \\(10t+9\\) with \\(t\\) not ending in \\(9\\) and with digit sum at least \\(8\\) yield the distinguished value, giving limsup frequency at least \\(1/100\\) along cutoffs \\(100K\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-19-43-00-00_summarize-proofs_aB29aUs4gwHD2zDDkQQtKT.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The Catalan coefficient sum is rewritten as a binomial-transform sequence \\(B_s(N)\\) with a period-three weight pattern (the exceptional parameter \\(m=-1\\) differs only by an additive constant).  Factoring \\((1+x)^p-1-x^p=p(1+x+x^2)S\\), reciprocal symmetry makes the correction polynomials anti-palindromic, so complementary coefficients pair and a skew-binomial divisibility plus the factorial valuation bound gives \\(p^{3e+3}\\) (the first two correction terms vanish); Newton interpolation then extends the prime-step congruence from nonnegative to arbitrary integer \\(s\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T13-28-11-00-00_summarize-proofs_mxGp9f4aAmBRWpEbkBEJTK.eval"
+  }
+}
