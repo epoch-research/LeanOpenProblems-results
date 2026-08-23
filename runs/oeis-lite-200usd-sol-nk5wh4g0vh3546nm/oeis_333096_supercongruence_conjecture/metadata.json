@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "The partial sums are rewritten as coefficients of \\(Q(x)(1+x)^A\\), with \\(Q(x)=(1-x^2)/(1+x+x^2)\\); expanding \\((1+x)^p=1+x^p+pE_p(x)\\), divisibility of \\(E_p\\) by \\(1+x+x^2\\) makes the correction coefficients anti-reciprocal, so pairing indices \\(d\\) and \\(j-d\\), a binomial-determinant factorization containing \\(BY(Y-B)\\), and the bound \\(v_p(j!)+3\\le j\\) yield the required cubic gain in each scaling step. Negative parameters are reduced by a coefficient involution to the nonnegative case plus a boundary binomial term, whose analogous scaling congruence is proved by the same Frobenius-pairing method (and a perturbation for the boundary case), after which one iterates the one-step result.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

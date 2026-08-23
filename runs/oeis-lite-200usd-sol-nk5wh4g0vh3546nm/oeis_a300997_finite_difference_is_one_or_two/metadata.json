@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Introduce cumulative tail masses, which obey the averaging recurrence \\(Q(t+1,k+1)=\\lfloor(Q(t,k)+Q(t,k+1))/2\\rfloor\\), and use positivity, mass conservation, and spatial monotonicity to characterize stabilization by \\(Q(t,n-1)>0\\). At the minimal stabilization time for mass \\(n\\), diagonal propagation estimates show mass \\(n+1\\) stabilizes within two more steps, while a reverse positivity shift would make mass \\(n\\) stabilize earlier if mass \\(n+1\\) stabilized no later, so its stabilization time is exactly one or two steps greater.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

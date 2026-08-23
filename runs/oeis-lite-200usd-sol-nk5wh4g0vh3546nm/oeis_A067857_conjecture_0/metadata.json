@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=8=2^3\\), so \\(\\Omega(8)=3\\) is odd and at least \\(3\\). Since \\(\\mu(8)=\\mu(4)=0\\), the Möbius sum reduces to \\(a(8)=8!(H_8-H_4)=25584>0\\), contradicting the predicted negativity.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

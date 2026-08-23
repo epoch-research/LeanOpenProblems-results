@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For the exceptional exponents, a modular analysis of padded decimal digits shows that a positive multiple of 27 or 81 whose reversal is also divisible has digit sum divisible by 27 or 81; below the respective all-nines candidate this forces every digit to be 9 (with the case of 9 immediate), proving the required minima. For every larger exponent, the palindrome built from one copy of the block 68899199886, or from \\(3^{n-12}\\) copies when \\(n\\ge12\\), is divisible by \\(3^n\\): grouping its geometric block sum in thirds supplies successive factors of 3, and its length makes it strictly smaller than the all-nines number.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

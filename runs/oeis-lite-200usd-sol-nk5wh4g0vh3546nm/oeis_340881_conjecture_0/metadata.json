@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Derive the recurrence \\(a(n+1)=(2^n-1)a(n)+2^{\\binom{n+1}{2}}\\). For odd primes, Fermat’s theorem makes its coefficients and inhomogeneous term invariant under the shift \\(2(p-1)\\), and the shifted base value collapses to \\(1\\), so induction applies; modulo \\(2\\), the same recurrence shows every positive-index term is \\(1\\).",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

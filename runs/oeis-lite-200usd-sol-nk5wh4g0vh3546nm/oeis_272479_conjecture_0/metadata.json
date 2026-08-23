@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Letting \\(d=s(n)\\) and \\(e=s(d)\\), the decimal congruence modulo \\(9\\) gives \\(n=e+9q\\); if \\(q=0\\), then \\(d=n<10\\) and \\(10n\\) is a partner. If \\(q>0\\), a digit-sum bound gives \\(d<10^q\\), and the proof uses the digitwise 9-complement of the zero-padded \\(q\\)-digit expansion of \\(d-1\\) to assemble a distinct positive \\(k\\) with \\(s(k)=e+9q=n\\) and \\(d\\mid k\\), which supplies the required partner.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

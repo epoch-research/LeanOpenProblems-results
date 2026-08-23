@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "For an arbitrary bound \\(B\\), apply the assumed representation to \\(n=(B+6)!\\); if either the resulting Sophie Germain prime or twin-prime pair were bounded by \\(B\\), an appropriate prime term would divide \\(n\\), and the identity \\((6x-1)+(6y+1)=6n\\) would make it divide the prime term on the other side. Primality would force those terms to be equal, whereas the factorial size bounds force a strict inequality, so both kinds of primes occur above every bound.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

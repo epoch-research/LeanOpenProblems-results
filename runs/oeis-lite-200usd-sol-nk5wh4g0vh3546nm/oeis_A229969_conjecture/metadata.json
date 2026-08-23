@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Take \\(n=7\\). Since the allowed values force \\(x\\ge 3\\) and the ordering \\(x\\le y\\le z\\) gives \\(x+y+z\\ge 3x\\ge 9\\), no such triple can sum to \\(7\\), independently of the primality conditions.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "Quadratic reciprocity provides an even \\(x\\) with \\(x^2\\equiv5\\pmod p\\); setting \\(n=x-1\\) factors the continued-fraction numerator as \\(pq\\), and recurrence divisibility identities force the small odd cofactor \\(q\\) into the denominator while showing that \\(p\\) cannot divide it (otherwise \\(p\\mid44\\)). Thus reduction leaves numerator \\(p\\), with the exceptional case \\(p=11\\) checked directly.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

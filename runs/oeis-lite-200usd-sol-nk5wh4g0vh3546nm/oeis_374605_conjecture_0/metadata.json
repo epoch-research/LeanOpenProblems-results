@@ -1,0 +1,8 @@
+{
+  "settlement": "proved",
+  "proof_summary": "A specialized terminating Sears transformation factors the sum as \\(\\binom{3n}{n}\\binom{2n}{n}^2\\) times a finite rational sum. Carry-counting shows both binomial factors have \\(p\\)-adic valuation one in the given range, while a termwise carry analysis shows the rational sum is \\(p\\)-integral, yielding total valuation at least three.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}

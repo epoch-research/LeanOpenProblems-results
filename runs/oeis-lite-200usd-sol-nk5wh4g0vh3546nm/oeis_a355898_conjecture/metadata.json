@@ -1,0 +1,8 @@
+{
+  "settlement": "disproved",
+  "proof_summary": "Assuming the claimed recurrence, the shifted terms \\(b_n=a_n+1\\) follow the Fibonacci matrix evolution; a modular exponentiation modulo \\(195318521017\\) at offset \\(249580073233\\) shows that two consecutive \\(a_n\\)'s would both be divisible by this modulus. Their gcd \\(g>1\\), while for their sum \\(s\\) one has \\(s/g>1\\), so equating the defining next term \\(g+s/g\\) with the claimed \\(1+s\\) gives \\((g-1)(s/g-1)=0\\), a contradiction.",
+  "generation": {
+    "model": "openai/gpt-5.6-sol",
+    "source_eval": "2026-08-23T14-06-28-00-00_summarize-proofs_8VFkcWPE3KUCJPrnBDz9YK.eval"
+  }
+}
