@@ -1,5 +1,3 @@
-# LeanOpenProblems results
-
 Per-sample outputs for evaluation runs on the benchmarks of open problems at
 [epoch-research/LeanOpenProblems](https://github.com/epoch-research/LeanOpenProblems).
 
