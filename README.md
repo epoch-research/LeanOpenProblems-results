@@ -9,8 +9,8 @@ Browse the results in the UI at <https://tadamcz.com/oeis-open/>.
 
 ### OEIS Open
 
-Runs for the evaluations reported in *OEIS Open: How many conjectures can
-language models turn into theorems?* (Adamczewski, 2026).
+Runs for the evaluations reported in [*OEIS Open: How many conjectures can
+language models turn into theorems?*](https://arxiv.org/pdf/2608.11941) (Adamczewski, 2026).
 
 | Run directory | Set | Model | Agent | Budget/attempt |
 |---|---|---|---|---|
