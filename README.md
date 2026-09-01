@@ -1,9 +1,16 @@
-# OEIS Open results
+# LeanOpenProblems results
 
-Per-sample outputs for the evaluation runs reported in *OEIS Open: How many
-conjectures can language models turn into theorems?* (Adamczewski, 2026).
+Per-sample outputs for evaluation runs on the benchmarks of open problems at
+[epoch-research/LeanOpenProblems](https://github.com/epoch-research/LeanOpenProblems).
 
-## Runs
+Browse the results in the UI at <https://tadamcz.com/oeis-open/>.
+
+## Benchmarks
+
+### OEIS Open
+
+Runs for the evaluations reported in *OEIS Open: How many conjectures can
+language models turn into theorems?* (Adamczewski, 2026).
 
 | Run directory | Set | Model | Agent | Budget/attempt |
 |---|---|---|---|---|
@@ -21,10 +28,12 @@ conjectures can language models turn into theorems?* (Adamczewski, 2026).
 | `oeis-lite-200usd-lit-oai-…` | Lite (100) | GPT-5.5 | literature | $200 |
 | `oeis-lite-200usd-lit-gdm-…` | Lite (100) | Gemini 3.5 Flash | literature | $200 |
 
-### Contents
+## Repository layout
 
-Each run directory contains one directory per attempted conjecture, plus an
-aggregate `scores.json`:
+### Run contents
+
+Each run directory (under `runs/`) contains one directory per attempted
+conjecture, plus an aggregate `scores.json`:
 
 - `Submission/` — the Lean files the agent submitted (the scored proof is
   `Spec.lean`)
@@ -37,8 +46,9 @@ Proofs that passed the verifier are the samples whose `scores.json` has
 
 Accepted samples may also include `metadata.json`, containing an LLM-written proof summary. 
 
-## Metadata
-The root `metadata/` directory contains run-independent sequence descriptions
+### Metadata
+The root `metadata/` directory contains run-independent data, organized per
+benchmark. For OEIS Open, `metadata/oeis/` contains sequence descriptions
 (`sequences.json`) and conjecture statements and provenance (`conjectures.json`).
 
 ## Source and methodology
