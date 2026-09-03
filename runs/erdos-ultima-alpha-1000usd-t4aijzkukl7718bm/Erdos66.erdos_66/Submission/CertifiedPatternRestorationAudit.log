@@ -1,0 +1,58 @@
+'Erdos66DifferenceNaturalPattern.differencePattern_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DifferenceNaturalPattern.differencePattern_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DifferenceNaturalPattern.localDiff_restrict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DifferenceNaturalPattern.differenceCode_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DifferenceNaturalPattern.localDiff_of_pattern_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointDifferencePatternHost.extendedTests_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointDifferencePatternHost.extendedTests_triple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointDifferencePatternHost.extendedTests_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointDifferencePatternHost.extendedTests_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointDifferencePatternHost.exists_joint_difference_host' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TranslatedDifferencePattern.endpoint_of_lt' depends on axioms: [propext, Quot.sound]
+'Erdos66TranslatedDifferencePattern.mem_edgeClass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.edgeClass_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.edgeClass_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.harmonic_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.differencePattern_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.colorCount_realized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.differencePattern_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.translatedDiff_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.differenceCode_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedDifferencePattern.translatedDiff_of_pattern_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.allTests_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.allTests_triple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.allTests_local_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.allTests_translated_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.allTests_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66JointTranslatedDifferenceHost.exists_joint_translated_difference_host' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PatternInsertionDomination.mem_repEndpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.repEndpoints_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.repEndpoints_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.newEndpoints_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.fiber_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.fiber_union_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.fiber_increment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.boundary_union_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.boundary_increment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternInsertionDomination.fiber_eq_empty_of_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.smallBoundary_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.sublogCentral_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.log_polynomial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.uniform_polynomial_sublog' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.smallBoundary_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.sublogCentral_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.smallBoundary_insert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogPatternInvariants.sublogCentral_insert' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CertifiedSparseRestorationMenu.exists_certified_sparse_restoration_menu' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,12 @@
+import Submission.PopulationGibbsEntropy
+#check monotone_of_deriv_nonneg
+#check monotoneOn_of_deriv_nonneg
+#check HasDerivAt.mul
+#check HasDerivAt.mul_const
+#check HasDerivAt.const_mul
+#check Real.exp_neg_mul_exp
+#check Real.exp_mul_exp_neg
+#check Real.exp_sub
+#check Real.exp_add
+#check Finset.sum_div
+#check List.toFinset_cons

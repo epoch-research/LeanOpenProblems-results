@@ -1,0 +1,9 @@
+import Submission.ResampledAveragedFloors
+
+#print axioms Erdos970.Resampling.populationSurvivors_mean
+#print axioms Erdos970.GapAverages.lowCountFraction_markov_lower_filtered
+#print axioms Erdos970.SoftExposure.resampled_exposure_necessary
+#print axioms Erdos970.SoftExposure.markov_expression_le_exact_budget
+#print axioms Erdos970.SoftExposure.averaged_partial_floor
+#print axioms Erdos970.SoftExposure.strict_markov_budget_requires_violated_floor
+#print axioms Erdos970.SoftExposure.no_small_core_count_of_strict_markov_budget

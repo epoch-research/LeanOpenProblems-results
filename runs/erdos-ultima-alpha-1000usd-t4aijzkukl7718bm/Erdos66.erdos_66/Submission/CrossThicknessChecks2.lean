@@ -1,0 +1,16 @@
+import Submission.RectangularRadixExplore
+#check RingEquiv.toEquiv_eq_coe
+#check RingEquiv.coe_toEquiv
+#check RingEquiv.toEquiv_eq_coe
+#check Equiv.subLeft
+#check Equiv.subRight
+#check Equiv.addLeft
+#check Equiv.addRight
+#check Finset.sum_equiv
+#check ZMod.finEquiv_apply
+#check ZMod.finEquiv_apply_val
+#check Fin.sum_univ_eq_sum_range
+#check Equiv.subLeft_apply
+#check Equiv.addLeft_apply
+#check Finset.sum_filter
+#check Fintype.sum_prod_type

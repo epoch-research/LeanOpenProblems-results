@@ -1,0 +1,7 @@
+import Submission.JointMonotoneProfileOperatorExplore
+/-! Axiom audit of joint finite mixed-profile rounding. -/
+#print axioms Erdos66MixedPaletteAssembly.quantized_mixed_assembly_error
+#print axioms Erdos66MixedStepBridge.mixedProfile_eq_normMixedConv
+#print axioms Erdos66MixedProfileQuantization.normMixedConv_quantization_error
+#print axioms Erdos66UniversalMixedHeight.exists_universal_mixed_height_realizer
+#print axioms Erdos66JointMonotoneProfileOperator.exists_joint_bounded_monotone_rounding_operator

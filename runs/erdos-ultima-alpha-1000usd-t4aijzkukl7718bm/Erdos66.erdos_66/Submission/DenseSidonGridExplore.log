@@ -1,0 +1,9 @@
+Submission/DenseSidonGridExplore.lean:94:39: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  Fintype.card ↥?s
+in the target expression
+  (parabola p).card * (parabola p).card = p ^ 2
+
+p : ℕ
+inst✝ : NeZero p
+hp : 0 < p
+⊢ (parabola p).card * (parabola p).card = p ^ 2

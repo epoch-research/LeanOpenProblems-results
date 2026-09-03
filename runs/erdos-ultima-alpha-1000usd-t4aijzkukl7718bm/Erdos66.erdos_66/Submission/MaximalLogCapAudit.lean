@@ -1,0 +1,24 @@
+import Submission.LogarithmicMaximalCapExplore
+/-! Axiom audit for fixed-cap blocking and maximal sets with holes. -/
+#print axioms Erdos66PointwiseCapBlocking.blocked_excludes
+#print axioms Erdos66PointwiseCapBlocking.rep_zero_of_upper
+#print axioms Erdos66PointwiseCapBlocking.exists_blocking_extension
+#print axioms Erdos66MaximalCapWithHoles.exists_extension
+#print axioms Erdos66MaximalCapWithHoles.step_spec
+#print axioms Erdos66MaximalCapWithHoles.states_step
+#print axioms Erdos66MaximalCapWithHoles.cutoff_ge
+#print axioms Erdos66MaximalCapWithHoles.mem_stable
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_mem
+#print axioms Erdos66MaximalCapWithHoles.states_subset_maximalSet
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_rep
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_capped
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_maximal
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_holes
+#print axioms Erdos66MaximalCapWithHoles.maximalSet_peaks
+#print axioms Erdos66MaximalCapWithHoles.exists_maximal_with_holes_and_peaks
+#print axioms Erdos66LogarithmicMaximalCap.logCap_error
+#print axioms Erdos66LogarithmicMaximalCap.logCap_top
+#print axioms Erdos66LogarithmicMaximalCap.logCap_ratio
+#print axioms Erdos66LogarithmicMaximalCap.subquartic_of_log_ratio
+#print axioms Erdos66LogarithmicMaximalCap.holes_peaks_no_limit
+#print axioms Erdos66LogarithmicMaximalCap.exists_maximal_log_cap_without_limit

@@ -1,0 +1,14 @@
+Q4 local subsets checked: 6885 ; edge maxima: [0, 0, 1, 2, 4, 5]
+Pentagon vertex/edge subgraphs checked in both colours: 244
+Sharp audited cube: red t= 2 d= 4 vertices= 16 all edges checked= 32 basis-extra= 0 basis-defect= 0
+Sharp audited cube: blue t= 2 d= 4 vertices= 16 all edges checked= 32 basis-extra= 0 basis-defect= 0
+Sharp audited cube: red t= 3 d= 6 vertices= 64 all edges checked= 192 basis-extra= 0 basis-defect= 0
+Sharp audited cube: blue t= 3 d= 6 vertices= 64 all edges checked= 192 basis-extra= 0 basis-defect= 0
+Sharp audited cube: red t= 4 d= 8 vertices= 256 all edges checked= 1024 basis-extra= 0 basis-defect= 0
+Sharp audited cube: blue t= 4 d= 8 vertices= 256 all edges checked= 1024 basis-extra= 0 basis-defect= 0
+Sharp audited cube: red t= 5 d= 10 vertices= 1024 all edges checked= 5120 basis-extra= 0 basis-defect= 0
+Sharp audited cube: blue t= 5 d= 10 vertices= 1024 all edges checked= 5120 basis-extra= 0 basis-defect= 0
+UNCOLOURED base-five Q9 injection: extra= 1895 defect= 1639 edge colours= {1: 1122, -1: 1182}
+Theorem requirements for monochromatic Q9 at t=4: at least 256 edges outside any fixed Hamming basis; at least 668 edges changing >=2 ORIGINAL coordinates.
+Spec.lean unchanged; SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: exact local and construction checks; no embedding search.

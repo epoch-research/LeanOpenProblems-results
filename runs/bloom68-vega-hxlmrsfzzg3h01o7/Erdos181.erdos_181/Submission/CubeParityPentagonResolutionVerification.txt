@@ -1,0 +1,14 @@
+t=0: ordinary injective RED Q_0; vertices=1; required edges=0; 10*vertices>5^t
+t=1: ordinary injective RED Q_1; vertices=2; required edges=1; 10*vertices>5^t
+t=2: ordinary injective RED Q_4; vertices=16; required edges=32; 10*vertices>5^t
+t=3: ordinary injective RED Q_5; vertices=32; required edges=80; 10*vertices>5^t
+t=4: ordinary injective RED Q_8; vertices=256; required edges=1024; 10*vertices>5^t
+t=5: ordinary injective RED Q_9; vertices=512; required edges=2304; 10*vertices>5^t
+t=6: ordinary injective RED Q_12; vertices=4096; required edges=24576; 10*vertices>5^t
+t=7: ordinary injective RED Q_13; vertices=8192; required edges=53248; 10*vertices>5^t
+t=8: ordinary injective RED Q_18; vertices=262144; required edges=2359296; 10*vertices>5^t
+PASS: 120 symmetric-sign cyclic-base clique/intersection/coset tests, including even orders.
+PASS: all 2440561 required original host edges checked.
+The t=8 example exceeds the affine dimension bound; the maps are genuinely nonlinear.
+Family asymptotic counterexample ruled out by the all-t argument in the report, not finite extrapolation.
+Spec.lean unchanged; SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b

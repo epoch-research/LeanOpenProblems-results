@@ -1,0 +1,13 @@
+import Submission.LongIntervalConcentration
+#check Nat.nth_count
+#check Nat.nth_count_of_infinite
+#check Equiv.summable_iff
+#check Nat.cofinite_eq_atTop
+#check Nat.primesBelow_card
+#check Nat.primeCounting'_eq_card_primesBelow
+#check Nat.primeCounting'_eq_card
+#check Nat.primesBelow
+#check Nat.exists_prime_lt_and_le_two_mul
+#check Finset.exists_superset_card_eq
+#check Finset.exists_subsuperset_card_eq
+#check Finset.card_sdiff_add_card_eq_card

@@ -1,0 +1,32 @@
+'Erdos66GrowingParameterTranslate.forbiddenTranslate_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingParameterTranslate.translated_avoids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingParameterTranslate.translated_no_opposites' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingParameterTranslate.exists_avoiding_parameter_block' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66GrowingParameterTranslate.crossCharFiber_l1_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingParameterTranslate.charFiber_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingParameterTranslate.charFiber_union_l1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.mem_scalarRange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.scalarRange_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.zero_mem_scalarRange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.neg_mem_scalarRange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.image_mem_scalarRange' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.enlarged_admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.enlarged_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingFieldSlice.exists_growing_slice_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingOriginRepair.exists_faithful_scalar_enlargement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66GrowingOriginRepair.mem_partialCurve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingOriginRepair.partialCurve_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingOriginRepair.mem_neg_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingOriginRepair.repairPoints_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingOriginRepair.exists_growing_repaired_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingSubfieldBlock.scalarRange_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingSubfieldBlock.cubic_extension_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingSubfieldBlock.exists_subfield_block_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingSubfieldBlock.growing_error_relative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GrowingSubfieldBlock.exists_accurate_subfield_block_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

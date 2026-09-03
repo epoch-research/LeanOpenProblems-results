@@ -1,0 +1,18 @@
+import Submission.CommonFactorCylinderExplore
+import Submission.CommonPeriodScaleExplore
+
+/-! Axiom audit for the common-factor calculations. -/
+#print axioms Erdos66CommonFactorCylinder.pairCount_full_right
+#print axioms Erdos66CommonFactorCylinder.pairCount_full_left
+#print axioms Erdos66CommonFactorCylinder.cylinder_mixed_count
+#print axioms Erdos66CommonFactorCylinder.cylinder_left_count
+#print axioms Erdos66CommonFactorCylinder.cylinder_right_count
+#print axioms Erdos66CommonFactorCylinder.cardKernel_nonneg
+#print axioms Erdos66CommonFactorCylinder.cardKernel_mean
+#print axioms Erdos66CommonFactorCylinder.exists_universal_cylinder_mixed_accuracy
+#print axioms Erdos66CommonPeriodScale.period_product_lower
+#print axioms Erdos66CommonPeriodScale.period_product_identity
+#print axioms Erdos66CommonPeriodScale.common_period_requires_gcd
+#print axioms Erdos66CommonPeriodScale.scale_div_lcm_le
+#print axioms Erdos66CommonPeriodScale.witness_common_period_requires_gcd
+#print axioms Erdos66CommonPeriodScale.scale_div_lcm_zero_of_small_gcd

@@ -1,0 +1,16 @@
+import Submission.BuchstabOrderedCost
+import Submission.SelbergPrimes
+#check Real.finset_prod_rpow
+#check tsum_le_of_sum_range_le
+#check Summable.tsum_le_of_sum_range_le
+#check Summable.sum_add_tsum_nat_add
+#check Summable.tsum_eq_zero_add
+#check Summable.tsum_eq_add_tsum_ite
+#check Summable.sum_le_tsum
+#check Real.rpow_neg
+#check Real.rpow_neg_one
+#check intervalIntegral.integral_rpow
+#check Erdos970.FiniteSelberg.prime_subset_product_injective
+#check Finset.sum_image
+#check Fin.prod_univ_eq_prod_range
+#check Finset.prod_coe_sort

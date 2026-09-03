@@ -1,0 +1,12 @@
+import Submission.BuchstabGridMain
+#check StrictMono.id_le
+#check Nat.le_nth
+#check Real.rpow_mul
+#check Real.exp_mul
+#check Real.one_le_rpow
+#check Real.log_le_sub_one_of_pos
+#check Finset.single_le_sum
+#check Finset.sum_nonneg
+#check Real.log_two_pos
+#check Real.tendsto_pow_mul_exp_add_atTop_nhds_zero
+#check Real.tendsto_rpow_mul_exp_neg_mul_atTop_nhds_zero

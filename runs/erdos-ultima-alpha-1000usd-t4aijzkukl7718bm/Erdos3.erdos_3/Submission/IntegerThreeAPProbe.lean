@@ -1,0 +1,17 @@
+import Submission.PolynomialThreeAPThreshold
+open Finset
+#check ZMod.isUnit_iff_coprime
+#check ZMod.isUnit_iff_coprime
+#check Nat.coprime_two_left
+#check Nat.coprime_two_right
+#check ZMod.natCast_eq_natCast_iff
+#check ZMod.val_natCast_of_lt
+#check Finset.card_image_iff
+#check Finset.card_image_of_injOn
+#check IsUnit.mul_left_cancel
+#check Finite.injective_iff_surjective
+#check Finite.bijective_iff_injective_and_card
+#check Finite.surjective_of_injective
+#check odd_two_mul_add_one
+#check Nat.odd_iff
+#check ZMod.card

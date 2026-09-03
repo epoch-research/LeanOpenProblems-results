@@ -1,0 +1,5 @@
+import Submission.ShortTriangleQuarticExclusion
+
+/-! Axiom audit of the combined quartic-triangle exclusions. -/
+#print axioms Erdos583QuarticTriangleReductionDevelopment.failure_no_quartic_triangle_data
+#print axioms Erdos583ShortTriangleQuarticExclusionDevelopment.failure_no_short_triangle_quartic_pair

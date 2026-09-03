@@ -1,0 +1,15 @@
+import Submission.BlockMomentObstruction
+#check Finset.prod_le_prod
+#check Finset.prod_le_prod_of_subset_of_one_le
+#check Finset.prod_le_prod_of_subset_of_le_one
+#check Finset.prod_le_one
+#check Finset.prod_erase_mul
+#check Finset.prod_erase_mul
+#check Finset.prod_eq_zero
+#check Finset.prod_eq_zero_iff
+#check Finset.prod_neg
+#check Erdos970.FiniteSelberg.average_hitMonomial
+#check Erdos970.FiniteSelberg.hitMonomial_eq
+#check Finset.prod_nonneg
+#check Finset.abs_prod
+#check Finset.sum_eq_single

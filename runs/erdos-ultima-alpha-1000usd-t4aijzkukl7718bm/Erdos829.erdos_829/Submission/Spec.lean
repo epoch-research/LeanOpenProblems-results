@@ -1,0 +1,31 @@
+import FormalConjecturesUtil
+
+/-!
+# Erdős Problem 829
+
+*References:*
+- [erdosproblems.com/829](https://www.erdosproblems.com/829)
+- [Er83] Erdős, P. and Dudley, U., _Some remarks and problems in number theory related to the
+  work of Euler_. Math. Mag. (1983), 292-298.
+-/
+
+open AdditiveCombinatorics Asymptotics Filter
+
+namespace Erdos829
+
+/-- The set of perfect cubes in $\mathbb{N}$. -/
+def cubes : Set ℕ := {n | ∃ k, k ^ 3 = n}
+
+/--
+**Erdős Problem 829 (open).**  Let $A \subseteq \mathbb{N}$ be the set of perfect cubes.  Is
+it true that $(1_A \ast 1_A)(n) \ll (\log n)^{O(1)}$?  That is, does there exist a natural
+number $C$ such that the number of representations of $n$ as a sum of two cubes is
+$O((\log n)^C)$ as $n \to \infty$?
+-/
+theorem erdos_829 :
+    
+      ∃ C : ℕ, (fun n : ℕ => (sumRep cubes n : ℝ)) =O[atTop]
+        (fun n : ℕ => (Real.log n) ^ C) := by
+  sorry
+
+end Erdos829

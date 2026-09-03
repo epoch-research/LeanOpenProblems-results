@@ -1,0 +1,4 @@
+import Submission.RepeatedBlockProfileExplore
+import Submission.FixedTemplateObstructionExplore
+#print axioms Erdos66RepeatedBlockProfile.repeated_block_uniform_error
+#print axioms Erdos66FixedTemplateObstruction.no_proper_fixed_template

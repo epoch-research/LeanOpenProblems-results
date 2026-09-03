@@ -1,0 +1,13 @@
+import Submission.AnchoredGraphColorTransferExplore
+#check Finset.sum_sq_le_sq_sum_of_nonneg
+#check Finset.sum_sq_le_sq_sum
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Finset.sum_le_sum
+#check Finset.card_image_le
+#check Finset.mem_image
+#check Finset.card_union_le
+#check Finset.sum_boole
+#check Finset.sum_ite_eq
+#check Finset.abs_sum_le_sum_abs
+#check abs_sub_comm
+#check Finset.single_le_sum

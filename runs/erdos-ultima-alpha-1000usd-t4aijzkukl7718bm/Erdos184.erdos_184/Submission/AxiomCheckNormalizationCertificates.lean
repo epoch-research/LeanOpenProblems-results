@@ -1,0 +1,9 @@
+import Submission.SixKernelCertificates
+import Submission.LabelKernelEmbedding
+import Submission.FastMarkedOrder
+import Submission.FourKernelCertificates
+
+#print axioms Erdos184Work.SixKernelCertificates.exists_two
+#print axioms Erdos184Work.LabelKernel.Embedding.minimalCore_map_iff
+#print axioms Erdos184Work.CycleSegments.Marked.fastNext_eq
+#print axioms Erdos184Work.FourKernelCertificates.exists_two_of_maximum_bound

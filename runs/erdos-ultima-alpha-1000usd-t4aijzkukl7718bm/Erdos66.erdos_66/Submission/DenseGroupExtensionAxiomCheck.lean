@@ -1,0 +1,8 @@
+import Submission.DenseGroupExtensionExplore
+/-! Axiom audit for conditional dense finite-group extension. -/
+#print axioms Erdos66VariableBernoulliBounds.exists_variable_bound
+#print axioms Erdos66GroupRepBernoulli.self_mgf
+#print axioms Erdos66GroupRepBernoulli.diagCorrection_bounds
+#print axioms Erdos66DenseGroupExtension.exists_extension_about_means
+#print axioms Erdos66DenseGroupExtension.exists_dense_extension_nominal
+#print axioms Erdos66DenseGroupExtension.exists_dense_extension_actual

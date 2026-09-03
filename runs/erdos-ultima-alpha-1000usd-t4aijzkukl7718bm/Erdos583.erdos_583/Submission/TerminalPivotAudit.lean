@@ -1,0 +1,11 @@
+import Submission.TerminalPivotObstruction
+
+/-! Audit of the terminal-pivot obstruction. -/
+#print axioms Erdos583TerminalPivotObstructionDevelopment.structural
+#print axioms Erdos583TerminalPivotObstructionDevelopment.T
+#print axioms Erdos583TerminalPivotObstructionDevelopment.U
+#print axioms Erdos583TerminalPivotObstructionDevelopment.terminality_lost
+#print axioms Erdos583TerminalPivotObstructionDevelopment.same_score
+#print axioms Erdos583TerminalPivotObstructionDevelopment.pivot_forms
+#print axioms Erdos583TerminalPivotObstructionDevelopment.terminal_vertices_table
+#print axioms Erdos583TerminalPivotObstructionDevelopment.terminal_weight_lost

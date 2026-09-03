@@ -1,0 +1,8 @@
+import Submission.PolynomialSparseCompletionExplore
+
+/-! Axiom audit of summable spikes and explicit sparse completion. -/
+#print axioms Erdos66SummableSpikes.asymptotic_prescribed_spikes
+#print axioms Erdos66RepeatedCenters.repeated_summability
+#print axioms Erdos66SparseGrowthCosts.logarithmic_multiplicity_costs
+#print axioms Erdos66PolynomialSparseCompletion.polynomial_sparse_completion
+#print axioms Erdos66PolynomialSparseCompletion.dyadic_exception_completion

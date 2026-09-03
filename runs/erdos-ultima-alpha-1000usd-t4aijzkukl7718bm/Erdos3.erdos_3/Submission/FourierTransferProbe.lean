@@ -1,0 +1,25 @@
+import Submission.FiniteFourier
+open Finset
+open scoped BigOperators Classical
+#check Fintype.prod_sum
+#check Finset.expect_sum_comm
+#check Finset.mul_expect
+#check Finset.expect_sub_distrib
+#check Finset.prod_nonneg
+#check Finset.prod_le_prod
+#check Finset.expect_le_expect
+#check Complex.ofReal_expect
+#check Complex.reCLM
+#check Complex.norm_real
+#check Finset.expect_mul_expect
+#check RCLike.norm_expect_le
+#check Fintype.expect_mul_expect
+#check Fintype.sum_prod_type
+#check AddChar.mul_apply
+#check AddChar.pow_apply
+#check AddChar.map_nsmul_eq_pow
+#check AddChar.map_zsmul_eq_zpow
+#check AddChar.map_sub_eq_div
+#check Finset.prod_norm
+#check norm_prod
+#check Finset.prod_sum

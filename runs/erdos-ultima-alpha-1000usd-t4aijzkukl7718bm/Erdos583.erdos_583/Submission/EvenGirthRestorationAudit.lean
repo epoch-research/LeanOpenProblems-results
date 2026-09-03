@@ -1,0 +1,8 @@
+import Submission.EvenGirthRestoration
+
+/-! Axiom audit of EvenGirthRestoration. -/
+#print axioms Erdos583EvenGirthRestorationDevelopment.small_even_forests_delete_edge
+#print axioms Erdos583EvenGirthRestorationDevelopment.restore_matching_small_even_forests
+#print axioms Erdos583EvenGirthRestorationDevelopment.normal_bound_of_matching_deficiency_le_three
+#print axioms Erdos583EvenGirthRestorationDevelopment.small_even_forests_of_egirth
+#print axioms Erdos583EvenGirthRestorationDevelopment.normal_bound_of_even_girth

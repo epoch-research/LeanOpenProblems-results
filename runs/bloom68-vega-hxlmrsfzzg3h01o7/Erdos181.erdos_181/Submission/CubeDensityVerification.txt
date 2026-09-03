@@ -1,0 +1,12 @@
+PASS: 258016 integer-partition/bin-packing checks and exact extremal counts
+PASS: 208 independent noninduced graph-copy checks
+PASS: sharp multipartite density constant and restricted Ramsey construction arithmetic
+PASS: 1200 robust-partition greedy embeddings
+PASS: Hamming-code Hall-failure certificates for dimensions 2, 4, 8, 16
+PASS: Q_2 embeds in P_3 tensor P_3 although it cannot embed in P_3
+PASS: explicit Q_15 quotient has only 3 collision pairs; all mixed-square and halfcube-blocking certificates hold
+PASS: codimension 1, dimension 48, 55 pairs: distance and every-subcube collision certificates (bipartite=False)
+PASS: codimension 2, dimension 48, 293 pairs: distance and every-subcube collision certificates (bipartite=True)
+PASS: codimension 3, dimension 64, 1553 pairs: distance and every-subcube collision certificates (bipartite=True)
+PASS: scalar homomorphism bound obstruction for several constants
+PASS: Spec.lean unchanged

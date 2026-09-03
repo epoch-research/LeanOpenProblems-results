@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check List.pairwise_insertionSort
+#check List.perm_insertionSort
+#check List.Perm.filter
+#check List.Perm.prod_eq
+#check List.perm_comp_forall₂
+#check List.pairwise_cons
+#check List.countP_append
+#check List.filter_append
+#check List.mem_primeFactorsList
+#check Nat.prime_of_mem_primeFactorsList
+#check List.mem_insertionSort
+#check Relation.Comp

@@ -1,0 +1,12 @@
+import Submission.KernelProjectionEstimates
+#check Submodule.map_span
+#check Submodule.map_top
+#check LinearMap.range_eq_top
+#check LinearMap.finrank_range_add_finrank_ker
+#check LinearMap.finrank_ker_add_finrank_range
+#check Submodule.finrank_top
+#check Module.finrank_self
+#check Submodule.finrank_lt
+#check Submodule.finrank_lt_finrank_of_lt
+#check LinearMap.finrank_range_of_surjective
+#check IsZLattice.span_top

@@ -1,0 +1,20 @@
+import Submission.PrimitiveProductCharacters
+
+/-! Exact-type and axiom audit of the primitive-character cardinality bounds. -/
+
+#check @Erdos821.card_characters_factorsThrough_le
+#print axioms Erdos821.card_characters_factorsThrough_le
+#check @Erdos821.imprimitiveCharacters_card_le_proper_divisor_totients
+#print axioms Erdos821.imprimitiveCharacters_card_le_proper_divisor_totients
+#check @Erdos821.prime_product_proper_divisor_totient
+#print axioms Erdos821.prime_product_proper_divisor_totient
+#check @Erdos821.prime_product_imprimitive_card_bound
+#print axioms Erdos821.prime_product_imprimitive_card_bound
+#check @Erdos821.prime_product_totient_le_twice_primitive_card
+#print axioms Erdos821.prime_product_totient_le_twice_primitive_card
+#check @Erdos821.eventually_prime_product_primitive_mass_power_lower
+#print axioms Erdos821.eventually_prime_product_primitive_mass_power_lower
+#check @Erdos821.uniform_primitive_character_constant_lower
+#print axioms Erdos821.uniform_primitive_character_constant_lower
+#check @Erdos821.prime_product_uniform_primitive_constant_lower
+#print axioms Erdos821.prime_product_uniform_primitive_constant_lower

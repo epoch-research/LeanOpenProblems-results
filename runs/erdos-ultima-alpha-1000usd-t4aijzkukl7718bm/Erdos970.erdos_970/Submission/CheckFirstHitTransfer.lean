@@ -1,0 +1,11 @@
+import Submission.FirstHitSelberg
+import Submission.SieveCertificateTransfer
+#check Fintype.sum_option
+#check Fintype.sum_prod_type
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite_mem
+#check Finset.sum_filter
+#check Erdos970.FiniteSelberg.majorant_expansion
+#check Erdos970.FiniteSelberg.coefficient_abs_le_one
+#check Erdos970.FiniteSelberg.majorant_hit_average_of_not_mem
+#check Erdos970.FiniteSelberg.average_sum

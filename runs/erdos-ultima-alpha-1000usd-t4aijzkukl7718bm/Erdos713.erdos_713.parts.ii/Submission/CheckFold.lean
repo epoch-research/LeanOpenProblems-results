@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Finset.sum_fiberwise_of_maps_to
+#check SimpleGraph.degree_lt_card_verts
+#check SimpleGraph.degree_le_card_verts
+#check SimpleGraph.degree_lt_card
+#check Finset.card_ne_zero
+#check Finset.sum_le_card_nsmul
+#check SimpleGraph.Copy.finite
+#check Function.Injective.nat_card_le

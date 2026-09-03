@@ -1,0 +1,17 @@
+import Submission.FirstHitSigned
+#check Finset.exists_ne_zero_of_sum_ne_zero
+#check Finset.sum_ne_zero_iff
+#check Finset.sum_eq_single
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.sum_subset
+#check Finset.sum_congr
+#check Finset.mem_insert
+#check Finset.erase_insert
+#check Finset.erase_insert_of_ne
+#check Finset.insert_erase
+#check Finset.insert_erase_invOn
+#check Finset.sum_ite_mem
+#check Finset.sum_ite_irrel
+#check Finset.sum_congr
+#check Finset.not_mem_erase
+#check Finset.subset_insert

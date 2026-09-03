@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check ZMod.castHom
+#check RingHom.injective
+#check RingHom.map_det
+#check Matrix.det_succ_row_zero
+#check Matrix.det_fin_three
+#check Polynomial.monic_of_natDegree_le_of_coeff_eq_one
+#check Polynomial.eq_X_add_C_of_natDegree_le_one
+#check Polynomial.eq_X_sq_add_C_mul_X_add_C
+#check Polynomial.Monic.quadratic_eq
+#check Polynomial.Monic.def
+#check Matrix.trace_mul_comm
+#check Algebra.norm_eq_matrix_det
+#check Algebra.trace_eq_matrix_trace

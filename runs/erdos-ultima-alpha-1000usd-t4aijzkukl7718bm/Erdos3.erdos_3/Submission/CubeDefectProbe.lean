@@ -1,0 +1,27 @@
+import Submission.HigherLocalPolynomialProgressions
+import Submission.FiniteUniformity
+open Finset
+open scoped BigOperators
+#check Equiv.piFinSucc
+#check finSuccArrowEquiv
+#check Fin.cons
+#check Fin.cons_self_tail
+#check Fintype.sum_prod_type
+#check Fintype.expect_prod_type
+#check Finset.expect_product'
+#check Finset.expect_eq_zero_iff_of_nonneg
+#check Finset.expect_eq_zero_iff
+#check Finset.sum_eq_zero_iff_of_nonneg
+#check Finset.expect_eq_sum_div_card
+#check Fintype.expect_eq_sum_div_card
+#check Fintype.expect_equiv
+#check Fintype.expect_unique
+#check Complex.norm_sub_one_sq_eq_of_norm_eq_one
+#check Equiv.toAdditive
+#check Additive.toMul_injective
+#check Circle.coe_injective
+#check Finset.expect_sub_distrib
+#check Finset.expect_mul
+#check Finset.mul_expect
+#check Erdos3FiniteSamplingMoments.expect_re
+#check Finset.sum_pos_iff_of_nonneg

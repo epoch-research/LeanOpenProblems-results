@@ -1,0 +1,7 @@
+import Submission.NonneighborShortening
+/-! Axiom audit of protected nonneighbor shortening. -/
+#print axioms Erdos583NonneighborShorteningDevelopment.member_of_path_subgraph
+#print axioms Erdos583NonneighborShorteningDevelopment.member_orient_tracked
+#print axioms Erdos583NonneighborShorteningDevelopment.shorten_oriented_preserving
+#print axioms Erdos583NonneighborShorteningDevelopment.shorten_member_preserving
+#print axioms Erdos583NonneighborShorteningDevelopment.extend_suffix_preserving

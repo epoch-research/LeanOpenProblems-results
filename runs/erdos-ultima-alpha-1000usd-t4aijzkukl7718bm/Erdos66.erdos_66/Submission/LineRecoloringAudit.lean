@@ -1,0 +1,22 @@
+import Submission.LineRecoloringIterationExplore
+/-! Axiom audit for finite recoloring, origin effects, and literal iterations. -/
+#print axioms Erdos66GraphRowAssembly.rowAssembly_mixed_pairCount
+#print axioms Erdos66GraphRowAssembly.rowAssembly_mixed_cap
+#print axioms Erdos66LineRecoloring.recolor_mixed_fiber_two
+#print axioms Erdos66LineRecoloring.recolored_mixed_count
+#print axioms Erdos66LineRecoloring.recolored_joint_cap
+#print axioms Erdos66LineRecoloring.recolored_disjoint
+#print axioms Erdos66LineRecoloring.recolored_card
+#print axioms Erdos66LineRecoloring.origin_color_preserved
+#print axioms Erdos66LineRecoloring.union_recolored_membership
+#print axioms Erdos66OriginLineLift.originLift_nonzero_error
+#print axioms Erdos66OriginLineLift.originLift_zero_count
+#print axioms Erdos66OriginLineLift.originLift_mean_preserved
+#print axioms Erdos66LineRecoloringPeaks.recolored_mixed_dominates
+#print axioms Erdos66LineRecoloringPeaks.recolored_self_dominates_twice
+#print axioms Erdos66LineRecoloringPeaks.two_step_self_amplification
+#print axioms Erdos66LineRecoloringIteration.space_card
+#print axioms Erdos66LineRecoloringIteration.two_step_extension_peak
+#print axioms Erdos66LineRecoloringIteration.even_stage_exponential_peak
+#print axioms Erdos66LineRecoloringIteration.nonempty_seed_exponential_peak
+#print axioms Erdos66LineRecoloringIteration.iteration_exceeds_logarithmic_cap

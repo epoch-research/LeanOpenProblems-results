@@ -1,0 +1,9 @@
+import Submission.AsymptoticAmplification
+
+/-! Audit for asymptotic amplification reductions. -/
+#print axioms Erdos583AsymptoticAmplificationDevelopment.reduce_odd_linear_offset
+#print axioms Erdos583AsymptoticAmplificationDevelopment.odd_linear_offset_two
+#print axioms Erdos583AsymptoticAmplificationDevelopment.odd_linear_bound_offset_two
+#print axioms Erdos583AsymptoticAmplificationDevelopment.gallai_of_arbitrarily_good_linear_bounds
+#print axioms Erdos583AsymptoticAmplificationDevelopment.normal_partition_card_le_vertices
+#print axioms Erdos583AsymptoticAmplificationDevelopment.gallai_of_asymptotic_odd_bound

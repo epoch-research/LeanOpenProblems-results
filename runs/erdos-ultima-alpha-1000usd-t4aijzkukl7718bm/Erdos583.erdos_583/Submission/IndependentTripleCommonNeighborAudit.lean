@@ -1,0 +1,5 @@
+import Submission.IndependentTripleCommonNeighbor
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583IndependentTripleCommonNeighborDevelopment.star_edges_distinct
+#print axioms Erdos583IndependentTripleCommonNeighborDevelopment.sharp_independent_three_common_neighbor

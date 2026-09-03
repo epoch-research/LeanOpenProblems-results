@@ -1,0 +1,9 @@
+import Submission.LollipopGroups
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583LollipopGroupsDevelopment.outside_group_not_marked
+#print axioms Erdos583LollipopGroupsDevelopment.small_outside_group_expands
+#print axioms Erdos583LollipopGroupsDevelopment.half_outside_group_expands
+#print axioms Erdos583LollipopGroupsDevelopment.saturated_outside_group_large
+#print axioms Erdos583LollipopGroupsDevelopment.saturated_half_outside_group_edge_bound
+#print axioms Erdos583LollipopGroupsDevelopment.outside_support_avoids
+#print axioms Erdos583LollipopGroupsDevelopment.disjoint_outside_groups_not_both_saturated

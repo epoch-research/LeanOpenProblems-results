@@ -1,0 +1,17 @@
+import Submission.OptimalCoverCore
+#check Finset.min'
+#check Finset.min'_mem
+#check Finset.min'_le
+#check Finset.mem_powerset
+#check Finset.induction_on
+#check Finset.card_erase_lt_of_mem
+#check List.Nodup
+#check List.nodup_cons
+#check List.toFinset_cons
+#check Finset.card_image_iff
+#check Fintype.card_le_of_injective
+#check Fintype.card_perm
+#check Equiv.Perm
+#check Finset.sort
+#check List.Pairwise
+#check Finset.sort_toFinset

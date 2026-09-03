@@ -1,0 +1,34 @@
+import Submission.GenericCapacityObstruction
+/-! Axiom audit of the generic, non-square capacity obstruction. -/
+#print axioms Erdos773.SidonPartitionFunction.Z_branch
+#print axioms Erdos773.SidonPartitionFunction.powerset_weight
+#print axioms Erdos773.SidonPartitionFunction.partition_bound
+#print axioms Erdos773.SidonDifferenceGraph.common_card
+#print axioms Erdos773.SidonDifferenceGraph.density_bound
+#print axioms Erdos773.SidonDifferenceGraph.remainder_independent
+#print axioms Erdos773.SidonPartitionScales.seed_dense
+#print axioms Erdos773.SidonPartitionScales.branching
+#print axioms Erdos773.SidonPartitionScales.exponential_budget
+#print axioms Erdos773.SidonPartitionScales.seed_partition_bound
+#print axioms Erdos773.BernoulliCarrier.contains
+#print axioms Erdos773.BernoulliCarrier.weighted_card
+#print axioms Erdos773.BernoulliCarrier.weighted_family
+#print axioms Erdos773.BernoulliCarrier.weighted_count
+#print axioms Erdos773.BernoulliCarrier.weighted_uniform_count
+#print axioms Erdos773.SidonSeedWitnesses.penalty_large
+#print axioms Erdos773.SidonSeedWitnesses.expected_penalty_bound
+#print axioms Erdos773.SidonSeedWitnesses.expected_penalty_small
+#print axioms Erdos773.SidonSeedWitnesses.exponential_penalty_budget
+#print axioms Erdos773.IntegerDifferenceCapacity.aps_card
+#print axioms Erdos773.IntegerDifferenceCapacity.aps_size
+#print axioms Erdos773.IntegerDifferenceCapacity.aps_subset
+#print axioms Erdos773.IntegerDifferenceCapacity.apFree_of_avoids
+#print axioms Erdos773.IntegerDifferenceCapacity.sixes_card
+#print axioms Erdos773.IntegerDifferenceCapacity.sixes_size
+#print axioms Erdos773.IntegerDifferenceCapacity.sixes_subset
+#print axioms Erdos773.IntegerDifferenceCapacity.capacity_of_avoids
+#print axioms Erdos773.GenericCapacityObstruction.reward_scales
+#print axioms Erdos773.GenericCapacityObstruction.expected_reward
+#print axioms Erdos773.GenericCapacityObstruction.finite_obstruction
+#print axioms Erdos773.GenericCapacityObstruction.finite_power_gap
+#print axioms Erdos773.GenericCapacityObstruction.eventual_obstruction

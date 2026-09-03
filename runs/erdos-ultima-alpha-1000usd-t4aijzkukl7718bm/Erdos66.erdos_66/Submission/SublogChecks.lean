@@ -1,0 +1,10 @@
+import Submission.RoundingExplore
+#check harmonic_mono
+#check harmonic_le_harmonic
+#check Erdos66Generating.global_harmonic_error
+#check Erdos66Generating.harmonic_log_ratio
+#check Filter.Tendsto.eventually_lt_const
+#check Filter.Eventually.const_mul
+#check Metric.tendsto_nhds
+#check Filter.tendsto_order
+#check Real.tendsto_harmonic_sub_log

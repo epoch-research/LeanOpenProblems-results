@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Finite.surjective_of_injective
+#check Fintype.equivFinOfCardEq
+#check SimpleGraph.Iso.mapNeighborSet
+#check SimpleGraph.IsBipartiteWith.not_adj_of_mem
+#check SimpleGraph.IsBipartiteWith.not_adj_of_mem_left
+#check SimpleGraph.IsBipartiteWith.not_adj_of_mem_right
+#check SimpleGraph.Iso.of_eq
+#check SimpleGraph.Iso.trans
+#check SimpleGraph.Iso.refl
+#print SimpleGraph.Iso

@@ -1,0 +1,15 @@
+Spectral cube verification: checks of the proved lemmas, not a proof of the constant-multiplier benchmark.
+Exact signed contraction: 36 direct connected-graph / quotient-multigraph comparisons passed.
+Exact Xi / polymer / ordinary injective-count identities passed for three hosts and z=0,1/2,1.
+Whole-star resummation: 27 connected-activity checks; degree-mixture coefficients checked through order 10.
+All-orders Gram lemma: 2349 exact polynomial checks; exact moments through d=12 and irregular-column checks passed.
+Linear-scale star-load lemma: 106 exact coefficient sequences through order 50; max load/bound=0.000688782; 4,000 exact pruning-constant checks passed.
+Cube support bounds: 65,809 parity supports (through Q_5), with exact independence-number checks; 65,808 edge-isoperimetric supports passed.
+Constants: 89,991 parameter checks through d=10,000; max d*load=0.00150016, min Hall margin=1230.36.
+Pure-collision load at N=8h: 0.514658628 < 0.632120559.
+Actual Q_4 certificate: N=1024, row minimum=32, column maximum=8, attempts=1; all edges and all distinct images checked.
+Actual Q_5 certificate: N=4096, row minimum=64, column maximum=11, attempts=1; all edges and all distinct images checked.
+Actual Q_6 certificate: N=4096, row minimum=32, column maximum=7, attempts=1; all edges and all distinct images checked.
+Actual Q_7 certificate: N=16384, row minimum=64, column maximum=8, attempts=2; all edges and all distinct images checked.
+Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+All checks passed. The proved general bound is 10^6(K+4)^2 d^2 2^d; the factor d^2 remains.

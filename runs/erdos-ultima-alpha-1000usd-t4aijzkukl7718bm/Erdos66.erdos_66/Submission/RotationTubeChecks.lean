@@ -1,0 +1,17 @@
+import Submission.RotationMassLogBoundExplore
+import Submission.PatternInsertionDominationExplore
+#check Int.floor_eq_iff
+#check Int.floor_intCast_add
+#check Int.fract_eq_iff
+#check Int.fract_lt_one
+#check Int.fract_sub_intCast
+#check Finset.sum_eq_card_filter
+#check Finset.card_le_card_of_injOn
+#check Finset.card_image_iff
+#check Erdos66PatternInsertionDomination.repEndpoints_card
+#check Finset.sum_pos_iff_of_nonneg
+#check Finset.sum_pos_iff
+#check Finset.exists_lt_of_sum_lt
+#check Finset.sum_indicator_subset
+#check Int.floor_sub_intCast
+#check Int.floor_sub_one

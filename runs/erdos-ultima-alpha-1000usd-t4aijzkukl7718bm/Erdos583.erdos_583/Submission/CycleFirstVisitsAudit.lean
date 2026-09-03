@@ -1,0 +1,10 @@
+import Submission.CycleFirstVisits
+/-! Axiom audit for cycle-first-visit exchanges. -/
+#print axioms Erdos583CycleFirstVisitsDevelopment.cycle_edge_first
+#print axioms Erdos583CycleFirstVisitsDevelopment.adjacent_first_surgery
+#print axioms Erdos583CycleFirstVisitsDevelopment.adjacent_first_absorption
+#print axioms Erdos583CycleFirstVisitsDevelopment.missing_first_neighbor
+#print axioms Erdos583CycleFirstVisitsDevelopment.cycle_adjacent_first_absorption
+#print axioms Erdos583CycleFirstVisitsDevelopment.cycle_missing_first_neighbor
+#print axioms Erdos583CycleFirstVisitsDevelopment.maximal_first_visits_not_adjacent
+#print axioms Erdos583CycleFirstVisitsDevelopment.maximal_first_visit_neighbors_present

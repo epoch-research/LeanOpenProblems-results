@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "auxiliary finite identities only",
+  "examples": [
+    {
+      "A": [
+        0,
+        1,
+        4
+      ],
+      "n": 3,
+      "E3": 93,
+      "E4": 647,
+      "eight_distinct_unordered_collisions": 0,
+      "five_set_flags": 0
+    },
+    {
+      "A": [
+        -1108889,
+        1,
+        10,
+        100,
+        1000,
+        10000,
+        100000,
+        1000000
+      ],
+      "n": 8,
+      "E3": 2528,
+      "E4": 67576,
+      "eight_distinct_unordered_collisions": 1,
+      "five_set_flags": 48
+    }
+  ]
+}

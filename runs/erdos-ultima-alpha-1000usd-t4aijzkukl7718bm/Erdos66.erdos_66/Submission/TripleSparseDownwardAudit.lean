@@ -1,0 +1,7 @@
+import Submission.TripleSparseDownwardCorrectionExplore
+/-! Axiom audit for exact downward corrections. -/
+#print axioms Erdos66CentralTripleDeletion.deletion_identity
+#print axioms Erdos66CentralTripleDeletion.many_target_loss
+#print axioms Erdos66CentralTripleDeletion.many_target_uniform_loss
+#print axioms Erdos66CentralTripleDeletion.exists_exact_downward_correction
+#print axioms Erdos66TripleSparseDownwardCorrection.exists_rounding_with_downward_corrections

@@ -1,0 +1,17 @@
+import Submission.FrequencyGraph
+import Submission.FiniteSampling
+#check Complex.normSq_sub
+#check Complex.sq_norm
+#check Complex.sq_norm_sub
+#check Complex.normSq_eq_norm_sq
+#check norm_sub_sq
+#check Complex.re_le_norm
+#check Complex.abs_re_le_norm
+#check AddChar.expect_eq_ite
+#check AddChar.expect_eq_zero_iff_ne_zero
+#check Finset.prod_boole
+#check Fintype.prod_boole
+#check Finset.prod_ite_zero
+#check Finset.exists_min_image
+#check Finset.expect_natCast
+#check Nat.log2_eq_log_two

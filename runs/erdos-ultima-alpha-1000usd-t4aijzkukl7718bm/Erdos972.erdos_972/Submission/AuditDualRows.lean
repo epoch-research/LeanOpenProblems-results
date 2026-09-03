@@ -1,0 +1,9 @@
+import Submission.DualTypeICovariance
+
+/-! Axiom audit of the newly completed dual one-prime estimates. -/
+#print axioms Erdos972InverseGoodApproximation.inverse_good_approximant
+#print axioms Erdos972ScaledPrimeRows.scaled_arc_prefix_bound
+#print axioms Erdos972DualPrimeRows.exists_two_sided_prime_divisor_scale
+#print axioms Erdos972DualProfileCovariance.prime_aligned_covariance
+#print axioms Erdos972DualProfileCovariance.mangoldt_log_covariance_tendsto
+#print axioms Erdos972DualTypeICovariance.dual_typeI_covariance_bound

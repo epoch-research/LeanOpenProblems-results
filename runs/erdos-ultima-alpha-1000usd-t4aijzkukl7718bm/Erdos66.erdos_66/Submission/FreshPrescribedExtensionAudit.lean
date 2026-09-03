@@ -1,0 +1,32 @@
+import Submission.CosetPrescribedExtensionExplore
+import Submission.NaturalBoundaryMixedExplore
+
+/-! Axiom audit for the finite prescribed-prefix construction and its natural-boundary limitation. -/
+#print axioms Erdos66FreshCurvePrefix.parabola_secant
+#print axioms Erdos66FreshCurvePrefix.three_old_values
+#print axioms Erdos66FreshCurvePrefix.mem_oldPlane
+#print axioms Erdos66FreshCurvePrefix.arbitrary_old_fresh_curve_cap
+#print axioms Erdos66FreshCurvePrefix.arbitrary_old_fresh_union_cap
+#print axioms Erdos66FreshCurvePrefix.fresh_union_disjoint
+#print axioms Erdos66FreshCurvePrefix.prescribed_old_slice
+#print axioms Erdos66FreshCurvePrefix.prescribed_old_flatness
+#print axioms Erdos66FreshOddExtension.old_target_forces_old_endpoint
+#print axioms Erdos66FreshOddExtension.oldPlane_add
+#print axioms Erdos66FreshOddExtension.oldPlane_sub
+#print axioms Erdos66FreshOddExtension.old_pairCount_outside
+#print axioms Erdos66FreshOddExtension.old_fresh_pairCount_inside
+#print axioms Erdos66FreshOddExtension.freshParabolas_eq_biUnion
+#print axioms Erdos66FreshOddExtension.freshParabolas_disjoint
+#print axioms Erdos66FreshOddExtension.fresh_pairCount_inside
+#print axioms Erdos66FreshOddExtension.prescribed_old_counts
+#print axioms Erdos66FreshOddExtension.replacement_off_plane
+#print axioms Erdos66FreshOddExtension.replacement_flat_new_targets
+#print axioms Erdos66PrescribedOddFieldExtension.planeMap_pairCount
+#print axioms Erdos66PrescribedOddFieldExtension.exists_prescribed_extension
+#print axioms Erdos66CosetPrescribedExtension.exists_flat_prescribed_extension
+#print axioms Erdos66NaturalBoundaryMixed.boundary_exact
+#print axioms Erdos66NaturalBoundaryMixed.boundary_target_tendsto
+#print axioms Erdos66NaturalBoundaryMixed.boundary_mixed_limit
+#print axioms Erdos66NaturalBoundaryMixed.no_sublog_boundary_cap
+#print axioms Erdos66NaturalBoundaryMixed.root_log_ratio_tendsto_zero
+#print axioms Erdos66NaturalBoundaryMixed.no_root_boundary_cap

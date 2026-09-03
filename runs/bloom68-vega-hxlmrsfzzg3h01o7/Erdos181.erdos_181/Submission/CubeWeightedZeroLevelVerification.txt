@@ -1,0 +1,6 @@
+Full-pattern convex/KKT certificate: 360 injections, 4096 exact potential comparisons PASS
+Weighted full-injection reflection Q_2, N=5: 120 injections, 16 patterns, 320 spectral/conditional checks, 640 zero-fold intersecting checks PASS
+Weighted full-injection reflection Q_2, N=7: 840 injections, 16 patterns, 672 spectral/conditional checks, 0 zero-fold intersecting checks PASS
+Weighted full-injection reflection Q_3, N=9: 362880 injections, 12 patterns, 9184 spectral/conditional checks, 4592 zero-fold intersecting checks PASS
+Weighted intersecting-family first-harmonic inequality: 45 exact cases PASS
+Spec.lean unchanged; no completing Ramsey theorem or zero-level spectral bound proved.

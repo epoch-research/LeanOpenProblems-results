@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Finset.exists_subset_card_eq
+#check Finset.card_insert_le
+#check Finset.card_union_le
+#check Finset.card_image_le
+#check Finset.not_subset
+#check Finset.card_erase_of_mem
+#check Odd.exists_two_mul_add_one
+#check Odd.nat_add_one_div_two
+#check Nat.even_sub
+#check Even.sub_odd
+#check Odd.pow

@@ -1,0 +1,12 @@
+import Submission.WeightedSquareStabilityExplore
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
+#check Filter.Tendsto.max
+#check Real.tendsto_sqrt
+#check Real.tendsto_log_div_rpow_nhdsGT_zero
+#check Real.tendsto_log_div_rpow_atTop
+#check Real.tendsto_log_div_id_atTop
+#check Asymptotics.IsLittleO.tsum_mul_geometric
+#check Asymptotics.IsLittleO.sum_range
+#check Filter.Tendsto.inv₀
+#check Real.continuous_sqrt
+#check Filter.Tendsto.mono_left

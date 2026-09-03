@@ -1,0 +1,16 @@
+import Submission.PolynomialRankQuadraticInverse
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_le_add_one
+#check Nat.floor_le
+#check Nat.floor_le_of_le
+#check Real.log_le_sub_one_of_pos
+#check one_div_le_one_div_of_le
+#check div_le_iff₀
+#check inv_pow
+#check Real.exp_le_exp
+#check Real.rpow_natCast
+#check pow_le_pow_right₀
+#check pow_le_pow_left₀
+#check one_le_pow₀
+#check Real.exp_nat_mul
+#check Real.exp_log

@@ -1,0 +1,13 @@
+'Erdos66ExpPowerDominance.model_ratio_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExpPowerDominance.monomial_normalization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExpPowerDominance.exists_dominant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExpPowerDominance.polynomial_eventually_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogBoundaryPolynomial.witness_exponential_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogBoundaryPolynomial.witness_polynomial_eventually_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogBoundaryPolynomial.witness_no_polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BoundaryMvPolynomial.polynomial_eval_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BoundaryMvPolynomial.witness_boundary_eval_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BoundaryMvPolynomial.boundaryShift_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BoundaryMvPolynomial.witness_eval_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

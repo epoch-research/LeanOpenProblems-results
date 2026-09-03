@@ -1,0 +1,9 @@
+import Submission.ShortCycleObstruction
+/-! Axiom audit for the short-cycle absorption obstruction. -/
+#print axioms Erdos583ShortCycleObstructionDevelopment.connected
+#print axioms Erdos583ShortCycleObstructionDevelopment.boundary
+#print axioms Erdos583ShortCycleObstructionDevelopment.no_three_paths
+#print axioms Erdos583ShortCycleObstructionDevelopment.cycle_and_paths
+#print axioms Erdos583ShortCycleObstructionDevelopment.disjoint_edges
+#print axioms Erdos583ShortCycleObstructionDevelopment.cover
+#print axioms Erdos583ShortCycleObstructionDevelopment.witness

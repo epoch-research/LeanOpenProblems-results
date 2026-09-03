@@ -1,0 +1,11 @@
+import Submission.BalancedBridge
+
+/-! Axiom audit for uniqueness of non-leaf bridges. -/
+
+#print axioms Erdos583BalancedBridgeDevelopment.connected_set_one_side
+#print axioms Erdos583BalancedBridgeDevelopment.half_set_meets_cut_endpoints
+#print axioms Erdos583BalancedBridgeDevelopment.balanced_cut_unique
+#print axioms Erdos583BalancedBridgeDevelopment.balanced_cut_of_nonleaf_bridge
+#print axioms Erdos583BalancedBridgeDevelopment.nonleaf_bridge_unique_of_failure
+#print axioms Erdos583BalancedBridgeDevelopment.two_leaves_four_dvd
+#print axioms Erdos583BalancedBridgeDevelopment.one_leaf_unless_four_dvd

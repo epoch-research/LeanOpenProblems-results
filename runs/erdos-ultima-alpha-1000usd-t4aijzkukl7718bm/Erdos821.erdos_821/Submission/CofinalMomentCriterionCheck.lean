@@ -1,0 +1,10 @@
+import Submission.CofinalMomentCriterion
+
+/-! Axiom audit of the cofinal-order moment implication. -/
+
+#print axioms Erdos821.HigherDivisors.eventually_order_eventually_rough_geometric
+#print axioms Erdos821.HigherDivisors.eventually_smooth_count_of_moment_denominator
+#print axioms Erdos821.HigherDivisors.sharp_moments_imply_cofinal_geometric
+#print axioms Erdos821.HigherDivisors.dyadic_smooth_density_of_cofinal_geometric_moments
+#print axioms Erdos821.HigherDivisors.erdos_821_of_cofinal_geometric_moments
+#print axioms Erdos821.HigherDivisors.negation_forces_geometric_moment_upper

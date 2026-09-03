@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Fintype.sum_equiv
+#check Fin.consEquiv
+#check Fin.consEquiv_apply
+#check Fin.tail_cons
+#check Fin.cons_self_tail
+#check Fin.sum_univ_succ
+#check Fin.tail
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_eq
+#check Finset.sum_filter
+#check Finset.sum_ite_irrel
+#check Fin.cons_inj
+#check Fin.forall_fin_succ
+#check Finset.sum_pi_single

@@ -1,0 +1,13 @@
+import Submission.SmoothCorrelationScale
+
+/-! Axiom audit for the exponential-divisor approximation development.
+None of these declarations settles the prime-pair conjecture. -/
+#print axioms Erdos972SmoothMangoldt.smoothMangoldt_tendsto
+#print axioms Erdos972SmoothMangoldt.smoothMangoldt_error_bound
+#print axioms Erdos972SmoothMangoldt.finite_smooth_correlation_tendsto
+#print axioms Erdos972SmoothMangoldtPositive.expDivisorSum_product
+#print axioms Erdos972SmoothMangoldtPositive.smoothMangoldt_nonneg
+#print axioms Erdos972SmoothMangoldtPositive.smoothMangoldt_le_log
+#print axioms Erdos972SmoothCorrelationApprox.smoothCorrelation_error_bound
+#print axioms Erdos972SmoothCorrelationScale.variable_smoothing_error_tendsto
+#print axioms Erdos972SmoothCorrelationScale.polynomial_cutoff_damping_tendsto_one

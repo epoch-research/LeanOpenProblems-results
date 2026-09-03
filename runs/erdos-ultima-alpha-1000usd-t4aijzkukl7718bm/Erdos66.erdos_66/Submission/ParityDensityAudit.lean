@@ -1,0 +1,12 @@
+import Submission.ParityDensityExceptionExplore
+/-! Axiom audit for the density-one parity necessary condition. -/
+#print axioms Erdos66AbelSquarePrefix.prefix_zero_of_weighted_zero
+#print axioms Erdos66AbelSquarePrefix.witness_parity_prefix_zero
+#print axioms Erdos66SquarePrefixDensity.log_bad_density_bound
+#print axioms Erdos66SquarePrefixDensity.logBad_density_zero
+#print axioms Erdos66SquarePrefixDensity.density_zero_of_eventual_subset
+#print axioms Erdos66ParityDensity.paired_ratios_in_density
+#print axioms Erdos66ParityDensity.witness_parity_self_counts_in_density
+#print axioms Erdos66DensityDiagonal.density_union_of_summable_bounds
+#print axioms Erdos66DensityDiagonal.exists_density_zero_exception
+#print axioms Erdos66ParityDensityException.witness_parity_limits_off_density_zero

@@ -1,0 +1,11 @@
+import Submission.ComplementarityErrorFloorExplore
+/-! Axiom audit for the approximate complementary-family energy bound. -/
+#print axioms Erdos66ApproximateComplementarity.family_square_expansion
+#print axioms Erdos66ApproximateComplementarity.family_coordinate_bound
+#print axioms Erdos66ApproximateComplementarity.self_energy_cap
+#print axioms Erdos66ApproximateComplementarity.total_centered_energy_lower
+#print axioms Erdos66ApproximateComplementarity.approximate_complementary_family_bound
+#print axioms Erdos66ApproximateComplementarity.exists_large_mixed_energy
+#print axioms Erdos66ComplementarityErrorFloor.normalized_numeric_bound
+#print axioms Erdos66ComplementarityErrorFloor.numeric_limit_floor
+#print axioms Erdos66ComplementarityErrorFloor.mixed_error_limit_ge_one

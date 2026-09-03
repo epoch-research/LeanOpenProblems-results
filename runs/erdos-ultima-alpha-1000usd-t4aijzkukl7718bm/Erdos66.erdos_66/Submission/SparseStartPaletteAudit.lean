@@ -1,0 +1,4 @@
+import Submission.SparseStartCompletePaletteExplore
+#print axioms Erdos66MinimumIndexedPalette.exists_complete_palette_with_minimum_index
+#print axioms Erdos66ActualCardinalityCoverage.linear_family_cardinality_coverage
+#print axioms Erdos66SparseStartCompletePalette.exists_sparse_start_complete_palette

@@ -1,0 +1,21 @@
+import Submission.Work
+open SimpleGraph Erdos583Work
+#check EdgeTrimming.path_spanningCoe_isAcyclic
+#check MatchingTrimming.path_spanningCoe_isAcyclic
+#check Walk.toSubgraph_cons
+#check Subgraph.sup_adj
+#check SimpleGraph.subgraphOfAdj_adj
+#check Walk.toSubgraph_adj
+#check SimpleGraph.IsAcyclic.anti
+#check SimpleGraph.Walk.IsCycle.transfer
+#check SimpleGraph.Walk.mem_support_of_mem_edges
+#check SimpleGraph.Subgraph.spanningCoe_adj
+#check SimpleGraph.Subgraph.edgeSet_mono
+#check Erdos583Work.BridgeGlue.within_le
+#check SimpleGraph.IsAcyclic
+#check SimpleGraph.Walk.IsPath.eq_nil
+#check SimpleGraph.Walk.IsPath.nil_of_eq
+#check Finset.eq_univ_of_card
+#check Finset.card_eq_iff_eq_univ
+#check Fin.sum_univ_two
+#check Erdos583Work.QuotaSurgery.simple_tail_of_one_defect_rep

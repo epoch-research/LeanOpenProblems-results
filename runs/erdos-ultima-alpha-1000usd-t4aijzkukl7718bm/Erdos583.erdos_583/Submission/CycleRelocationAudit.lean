@@ -1,0 +1,8 @@
+import Submission.CycleRelocation
+/-! Audit of closed-segment relocation and its incidence cost. -/
+#print axioms Erdos583CycleRelocationDevelopment.relocate_cycle_data
+#print axioms Erdos583CycleRelocationDevelopment.relocate_cycle_ncard
+#print axioms Erdos583CycleRelocationDevelopment.path_split_verts_inter
+#print axioms Erdos583CycleRelocationDevelopment.terminal_cycle_prefix_inter
+#print axioms Erdos583CycleRelocationDevelopment.terminal_cycle_relocation_ncard
+#print axioms Erdos583CycleRelocationDevelopment.terminal_cycle_relocation_strict_loss

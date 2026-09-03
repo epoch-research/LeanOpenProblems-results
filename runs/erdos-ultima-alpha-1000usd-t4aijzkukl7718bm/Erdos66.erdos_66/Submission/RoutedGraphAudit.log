@@ -1,0 +1,14 @@
+'Erdos66RoutedGraphIteration.routed_mixed_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RoutedGraphIteration.routed_self_dominates_twice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RoutedGraphIteration.arbitrary_graph_two_step_amplification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RoutedGraphIteration.routed_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RoutedGraphIteration.routed_two_step_extension_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RoutedGraphIteration.routed_even_stage_exponential_peak' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RoutedGraphIteration.routed_iteration_exceeds_logarithmic_cap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RoutedGraphIteration.parallel_graph_routing' depends on axioms: [propext, Classical.choice, Quot.sound]

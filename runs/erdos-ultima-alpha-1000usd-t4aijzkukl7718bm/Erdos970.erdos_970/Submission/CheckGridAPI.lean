@@ -1,0 +1,15 @@
+import Submission.BuchstabSectorSums
+#check Finset.sum_Ico_sub
+#check Finset.sum_Ico_sub'
+#check Finset.sum_Ico_eq_sub
+#check Finset.sum_Ico_add
+#check Nat.floor_natCast
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Filter.Eventually.finset_forall
+#check Filter.eventually_all_finset
+#check Finset.sum_filter_add_sum_filter_not
+#check Nat.floor_le
+#check Nat.floor_mono
+#check Nat.floor_le_floor
+#check Finset.sum_bij
+#check Finset.sum_union

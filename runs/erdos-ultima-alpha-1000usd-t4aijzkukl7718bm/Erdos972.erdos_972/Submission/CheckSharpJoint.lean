@@ -1,0 +1,12 @@
+import Submission.JointSmoothL1
+#check Erdos972ChebyshevPNT.eventually_theta_interval_lower
+#check Erdos972ChebyshevLower.theta_sub_eq_sum
+#check Nat.floor_lt
+#check Nat.floor_div_natCast
+#check tendsto_order
+#check tendsto_order.2
+#check Filter.Eventually.and
+#check Real.log_two_lt_d9
+#check Real.log_two_gt_d9
+#check Real.exp_neg
+#check Real.exp_add

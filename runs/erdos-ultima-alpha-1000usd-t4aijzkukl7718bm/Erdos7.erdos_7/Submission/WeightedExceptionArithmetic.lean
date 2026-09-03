@@ -1,0 +1,210 @@
+import Submission.NoThreeHoleMeasure
+import Submission.DoubleExceptionArithmetic
+
+/-! A weighted obstruction to any finite exceptional family over a no-3 base. -/
+namespace Erdos7WeightedExceptionArithmetic
+open scoped BigOperators
+open Erdos7Reduction Erdos7Compression Erdos7Distortion Erdos7StarSieve
+open Erdos7DoubleExceptionScalar
+open Erdos7CompressionSieve
+set_option maxHeartbeats 6000000
+
+/-- The multiplicative distortion cost of one arithmetic progression. -/
+def weight (d : ℕ) : ℚ := (5/4 : ℚ)^d.primeFactors.card / d
+
+lemma weight_eq_product (d : ℕ) (hd : d≠0) :
+    weight d = ∏ q∈d.primeFactors, (5/4 : ℚ)/(q : ℚ)^d.factorization q := by
+  have hh := factorization_product_over_superset d hd d.primeFactors (Finset.Subset.refl _)
+  rw [Finset.prod_coe_sort d.primeFactors (fun q => q^d.factorization q)] at hh
+  have he : (d : ℚ)=∏ q∈d.primeFactors, (q : ℚ)^d.factorization q := by exact_mod_cast hh
+  rw [Finset.prod_div_distrib,Finset.prod_const,weight,← he]
+
+lemma schedule_product {n : ℕ} (p : Fin n → ℕ) (hinj : Function.Injective p)
+    (d : ℕ) (hd : d≠0) (hcover : ∀ q∈d.primeFactors, ∃ i, p i=q) :
+    d=∏ i,p i^d.factorization (p i) := by
+  let Q := Finset.univ.image p
+  have hsub : d.primeFactors ⊆ Q := by
+    intro q hq
+    obtain ⟨i,hi⟩ := hcover q hq
+    exact Finset.mem_image.mpr ⟨i,Finset.mem_univ _,hi⟩
+  have hh := factorization_product_over_superset d hd Q hsub
+  rw [Finset.prod_coe_sort Q (fun q => q^d.factorization q)] at hh
+  calc
+    d = ∏ q∈Q, q^d.factorization q := hh
+    _ = ∏ i, p i^d.factorization (p i) :=
+      Finset.prod_image (fun i _ j _ hij => hinj hij)
+
+lemma schedule_weight {n : ℕ} (p : Fin n → ℕ) (hinj : Function.Injective p)
+    (d : ℕ) (hd : d≠0) (hcover : ∀ q∈d.primeFactors, ∃ i, p i=q) :
+    (∏ i∈expSupport (fun i => d.factorization (p i)),
+      (5/4 : ℚ)*((p i : ℚ)⁻¹)^d.factorization (p i)) = weight d := by
+  classical
+  rw [weight_eq_product d hd]
+  have hmem (i : Fin n) : i∈expSupport (fun i => d.factorization (p i)) ↔ p i∈d.primeFactors := by
+    rw [mem_expSupport,← Nat.support_factorization,Finsupp.mem_support_iff]
+  apply Finset.prod_bij (fun i _ => p i)
+  · intro i hi; exact (hmem i).mp hi
+  · intro i hi j hj hij; exact hinj hij
+  · intro q hq
+    obtain ⟨i,hi⟩ := hcover q hq
+    exact ⟨i,(hmem i).mpr (hi ▸ hq),hi⟩
+  · intro i hi
+    simp only [div_eq_mul_inv,inv_pow]
+
+/-- All exponent caps and all exceptional exponent vectors are arbitrary. -/
+theorem not_coordinate_cover_weighted {n : ℕ} {κ J : Type*} [Fintype κ] [Fintype J]
+    (hn : 94 ≤ n) (p E : Fin n → ℕ)
+    (hp : ∀ i, (p i).Prime ∧ 5 ≤ p i) (hmono : StrictMono p)
+    (hpre : ∀ i : Fin 94, p (Fin.castLE hn i)=primes i)
+    (e : κ → Fin n → ℕ) (hei : Function.Injective e)
+    (he0 : ∀ k, ∃ i, e k i≠0) (heE : ∀ k i, e k i≤E i) (a : κ → ℤ)
+    (g : J → Fin n → ℕ) (hgE : ∀ j i, g j i≤E i) (b : J → ℤ)
+    (hweight : (∑ j, ∏ i∈expSupport (g j), (5/4 : ℚ)*((p i : ℚ)⁻¹)^(g j i)) ≤ 1/2) :
+    ¬ (∀ x : ℤ, (∃ k, ((∏ i, p i ^ e k i : ℕ) : ℤ) ∣ x-a k) ∨
+      (∃ j, ((∏ i, p i ^ g j i : ℕ) : ℤ) ∣ x-b j)) := by
+  classical
+  intro hcover
+  have hcop : Pairwise (Function.onFun Nat.Coprime p) := by
+    intro i j hij
+    exact (Nat.coprime_primes (hp i).1 (hp j).1).mpr (fun h => hij (hmono.injective h))
+  letI (i : Fin n) : NeZero (p i) := ⟨(hp i).1.ne_zero⟩
+  let A (i : Fin n) := ZMod (p i ^ E i)
+  let f (k : κ) (i : Fin n) := ZMod.castHom (pow_dvd_pow (p i) (heE k i)) (ZMod (p i ^ e k i))
+  let X (k : κ) (i : Fin n) := Finset.univ.filter (fun x : A i => f k i x=(a k : ZMod (p i ^ e k i)))
+  let f₀ (j : J) (i : Fin n) := ZMod.castHom (pow_dvd_pow (p i) (hgE j i)) (ZMod (p i ^ g j i))
+  let Y (j : J) (i : Fin n) := Finset.univ.filter (fun x : A i => f₀ j i x=(b j : ZMod (p i ^ g j i)))
+  have hXcard (k : κ) (i : Fin n) : ((X k i).card : ℚ) ≤
+      (Fintype.card (A i) : ℚ)*((p i : ℚ)⁻¹)^(e k i) := by
+    have hh := surjective_fiber_card_rat (f k i).toAddMonoidHom
+      (ZMod.castHom_surjective (pow_dvd_pow (p i) (heE k i))) (a k)
+    change ((X k i).card : ℚ) = _ at hh
+    rw [hh]
+    simp only [A,ZMod.card,Nat.cast_pow,div_eq_mul_inv,inv_pow]
+    exact le_rfl
+  have hX0 (k : κ) (i : Fin n) (hi : e k i=0) : X k i=Finset.univ := by
+    apply Finset.eq_univ_of_forall
+    intro x
+    simp only [X,Finset.mem_filter,Finset.mem_univ,true_and]
+    have hsub : ∀ u v : ZMod (p i ^ e k i), u=v := by
+      rw [hi,pow_zero]
+      exact fun u v => Subsingleton.elim u v
+    exact hsub _ _
+  have hY (j : J) (i : Fin n) : fraction (Y j i) ≤ ((p i : ℚ)⁻¹)^(g j i) := by
+    have hh := surjective_fiber_card_rat (f₀ j i).toAddMonoidHom
+      (ZMod.castHom_surjective (pow_dvd_pow (p i) (hgE j i))) (b j : ZMod (p i ^ g j i))
+    change ((Y j i).card : ℚ) = _ at hh
+    unfold fraction
+    rw [hh]
+    simp only [ZMod.card,Nat.cast_pow]
+    have hcard : (Fintype.card (A i) : ℚ)≠0 := ne_of_gt card_pos_rat
+    have hp0 : (p i : ℚ)≠0 := by exact_mod_cast (hp i).1.ne_zero
+    apply le_of_eq
+    rw [inv_pow]
+    field_simp
+    simp only [A,ZMod.card,Nat.cast_pow]
+  apply Erdos7NoThreeHoleMeasure.not_cover_with_weighted_boxes hn A p E hp hmono hpre e hei he0 heE X hX0 hXcard
+    (fun j => expSupport (g j)) Y
+  · apply le_trans (Finset.sum_le_sum (fun j _ => ?_)) hweight
+    exact Finset.prod_le_prod (fun i _ => mul_nonneg (by norm_num) (fraction_nonneg _))
+      (fun i _ => mul_le_mul_of_nonneg_left (hY j i) (by norm_num))
+  intro x
+  let z := Nat.chineseRemainderOfFinset (fun i => (x i).val) (fun i => p i ^ E i) Finset.univ
+    (fun i _ => pow_ne_zero _ (NeZero.ne _))
+    (fun i _ j _ hij => (hcop hij).pow _ _)
+  have hz (i : Fin n) : (z.val : A i)=x i := by
+    rw [← ZMod.natCast_zmod_val (x i)]
+    exact (ZMod.natCast_eq_natCast_iff _ _ _).mpr (z.property i (Finset.mem_univ _))
+  rcases hcover (z.val : ℤ) with ⟨k,hk⟩ | hk
+  · left
+    refine ⟨k,fun i => ?_⟩
+    have hpi : p i ^ e k i ∣ ∏ j, p j ^ e k j :=
+      Finset.dvd_prod_of_mem (fun j => p j ^ e k j) (Finset.mem_univ i)
+    have hpi' : ((p i ^ e k i : ℕ) : ℤ) ∣ ((∏ j, p j ^ e k j : ℕ) : ℤ) := by exact_mod_cast hpi
+    have hqi := hpi'.trans hk
+    simp only [X,Finset.mem_filter,Finset.mem_univ,true_and]
+    rw [← hz i,map_natCast]
+    symm
+    simpa only [Int.cast_natCast] using
+      (ZMod.intCast_eq_intCast_iff_dvd_sub (a k) (z.val : ℤ) (p i ^ e k i)).mpr hqi
+  · obtain ⟨j,hj⟩ := hk
+    right
+    refine ⟨j,fun i _ => ?_⟩
+    have hpi : p i ^ g j i ∣ ∏ l, p l ^ g j l :=
+      Finset.dvd_prod_of_mem (fun l => p l ^ g j l) (Finset.mem_univ i)
+    have hh := (Int.natCast_dvd_natCast.mpr hpi).trans hj
+    simp only [Y,Finset.mem_filter,Finset.mem_univ,true_and]
+    rw [← hz i,map_natCast]
+    symm
+    simpa only [Int.cast_natCast] using
+      (ZMod.intCast_eq_intCast_iff_dvd_sub (b j) (z.val : ℤ) (p i^g j i)).mpr hh
+
+lemma prime_factor_ge_five (d : ℕ) (ho : Odd d) (h3 : ¬ 3 ∣ d)
+    (q : ℕ) (hq : q∈d.primeFactors) : q.Prime ∧ 5≤q := by
+  have hh := Nat.mem_primeFactors.mp hq
+  have hqo := ho.of_dvd_nat hh.2.1
+  have hne : q≠3 := by intro h; exact h3 (h ▸ hh.2.1)
+  have htwo := hh.1.two_le
+  refine ⟨hh.1,?_⟩
+  obtain ⟨k,hk⟩ := hqo
+  omega
+
+/-- No cardinality or injectivity assumption is imposed on the exceptional
+family. It may include modulus1; the weight condition then cannot hold. -/
+theorem not_cover_with_weighted_exceptions {I J : Type*} [Fintype I] [Fintype J]
+    (m : I → ℕ) (a : I → ℤ) (hinj : Function.Injective m)
+    (hm : ∀ i, 1 < m i ∧ Odd (m i)) (h3 : ∀ i, ¬ 3 ∣ m i)
+    (d : J → ℕ) (b : J → ℤ) (hd : ∀ j, 0 < d j ∧ Odd (d j))
+    (hd3 : ∀ j, ¬ 3 ∣ d j) (hweight : (∑ j, weight (d j)) ≤ 1/2) :
+    ¬ (∀ x : ℤ, (∃ i, (m i : ℤ) ∣ x-a i) ∨ ∃ j, (d j : ℤ) ∣ x-b j) := by
+  classical
+  intro hcover
+  let P := (Finset.univ.biUnion (fun i => (m i).primeFactors)) ∪
+    (Finset.univ.biUnion (fun j => (d j).primeFactors))
+  have hP : ∀ q∈P, q.Prime ∧ 5≤q := by
+    intro q hq
+    rcases Finset.mem_union.mp hq with hq | hq
+    · obtain ⟨i,_,hi⟩ := Finset.mem_biUnion.mp hq
+      exact prime_factor_ge_five (m i) (hm i).2 (h3 i) q hi
+    · obtain ⟨j,_,hj⟩ := Finset.mem_biUnion.mp hq
+      exact prime_factor_ge_five (d j) (hd j).2 (hd3 j) q hj
+  obtain ⟨n,hn,p,hp,hmono,hpre,hcovers⟩ := Erdos7DoubleExceptionArithmetic.padded_primes P hP
+  let e (k : I) (i : Fin n) := (m k).factorization (p i)
+  let g (j : J) (i : Fin n) := (d j).factorization (p i)
+  let E (i : Fin n) := max (Finset.univ.sup (fun k => e k i)) (Finset.univ.sup (fun j => g j i))
+  have hmcover (k : I) : ∀ q∈(m k).primeFactors, ∃ i, p i=q := by
+    intro q hq
+    exact hcovers q (Finset.mem_union_left _ (Finset.mem_biUnion.mpr ⟨k,Finset.mem_univ _,hq⟩))
+  have hdcover (j : J) : ∀ q∈(d j).primeFactors, ∃ i, p i=q := by
+    intro q hq
+    exact hcovers q (Finset.mem_union_right _ (Finset.mem_biUnion.mpr ⟨j,Finset.mem_univ _,hq⟩))
+  have hmprod (k : I) : m k=∏ i,p i^e k i :=
+    schedule_product p hmono.injective (m k) (by have := (hm k).1; omega) (hmcover k)
+  have hdprod (j : J) : d j=∏ i,p i^g j i :=
+    schedule_product p hmono.injective (d j) (by have := (hd j).1; omega) (hdcover j)
+  have hei : Function.Injective e := by
+    intro k l hkl
+    apply hinj
+    rw [hmprod k,hmprod l,hkl]
+  have he0 (k : I) : ∃ i, e k i≠0 := by
+    by_contra! hz
+    have hh := (hm k).1
+    rw [hmprod k] at hh
+    simp only [hz,pow_zero,Finset.prod_const_one] at hh
+    omega
+  have heE (k : I) (i : Fin n) : e k i≤E i :=
+    (Finset.le_sup (f := fun k => e k i) (Finset.mem_univ k)).trans (le_max_left _ _)
+  have hgE (j : J) (i : Fin n) : g j i≤E i :=
+    (Finset.le_sup (f := fun j => g j i) (Finset.mem_univ j)).trans (le_max_right _ _)
+  have hw : (∑ j, ∏ i∈expSupport (g j), (5/4 : ℚ)*((p i : ℚ)⁻¹)^(g j i)) ≤ 1/2 := by
+    apply le_trans (le_of_eq (Finset.sum_congr rfl (fun j _ => ?_))) hweight
+    exact schedule_weight p hmono.injective (d j) (by have := (hd j).1; omega) (hdcover j)
+  apply not_coordinate_cover_weighted hn p E hp hmono hpre e hei he0 heE a g hgE b hw
+  intro x
+  rcases hcover x with ⟨k,hk⟩ | ⟨j,hj⟩
+  · exact Or.inl ⟨k,by simpa only [← hmprod] using hk⟩
+  · exact Or.inr ⟨j,by simpa only [← hdprod] using hj⟩
+
+#print axioms not_cover_with_weighted_exceptions
+#print axioms schedule_weight
+#print axioms not_coordinate_cover_weighted
+end Erdos7WeightedExceptionArithmetic

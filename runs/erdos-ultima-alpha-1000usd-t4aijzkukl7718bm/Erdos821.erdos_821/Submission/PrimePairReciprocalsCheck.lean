@@ -1,0 +1,22 @@
+import Submission.PrimePairReciprocals
+
+/-! Exact types and axiom audit for PrimePairReciprocals. -/
+
+#check Erdos821.summable_reciprocal_of_summable_geometric_count
+#check Erdos821.pair_sieve_normalized_error
+#check Erdos821.prime_pair_normalized_count
+#check Erdos821.summable_prime_pair_reciprocal
+#check Erdos821.summable_canonical_test_pattern_reciprocal
+#check Erdos821.summable_prime_pair_parent_reciprocal
+#check Erdos821.summable_bounded_cofactor_parent_reciprocal
+#check Erdos821.bounded_canonical_parent_mem
+#check Erdos821.summable_bounded_canonical_parent_reciprocal
+#print axioms Erdos821.summable_reciprocal_of_summable_geometric_count
+#print axioms Erdos821.pair_sieve_normalized_error
+#print axioms Erdos821.prime_pair_normalized_count
+#print axioms Erdos821.summable_prime_pair_reciprocal
+#print axioms Erdos821.summable_canonical_test_pattern_reciprocal
+#print axioms Erdos821.summable_prime_pair_parent_reciprocal
+#print axioms Erdos821.summable_bounded_cofactor_parent_reciprocal
+#print axioms Erdos821.bounded_canonical_parent_mem
+#print axioms Erdos821.summable_bounded_canonical_parent_reciprocal

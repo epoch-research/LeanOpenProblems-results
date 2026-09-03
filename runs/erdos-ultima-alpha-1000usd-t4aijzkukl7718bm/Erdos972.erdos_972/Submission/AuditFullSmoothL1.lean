@@ -1,0 +1,13 @@
+import Submission.FullSmoothL1Obstruction
+
+/-! Axiom audit of the one-variable full-smoothing L1 discrepancy. These
+are diagnostic results, not a proof or disproof of the original conjecture. -/
+#print axioms Erdos972DampedSingleMean.divisor_mean_tendsto
+#print axioms Erdos972DampedSingleMean.smoothMangoldt_mean_tendsto
+#print axioms Erdos972FullSmoothL1Obstruction.primeCounting_div_tendsto_zero
+#print axioms Erdos972FullSmoothL1Obstruction.smoothOverlap_mean_tendsto_zero
+#print axioms Erdos972FullSmoothL1Obstruction.smoothL1Error_mean_tendsto
+#print axioms Erdos972FullSmoothL1Obstruction.smoothL1Error_fixed_tendsto_zero
+#print axioms Erdos972FullSmoothL1Obstruction.smoothL1Error_iterated_mean_tendsto_two
+#print axioms Erdos972FullSmoothL1Obstruction.exists_large_smoothL1Error
+#print axioms Erdos972FullSmoothL1Obstruction.not_uniform_smoothL1_approximation

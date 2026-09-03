@@ -1,0 +1,10 @@
+'Erdos66FiniteGrowingMomentCounterexample.factorial_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FiniteGrowingMomentCounterexample.finite_even_moment_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66FiniteGrowingMomentCounterexample.even_moment_lt_factorial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66FiniteGrowingMomentCounterexample.exists_logarithmic_counterexample' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

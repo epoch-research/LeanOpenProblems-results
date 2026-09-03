@@ -1,0 +1,7 @@
+import Submission.TerminalTail
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583TerminalTailDevelopment.replace_two_finishes_general
+#print axioms Erdos583TerminalTailDevelopment.shorten_terminal_tail
+#print axioms Erdos583TerminalTailDevelopment.shorten_terminal_tail_at_endpoint
+#print axioms Erdos583TerminalTailDevelopment.nonnil_last_edge
+#print axioms Erdos583TerminalTailDevelopment.shortest_private_finish_tail_length_one

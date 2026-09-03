@@ -1,0 +1,9 @@
+import Submission.FreeRootCycleMinimum
+
+/-! Axiom audit of unrestricted cycle minimization and endpoint rotation. -/
+#print axioms Erdos583GeneralPairEndpointsDevelopment.replace_two_endpoints
+#print axioms Erdos583CycleEndpointRotationDevelopment.cycle_endpoint_rotation
+#print axioms Erdos583FreeRootCycleMinimumDevelopment.exists_unrestricted_shortest_cycle
+#print axioms Erdos583FreeRootCycleMinimumDevelopment.maximum_cycle_endpoint_shortening
+#print axioms Erdos583FreeRootCycleMinimumDevelopment.minimum_whole_cycle_path_start_avoids
+#print axioms Erdos583FreeRootCycleMinimumDevelopment.minimum_whole_cycle_other_endpoints_avoid

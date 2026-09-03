@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Finset.card_sigma
+#check Finset.mem_sigma
+#check Finset.card_le_card_of_injOn
+#check Nat.cast_sub
+#check Nat.cast_sub_le
+#check Nat.cast_div
+#check harmonic_eq_sum_Icc
+#check harmonic_eq_sum_Icc_one_div
+#check Real.tendsto_harmonic_atTop
+#check tendsto_harmonic_atTop
+#check Nat.factorial_pos
+#check Finset.sum_Icc_succ_bot
+#check Nat.card_Icc
+#check Finset.prod_pair
+#check Nat.mul_le_of_le_div

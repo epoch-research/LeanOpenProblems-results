@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Real.exp_nat_mul
+#check Real.exp_mul_nat
+#check Real.exp_nat_mul
+#check pow_le_pow_left₀
+#check Finset.prod_const
+#check Finset.sum_const
+#check Fintype.card_finset_len
+#check Nat.choose_eq_factorial_div_factorial
+#check Nat.choose_succ_succ
+#check Finset.mem_coe

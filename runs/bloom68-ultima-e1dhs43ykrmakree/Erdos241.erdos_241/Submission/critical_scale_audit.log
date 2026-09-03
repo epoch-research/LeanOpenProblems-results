@@ -1,0 +1,7 @@
+PASS: exact profile mass1, squared integral151/315, cap minimum14/27
+PASS: symbolic aggregate integral/cancellation identity
+PASS: rational Taylor bound16(1-exp(-1/8))<1.880050
+PASS: arithmetic implication of the published kernel-norm estimate
+PASS: exact integer-periodized smoothing kernels L=1..20
+Scope: auxiliary identities only; no strong-B3 fixed-excess family.
+PASS: triple-convolution maximum3/4 and exact interval-core scaling

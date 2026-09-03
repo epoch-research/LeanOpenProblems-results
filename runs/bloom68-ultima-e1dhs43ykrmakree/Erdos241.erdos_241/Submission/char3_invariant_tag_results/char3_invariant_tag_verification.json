@@ -1,0 +1,92 @@
+{
+  "construction": {
+    "primitive_cycle": 19682,
+    "trace_zero_nonzero_elements": 728,
+    "singer_points": 28,
+    "perfect_nonzero_differences": 756,
+    "full_orbits": 9,
+    "affine_parameters_checked": 27,
+    "norm_values_trace_one": 9,
+    "independent_field_polynomial": "X^9-X^6-X^4-X^2-X+1"
+  },
+  "baseline": {
+    "existing_files_unchanged": 499
+  },
+  "cases_checked": 90,
+  "by_n": {
+    "25": {
+      "UNSAT": 9
+    },
+    "24": {
+      "UNSAT": 9
+    },
+    "22": {
+      "UNSAT": 36
+    },
+    "21": {
+      "UNSAT": 36
+    }
+  },
+  "tree_nodes_checked": 14130,
+  "SAT_direct_checks": [],
+  "search_process_wall_seconds": 1.597621887049172,
+  "solver_process_wall_seconds": 0.385246750083752,
+  "solver_DFS_seconds": 0.127496,
+  "search_cap_seconds": 300.0,
+  "pigeonhole_certificates_checked": 90,
+  "pigeonhole_core_size_range": [
+    49,
+    84
+  ],
+  "negation_orbit_certificates_checked": 90,
+  "negation_core_size_range": [
+    34,
+    49
+  ],
+  "negation_identities_checked": 4410,
+  "nonzero_negation_orbits_mod_13": [
+    [
+      1,
+      12
+    ],
+    [
+      2,
+      11
+    ],
+    [
+      3,
+      10
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "bad_tree_controls_rejected": [
+    "truncated",
+    "surplus",
+    "false_root_conflict"
+  ],
+  "SAT_checker_controls": {
+    "fixed_three_point_orbit_positive_control": {
+      "n": 3,
+      "distinct_triples": 10,
+      "distinct_pairs": 6
+    },
+    "repeated_triple_collision_control_rejected": true,
+    "scope": "verifier regression only, not a searched deletion case"
+  },
+  "example_core_original_inequalities_checked": 34,
+  "invariant_retention_upper_bound_by_heredity": 19,
+  "upper_bound_attainment": "not tested",
+  "cube_root_M": 21.429551277945745,
+  "status": "PASS"
+}

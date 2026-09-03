@@ -1,0 +1,22 @@
+import FormalConjecturesUtil
+/-! Queries for the two permissible affine-prefix exceptions. -/
+#check Nat.Prime.eq_of_dvd_of_prime
+#check Nat.Prime.dvd_mul
+#check Nat.prime_dvd_prime_iff_eq
+#check Nat.Prime.dvd_prime_iff_eq
+#check Finset.card_biUnion
+#check Finset.card_product
+#check Finset.card_sigma
+#check Finset.sum_card_fiberwise
+#check Finset.sum_card_bipartiteAbove_eq_card
+#check Finset.card_filter_le_iff
+#check Nat.primesBelow_card_eq_primeCounting'
+#check Finset.card_Icc
+#check Nat.primeCounting_le
+#check Nat.primeCounting_le_self
+#check Finset.sum_ite
+#check Finset.sum_filter_add_sum_filter_not
+#check Nat.card_multiples
+#check Finset.card_multiples
+#check Finset.card_filter_dvd
+#check Nat.sum_divisors_eq_sum_range

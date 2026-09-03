@@ -1,0 +1,18 @@
+import Submission.SmoothModulusMoments
+
+/-! Exact-type and axiom audit of the block-prime moment identities. -/
+
+#check @Erdos821.prime_product_divisor_count_eq_choose
+#print axioms Erdos821.prime_product_divisor_count_eq_choose
+#check @Erdos821.prime_product_progression_sum_eq_binomial_moment
+#print axioms Erdos821.prime_product_progression_sum_eq_binomial_moment
+#check @Erdos821.geometric_smooth_deficit_eq_binomial_moment
+#print axioms Erdos821.geometric_smooth_deficit_eq_binomial_moment
+#check @Erdos821.block_prime_divisor_card_lt
+#print axioms Erdos821.block_prime_divisor_card_lt
+#check @Erdos821.prime_product_divisor_count_le_at_scale
+#print axioms Erdos821.prime_product_divisor_count_le_at_scale
+#check @Erdos821.prime_product_progression_sum_le_smooth_count
+#print axioms Erdos821.prime_product_progression_sum_le_smooth_count
+#check @Erdos821.geometric_signed_deficit_sharp_smooth_prime_count
+#print axioms Erdos821.geometric_signed_deficit_sharp_smooth_prime_count

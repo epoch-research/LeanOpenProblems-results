@@ -1,0 +1,9 @@
+import Submission.TailEdgeAbsorption
+
+/-! Axiom audit of TailEdgeAbsorption. -/
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.padded_path_family
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.replace_group_and_trail
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.replacement_score
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.absorb_tail_edge
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.absorb_last_tail_edge
+#print axioms Erdos583TailEdgeAbsorptionDevelopment.shorten_at_small_marked_group

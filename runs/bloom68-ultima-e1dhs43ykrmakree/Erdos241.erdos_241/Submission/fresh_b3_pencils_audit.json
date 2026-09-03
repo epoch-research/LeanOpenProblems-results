@@ -1,0 +1,459 @@
+{
+  "status": "Finite verification of the proved exceptional-pencil mechanism; not a resolution of the conjecture",
+  "definition": "strong B3 with repeated summands",
+  "records": [
+    {
+      "q": 2,
+      "forward": {
+        "exceptional_line_size": 2,
+        "exceptional_triples": 3,
+        "maximum_exceptional_multiplicity": 2,
+        "nonexceptional_values": 3,
+        "subset_involution_checks": 8
+      },
+      "reverse": {
+        "exceptional_line_size": 2,
+        "exceptional_triples": 2,
+        "maximum_exceptional_multiplicity": 1,
+        "nonexceptional_values": 4,
+        "subset_involution_checks": 8
+      },
+      "cyclic_collision_masks": 1,
+      "integer_collision_masks": 1,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 15,
+          "maximum_cardinality": 3,
+          "example_integer_set": [
+            5,
+            13,
+            22
+          ],
+          "fixed_ambient_N": 28
+        },
+        "integer": {
+          "admissible_parameter_subsets": 15,
+          "maximum_cardinality": 3,
+          "example_integer_set": [
+            5,
+            13,
+            22
+          ],
+          "fixed_ambient_N": 28
+        }
+      }
+    },
+    {
+      "q": 3,
+      "forward": {
+        "exceptional_line_size": 3,
+        "exceptional_triples": 5,
+        "maximum_exceptional_multiplicity": 2,
+        "nonexceptional_values": 13,
+        "subset_involution_checks": 24
+      },
+      "reverse": {
+        "exceptional_line_size": 3,
+        "exceptional_triples": 6,
+        "maximum_exceptional_multiplicity": 2,
+        "nonexceptional_values": 12,
+        "subset_involution_checks": 24
+      },
+      "cyclic_collision_masks": 5,
+      "integer_collision_masks": 1,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 55,
+          "maximum_cardinality": 5,
+          "example_integer_set": [
+            5,
+            13,
+            37,
+            98,
+            22
+          ],
+          "fixed_ambient_N": 104
+        },
+        "integer": {
+          "admissible_parameter_subsets": 62,
+          "maximum_cardinality": 5,
+          "example_integer_set": [
+            5,
+            13,
+            37,
+            98,
+            22
+          ],
+          "fixed_ambient_N": 104
+        }
+      }
+    },
+    {
+      "q": 4,
+      "forward": {
+        "exceptional_line_size": 4,
+        "exceptional_triples": 10,
+        "maximum_exceptional_multiplicity": 4,
+        "nonexceptional_values": 30,
+        "subset_involution_checks": 64
+      },
+      "reverse": {
+        "exceptional_line_size": 4,
+        "exceptional_triples": 10,
+        "maximum_exceptional_multiplicity": 4,
+        "nonexceptional_values": 30,
+        "subset_involution_checks": 64
+      },
+      "cyclic_collision_masks": 18,
+      "integer_collision_masks": 5,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 171,
+          "maximum_cardinality": 5,
+          "example_integer_set": [
+            5,
+            233,
+            101,
+            225,
+            246
+          ],
+          "fixed_ambient_N": 252
+        },
+        "integer": {
+          "admissible_parameter_subsets": 215,
+          "maximum_cardinality": 6,
+          "example_integer_set": [
+            5,
+            233,
+            101,
+            225,
+            246,
+            42
+          ],
+          "fixed_ambient_N": 252
+        }
+      }
+    },
+    {
+      "q": 5,
+      "forward": {
+        "exceptional_line_size": 5,
+        "exceptional_triples": 13,
+        "maximum_exceptional_multiplicity": 3,
+        "nonexceptional_values": 62,
+        "subset_involution_checks": 160
+      },
+      "reverse": {
+        "exceptional_line_size": 5,
+        "exceptional_triples": 13,
+        "maximum_exceptional_multiplicity": 3,
+        "nonexceptional_values": 62,
+        "subset_involution_checks": 160
+      },
+      "cyclic_collision_masks": 22,
+      "integer_collision_masks": 7,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 718,
+          "maximum_cardinality": 7,
+          "example_integer_set": [
+            5,
+            413,
+            477,
+            305,
+            385,
+            198,
+            274
+          ],
+          "fixed_ambient_N": 496
+        },
+        "integer": {
+          "admissible_parameter_subsets": 871,
+          "maximum_cardinality": 8,
+          "example_integer_set": [
+            5,
+            413,
+            477,
+            305,
+            385,
+            490,
+            378,
+            214
+          ],
+          "fixed_ambient_N": 496
+        }
+      }
+    },
+    {
+      "q": 7,
+      "forward": {
+        "exceptional_line_size": 7,
+        "exceptional_triples": 25,
+        "maximum_exceptional_multiplicity": 4,
+        "nonexceptional_values": 171,
+        "subset_involution_checks": 896
+      },
+      "reverse": {
+        "exceptional_line_size": 7,
+        "exceptional_triples": 26,
+        "maximum_exceptional_multiplicity": 4,
+        "nonexceptional_values": 170,
+        "subset_involution_checks": 896
+      },
+      "cyclic_collision_masks": 69,
+      "integer_collision_masks": 29,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 7707,
+          "maximum_cardinality": 9,
+          "example_integer_set": [
+            5,
+            221,
+            1093,
+            1165,
+            89,
+            289,
+            333,
+            118,
+            954
+          ],
+          "fixed_ambient_N": 1368
+        },
+        "integer": {
+          "admissible_parameter_subsets": 10245,
+          "maximum_cardinality": 10,
+          "example_integer_set": [
+            5,
+            221,
+            1093,
+            1165,
+            89,
+            289,
+            333,
+            118,
+            954,
+            1358
+          ],
+          "fixed_ambient_N": 1368
+        }
+      }
+    },
+    {
+      "q": 8,
+      "forward": {
+        "exceptional_line_size": 8,
+        "exceptional_triples": 36,
+        "maximum_exceptional_multiplicity": 8,
+        "nonexceptional_values": 252,
+        "subset_involution_checks": 2048
+      },
+      "reverse": {
+        "exceptional_line_size": 8,
+        "exceptional_triples": 32,
+        "maximum_exceptional_multiplicity": 4,
+        "nonexceptional_values": 256,
+        "subset_involution_checks": 2048
+      },
+      "cyclic_collision_masks": 118,
+      "integer_collision_masks": 59,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 19087,
+          "maximum_cardinality": 9,
+          "example_integer_set": [
+            5,
+            1565,
+            133,
+            1509,
+            1289,
+            665,
+            725,
+            521,
+            2038
+          ],
+          "fixed_ambient_N": 2044
+        },
+        "integer": {
+          "admissible_parameter_subsets": 28001,
+          "maximum_cardinality": 10,
+          "example_integer_set": [
+            5,
+            1565,
+            133,
+            1509,
+            1289,
+            665,
+            725,
+            521,
+            2038,
+            1514
+          ],
+          "fixed_ambient_N": 2044
+        }
+      }
+    },
+    {
+      "q": 9,
+      "forward": {
+        "exceptional_line_size": 9,
+        "exceptional_triples": 38,
+        "maximum_exceptional_multiplicity": 5,
+        "nonexceptional_values": 367,
+        "subset_involution_checks": 4608
+      },
+      "reverse": {
+        "exceptional_line_size": 9,
+        "exceptional_triples": 40,
+        "maximum_exceptional_multiplicity": 5,
+        "nonexceptional_values": 365,
+        "subset_involution_checks": 4608
+      },
+      "cyclic_collision_masks": 132,
+      "integer_collision_masks": 60,
+      "all_subsets_audit": {
+        "cyclic": {
+          "admissible_parameter_subsets": 101012,
+          "maximum_cardinality": 11,
+          "example_integer_set": [
+            5,
+            933,
+            1241,
+            2417,
+            2449,
+            2825,
+            1437,
+            693,
+            2341,
+            1374,
+            238
+          ],
+          "fixed_ambient_N": 2912
+        },
+        "integer": {
+          "admissible_parameter_subsets": 148275,
+          "maximum_cardinality": 13,
+          "example_integer_set": [
+            5,
+            933,
+            2449,
+            2825,
+            1437,
+            693,
+            2341,
+            2906,
+            1374,
+            238,
+            1970,
+            2734,
+            1038
+          ],
+          "fixed_ambient_N": 2912
+        }
+      }
+    },
+    {
+      "q": 11,
+      "forward": {
+        "exceptional_line_size": 11,
+        "exceptional_triples": 63,
+        "maximum_exceptional_multiplicity": 6,
+        "nonexceptional_values": 663,
+        "subset_involution_checks": 22528
+      },
+      "reverse": {
+        "exceptional_line_size": 11,
+        "exceptional_triples": 62,
+        "maximum_exceptional_multiplicity": 6,
+        "nonexceptional_values": 664,
+        "subset_involution_checks": 22528
+      },
+      "cyclic_collision_masks": 295,
+      "integer_collision_masks": 135
+    },
+    {
+      "q": 13,
+      "forward": {
+        "exceptional_line_size": 13,
+        "exceptional_triples": 84,
+        "maximum_exceptional_multiplicity": 7,
+        "nonexceptional_values": 1099,
+        "subset_involution_checks": 106496
+      },
+      "reverse": {
+        "exceptional_line_size": 13,
+        "exceptional_triples": 84,
+        "maximum_exceptional_multiplicity": 7,
+        "nonexceptional_values": 1099,
+        "subset_involution_checks": 106496
+      }
+    },
+    {
+      "q": 16,
+      "forward": {
+        "exceptional_line_size": 16,
+        "exceptional_triples": 136,
+        "maximum_exceptional_multiplicity": 16,
+        "nonexceptional_values": 2040,
+        "subset_involution_checks": 16272
+      },
+      "reverse": {
+        "exceptional_line_size": 16,
+        "exceptional_triples": 128,
+        "maximum_exceptional_multiplicity": 8,
+        "nonexceptional_values": 2048,
+        "subset_involution_checks": 16272
+      }
+    },
+    {
+      "q": 17,
+      "forward": {
+        "exceptional_line_size": 17,
+        "exceptional_triples": 143,
+        "maximum_exceptional_multiplicity": 9,
+        "nonexceptional_values": 2458,
+        "subset_involution_checks": 17306
+      },
+      "reverse": {
+        "exceptional_line_size": 17,
+        "exceptional_triples": 145,
+        "maximum_exceptional_multiplicity": 9,
+        "nonexceptional_values": 2456,
+        "subset_involution_checks": 17306
+      }
+    },
+    {
+      "q": 19,
+      "forward": {
+        "exceptional_line_size": 19,
+        "exceptional_triples": 181,
+        "maximum_exceptional_multiplicity": 10,
+        "nonexceptional_values": 3429,
+        "subset_involution_checks": 19380
+      },
+      "reverse": {
+        "exceptional_line_size": 19,
+        "exceptional_triples": 178,
+        "maximum_exceptional_multiplicity": 10,
+        "nonexceptional_values": 3432,
+        "subset_involution_checks": 19380
+      }
+    }
+  ],
+  "general_basis_checks": [
+    {
+      "q": 3,
+      "all_basis_choices_beta": 18,
+      "subset_involution_checks": 864
+    },
+    {
+      "q": 5,
+      "all_basis_choices_beta": 100,
+      "subset_involution_checks": 32000
+    },
+    {
+      "q": 7,
+      "all_basis_choices_beta": 294,
+      "subset_involution_checks": 526848
+    }
+  ]
+}

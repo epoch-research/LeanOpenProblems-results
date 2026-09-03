@@ -1,0 +1,5 @@
+'Erdos952.WallData.labelCheck_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.move_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.BlackPath.append' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.BlackPath.toRTC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.checkPacked_sound' depends on axioms: [propext, Classical.choice, Quot.sound]

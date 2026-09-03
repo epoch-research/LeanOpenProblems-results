@@ -1,0 +1,14 @@
+import Submission.WitnessDifferencePeakExplore
+
+/-! Axiom audit of short-difference mass and witness peaks. -/
+#print axioms Erdos66ShortDifferenceMass.differencePairs_zero
+#print axioms Erdos66ShortDifferenceMass.shortPairs_sum
+#print axioms Erdos66ShortDifferenceMass.block_energy_le_short_pairs
+#print axioms Erdos66ShortDifferenceMass.annular_short_difference_mass
+#print axioms Erdos66ShortDifferenceMass.annular_short_difference_mass_lower
+#print axioms Erdos66ShortDifferenceMass.annular_difference_peak
+#print axioms Erdos66WitnessDifferencePeak.differencePairs_card
+#print axioms Erdos66WitnessDifferencePeak.cutoff_differencePairs_card
+#print axioms Erdos66WitnessDifferencePeak.counting_profile_forces_difference_peaks
+#print axioms Erdos66WitnessDifferencePeak.witness_forces_difference_peaks
+#print axioms Erdos66WitnessDifferencePeak.subquadratic_short_differences_exclude_witness

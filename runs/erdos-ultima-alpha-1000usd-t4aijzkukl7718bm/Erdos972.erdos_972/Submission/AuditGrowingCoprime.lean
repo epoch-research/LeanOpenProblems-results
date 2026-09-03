@@ -1,0 +1,7 @@
+import Submission.GrowingCoprimeCandidates
+
+#print axioms Erdos972GrowingCoprimeCandidates.arc_le_coprimePrimeWeight_add_prime_powers
+#print axioms Erdos972GrowingCoprimeCandidates.coprimePrimeWeight_lower_of_arc
+#print axioms Erdos972GrowingCoprimeCandidates.sixth_scale_primePower_tendsto
+#print axioms Erdos972GrowingCoprimeCandidates.eventually_coprime_prime_budget
+#print axioms Erdos972GrowingCoprimeCandidates.exists_growing_coprime_prime_scale

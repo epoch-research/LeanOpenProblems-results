@@ -1,0 +1,26 @@
+import Submission.ContinuousBuchstabKernel
+open Real Set Filter MeasureTheory
+#check Measurable.ite
+#check Measurable.indicator
+#check integral_indicator
+#check StronglyMeasurable.integral_prod_right
+#check MeasurableSet.preimage
+#check measurableSet_lt
+#check Measurable.integral_prod_right
+#check Measurable.aestronglyMeasurable
+#check norm_integral_le_integral_norm
+#check integral_abs_le_integral_abs
+#check integral_mono_ae
+#check integral_sub
+#check integral_add
+#check IntegrableOn.mono_set
+#check IntegrableOn.integrable_norm
+#check Integrable.norm
+#check integral_const_mul
+#check IntegrableOn.integrable_mul
+#check integral_integral_swap
+#check integrable_prod_iff
+#check integral_indicator_const
+#check Real.volume_Ioo
+#check Real.volume_Ioc
+#check Real.volume_Ioc_toReal

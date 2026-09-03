@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Real.rpow_natCast_mul
+#check Real.rpow_mul_natCast
+#check Real.rpow_mul
+#check Polynomial.comp_add
+#check Polynomial.comp_mul
+#check Polynomial.comp_C
+#check Polynomial.coeff_X_add_C_pow
+#check Polynomial.finset_sum_coeff
+#check Polynomial.sum_comp

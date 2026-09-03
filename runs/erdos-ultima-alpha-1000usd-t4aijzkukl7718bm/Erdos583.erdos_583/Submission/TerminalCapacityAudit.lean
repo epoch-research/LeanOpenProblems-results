@@ -1,0 +1,12 @@
+import Submission.TerminalCapacity
+
+/-! Axiom audit of the terminal-capacity helpers. -/
+#print axioms Erdos583TerminalCapacityDevelopment.path_length_le_of_avoids
+#print axioms Erdos583TerminalCapacityDevelopment.path_edge_capacity_at_vertex
+#print axioms Erdos583TerminalCapacityDevelopment.edge_capacity_at_vertex
+#print axioms Erdos583TerminalCapacityDevelopment.terminal_weight_of_deletion_lower_bound
+#print axioms Erdos583TerminalCapacityDevelopment.terminal_weight_copy_lower_bound
+#print axioms Erdos583TerminalCapacityDevelopment.restrict_path_normal
+#print axioms Erdos583TerminalCapacityDevelopment.refine_decomposition_exact
+#print axioms Erdos583TerminalCapacityDevelopment.restricted_degree_even_of_terminal
+#print axioms Erdos583TerminalCapacityDevelopment.trim_decomposition_exact

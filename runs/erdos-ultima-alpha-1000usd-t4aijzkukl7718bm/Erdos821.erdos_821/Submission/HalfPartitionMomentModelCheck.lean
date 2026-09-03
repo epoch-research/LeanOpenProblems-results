@@ -1,0 +1,22 @@
+import Submission.HalfPartitionMomentModel
+
+/-! Exact types and permitted-axiom audit for the half-level partition model. -/
+
+#check Erdos821.HalfPartitionMomentModel.support_properties
+#check Erdos821.HalfPartitionMomentModel.normalized_mass
+#check Erdos821.HalfPartitionMomentModel.single_part_moment
+#check Erdos821.HalfPartitionMomentModel.half_weight_moments
+#check Erdos821.HalfPartitionMomentModel.fourth_root_smooth_mass_zero
+#check Erdos821.HalfPartitionMomentModel.mean_one
+#check Erdos821.HalfPartitionMomentModel.mean_count
+#check Erdos821.HalfPartitionMomentModel.mean_half_weight_moment
+#check Erdos821.HalfPartitionMomentModel.mean_fourth_root_smooth_zero
+#print axioms Erdos821.HalfPartitionMomentModel.support_properties
+#print axioms Erdos821.HalfPartitionMomentModel.normalized_mass
+#print axioms Erdos821.HalfPartitionMomentModel.single_part_moment
+#print axioms Erdos821.HalfPartitionMomentModel.half_weight_moments
+#print axioms Erdos821.HalfPartitionMomentModel.fourth_root_smooth_mass_zero
+#print axioms Erdos821.HalfPartitionMomentModel.mean_one
+#print axioms Erdos821.HalfPartitionMomentModel.mean_count
+#print axioms Erdos821.HalfPartitionMomentModel.mean_half_weight_moment
+#print axioms Erdos821.HalfPartitionMomentModel.mean_fourth_root_smooth_zero

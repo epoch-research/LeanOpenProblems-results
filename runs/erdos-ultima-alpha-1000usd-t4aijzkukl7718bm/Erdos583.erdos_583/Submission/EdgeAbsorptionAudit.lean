@@ -1,0 +1,13 @@
+import Submission.EdgeAbsorption
+
+/-! Axiom audit of the EdgeAbsorption lemmas. -/
+#print axioms Erdos583EdgeAbsorptionDevelopment.attach_edge_support
+#print axioms Erdos583EdgeAbsorptionDevelopment.attach_edge_connected
+#print axioms Erdos583EdgeAbsorptionDevelopment.attach_edge_partition
+#print axioms Erdos583EdgeAbsorptionDevelopment.partition_with_remainder
+#print axioms Erdos583EdgeAbsorptionDevelopment.transfer_lift_subgraph
+#print axioms Erdos583EdgeAbsorptionDevelopment.reindex
+#print axioms Erdos583EdgeAbsorptionDevelopment.reindex_score
+#print axioms Erdos583EdgeAbsorptionDevelopment.same_nonempty_member_unique
+#print axioms Erdos583EdgeAbsorptionDevelopment.replace_group_with_distinguished
+#print axioms Erdos583EdgeAbsorptionDevelopment.absorb_first_edge

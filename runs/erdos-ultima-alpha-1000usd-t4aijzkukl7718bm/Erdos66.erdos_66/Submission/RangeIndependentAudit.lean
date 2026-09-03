@@ -1,0 +1,8 @@
+import Submission.RangeIndependentFamilyExplore
+/-! Permitted-axiom audit for asymmetric energy and range-independent families. -/
+#print axioms Erdos66AsymmetricMixedEnergy.asymmetric_energy_sq
+#print axioms Erdos66AsymmetricMixedEnergy.interval_mixed_l1_fourth
+#print axioms Erdos66WeightedTranslateSelection.exists_weighted_small_translates
+#print axioms Erdos66QuadraticLevelSelection.exists_quadratic_level_parameters
+#print axioms Erdos66RangeIndependentFamily.quadratic_level_flat_family
+#print axioms Erdos66RangeIndependentFamily.exists_range_independent_flat_family

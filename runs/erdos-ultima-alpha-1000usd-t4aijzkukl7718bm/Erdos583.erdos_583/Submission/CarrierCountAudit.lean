@@ -1,0 +1,13 @@
+import Submission.CarrierCount
+
+/-! Axiom audit for the carrier-count development. -/
+#print axioms Erdos583CarrierCountDevelopment.Touches
+#print axioms Erdos583CarrierCountDevelopment.carrierCount
+#print axioms Erdos583CarrierCountDevelopment.carrierCount_le
+#print axioms Erdos583CarrierCountDevelopment.touches_append
+#print axioms Erdos583CarrierCountDevelopment.touches_of_nonempty_inter
+#print axioms Erdos583CarrierCountDevelopment.carrierCount_congr
+#print axioms Erdos583CarrierCountDevelopment.carrierCount_increase
+#print axioms Erdos583CarrierCountDevelopment.exists_maximum_carriers
+#print axioms Erdos583CarrierCountDevelopment.marked_internal_cut_increases_carriers
+#print axioms Erdos583CarrierCountDevelopment.maximum_carriers_no_marked_internal_cut

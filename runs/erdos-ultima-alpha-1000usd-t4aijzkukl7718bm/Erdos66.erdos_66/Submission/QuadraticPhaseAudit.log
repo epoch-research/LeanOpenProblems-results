@@ -1,0 +1,41 @@
+'Erdos66QuadraticPhaseResonance.phase_mem_of_small_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhaseResonance.square_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhaseResonance.reflected_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhaseResonance.finite_resonance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.resonanceSize_sq_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.resonanceSize_sq_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.resonance_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.cubic_approximation_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.log_div_fourth_root_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.fourth_root_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.resonanceSize_log_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPhasePeaks.unbounded_peaks_of_approximations' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuadraticPhasePeaks.no_finite_limit_of_approximations' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuadraticPhasePeaks.logWindow_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.phaseParameter_transcendental' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.phaseDenominator_ge_sixteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.denominator_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.denominator_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.phaseDenominator_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.partialSum_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.liouville_two_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.partialSum_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.square_partial_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.approximation_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.explicit_approximations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.frequently_explicit_approximations' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.explicit_denominator_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.explicit_quadratic_phase_unbounded_peaks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LiouvilleQuadraticPhase.explicit_quadratic_phase_no_finite_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,14 @@
+import Submission.GraphRowGeometryExplore
+#check ZMod.val_natCast
+#check ZMod.natCast_mod
+#check ZMod.cast_natCast
+#check Nat.div_div_eq_div_mul
+#check Nat.div_div_eq_div_mul
+#check Nat.div_add_mod
+#check Nat.mod_add_div
+#check Nat.div_add_mod'
+#check Nat.add_mod_mod
+#check Erdos66CyclicThickening.mul_cast_eq
+#check Equiv.eq_symm_apply
+#check Equiv.symm_apply_eq
+#check Nat.cast_id

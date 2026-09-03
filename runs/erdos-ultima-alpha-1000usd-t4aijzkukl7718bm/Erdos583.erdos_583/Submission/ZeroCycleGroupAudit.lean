@@ -1,0 +1,7 @@
+import Submission.ZeroCycleGroup
+/-! Axiom audit of the new helper lemmas, not of the unresolved conjecture. -/
+#print axioms Erdos583ZeroCycleGroupDevelopment.small_cycle_group_complement_ge_four
+#print axioms Erdos583ZeroCycleGroupDevelopment.small_cycle_group_order_bound
+#print axioms Erdos583ZeroCycleGroupDevelopment.hitting_group_cycle_intersection_ge_seven
+#print axioms Erdos583ZeroCycleGroupDevelopment.small_hitting_group_bounds
+#print axioms Erdos583ZeroCycleGroupDevelopment.zero_component_bounds

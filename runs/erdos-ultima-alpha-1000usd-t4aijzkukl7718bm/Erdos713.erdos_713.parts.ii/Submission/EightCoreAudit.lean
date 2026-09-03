@@ -1,0 +1,6 @@
+import FormalConjecturesUtil
+import Submission.EightCore
+#print axioms Erdos713EightCore.certificate_correct
+#print axioms Erdos713EightCore.classify_core_of_card_le_eight
+#print axioms Erdos713EightCore.exceptional_rate_bounds
+#print axioms Erdos713EightCore.irrational_rate_core_of_card_le_eight

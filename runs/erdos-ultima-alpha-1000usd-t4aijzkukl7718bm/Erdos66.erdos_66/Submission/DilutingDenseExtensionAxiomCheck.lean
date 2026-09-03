@@ -1,0 +1,6 @@
+import Submission.DilutingDenseExtensionExplore
+/-! Axiom audit for dilution and tolerance-preserving finite extensions. -/
+#print axioms Erdos66DilutingDenseExtension.mean_retirement
+#print axioms Erdos66DilutingDenseExtension.self_mean_error_retired
+#print axioms Erdos66DilutingDenseExtension.mixed_mean_error_retired
+#print axioms Erdos66DilutingDenseExtension.exists_flatness_preserving_extension

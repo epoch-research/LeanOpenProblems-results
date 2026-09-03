@@ -1,0 +1,13 @@
+import Submission.BuchstabQuantitativeProfile
+#check Real.exp_neg
+#check Real.exp_nat_mul
+#check Real.exp_le_exp
+#check Nat.cast_add
+#check pow_le_pow_left₀
+#check div_pow
+#check pow_pos
+#check Finset.sum_le_sum
+#check Nat.floor_eq_iff
+#check one_div_le_one_div_of_le
+#check intervalIntegral.integral_of_le
+#check setIntegral_mono_set

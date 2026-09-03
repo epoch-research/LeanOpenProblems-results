@@ -1,0 +1,15 @@
+import Submission.BooleanKernelUpperWeights
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite
+#check Finset.sum_add_distrib
+#check Finset.prod_singleton
+#check Finset.prod_le_one
+#check Finset.sum_eq_single
+#check Finset.card_le_card_of_injOn
+#check Nat.primeCounting
+#check Nat.primeCounting_eq_card
+#check Nat.primeCounting'_eq_card
+#check Nat.primeCounting_eq_card_prime
+#check Finset.card_filter_le_iff
+#check Nat.count_eq_card_filter_range

@@ -1,0 +1,19 @@
+import Submission.ContinuousCriticalFirstMoment
+open MeasureTheory Set
+#check ENNReal.le_of_add_le_add_right
+#check ENNReal.add_le_add_iff_right
+#check ENNReal.ofReal_indicator
+#check ENNReal.ofReal_le_ofReal
+#check lintegral_const
+#check MeasureTheory.lintegral_indicator
+#check ENNReal.ofReal_mul
+#check ENNReal.ofReal_div_of_pos
+#check ENNReal.natCast_mul
+#check ENNReal.eq_top_of_forall_natCast_le
+#check ENNReal.iSup_natCast
+#check ENNReal.mul_lt_top
+#check ENNReal.add_lt_top
+#check ENNReal.ofReal_toReal
+#check ENNReal.toReal_le_toReal
+#check ENNReal.mul_le_mul
+#check lintegral_finset_sum

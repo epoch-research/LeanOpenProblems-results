@@ -1,0 +1,83 @@
+{
+  "kernel_verification": "PASS: 35 fresh source compilations, including all 443 accepted chunk theorems and the composed endpoint theorem",
+  "lean_version": "Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)",
+  "edges": 1812223,
+  "raw_vertices": 1812224,
+  "chunks": 443,
+  "parts": 28,
+  "start": [
+    146,
+    -149
+  ],
+  "finish": [
+    576956,
+    95986
+  ],
+  "raw_sha256": "96754f307803aa9fc8eac8990d47fb572ee18ef8887eab2c3936f51e1ba4e272",
+  "line_counts": {
+    "generic_checkers": 280,
+    "certificate_parts": 33776,
+    "combined_theorems": 69,
+    "verification_tests": 89
+  },
+  "total_lean_lines": 34214,
+  "lean_source_bytes": 3224487,
+  "olean_bytes": 50675408,
+  "fresh_build_wall_seconds": 380.057,
+  "fresh_build_cpu_seconds": 2690.276,
+  "max_single_compilation_rss_kib": 3078840,
+  "parallel_jobs": 8,
+  "lean_threads_per_job": 1,
+  "all_compiled_sources_match_recorded_hashes": true,
+  "existing_Lean_files_untouched": true,
+  "no_custom_axioms_or_prohibited_trust_constructs": true,
+  "axiom_sets": {
+    "Erdos952.WallData.Part00.accepted0000": [
+      "propext"
+    ],
+    "Erdos952.WallData.Part27.accepted0442": [
+      "propext"
+    ],
+    "Erdos952.WallData.checkPacked_sound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_path_exact": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.start_black": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.finish_black": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_displacement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "signatures": {
+    "Erdos952.WallData.checkPacked": "GaussianInt \u2192 Nat \u2192 List Nat \u2192 GaussianInt \u2192 Bool",
+    "Erdos952.WallData.checkPacked_sound": "\u2200 (target : GaussianInt) (n : Nat) (words : List Nat) (p : GaussianInt), checkPacked target n words p = true \u2192 BlackPath n p target",
+    "Erdos952.WallData.wall_path_exact": "BlackPath 1812223 start finish",
+    "Erdos952.WallData.wall_path": "Relation.ReflTransGen (fun p q : GaussianInt => Black p \u2227 Black q \u2227 (q-p).norm = 1) start finish"
+  },
+  "scope": "Only the supplied finite black NN path in w coordinates. No arbitrary-D or full moat theorem.",
+  "reproduction": [
+    "python3 Submission/WallDataGenerate.py full",
+    "python3 Submission/WallDataCheck.py --full --jobs 8"
+  ]
+}

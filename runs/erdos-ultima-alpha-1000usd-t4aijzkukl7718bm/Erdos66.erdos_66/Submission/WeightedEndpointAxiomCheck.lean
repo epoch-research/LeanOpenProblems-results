@@ -1,0 +1,4 @@
+import Submission.WeightedEndpointObstructionExplore
+#print axioms Erdos66WeightedEndpoint.endpoint_peaks
+#print axioms Erdos66WeightedEndpoint.no_finite_weighted_limit
+#print axioms Erdos66WeightedEndpoint.power_weight_no_finite_limit

@@ -1,0 +1,19 @@
+import Submission.SmoothPredecessorLogAccounting
+
+/-! Independent axiom audit for SmoothPredecessorLogAccounting. -/
+
+#print axioms Erdos821.AnalyticSieve.smooth_prime_power_le_of_no_large_square
+#print axioms Erdos821.AnalyticSieve.truncatedPredecessorLog
+#print axioms Erdos821.AnalyticSieve.truncatedPredecessorLog_nonneg
+#print axioms Erdos821.AnalyticSieve.truncatedPredecessorLog_eq
+#print axioms Erdos821.AnalyticSieve.largeSquarePredecessorPool
+#print axioms Erdos821.AnalyticSieve.largeSquarePredecessorPool_card
+#print axioms Erdos821.AnalyticSieve.prime_power_le_twice_totient
+#print axioms Erdos821.AnalyticSieve.mangoldt_div_totient_le_twice
+#print axioms Erdos821.AnalyticSieve.truncatedLogMainTerm
+#print axioms Erdos821.AnalyticSieve.exists_truncatedLogMainTerm_bound
+#print axioms Erdos821.AnalyticSieve.restricted_truncated_log_identity
+#print axioms Erdos821.AnalyticSieve.restricted_truncated_log_upper
+#print axioms Erdos821.AnalyticSieve.summable_log_square_correction
+#print axioms Erdos821.AnalyticSieve.prime_log_totient_correction
+#print axioms Erdos821.AnalyticSieve.exists_truncatedLogMainTerm_sharp_bound

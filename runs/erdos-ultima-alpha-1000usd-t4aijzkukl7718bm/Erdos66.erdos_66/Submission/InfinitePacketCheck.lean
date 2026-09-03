@@ -1,0 +1,14 @@
+import Submission.JointRepairPotentialExplore
+#check geom_sum_mul
+#check geom_sum_mul_neg
+#check geom_sum_le
+#check geom_sum_lt
+#check hasSum_geometric_of_norm_lt_one
+#check tsum_geometric_of_norm_lt_one
+#check summable_geometric_of_norm_lt_one
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_product
+#check Finset.sum_filter
+#check Finset.sum_lt_sum
+#check Finset.sum_le_tsum
+#check IsCompact.nonempty_iInter_of_sequence_nonempty_isCompact_isClosed

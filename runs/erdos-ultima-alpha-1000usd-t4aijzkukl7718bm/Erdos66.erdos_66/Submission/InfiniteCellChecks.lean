@@ -1,0 +1,13 @@
+import Submission.PredecessorCellExplore
+#check Set.Finite.of_injOn
+#check Set.Finite.preimage
+#check Set.Finite.preimage_of_injOn
+#check Set.Finite.of_finite_image
+#check Set.Finite.image
+#check Finset.card_biUnion
+#check Set.Finite.toFinset
+#check Set.Finite.mem_toFinset
+#check Set.Finite.subset
+#check Set.InjOn.mono
+#check Set.finite_Iio
+#check Set.finite_Ico

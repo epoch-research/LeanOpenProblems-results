@@ -1,0 +1,35 @@
+Exact adaptive cover: all 502 subsets of the 3x3 grid with >=2 points.
+Exact adaptive cover: 180 randomized actual sets at split primes 5,13,17.
+Sharp correlated CRT set: p=5, V=[0, 2, 4], n=125, counts=[1, 5, 5, 25, 25, 125]
+Sharp correlated CRT set: p=5, V=[0, 3, 6], n=125, counts=[1, 5, 5, 5, 25, 25, 25, 125]
+Sharp correlated CRT set: p=5, V=[1, 4, 7], n=125, counts=[1, 1, 5, 5, 5, 25, 25, 25, 125]
+Sharp correlated CRT set: p=13, V=[0, 2], n=169, counts=[1, 13, 13, 169]
+Actual 12x12 low-D grid has both valuation parities: V=[0, 1, 2, 3], counts=[1, 5, 25, 124, 144]
+Primitive fixed-cardinality example: arbitrarily many zero-entropy unary refinements checked.
+Exact grid autocorrelation and radial counts checked against all endpoint pairs for L=2,...,8.
+Representation comparisons, conditional-orientation KL chain rule, and Jensen inequality checked through L=256.
+Uniform-color endpoint laws: exact rational class masses and entropy-cost equality checked for L=2,...,6.
+
+Actual square-grid data (natural logarithms; not an asymptotic proof):
+ L          n          D       H0-H1   reverseKL       Phi0       Phi1       Phi2
+   8         64         33    0.250712    0.345586     3.7612     6.2101     8.2702
+  16        256        119    0.336195    0.484169     4.6279     9.0657    12.9667
+  32       1024        430    0.398681    0.594894     5.6710    12.5879    19.0491
+  64       4096       1575    0.448947    0.686168     6.7633    16.6001    26.4474
+ 128      16384       5838    0.489496    0.757277     7.8761    20.9644    35.0880
+ 256      65536      21859    0.523692    0.814343     8.9887    25.6196    44.9583
+ 512     262144      82489    0.553080    0.859209    10.0992    30.5272    56.0517
+1024    1048576     313259    0.578917    0.896381    11.2045    35.6643    68.3669
+
+Predicted logarithmic exponents 2*c_alpha:
+alpha=   0: 2*c_alpha=1.000000000
+alpha=0.25: 2*c_alpha=1.081057180
+alpha= 0.5: 2*c_alpha=1.171572875
+alpha=0.75: 2*c_alpha=1.272828678
+alpha=   1: 2*c_alpha=1.386294361
+alpha= 1.5: 2*c_alpha=1.656854249
+alpha=   2: 2*c_alpha=2.000000000
+alpha=   3: 2*c_alpha=3.000000000
+Uniformization cost coefficient (proved lower bound): 0.085786438
+
+ALL FINITE CHECKS PASSED. No claim that these checks prove the asymptotics or (C0).

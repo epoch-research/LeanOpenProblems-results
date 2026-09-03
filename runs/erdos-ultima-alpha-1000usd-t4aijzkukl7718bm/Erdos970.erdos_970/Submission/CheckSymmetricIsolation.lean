@@ -1,0 +1,9 @@
+import Submission.Work
+#check Nat.modEq_of_dvd
+#check Nat.modEq_iff_dvd
+#check Int.natCast_dvd
+#check Nat.primeFactors_prod
+#check Nat.chineseRemainderOfFinset
+#check Nat.not_coprime_iff_dvd
+#check Nat.Prime.not_coprime_iff_dvd
+#check Nat.le_succ

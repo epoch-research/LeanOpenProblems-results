@@ -1,0 +1,11 @@
+import Submission.SixthPowerBound
+#check Nat.sqrt_pos
+#check Nat.sq_sqrt
+#check Nat.sqrt_le_self
+#check Nat.lt_succ_sqrt
+#check Nat.lt_succ_sqrt'
+#check Nat.sqrt_le
+#check Nat.lt_sqrt
+#check Erdos970.WeightedMertens.lower_bound_with_error
+#check Erdos970.WeightedMertens.errorSum_le
+#check Finset.sum_filter_add_sum_filter_not

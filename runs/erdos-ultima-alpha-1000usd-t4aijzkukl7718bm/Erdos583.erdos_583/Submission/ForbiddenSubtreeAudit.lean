@@ -1,0 +1,9 @@
+import Submission.ForbiddenSubtree
+
+/-! Axiom audit for connected-forbidden-subtree exchanges. -/
+#print axioms Erdos583ForbiddenSubtreeDevelopment.tree_leaf_outside_preconnected
+#print axioms Erdos583ForbiddenSubtreeDevelopment.cycle_of_two_successors_except_preconnected
+#print axioms Erdos583ForbiddenSubtreeDevelopment.cycle_of_two_successors_except_subtree
+#print axioms Erdos583ForbiddenSubtreeDevelopment.improve_zero_forest_avoiding_subtree
+#print axioms Erdos583ForbiddenSubtreeDevelopment.normalize_zero_forest_avoiding_subtree
+#print axioms Erdos583ForbiddenSubtreeDevelopment.restore_edge_avoiding_subtree

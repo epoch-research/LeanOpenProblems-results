@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+import Submission.SuspensionCount
+#check le_pow₀
+#check one_le_pow₀
+#check Nat.pow_le_pow_right
+#check Nat.le_mul_of_pos_right
+#check Real.rpow_pos_of_pos
+#check Erdos713RateRegularization.exists_almost_regular_below
+#check Nat.exists_eq_succ_of_ne_zero
+#check SimpleGraph.IsTree.isConnected
+#check Erdos713Forest.free_tree_edge_bound
+#check pow_le_pow_left₀
+#check Nat.cast_pow

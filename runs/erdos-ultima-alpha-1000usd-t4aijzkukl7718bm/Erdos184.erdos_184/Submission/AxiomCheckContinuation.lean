@@ -1,0 +1,52 @@
+import Submission.ThreeKernelReduction
+import Submission.JunctionCounts
+import Submission.LabelCycleCertificates
+import Submission.ContactKernel
+import Submission.PathKernelPartitions
+import Submission.MaximumTriplePatterns
+import Submission.NumberedCycleSegmentation
+import Submission.NonAlternate220Assembly
+import Submission.MaximumSwitching
+import Submission.DoubleTripleContacts
+import Submission.CyclePartitionLift
+import Submission.SixCycleCertificateFamily
+import Submission.MaximumCoreFamilies
+import Submission.CoreBlockReduction
+import Submission.CycleContactLower
+
+/-! Axiom audit of the newest auxiliary results. Spec remains unresolved. -/
+#print axioms Erdos184Work.PathSubstitution.Family.Circuit.decomposition
+#print axioms Erdos184Work.SixCycleCertificates.subdivision_number_le_two
+#print axioms Erdos184Work.MaximumCoreFamilies.three_core_maximum_family
+#print axioms Erdos184Serial.Separation.minimalCore_iff
+#print axioms Erdos184Work.GraphVertexSeparation.number_sup
+#print axioms Erdos184Work.CoreBlockReduction.exists_irreducible_block_of_nonrigid_core
+#print axioms Erdos184Work.CoreBlockReduction.nonrigid_three_irreducible
+#print axioms Erdos184Work.CycleContactLower.two_contacts_of_number_le_two
+
+#print axioms Erdos184Work.DoubleTripleCertificates.Layout0.subdivision_at_least_four
+#print axioms Erdos184Work.DoubleTripleCertificates.Layout26.subdivision_at_least_four
+
+#print axioms Erdos184Work.CycleSegments.four_segments_orders_any
+#print axioms Erdos184Work.DoubleTripleCertificates.contact_at_least_four
+#print axioms Erdos184Work.DoubleTripleCertificates.maximum_three_pieces_four_degree
+
+#print axioms Erdos184Work.MaximumCoreFamilies.maximum_contacts_alternate
+
+#print axioms Erdos184Work.PathSeries.path_subgraph_all_or_none
+#print axioms Erdos184Serial.SupportTransport.minimalCore_iff
+#print axioms Erdos184Work.PathSubstitution.Family.number_iff_kernel_full
+#print axioms Erdos184Work.PathSubstitution.Family.minimal_expandGraph_iff
+#print axioms Erdos184Work.NonAlternate220.subdivision_number_three
+#print axioms Erdos184Work.NonAlternate220.alternating_segmentation_of_number_le_two
+
+#print axioms Erdos184Work.MaximumCoreFamilies.three_core_admissible_family
+#print axioms Erdos184Work.CycleSegments.Marked.exists_numbered_segmentation
+
+#print axioms Erdos184Work.CycleSegments.ContactLayout.exists_ordered_family
+#print axioms Erdos184Work.PathSubstitution.Family.expandGraph_colorLabels
+#print axioms Erdos184Work.PathSubstitution.Family.kernel_upper_bound_iff
+
+#print axioms Erdos184Work.ThreeKernelReduction.exists_kernel
+#print axioms Erdos184Work.MaximumCoreFamilies.maximum_junction_bounds
+#print axioms Erdos184Work.LabelKernel.PartitionData.exists_partition

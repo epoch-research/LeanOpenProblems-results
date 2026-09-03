@@ -1,0 +1,11 @@
+import Submission.ContinuousBuchstabKernel
+#check Real.quadratic_le_exp_of_nonneg
+#check Real.one_add_add_sq_div_two_le_exp
+#check Real.add_one_le_exp
+#check Real.exp_one_gt_d9
+#check Real.exp_one_gt_two
+#check Real.tendsto_rpow_mul_exp_neg_mul_atTop_nhds_zero
+#check integrableOn_exp_mul_Ioi
+#check integrableOn_Ioi_deriv_of_nonneg'
+#check HasDerivAt.const_mul
+#check Real.exp_one_lt_d9

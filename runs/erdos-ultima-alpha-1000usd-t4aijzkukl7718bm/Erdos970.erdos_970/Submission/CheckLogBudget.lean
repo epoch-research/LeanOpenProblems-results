@@ -1,0 +1,11 @@
+import Submission.EventualLowerAsymptotic
+#check Real.one_sub_div_le_log_sub_log
+#check Real.sub_one_le_log
+#check Real.one_sub_inv_le_log_of_pos
+#check Real.log_le_sub_one_of_pos
+#check Real.log_div
+#check Real.rpow_def_of_pos
+#check Finset.sum_range_sub
+#check Finset.sum_range_sub'
+#check Filter.eventually_ge_atTop
+#check Finset.prod_le_prod_of_subset_of_one_le

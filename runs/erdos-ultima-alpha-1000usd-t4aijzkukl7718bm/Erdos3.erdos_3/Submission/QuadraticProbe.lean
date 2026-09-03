@@ -1,0 +1,16 @@
+import Submission.LocalPhaseDuality
+#check AddChar.add_apply
+#check AddChar.nsmul_apply
+#check AddChar.map_add_eq_mul
+#check AddChar.inv_apply
+#check AddMonoidHom.toEquiv
+#check AddEquiv.ofBijective
+#check Complex.norm_mul_self
+#check norm_mul_sub_mul_le
+#check norm_sub_mul_le
+#check norm_pow
+#check Complex.norm_div
+#check norm_mul
+#check norm_sub_eq
+#check Complex.mul_conj
+#check Equiv.ofBijective_apply

@@ -1,0 +1,8 @@
+import Submission.SubdividedFiveRestoration
+
+/-! Axiom audit of transferred two-path replacement and subdivided-K5 restoration. -/
+#print axioms Erdos583TwoReplacementTransferDevelopment.replace_one_by_two_general
+#print axioms Erdos583TwoReplacementTransferDevelopment.replace_one_by_two_keeping_separate
+#print axioms Erdos583SubdividedFiveRestorationDevelopment.subdivided_five_partition_to_pentagon
+#print axioms Erdos583SubdividedFiveRestorationDevelopment.failure_no_subdivided_five_partition
+#print axioms Erdos583SubdividedFiveRestorationDevelopment.failure_no_subdivided_five_support_saving

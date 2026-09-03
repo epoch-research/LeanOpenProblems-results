@@ -1,0 +1,10 @@
+import Submission.InfinitePredecessorReplacementExplore
+#check tendsto_zero_iff_norm_tendsto_zero
+#check tendsto_zero_iff_abs_tendsto_zero
+#check tendsto_pow_nhds_zero_iff
+#check Real.tendsto_sqrt
+#check Real.tendsto_log_atTop
+#check Filter.Tendsto.log
+#check Real.log_mul_add_one_eq_zero_iff
+#check Finset.card_biUnion
+#check Filter.Tendsto.sqrt

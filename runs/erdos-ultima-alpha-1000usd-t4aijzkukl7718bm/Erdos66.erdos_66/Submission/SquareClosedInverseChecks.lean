@@ -1,0 +1,15 @@
+import Submission.SquareClosedSubspaceExplore
+#check Fintype.fieldOfDomain
+#check Fintype.divisionRingOfIsDomain
+#check Finite.fieldOfDomain
+#check Subalgebra.isField
+#check Algebra.IsAlgebraic.isIntegral
+#check Algebra.IsAlgebraic.toIntermediateField
+#check IntermediateField.ofSubalgebra
+#check Fintype.one_lt_card
+#check inv_eq_of_mul_eq_one_right
+#check inv_eq_of_mul_eq_one_left
+#check pow_succ
+#check Subsemiring.pow_mem
+#check Subalgebra.pow_mem
+#check Module.finrank_pos

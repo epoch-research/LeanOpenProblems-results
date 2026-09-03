@@ -1,0 +1,16 @@
+'Erdos66TranslatedRadixCarry.radix_product_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.radix_product_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.radixAssembly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.mem_radixAssembly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.radixAssembly_pairwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.radixAssembly_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.radixAssembly_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixCarry.translated_radix_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatchedTranslatedRadix.patchedRadix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatchedTranslatedRadix.patchedRadix_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatchedTranslatedRadix.patchedRadix_off' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatchedTranslatedRadix.patchedRadix_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatchedTranslatedRadix.patchedRadix_full_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicTranslatedRadix.exists_logarithmic_translated_radix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,7 @@
+PASS: exact Hall catalogue identity: 1110 parameter pairs
+PASS: all 32768 Boolean 3x5 list matrices: 29206 matchable, 3562 Hall-certified
+PASS: full integral Q_1-packing audits: 20 weighted host cases, 3488 positive configurations
+PASS: certificate-fibre entropy identities: 47 fibres; 346 conditional history inequalities
+PASS: selected-scale, certificate-subtracted surplus: 324 parameter choices
+Smallest audited lower-bound margin over k/5, per h: 1.74977292452
+NO CLAIM: summed EL, a uniform-in-T pressure bound, and R(Q_d)=O(2^d) remain unproved.

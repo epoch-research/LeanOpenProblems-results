@@ -1,0 +1,15 @@
+Balanced-relation star audit (exact rational arithmetic)
+PASS: 15 exact balance, zero-one lift, and avoiding-injection tag checks.
+PASS: 12 shared-variable enumeration/closed-form identities (including 2187 assignments per four-star).
+PASS: exact polynomial identities: M2=2q^2/(1-q)^2, M4=6q^3+O(q^4), kappa4=6q^3+O(q^4).
+PASS: all-dimensional bound kappa4>=5q^3 for 0<q<=1/128, by negative-coefficient bound.
+PASS: 1004 rooted source four-stars; unique hub and union size 4d-9.
+Exact normalized rooted cumulant load divided by d (decimal display only):
+  d=  8: 0.000105336; limit 1/16^3=0.000244141
+  d= 16: 0.000166843; limit 1/16^3=0.000244141
+  d= 32: 0.000203457; limit 1/16^3=0.000244141
+  d= 64: 0.000223283; limit 1/16^3=0.000244141
+  d=128: 0.000233582; limit 1/16^3=0.000244141
+  d=256: 0.000238829; limit 1/16^3=0.000244141
+Injective-transfer bound used in paper: |E_inj F-E_iid F| <= r(r-1)/N for |F|<=1.
+This is NOT a Ramsey proof, a countercolouring, or a disproof of balanced packing.

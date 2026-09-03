@@ -1,0 +1,10 @@
+import Submission.ComponentBudget
+/-! Axiom audit for component-wise smaller-order budgets. -/
+#print axioms Erdos583ComponentBudgetDevelopment.partition_components
+#print axioms Erdos583ComponentBudgetDevelopment.sum_component_orders
+#print axioms Erdos583ComponentBudgetDevelopment.smaller_orders_even_components
+#print axioms Erdos583ComponentBudgetDevelopment.smaller_orders_even_support
+#print axioms Erdos583ComponentBudgetDevelopment.restore_path_even_components
+#print axioms Erdos583ComponentBudgetDevelopment.failure_path_leaves_odd_component
+#print axioms Erdos583ComponentBudgetDevelopment.support_component_order_ge_two
+#print axioms Erdos583ComponentBudgetDevelopment.failure_path_leaves_large_odd_component

@@ -1,0 +1,1034 @@
+{
+  "status": "Exact targeted verification of the proved obstruction, not a B3-excess construction.",
+  "definition": "Strong B3; all triple multisets, including repeated parameters.",
+  "symbolic": {
+    "determinant_matches_resultant": true,
+    "depressed_cubic_formula_verified": true,
+    "translated_formula_verified": true,
+    "degree_in_cubic_coefficients": 5,
+    "critical_quartic_verified": true,
+    "critical_line_map_quadratic_relations": 0,
+    "expanded_resultant": "-b2^4*b0*c^2 + b2^4*b1*c*d - b2^5*d^2 - b1^4*b0*c - b2*b1^2*b0^2*c - 2*b2^2*b0^3*c - b2^2*b1*b0*c^2 + b1^5*d + b2^2*b1^2*c*d - b2^3*b0*c*d - b0^5 + b1*b0^3*c - 2*b1^2*b0*c^2 + b2*b0^2*c^2 + 2*b1^3*c*d + 2*b2*b1*b0*c*d - b0*c^3 + 2*b0^2*c*d + b1*c^2*d - b2*c*d^2 + d^3",
+    "generic_two_direction_example": {
+      "P": "t^3 + z*t^2 + (u*z + 1)*t + v*z + 1",
+      "R": "(-u^5 + u^4*v - v^5 + u^2*v^2 + 2*v^3 + u - v - 1)*z^5 + (u^4 - u^3*v - u*v^3 + 2*u^2*v + 2*u*v^2 + u^2 - u*v + v^2 - v)*z^4 + (u^3 - u^2*v + 2*u*v^2 - v^3 + u^2 + u*v + 2*v^2 + u - 1)*z^3 + (2*u*v - v^2 - u + v + 2)*z^2 + (-u + v)*z - 1",
+      "discriminant_monic": "z^4 + ((u^3 - 2*u*v + 2*u + 1)/(u^2 + v))*z^3 + ((-2*u^2 - 2*v^2 - 2*u - 2*v + 1)/(u^2 + v))*z^2 + ((-2*u + v - 2)/(u^2 + v))*z + (-1)/(u^2 + v)",
+      "resultant_degree": 5,
+      "derivative_degree": 3,
+      "discriminant_irreducible_over_F5_u_v": true,
+      "rank_1_R_R2_R3": 4,
+      "rank_1_R2_R4_R6": 4
+    }
+  },
+  "cases": [
+    {
+      "name": "Artin-Schreier a=1",
+      "q": 5,
+      "base_field_modulus": "x + 4",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + 1",
+      "extension_field_modulus": "x^3 + 3*x + 3",
+      "theta": "w^2 + 3*w + 2",
+      "cyclic_generator": "w^2",
+      "M": 62,
+      "numerator": "t^5 + 4*t + 4",
+      "denominator": "1",
+      "allowed_parameters": 5,
+      "all_triple_multisets": 35,
+      "triples_with_repetitions": 25,
+      "distinct_product_values": 27,
+      "product_values_with_collisions": 8,
+      "product_values_with_two_squarefree_triples": 0,
+      "unordered_collision_pairs": 8,
+      "maximum_triple_fiber": 2,
+      "fiber_histogram": {
+        "1": 19,
+        "2": 8
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 12,
+      "any_collision": {
+        "parameters_left": [
+          "0",
+          "0",
+          "0"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "3"
+        ],
+        "codes_left": [
+          0,
+          0,
+          0
+        ],
+        "codes_right": [
+          1,
+          1,
+          3
+        ],
+        "P": "t^3",
+        "Q": "t^3 + 2*t + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "4",
+        "R_P": "4",
+        "R_Q": "4",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          28,
+          28,
+          28
+        ],
+        "cyclic_logs_right": [
+          38,
+          38,
+          8
+        ],
+        "common_sum_mod_M": 22,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "0",
+          "0",
+          "0"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "3"
+        ],
+        "codes_left": [
+          0,
+          0,
+          0
+        ],
+        "codes_right": [
+          1,
+          1,
+          3
+        ],
+        "P": "t^3",
+        "Q": "t^3 + 2*t + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "4",
+        "R_P": "4",
+        "R_Q": "4",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          28,
+          28,
+          28
+        ],
+        "cyclic_logs_right": [
+          38,
+          38,
+          8
+        ],
+        "common_sum_mod_M": 22,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": null,
+      "q5_all_subsets": {
+        "strong_B3_maximum": 3,
+        "valid_subsets": 23,
+        "maximizer_parameters": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "seconds": 0.008
+    },
+    {
+      "name": "linearized c=1,d=1",
+      "q": 5,
+      "base_field_modulus": "x + 4",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + 1",
+      "extension_field_modulus": "x^3 + 3*x + 3",
+      "theta": "w^2 + 3*w + 2",
+      "cyclic_generator": "w^2",
+      "M": 62,
+      "numerator": "t^5 + t + 1",
+      "denominator": "1",
+      "allowed_parameters": 4,
+      "all_triple_multisets": 20,
+      "triples_with_repetitions": 16,
+      "distinct_product_values": 19,
+      "product_values_with_collisions": 1,
+      "product_values_with_two_squarefree_triples": 0,
+      "unordered_collision_pairs": 1,
+      "maximum_triple_fiber": 2,
+      "fiber_histogram": {
+        "1": 18,
+        "2": 1
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 12,
+      "any_collision": {
+        "parameters_left": [
+          "1",
+          "1",
+          "1"
+        ],
+        "parameters_right": [
+          "3",
+          "4",
+          "4"
+        ],
+        "codes_left": [
+          1,
+          1,
+          1
+        ],
+        "codes_right": [
+          3,
+          4,
+          4
+        ],
+        "P": "t^3 + 2*t^2 + 3*t + 4",
+        "Q": "t^3 + 4*t^2 + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "3",
+        "R_P": "2",
+        "R_Q": "2",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          7,
+          7,
+          7
+        ],
+        "cyclic_logs_right": [
+          39,
+          22,
+          22
+        ],
+        "common_sum_mod_M": 21,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "1",
+          "1",
+          "1"
+        ],
+        "parameters_right": [
+          "3",
+          "4",
+          "4"
+        ],
+        "codes_left": [
+          1,
+          1,
+          1
+        ],
+        "codes_right": [
+          3,
+          4,
+          4
+        ],
+        "P": "t^3 + 2*t^2 + 3*t + 4",
+        "Q": "t^3 + 4*t^2 + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "3",
+        "R_P": "2",
+        "R_Q": "2",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          7,
+          7,
+          7
+        ],
+        "cyclic_logs_right": [
+          39,
+          22,
+          22
+        ],
+        "common_sum_mod_M": 21,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": null,
+      "q5_all_subsets": {
+        "strong_B3_maximum": 3,
+        "valid_subsets": 14,
+        "maximizer_parameters": [
+          "0",
+          "1",
+          "3"
+        ]
+      },
+      "seconds": 0.002
+    },
+    {
+      "name": "Artin-Schreier after H(t)=1/t",
+      "q": 5,
+      "base_field_modulus": "x + 4",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + 1",
+      "extension_field_modulus": "x^3 + 3*x + 3",
+      "theta": "w^2 + 3*w + 2",
+      "cyclic_generator": "w^2",
+      "M": 62,
+      "numerator": "4*t^5 + 4*t^4 + 1",
+      "denominator": "t^5",
+      "allowed_parameters": 4,
+      "all_triple_multisets": 20,
+      "triples_with_repetitions": 16,
+      "distinct_product_values": 18,
+      "product_values_with_collisions": 2,
+      "product_values_with_two_squarefree_triples": 0,
+      "unordered_collision_pairs": 2,
+      "maximum_triple_fiber": 2,
+      "fiber_histogram": {
+        "1": 16,
+        "2": 2
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 12,
+      "any_collision": {
+        "parameters_left": [
+          "1",
+          "2",
+          "4"
+        ],
+        "parameters_right": [
+          "3",
+          "3",
+          "3"
+        ],
+        "codes_left": [
+          1,
+          2,
+          4
+        ],
+        "codes_right": [
+          3,
+          3,
+          3
+        ],
+        "P": "t^3 + 3*t^2 + 4*t + 2",
+        "Q": "t^3 + t^2 + 2*t + 3",
+        "lambda_in_P=f+lambda*(Q-f)": "3",
+        "R_P": "4",
+        "R_Q": "4",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          38,
+          26,
+          22
+        ],
+        "cyclic_logs_right": [
+          8,
+          8,
+          8
+        ],
+        "common_sum_mod_M": 24,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "1",
+          "2",
+          "4"
+        ],
+        "parameters_right": [
+          "3",
+          "3",
+          "3"
+        ],
+        "codes_left": [
+          1,
+          2,
+          4
+        ],
+        "codes_right": [
+          3,
+          3,
+          3
+        ],
+        "P": "t^3 + 3*t^2 + 4*t + 2",
+        "Q": "t^3 + t^2 + 2*t + 3",
+        "lambda_in_P=f+lambda*(Q-f)": "3",
+        "R_P": "4",
+        "R_Q": "4",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          38,
+          26,
+          22
+        ],
+        "cyclic_logs_right": [
+          8,
+          8,
+          8
+        ],
+        "common_sum_mod_M": 24,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": null,
+      "q5_all_subsets": {
+        "strong_B3_maximum": 3,
+        "valid_subsets": 14,
+        "maximizer_parameters": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "seconds": 0.001
+    },
+    {
+      "name": "inseparable c=0,d=1",
+      "q": 5,
+      "base_field_modulus": "x + 4",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + 1",
+      "extension_field_modulus": "x^3 + 3*x + 3",
+      "theta": "w^2 + 3*w + 2",
+      "cyclic_generator": "w^2",
+      "M": 62,
+      "numerator": "t^5 + 1",
+      "denominator": "1",
+      "allowed_parameters": 4,
+      "all_triple_multisets": 20,
+      "triples_with_repetitions": 16,
+      "distinct_product_values": 19,
+      "product_values_with_collisions": 1,
+      "product_values_with_two_squarefree_triples": 0,
+      "unordered_collision_pairs": 1,
+      "maximum_triple_fiber": 2,
+      "fiber_histogram": {
+        "1": 18,
+        "2": 1
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 12,
+      "any_collision": {
+        "parameters_left": [
+          "0",
+          "0",
+          "0"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "3"
+        ],
+        "codes_left": [
+          0,
+          0,
+          0
+        ],
+        "codes_right": [
+          1,
+          1,
+          3
+        ],
+        "P": "t^3",
+        "Q": "t^3 + 2*t + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "4",
+        "R_P": "1",
+        "R_Q": "1",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          28,
+          28,
+          28
+        ],
+        "cyclic_logs_right": [
+          7,
+          7,
+          8
+        ],
+        "common_sum_mod_M": 22,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "0",
+          "0",
+          "0"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "3"
+        ],
+        "codes_left": [
+          0,
+          0,
+          0
+        ],
+        "codes_right": [
+          1,
+          1,
+          3
+        ],
+        "P": "t^3",
+        "Q": "t^3 + 2*t + 2",
+        "lambda_in_P=f+lambda*(Q-f)": "4",
+        "R_P": "1",
+        "R_Q": "1",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          28,
+          28,
+          28
+        ],
+        "cyclic_logs_right": [
+          7,
+          7,
+          8
+        ],
+        "common_sum_mod_M": 22,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": null,
+      "q5_all_subsets": {
+        "strong_B3_maximum": 3,
+        "valid_subsets": 14,
+        "maximizer_parameters": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "seconds": 0.002
+    },
+    {
+      "name": "Artin-Schreier a=1",
+      "q": 125,
+      "base_field_modulus": "x^3 + 3*x + 3",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + b + 1",
+      "extension_field_modulus": "x^9 + 2*x^3 + x + 3",
+      "theta": "2*w^8 + 4*w^7 + 2*w^6 + 4*w^5 + 4*w^4 + w^3 + 4*w",
+      "cyclic_generator": "w^2",
+      "M": 976562,
+      "numerator": "t^5 + 4*t + 4",
+      "denominator": "1",
+      "allowed_parameters": 125,
+      "all_triple_multisets": 333375,
+      "triples_with_repetitions": 15625,
+      "distinct_product_values": 284352,
+      "product_values_with_collisions": 44163,
+      "product_values_with_two_squarefree_triples": 40496,
+      "unordered_collision_pairs": 54260,
+      "maximum_triple_fiber": 5,
+      "fiber_histogram": {
+        "1": 240189,
+        "2": 39653,
+        "3": 4187,
+        "4": 296,
+        "5": 27
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 28,
+      "any_collision": {
+        "parameters_left": [
+          "0",
+          "4*b + 2",
+          "3*b^2 + b"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "b^2 + 2*b + 4"
+        ],
+        "codes_left": [
+          0,
+          22,
+          80
+        ],
+        "codes_right": [
+          1,
+          1,
+          39
+        ],
+        "P": "t^3 + (2*b^2 + 3)*t^2 + (b + 4)*t",
+        "Q": "t^3 + (4*b^2 + 3*b + 4)*t^2 + (2*b^2 + 4*b + 4)*t + 4*b^2 + 3*b + 1",
+        "lambda_in_P=f+lambda*(Q-f)": "4*b^2 + b + 4",
+        "R_P": "2*b^2 + 2*b",
+        "R_Q": "3*b^2 + 3*b",
+        "scalar_sign": -1,
+        "cyclic_logs_left": [
+          853182,
+          878147,
+          47015
+        ],
+        "cyclic_logs_right": [
+          129332,
+          129332,
+          543118
+        ],
+        "common_sum_mod_M": 801782,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "0",
+          "4*b + 2",
+          "3*b^2 + b"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "b^2 + 2*b + 4"
+        ],
+        "codes_left": [
+          0,
+          22,
+          80
+        ],
+        "codes_right": [
+          1,
+          1,
+          39
+        ],
+        "P": "t^3 + (2*b^2 + 3)*t^2 + (b + 4)*t",
+        "Q": "t^3 + (4*b^2 + 3*b + 4)*t^2 + (2*b^2 + 4*b + 4)*t + 4*b^2 + 3*b + 1",
+        "lambda_in_P=f+lambda*(Q-f)": "4*b^2 + b + 4",
+        "R_P": "2*b^2 + 2*b",
+        "R_Q": "3*b^2 + 3*b",
+        "scalar_sign": -1,
+        "cyclic_logs_left": [
+          853182,
+          878147,
+          47015
+        ],
+        "cyclic_logs_right": [
+          129332,
+          129332,
+          543118
+        ],
+        "common_sum_mod_M": 801782,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": {
+        "parameters_left": [
+          "0",
+          "b^2 + 4",
+          "b^2 + b + 4"
+        ],
+        "parameters_right": [
+          "1",
+          "b",
+          "3*b^2 + b + 2"
+        ],
+        "codes_left": [
+          0,
+          29,
+          34
+        ],
+        "codes_right": [
+          1,
+          5,
+          82
+        ],
+        "P": "t^3 + (3*b^2 + 4*b + 2)*t^2 + (3*b + 3)*t",
+        "Q": "t^3 + (2*b^2 + 3*b + 2)*t^2 + (4*b^2 + 3)*t + 4*b^2 + 2*b + 4",
+        "lambda_in_P=f+lambda*(Q-f)": "b^2 + 4*b",
+        "R_P": "b^2 + b + 4",
+        "R_Q": "b^2 + b + 4",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          853182,
+          898653,
+          226683
+        ],
+        "cyclic_logs_right": [
+          129332,
+          564279,
+          308345
+        ],
+        "common_sum_mod_M": 25394,
+        "six_distinct_parameters": true
+      },
+      "seconds": 2.104
+    },
+    {
+      "name": "linearized c=1,d=1",
+      "q": 125,
+      "base_field_modulus": "x^3 + 3*x + 3",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + b + 1",
+      "extension_field_modulus": "x^9 + 2*x^3 + x + 3",
+      "theta": "2*w^8 + 4*w^7 + 2*w^6 + 4*w^5 + 4*w^4 + w^3 + 4*w",
+      "cyclic_generator": "w^2",
+      "M": 976562,
+      "numerator": "t^5 + t + 1",
+      "denominator": "1",
+      "allowed_parameters": 124,
+      "all_triple_multisets": 325500,
+      "triples_with_repetitions": 15376,
+      "distinct_product_values": 278319,
+      "product_values_with_collisions": 42488,
+      "product_values_with_two_squarefree_triples": 38978,
+      "unordered_collision_pairs": 52242,
+      "maximum_triple_fiber": 5,
+      "fiber_histogram": {
+        "1": 235831,
+        "2": 38140,
+        "3": 4026,
+        "4": 299,
+        "5": 23
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 28,
+      "any_collision": {
+        "parameters_left": [
+          "0",
+          "b^2",
+          "4*b^2 + 3*b"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "b^2 + 4*b + 2"
+        ],
+        "codes_left": [
+          0,
+          25,
+          115
+        ],
+        "codes_right": [
+          1,
+          1,
+          47
+        ],
+        "P": "t^3 + 2*b*t^2 + (3*b^2 + 4*b + 1)*t",
+        "Q": "t^3 + (4*b^2 + b + 1)*t^2 + (2*b^2 + 3*b)*t + 4*b^2 + b + 3",
+        "lambda_in_P=f+lambda*(Q-f)": "3*b^2 + 3*b",
+        "R_P": "b^2 + 3*b + 1",
+        "R_Q": "b^2 + 3*b + 1",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          853182,
+          181480,
+          89016
+        ],
+        "cyclic_logs_right": [
+          617613,
+          617613,
+          865014
+        ],
+        "common_sum_mod_M": 147116,
+        "six_distinct_parameters": false
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "0",
+          "b^2",
+          "4*b^2 + 3*b"
+        ],
+        "parameters_right": [
+          "1",
+          "1",
+          "b^2 + 4*b + 2"
+        ],
+        "codes_left": [
+          0,
+          25,
+          115
+        ],
+        "codes_right": [
+          1,
+          1,
+          47
+        ],
+        "P": "t^3 + 2*b*t^2 + (3*b^2 + 4*b + 1)*t",
+        "Q": "t^3 + (4*b^2 + b + 1)*t^2 + (2*b^2 + 3*b)*t + 4*b^2 + b + 3",
+        "lambda_in_P=f+lambda*(Q-f)": "3*b^2 + 3*b",
+        "R_P": "b^2 + 3*b + 1",
+        "R_Q": "b^2 + 3*b + 1",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          853182,
+          181480,
+          89016
+        ],
+        "cyclic_logs_right": [
+          617613,
+          617613,
+          865014
+        ],
+        "common_sum_mod_M": 147116,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": {
+        "parameters_left": [
+          "0",
+          "b + 3",
+          "4*b^2"
+        ],
+        "parameters_right": [
+          "1",
+          "3",
+          "2*b^2 + b + 2"
+        ],
+        "codes_left": [
+          0,
+          8,
+          100
+        ],
+        "codes_right": [
+          1,
+          3,
+          57
+        ],
+        "P": "t^3 + (b^2 + 4*b + 2)*t^2 + (2*b^2 + 3*b + 3)*t",
+        "Q": "t^3 + (3*b^2 + 4*b + 4)*t^2 + (3*b^2 + 4*b + 1)*t + 4*b^2 + 2*b + 4",
+        "lambda_in_P=f+lambda*(Q-f)": "b^2 + 4*b",
+        "R_P": "b^2 + b",
+        "R_Q": "4*b^2 + 4*b",
+        "scalar_sign": -1,
+        "cyclic_logs_left": [
+          853182,
+          887081,
+          186726
+        ],
+        "cyclic_logs_right": [
+          617613,
+          43865,
+          288949
+        ],
+        "common_sum_mod_M": 950427,
+        "six_distinct_parameters": true
+      },
+      "seconds": 2.071
+    },
+    {
+      "name": "Artin-Schreier after H(t)=1/t",
+      "q": 125,
+      "base_field_modulus": "x^3 + 3*x + 3",
+      "f_minimal_polynomial_of_minus_theta": "t^3 + t + b + 1",
+      "extension_field_modulus": "x^9 + 2*x^3 + x + 3",
+      "theta": "2*w^8 + 4*w^7 + 2*w^6 + 4*w^5 + 4*w^4 + w^3 + 4*w",
+      "cyclic_generator": "w^2",
+      "M": 976562,
+      "numerator": "4*t^5 + 4*t^4 + 1",
+      "denominator": "t^5",
+      "allowed_parameters": 124,
+      "all_triple_multisets": 325500,
+      "triples_with_repetitions": 15376,
+      "distinct_product_values": 278505,
+      "product_values_with_collisions": 42475,
+      "product_values_with_two_squarefree_triples": 38876,
+      "unordered_collision_pairs": 51865,
+      "maximum_triple_fiber": 6,
+      "fiber_histogram": {
+        "1": 236030,
+        "2": 38283,
+        "3": 3885,
+        "4": 287,
+        "5": 19,
+        "6": 1
+      },
+      "all_multisets_projective_scalar_cyclic_equivalence_checked": true,
+      "resultant_sample_checks": 28,
+      "any_collision": {
+        "parameters_left": [
+          "1",
+          "b^2 + 3",
+          "4*b^2 + 1"
+        ],
+        "parameters_right": [
+          "2",
+          "b",
+          "4*b + 3"
+        ],
+        "codes_left": [
+          1,
+          28,
+          101
+        ],
+        "codes_right": [
+          2,
+          5,
+          23
+        ],
+        "P": "t^3 + (b^2 + 3*b + 2)*t + 4*b^2 + 2*b + 2",
+        "Q": "t^3 + (4*b^2 + 3*b + 1)*t + 2*b^2 + 4*b",
+        "lambda_in_P=f+lambda*(Q-f)": "3*b^2 + b + 1",
+        "R_P": "3*b^2 + 3*b + 2",
+        "R_Q": "3*b^2 + 3*b + 2",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          129332,
+          812212,
+          863591
+        ],
+        "cyclic_logs_right": [
+          567796,
+          753291,
+          484048
+        ],
+        "common_sum_mod_M": 828573,
+        "six_distinct_parameters": true
+      },
+      "collision_involving_repetitions": {
+        "parameters_left": [
+          "1",
+          "2*b^2 + 3*b + 2",
+          "4*b^2 + 2*b + 2"
+        ],
+        "parameters_right": [
+          "2",
+          "b^2 + 3*b + 2",
+          "b^2 + 3*b + 2"
+        ],
+        "codes_left": [
+          1,
+          67,
+          112
+        ],
+        "codes_right": [
+          2,
+          42,
+          42
+        ],
+        "P": "t^3 + 4*b^2*t^2 + 3*b*t + b^2 + 2*b + 4",
+        "Q": "t^3 + (3*b^2 + 4*b + 4)*t^2 + (4*b^2 + 3*b + 4)*t + 3*b + 3",
+        "lambda_in_P=f+lambda*(Q-f)": "4*b^2 + 4*b + 1",
+        "R_P": "b^2 + 2",
+        "R_Q": "b^2 + 2",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          129332,
+          589011,
+          654185
+        ],
+        "cyclic_logs_right": [
+          567796,
+          890647,
+          890647
+        ],
+        "common_sum_mod_M": 395966,
+        "six_distinct_parameters": false
+      },
+      "six_distinct_root_collision": {
+        "parameters_left": [
+          "1",
+          "b^2 + 3",
+          "4*b^2 + 1"
+        ],
+        "parameters_right": [
+          "2",
+          "b",
+          "4*b + 3"
+        ],
+        "codes_left": [
+          1,
+          28,
+          101
+        ],
+        "codes_right": [
+          2,
+          5,
+          23
+        ],
+        "P": "t^3 + (b^2 + 3*b + 2)*t + 4*b^2 + 2*b + 2",
+        "Q": "t^3 + (4*b^2 + 3*b + 1)*t + 2*b^2 + 4*b",
+        "lambda_in_P=f+lambda*(Q-f)": "3*b^2 + b + 1",
+        "R_P": "3*b^2 + 3*b + 2",
+        "R_Q": "3*b^2 + 3*b + 2",
+        "scalar_sign": 1,
+        "cyclic_logs_left": [
+          129332,
+          812212,
+          863591
+        ],
+        "cyclic_logs_right": [
+          567796,
+          753291,
+          484048
+        ],
+        "common_sum_mod_M": 828573,
+        "six_distinct_parameters": true
+      },
+      "seconds": 2.026
+    }
+  ],
+  "pencils": [
+    {
+      "q": 5,
+      "U": "1",
+      "R": "4*L^5 + 4*L^3 + 4*L^2 + L + 4",
+      "R_derivative": "2*L^2 + 3*L + 1",
+      "cubic_discriminant": "3*L^2 + L + 4",
+      "finite_branch_polynomial": "2*s^2 + 3*s + 1",
+      "doubled_root_scalar_polynomial": "3*s^2 + 4",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 2
+    },
+    {
+      "q": 5,
+      "U": "t",
+      "R": "4*L^5 + L^4 + L^3 + 4*L + 4",
+      "R_derivative": "4*L^3 + 3*L^2 + 4",
+      "cubic_discriminant": "L^3 + 3*L^2 + 3*L + 4",
+      "finite_branch_polynomial": "4*s^3 + 4*s^2 + 2*s + 4",
+      "doubled_root_scalar_polynomial": "4*s^3 + 4",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 0
+    },
+    {
+      "q": 5,
+      "U": "t^2",
+      "R": "4*L^5 + 4*L^3 + 2*L^2 + 4",
+      "R_derivative": "2*L^2 + 4*L",
+      "cubic_discriminant": "L^3 + L^2 + 3*L + 4",
+      "finite_branch_polynomial": "2*s^2 + 3*s + 1",
+      "doubled_root_scalar_polynomial": "4*s^3 + 2*s^2 + 3",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 0
+    },
+    {
+      "q": 5,
+      "U": "t^2 + t + 1",
+      "R": "L^5 + 3*L^4 + 3*L^2 + 4",
+      "R_derivative": "2*L^3 + L",
+      "cubic_discriminant": "2*L^4 + 2*L^3 + 3*L^2 + 2*L + 4",
+      "finite_branch_polynomial": "2*s^3 + 4*s^2 + s + 4",
+      "doubled_root_scalar_polynomial": "2*s^4 + 4*s^3 + 2*s^2 + 4*s + 4",
+      "specialized_branch_gcd_degree": 1,
+      "specialized_sign_gcd_degree": 0
+    },
+    {
+      "q": 125,
+      "U": "1",
+      "R": "4*L^5 + 4*L^3 + (2*b + 4)*L^2 + (2*b^2 + 3*b + 1)*L + 2*b^2 + 3",
+      "R_derivative": "2*L^2 + (4*b + 3)*L + 2*b^2 + 3*b + 1",
+      "cubic_discriminant": "3*L^2 + (b + 1)*L + 3*b^2 + b + 4",
+      "finite_branch_polynomial": "2*s^2 + 3*s + 1",
+      "doubled_root_scalar_polynomial": "3*s^2 + 4",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 2
+    },
+    {
+      "q": 125,
+      "U": "t",
+      "R": "4*L^5 + (b + 1)*L^4 + (4*b + 1)*L^3 + 4*b*L^2 + (2*b^2 + 2)*L + 2*b^2 + 3",
+      "R_derivative": "(4*b + 4)*L^3 + (2*b + 3)*L^2 + 3*b*L + 2*b^2 + 2",
+      "cubic_discriminant": "L^3 + 3*L^2 + 3*L + 3*b^2 + b + 4",
+      "finite_branch_polynomial": "(3*b^2 + b)*s^3 + (2*b^2 + 3)*s^2 + (2*b^2 + b + 4)*s + b^2 + 2*b + 4",
+      "doubled_root_scalar_polynomial": "4*s^3 + (2*b^2 + 2*b + 3)*s^2 + (4*b^2 + 2*b + 4)*s + b + 2",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 0
+    },
+    {
+      "q": 125,
+      "U": "t^2",
+      "R": "4*L^5 + 4*b*L^4 + (4*b + 4)*L^3 + (b^2 + 4*b + 1)*L^2 + (2*b^2 + b)*L + 2*b^2 + 3",
+      "R_derivative": "b*L^3 + (2*b + 2)*L^2 + (2*b^2 + 3*b + 2)*L + 2*b^2 + b",
+      "cubic_discriminant": "(b + 1)*L^3 + L^2 + (3*b + 3)*L + 3*b^2 + b + 4",
+      "finite_branch_polynomial": "(2*b^2 + 4*b + 4)*s^3 + (b^2 + 1)*s^2 + (2*b^2 + 4)*s + 4*b^2 + 2*b + 3",
+      "doubled_root_scalar_polynomial": "(3*b^2 + b)*s^3 + (4*b^2 + 3*b)*s^2 + (4*b^2 + b + 2)*s + 2*b + 4",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 0
+    },
+    {
+      "q": 125,
+      "U": "t^2 + t + 1",
+      "R": "L^5 + (3*b + 3)*L^4 + (2*b^2 + 2*b)*L^3 + (4*b + 2)*L^2 + (b^2 + 4*b + 3)*L + 2*b^2 + 3",
+      "R_derivative": "(2*b + 2)*L^3 + (b^2 + b)*L^2 + (3*b + 4)*L + b^2 + 4*b + 3",
+      "cubic_discriminant": "2*L^4 + (b + 2)*L^3 + (3*b + 3)*L^2 + (4*b + 2)*L + 3*b^2 + b + 4",
+      "finite_branch_polynomial": "(4*b^2 + 3*b)*s^3 + (3*b^2 + 3*b + 1)*s^2 + (2*b^2 + 2)*s + 4*b^2 + 2*b",
+      "doubled_root_scalar_polynomial": "2*s^4 + 2*s^3 + (4*b^2 + 4*b + 2)*s^2 + (3*b^2 + 3)*s + 4*b^2 + 2*b + 4",
+      "specialized_branch_gcd_degree": 0,
+      "specialized_sign_gcd_degree": 0
+    }
+  ]
+}

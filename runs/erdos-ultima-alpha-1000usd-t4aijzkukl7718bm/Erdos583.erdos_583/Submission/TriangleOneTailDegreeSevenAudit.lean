@@ -1,0 +1,11 @@
+import Submission.TriangleOneTailDegreeSeven
+
+/-! Axiom audit of the mixed fresh repair and the one-tail root-degree improvement. -/
+#print axioms Erdos583LeafPunctureDevelopment.puncture_leaf_connected
+#print axioms Erdos583LeafPunctureDevelopment.puncture_leaf_edgeSet
+#print axioms Erdos583LeafPunctureDevelopment.puncture_supported_vertex_card
+#print axioms Erdos583MixedTriangleFreshDevelopment.mixed_triangle_fresh_reduction
+#print axioms Erdos583MixedTriangleTailLockDevelopment.cubic_third_neighbor
+#print axioms Erdos583MixedTriangleTailLockDevelopment.failure_mixed_short_triangle_tail_lock
+#print axioms Erdos583TriangleOneTailDegreeSevenDevelopment.failure_degree_five_short_triangle_only_mixed
+#print axioms Erdos583TriangleOneTailDegreeSevenDevelopment.failure_one_tail_triangle_root_degree_ge_seven

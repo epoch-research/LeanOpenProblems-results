@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Nat.coprime_two_right
+#check Nat.Coprime.mul_right
+#check Nat.coprime_sub_self_right
+#check Nat.coprime_sub_self_left
+#check Nat.coprime_pred_self
+#check Nat.coprime_self_pred
+#check ZMod.natCast_self
+#check ZMod.natCast_mod
+#check Set.IsSidon.subset
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.Coprime.sub_self_right
+#check Nat.Coprime.sub_self_left
+#check Nat.coprime_add_self_right
+#check Nat.Coprime.sub_right
+#check IsSidon

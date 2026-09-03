@@ -1,0 +1,9 @@
+import Submission.E74Basic
+#print E74.badEdges
+#print E74.ends
+#print E74.ShortSupport
+#print E74.MinimalSupport
+#print E74.SmallCuts
+#check SimpleGraph.Walk.mapLe
+#check SimpleGraph.Walk.support_subset_verts_toSubgraph
+#check SimpleGraph.Walk.mem_verts_toSubgraph

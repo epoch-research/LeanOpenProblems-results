@@ -1,0 +1,9 @@
+import Submission.ThreeEvenCutVertex
+
+/-! Axiom audit of the unconditional even-cut sharp bound. -/
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.boundary_neighbor_card
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.evenCount_induce_le_of_boundary
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.evenCount_induce_le_remove_boundary
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.sharp_three_even_boundary
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.sharp_triangle_even_cut
+#print axioms Erdos583ThreeEvenCutVertexDevelopment.sharp_three_even_cut_vertex

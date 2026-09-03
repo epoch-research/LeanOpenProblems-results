@@ -1,0 +1,29 @@
+import Submission.CriticalNonlinearPrimeProxy
+open Filter Finset
+open scoped Topology
+#check Summable.sum_add_tsum_nat_add
+#check Summable.sum_add_tsum_subtype_compl
+#check Summable.tsum_le_tsum_of_inj
+#check Real.tsum_comp_le_tsum_of_inj
+#check tendsto_tsum_compl_atTop_zero
+#check Summable.tendsto_sum_tsum_nat
+#check Summable.hasSum
+#check HasSum.tendsto_sum_nat
+#check tendstoUniformlyOn_iff
+#check TendstoUniformlyOn.continuousAt
+#check TendstoUniformlyOn.continuousWithinAt
+#check TendstoLocallyUniformlyOn.continuousWithinAt
+#check ContinuousAt.congr_of_eventuallyEq
+#check tendsto_const_nhds.congr'
+#check continuousAt_nat_floor
+#check Int.continuousAt_floor
+#check continuousAt_floor
+#check Nat.floor_eq_iff'
+#check EventuallyEq.sum
+#check Filter.Eventually.sum
+#check Finset.eventually_all
+#check Nat.le_floor
+#check Metric.continuousAt_iff
+#check eventually_lt_nhds
+#check Summable.comp_injective
+#check Summable.sum_le_tsum

@@ -1,0 +1,18 @@
+import Submission.ProductSupplyBudget
+
+/-! Independent axiom audit for the product-half-level continuation. -/
+
+#print axioms Erdos821.AnalyticSieve.productSupplyFirstCoefficient
+#print axioms Erdos821.AnalyticSieve.productSupplySecondCoefficient
+#print axioms Erdos821.AnalyticSieve.productSupplyLongBudget
+#print axioms Erdos821.AnalyticSieve.productSupplyLongLimit
+#print axioms Erdos821.AnalyticSieve.tendsto_productSupplyLongBudget
+#print axioms Erdos821.AnalyticSieve.productSupply_log_error_coefficient
+#print axioms Erdos821.AnalyticSieve.productSupplyFirstLimit_lt
+#print axioms Erdos821.AnalyticSieve.productSupplySecondLimit_lt
+#print axioms Erdos821.AnalyticSieve.eventually_productSupplyFirstBudget
+#print axioms Erdos821.AnalyticSieve.eventually_productSupplySecondBudget
+#print axioms Erdos821.AnalyticSieve.productSupplyShortBudget
+#print axioms Erdos821.AnalyticSieve.eventually_productSupplyShortBudget
+#print axioms Erdos821.AnalyticSieve.productSupplyLongBudget_identity
+#print axioms Erdos821.AnalyticSieve.productSupplyShortBudget_identity

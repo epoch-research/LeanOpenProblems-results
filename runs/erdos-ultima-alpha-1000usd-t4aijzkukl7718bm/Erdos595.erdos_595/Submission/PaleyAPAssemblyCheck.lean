@@ -1,0 +1,74 @@
+import FormalConjecturesUtil
+set_option profiler true
+set_option maxHeartbeats 2000000
+set_option maxRecDepth 20000
+example (P : Fin 67 → Prop) (h0 : P 0) (h1 : P 1) (h2 : P 2) (h3 : P 3) (h4 : P 4) (h5 : P 5) (h6 : P 6) (h7 : P 7) (h8 : P 8) (h9 : P 9) (h10 : P 10) (h11 : P 11) (h12 : P 12) (h13 : P 13) (h14 : P 14) (h15 : P 15) (h16 : P 16) (h17 : P 17) (h18 : P 18) (h19 : P 19) (h20 : P 20) (h21 : P 21) (h22 : P 22) (h23 : P 23) (h24 : P 24) (h25 : P 25) (h26 : P 26) (h27 : P 27) (h28 : P 28) (h29 : P 29) (h30 : P 30) (h31 : P 31) (h32 : P 32) (h33 : P 33) (h34 : P 34) (h35 : P 35) (h36 : P 36) (h37 : P 37) (h38 : P 38) (h39 : P 39) (h40 : P 40) (h41 : P 41) (h42 : P 42) (h43 : P 43) (h44 : P 44) (h45 : P 45) (h46 : P 46) (h47 : P 47) (h48 : P 48) (h49 : P 49) (h50 : P 50) (h51 : P 51) (h52 : P 52) (h53 : P 53) (h54 : P 54) (h55 : P 55) (h56 : P 56) (h57 : P 57) (h58 : P 58) (h59 : P 59) (h60 : P 60) (h61 : P 61) (h62 : P 62) (h63 : P 63) (h64 : P 64) (h65 : P 65) (h66 : P 66) : ∀ i, P i := by
+  intro i
+  fin_cases i
+  · exact h0
+  · exact h1
+  · exact h2
+  · exact h3
+  · exact h4
+  · exact h5
+  · exact h6
+  · exact h7
+  · exact h8
+  · exact h9
+  · exact h10
+  · exact h11
+  · exact h12
+  · exact h13
+  · exact h14
+  · exact h15
+  · exact h16
+  · exact h17
+  · exact h18
+  · exact h19
+  · exact h20
+  · exact h21
+  · exact h22
+  · exact h23
+  · exact h24
+  · exact h25
+  · exact h26
+  · exact h27
+  · exact h28
+  · exact h29
+  · exact h30
+  · exact h31
+  · exact h32
+  · exact h33
+  · exact h34
+  · exact h35
+  · exact h36
+  · exact h37
+  · exact h38
+  · exact h39
+  · exact h40
+  · exact h41
+  · exact h42
+  · exact h43
+  · exact h44
+  · exact h45
+  · exact h46
+  · exact h47
+  · exact h48
+  · exact h49
+  · exact h50
+  · exact h51
+  · exact h52
+  · exact h53
+  · exact h54
+  · exact h55
+  · exact h56
+  · exact h57
+  · exact h58
+  · exact h59
+  · exact h60
+  · exact h61
+  · exact h62
+  · exact h63
+  · exact h64
+  · exact h65
+  · exact h66

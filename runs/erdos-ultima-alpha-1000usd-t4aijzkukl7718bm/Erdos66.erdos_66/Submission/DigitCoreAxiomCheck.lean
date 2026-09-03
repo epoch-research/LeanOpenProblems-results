@@ -1,0 +1,3 @@
+import Submission.DigitCoreExplore
+#print axioms Erdos66DigitCore.core_peak
+#print axioms Erdos66DigitCore.core_excludes_finite_limit

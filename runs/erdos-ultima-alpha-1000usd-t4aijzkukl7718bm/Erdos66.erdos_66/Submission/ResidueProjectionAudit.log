@@ -1,0 +1,28 @@
+'Erdos66ResidueEnergyProjection.variance_corr_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueEnergyProjection.weighted_corr_energy_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ResidueEnergyProjection.variance_difference_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalResidueProjection.push_square_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalResidueProjection.variance_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalResidueProjection.natVariance_difference_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueProfileProjection.antitone_weighted_prefix_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ResidueProfileProjection.centeredProfile_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueProfileProjection.projectionError_profile_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66WitnessResidueProjection.residueEnergy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessResidueProjection.witness_residueEnergy_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResiduePairIdentity.residue_pair_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResiduePairIdentity.sum_pairError_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueProjectionDensity.witness_totalError_prefix_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ResidueProjectionDensity.witness_projection_limits_off_density_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ResidueProjectionDensity.witness_pair_limits_off_density_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

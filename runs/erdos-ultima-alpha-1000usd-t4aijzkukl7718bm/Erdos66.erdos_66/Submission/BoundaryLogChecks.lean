@@ -1,0 +1,13 @@
+import Submission.BoundaryCorrectionEligibilityExplore
+open Filter
+#check Real.tendsto_log_atTop
+#check Nat.lt_floor_add_one
+#check Nat.lt_floor_add_one
+#check Nat.le_floor
+#check Nat.floor_le
+#check Nat.le_ceil
+#check eventually_ge_atTop
+#check tendsto_natCast_atTop_atTop
+#check Real.log_natCast_atTop
+#check Filter.Tendsto.eventually_ge_atTop
+#check Real.log_two_lt_d9

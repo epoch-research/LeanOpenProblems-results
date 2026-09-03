@@ -1,0 +1,15 @@
+import Submission.DivisorRowDispersion
+#check Nat.Prime.dvd_mul
+#check Nat.Prime.dvd_of_dvd_pow
+#check Nat.Prime.dvd_of_dvd_mul_left
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.Coprime.dvd_of_dvd_mul_right
+#check Nat.Coprime.dvd_of_dvd_mul_left
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.coprime_primes
+#check Int.abs_lt_one_iff
+#check Int.cast_lt
+#check Int.cast_abs
+#check Nat.cast_div
+#check Nat.mul_div_cancel'
+#check Nat.eq_of_mul_eq_mul_right

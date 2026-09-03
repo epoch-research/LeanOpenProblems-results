@@ -1,0 +1,8 @@
+import Submission.CriticalFiveEvenNeighborhood
+
+/-! Exact axiom audit for guarded restoration and critical neighborhoods. -/
+#print axioms Erdos583CriticalFiveEvenNeighborhoodDevelopment.critical_five_even_remaining_set
+#print axioms Erdos583CriticalFiveEvenNeighborhoodDevelopment.add_edge_adj_to_away
+#print axioms Erdos583CriticalFiveEvenNeighborhoodDevelopment.critical_five_even_common_neighbor
+#print axioms Erdos583CriticalFiveEvenNeighborhoodDevelopment.critical_five_even_degree_two_no_pair
+#print axioms Erdos583CriticalFiveEvenNeighborhoodDevelopment.critical_five_even_common_neighbor_separator

@@ -1,0 +1,19 @@
+'Erdos66QuadraticLogWindowBudget.eventually_quadratic_log_window_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RankRestorationSelection.exists_rank_restoration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankRestorationAlgebra.swapped_insertion_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankRestorationAlgebra.swapped_insertion_compare' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankRestorationAlgebra.swap_insertion_compare' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GlobalRankRestoration.uniformly_eventually_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BatchCentralDeletion.union_hits_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BatchCentralDeletion.union_deletion_loss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BatchCentralDeletion.center_core_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BatchRankDownwardClipping.uniformly_eventually_batch_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BatchRankHostClipping.exists_host_with_logarithmic_batches' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

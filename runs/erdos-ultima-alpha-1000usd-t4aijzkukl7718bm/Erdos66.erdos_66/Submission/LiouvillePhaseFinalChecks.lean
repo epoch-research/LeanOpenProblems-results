@@ -1,0 +1,12 @@
+import Submission.LiouvilleQuadraticPhaseExplore
+#check Transcendental.pow
+#check Transcendental.irrational
+#check transcendental_iff_not_isAlgebraic
+#check IsAlgebraic.of_pow
+#check tendsto_atTop_mono'
+#check transcendental_liouvilleNumber
+#check Liouville.irrational
+#check Real.sqrt_sq_eq_abs
+#check Rat.cast_natAbs_num
+#check Irrational.of_pow
+#check IsAlgebraic.irrational

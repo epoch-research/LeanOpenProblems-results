@@ -1,0 +1,11 @@
+import Submission.PacketMatchingExplore
+#check Real.sqrt_mul_self
+#check Real.sqrt_mul
+#check Real.sq_sqrt
+#check Real.sqrt_le_sqrt
+#check one_div_le_one_div_of_le
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_filter_le_sum
+#check Finset.sum_product
+#check Fintype.sum_prod_type
+#check Finset.sum_bool

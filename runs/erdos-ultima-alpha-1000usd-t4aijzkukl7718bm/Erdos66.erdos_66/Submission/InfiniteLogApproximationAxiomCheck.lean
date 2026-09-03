@@ -1,0 +1,7 @@
+import Submission.InfiniteLogApproximationExplore
+/-! Axiom audit for the fixed-tolerance infinite analogue. -/
+#print axioms Erdos66ScaledFractionalTail.exists_scaled_probability_profile
+#print axioms Erdos66SummedBernoulliBounds.exists_summed_bound
+#print axioms Erdos66RepEnvelopeCompactness.exists_of_finite_envelopes
+#print axioms Erdos66InfiniteLogApproximation.exists_with_coefficient
+#print axioms Erdos66InfiniteLogApproximation.exists_fixed_relative_log_approximation

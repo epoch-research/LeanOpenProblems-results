@@ -1,0 +1,11 @@
+import Submission.BridgeParityReduction
+
+/-! Axiom audit for bridge-endpoint parity. -/
+#print axioms Erdos583BridgeParityReductionDevelopment.glue_spanning_cut_sides
+#print axioms Erdos583BridgeParityReductionDevelopment.within_bridge_neighbor_add_one
+#print axioms Erdos583BridgeParityReductionDevelopment.augment_bridge_side_cover
+#print axioms Erdos583BridgeParityReductionDevelopment.extend_even_bridge_side
+#print axioms Erdos583BridgeParityReductionDevelopment.gallai_of_even_bridge_endpoint
+#print axioms Erdos583BridgeParityReductionDevelopment.bridge_endpoints_odd_of_failure
+#print axioms Erdos583BridgeParityReductionDevelopment.even_vertex_no_bridge_of_failure
+#print axioms Erdos583BridgeParityReductionDevelopment.even_forest_independent_of_failure

@@ -1,0 +1,9 @@
+import Submission.RegularCutDefects
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583RegularCutDefectsDevelopment.walkDefect_add_vertices
+#print axioms Erdos583RegularCutDefectsDevelopment.walkDefect_zero_iff
+#print axioms Erdos583RegularCutDefectsDevelopment.regularTail_defect_le_one
+#print axioms Erdos583RegularCutDefectsDevelopment.regularCut_member_defect
+#print axioms Erdos583RegularCutDefectsDevelopment.regularCut_all_paths
+#print axioms Erdos583RegularCutDefectsDevelopment.regularCut_one_petal_bound

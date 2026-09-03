@@ -1,0 +1,13 @@
+resilience checkpoint 2 0 {'instances': 1, 'random_matchings': 4, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 1, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 6} seconds 0.01
+resilience checkpoint 2 5 {'instances': 6, 'random_matchings': 24, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 2, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 11} seconds 0.04
+resilience checkpoint 2 10 {'instances': 11, 'random_matchings': 44, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 3, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 15} seconds 0.1
+resilience checkpoint 2 15 {'instances': 16, 'random_matchings': 64, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 4, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 21} seconds 0.15
+resilience checkpoint 3 0 {'instances': 31, 'random_matchings': 124, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 15, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 116} seconds 0.35
+resilience checkpoint 3 5 {'instances': 86, 'random_matchings': 344, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 26, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 231} seconds 0.66
+resilience checkpoint 3 10 {'instances': 141, 'random_matchings': 564, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 37, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 321} seconds 1.08
+resilience checkpoint 3 15 {'instances': 196, 'random_matchings': 784, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 48, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 419} seconds 1.35
+resilience checkpoint 4 0 {'instances': 249, 'random_matchings': 996, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 57, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 546} seconds 2.74
+resilience checkpoint 4 5 {'instances': 294, 'random_matchings': 1176, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 66, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 657} seconds 4.55
+resilience checkpoint 4 10 {'instances': 339, 'random_matchings': 1356, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 75, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 790} seconds 7.07
+resilience checkpoint 4 15 {'instances': 384, 'random_matchings': 1536, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 84, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 969} seconds 9.16
+resilience result {'instances': 420, 'random_matchings': 1680, 'exact_obstruction': 0, 'milp_infeasible': 0, 'exact_no_matching': 84, 'solver_limit': 0, 'cut_limit': 0, 'cuts': 969} seconds 9.25

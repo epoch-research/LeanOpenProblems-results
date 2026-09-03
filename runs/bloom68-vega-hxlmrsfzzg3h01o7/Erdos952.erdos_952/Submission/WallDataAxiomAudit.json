@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "axiom_sets": {
+    "Erdos952.WallData.Part00.accepted0000": [
+      "propext"
+    ],
+    "Erdos952.WallData.Part27.accepted0442": [
+      "propext"
+    ],
+    "Erdos952.WallData.checkPacked_sound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_path_exact": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.start_black": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.finish_black": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos952.WallData.wall_displacement": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "log_sha256": "74654061888c7029486b134a8dae37bdf1f08811a07fc5afc32d762bb676bd60"
+}

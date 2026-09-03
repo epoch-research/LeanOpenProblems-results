@@ -1,0 +1,24 @@
+Spec.lean SHA-256 before: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+Local capacity lemma: numerical minimization, all endpoints, and sharp equal-root cases passed.
+List cores: all nonempty 4-site lists through 3 rows, weighted lists, and birthday cases passed.
+SOS cores: independent minor sums, Gram determinants, leverage scores, and disjoint products passed.
+Positive source-polymer gas: all compatible families, arbitrary amplitudes, and free isolates agree with full injections.
+Cube linkage: direct full injections = pinned-list counts, with every cross-collision excluded.
+Original f_uv expansion and global even-parity projection also agree exactly.
+Joint scalar-cumulant obstruction: exact polynomial [Fraction(-2, 1), Fraction(8, 1), Fraction(148, 1), Fraction(-1528, 1), Fraction(11230, 1), Fraction(-42976, 1), Fraction(68400, 1), Fraction(-40320, 1)]
+Independent 4,140-partition sums and all-dimensional induced-matching construction passed.
+Joint image-law obstruction: full-injection counts verify the non-real-rooted specialization and flat marginals.
+
+Audit totals:
+  Gram determinants / leverage laws: 145
+  collision bounds verified: 1062
+  full cube count comparisons: 43
+  good pinned cube/color sectors: 2483
+  nonstable actual joint image laws: 3
+  original pair-factor and parity identities: 6
+  overloaded examples (no bound asserted): 2768
+  positive source-gas family/full-injection comparisons: 10
+  positive-core products: 3795
+  univariate capacities: 648
+Spec.lean SHA-256 after: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: all finite checks. No universal good pinned sector or Ramsey bound is certified.

@@ -1,0 +1,12 @@
+import Submission.QuadraticProgressionCurvature
+import Submission.PolynomialThreeAPThreshold
+#check Combinatorics.exists_mono_homothetic_copy
+#check Finset.exists_le_card_fiber_of_mul_le_card_of_maps_to
+#check Finset.exists_lt_card_fiber_of_mul_lt_card_of_maps_to
+#check Finset.exists_le_card_fiber_of_nsmul_le_card_of_maps_to
+#check Finset.card_eq_sum_card_fiberwise
+#check Set.not_threeAPFree_iff
+#check Set.IsAPOfLengthFree
+#check Nat.exists_lt_and_lt_iff
+#check Nat.ceil_pos
+#check Erdos3PolynomialThreeAPThreshold.thresholdExponent

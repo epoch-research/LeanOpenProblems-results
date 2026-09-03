@@ -1,0 +1,11 @@
+import Submission.EulerianGirthBound
+
+/-! Exact axiom audit of the Eulerian high-girth bound. -/
+#print axioms Erdos583EulerianGirthBoundDevelopment.maximum_trail_endpoint_edges
+#print axioms Erdos583EulerianGirthBoundDevelopment.connected_even_has_eulerian
+#print axioms Erdos583EulerianGirthBoundDevelopment.short_trail_isPath
+#print axioms Erdos583EulerianGirthBoundDevelopment.trail_path_pieces
+#print axioms Erdos583EulerianGirthBoundDevelopment.eulerian_girth_edge_budget
+#print axioms Erdos583EulerianGirthBoundDevelopment.eulerian_average_degree_girth_bound
+#print axioms Erdos583EulerianGirthBoundDevelopment.eulerian_high_girth_bound
+#print axioms Erdos583EulerianGirthBoundDevelopment.eulerian_failure_short_cycle

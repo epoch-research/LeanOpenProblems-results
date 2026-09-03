@@ -1,0 +1,13 @@
+import Submission.OneForbiddenRoot
+#check Finset.exists_max_image
+#check SimpleGraph.Reachable.exists_path_of_dist
+#check SimpleGraph.Walk.penultimate_concat
+#check SimpleGraph.Walk.IsPath.concat
+#check SimpleGraph.IsAcyclic.path_concat
+#check SimpleGraph.Walk.map_isPath_iff
+#check SimpleGraph.Walk.IsPath.map
+#check SimpleGraph.induceHom
+#check SimpleGraph.Walk.support_map
+#check SimpleGraph.Walk.length_eq_dist
+#check SimpleGraph.dist_le
+#check SimpleGraph.dist_le_length

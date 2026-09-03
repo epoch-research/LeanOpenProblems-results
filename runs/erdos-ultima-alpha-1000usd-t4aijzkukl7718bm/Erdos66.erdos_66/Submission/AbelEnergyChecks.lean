@@ -1,0 +1,14 @@
+import Submission.SharpFluctuationExplore
+#check summable_pow_mul_geometric_of_norm_lt_one
+#check summable_nat_add_iff
+#check harmonic_le_one_add_log
+#check harmonic_le
+#check harmonic_nonneg
+#check Real.pow_rpow_inv_natCast
+#check Real.rpow_inv_natCast_pow
+#check Filter.tendsto_nhdsWithin_iff
+#check tendsto_nhdsWithin_iff
+#check Filter.Tendsto.rpow_const
+#check Filter.Eventually.filter_mono
+#check HasSum.mul_left
+#check tsum_mul_left

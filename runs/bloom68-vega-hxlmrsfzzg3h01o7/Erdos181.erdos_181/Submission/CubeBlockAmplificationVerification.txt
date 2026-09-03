@@ -1,0 +1,16 @@
+Cube block amplification verification; deterministic seed 20260901
+Exact globally injective block-lift identities: 138 checks passed.
+Exact block-star moments and nonnegative Gram decomposition: 24 checks (22 nonzero variances).
+Finite-population partial-bijection formula: 6 cases, 29592 embedding pairs, plus all 512 small random hosts passed.
+Partite overlap moments: 4 exact checks. Product-uniform successful block sampler: all 66064 finite partite hosts passed.
+Cube isoperimetry, connected-support bounds, and Janson overlap budget: 65808 source subsets and 1000 parameter checks passed.
+Outer-cube star moments and exact component factorization: 65812 marking patterns and 65812 supports passed.
+Actual outer-neighborhood query-overlap union bound: 5 exact cases passed.
+Stopped greedy capacity audit: exact column/overlap budgets; 500 trials, 0 failures, single-trial proved bound 3.31e-09.
+Actual-host completion certificate Q_6, blocks Q_2: 3 clean / 5 reserved blocks, 192 edges and 240 commuting squares verified (finite diagnostic instance, attempt 1).
+Actual-host completion certificate Q_7, blocks Q_2: 13 clean / 3 reserved blocks, 448 edges and 672 commuting squares verified (finite diagnostic instance, attempt 1).
+Actual-host completion certificate Q_6, blocks Q_3: 2 clean / 2 reserved blocks, 192 edges and 240 commuting squares verified (finite diagnostic instance, attempt 32).
+Spectral preparation: 90 matrix/set checks and 640 exact rational greedy-count/spread-budget checks passed.
+Large-parameter audit: 489 dimensions from 2^16 through 2^128+1; column truncation, Janson, total error, and initial packing budgets passed.
+All checks passed. Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+Scope: finite identity/constant checks only; no proof of the uniform spectral or Ramsey benchmark.

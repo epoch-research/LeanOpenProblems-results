@@ -1,0 +1,8 @@
+import Submission.ExactClippingDemandExplore
+import Submission.AggregateIncidenceBatchClippingExplore
+
+/-! Axiom audit for exact demand and aggregate clipping. -/
+#print axioms Erdos66ExactClippingDemand.clipDemand_eq_zero_iff
+#print axioms Erdos66ExactClippingDemand.clipDemand_le
+#print axioms Erdos66ExactClippingDemand.exists_central_clipping_exact
+#print axioms Erdos66AggregateIncidenceBatchClipping.uniformly_eventually_batch_downward_clipping

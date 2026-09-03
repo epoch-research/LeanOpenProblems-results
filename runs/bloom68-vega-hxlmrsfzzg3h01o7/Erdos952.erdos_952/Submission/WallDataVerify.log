@@ -1,0 +1,17 @@
+LabelBlack : ℤ → ℤ → ℕ → Prop
+Black : GaussianInt → Prop
+BlackPath : ℕ → GaussianInt → GaussianInt → Prop
+checkPacked : GaussianInt → ℕ → List ℕ → GaussianInt → Bool
+checkPacked_sound : ∀ (target : GaussianInt) (n : ℕ) (words : List ℕ) (p : GaussianInt),
+  checkPacked target n words p = true → BlackPath n p target
+wall_path_exact : BlackPath 1812223 start finish
+wall_path : Relation.ReflTransGen (fun p q => Black p ∧ Black q ∧ Zsqrtd.norm (q - p) = 1) start finish
+wall_displacement : finish - start = { re := 576810, im := 96135 }
+'Erdos952.WallData.Part00.accepted0000' depends on axioms: [propext]
+'Erdos952.WallData.Part27.accepted0442' depends on axioms: [propext]
+'Erdos952.WallData.checkPacked_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.wall_path_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.wall_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.start_black' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.finish_black' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos952.WallData.wall_displacement' depends on axioms: [propext, Classical.choice, Quot.sound]

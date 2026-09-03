@@ -1,0 +1,11 @@
+import Submission.SuspensionGraph
+open SimpleGraph
+#check SimpleGraph.Walk.IsCycle
+#check SimpleGraph.Walk.isCycle_def
+#check SimpleGraph.IsContained
+#check SimpleGraph.Coloring.comp
+#check SimpleGraph.IsTree.card_edgeFinset
+#check SimpleGraph.cycleGraph_degree
+#check SimpleGraph.degree_cycleGraph
+#check SimpleGraph.Connected
+#print SimpleGraph.IsContained

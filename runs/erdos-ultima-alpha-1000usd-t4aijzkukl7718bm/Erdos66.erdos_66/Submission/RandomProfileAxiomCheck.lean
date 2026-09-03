@@ -1,0 +1,4 @@
+import Submission.RandomConstantProfileExplore
+#print axioms Erdos66FiniteRepBernoulli.selected_rep
+#print axioms Erdos66FiniteRepBernoulli.exists_simultaneous_rep_bound
+#print axioms Erdos66RandomConstantProfile.exists_constant_profile

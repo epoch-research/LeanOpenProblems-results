@@ -1,0 +1,43 @@
+import Submission.UniformSquareSampling
+
+/-! Combined audit of the uniform Gaussian incident-degree and sampling bounds. -/
+#print axioms Erdos773.GaussianIncidentEncoding.partners_card
+#print axioms Erdos773.GaussianIncidentEncoding.exists_direction
+#print axioms Erdos773.GaussianIncidentCounting.fiber_card
+#print axioms Erdos773.GaussianIncidentCounting.representations_card_bound
+#print axioms Erdos773.GaussianIncidentCounting.incident_cover
+#print axioms Erdos773.GaussianIncidentCounting.degree_bound
+#print axioms Erdos773.GaussianDirectionWeights.weight_sum
+#print axioms Erdos773.GaussianDirectionWeights.weight_of_coprime
+#print axioms Erdos773.GaussianDirectionWeights.weighted_bin
+#print axioms Erdos773.GaussianDirectionWeights.row_log
+#print axioms Erdos773.GaussianRadialBins.height_sum
+#print axioms Erdos773.GaussianRadialBins.reciprocal_bound
+#print axioms Erdos773.GaussianRadialCounting.weighted_height_sum
+#print axioms Erdos773.GaussianRadialCounting.row_reciprocal_bound
+#print axioms Erdos773.GaussianRadialCounting.triangle_sum_bound
+#print axioms Erdos773.GaussianDirectionSum.square_sum
+#print axioms Erdos773.GaussianDirectionSum.directions_card
+#print axioms Erdos773.GaussianDirectionSum.reciprocal_sum_bound
+#print axioms Erdos773.GaussianIncidentDegree.finite_degree_bound
+#print axioms Erdos773.GaussianIncidentDegree.eventual_degree_bound
+#print axioms Erdos773.HypergraphSamplingMoments.union_step
+#print axioms Erdos773.HypergraphSamplingMoments.jointMoment_bound
+#print axioms Erdos773.HypergraphSamplingMoments.jointMoment_expectation
+#print axioms Erdos773.HypergraphSamplingMoments.moment_bound
+#print axioms Erdos773.HypergraphSamplingMoments.tail_bound
+#print axioms Erdos773.UniformDegreeSampling.potential_bound
+#print axioms Erdos773.UniformDegreeSampling.finite_selection
+#print axioms Erdos773.UniformHypergraphSampling.link_card
+#print axioms Erdos773.UniformHypergraphSampling.link_degree
+#print axioms Erdos773.UniformHypergraphSampling.induced_degree_le_link
+#print axioms Erdos773.UniformHypergraphSampling.finite_selection
+#print axioms Erdos773.UniformAmbientSampling.lift_induced
+#print axioms Erdos773.UniformAmbientSampling.finite_selection
+#print axioms Erdos773.UniformSquareSamplingScales.overlap_budget
+#print axioms Erdos773.UniformSquareSamplingScales.tail_decay
+#print axioms Erdos773.UniformSquareSamplingScales.moment_ratio
+#print axioms Erdos773.UniformSquareSamplingScales.sampling_loss
+#print axioms Erdos773.UniformSquareSampling.finite_selection
+#print axioms Erdos773.UniformSquareSampling.finite_log_sampling
+#print axioms Erdos773.UniformSquareSampling.logarithmic_sampling

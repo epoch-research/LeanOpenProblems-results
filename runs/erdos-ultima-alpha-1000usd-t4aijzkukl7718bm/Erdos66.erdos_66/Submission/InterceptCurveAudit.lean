@@ -1,0 +1,62 @@
+import Submission.InterceptPrefixExplore
+import Submission.InterceptCollisionExampleExplore
+
+/-! Axiom audit of the intercept-curve and exact collision-correction pipeline. -/
+
+#print axioms Erdos66TwofoldFamily.familyMult
+#print axioms Erdos66TwofoldFamily.collisions
+#print axioms Erdos66TwofoldFamily.familyMult_pos_iff
+#print axioms Erdos66TwofoldFamily.sum_indicators_eq_mult
+#print axioms Erdos66TwofoldFamily.mult_decomposition
+#print axioms Erdos66TwofoldFamily.sum_indicator
+#print axioms Erdos66TwofoldFamily.sum_familyMult
+#print axioms Erdos66TwofoldFamily.mass_correction
+#print axioms Erdos66TwofoldFamily.representation_correction
+#print axioms Erdos66TwofoldFamily.union_count_le_weighted
+#print axioms Erdos66TwofoldFamily.collision_double_indicator
+#print axioms Erdos66TwofoldFamily.sum_square_mult
+#print axioms Erdos66TwofoldFamily.collision_mass_formula
+#print axioms Erdos66InterceptCurve.value
+#print axioms Erdos66InterceptCurve.point
+#print axioms Erdos66InterceptCurve.point_injective
+#print axioms Erdos66InterceptCurve.value_zero
+#print axioms Erdos66InterceptCurve.value_collision
+#print axioms Erdos66InterceptCurve.curve
+#print axioms Erdos66InterceptCurve.curveUnion
+#print axioms Erdos66InterceptCurve.multiplicity
+#print axioms Erdos66InterceptCurve.mem_curve
+#print axioms Erdos66InterceptCurve.mem_curveUnion
+#print axioms Erdos66InterceptCurve.curveUnion_row_zero
+#print axioms Erdos66InterceptCurve.curve_card
+#print axioms Erdos66InterceptCurve.multiplicity_le_two
+#print axioms Erdos66InterceptCurve.rootCount
+#print axioms Erdos66InterceptCurve.weightedCount
+#print axioms Erdos66InterceptCurve.rootCount_parabola
+#print axioms Erdos66InterceptCurve.rootCount_formula
+#print axioms Erdos66InterceptCurve.weightedCount_formula
+#print axioms Erdos66InterceptCurve.weightedCount_error
+#print axioms Erdos66InterceptCurve.curve_pairCount
+#print axioms Erdos66InterceptCollisionCorrection.collisionSet
+#print axioms Erdos66InterceptCollisionCorrection.familyMult_eq
+#print axioms Erdos66InterceptCollisionCorrection.weighted_set_correction
+#print axioms Erdos66InterceptCollisionCorrection.curve_union_mass
+#print axioms Erdos66InterceptCollisionCorrection.curve_intersection_card
+#print axioms Erdos66InterceptCollisionCorrection.curve_intersection_character
+#print axioms Erdos66InterceptCollisionCorrection.intersection_formula
+#print axioms Erdos66InterceptCollisionCorrection.collision_card_formula
+#print axioms Erdos66InterceptCollisionCorrection.collision_card_le_square
+#print axioms Erdos66InterceptUpperAndMass.sum_pairCount_real
+#print axioms Erdos66InterceptUpperAndMass.deficit
+#print axioms Erdos66InterceptUpperAndMass.deficit_nonneg
+#print axioms Erdos66InterceptUpperAndMass.total_deficit_exact
+#print axioms Erdos66InterceptUpperAndMass.total_deficit_le
+#print axioms Erdos66InterceptUpperAndMass.actual_upper_from_weighted
+#print axioms Erdos66InterceptUpperAndMass.actual_upper
+#print axioms Erdos66InterceptUpperAndMass.total_absolute_error
+#print axioms Erdos66InterceptPrefix.anchored
+#print axioms Erdos66InterceptPrefix.anchored_row_zero
+#print axioms Erdos66InterceptPrefix.anchored_pairCount
+#print axioms Erdos66InterceptPrefix.encoded_prefix
+#print axioms Erdos66InterceptPrefix.encoded_counts_below
+#print axioms Erdos66InterceptCollisionExample.actual_count_two
+#print axioms Erdos66InterceptCollisionExample.weighted_count_eight

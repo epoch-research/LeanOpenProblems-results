@@ -1,0 +1,20 @@
+import Submission.PowerSmoothSpectrum
+
+/-! Type and axiom audit of the quantitative smooth-prime transfer. -/
+
+#check Erdos821.rational_power_nonsummability_supplies_dyadic_family
+#print axioms Erdos821.rational_power_nonsummability_supplies_dyadic_family
+#check Erdos821.infinite_g_gt_of_rational_smooth_power_nonsummability
+#print axioms Erdos821.infinite_g_gt_of_rational_smooth_power_nonsummability
+#check Erdos821.summable_rational_smooth_power_above_one
+#print axioms Erdos821.summable_rational_smooth_power_above_one
+#check Erdos821.summable_rational_smooth_power_of_g_power_bound
+#print axioms Erdos821.summable_rational_smooth_power_of_g_power_bound
+#check Erdos821.summable_root_smooth_power_of_g_power_bound
+#print axioms Erdos821.summable_root_smooth_power_of_g_power_bound
+#check Erdos821.eventually_g_le_of_root_smooth_power
+#print axioms Erdos821.eventually_g_le_of_root_smooth_power
+#check Erdos821.negation_forces_quantitative_smooth_series
+#print axioms Erdos821.negation_forces_quantitative_smooth_series
+#check Erdos821.quantitative_series_feedback_margin
+#print axioms Erdos821.quantitative_series_feedback_margin

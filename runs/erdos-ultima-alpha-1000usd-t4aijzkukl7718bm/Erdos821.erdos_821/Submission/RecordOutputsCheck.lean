@@ -1,0 +1,13 @@
+import Submission.RecordOutputs
+
+#check @Erdos821.normalized_record_prime_power_bound
+#check @Erdos821.eventually_normalized_record_output_smooth
+#check @Erdos821.exists_smooth_normalized_record_of_infinite_g_gt
+#check @Erdos821.infinite_smooth_outputs_of_infinite_g_gt
+#check @Erdos821.exists_fixed_positive_power_smooth_record_outputs
+
+#print axioms Erdos821.normalized_record_prime_power_bound
+#print axioms Erdos821.eventually_normalized_record_output_smooth
+#print axioms Erdos821.exists_smooth_normalized_record_of_infinite_g_gt
+#print axioms Erdos821.infinite_smooth_outputs_of_infinite_g_gt
+#print axioms Erdos821.exists_fixed_positive_power_smooth_record_outputs

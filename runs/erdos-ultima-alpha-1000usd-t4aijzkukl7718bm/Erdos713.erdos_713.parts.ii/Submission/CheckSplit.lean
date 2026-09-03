@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Nat.card_pos_iff
+#check Nat.card_pos
+#check Nat.card_eq_zero
+#check Fintype.card_pos_iff
+#check Nat.sqrt_pos
+#check Nat.sqrt_pos.mpr
+#check Nat.le_sqrt
+#check Nat.sqrt_lt
+#check Real.sq_sqrt
+#check Real.sqrt_le_iff
+#check Real.sqrt_lt
+#check Real.sqrt_le_sqrt
+#check Nat.le_of_mul_le_mul_left

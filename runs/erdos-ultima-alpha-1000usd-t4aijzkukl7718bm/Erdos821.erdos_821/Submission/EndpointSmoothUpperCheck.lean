@@ -1,0 +1,14 @@
+import Submission.EndpointSmoothUpper
+
+#check @Erdos821.g_le_of_summable_smooth_shifted_sharp
+#print axioms Erdos821.g_le_of_summable_smooth_shifted_sharp
+#check @Erdos821.exists_sum_primeFactors_rpow_nonpos_le_log
+#print axioms Erdos821.exists_sum_primeFactors_rpow_nonpos_le_log
+#check @Erdos821.eventually_g_le_rpow_of_summable_smooth_endpoint
+#print axioms Erdos821.eventually_g_le_rpow_of_summable_smooth_endpoint
+#check @Erdos821.g_le_endpoint_exp_primeFactors
+#print axioms Erdos821.g_le_endpoint_exp_primeFactors
+#check @Erdos821.not_summable_smooth_endpoint_of_infinite_g_gt
+#print axioms Erdos821.not_summable_smooth_endpoint_of_infinite_g_gt
+#check @Erdos821.erdos_821_iff_endpoint_smooth_series
+#print axioms Erdos821.erdos_821_iff_endpoint_smooth_series

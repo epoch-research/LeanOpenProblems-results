@@ -1,0 +1,13 @@
+import Submission.DfaCountingExplore
+#check Fintype.card_piFinset
+#check Fintype.mem_piFinset
+#check Fintype.piFinset_mono
+#check Nat.ofDigits_add_ofDigits_eq_ofDigits_zipWith_of_length_eq
+#check Finset.card_pair
+#check Finset.Nonempty.choose
+#check Finset.card_pos
+#check Finset.card_le_univ
+#check Finset.prod_eq_zero_iff
+#check Finset.card_biUnion_le
+#check Finset.biUnion_subset
+#check Finset.subset_biUnion_of_mem

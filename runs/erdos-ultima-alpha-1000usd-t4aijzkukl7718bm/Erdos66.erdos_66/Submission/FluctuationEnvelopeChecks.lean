@@ -1,0 +1,16 @@
+import Submission.SquareRootFluctuationExplore
+open Filter
+#check Filter.Frequently
+#check Filter.Frequently.and_eventually
+#check Filter.Frequently.mono
+#check Filter.frequently_iff
+#check Filter.frequently_atTop
+#check not_frequently
+#check Filter.Eventually
+#check sq_lt_sq₀
+#check sq_abs
+#check tendsto_congr'
+#check le_of_tendsto_of_tendsto
+#check Summable.of_norm_bounded
+#check Real.tendsto_sqrt_atTop
+#check Real.tendsto_log_atTop

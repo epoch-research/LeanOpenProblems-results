@@ -1,0 +1,22 @@
+import Submission.HyperbolicCompositeGain
+
+/-! Axiom audit of the hyperbolic sieve denominator and multiplicity gain. -/
+
+#print axioms Erdos821.HigherDivisors.hasSum_prime_power_tau
+#print axioms Erdos821.HigherDivisors.sum_exact_prime_support_tau_le
+#print axioms Erdos821.HigherDivisors.avoidingHarmonicMoment_strip
+#print axioms Erdos821.HigherDivisors.avoidingHarmonicMoment_euler_lower
+#print axioms Erdos821.HigherDivisors.avoidingHarmonicMoment_totient_lower
+#print axioms Erdos821.Sieve.pair_denominator_ge_support_harmonic
+#print axioms Erdos821.Sieve.pair_denominator_ge_avoiding_harmonic
+#print axioms Erdos821.Sieve.pair_denominator_hyperbolic_lower
+#print axioms Erdos821.Sieve.eventually_prime_pair_explicit_gain_nine_hundred
+#print axioms Erdos821.AnalyticSieve.eventually_hyperbolic_pair_at
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_hyperbolic
+#print axioms Erdos821.eventually_hyperbolic_structured_smooth_family
+#print axioms Erdos821.infinite_g_gt_hyperbolic_composite_limit
+#print axioms Erdos821.infinite_g_gt_hyperbolic_composite_uniform
+#print axioms Erdos821.erdos_821_hyperbolic_composite_range
+#print axioms Erdos821.hyperbolic_composite_gain_gt_fifty_five_sharp_gain
+#print axioms Erdos821.hyperbolic_composite_gain_gt_thousand_binomial_gain
+#check Erdos821.infinite_g_gt_hyperbolic_composite_uniform

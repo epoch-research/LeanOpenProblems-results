@@ -1,0 +1,23 @@
+Submission/AdaptiveRepairBudgetExplore.lean:11:14: error(lean.unknownIdentifier): Unknown constant `Real.isLittleO_log_rpow_atTop`
+Submission/AdaptiveRepairBudgetExplore.lean:10:89: error: unsolved goals
+⊢ Tendsto (fun N => Real.log ↑N / √↑N) atTop (𝓝 0)
+Submission/AdaptiveRepairBudgetExplore.lean:44:2: error: linarith failed to find a contradiction
+case h1.h
+v s B G : ℝ
+hv : 0 < v
+hs : √v ≠ 0
+hr : √v ^ 2 = v
+a✝ :
+  √v ^ 2 * (√v * (B * Real.log v + 4 * G * s) + s * (B * √v * Real.log v + 4 * s + 2)) <
+    v * (√v * (B * Real.log v + 4 * G * s + B * Real.log v * s) + 4 * s ^ 2) + √v ^ 2 * s * 2
+⊢ False
+failed
+Submission/AdaptiveRepairBudgetExplore.lean:52:2: error: linarith failed to find a contradiction
+case h1.h
+v s B t : ℝ
+hv : 0 < v
+hs : √v ≠ 0
+hr : √v ^ 2 = v
+a✝ : s * √v ^ 2 * (B * √v * Real.log v + s * 4 + 2) < s * ((B * √v * Real.log v + s * 4) * v + √v ^ 2 * 2)
+⊢ False
+failed

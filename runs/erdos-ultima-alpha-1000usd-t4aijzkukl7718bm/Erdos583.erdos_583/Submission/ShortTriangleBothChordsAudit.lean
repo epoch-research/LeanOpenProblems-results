@@ -1,0 +1,7 @@
+import Submission.ShortTriangleBothChords
+
+/-! Axiom audit of the existing-shortcut reduction and its short-triangle corollary. -/
+#print axioms Erdos583ExistingShortcutTriangleDevelopment.puncture_shortcut_eq_delete_triangle
+#print axioms Erdos583ExistingShortcutTriangleDevelopment.failure_no_one_existing_one_fresh_shortcut
+#print axioms Erdos583TwoExistingShortcutsDevelopment.failure_two_shortcuts_present
+#print axioms Erdos583ShortTriangleBothChordsDevelopment.failure_degree_five_short_triangle_both_chords

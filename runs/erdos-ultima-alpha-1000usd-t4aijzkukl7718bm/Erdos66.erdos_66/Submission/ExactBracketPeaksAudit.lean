@@ -1,0 +1,54 @@
+import Submission.CenteredCumulativeRoundingExplore
+import Submission.LinearRoundingPeakExplore
+import Submission.ChordPeakExtensionExplore
+import Submission.ExactBracketPeaksExplore
+import Submission.BracketLookaheadObstructionExplore
+
+/-! Axiom audit of exact-bracket chord-patch peaks. -/
+#print axioms Erdos66CenteredCumulativeRounding.floor_step_binary
+#print axioms Erdos66CenteredCumulativeRounding.rounded_indicator
+#print axioms Erdos66CenteredCumulativeRounding.rounded_mass
+#print axioms Erdos66CenteredCumulativeRounding.rounded_count
+#print axioms Erdos66CenteredCumulativeRounding.integer_brackets_of_distance
+#print axioms Erdos66CenteredCumulativeRounding.centered_floor_error
+#print axioms Erdos66CenteredCumulativeRounding.rounded_original_brackets
+#print axioms Erdos66CenteredCumulativeRounding.centered_steps
+#print axioms Erdos66CenteredCumulativeRounding.splice_outside
+#print axioms Erdos66CenteredCumulativeRounding.splice_inside
+#print axioms Erdos66CenteredCumulativeRounding.splice_steps
+#print axioms Erdos66CenteredCumulativeRounding.mass_interval_bounds
+#print axioms Erdos66CenteredCumulativeRounding.chordSlope_bounds
+#print axioms Erdos66CenteredCumulativeRounding.chord_endpoints
+#print axioms Erdos66CenteredCumulativeRounding.chord_steps
+#print axioms Erdos66CenteredCumulativeRounding.chord_error
+#print axioms Erdos66LinearRoundingPeak.reflected_rank_sum
+#print axioms Erdos66LinearRoundingPeak.paired_ranks_peak
+#print axioms Erdos66LinearRoundingPeak.crossing_bounds
+#print axioms Erdos66LinearRoundingPeak.crossing_inside
+#print axioms Erdos66LinearRoundingPeak.crossing_floor
+#print axioms Erdos66LinearRoundingPeak.crossing_injective
+#print axioms Erdos66LinearRoundingPeak.linear_segment_peak
+#print axioms Erdos66ChordPeakExtension.quarter_flat_window
+#print axioms Erdos66ChordPeakExtension.eventual_linear_peak_budget
+#print axioms Erdos66ChordPeakExtension.exists_extension
+#print axioms Erdos66ChordPeakExtension.step_spec
+#print axioms Erdos66ExactBracketPeaks.states_step
+#print axioms Erdos66ExactBracketPeaks.states_cutoff_mono
+#print axioms Erdos66ExactBracketPeaks.states_cutoff
+#print axioms Erdos66ExactBracketPeaks.states_stable
+#print axioms Erdos66ExactBracketPeaks.limit_eq_state
+#print axioms Erdos66ExactBracketPeaks.limit_zero
+#print axioms Erdos66ExactBracketPeaks.limit_steps
+#print axioms Erdos66ExactBracketPeaks.limit_close
+#print axioms Erdos66ExactBracketPeaks.badSet_brackets
+#print axioms Erdos66ExactBracketPeaks.badSet_mass_discrepancy
+#print axioms Erdos66ExactBracketPeaks.badSet_rep
+#print axioms Erdos66ExactBracketPeaks.target_ge
+#print axioms Erdos66ExactBracketPeaks.badSet_peaks
+#print axioms Erdos66ExactBracketPeaks.badSet_no_limit
+#print axioms Erdos66ExactBracketPeaks.exists_exact_bracket_unbounded_peaks
+#print axioms Erdos66ExactBracketPeaks.badSet_error_prefix
+#print axioms Erdos66ExactBracketPeaks.badSet_quadratic_error_not_zero
+#print axioms Erdos66BracketLookaheadObstruction.last_cutoff_loss
+#print axioms Erdos66BracketLookaheadObstruction.cutoff_mass
+#print axioms Erdos66BracketLookaheadObstruction.exists_exact_bracket_prefix_forcing_peak

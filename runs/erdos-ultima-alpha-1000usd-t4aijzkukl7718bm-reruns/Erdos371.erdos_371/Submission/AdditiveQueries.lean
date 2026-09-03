@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.sum_le_sum_of_injOn
+#check Nat.card_multiples
+#check Finset.sum_ite_le_sum
+#check Finset.single_le_sum
+#check Finset.sum_subset
+#check Finset.sum_filter
+#check Finset.sum_filter_of_ne
+#check Finset.sum_ite_eq'
+#check Real.tendsto_natCast_atTop_atTop
+#check Nat.mem_primeFactors
+#check Nat.primeFactors_zero
+#check Nat.primeFactors_one

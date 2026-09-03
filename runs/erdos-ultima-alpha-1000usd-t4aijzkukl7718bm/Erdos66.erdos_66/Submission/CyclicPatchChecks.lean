@@ -1,0 +1,13 @@
+import Submission.CyclicAsymptoticExplore
+open Filter
+#check Nat.tendsto_floor_atTop
+#check Real.tendsto_sqrt_atTop
+#check tendsto_inv_atTop_zero
+#check Nat.floor_le
+#check Nat.floor_lt
+#check Nat.lt_floor_add_one
+#check ZMod.val_natCast_of_lt
+#check ZMod.natCast_zmod_val
+#check squeeze_zero'
+#check Filter.Tendsto.eventually_le_const
+#check Filter.Tendsto.eventually_lt_const

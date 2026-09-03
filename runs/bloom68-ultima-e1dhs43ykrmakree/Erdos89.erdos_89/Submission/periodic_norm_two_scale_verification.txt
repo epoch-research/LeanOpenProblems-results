@@ -1,0 +1,44 @@
+M= 1:   1 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M= 2:   3 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M= 3:   3 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M= 4:   6 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M= 5:   7 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M= 8:  18 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M=13:  43 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M=15:  57 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+M=20: 102 residue/unit orbits; all 2000 Euler states and 10811 coprime products checked
+Exact prime-power/Euler reconstruction: 18000 integers checked.
+Mod 13: |G|=36, |ker N|=3, |Fix(conjugation)|=12; N maps Fix(conjugation) bijectively onto F_13^*.
+36-state unit submonoid: 2V is column stochastic; V(V-1/2)(V-1/6)^2=0 but V(V-1/2)(V-1/6)!=0.
+Thus lower-spectrum nilpotence is real, not safely discardable.
+Mod-13 exact missing-set characterization checked at every n<=1,000,000:
+  missing iff n is a norm, n=1 mod 13, and no active split prime divides n.
+          X       S(X)       C_B(X)       F_B(X)       missing
+            1           1           1           0           1
+           40          20           2           1           1
+         1000         330          30          21           9
+        10000        2749         237         189          48
+       100000       24028        2029        1649         380
+      1000000      216341       18153       15059        3094
+Display constants: gamma=1.056182121727, gamma*log(4)=1.464179319666, gamma*log(2)=0.732089659833
+Actual endpoints at BOTH scales (finite values are not asymptotic evidence):
+ M    R     n_R   D_R  n_(R/2) D_(R/2) K_R^2-K_(R/2)^2  half-size radius,n
+ 1     8     197    94      49    27       1.098592955      4,49
+ 1    16     797   330     197    94       1.440811074     10,317
+ 1    24    1793   696     441   193       1.415439255     15,709
+ 5    20      49    27      13     8       0.652927812      8,9
+ 5    40     197    94      49    27       1.098592955     22,61
+ 5    80     797   330     197    94       1.440811074     50,317
+13    52      99   187      27    52       0.010676225     21,17
+13   104     398   730      99   187       0.016972198     57,119
+13   208    1598  2749     398   730       0.040663340    131,643
+Every endpoint sandwich, O(MR) boundary count, and half-size test passed.
+Mod-13 predicted limiting centered-half defect: 0.029881210605
+Varying-modulus annuli: exact centered child has n=2,D=1.
+ R     M      n      actual D    actual centered defect
+  8    40     150          94             -1.453598914
+ 16    80     602         330             -0.672139578
+ 32   160    2414        1192              0.101304558
+Unboundedness for this sequence is proved analytically in the note;
+it refutes only a modulus-uniform CENTERED selector, not arbitrary selection.
+ALL EXACT FINITE CHECKS PASSED. No numerical claim of proving a limit.

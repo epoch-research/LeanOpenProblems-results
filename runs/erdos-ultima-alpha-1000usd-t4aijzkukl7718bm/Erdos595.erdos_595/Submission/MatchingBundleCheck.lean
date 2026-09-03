@@ -1,0 +1,9 @@
+import Submission.ArcAdjoint
+#check Set.pair_eq_pair_iff
+#check Set.pair_eq_pair_iff_swap
+#check Set.image_pair
+#check Set.eq_singleton_iff_unique_mem
+#check Set.mem_insert_iff
+#check Set.pair_comm
+#check Set.pair_ne_pair
+#check SimpleGraph.Hom.cliqueFree

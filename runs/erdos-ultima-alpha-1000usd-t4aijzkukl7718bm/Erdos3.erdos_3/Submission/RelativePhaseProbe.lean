@@ -1,0 +1,20 @@
+import Submission.RelativeChang
+import Submission.FourierSmoothing
+open Finset
+open scoped BigOperators Classical ComplexConjugate
+#check Finset.exists_max_image
+#check Finset.prod_erase_mul
+#check AddChar.inv_apply
+#check AddChar.div_apply
+#check AddChar.mul_apply
+#check AddChar.star_apply
+#check AddChar.map_neg_eq_inv
+#check Finset.exists_mem_eq_sup'
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Complex.norm_conj
+#check AddChar.norm_apply
+#check Complex.inv_eq_conj
+#check Finset.prod_erase_mul
+#check Finset.prod_eq_prod_diff_singleton_mul
+#check Finset.prod_sdiff
+#check Finset.max'_mem

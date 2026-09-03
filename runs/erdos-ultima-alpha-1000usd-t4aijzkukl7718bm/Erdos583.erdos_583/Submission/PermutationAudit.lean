@@ -1,0 +1,10 @@
+import Submission.Permutation
+/-! Axiom audit of Eulerian permutation-path representations. -/
+#print axioms Erdos583PermutationDevelopment.regular_relation_matching
+#print axioms Erdos583PermutationDevelopment.two_regular_relation
+#print axioms Erdos583PermutationDevelopment.orient_eulerian_normal
+#print axioms Erdos583PermutationDevelopment.permutation_of_normal
+#print axioms Erdos583PermutationDevelopment.exists_permutation_path_system
+#print axioms Erdos583PermutationDevelopment.PermutationPathSystem.parts_good
+#print axioms Erdos583PermutationDevelopment.PermutationPathSystem.parts_card_add_fixed
+#print axioms Erdos583PermutationDevelopment.PermutationPathSystem.gallai_iff_fixed

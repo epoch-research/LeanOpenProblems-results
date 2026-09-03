@@ -1,0 +1,5 @@
+'Erdos66DfaPowerPeak.digit_loops_exponential_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DfaPowerPeak.power_peaks_of_exponential_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DfaPowerPeak.automatic_basis_power_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DfaPowerPeak.automatic_basis_not_subpolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DfaPowerPeak.automatic_basis_no_polylog_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]

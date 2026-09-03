@@ -1,0 +1,17 @@
+import Submission.LogProfileLowerExplore
+import Submission.PurePatternBracketRoundingExplore
+import Submission.PatternSublogRoundingExplore
+import Submission.MatchingPatternSublogExplore
+/-! Axiom audit of countable sublogarithmic pattern rounding. -/
+#print axioms Erdos66LogProfileLower.antitone_half_convolution
+#print axioms Erdos66LogProfileLower.profile_log_square_lower
+#print axioms Erdos66PurePatternBracketRounding.exists_pattern_rounding
+#print axioms Erdos66PurePatternBracketRounding.exists_indexed_pattern_rounding
+#print axioms Erdos66PatternSublogRounding.forbidZero_eval
+#print axioms Erdos66PatternSublogRounding.forbidZero_value
+#print axioms Erdos66PatternSublogRounding.exists_supported_sublog_rounding
+#print axioms Erdos66MatchingPatternSublog.expPattern_eval_factor
+#print axioms Erdos66MatchingPatternSublog.prod_bits_binary
+#print axioms Erdos66MatchingPatternSublog.expPattern_value
+#print axioms Erdos66MatchingPatternSublog.expPattern_mean_bound
+#print axioms Erdos66MatchingPatternSublog.exists_matching_sublog_rounding

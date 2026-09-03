@@ -1,0 +1,15 @@
+PASS base row sums, traces of H and H^2, and exact spectral polynomial; eigenvalue multiplicities 1,2,2.
+PASS all 25 symplectic Gram identities; rank 4; no affine 2-plane in the five-point alphabet.
+PASS 2- and 3-dimensional block bases, all nonzero line multiples in their declared colour.
+PASS t=2: both explicit Q_4, 16 vertices each, every edge checked.
+PASS t=3: both explicit Q_6, 64 vertices each, every edge checked.
+PASS t=4: both explicit Q_8, 256 vertices each, every edge checked.
+PASS t=5: both explicit Q_10, 1024 vertices each, every edge checked.
+PASS t=6: both explicit Q_12, 4096 vertices each, every edge checked.
+PASS t=7: both explicit Q_14, 16384 vertices each, every edge checked.
+PASS 291264 explicit cube edges checked in total.
+PASS exact half-degrees for t=1,...,5, with red diagonal removed.
+PASS exact Fourier values sqrt(5), (5-sqrt(5))/2, 0 for the kernel bound.
+PASS legal red square with coordinate increment sum 5: no torus-style integer lift.
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+NO SEARCH performed. These audits do not assert an all-map dimension bound or settle the endpoint.

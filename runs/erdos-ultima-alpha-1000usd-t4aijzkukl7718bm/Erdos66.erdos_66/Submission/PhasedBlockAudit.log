@@ -1,0 +1,17 @@
+'Erdos66PhasedBlockOperator.phasedOperator_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedBlockOperator.phasedOperator_prefix_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedBlockOperator.phased_operator_profile_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedBlockOperator.exists_universal_phased_operator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OccurrencePhaseBalance.sum_occurrences' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OccurrencePhaseBalance.hit_sum_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OccurrencePhaseBalance.phase_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedResidueCounting.count_residue_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedResidueCounting.count_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedResidueCounting.balanced_block_residue_discrepancy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PhasedResidueCounting.balanced_residue_discrepancy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedResidueCounting.count_atTop_of_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PhasedResidueCounting.balanced_residue_equidistribution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

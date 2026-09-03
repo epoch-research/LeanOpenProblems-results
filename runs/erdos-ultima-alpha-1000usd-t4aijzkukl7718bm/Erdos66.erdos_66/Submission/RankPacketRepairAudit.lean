@@ -1,0 +1,19 @@
+import Submission.AssignedPacketRepairExplore
+import Submission.AssignedPacketDegreeExplore
+import Submission.AssignedIntervalRepairExplore
+import Submission.RankProfileGapExplore
+import Submission.GlobalRankPacketRepairExplore
+
+/-! Axiom audit for nearby rank-assigned packet repairs. -/
+#print axioms Erdos66AssignedPacketRepair.exists_assigned_packet_repair
+#print axioms Erdos66AssignedPacketDegree.assigned_hit_card
+#print axioms Erdos66AssignedPacketDegree.assigned_candidate_degrees
+#print axioms Erdos66AssignedIntervalRepair.nearby_assignment_fiber
+#print axioms Erdos66AssignedIntervalRepair.assigned_endpoints_separated
+#print axioms Erdos66AssignedIntervalRepair.exists_assigned_interval_repair
+#print axioms Erdos66RankProfileGap.mass_add_lower
+#print axioms Erdos66RankProfileGap.rank_assignment_gap
+#print axioms Erdos66RankProfileGap.harmonic_brackets_unbounded
+#print axioms Erdos66RankProfileGap.harmonic_rank_gap
+#print axioms Erdos66GlobalRankPacketRepair.rank_assigned_swap_brackets
+#print axioms Erdos66GlobalRankPacketRepair.eventually_global_rank_packet_repair

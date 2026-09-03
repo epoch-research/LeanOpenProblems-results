@@ -1,0 +1,18 @@
+import Submission.GrowingLargeChildDepth
+
+/-! Exact types and axiom audit for GrowingLargeChildDepth. -/
+
+#check Erdos821.largeChildDepthScale_pos
+#check Erdos821.largeChildDepth_compensation
+#check Erdos821.eventually_depth_factor_budget
+#check Erdos821.largeChildDepth_budget_identity
+#check Erdos821.largeChildLayer_count_compensated
+#check Erdos821.eventually_growing_largeChildLayer_count_small
+#check Erdos821.eventually_growing_prime_complement_large
+#print axioms Erdos821.largeChildDepthScale_pos
+#print axioms Erdos821.largeChildDepth_compensation
+#print axioms Erdos821.eventually_depth_factor_budget
+#print axioms Erdos821.largeChildDepth_budget_identity
+#print axioms Erdos821.largeChildLayer_count_compensated
+#print axioms Erdos821.eventually_growing_largeChildLayer_count_small
+#print axioms Erdos821.eventually_growing_prime_complement_large

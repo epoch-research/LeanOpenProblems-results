@@ -1,0 +1,12 @@
+import Submission.LocalThreeAPIncrement
+import Submission.SimultaneousWindows
+open Finset
+#check Finset.pow_pos
+#check Finset.card_union_le
+#check mul_le_mul_iff_left₀
+#check le_div_iff₀
+#check div_le_div_iff₀
+#check le_of_mul_le_mul_left
+#check Real.sq_sqrt
+#check Finset.card_pos
+#check Finset.expect_le

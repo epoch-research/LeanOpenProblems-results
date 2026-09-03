@@ -1,0 +1,7 @@
+Global rebuilds: 4096 fully optimized coloured/blocking instances; 403456 arbitrary batches; 148698 equal-size potential inequalities; 2192 deficient optima
+Coarea: 4096 exhaustive cut minima; 49152 multilevel potential identities; 7 literal threshold witnesses; both-colour C_5 core audited
+Moment minimax: 511 actual-block games, with exact rational saddle points; 64 feasible and 447 strictly separated; boundary-mixture trap checked
+Global conditional flow/Farkas alternative: 20 multi-root instances; 15 feasible, 5 globally separated; 9138 history states, 14476 actual-block transitions (LP residuals checked to 1e-7)
+Separator geometry: 200 central Hamming-ball identities through t=200; 12000 exact aggregate row-load budgets (overlapping within-block lists allowed)
+PASS: all finite audits; Spec.lean unchanged.
+NOT PROVED: robust core => viable global capacity flow, augmenting rebuild, or low-waste cut.

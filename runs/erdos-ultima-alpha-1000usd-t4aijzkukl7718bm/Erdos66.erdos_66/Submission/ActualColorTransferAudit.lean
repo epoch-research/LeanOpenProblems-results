@@ -1,0 +1,18 @@
+import Submission.ActualColorRootTransferExplore
+
+/-! Axiom audit for the disjoint-palette actual-set conversion. -/
+#print axioms Erdos66DisjointPaletteAssembly.assembly_pairCount
+#print axioms Erdos66DisjointPaletteAssembly.weighted_matrix_error
+#print axioms Erdos66DisjointPaletteAssembly.assembly_error
+#print axioms Erdos66OrientedEdgeRepair.edgeRepair_pairwise
+#print axioms Erdos66OrientedEdgeRepair.edgeRepair_origin
+#print axioms Erdos66OrientedEdgeRepair.exists_edge_curve_embedding
+#print axioms Erdos66PaletteL1Repair.matrix_L1_le_common_lower
+#print axioms Erdos66PaletteL1Repair.palette_L1_nonzero
+#print axioms Erdos66PaletteL1Repair.palette_L1_origin
+#print axioms Erdos66DisjointCurvePalette.repairedPalette_pairwise
+#print axioms Erdos66DisjointCurvePalette.repairedPalette_origin
+#print axioms Erdos66DisjointCurvePalette.repairedPalette_sum_nonzero
+#print axioms Erdos66DisjointCurvePalette.exists_disjoint_curve_palette
+#print axioms Erdos66ActualColorRootTransfer.assembly_root_error
+#print axioms Erdos66ActualColorRootTransfer.exists_actual_pattern_for_later_colors

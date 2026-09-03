@@ -1,0 +1,15 @@
+import Submission.DampedMeanZeta
+#check integral_rpow
+#check Finset.sum_Ico_add
+#check Finset.sum_Ico_add'
+#check Finset.sum_Ico_consecutive
+#check Finset.sum_Ioc_consecutive
+#check Finset.sum_Ico_eq_sub
+#check Finset.sum_Ioc_sub_eq
+#check Finset.sum_Ico_succ_top
+#check Finset.sum_Ico_succ_bot
+#check Finset.sum_Ico_add_one
+#check Nat.Ico_succ_succ
+#check Finset.sum_Ico_succ_succ
+#check Finset.sum_Ico_add_right
+#check Finset.sum_Ico_consecutive

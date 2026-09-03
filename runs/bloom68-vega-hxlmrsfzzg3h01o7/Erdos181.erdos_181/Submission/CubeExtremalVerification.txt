@@ -1,0 +1,10 @@
+PASS: exact square identity and lower bounds on 5050 bipartite graphs
+PASS: K_(2,8) counterexample to uncoloured square-lift induction
+PASS: canonical disjoint cube lifts for 2<=d<=8
+PASS: exact Lee parameter inequalities for 8<=d<=200
+PASS: partite Hamming-label classes [(2, 1), (4, 2), (8, 16), (16, 2048)]
+PASS: random-alteration exponent, critical coefficient and formal square-recursion algebra
+PASS: Q3 lower-order-constant absorption and leaf-removal inequalities
+PASS: small-host clique obstructions and random-alteration normalization
+PASS: Spec.lean unchanged; SHA256=9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+No check above asserts the unproved near-2/d extremal exponent or linear Ramsey bound.

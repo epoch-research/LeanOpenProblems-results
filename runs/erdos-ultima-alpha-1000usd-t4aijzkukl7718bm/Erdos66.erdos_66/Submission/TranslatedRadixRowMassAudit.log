@@ -1,0 +1,14 @@
+'Erdos66TranslatedRadixRowMass.radixRow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.mem_radixRow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.periodic_eq_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.patched_zero_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.patched_nonzero_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.patched_nonzero_row_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.patched_two_block_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.witness_eventually_strict_two_block_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TranslatedRadixRowMass.agrees_two_blocks_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixRowMass.no_log_limit_of_frequent_row_mass_dichotomy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

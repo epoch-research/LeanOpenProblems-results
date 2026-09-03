@@ -1,0 +1,9 @@
+import Submission.Work
+#check Equiv.ofFiberEquiv
+#check Equiv.subtypeEquiv
+#check Fintype.card_congr
+#check Fintype.card_ofFinset
+#check Equiv.sumCongr
+#check Equiv.sumSubtype
+#check Equiv.sigmaCongrRight
+#check Equiv.sigmaFiberEquiv

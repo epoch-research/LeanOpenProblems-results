@@ -1,0 +1,13 @@
+import Submission.CoreFilteredSelberg
+import Submission.SoftExposureSymmetric
+#check Finset.prod_le_prod_of_subset_of_le_one
+#check Finset.prod_le_prod_of_subset_of_one_le
+#check Finset.prod_le_prod_of_subset_of_one_le'
+#check Finset.prod_le_one
+#check Finset.prod_sdiff
+#check Finset.prod_sdiff_mul_prod
+#check Finset.exists_subset_card_eq
+#check Nat.one_le_factorial
+#check pow_le_one₀
+#check mul_le_of_le_one_left
+#check Finset.prod_pos

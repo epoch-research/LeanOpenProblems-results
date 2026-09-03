@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Real.log_le_log_iff
+#check Real.log_le_log_iff_of_pos
+#check Real.log_mul
+#check abs_add
+#check abs_sub_comm
+#check Finset.card_union_le
+#check Nat.cast_lt
+#check Nat.div_mul_le_self
+#check Nat.le_div_iff_mul_le
+#check Filter.Tendsto.eventually

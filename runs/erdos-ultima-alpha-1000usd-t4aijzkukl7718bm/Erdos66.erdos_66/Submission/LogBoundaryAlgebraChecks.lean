@@ -1,0 +1,15 @@
+import Submission.GeneratingExplore
+#check Real.tendsto_rpow_mul_exp_neg_mul_atTop_nhds_zero
+#check Real.tendsto_rpow_div_exp_atTop
+#check Asymptotics.isEquivalent_iff_tendsto_one
+#check Asymptotics.IsEquivalent.pow
+#check Asymptotics.IsEquivalent.mul
+#check Asymptotics.IsEquivalent.div
+#check Asymptotics.IsLittleO.tendsto_div_nhds_zero
+#check Asymptotics.IsLittleO.trans_isBigO
+#check Real.isLittleO_rpow_exp_pos_mul_atTop
+#check Real.tendsto_exp_mul_div_rpow_atTop
+#check Real.isLittleO_rpow_rpow_atTop
+#check Finset.exists_max_image
+#check Finset.exists_maximal
+#check Filter.Tendsto.eventually_ne

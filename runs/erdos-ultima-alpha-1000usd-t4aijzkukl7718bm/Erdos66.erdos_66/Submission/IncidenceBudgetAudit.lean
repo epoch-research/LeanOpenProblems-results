@@ -1,0 +1,38 @@
+import Submission.BudgetInterceptScaleExplore
+
+/-! Axiom audit of the incidence-budget refinement. -/
+#print axioms Erdos66EdgeTripleBudget.Valid
+#print axioms Erdos66EdgeTripleBudget.tripleMass
+#print axioms Erdos66EdgeTripleBudget.sameEdge_class_card
+#print axioms Erdos66EdgeTripleBudget.different_class_card
+#print axioms Erdos66EdgeTripleBudget.different_two_classes_card
+#print axioms Erdos66EdgeTripleBudget.tripleMass_eq
+#print axioms Erdos66EdgeTripleBudget.tripleMass_lower
+#print axioms Erdos66InterceptIncidenceBudget.properEdges
+#print axioms Erdos66InterceptIncidenceBudget.rootIndicator
+#print axioms Erdos66InterceptIncidenceBudget.budgetAt
+#print axioms Erdos66InterceptIncidenceBudget.budget
+#print axioms Erdos66InterceptIncidenceBudget.properEdges_card
+#print axioms Erdos66InterceptIncidenceBudget.rootIndicator_sum
+#print axioms Erdos66InterceptIncidenceBudget.budgetAt_sum
+#print axioms Erdos66InterceptIncidenceBudget.budget_sum
+#print axioms Erdos66InterceptIncidenceBudget.exists_low_energy_budget
+#print axioms Erdos66InterceptBudgetPointwise.activeEdges
+#print axioms Erdos66InterceptBudgetPointwise.active_triples_le_budget
+#print axioms Erdos66InterceptBudgetPointwise.active_card_cubic
+#print axioms Erdos66InterceptBudgetPointwise.collision_curve_active_bound
+#print axioms Erdos66InterceptBudgetPointwise.excessSum
+#print axioms Erdos66InterceptBudgetPointwise.excessSum_cubic
+#print axioms Erdos66InterceptBudgetPointwise.collision_union_budget_bound
+#print axioms Erdos66InterceptBudgetPointwise.correction
+#print axioms Erdos66InterceptBudgetPointwise.correction_bound
+#print axioms Erdos66InterceptBudgetPointwise.correction_cubic
+#print axioms Erdos66InterceptBudgetPointwise.exists_low_energy_pointwise
+#print axioms Erdos66BudgetInterceptFlat.admissible_of_outside_opposite
+#print axioms Erdos66BudgetInterceptFlat.weighted_support_bound
+#print axioms Erdos66BudgetInterceptFlat.actual_error_bound
+#print axioms Erdos66BudgetInterceptFlat.exists_budget_anchored_graph
+#print axioms Erdos66BudgetInterceptScale.cubic_relative_bound
+#print axioms Erdos66BudgetInterceptScale.exists_relative_anchored_graph
+#print axioms Erdos66BudgetInterceptScale.full_prefix_fails_budget_condition
+#print axioms Erdos66BudgetInterceptScale.prime_prefix_fails_budget_condition

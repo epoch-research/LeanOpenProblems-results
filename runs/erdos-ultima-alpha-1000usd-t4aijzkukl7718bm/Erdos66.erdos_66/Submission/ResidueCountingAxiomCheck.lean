@@ -1,0 +1,5 @@
+import Submission.ResidueCountingExplore
+/-! Axiom checks for ordinary residue-counting consequences. -/
+#print axioms Erdos66TauberianGeneral.counting_profile_of_generating_profile
+#print axioms Erdos66ResidueCounting.witness_residue_counting_profile
+#print axioms Erdos66ResidueCounting.witness_ordinary_residue_equidistribution

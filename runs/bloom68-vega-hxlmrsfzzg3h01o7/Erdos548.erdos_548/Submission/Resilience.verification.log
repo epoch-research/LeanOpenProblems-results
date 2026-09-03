@@ -1,0 +1,113 @@
+$ lake env lean -o .lake/build/lib/lean/Submission/Auxiliary.olean -i .lake/build/lib/lean/Submission/Auxiliary.ilean Submission/Auxiliary.lean
+Exit code: 0
+'Erdos548.Auxiliary.ncard_edgeSet_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Auxiliary.isContained_sum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Auxiliary.doubled_threshold_of_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Auxiliary.plusOneStatement_iff_strictThresholdStatement' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Auxiliary.strictThreshold_of_k_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Auxiliary.plusOneThreshold_of_k_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -o .lake/build/lib/lean/Submission/Critical.olean -i .lake/build/lib/lean/Submission/Critical.ilean Submission/Critical.lean
+Exit code: 0
+'Erdos548.Critical.exists_adj_not_mem_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.isContained_of_subsingleton' does not depend on any axioms
+'Erdos548.Critical.isContained_of_isTree_of_card_le_degree_add_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_minDegree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.fin_tree_isContained_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_edgeSet_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_induce_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_of_isEmpty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.nonempty_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_induced_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_induced_critical_of_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.incidentEdges_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.image_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.edgeSet_diff_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_induce_compl_add_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.proper_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.incidentEdges_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.neighborSet_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.two_mul_neighborSet_ncard_ge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.IsInducedCritical.neighborSet_ncard_ge_ceil' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.ncard_neighborSet_eq_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.two_mul_minDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.minDegree_ge_ceil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.minDegree_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_degree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.maxDegree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_neighborSet_ncard_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.maxDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_critical_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -o .lake/build/lib/lean/Submission/Resilience.olean -i .lake/build/lib/lean/Submission/Resilience.ilean Submission/Resilience.lean
+Exit code: 0
+'Erdos548.Resilience.D_eq_two_mul_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.ncard_deleteEdges_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.D_deleteEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.excess_deleteEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.excess_deleteEdges_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.card_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.card_ge_after_deletion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.TreeUniversal.trans' does not depend on any axioms
+'Erdos548.Resilience.robustUniversal_of_strictAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.incidentEdges_eq_internal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.connected_of_inducedCritical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.uniformCriticalR2_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.fin_three_tree_missing_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.fin_three_tree_isContained_of_two_neighbors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Resilience.strictAt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.strictAt_of_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.strictAt_of_uniformCriticalR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.strictAt_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.strictThresholdStatement_of_uniformCriticalR2' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Resilience.strictThresholdStatement_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.plusOneStatement_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Resilience.erdos_548_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+$ lake env lean -o .lake/build/lib/lean/Submission/ResilienceVerification.olean -i .lake/build/lib/lean/Submission/ResilienceVerification.ilean Submission/ResilienceVerification.lean
+Exit code: 0
+Verified: neither conjectural declaration from Spec is in the environment.
+
+$ lake env lean --deps Submission/Resilience.lean
+Exit code: 0
+/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean
+/workspace/leanproject/.lake/build/lib/lean/Submission/Auxiliary.olean
+/workspace/leanproject/.lake/build/lib/lean/Submission/Critical.olean
+
+$ lake env lean --version
+Exit code: 0
+Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+
+Static audits: PASS
+All 22 theorem axiom sets are allowed.
+All 11 boundary/interface examples compile.
+Both conjectural Spec declarations are absent from the environment.
+No proof placeholders, native_decide, or new axiom declarations in the new Lean files.
+All protected source hashes are unchanged.

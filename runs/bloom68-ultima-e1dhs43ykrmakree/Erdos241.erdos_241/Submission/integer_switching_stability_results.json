@@ -1,0 +1,1887 @@
+{
+  "characteristic_three_corner": [
+    {
+      "degenerate_multiplier_forced_square": true,
+      "irreducible_depressed_cubics": 2,
+      "q": 3
+    },
+    {
+      "degenerate_multiplier_forced_square": true,
+      "irreducible_depressed_cubics": 24,
+      "q": 9
+    },
+    {
+      "degenerate_multiplier_forced_square": true,
+      "irreducible_depressed_cubics": 234,
+      "q": 27
+    },
+    {
+      "degenerate_multiplier_forced_square": true,
+      "irreducible_depressed_cubics": 2160,
+      "q": 81
+    }
+  ],
+  "deep_discriminant_checks": [
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + 2*X^2 + 1",
+      "q": 3,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "X",
+      "disc_D_degree": 4,
+      "f": "X^3 + 2*X^2 + 1",
+      "q": 3,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          10,
+          8,
+          1
+        ]
+      ],
+      "W": "X^2 + X",
+      "disc_D_degree": 4,
+      "f": "X^3 + 2*X^2 + 1",
+      "q": 3,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2 + 2*X + 2",
+      "disc_D_degree": 3,
+      "f": "X^3 + 2*X^2 + 1",
+      "q": 3,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 5,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 5,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "4*X^2 + X",
+      "disc_D_degree": 4,
+      "f": "X^3 + X^2 + 1",
+      "q": 5,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2 + 2*X + 3",
+      "disc_D_degree": 4,
+      "f": "X^3 + X^2 + 1",
+      "q": 5,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "4*X^2 + 4*X + 4",
+      "disc_D_degree": 4,
+      "f": "X^3 + X^2 + 1",
+      "q": 5,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "6*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "4*X^2 + 6*X + 1",
+      "disc_D_degree": 4,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2 + 4*X + 3",
+      "disc_D_degree": 4,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2 + 3*X + 5",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2 + 6*X + 6",
+      "disc_D_degree": 3,
+      "f": "X^3 + X^2 + 1",
+      "q": 7,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "s*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(2*s + 1)*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*s*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(2*s + 2)*X^2 + s",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2 + s + 1",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2 + s*X + 2",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(s + 2)*X^2 + (s + 1)*X + 2*s",
+      "disc_D_degree": 3,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "s*X^2 + (s + 1)*X + 2*s + 2",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(s + 1)*X^2 + 2*X + s + 2",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(s + 1)*X^2 + (2*s + 1)*X + 1",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "(2*s + 1)*X^2 + X + 1",
+      "disc_D_degree": 4,
+      "f": "X^3 + s*X^2 + s",
+      "q": 9,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "6*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "7*X^2",
+      "disc_D_degree": 3,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2 + 8*X",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2 + 5*X + 1",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "10*X^2 + X + 2",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "10*X^2 + 5*X + 3",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "7*X^2 + 4*X + 4",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "9*X^2 + X + 5",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "4*X^2 + 10*X + 5",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "6*X^2 + 6*X + 6",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2 + 3*X + 7",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "3*X^2 + 10*X + 7",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "6*X^2 + 5*X + 8",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "6*X^2 + 2*X + 9",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "5*X^2 + 10",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "2*X^2 + 8*X + 10",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    },
+    {
+      "Delta_factor_bidegrees": [
+        [
+          12,
+          8,
+          1
+        ]
+      ],
+      "W": "10*X^2 + 10*X + 10",
+      "disc_D_degree": 4,
+      "f": "X^3 + 4*X^2 + 1",
+      "q": 11,
+      "root_of_f_specializations": true
+    }
+  ],
+  "finite_field_counts": {
+    "field_multiplier_cases": 3784,
+    "generic_families": 3784,
+    "good_fibers": 808,
+    "good_incidences": 3232,
+    "multipliers_constant": 100,
+    "multipliers_linear": 536,
+    "multipliers_monic_quadratic": 536,
+    "multipliers_nonmonic_quadratic": 2612,
+    "split_distinct_fibers": 1656
+  },
+  "globally_selected_but_locally_absent_examples": [
+    {
+      "T": 0,
+      "after_moving": [
+        327,
+        351,
+        381,
+        424,
+        807
+      ],
+      "all_five_parameters_globally_selected": true,
+      "before_moving": [
+        327,
+        351,
+        381,
+        424,
+        443
+      ],
+      "local_interval": [
+        327,
+        443
+      ],
+      "locally_absent_root_count": 1,
+      "m": 364,
+      "moved_from": 443,
+      "moved_to": 807,
+      "q": 9,
+      "repeated_triples_verified": 35
+    },
+    {
+      "T": 364,
+      "after_moving": [
+        327,
+        351,
+        381,
+        424,
+        807
+      ],
+      "all_five_parameters_globally_selected": true,
+      "before_moving": [
+        327,
+        351,
+        381,
+        424,
+        443
+      ],
+      "local_interval": [
+        327,
+        443
+      ],
+      "locally_absent_root_count": 1,
+      "m": 364,
+      "moved_from": 443,
+      "moved_to": 807,
+      "q": 9,
+      "repeated_triples_verified": 35
+    },
+    {
+      "T": -222,
+      "after_moving": [
+        387,
+        432,
+        539,
+        607,
+        1075
+      ],
+      "all_five_parameters_globally_selected": true,
+      "before_moving": [
+        387,
+        410,
+        432,
+        539,
+        607
+      ],
+      "local_interval": [
+        387,
+        607
+      ],
+      "locally_absent_root_count": 1,
+      "m": 665,
+      "moved_from": 410,
+      "moved_to": 1075,
+      "q": 11,
+      "repeated_triples_verified": 35
+    }
+  ],
+  "integer_B3_but_not_cyclic_examples": [
+    {
+      "T": 0,
+      "W": "X^2 + (s + 2)*X + s",
+      "generator_exponent": 11,
+      "integer_set": [
+        17,
+        104,
+        125,
+        200,
+        327
+      ],
+      "left_triple": [
+        104,
+        200,
+        327
+      ],
+      "m": 364,
+      "q": 9,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        125,
+        125,
+        17
+      ],
+      "winding": 1
+    },
+    {
+      "T": 0,
+      "W": "6*X^2 + 5*X + 8",
+      "generator_exponent": 1,
+      "integer_set": [
+        96,
+        397,
+        403,
+        607,
+        664
+      ],
+      "left_triple": [
+        403,
+        664,
+        397
+      ],
+      "m": 665,
+      "q": 11,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        96,
+        96,
+        607
+      ],
+      "winding": 1
+    },
+    {
+      "T": 0,
+      "W": "6*X^2 + X + 10",
+      "generator_exponent": 11,
+      "integer_set": [
+        57,
+        59,
+        278,
+        317,
+        371
+      ],
+      "left_triple": [
+        57,
+        278,
+        59
+      ],
+      "m": 665,
+      "q": 11,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        371,
+        371,
+        317
+      ],
+      "winding": -1
+    },
+    {
+      "T": 0,
+      "W": "X + 5",
+      "generator_exponent": 1329,
+      "integer_set": [
+        10,
+        32,
+        267,
+        503,
+        568
+      ],
+      "left_triple": [
+        32,
+        10,
+        267
+      ],
+      "m": 665,
+      "q": 11,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        568,
+        568,
+        503
+      ],
+      "winding": -2
+    },
+    {
+      "T": 0,
+      "W": "2*X^2 + 4*X",
+      "generator_exponent": 1,
+      "integer_set": [
+        402,
+        929,
+        1434,
+        1668,
+        1885
+      ],
+      "left_triple": [
+        1434,
+        929,
+        402
+      ],
+      "m": 2456,
+      "q": 17,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        1668,
+        1668,
+        1885
+      ],
+      "winding": -1
+    },
+    {
+      "T": 0,
+      "W": "2*X^2 + 4*X",
+      "generator_exponent": 1,
+      "integer_set": [
+        647,
+        929,
+        1234,
+        1434,
+        2293
+      ],
+      "left_triple": [
+        1434,
+        1234,
+        2293
+      ],
+      "m": 2456,
+      "q": 17,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        929,
+        929,
+        647
+      ],
+      "winding": 1
+    },
+    {
+      "T": 0,
+      "W": "2*X^2 + 4*X",
+      "generator_exponent": 1,
+      "integer_set": [
+        348,
+        395,
+        424,
+        1811,
+        2293
+      ],
+      "left_triple": [
+        1811,
+        395,
+        348
+      ],
+      "m": 2456,
+      "q": 17,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        2293,
+        2293,
+        424
+      ],
+      "winding": -1
+    },
+    {
+      "T": 0,
+      "W": "8*X^2 + 4*X + 8",
+      "generator_exponent": 5,
+      "integer_set": [
+        533,
+        677,
+        738,
+        1316,
+        2327
+      ],
+      "left_triple": [
+        1316,
+        738,
+        677
+      ],
+      "m": 2456,
+      "q": 17,
+      "repeated_triples_verified": 35,
+      "right_triple": [
+        2327,
+        2327,
+        533
+      ],
+      "winding": -1
+    }
+  ],
+  "protected_hashes": {
+    "Reductions.lean": "5d658eaf4fab8027bf0f5c86dcb155ad0b761dd420e9f2041a1aaa7047868e40",
+    "SignedSums.lean": "650f67d09c073c1812b3e7ee7f020ad76750ae9b6b965dcbcf149637277643cc",
+    "Spec.lean": "fa08ffd0daf6d26c138eb7da5a4186d0abd9155428d0c4528526a570b398d860"
+  },
+  "protected_unchanged": true,
+  "real_kernel_checks": {
+    "middle_ratio_monotone": true,
+    "periodic_capacity_mesh_checks": 385,
+    "pointwise_imbalance_identity": true,
+    "short_arc_kernel_integral": "11/24",
+    "span_envelope_endpoints": [
+      "27/32",
+      "1"
+    ]
+  },
+  "scope": "Exact algebra and winding checks; analytic uniform theorem proved in the note, not inferred from this audit.",
+  "seconds": 16.814,
+  "universal": {
+    "cubic_leading_coefficient": true,
+    "disc_a_identity": true,
+    "exceptional_multiplier_identity": true
+  },
+  "winding_cases": [
+    {
+      "T": -21,
+      "W": "3*X^2 + X + 2",
+      "generator_exponent": 1,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "3*X^2 + 2*X + 1",
+      "generator_exponent": 1,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "4*X + 3",
+      "generator_exponent": 1,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 15,
+      "W": "4*X^2 + 1",
+      "generator_exponent": 1,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 62,
+      "W": "3*X^2 + 2*X + 1",
+      "generator_exponent": 1,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -21,
+      "W": "2*X^2 + 3*X + 3",
+      "generator_exponent": 5,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "4*X + 1",
+      "generator_exponent": 5,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "2*X^2 + 4*X + 4",
+      "generator_exponent": 5,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 15,
+      "W": "2*X^2 + X + 2",
+      "generator_exponent": 5,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 62,
+      "W": "4*X + 1",
+      "generator_exponent": 5,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -21,
+      "W": "X^2 + 4*X",
+      "generator_exponent": 7,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "4*X^2 + 2*X",
+      "generator_exponent": 7,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "3*X^2 + 1",
+      "generator_exponent": 7,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 15,
+      "W": "2*X^2 + 2*X",
+      "generator_exponent": 7,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 62,
+      "W": "4*X^2 + 2*X",
+      "generator_exponent": 7,
+      "q": 5,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -57,
+      "W": "6*X^2 + 2*X + 1",
+      "generator_exponent": 1,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "5*X^2 + 4*X + 2",
+      "generator_exponent": 1,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "X + 3",
+      "generator_exponent": 1,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 42,
+      "W": "X + 4",
+      "generator_exponent": 1,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 171,
+      "W": "5*X^2 + 4*X + 2",
+      "generator_exponent": 1,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -57,
+      "W": "5*X^2 + 5*X + 3",
+      "generator_exponent": 5,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "6*X^2 + 6*X + 5",
+      "generator_exponent": 5,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "4*X^2 + 6*X + 6",
+      "generator_exponent": 5,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1
+      }
+    },
+    {
+      "T": 42,
+      "W": "X^2 + X + 1",
+      "generator_exponent": 5,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 171,
+      "W": "6*X^2 + 6*X + 5",
+      "generator_exponent": 5,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1
+      }
+    },
+    {
+      "T": -57,
+      "W": "2*X^2 + 4*X + 3",
+      "generator_exponent": 7,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "4*X^2 + X + 6",
+      "generator_exponent": 7,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "3*X^2 + 2*X",
+      "generator_exponent": 7,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1
+      }
+    },
+    {
+      "T": 42,
+      "W": "3*X^2 + 2*X + 1",
+      "generator_exponent": 7,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 171,
+      "W": "4*X^2 + X + 6",
+      "generator_exponent": 7,
+      "q": 7,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -122,
+      "W": "(s + 1)*X^2 + (2*s + 1)*X + s + 1",
+      "generator_exponent": 1,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "2*s*X^2 + s*X + 2*s + 2",
+      "generator_exponent": 1,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "(2*s + 1)*X^2 + (2*s + 2)*X + s",
+      "generator_exponent": 1,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {
+        "1": 1
+      }
+    },
+    {
+      "T": 91,
+      "W": "(s + 2)*X^2 + (2*s + 1)*X + 1",
+      "generator_exponent": 1,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 364,
+      "W": "2*s*X^2 + s*X + 2*s + 2",
+      "generator_exponent": 1,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -122,
+      "W": "s*X^2 + s*X + s + 1",
+      "generator_exponent": 5,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "(s + 2)*X^2 + (s + 1)*X + s + 2",
+      "generator_exponent": 5,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 1,
+      "W": "s*X^2 + (2*s + 2)*X + 2*s + 1",
+      "generator_exponent": 5,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 91,
+      "W": "s*X^2 + 2*X + s",
+      "generator_exponent": 5,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 364,
+      "W": "(s + 2)*X^2 + (s + 1)*X + s + 2",
+      "generator_exponent": 5,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": -122,
+      "W": "(2*s + 2)*X^2 + X + s + 2",
+      "generator_exponent": 11,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "X^2 + (s + 2)*X + s",
+      "generator_exponent": 11,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1,
+        "1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "2*s*X^2 + (2*s + 2)*X + s + 1",
+      "generator_exponent": 11,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1
+      }
+    },
+    {
+      "T": 91,
+      "W": "(2*s + 2)*X^2 + 2*s*X + s + 2",
+      "generator_exponent": 11,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 364,
+      "W": "X^2 + (s + 2)*X + s",
+      "generator_exponent": 11,
+      "q": 9,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "2": 1
+      }
+    },
+    {
+      "T": -222,
+      "W": "4*X^2 + 8*X + 2",
+      "generator_exponent": 1,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "0": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "6*X^2 + 5*X + 8",
+      "generator_exponent": 1,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "X + 5",
+      "generator_exponent": 1,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "2": 1
+      }
+    },
+    {
+      "T": 166,
+      "W": "4*X",
+      "generator_exponent": 1,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 665,
+      "W": "6*X^2 + 5*X + 8",
+      "generator_exponent": 1,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "2": 1
+      }
+    },
+    {
+      "T": -222,
+      "W": "3*X^2 + 7*X + 6",
+      "generator_exponent": 11,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 0,
+      "W": "6*X^2 + X + 10",
+      "generator_exponent": 11,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "0": 2
+      }
+    },
+    {
+      "T": 1,
+      "W": "10*X^2 + 10*X + 4",
+      "generator_exponent": 11,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "1": 1
+      }
+    },
+    {
+      "T": 166,
+      "W": "7*X^2 + 7*X + 7",
+      "generator_exponent": 11,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1,
+        "1": 1
+      }
+    },
+    {
+      "T": 665,
+      "W": "6*X^2 + X + 10",
+      "generator_exponent": 11,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1,
+        "1": 2
+      }
+    },
+    {
+      "T": -222,
+      "W": "6*X^2 + 2*X + 8",
+      "generator_exponent": 1329,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "X + 5",
+      "generator_exponent": 1329,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "6*X^2 + 5*X + 8",
+      "generator_exponent": 1329,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1
+      }
+    },
+    {
+      "T": 166,
+      "W": "8*X^2 + 10*X",
+      "generator_exponent": 1329,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {}
+    },
+    {
+      "T": 665,
+      "W": "X + 5",
+      "generator_exponent": 1329,
+      "q": 11,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1
+      }
+    },
+    {
+      "T": -819,
+      "W": "13*X^2 + 8*X + 12",
+      "generator_exponent": 1,
+      "q": 17,
+      "short_window_fibers": 1,
+      "windings": {
+        "-1": 1,
+        "0": 2,
+        "1": 2
+      }
+    },
+    {
+      "T": 0,
+      "W": "2*X^2 + 4*X",
+      "generator_exponent": 1,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 2,
+        "0": 2,
+        "1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "10*X^2 + X + 5",
+      "generator_exponent": 1,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 4,
+        "1": 1
+      }
+    },
+    {
+      "T": 614,
+      "W": "9*X^2 + X",
+      "generator_exponent": 1,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "0": 1
+      }
+    },
+    {
+      "T": 2456,
+      "W": "2*X^2 + 4*X",
+      "generator_exponent": 1,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 2,
+        "-1": 2,
+        "0": 1
+      }
+    },
+    {
+      "T": -819,
+      "W": "7*X^2 + 5",
+      "generator_exponent": 5,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 2,
+        "0": 2,
+        "1": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "8*X^2 + 4*X + 8",
+      "generator_exponent": 5,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 2,
+        "1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "11*X^2 + 3*X + 16",
+      "generator_exponent": 5,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "0": 2
+      }
+    },
+    {
+      "T": 614,
+      "W": "2*X^2 + X + 2",
+      "generator_exponent": 5,
+      "q": 17,
+      "short_window_fibers": 1,
+      "windings": {
+        "-1": 1,
+        "0": 4
+      }
+    },
+    {
+      "T": 2456,
+      "W": "8*X^2 + 4*X + 8",
+      "generator_exponent": 5,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 2,
+        "0": 1
+      }
+    },
+    {
+      "T": -819,
+      "W": "10*X + 6",
+      "generator_exponent": 7,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "1": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "14*X^2 + 5*X + 12",
+      "generator_exponent": 7,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 2,
+        "1": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "10*X^2 + 4*X + 15",
+      "generator_exponent": 7,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "0": 2,
+        "1": 2
+      }
+    },
+    {
+      "T": 614,
+      "W": "5*X^2 + 3*X + 14",
+      "generator_exponent": 7,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 1,
+        "0": 1
+      }
+    },
+    {
+      "T": 2456,
+      "W": "14*X^2 + 5*X + 12",
+      "generator_exponent": 7,
+      "q": 17,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 2,
+        "0": 1
+      }
+    },
+    {
+      "T": -4965,
+      "W": "3*X^2 + 24*X + 19",
+      "generator_exponent": 1,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 3,
+        "0": 7,
+        "1": 4,
+        "2": 2
+      }
+    },
+    {
+      "T": 0,
+      "W": "13*X^2 + 11*X + 10",
+      "generator_exponent": 1,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 3,
+        "0": 3,
+        "1": 6
+      }
+    },
+    {
+      "T": 1,
+      "W": "19*X^2 + 18*X + 23",
+      "generator_exponent": 1,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 3,
+        "0": 4,
+        "1": 4
+      }
+    },
+    {
+      "T": 3723,
+      "W": "2*X^2 + 16*X + 8",
+      "generator_exponent": 1,
+      "q": 31,
+      "short_window_fibers": 1,
+      "windings": {
+        "-1": 5,
+        "0": 11,
+        "1": 5
+      }
+    },
+    {
+      "T": 14895,
+      "W": "13*X^2 + 11*X + 10",
+      "generator_exponent": 1,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 2,
+        "-1": 3,
+        "0": 6,
+        "2": 1
+      }
+    },
+    {
+      "T": -4965,
+      "W": "14*X^2 + 9*X + 24",
+      "generator_exponent": 7,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 5,
+        "0": 6,
+        "1": 2
+      }
+    },
+    {
+      "T": 0,
+      "W": "9*X^2 + 8*X + 11",
+      "generator_exponent": 7,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 5,
+        "0": 5,
+        "1": 2
+      }
+    },
+    {
+      "T": 1,
+      "W": "11*X^2 + 8*X + 13",
+      "generator_exponent": 7,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 4,
+        "0": 3,
+        "1": 9
+      }
+    },
+    {
+      "T": 3723,
+      "W": "21*X^2 + 4*X + 5",
+      "generator_exponent": 7,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 4,
+        "0": 4
+      }
+    },
+    {
+      "T": 14895,
+      "W": "9*X^2 + 8*X + 11",
+      "generator_exponent": 7,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 4,
+        "-1": 5,
+        "0": 3
+      }
+    },
+    {
+      "T": -4965,
+      "W": "14*X^2 + 16*X + 25",
+      "generator_exponent": 11,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 6,
+        "0": 5,
+        "1": 8,
+        "2": 1
+      }
+    },
+    {
+      "T": 0,
+      "W": "8*X^2 + 18*X + 1",
+      "generator_exponent": 11,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-1": 5,
+        "0": 5,
+        "1": 3,
+        "2": 1
+      }
+    },
+    {
+      "T": 1,
+      "W": "11*X^2 + 23*X + 26",
+      "generator_exponent": 11,
+      "q": 31,
+      "short_window_fibers": 2,
+      "windings": {
+        "-1": 4,
+        "0": 7,
+        "1": 5
+      }
+    },
+    {
+      "T": 3723,
+      "W": "30*X^2 + 7*X + 28",
+      "generator_exponent": 11,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 2,
+        "-1": 4,
+        "0": 6,
+        "1": 1
+      }
+    },
+    {
+      "T": 14895,
+      "W": "8*X^2 + 18*X + 1",
+      "generator_exponent": 11,
+      "q": 31,
+      "short_window_fibers": 0,
+      "windings": {
+        "-2": 5,
+        "-1": 4,
+        "0": 2,
+        "1": 2,
+        "2": 1
+      }
+    }
+  ],
+  "winding_counts": {
+    "models": 90,
+    "short_circle_arc_checks": 10,
+    "short_raw_window_checks": 5,
+    "winding_identities": 294
+  }
+}

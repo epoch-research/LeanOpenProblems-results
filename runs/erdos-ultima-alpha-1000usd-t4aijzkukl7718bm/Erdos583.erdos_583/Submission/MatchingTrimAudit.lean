@@ -1,0 +1,12 @@
+import Submission.MatchingTrim
+/-! Axiom audit for quantitative matching trimming. -/
+#print axioms Erdos583MatchingTrimDevelopment.spanningCoe_acyclic_of_coe
+#print axioms Erdos583MatchingTrimDevelopment.path_spanningCoe_isAcyclic
+#print axioms Erdos583MatchingTrimDevelopment.restrict_path_partition
+#print axioms Erdos583MatchingTrimDevelopment.trim_odd_card
+#print axioms Erdos583MatchingTrimDevelopment.trim_path_partition
+#print axioms Erdos583MatchingTrimDevelopment.trim_decomposition
+#print axioms Erdos583MatchingTrimDevelopment.trim_decomposition_of_terminal_weight
+#print axioms Erdos583MatchingTrimDevelopment.terminalWeight_le_twice_card
+#print axioms Erdos583MatchingTrimDevelopment.exists_terminal_weight_maximum
+#print axioms Erdos583MatchingTrimDevelopment.gallai_of_matching_terminal_weight

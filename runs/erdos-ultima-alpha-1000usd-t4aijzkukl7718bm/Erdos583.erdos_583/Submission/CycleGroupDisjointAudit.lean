@@ -1,0 +1,7 @@
+import Submission.CycleGroupDisjoint
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583CycleGroupDisjointDevelopment.selectedGraph_eq_of_parts
+#print axioms Erdos583CycleGroupDisjointDevelopment.selectedGraph_mono
+#print axioms Erdos583CycleGroupDisjointDevelopment.tight_group_cycle_closed
+#print axioms Erdos583CycleGroupDisjointDevelopment.tight_group_cycle_subset
+#print axioms Erdos583CycleGroupDisjointDevelopment.tight_normal_group_disjoint_cycle

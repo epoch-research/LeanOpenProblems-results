@@ -1,0 +1,26 @@
+Finite verification; all logarithms are natural.
+frozen smooth laws: exact invariance and conditioned gap-p identities checked at X=5000, y=13, z=71
+calibration subtraction with fixed, nonconstant prescribed marginals
+  nonzero current=0.00020000; calibrated increment=-0.001837003503
+  antisymmetric production=0.000000020582; symmetric mixture cost=0.001837024085
+  consistent-reference posterior KL=0.000000020582 (nonnegative)
+prime-copy model p=(2, 3, 5, 7), gamma=1/2
+  KL joint=0.549306144334, sum one-prime KL=1.042943209054, base=0.549306144334
+  JS joint=0.130812035941, sum one-prime JS=0.249567873789, base=0.130812035941
+  conditional KL increments=[0.549306144334, 0.0, -0.0, 0.0]
+  log-weighted KL: single=1.068623209952, chain=0.380750005209
+prime-copy model p=(3, 5, 7, 11), gamma=1/2
+  KL joint=0.387238788831, sum one-prime KL=0.548123235048, base=0.549306144334
+  JS joint=0.092669435128, sum one-prime JS=0.131784678711, base=0.130812035941
+  conditional KL increments=[0.268239652072, 0.067007335755, 0.034436137156, 0.017555663847]
+  log-weighted KL: single=0.818525335006, chain=0.511641796787
+prime-copy model p=(11, 13, 17, 19), gamma=1/2
+  KL joint=0.147148408824, sum one-prime KL=0.164471648455, base=0.549306144334
+  JS joint=0.035141858297, sum one-prime JS=0.039297666616, base=0.130812035941
+  conditional KL increments=[0.054486170328, 0.040934902687, 0.028203494329, 0.023523841479]
+  log-weighted KL: single=0.433447104002, chain=0.384819114883
+nonuniform full-support extension: arbitrary positive marginal and exact shared copies verified
+independent-flip calibration: zero-current copies acquire exactly (m-1) log 2 entropy
+prefix reversal-JS with EXACT constant marginals at lengths 12,18,24:
+  [0.130812035941, 0.0, 0.031583942402]
+PASS: exact probability/marginal/copy checks and numerical KL/JS identities.

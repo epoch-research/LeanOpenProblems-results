@@ -1,0 +1,15 @@
+'TreeExactKernelBounds.degree_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.odd_card_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.exists_exact_of_degree_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.exists_kernel_odd_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.extend_kernel_copy_of_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.extend_kernel_copy_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.isContained_of_degree_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.odd_card_lower_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.exact_of_excess_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.excess_add_two_eq_leaves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.exists_exact_of_leaves_le_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Main file compile exit status: 0
+'TreeExactKernelBounds.isContained_of_degree_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelBounds.exists_exact_of_leaves_le_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Independent import smoke-check exit status: 0

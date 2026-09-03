@@ -1,0 +1,8 @@
+import Submission.GuardedPathRestoration
+
+/-! Exact axiom audit for guarded restoration and critical neighborhoods. -/
+#print axioms Erdos583GuardedPathRestorationDevelopment.delete_cons_edge_restoration
+#print axioms Erdos583GuardedPathRestorationDevelopment.restore_guarded_path_tracked
+#print axioms Erdos583GuardedPathRestorationDevelopment.sharp_three_even_guarded_path
+#print axioms Erdos583GuardedPathRestorationDevelopment.shortest_path_guard_of_first_nonadjacent
+#print axioms Erdos583GuardedPathRestorationDevelopment.sharp_three_even_common_neighbor_avoidance

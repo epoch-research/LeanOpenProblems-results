@@ -1,0 +1,16 @@
+import Submission.EndpointCompositeGain
+
+/-! Axiom audit for the endpoint-correction refinement. -/
+
+#print axioms Erdos821.AnalyticSieve.exists_totient_ratio_power_bound
+#print axioms Erdos821.AnalyticSieve.eventually_totient_ratio_box
+#print axioms Erdos821.AnalyticSieve.eventually_endpoint_pair_at
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_composite_cofactor_endpoint
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_endpoint
+#print axioms Erdos821.composite_second_sieve_rejected_weight_endpoint
+#print axioms Erdos821.endpoint_strict_structured_rough_count_le
+#print axioms Erdos821.endpoint_structured_coefficient_bound
+#print axioms Erdos821.eventually_endpoint_structured_smooth_family
+#print axioms Erdos821.infinite_g_gt_endpoint_composite_uniform
+#print axioms Erdos821.erdos_821_endpoint_composite_range
+#print axioms Erdos821.endpoint_composite_threshold_gt_even_threshold

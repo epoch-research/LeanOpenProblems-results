@@ -1,0 +1,11 @@
+import Submission.NearScalePrefixObstructionExplore
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.tendsto_log_pow_div_rpow_atTop
+#check Real.tendsto_pow_log_div_pow_atTop
+#check Real.tendsto_log_div_rpow_atTop
+#check Nat.ceil_lt_add_one
+#check Nat.le_ceil
+#check Nat.ceil_le
+#check tendsto_natCast_atTop_atTop
+#check Filter.Tendsto.const_div_atTop
+#check Asymptotics.IsLittleO.natCast_atTop

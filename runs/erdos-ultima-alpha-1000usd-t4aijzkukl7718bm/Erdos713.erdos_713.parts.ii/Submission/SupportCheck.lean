@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+import Submission.QuadraticSupports
+#check Nat.floor_le
+#check Nat.le_floor
+#check Nat.lt_floor_add_one
+#check Nat.floor_lt
+#check Asymptotics.IsEquivalent.comp_tendsto
+#check Filter.Tendsto.const_mul_atTop
+#check Real.rpow_natCast
+#check Real.one_lt_rpow
+#check Real.rpow_lt_rpow_of_exponent_lt
+#check Real.rpow_mul
+#check Real.mul_rpow
+#check Filter.Tendsto.const_mul
+#check Filter.Tendsto.mul_const
+#check Filter.Eventually.filter_mono

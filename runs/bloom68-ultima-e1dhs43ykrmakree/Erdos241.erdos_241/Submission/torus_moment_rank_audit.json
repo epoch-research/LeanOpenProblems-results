@@ -1,0 +1,127 @@
+{
+  "scope": "Exact finite matrix checks; no asymptotic proof or disproof",
+  "formal": [
+    {
+      "n": 2,
+      "d": 3,
+      "H": 4,
+      "formal_root_shift_rank": 2,
+      "formal_fisher_shift_rank": 3,
+      "root_aggregate_signature": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "n": 3,
+      "d": 7,
+      "H": 12,
+      "formal_root_shift_rank": 4,
+      "formal_fisher_shift_rank": 8,
+      "root_aggregate_signature": [
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "n": 4,
+      "d": 13,
+      "H": 28,
+      "formal_root_shift_rank": 6,
+      "formal_fisher_shift_rank": 16,
+      "root_aggregate_signature": [
+        13,
+        15,
+        11
+      ]
+    },
+    {
+      "n": 5,
+      "d": 21,
+      "H": 55,
+      "formal_root_shift_rank": 8,
+      "formal_fisher_shift_rank": 27,
+      "root_aggregate_signature": [
+        29,
+        34,
+        21
+      ]
+    },
+    {
+      "n": 6,
+      "d": 31,
+      "H": 96,
+      "formal_root_shift_rank": 10,
+      "formal_fisher_shift_rank": 41,
+      "root_aggregate_signature": [
+        56,
+        65,
+        34
+      ]
+    }
+  ],
+  "actual_Z13": {
+    "A": [
+      0,
+      1,
+      4
+    ],
+    "M": 13,
+    "triple_sums": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      12
+    ],
+    "Fisher_frequencies": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "root_frequencies": [
+      0,
+      1,
+      3,
+      4,
+      9,
+      10,
+      12
+    ],
+    "Eplus": [
+      2,
+      5,
+      7,
+      8,
+      11
+    ],
+    "Eminus": [
+      2,
+      5,
+      6,
+      8,
+      11
+    ],
+    "actual_shift_rank": 11,
+    "actual_self_commutator_rank": 2,
+    "actual_aggregate_commutator_rank": 5,
+    "ambient_complement": 1
+  },
+  "status": "PASS"
+}

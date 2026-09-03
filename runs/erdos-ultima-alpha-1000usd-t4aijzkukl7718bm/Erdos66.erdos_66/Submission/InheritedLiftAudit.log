@@ -1,0 +1,49 @@
+'Erdos66ParabolaOriginInheritance.oppositePairs_eq_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParabolaOriginInheritance.parabola_root_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParabolaOriginInheritance.crossGraphCount_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParabolaOriginInheritance.parabola_origin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParabolaOriginInheritance.origin_error_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.pairCount_addEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.mem_sheared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.first_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.sheared_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.encoded_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ShearedParabolaPrefix.encoded_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InheritedOriginLift.translated_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InheritedOriginLift.pairCount_translated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InheritedOriginLift.exists_nonzero_low_energy_translate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InheritedOriginLift.nonzero_lift_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InheritedOriginLift.exists_inherited_origin_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.mem_shiftSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.pairCount_shiftSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.pairCount_insert_left_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.pairCount_erase_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.pairCount_erase_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.faithfulLift_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.faithfulLift_count_comparison' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.encodePlane_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.faithful_encoded_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.faithful_encoded_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrefixFaithfulParabolaLift.exists_prefix_faithful_lift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66FaithfulParabolaCardinality.punctured_parabola_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FaithfulParabolaCardinality.faithfulLift_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FaithfulParabolaCardinality.encodePlane_injective' depends on axioms: [propext]
+'Erdos66FaithfulParabolaCardinality.encodePlane_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FaithfulParabolaCardinality.encodePlane_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FaithfulParabolaCardinality.faithful_encoded_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticPrefixMass.eventual_no_linear_mass_amplification' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66FullFaithfulLiftObstruction.prefixParameters_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FullFaithfulLiftObstruction.full_lift_forces_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FullFaithfulLiftObstruction.eventually_no_full_faithful_lift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

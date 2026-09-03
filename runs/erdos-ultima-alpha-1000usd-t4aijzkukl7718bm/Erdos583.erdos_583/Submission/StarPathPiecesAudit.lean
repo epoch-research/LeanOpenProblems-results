@@ -1,0 +1,26 @@
+import Submission.StarPathPieces
+
+/-! Vertex-star path splitting audit. -/
+#print axioms Erdos583StarPathPiecesDevelopment.half
+#print axioms Erdos583StarPathPiecesDevelopment.half_nil_of_not_mem
+#print axioms Erdos583StarPathPiecesDevelopment.half_cover
+#print axioms Erdos583StarPathPiecesDevelopment.half_edges_subset
+#print axioms Erdos583StarPathPiecesDevelopment.half_disjoint
+#print axioms Erdos583StarPathPiecesDevelopment.tail_avoids_start
+#print axioms Erdos583StarPathPiecesDevelopment.head_tail_cover
+#print axioms Erdos583StarPathPiecesDevelopment.head_edge_mem
+#print axioms Erdos583StarPathPiecesDevelopment.tail_edges_subset
+#print axioms Erdos583StarPathPiecesDevelopment.familyHalf
+#print axioms Erdos583StarPathPiecesDevelopment.familyHalf_disjoint
+#print axioms Erdos583StarPathPiecesDevelopment.ArmIndex
+#print axioms Erdos583StarPathPiecesDevelopment.tip
+#print axioms Erdos583StarPathPiecesDevelopment.tip_adj
+#print axioms Erdos583StarPathPiecesDevelopment.tip_injective
+#print axioms Erdos583StarPathPiecesDevelopment.arm_owner_touches
+#print axioms Erdos583StarPathPiecesDevelopment.tip_surjective_neighbor
+#print axioms Erdos583StarPathPiecesDevelopment.tip_bijective_neighbor
+#print axioms Erdos583StarPathPiecesDevelopment.AvoidIndex
+#print axioms Erdos583StarPathPiecesDevelopment.avoid_index_card_lt
+#print axioms Erdos583StarPathPiecesDevelopment.tail_disjoint
+#print axioms Erdos583StarPathPiecesDevelopment.tail_avoids_center
+#print axioms Erdos583StarPathPiecesDevelopment.outside_cover

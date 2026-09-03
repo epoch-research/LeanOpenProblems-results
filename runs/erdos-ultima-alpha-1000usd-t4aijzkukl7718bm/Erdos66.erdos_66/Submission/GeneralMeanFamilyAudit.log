@@ -1,0 +1,18 @@
+'Erdos66GeneralMeanFamilyBudget.common_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.common_self_energy_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.total_common_energy_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.common_mean_family_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.relative_mixed_family_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.normalized_family_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.numeric_relative_error_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GeneralMeanFamilyBudget.mixed_error_over_mean_limit_ge_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.mem_shiftOrbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.shiftOrbit_cardinality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.shiftOrbit_covers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.shiftOrbit_size_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.shiftOrbit_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualCardinalityMixedFamily.exists_large_equal_cardinality_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

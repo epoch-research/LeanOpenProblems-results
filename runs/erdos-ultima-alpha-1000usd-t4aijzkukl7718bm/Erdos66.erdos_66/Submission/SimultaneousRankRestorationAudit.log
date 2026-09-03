@@ -1,0 +1,79 @@
+'Erdos66InsertionMatchingPattern.insertionPattern_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.product_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.repMean_indicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.exists_sublog_insertion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedProfileComparison.weighted_prefix_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedProfileComparison.weighted_prefix_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedProfileComparison.monotone_weighted_prefix_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TruncatedProfileComparison.shifted_indicator_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedProfileComparison.weighted_interval_comparison' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TruncatedProfileComparison.truncated_mixed_comparison' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.sum_reflect_Ico' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.sum_reflect_product_Ico' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.sumConv_three_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.reflected_interval_occupancy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.boundary_indicator_profile' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TruncatedConvolutionAlgebra.boundary_profile_indicator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SparseRowConvolutionBounds.central_rows_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowConvolutionBounds.central_self_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowConvolutionBounds.mixed_three_parts_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowConvolutionBounds.self_three_parts_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.log_size_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.quotient_profile_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.sparse_quotient_profile_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.row_insertion_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.row_insertion_mean_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowMeanDecay.exists_sparse_row_insertion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_of_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.rowProb_eq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.mass_rowProb_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.mass_rowProb_le_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRowProbability.mass_rowProb_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.candidates_pairwise_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.interval_rowProb_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.interval_rowProb_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.interval_rowProb_central_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.brackets_at_integer_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteIntervalRows.interval_rowProb_exactly_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowCountingScale.row_count_scale_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseRowCountingScale.sparse_row_count_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRankSwap.infinite_rank_swap_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SimultaneousIntervalRowSelection.exists_sparse_interval_transversal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InfiniteRankWindow.density_window_profile_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRankWindow.eventually_good_density_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteRankWindow.exists_uniform_rank_probability_rows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InsertionIncrementComparison.indicator_union_disjoint' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InsertionIncrementComparison.disjoint_union_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionIncrementComparison.insertion_increment_mono' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InsertionIncrementComparison.log_zero_unshift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SimultaneousRankRestoration.exists_simultaneous_sparse_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

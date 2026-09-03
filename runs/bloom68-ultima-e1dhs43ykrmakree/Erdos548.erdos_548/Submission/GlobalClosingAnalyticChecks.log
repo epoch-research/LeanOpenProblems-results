@@ -1,0 +1,10 @@
+explicit leg lifting maps checked: {'one_virtual_edge': 3351, 'two_virtual_edges': 416}
+fresh-leaf internal-edge obstruction: nine all-role exact checks; none is critical
+strict circuit: all 65534 proper subsets checked
+maxima by subset order: [-4, -7, -9, -10, -10, -10, -10, -9, -9, -8, -7, -6, -4, -3, -1]
+6-degeneracy order: [4, 9, 15, 2, 8, 11, 7, 12, 1, 10, 13, 0, 3, 5, 6, 14] later degrees: [6, 6, 5, 6, 5, 5, 5, 4, 5, 4, 4, 4, 3, 2, 1, 0]
+ordinary target embedding: [0, 4, 7, 8, 5, 9, 1, 3, 2, 6] ; all high-vertex apex budgets fail: {0: 5, 3: 5, 6: 5, 10: 5, 13: 5}
+matching-component budget: 273 exact checks, including 23 disconnected deletions
+double-cover exact identities: 12000 ; small-support nonpositivity: 10613
+all 4096 double-cover domain pairs in strict 2-circuit: [(63, 63, 2)]
+one-unit forest degree discount fails in K_t,t for K_1,t + K2, t=3..11; exhaustive matching at t<=6

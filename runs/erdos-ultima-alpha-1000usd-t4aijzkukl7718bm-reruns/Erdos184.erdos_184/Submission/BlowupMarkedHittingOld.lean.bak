@@ -1,0 +1,198 @@
+import Submission.LinearFamilyEfficient
+import Submission.HamiltonReduction
+
+/-!
+A marked-hitting decomposition in an unbounded-degree family. Doubling labels
+in one part moves every Hamilton piece onto an edge of the original marked
+Hamilton cycle. Odd order makes the relabeling bijective.
+This is a special family, not a settlement of Erdos 184.
+-/
+open SimpleGraph
+open scoped Classical
+namespace Erdos184.LinearFamilyGap.MarkedHitting
+open Efficient
+
+variable {q : ℕ}
+
+/-- Relabel part one by multiplication by two and fix every other part. -/
+def relabel (hq : Odd q) : Equiv.Perm (Fin 6 × ZMod q) :=
+  Equiv.prodCongrRight (fun i => if i = 1 then
+    (ZMod.unitOfCoprime 2 (Nat.coprime_two_left.mpr hq)).mulLeft else Equiv.refl _)
+
+lemma relabel_fst (hq : Odd q) (v : Fin 6 × ZMod q) : (relabel hq v).1 = v.1 := rfl
+
+lemma relabel_zero (hq : Odd q) (x : ZMod q) : relabel hq (0,x) = (0,x) := by
+  simp [relabel,Equiv.prodCongrRight]
+
+lemma relabel_one (hq : Odd q) (x : ZMod q) : relabel hq (1,x) = (1,2*x) := by
+  simp [relabel,Equiv.prodCongrRight,Units.mulLeft,ZMod.coe_unitOfCoprime]
+
+lemma relabel_adj (hq : Odd q) (u v : Fin 6 × ZMod q) :
+    (G (ZMod q)).Adj (relabel hq u) (relabel hq v) ↔ (G (ZMod q)).Adj u v := Iff.rfl
+
+variable [NeZero q]
+
+def A (hq : Odd q) (t : ZMod q) : SimpleGraph (Fin 6 × ZMod q) :=
+  (F t).comap (relabel hq)
+
+lemma A_le (hq : Odd q) (t : ZMod q) : A hq t ≤ G (ZMod q) := by
+  intro u v h
+  exact (relabel_adj hq u v).mp (F_le t h)
+
+lemma A_connected (hq : Odd q) (t : ZMod q) : (A hq t).Connected :=
+  (SimpleGraph.Iso.comap (relabel hq) (F t)).connected_iff.mpr (F_connected t)
+
+lemma A_regular (hq : Odd q) (t : ZMod q) : (A hq t).IsRegularOfDegree 2 := by
+  intro v
+  have hd := (SimpleGraph.Iso.comap (relabel hq) (F t)).degree_eq v
+  have hr := F_regular t (relabel hq v)
+  simp only [← card_neighborSet_eq_degree,← Nat.card_eq_fintype_card] at hd hr ⊢
+  exact hd.symm.trans hr
+
+/-- The edge between (0,t) and (1,t) lies both in the new piece and in
+F 0, the specified original Hamilton cycle. -/
+lemma common_edge (hq : Odd q) (t : ZMod q) :
+    (A hq t).Adj (0,t) (1,t) ∧ (F (q := q) 0).Adj (0,t) (1,t) := by
+  constructor
+  · change (F t).Adj (relabel hq (0,t)) (relabel hq (1,t))
+    rw [relabel_zero,relabel_one]
+    apply Or.inl
+    apply Prod.ext
+    · rfl
+    · dsimp [next,shift]
+      ring
+  · apply Or.inl
+    simp [next,shift]
+
+def Q (hq : Odd q) (t : ZMod q) : (G (ZMod q)).Subgraph :=
+  SimpleGraph.toSubgraph (A hq t) (A_le hq t)
+
+lemma Q_cycles (hq : Odd q) (t : ZMod q) :
+    (Q hq t).coe.Connected ∧ (Q hq t).coe.IsRegularOfDegree 2 := by
+  constructor
+  · apply (Subgraph.spanningCoeEquivCoeOfSpanning (Q hq t)
+      (SimpleGraph.toSubgraph.isSpanning (A hq t) (A_le hq t))).connected_iff.mp
+    exact A_connected hq t
+  · intro v
+    rw [Subgraph.coe_degree,← Subgraph.degree_spanningCoe]
+    simpa only [← card_neighborSet_eq_degree,← Nat.card_eq_fintype_card]
+      using A_regular hq t v.val
+
+lemma Q_injective (hq : Odd q) : Function.Injective (Q hq) := by
+  intro t s heq
+  have ht : (Q hq t).Adj (0,t) (1,t) := (common_edge hq t).1
+  have hs : (Q hq s).Adj (0,t) (1,t) := heq ▸ ht
+  exact edge_parameter ht hs
+
+noncomputable def D (hq : Odd q) : Finset (G (ZMod q)).Subgraph :=
+  Finset.univ.image (Q hq)
+
+lemma mem_D (hq : Odd q) (H : (G (ZMod q)).Subgraph) :
+    H ∈ D hq ↔ ∃ t, H = Q hq t := by simp [D,eq_comm]
+
+lemma D_card (hq : Odd q) : (D hq).card = q := by
+  rw [D,Finset.card_image_of_injective _ (Q_injective hq)]
+  simp only [Finset.card_univ,ZMod.card]
+
+lemma D_cycles (hq : Odd q) :
+    ∀ H ∈ D hq, H.coe.Connected ∧ H.coe.IsRegularOfDegree 2 := by
+  intro H hH
+  obtain ⟨t,rfl⟩ := (mem_D hq H).mp hH
+  exact Q_cycles hq t
+
+lemma D_decomposition (hq : Odd q) : IsDecomposition (G (ZMod q)) (D hq) := by
+  constructor
+  · intro H hH K hK hne
+    obtain ⟨t,rfl⟩ := (mem_D hq H).mp hH
+    obtain ⟨s,rfl⟩ := (mem_D hq K).mp hK
+    change Disjoint (Q hq t).edgeSet (Q hq s).edgeSet
+    rw [Set.disjoint_left]
+    intro e ht hs
+    induction e using Sym2.ind with
+    | h u v =>
+      have ht' : (F t).Adj (relabel hq u) (relabel hq v) := ht
+      have hs' : (F s).Adj (relabel hq u) (relabel hq v) := hs
+      exact hne (congrArg (Q hq) (edge_parameter ht' hs'))
+  · ext e
+    induction e using Sym2.ind with
+    | h u v =>
+      simp only [Set.mem_iUnion,exists_prop]
+      constructor
+      · rintro ⟨H,_,he⟩
+        exact H.edgeSet_subset he
+      · intro he
+        obtain ⟨t,ht⟩ := Efficient.edge_covered (relabel hq u) (relabel hq v)
+          ((relabel_adj hq u v).mpr he)
+        exact ⟨Q hq t,(mem_D hq _).mpr ⟨t,rfl⟩,ht⟩
+
+lemma D_hitting (hq : Odd q) :
+    ∀ H ∈ D hq, (H.edgeSet ∩ (F (q := q) 0).edgeSet).Nonempty := by
+  intro H hH
+  obtain ⟨t,rfl⟩ := (mem_D hq H).mp hH
+  exact ⟨s((0,t),(1,t)),(common_edge hq t).1,(common_edge hq t).2⟩
+
+/-- For every odd q, the blowup admits q Hamilton pieces all hitting the
+specified marked Hamilton cycle. Their number is also minimum. -/
+theorem marked_hamilton_decomposition (hq : Odd q) :
+    ∃ D : Finset (G (ZMod q)).Subgraph,
+      (∀ H ∈ D, H.coe.Connected ∧ H.coe.IsRegularOfDegree 2) ∧
+      IsDecomposition (G (ZMod q)) D ∧
+      (∀ H ∈ D, (H.edgeSet ∩ (F (q := q) 0).edgeSet).Nonempty) ∧ D.card = q :=
+  ⟨D hq,D_cycles hq,D_decomposition hq,D_hitting hq,D_card hq⟩
+
+def blue : SimpleGraph (Fin 6 × ZMod q) := G (ZMod q) \ F 0
+
+lemma blue_regular : (blue (q := q)).IsRegularOfDegree (2*(q-1)) := by
+  intro v
+  have hd := degree_sdiff_of_le (F_le (0 : ZMod q)) v
+  have hg := graph_regular (ZMod q) v
+  have hr := F_regular (0 : ZMod q) v
+  rw [ZMod.card] at hg
+  simp only [← card_neighborSet_eq_degree,← Nat.card_eq_fintype_card] at hd hg hr ⊢
+  change Nat.card ((G (ZMod q) \ F 0).neighborSet v) = _
+  omega
+
+lemma blue_edge_card : (blue (q := q)).edgeFinset.card = 6*q*(q-1) := by
+  have hs := (blue (q := q)).sum_degrees_eq_twice_card_edges
+  have hd (v : Fin 6 × ZMod q) : (blue (q := q)).degree v = 2*(q-1) := by
+    simpa only [← card_neighborSet_eq_degree,← Nat.card_eq_fintype_card]
+      using blue_regular (q := q) v
+  simp only [hd,Finset.sum_const,Finset.card_univ,smul_eq_mul,
+    Fintype.card_prod,Fintype.card_fin,ZMod.card] at hs
+  nlinarith
+
+/-- Even allowing overlaps, covering the unmarked graph by forests needs
+at least q forests when q>1. Thus the marked-hitting construction above
+handles arbitrarily large unmarked arboricity. -/
+theorem forest_cover_lower_bound (hq : 1 < q) (k : ℕ)
+    (J : Fin k → SimpleGraph (Fin 6 × ZMod q)) (hf : ∀ i, (J i).IsAcyclic)
+    (hcover : ∀ u v, (blue (q := q)).Adj u v → ∃ i, (J i).Adj u v) : q ≤ k := by
+  have hsub : (blue (q := q)).edgeFinset ⊆ Finset.univ.biUnion (fun i => (J i).edgeFinset) := by
+    intro e he
+    induction e using Sym2.ind with
+    | h u v =>
+      obtain ⟨i,hi⟩ := hcover u v (mem_edgeFinset.mp he)
+      exact Finset.mem_biUnion.mpr ⟨i,Finset.mem_univ _,mem_edgeFinset.mpr hi⟩
+  have hsum := (Finset.card_le_card hsub).trans (Finset.card_biUnion_le)
+  have hbound : ∑ i : Fin k, (J i).edgeFinset.card ≤ k*(6*q-1) := by
+    calc
+      ∑ i : Fin k, (J i).edgeFinset.card ≤ ∑ _i : Fin k, (6*q-1) := by
+        apply Finset.sum_le_sum
+        intro i _
+        have hh := forest_edge_card_lt_vertex_card (J i) (hf i)
+        simp only [Fintype.card_prod,Fintype.card_fin,ZMod.card] at hh
+        simp only [SimpleGraph.edgeFinset_card,← Nat.card_eq_fintype_card] at hh ⊢
+        omega
+      _ = k*(6*q-1) := by simp
+  have hh := hsum.trans hbound
+  have hc := blue_edge_card (q := q)
+  simp only [SimpleGraph.edgeFinset_card,← Nat.card_eq_fintype_card] at hh hc
+  rw [hc] at hh
+  by_contra! hk
+  have hkle : k ≤ q-1 := by omega
+  have hmul := Nat.mul_le_mul_right (6*q-1) hkle
+  have hsubq : 6*q-1+1 = 6*q := by omega
+  have hqpos : 0 < q-1 := by omega
+  nlinarith
+
+end Erdos184.LinearFamilyGap.MarkedHitting

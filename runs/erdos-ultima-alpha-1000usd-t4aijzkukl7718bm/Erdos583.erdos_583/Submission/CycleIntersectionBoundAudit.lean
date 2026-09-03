@@ -1,0 +1,7 @@
+import Submission.CycleIntersectionBound
+/-! Axiom audit of the bounded-intersection cycle absorption proof. -/
+#print axioms Erdos583CycleIntersectionBoundDevelopment.missing_ear_reduction
+#print axioms Erdos583CycleIntersectionBoundDevelopment.short_cycle_absorption
+#print axioms Erdos583CycleIntersectionBoundDevelopment.small_intersection_absorption
+#print axioms Erdos583CycleIntersectionBoundDevelopment.maximal_cycle_intersection_ge_five
+#print axioms Erdos583CycleIntersectionBoundDevelopment.single_defect_cycle_intersection_ge_five

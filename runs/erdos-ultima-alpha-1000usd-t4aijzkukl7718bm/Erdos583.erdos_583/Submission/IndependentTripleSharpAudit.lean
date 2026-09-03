@@ -1,0 +1,7 @@
+import Submission.IndependentTripleSharp
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583IndependentTripleSharpDevelopment.sharp_independent_three_reachable
+#print axioms Erdos583IndependentTripleSharpDevelopment.sharp_at_most_two_even
+#print axioms Erdos583IndependentTripleSharpDevelopment.sharp_connected_independent_three
+#print axioms Erdos583IndependentTripleSharpDevelopment.sharp_independent_three

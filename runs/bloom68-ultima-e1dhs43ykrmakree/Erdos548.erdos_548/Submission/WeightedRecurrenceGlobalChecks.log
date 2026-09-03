@@ -1,0 +1,26 @@
+Padding audit: k = 4 n = 9 epsilon_F = 1 outer epsilon = 1, degrees = [(2, 6), (3, 1), (5, 1), (8, 1)]
+Padding audit: k = 6 n = 17 epsilon_F = 1 outer epsilon = 1, degrees = [(3, 9), (4, 4), (5, 1), (11, 2), (16, 1)]
+Padding audit: k = 6 n = 17 epsilon_F = 2 outer epsilon = 1, degrees = [(3, 8), (4, 4), (5, 2), (10, 2), (16, 1)]
+Padding audit: k = 8 n = 25 epsilon_F = 2 outer epsilon = 1, degrees = [(4, 15), (5, 4), (6, 2), (18, 2), (24, 2)]
+Critical split proper-subset types: 1580
+Critical padding subset types: 14752
+Matching-pattern/weight/escape audits: 1527
+Independent-set DP comparisons: 26
+Independent direct weighted embedding and leaf-identity cases: 3
+Binary height 0 vertices 1 exact nonmonotone minimax boundary 0
+Binary height 1 vertices 3 exact nonmonotone minimax boundary 2
+Binary height 2 vertices 7 exact nonmonotone minimax boundary 3
+Binary height 3 vertices 15 exact nonmonotone minimax boundary 4
+All-leaf binary height 2 barrier distribution: [(2, 4), (3, 1)]
+All-leaf binary height 3 barrier distribution: [(3, 8), (4, 1)]
+Independent all-leaf minimax audits: 14
+Binary height 3, image block 2 cut threshold 4 cut mass/A = 14179009/4294967296
+Binary height 3, image block 4 cut threshold 2 cut mass/A = 1379424961/4294967296
+Star-derived r=5: two-image transport congestion >= 1296 > 2m = 280 ; actual CW margin = 254016/3697
+Subcubic height 24: r = 33554431 k = 67108862 n = 1125899873288193
+  congestion >= 25!/2 = 7755605021665492992000000 > 2m = 75557858096414956978174 ; certified ratio = 3877802510832746496000000/37778929048207478489087
+  EVERY leaf: congestion >= 24!/2 = 310224200866619719680000 > 2m; certified ratio = 155112100433309859840000/37778929048207478489087
+Exact scalar-potential audits: 5 ; free-attachment aggregate audit: passed
+Spec.lean unchanged: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+All targeted exact checks passed in 0.66 seconds.
+CW and unrestricted Erdős–Sós remain unproved and unrefuted here.

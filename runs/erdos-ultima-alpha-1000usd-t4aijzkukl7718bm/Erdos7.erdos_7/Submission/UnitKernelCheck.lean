@@ -1,0 +1,15 @@
+import Submission.UnitOrbitProbability
+#check Nat.ModEq.of_dvd
+#check Nat.totient_mul
+#check ArithmeticFunction
+#check ArithmeticFunction.IsMultiplicative
+#check Int.coe_lcm_dvd_iff
+#check Nat.mod_lcm
+#check Subgroup.mem_inf
+#check Subgroup.bot_coe
+#check Subgroup.comap_bot
+#check MonoidHom.comap_bot
+#check Subgroup.card_bot
+#check Nat.cast_pos
+#check div_right_inj'
+#check one_div_mul_one_div

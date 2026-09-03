@@ -1,0 +1,15 @@
+import Submission.BuchstabRefinementCost
+#check Summable.comp_injective
+#check Function.Injective.summable_iff
+#check Real.inv_rpow
+#check Finset.sum_comp
+#check Finset.sum_range
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_le_tsum
+#check Summable.tsum_nonneg
+#check tsum_nonneg
+#check Real.rpow_le_rpow_of_exponent_le
+#check Real.sqrt_sq_eq_abs
+#check Nat.floor_le
+#check Nat.floor_pos
+#check Real.sq_sqrt

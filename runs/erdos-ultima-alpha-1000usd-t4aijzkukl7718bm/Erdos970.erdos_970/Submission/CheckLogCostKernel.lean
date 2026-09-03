@@ -1,0 +1,11 @@
+import Submission.ContinuousBuchstabKernel
+#check Real.tendsto_pow_mul_exp_neg_atTop_nhds_zero
+#check tendsto_pow_mul_exp_neg_atTop_nhds_zero
+#check MeasureTheory.integral_exp_mul_Ioi
+#check integral_exp_mul_Ioi
+#check MeasureTheory.integral_exp_neg_Ioi
+#check integral_exp_neg_Ioi
+#check Real.exp_nat_mul
+#check pow_lt_pow_iff_left₀
+#check Real.rpow_def_of_pos
+#check MeasureTheory.integral_Ioi_of_hasDerivAt_of_tendsto'

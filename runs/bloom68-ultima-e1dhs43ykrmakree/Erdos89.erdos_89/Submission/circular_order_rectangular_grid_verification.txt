@@ -1,0 +1,13 @@
+Exact integer full-fiber checks; not an asymptotic numerical test.
+L H n D arc_mass E Q M_1 M_4 M_9 M_16
+3 3 9 5 40 1248 129 16 40 40 40
+4 3 12 8 70 3096 165 26 70 70 70
+7 4 28 20 414 45848 461 122 382 414 414
+11 5 55 42 1663 376972 985 389 1298 1620 1663
+17 3 51 47 1057 213852 633 303 851 936 1055
+25 6 150 129 11392 7388172 2573 2006 6896 9218 10268
+37 7 259 228 34068 38022060 4441 5003 17165 25459 27790
+81 4 324 316 41262 54260024 4309 7674 28946 29756 30890
+121 3 363 359 48481 69902796 4377 11639 34443 35048 35895
+PASS: 9 complete rectangles, 138447 actual retained arcs, 75331 opposite-side checks, 30560 large-radius narrow checks, 568 nonaxis orthogonal parameter checks, 36 cap/cutoff checks.
+The asymptotic AP counterexample is proved in the accompanying note; these finite checks are only sanity checks of its lemmas.

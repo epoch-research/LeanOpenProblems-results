@@ -1,0 +1,17 @@
+import Submission.DfaCountingExplore
+#check Fintype.piFinset
+#check Finset.univ_pi_univ
+#check Finset.card_pi
+#check Finset.card_piFinset
+#check Finset.mem_piFinset
+#check List.mapIdx_ofFn
+#check List.sum_ofFn
+#check List.map_ofFn
+#check Finset.prod_pow
+#check Finset.prod_le_prod
+#check Nat.le_two_pow
+#check Nat.lt_two_pow_self
+#check Finset.exists_pair_ne
+#check Finset.one_lt_card
+#check Finset.card_le_one
+#check Fintype.card_le_of_injective

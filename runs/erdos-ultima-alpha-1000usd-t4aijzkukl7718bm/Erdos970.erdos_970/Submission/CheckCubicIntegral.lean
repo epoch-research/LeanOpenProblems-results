@@ -1,0 +1,16 @@
+import Submission.HardCubicProfileCertificate
+#check intervalIntegral.integral_congr_ae
+#check intervalIntegral.integral_congr_ae_restrict
+#check intervalIntegral.integral_congr_ae'
+#check MeasureTheory.ae_neq
+#check Real.log_le_sub_one_of_pos
+#check Real.log_le_sub_one
+#check Real.sum_range_log
+#check Real.hasSum_pow_div_log_of_abs_lt_one
+#check Real.hasSum_pow_div_log_of_abs_lt_one
+#check intervalIntegral.integral_mono_on
+#check intervalIntegral.integral_one_div
+#check integral_one_div
+#check integral_inv
+#check Real.log_div
+#check Real.log_lt_sub_one_of_pos

@@ -1,0 +1,11 @@
+import Submission.DoubleCoverLinearCertificate
+#check Nat.le_self_pow
+#check Nat.pow_le_pow_left
+#check Nat.le_pow
+#check Finset.prod_inv_distrib
+#check Nat.findGreatest_eq_iff
+#check Finset.filter_union_filter_neg_eq
+#check Finset.filter_union_filter_not_eq
+#check Finset.filter_union_filter_not
+#check Finset.filter_filter
+#check Nat.pow_pos

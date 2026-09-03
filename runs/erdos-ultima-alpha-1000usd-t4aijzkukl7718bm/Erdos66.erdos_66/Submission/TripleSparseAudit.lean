@@ -1,0 +1,8 @@
+import Submission.TripleSparsePowerProfileExplore
+/-! Permitted-axiom audit of joint finite and infinite triple selection. -/
+#print axioms Erdos66FiniteTripleIntersectionSelection.exists_uniform_triple_selection
+#print axioms Erdos66CentralTripleCounts.selected_fiber_bound
+#print axioms Erdos66TripleIntersectionCompactness.exists_summable_costs_with_triples
+#print axioms Erdos66TripleSparseCosts.exists_triple_sparse_summable_rep_costs
+#print axioms Erdos66TripleSparsePowerProfile.exists_triple_sparse_power_potentials
+#print axioms Erdos66TripleSparsePowerProfile.exists_triple_sparse_power_exceptions

@@ -1,0 +1,929 @@
+Submission/Spec.lean:743:8: warning: automatically included section variable(s) unused in theorem `_private.Submission.Spec.0.Erdos672.cube_rotate`:
+  [NumberField K]
+  [IsCyclotomicExtension {3} ℚ K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NumberField K] [IsCyclotomicExtension {3} ℚ K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:759:55: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:759:69: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:805:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:805:46: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:811:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:811:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:811:73: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:813:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:813:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:869:80: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:871:60: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:889:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:908:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:908:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:954:90: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:985:95: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:986:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1162:107: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1232:51: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1252:85: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1253:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1255:90: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1256:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1529:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1570:87: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1570:103: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1571:87: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:1571:103: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2220:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2698:86: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2725:31: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2739:34: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2743:34: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2746:27: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2793:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:2793:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3184:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3287:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3287:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3292:75: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3293:16: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3312:70: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3312:83: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3318:88: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3646:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3997:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:3997:65: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:4005:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:4005:65: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:4837:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:4837:67: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:5239:8: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:5611:16: warning: unused variable `hd`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Submission/Spec.lean:6016:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:6056:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:6093:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6240:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6262:17: warning: This simp argument is unused:
+  Nat.mod_mod
+
+Hint: Omit it from the simp argument list.
+  simp only [Finsupp.add_apply, ̲Finsupp.smul_apply, ̲smul_eq_mul, ̲Nat.add_mod, ̲Nat.mul_mod_right,
+      Nat.add_zero, ̲Nat.mod_m̵o̵d̵,̵N̵a̵t̵.̵m̵o̵d̵_̵eq_of_lt hf]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:6273:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6315:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:6335:88: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:6362:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:6369:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6439:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6498:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6625:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6715:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6761:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6894:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:6917:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:7029:0: warning: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+Submission/Spec.lean:7099:8: warning: 'congr 1' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:7519:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7519:52: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7602:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7602:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7605:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7605:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7626:65: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7653:55: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7655:53: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:7895:43: warning: This simp argument is unused:
+  Int.natAbs_natCast
+
+Hint: Omit it from the simp argument list.
+  simp only [̵I̵n̵t̵.̵n̵a̵t̵A̵b̵s̵_̵p̵o̵w̵,̵I̵n̵t̵.̵n̵a̵t̵A̵b̵s̵_̵m̵u̵l̵,̵I̵n̵t̵.̵n̵a̵t̵A̵b̵s̵_̵n̵a̵t̵C̵a̵s̵t̵]̵[̲I̲n̲t̲.̲n̲a̲t̲A̲b̲s̲_̲p̲o̲w̲,̲ ̲I̲n̲t̲.̲n̲a̲t̲A̲b̲s̲_̲m̲u̲l̲]̲ at hN
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:7984:46: warning: unused variable `hn`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Submission/Spec.lean:10340:8: warning: This simp argument is unused:
+  Finsupp.smul_apply
+
+Hint: Omit it from the simp argument list.
+  simp [̵F̵i̵n̵s̵u̵p̵p̵.̵s̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵,̵F̵i̵n̵s̵u̵p̵p̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵e̵x̵t̵_̵i̵f̵f̵,̵j̵,̵e̵q̵_̵c̵o̵m̵m̵]̵[̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲,̲ ̲F̲i̲n̲s̲u̲p̲p̲.̲s̲i̲n̲g̲l̲e̲_̲a̲p̲p̲l̲y̲,̲ ̲F̲i̲n̲.̲e̲x̲t̲_̲i̲f̲f̲,̲ ̲j̲,̲ ̲e̲q̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:10370:51: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:10370:51: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:10435:95: warning: This simp argument is unused:
+  Finsupp.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [̵-̵b̵a̵s̵i̵s̵_̵z̵e̵r̵o̵,̵-̵b̵a̵s̵i̵s̵_̵o̵n̵e̵,̵-̵b̵a̵s̵i̵s̵_̵t̵w̵o̵,̵-̵b̵a̵s̵i̵s̵_̵t̵h̵r̵e̵e̵,̵-̵b̵a̵s̵i̵s̵_̵f̵o̵u̵r̵,̵-̵b̵a̵s̵i̵s̵_̵f̵i̵v̵e̵,̵F̵i̵n̵s̵u̵p̵p̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵e̵x̵t̵_̵i̵f̵f̵]̵[̲-̲b̲a̲s̲i̲s̲_̲z̲e̲r̲o̲,̲ ̲-̲b̲a̲s̲i̲s̲_̲o̲n̲e̲,̲ ̲-̲b̲a̲s̲i̲s̲_̲t̲w̲o̲,̲ ̲-̲b̲a̲s̲i̲s̲_̲t̲h̲r̲e̲e̲,̲ ̲-̲b̲a̲s̲i̲s̲_̲f̲o̲u̲r̲,̲ ̲-̲b̲a̲s̲i̲s̲_̲f̲i̲v̲e̲,̲
+  ̲ ̲ ̲ ̲ ̲F̲i̲n̲.̲e̲x̲t̲_̲i̲f̲f̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:10512:57: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:10512:57: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:10658:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10661:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10661:55: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10669:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10669:53: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10812:46: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10812:63: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:10812:75: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11008:92: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11447:54: warning: This simp argument is unused:
+  eval₂_C
+
+Hint: Omit it from the simp argument list.
+  simp only [̵p̵o̵l̵y̵n̵o̵m̵i̵a̵l̵,̵e̵v̵a̵l̵₂̵_̵s̵u̵b̵,̵e̵v̵a̵l̵₂̵_̵p̵o̵w̵,̵e̵v̵a̵l̵₂̵_̵X̵,̵e̵v̵a̵l̵₂̵_̵C̵,̵e̵v̵a̵l̵₂̵_̵n̵e̵g̵,̵e̵v̵a̵l̵₂̵_̵o̵f̵N̵a̵t̵,̵m̵a̵p̵_̵n̵e̵g̵,̵m̵a̵p̵_̵o̵f̵N̵a̵t̵]̵[̲p̲o̲l̲y̲n̲o̲m̲i̲a̲l̲,̲ ̲e̲v̲a̲l̲₂̲_̲s̲u̲b̲,̲ ̲e̲v̲a̲l̲₂̲_̲p̲o̲w̲,̲ ̲e̲v̲a̲l̲₂̲_̲X̲,̲ ̲e̲v̲a̲l̲₂̲_̲n̲e̲g̲,̲ ̲e̲v̲a̲l̲₂̲_̲o̲f̲N̲a̲t̲,̲ ̲m̲a̲p̲_̲n̲e̲g̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲m̲a̲p̲_̲o̲f̲N̲a̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:11776:82: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11781:82: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11898:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11905:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:11912:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:12083:41: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:12085:31: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:12083:41: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:12085:31: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:12425:25: warning: `Nat.add_eq_zero` has been deprecated: Use `Nat.add_eq_zero_iff` instead
+Submission/Spec.lean:12657:55: warning: unused variable `hX`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Submission/Spec.lean:12673:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:12675:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:12717:58: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:12717:58: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:12920:52: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:13156:33: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:13158:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:13402:14: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:13402:14: warning: 'omega' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:13962:15: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:13963:15: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:14150:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:14759:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:14900:51: warning: This simp argument is unused:
+  Rat.cast_intCast
+
+Hint: Omit it from the simp argument list.
+  simp only [̵d̵u̵a̵l̵G̵e̵n̵e̵r̵a̵t̵o̵r̵X̵,̵a̵l̵p̵h̵a̵,̵i̵c̵o̵o̵r̵d̵_̵c̵o̵e̵,̵c̵o̵o̵r̵d̵,̵R̵a̵t̵.̵c̵a̵s̵t̵_̵i̵n̵t̵C̵a̵s̵t̵,̵I̵n̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵,̵I̵n̵t̵.̵c̵a̵s̵t̵_̵n̵e̵g̵,̵
+  ̵ ̵ ̵ ̵ ̵I̵n̵t̵.̵c̵a̵s̵t̵_̵z̵e̵r̵o̵,̵R̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵,̵R̵a̵t̵.̵c̵a̵s̵t̵_̵n̵e̵g̵,̵R̵a̵t̵.̵c̵a̵s̵t̵_̵z̵e̵r̵o̵,̵o̵m̵e̵g̵a̵]̵[̲d̲u̲a̲l̲G̲e̲n̲e̲r̲a̲t̲o̲r̲X̲,̲ ̲a̲l̲p̲h̲a̲,̲ ̲i̲c̲o̲o̲r̲d̲_̲c̲o̲e̲,̲ ̲c̲o̲o̲r̲d̲,̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲o̲f̲N̲a̲t̲,̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲n̲e̲g̲,̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲z̲e̲r̲o̲,̲
+  ̲ ̲ ̲ ̲ ̲R̲a̲t̲.̲c̲a̲s̲t̲_̲o̲f̲N̲a̲t̲,̲ ̲R̲a̲t̲.̲c̲a̲s̲t̲_̲n̲e̲g̲,̲ ̲R̲a̲t̲.̲c̲a̲s̲t̲_̲z̲e̲r̲o̲,̲ ̲o̲m̲e̲g̲a̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15008:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.phi_on_curve`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:15032:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.phi_descent_cube`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:15056:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.phiX_fraction`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:15059:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15061:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.phiY_fraction`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:15064:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15070:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15079:17: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:15079:17: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:15089:17: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:15089:17: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:15139:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15154:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15166:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:15229:59: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [minusCurve, ̲WeierstrassCurve.toAffine, ̲zero_mul,z̵e̵r̵o̵_̵ ̲add,̵a̵d̵d̵_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15235:58: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [dualCurve, ̲WeierstrassCurve.toAffine, ̲zero_mul,z̵e̵r̵o̵_̵ ̲add,̵a̵d̵d̵_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15270:24: warning: This simp argument is unused:
+  dualPoint
+
+Hint: Omit it from the simp argument list.
+  simp only [̵m̵i̵n̵u̵s̵P̵o̵i̵n̵t̵,̵d̵u̵a̵l̵P̵o̵i̵n̵t̵,̵P̵o̵i̵n̵t̵.̵s̵o̵m̵e̵.̵i̵n̵j̵E̵q̵]̵[̲m̲i̲n̲u̲s̲P̲o̲i̲n̲t̲,̲ ̲P̲o̲i̲n̲t̲.̲s̲o̲m̲e̲.̲i̲n̲j̲E̲q̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15274:13: warning: This simp argument is unused:
+  minusPoint
+
+Hint: Omit it from the simp argument list.
+  simp only [̵m̵i̵n̵u̵s̵P̵o̵i̵n̵t̵,̵d̵u̵a̵l̵P̵o̵i̵n̵t̵,̵P̵o̵i̵n̵t̵.̵s̵o̵m̵e̵.̵i̵n̵j̵E̵q̵]̵[̲d̲u̲a̲l̲P̲o̲i̲n̲t̲,̲ ̲P̲o̲i̲n̲t̲.̲s̲o̲m̲e̲.̲i̲n̲j̲E̲q̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15939:62: warning: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [dualCurve, ̲WeierstrassCurve.toAffine, ̲zero_mul,z̵e̵r̵o̵_̵ ̲add,̵a̵d̵d̵_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15939:71: warning: This simp argument is unused:
+  add_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [dualCurve, ̲WeierstrassCurve.toAffine, ̲zero_mul, ̲zero_add,̵a̵d̵d̵_̵z̵e̵r̵o̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:15944:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16023:55: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16089:23: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16089:23: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16508:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16512:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16517:55: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16521:25: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16517:55: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16521:25: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16526:55: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16530:25: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16526:55: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16530:25: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16532:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.secantX_fraction`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:16535:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16541:17: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16541:17: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16546:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16554:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16568:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16584:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16779:19: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:16779:19: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:16892:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16898:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16902:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16908:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:16915:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:17134:16: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Submission/Spec.lean:17778:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:17778:50: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:17952:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18022:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18024:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18026:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18033:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18037:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18037:36: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:18133:74: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18136:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18136:55: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18243:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18268:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.formalTripleDenominator_eq`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:18270:43: warning: This simp argument is unused:
+  eval₂_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [eval₂_add, ̲eval₂_sub, ̲eval₂_mul, ̲eval₂_n̵e̵g̵,̵e̵v̵a̵l̵₂̵_̵pow, ̲eval₂_X, ̲eval₂_ofNat, ̲map_ofNat, ̲map_neg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:18270:83: warning: This simp argument is unused:
+  map_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [eval₂_add, ̲eval₂_sub, ̲eval₂_mul, ̲eval₂_neg, ̲eval₂_pow, ̲eval₂_X, ̲eval₂_ofNat, ̲map_o̵f̵N̵a̵t̵,̵m̵a̵p̵_̵neg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:18270:93: warning: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [eval₂_add, ̲eval₂_sub, ̲eval₂_mul, ̲eval₂_neg, ̲eval₂_pow, ̲eval₂_X, ̲eval₂_ofNat, ̲map_ofNat,̵m̵a̵p̵_̵n̵e̵g̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:18279:83: warning: This simp argument is unused:
+  map_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp only [eval₂_add, ̲eval₂_sub, ̲eval₂_mul, ̲eval₂_neg, ̲eval₂_pow, ̲eval₂_X, ̲eval₂_ofNat, ̲map_o̵f̵N̵a̵t̵,̵m̵a̵p̵_̵neg]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:18279:93: warning: This simp argument is unused:
+  map_neg
+
+Hint: Omit it from the simp argument list.
+  simp only [eval₂_add, ̲eval₂_sub, ̲eval₂_mul, ̲eval₂_neg, ̲eval₂_pow, ̲eval₂_X, ̲eval₂_ofNat, ̲map_ofNat,̵m̵a̵p̵_̵n̵e̵g̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:18426:0: warning: automatically included section variable(s) unused in theorem `Erdos672.FormalChart.chart_addW_ne`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:18455:0: warning: automatically included section variable(s) unused in theorem `Erdos672.FormalChart.chart_add_Y`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:18460:0: warning: automatically included section variable(s) unused in theorem `Erdos672.FormalChart.chart_secant_slope`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:18537:8: warning: `pow_eq_zero` has been deprecated: Use `eq_zero_of_pow_eq_zero` instead
+Submission/Spec.lean:18657:33: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:18657:33: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:18913:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:18980:33: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+Submission/Spec.lean:18980:33: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:19000:22: warning: unused variable `x`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:19118:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:19124:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19198:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.normalized_F`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:19202:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.normalized_A`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:19206:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.normalized_B`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:19210:0: warning: automatically included section variable(s) unused in theorem `Erdos672.ThreeIsogeny.normalized_H`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:19399:30: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:19474:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19474:49: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19524:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19524:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19555:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19570:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:19871:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+Submission/Spec.lean:19946:0: warning: automatically included section variable(s) unused in theorem `Erdos672.FormalChart.reciprocal_chart_equation`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:19953:0: warning: automatically included section variable(s) unused in theorem `Erdos672.FormalChart.normalized_translate_numerator`:
+  [CharZero K]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CharZero K] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/Spec.lean:20037:58: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20057:45: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20064:34: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:20198:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20199:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20209:71: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20213:41: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20215:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20216:19: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20209:62: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Submission/Spec.lean:20225:72: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:20271:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20275:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20304:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20325:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20325:39: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20540:86: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20610:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Submission/Spec.lean:20638:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20638:42: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20638:56: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20643:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20643:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20648:24: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20648:38: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+Submission/Spec.lean:20726:15: warning: This simp argument is unused:
+  Fin.val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [̵F̵i̵n̵.̵v̵a̵l̵_̵z̵e̵r̵o̵,̵z̵e̵r̵o̵_̵n̵s̵m̵u̵l̵,̵a̵d̵d̵_̵z̵e̵r̵o̵]̵[̲z̲e̲r̲o̲_̲n̲s̲m̲u̲l̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲ at hP
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:20735:17: warning: This simp argument is unused:
+  Fin.val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [̵F̵i̵n̵.̵v̵a̵l̵_̵z̵e̵r̵o̵,̵z̵e̵r̵o̵_̵n̵s̵m̵u̵l̵,̵a̵d̵d̵_̵z̵e̵r̵o̵]̵[̲z̲e̲r̲o̲_̲n̲s̲m̲u̲l̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲ at hP
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:20749:17: warning: This simp argument is unused:
+  Fin.val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [̵F̵i̵n̵.̵v̵a̵l̵_̵z̵e̵r̵o̵,̵z̵e̵r̵o̵_̵n̵s̵m̵u̵l̵,̵a̵d̵d̵_̵z̵e̵r̵o̵]̵[̲z̲e̲r̲o̲_̲n̲s̲m̲u̲l̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲ at hP
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/Spec.lean:20831:8: warning: declaration uses 'sorry'

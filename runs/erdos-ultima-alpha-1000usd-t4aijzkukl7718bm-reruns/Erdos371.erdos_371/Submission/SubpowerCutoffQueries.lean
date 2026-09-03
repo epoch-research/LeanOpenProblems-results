@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Real.log_le_log_iff
+#check Real.log_natCast_nonneg
+#check Nat.floor_le
+#check Nat.le_floor
+#check Nat.lt_floor_add_one
+#check Real.tendsto_log_div_self
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Nat.floor_pos
+#check Real.log_le_sub_one_of_pos
+#check Real.log_pow
+#check Real.tendsto_log_atTop

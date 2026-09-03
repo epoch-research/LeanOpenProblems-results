@@ -1,0 +1,13 @@
+import Submission.DegreeTwoPacking
+/-! Axiom audit for degree-two neighborhood packing. -/
+#print axioms Erdos583DegreeTwoPackingDevelopment.diamond_path_exchange
+#print axioms Erdos583DegreeTwoPackingDevelopment.induce_dominated_boundary_connected
+#print axioms Erdos583DegreeTwoPackingDevelopment.two_triangular_tips_connected
+#print axioms Erdos583DegreeTwoPackingDevelopment.two_tips_edge_diff
+#print axioms Erdos583DegreeTwoPackingDevelopment.distinct_tips_reduction
+#print axioms Erdos583DegreeTwoPackingDevelopment.restore_diamond
+#print axioms Erdos583DegreeTwoPackingDevelopment.twin_tips_reduction
+#print axioms Erdos583DegreeTwoPackingDevelopment.degree_two_triangle_at_neighbor
+#print axioms Erdos583DegreeTwoPackingDevelopment.degree_two_neighbors_disjoint
+#print axioms Erdos583DegreeTwoPackingDevelopment.degree_two_closed_neighbors_disjoint
+#print axioms Erdos583DegreeTwoPackingDevelopment.degree_two_card_bound

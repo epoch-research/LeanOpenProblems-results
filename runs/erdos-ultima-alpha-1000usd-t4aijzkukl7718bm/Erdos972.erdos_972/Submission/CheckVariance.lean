@@ -1,0 +1,10 @@
+import Submission.RemainderSemiprimes
+import Submission.PrimeIntervalCounts
+#check Finset.card_image_of_injOn
+#check Finset.card_image_iff
+#check Nat.mul_left_cancel
+#check Nat.mul_le_mul
+#check Nat.le_div_iff_mul_le
+#check Nat.le_div_iff_mul_le
+#check Real.log_natCast_nonneg
+#check Finset.sum_le_sum_of_subset_of_nonneg

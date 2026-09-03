@@ -1,0 +1,11 @@
+import Submission.StrongQuadraticRegularity
+#check Finset.inf'_le
+#check Finset.le_inf'
+#check Finset.exists_mem_eq_inf'
+#check Finset.exists_mem_eq_inf
+#check Finset.inf'_add
+#check Finset.inf'_const
+#check List.sum_map_add
+#check NNReal.coe_sum
+#check Finset.coe_sum
+#check norm_le_pi_norm

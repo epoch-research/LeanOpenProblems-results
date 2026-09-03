@@ -1,0 +1,7 @@
+import Submission.SplitFamilyTracked
+
+/-! Axiom audit of the endpoint-refinement development. -/
+#print axioms Erdos583SplitFamilyTrackedDevelopment.indexed_path_family_tracked
+#print axioms Erdos583SplitFamilyTrackedDevelopment.split_family_member
+#print axioms Erdos583SplitFamilyTrackedDevelopment.one_defect_path_family_preserves_lower_quotas
+#print axioms Erdos583SplitFamilyTrackedDevelopment.one_defect_marked_partition

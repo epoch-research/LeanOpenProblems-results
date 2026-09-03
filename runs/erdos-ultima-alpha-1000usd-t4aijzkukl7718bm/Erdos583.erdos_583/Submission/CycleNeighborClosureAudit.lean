@@ -1,0 +1,8 @@
+import Submission.CycleNeighborClosure
+
+/-! Axiom audit for CycleNeighborClosure. -/
+#print axioms Erdos583CycleNeighborClosureDevelopment.cycle_neighbor_pair
+#print axioms Erdos583CycleNeighborClosureDevelopment.cycle_support_of_closed
+#print axioms Erdos583CycleNeighborClosureDevelopment.cycle_length_le_three_of_triangle
+#print axioms Erdos583CycleNeighborClosureDevelopment.cycle_length_le_four_of_common_neighbors
+#print axioms Erdos583CycleNeighborClosureDevelopment.shortest_cycle_avoider_no_chord

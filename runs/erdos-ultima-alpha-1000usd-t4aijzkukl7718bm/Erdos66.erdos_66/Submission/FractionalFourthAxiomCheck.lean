@@ -1,0 +1,3 @@
+import Submission.FractionalFourthPowerExplore
+#print axioms Erdos66FractionalFourthPower.summable_profile_fourth
+#print axioms Erdos66FractionalFourthPower.profile_square_series_limit

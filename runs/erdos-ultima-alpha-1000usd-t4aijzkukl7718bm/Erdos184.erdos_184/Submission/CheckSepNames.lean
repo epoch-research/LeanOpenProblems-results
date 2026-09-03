@@ -1,0 +1,13 @@
+import Submission.GraphCircuitCode
+import Submission.CircuitSeparation
+#check Erdos184Work.degree_sup_inf
+#check SimpleGraph.edgeSet_inf
+#check SimpleGraph.edgeFinset_inf
+#check SimpleGraph.degree_eq_zero_iff_notMem_support
+#check SimpleGraph.support_mono
+#check Nat.even_or_odd
+#check Even.not_odd
+#check Nat.not_even_iff_odd
+#check Nat.odd_iff
+#check Erdos184Work.BlockRestriction.degree_eq_sum_of_partition
+#check SimpleGraph.Disjoint

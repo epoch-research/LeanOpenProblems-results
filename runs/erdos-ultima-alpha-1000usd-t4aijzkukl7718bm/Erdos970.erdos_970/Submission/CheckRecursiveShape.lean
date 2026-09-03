@@ -1,0 +1,17 @@
+import Submission.RecursiveSieveRational
+#check convexOn_iff_segment_subset_epigraph
+#check ConvexOn.max
+#check ConvexOn.add
+#check ConvexOn.sum
+#check convexOn_id
+#check convexOn_const
+#check ConvexOn.comp_linearMap
+#check ConvexOn.comp_affineMap
+#check ConvexOn.monotoneOn_of_nonneg
+#check ConvexOn.map_add_le
+#check Fin.sum_univ_succ
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_sub_distrib
+#check ConvexOn.secant_mono
+#check ConvexOn.map_le_max
+#print ConvexOn

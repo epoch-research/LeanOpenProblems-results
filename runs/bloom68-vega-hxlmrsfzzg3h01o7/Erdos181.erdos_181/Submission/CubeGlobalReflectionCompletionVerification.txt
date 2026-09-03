@@ -1,0 +1,8 @@
+Actual full injections: 130,704 in 6 host/weight cases PASS
+Reduced square-pattern cut classification: 560 representations PASS
+Full maximum, reduced maximum, two-colour ratio: 40 exact cases PASS
+Example C=3, d=10: log(M/M_R)=15.340911 (display only; checks exact)
+Sparse positive-weight ratio and global pattern maximum: 144 cases PASS
+Explicit counterexample family repaired, including sparse budget: 24 cases PASS
+Spec.lean unchanged: SHA-256 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+Full conjecture proved: NO. Universal weighted/zero-level inequality remains unproved.

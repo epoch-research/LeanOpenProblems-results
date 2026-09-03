@@ -1,0 +1,14 @@
+import Submission.RepairedIntegerBlocksExplore
+
+/-! Audit of exception-free finite plane profiles and their integer transfer. -/
+#print axioms Erdos66WholeBlockPacketParameters.eventually_packet_budget
+#print axioms Erdos66NaturalLabeledPackets.exists_natural_labeled_packets
+#print axioms Erdos66ExceptionalLabeledPackets.eventually_exception_packets
+#print axioms Erdos66WeightedPacketAlgebra.weighted_packet_error
+#print axioms Erdos66BalancedWeightedPacket.balanced_repair_collateral
+#print axioms Erdos66CurveFamilyPacket.extendedCurves_collateral
+#print axioms Erdos66RepairedPlaneProfile.eventually_repaired_plane_profiles
+#print axioms Erdos66AggregateUpperTransfer.aggregate_block_upper
+#print axioms Erdos66AggregateUpperTransfer.plane_to_integer_upper
+#print axioms Erdos66RepairedIntegerBlocks.eventually_repaired_integer_blocks
+#check Erdos66RepairedIntegerBlocks.eventually_repaired_integer_blocks

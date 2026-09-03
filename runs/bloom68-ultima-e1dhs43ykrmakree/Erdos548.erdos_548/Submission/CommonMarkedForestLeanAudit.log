@@ -1,0 +1,78 @@
+'CommonMarkedForest.common_list_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.common_list_forest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.CL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.degree_le_remaining_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.degree_lt_remaining_add_of_miss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.degree_induce_compl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.fresh_neighbor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.exists_leaf_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.tree_delete_leaf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.extend_leaf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.tree_copy_of_fresh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.tree_copy_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.tree_copy_clique_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.copy_on_clique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.tree_copy_cover_clique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.clique_of_universal_extensions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.RootStar' does not depend on any axioms
+'CommonMarkedForest.nonstar_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.copy_switch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.component_deficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.RootedTree' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.RootedTree.order' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.RootedTree.edges' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.RootedTree.order_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.RootedTree.edges_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.RootedTree.edges_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.forestGraph' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.forestGraph_adj_same' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.forestGraph_neighbor' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.Marked' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.Avoids' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.totalOrder' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.totalEdges' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.totalOrder_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.card_vertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.componentCopy' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.card_filter_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.blocked_switch' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.residual_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.rootStar_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.rootstar_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.leaf_reservoir' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.restFamily' depends on axioms: [propext, Quot.sound]
+'CommonMarkedForest.join_copies' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.join_marked' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.sum_except' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.totalOrder_except' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.totalEdges_except' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.card_rest_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.allowedAfter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.mem_allowedAfter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.card_allowedAfter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.isolated_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.nontrivial_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.common_list_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.forestGraph_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.forestGraph_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.componentFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.componentUnionIso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.componentFamily_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.componentFamily_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.common_list_forest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.common_list_forest_roots' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.CL' depends on axioms: [propext, Classical.choice, Quot.sound]
+@CommonMarkedForest.CL : ∀ {V : Type u_1} [inst : Fintype V] (F : SimpleGraph V),
+  F.IsAcyclic →
+    ∀ (roots : F.ConnectedComponent → V),
+      (∀ (C : F.ConnectedComponent), roots C ∈ C) →
+        ∀ {W : Type u_2} [inst_1 : Fintype W] (H : SimpleGraph W) (A : Set W),
+          F.edgeSet.ncard ≤ H.minDegree → Fintype.card V ≤ A.ncard → ∃ f, ∀ (C : F.ConnectedComponent), f (roots C) ∈ A
+@CommonMarkedForest.common_list_family : ∀ {I : Type u_1} [inst : Fintype I] (T : I → CommonMarkedForest.RootedTree)
+  {W : Type u_2} [inst_1 : Fintype W] (H : SimpleGraph W) (A : Finset W),
+  (∀ (s : W), CommonMarkedForest.totalEdges T ≤ H.degree s) →
+    CommonMarkedForest.totalOrder T ≤ #A → ∃ f, CommonMarkedForest.Marked T f A
+@CommonMarkedForest.common_list_forest : ∀ {V : Type u_1} [inst : Fintype V] (F : SimpleGraph V),
+  F.IsAcyclic →
+    ∀ (root : (C : F.ConnectedComponent) → ↥C) {W : Type u_2} [inst_1 : Fintype W] (H : SimpleGraph W) (A : Finset W),
+      (∀ (s : W), #F.edgeFinset ≤ H.degree s) → Fintype.card V ≤ #A → ∃ f, ∀ (C : F.ConnectedComponent), f ↑(root C) ∈ A

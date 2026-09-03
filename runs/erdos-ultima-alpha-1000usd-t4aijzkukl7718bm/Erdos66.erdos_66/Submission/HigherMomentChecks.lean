@@ -1,0 +1,15 @@
+import Submission.AbelErrorEnergyExplore
+#check Real.pow_arith_mean_le_arith_mean_pow
+#check ConvexOn.map_sum_le
+#check ConvexOn.map_sum_le_of_le_one
+#check convexOn_pow
+#check sum_geometric_of_lt_one
+#check hasSum_geometric_of_lt_one
+#check Summable.hasSum
+#check HasSum.tendsto_sum_nat
+#check le_of_tendsto_of_tendsto
+#check pow_lt_pow_left₀
+#check Real.log_pos
+#check Finset.sum_erase_add
+#check summable_nat_add_iff
+#check summable_pow_mul_geometric_of_norm_lt_one

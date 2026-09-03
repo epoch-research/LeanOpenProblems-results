@@ -1,0 +1,15 @@
+import Submission.BuchstabPrimeCoordinates
+import Submission.ContinuousIntervalQuantumLogBudget
+#check Erdos970.FiniteSelberg.eulerMass_mono
+#check Erdos970.FiniteSelberg.inverse_eulerMass
+#check Erdos970.FiniteSelberg.exists_scaledEulerMass_limit
+#check Erdos970.RecursiveSieve.Buchstab.prefixDensity
+#check Nat.le_ceil
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_lt_add_one_iff
+#check Nat.le_ceil_iff
+#check Finset.prod_le_prod_of_subset_of_le_one
+#check Nat.primesBelow_card_eq_primeCounting'
+#check Finset.prod_range_add
+#check Finset.sum_Ico_eq_sub
+#check Finset.sum_Ico_sub

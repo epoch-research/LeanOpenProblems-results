@@ -1,0 +1,8 @@
+import Submission.FreeRootWholeCycleExclusion
+
+/-! Axiom audit of first-visit rotations and unrestricted whole-cycle exclusion. -/
+#print axioms Erdos583CycleFirstVisitRotationDevelopment.cycle_first_visit_rotation
+#print axioms Erdos583CycleFirstVisitRotationDevelopment.maximum_cycle_first_visit_shortening
+#print axioms Erdos583FreeRootWholeCycleExclusionDevelopment.minimum_whole_cycle_other_path_disjoint
+#print axioms Erdos583FreeRootWholeCycleExclusionDevelopment.minimum_whole_cycle_impossible
+#print axioms Erdos583FreeRootWholeCycleExclusionDevelopment.unrestricted_minimum_tail_not_nil

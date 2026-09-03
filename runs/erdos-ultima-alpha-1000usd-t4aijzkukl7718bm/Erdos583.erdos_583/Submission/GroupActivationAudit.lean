@@ -1,0 +1,7 @@
+import Submission.GroupActivation
+/-! Axiom audit for whole-group endpoint activation. -/
+#print axioms Erdos583GroupActivationDevelopment.replace_path_group_tracked
+#print axioms Erdos583GroupActivationDevelopment.repair_with_marked_outside_group
+#print axioms Erdos583GroupActivationDevelopment.tight_outside_group_misses_neighbor
+#print axioms Erdos583GroupActivationDevelopment.rooted_cycle_tight_group_avoids_neighbors
+#print axioms Erdos583GroupActivationDevelopment.outside_group_meeting_cycle_neighbor_expands

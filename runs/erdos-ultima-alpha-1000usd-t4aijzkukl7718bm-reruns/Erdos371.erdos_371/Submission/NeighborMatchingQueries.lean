@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Nat.maxPrimeFac_pos
+#check Nat.maxPrimeFac_pos_iff
+#check Nat.one_le_maxPrimeFac
+#check Nat.mod_modEq
+#check Nat.ModEq.add_right
+#check Nat.mul_pos
+#check Nat.dvd_add_iff_right
+#check Nat.Prime.pos

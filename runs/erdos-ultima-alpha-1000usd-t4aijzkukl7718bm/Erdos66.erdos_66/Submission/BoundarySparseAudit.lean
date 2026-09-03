@@ -1,0 +1,12 @@
+import Submission.BoundaryLogarithmicClippingExplore
+import Submission.PatternSparsePowerProfileExplore
+/-! Axiom audit of boundary envelopes, clipping eligibility, and the generic
+positive-pattern selection infrastructure. -/
+#print axioms Erdos66BoundaryPairMean.boundaryMean_bound
+#print axioms Erdos66BoundaryPairPotential.weighted_boundary_mean
+#print axioms Erdos66FiniteBoundarySelection.exists_uniform_boundary_selection
+#print axioms Erdos66BoundarySparsePowerProfile.exists_boundary_sparse_power_potentials
+#print axioms Erdos66BoundaryCorrectionEligibility.exists_central_clipping
+#print axioms Erdos66BoundaryLogarithmicClipping.exists_rounding_with_logarithmic_clipping
+#print axioms Erdos66NaturalPositivePattern.exists_pattern_selection
+#print axioms Erdos66PatternSparsePowerProfile.exists_pattern_sparse_power_potentials

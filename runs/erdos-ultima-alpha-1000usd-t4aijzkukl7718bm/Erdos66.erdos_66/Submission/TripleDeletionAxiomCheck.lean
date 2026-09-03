@@ -1,0 +1,17 @@
+import Submission.TripleDeletionParametersExplore
+
+/-! Axiom audit for joint codegree selection, deletion, and its parameters. -/
+
+#print axioms Erdos66LateBadTargets.badTargets_location
+#print axioms Erdos66BernoulliMatching.expect_exp_realized_le
+#print axioms Erdos66TripleCodegreeGeometry.codegree_le_realized_add_two
+#print axioms Erdos66TripleCodegreeMean.shifted_triple_mass
+#print axioms Erdos66BernoulliConcentration.exists_simultaneous_bound_with_potential
+#print axioms Erdos66SignedRepBernoulli.exists_unsigned_signed_bound_with_potential
+#print axioms Erdos66TripleCodegreeConcentration.exists_unsigned_signed_codegree
+#print axioms Erdos66BinaryProfileCodegree.exists_binary_signed_profile_codegrees
+#print axioms Erdos66SignedProfileDeletion.signed_fiber_loss
+#print axioms Erdos66DeletedBinaryProfile.exists_deleted_binary_profile
+
+#print axioms Erdos66TripleDeletionParameters.eventually_parameters
+#print axioms Erdos66TripleDeletionParameters.eventually_deleted_profiles

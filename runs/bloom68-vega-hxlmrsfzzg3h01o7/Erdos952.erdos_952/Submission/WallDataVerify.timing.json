@@ -1,0 +1,25 @@
+{
+  "source": "Submission/WallDataVerify.lean",
+  "source_sha256": "4be5e8ea921969b40f4566ef646d6a0cec477903b8a222ffb403f956bd3721ba",
+  "source_unchanged_during_compile": true,
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-o",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataVerify.olean",
+    "/workspace/leanproject/Submission/WallDataVerify.lean"
+  ],
+  "exit_code": 0,
+  "started_unix": 1788237044.3764436,
+  "finished_unix": 1788237046.4725423,
+  "wall_seconds": 2.096,
+  "user_seconds": 1.399,
+  "system_seconds": 0.741,
+  "max_rss_kib": 2170472,
+  "source_bytes": 1104,
+  "source_lines": 38,
+  "olean_bytes": 40712,
+  "log": "Submission/WallDataVerify.log"
+}

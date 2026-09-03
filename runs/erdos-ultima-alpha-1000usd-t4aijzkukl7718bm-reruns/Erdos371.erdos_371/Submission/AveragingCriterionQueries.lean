@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Metric.tendsto_atTop
+#check Metric.tendsto_nhds
+#check Real.tendsto_nhds
+#check summable_iff_bddAbove
+#check summable_iff_bddAbove_of_nonneg
+#check summable_of_sum_le
+#check not_bddAbove_iff
+#check Real.sqrt_sq_eq_abs
+#check Real.sq_sqrt
+#check Real.sqrt_le_sqrt
+#check tendsto_order
+#check Filter.Tendsto.eventually_lt_const
+#check Finset.sum_image
+#check lt_of_sq_lt_sq
+#check sq_lt_sq₀

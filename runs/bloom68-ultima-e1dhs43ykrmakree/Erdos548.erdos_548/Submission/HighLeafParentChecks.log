@@ -1,0 +1,23 @@
+Tree-selection and large-degree/support facts: PASS
+Critical atlas/core and bipartite constructions: PASS
+Larger critical bipartite constructions: PASS
+Complete multipartite positive-density construction: PASS
+Critical clique-join constructions: PASS
+Exact high/low extension disjunction: PASS
+Spec.lean hash unchanged: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+AUDIT TOTALS:
+  arbitrary-leaf core extensions: 637
+  asymmetric high cores constructed: 25
+  asymmetric peeling deletions: 20
+  bipartite critical atlas hosts: 7
+  constructive CL forest embeddings: 1235
+  critical atlas hosts: 137
+  critical clique-join embeddings: 1676
+  cycle blow-up proper-box corners: 1152
+  exact leaf-extension identities: 3968
+  explicit full embeddings checked: 17739
+  multipartite deficit/forest branch: 499
+  multipartite high-part grouping: 13681
+  old maximum-root obstruction resolved by another high: 1
+  parent-containing independent selections: 9135
+  smaller-color roots at high vertices: 1246

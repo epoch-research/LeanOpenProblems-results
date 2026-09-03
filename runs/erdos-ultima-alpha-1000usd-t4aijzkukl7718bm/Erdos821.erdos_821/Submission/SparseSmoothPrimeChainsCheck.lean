@@ -1,0 +1,18 @@
+import Submission.SparseSmoothPrimeChains
+
+/-! Exact types and axiom audit for SparseSmoothPrimeChains. -/
+
+#check Erdos821.summable_rootSmoothPrimeSet
+#check Erdos821.prime_outside_rootSmoothPrimeSet_has_large_child
+#check Erdos821.prime_mem_some_root_smooth_ancestor_layer
+#check Erdos821.root_smooth_ancestor_layers_cover_primes
+#check Erdos821.exists_sparse_rootSmoothPrimeSet_of_negation
+#check Erdos821.negation_forces_sparse_large_child_layers
+#check Erdos821.negation_forces_reciprocal_many_avoiding_paths
+#print axioms Erdos821.summable_rootSmoothPrimeSet
+#print axioms Erdos821.prime_outside_rootSmoothPrimeSet_has_large_child
+#print axioms Erdos821.prime_mem_some_root_smooth_ancestor_layer
+#print axioms Erdos821.root_smooth_ancestor_layers_cover_primes
+#print axioms Erdos821.exists_sparse_rootSmoothPrimeSet_of_negation
+#print axioms Erdos821.negation_forces_sparse_large_child_layers
+#print axioms Erdos821.negation_forces_reciprocal_many_avoiding_paths

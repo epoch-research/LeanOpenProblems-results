@@ -1,0 +1,14 @@
+import Submission.RoundingExplore
+#check mul_left_cancel₀
+#check Real.le_sqrt_of_sq_le
+#check Real.sqrt_le_left
+#check tendsto_zero_iff_abs_tendsto_zero
+#check tendsto_zero_iff_sq_tendsto_zero
+#check Real.tendsto_sqrt
+#check Finset.sum_Ico_eq_sub
+#check PowerSeries.X_ne_one
+#check PowerSeries.one_sub_X_ne_zero
+#check harmonic_le_one_add_log
+#check harmonic_le_one_add_log_nat
+#check harmonic_mono
+#check Nat.lt_pow_self

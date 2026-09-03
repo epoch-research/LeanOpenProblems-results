@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Finset.card_le_mul_card_image_of_maps_to
+#check Finset.card_le_two
+#check Fintype.card_units
+#check Fintype.card_units_add_one
+#check Fintype.nonempty_embedding_iff_card_le
+#check sq_eq_sq_iff_eq_or_eq_neg
+#check Finset.card_union_le
+#check AddMonoid.exponent
+#check AddMonoid.exponent_eq_prime
+#check CharP.addMonoidExponent
+#check FiniteField.card
+#check QuotientAddGroup.card_quotient_mul_card_subgroup
+#check Fintype.card_quotient_mul_card_addSubgroup
+#check QuotientAddGroup.eq_iff_sub_mem
+#check Finset.exists_mem_notMem_of_card_lt_card

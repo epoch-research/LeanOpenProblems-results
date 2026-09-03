@@ -1,0 +1,109 @@
+n25_d0 UNSAT 145 budget used 0.0117s
+n25_d1 UNSAT 133 budget used 0.0171s
+n25_d2 UNSAT 145 budget used 0.0239s
+n25_d3 UNSAT 97 budget used 0.0285s
+n25_d4 UNSAT 229 budget used 0.0356s
+n25_d5 UNSAT 109 budget used 0.0408s
+n25_d6 UNSAT 229 budget used 0.0477s
+n25_d7 UNSAT 97 budget used 0.0524s
+n25_d8 UNSAT 121 budget used 0.0579s
+n24_d0 UNSAT 145 budget used 0.0633s
+n24_d1 UNSAT 133 budget used 0.0675s
+n24_d2 UNSAT 145 budget used 0.0728s
+n24_d3 UNSAT 121 budget used 0.0767s
+n24_d4 UNSAT 121 budget used 0.0816s
+n24_d5 UNSAT 109 budget used 0.0853s
+n24_d6 UNSAT 121 budget used 0.0913s
+n24_d7 UNSAT 97 budget used 0.0951s
+n24_d8 UNSAT 109 budget used 0.0990s
+n22_d0_1 UNSAT 157 budget used 0.1023s
+n22_d0_2 UNSAT 157 budget used 0.1054s
+n22_d0_3 UNSAT 361 budget used 0.1100s
+n22_d0_4 UNSAT 169 budget used 0.1213s
+n22_d0_5 UNSAT 145 budget used 0.1244s
+n22_d0_6 UNSAT 193 budget used 0.1279s
+n22_d0_7 UNSAT 169 budget used 0.1311s
+n22_d0_8 UNSAT 133 budget used 0.1353s
+n22_d1_2 UNSAT 157 budget used 0.1397s
+n22_d1_3 UNSAT 133 budget used 0.1427s
+n22_d1_4 UNSAT 145 budget used 0.1477s
+n22_d1_5 UNSAT 181 budget used 0.1510s
+n22_d1_6 UNSAT 181 budget used 0.1630s
+n22_d1_7 UNSAT 133 budget used 0.1746s
+n22_d1_8 UNSAT 169 budget used 0.1778s
+n22_d2_3 UNSAT 169 budget used 0.1809s
+n22_d2_4 UNSAT 193 budget used 0.1840s
+n22_d2_5 UNSAT 169 budget used 0.1870s
+n22_d2_6 UNSAT 361 budget used 0.1917s
+n22_d2_7 UNSAT 133 budget used 0.1948s
+n22_d2_8 UNSAT 145 budget used 0.2032s
+n22_d3_4 UNSAT 277 budget used 0.2073s
+n22_d3_5 UNSAT 97 budget used 0.2103s
+n22_d3_6 UNSAT 277 budget used 0.2148s
+n22_d3_7 UNSAT 97 budget used 0.2179s
+n22_d3_8 UNSAT 121 budget used 0.2212s
+n22_d4_5 UNSAT 109 budget used 0.2242s
+n22_d4_6 UNSAT 289 budget used 0.2287s
+n22_d4_7 UNSAT 121 budget used 0.2328s
+n22_d4_8 UNSAT 121 budget used 0.2358s
+n22_d5_6 UNSAT 169 budget used 0.2403s
+n22_d5_7 UNSAT 121 budget used 0.2451s
+n22_d5_8 UNSAT 133 budget used 0.2484s
+n22_d6_7 UNSAT 133 budget used 0.2518s
+n22_d6_8 UNSAT 361 budget used 0.2568s
+n22_d7_8 UNSAT 121 budget used 0.2612s
+n21_d0_1 UNSAT 169 budget used 0.2641s
+n21_d0_2 UNSAT 169 budget used 0.2668s
+n21_d0_3 UNSAT 121 budget used 0.2693s
+n21_d0_4 UNSAT 169 budget used 0.2727s
+n21_d0_5 UNSAT 181 budget used 0.2855s
+n21_d0_6 UNSAT 193 budget used 0.2887s
+n21_d0_7 UNSAT 169 budget used 0.2918s
+n21_d0_8 UNSAT 133 budget used 0.2959s
+n21_d1_2 UNSAT 169 budget used 0.2986s
+n21_d1_3 UNSAT 133 budget used 0.3011s
+n21_d1_4 UNSAT 145 budget used 0.3036s
+n21_d1_5 UNSAT 145 budget used 0.3072s
+n21_d1_6 UNSAT 181 budget used 0.3099s
+n21_d1_7 UNSAT 133 budget used 0.3124s
+n21_d1_8 UNSAT 217 budget used 0.3151s
+n21_d2_3 UNSAT 169 budget used 0.3176s
+n21_d2_4 UNSAT 193 budget used 0.3205s
+n21_d2_5 UNSAT 169 budget used 0.3233s
+n21_d2_6 UNSAT 121 budget used 0.3258s
+n21_d2_7 UNSAT 133 budget used 0.3377s
+n21_d2_8 UNSAT 181 budget used 0.3403s
+n21_d3_4 UNSAT 157 budget used 0.3441s
+n21_d3_5 UNSAT 193 budget used 0.3472s
+n21_d3_6 UNSAT 133 budget used 0.3544s
+n21_d3_7 UNSAT 97 budget used 0.3579s
+n21_d3_8 UNSAT 121 budget used 0.3603s
+n21_d4_5 UNSAT 157 budget used 0.3628s
+n21_d4_6 UNSAT 133 budget used 0.3653s
+n21_d4_7 UNSAT 121 budget used 0.3677s
+n21_d4_8 UNSAT 121 budget used 0.3701s
+n21_d5_6 UNSAT 169 budget used 0.3726s
+n21_d5_7 UNSAT 121 budget used 0.3752s
+n21_d5_8 UNSAT 121 budget used 0.3779s
+n21_d6_7 UNSAT 121 budget used 0.3803s
+n21_d6_8 UNSAT 133 budget used 0.3827s
+n21_d7_8 UNSAT 133 budget used 0.3852s
+{
+  "by_n": {
+    "25": {
+      "UNSAT": 9
+    },
+    "24": {
+      "UNSAT": 9
+    },
+    "22": {
+      "UNSAT": 36
+    },
+    "21": {
+      "UNSAT": 36
+    }
+  },
+  "search_process_wall_seconds": 0.385246750083752,
+  "dfs_seconds": 0.127496,
+  "cap_seconds": 300.0
+}

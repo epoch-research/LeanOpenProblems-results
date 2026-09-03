@@ -1,0 +1,6 @@
+import Submission.CycleEndpointSlots
+/-! Axiom audit for the cycle endpoint-slot count. -/
+#print axioms Erdos583CycleEndpointSlotsDevelopment.common_cycle_vertex_other_endpoint
+#print axioms Erdos583CycleEndpointSlotsDevelopment.common_cycle_length_bound
+#print axioms Erdos583CycleEndpointSlotsDevelopment.cycle_avoiding_path_card
+#print axioms Erdos583CycleEndpointSlotsDevelopment.five_cycle_four_slots

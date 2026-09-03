@@ -1,0 +1,13 @@
+buffered adjacent-layer/bit configurations: 7986
+minimum-support/cut/scale locality checks: 31368
+homogeneous support-component pruning checks: 2883
+arbitrary-support surgery checks, balanced/unbalanced: 1267 1133
+long-cycle non-full-support buffered surgeries: 6
+two successive non-full-support surgeries:
+  original vertices/edges: 72390 72400
+  defect counts: 4 -> 2 -> 0; buffer sizes: 8 12
+  combined third-colour class independent; explicit 3-colouring verified
+four-chromatic fallback: t=4 -> 2, then actual 4-vertex tau=2 certificate
+integer radius/scale estimates: all 2 <= t <= 100000
+witness-size and explicit-profile estimates: all 1 <= q < 500
+ALL CHECKS PASSED

@@ -1,0 +1,20 @@
+import Submission.ClippedModulusExplore
+import Submission.ClippedModulusTuningExplore
+import Submission.DyadicCyclicPaletteExplore
+
+/-! Axiom audit for clipped and dyadic finite cyclic palettes. -/
+
+#print axioms Erdos66ClippedModulus.prefix_two_integer_counts
+#print axioms Erdos66ClippedModulus.mem_rebase
+#print axioms Erdos66ClippedModulus.slice_rebase
+#print axioms Erdos66ClippedModulus.rebase_prefix_identity
+#print axioms Erdos66ClippedModulus.two_overlap_lengths
+#print axioms Erdos66ClippedModulus.rebase_prefix_error
+#print axioms Erdos66ClippedModulus.rebase_cyclic_error
+#print axioms Erdos66ClippedModulus.rebase_mono
+#print axioms Erdos66ClippedModulus.rebase_univ
+#print axioms Erdos66ClippedModulus.rebase_prefix_actual_error
+#print axioms Erdos66ClippedModulusTuning.clipped_quantized_prefix_error
+#print axioms Erdos66ClippedModulusTuning.exists_clipped_tuned_member
+#print axioms Erdos66DyadicCyclicPalette.half_scale_log_bound
+#print axioms Erdos66DyadicCyclicPalette.exists_dyadic_logarithmic_palette

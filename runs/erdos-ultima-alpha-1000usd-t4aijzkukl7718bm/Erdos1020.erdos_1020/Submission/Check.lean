@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Finset.exists_min_image
+#check Finset.sum_image
+#check Finset.image_biUnion
+#check Finset.biUnion_image
+#check Finset.sum_insert
+#check Finset.sum_erase_add
+#check Finset.card_fin_lt
+#check Finset.exists_mem_notMem_of_card_lt_card
+#check Finset.eq_of_subset_of_card_le
+#check Finset.image_image
+#check Finset.image_union
+#check Finset.sum_le_sum
+#check Finset.sum_lt_sum
+#check Finset.image_injective
+#check Finset.sum_congr

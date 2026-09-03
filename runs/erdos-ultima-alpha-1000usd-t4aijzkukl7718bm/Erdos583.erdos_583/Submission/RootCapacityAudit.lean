@@ -1,0 +1,15 @@
+import Submission.RootCapacity
+/-! Axiom audit for rooted single-defect capacity constraints. -/
+#print axioms Erdos583RootCapacityDevelopment.walk_incidence_count
+#print axioms Erdos583RootCapacityDevelopment.trail_degree_count
+#print axioms Erdos583RootCapacityDevelopment.trail_incidence
+#print axioms Erdos583RootCapacityDevelopment.path_incidence
+#print axioms Erdos583RootCapacityDevelopment.repeated_start_incidence
+#print axioms Erdos583RootCapacityDevelopment.rooted_member_incidence
+#print axioms Erdos583RootCapacityDevelopment.rooted_incidence
+#print axioms Erdos583RootCapacityDevelopment.rooted_degree_quota_bound
+#print axioms Erdos583RootCapacityDevelopment.root_eq_of_over_capacity
+#print axioms Erdos583RootCapacityDevelopment.trail_endpoint_boundary_bound
+#print axioms Erdos583RootCapacityDevelopment.ncard_inter_eq_sum
+#print axioms Erdos583RootCapacityDevelopment.rooted_cut_bound
+#print axioms Erdos583RootCapacityDevelopment.root_eq_of_cut_over_capacity

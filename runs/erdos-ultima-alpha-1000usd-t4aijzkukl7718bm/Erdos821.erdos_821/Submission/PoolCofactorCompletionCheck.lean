@@ -1,0 +1,11 @@
+import Submission.PoolCofactorCompletion
+/-! Permitted-axiom audit for the retained-pool all-modulus completion. -/
+
+#print axioms Erdos821.AnalyticSieve.poolLargeConductor_le_divisor_sum
+#print axioms Erdos821.AnalyticSieve.poolLargeConductor_harmonic_mean
+#print axioms Erdos821.AnalyticSieve.pool_conductor_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.pool_unit_all_modulus_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.pool_unit_principal_density_error
+#print axioms Erdos821.AnalyticSieve.pool_unit_principal_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.pool_unit_natural_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.exists_pool_unit_natural_mean_bound

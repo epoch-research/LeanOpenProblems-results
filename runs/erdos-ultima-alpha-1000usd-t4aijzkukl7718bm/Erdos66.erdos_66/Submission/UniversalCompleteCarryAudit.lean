@@ -1,0 +1,20 @@
+import Submission.UniversalCompleteNaturalExplore
+/-! Axiom audit for fixed-radix complete-partition transfer. -/
+#print axioms Erdos66UniversalCompleteCyclic.colorClass_disjoint
+#print axioms Erdos66UniversalCompleteCyclic.colorClass_cover
+#print axioms Erdos66UniversalCompleteCyclic.colorClass_eq_union
+#print axioms Erdos66UniversalCompleteCyclic.colorClass_pairCount
+#print axioms Erdos66UniversalCompleteCyclic.exists_complete_plane_colors
+#print axioms Erdos66UniversalCompleteCyclic.thickened_disjoint
+#print axioms Erdos66UniversalCompleteCyclic.thickened_cover
+#print axioms Erdos66UniversalCompleteNatural.mem_cyclicColors
+#print axioms Erdos66UniversalCompleteNatural.cyclicColors_disjoint
+#print axioms Erdos66UniversalCompleteNatural.cyclicColors_cover
+#print axioms Erdos66UniversalCompleteNatural.cyclicMean_pos
+#print axioms Erdos66UniversalCompleteNatural.carryRelative_nonneg
+#print axioms Erdos66UniversalCompleteNatural.cyclicColors_error
+#print axioms Erdos66UniversalCompleteNatural.naturalSet_mem
+#print axioms Erdos66UniversalCompleteNatural.naturalSet_prefix_congr
+#print axioms Erdos66UniversalCompleteNatural.naturalSet_full_projection
+#print axioms Erdos66UniversalCompleteNatural.naturalSet_profile_error
+#print axioms Erdos66UniversalCompleteNatural.exists_universal_complete_natural

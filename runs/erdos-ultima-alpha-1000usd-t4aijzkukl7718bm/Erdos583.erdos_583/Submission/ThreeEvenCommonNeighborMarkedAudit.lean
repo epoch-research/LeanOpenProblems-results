@@ -1,0 +1,5 @@
+import Submission.ThreeEvenCommonNeighborMarked
+
+/-! Axiom audit of the endpoint-refinement development. -/
+#print axioms Erdos583ThreeEvenCommonNeighborMarkedDevelopment.regular_three_even_common_neighbor
+#print axioms Erdos583ThreeEvenCommonNeighborMarkedDevelopment.three_even_common_neighbor_marked

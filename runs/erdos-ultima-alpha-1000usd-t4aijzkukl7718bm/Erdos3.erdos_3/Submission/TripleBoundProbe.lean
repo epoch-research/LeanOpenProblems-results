@@ -1,0 +1,14 @@
+import Submission.ExplicitProgressionThresholds
+import Submission.DyadicFourParameters
+#check Nat.le_two_pow
+#check Nat.lt_two_pow_self
+#check Nat.le_self_pow
+#check Nat.one_le_pow
+#check Nat.pow_le_pow_left
+#check Nat.pow_le_pow_right
+#check max_add_add_right
+#check Nat.max_add_add_right
+#check Nat.add_max_add_right
+#check le_mul_of_one_le_right
+#check Nat.le_mul_of_pos_right
+#check Nat.pow_lt_pow_right

@@ -1,0 +1,9 @@
+import Submission.WideRankCellBudgetExplore
+#check Real.sqrt_div
+#check Real.sqrt_sq
+#check Real.sqrt_sq_eq_abs
+#check Real.sqrt_mul
+#check Filter.Tendsto.atTop_mul_atTop₀
+#check Filter.Tendsto.atTop_mul_pos
+#check Real.log_le_self
+#check Real.log_le_sub_one_of_pos

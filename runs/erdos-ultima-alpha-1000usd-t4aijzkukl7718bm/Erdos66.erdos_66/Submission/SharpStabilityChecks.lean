@@ -1,0 +1,13 @@
+import Submission.FrequentFluctuationExplore
+#check tendsto_tsum_of_dominated_convergence
+#check tendsto_tsum_of_dominated_convergence_of_summable_norm
+#check tsum_tendsto_of_norm_bounded
+#check Real.sqrt_div
+#check Real.sq_sqrt
+#check Summable.mul_left
+#check Summable.of_norm_bounded
+#check Real.sqrt_lt_one
+#check Real.sqrt_lt_one.mpr
+#check ContinuousOn.tendsto
+#check le_of_tendsto
+#check Filter.Tendsto.mono_left

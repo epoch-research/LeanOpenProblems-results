@@ -1,0 +1,15 @@
+import Submission.SimultaneousQuadraticRecurrence
+#check Complex.sq_sqrt
+#check Complex.sq_sqrt'
+#check Complex.norm_sqrt
+#check Complex.abs_sqrt
+#check Complex.sq_abs
+#check Complex.normSq_sqrt
+#check exists_pow_eq
+#check IsAlgClosed.exists_pow_eq
+#check Nat.choose_le_pow
+#check Nat.choose_le_two_pow
+#check Nat.log_le_self
+#check Nat.le_pow_iff_clog_le
+#check Nat.le_pow_clog
+#check NormedSpace.norm_zpow

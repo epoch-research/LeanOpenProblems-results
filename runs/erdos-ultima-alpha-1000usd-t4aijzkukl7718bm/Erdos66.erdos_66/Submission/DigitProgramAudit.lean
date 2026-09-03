@@ -1,0 +1,34 @@
+import Submission.NonuniformDigitCoreExplore
+/-! Axiom audit for digit boxes, blocking, and nonuniform bounded-width cores. -/
+#print axioms Erdos66DigitBoxEnergy.encode_injective
+#print axioms Erdos66DigitBoxEnergy.encode_lt
+#print axioms Erdos66DigitBoxEnergy.encode_pair_sum
+#print axioms Erdos66DigitBoxEnergy.box_card
+#print axioms Erdos66DigitBoxEnergy.two_point_power_bound
+#print axioms Erdos66DigitBoxEnergy.two_point_box_peak
+#print axioms Erdos66DigitBoxEnergy.box_card_le_cap_power
+#print axioms Erdos66LayeredDigitProgram.mem_accepted_encode
+#print axioms Erdos66LayeredDigitProgram.accepted_lt
+#print axioms Erdos66LayeredDigitProgram.accepted_card_le
+#print axioms Erdos66LayeredDigitProgram.accepted_card_le_of_finite_cap
+#print axioms Erdos66LayeredDigitAsymptotic.logarithmic_digit_cap
+#print axioms Erdos66LayeredDigitAsymptotic.shifted_poly_ratio
+#print axioms Erdos66LayeredDigitAsymptotic.poly_geometric_count_negligible
+#print axioms Erdos66LayeredDigitAsymptotic.recognized_subset_sq_negligible
+#print axioms Erdos66LayeredDigitAsymptotic.recognized_subset_negligible
+#print axioms Erdos66LayeredPath.path_append
+#print axioms Erdos66LayeredPath.path_ofFn_iff
+#print axioms Erdos66DigitBlocking.full_box_eq_range
+#print axioms Erdos66DigitBlocking.exists_encode
+#print axioms Erdos66DigitBlocking.ofFn_eq_finWord
+#print axioms Erdos66DigitBlocking.mem_fromEdge_encode
+#print axioms Erdos66DigitBlocking.mem_fromEdge
+#print axioms Erdos66DigitBlocking.expand_length
+#print axioms Erdos66DigitBlocking.expand_code
+#print axioms Erdos66DigitBlocking.path_expand
+#print axioms Erdos66DigitBlocking.expand_finWord
+#print axioms Erdos66DigitBlocking.mem_block_program
+#print axioms Erdos66NonuniformDigitCore.grouped_recognition
+#print axioms Erdos66NonuniformDigitCore.nonuniform_subset_sq_negligible
+#print axioms Erdos66NonuniformDigitCore.nonuniform_subset_negligible
+#print axioms Erdos66NonuniformDigitCore.no_nonzero_log_limit

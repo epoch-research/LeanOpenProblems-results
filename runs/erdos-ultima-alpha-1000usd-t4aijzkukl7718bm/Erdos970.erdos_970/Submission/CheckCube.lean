@@ -1,0 +1,10 @@
+import Submission.MixedPatternRescaling
+#check Finset.card_bij
+#check Finset.card_powerset
+#check Finset.exists_of_ssubset
+#check Finset.exists_mem_notMem_of_ssubset
+#check Finset.ssubset_iff_subset_ne
+#check Nat.ModEq.of_dvd
+#check Nat.mod_mod_of_dvd
+#check Finset.mem_powerset
+#check Finset.not_subset

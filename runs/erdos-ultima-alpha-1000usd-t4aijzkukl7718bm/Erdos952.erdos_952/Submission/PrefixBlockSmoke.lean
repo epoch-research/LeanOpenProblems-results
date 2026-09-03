@@ -1,0 +1,13 @@
+import Submission.PeriodicSieveComponents
+#check finProdFinEquiv
+#check finProdFinEquiv_apply
+#check Fin.divNat
+#check Fin.modNat
+#check Fintype.card_le_of_injective
+#check Nat.add_mul_div_left
+#check Nat.mul_add_div
+#check Fin.castSucc_mk
+#check Fin.succ_mk
+#check Nat.card_pos_iff
+#check Finset.card_attach
+#check Set.Finite.toFinset_card

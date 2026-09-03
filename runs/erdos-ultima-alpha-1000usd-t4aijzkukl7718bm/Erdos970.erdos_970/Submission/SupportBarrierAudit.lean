@@ -1,0 +1,7 @@
+import Submission.RadialProfileBarrier
+import Submission.PrimeSupportMassBarrier
+#print axioms Erdos970.RadialProfile.profileEnergy_lower
+#print axioms Erdos970.RadialProfile.no_quadratic_radial_profile
+#print axioms Erdos970.FiniteSelberg.kernelEnergy_weighted_support_upper
+#print axioms Erdos970.FiniteSelberg.eulerMass_initial_lower
+#print axioms Erdos970.FiniteSelberg.initial_common_kernel_tail_nonpos

@@ -1,0 +1,89 @@
+{
+  "solver_self_test": {
+    "root_tables": "PASS",
+    "random_bruteforce_cases": 2000,
+    "status": "PASS"
+  },
+  "q17_tag_searches": 0,
+  "independent_checker_backend_agreement": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      2,
+      10
+    ],
+    [
+      9,
+      10,
+      11
+    ]
+  ],
+  "both_checkers_reject_rehashed_malformed_trees": [
+    "truncated_child",
+    "surplus_child",
+    "false_conflict_at_root",
+    "branch_on_already_fixed_tag"
+  ],
+  "repeated_triples_negative_fixture": {
+    "classification": "weak-only SAT, NOT strong B3; a negative regression test, not a construction success",
+    "deleted_indices": [
+      0,
+      1,
+      2
+    ],
+    "T": [
+      23,
+      32,
+      80,
+      82,
+      86,
+      104,
+      109,
+      120,
+      123
+    ],
+    "tags": [
+      0,
+      1,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "CRT_A_in_T_order": [
+      555,
+      431,
+      80,
+      215,
+      352,
+      237,
+      375,
+      120,
+      655
+    ],
+    "weak_distinct_triple_sums": 84,
+    "weak_constraint_count": 11,
+    "strong_constraint_count": 58,
+    "strong_collision": {
+      "left_indices": [
+        1,
+        5,
+        5
+      ],
+      "right_indices": [
+        2,
+        2,
+        2
+      ],
+      "sum_mod_665": 240
+    }
+  },
+  "status": "PASS"
+}

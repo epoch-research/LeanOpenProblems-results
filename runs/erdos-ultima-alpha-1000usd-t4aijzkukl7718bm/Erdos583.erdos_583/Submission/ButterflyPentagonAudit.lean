@@ -1,0 +1,12 @@
+import Submission.ButterflyPentagon
+
+/-! Axiom audit of the two-triangle path-or-pentagon theorem. -/
+#print axioms Erdos583PathIntervalReplacementDevelopment.replace_interval_isPath
+#print axioms Erdos583ButterflyPairsDevelopment.opposite_pairs_vec
+#print axioms Erdos583ButterflyPairsDevelopment.core_relabel_vec
+#print axioms Erdos583ButterflyPairsDevelopment.base_coreEdges_eq
+#print axioms Erdos583ButterflyPairsDevelopment.mapped_core_relabel
+#print axioms Erdos583ButterflyPairsDevelopment.hub_adj
+#print axioms Erdos583ButterflyPairsDevelopment.paired_adj
+#print axioms Erdos583ButterflyPentagonDevelopment.butterfly_ordered_pentagon
+#print axioms Erdos583ButterflyPentagonDevelopment.butterfly_path_or_pentagon

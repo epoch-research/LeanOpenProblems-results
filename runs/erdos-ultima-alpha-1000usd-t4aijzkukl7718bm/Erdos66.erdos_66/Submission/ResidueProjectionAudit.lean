@@ -1,0 +1,18 @@
+import Submission.ResidueProjectionDensityExplore
+/-! Axiom audit for all-modulus joint residue energy and density limits. -/
+#print axioms Erdos66ResidueEnergyProjection.variance_corr_eq
+#print axioms Erdos66ResidueEnergyProjection.weighted_corr_energy_difference
+#print axioms Erdos66ResidueEnergyProjection.variance_difference_sq
+#print axioms Erdos66NaturalResidueProjection.push_square_tendsto
+#print axioms Erdos66NaturalResidueProjection.variance_tendsto
+#print axioms Erdos66NaturalResidueProjection.natVariance_difference_sq
+#print axioms Erdos66ResidueProfileProjection.antitone_weighted_prefix_bound
+#print axioms Erdos66ResidueProfileProjection.centeredProfile_prefix
+#print axioms Erdos66ResidueProfileProjection.projectionError_profile_bound
+#print axioms Erdos66WitnessResidueProjection.residueEnergy_bound
+#print axioms Erdos66WitnessResidueProjection.witness_residueEnergy_zero
+#print axioms Erdos66ResiduePairIdentity.residue_pair_eq
+#print axioms Erdos66ResiduePairIdentity.sum_pairError_square
+#print axioms Erdos66ResidueProjectionDensity.witness_totalError_prefix_zero
+#print axioms Erdos66ResidueProjectionDensity.witness_projection_limits_off_density_zero
+#print axioms Erdos66ResidueProjectionDensity.witness_pair_limits_off_density_zero

@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check geom_sum_mul
+#check geom_sum_mul_neg
+#check geom_sum_eq
+#check Finset.sum_geometric_two
+#check Nat.geom_sum_two
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.sum_ite_eq'
+#check Filter.Tendsto.inv_tendsto_atTop
+#check Real.log_pow
+#check tendsto_one_div_atTop_nhds_zero_nat
+#check Nat.log_le_iff_le_pow
+#check Nat.log_lt_iff_lt_pow
+#check Nat.le_log_iff_pow_le
+#check Finset.sum_le_sum_of_subset_of_nonneg

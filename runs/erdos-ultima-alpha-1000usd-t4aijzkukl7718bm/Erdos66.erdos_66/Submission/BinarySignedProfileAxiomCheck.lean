@@ -1,0 +1,12 @@
+import Submission.BinaryAggregateBlocksExplore
+
+/-! Axiom audit for weighted character selection and binary coarse profiles. -/
+#print axioms Erdos66RealWeightedCharacterEnergy.average_signed_fiber_energy
+#print axioms Erdos66RealWeightedCharacterEnergy.average_signed_energy
+#print axioms Erdos66RealWeightedCharacterEnergy.exists_admissible_weighted_translate
+#print axioms Erdos66WeightedProfileCharacter.exists_profile_translation
+#print axioms Erdos66WeightedProfileCharacter.exists_fractional_root_profile
+#print axioms Erdos66SignedRepBernoulli.exists_unsigned_signed_bound
+#print axioms Erdos66SignedRepBernoulli.signedMean_nat_correction_bounds_all
+#print axioms Erdos66BinarySignedProfile.exists_binary_signed_profile
+#print axioms Erdos66BinaryAggregateBlocks.exists_aggregate_blocks

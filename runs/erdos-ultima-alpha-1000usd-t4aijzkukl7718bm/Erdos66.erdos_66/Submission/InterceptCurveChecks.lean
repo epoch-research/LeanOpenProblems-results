@@ -1,0 +1,16 @@
+import Submission.FiniteFieldExplore
+import Submission.OriginRepairExplore
+#check Finset.card_le_two
+#check Finset.two_lt_card_iff
+#check Fintype.card_subtype
+#check Fintype.card_subtype_iff
+#check Fintype.card_ofFinset
+#check Finset.card_filter_le_iff
+#check Finset.card_image_le
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.card_eq_sum_card_image
+#check Finset.card_bij
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Finset.card_le_card_of_injOn
+#check Finset.sum_ite_eq'
+#print Erdos66OriginRepair.pairCount

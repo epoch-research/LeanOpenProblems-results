@@ -1,0 +1,16 @@
+'Erdos66ClippedModulus.prefix_two_integer_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.mem_rebase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.slice_rebase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_prefix_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.two_overlap_lengths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_prefix_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_cyclic_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulus.rebase_prefix_actual_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulusTuning.clipped_quantized_prefix_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedModulusTuning.exists_clipped_tuned_member' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicCyclicPalette.half_scale_log_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicCyclicPalette.exists_dyadic_logarithmic_palette' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

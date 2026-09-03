@@ -1,0 +1,9 @@
+import Submission.Work
+#check Equiv.swap_inv
+#check Equiv.swap_symm
+#check mul_inv_rev
+#check Equiv.Perm.inv_apply_self
+#check Equiv.Perm.symm_eq_inv
+#check Equiv.swap_apply_self
+#check Equiv.apply_swap_eq_self
+#check Equiv.Perm.inv_apply_self

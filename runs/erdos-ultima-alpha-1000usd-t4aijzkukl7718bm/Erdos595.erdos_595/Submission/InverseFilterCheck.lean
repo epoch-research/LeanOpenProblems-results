@@ -1,0 +1,22 @@
+import FormalConjecturesUtil
+open Filter Set Ordinal
+#check Ordinal.bddAbove_of_small
+#check Ordinal.bddAbove_range
+#check Ordinal.lsub
+#check Ordinal.lift
+#check Ordinal.iSup
+#check ciSup_le
+#check le_ciSup
+#check Cardinal.aleph
+#check Ordinal.add_lt_add_iff_left
+#check add_lt_add_left
+#check natCast_strictMono
+#check Ordinal.natCast_strictMono
+#check Fin.strictMono_iff_lt_succ
+#check Fin.tail_cons
+#check Fin.cons_zero
+#check Fin.cons_succ
+#check Filter.map_comap_of_surjective
+#check Filter.eventually_gt_atTop
+#check wellFounded_iff_isEmpty_descending_chain
+#check Countable.bddAbove_range

@@ -1,0 +1,9 @@
+import Submission.ParityCorrectedTransfer
+#check SimpleGraph.Iso.map
+#check SimpleGraph.map_adj
+#check SimpleGraph.Iso.map_eq
+#check Erdos184Work.BlockRestriction.number_eq_of_iso
+#check Erdos184Work.FractionalGapFamily.number_eq_of_iso
+#check Erdos184Work.EvenFractionalFamily.number_eq_of_iso
+#check SimpleGraph.Iso.adj_iff
+#check SimpleGraph.map_monotone

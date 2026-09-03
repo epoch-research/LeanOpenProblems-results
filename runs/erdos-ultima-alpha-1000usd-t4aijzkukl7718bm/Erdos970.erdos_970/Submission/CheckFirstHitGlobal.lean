@@ -1,0 +1,14 @@
+import Submission.FirstHitMediumSum
+import Submission.FirstHitEarlyTail
+#check Finset.prod_one_sub_ordered
+#check Finset.prod_dvd_prod_of_subset
+#check Nat.le_of_dvd
+#check Finset.prod_pos
+#check Finset.sum_sdiff
+#check Filter.eventually_atTop
+#check Filter.eventually_atTop.mp
+#check Nat.ceil_le
+#check Finset.filter_eq_self
+#check Erdos970.FiniteSelberg.smallDivisorFamily
+#check Finset.prod_inv_distrib
+#check Nat.prod_primesBelow_pos

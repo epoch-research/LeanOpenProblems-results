@@ -1,0 +1,410 @@
+{
+  "Erdos1.erdos_1": {
+    "erdos_number": 1,
+    "url": "https://www.erdosproblems.com/1",
+    "conjecture": "If every subset of $A\\subseteq\\{1,\\ldots,N\\}$ has a distinct sum, then $N\\gg 2^{|A|}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos3.erdos_3": {
+    "erdos_number": 3,
+    "url": "https://www.erdosproblems.com/3",
+    "conjecture": "If $A\\subseteq\\mathbb{N}$ has $\\sum_{n\\in A}1/n=\\infty$, then $A$ contains arbitrarily long arithmetic progressions.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos5.erdos_5": {
+    "erdos_number": 5,
+    "url": "https://www.erdosproblems.com/5",
+    "conjecture": "Every $C\\geq 0$ is a limit point of the normalised prime gaps $(p_{n+1}-p_n)/\\log n$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos7.erdos_7": {
+    "erdos_number": 7,
+    "url": "https://www.erdosproblems.com/7",
+    "conjecture": "There is a covering system of the integers all of whose moduli are odd and greater than $1$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos20.erdos_20": {
+    "erdos_number": 20,
+    "url": "https://www.erdosproblems.com/20",
+    "conjecture": "Sunflower conjecture: the minimal $f(n,k)$ such that every family of $f(n,k)$ many $n$-element sets contains a $k$-sunflower satisfies $f(n,k)<c_k^n$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos23.erdos_23": {
+    "erdos_number": 23,
+    "url": "https://www.erdosproblems.com/23",
+    "conjecture": "Every triangle-free graph on $5n$ vertices can be made bipartite by deleting at most $n^2$ edges.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos28.erdos_28": {
+    "erdos_number": 28,
+    "url": "https://www.erdosproblems.com/28",
+    "conjecture": "If $A\\subseteq\\mathbb{N}$ and $A+A$ contains all sufficiently large integers, then the number of representations of $n$ as $a+b$ with $a,b\\in A$ is unbounded.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos30.erdos_30": {
+    "erdos_number": 30,
+    "url": "https://www.erdosproblems.com/30",
+    "conjecture": "The maximum size of a Sidon set in $\\{1,\\ldots,N\\}$ is $\\sqrt{N}+O_\\varepsilon(N^\\varepsilon)$ for every $\\varepsilon>0$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos39.erdos_39": {
+    "erdos_number": 39,
+    "url": "https://www.erdosproblems.com/39",
+    "conjecture": "There is an infinite Sidon set $A$ with $|A\\cap\\{1,\\ldots,N\\}|\\gg_\\varepsilon N^{1/2-\\varepsilon}$ for every $\\varepsilon>0$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos41.erdos_41": {
+    "erdos_number": 41,
+    "url": "https://www.erdosproblems.com/41",
+    "conjecture": "If $A\\subseteq\\mathbb{N}$ is infinite and all triple sums $a+b+c$ from $A$ are distinct, then $\\liminf_N |A\\cap\\{1,\\ldots,N\\}|/N^{1/3}=0$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos52.erdos_52": {
+    "erdos_number": 52,
+    "url": "https://www.erdosproblems.com/52",
+    "conjecture": "Sum--product conjecture: $\\max(|A+A|,|A\\cdot A|)\\gg_\\varepsilon |A|^{2-\\varepsilon}$ for finite $A\\subseteq\\mathbb{Z}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos61.erdos_61": {
+    "erdos_number": 61,
+    "url": "https://www.erdosproblems.com/61",
+    "conjecture": "Erd\\H{o}s--Hajnal conjecture: for every graph $H$ there is $c>0$ such that every $H$-free graph on $n$ vertices contains a clique or independent set of size at least $n^c$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos66.erdos_66": {
+    "erdos_number": 66,
+    "url": "https://www.erdosproblems.com/66",
+    "conjecture": "There is a set $A\\subseteq\\mathbb{N}$ such that the number of representations of $n$ as $a+b$ with $a,b\\in A$, divided by $\\log n$, tends to a nonzero limit.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos68.erdos_68": {
+    "erdos_number": 68,
+    "url": "https://www.erdosproblems.com/68",
+    "conjecture": "The sum $\\sum_{n\\geq 2}1/(n!-1)$ is irrational.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos74.erdos_74": {
+    "erdos_number": 74,
+    "url": "https://www.erdosproblems.com/74",
+    "conjecture": "For every $f(n)\\to\\infty$ there is a graph of infinite chromatic number in which every $n$-vertex subgraph can be made bipartite by deleting at most $f(n)$ edges.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos86.erdos_86": {
+    "erdos_number": 86,
+    "url": "https://www.erdosproblems.com/86",
+    "conjecture": "Every subgraph of the hypercube $Q_n$ with at least $(\\tfrac{1}{2}+o(1))n2^{n-1}$ edges contains a $4$-cycle.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos89.erdos_89": {
+    "erdos_number": 89,
+    "url": "https://www.erdosproblems.com/89",
+    "conjecture": "Every set of $n$ points in $\\mathbb{R}^2$ determines $\\gg n/\\sqrt{\\log n}$ distinct distances.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos97.erdos_97": {
+    "erdos_number": 97,
+    "url": "https://www.erdosproblems.com/97",
+    "conjecture": "Every convex polygon has a vertex with no four other vertices equidistant from it.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos101.erdos_101": {
+    "erdos_number": 101,
+    "url": "https://www.erdosproblems.com/101",
+    "conjecture": "Among $n$ points in $\\mathbb{R}^2$ with no five on a line, the number of lines containing exactly four points is $o(n^2)$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos104.erdos_104": {
+    "erdos_number": 104,
+    "url": "https://www.erdosproblems.com/104",
+    "conjecture": "Among $n$ points in $\\mathbb{R}^2$, the number of unit circles containing at least three of the points is $o(n^2)$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos107.erdos_107": {
+    "erdos_number": 107,
+    "url": "https://www.erdosproblems.com/107",
+    "conjecture": "Happy ending problem: the minimal $N$ such that any $N$ points in $\\mathbb{R}^2$, no three on a line, contain the vertices of a convex $n$-gon is $2^{n-2}+1$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos120.erdos_120": {
+    "erdos_number": 120,
+    "url": "https://www.erdosproblems.com/120",
+    "conjecture": "Erd\\H{o}s similarity problem: for every infinite $A\\subseteq\\mathbb{R}$ there is a set of positive measure containing no affine copy $a\\cdot A+b$ (with $a\\neq 0$) of $A$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos126.erdos_126": {
+    "erdos_number": 126,
+    "url": "https://www.erdosproblems.com/126",
+    "conjecture": "Let $f(n)$ be the largest $m$ such that $\\prod_{a\\neq b\\in A}(a+b)$ has at least $m$ distinct prime factors whenever $|A|=n$; then $f(n)/\\log n\\to\\infty$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos128.erdos_128": {
+    "erdos_number": 128,
+    "url": "https://www.erdosproblems.com/128",
+    "conjecture": "If every induced subgraph on at least $n/2$ of the $n$ vertices of $G$ has more than $n^2/50$ edges, then $G$ contains a triangle.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos138.erdos_138": {
+    "erdos_number": 138,
+    "url": "https://www.erdosproblems.com/138",
+    "conjecture": "The van der Waerden numbers satisfy $W(k)^{1/k}\\to\\infty$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos172.erdos_172": {
+    "erdos_number": 172,
+    "url": "https://www.erdosproblems.com/172",
+    "conjecture": "In any finite colouring of $\\mathbb{N}$ there are arbitrarily large finite sets $A$ such that all sums and products of distinct elements of $A$ receive the same colour.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos181.erdos_181": {
+    "erdos_number": 181,
+    "url": "https://www.erdosproblems.com/181",
+    "conjecture": "The Ramsey number of the hypercube satisfies $R(Q_n)\\ll 2^n$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos184.erdos_184": {
+    "erdos_number": 184,
+    "url": "https://www.erdosproblems.com/184",
+    "conjecture": "Erd\\H{o}s--Gallai conjecture: every graph on $n$ vertices can be decomposed into $O(n)$ edge-disjoint cycles and edges.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos208.erdos_208.parts.i": {
+    "erdos_number": 208,
+    "url": "https://www.erdosproblems.com/208",
+    "conjecture": "The gaps between consecutive squarefree numbers $s_n$ satisfy $s_{n+1}-s_n\\ll_\\varepsilon s_n^\\varepsilon$ for every $\\varepsilon>0$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos213.erdos_213": {
+    "erdos_number": 213,
+    "url": "https://www.erdosproblems.com/213",
+    "conjecture": "For every $n\\geq 4$ there are $n$ points in $\\mathbb{R}^2$, no three on a line and no four on a circle, with all pairwise distances integers.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos241.erdos_241": {
+    "erdos_number": 241,
+    "url": "https://www.erdosproblems.com/241",
+    "conjecture": "Bose--Chowla conjecture: the maximum size of $A\\subseteq\\{1,\\ldots,N\\}$ with all triple sums distinct is $\\sim N^{1/3}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos242.erdos_242": {
+    "erdos_number": 242,
+    "url": "https://www.erdosproblems.com/242",
+    "conjecture": "Erd\\H{o}s--Straus conjecture: for every $n>2$ there are integers $1\\leq x<y<z$ with $4/n=1/x+1/y+1/z$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos322.erdos_322": {
+    "erdos_number": 322,
+    "url": "https://www.erdosproblems.com/322",
+    "conjecture": "For every $k\\geq 3$ there is $c>0$ such that infinitely many $n$ have more than $n^c$ representations as a sum of $k$ many $k$th powers.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos324.erdos_324": {
+    "erdos_number": 324,
+    "url": "https://www.erdosproblems.com/324",
+    "conjecture": "There is a polynomial $f\\in\\mathbb{Z}[x]$ such that the sums $f(a)+f(b)$ with $a<b$ nonnegative integers are all distinct.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos364.erdos_364": {
+    "erdos_number": 364,
+    "url": "https://www.erdosproblems.com/364",
+    "conjecture": "There are no three consecutive powerful numbers.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos371.erdos_371": {
+    "erdos_number": 371,
+    "url": "https://www.erdosproblems.com/371",
+    "conjecture": "The set of $n$ with $P(n+1)>P(n)$, where $P(n)$ is the largest prime factor of $n$, has density $1/2$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos376.erdos_376": {
+    "erdos_number": 376,
+    "url": "https://www.erdosproblems.com/376",
+    "conjecture": "There are infinitely many $n$ such that $\\binom{2n}{n}$ is coprime to $105$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos406.erdos_406": {
+    "erdos_number": 406,
+    "url": "https://www.erdosproblems.com/406",
+    "conjecture": "Only finitely many powers of $2$ have only the digits $0$ and $1$ when written in base $3$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos431.erdos_431": {
+    "erdos_number": 431,
+    "url": "https://www.erdosproblems.com/431",
+    "conjecture": "There are infinite sets $A,B\\subseteq\\mathbb{N}$ such that $A+B$ agrees with the set of primes up to finitely many exceptions.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos478.erdos_478": {
+    "erdos_number": 478,
+    "url": "https://www.erdosproblems.com/478",
+    "conjecture": "The number of distinct residues $k!\\bmod p$ for $1\\leq k<p$ is $\\sim(1-1/e)p$ as the prime $p\\to\\infty$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos508.HadwigerNelsonProblem.eq5": {
+    "erdos_number": 508,
+    "url": "https://www.erdosproblems.com/508",
+    "conjecture": "Hadwiger--Nelson problem: the chromatic number of the unit-distance graph on $\\mathbb{R}^2$ is exactly $5$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos508.HadwigerNelsonProblem.eq6": {
+    "erdos_number": 508,
+    "url": "https://www.erdosproblems.com/508",
+    "conjecture": "Hadwiger--Nelson problem: the chromatic number of the unit-distance graph on $\\mathbb{R}^2$ is exactly $6$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos508.HadwigerNelsonProblem.eq7": {
+    "erdos_number": 508,
+    "url": "https://www.erdosproblems.com/508",
+    "conjecture": "Hadwiger--Nelson problem: the chromatic number of the unit-distance graph on $\\mathbb{R}^2$ is exactly $7$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos548.erdos_548": {
+    "erdos_number": 548,
+    "url": "https://www.erdosproblems.com/548",
+    "conjecture": "Erd\\H{o}s--S\\'os conjecture: every graph on $n\\geq k+1$ vertices with at least $\\frac{k-1}{2}n+1$ edges contains every tree on $k+1$ vertices.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos564.erdos_564": {
+    "erdos_number": 564,
+    "url": "https://www.erdosproblems.com/564",
+    "conjecture": "There is $c>0$ such that $R_3(n)\\geq 2^{2^{cn}}$, where $R_3(n)$ is the $2$-colour Ramsey number of the complete $3$-uniform hypergraph on $n$ vertices.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos571.erdos_571": {
+    "erdos_number": 571,
+    "url": "https://www.erdosproblems.com/571",
+    "conjecture": "For every rational $\\alpha\\in[1,2)$ there is a bipartite graph $G$ with extremal number $\\mathrm{ex}(n;G)\\asymp n^\\alpha$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos583.erdos_583": {
+    "erdos_number": 583,
+    "url": "https://www.erdosproblems.com/583",
+    "conjecture": "Every connected graph on $n$ vertices can be partitioned into at most $\\lceil n/2\\rceil$ edge-disjoint paths.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos595.erdos_595": {
+    "erdos_number": 595,
+    "url": "https://www.erdosproblems.com/595",
+    "conjecture": "There is an infinite graph containing no $K_4$ which is not the union of countably many triangle-free graphs.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos647.erdos_647": {
+    "erdos_number": 647,
+    "url": "https://www.erdosproblems.com/647",
+    "conjecture": "There is some $n>24$ such that $m+\\tau(m)\\leq n+2$ for all $m<n$, where $\\tau(m)$ counts the divisors of $m$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos672.erdos_672": {
+    "erdos_number": 672,
+    "url": "https://www.erdosproblems.com/672",
+    "conjecture": "The product of an arithmetic progression $n,n+d,\\ldots,n+(k-1)d$ of positive integers with $k\\geq 4$ and $\\gcd(n,d)=1$ is never a perfect power.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos713.erdos_713.parts.i": {
+    "erdos_number": 713,
+    "url": "https://www.erdosproblems.com/713",
+    "conjecture": "For every bipartite graph $G$ with at least two edges there are $\\alpha\\in[1,2)$ and $c>0$ such that $\\mathrm{ex}(n;G)\\sim cn^\\alpha$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos713.erdos_713.parts.ii": {
+    "erdos_number": 713,
+    "url": "https://www.erdosproblems.com/713",
+    "conjecture": "Any exponent $\\alpha$ arising as in part (i) is rational.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos714.erdos_714": {
+    "erdos_number": 714,
+    "url": "https://www.erdosproblems.com/714",
+    "conjecture": "$\\mathrm{ex}(n;K_{r,r})\\gg n^{2-1/r}$ for every $r\\geq 2$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos723.erdos_723": {
+    "erdos_number": 723,
+    "url": "https://www.erdosproblems.com/723",
+    "conjecture": "Every finite projective plane has prime-power order.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos773.erdos_773": {
+    "erdos_number": 773,
+    "url": "https://www.erdosproblems.com/773",
+    "conjecture": "The largest Sidon subset of the squares $\\{1,4,\\ldots,N^2\\}$ has size $N^{1-o(1)}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos812.erdos_812.parts.i": {
+    "erdos_number": 812,
+    "url": "https://www.erdosproblems.com/812",
+    "conjecture": "There is $c>0$ such that the diagonal Ramsey numbers satisfy $R(n+1)/R(n)\\geq 1+c$ for all large $n$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos821.erdos_821": {
+    "erdos_number": 821,
+    "url": "https://www.erdosproblems.com/821",
+    "conjecture": "For every $\\varepsilon>0$ there are infinitely many $n$ such that $\\phi(m)=n$ has more than $n^{1-\\varepsilon}$ solutions $m$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos829.erdos_829": {
+    "erdos_number": 829,
+    "url": "https://www.erdosproblems.com/829",
+    "conjecture": "The number of representations of $n$ as a sum of two cubes is at most $(\\log n)^{O(1)}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos952.erdos_952": {
+    "erdos_number": 952,
+    "url": "https://www.erdosproblems.com/952",
+    "conjecture": "There is an infinite sequence of distinct Gaussian primes with uniformly bounded gaps between consecutive terms.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos970.erdos_970": {
+    "erdos_number": 970,
+    "url": "https://www.erdosproblems.com/970",
+    "conjecture": "Jacobsthal's function satisfies $h(k)\\ll k^2$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos972.erdos_972": {
+    "erdos_number": 972,
+    "url": "https://www.erdosproblems.com/972",
+    "conjecture": "For every irrational $\\alpha>1$ there are infinitely many primes $p$ such that $\\lfloor \\alpha p\\rfloor$ is also prime.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos975.erdos_975": {
+    "erdos_number": 975,
+    "url": "https://www.erdosproblems.com/975",
+    "conjecture": "For every irreducible $f\\in\\mathbb{Z}[x]$ which is eventually positive, $\\sum_{n\\leq x}\\tau(f(n))\\sim c\\,x\\log x$ for some constant $c>0$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1003.erdos_1003": {
+    "erdos_number": 1003,
+    "url": "https://www.erdosproblems.com/1003",
+    "conjecture": "There are infinitely many $n$ with $\\phi(n)=\\phi(n+1)$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1020.erdos_1020": {
+    "erdos_number": 1020,
+    "url": "https://www.erdosproblems.com/1020",
+    "conjecture": "Erd\\H{o}s matching conjecture: for $r\\geq 3$ and $n\\geq rk-1$, the maximum number of edges in an $r$-uniform hypergraph on $n$ vertices with no $k$ pairwise disjoint edges is $\\max\\bigl(\\binom{rk-1}{r},\\binom{n}{r}-\\binom{n-k+1}{r}\\bigr)$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1057.erdos_1057": {
+    "erdos_number": 1057,
+    "url": "https://www.erdosproblems.com/1057",
+    "conjecture": "The number of Carmichael numbers up to $x$ is $x^{1-o(1)}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1083.erdos_1083": {
+    "erdos_number": 1083,
+    "url": "https://www.erdosproblems.com/1083",
+    "conjecture": "For every $d\\geq 3$, the minimum number of distinct distances determined by $n$ points in $\\mathbb{R}^d$ is $n^{2/d-o(1)}$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1159.erdos_1159": {
+    "erdos_number": 1159,
+    "url": "https://www.erdosproblems.com/1159",
+    "conjecture": "There is $C>1$ such that every finite projective plane has a set of points meeting every line in at least $1$ and at most $C$ points.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  },
+  "Erdos1206.erdos_1206.parts.i": {
+    "erdos_number": 1206,
+    "url": "https://www.erdosproblems.com/1206",
+    "conjecture": "The cubes $\\{1,8,\\ldots,N^3\\}$ contain a Sidon set of size $\\gg N$.",
+    "source": "FrontierMath Erdős paper, Appendix A (informal one-line description; the Lean statement is authoritative)"
+  }
+}

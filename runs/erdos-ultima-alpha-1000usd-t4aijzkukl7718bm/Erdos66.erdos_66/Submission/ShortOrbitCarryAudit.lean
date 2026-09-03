@@ -1,0 +1,55 @@
+import Submission.ExplicitPhaseCarryExplore
+
+/-! Axiom audit for the short-orbit carry and explicit rotation pipeline. -/
+
+#print axioms Erdos66AntitonePairIntervals.active
+#print axioms Erdos66AntitonePairIntervals.mem_active
+#print axioms Erdos66AntitonePairIntervals.active_convex
+#print axioms Erdos66AntitonePairIntervals.active_eq_interval
+#print axioms Erdos66AntitonePairIntervals.halfSupport
+#print axioms Erdos66AntitonePairIntervals.active_mem_halfSupport
+#print axioms Erdos66AntitonePairIntervals.active_empty_off_halfSupport
+#print axioms Erdos66AntitonePairIntervals.halfSupport_card_le
+#print axioms Erdos66ShortOrbitCarry.phasedRows
+#print axioms Erdos66ShortOrbitCarry.hit
+#print axioms Erdos66ShortOrbitCarry.IntervalBound
+#print axioms Erdos66ShortOrbitCarry.phasedRows_zero
+#print axioms Erdos66ShortOrbitCarry.lower_eq_prefix
+#print axioms Erdos66ShortOrbitCarry.lower_phased_sum
+#print axioms Erdos66ShortOrbitCarry.lower_sum_eq_active
+#print axioms Erdos66ShortOrbitCarry.count_sum_eq_active
+#print axioms Erdos66ShortOrbitCarry.active_orbit_error
+#print axioms Erdos66ShortOrbitCarry.lower_short_orbit_error
+#print axioms Erdos66ShortOrbitNatural.phased_pairCount
+#print axioms Erdos66ShortOrbitNatural.upper_short_orbit_error
+#print axioms Erdos66ShortOrbitNatural.intervalBound_mono
+#print axioms Erdos66ShortOrbitNatural.phaseMass
+#print axioms Erdos66ShortOrbitNatural.halfMass
+#print axioms Erdos66ShortOrbitNatural.natural_short_orbit_error
+#print axioms Erdos66QuadraticRotationApprox.sqrt_two_rat_lower
+#print axioms Erdos66QuadraticRotationApprox.exists_comparable_approx
+#print axioms Erdos66HermiteFloor.sum_int_div_block
+#print axioms Erdos66HermiteFloor.sum_floor_grid
+#print axioms Erdos66RationalRotationGrid.sum_zmod_range
+#print axioms Erdos66RationalRotationGrid.rat_mul_mod_decomposition
+#print axioms Erdos66RationalRotationGrid.rational_orbit_sum
+#print axioms Erdos66RationalRotationGrid.rational_floor_difference
+#print axioms Erdos66RotationFloorPerturbation.rotationSum
+#print axioms Erdos66RotationFloorPerturbation.rotationSum_add
+#print axioms Erdos66RotationFloorPerturbation.rotationSum_zero
+#print axioms Erdos66RotationFloorPerturbation.floor_diff_error
+#print axioms Erdos66RotationFloorPerturbation.rational_rotation_error
+#print axioms Erdos66RotationFloorPerturbation.rational_block_perturbation
+#print axioms Erdos66RotationFloorPerturbation.block_error_of_approximation
+#print axioms Erdos66ShortRotationLogBound.exists_good_rotation_block
+#print axioms Erdos66ShortRotationLogBound.rotation_log_bound
+#print axioms Erdos66DiscreteRotationBridge.ediv_difference
+#print axioms Erdos66DiscreteRotationBridge.hit_floor
+#print axioms Erdos66DiscreteRotationBridge.hit_range_eq_rotationSum
+#print axioms Erdos66DiscreteRotationBridge.hit_add
+#print axioms Erdos66DiscreteRotationBridge.phaseInteger
+#print axioms Erdos66DiscreteRotationBridge.phase
+#print axioms Erdos66DiscreteRotationBridge.slope_error
+#print axioms Erdos66DiscreteRotationBridge.slope_near
+#print axioms Erdos66DiscreteRotationBridge.phase_intervalBound
+#print axioms Erdos66ExplicitPhaseCarry.explicit_natural_carry

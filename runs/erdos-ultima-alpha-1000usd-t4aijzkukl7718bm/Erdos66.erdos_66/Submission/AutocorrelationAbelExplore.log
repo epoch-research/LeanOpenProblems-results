@@ -1,0 +1,140 @@
+Submission/AutocorrelationAbelExplore.lean:32:41: error: Application type mismatch: The argument
+  one_mul (r ^ n)
+has type
+  1 * r ^ n = r ^ n
+but is expected to have type
+  v n * r ^ n = ?m.382
+in the application
+  LE.le.trans_eq (mul_le_mul_of_nonneg_right (hv1 n) (pow_nonneg (LT.lt.le hr.left) n)) (one_mul (r ^ n))
+Submission/AutocorrelationAbelExplore.lean:37:16: error: unsolved goals
+u v : ℕ → ℝ
+hu0 : ∀ (n : ℕ), 0 ≤ u n
+hv1 : ∀ (n : ℕ), 1 ≤ v n
+hu : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => u n * r ^ n
+hv : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => v n * r ^ n
+h : Tendsto (fun n => u n / v n) atTop (𝓝 0)
+ε : ℝ
+hε : ε > 0
+N : ℕ
+hN : ∀ b ≥ N, u b / v b < ε / 2
+D : ℝ := ∑ n ∈ Finset.range N, u n
+hD : 0 ≤ D
+ht : Tendsto (fun r => D * (1 - r)) (𝓝[<] 1) (𝓝 0)
+r : ℝ
+hr : 0 < r ∧ r < 1
+hsmall : D * (1 - r) < ε / 2
+hgeom : Summable fun n => r ^ n
+hVlow : (1 - r)⁻¹ ≤ series v r
+hVpos : 0 < series v r
+hU0 : 0 ≤ series u r
+d : ℕ → ℝ := fun n => if n ∈ Finset.range N then u n * r ^ n else 0
+n : ℕ
+hn : n ∉ Finset.range N
+⊢ n < N → u n = 0 ∨ r = 0 ∧ ¬n = 0
+Submission/AutocorrelationAbelExplore.lean:39:54: error: unsolved goals
+u v : ℕ → ℝ
+hu0 : ∀ (n : ℕ), 0 ≤ u n
+hv1 : ∀ (n : ℕ), 1 ≤ v n
+hu : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => u n * r ^ n
+hv : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => v n * r ^ n
+h : Tendsto (fun n => u n / v n) atTop (𝓝 0)
+ε : ℝ
+hε : ε > 0
+N : ℕ
+hN : ∀ b ≥ N, u b / v b < ε / 2
+D : ℝ := ∑ n ∈ Finset.range N, u n
+hD : 0 ≤ D
+ht : Tendsto (fun r => D * (1 - r)) (𝓝[<] 1) (𝓝 0)
+r : ℝ
+hr : 0 < r ∧ r < 1
+hsmall : D * (1 - r) < ε / 2
+hgeom : Summable fun n => r ^ n
+hVlow : (1 - r)⁻¹ ≤ series v r
+hVpos : 0 < series v r
+hU0 : 0 ≤ series u r
+d : ℕ → ℝ := fun n => if n ∈ Finset.range N then u n * r ^ n else 0
+hd : Summable d
+n : ℕ
+hn : n ∉ Finset.range N
+⊢ n < N → u n = 0 ∨ r = 0 ∧ ¬n = 0
+Submission/AutocorrelationAbelExplore.lean:47:57: error: failed to prove positivity/nonnegativity/nonzeroness
+Submission/AutocorrelationAbelExplore.lean:56:65: error: linarith failed to find a contradiction
+case h
+u v : ℕ → ℝ
+hu0 : ∀ (n : ℕ), 0 ≤ u n
+hv1 : ∀ (n : ℕ), 1 ≤ v n
+hu : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => u n * r ^ n
+hv : ∀ (r : ℝ), 0 < r → r < 1 → Summable fun n => v n * r ^ n
+h : Tendsto (fun n => u n / v n) atTop (𝓝 0)
+ε : ℝ
+hε : ε > 0
+N : ℕ
+hN : ∀ b ≥ N, u b / v b < ε / 2
+D : ℝ := ∑ n ∈ Finset.range N, u n
+hD : 0 ≤ D
+ht : Tendsto (fun r => D * (1 - r)) (𝓝[<] 1) (𝓝 0)
+r : ℝ
+hr : 0 < r ∧ r < 1
+hsmall : D * (1 - r) < ε / 2
+hgeom : Summable fun n => r ^ n
+hVlow : (1 - r)⁻¹ ≤ series v r
+hVpos : 0 < series v r
+hU0 : 0 ≤ series u r
+d : ℕ → ℝ := fun n => if n ∈ Finset.range N then u n * r ^ n else 0
+hd : Summable d
+hdD : ∑' (n : ℕ), d n ≤ D
+hpoint : ∀ (n : ℕ), u n * r ^ n ≤ ε / 2 * (v n * r ^ n) + d n
+hsum : ∑' (i : ℕ), u i * r ^ i ≤ ε / 2 * ∑' (x : ℕ), v x * r ^ x + ∑' (b : ℕ), d b
+a✝ : ε / 2 * series v r + D < ε / 2 * ∑' (x : ℕ), v x * r ^ x + ∑' (b : ℕ), d b
+⊢ False
+failed
+Submission/AutocorrelationAbelExplore.lean:37:27: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  simp [d,̵h̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/AutocorrelationAbelExplore.lean:39:65: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  simp [d,̵h̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/AutocorrelationAbelExplore.lean:72:4: error: not a positivity goal
+Submission/AutocorrelationAbelExplore.lean:113:6: error: linarith failed to find a contradiction
+case h
+r : ℝ
+hr0 : 0 < r
+hr1 : r < 1
+hL : 1 ≤ -Real.log (1 - r)
+L : ℝ := -Real.log (1 - r)
+ht : 0 < 1 - r
+hnr : ‖r‖ < 1
+hH : ∀ (n : ℕ), ↑(harmonic (n + 1)) ≤ L + (1 - r) * (↑n + 1)
+n : ℕ
+hs : ↑(harmonic (n + 1)) ^ 2 ≤ (L + (1 - r) * (↑n + 1)) ^ 2
+a✝ : 2 * ((↑n + 2) * (↑n + 2 - 1) / 2) < (↑n + 1) ^ 2
+⊢ False
+failed
+Submission/AutocorrelationAbelExplore.lean:127:42: error: No goals to be solved
+Submission/AutocorrelationAbelExplore.lean:137:86: error: unsolved goals
+A : Set ℕ
+c : ℝ
+h : Tendsto (fun n => ↑(AdditiveCombinatorics.sumRep A n) / Real.log ↑n) atTop (𝓝 c)
+hh :
+  Tendsto
+    (fun x =>
+      ((fun n => ↑(AdditiveCombinatorics.sumRep A n) / Real.log ↑n) / fun n => ↑(harmonic (n + 1)) / Real.log ↑n) x - c)
+    atTop (𝓝 0)
+hs :
+  Tendsto
+    (fun x =>
+      (((fun n => ↑(AdditiveCombinatorics.sumRep A n) / Real.log ↑n) / fun n => ↑(harmonic (n + 1)) / Real.log ↑n) x -
+          c) ^
+        2)
+    atTop (𝓝 0)
+n : ℕ
+⊢ (↑(AdditiveCombinatorics.sumRep A n) / Real.log ↑n / (↑(harmonic (n + 1)) / Real.log ↑n) - c) ^ 2 =
+    (↑(AdditiveCombinatorics.sumRep A n) / ↑(harmonic (n + 1)) - c) ^ 2

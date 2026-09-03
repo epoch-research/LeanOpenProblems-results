@@ -1,0 +1,26 @@
+import Submission.ChangingFieldLogCapExplore
+/-! Axiom audit for changing-field full affine-line iteration. -/
+#print axioms Erdos66ChangingFieldLineStep.mem_extend
+#print axioms Erdos66ChangingFieldLineStep.extend_apply
+#print axioms Erdos66ChangingFieldLineStep.extend_mono
+#print axioms Erdos66ChangingFieldLineStep.step_mono
+#print axioms Erdos66ChangingFieldLineStep.step_mixed_dominates
+#print axioms Erdos66ChangingFieldLineStep.step_self_dominates_twice
+#print axioms Erdos66ChangingFieldLineStep.two_step_amplification
+#print axioms Erdos66ChangingFieldLineStep.step_nonempty
+#print axioms Erdos66ChangingFieldLineStep.union_step_membership
+#print axioms Erdos66ChangingFieldLineStep.field_size_peak
+#print axioms Erdos66ChangingFieldGrowth.growthAllowance_pos
+#print axioms Erdos66ChangingFieldGrowth.budget_one_step
+#print axioms Erdos66ChangingFieldGrowth.budget_bound
+#print axioms Erdos66ChangingFieldGrowth.no_logarithmic_budget
+#print axioms Erdos66ChangingFieldIteration.space_card_succ
+#print axioms Erdos66ChangingFieldIteration.two_step_peak
+#print axioms Erdos66ChangingFieldIteration.exponential_peak_from
+#print axioms Erdos66ChangingFieldIteration.nonempty_stages
+#print axioms Erdos66ChangingFieldIteration.union_step_subset
+#print axioms Erdos66ChangingFieldIteration.field_peak_each_stage
+#print axioms Erdos66ChangingFieldLogCap.space_log_nonneg
+#print axioms Erdos66ChangingFieldLogCap.space_log_succ
+#print axioms Erdos66ChangingFieldLogCap.no_eventual_log_cap
+#print axioms Erdos66ChangingFieldLogCap.arbitrarily_late_log_cap_violation

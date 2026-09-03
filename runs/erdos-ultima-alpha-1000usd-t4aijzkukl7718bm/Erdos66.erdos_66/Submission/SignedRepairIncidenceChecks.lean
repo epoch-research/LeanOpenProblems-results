@@ -1,0 +1,14 @@
+import Submission.UnrestrictedRepairIncidenceExplore
+#check Finset.sum_sdiff_sub_sum_sdiff
+#check Finset.sum_sdiff
+#check Finset.sum_sub_distrib
+#check Finset.sum_union_inter
+#check Finset.card_sdiff_add_card_inter
+#check Finset.sum_sdiff_add_sum_inter
+#check Finset.sum_sdiff_add_sum_inter_eq_sum
+#check Finset.sum_inter_add_sum_diff
+#check Finset.sum_sdiff_add_sum_eq_sum
+#check Finset.sum_sdiff_add_sum
+#check Erdos66NatPairAlgebra.pairs_self
+#check Finset.abs_sum_le_sum_abs
+#check abs_sum_le_sum_abs

@@ -1,0 +1,20 @@
+import Submission.MomentOrderConstants
+
+/-! Type and axiom audit of the coefficient comparisons. -/
+
+open Erdos821.HigherDivisors
+
+#check factorial_rankin_coefficient_le
+#print axioms factorial_rankin_coefficient_le
+#check tendsto_polynomial_eulerCost_geometric
+#print axioms tendsto_polynomial_eulerCost_geometric
+#check tendsto_factorial_rough_coefficient
+#print axioms tendsto_factorial_rough_coefficient
+#check exists_order_rough_coefficient_lt_factorial
+#print axioms exists_order_rough_coefficient_lt_factorial
+#check tendsto_symmetrized_cutoff_ratio
+#print axioms tendsto_symmetrized_cutoff_ratio
+#check rough_sieve_main_le_normalized
+#print axioms rough_sieve_main_le_normalized
+#check exists_order_rough_main_lt_factorial
+#print axioms exists_order_rough_main_lt_factorial

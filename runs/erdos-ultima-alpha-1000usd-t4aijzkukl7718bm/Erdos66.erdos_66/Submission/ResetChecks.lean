@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Nat.mul_div_right
+#check Nat.mul_div_cancel_left
+#check Nat.mul_div_cancel
+#check Nat.le_div_iff_mul_le
+#check Nat.div_le_iff_le_mul_add_pred
+#check Nat.div_le_div_right
+#check Nat.div_le_self
+#check Nat.mul_div_le
+#check tendsto_nat_floor_div_atTop
+#check squeeze_zero'
+#check Filter.Tendsto.congr'
+#check Filter.EventuallyEq.tendsto_iff
+#check abs_sub_le

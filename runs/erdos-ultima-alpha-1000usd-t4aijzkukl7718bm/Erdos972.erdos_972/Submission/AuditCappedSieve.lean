@@ -1,0 +1,17 @@
+import Submission.PrimeRoughLogLower
+
+/-! Axiom audit for the improved quantitative almost-prime lower bound.
+The universal prime-output conjecture is not proved by these declarations. -/
+#print axioms Erdos972SelbergUnitWeights.selbergWeight_formula
+#print axioms Erdos972SelbergUnitWeights.siftedMass_bound
+#print axioms Erdos972SelbergUnitWeights.abs_selbergWeight_le_one
+#print axioms Erdos972SelbergMajorantSize.weightCoeff_abs_sum_square
+#print axioms Erdos972SelbergMajorantSize.majorant_bounded_factors
+#print axioms Erdos972CappedLowerSieve.rough_weight_lower_cap
+#print axioms Erdos972CappedLowerSieve.rough_weight_positive_cap
+#print axioms Erdos972CappedLowerSieve.sieveMass_log_upper
+#print axioms Erdos972CappedLowerSieve.rough_weight_log_lower
+#print axioms Erdos972PrimeRoughLogLower.exists_prime_rough_log_scale
+#print axioms Erdos972PrimeRoughLogLower.exists_prime_rough_card_scale
+#print axioms Erdos972PrimeRoughLogLower.exists_prime_almostPrime_card_scale
+#print axioms Erdos972PrimeRoughLogLower.frequently_many_prime_almostPrime_pairs

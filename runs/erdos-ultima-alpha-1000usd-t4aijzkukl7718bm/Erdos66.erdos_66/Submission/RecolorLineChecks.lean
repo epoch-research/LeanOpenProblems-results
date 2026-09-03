@@ -1,0 +1,12 @@
+import Submission.AffineLineAssemblyExplore
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Equiv.sum_comp
+#check Equiv.sum_comp_emb
+#check Finset.sum_bij
+#check Erdos66OriginRepair.pairCount_singleton_left
+#check Erdos66ParabolaRepair.pairCount_product
+#check Finset.sum_fiberwise
+#check Finset.sum_ite
+#check Finset.sum_filter
+#check Finset.card_image_iff

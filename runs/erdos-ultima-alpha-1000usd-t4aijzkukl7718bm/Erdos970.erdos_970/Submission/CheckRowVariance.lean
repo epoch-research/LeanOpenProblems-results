@@ -1,0 +1,11 @@
+import Submission.AffinePhaseRescaling
+import Submission.SparseVoidBound
+#check Erdos970.GapAverages.residueHits
+#check Erdos970.GapAverages.residueHits_eq
+#check Finset.sum_fin_eq_sum_range
+#check Finset.sum_ite_irrel
+#check Nat.mod_lt
+#check Finset.sum_boole
+#check Erdos970.GapAverages.residueHits_pow_mean
+#check Finset.card_filter_le_iff
+#check Finset.sum_fiberwise

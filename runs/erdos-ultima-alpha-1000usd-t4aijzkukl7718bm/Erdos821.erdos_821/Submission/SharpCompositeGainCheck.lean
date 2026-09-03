@@ -1,0 +1,16 @@
+import Submission.SharpCompositeGain
+
+/-! Axiom audits for the sharper prime-pair sieve and multiplicity gain. -/
+
+#print axioms Erdos821.Sieve.sum_prime_log_div_le_log_add
+#print axioms Erdos821.Sieve.pair_sieve_denominator_log_lower_sharp
+#print axioms Erdos821.Sieve.eventually_prime_pair_explicit_sharp
+#print axioms Erdos821.Sieve.eventually_prime_pair_explicit_gain_sixteen
+#print axioms Erdos821.AnalyticSieve.eventually_sharp_pair_at
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_sharp
+#print axioms Erdos821.eventually_sharp_structured_smooth_family
+#print axioms Erdos821.infinite_g_gt_sharp_composite_limit
+#print axioms Erdos821.infinite_g_gt_sharp_composite_uniform
+#print axioms Erdos821.erdos_821_sharp_composite_range
+#print axioms Erdos821.sharp_composite_gain_gt_eighteen_binomial_gain
+#check Erdos821.infinite_g_gt_sharp_composite_uniform

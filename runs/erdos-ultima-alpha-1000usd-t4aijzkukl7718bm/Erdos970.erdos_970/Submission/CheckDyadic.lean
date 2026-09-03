@@ -1,0 +1,17 @@
+import Submission.SoftEndpointReduction
+#check Real.exp_nat_mul
+#check Real.exp_mul_nat
+#check Finset.sum_equiv
+#check Equiv.sum_comp
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Nat.cast_pow
+#check Finset.prod_coe_sort
+#check Finset.prod_ite
+#check mul_pow_sub
+#check pow_sub₀
+#check pow_sub
+#check Fintype.bijective_iff_injective_and_card
+#check Nat.modEq_and_modEq_iff_modEq_mul
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd

@@ -1,0 +1,28 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8065/8066] Built Challenge (4.7s)
+  warning: run/Challenge.lean:24:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:30:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos126.erdos_126, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8065/8066] Built Solution (6.9s)
+  warning: run/Solution.lean:1089:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+  Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
+  For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+  
+  Note: This linter can be disabled with `set_option linter.style.openClassical false`
+  warning: run/Solution.lean:1629:12: please avoid 'open (scoped) Classical' statements: this can hide theorem statements which would be better stated with explicit decidability statements.
+  Instead, use `open Classical in` for definitions or instances, the `classical` tactic for proofs.
+  For theorem statements, either add missing decidability assumptions or use `open Classical in`.
+  
+  Note: This linter can be disabled with `set_option linter.style.openClassical false`
+  warning: run/Solution.lean:2344:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos126.erdos_126, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

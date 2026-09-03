@@ -1,0 +1,9 @@
+import Submission.TriangleAbsorption
+/-! Audit triangle absorption and its maximum-score consequences. -/
+#print axioms Erdos583TriangleAbsorptionDevelopment.ordered_triangle_surgery
+#print axioms Erdos583TriangleAbsorptionDevelopment.missing_triangle_surgery
+#print axioms Erdos583TriangleAbsorptionDevelopment.triangle_absorb_at_last
+#print axioms Erdos583TriangleAbsorptionDevelopment.triangle_path_absorption
+#print axioms Erdos583TriangleAbsorptionDevelopment.maximal_triangle_no_intersecting_path
+#print axioms Erdos583TriangleAbsorptionDevelopment.maximal_single_defect_no_triangle
+#print axioms Erdos583TriangleAbsorptionDevelopment.budget_maximum_no_triangle

@@ -1,0 +1,22 @@
+import Submission.LocalizedMomentCriterion
+
+/-! Axiom audit for the localized moment criterion. -/
+
+#print axioms Erdos821.HigherDivisors.frequently_increment_of_geometric_growth
+#print axioms Erdos821.HigherDivisors.normalizedMomentScale
+#print axioms Erdos821.HigherDivisors.normalizedMomentScale_nonneg
+#print axioms Erdos821.HigherDivisors.momentScaleX_succ
+#print axioms Erdos821.HigherDivisors.normalizedMomentScale_double
+#print axioms Erdos821.HigherDivisors.normalizedMomentScale_tendsto
+#print axioms Erdos821.HigherDivisors.shiftedPrimeBlockMoment
+#print axioms Erdos821.HigherDivisors.shiftedPrimeMoment_difference
+#print axioms Erdos821.HigherDivisors.shiftedPrimeBlockMoment_eq_sum
+#print axioms Erdos821.HigherDivisors.shiftedPrimeBlockMoment_nonneg
+#print axioms Erdos821.HigherDivisors.frequently_block_moment_of_total
+#print axioms Erdos821.HigherDivisors.shiftedPrimeMoment_nonneg
+#print axioms Erdos821.HigherDivisors.shiftedPrimeBlockMoment_le_total
+#print axioms Erdos821.HigherDivisors.CofinalLocalizedMomentLower
+#print axioms Erdos821.HigherDivisors.cofinal_geometric_of_localized
+#print axioms Erdos821.HigherDivisors.cofinal_localized_of_geometric
+#print axioms Erdos821.HigherDivisors.cofinal_localized_iff_geometric
+#print axioms Erdos821.HigherDivisors.erdos_821_of_cofinal_localized_moments

@@ -1,0 +1,28 @@
+{"q": 3, "degree": 3, "M": 26, "size": 3, "mode": "reciprocal", "solutions": 13, "first": [[1, [0, 9, 12]]], "seconds": 0.028}
+{"q": 3, "degree": 3, "M": 26, "size": 3, "mode": "straight", "solutions": 13, "first": [[1, [1, 5, 2]]], "seconds": 0.028}
+{"q": 3, "degree": 4, "M": 40, "size": 4, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.001}
+{"q": 3, "degree": 4, "M": 40, "size": 4, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.001}
+{"q": 5, "degree": 3, "M": 124, "size": 5, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.002}
+{"q": 5, "degree": 3, "M": 124, "size": 5, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.003}
+{"q": 5, "degree": 4, "M": 156, "size": 6, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.002}
+{"q": 5, "degree": 4, "M": 156, "size": 6, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.003}
+{"q": 7, "degree": 3, "M": 342, "size": 7, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.005}
+{"q": 7, "degree": 3, "M": 342, "size": 7, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.008}
+{"q": 7, "degree": 4, "M": 400, "size": 8, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.006}
+{"q": 7, "degree": 4, "M": 400, "size": 8, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.01}
+{"q": 11, "degree": 3, "M": 1330, "size": 11, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.022}
+{"q": 11, "degree": 3, "M": 1330, "size": 11, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.041}
+{"q": 11, "degree": 4, "M": 1464, "size": 12, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.026}
+{"q": 11, "degree": 4, "M": 1464, "size": 12, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.049}
+{"q": 13, "degree": 3, "M": 2196, "size": 13, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.044}
+{"q": 13, "degree": 3, "M": 2196, "size": 13, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.085}
+{"q": 13, "degree": 4, "M": 2380, "size": 14, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.053}
+{"q": 13, "degree": 4, "M": 2380, "size": 14, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.102}
+{"q": 17, "degree": 3, "M": 4912, "size": 17, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.137}
+{"q": 17, "degree": 3, "M": 4912, "size": 17, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.268}
+{"q": 17, "degree": 4, "M": 5220, "size": 18, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.146}
+{"q": 17, "degree": 4, "M": 5220, "size": 18, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.284}
+{"q": 19, "degree": 3, "M": 6858, "size": 19, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.221}
+{"q": 19, "degree": 3, "M": 6858, "size": 19, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.434}
+{"q": 19, "degree": 4, "M": 7240, "size": 20, "mode": "reciprocal", "solutions": 0, "first": [], "seconds": 0.239}
+{"q": 19, "degree": 4, "M": 7240, "size": 20, "mode": "straight", "solutions": 0, "first": [], "seconds": 0.467}

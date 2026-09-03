@@ -1,0 +1,31 @@
+import Submission.GraphCoreIrreducible
+/-! Axiom audit for subdivision and general two-edge-cut reductions. -/
+#print axioms Erdos184Serial.point_minimalCore
+#print axioms Erdos184Work.GraphSubdivision.even_split_iff
+#print axioms Erdos184Work.GraphSubdivision.edgeMap_injective
+#print axioms Erdos184Work.GraphSubdivision.edgeFinset_split
+#print axioms Erdos184Work.GraphSubdivision.serial_valid_iff
+#print axioms Erdos184Work.GraphSubdivision.number_subdivide
+#print axioms Erdos184Work.GraphSubdivision.minimal_subdivide_iff
+#print axioms Erdos184Work.GraphSubdivision.rigid_subdivide_iff
+#print axioms Erdos184Work.GraphSubdivision.degree_subdivide_old
+#print axioms Erdos184Work.GraphSubdivision.degree_subdivide_new
+#print axioms Erdos184Work.GraphIsoCore.minimal_iso_iff
+#print axioms Erdos184Work.GraphIsoCore.rigid_iso_iff
+#print axioms Erdos184Work.GraphTwoCut.expansionIso
+#print axioms Erdos184Work.GraphTwoCut.closures_even
+#print axioms Erdos184Work.GraphTwoCut.number_join
+#print axioms Erdos184Work.GraphTwoCut.minimal_join_iff
+#print axioms Erdos184Work.GraphTwoCut.rigid_join_iff
+#print axioms Erdos184Work.GraphTwoCut.number_two_edge_cut
+#print axioms Erdos184Work.GraphTwoCut.minimal_two_edge_cut_iff
+#print axioms Erdos184Work.GraphTwoCut.rigid_two_edge_cut_iff
+#print axioms Erdos184Work.GraphBranchCount.branches_iso
+#print axioms Erdos184Work.GraphBranchCount.branches_split
+#print axioms Erdos184Work.GraphBranchCount.branches_join
+#print axioms Erdos184Work.GraphBranchCount.closure_degree_left
+#print axioms Erdos184Work.GraphBranchCount.closure_degree_right
+#print axioms Erdos184Work.GraphBranchCount.closure_degree_new
+#print axioms Erdos184Work.GraphTwoCut.exists_cut_endpoints
+#print axioms Erdos184Work.GraphTwoCut.nonrigid_minimal_two_cut_smaller
+#print axioms Erdos184Work.GraphCoreIrreducible.exists_irreducible_of_nonrigid_core

@@ -1,0 +1,12 @@
+import Submission.SurplusNeighbor
+
+/-! Axiom audit of the local surplus-neighbor exchanges. -/
+#print axioms Erdos583SurplusNeighborDevelopment.exchange_first_edges_data
+#print axioms Erdos583SurplusNeighborDevelopment.transfer_data
+#print axioms Erdos583SurplusNeighborDevelopment.maximum_transfer
+#print axioms Erdos583SurplusNeighborDevelopment.maximum_transfer_endpoint
+#print axioms Erdos583SurplusNeighborDevelopment.terminal_quota_le_two
+#print axioms Erdos583SurplusNeighborDevelopment.third_endpoint_of_quota_ge_three
+#print axioms Erdos583SurplusNeighborDevelopment.outside_terminal_quota_le_two
+#print axioms Erdos583SurplusNeighborDevelopment.swap_to_outside_terminal
+#print axioms Erdos583SurplusNeighborDevelopment.outside_terminal_quota_le_two_any

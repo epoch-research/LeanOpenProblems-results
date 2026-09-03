@@ -1,0 +1,7 @@
+import Submission.SaturatedCycleCore
+
+/-! Axiom audit of saturation and the resulting exterior splicing theorem. -/
+#print axioms Erdos583SaturatedCycleCoreDevelopment.full_edge_count_eq_top
+#print axioms Erdos583SaturatedCycleCoreDevelopment.cycle_piece_saturation
+#print axioms Erdos583SaturatedCycleCoreDevelopment.cycle_piece_incidence_saturation
+#print axioms Erdos583SaturatedCycleCoreDevelopment.saturated_cycle_core_splice

@@ -1,0 +1,33 @@
+PASS boundary qualifications seconds 0.052
+PASS explicit protected-center recursive exchange seconds 0.001
+PASS exhaustive atlas construction seconds 49.337
+PASS random deeper rooted forests seconds 20.95
+PASS connected-core and critical-host corollaries seconds 1.393
+500 arbitrary connected-core extensions
+96,032 atlas prescribed-center dominance audits
+4,278 checked Hall-defect exchange inequalities
+317,614 constructive atlas disjoint-reservoir embeddings
+3,076 critical bipartite proper-set type inequalities
+1 critical distinct-list two-apex extension examples
+8 critical hosts without an eligible path-core budget
+4,194,303 critical two-apex proper vertex-set inequalities
+15,890 deleted isolated child branches
+1 explicit frozen-center, isolated-branch exchange examples
+78,038 frozen leaf sets changed
+399 frozen-center root exchanges
+125,412 non-star root replacements
+125,070 packings with frozen centers
+14,102 packings with frozen centers and isolated flexible roots
+14,199 packings with isolated flexible roots
+4,278 protected root exchanges
+447,277 protected star packings
+3,000 random arbitrary-list forest embeddings
+1 root-candidate-only degree counterexamples
+7 sharp isolated-component counterexamples
+1 star-feasibility nonnecessity examples
+417,788 star-only recursion bases
+750 uniform-large-list audits including isolates
+Shared Lean files unchanged; Spec SHA-256 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+Elapsed seconds 71.735
+The general theorems are proved in WeightedListForestFindings.md, not by these finite audits.
+Unrestricted Erdos--Sos and automatic adaptive-core selection are NOT claimed.

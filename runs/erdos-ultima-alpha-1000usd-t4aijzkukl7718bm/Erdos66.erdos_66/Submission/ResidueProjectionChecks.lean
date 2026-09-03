@@ -1,0 +1,15 @@
+import Submission.ResidueEnergyProjectionExplore
+import Submission.NaturalAutocorrelationExplore
+#check ZMod.castHom
+#check ZMod.castHom_apply
+#check ZMod.castHom_val
+#check RingHom.toAddMonoidHom
+#check Summable.mul_of_nonneg
+#check Summable.mul
+#check Summable.sq
+#check Summable.mul_left
+#check tsum_ite_irrel
+#check ite_tsum
+#check Summable.div_const
+#check Summable.sum_mul_antidiagonal
+#check ZMod.castHom_comp

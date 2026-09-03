@@ -1,0 +1,18 @@
+import Submission.AggregateBlockTransferExplore
+import Submission.AffineRootAggregateExplore
+import Submission.AffineAggregateIntegerTransferExplore
+
+/-! Axiom audit for collective block transfer and affine root aggregates. -/
+#print axioms Erdos66AggregateBlockTransfer.aggregate_block_formula
+#print axioms Erdos66AggregateBlockTransfer.aggregate_block_error
+#print axioms Erdos66AffineRootAggregate.rootAggregate_identity
+#print axioms Erdos66AffineRootAggregate.rootAggregate_error
+#print axioms Erdos66AffineRootAggregate.singleton_parabola_pair_count
+#print axioms Erdos66AffineRootAggregate.coloredCurve_aggregate
+#print axioms Erdos66AffineRootAggregate.selectedWeight_fiber_eq_sumRep
+#print axioms Erdos66AffineRootAggregate.coloredCurve_aggregate_error
+#print axioms Erdos66AffineRootAggregate.coloredCurve_plane_error
+#print axioms Erdos66AggregateCyclicThickening.thickened_aggregate_error
+#print axioms Erdos66AggregateCyclicThickening.thickened_plane_aggregate_error
+#print axioms Erdos66AggregateCyclicThickening.plane_to_integer_aggregate_error
+#print axioms Erdos66AffineAggregateIntegerTransfer.affine_integer_error

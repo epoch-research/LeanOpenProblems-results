@@ -1,0 +1,8 @@
+import Submission.OneForbiddenRoot
+
+/-! Axiom audit for the one-forbidden-root forest exchange. -/
+#print axioms Erdos583OneForbiddenRootDevelopment.tree_leaf_away
+#print axioms Erdos583OneForbiddenRootDevelopment.cycle_of_two_successors_except_one
+#print axioms Erdos583OneForbiddenRootDevelopment.improve_zero_forest_avoiding
+#print axioms Erdos583OneForbiddenRootDevelopment.normalize_zero_forest_avoiding
+#print axioms Erdos583OneForbiddenRootDevelopment.restore_edge_tail_zero

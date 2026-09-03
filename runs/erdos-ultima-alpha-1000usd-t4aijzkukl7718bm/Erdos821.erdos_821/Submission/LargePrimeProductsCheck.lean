@@ -1,0 +1,20 @@
+import Submission.LargePrimeProducts
+
+/-! Exact-type and axiom audit for large-prime divisor switching. -/
+
+#check @Erdos821.large_prime_product_divisor_count
+#print axioms Erdos821.large_prime_product_divisor_count
+#check @Erdos821.largePrimeMoment_progression_eq
+#print axioms Erdos821.largePrimeMoment_progression_eq
+#check @Erdos821.prime_progression_weight_eq_cofactors
+#print axioms Erdos821.prime_progression_weight_eq_cofactors
+#check @Erdos821.largePrimeMoment_progression_eq_cofactors
+#print axioms Erdos821.largePrimeMoment_progression_eq_cofactors
+#check @Erdos821.large_prime_selected_cofactor_le
+#print axioms Erdos821.large_prime_selected_cofactor_le
+#check @Erdos821.smooth_progression_weight_eq_switched_moments
+#print axioms Erdos821.smooth_progression_weight_eq_switched_moments
+#check @Erdos821.smooth_progression_weight_eq_sub_large_pairs
+#print axioms Erdos821.smooth_progression_weight_eq_sub_large_pairs
+#check @Erdos821.largePrimeMoment_progression_eq_zero_of_large_order
+#print axioms Erdos821.largePrimeMoment_progression_eq_zero_of_large_order

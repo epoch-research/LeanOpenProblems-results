@@ -1,0 +1,13 @@
+import Submission.SignedRepairStabilityExplore
+/-! Axiom audit for unrestricted signed repair accounting and contrast. -/
+#print axioms Erdos66SignedRepairIncidence.midpointDegree_union_inter
+#print axioms Erdos66SignedRepairIncidence.signed_incidence_identity
+#print axioms Erdos66SignedRepairIncidence.card_difference
+#print axioms Erdos66SignedRepairIncidence.centered_signed_identity
+#print axioms Erdos66SignedRepairIncidence.centered_signed_bound
+#print axioms Erdos66SignedRepairIncidence.uniform_gain_mass
+#print axioms Erdos66SignedRepairIncidence.normalized_signed_budget
+#print axioms Erdos66SignedRepairStability.same_mass_regular_edits_empty
+#print axioms Erdos66SignedRepairStability.same_counting_regular_edits_empty
+#print axioms Erdos66SignedRepairStability.same_counting_frequent_contrast
+#print axioms Erdos66SignedRepairStability.same_coefficient_frequent_contrast

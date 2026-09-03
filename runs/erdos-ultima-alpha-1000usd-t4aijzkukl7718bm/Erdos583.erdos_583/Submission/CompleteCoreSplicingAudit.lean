@@ -1,0 +1,10 @@
+import Submission.CompleteCoreSplicing
+
+/-! Axiom audit for complete-core endpoint pairing and splicing. -/
+#print axioms Erdos583CompletePrescribedPairsDevelopment.sharp_odd_endpoint_bijective
+#print axioms Erdos583CompletePrescribedPairsDevelopment.complete_even_degree_odd
+#print axioms Erdos583CompletePrescribedPairsDevelopment.cycle_remainder_endpoint_bijective
+#print axioms Erdos583CompletePrescribedPairsDevelopment.complete_prescribed_pairs
+#print axioms Erdos583CompletePrescribedPairsDevelopment.clique_prescribed_pairs
+#print axioms Erdos583CompleteCoreSplicingDevelopment.splice_clique_pairs
+#print axioms Erdos583CompleteCoreSplicingDevelopment.clique_cycle_remainder_splice

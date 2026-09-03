@@ -1,0 +1,16 @@
+import Submission.OrderedPipageGeometryExplore
+#check Int.floor_eq_iff
+#check Int.ceil_eq_iff
+#check Int.floor_intCast
+#check Int.ceil_intCast
+#check Int.floor_mono
+#check Int.ceil_mono
+#check Finset.sum_erase_add
+#check Finset.card_le_one
+#check Finset.one_lt_card
+#check Finset.card_pos
+#check Finset.exists_ne_map_eq_of_card_lt_of_maps_to
+#check Finset.exists_mem_ne
+#check Finset.min'_lt_min'
+#check Finset.ssubset_iff_subset_ne
+#check Finset.ssubset_iff_subset_ne

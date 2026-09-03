@@ -1,0 +1,10 @@
+import Submission.BuchstabProfileSectors
+import Submission.ContinuousBuchstabRectangles
+#check le_of_forall_pos_le_add
+#check le_of_forall_pos_lt_add
+#check Finset.mul_sum
+#check Finset.sum_div
+#check Erdos970.RecursiveSieve.Buchstab.profileBins_sum
+#check Erdos970.RecursiveSieve.Buchstab.profileBin_child_level
+#check Real.log_div
+#check Real.log_le_log

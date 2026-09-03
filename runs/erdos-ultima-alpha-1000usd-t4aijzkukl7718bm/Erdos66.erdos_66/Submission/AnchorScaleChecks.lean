@@ -1,0 +1,9 @@
+import Submission.InterceptSelectionScaleExplore
+#check Filter.Tendsto.inv₀
+#check Filter.Tendsto.div
+#check Real.sqrt_div
+#check Filter.Tendsto.sqrt
+#check Real.sqrt_sq
+#check Real.sqrt_le_sqrt
+#check Finset.card_le_card
+#check Finset.card_image_of_injective

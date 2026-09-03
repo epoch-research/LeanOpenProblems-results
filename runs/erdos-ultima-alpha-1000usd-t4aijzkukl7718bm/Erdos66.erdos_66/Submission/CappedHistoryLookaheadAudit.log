@@ -1,0 +1,9 @@
+'Erdos66CappedHistoryLookahead.sumRep_congr_past_cutoff_of_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CappedHistoryLookahead.exists_capped_accurate_history_without_next_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CappedHistoryLookahead.capped_accurate_history_does_not_ensure_next_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

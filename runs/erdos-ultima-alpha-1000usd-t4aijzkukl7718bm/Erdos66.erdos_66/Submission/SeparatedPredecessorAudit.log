@@ -1,0 +1,66 @@
+'Erdos66LocatedPredecessorPacket.exists_predecessor_packet_repair_located' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LocatedIntervalPredecessor.exists_located_interval_predecessor_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PredecessorCutoffTransfer.predecessor_congr_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.predecessor_cutoff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.swap_mem_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.swap_count_after' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.sumRep_union_finset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.swap_rep_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.cutoff_swap_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.cutoff_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.cutoff_rep_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorCutoffTransfer.cutoff_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorScaleBudget.eventually_gap_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorScaleBudget.polynomial_cutoff_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorScaleBudget.degree_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PredecessorScaleBudget.finite_profile_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GlobalPredecessorRepair.eventually_global_predecessor_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SeparatedPredecessorState.weight_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.weight_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.weight_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.weight_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.state_discrepancy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.state_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.exists_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorState.step_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.states_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.cutoff_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.cutoff_increases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.cutoff_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.cutoff_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.target_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.target_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.target_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.states_mem_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_count_close' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_discrepancy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.log_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.finite_collateral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.outside_collateral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.initial_collateral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.repaired_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.logarithm_double' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.outside_ratio_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SeparatedPredecessorSpikes.exists_count_preserving_sparse_spikes' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CountPreservingPowerSpikes.sparse_centers_power_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CountPreservingPowerSpikes.power_exception_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CountPreservingPowerSpikes.no_limit_of_power_exceptions_and_peaks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CountPreservingPowerSpikes.exists_balanced_power_exceptions_no_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

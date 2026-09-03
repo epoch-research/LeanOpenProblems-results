@@ -1,0 +1,18 @@
+import Submission.LogarithmicTranslatedRadixExplore
+
+/-! Axiom audit for translated radix lifts and their logarithmic tuning. -/
+
+#print axioms Erdos66TranslatedRadixCarry.radix_product_count
+#print axioms Erdos66TranslatedRadixCarry.radix_product_error
+#print axioms Erdos66TranslatedRadixCarry.radixAssembly
+#print axioms Erdos66TranslatedRadixCarry.mem_radixAssembly
+#print axioms Erdos66TranslatedRadixCarry.radixAssembly_pairwise
+#print axioms Erdos66TranslatedRadixCarry.radixAssembly_count
+#print axioms Erdos66TranslatedRadixCarry.radixAssembly_error
+#print axioms Erdos66TranslatedRadixCarry.translated_radix_error
+#print axioms Erdos66PatchedTranslatedRadix.patchedRadix
+#print axioms Erdos66PatchedTranslatedRadix.patchedRadix_prefix
+#print axioms Erdos66PatchedTranslatedRadix.patchedRadix_off
+#print axioms Erdos66PatchedTranslatedRadix.patchedRadix_error
+#print axioms Erdos66PatchedTranslatedRadix.patchedRadix_full_projection
+#print axioms Erdos66LogarithmicTranslatedRadix.exists_logarithmic_translated_radix

@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check List.Forall
+#check List.forall_mem_iff
+#check List.forall_iff_forall_mem
+#check List.all_eq_true
+#check List.all_eq_true_iff
+#check List.forall_mem_cons
+#check List.decidableForallMem
+#check List.instDecidableForallMem
+#check List.decidableForallMem
+#check List.all_iff_forall

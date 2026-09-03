@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check Nat.tendsto_floor_atTop
+#check tendsto_nat_floor_atTop
+#check Filter.Tendsto.atTop_div_const
+#check Filter.tendsto_div_const_atTop
+#check Real.tendsto_exp_atBot
+#check Real.log_pos
+#check Nat.card_primes_lt
+#check Nat.primesBelow_card_eq_primeCounting'

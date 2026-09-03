@@ -1,0 +1,14 @@
+import Submission.ComplementaryFamilyBarrierExplore
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_ne_eq
+#check Finset.sum_ite_mem
+#check Finset.sum_const
+#check Finset.sum_erase_add
+#check Fintype.card_pos
+#check Erdos66CenteredMixedEnergy.centeredEnergy_eq_corr_inner
+#check Erdos66MixedEnergy.sum_conv
+#check Erdos66CyclicVariance.sum_corr_mean
+#check Erdos66MixedEnergy.conv_indicators
+#check Erdos66CyclicVariance.sum_indicator_sq
+#check Finset.sum_mul_sum

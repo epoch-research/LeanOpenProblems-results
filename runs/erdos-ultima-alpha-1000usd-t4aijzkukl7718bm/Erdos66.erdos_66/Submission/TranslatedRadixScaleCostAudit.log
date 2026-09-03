@@ -1,0 +1,6 @@
+'Erdos66TranslatedRadixScaleCost.integer_mean_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixScaleCost.patchedRadix_count_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixScaleCost.cap_scale_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedRadixScaleCost.cap_requires_exponential_scale' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

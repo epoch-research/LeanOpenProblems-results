@@ -1,0 +1,12 @@
+import Submission.JointSmoothL1
+#check exists_hasDerivAt_eq_slope
+#check exists_deriv_eq_slope
+#check Convex.image_sub_le_mul_sub_of_deriv_le
+#check Convex.image_sub_le_mul_sub_of_hasDerivWithinAt_le
+#check Erdos972DivisorEnergy.sum_divisorsAntidiagonal_eq_sum_hyperbola
+#check Erdos972Vaughan.weightedSum_convolution_support
+#check Erdos972ExponentialSum.psi_le_seven_mul
+#check sub_apply
+#check ArithmeticFunction.coe_sub
+#check ArithmeticFunction.sub_apply
+#check HasDerivAt.exists_ratio_hasDerivAt_eq_ratio_slope

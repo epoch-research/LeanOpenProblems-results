@@ -1,0 +1,13 @@
+import Submission.SievePolynomial
+#check Finset.forall_mem_singleton
+#check Finset.forall_mem_empty
+#check Finset.mem_singleton
+#check Finset.insert_idem
+#check Finset.insert_eq_of_mem
+#check Finset.card_subtype
+#check Finset.filter_attach
+#check Finset.attach_filter
+#check Finset.card_attach
+#check Finset.sum_attach
+#check Finset.filter_attach_univ
+#check Fintype.card_subtype_iff

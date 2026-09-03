@@ -1,0 +1,14 @@
+Abstract systems m=1, a=1: 1 feasible systems
+Abstract systems m=1, a=2: 3 feasible systems
+Abstract systems m=1, a=3: 7 feasible systems
+Abstract systems m=1, a=4: 15 feasible systems
+Abstract systems m=2, a=2: 7 feasible systems
+Abstract systems m=2, a=3: 46 feasible systems
+Abstract systems m=2, a=4: 221 feasible systems
+Abstract systems m=3, a=3: 247 feasible systems
+Abstract systems m=3, a=4: 3125 feasible systems
+TOTAL: 3672 list systems; 24452 common-base identities; 375938 root-neighborhood tests
+Cube-ball identities: 48 (n,s) pairs through n=12
+Random genuine-cube batch reconfigurations: 423
+Global-optimality tests: 552 colorings; 370 deficient optima; 15124 improving odd reassignments rejected under full even rematching
+All checks passed. No assertion of a dimension-uniform Ramsey bound.

@@ -1,0 +1,8 @@
+import Submission.MesoscopicPeriodBarrierExplore
+/-! Axiom audit for clipped shrinking-window product-period restrictions. -/
+#print axioms Erdos66MesoscopicPeriodBarrier.clipped_period_bound
+#print axioms Erdos66MesoscopicPeriodBarrier.product_resolution_bound
+#print axioms Erdos66MesoscopicPeriodBarrier.clipped_window_div_product_zero
+#print axioms Erdos66MesoscopicPeriodBarrier.square_scale_log_window_zero
+#print axioms Erdos66MesoscopicPeriodBarrier.clipped_no_complete_product_average
+#print axioms Erdos66MesoscopicPeriodBarrier.square_scale_clipped_product_zero

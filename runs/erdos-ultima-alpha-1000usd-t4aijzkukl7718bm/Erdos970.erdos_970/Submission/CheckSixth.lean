@@ -1,0 +1,10 @@
+import Submission.SelbergSoftPrimeBound
+#check Real.exp_one_lt_three
+#check Real.exp_one_lt_d9
+#check Real.exp_one_lt_two_mul
+#check Erdos970.not_isJacobsthalBound_iff_cover
+#check Erdos970.jacobsthalFunction_le_iff
+#check Nat.ceil_le
+#check Nat.ceil_lt_add_one
+#check Nat.cast_pow
+#check Nat.pow_le_pow_left

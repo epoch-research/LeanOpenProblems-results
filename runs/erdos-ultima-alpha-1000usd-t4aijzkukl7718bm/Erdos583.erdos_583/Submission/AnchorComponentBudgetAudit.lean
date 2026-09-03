@@ -1,0 +1,11 @@
+import Submission.AnchorComponentBudget
+
+/-! Axiom audit of the anchor outside-component budget. -/
+#print axioms Erdos583AnchorComponentBudgetDevelopment.zeroComponents
+#print axioms Erdos583AnchorComponentBudgetDevelopment.component_count_budget
+#print axioms Erdos583AnchorComponentBudgetDevelopment.zero_outside_components_card
+#print axioms Erdos583AnchorComponentBudgetDevelopment.outside_components_nontight
+#print axioms Erdos583AnchorComponentBudgetDevelopment.outside_component_budget
+#print axioms Erdos583AnchorComponentBudgetDevelopment.anchor_component_budget
+#print axioms Erdos583AnchorComponentBudgetDevelopment.exists_optimized_anchor_component_certificate
+#print axioms Erdos583AnchorComponentBudgetDevelopment.exists_optimized_lollipop_component_certificate

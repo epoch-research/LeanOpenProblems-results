@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+import Submission.ProductTransportFibers
+import Submission.OffDiagonalEnergy
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.sum_product
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Finset.sum_const

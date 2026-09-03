@@ -1,0 +1,7 @@
+import Submission.PredecessorPacketCapacityExplore
+
+/-! Audit of infinite distinct-cell replacement and packet capacity. -/
+#print axioms Erdos66InfinitePredecessorReplacement.infinite_replacement_prefix
+#print axioms Erdos66InfinitePredecessorReplacement.finite_replacement_representation
+#print axioms Erdos66PredecessorPacketCapacity.packet_target_bound
+#print axioms Erdos66PredecessorPacketCapacity.packet_count_div_sqrt_zero

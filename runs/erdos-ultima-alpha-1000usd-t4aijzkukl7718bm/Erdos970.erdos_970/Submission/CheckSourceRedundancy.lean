@@ -1,0 +1,11 @@
+import Submission.RecursiveEnvelopeShape
+import Submission.SeededReferenceTransfer
+#check Finset.sum_range_add_sum_Ico
+#check Finset.card_Ico
+#check max_eq_right
+#check max_pos_iff
+#check max_eq_right_of_lt
+#check div_mul_cancel₀
+#check one_le_div
+#check Nat.cast_le
+#check Finset.sum_le_sum

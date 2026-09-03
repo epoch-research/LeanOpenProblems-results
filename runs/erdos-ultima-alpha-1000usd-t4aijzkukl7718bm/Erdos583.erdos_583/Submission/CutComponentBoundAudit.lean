@@ -1,0 +1,12 @@
+import Submission.CutComponentBound
+/-! Axiom audit for the component-count restriction. -/
+#print axioms Erdos583CutComponentBoundDevelopment.deletedComponentSet
+#print axioms Erdos583CutComponentBoundDevelopment.root_not_in_component
+#print axioms Erdos583CutComponentBoundDevelopment.component_set_nonempty
+#print axioms Erdos583CutComponentBoundDevelopment.component_sets_disjoint
+#print axioms Erdos583CutComponentBoundDevelopment.component_set_closed
+#print axioms Erdos583CutComponentBoundDevelopment.singleton_component_leaf
+#print axioms Erdos583CutComponentBoundDevelopment.at_most_one_singleton_component
+#print axioms Erdos583CutComponentBoundDevelopment.at_most_two_nonsingleton_components
+#print axioms Erdos583CutComponentBoundDevelopment.at_most_three_components_after_delete_vertex
+#print axioms Erdos583CutComponentBoundDevelopment.three_components_imply_leaf_at_vertex

@@ -1,0 +1,30 @@
+'Erdos66SignedRepairEnergy.signed_sum_sq_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairEnergy.centered_signed_energy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairEnergy.normalizedEnergy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairEnergy.normalized_centered_energy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairEnergy.normalized_gain_energy_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairEnergyStability.same_mass_energy_limit_floor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SignedRepairEnergyStability.same_mass_total_energy_limit_floor' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SignedRepairEnergyStability.same_mass_vanishing_energy_empty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SignedRepairEnergyStability.small_edits_require_unbounded_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CompletionIncidenceEnergy.monotone_edit_count_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompletionIncidenceEnergy.same_counting_vanishing_energy_empty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CompletionIncidenceEnergy.same_counting_monotone_energy_unbounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CompletionIncidenceEnergy.same_coefficient_completion_energy_unbounded' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CompletionIncidenceEnergy.same_coefficient_completion_frequent_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

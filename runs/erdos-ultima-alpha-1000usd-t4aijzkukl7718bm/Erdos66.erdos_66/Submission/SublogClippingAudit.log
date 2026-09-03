@@ -1,0 +1,17 @@
+'Erdos66SublogRankDownwardRepair.uniformly_eventually_downward_rank_repair_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SublogDownwardClipping.uniformly_eventually_downward_clipping_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SublogHostClipping.log_add_two_le_twice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogHostClipping.smallBoundary_eventually_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SublogHostClipping.host_eventually_uniform_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ClippableSparseRestorationMenu.envelope_of_sublog_change' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ClippableSparseRestorationMenu.exists_uniformly_clippable_sparse_restoration_menu' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

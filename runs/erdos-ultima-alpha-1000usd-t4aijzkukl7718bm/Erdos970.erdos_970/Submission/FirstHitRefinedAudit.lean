@@ -1,0 +1,8 @@
+import Submission.FirstHitRefinedPower
+
+#print axioms Erdos970.FiniteSelberg.firstHitCutoff_reciprocal_upper_three_fifths
+#print axioms Erdos970.FiniteSelberg.refinedHit_excess_chord_budget
+#print axioms Erdos970.FiniteSelberg.exists_refinedHitMainSum_slack
+#print axioms Erdos970.FiniteSelberg.isJacobsthalBound_of_refinedHitMainSum
+#print axioms Erdos970.FiniteSelberg.exists_refinedHit_power_bound
+#check Erdos970.FiniteSelberg.exists_refinedHit_power_bound

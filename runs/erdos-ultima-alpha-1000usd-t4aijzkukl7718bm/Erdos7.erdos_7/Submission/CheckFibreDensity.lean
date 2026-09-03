@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Finset.piFinset
+#check Fintype.piFinset
+#check Finset.mem_piFinset
+#check Finset.card_piFinset
+#check Finset.card_biUnion_le
+#check Finset.mem_biUnion
+#check Fintype.card_pi
+#check Finset.univ_pi_univ
+#check Finset.card_le_card

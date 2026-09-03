@@ -1,0 +1,7 @@
+import Submission.TrackedCyclePartition
+
+/-! Axiom audit of tracked cycle partition bridges. -/
+#print axioms Erdos583TrackedCyclePartitionDevelopment.cycle_and_paths_family
+#print axioms Erdos583TrackedCyclePartitionDevelopment.one_cycle_family_score
+#print axioms Erdos583TrackedCyclePartitionDevelopment.one_defect_maximal_of_failure
+#print axioms Erdos583TrackedCyclePartitionDevelopment.failure_no_pentagon_partition

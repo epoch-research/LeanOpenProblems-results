@@ -1,0 +1,8 @@
+'Erdos66SidonColorDefect.forward_defect_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonColorDefect.sameCellPairs_defect_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonColorDefect.block_energy_defect_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonColorDefect.annular_defect_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonColorDefect.small_color_defect_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonColorDefectWitness.witness_requires_color_defects' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

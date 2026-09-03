@@ -1,0 +1,28 @@
+import Submission.LargeChildPropagation
+
+/-! Exact types and axiom audit for LargeChildPropagation. -/
+
+#check Erdos821.sum_largeDivisorLift_le
+#check Erdos821.summable_largeDivisorLift
+#check Erdos821.summable_set_power_mono
+#check Erdos821.summable_largeChildParents
+#check Erdos821.summable_largeChildParents_next
+#check Erdos821.largeChildLayerExponent_bounds
+#check Erdos821.largeChildLayerExponent_eq
+#check Erdos821.summable_largeChildLayer
+#check Erdos821.not_summable_prime_complement_power_one
+#check Erdos821.infinite_primes_outside_largeChildLayer
+#check Erdos821.not_summable_reciprocal_outside_largeChildLayer
+#check Erdos821.outside_largeChildLayer_has_avoiding_path
+#print axioms Erdos821.sum_largeDivisorLift_le
+#print axioms Erdos821.summable_largeDivisorLift
+#print axioms Erdos821.summable_set_power_mono
+#print axioms Erdos821.summable_largeChildParents
+#print axioms Erdos821.summable_largeChildParents_next
+#print axioms Erdos821.largeChildLayerExponent_bounds
+#print axioms Erdos821.largeChildLayerExponent_eq
+#print axioms Erdos821.summable_largeChildLayer
+#print axioms Erdos821.not_summable_prime_complement_power_one
+#print axioms Erdos821.infinite_primes_outside_largeChildLayer
+#print axioms Erdos821.not_summable_reciprocal_outside_largeChildLayer
+#print axioms Erdos821.outside_largeChildLayer_has_avoiding_path

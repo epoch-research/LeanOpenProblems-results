@@ -1,0 +1,16 @@
+import Submission.FirstHitBooleanCost
+#check Finset.sum_powerset_neg_one_pow_card
+#check Finset.sum_powerset_neg_one_pow_card_of_nonempty
+#check Finset.prod_add
+#check Finset.prod_sub
+#check Finset.sum_powerset
+#check Finset.sum_subset
+#check Finset.strongInductionOn
+#check Finset.sum_powerset_insert
+#check Finset.prod_ite_mem
+#check Finset.prod_boole
+#check Real.sq_sqrt
+#check Real.sqrt_sq_eq_abs
+#check Finset.sum_pi
+#check Fintype.sum_bool
+#check Finset.prod_ite_zero

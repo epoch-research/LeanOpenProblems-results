@@ -1,0 +1,8 @@
+import Submission.BinaryLinearCodePeakExplore
+#print axioms Erdos66BinaryZeroSpan.exists_small_zero_span
+#print axioms Erdos66BinarySupportedSubspace.exists_supported_subspace
+#print axioms Erdos66BinarySupportedSubspace.code_supported_subspace
+#print axioms Erdos66BinaryLinearCodePeak.exists_linear_code_peak
+#print axioms Erdos66BinaryLinearCodePeak.exists_affine_code_peak
+#print axioms Erdos66BinaryLinearCodePeak.no_log_limit_of_linear_code_family
+#print axioms Erdos66BinaryLinearCodePeak.no_log_limit_of_affine_code_family

@@ -1,0 +1,13 @@
+import Submission.PredecessorScaleBudgetExplore
+#check Nat.pow_le_pow_right
+#check Nat.pow_le_pow_left
+#check Nat.cast_le
+#check Nat.ceil_le
+#check Finset.card_range
+#check Finset.cast_card
+#check Finset.disjoint_left
+#check Finset.coe_disjoint
+#check Set.disjoint_left
+#check Real.log_natCast
+#check Finset.filter_congr_decidable
+#check Finset.filter_congr

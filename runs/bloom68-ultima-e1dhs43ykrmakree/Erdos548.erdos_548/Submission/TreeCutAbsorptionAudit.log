@@ -1,0 +1,8 @@
+'TreeCutAbsorption.colored_tree_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.extend_kernel_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.KernelData.parameter_decreases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.edge_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.cut_surplus_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.cut_density_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.isContained_of_kernel_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeCutAbsorption.conditional_erdos_sos' depends on axioms: [propext, Classical.choice, Quot.sound]

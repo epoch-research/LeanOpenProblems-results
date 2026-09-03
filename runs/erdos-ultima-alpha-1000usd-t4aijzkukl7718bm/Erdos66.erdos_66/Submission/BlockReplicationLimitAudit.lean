@@ -1,0 +1,16 @@
+import Submission.BlockReplicationLimitExplore
+
+/-! Axiom audit for fixed-block replication. -/
+#print axioms Erdos66BlockReplicationLimit.replicate
+#print axioms Erdos66BlockReplicationLimit.palette
+#print axioms Erdos66BlockReplicationLimit.replicate_eq_blockSet
+#print axioms Erdos66BlockReplicationLimit.lower_full
+#print axioms Erdos66BlockReplicationLimit.upper_full
+#print axioms Erdos66BlockReplicationLimit.lower_palette
+#print axioms Erdos66BlockReplicationLimit.upper_palette
+#print axioms Erdos66BlockReplicationLimit.replicate_rep_succ
+#print axioms Erdos66BlockReplicationLimit.replicate_rep_last
+#print axioms Erdos66BlockReplicationLimit.tendsto_of_all_residues
+#print axioms Erdos66BlockReplicationLimit.replicate_log_limit
+#print axioms Erdos66BlockReplicationLimit.log_limit_of_replicate
+#print axioms Erdos66BlockReplicationLimit.replicate_log_limit_iff

@@ -1,0 +1,20 @@
+import Submission.UniversalKernelAccuracyExplore
+
+/-! Axiom audit of the universal fixed-color kernel transfer. -/
+#print axioms Erdos66UniversalColorKernelSpan.colorMask_combination
+#print axioms Erdos66UniversalColorKernelSpan.colorMask_total_mass
+#print axioms Erdos66UniversalColorKernelSpan.exists_all_color_kernels
+#print axioms Erdos66UniversalColorKernelSpan.extendColor_fin
+#print axioms Erdos66UniversalColorKernelSpan.matrixSum_color
+#print axioms Erdos66UniversalColorKernelSpan.matrixRootCount_color
+#print axioms Erdos66UniversalColorKernelSpan.exists_all_label_color_kernels
+#print axioms Erdos66UniversalColorKernelSpan.balanced_kernel_sum
+#print axioms Erdos66UniversalColorKernelSpan.exists_all_balanced_kernels
+#print axioms Erdos66UniversalActualKernel.exists_universal_actual_kernel_bound
+#print axioms Erdos66UniversalActualKernel.kernelMean_nonneg
+#print axioms Erdos66UniversalActualKernel.kernel_le_total_mean
+#print axioms Erdos66UniversalActualKernel.kernel_second_le_mean_sq
+#print axioms Erdos66UniversalActualKernel.exists_universal_actual_relative_sq
+#print axioms Erdos66UniversalKernelAccuracy.repair_root_coefficient_le
+#print axioms Erdos66UniversalKernelAccuracy.exists_universal_actual_accuracy
+#print axioms Erdos66UniversalKernelAccuracy.exists_color_accuracy_threshold

@@ -1,0 +1,24 @@
+'Erdos66GraphRowAssembly.rowAssembly_mixed_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GraphRowAssembly.rowAssembly_mixed_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.recolor_mixed_fiber_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.recolored_mixed_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.recolored_joint_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.recolored_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.recolored_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.origin_color_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloring.union_recolored_membership' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OriginLineLift.originLift_nonzero_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OriginLineLift.originLift_zero_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OriginLineLift.originLift_mean_preserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringPeaks.recolored_mixed_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringPeaks.recolored_self_dominates_twice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringPeaks.two_step_self_amplification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringIteration.space_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringIteration.two_step_extension_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringIteration.even_stage_exponential_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LineRecoloringIteration.nonempty_seed_exponential_peak' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LineRecoloringIteration.iteration_exceeds_logarithmic_cap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

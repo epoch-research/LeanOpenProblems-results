@@ -1,0 +1,12 @@
+import Submission.CoprimeThicknessGeometryExplore
+#check ZMod.isUnit_natCast_iff
+#check ZMod.isUnit_natCast_iff_coprime
+#check ZMod.natCast_eq_zero_iff
+#check Nat.Coprime.of_mul_right_right
+#check Nat.Coprime.of_mul_right_left
+#check Units.mulLeft
+#check AddEquiv.mulLeft
+#check Equiv.mulLeft
+#check IsUnit.mul_left_injective
+#check IsUnit.mul_left_cancel
+#check mul_left_cancel₀

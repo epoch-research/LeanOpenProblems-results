@@ -1,0 +1,4 @@
+m=1: Gram variables=3, rank=2, nullity=1; max gadget coefficient=2; all field identities exact
+m=3: Gram variables=21, rank=18, nullity=3; max gadget coefficient=5; all field identities exact
+m=5: Gram variables=55, rank=50, nullity=5; max gadget coefficient=5; all field identities exact
+m=7: Gram variables=105, rank=98, nullity=7; max gadget coefficient=5; all field identities exact

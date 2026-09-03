@@ -1,0 +1,14 @@
+'Erdos66QuarticPrefixCapacity.block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuarticPrefixCapacity.block_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuarticPrefixCapacity.block_sum_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuarticPrefixCapacity.block_square_mass_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuarticPrefixCapacity.summable_block_fourth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuarticPrefixCapacity.summable_geometric_prefix_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuarticPrefixCapacity.frequently_small_geometric_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuarticPrefixCapacity.consistent_coefficient_capacity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

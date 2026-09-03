@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+import Submission.UpToExpandingRegularization
+open SimpleGraph
+#check circulantGraph_adj_translate
+#check cycleGraph_adj
+#check Iso.comap
+#check Function.injective_sub_right
+#check Function.injective_add_right
+#check IsAcyclic.mono
+#check Erdos713PowerCritical.iso_of_map_eq_of_no_isolates
+#check Erdos713Rate.forest_rate
+#check Asymptotics.isEquivalent_nat_floor
+#check Asymptotics.IsEquivalent.comp_tendsto
+#check irrational_sqrt_two
+#check Irrational.ratCast_add
+#check Nat.floor_add_le
+#check Real.add_rpow_le_rpow_add

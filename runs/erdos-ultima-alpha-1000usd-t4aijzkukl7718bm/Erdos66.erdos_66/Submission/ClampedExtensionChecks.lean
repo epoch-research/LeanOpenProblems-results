@@ -1,0 +1,13 @@
+import Submission.ClampedPrefixContinuationExplore
+#check Finset.abs_prod_sub_prod_le
+#check Finset.norm_prod_sub_prod_le
+#check Finset.prod_sub_prod
+#check Finset.sum_biUnion
+#check Finset.sum_le_univ_sum_of_nonneg
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.abs_prod_le_prod_abs
+#check Finset.prod_le_one
+#check abs_sub_le
+#check Finset.sum_range_add_sum_Ico
+#check Erdos66Generating.indicator
+#check Erdos66Rounding.indicator

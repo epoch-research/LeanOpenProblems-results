@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Finset.exists_lt_card_fiber_of_mul_lt_card_of_maps_to
+#check Polynomial.coeff_eq_zero_of_natDegree_lt
+#check Finset.card_filter_add_card_filter_neg_eq_card
+#check Polynomial.card_le_degree_of_subset_roots
+#check Fintype.card_fun
+#check Function.Embedding.exists_of_card_le_finset
+#check Finset.mem_coe
+#check SimpleGraph.Copy.injective

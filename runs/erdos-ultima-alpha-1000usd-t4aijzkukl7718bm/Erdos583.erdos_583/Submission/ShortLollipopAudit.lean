@@ -1,0 +1,11 @@
+import Submission.ShortLollipop
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583ShortLollipopDevelopment.attach_common_start_edge
+#print axioms Erdos583ShortLollipopDevelopment.triangle_tail_edge_at_last
+#print axioms Erdos583ShortLollipopDevelopment.triangle_tail_edge_absorption
+#print axioms Erdos583ShortLollipopDevelopment.maximum_one_defect_no_two_path_cover
+#print axioms Erdos583ShortLollipopDevelopment.one_edge_form
+#print axioms Erdos583ShortLollipopDevelopment.maximum_short_triangle_no_outside_intersection
+#print axioms Erdos583ShortLollipopDevelopment.cubic_quota_one_others_avoid
+#print axioms Erdos583ShortLollipopDevelopment.quota_one_tail_not_nil
+#print axioms Erdos583ShortLollipopDevelopment.cubic_triangle_tail_length_ge_two

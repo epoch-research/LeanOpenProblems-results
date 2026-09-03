@@ -1,0 +1,13 @@
+import Submission.NearLinearProgressionPartition
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.sum_card_fiberwise
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Equiv.ofBijective
+#check Fintype.sum_equiv
+#check Fintype.card_congr
+#check Finset.sum_coe_sort
+#check Finset.card_bij
+#check Finset.card_bij'
+#check Finset.card_le_card_of_injOn

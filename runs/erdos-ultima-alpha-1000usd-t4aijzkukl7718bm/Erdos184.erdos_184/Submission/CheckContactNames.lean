@@ -1,0 +1,15 @@
+import Submission.DoubleTripleAssembly
+#check Set.ncard_eq_two
+#check Set.ncard_eq_two_iff
+#check SimpleGraph.Walk.support_toSubgraph
+#check SimpleGraph.Walk.toSubgraph_verts
+#check SimpleGraph.Walk.toSubgraph_map
+#check SimpleGraph.Walk.mapLe
+#check Erdos184Work.LongRing.regular_cycle_walk_at
+#check Erdos184Work.Subfamilies.lowerFamily_decomposition
+#check Erdos184Work.lowerWalk
+#check SimpleGraph.Walk.mapLe
+#check SimpleGraph.Walk.map
+#check SimpleGraph.Walk.toSubgraph.map
+#check SimpleGraph.Walk.transfer
+#check SimpleGraph.Walk.isCycle_transfer

@@ -1,0 +1,16 @@
+import Submission.IteratedTotientValuation
+
+/-! Type and axiom audit for bounded valuations of iterated fibers. -/
+
+#check Erdos821.IteratedTotient.two_valuation_le_totient_add_one
+#print axioms Erdos821.IteratedTotient.two_valuation_le_totient_add_one
+#check Erdos821.IteratedTotient.two_valuation_le_iterate_add
+#print axioms Erdos821.IteratedTotient.two_valuation_le_iterate_add
+#check Erdos821.IteratedTotient.two_valuation_le_of_mem
+#print axioms Erdos821.IteratedTotient.two_valuation_le_of_mem
+#check Erdos821.IteratedTotient.eventually_multiplicity_le_of_bounded_two_valuation
+#print axioms Erdos821.IteratedTotient.eventually_multiplicity_le_of_bounded_two_valuation
+#check Erdos821.IteratedTotient.finite_large_multiplicity_bounded_two_valuation
+#print axioms Erdos821.IteratedTotient.finite_large_multiplicity_bounded_two_valuation
+#check Erdos821.IteratedTotient.finite_large_multiplicity_squarefree_outputs
+#print axioms Erdos821.IteratedTotient.finite_large_multiplicity_squarefree_outputs

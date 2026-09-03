@@ -1,0 +1,126 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "file": "q11_three_deletions.json",
+      "construction": {
+        "q": 11,
+        "primitive_cycle_checked": 1330,
+        "trace_zero_nonzero_elements": 120,
+        "nonzero_differences_once": 132
+      },
+      "instances": 220,
+      "status_counts": {
+        "UNSAT": 220
+      },
+      "UNSAT_tree_nodes_checked": 190581,
+      "UNSAT_normalized_assignments_covered": 85937500,
+      "linear_obstructions_checked": 6
+    },
+    {
+      "file": "q11_retention.json",
+      "construction": {
+        "q": 11,
+        "primitive_cycle_checked": 1330,
+        "trace_zero_nonzero_elements": 120,
+        "nonzero_differences_once": 132
+      },
+      "instances": 2,
+      "status_counts": {
+        "UNSAT": 1,
+        "SAT": 1
+      },
+      "UNSAT_tree_nodes_checked": 1222,
+      "UNSAT_normalized_assignments_covered": 78125,
+      "linear_obstructions_checked": 0,
+      "exact_maximum_retention_verified": 8
+    },
+    {
+      "file": "q11_cores.json",
+      "construction": {
+        "q": 11,
+        "primitive_cycle_checked": 1330,
+        "trace_zero_nonzero_elements": 120,
+        "nonzero_differences_once": 132
+      },
+      "cores_checked": [
+        {
+          "deleted_indices": [
+            0,
+            1,
+            2
+          ],
+          "constraints": 22,
+          "rank_mod_5": 6,
+          "inclusion_minimal": true,
+          "D4_identity_checked": false,
+          "tree_nodes": 9231
+        },
+        {
+          "deleted_indices": [
+            0,
+            1,
+            7
+          ],
+          "constraints": 12,
+          "rank_mod_5": 4,
+          "inclusion_minimal": true,
+          "D4_identity_checked": true,
+          "tree_nodes": 25656
+        },
+        {
+          "deleted_indices": [
+            0,
+            2,
+            6
+          ],
+          "constraints": 23,
+          "rank_mod_5": 7,
+          "inclusion_minimal": true,
+          "D4_identity_checked": false,
+          "tree_nodes": 3236
+        },
+        {
+          "deleted_indices": [
+            5,
+            6,
+            8
+          ],
+          "constraints": 32,
+          "rank_mod_5": 8,
+          "inclusion_minimal": true,
+          "D4_identity_checked": false,
+          "tree_nodes": 4094
+        }
+      ]
+    },
+    {
+      "file": "q17_three_deletions.json",
+      "construction": {
+        "q": 17,
+        "primitive_cycle_checked": 4912,
+        "trace_zero_nonzero_elements": 288,
+        "nonzero_differences_once": 306
+      },
+      "instances": 173,
+      "status_counts": {
+        "UNSAT": 172,
+        "TIMEOUT": 1
+      },
+      "UNSAT_tree_nodes_checked": 22184909,
+      "UNSAT_normalized_assignments_covered": 756463999909888,
+      "linear_obstructions_checked": 0,
+      "Frobenius_orbits_independently_checked": 276,
+      "all_deletions_in_partition": 816,
+      "original_deletion_status_counts_via_valid_symmetry": {
+        "UNSAT": 504,
+        "TIMEOUT": 3,
+        "UNTESTED_BUDGET": 309
+      },
+      "time_cap_seconds": 300.0,
+      "recorded_search_phase_seconds": 298.0130974010099
+    }
+  ],
+  "seconds": 151.4516775740194,
+  "Spec_unchanged_sha256": "fa08ffd0daf6d26c138eb7da5a4186d0abd9155428d0c4528526a570b398d860"
+}

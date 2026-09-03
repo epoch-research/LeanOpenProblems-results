@@ -1,0 +1,40 @@
+# Recursive-matching counterexample verification
+
+Infinite-family theorem: paper proof in CubeRecursiveMatchingDisproof.md.
+
+The finite checks below do not substitute for that proof.
+
+Command: python3 Submission/check_recursive_matching_disproof.py --milp
+
+All five levels: identical halves, perfect matching, connected, triangle-free, d-regular
+Dimension 3: 8 vertices, 48 labelled proper 3-colorings
+Dimension 4: 16 vertices, 72 labelled proper 3-colorings
+Dimension 5: 32 vertices, 0 labelled proper 3-colorings
+Exact double-counting checked for every pair of half-colorings and every cyclic matching
+8 -> 16 counts: [432, 120, 72, 120, 432, 120, 72, 120]
+16 -> 32: 64 shift vectors; sum of coloring counts = 4992 ; zero-count choices = 32
+Explicit proper 4-coloring checked
+Rational amplification inequalities and exact exponent identity checked on test ranges
+Independent HiGHS MILP confirms no proper 3-coloring: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is At lower/fixed bound)
+Spec.lean hash unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS (infinite-family conclusions rely on the accompanying paper proof)
+
+Command: lake env lean Submission/CubeRecursiveMatchingVerification.lean
+
+'CubeRecursiveMatchingVerification.multipartite_countercoloring' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursiveMatchingVerification.example_not_colorable_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursiveMatchingVerification.example_chromatic_number' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursiveMatchingVerification.example_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursiveMatchingVerification.example_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursiveMatchingVerification.example_countercoloring_93' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+Both commands exited successfully (status 0).
+
+No new axioms, proof placeholders, native_decide, or Spec import in the Lean file.
+9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b  Submission/Spec.lean

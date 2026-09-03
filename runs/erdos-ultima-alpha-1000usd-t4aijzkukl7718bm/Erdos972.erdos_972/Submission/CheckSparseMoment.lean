@@ -1,0 +1,14 @@
+import Submission.DivisorFourthMoment
+import Submission.MellinRemainderEnergy
+#check Finset.sum_le_sum_of_inj
+#check Finset.sum_le_sum_of_inj'
+#check Finset.sum_image
+#check Real.log_natCast_nonneg
+#check pow_le_pow_iff_left₀
+#check pow_le_pow_left₀
+#check pow_le_pow_right₀
+#check pow_lt_pow_left₀
+#check pow_le_pow_left₀
+#check ArithmeticFunction.coe_mul_zeta_apply
+#check ArithmeticFunction.mul_apply
+#check Nat.sum_divisorsAntidiagonal

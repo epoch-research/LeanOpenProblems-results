@@ -1,0 +1,11 @@
+import Submission.FourFactorReduction
+
+/-! Axiom audit of the fully centered four-factor reduction. -/
+#print axioms Erdos972OriginalTypeICovariance.original_typeI_covariance_bound
+#print axioms Erdos972CovarianceScaleBudgets.eventually_original_covariance_budget
+#print axioms Erdos972CovarianceScaleBudgets.eventually_dual_covariance_budget
+#print axioms Erdos972CommonCovarianceScales.exists_common_typeI_covariance_scale
+#print axioms Erdos972CenteredDoubleVaughan.centered_double_vaughan_identity
+#print axioms Erdos972PrimeCovarianceObstruction.finite_primeSet_forces_negative_prime_covariance
+#print axioms Erdos972FourFactorReduction.finite_primeSet_forces_negative_fourFactor
+#print axioms Erdos972FourFactorReduction.infinite_primeSet_of_fourFactor_gap

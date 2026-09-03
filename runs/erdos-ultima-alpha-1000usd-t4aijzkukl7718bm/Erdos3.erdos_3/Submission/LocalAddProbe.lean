@@ -1,0 +1,15 @@
+import Submission.HigherFreimanExtraction
+#check IsAddFreimanHom.mono
+#check Finset.mem_nsmul
+#check Multiset.mem_add
+#check Multiset.card_add
+#check Multiset.sum_add
+#check Multiset.map_add
+#check add_sub_add_eq_sub_sub
+#check sub_add_sub_comm
+#check sub_eq_sub_iff_add_eq_add
+#check Multiset.mem_replicate
+#check Multiset.sum_replicate
+#check Multiset.card_replicate
+#check Multiset.map_replicate
+#check Finset.add_nsmul

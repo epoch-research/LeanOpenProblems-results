@@ -1,0 +1,13 @@
+import Submission.PrimePowerError
+#check Nat.le_self_pow
+#check Nat.cast_div_le
+#check Finset.coe_mem
+#check Real.sqrt_sq_eq_abs
+#check Real.le_sqrt
+#check Real.le_sqrt_of_sq_le
+#check Real.sq_le
+#check pow_le_pow_left₀
+#check pow_le_pow_left₀
+#check tendsto_pow_nhds_zero_iff
+#check Real.rpow_natCast_mul
+#check Real.rpow_mul_natCast

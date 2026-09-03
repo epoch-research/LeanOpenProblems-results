@@ -1,0 +1,13 @@
+import Submission.BooleanKernelRestriction
+#check Finset.sum_bij
+#check Finset.sum_eq_single
+#check Finset.max'
+#check Finset.le_max'
+#check Finset.max'_mem
+#check Finset.max'_eq_iff
+#check Finset.max'_lt_iff
+#check Finset.mem_filter
+#check Finset.sum_fiberwise
+#check Finset.prod_erase_mul
+#check Finset.prod_insert
+#check Finset.prod_subset

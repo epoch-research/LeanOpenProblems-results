@@ -1,0 +1,23 @@
+{
+  "id": "Erdos548.erdos_548",
+  "epoch": 1,
+  "uuid": "BMtsGi778uMZDP94vgins9",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0
+  },
+  "model_usage": {
+    "epoch/vega-alpha": {
+      "input_tokens": 80582,
+      "output_tokens": 4680684,
+      "total_tokens": 149486206,
+      "input_tokens_cache_write": 15296835,
+      "input_tokens_cache_read": 129428105,
+      "reasoning_tokens": 3388355,
+      "total_cost": 301.1427012499999
+    }
+  },
+  "oeis_id": null
+}

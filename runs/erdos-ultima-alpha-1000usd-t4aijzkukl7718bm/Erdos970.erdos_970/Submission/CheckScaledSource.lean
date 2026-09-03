@@ -1,0 +1,13 @@
+import Submission.BuchstabLevelMonotonicity
+#check Real.sqrt_mul
+#check Real.sqrt_mul_self
+#check Real.sqrt_exp
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_le
+#check Nat.le_floor
+#check Finset.sum_bij
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_range_sub'
+#check Filter.Tendsto.sum
+#check tendsto_finset_sum
+#check Filter.Eventually.mono

@@ -1,0 +1,19 @@
+import Submission.TaperedNaturalMassExplore
+import Submission.SupportSensitiveFaithfulLiftExplore
+
+/-! Axiom audit for the tapered-lift development. -/
+#print axioms Erdos66TaperedFaithfulLift.mem_faithfulLift
+#print axioms Erdos66TaperedFaithfulLift.mem_row_label
+#print axioms Erdos66TaperedFaithfulLift.row_zero
+#print axioms Erdos66TaperedFaithfulLift.tapered_first_row
+#print axioms Erdos66TaperedFaithfulLift.encode_tapered_eq_blocks
+#print axioms Erdos66TaperedFaithfulLift.tapered_natural_formula
+#print axioms Erdos66TaperedFaithfulLift.tapered_encoded_prefix
+#print axioms Erdos66TaperedRowAverage.row_eq_safeRow
+#print axioms Erdos66TaperedRowAverage.parameterEquiv
+#print axioms Erdos66TaperedRowAverage.sum_card_safeRow
+#print axioms Erdos66TaperedRowAverage.safeRow_translation_average
+#print axioms Erdos66TaperedRowAverage.constant_parameters_not_antitone
+#print axioms Erdos66TaperedNaturalMass.prefix_mass_translation_sum
+#print axioms Erdos66SupportSensitiveFaithfulLift.nonzero_lift_error_with_support
+#print axioms Erdos66SupportSensitiveFaithfulLift.exists_support_sensitive_faithful_lift

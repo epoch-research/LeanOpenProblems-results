@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+import Submission.PrimePowerRectangles
+#check Nat.tendsto_pow_atTop_atTop
+#check Filter.Tendsto.eventually_gt_atTop
+#check Filter.Tendsto.eventually_lt_const
+#check tendsto_const_div_atTop_nhds_zero_nat
+#check Filter.EventuallyLE.trans
+#check Finset.sum_range_succ
+#check Finset.sum_Icc_succ_top
+#check Nat.one_lt_pow

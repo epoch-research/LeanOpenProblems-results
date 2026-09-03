@@ -1,0 +1,4 @@
+Submission/Spec.lean:29:8: warning: declaration uses 'sorry'
+Submission/Spec.lean:29:8: warning: Docstrings should use `$ $` or `$$ $$` for math formulas instead of `\[ \]` or `\( \)`.
+
+Note: This linter can be disabled with `set_option linter.style.latex_docstring false`

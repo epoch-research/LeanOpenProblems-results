@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check intermediate_value_Icc
+#check ContinuousOn.intermediate_value
+#check ConvexOn.continuousOn
+#check ConvexOn.continuousOn_interior
+#check Continuous.max
+#check Monotone.min
+#check sub_max
+#check Finset.continuous_sum
+#check continuous_finset_sum
+#check Continuous.sub
+#check ConvexOn.add_const

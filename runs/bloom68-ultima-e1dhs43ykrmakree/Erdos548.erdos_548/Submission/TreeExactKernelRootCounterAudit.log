@@ -1,0 +1,6 @@
+'TreeExactKernelRootCounter.no_odd_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelRootCounter.isTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelRootCounter.no_exact_rooted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelRootCounter.color_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelRootCounter.exact_unrooted' depends on axioms: [propext, Classical.choice, Quot.sound]
+Rooted counterexample compile exit status: 0

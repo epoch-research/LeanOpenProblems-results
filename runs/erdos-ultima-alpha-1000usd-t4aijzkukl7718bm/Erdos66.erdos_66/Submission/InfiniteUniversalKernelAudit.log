@@ -1,0 +1,44 @@
+'Erdos66InfiniteKernelLocality.mem_coarseCut' depends on axioms: [propext, Classical.choice, Quot.sound]
+Submission/InfiniteUniversalKernelAudit.lean:6:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Erdos66InfiniteKernelLocality.mem_assembly_cut' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteKernelLocality.infiniteAssembly_nonneg' depends on axioms: [propext, Quot.sound]
+'Erdos66InfiniteKernelLocality.assembly_count_locality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteKernelLocality.coarse_count_locality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteKernelLocality.infiniteKernel_eq_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteKernelLocality.coarse_count_antidiagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteKernelLocality.coarse_count_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalInfiniteKernel.exists_universal_infinite_kernel_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalInfiniteKernel.exists_universal_infinite_relative_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalInfiniteKernel.exists_universal_infinite_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MixedDisjointAssembly.assembly_mixed_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MixedDisjointAssembly.assembly_mixed_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MixedDisjointAssembly.mixedKernel_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MixedDisjointAssembly.assembly_mixed_root_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalPaletteMatrix.exists_universal_palette_matrix_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalPaletteMatrix.exists_universal_palette_relative_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalPaletteMatrix.exists_universal_palette_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InfiniteMixedKernel.assembly_mixed_count_locality' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteMixedKernel.coarseCut_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteMixedKernel.mixed_count_prefix_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteMixedKernel.infiniteMixedKernel_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteMixedKernel.infinite_mixed_palette_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InfiniteMixedKernel.exists_universal_infinite_mixed_relative_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InfiniteMixedKernel.exists_universal_infinite_mixed_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

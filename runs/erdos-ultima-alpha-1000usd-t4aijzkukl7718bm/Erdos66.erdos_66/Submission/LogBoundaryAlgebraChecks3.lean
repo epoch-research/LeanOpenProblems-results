@@ -1,0 +1,12 @@
+import Submission.ExpPowerDominanceExplore
+#check Real.sqrt_div
+#check Real.exp_mul
+#check Real.exp_pos
+#check Finset.nonempty_iff_ne_empty
+#check Filter.Eventually.and
+#check Filter.Eventually.filter_mono
+#check Erdos66Explore.limit_pos
+#check MvPolynomial.support_nonempty
+#check MvPolynomial.support_eq_empty
+#check MvPolynomial.coeff_mem_support
+#check Polynomial.coeff_mem_support

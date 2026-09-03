@@ -1,0 +1,17 @@
+import Submission.BuchstabContinuousMain
+#check antitone_nat_of_succ_le
+#check monotone_nat_of_le_succ
+#check Finset.sum_range_sub
+#check Finset.sum_range_sub'
+#check geom_sum_mul
+#check geom_sum_mul_neg
+#check geom_sum_le
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
+#check Finset.sum_range_add_sub_sum_range
+#check sum_Ico_eq_sub
+#check sum_geometric_two_le
+#check Finset.sum_range_succ_sub_sum
+#check Erdos970.ContinuousBuchstab.upperEnvelope_difference_bound
+#check Erdos970.ContinuousBuchstab.upperEnvelope_succ_le
+#check Erdos970.RecursiveSieve.Buchstab.referenceLower_mono_depth
+#check Erdos970.RecursiveSieve.Buchstab.referenceUpper

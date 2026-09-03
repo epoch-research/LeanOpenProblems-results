@@ -1,0 +1,8 @@
+import Submission.NaturalGrowingMomentCounterexampleExplore
+
+/-! Axiom audit for the natural-annulus growing-moment examples. -/
+#print axioms Erdos66NaturalGrowingMomentCounterexample.pointwise_even_power_lt_factorial
+#print axioms Erdos66NaturalGrowingMomentCounterexample.log_double_le
+#print axioms Erdos66NaturalGrowingMomentCounterexample.exists_upper_bounded_counterexample
+#print axioms Erdos66NaturalGrowingMomentCounterexample.finiteMean_bounds
+#print axioms Erdos66NaturalGrowingMomentCounterexample.exists_actual_window_mean_counterexample

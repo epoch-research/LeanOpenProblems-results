@@ -1,0 +1,10 @@
+import Submission.FreeCycleChoice
+/-! Axiom audit of the new helper lemmas, not of the unresolved conjecture. -/
+#print axioms Erdos583FreeCycleChoiceDevelopment.exists_free_shortest_cycle
+#print axioms Erdos583FreeCycleChoiceDevelopment.exists_cycle_tail_carrier_optimum
+#print axioms Erdos583FreeCycleChoiceDevelopment.free_cycle_minimum_structure
+#print axioms Erdos583FreeCycleChoiceDevelopment.free_cycle_tail_normal_complement
+#print axioms Erdos583FreeCycleChoiceDevelopment.normal_support_spanning_of_cycle_degree_three
+#print axioms Erdos583FreeCycleChoiceDevelopment.free_minimum_whole_cycle_spanning
+#print axioms Erdos583FreeCycleChoiceDevelopment.free_cycle_tail_cubic_support
+#print axioms Erdos583FreeCycleChoiceDevelopment.exists_free_cycle_component_certificate

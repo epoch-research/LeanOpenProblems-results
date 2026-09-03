@@ -1,0 +1,246 @@
+import Submission.FiniteExcursion
+import Submission.FiniteFreedman
+import Submission.FiniteKernelChoices
+import Submission.FiniteKernelCrossing
+import Submission.GreedyAmbientExtraction
+import Submission.GreedyAvailableProfiles
+import Submission.GreedyBoundedDegreeExtraction
+import Submission.GreedyDriftBudget
+import Submission.GreedyEnvelopeCalculus
+import Submission.GreedyFiniteKernel
+import Submission.GreedyGrowingExtraction
+import Submission.GreedyGrowingFailure
+import Submission.GreedyGrowingSquareCertificate
+import Submission.GreedyGrowingSquareScales
+import Submission.GreedyGuardControls
+import Submission.GreedyHorizonFactors
+import Submission.GreedyIntegratedVariance
+import Submission.GreedyOneStepProfiles
+import Submission.GreedyPhysicalStep
+import Submission.GreedyPolynomialExtraction
+import Submission.GreedyPolynomialFailure
+import Submission.GreedyProfileDrift
+import Submission.GreedyProfileExtraction
+import Submission.GreedyProfileGuard
+import Submission.GreedyProfileRecords
+import Submission.GreedyProfileVariance
+import Submission.GreedyRecordedCrossing
+import Submission.GreedyRecordedExcursion
+import Submission.GreedyRoundedHorizon
+import Submission.GreedyScaledTrajectory
+import Submission.GreedySquareCertificate
+import Submission.GreedySquarePowerLower
+import Submission.GreedySquareScales
+import Submission.GreedySquareSidonLower
+import Submission.GreedyTrackedMoments
+import Submission.GreedyTrackedState
+import Submission.GreedyTrackedVariance
+import Submission.GreedyTrajectoryCalculus
+import Submission.GreedyUniformCosts
+import Submission.GreedyUniformHorizon
+import Submission.GreedyUniformMoments
+
+import Submission.GreedyTightSquareScales
+import Submission.GreedyTightSquareLower
+
+/-! Combined audit through the square-Sidon N^(2/3) lower bound. -/
+#print axioms Erdos773.FiniteKernelCrossing.terminal_eq_hit_of_preserved
+#print axioms Erdos773.FiniteKernelCrossing.hit_or_bound
+#print axioms Erdos773.FiniteKernelCrossing.hit_union_bound
+#print axioms Erdos773.FiniteKernelCrossing.simultaneous_goodPath
+#print axioms Erdos773.FiniteKernelCrossing.Kernel.exists_support_lt
+#print axioms Erdos773.FiniteKernelCrossing.hit_bounds
+#print axioms Erdos773.FiniteKernelCrossing.goodPath_of_hit_lt_one
+#print axioms Erdos773.FiniteKernelCrossing.hit_le_potential
+#print axioms Erdos773.FiniteFreedman.first_crossing_deterministic
+#print axioms Erdos773.FiniteFreedman.one_step_mgf
+#print axioms Erdos773.FiniteFreedman.compensated_step
+#print axioms Erdos773.FiniteFreedman.first_crossing_exponential
+#print axioms Erdos773.FiniteFreedman.first_crossing_bound
+#print axioms Erdos773.FiniteFreedman.goodPath_of_variance_control
+#print axioms Erdos773.FiniteExcursion.excursion_step
+#print axioms Erdos773.FiniteExcursion.first_crossing_exponential
+#print axioms Erdos773.FiniteExcursion.first_crossing_bound
+#print axioms Erdos773.FiniteKernelChoices.weighted_fiber_sum
+#print axioms Erdos773.FiniteKernelChoices.ofChoices_avg
+#print axioms Erdos773.FiniteKernelChoices.ofChoices_support
+#print axioms Erdos773.GreedyFiniteKernel.lifted_hit_of_monotone
+#print axioms Erdos773.GreedyFiniteKernel.lifted_terminal
+#print axioms Erdos773.GreedyFiniteKernel.lifted_terminal_from_empty
+#print axioms Erdos773.GreedyFiniteKernel.kernel_avg
+#print axioms Erdos773.GreedyFiniteKernel.kernel_support
+#print axioms Erdos773.GreedyFiniteKernel.goodPath_independent
+#print axioms Erdos773.GreedyFiniteKernel.lifted_avg
+#print axioms Erdos773.GreedyFiniteKernel.lifted_support
+#print axioms Erdos773.GreedyFiniteKernel.lifted_goodPath_terminal
+#print axioms Erdos773.GreedyTrackedState.goodPath_running_terminal
+#print axioms Erdos773.GreedyTrackedState.goodPath_full_run
+#print axioms Erdos773.GreedyTrackedState.goodPath_terminal
+#print axioms Erdos773.GreedyTrackedState.goodPath_valid_terminal
+#print axioms Erdos773.GreedyTrackedState.update_freezes
+#print axioms Erdos773.GreedyTrackedState.update_inactive
+#print axioms Erdos773.GreedyTrackedState.update_valid
+#print axioms Erdos773.GreedyTrackedState.Reach.valid
+#print axioms Erdos773.GreedyTrackedState.Reach.carrier
+#print axioms Erdos773.GreedyTrackedState.terminal_carrier
+#print axioms Erdos773.GreedyTrackedState.hit_carrier
+#print axioms Erdos773.GreedyTrackedMoments.error_eq_live
+#print axioms Erdos773.GreedyTrackedMoments.live_degree_bounds
+#print axioms Erdos773.GreedyTrackedMoments.degree_increment
+#print axioms Erdos773.GreedyTrackedMoments.error_increment
+#print axioms Erdos773.GreedyTrackedMoments.error_drift_frozen
+#print axioms Erdos773.GreedyTrackedMoments.degree_drift
+#print axioms Erdos773.GreedyTrackedMoments.error_drift
+#print axioms Erdos773.GreedyTrackedMoments.degree_second_moment
+#print axioms Erdos773.GreedyTrackedMoments.error_second_moment
+#print axioms Erdos773.GreedyTrackedVariance.local_second_moment_bound
+#print axioms Erdos773.GreedyTrackedVariance.local_two_second_moment
+#print axioms Erdos773.GreedyTrackedVariance.local_higher_second_moment
+#print axioms Erdos773.GreedyTrackedVariance.recorded_two_second_moment
+#print axioms Erdos773.GreedyTrackedVariance.recorded_higher_second_moment
+#print axioms Erdos773.GreedyTrackedVariance.profile_increment_bound
+#print axioms Erdos773.GreedyRecordedCrossing.MomentControl.increment
+#print axioms Erdos773.GreedyRecordedCrossing.Control.drift
+#print axioms Erdos773.GreedyRecordedCrossing.MomentControl.second_moment
+#print axioms Erdos773.GreedyRecordedCrossing.first_crossing
+#print axioms Erdos773.GreedyRecordedCrossing.goodPath
+#print axioms Erdos773.GreedyRecordedCrossing.reachable_good
+#print axioms Erdos773.GreedyRecordedExcursion.CriticalControl.drift
+#print axioms Erdos773.GreedyRecordedExcursion.first_crossing
+#print axioms Erdos773.GreedyRecordedExcursion.Test.hit_le_cost
+#print axioms Erdos773.GreedyRecordedExcursion.simultaneous_with_auxiliary
+#print axioms Erdos773.GreedyRecordedExcursion.simultaneous_path
+#print axioms Erdos773.GreedyRecordedExcursion.simultaneous_full_run
+#print axioms Erdos773.GreedyAvailableProfiles.remaining_discrete
+#print axioms Erdos773.GreedyAvailableProfiles.remaining_discrete_lower
+#print axioms Erdos773.GreedyAvailableProfiles.reach_running_profiles
+#print axioms Erdos773.GreedyAvailableProfiles.remaining_budget
+#print axioms Erdos773.GreedyAvailableProfiles.available_step
+#print axioms Erdos773.GreedyAvailableProfiles.profile_step
+#print axioms Erdos773.GreedyAvailableProfiles.goodPath_profile_terminal
+#print axioms Erdos773.GreedyAvailableProfiles.full_run_of_profiles
+#print axioms Erdos773.GreedyProfileDrift.incident_eq_empty_of_unavailable
+#print axioms Erdos773.GreedyProfileDrift.incident_eq_empty_of_size
+#print axioms Erdos773.GreedyProfileDrift.safeChoices_card
+#print axioms Erdos773.GreedyProfileDrift.two_drift_envelope
+#print axioms Erdos773.GreedyProfileDrift.higher_drift_envelope
+#print axioms Erdos773.GreedyProfileDrift.safe_count_envelope
+#print axioms Erdos773.GreedyProfileDrift.numerator_envelope
+#print axioms Erdos773.GreedyProfileDrift.envelope_drift_signs
+#print axioms Erdos773.GreedyProfileVariance.raw_two_variance
+#print axioms Erdos773.GreedyProfileVariance.raw_higher_variance
+#print axioms Erdos773.GreedyProfileVariance.two_moment_control
+#print axioms Erdos773.GreedyProfileVariance.higher_moment_control
+#print axioms Erdos773.GreedyTrajectoryCalculus.profile_increment_bounds
+#print axioms Erdos773.GreedyTrajectoryCalculus.first_derivative_bounds
+#print axioms Erdos773.GreedyTrajectoryCalculus.q_remainder
+#print axioms Erdos773.GreedyTrajectoryCalculus.first_order_remainder
+#print axioms Erdos773.GreedyTrajectoryCalculus.hasDerivAt_q
+#print axioms Erdos773.GreedyTrajectoryCalculus.mean_field
+#print axioms Erdos773.GreedyTrajectoryCalculus.second_derivative_bounds
+#print axioms Erdos773.GreedyTrajectoryCalculus.profile_remainders
+#print axioms Erdos773.GreedyEnvelopeCalculus.growth_increment_lower
+#print axioms Erdos773.GreedyEnvelopeCalculus.dbudgetWeight_lower
+#print axioms Erdos773.GreedyEnvelopeCalculus.budgetWeight_increment_lower
+#print axioms Erdos773.GreedyEnvelopeCalculus.error_scale_relations
+#print axioms Erdos773.GreedyEnvelopeCalculus.availability_envelope_step
+#print axioms Erdos773.GreedyEnvelopeCalculus.degree_envelope_steps
+#print axioms Erdos773.GreedyScaledTrajectory.model_scaling
+#print axioms Erdos773.GreedyScaledTrajectory.residuals
+#print axioms Erdos773.GreedyScaledTrajectory.availability_residual
+#print axioms Erdos773.GreedyScaledTrajectory.increments
+#print axioms Erdos773.GreedyDriftBudget.degree_error_budgets
+#print axioms Erdos773.GreedyDriftBudget.absorb
+#print axioms Erdos773.GreedyOneStepProfiles.three_drift_signs
+#print axioms Erdos773.GreedyPhysicalStep.availability_remainder
+#print axioms Erdos773.GreedyPhysicalStep.availability_growth
+#print axioms Erdos773.GreedyPhysicalStep.availability_box_step
+#print axioms Erdos773.GreedyPhysicalStep.profile_scale_relations
+#print axioms Erdos773.GreedyPhysicalStep.budget_identity
+#print axioms Erdos773.GreedyPhysicalStep.signed_drifts
+#print axioms Erdos773.GreedyUniformHorizon.exponential_threshold
+#print axioms Erdos773.GreedyUniformHorizon.polynomial_parameters
+#print axioms Erdos773.GreedyUniformHorizon.eventually_bounds
+#print axioms Erdos773.GreedyUniformHorizon.conditions
+#print axioms Erdos773.GreedyProfileRecords.available_empty
+#print axioms Erdos773.GreedyProfileRecords.initial_center
+#print axioms Erdos773.GreedyProfileRecords.initial_signed_error
+#print axioms Erdos773.GreedyProfileRecords.crossing_iff
+#print axioms Erdos773.GreedyProfileRecords.tube_of_no_crossing
+#print axioms Erdos773.GreedyProfileRecords.live_tube
+#print axioms Erdos773.GreedyProfileGuard.ready_of_QBox
+#print axioms Erdos773.GreedyProfileGuard.reach_running_QBox
+#print axioms Erdos773.GreedyProfileGuard.good_implies_guard
+#print axioms Erdos773.GreedyProfileGuard.full_run_of_goodPath
+#print axioms Erdos773.GreedyGuardControls.moment_control
+#print axioms Erdos773.GreedyGuardControls.guard_signed_drift
+#print axioms Erdos773.GreedyGuardControls.control
+#print axioms Erdos773.GreedyProfileExtraction.auxiliary_tail
+#print axioms Erdos773.GreedyProfileExtraction.crossing_tail
+#print axioms Erdos773.GreedyProfileExtraction.profile_tail
+#print axioms Erdos773.GreedyProfileExtraction.independent_of_certificate
+#print axioms Erdos773.GreedyUniformMoments.uniform_upper_bound
+#print axioms Erdos773.GreedyUniformMoments.profile_increment_uniform
+#print axioms Erdos773.GreedyUniformMoments.envelope_increment_uniform
+#print axioms Erdos773.GreedyUniformMoments.signed_slope_bound
+#print axioms Erdos773.GreedyIntegratedVariance.raw_variance_bound
+#print axioms Erdos773.GreedyIntegratedVariance.variance_bound
+#print axioms Erdos773.GreedyIntegratedVariance.integrated_variance
+#print axioms Erdos773.GreedyIntegratedVariance.increment_cap
+#print axioms Erdos773.GreedyIntegratedVariance.increment_cap_pos
+#print axioms Erdos773.GreedyUniformCosts.denominator_bound
+#print axioms Erdos773.GreedyUniformCosts.cost_bound
+#print axioms Erdos773.GreedyUniformCosts.totalCost_bound
+#print axioms Erdos773.GreedyUniformCosts.independent_of_failure
+#print axioms Erdos773.GreedyRoundedHorizon.horizon
+#print axioms Erdos773.GreedyRoundedHorizon.ratio_bound
+#print axioms Erdos773.GreedyRoundedHorizon.steps_le_stop
+#print axioms Erdos773.GreedyRoundedHorizon.steps_half
+#print axioms Erdos773.GreedyPolynomialFailure.profile_failure_bound
+#print axioms Erdos773.GreedyPolynomialFailure.auxiliary_base_bound
+#print axioms Erdos773.GreedyPolynomialFailure.failure_bound
+#print axioms Erdos773.GreedyPolynomialFailure.totalBound_tendsto
+#print axioms Erdos773.GreedyPolynomialFailure.eventually_totalBound_lt_one
+#print axioms Erdos773.GreedyPolynomialExtraction.eventually_data
+#print axioms Erdos773.GreedyPolynomialExtraction.eventually_independent
+#print axioms Erdos773.GreedyBoundedDegreeExtraction.eventually_independent
+#print axioms Erdos773.GreedyBoundedDegreeExtraction.eventually_arbitrary_multiplier
+#print axioms Erdos773.GreedyAmbientExtraction.degree_lift
+#print axioms Erdos773.GreedyAmbientExtraction.linear_lift
+#print axioms Erdos773.GreedyAmbientExtraction.eventually_selection
+#print axioms Erdos773.GreedySquareCertificate.finite_linearization
+#print axioms Erdos773.GreedySquareCertificate.trimmed_linearization
+#print axioms Erdos773.GreedySquareCertificate.eventually_certificate
+#print axioms Erdos773.GreedySquareScales.scalar_bounds
+#print axioms Erdos773.GreedySquareScales.overlap_cost
+#print axioms Erdos773.GreedySquareScales.retained_edge_cost
+#print axioms Erdos773.GreedySquareScales.scale_lower
+#print axioms Erdos773.GreedySquareSidonLower.eventual_log_lower
+#print axioms Erdos773.GreedySquareSidonLower.normalized_max_tendsto
+#print axioms Erdos773.GreedyHorizonFactors.penalty_exp_bound
+#print axioms Erdos773.GreedyHorizonFactors.speed_exp_bound
+#print axioms Erdos773.GreedyHorizonFactors.auxiliary_exp_bound
+#print axioms Erdos773.GreedyHorizonFactors.factor_bounds
+#print axioms Erdos773.GreedyGrowingFailure.totalBound_uniform
+#print axioms Erdos773.GreedyGrowingFailure.uniformBound_tendsto
+#print axioms Erdos773.GreedyGrowingFailure.eventually_uniform_data
+#print axioms Erdos773.GreedyGrowingFailure.eventually_independent
+#print axioms Erdos773.GreedyGrowingExtraction.eventually_independent
+#print axioms Erdos773.GreedyGrowingExtraction.eventually_selection
+#print axioms Erdos773.GreedyGrowingSquareCertificate.eventually_certificate
+#print axioms Erdos773.GreedyGrowingSquareScales.scalar24_bounds
+#print axioms Erdos773.GreedyGrowingSquareScales.scale_lower
+#print axioms Erdos773.GreedyGrowingSquareScales.horizon_budget
+#print axioms Erdos773.GreedyGrowingSquareScales.lower_identity
+#print axioms Erdos773.GreedySquarePowerLower.eventual_power_lower
+#print axioms Erdos773.GreedySquarePowerLower.rational_le_constant
+#print axioms Erdos773.GreedySquarePowerLower.eventual_rational_power_lower
+
+#print axioms Erdos773.GreedyTightSquareScales.ceil_root24_tight
+#print axioms Erdos773.GreedyTightSquareScales.volume97
+#print axioms Erdos773.GreedyTightSquareScales.tight_degree
+#print axioms Erdos773.GreedyTightSquareScales.tightHorizon_cube
+#print axioms Erdos773.GreedyTightSquareScales.tightHorizon_hundred
+#print axioms Erdos773.GreedyTightSquareScales.tightHorizon_budget
+#print axioms Erdos773.GreedyTightSquareScales.tight_scale_lower
+#print axioms Erdos773.GreedyTightSquareLower.eventual_power_lower

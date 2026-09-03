@@ -1,0 +1,10 @@
+'TreeExactKernelCounterexample.isTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.color_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.no_exact_unrooted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.odd_le_eighteen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.maximum_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.at_most_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+Unrooted counterexample compile exit status: 0
+'TreeExactKernelCounterexample.no_exact_unrooted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeExactKernelCounterexample.at_most_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+Independent import/admissibility smoke-check exit status: 0

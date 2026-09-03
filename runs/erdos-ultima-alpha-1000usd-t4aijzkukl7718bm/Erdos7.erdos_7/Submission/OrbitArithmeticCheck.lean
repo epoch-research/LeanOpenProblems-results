@@ -1,0 +1,16 @@
+import Submission.UnitOrbitDescent
+#check ZMod.castHom
+#check ZMod.castHom_apply
+#check ZMod.cast_intCast
+#check ZMod.cast_natCast
+#check Units.map
+#check Units.val_map
+#check IsUnit.unit_spec
+#check ZMod.natCast_zmod_val
+#check ZMod.intCast_zmod_cast
+#check ZMod.intCast_eq_intCast_iff_dvd_sub
+#check Nat.totient_lt
+#check Nat.le_of_dvd
+#check Units.isUnit
+#check Erdos7Reduction.HasOddArithmeticCover
+#check Erdos7Reduction.IsOddArithmeticCover

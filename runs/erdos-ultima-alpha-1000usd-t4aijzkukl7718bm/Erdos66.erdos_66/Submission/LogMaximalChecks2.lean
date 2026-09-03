@@ -1,0 +1,14 @@
+import Submission.MaximalCapWithHolesExplore
+import Submission.SparseRepairExplore
+#check Erdos66SparseRepair.logScale_ratio
+#check Erdos66SparseRepair.logScale
+#check Real.tendsto_log_comp_add_sub_log
+#check Filter.Tendsto.atTop_div_const
+#check Filter.Tendsto.atTop_add_const_right
+#check Filter.Tendsto.add_const_atTop
+#check pow_le_pow_left₀
+#check Nat.le_div_iff_mul_le
+#check Nat.lt_div_iff_mul_lt
+#check Nat.lt_div_iff_add_mul_lt
+#check Filter.Tendsto.congr'
+#check tendsto_zero_iff_norm_tendsto_zero

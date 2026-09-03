@@ -1,0 +1,18 @@
+'Erdos66LogProfileLower.antitone_half_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogProfileLower.profile_log_square_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PurePatternBracketRounding.exists_pattern_rounding' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PurePatternBracketRounding.exists_indexed_pattern_rounding' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PatternSublogRounding.forbidZero_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternSublogRounding.forbidZero_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PatternSublogRounding.exists_supported_sublog_rounding' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MatchingPatternSublog.expPattern_eval_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingPatternSublog.prod_bits_binary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingPatternSublog.expPattern_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingPatternSublog.expPattern_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingPatternSublog.exists_matching_sublog_rounding' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

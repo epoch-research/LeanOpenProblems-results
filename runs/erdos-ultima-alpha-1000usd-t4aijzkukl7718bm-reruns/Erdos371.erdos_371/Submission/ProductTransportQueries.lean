@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+import Submission.PrimeDiscrepancy
+#check CharP.cast_eq_zero_iff
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check Int.cast_neg
+#check Nat.cast_sub
+#check Nat.le_maxPrimeFac
+#check Int.cast_mul
+#check Nat.ModEq.mul
+#check Nat.ModEq.sub
+#check Nat.ModEq.add_right_cancel
+#check Nat.ModEq.sub_one
+#check Nat.dvd_sub'
+#check Nat.dvd_sub
+#check Nat.modEq_iff_dvd'

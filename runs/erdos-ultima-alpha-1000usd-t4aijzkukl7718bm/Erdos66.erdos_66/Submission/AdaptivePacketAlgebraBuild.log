@@ -1,0 +1,45 @@
+Submission/AdaptivePacketAlgebraExplore.lean:15:0: warning: automatically included section variable(s) unused in theorem `Erdos66AdaptivePacketAlgebra.mem_packet_iff`:
+  [Fintype α]
+  [Nonempty α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [Nonempty α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/AdaptivePacketAlgebraExplore.lean:25:0: warning: automatically included section variable(s) unused in theorem `Erdos66AdaptivePacketAlgebra.packet_card`:
+  [Fintype α]
+  [Nonempty α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [Nonempty α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/AdaptivePacketAlgebraExplore.lean:31:46: error: unsolved goals
+u v z : ℕ
+⊢ {p ∈ {(u, v)} | p.1 + p.2 = z}.card = if u + v = z then 1 else 0
+Submission/AdaptivePacketAlgebraExplore.lean:46:55: error: unsolved goals
+case h
+α : Type u_1
+inst✝¹ : Fintype α
+inst✝ : Nonempty α
+n : ℕ
+x : α → ℕ
+a : α
+hh : 2 * x a < n
+z : ℕ
+hxy : x a ≠ n - x a
+hd : Disjoint {x a} {n - x a}
+u : ℕ
+⊢ u = n - x a ∨ u = x a ↔ u = x a ∨ u = n - x a
+Submission/AdaptivePacketAlgebraExplore.lean:56:0: warning: automatically included section variable(s) unused in theorem `Erdos66AdaptivePacketAlgebra.packet_pairs_le`:
+  [Fintype α]
+  [Nonempty α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [Nonempty α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/AdaptivePacketAlgebraExplore.lean:61:0: warning: automatically included section variable(s) unused in theorem `Erdos66AdaptivePacketAlgebra.assigned_packet_pairs_le`:
+  [Fintype α]
+  [Nonempty α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] [Nonempty α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

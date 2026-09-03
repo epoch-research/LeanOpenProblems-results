@@ -1,0 +1,251 @@
+import Submission.GreedyBatchSquareEndpoint
+import Submission.GreedyBatchSquareScales
+import Submission.GreedyBatchSquareCertificate
+import Submission.GreedyBatchInitialExtraction
+import Submission.GreedyBatchProfileIteration
+import Submission.GreedyBatchTrajectory
+import Submission.GreedyBatchFailurePenalty
+import Submission.GreedyBatchVolume
+import Submission.GreedyBatchDensityProfile
+import Submission.GreedyBatchRateGeometry
+import Submission.GreedyBatchProfileFits
+import Submission.GreedyBatchFutureProfiles
+import Submission.GreedyBatchProfileConditions
+import Submission.GreedyBatchProfiles
+import Submission.GreedyBatchProfileStep
+import Submission.GreedyBatchCeilingErrors
+import Submission.GreedyBatchProfileLower
+import Submission.GreedyBatchScaledStep
+import Submission.GreedyBatchScaledErrors
+import Submission.GreedyBatchScaleTails
+import Submission.GreedyBatchMomentBounds
+import Submission.GreedyBatchSchedule
+import Submission.GreedyBatchDensityStep
+import Submission.GreedyBatchReward
+import Submission.GreedyBatchCertificate
+import Submission.GreedyBatchScalarTails
+import Submission.GreedyBatchSelection
+import Submission.GreedyBatchStructure
+import Submission.GreedyBatchCommonTail
+import Submission.GreedyBatchCommonStep
+import Submission.GreedyBatchCommonBudgets
+import Submission.GreedyBatchSharedStep
+import Submission.GreedyBatchSharedLoss
+import Submission.GreedyBatchSharedWitnesses
+import Submission.BernoulliEvents
+import Submission.GreedyResidualRegularization
+import Submission.GreedyMixedCommonProfiles
+import Submission.BernoulliHitCounts
+import Submission.GreedyBatchState
+import Submission.GreedyBatchGraphLoss
+import Submission.GreedyBatchDegreeStep
+
+/-! Combined axiom audit of the mixed regularization and batch inputs. -/
+
+#print axioms Erdos773.PolynomialSidonSlopes.seed_sidon
+#print axioms Erdos773.PolynomialSidonSlopes.seed_card
+#print axioms Erdos773.UniformLayerRegularization.regularized_pair_degree
+#print axioms Erdos773.UniformLayerRegularization.regularized_intersections
+#print axioms Erdos773.UniformLayerRegularization.independent_density_transfer
+#print axioms Erdos773.RegularizationCommonNeighbors.two_common_bound
+#print axioms Erdos773.RegularizationSharedLinks.overlap_rigid
+#print axioms Erdos773.RegularizationSharedLinks.count_bound
+#print axioms Erdos773.MixedLayerRegularization.exists_regularization
+#print axioms Erdos773.MixedLayerRegularization.model_card
+#print axioms Erdos773.MixedLayerRegularization.density_transfer
+#print axioms Erdos773.FiniteHypergraphRestriction.degree_eq
+#print axioms Erdos773.FiniteHypergraphRestriction.pair_eq
+#print axioms Erdos773.FiniteHypergraphRestriction.common_eq
+#print axioms Erdos773.FiniteHypergraphRestriction.independent_iff
+#print axioms Erdos773.GreedyResidualRegularization.rank_range
+#print axioms Erdos773.GreedyResidualRegularization.exists_restart_model
+#print axioms Erdos773.GreedyMixedCommonTails.witness_incidence
+#print axioms Erdos773.GreedyMixedCommonTails.prefix_common_tail
+#print axioms Erdos773.GreedyMixedCommonProfiles.one_support_twin
+#print axioms Erdos773.GreedyMixedCommonProfiles.one_support_bound
+#print axioms Erdos773.IndexedBernoulliMoments.union_step
+#print axioms Erdos773.IndexedBernoulliMoments.moment_bound
+#print axioms Erdos773.IndexedBernoulliMoments.tail_bound
+#print axioms Erdos773.WeightedBernoulliLowerTail.laplace_identity
+#print axioms Erdos773.WeightedBernoulliLowerTail.relative_lower_tail
+#print axioms Erdos773.BernoulliHitCounts.hit_lower
+#print axioms Erdos773.BernoulliHitCounts.pairFamily_incidence
+#print axioms Erdos773.BernoulliHitCounts.lower_tail
+#print axioms Erdos773.GreedyBatchState.chosen_independent
+#print axioms Erdos773.GreedyBatchState.extension
+#print axioms Erdos773.GreedyBatchState.reward_expectation
+
+#print axioms Erdos773.GreedyBatchGraphLoss.kills_two_incidence
+#print axioms Erdos773.GreedyBatchGraphLoss.old_survival_tail
+#print axioms Erdos773.GreedyBatchGraphLoss.kill_mean_lower
+
+#print axioms Erdos773.GreedyBatchPromotions.family_card
+#print axioms Erdos773.GreedyBatchPromotions.positive_incidence
+#print axioms Erdos773.GreedyBatchPromotions.incidence_bound
+#print axioms Erdos773.GreedyBatchPromotions.cost_tail
+#print axioms Erdos773.GreedyBatchPromotions.contraction_count
+#print axioms Erdos773.GreedyBatchDegreeStep.degree_step
+#print axioms Erdos773.GreedyBatchDegreeStep.degree_two
+#print axioms Erdos773.GreedyBatchDegreeStep.degree_three
+#print axioms Erdos773.GreedyBatchDegreeStep.degree_four
+
+#print axioms Erdos773.BernoulliEvents.cover_bound
+#print axioms Erdos773.BernoulliEvents.union_bound
+#print axioms Erdos773.BernoulliEvents.capped_exponential_tail
+#print axioms Erdos773.GreedyBatchSharedWitnesses.family_card
+#print axioms Erdos773.GreedyBatchSharedWitnesses.witness_card
+#print axioms Erdos773.GreedyBatchSharedWitnesses.first_role_incidence
+#print axioms Erdos773.GreedyBatchSharedWitnesses.witness_incidence
+#print axioms Erdos773.GreedyBatchSharedWitnesses.cost_swap
+#print axioms Erdos773.GreedyBatchSharedWitnesses.cost_tail
+#print axioms Erdos773.GreedyBatchSharedLoss.vertex_incidence
+#print axioms Erdos773.GreedyBatchSharedLoss.kill_incidence
+#print axioms Erdos773.GreedyBatchSharedLoss.old_survival_tail
+#print axioms Erdos773.GreedyBatchSharedLoss.kill_mean_lower
+#print axioms Erdos773.GreedyBatchSharedStep.data_of_residuals
+#print axioms Erdos773.GreedyBatchSharedStep.next_link_sources
+#print axioms Erdos773.GreedyBatchSharedStep.next_link_cover
+#print axioms Erdos773.GreedyBatchSharedStep.shared_step
+#print axioms Erdos773.GreedyBatchCommonBudgets.firstRank_card
+#print axioms Erdos773.GreedyBatchCommonBudgets.two_support_cover
+#print axioms Erdos773.GreedyBatchCommonBudgets.two_support_bound
+#print axioms Erdos773.GreedyBatchCommonBudgets.total_patterns_bound
+#print axioms Erdos773.GreedyBatchCommonBudgets.support_mass
+#print axioms Erdos773.GreedyBatchCommonBudgets.layer_tail
+#print axioms Erdos773.GreedyBatchCommonStep.neighbor_witness
+#print axioms Erdos773.GreedyBatchCommonStep.common_le_cost
+#print axioms Erdos773.GreedyBatchCommonStep.common_step
+#print axioms Erdos773.GreedyBatchCommonTail.common_tail
+#print axioms Erdos773.GreedyBatchStructure.pair_le
+#print axioms Erdos773.GreedyBatchStructure.intersections
+#print axioms Erdos773.GreedyBatchStructure.shared_restrict
+#print axioms Erdos773.GreedyBatchSelection.reward_upper
+#print axioms Erdos773.GreedyBatchSelection.exists_avoiding
+#print axioms Erdos773.GreedyBatchSelection.exists_all
+
+#print axioms Erdos773.GreedyBatchScalarTails.old_degree_tail
+#print axioms Erdos773.GreedyBatchScalarTails.old_shared_tail
+#print axioms Erdos773.GreedyBatchScalarTails.promotion_tail
+#print axioms Erdos773.GreedyBatchScalarTails.shared_creation_tail
+#print axioms Erdos773.GreedyBatchCertificate.vertex_tail
+#print axioms Erdos773.GreedyBatchCertificate.pair_tail
+#print axioms Erdos773.GreedyBatchCertificate.bad_tail
+#print axioms Erdos773.GreedyBatchCertificate.bounds_of_good
+#print axioms Erdos773.GreedyBatchCertificate.exists_batch
+#print axioms Erdos773.GreedyBatchReward.weighted_card_sum
+#print axioms Erdos773.GreedyBatchReward.lowerReward_eq
+#print axioms Erdos773.GreedyBatchReward.tests_mono
+#print axioms Erdos773.GreedyBatchDensityStep.zero_density
+#print axioms Erdos773.GreedyBatchDensityStep.regularize_next
+#print axioms Erdos773.GreedyBatchDensityStep.continue_batch
+#print axioms Erdos773.GreedyBatchDensityStep.density_step
+#print axioms Erdos773.GreedyBatchSchedule.iterate
+
+#print axioms Erdos773.GreedyBatchMomentBounds.budget_uniform
+#print axioms Erdos773.GreedyBatchMomentBounds.hit_budget
+#print axioms Erdos773.GreedyBatchMomentBounds.moment_exponential
+#print axioms Erdos773.GreedyBatchMomentBounds.hit_exponential
+#print axioms Erdos773.GreedyBatchMomentBounds.shrinking_scale
+
+#print axioms Erdos773.GreedyBatchScaleTails.overlap_error
+#print axioms Erdos773.GreedyBatchScaleTails.budget_scale
+#print axioms Erdos773.GreedyBatchScaleTails.near_mean_margin
+#print axioms Erdos773.GreedyBatchScaleTails.scaled_moment
+#print axioms Erdos773.GreedyBatchScaleTails.old_scaled
+
+#print axioms Erdos773.GreedyBatchScaledErrors.near_promotion
+#print axioms Erdos773.GreedyBatchScaledErrors.loose_shared
+#print axioms Erdos773.GreedyBatchScaledErrors.common_moment
+#print axioms Erdos773.GreedyBatchScaledErrors.vertex_errors
+#print axioms Erdos773.GreedyBatchScaledErrors.pair_errors
+#print axioms Erdos773.GreedyBatchScaledErrors.margins_positive
+#print axioms Erdos773.GreedyBatchScaledErrors.probability_range
+#print axioms Erdos773.GreedyBatchScaledStep.density_step
+
+#print axioms Erdos773.GreedyBatchProfileLower.delta_error
+#print axioms Erdos773.GreedyBatchProfileLower.rank_two
+#print axioms Erdos773.GreedyBatchProfileLower.rank_three
+#print axioms Erdos773.GreedyBatchProfileLower.rank_four
+#print axioms Erdos773.GreedyBatchProfileLower.shared
+#print axioms Erdos773.GreedyBatchProfileLower.ideal_two
+#print axioms Erdos773.GreedyBatchProfileLower.ideal_three
+#print axioms Erdos773.GreedyBatchProfileLower.ideal_four
+#print axioms Erdos773.GreedyBatchProfileLower.ideal_shared
+#print axioms Erdos773.GreedyBatchCeilingErrors.old_upper
+#print axioms Erdos773.GreedyBatchCeilingErrors.promotion_upper
+#print axioms Erdos773.GreedyBatchProfileStep.coefficients
+#print axioms Erdos773.GreedyBatchProfileStep.step_bound
+#print axioms Erdos773.GreedyBatchProfileStep.step_squared_time
+#print axioms Erdos773.GreedyBatchProfileStep.step_time_squared
+#print axioms Erdos773.GreedyBatchProfileStep.step_gap
+
+#print axioms Erdos773.GreedyBatchProfiles.profile_positive
+#print axioms Erdos773.GreedyBatchProfiles.base_large
+#print axioms Erdos773.GreedyBatchProfiles.cap_bounds
+#print axioms Erdos773.GreedyBatchProfiles.probability_pos
+#print axioms Erdos773.GreedyBatchProfiles.probability_le_one
+#print axioms Erdos773.GreedyBatchProfileConditions.step_weighted
+#print axioms Erdos773.GreedyBatchProfileConditions.weighted_bounds
+#print axioms Erdos773.GreedyBatchProfileConditions.incidence_ratios
+#print axioms Erdos773.GreedyBatchProfileConditions.graph_load
+#print axioms Erdos773.GreedyBatchProfileConditions.promotion_means
+#print axioms Erdos773.GreedyBatchProfileConditions.shared_means
+#print axioms Erdos773.GreedyBatchProfileConditions.common_means
+#print axioms Erdos773.GreedyBatchProfileConditions.conditions
+
+#print axioms Erdos773.GreedyBatchFutureProfiles.two
+#print axioms Erdos773.GreedyBatchFutureProfiles.three
+#print axioms Erdos773.GreedyBatchFutureProfiles.four
+#print axioms Erdos773.GreedyBatchFutureProfiles.shared
+#print axioms Erdos773.GreedyBatchProfileFits.profile_large
+#print axioms Erdos773.GreedyBatchProfileFits.deficit_bound
+#print axioms Erdos773.GreedyBatchProfileFits.old_bound
+#print axioms Erdos773.GreedyBatchProfileFits.promotion_bound
+#print axioms Erdos773.GreedyBatchProfileFits.fits
+
+#print axioms Erdos773.GreedyBatchRateGeometry.precise_load
+#print axioms Erdos773.GreedyBatchRateGeometry.coarse_load
+#print axioms Erdos773.GreedyBatchRateGeometry.growth_bounds
+#print axioms Erdos773.GreedyBatchRateGeometry.growth_load
+#print axioms Erdos773.GreedyBatchRateGeometry.small_terms
+#print axioms Erdos773.GreedyBatchRateGeometry.bracket_lower
+#print axioms Erdos773.GreedyBatchDensityProfile.efficiency_bounds
+#print axioms Erdos773.GreedyBatchDensityProfile.next_density
+#print axioms Erdos773.GreedyBatchDensityProfile.future_lower
+#print axioms Erdos773.GreedyBatchDensityProfile.rate_margin
+#print axioms Erdos773.GreedyBatchDensityProfile.density_bounds
+#print axioms Erdos773.GreedyBatchDensityProfile.density_pos
+#print axioms Erdos773.GreedyBatchDensityProfile.nextD_le
+#print axioms Erdos773.GreedyBatchVolume.degree_power
+#print axioms Erdos773.GreedyBatchVolume.copies_bound
+#print axioms Erdos773.GreedyBatchVolume.volume_step
+#print axioms Erdos773.GreedyBatchVolume.volume_exponent
+#print axioms Erdos773.GreedyBatchVolume.volume_exp
+#print axioms Erdos773.GreedyBatchFailurePenalty.probability_lower
+#print axioms Erdos773.GreedyBatchFailurePenalty.penalty_exp
+#print axioms Erdos773.GreedyBatchFailurePenalty.logarithmic_budget
+#print axioms Erdos773.GreedyBatchFailurePenalty.exponential_small
+#print axioms Erdos773.GreedyBatchFailurePenalty.penalty
+#print axioms Erdos773.GreedyBatchFailurePenalty.volume_penalty
+
+#print axioms Erdos773.GreedyBatchTrajectory.time_strict
+#print axioms Erdos773.GreedyBatchTrajectory.scale_succ
+#print axioms Erdos773.GreedyBatchTrajectory.scale_antitone
+#print axioms Erdos773.GreedyBatchTrajectory.common_bound
+#print axioms Erdos773.GreedyBatchTrajectory.ranges
+#print axioms Erdos773.GreedyBatchTrajectory.stopping_index
+#print axioms Erdos773.GreedyBatchTrajectory.stopping_small
+#print axioms Erdos773.GreedyBatchTrajectory.terminal_scale
+#print axioms Erdos773.GreedyBatchProfileIteration.valid
+#print axioms Erdos773.GreedyBatchProfileIteration.uniform_fixed
+#print axioms Erdos773.GreedyBatchProfileIteration.uniform_horizon
+
+#print axioms Erdos773.GreedyBatchInitialExtraction.initial_range
+#print axioms Erdos773.GreedyBatchInitialExtraction.independent
+#print axioms Erdos773.GreedyBatchInitialExtraction.selection
+#print axioms Erdos773.GreedyBatchSquareCertificate.certificate
+#print axioms Erdos773.GreedyBatchSquareScales.volume
+#print axioms Erdos773.GreedyBatchSquareScales.scale_lower
+#print axioms Erdos773.GreedyBatchSquareScales.terminal
+#print axioms Erdos773.GreedyBatchSquareScales.coefficient
+#print axioms Erdos773.GreedyBatchSquareEndpoint.eventual_endpoint

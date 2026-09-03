@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Fintype.exists_le_card_fiber_of_mul_le_card
+#check Function.Embedding.ofCardLE
+#check Fintype.card_subtype
+#check Fintype.card_coe
+#check Finset.card_sdiff_of_subset
+#check Finset.card_pair
+#check SimpleGraph.Copy
+#check Matrix.det_fin_two
+#check Finset.card_insert_le
+#check Fintype.card_pos_iff
+#check Fintype.card_units
+#check Nat.card_units

@@ -1,0 +1,12 @@
+import Submission.FreimanFrequencyGraph
+#check Finset.sub_add
+#check Finset.add_sub_assoc
+#check Finset.add_sub
+#check Finset.sub_eq_add_neg
+#check NNRat.cast_div
+#check NNRat.cast_natCast
+#check Finset.nsmul_add
+#check Finset.card_le_card_of_injOn
+#check Finset.card_nsmul_le
+#check Nat.cast_le
+#check NNRat.cast_le

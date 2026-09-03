@@ -1,0 +1,8 @@
+import Submission.TriangleFreshTail
+
+/-! Axiom audit for arbitrary fresh-tail triangle absorption. -/
+#print axioms Erdos583TriangleFreshTailDevelopment.triangle_fresh_tail_at_last
+#print axioms Erdos583TriangleFreshTailDevelopment.triangle_fresh_tail_absorption
+#print axioms Erdos583TriangleFreshTailDevelopment.maximum_triangle_tail_avoider_misses_cycle
+#print axioms Erdos583TriangleFreshTailDevelopment.maximum_triangle_component_meets_tail
+#print axioms Erdos583TriangleFreshTailDevelopment.maximum_triangle_component_count

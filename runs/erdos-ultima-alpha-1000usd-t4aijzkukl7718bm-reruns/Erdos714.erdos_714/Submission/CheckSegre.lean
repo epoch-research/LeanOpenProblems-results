@@ -1,0 +1,9 @@
+import Submission.CubicSegreProjective
+#check div_left_injective
+#check div_left_inj'
+#check div_left_inj
+#check Fin.succ_injective
+#check Fin.sum_univ_castSucc
+#check LinearIndependent.of_comp
+#check LinearIndependent.of_comp_subtype
+#check LinearMap.linearIndependent_iff

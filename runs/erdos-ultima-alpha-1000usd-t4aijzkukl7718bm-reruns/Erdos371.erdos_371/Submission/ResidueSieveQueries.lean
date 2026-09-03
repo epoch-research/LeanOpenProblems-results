@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Finset.pi
+#check Finset.mem_pi
+#check Finset.card_pi
+#check Finset.card_bij
+#check Nat.coprime_prod_right_iff
+#check Nat.coprime_prod_right
+#check Nat.chineseRemainderOfFinset
+#check Nat.chineseRemainderOfFinset_lt_prod
+#check Nat.ModEq.refl
+#check Nat.ModEq.of_dvd
+#check Finset.dvd_prod_of_mem
+#check Nat.mod_mod_of_dvd
+#check Nat.add_mod
+#check Nat.one_modEq

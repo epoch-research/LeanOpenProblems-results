@@ -1,0 +1,15 @@
+import Submission.BuchstabTiltedSource
+import Submission.PrimeExpCubeTransfer
+import Submission.PrimeDoubleOuterProfile
+/-! Audit of the stronger actual source and the coefficient-one prime transfer.
+No complete logarithmically saved recursion or endpoint theorem is asserted. -/
+#print axioms Erdos970.FiniteSelberg.arbitrary_tilt_divisor_cost_sum_le
+#print axioms Erdos970.FiniteSelberg.arbitrary_tilt_smooth_divisor_cost_sum_le
+#print axioms Erdos970.FiniteSelberg.canonical_cost_le_arbitrary_tilt
+#print axioms Erdos970.RecursiveSieve.Buchstab.scaled_sharp_cost_le_slow_profile
+#print axioms Erdos970.RecursiveSieve.Buchstab.complete_sharp_error_le_four_pow
+#print axioms Erdos970.WeightedMertens.prime_smooth_profile_error
+#print axioms Erdos970.WeightedMertens.prime_reciprocalExpSquare_sum_upper
+#print axioms Erdos970.WeightedMertens.prime_reciprocalExpCube_sum_upper
+#print axioms Erdos970.WeightedMertens.prime_doubleOuterProfile_upper
+#print axioms Erdos970.WeightedMertens.integral_doubleOuterProfile_upper

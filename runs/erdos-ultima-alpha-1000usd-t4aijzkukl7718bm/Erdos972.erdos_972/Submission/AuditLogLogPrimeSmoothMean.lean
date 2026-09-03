@@ -1,0 +1,9 @@
+import Submission.LogLogPrimeSmoothMean
+/-! Axiom audit for the new moving-parameter auxiliary result. -/
+#print axioms Erdos972DampedMeanTailBound.dampedMean_tail_bound
+#print axioms Erdos972LogLogPrimeSmoothMean.loglogParameter_tendsto
+#print axioms Erdos972LogLogPrimeSmoothMean.loglog_divisorMean_tendsto
+#print axioms Erdos972LogLogPrimeSmoothMean.primeRowError_log_weight_tendsto
+#print axioms Erdos972LogLogPrimeSmoothMean.exists_loglog_prime_smooth_mean_scale
+#print axioms Erdos972LogLogPrimeSmoothMean.exists_loglog_prime_smooth_positive_scale
+#print axioms Erdos972LogLogPrimeSmoothMean.loglogParameter_log_cutoff_tendsto

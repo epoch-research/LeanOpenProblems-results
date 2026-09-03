@@ -1,0 +1,17 @@
+import Submission.GlobalCritical
+/-! Axiom audit for global edge minimality and bridge-side edge balance. -/
+#print axioms Erdos583GlobalCriticalDevelopment.MinimalEdges.spanning
+#print axioms Erdos583GlobalCriticalDevelopment.exists_minimal_edges
+#print axioms Erdos583GlobalCriticalDevelopment.edge_ncard_iso
+#print axioms Erdos583GlobalCriticalDevelopment.MinimalEdges.on_finite
+#print axioms Erdos583GlobalCriticalDevelopment.failure_has_global_minimal_root
+#print axioms Erdos583GlobalCriticalDevelopment.sum_neighbor_ncard
+#print axioms Erdos583GlobalCriticalDevelopment.pairedCopies_edge_ncard
+#print axioms Erdos583GlobalCriticalDevelopment.within_edge_ncard
+#print axioms Erdos583GlobalCriticalDevelopment.bridge_cut_edge_ncard
+#print axioms Erdos583GlobalCriticalDevelopment.marked_of_half_order_fewer_edges
+#print axioms Erdos583GlobalCriticalDevelopment.failure_cut_side_edge_bound
+#print axioms Erdos583GlobalCriticalDevelopment.failure_cut_edges_equal
+#print axioms Erdos583GlobalCriticalDevelopment.nonleaf_bridge_odd_edge_count
+#print axioms Erdos583GlobalCriticalDevelopment.bridge_leaf_of_even_edge_count
+#print axioms Erdos583GlobalCriticalDevelopment.one_leaf_of_even_edge_count

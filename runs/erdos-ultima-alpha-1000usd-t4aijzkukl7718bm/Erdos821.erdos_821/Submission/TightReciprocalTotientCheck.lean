@@ -1,0 +1,5 @@
+import Submission.TightReciprocalTotient
+/-! # Axiom audit for TightReciprocalTotient -/
+#print axioms Erdos821.Sieve.reciprocal_totient_euler_product_le_thirty_nine_twentieths
+#print axioms Erdos821.Sieve.sum_reciprocal_totient_le_thirty_nine_twentieths_harmonic
+#print axioms Erdos821.Sieve.even_reciprocal_totient_le_thirteen_tenths_harmonic

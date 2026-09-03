@@ -1,0 +1,63 @@
+'TreeParityKernel.rooted_labels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.rooted_parity_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.exists_parity_kernel_of_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.parity_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.parity_kernel_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Compilation exit status: 0
+
+Downstream interface smoke checks:
+@rooted_parity_kernel : ∀ {V : Type u_1} [inst : Fintype V] {G : SimpleGraph V},
+  G.IsTree →
+    ∀ (χ : G.Coloring (Fin 2)) (r : V) (c : ℕ),
+      (∀ (i : Fin 2), c < #{x | χ x = i}) → ∃ R U W, IsParityKernel G c R U W ∧ r ∈ R
+@exists_parity_kernel_of_card : ∀ {V : Type u_1} [inst : Fintype V] {G : SimpleGraph V},
+  G.IsTree → ∀ (c : ℕ), 2 * c < Fintype.card V → ∃ R U W, IsParityKernel G c R U W
+@parity_kernel : ∀ {V : Type u_1} [inst : Fintype V] {G : SimpleGraph V},
+  G.IsTree →
+    ∀ {k c : ℕ},
+      #G.edgeFinset = k →
+        1 ≤ c →
+          c ≤ k / 2 →
+            ∃ R U W,
+              IsParityKernel G c R U W ∧
+                R ⊂ univ ∧ 2 * c ≤ #(univ \ R) ∧ (induce (↑R) G).IsTree ∧ #(induce (↑R) G).edgeFinset ≤ k - 2 * c
+parity_kernel_fin : ∀ (k c : ℕ) (G : SimpleGraph (Fin (k + 1))),
+  G.IsTree →
+    1 ≤ c →
+      c ≤ k / 2 →
+        ∃ R U W,
+          IsParityKernel G c R U W ∧
+            R ⊂ univ ∧ 2 * c ≤ #(univ \ R) ∧ (induce (↑R) G).IsTree ∧ #(induce (↑R) G).edgeFinset ≤ k - 2 * c
+'kernel_interface_smoke' depends on axioms: [propext, Classical.choice, Quot.sound]
+'rooted_interface_smoke' depends on axioms: [propext, Classical.choice, Quot.sound]
+'two_edge_smoke' depends on axioms: [propext, Classical.choice, Quot.sound]
+'zero_budget_smoke' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Smoke check exit status: 0
+
+Independent source-inlining check:
+'CommonMarkedForest.common_list_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.common_list_forest' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CommonMarkedForest.CL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.existsUnique_neighbor_in_component' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.edges_delete_vertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.card_delete_vertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.degree_delete_vertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.exact_apex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.exact_apex_of_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.exact_apex_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.isContained_of_density_of_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.isContained_of_density_of_exists_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.isContained_of_density_of_maxDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.erdos_sos_highDegree_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.erdos_sos_highDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.erdos_sos_maxDegree_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ErdosSosHighDegree.erdos_sos_maxDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.rooted_labels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.rooted_parity_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.exists_parity_kernel_of_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.parity_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TreeParityKernel.parity_kernel_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Inlining check exit status: 0

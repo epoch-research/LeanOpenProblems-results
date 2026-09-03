@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le
+#check Real.hasDerivAt_log
+#check Real.deriv_inv_log
+#check HasDerivAt.log
+#check HasDerivAt.inv
+#check intervalIntegrable_iff_integrableOn_Icc_of_le
+#check integrableOn_mul_sum_Icc
+#check intervalIntegral.integral_sub
+#check intervalIntegral.integral_const_mul
+#check intervalIntegral.abs_integral_le_integral_abs
+#check intervalIntegral.integral_mono_on
+#check ContinuousOn.intervalIntegrable
+#check abs_div
+#check div_le_div_of_nonneg_right
+#check intervalIntegral.integral_congr

@@ -1,0 +1,24 @@
+Balanced packing derivation audit
+
+Scope: paper proofs plus exact algebra checks; not a Lean formalization.
+No numerical or combinatorial search was performed.
+
+Exact checks passed:
+- kappa(1/4)=7/12 and graph-switch load <=6/7<1.
+- 2(1-b)^2-b=(1-2b)(2-b).
+- The balanced construction has p >=93/(128q)>1/(2q).
+- Its all-nonzero weights have upper bound 51/400<1 and positive lower bound.
+- Its supply of ordinary types is at least m for d>=4, n>=2m, q>=16.
+- The corpus-audit Chernoff exponent is M/84.
+- The corpus threshold difference is (n^2+7n-36)/6.
+
+Analytical checks in the note:
+- Pivotal deletion counts coordinate positions, so iid repetitions and R loops are covered.
+- Each changed edge in the graph switch is accounted for; the exchanged-vertex edge is unchanged as an unordered image.
+- The zero-one lift has exactly the weighted kernel's one-coordinate marginals.
+- The pair-cylinder core of the lifted diagnostic is exactly the claimed complete bipartite graph.
+- The diagnostic has an explicit avoiding injection and is NOT a counterexample to the target claim.
+- The corpus counterexample uses affine F_4-lines and analytic first-moment/Chernoff bounds, not a search.
+
+General arbitrary-balanced-B packing remains unresolved.
+Spec.lean SHA256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b

@@ -1,0 +1,185 @@
+import Mathlib.Tactic.FinCases
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.SplitIfs
+import Mathlib.Data.Nat.Bitwise
+import Mathlib.Data.Finset.Card
+import Mathlib.Data.Fintype.Card
+import Mathlib.Data.Fin.VecNotation
+import Mathlib.Data.ZMod.Basic
+
+/-! Finite local and coloring certificates for the signed-permutation template.
+These are restricted-template results, not a settlement of Erdős 213. -/
+
+set_option Elab.async false
+set_option maxRecDepth 100000
+set_option synthInstance.maxSize 100000
+namespace Erdos213.OctahedralLocal
+
+def forms {R : Type*} [CommRing R] (a b c : R) : Fin 22 → R :=
+  ![1,
+    b^2 + c^2,
+    a^2 + c^2,
+    a^2 + b^2,
+    a^2 + b^2 + c^2,
+    2*a^2 + b^2 - 2*b*c + c^2,
+    2*a^2 + b^2 + c^2,
+    2*a^2 + b^2 + 2*b*c + c^2,
+    a^2 - 2*a*b + b^2 + 2*c^2,
+    a^2 + b^2 + 2*c^2,
+    a^2 + 2*a*b + b^2 + 2*c^2,
+    a^2 - a*b + b^2 - a*c - b*c + c^2,
+    a^2 - a*b + b^2 + a*c - b*c + c^2,
+    a^2 - a*b + b^2 - a*c + b*c + c^2,
+    a^2 - a*b + b^2 + a*c + b*c + c^2,
+    a^2 + a*b + b^2 - a*c - b*c + c^2,
+    a^2 + a*b + b^2 + a*c - b*c + c^2,
+    a^2 + a*b + b^2 - a*c + b*c + c^2,
+    a^2 + a*b + b^2 + a*c + b*c + c^2,
+    a^2 + 2*b^2 - 2*a*c + c^2,
+    a^2 + 2*b^2 + c^2,
+    a^2 + 2*b^2 + 2*a*c + c^2]
+
+def edgeCode (i j : Fin 48) : Fin 44 :=
+  ⟨((491057883367276810653841983980413056209328832559388815801802171988992588589481376886177119505615869088706600808342435184934019936078011898976368095263726970480228656851000085093036411498233023085772212088730255932068508553048773902776094163544407913062171849413670499434179874341534435490200261022991036432184353530899402622889250727424591671181706618645665768684513585011433444655904495703831599280856849352740738991939563805418819432550678368464035432724998447024344411391314916938714829466416083837356829059057996880348154160567280222827139073218152044978880449776623856505901900051749938099001763556741822693513563772763660852785713242665084854765139852883907140857977586095112606792980266581165955979627631907310046938639339631184480211251719951777871511552957739094937666727262069936367618098541856412516672816903631638602382236171302375712656766342192636046369798224093907800347122208629647848448997351950461639699569779826219396714679902447657685620452571118003292490074793470489415347356805667542638415941385599193410454313803438771191778613079040987336719202161409784159506041722988497500122458726209869701509148528526072016492212493181181849232290701942374349156934413476772247450982656743332200705691300153659393096773484856273385035324469835294244602151672578998025575955816912436483942776656731082934009550245002026298638403572016855114196577426465432333073849363900884530646219091205496911418842850429361331119673259348754214697494020975045607367939410821212388584547638526202455137617712816490911928515991206839542519932324014278003313196649664806572677405192698671420627632091954644443078682790563015230682126364698571260883576260335353799324362659823140522875550646548999370636804365078879397033441890083029003156190190484506601199967138610247319053037073754083906952719888002025501777333224461907065326954021533314184753727205522418918877319362206594106186568468060507283505648495392439287618103560352943826371097487503853097418104642064419301805090389091990859992024484165710515629020221120488117812802157326295963509557496271093558099227766783825812489508776479538648114790537565599795536763650840482634862474045637635696409272626451534456494611404283638620695989521326677361143415572097445950426796471068390756409356435665486405966518333825210953501492788425714860325757538762852496335360281776271358920914578352407168823100795344246782288178707245085984863813500123039031374906075859703985676301042335026973971696091916543168563298398187837730339405574394870245772323100925341935733102854614850421585310220184905618047243900784825542665099337552455914249651943902388726148611684446511020901316759217944966948731876392789572486668970346021347296658447119808798033129249722170213290177569208168656549569833469325963943471936556198374292955625941615258700393065381272569289033453073069512242399418975790816837603034970849777259048874047284252971987448891474382353757951257137663190514521070124846911467359663832246640565163298017554397612309795197508391783638135416968686167379228040574919059030274963837414348375213708556704557661673919099700617861042423587497993626209480654430802208513209017747660621369853006912336154221583024536102164032808622355439630699565055829649660116314401094079521482189264783550584528423189261288616239471739632530729858754003236078186897535786357473855213622621777350416489044226987823986627733719871811526647486305800699075446005518113896518110594727286408293831325976311535417597276949068043589883230437225950564674956813800385894733102284937362476399765821629727843392524061176175107922537054714618229767391553115651801503663877439471736453063380162721846697876935191895889156292435493394592816928093562038261774516589406146337836471881772624058937582432701296264494530634032032933132283562251047020015503156870779960805643255160581710520694519284968873299873516228492081512221815188505621166766640841402999486363403706357114601104871797413910265808063395190955338671715511045571091529947701518783469004630149311134516885358268850039815712031909340007542304637788513236184511684967549182704410112683970043009702808686547923709293064766797515496694420110989182620354071616074384414251949428775013580800 >>> (6*(48*i.val+j.val)))%64)%44, Nat.mod_lt _ (by norm_num)⟩
+
+def allowedMask (k : Fin 16) : ℕ :=
+  (31305046244188477759352712230090528638067428150126324763322301015270440542438633278393294202889336143851602157471711751747474042567080592436946628079117389353490069860326175007477362610525855149460099640064247 >>> (44*k.val)) % (2^44)
+
+def coloring (k : Fin 16) (i : Fin 48) : Fin 8 :=
+  ⟨(1134691574638469652975012568730325013322251192580443201431755173966631644421949731332037200142177882765516524292345050052753366814650346035092031377383201138428532581889886171313731512807417068316639975838546961531197790523363625161229623149811626194929472154257178028533706531669130015661188747210510731291580309827812445487334721319516942760006654158532963886001397304084489122923140017270439203138329284476323661166038018291934928617482920488787276052723496356649021022360578560074178293175172574382244918871193288367799201641514314917604651639698937523931012626218081770470781390885801676378672853135764319108697182506631084433034185014275696702643327725932775810940839615538623678699906696 >>> (3*(48*k.val+i.val)))%8, Nat.mod_lt _ (by norm_num)⟩
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_0 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 0).testBit (edgeCode i j).val = true → coloring 0 i ≠ coloring 0 j := by
+  decide
+run_cmd do IO.println "color 0 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_1 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 1).testBit (edgeCode i j).val = true → coloring 1 i ≠ coloring 1 j := by
+  decide
+run_cmd do IO.println "color 1 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_2 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 2).testBit (edgeCode i j).val = true → coloring 2 i ≠ coloring 2 j := by
+  decide
+run_cmd do IO.println "color 2 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_3 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 3).testBit (edgeCode i j).val = true → coloring 3 i ≠ coloring 3 j := by
+  decide
+run_cmd do IO.println "color 3 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_4 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 4).testBit (edgeCode i j).val = true → coloring 4 i ≠ coloring 4 j := by
+  decide
+run_cmd do IO.println "color 4 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_5 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 5).testBit (edgeCode i j).val = true → coloring 5 i ≠ coloring 5 j := by
+  decide
+run_cmd do IO.println "color 5 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_6 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 6).testBit (edgeCode i j).val = true → coloring 6 i ≠ coloring 6 j := by
+  decide
+run_cmd do IO.println "color 6 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_7 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 7).testBit (edgeCode i j).val = true → coloring 7 i ≠ coloring 7 j := by
+  decide
+run_cmd do IO.println "color 7 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_8 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 8).testBit (edgeCode i j).val = true → coloring 8 i ≠ coloring 8 j := by
+  decide
+run_cmd do IO.println "color 8 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_9 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 9).testBit (edgeCode i j).val = true → coloring 9 i ≠ coloring 9 j := by
+  decide
+run_cmd do IO.println "color 9 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_10 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 10).testBit (edgeCode i j).val = true → coloring 10 i ≠ coloring 10 j := by
+  decide
+run_cmd do IO.println "color 10 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_11 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 11).testBit (edgeCode i j).val = true → coloring 11 i ≠ coloring 11 j := by
+  decide
+run_cmd do IO.println "color 11 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_12 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 12).testBit (edgeCode i j).val = true → coloring 12 i ≠ coloring 12 j := by
+  decide
+run_cmd do IO.println "color 12 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_13 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 13).testBit (edgeCode i j).val = true → coloring 13 i ≠ coloring 13 j := by
+  decide
+run_cmd do IO.println "color 13 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_14 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 14).testBit (edgeCode i j).val = true → coloring 14 i ≠ coloring 14 j := by
+  decide
+run_cmd do IO.println "color 14 done"; (← IO.getStdout).flush
+
+set_option maxHeartbeats 10000000 in
+private lemma coloring_certificate_15 : ∀ i j : Fin 48, i ≠ j →
+    (allowedMask 15).testBit (edgeCode i j).val = true → coloring 15 i ≠ coloring 15 j := by
+  decide
+run_cmd do IO.println "color 15 done"; (← IO.getStdout).flush
+
+lemma coloring_certificate : ∀ k : Fin 16, ∀ i j : Fin 48, i ≠ j →
+    (allowedMask k).testBit (edgeCode i j).val = true → coloring k i ≠ coloring k j := by
+  intro k
+  fin_cases k
+  · exact coloring_certificate_0
+  · exact coloring_certificate_1
+  · exact coloring_certificate_2
+  · exact coloring_certificate_3
+  · exact coloring_certificate_4
+  · exact coloring_certificate_5
+  · exact coloring_certificate_6
+  · exact coloring_certificate_7
+  · exact coloring_certificate_8
+  · exact coloring_certificate_9
+  · exact coloring_certificate_10
+  · exact coloring_certificate_11
+  · exact coloring_certificate_12
+  · exact coloring_certificate_13
+  · exact coloring_certificate_14
+  · exact coloring_certificate_15
+
+#print axioms coloring_certificate
+
+
+lemma card_le_eight_of_mask (T : Finset (Fin 48)) (k : Fin 16)
+    (h : ∀ i ∈ T, ∀ j ∈ T, i ≠ j →
+      (allowedMask k).testBit (edgeCode i j).val = true) : T.card ≤ 8 := by
+  have hi : Set.InjOn (coloring k) (T : Set (Fin 48)) := by
+    intro i hi j hj he
+    by_contra hij
+    exact coloring_certificate k i j hij (h i hi j hj hij) he
+  have hc := Finset.card_le_card_of_injOn (t := Finset.univ) (coloring k)
+    (by intro i hi; simp : Set.MapsTo (coloring k) (T : Set (Fin 48))
+      ((Finset.univ : Finset (Fin 8)) : Set (Fin 8))) hi
+  simpa using hc
+
+
+#print axioms card_le_eight_of_mask
+end Erdos213.OctahedralLocal

@@ -1,0 +1,9 @@
+import Submission.EnergyPurification
+/-! Axiom audit of the shortest-member purification obstruction. -/
+#print axioms Erdos583EnergyPurificationDevelopment.leafPart_vertex_rigid
+#print axioms Erdos583EnergyPurificationDevelopment.purified_subset_of_vertex_transfer
+#print axioms Erdos583EnergyPurificationDevelopment.member_two_verts_leafPart
+#print axioms Erdos583EnergyPurificationDevelopment.shortest_member_recipient_two_verts
+#print axioms Erdos583EnergyPurificationDevelopment.leafCovered_transfer
+#print axioms Erdos583EnergyPurificationDevelopment.shortest_member_purified_recipient
+#print axioms Erdos583EnergyPurificationDevelopment.exists_constrained_energy_maximum

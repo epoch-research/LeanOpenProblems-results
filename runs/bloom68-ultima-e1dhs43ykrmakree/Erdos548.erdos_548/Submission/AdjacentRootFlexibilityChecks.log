@@ -1,0 +1,23 @@
+20-vertex: all 1,048,575 proper subsets sparse; 99 nonempty proper tight subsets
+20-vertex: n=20, m=41, eta=1, unique maximum degree=7, connectivity=3, R_s=[0]
+  W_5 order: [0, 14, 15, 8, 1, 2, 9, 16, 17, 10, 3, 4, 11, 18, 19, 12, 5, 6, 7, 13]
+32-vertex bipartite: n=32, m=65, eta=1, unique maximum degree=9, connectivity=3, R_s=[0]
+  W_5 order: [0, 27, 23, 24, 25, 26, 28, 16, 1, 21, 15, 22, 29, 2, 3, 14, 13, 12, 11, 19, 10, 9, 8, 30, 4, 5, 17, 20, 31, 7, 6, 18]
+Infinite-family audit: r=2,...,8; R_s={hub} for the length-two broom
+  r=3,...,8: both internal vertices of the length-three arm are unavailable
+PASS
+W_k activation orders: 2
+adjacent unavailable nonleaf-edge examples: 6
+connectivity checks after at most two deletions: 740
+exact permissible-role sets certified: 15
+excluded roles certified by the degree-ball lemma: 153
+explicit injective tree copies: 38
+explicit three-vertex cut witnesses: 2
+independent rooted monomorphism decisions: 12
+odd-parameter family instances: 7
+proper induced subsets checked exhaustively (including empty): 1,048,575
+proper-set exclusion min-cuts: 52
+root-reachable circuit orientation certificates: 9
+unconstrained surplus min-cuts: 2
+Lean files unchanged during checks: 10
+Spec.lean SHA-256: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103

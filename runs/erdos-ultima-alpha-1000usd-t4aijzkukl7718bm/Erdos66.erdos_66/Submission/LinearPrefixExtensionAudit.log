@@ -1,0 +1,18 @@
+'Erdos66LinearPrefixExtension.newPoint_embedding' depends on axioms: [propext]
+'Erdos66LinearPrefixExtension.newPoints_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.coefficient_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.mixed_increment_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.extension_count_bits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.exists_linear_prefix_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.mixedMean_local_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.first_window_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.cutoff_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LinearPrefixExtension.exists_profile_prefix_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicPrefixExtension.logarithmic_transition_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicPrefixExtension.exists_logarithmic_prefix_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

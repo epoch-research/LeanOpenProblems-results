@@ -1,0 +1,10 @@
+import Submission.RoutedGraphIterationExplore
+/-! Axiom audit for arbitrary graph functions with fixed old-to-new color routing. -/
+#print axioms Erdos66RoutedGraphIteration.routed_mixed_dominates
+#print axioms Erdos66RoutedGraphIteration.routed_self_dominates_twice
+#print axioms Erdos66RoutedGraphIteration.arbitrary_graph_two_step_amplification
+#print axioms Erdos66RoutedGraphIteration.routed_mono
+#print axioms Erdos66RoutedGraphIteration.routed_two_step_extension_peak
+#print axioms Erdos66RoutedGraphIteration.routed_even_stage_exponential_peak
+#print axioms Erdos66RoutedGraphIteration.routed_iteration_exceeds_logarithmic_cap
+#print axioms Erdos66RoutedGraphIteration.parallel_graph_routing

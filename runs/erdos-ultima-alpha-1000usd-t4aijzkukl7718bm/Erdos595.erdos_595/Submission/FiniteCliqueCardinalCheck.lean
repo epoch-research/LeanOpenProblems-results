@@ -1,0 +1,16 @@
+import Submission.FiniteCliqueUltrafilterColoring
+#check Cardinal.mk_finset
+#check Cardinal.mk_finset_of_infinite
+#check Cardinal.mk_finset_le
+#check Cardinal.mk_finset_le_max
+#check SimpleGraph.chromaticCardinal_le_of_colorable
+#check SimpleGraph.Coloring.chromaticCardinal_le
+#check Cardinal.mk_le_of_injective
+#check Cardinal.mk_set
+#check Cardinal.mk_le_continuum
+#check Set.Finite.countable
+#check Cardinal.aleph0_le_continuum
+#check Cardinal.continuum
+#check Cardinal.mk_list
+#check Cardinal.mk_list_eq_max
+#check Cardinal.mk_finset_of_infinite

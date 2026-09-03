@@ -1,0 +1,12 @@
+import Submission.OneSidedDistributionCriterion
+
+/-! Audit of the one-sided criterion; all unresolved hypotheses remain explicit. -/
+
+#print Erdos821.CofinalSmoothModulusCondition
+#check @Erdos821.geometric_signed_deficit_smooth_prime_count
+#check @Erdos821.cofinal_smooth_modulus_condition_of_geometric_distribution
+#check @Erdos821.erdos_821_of_cofinal_smooth_modulus_condition
+#print axioms Erdos821.geometric_smooth_deficit_le_error
+#print axioms Erdos821.geometric_signed_deficit_smooth_prime_count
+#print axioms Erdos821.cofinal_smooth_modulus_condition_of_geometric_distribution
+#print axioms Erdos821.erdos_821_of_cofinal_smooth_modulus_condition

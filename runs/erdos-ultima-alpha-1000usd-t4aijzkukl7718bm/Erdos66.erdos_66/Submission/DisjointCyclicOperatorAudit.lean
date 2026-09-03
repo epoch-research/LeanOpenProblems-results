@@ -1,0 +1,23 @@
+import Submission.NestedDifferencePaletteExplore
+import Submission.UniversalCyclicCoarseExplore
+import Submission.DisjointBlockOperatorExplore
+
+/-! Axiom audit for disjoint cyclic palettes and the natural operator. -/
+#print axioms Erdos66NestedDifferencePalette.pairCount_diff_left
+#print axioms Erdos66NestedDifferencePalette.pairCount_diff_right
+#print axioms Erdos66NestedDifferencePalette.layers_disjoint
+#print axioms Erdos66NestedDifferencePalette.layer_count_identity
+#print axioms Erdos66NestedDifferencePalette.layer_count_error
+#print axioms Erdos66NestedDifferencePalette.exists_logarithmic_disjoint_cyclic_palette
+#print axioms Erdos66UniversalCyclicCoarse.nonnegative_weighted_pair_error
+#print axioms Erdos66UniversalCyclicCoarse.infinite_mixed_count_identity
+#print axioms Erdos66UniversalCyclicCoarse.infinite_mixed_count_error
+#print axioms Erdos66UniversalCyclicCoarse.exists_universal_cyclic_infinite_transfer
+#print axioms Erdos66DisjointBlockOperator.selected_union_count
+#print axioms Erdos66DisjointBlockOperator.selected_union_error
+#print axioms Erdos66DisjointBlockOperator.colorWeight_bounds
+#print axioms Erdos66DisjointBlockOperator.colorBlocks_mixed_error
+#print axioms Erdos66DisjointBlockOperator.naturalOperator_mem
+#print axioms Erdos66DisjointBlockOperator.naturalOperator_prefix_congr
+#print axioms Erdos66DisjointBlockOperator.natural_operator_profile_error
+#print axioms Erdos66DisjointBlockOperator.exists_universal_natural_operator

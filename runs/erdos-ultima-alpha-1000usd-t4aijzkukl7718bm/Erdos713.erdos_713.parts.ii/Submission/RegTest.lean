@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+open Filter
+#check tendsto_natCast_atTop_atTop
+#check Real.tendsto_rpow_atTop
+#check Real.tendsto_rpow_atTop_iff
+#check Real.tendsto_rpow_atTop_neg
+#check Filter.Tendsto.const_mul_atTop
+#check SimpleGraph.IsBipartite.of_hom
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check SimpleGraph.extremalNumber_le_card_choose_two
+#check SimpleGraph.card_edgeFinset_le_card_choose_two

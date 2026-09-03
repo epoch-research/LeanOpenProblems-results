@@ -1,0 +1,7 @@
+import Submission.ShortCycleCarrierAbsorption
+/-! Axiom audit for bounded-length many-carrier absorption. -/
+#print axioms Erdos583ShortCycleCarrierAbsorptionDevelopment.carrier_hit
+#print axioms Erdos583ShortCycleCarrierAbsorptionDevelopment.short_cycle_carrier_bound
+#print axioms Erdos583ShortCycleCarrierAbsorptionDevelopment.absorb_short_cycle_dense_carriers
+#print axioms Erdos583ShortCycleCarrierAbsorptionDevelopment.score_of_cycle_and_paths
+#print axioms Erdos583ShortCycleCarrierAbsorptionDevelopment.cycle_and_paths_absorption_le_seven

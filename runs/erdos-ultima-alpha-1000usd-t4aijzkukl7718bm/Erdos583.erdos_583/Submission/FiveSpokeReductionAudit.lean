@@ -1,0 +1,12 @@
+import Submission.FiveSpokeReduction
+
+/-! Axiom audit for FiveSpokeReduction. -/
+#print axioms Erdos583FiveSpokeReductionDevelopment.two_shortcuts_ne
+#print axioms Erdos583FiveSpokeReductionDevelopment.two_edge_function
+#print axioms Erdos583FiveSpokeReductionDevelopment.restore_five_spokes
+#print axioms Erdos583FiveSpokeReductionDevelopment.proxy_connected_of_induce
+#print axioms Erdos583FiveSpokeReductionDevelopment.within_delete_center_edge
+#print axioms Erdos583FiveSpokeReductionDevelopment.proxy_delete_center_edge
+#print axioms Erdos583FiveSpokeReductionDevelopment.failure_proxy_minimum
+#print axioms Erdos583FiveSpokeReductionDevelopment.failure_proxy_same_owner
+#print axioms Erdos583FiveSpokeReductionDevelopment.failure_proxy_certificate

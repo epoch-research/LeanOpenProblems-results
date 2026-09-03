@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Finset.single_le_sum
+#check Finset.prod_ite_eq
+#check Finset.prod_ite_eq'
+#check Finset.prod_update_of_mem
+#check Finset.prod_mul_distrib
+#check Finset.prod_div_distrib
+#check div_le_div_of_nonneg_right
+#check Finset.card_univ

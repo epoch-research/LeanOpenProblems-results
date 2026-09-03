@@ -1,0 +1,14 @@
+import Submission.UnitOrbitPhaseProbability
+#check orderOf_units
+#check Units.ext_iff
+#check Units.val_pow_eq_pow_val
+#check Units.val_zpow_eq_zpow_val
+#check ZMod.unitOfCoprime_val
+#check ZMod.unitOfCoprime_coe
+#check ZMod.coe_unitOfCoprime
+#check ZMod.unitsMap_val
+#check MonoidHom.prod_apply
+#check Nat.card_eq_fintype_card
+#check ZMod.castHom_apply
+#check eq_inv_mul_iff_mul_eq
+#check Finset.sum_congr

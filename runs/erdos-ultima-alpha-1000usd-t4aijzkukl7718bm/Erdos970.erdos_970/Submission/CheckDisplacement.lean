@@ -1,0 +1,17 @@
+import Submission.CompletionCollisionFibers
+open Finset
+#check Fin.addEquiv
+#check Fin.add_right_cancel
+#check Fin.add_left_cancel
+#check Equiv.addRight
+#check Equiv.addLeft
+#check Fintype.sum_equiv
+#check Fin.val_add
+#check ZMod.finEquiv
+#check Finset.sum_range_add
+#check Finset.sum_range_mul
+#check Finset.sum_range_mul_eq_sum_Ico
+#check Function.Periodic.sum_range
+#check Finset.sum_bij
+#check Nat.add_mod
+#check Nat.mod_add_div

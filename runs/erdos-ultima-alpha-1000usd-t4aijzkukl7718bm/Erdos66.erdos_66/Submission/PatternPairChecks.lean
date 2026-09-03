@@ -1,0 +1,13 @@
+import Submission.PatternSparsePowerProfileExplore
+#check Nat.pair
+#check Nat.unpair
+#check Nat.pair_unpair
+#check Nat.unpair_pair
+#check Nat.left_le_pair
+#check Nat.right_le_pair
+#check Nat.pair_le_max_add_one_sq
+#check Nat.pair_lt_max_add_one_sq
+#check Denumerable.ofEquiv
+#check tsum_one_div_mul_add
+#check sum_range_one_div_mul_add
+#check Real.exp_one_lt_d9

@@ -1,0 +1,15 @@
+import Submission.QuadraticExtensionCharacterExplore
+#check Algebra.norm
+#check Algebra.norm_algebraMap
+#check Algebra.norm_eq_matrix_det
+#check IsSquare.map
+#check Odd.isSquare_pow_iff
+#check isSquare_pow_iff
+#check Odd.isSquare_of_pow
+#check IsSquare.pow
+#check quadraticChar_dichotomy
+#check quadraticChar_zero_iff
+#check ringChar.eq
+#check Algebra.norm_eq_zero_iff
+#check Algebra.norm_eq_zero
+#check Algebra.norm_apply

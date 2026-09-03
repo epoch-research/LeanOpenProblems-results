@@ -1,0 +1,10 @@
+import Submission.ResiduePairIdentityExplore
+#check Summable.sum
+#check Summable.sum'
+#check summable_finset_sum
+#check summable_fintype
+#check Finset.summable_sum
+#check Finset.summable_sum'
+#check Real.le_sqrt_of_sq_le
+#check tsum_mul_right
+#check tsum_mul_left

@@ -1,0 +1,14 @@
+PASS exact cyclotomic arithmetic: 1688 exact assertions
+PASS character coefficients and real-odd parity: 474 exact assertions
+PASS odd Parseval and inverse-residue projection: 130 exact assertions
+PASS prime Gauss sums: 324 exact assertions
+PASS positive-four Fourier pairing: 286 exact assertions
+PASS Jacobi periods and square-pair identities: 26757 exact assertions
+PASS circle sign and exact versus centered weights: 4 exact assertions
+PASS rational arc constants and integer-center exception: 445 exact assertions
+PASS scale and exponent identities: 33 exact assertions
+PASS primitive completion and high-factor exponents: 232438 exact assertions
+PASS critical-kernel arithmetic and exceptional factorization: 1485777 exact assertions
+PASS all 11 groups: 1748356 exact assertions
+Exponents: real odd=19/20; low prefactor=7/20; low at R=X^(2/5)=19/20; low at R=H=11/10.
+Scope: finite identities/exponents only; no numerical asymptotic evidence, no verification of the target theorem.

@@ -1,0 +1,13 @@
+import Submission.WitnessAutocorrelationExplore
+/-! Axiom audit for the natural autocorrelation necessary condition. -/
+#print axioms Erdos66AutocorrelationStability.corr_error_le_conv_error
+#print axioms Erdos66AutocorrelationStability.cyclic_weighted_corr_error
+#print axioms Erdos66NaturalAutocorrelation.push_corr_tendsto
+#print axioms Erdos66NaturalAutocorrelation.partial_weighted_corr_error
+#print axioms Erdos66NaturalAutocorrelation.weighted_corr_error
+#print axioms Erdos66AutocorrelationAbel.ratio_zero_abel
+#print axioms Erdos66AutocorrelationAbel.harmonic_sq_series_bound
+#print axioms Erdos66AutocorrelationAbel.witness_error_ratio_zero
+#print axioms Erdos66WitnessAutocorrelation.witness_normalized_error_energy_zero
+#print axioms Erdos66WitnessAutocorrelation.natural_corr_error_bound
+#print axioms Erdos66WitnessAutocorrelation.witness_normalized_corr_error_zero

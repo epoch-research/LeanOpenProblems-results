@@ -1,0 +1,6 @@
+import Submission.HarmonicExceptionalProfileExplore
+/-! Axiom audit for fixed-coefficient harmonic exceptional-target bounds. -/
+#print axioms Erdos66SummableCostCompactness.exists_summable_costs
+#print axioms Erdos66BiasedTailPotential.expect_potential_bound
+#print axioms Erdos66HarmonicExceptionalProfile.uniform_weighted_potential_bound
+#print axioms Erdos66HarmonicExceptionalProfile.exists_harmonically_summable_exceptions

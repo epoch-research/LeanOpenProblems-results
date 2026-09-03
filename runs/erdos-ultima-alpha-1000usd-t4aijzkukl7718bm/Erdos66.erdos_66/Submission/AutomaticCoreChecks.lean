@@ -1,0 +1,14 @@
+import Submission.DfaCountingExplore
+#check Nat.le_log_of_pow_le
+#check tendsto_order
+#check squeeze_zero'
+#check Real.continuous_sqrt
+#check Real.sqrt_sq
+#check Nat.cast_sub
+#check Finset.card_sdiff_of_subset
+#check tendsto_atTop
+#check Nat.pow_le_pow_left
+#check div_le_div₀
+#check Real.sqrt_sq_eq_abs
+#check Real.sqrt_sq
+#check tendsto_natCast_atTop_atTop

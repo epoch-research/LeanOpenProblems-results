@@ -1,0 +1,15 @@
+import Submission.UnitOrbitKernel
+#check Subgroup.mem_sup
+#check Subgroup.mem_sup_of_normal_right
+#check Subgroup.mem_sup_of_normal_left
+#check Subgroup.normal_of_comm
+#check Subgroup.mul_mem_sup
+#check Nat.card_eq_zero_of_isEmpty
+#check Nat.card_eq_zero
+#check Nat.card_eq_fintype_card
+#check orderOf_pos
+#check orderOf_pos_iff
+#check ZMod.card_units_eq_totient
+#check Nat.card_units_zmod
+#check Nat.totient_pos
+#check Set.Nonempty.to_subtype

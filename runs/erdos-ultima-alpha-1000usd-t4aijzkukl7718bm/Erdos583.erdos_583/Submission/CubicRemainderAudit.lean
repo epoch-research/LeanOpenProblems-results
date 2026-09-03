@@ -1,0 +1,7 @@
+import Submission.CubicRemainder
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583CubicRemainderDevelopment.selected_erase_eq_delete
+#print axioms Erdos583CubicRemainderDevelopment.cycle_normal_degree_bound
+#print axioms Erdos583CubicRemainderDevelopment.nonmarked_partition_even
+#print axioms Erdos583CubicRemainderDevelopment.cubic_neighbor_not_marked
+#print axioms Erdos583CubicRemainderDevelopment.cubic_remainder_certificate

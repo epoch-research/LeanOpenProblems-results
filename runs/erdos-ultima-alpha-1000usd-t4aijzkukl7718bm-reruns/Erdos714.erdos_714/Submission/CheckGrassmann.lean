@@ -1,0 +1,11 @@
+import Submission.GrassmannFourChart
+#check SimpleGraph.edgeFinset_mono
+#check SimpleGraph.edgeFinset_sup
+#check SimpleGraph.card_edgeFinset_mono
+#check SimpleGraph.Free.mono
+#check Finset.sum_filter
+#check Finset.sum_const
+#check Nat.le_of_mul_le_mul_left
+#check Nat.pow_le_pow_iff_left
+#check Finset.filter_product
+#check Fintype.card_prod

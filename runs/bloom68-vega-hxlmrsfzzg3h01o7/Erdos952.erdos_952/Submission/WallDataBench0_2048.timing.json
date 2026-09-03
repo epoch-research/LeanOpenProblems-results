@@ -1,0 +1,21 @@
+{
+  "source": "Submission/WallDataBench0_2048.lean",
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-o",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_2048.olean",
+    "/workspace/leanproject/Submission/WallDataBench0_2048.lean"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 116.725,
+  "user_seconds": 112.099,
+  "system_seconds": 4.656,
+  "max_rss_kib": 24081012,
+  "source_bytes": 2569,
+  "source_lines": 20,
+  "olean_bytes": 51296,
+  "log": "Submission/WallDataBench0_2048.log"
+}

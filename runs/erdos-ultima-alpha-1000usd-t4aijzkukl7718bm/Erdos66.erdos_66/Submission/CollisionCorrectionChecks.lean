@@ -1,0 +1,13 @@
+import Submission.InterceptCurveExplore
+#check Finset.card_pos
+#check Finset.card_filter
+#check Erdos66CyclicVariance.indicator
+#check Erdos66CyclicVariance.conv_add_left
+#check Erdos66CyclicVariance.conv_add_right
+#check Erdos66CyclicVariance.conv_comm
+#check Erdos66MixedEnergy.conv_comm
+#check Erdos66PrefixFaithfulParabolaLift.pairCount_shiftSet
+#check Erdos66OriginRepair.pairCount_sum
+#check Finset.card_biUnion_le
+#check Finset.sum_filter
+#check Finset.card_eq_sum_ones

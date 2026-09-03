@@ -1,0 +1,5 @@
+Discount: two constructive examples, including a frozen component and an isolated branch; sharpness K_{5,8}.
+Punctured-star obstruction: K_{3,7}, all 18 (high vertex, hole) choices; 31 proper subset types; full path copies verified.
+Chambers: five full-copy certificates, including a depth-four repair leaf and a two-chamber return; tight sink and two-cycle W-resistance checked.
+Critical application: n=45, e=271=6n+1, delta=7; root-reachable quota certificate; all 11 high vertices covered; every coarse core budget fails.
+All targeted audits passed. No exhaustive tree/host search was run.

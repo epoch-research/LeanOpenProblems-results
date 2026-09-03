@@ -1,0 +1,11 @@
+import Submission.PrimeRowResidueInjection
+#check Nat.div_dvd_of_dvd
+#check Nat.Coprime.of_dvd_left
+#check Fintype.card_le_of_injective
+#check Fintype.card_coe
+#check IsUnit.unit_spec
+#check IsUnit.of_mul_eq_one
+#check Nat.coprime_two_right
+#check Nat.coprime_two_left
+#check Nat.totient_two
+#check Nat.Prime.coprime_iff_not_dvd

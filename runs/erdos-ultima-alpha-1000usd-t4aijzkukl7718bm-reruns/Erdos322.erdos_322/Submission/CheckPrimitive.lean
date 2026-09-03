@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.coprime_of_dvd
+#check Int.ofNat_dvd_left
+#check Int.natCast_dvd_natCast
+#check Nat.prime_dvd_prime_iff_eq
+#check Nat.gcd_mul_left
+#check Int.natAbs_mul
+#check Int.natAbs_pow
+#check Finset.gcd_dvd
+#check Finset.dvd_gcd
+#check Nat.dvd_antisymm

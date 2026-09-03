@@ -1,0 +1,9 @@
+import Submission.MassSensitivePhaseCarryExplore
+#check sq_sum_le_card_mul_sum_sq
+#check Real.log_pow
+#check Real.log_one_add_le_self
+#check Real.sqrt_mul
+#check Finset.sum_subset
+#check Finset.sum_subset_zero_on_sdiff
+#check Real.sqrt_div
+#check Filter.Tendsto.bddAbove_range

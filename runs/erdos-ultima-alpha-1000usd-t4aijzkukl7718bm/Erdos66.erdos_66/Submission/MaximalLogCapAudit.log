@@ -1,0 +1,26 @@
+'Erdos66PointwiseCapBlocking.blocked_excludes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PointwiseCapBlocking.rep_zero_of_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PointwiseCapBlocking.exists_blocking_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.exists_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.step_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.states_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.cutoff_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.mem_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.states_subset_maximalSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_capped' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_maximal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_holes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.maximalSet_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MaximalCapWithHoles.exists_maximal_with_holes_and_peaks' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicMaximalCap.logCap_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicMaximalCap.logCap_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicMaximalCap.logCap_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicMaximalCap.subquartic_of_log_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicMaximalCap.holes_peaks_no_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicMaximalCap.exists_maximal_log_cap_without_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

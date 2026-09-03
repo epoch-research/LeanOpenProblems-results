@@ -1,0 +1,17 @@
+import Submission.NaturalTwistedEnergyExplore
+import Submission.WitnessAutocorrelationExplore
+import Submission.RoundingExplore
+#check Finset.sum_range_pair
+#check Finset.sum_range_add
+#check Finset.sum_range_reflect
+#check Antitone.alternating_sum_nonneg
+#check Antitone.alternating_sum_le
+#check alternating_sum_nonneg
+#check Real.sqrt_mul
+#check Real.sqrt_sq
+#check Real.le_sqrt_of_sq_le
+#check Real.sqrt_le_sqrt
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check Filter.Tendsto.const_div_atTop
+#check Erdos66Fractional.profile_le_one
+#check AdditiveCombinatorics.sumConv

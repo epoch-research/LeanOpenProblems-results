@@ -1,0 +1,21 @@
+import Submission.OddFieldExtensionExplore
+import Submission.OddExtensionCharacterFiberExplore
+import Submission.OddExtensionFlatSetExplore
+import Submission.SquareClosedSubspaceExplore
+/-! Audit of odd-extension compatibility and square-closed coordinate spaces. -/
+#print axioms Erdos66OddFieldExtension.isSquare_of_odd_power
+#print axioms Erdos66OddFieldExtension.isSquare_algebraMap_iff
+#print axioms Erdos66OddFieldExtension.quadraticChar_algebraMap
+#print axioms Erdos66OddFieldExtension.curve_old_slice
+#print axioms Erdos66OddFieldExtension.outside_parameter_old_slice
+#print axioms Erdos66OddExtensionCharacterFiber.mapped_charFiber
+#print axioms Erdos66OddExtensionCharacterFiber.mapped_charFiber_outside
+#print axioms Erdos66OddExtensionCharacterFiber.sum_abs_charFiber_map
+#print axioms Erdos66OddExtensionCharacterFiber.extended_graphCount_error
+#print axioms Erdos66OddExtensionFlatSet.parabolaSet_old_slice
+#print axioms Erdos66OddExtensionFlatSet.repairPoints_map
+#print axioms Erdos66OddExtensionFlatSet.repaired_old_slice
+#print axioms Erdos66OddExtensionFlatSet.extended_repaired_counts
+#print axioms Erdos66SquareClosedSubspace.mul_mem_of_square_closed
+#print axioms Erdos66SquareClosedSubspace.square_closed_is_intermediate_field
+#print axioms Erdos66SquareClosedSubspace.square_closed_finrank_dvd

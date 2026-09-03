@@ -1,0 +1,27 @@
+lemma odd_vertices_le_twice_path_count {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {D : Finset G.Subgraph} (hD : GoodDecomposition G D) :
+    Fintype.card {v : V // Odd (G.degree v)} ≤ 2 * D.card := by
+  classical
+  choose a b p hp hpeq using fun H : D ↦ hD.1 H.val H.property
+  let f : D × Bool → V := fun x ↦ if x.2 then a x.1 else b x.1
+  have hcover (v : {v : V // Odd (G.degree v)}) : ∃ x : D × Bool, f x = v.val := by
+    by_contra hn
+    have hmiss (x : D × Bool) : f x ≠ v.val := fun hx ↦ hn ⟨x, hx⟩
+    have hev : Even (G.degree v.val) := by
+      rw [hD.2.degree_eq_sum v.val]
+      apply Finset.even_sum
+      intro H hH
+      let H' : D := ⟨H, hH⟩
+      change Even (H'.val.neighborSet v.val).ncard
+      rw [hpeq H']
+      apply path_neighbor_ncard_even (hp H')
+      · exact (show a H' ≠ v.val by simpa [f] using hmiss (H', true)).symm
+      · exact (show b H' ≠ v.val by simpa [f] using hmiss (H', false)).symm
+    exact (Nat.not_even_iff_odd.mpr v.property) hev
+  choose g hg using hcover
+  have hginj : Function.Injective g := by
+    intro v w h
+    apply Subtype.ext
+    rw [← hg v, ← hg w, h]
+  have hc := Fintype.card_le_of_injective g hginj
+  simpa [Fintype.card_prod, Fintype.card_coe, Nat.mul_comm] using hc

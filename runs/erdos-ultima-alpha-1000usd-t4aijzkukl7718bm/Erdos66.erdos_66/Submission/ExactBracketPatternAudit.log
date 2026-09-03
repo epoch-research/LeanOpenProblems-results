@@ -1,0 +1,38 @@
+'Erdos66ExactBracketPatternCompactness.exists_summable_costs_with_patterns' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketPatternCosts.selected_prefix_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketPatternCosts.exists_pattern_sparse_summable_rep_costs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketPatternHost.exists_pattern_sparse_power_potentials' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketPatternHost.exists_indexed_pattern_power_potentials' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketPatternHost.exists_polynomial_pattern_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketPatternHost.exists_joint_pattern_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketPatternHost.exists_joint_boundary_triple_rounding' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketHostEnvelope.envelope_of_power_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketHostEnvelope.exists_exact_bracket_host' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FlexibleRankDownwardRepair.uniformly_eventually_downward_rank_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RankDownwardEligibility.near_midpoint_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankDownwardEligibility.eligible_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankDownwardEligibility.exists_eligible_clipping_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketDownwardClipping.uniformly_eventually_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketHostClipping.eventually_boundary_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketHostClipping.host_eventually_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ExactBracketHostClipping.exists_exact_bracket_host_with_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

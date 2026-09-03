@@ -1,0 +1,6 @@
+import Submission.CenterDensityExample
+#print axioms Erdos7AffineUnitDensity.centered_unit_density
+#print axioms Erdos7AffineUnitDensity.centered_prime_moment
+#print axioms Erdos7CenterDensityMinimum.zero_minimizes
+#print axioms Erdos7CenterDensityExample.every_center_above_one
+#print axioms Erdos7CenterDensityExample.uncovered

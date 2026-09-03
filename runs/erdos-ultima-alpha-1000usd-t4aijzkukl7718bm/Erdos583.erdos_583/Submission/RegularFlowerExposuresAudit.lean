@@ -1,0 +1,10 @@
+import Submission.RegularFlowerExposures
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583RegularFlowerExposuresDevelopment.regular_parallel_exposures
+#print axioms Erdos583RegularFlowerExposuresDevelopment.exists_max_regular_score
+#print axioms Erdos583RegularFlowerExposuresDevelopment.regular_exposure_zero_at_max
+#print axioms Erdos583RegularFlowerExposuresDevelopment.max_regular_petals_bound
+#print axioms Erdos583RegularFlowerExposuresDevelopment.regularCut_nonpath_root
+#print axioms Erdos583RegularFlowerExposuresDevelopment.max_regular_three_zeros_deficit
+#print axioms Erdos583RegularFlowerExposuresDevelopment.normalize_regular_three_zeros

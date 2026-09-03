@@ -1,0 +1,12 @@
+Core family: 261 explicit saturation embeddings; ordinary noncontainment checked in d=2,3.
+Exact partition distances (d,N,partitions,(red-within,red-between)): [(2, 4, 15, (1, 1)), (3, 10, 115975, (3, 3))]
+Cube vertex connectivity: 42189 vertex-deletion cases through d=5.
+K4: all 64 colorings checked; 12 one-color C4-saturated graphs, no simultaneous pair.
+Connected fractional matching: 2980 weighted looped templates; LP primal values checked against exhaustive half-integral dual covers.
+Euler-walk rounding: 247 exact rational instances; 62 full theorem-scale capacity/error estimates.
+Binomial residues: 4992 (d,L) pairs, every residue checked exactly before comparison.
+Actual injective greedy embedding: 240 cube/template cases with incident errors D=0,1,2.
+One-sided saturation obstruction: 12 finite first-moment/threshold substitutions.
+Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+ALL CHECKS PASSED; no missing normal-form or Ramsey assertion was assumed.
+Elapsed seconds: 9.20

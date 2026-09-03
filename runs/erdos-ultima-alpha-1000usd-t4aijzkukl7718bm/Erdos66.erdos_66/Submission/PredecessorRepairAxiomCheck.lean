@@ -1,0 +1,9 @@
+import Submission.PredecessorPacketRepairExplore
+
+/-! Audit of finite predecessor-packet repairs and their selection tools. -/
+#print axioms Erdos66BoundedFiberSelection.bounded_fiber_indicator_bound
+#print axioms Erdos66BoundedFiberSelection.exists_avoid_bounded_fibers_and_small_hits
+#print axioms Erdos66CellSidonSelection.exists_cell_sidon_avoid_and_hits
+#print axioms Erdos66NaturalSymmetricPacket.natPacket_off_center
+#print axioms Erdos66NaturalSymmetricPacket.swapped_symmetric_target
+#print axioms Erdos66PredecessorPacketRepair.exists_predecessor_packet_repair

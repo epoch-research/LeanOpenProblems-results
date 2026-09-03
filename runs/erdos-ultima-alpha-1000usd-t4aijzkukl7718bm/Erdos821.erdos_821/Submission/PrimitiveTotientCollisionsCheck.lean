@@ -1,0 +1,11 @@
+import Submission.PrimitiveTotientCollisions
+/-! Axiom audit for the primitive collision reduction. -/
+#print axioms Erdos821.PrimitiveCollisions.split_injective
+#print axioms Erdos821.PrimitiveCollisions.weight_split
+#print axioms Erdos821.PrimitiveCollisions.summable_collision_iff_primitive
+#print axioms Erdos821.PrimitiveCollisions.collision_tsum_le
+#print axioms Erdos821.PrimitiveCollisions.primitive_tsum_le
+#print axioms Erdos821.PrimitiveCollisions.summable_squarefree_second_moment_iff
+#print axioms Erdos821.PrimitiveCollisions.erdos_821_iff_primitive_collision_divergence
+#print axioms Erdos821.PrimitiveCollisions.summable_primitive_iff_distinct
+#print axioms Erdos821.PrimitiveCollisions.erdos_821_iff_distinct_primitive_divergence

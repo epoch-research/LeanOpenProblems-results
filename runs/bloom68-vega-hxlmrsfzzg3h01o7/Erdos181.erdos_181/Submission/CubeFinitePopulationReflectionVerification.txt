@@ -1,0 +1,16 @@
+PASS Kneser eigenvalues, counting normalization, star and Fano zero-disjointness cases
+  exact one-phase image count: 3920 images, weight 144, Z=564480, Gamma=20736
+PASS single point: N=129, d=5, exact regularity, exact lists, all phase edges, one-collision maps
+  modified pair blocks: {'boundary': 32, 'list': 114, 'point': 32, 'private': 128, 'repair': 114}
+PASS triangle phases: N=2049, d=8, exact regularity, exact lists, all phase edges, one-collision maps
+  modified pair blocks: {'boundary': 1024, 'list': 2988, 'point': 2304, 'private': 36864, 'repair': 2988}
+PASS Fano incidence, quotient, marker separation, phase rigidity, exact factorial counts and occupancies
+PASS deterministic isolated-edge and leaf cancellation, all graphs through four vertices
+High-precision (log negative-lower-bound / baseline)/(h log h), q=2, C=16:
+  a=   6: -0.12010714092407
+  a=  20: 0.074152354591635
+  a=  80: 0.14296465282922
+  a= 320: 0.16070420580527
+  a=1280: 0.16517372357748
+PASS factorial asymptotics approach the proved coefficient 1/6
+PASS Spec.lean unchanged; all checks completed

@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Finset.sum_sdiff
+#check Finset.card_sdiff
+#check Finset.card_erase_eq_ite
+#check Finset.card_erase_of_mem
+#check Nat.choose_succ_succ
+#check Nat.add_one_mul_choose_eq
+#check Nat.succ_mul_choose_eq
+#check Nat.mul_choose_eq
+#check Nat.choose_mul_succ_eq
+#check Nat.choose_succ_right_eq
+#check add_pow
+#check add_pow_le
+#check add_pow_le_add_pow
+#check pow_add_mul_le_add_pow
+#check ConvexOn.map_add_le

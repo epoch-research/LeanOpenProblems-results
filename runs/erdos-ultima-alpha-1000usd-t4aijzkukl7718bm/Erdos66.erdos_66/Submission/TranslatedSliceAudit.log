@@ -1,0 +1,22 @@
+'Erdos66TranslateKernelAveraging.sum_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslateKernelAveraging.sum_translated_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslateKernelAveraging.sum_all_translated_pairCount' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TranslateKernelAveraging.translated_kernel_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslateKernelAveraging.exists_universal_translate_averaging' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66TranslatedSliceLift.translated_assembly_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.replaceZeroSlice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.replaceZeroSlice_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.replaceZeroSlice_off' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.replaceZeroSlice_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.translated_slice_lift_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TranslatedSliceLift.exists_nonzero_member_of_positive_count' depends on axioms: [propext, Quot.sound]
+'Erdos66TranslatedSliceLift.translated_slice_lift_full_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicTranslatedSlice.exists_logarithmic_translated_slice' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

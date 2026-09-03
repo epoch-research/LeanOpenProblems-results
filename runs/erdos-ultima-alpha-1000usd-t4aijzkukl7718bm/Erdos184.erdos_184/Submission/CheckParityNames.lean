@@ -1,0 +1,12 @@
+import Submission.EdgeHull
+open SimpleGraph
+#check SimpleGraph.deleteEdges_adj
+#check SimpleGraph.degree_pos_iff_exists_adj
+#check SimpleGraph.degree_pos_iff_mem_support
+#check SimpleGraph.Adj.ne
+#check Sym2.eq_iff
+#check Sym2.eq_iff_iff
+#check Finset.sum_ite_eq'
+#check Finset.card_erase_add_one
+#check Erdos184Work.Critical.exists_optimal
+#print Erdos184Work.Critical.number_le

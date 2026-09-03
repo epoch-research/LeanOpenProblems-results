@@ -1,0 +1,16 @@
+import Submission.FiniteLayerCake
+#check sum_mul_eq_sub_sub_integral_mul
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt
+#check Real.hasDerivAt_log
+#check HasDerivAt.pow
+#check deriv_log
+#check deriv_pow
+#check Real.log_natCast_nonneg
+#check Erdos970.WeightedMertens.boundConstant_nonneg
+#check MeasureTheory.IntegrableOn.congr_fun
+#check ContinuousOn.congr
+#check intervalIntegral.integral_norm_le
+#check Nat.floor_eq_iff
+#check Real.log_le_sub_one_of_pos
+#check HasDerivAt.div_const
+#check HasDerivAt.const_mul

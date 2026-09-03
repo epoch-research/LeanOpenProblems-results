@@ -1,0 +1,7 @@
+import Submission.SumDifferenceFamilyExplore
+
+/-! Axiom audit of the finite sum-and-difference family. -/
+#print axioms Erdos66DegenerateCrossGraph.cross_graph_error_allow_opposites
+#print axioms Erdos66DifferenceSignEnergy.differencePush_l1_sq_le
+#print axioms Erdos66SumDifferenceParameters.exists_sum_difference_parameter_family
+#print axioms Erdos66SumDifferenceFamily.exists_sum_difference_flat_prime_family

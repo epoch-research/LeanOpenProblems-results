@@ -1,0 +1,8 @@
+def IsCarmichael : ℕ → Prop :=
+fun n => ∀ b ≥ 1, n.Coprime b → n.FermatPsp b
+CarmichaelAlgebra.isCarmichael_iff_carmichael_dvd {n : ℕ} :
+  IsCarmichael n ↔ 1 < n ∧ ¬Nat.Prime n ∧ ArithmeticFunction.Carmichael n ∣ n - 1
+CarmichaelAlgebra.isCarmichael_iff_korselt {n : ℕ} :
+  IsCarmichael n ↔ ¬Nat.Prime n ∧ 1 < n ∧ Squarefree n ∧ ∀ (p : ℕ), Nat.Prime p → p ∣ n → p - 1 ∣ n - 1
+CarmichaelAlgebra.isCarmichael_prod_of_modEq {P : Finset ℕ} {M : ℕ} (hP : ∀ p ∈ P, Nat.Prime p) (hcard : 2 ≤ P.card)
+  (hdiv : ∀ p ∈ P, p - 1 ∣ M) (hmod : ∏ p ∈ P, p ≡ 1 [MOD M]) : IsCarmichael (∏ p ∈ P, p)

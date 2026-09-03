@@ -1,0 +1,16 @@
+import Submission.DivisorCovariance
+import Submission.DoubleVaughan
+#check Nat.sum_divisorsAntidiagonal
+#check Nat.sum_divisorsAntidiagonal'
+#check Nat.cast_div
+#check ArithmeticFunction.log_apply
+#check Finset.sum_filter
+#check Nat.div_pos
+#check Nat.div_pos_of_dvd_of_pos
+#check Nat.mem_divisors
+#check Real.log_sqrt
+#check Real.log_le_rpow_div
+#check Real.sqrt_mul
+#check Real.sq_sqrt
+#check Real.sqrt_div
+#check Finset.sum_range_sub

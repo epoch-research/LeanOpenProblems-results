@@ -1,0 +1,11 @@
+import Submission.CofactorSuccessorIntervals
+
+/-! Axiom audit for the weighted successor-sieve multiplicity gain. -/
+
+#print axioms Erdos821.AnalyticSieve.sum_natural_interval_sub
+#print axioms Erdos821.AnalyticSieve.cofactor_successor_interval_count
+#print axioms Erdos821.AnalyticSieve.cofactor_successor_interval_discrepancy
+#print axioms Erdos821.AnalyticSieve.cofactorIntervalPrimeSuccessorWeight
+#print axioms Erdos821.AnalyticSieve.cofactor_interval_prime_successor_le_sifted
+#print axioms Erdos821.AnalyticSieve.exists_cofactor_interval_successor_sieve_bound
+#print axioms Erdos821.AnalyticSieve.exists_cofactor_interval_successor_log_bound

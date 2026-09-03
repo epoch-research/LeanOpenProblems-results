@@ -1,0 +1,9 @@
+import Submission.StrongLocalizedCounting
+/-! Axiom audit for the convex-projection strong-regularity branch. -/
+#print axioms Erdos3ConvexLeastSquares.minimizer_pythagorean
+#print axioms Erdos3BoundedFeatureClasses.projected_test_step
+#print axioms Erdos3ProjectedWeakRegularity.projected_weak_refinement
+#print axioms Erdos3AdaptiveStrongRegularity.adaptive_strong_regularity_explicit
+#print axioms Erdos3StrongQuadraticRegularity.strong_U3_regularity
+#print axioms Erdos3FeatureLipschitzEnvelope.featureClass_factor
+#print axioms Erdos3StrongLocalizedCounting.strong_localized_counting_bridge

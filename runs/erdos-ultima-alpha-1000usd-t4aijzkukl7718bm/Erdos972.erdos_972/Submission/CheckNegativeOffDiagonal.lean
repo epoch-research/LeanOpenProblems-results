@@ -1,0 +1,17 @@
+import Submission.PrimeRemainderProfileIdentity
+#check irrational_sqrt_two
+#check Irrational.add_rat
+#check Irrational.rat_add
+#check Irrational.div_natCast
+#check Irrational.div_ratCast
+#check Irrational.div_rat
+#check Nat.Prime.dvd_of_dvd_pow
+#check Nat.Prime.dvd_mul
+#check Nat.Prime.dvd_of_dvd_mul_left
+#check Nat.Prime.dvd_of_dvd_mul_right
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite_eq'
+#check Nat.lt_floor_add_one
+#check Real.sqrt_two_lt_three_halves
+#check Real.sqrt_lt'
+#check Nat.mul_div_cancel_left

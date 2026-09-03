@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+#check SimpleGraph.Iso.map
+#check SimpleGraph.map_le_iff_le_comap
+#check SimpleGraph.map_le_iff
+#check SimpleGraph.card_edgeFinset_le_card_edgeFinset
+#check SimpleGraph.edgeFinset_mono
+#check SimpleGraph.edgeFinset_subset_edgeFinset
+#check Finset.eq_of_subset_of_card_le
+#check Fintype.bijective_iff_injective_and_card
+#check Fintype.bijective_iff_injective_and_card_le
+#check Fintype.bijective_iff_injective_and_card_ge
+#check Finite.surjective_of_injective
+#check Function.Bijective.of_injective_of_card_le
+#check Equiv.ofBijective
+#check SimpleGraph.Iso.card_edgeFinset_eq
+#check SimpleGraph.map_adj
+#check SimpleGraph.edgeFinset_inj

@@ -1,0 +1,12 @@
+import Submission.QuarticPrefixCapacityExplore
+
+/-! Axiom audit of the consistent-coefficient capacity criterion. -/
+
+#print axioms Erdos66QuarticPrefixCapacity.block
+#print axioms Erdos66QuarticPrefixCapacity.block_card_le
+#print axioms Erdos66QuarticPrefixCapacity.block_sum_prefix
+#print axioms Erdos66QuarticPrefixCapacity.block_square_mass_le
+#print axioms Erdos66QuarticPrefixCapacity.summable_block_fourth
+#print axioms Erdos66QuarticPrefixCapacity.summable_geometric_prefix_energy
+#print axioms Erdos66QuarticPrefixCapacity.frequently_small_geometric_prefix
+#print axioms Erdos66QuarticPrefixCapacity.consistent_coefficient_capacity

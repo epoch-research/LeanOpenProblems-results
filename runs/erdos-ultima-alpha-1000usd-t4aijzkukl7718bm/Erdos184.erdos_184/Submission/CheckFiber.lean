@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.sum_boole
+#check Finset.card_filter
+#check Nat.strong_induction_on
+#check Finset.filter_card_add_filter_neg_card_eq_card

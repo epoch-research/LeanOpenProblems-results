@@ -1,0 +1,80 @@
+'Erdos66InterceptEdgePolynomial.SameEdge' does not depend on any axioms
+'Erdos66InterceptEdgePolynomial.edgeSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.edgeProd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.linearFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.edgePolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.linearFactor_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.edgePolynomial_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.linearFactor_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.edgePolynomial_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.sameEdge_of_sum_prod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.exclusive_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.rootMultiplicity_edge_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptEdgePolynomial.edge_product_has_simple_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.square_ne_square_times_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.tripleNorm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.tripleNorm_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.norm_vanish_of_relation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptEdgePolynomial.tripleNorm_eval_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.pairLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.pairLinear_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.pairLinear_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.concurrencyPolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.concurrencyPolynomial_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.EdgeHit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.hit_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.hits_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.three_hits_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.natDegree_mul_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.natDegree_add_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.natDegree_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.natDegree_pow_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.edgePolynomial_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.pairLinear_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.tripleNorm_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptConcurrencyPolynomial.concurrencyPolynomial_degree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptGoodTranslation.edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.collisionForbidden' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.oppositeForbidden' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.allForbidden' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.biUnion_card_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.polynomial_root_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.collisionForbidden_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.oppositeForbidden_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.allForbidden_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.outside_opposite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.outside_admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.outside_no_three_hits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptGoodTranslation.exists_good_low_energy_translate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptCollisionIncidence.sameEdge_symm' does not depend on any axioms
+'Erdos66InterceptCollisionIncidence.edgePoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.mem_edgePoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.edgePoints_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.edgePoints_sameEdge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.collision_has_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.edge_hit_of_membership' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.collision_curve_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.collision_subset_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.collision_union_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptCollisionIncidence.collision_self_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GoodInterceptFlat.good_collision_correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GoodInterceptFlat.good_actual_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GoodInterceptFlat.good_error_with_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GoodInterceptFlat.exists_good_anchored_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptSelectionScale.count_square_eventually_gt_cutoff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptSelectionScale.full_prefix_fails_selector_condition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptSelectionScale.prime_prefix_fails_selector_condition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

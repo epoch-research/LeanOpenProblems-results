@@ -1,0 +1,7 @@
+'Erdos66FiniteFieldDegree.exists_extension_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddDegreeLogTuning.odd_degree_tuning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddDegreeLogTuning.tuning_cost_tendsto_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogTunedGrowingField.normalized_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogTunedGrowingField.exists_log_tuned_growing_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

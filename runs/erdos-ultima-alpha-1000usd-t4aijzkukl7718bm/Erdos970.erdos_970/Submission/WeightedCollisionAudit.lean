@@ -1,0 +1,13 @@
+import Submission.CompletionCollisionFibers
+
+/-! Axiom audit of the finite weighted repeated-hit development.
+This is not a settlement of the original conjecture. -/
+#print axioms Erdos970.OneHitLogConcavity.coverageCovariance_insert
+#print axioms Erdos970.OneHitLogConcavity.population_cover_le_product_add_weightedCollisionCost
+#print axioms Erdos970.OneHitLogConcavity.population_cover_le_product_of_crossSeparated
+#print axioms Erdos970.OneHitLogConcavity.weightedCoreRemainder_le_coverage
+#print axioms Erdos970.OneHitLogConcavity.weightedCoreRemainder_le_collision
+#print axioms Erdos970.OneHitLogConcavity.void_double_le_square_add_variance_add_weighted_remainder
+#print axioms Erdos970.OneHitLogConcavity.completionIncrement_eq_fiber
+#print axioms Erdos970.OneHitLogConcavity.completionCollision_le_concentration_product
+#print axioms Erdos970.OneHitLogConcavity.weightedCollisionCost_le_reciprocal_sum

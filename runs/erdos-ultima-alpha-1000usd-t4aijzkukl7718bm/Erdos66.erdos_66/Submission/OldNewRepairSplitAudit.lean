@@ -1,0 +1,15 @@
+import Submission.CompletionSelfMassExplore
+
+/-! Axiom audit of the old/new repair split and its completion consequences. -/
+#print axioms Erdos66OldNewRepairSplit.selfMass_nonneg
+#print axioms Erdos66OldNewRepairSplit.selfMass_le_card_sq
+#print axioms Erdos66OldNewRepairSplit.increment_old_new_identity
+#print axioms Erdos66OldNewRepairSplit.uniform_gain_old_new_bound
+#print axioms Erdos66OldNewRepairSplit.old_degree_forces_self_mass
+#print axioms Erdos66OldNewRepairSplit.negligible_old_incidence_forces_self_mass
+#print axioms Erdos66OldNewRepairSplit.negligible_old_incidence_card_lower
+#print axioms Erdos66OldNewRepairSplit.negligible_old_incidence_and_self_forces_empty
+#print axioms Erdos66CompletionSelfMass.same_counting_completion_self_mass
+#print axioms Erdos66CompletionSelfMass.same_counting_completion_card_lower
+#print axioms Erdos66CompletionSelfMass.same_coefficient_completion_self_mass
+#print axioms Erdos66CompletionSelfMass.same_coefficient_completion_frequent_self_peak

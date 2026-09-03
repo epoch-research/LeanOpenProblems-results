@@ -1,0 +1,17 @@
+import Submission.PrimeRemainderProfileIdentity
+#check Nat.Prime.dvd_iff_eq
+#check Nat.Prime.dvd_prime
+#check Nat.le_of_dvd
+#check Nat.le_div_iff_mul_le
+#check Nat.floor_eq_iff
+#check Finset.sum_eq_single
+#check Erdos972MellinDivisorCoefficient.divisorCoeff_eq
+#check Erdos972TypeIPolynomial.truncated_divisor_sum
+#check Erdos972TypeIPolynomial.divisorPolynomial
+#check Erdos972PrimePowerError.floorMul
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_irrel
+#check mul_eq_mul_right_iff
+#check Nat.mul_right_cancel
+#check ArithmeticFunction.moebius_apply_prime

@@ -1,0 +1,9 @@
+import Submission.SignedRepBernoulliExplore
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_fin_eq_sum_range
+#check Finset.sum_fin_eq_sum_range
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_range_subtype
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_fin_eq_sum_range
+#check Finset.sum_attach

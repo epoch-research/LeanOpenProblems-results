@@ -1,0 +1,7 @@
+import Submission.DenseSidonGridExplore
+#print axioms Erdos66DenseSidonGrid.parabola_sidon
+#print axioms Erdos66DenseSidonGrid.denseGrid_card
+#print axioms Erdos66DenseSidonGrid.denseGrid_lt
+#print axioms Erdos66DenseSidonGrid.denseGrid_rep_le_four
+#print axioms Erdos66DenseSidonGrid.denseGrid_not_sidon_colored
+#print axioms Erdos66DenseSidonGrid.exists_dense_cap_four_not_sidon_colored

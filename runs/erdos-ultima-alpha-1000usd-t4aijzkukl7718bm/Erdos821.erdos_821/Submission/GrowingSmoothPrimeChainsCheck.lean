@@ -1,0 +1,16 @@
+import Submission.GrowingSmoothPrimeChains
+
+/-! Exact types and axiom audit for GrowingSmoothPrimeChains. -/
+
+#check Erdos821.exists_reciprocal_exponent_above
+#check Erdos821.exists_sparse_reciprocal_rootSmoothPrimeSet_of_negation
+#check Erdos821.zero_not_mem_rootSmoothPrimeSet
+#check Erdos821.negation_forces_growing_sparse_layers
+#check Erdos821.negation_forces_growing_many_avoiding_paths
+#check Erdos821.negation_forces_growing_many_avoiding_trees
+#print axioms Erdos821.exists_reciprocal_exponent_above
+#print axioms Erdos821.exists_sparse_reciprocal_rootSmoothPrimeSet_of_negation
+#print axioms Erdos821.zero_not_mem_rootSmoothPrimeSet
+#print axioms Erdos821.negation_forces_growing_sparse_layers
+#print axioms Erdos821.negation_forces_growing_many_avoiding_paths
+#print axioms Erdos821.negation_forces_growing_many_avoiding_trees

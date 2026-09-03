@@ -1,0 +1,14 @@
+import Submission.ExplicitProgressionThresholds
+import Submission.PolynomialFourDensityBound
+#check exists_nat_pow_near
+#check exists_nat_pow_ge
+#check pow_right_strictMono₀
+#check Nat.cast_pow
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_le
+#check Nat.le_ceil
+#check Nat.ceil_le_add_one
+#check Erdos3SingleExponentialQuadraticInverse.rankConstant
+#check Erdos3QuadraticRankPowerBound.rankConstant
+#check Erdos3NormalizedQuadraticPowerBounds.correlationDenominator_pos
+#check one_div_le_one_div_of_le

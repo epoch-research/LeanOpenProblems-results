@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check ZMod.val_natCast
+#check ZMod.natCast_zmod_val
+#check ZMod.val_lt
+#check ZMod.natCast_eq_natCast_iff
+#check ZMod.natCast_inj
+#check Finset.card_pair
+#check Finset.mem_univ
+#check eq_div_iff
+#check Finset.card_bij

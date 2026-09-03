@@ -1,0 +1,13 @@
+import Submission.PureFourStructure
+#check Finset.sum_coe_sort
+#check Finset.sum_attach
+#check Finset.sum_sdiff
+#check Finset.sum_sdiff_add_sum_eq_sum
+#check Finset.sum_add_sum_compl
+#check Finset.sum_filter_add_sum_filter_not
+#check Nat.pow_sum_le_card_mul_sum_pow
+#check pow_sum_le_card_mul_sum_pow
+#check Finset.card_le_univ
+#check Finset.sum_fiberwise_of_maps_to
+#check Nat.add_pow_le
+#check add_pow_le

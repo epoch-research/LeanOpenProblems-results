@@ -1,0 +1,17 @@
+import Submission.JointFiniteRepairExplore
+import Submission.NaturalRepairBridgeExplore
+#check Real.sqrt_mul
+#check Real.sqrt_div
+#check Real.sqrt_sq_eq_abs
+#check Real.sqrt_mul_self
+#check Real.sqrt_ne_zero'
+#check Filter.Eventually.of_forall
+#check summable_nat_add_iff
+#check summable_nat_add_iff'
+#check Summable.sum_le_tsum
+#check Summable.hasSum_nat_add_iff
+#check Summable.tendsto_sum_nat_add
+#check Summable.tendsto_sum_nat_add_iff
+#check summable_one_div_nat_pow
+#check Real.summable_one_div_nat_rpow
+#check summable_nat_add_iff

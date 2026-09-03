@@ -1,0 +1,39 @@
+import Submission.WideBlockReciprocal
+
+/-! Axiom audit for the fixed-mass blockwise sieve. -/
+
+#print axioms Erdos821.eventually_power_saving_le_divisor
+#print axioms Erdos821.family_block_rough_count_le
+#print axioms Erdos821.family_block_error_pow_bound
+#print axioms Erdos821.family_block_total_error_bound
+#print axioms Erdos821.fixed_mass_progression_lower
+#print axioms Erdos821.fixed_mass_block_smooth_count
+#print axioms Erdos821.widePairMassDenom_pos
+#print axioms Erdos821.widePairLeft_prime
+#print axioms Erdos821.widePairRight_prime
+#print axioms Erdos821.widePairPools_disjoint
+#print axioms Erdos821.widePairPool_mass_lower
+#print axioms Erdos821.widePairPools_bounds
+#print axioms Erdos821.widePairPool_bounds
+#print axioms Erdos821.widePairPool_card_le
+#print axioms Erdos821.widePairPool_smooth_odd
+#print axioms Erdos821.widePair_prime_divisor_card_le
+#print axioms Erdos821.widePair_divisor_incidence_le
+#print axioms Erdos821.widePair_pool_primitive_bounds
+#print axioms Erdos821.widePair_product_lift_bound
+#print axioms Erdos821.widePair_composite_error_bound
+#print axioms Erdos821.eventually_widePair_progression_lower
+#print axioms Erdos821.widePair_block_smooth_count
+#print axioms Erdos821.exists_wide_block_smooth_prime_count
+#print axioms Erdos821.infinite_g_gt_of_single_log_smooth_count
+#print axioms Erdos821.infinite_g_gt_wide_block_uniform
+#print axioms Erdos821.erdos_821_wide_block_range
+#print axioms Erdos821.small_smooth_prime_card_le
+#print axioms Erdos821.eventually_relative_prime_count_of_single_log
+#print axioms Erdos821.not_summable_relative_of_single_log_count
+#print axioms Erdos821.wide_block_prime_reciprocal_divergence
+#print axioms Erdos821.rationalSmoothShiftedPrimes_mono_ratio
+#print axioms Erdos821.not_summable_reciprocal_superset
+#print axioms Erdos821.wide_block_decimal_reciprocal_divergence
+#print axioms Erdos821.wide_block_reciprocal_strict_improvement
+#print axioms Erdos821.wide_block_multiplicity_strict_improvement

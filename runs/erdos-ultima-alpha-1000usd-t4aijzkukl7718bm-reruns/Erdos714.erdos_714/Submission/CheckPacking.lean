@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Fintype.card_le_iff
+#check Finset.exists_subset_card_eq
+#check Finset.card_map
+#check Fintype.equivFinOfCardEq
+#check Function.Embedding.sumMap
+#check SimpleGraph.card_edgeFinset_map
+#check SimpleGraph.mem_edgeFinset
+#check SimpleGraph.mem_edgeSet
+#check Finset.mem_sigma
+#check Finset.card_sigma
+#check Sym2.inductionOn
+#check Sym2.ind
+#check SimpleGraph.Copy.completeBipartiteGraph
+#check SimpleGraph.Free.mono
+#check SimpleGraph.sum_degrees_eq_twice_card_edges

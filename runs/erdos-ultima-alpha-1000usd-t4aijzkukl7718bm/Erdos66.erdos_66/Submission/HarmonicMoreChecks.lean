@@ -1,0 +1,11 @@
+import Submission.HarmonicExceptionalProfileExplore
+#check Nat.cofinite_eq_atTop
+#check Nat.atTop_eq_cofinite
+#check Filter.Eventually.filter_mono
+#check summable_nat_add_iff
+#check Filter.atTop_le_cofinite
+#check summable_of_nonneg_of_le
+#check HasSum.sum_le
+#check Finset.sum_filter
+#check Real.summable_one_div_nat_add_rpow
+#check one_div_le_one_div_of_le

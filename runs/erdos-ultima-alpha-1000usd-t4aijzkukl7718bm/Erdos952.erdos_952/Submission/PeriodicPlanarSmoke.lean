@@ -1,0 +1,16 @@
+import Submission.RipsCrossing
+import Submission.PeriodicCurveCrossing
+import Submission.RankTwoSieveNecessity
+#check SimpleGraph.Walk.ne_nil
+#check SimpleGraph.Walk.not_nil
+#check SimpleGraph.Walk.getVert_zero
+#check SimpleGraph.Walk.adj_getVert_succ
+#check SimpleGraph.Walk.length_pos_of_ne
+#check SimpleGraph.Walk.exists_cons
+#check Set.Infinite.not_injOn_finite_range
+#check Set.Infinite.exists_ne_map_eq_of_mapsTo
+#check Set.Infinite.exists_ne_map_eq
+#check GaussianInt.toComplex_re
+#check GaussianInt.toComplex_im
+#check GaussianInt.toComplex_injective
+#check Zsqrtd.norm_eq_zero

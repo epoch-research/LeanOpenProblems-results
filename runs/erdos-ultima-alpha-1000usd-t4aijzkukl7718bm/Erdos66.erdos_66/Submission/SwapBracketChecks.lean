@@ -1,0 +1,17 @@
+import Submission.ClampedPrefixContinuationExplore
+import Submission.SetIntervalReplacementExplore
+#check Erdos66Counting.count
+#check Erdos66Rounding.indicator
+#check Erdos66SetIntervalReplacement.count_sum
+#check Finset.sum_image
+#check Finset.sum_sdiff
+#check Finset.sum_union
+#check Finset.filter_union
+#check Finset.filter_sdiff
+#check Finset.sum_boole
+#check Nat.cast_sub
+#check Int.floor_le
+#check Int.lt_ceil
+#check Int.ceil_le
+#check Int.le_floor
+#check Set.PairwiseDisjoint

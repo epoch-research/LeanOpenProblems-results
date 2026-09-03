@@ -1,0 +1,12 @@
+import Submission.CyclotomicSubfield
+#check GaloisField.algHom
+#check GaloisField.card
+#check FiniteField.nonempty_algHom_of_finrank_dvd
+#check FiniteField.nonempty_algHom_iff_finrank_dvd
+#check FiniteField.nonempty_ringHom_iff
+#check FiniteField.subfield
+#check IntermediateField.exists_iff_dvd
+#check FiniteField.algHomOfDvd
+#check FiniteField.finrank_subfield
+#check IntermediateField.exists_finrank_eq
+#check AlgebraicClosure

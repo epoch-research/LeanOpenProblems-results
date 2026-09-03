@@ -1,0 +1,8 @@
+import Submission.ButterflyTwoPaths
+
+/-! Axiom audit of controlled triangle arms and two-disjoint-path absorption. -/
+#print axioms Erdos583TriangleArmsDevelopment.triangle_arms_at_split
+#print axioms Erdos583TriangleArmsDevelopment.triangle_arms_first_side
+#print axioms Erdos583TriangleArmsDevelopment.triangle_arms_avoiding
+#print axioms Erdos583ButterflyTwoPathsDevelopment.butterfly_core_ncard
+#print axioms Erdos583ButterflyTwoPathsDevelopment.butterfly_two_disjoint_paths

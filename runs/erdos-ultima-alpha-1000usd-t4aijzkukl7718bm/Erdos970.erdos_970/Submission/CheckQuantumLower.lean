@@ -1,0 +1,16 @@
+import Submission.LowerAsymptotic
+#check Nat.sqrt_le
+#check Nat.sqrt_le_self
+#check Nat.sqrt_pos
+#check Nat.sqrt_sq_le
+#check Nat.lt_succ_sqrt
+#check Nat.lt_succ_sqrt'
+#check Nat.sq_sqrt
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check Nat.one_le_floor
+#check Nat.le_sqrt
+#check Erdos970.jacobsthalFunction_monotone
+#check Erdos970.jacobsthalFunction_strictMono
+#check Filter.eventually_atTop
+#check Real.tendsto_log_atTop

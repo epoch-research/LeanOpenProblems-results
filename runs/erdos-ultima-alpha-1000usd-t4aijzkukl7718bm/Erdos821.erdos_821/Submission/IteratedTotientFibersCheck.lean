@@ -1,0 +1,27 @@
+import Submission.IteratedTotientFibers
+
+/-! Type and axiom audit for the fixed-iterate fiber results. -/
+
+open Erdos821.IteratedTotient
+
+#check multiplicity_succ
+#check eventually_iterated_input_le_rpow
+#check eventually_multiplicity_le_one_add
+#check eventually_multiplicity_le_mul_exponent
+#check finite_large_iterated_fibers_of_power_bound
+#check restricted_second_eq_sum
+#check eventually_bounded_valuation_second_le
+#check eventually_squarefree_second_le
+
+#print axioms finite_fiber
+#print axioms multiplicity_succ
+#print axioms eventually_input_le_rpow
+#print axioms eventually_iterated_input_le_rpow
+#print axioms eventually_multiplicity_le_one_add
+#print axioms eventually_multiplicity_succ_le
+#print axioms eventually_multiplicity_le_mul_exponent
+#print axioms finite_large_iterated_fibers_of_power_bound
+#print axioms restricted_second_eq_sum
+#print axioms eventually_restricted_second_le
+#print axioms eventually_bounded_valuation_second_le
+#print axioms eventually_squarefree_second_le

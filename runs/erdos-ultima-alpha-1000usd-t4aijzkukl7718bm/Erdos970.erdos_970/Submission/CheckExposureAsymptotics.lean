@@ -1,0 +1,17 @@
+import Submission.SymmetricExposureTail
+import Submission.FiveEighthTail
+import Submission.ThirteenSixteenthPowerBound
+#check Nat.pow_le_pow_left_iff
+#check Nat.pow_le_pow_left_iff'
+#check Nat.pow_le_pow_iff_left
+#check Nat.le_pow
+#check Real.tendsto_log_div_rpow_atTop
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.tendsto_log_div_mul_add_atTop
+#check Real.tendsto_log_div_self_atTop
+#check Finset.card_le_card
+#check Erdos970.jacobsthalFunction_le_iff
+#check Nat.cast_sub
+#check Real.rpow_natCast
+#check Nat.card_le_card_of_injective
+#check Nat.pow_pos

@@ -1,0 +1,18 @@
+import Submission.GeneralMeanFamilyBudgetExplore
+import Submission.EqualCardinalityMixedFamilyExplore
+
+/-! Audit of arbitrary-mean family budgets and distinct translated families. -/
+#print axioms Erdos66GeneralMeanFamilyBudget.common_mean
+#print axioms Erdos66GeneralMeanFamilyBudget.common_self_energy_cap
+#print axioms Erdos66GeneralMeanFamilyBudget.total_common_energy_lower
+#print axioms Erdos66GeneralMeanFamilyBudget.common_mean_family_budget
+#print axioms Erdos66GeneralMeanFamilyBudget.relative_mixed_family_budget
+#print axioms Erdos66GeneralMeanFamilyBudget.normalized_family_budget
+#print axioms Erdos66GeneralMeanFamilyBudget.numeric_relative_error_floor
+#print axioms Erdos66GeneralMeanFamilyBudget.mixed_error_over_mean_limit_ge_one
+#print axioms Erdos66EqualCardinalityMixedFamily.mem_shiftOrbit
+#print axioms Erdos66EqualCardinalityMixedFamily.shiftOrbit_cardinality
+#print axioms Erdos66EqualCardinalityMixedFamily.shiftOrbit_covers
+#print axioms Erdos66EqualCardinalityMixedFamily.shiftOrbit_size_bound
+#print axioms Erdos66EqualCardinalityMixedFamily.shiftOrbit_large
+#print axioms Erdos66EqualCardinalityMixedFamily.exists_large_equal_cardinality_family

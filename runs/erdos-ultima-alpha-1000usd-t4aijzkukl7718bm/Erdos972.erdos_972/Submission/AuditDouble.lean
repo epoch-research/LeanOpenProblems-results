@@ -1,0 +1,13 @@
+import Submission.DivisorCovariance
+import Submission.MobiusLaplace
+import Submission.VaughanRemainderSigns
+
+/-! Audit of the second-factor and signed Tauberian developments. -/
+#print axioms Erdos972DoubleVaughan.double_vaughan_identity
+#print axioms Erdos972DoubleVaughan.pairSum_convolution_convolution
+#print axioms Erdos972VaughanRemainderSigns.typeII_both_signs
+#print axioms Erdos972SlowOscillationTauberian.bounded_slow_laplace_tauberian
+#print axioms Erdos972MobiusLaplace.reciprocalMoebius_tendsto_zero
+#print axioms Erdos972ReciprocalDivisorCounts.reciprocal_scale_divisor_prefix_bound
+#print axioms Erdos972DivisorCovariance.exists_joint_prime_divisor_scale
+#print axioms Erdos972DivisorCovariance.logPower_polynomial_pair_error

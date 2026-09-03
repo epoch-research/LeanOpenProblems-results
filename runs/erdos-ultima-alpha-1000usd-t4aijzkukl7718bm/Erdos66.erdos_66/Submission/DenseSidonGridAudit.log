@@ -1,0 +1,11 @@
+'Erdos66DenseSidonGrid.parabola_sidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+Submission/DenseSidonGridAudit.lean:2:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Erdos66DenseSidonGrid.denseGrid_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DenseSidonGrid.denseGrid_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DenseSidonGrid.denseGrid_rep_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DenseSidonGrid.denseGrid_not_sidon_colored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DenseSidonGrid.exists_dense_cap_four_not_sidon_colored' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

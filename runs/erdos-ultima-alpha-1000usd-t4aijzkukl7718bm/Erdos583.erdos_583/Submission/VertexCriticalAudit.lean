@@ -1,0 +1,9 @@
+import Submission.VertexCritical
+
+/-! Axiom audit for VertexCritical. -/
+#print axioms Erdos583VertexCriticalDevelopment.SmallerOrders.on_finite
+#print axioms Erdos583VertexCriticalDevelopment.SmallerOrders.on_induce
+#print axioms Erdos583VertexCriticalDevelopment.failure_has_minimal_order
+#print axioms Erdos583VertexCriticalDevelopment.SmallerOrders.bridge_cut_even
+#print axioms Erdos583VertexCriticalDevelopment.SmallerOrders.bridge_structure
+#print axioms Erdos583VertexCriticalDevelopment.SmallerOrders.bridge_even_order_or_leaf

@@ -1,0 +1,17 @@
+import Submission.MarkedDouble
+
+/-! Axiom audit for marked doubling and balanced bridge cuts. -/
+
+#print axioms Erdos583MarkedDoubleDevelopment.MarkedAt
+#print axioms Erdos583MarkedDoubleDevelopment.MarkedAt.mono
+#print axioms Erdos583MarkedDoubleDevelopment.split_path_delete_edge_marked
+#print axioms Erdos583MarkedDoubleDevelopment.refine_decomposition_tracked
+#print axioms Erdos583MarkedDoubleDevelopment.delete_edge_decomposition_marked
+#print axioms Erdos583MarkedDoubleDevelopment.project_unpaired_path_tracked
+#print axioms Erdos583MarkedDoubleDevelopment.decompose_one_of_two_copies_marked
+#print axioms Erdos583MarkedDoubleDevelopment.marked_of_double_bridge
+#print axioms Erdos583MarkedDoubleDevelopment.marked_of_twice_order_lt
+#print axioms Erdos583MarkedDoubleDevelopment.failure_cut_side_half_bound
+#print axioms Erdos583MarkedDoubleDevelopment.failure_cut_balanced
+#print axioms Erdos583MarkedDoubleDevelopment.failure_bridge_balanced
+#print axioms Erdos583MarkedDoubleDevelopment.bridge_leaf_or_four_dvd

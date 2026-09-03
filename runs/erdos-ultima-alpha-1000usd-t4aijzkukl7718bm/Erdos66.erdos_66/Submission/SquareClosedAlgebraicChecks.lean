@@ -1,0 +1,10 @@
+import Submission.OddFieldExtensionExplore
+#check Algebra.IsAlgebraic.isAlgebraic
+#check Algebra.IsAlgebraic.isAlgebraic_iff
+#check Subalgebra.IsAlgebraic
+#check Subalgebra.IsAlgebraic.toIntermediateField
+#check Module.finrank_congr
+#check LinearEquiv.ofEq
+#check IntermediateField.toSubmodule
+#check IntermediateField.coe_toSubalgebra
+#check Subalgebra.toSubmodule

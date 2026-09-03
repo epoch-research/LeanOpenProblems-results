@@ -1,0 +1,10 @@
+import Submission.EdgeCritical
+
+/-! Axiom audit for edge-minimal counterexample structure. -/
+
+#print axioms Erdos583EdgeCriticalDevelopment.exists_edge_minimal_failure
+#print axioms Erdos583EdgeCriticalDevelopment.EdgeMinimal.delete_nonbridge
+#print axioms Erdos583EdgeCriticalDevelopment.EdgeMinimal.root_at_other_endpoint
+#print axioms Erdos583EdgeCriticalDevelopment.restore_even_even_edge_of_even_forest
+#print axioms Erdos583EdgeCriticalDevelopment.EdgeMinimal.even_even_edge_isBridge_of_even_forest
+#print axioms Erdos583EdgeCriticalDevelopment.failure_has_edge_minimal_rooted_one_defect

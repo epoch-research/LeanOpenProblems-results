@@ -1,0 +1,13 @@
+import Submission.PredecessorPacketCapacityExplore
+import Submission.ClippingBudgetTransferExplore
+import Submission.TauberianProfileExplore
+#check Finset.card_eq_sum_ones
+#check Finset.sum_boole
+#check Finset.sum_filter
+#check Real.sqrt_mul
+#check Real.sqrt_div
+#check Filter.Tendsto.atTop_mul_const
+#check Filter.Tendsto.const_mul_atTop
+#check Filter.tendsto_atTop_mono'
+#check Real.sqrt_le_sqrt
+#check Filter.Tendsto.mul

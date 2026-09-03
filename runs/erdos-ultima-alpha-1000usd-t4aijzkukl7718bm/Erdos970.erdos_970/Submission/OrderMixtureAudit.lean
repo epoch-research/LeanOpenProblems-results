@@ -1,0 +1,10 @@
+import Submission.OrderMixtureExample
+import Submission.OrderMixtureUniversal
+import Submission.CanonicalSignExample
+#print axioms Erdos970.FiniteSelberg.survivor_of_boolean_cover
+#print axioms Erdos970.FiniteSelberg.booleanObjective_mixture_le
+#print axioms Erdos970.FiniteSelberg.OrderMixtureExample.components_first_hit
+#print axioms Erdos970.FiniteSelberg.OrderMixtureExample.mixed_not_single_order
+#print axioms Erdos970.FiniteSelberg.OrderMixtureExample.mixed_survivor
+#print axioms Erdos970.FiniteSelberg.normalized_cover_is_order_mixture
+#print axioms Erdos970.FiniteSelberg.CanonicalSignExample.canonical_not_alternating

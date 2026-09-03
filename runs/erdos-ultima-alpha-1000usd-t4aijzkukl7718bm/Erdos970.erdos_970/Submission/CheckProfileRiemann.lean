@@ -1,0 +1,17 @@
+import Submission.ContinuousBuchstabMonotone
+open Real Set Filter MeasureTheory
+#check AntitoneOn.sum_le_integral
+#check intervalIntegral.integral_comp_mul_left
+#check intervalIntegral.integral_comp_add_left
+#check intervalIntegral.integral_comp_add_mul
+#check intervalIntegral.integral_comp_mul_add
+#check intervalIntegral.integral_comp_mul_left'
+#check Finset.sum_range_sub'
+#check Finset.sum_range_sub
+#check Finset.sum_range_sub_shift
+#check Finset.sum_range_succ_sub_sum
+#check intervalIntegral.integral_mono_on
+#check AntitoneOn.intervalIntegrable
+#check intervalIntegral.integral_mono_interval
+#check intervalIntegral.integral_add_adjacent_intervals
+#check MeasureTheory.integral_Ioi_sub_Ioi

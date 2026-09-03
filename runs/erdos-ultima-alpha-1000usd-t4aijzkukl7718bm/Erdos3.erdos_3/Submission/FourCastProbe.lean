@@ -1,0 +1,10 @@
+import Submission.CyclicIntervalMask
+#check ZMod.val_zero
+#check ZMod.val_natCast_of_lt
+#check ZMod.natCast_self
+#check Fin.forall_fin_succ
+#check Fin.forall_fin_four
+#check Nat.cast_inj
+#check Nat.cast_add
+#check Nat.cast_mul
+#check Fin.mk.injEq

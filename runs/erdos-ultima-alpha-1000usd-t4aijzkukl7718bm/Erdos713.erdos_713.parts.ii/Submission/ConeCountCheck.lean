@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite
+#check Finset.sum_boole
+#check Finset.filter_card_add_filter_neg_card_eq_card
+#check SimpleGraph.degree_le_card_verts
+#check SimpleGraph.maxDegree_le_card
+#check SimpleGraph.sum_degrees_eq_twice_card_edges
+#check SimpleGraph.sum_degrees_eq_twice_card_edgeFinset
+#check Asymptotics.isBigO_iff
+#check Asymptotics.IsBigO.of_bound

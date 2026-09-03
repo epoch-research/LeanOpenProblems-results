@@ -1,0 +1,8 @@
+import Submission.PatternSublogRoundingExplore
+#check Erdos66PositiveBinaryExpansion.multilinearExp_binary
+#check Erdos66PositiveBinaryExpansion.multilinearExp
+#check Finset.prod_biUnion
+#check Erdos66FiniteRepBernoulli.symmetric_sum
+#check Erdos66NaturalPositivePattern.Pattern
+#check Finset.sum_bij
+#check Finset.prod_one_add

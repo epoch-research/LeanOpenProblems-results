@@ -1,0 +1,13 @@
+import Submission.RoundedSieve
+#check Nat.forall_lt_succ
+#check Nat.forall_lt_succ_iff
+#check Finset.sum_range_succ
+#check Fin.sum_univ_eq_sum_range
+#check Nat.sub_le_iff_le_add
+#check Nat.le_sub_of_add_le
+#check Nat.le_sub_iff_add_le
+#check Finset.sum_le_sum
+#check Finset.card_filter
+#check Finset.card_filter_add_card_filter_not
+#check Finset.filter_filter
+#check Nat.sub_add_cancel

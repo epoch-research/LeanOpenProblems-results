@@ -1,0 +1,15 @@
+import Submission.SelbergNormalizerAdditive
+import Submission.ReciprocalMertens
+#check Finset.sum_le_tsum
+#check Summable.sum_le_tsum
+#check HasSum.sum_le
+#check Finset.sum_bij
+#check Erdos970.WeightedMertens.primeSum
+#check Nat.mem_factoredNumbers_of_primeFactors_subset
+#check Finset.filter_union_filter_neg_eq
+#check Nat.mem_primeFactors
+#check Erdos970.FiniteSelberg.harmonic_floor_le_one_add_log
+#check Real.log_two_lt_d9
+#check Filter.tendsto_log_atTop
+#check Real.tendsto_log_atTop
+#check tendsto_natCast_atTop_atTop

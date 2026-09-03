@@ -1,0 +1,43 @@
+Balanced inverse-square minima and finite support lower bound: PASS (75 parameter pairs)
+Exact row-disjoint witness couplings: PASS (5 fiber sizes, all permutations through k=7)
+Actual-circumcenter, endpoint, and global-color identities:
+  five-point Pythagorean arc: m=5, s=1, cross D=1, actual triples=10, U2=2/5, U0=1, rich global colors=1
+  support change at separation 10^(-40): m=6, s=1, cross D=2, actual triples=10, U2=2/5, U0=1, rich global colors=1
+  two exterior centers: m=42, s=2, cross D=20, actual triples=8, U2=1/2, U0=2, rich global colors=1
+  complete disk in a unit grid: m=29, s=180, cross D=62, actual triples=16, U2=16/9, U0=16, rich global colors=1
+  exact random configuration 1: m=16, s=9, cross D=75, actual triples=0, U2=0, U0=0, rich global colors=0
+  exact random configuration 2: m=16, s=9, cross D=81, actual triples=0, U2=0, U0=0, rich global colors=0
+  exact random configuration 3: m=16, s=9, cross D=75, actual triples=0, U2=0, U0=0, rich global colors=0
+  exact random configuration 4: m=16, s=9, cross D=81, actual triples=0, U2=0, U0=0, rich global colors=0
+  exact random configuration 5: m=16, s=9, cross D=77, actual triples=1, U2=1/9, U0=1, rich global colors=1
+  PASS: full fiber weights retained, with no distance tolerances
+Forced-chord rational/integer stars (M_disk = 2):
+  N=1: n=6, |A|=3, edge U0=1, edge U2=1/9; integer scaling checked
+  N=2: n=8, |A|=4, edge U0=2, edge U2=2/9; integer scaling checked
+  N=4: n=12, |A|=6, edge U0=4, edge U2=4/9; integer scaling checked
+  N=8: n=20, |A|=10, edge U0=8, edge U2=8/9; integer scaling checked
+  N=16: n=36, |A|=18, edge U0=16, edge U2=16/9; integer scaling checked
+  N=32: n=68, |A|=34, edge U0=32, edge U2=32/9; integer scaling checked
+  PASS: 4387 subsets also checked exhaustively for N<=4
+Full unit-grid fixed-chord congestion (complete actual circle fibers):
+  L=  25: n=40401, selected centers=  2, max k=  4, max full r2= 24, edge U0>=1.000000, edge U2>=0.250000; t_delta>=12, selected global-color load<=0.08333333
+  L=  50: n=160801, selected centers=  3, max k=  6, max full r2= 40, edge U0>=1.200000, edge U2>=0.361111; t_delta>=42, selected global-color load<=0.02857143
+  L= 100: n=641601, selected centers=  5, max k=  6, max full r2= 40, edge U0>=1.600000, edge U2>=0.583333; t_delta>=169, selected global-color load<=0.00946746
+  L= 200: n=2563201, selected centers=  9, max k=  8, max full r2= 56, edge U0>=2.307143, edge U2>=1.010417; t_delta>=676, selected global-color load<=0.00341293
+  L= 400: n=10246401, selected centers= 17, max k= 12, max full r2= 96, edge U0>=3.319481, edge U2>=1.763889; t_delta>=2601, selected global-color load<=0.00127623
+  L= 800: n=40972801, selected centers= 33, max k= 16, max full r2= 96, edge U0>=4.728097, edge U2>=3.088968; t_delta>=10201, selected global-color load<=0.00046349
+  L=1600: n=163865601, selected centers= 65, max k= 22, max full r2=160, edge U0>=8.654506, edge U2>=5.963728; t_delta>=40401, selected global-color load<=0.00021422
+  L=3200: n=655411201, selected centers=129, max k= 26, max full r2=192, edge U0>=15.106591, edge U2>=11.306300; t_delta>=160801, selected global-color load<=0.00009395
+  L=6400: n=2621542401, selected centers=257, max k= 26, max full r2=192, edge U0>=27.263485, edge U2>=21.667553; t_delta>=641601, selected global-color load<=0.00004249
+  PASS: 520 complete fibers and 2080 translation-rectangle corners checked; asymptotic divergence uses the proved divisor bound
+Full unit-grid aggregate weights and exact squared-ratio correction:
+  L= 2: n=   289, m=  13, s=   244, D=  134, Phi=4.651426, W=0.000000, Gamma=4.651426, U2/(sm)=0.00000000, K(A)^2=2.640625
+  L= 4: n=  1089, m=  49, s=   896, D=  456, Phi=5.703298, W=0.011085, Gamma=5.692213, U2/(sm)=0.00032394, K(A)^2=3.293553
+  L= 8: n=  4225, m= 197, s=  3432, D= 1620, Phi=6.801793, W=0.071683, Gamma=6.730110, U2/(sm)=0.00175647, K(A)^2=4.392146
+  L=12: n=  9409, m= 441, s=  7620, D= 3462, Phi=7.386400, W=0.132707, Gamma=7.253693, U2/(sm)=0.00299439, K(A)^2=5.221107
+  L=16: n= 16641, m= 797, s= 13436, D= 5923, Phi=7.893605, W=0.195595, Gamma=7.698009, U2/(sm)=0.00412983, K(A)^2=5.832957
+  L=24: n= 37249, m=1793, s= 30040, D=12761, Phi=8.520397, W=0.294236, Gamma=8.226161, U2/(sm)=0.00575553, K(A)^2=6.636546
+  L=32: n= 66049, m=3209, s= 53200, D=22025, Phi=8.992919, W=0.378291, Gamma=8.614627, U2/(sm)=0.00701091, K(A)^2=7.247478
+  PASS: exact aggregate weights for 108868 exterior rows (D4 symmetry used)
+Integral rotation net and shifted-disk support realization: PASS (36 rotations of common modulus 65, 1000 rational net tests, 548 actual integer endpoint realizations)
+ALL EXACT WEIGHTED CROSS-DISTANCE CHECKS PASSED

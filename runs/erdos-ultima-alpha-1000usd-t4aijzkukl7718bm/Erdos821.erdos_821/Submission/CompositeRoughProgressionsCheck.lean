@@ -1,0 +1,14 @@
+import Submission.CompositeRoughProgressions
+
+/-! Exact-type and axiom audit for the composite-modulus second sieve. -/
+
+#check @Erdos821.AnalyticSieve.sum_prime_pair_composite_cofactor_bound
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_composite_cofactor_bound
+#check @Erdos821.AnalyticSieve.rough_composite_progression_card_le_pairs
+#print axioms Erdos821.AnalyticSieve.rough_composite_progression_card_le_pairs
+#check @Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_le
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_le
+#check @Erdos821.prime_product_modulus_totient_ratio
+#print axioms Erdos821.prime_product_modulus_totient_ratio
+#check @Erdos821.prime_product_modulus_le_twice_totient
+#print axioms Erdos821.prime_product_modulus_le_twice_totient

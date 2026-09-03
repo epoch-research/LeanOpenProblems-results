@@ -1,0 +1,15 @@
+import Submission.CoprimeThicknessGeometryExplore
+import Submission.PeriodicPatternComparisonExplore
+#check Finset.card_bij
+#check Finset.card_nbij
+#check Nat.Coprime.of_mul_right
+#check Nat.Coprime.of_mul_left
+#check Nat.coprime_mul_iff_right
+#check ZMod.isUnit_iff_coprime
+#check Units.mul_inv
+#check Units.inv_mul
+#check Finset.card_image_iff
+#check Equiv.prodCongr
+#check Finset.sum_bij
+#check Nat.mul_left_cancel
+#check mul_le_mul_left

@@ -1,0 +1,16 @@
+import Submission.BuchstabSlowCutoff
+open Finset
+#check Finset.sum_le_sum_of_inj
+#check Finset.sum_le_sum_of_injOn
+#check Finset.sum_filter
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.sum_image
+#check Finset.card_le_card_of_injOn
+#check Nat.mem_primesBelow
+#check Nat.lt_of_sub_one_lt
+#check Nat.sub_lt_sub_right
+#check StrictMono.nat_add_le
+#check StrictMono.add_le_nat
+#check Erdos970.RecursiveSieve.Buchstab.primeKeep_levels
+#check Erdos970.nthPrime_strictMono
+#check Erdos970.RecursiveSieve.nthPrime_strictMono

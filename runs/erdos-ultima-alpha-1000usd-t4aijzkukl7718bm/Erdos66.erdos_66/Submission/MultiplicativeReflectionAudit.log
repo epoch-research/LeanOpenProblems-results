@@ -1,0 +1,8 @@
+'Erdos66MultiplicativeReflection.reflected_solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeReflection.reflected_row_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeReflection.overlap_le_two_targets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeReflection.exists_overlap_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeReflection.common_parameter_mass_le_overlap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MultiplicativeReflection.common_parameter_cap' depends on axioms: [propext, Classical.choice, Quot.sound]

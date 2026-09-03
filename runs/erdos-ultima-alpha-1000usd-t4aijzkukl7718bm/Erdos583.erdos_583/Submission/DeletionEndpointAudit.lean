@@ -1,0 +1,11 @@
+import Submission.DeletionEndpoint
+/-! Axiom audit of tracked edge insertion and deletion-side endpoint obstructions. -/
+#print axioms Erdos583DeletionEndpointDevelopment.quota_balance_one_slot_graphs
+#print axioms Erdos583DeletionEndpointDevelopment.append_new_edge_tracked
+#print axioms Erdos583DeletionEndpointDevelopment.quota_pos_of_endpoint
+#print axioms Erdos583DeletionEndpointDevelopment.endpoint_of_positive_quota
+#print axioms Erdos583DeletionEndpointDevelopment.deletion_endpoint_must_meet
+#print axioms Erdos583DeletionEndpointDevelopment.restore_if_other_endpoint_active
+#print axioms Erdos583DeletionEndpointDevelopment.failed_even_forest_deletion_quota_zero
+#print axioms Erdos583DeletionEndpointDevelopment.restore_if_other_endpoint_member
+#print axioms Erdos583DeletionEndpointDevelopment.failed_deletion_card_eq

@@ -1,0 +1,16 @@
+import Submission.UniformSelectionExplore
+#check Equiv.piEquivPiSubtypeProd
+#check Equiv.piCongrLeft
+#check Equiv.piCongrLeft'
+#check Equiv.arrowCongr
+#check Equiv.sumCompl
+#check Function.Embedding.equivRange
+#check Equiv.Set.image
+#check Equiv.Set.range
+#check Equiv.ofInjective
+#check Equiv.sum_comp
+#check Fintype.sum_prod_type
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Fintype.piFinSucc
+#check Equiv.piFinSucc
+#check Fintype.sum_equiv

@@ -1,0 +1,13 @@
+import Submission.NormalRemainder
+/-! Permitted-axiom audit for normal-remainder support bounds. -/
+#print axioms Erdos583NormalRemainderDevelopment.triangle_support_adj
+#print axioms Erdos583NormalRemainderDevelopment.cycle_degree_ge_two
+#print axioms Erdos583NormalRemainderDevelopment.missing_mem_removed
+#print axioms Erdos583NormalRemainderDevelopment.missing_incidence
+#print axioms Erdos583NormalRemainderDevelopment.missing_finish_leaf
+#print axioms Erdos583NormalRemainderDevelopment.missing_cycle_subsingleton
+#print axioms Erdos583NormalRemainderDevelopment.missing_on_cycle_or_finish
+#print axioms Erdos583NormalRemainderDevelopment.normal_support_compl_card_le_two
+#print axioms Erdos583NormalRemainderDevelopment.normal_support_at_least_order_sub_two
+#print axioms Erdos583NormalRemainderDevelopment.leafless_normal_support_compl_card_le_one
+#print axioms Erdos583NormalRemainderDevelopment.normal_support_budget

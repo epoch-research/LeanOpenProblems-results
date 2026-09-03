@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Real.tendsto_log_atTop
+#check Real.tendsto_log_div_self_atTop
+#check tendsto_natCast_atTop_atTop
+#check Filter.Tendsto.eventually_lt_const
+#check Filter.Tendsto.eventually_le_const
+#check Filter.Tendsto.eventually_const_lt
+#check Filter.Tendsto.eventually_const_le
+#check Filter.Tendsto.eventually_le_atTop
+#check Finset.exists_min_image
+#check Finset.exists_min_image
+#check Filter.tendsto_order
+#check Filter.Tendsto.const_mul_atTop
+#check Filter.Tendsto.atTop_mul_const

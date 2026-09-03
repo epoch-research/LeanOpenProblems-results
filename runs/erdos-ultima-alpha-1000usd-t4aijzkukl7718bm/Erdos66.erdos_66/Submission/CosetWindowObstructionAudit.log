@@ -1,0 +1,26 @@
+'Erdos66AffineOldPlaneSlice.oldPlane_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AffineOldPlaneSlice.off_sub_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AffineOldPlaneSlice.old_curve_count_eq_fresh' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AffineOldPlaneSlice.off_old_curve_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AffineOldPlaneSlice.off_old_parabola_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AffineOldPlaneSlice.off_old_repaired_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareAnnulusMass.square_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareAnnulusMass.linear_div_square_count_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareAnnulusMass.witness_square_annulus_gt_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareAnnulusMass.witness_eventually_large_window_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SquareAnnulusMass.no_log_limit_of_frequent_thin_square_annuli' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CosetWindowObstruction.encoded_coset_window_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CosetWindowObstruction.encoded_subfield_sized_window_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CosetWindowObstruction.witness_eventually_many_coset_parameters' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CosetWindowObstruction.hasCosetWindow_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CosetWindowObstruction.no_log_limit_of_frequent_coset_windows' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

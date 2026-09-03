@@ -1,0 +1,7 @@
+import Submission.LocalZeroNormalization
+
+/-! Axiom audit for local zero-region normalization. -/
+#print axioms Erdos583LocalZeroNormalizationDevelopment.normalize_in_zero_region
+#print axioms Erdos583LocalZeroNormalizationDevelopment.repair_of_subsingleton_zero_neighbors
+#print axioms Erdos583LocalZeroNormalizationDevelopment.normalize_region_partition
+#print axioms Erdos583LocalZeroNormalizationDevelopment.append_edge_away_from_inactive

@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check List.SortedLT.filter
+#check List.SortedLT.sublist
+#check List.SortedLT.nodup
+#check List.toFinset_card_of_nodup
+#check List.get_mem
+#check List.getElem_mem
+#check List.filter_sublist
+#check List.Pairwise.filter
+#check List.sortedLT_iff_pairwise
+#check List.sortedLT_iff_pairwise_lt

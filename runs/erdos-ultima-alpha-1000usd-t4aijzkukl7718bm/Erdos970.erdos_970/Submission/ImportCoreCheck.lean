@@ -1,0 +1,2 @@
+import Submission.OptimalCoverCore
+#print axioms Erdos970.OptimalCoverCore.exists_optimal

@@ -1,0 +1,13 @@
+import Submission.TypeIIReduction
+/-! Axiom audit for the centered Type-I estimates and remaining Type-II reduction. -/
+#print axioms Erdos972SelfCenteredLog.selfCenteredLog_div_tendsto
+#print axioms Erdos972SelfCenteredLog.centeredLogRow_bound
+#print axioms Erdos972ChebyshevRowMean.common_row_endpoint_bound
+#print axioms Erdos972CenteredRowScales.exists_common_centered_row_scale
+#print axioms Erdos972CenteredVaughan.centered_vaughan_identity
+#print axioms Erdos972CenteredVaughan.exists_small_typeI
+#print axioms Erdos972TypeIIReduction.exists_correlation_bilinear_approx
+#print axioms Erdos972TypeIIReduction.finite_primeSet_forces_negative_typeII
+#print axioms Erdos972TypeIIReduction.infinite_primeSet_of_typeII_gap
+#check Erdos972CenteredRowScales.exists_common_centered_row_scale
+#check Erdos972TypeIIReduction.infinite_primeSet_of_typeII_gap

@@ -1,0 +1,20 @@
+{
+  "provenance_audit": "PASS (external, not a Lean proof)",
+  "recovered_raw_bytes": 1812224,
+  "raw_sha256": "96754f307803aa9fc8eac8990d47fb572ee18ef8887eab2c3936f51e1ba4e272",
+  "edges": 1812223,
+  "chunks": 443,
+  "parts": 28,
+  "start": [
+    146,
+    -149
+  ],
+  "finish": [
+    576956,
+    95986
+  ],
+  "last_dummy_direction": 0,
+  "all_source_words_decoded": true,
+  "all_overlaps_equal": true,
+  "all_labels_externally_rechecked": true
+}

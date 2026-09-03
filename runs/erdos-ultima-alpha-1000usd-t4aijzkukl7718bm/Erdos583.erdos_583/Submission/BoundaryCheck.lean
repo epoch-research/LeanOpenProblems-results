@@ -1,0 +1,14 @@
+import Submission.DegreeTwoBoundary
+open SimpleGraph
+#check Walk.copy
+#check Walk.IsPath.copy
+#check Walk.toSubgraph_copy
+#check Sym2.map.injective
+#check Set.PairwiseDisjoint
+#check Finset.card_image_le
+#check Nat.card_congr
+#check Walk.length_pos_of_ne
+#check Walk.not_nil_iff_lt_length
+#check Finset.card_le_card_of_injOn
+#check Finset.card_image_iff
+#check Finset.card_univ

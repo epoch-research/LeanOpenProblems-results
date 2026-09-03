@@ -1,0 +1,41 @@
+'E74.edgeSet_finite_of_verts_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.isBipartite_delete_all_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.edgeDistancesToBipartite_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.minEdgeDistToBipartite_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.subgraph_edgeSet_ncard_le_choose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.minEdgeDistToBipartite_le_choose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.subgraphEdgeDistsToBipartite_bddAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.minEdgeDistToBipartite_le_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.edgeDeletionBudget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_boolCut_of_deleteEdges_isBipartite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.coeSubgraph_cut_of_deleteEdges_isBipartite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.smallCuts_of_maxSubgraphEdgeDistToBipartite' depends on axioms: [propext, Classical.choice, Quot.sound]
+E74.edgeSet_finite_of_verts_finite.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (hA : A.verts.Finite) :
+  A.edgeSet.Finite
+E74.isBipartite_delete_all_edges.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) :
+  (A.deleteEdges A.edgeSet).coe.IsBipartite
+E74.edgeDistancesToBipartite_nonempty.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) :
+  (Erdos74.SimpleGraph.edgeDistancesToBipartite A).Nonempty
+E74.minEdgeDistToBipartite_attained.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (hA : A.verts.Finite) :
+  ∃ E, ↑E ⊆ A.edgeSet ∧ (A.deleteEdges ↑E).coe.IsBipartite ∧ E.card = Erdos74.SimpleGraph.minEdgeDistToBipartite A
+E74.subgraph_edgeSet_ncard_le_choose.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (hA : A.verts.Finite) :
+  A.edgeSet.ncard ≤ A.verts.ncard.choose 2
+E74.minEdgeDistToBipartite_le_choose.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (hA : A.verts.Finite) :
+  Erdos74.SimpleGraph.minEdgeDistToBipartite A ≤ A.verts.ncard.choose 2
+E74.subgraphEdgeDistsToBipartite_bddAbove.{u} {V : Type u} (G : SimpleGraph V) (n : ℕ) :
+  BddAbove (Erdos74.SimpleGraph.subgraphEdgeDistsToBipartite G n)
+E74.minEdgeDistToBipartite_le_max.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (hA : A.verts.Finite) :
+  Erdos74.SimpleGraph.minEdgeDistToBipartite A ≤ Erdos74.SimpleGraph.maxSubgraphEdgeDistToBipartite G A.verts.ncard
+E74.edgeDeletionBudget.{u} {V : Type u} (G : SimpleGraph V) (f : ℕ → ℕ)
+  (hG : ∀ (n : ℕ), Erdos74.SimpleGraph.maxSubgraphEdgeDistToBipartite G n ≤ f n) (A : G.Subgraph)
+  (hA : A.verts.Finite) : ∃ E, ↑E ⊆ A.edgeSet ∧ (A.deleteEdges ↑E).coe.IsBipartite ∧ E.card ≤ f A.verts.ncard
+E74.exists_boolCut_of_deleteEdges_isBipartite.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) (E : Set (Sym2 V))
+  (hb : (A.deleteEdges E).coe.IsBipartite) : ∃ p, ∀ ⦃u v : V⦄, A.Adj u v → p u = p v → s(u, v) ∈ E
+E74.coeSubgraph_cut_of_deleteEdges_isBipartite.{u} {V : Type u} {G : SimpleGraph V} (A : G.Subgraph) [Fintype ↑A.verts]
+  (H : A.coe.Subgraph) (E : Finset (Sym2 V))
+  (hb : ((SimpleGraph.Subgraph.coeSubgraph H).deleteEdges ↑E).coe.IsBipartite) :
+  ∃ p, (E74.badEdges H.spanningCoe p).card ≤ E.card
+E74.smallCuts_of_maxSubgraphEdgeDistToBipartite.{u} {V : Type u} (B f : ℕ → ℕ)
+  (hf : ∀ (k : ℕ), 2 ≤ k → ∀ n ≤ B k, f n < k) (G : SimpleGraph V)
+  (hG : ∀ (n : ℕ), Erdos74.SimpleGraph.maxSubgraphEdgeDistToBipartite G n ≤ f n) (A : G.Subgraph)
+  (hA : A.verts.Finite) : E74.SmallCuts A.coe B

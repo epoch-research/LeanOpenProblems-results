@@ -1,0 +1,23 @@
+{
+  "id": "Erdos1206.erdos_1206.parts.i",
+  "epoch": 1,
+  "uuid": "i2C7zpoDgCLoZefgSBYGSt",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0
+  },
+  "model_usage": {
+    "epoch/ultima-alpha": {
+      "input_tokens": 88561,
+      "output_tokens": 4164196,
+      "total_tokens": 138734622,
+      "input_tokens_cache_write": 18797090,
+      "input_tokens_cache_read": 115684775,
+      "reasoning_tokens": 3082055,
+      "total_cost": 300.6928849999999
+    }
+  },
+  "oeis_id": null
+}

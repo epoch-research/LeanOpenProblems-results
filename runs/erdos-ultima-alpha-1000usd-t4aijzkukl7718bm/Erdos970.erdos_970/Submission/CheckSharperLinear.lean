@@ -1,0 +1,10 @@
+import Submission.BuchstabSmoothGrowth
+import Submission.LinearExposureTail
+#check Real.rpow_natCast
+#check Real.rpow_le_rpow_of_exponent_le
+#check Real.mul_rpow
+#check Real.rpow_mul
+#check Nat.le_of_pow_le_pow_left
+#check Nat.pow_le_pow_iff_left
+#check Erdos970.RecursiveSieve.Buchstab.exists_smoothBuchstab_bound
+#check Erdos970.SoftExposure.exists_power_envelope

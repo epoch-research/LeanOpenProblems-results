@@ -1,0 +1,46 @@
+q17 1 of 276 {'UNSAT': 1} wall 3.039
+q17 2 of 276 {'UNSAT': 2} wall 3.728
+q17 3 of 276 {'UNSAT': 3} wall 4.417
+q17 10 of 276 {'UNSAT': 10} wall 17.658
+q17 20 of 276 {'UNSAT': 20} wall 36.57
+q17 30 of 276 {'UNSAT': 30} wall 53.804
+q17 40 of 276 {'UNSAT': 40} wall 67.9
+q17 50 of 276 {'UNSAT': 50} wall 88.537
+q17 60 of 276 {'UNSAT': 60} wall 104.224
+q17 70 of 276 {'UNSAT': 70} wall 121.261
+q17 80 of 276 {'UNSAT': 80} wall 140.383
+q17 90 of 276 {'UNSAT': 90} wall 158.676
+q17 100 of 276 {'UNSAT': 100} wall 179.045
+q17 110 of 276 {'UNSAT': 110} wall 193.588
+q17 120 of 276 {'UNSAT': 120} wall 208.247
+q17 130 of 276 {'UNSAT': 130} wall 227.64
+q17 140 of 276 {'UNSAT': 140} wall 245.724
+q17 150 of 276 {'UNSAT': 150} wall 266.611
+q17 160 of 276 {'UNSAT': 160} wall 280.984
+q17 170 of 276 {'UNSAT': 170} wall 295.324
+{
+  "total_deletions": 816,
+  "Frobenius_orbits": 276,
+  "orbit_size_histogram": {
+    "3": 270,
+    "1": 6
+  },
+  "representatives_attempted": 173,
+  "representative_status_counts": {
+    "UNSAT": 172,
+    "TIMEOUT": 1
+  },
+  "original_deletion_status_counts_via_valid_symmetry": {
+    "UNSAT": 504,
+    "TIMEOUT": 3,
+    "UNTESTED_BUDGET": 309
+  },
+  "unattempted_representatives": 103,
+  "nodes": 22204704,
+  "normalized_assignments_per_representative": 4398046511104,
+  "covered_assignments_in_UNSAT_representatives": 756463999909888,
+  "max_signed_fiber_all_deletions_via_symmetry": 8,
+  "search_elapsed_ms": 249267.05699999997,
+  "phase_wall_seconds": 298.0130974010099,
+  "all_816_deletions_UNSAT": false
+}

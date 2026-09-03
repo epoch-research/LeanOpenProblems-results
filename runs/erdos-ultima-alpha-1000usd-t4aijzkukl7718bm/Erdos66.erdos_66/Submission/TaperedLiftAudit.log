@@ -1,0 +1,19 @@
+'Erdos66TaperedFaithfulLift.mem_faithfulLift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.mem_row_label' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.row_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.tapered_first_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.encode_tapered_eq_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.tapered_natural_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedFaithfulLift.tapered_encoded_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedRowAverage.row_eq_safeRow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedRowAverage.parameterEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedRowAverage.sum_card_safeRow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedRowAverage.safeRow_translation_average' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedRowAverage.constant_parameters_not_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TaperedNaturalMass.prefix_mass_translation_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SupportSensitiveFaithfulLift.nonzero_lift_error_with_support' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SupportSensitiveFaithfulLift.exists_support_sensitive_faithful_lift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

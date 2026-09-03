@@ -1,0 +1,31 @@
+import FormalConjecturesUtil
+open Polynomial Finset
+#check AddMonoidHom.card_ker_mul_card_range
+#check AddSubgroup.card_mul_index
+#check AddSubgroup.index_ker
+#check LinearMap.quotKerEquivRange
+#check Module.card_eq_pow_finrank
+#check FiniteField.card
+#check Polynomial.eq_of_natDegree_lt_card_of_eval_eq
+#check Polynomial.card_le_degree_of_subset_roots
+#check Polynomial.card_roots'
+#check Polynomial.degree_le_of_ne_zero
+#check Polynomial.natDegree_le_iff_coeff_eq_zero
+#check Polynomial.natDegree_sum_le
+#check Polynomial.natDegree_add_le
+#check Polynomial.natDegree_lt_iff_coeff_eq_zero
+#check Polynomial.card_le_natDegree_of_subset_roots
+#check Polynomial.mem_roots
+#check Polynomial.natDegree_mul
+#check Polynomial.modByMonic_eq_zero_iff_dvd
+#check Polynomial.dvd_iff_isRoot
+#check AddMonoidHom.card_ker
+#check Fintype.card_congr
+#check Fintype.card_eq_card_quotient_mul_card_subgroup
+#check LinearMap.card_ker
+#check Algebra.trace_surjective
+#check ZMod.eq_zero_or_eq_one
+#check ZMod.finrank
+#check FiniteField.finrank
+#check FiniteField.isSquare_iff
+#synth Algebra (ZMod 2) (GaloisField 2 4)

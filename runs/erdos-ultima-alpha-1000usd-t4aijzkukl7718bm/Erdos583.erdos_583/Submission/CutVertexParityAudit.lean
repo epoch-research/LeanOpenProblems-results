@@ -1,0 +1,13 @@
+import Submission.CutVertexParity
+/-! Axiom audit for cut-vertex parity. -/
+#print axioms Erdos583CutVertexParityDevelopment.induced_neighbor_card
+#print axioms Erdos583CutVertexParityDevelopment.single_boundary_neighbor_sum
+#print axioms Erdos583CutVertexParityDevelopment.gallai_odd_even_sides
+#print axioms Erdos583CutVertexParityDevelopment.failure_odd_even_side_parity
+#print axioms Erdos583CutVertexParityDevelopment.nontrivial_cut_boundary_odd
+#print axioms Erdos583CutVertexParityDevelopment.leaf_edge_bridge
+#print axioms Erdos583CutVertexParityDevelopment.two_vertex_side_bridge
+#print axioms Erdos583CutVertexParityDevelopment.cut_boundary_odd
+#print axioms Erdos583CutVertexParityDevelopment.delete_even_vertex_connected_of_failure
+
+#print axioms Erdos583CutVertexParityDevelopment.nontrivial_cut_side_parity

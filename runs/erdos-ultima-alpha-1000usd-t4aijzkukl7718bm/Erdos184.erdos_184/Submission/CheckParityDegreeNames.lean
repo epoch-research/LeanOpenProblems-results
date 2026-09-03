@@ -1,0 +1,12 @@
+import Submission.OddForestReduction
+#check SimpleGraph.mem_incidenceFinset
+#check SimpleGraph.mem_incidenceSet
+#check SimpleGraph.incidenceSet_subset
+#check SimpleGraph.incidenceSet_inter
+#check Finset.card_biUnion
+#check Finset.sum_union
+#check Finset.sum_le_univ_sum_of_nonneg
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Sym2.mem_and_mem_iff
+#check Sym2.eq_of_mem_of_mem
+#check SimpleGraph.incidenceSet_inter_incidenceSet

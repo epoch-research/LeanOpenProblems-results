@@ -1,0 +1,7 @@
+import Submission.MatchingAppend
+/-! Axiom audit for the matching-append certificate. -/
+#print axioms Erdos583MatchingAppendDevelopment.OrientedMatching.edge_injective
+#print axioms Erdos583MatchingAppendDevelopment.OrientedMatching.decorate_isPath
+#print axioms Erdos583MatchingAppendDevelopment.OrientedMatching.append_to_normal_system
+#print axioms Erdos583MatchingAppendDevelopment.path_family_partition
+#print axioms Erdos583MatchingAppendDevelopment.matching_append_certificate

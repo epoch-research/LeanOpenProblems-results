@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+open Matrix
+#check map_div
+#check _root_.map_div
+#check map_div₀
+#check Matrix.of_apply
+#check Matrix.cons_val_zero
+#check _root_.map_ofNat
+#check _root_.map_mul
+#check _root_.map_sub

@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+import Submission.ExpandingRegularization
+/-! Audit of the expanding-witness reduction. -/
+#print axioms Erdos713Expansion.record_cut_bound
+#print axioms Erdos713Expansion.of_rate
+#print axioms Erdos713Expansion.exists_exact_expanders
+#print axioms Erdos713Expansion.exists_bipartite_all_cuts
+#print axioms Erdos713ExpanderPruning.exists_pruned_expander
+#print axioms Erdos713ExpandingRegularization.cut_induce_image
+#print axioms Erdos713ExpandingRegularization.local_regular_expander
+#print axioms Erdos713ExpandingRegularization.exists_regular_expanders
+#print axioms Erdos713ExpandingRegularization.of_rate
+#print axioms Erdos713ExpandingRegularization.robust_of_rate

@@ -1,0 +1,13 @@
+import Submission.InterceptCurveExplore
+import Submission.TwofoldFamilyExplore
+#check Finset.inter_eq_filter
+#check quadraticChar_card_sqrts
+#check quadraticChar_sq_one
+#check Finset.sum_congr
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_eq
+#check Finset.sum_pair
+#check Finset.sum_sub_distrib
+#check Finset.sum_mul_sum
+#check Nat.cast_sum

@@ -1,0 +1,29 @@
+'Erdos66RowAdaptiveHitSelection.exists_row_adaptive_small_hits' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66EqualWidthRowPacking.row_unique' depends on axioms: [propext, Quot.sound]
+'Erdos66EqualWidthRowPacking.local_card_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EqualWidthRowPacking.partnerChoices_card_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AntitoneFiniteMass.finite_sum_le_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AntitoneFiniteMass.finite_sum_le_prefix_of_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66IntervalRowSingletonSelection.exists_interval_singletons' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66DisjointWindowMass.disjoint_intervals_count_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointWindowMass.sum_partnerChoices_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AggregatedRankRestorationSelection.exists_aggregated_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66WideRankCellBudget.eventually_wide_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WideRankCellBudget.interval_mass_ratio_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WideRankRestorationBudget.augmented_demand_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WideRankRestorationBudget.eventually_wide_rank_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66WideRankRestorationBudget.power_demand_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WideBracketOnlyRestoration.uniformly_eventually_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66WideBracketOnlyRestoration.eventually_power_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

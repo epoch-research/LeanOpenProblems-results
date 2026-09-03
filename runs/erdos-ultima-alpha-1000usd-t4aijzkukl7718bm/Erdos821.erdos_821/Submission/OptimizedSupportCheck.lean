@@ -1,0 +1,16 @@
+import Submission.OptimizedSupport
+
+/-! Exact-type and axiom audit for the optimized support upper bounds. -/
+
+#check @Erdos821.sum_primeFactors_weight_le_flexible_scale
+#check @Erdos821.g_le_flexible_support_rankin
+#check @Erdos821.eventually_exp_weighted_geometric_budget
+#check @Erdos821.eventually_g_le_optimized_power_on_windows
+#check @Erdos821.eventually_g_le_optimized_power_loglog_loss
+#check @Erdos821.tendsto_optimized_support_rankin_exponent_loss
+#print axioms Erdos821.sum_primeFactors_weight_le_flexible_scale
+#print axioms Erdos821.g_le_flexible_support_rankin
+#print axioms Erdos821.eventually_exp_weighted_geometric_budget
+#print axioms Erdos821.eventually_g_le_optimized_power_on_windows
+#print axioms Erdos821.eventually_g_le_optimized_power_loglog_loss
+#print axioms Erdos821.tendsto_optimized_support_rankin_exponent_loss

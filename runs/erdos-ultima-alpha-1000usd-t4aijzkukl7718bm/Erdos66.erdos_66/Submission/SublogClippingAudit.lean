@@ -1,0 +1,14 @@
+import Submission.SublogRankDownwardRepairExplore
+import Submission.SublogDownwardClippingExplore
+import Submission.SublogHostClippingExplore
+import Submission.ClippableSparseRestorationMenuExplore
+
+/-! Axiom audit for sublogarithmic clipping and its uniform sparse menu. -/
+
+#print axioms Erdos66SublogRankDownwardRepair.uniformly_eventually_downward_rank_repair_budget
+#print axioms Erdos66SublogDownwardClipping.uniformly_eventually_downward_clipping_budget
+#print axioms Erdos66SublogHostClipping.log_add_two_le_twice
+#print axioms Erdos66SublogHostClipping.smallBoundary_eventually_margin
+#print axioms Erdos66SublogHostClipping.host_eventually_uniform_downward_clipping
+#print axioms Erdos66ClippableSparseRestorationMenu.envelope_of_sublog_change
+#print axioms Erdos66ClippableSparseRestorationMenu.exists_uniformly_clippable_sparse_restoration_menu

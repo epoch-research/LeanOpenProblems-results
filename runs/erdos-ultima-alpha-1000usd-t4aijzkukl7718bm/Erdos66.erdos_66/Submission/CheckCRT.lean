@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Nat.prod_pow_primeFactors_factorization
+#check Nat.factorization_prod_pow_eq_self
+#check Nat.mem_primeFactors
+#check Nat.prime_of_mem_primeFactors
+#check Nat.dvd_of_mem_primeFactors
+#check Finset.mem_biUnion
+#check Finset.prod_ite_eq
+#check Finset.prod_ite_eq'
+#check legendreSym.hom
+#check legendreSym.at_one
+#check Nat.primeFactors_prod
+#check Nat.Prime.mem_primeFactors
+#check Finset.prod_eq_single
+#check Finset.prod_eq_mul_prod_diff_singleton
+#check ZMod.χ₈_nat_eq_if_mod_eight

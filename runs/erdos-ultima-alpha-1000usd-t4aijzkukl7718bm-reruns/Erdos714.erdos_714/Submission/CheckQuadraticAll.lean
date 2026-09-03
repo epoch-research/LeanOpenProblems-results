@@ -1,0 +1,17 @@
+import Submission.QuadraticRecoveryThinning
+import Submission.NormPolynomialLevels
+#check Erdos714QuadraticThinning.rowLift
+#check Erdos714QuadraticThinning.columnLift
+#check Erdos714QuadraticThinning.row_nonzero
+#check Erdos714QuadraticThinning.column_nonzero
+#check Erdos714QuadraticThinning.column_ray_injective
+#check Erdos714QuadraticThinning.lift_compatibility
+#check Erdos714QuadraticThinning.graph
+#check Erdos714NormLevels.enumerate_sets
+#check Fintype.card_coe
+#check Polynomial.card_le_degree_of_subset_roots
+#check IsEmpty.elim
+#check Function.Embedding.subtype
+#check Equiv.Set.image
+#check Finset.card_image_of_injOn
+#print Erdos714LinearBlocks.RayInjective

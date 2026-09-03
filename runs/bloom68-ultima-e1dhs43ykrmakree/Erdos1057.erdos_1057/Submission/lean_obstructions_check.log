@@ -1,0 +1,12 @@
+'CarmichaelSubsetProductStudy.positive_lifts_sum_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarmichaelSubsetProductStudy.quotient_positive_lifts_sum_ne_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CarmichaelSubsetProductStudy.diagonal_strip_no_short_zero_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CarmichaelSubsetProductStudy.diagonal_strip_101' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarmichaelSubsetProductStudy.interval_zero_sum_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CarmichaelSubsetProductStudy.common_multiplier_inverse_pair_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

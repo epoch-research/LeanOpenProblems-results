@@ -1,0 +1,8 @@
+import Submission.CriticalEvenIntersection
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583CriticalEvenIntersectionDevelopment.disjoint_critical_even_edges_seven_even
+#print axioms Erdos583CriticalEvenIntersectionDevelopment.critical_five_even_edges_intersect
+#print axioms Erdos583CriticalEvenIntersectionDevelopment.pairwise_intersecting_edges_star_or_triangle
+#print axioms Erdos583CriticalEvenIntersectionDevelopment.criticalEvenGraph
+#print axioms Erdos583CriticalEvenIntersectionDevelopment.critical_five_even_star_or_triangle

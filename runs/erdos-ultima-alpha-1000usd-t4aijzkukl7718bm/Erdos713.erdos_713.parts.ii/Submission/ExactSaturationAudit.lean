@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+import Submission.QuantitativeRobustCopies
+import Submission.QuadraticSupports
+#print axioms Erdos713CloneSaturation.exists_saturated
+#print axioms Erdos713CloneSaturation.ambient_edges
+#print axioms Erdos713CloneSaturation.exists_saturated_bounds
+#print axioms Erdos713ExactCloneSaturation.bounded_extra_vertices
+#print axioms Erdos713ExactCloneSaturation.linear_edges_lower
+#print axioms Erdos713ExactCloneSaturation.exact_at_quadratic_support
+#print axioms Erdos713QuadraticSupports.cofinal_supports
+#print axioms Erdos713QuadraticSupports.exact_saturated_cofinal

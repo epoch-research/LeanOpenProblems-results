@@ -1,0 +1,5 @@
+import Submission.LogarithmicPrefixSystemExplore
+/-! Axiom audit of fixed-palette prefix-preserving extensions. -/
+#print axioms Erdos66PalettePrefixExtension.exists_prefix_preserving_quantized_extension
+#print axioms Erdos66BoundedWeightPalette.exists_fitting_prefix_palette
+#print axioms Erdos66LogarithmicPrefixSystem.exists_logarithmic_prefix_extension_system

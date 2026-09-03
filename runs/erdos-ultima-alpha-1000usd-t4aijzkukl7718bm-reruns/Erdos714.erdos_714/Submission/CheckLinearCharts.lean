@@ -1,0 +1,10 @@
+import Submission.LinearQuadraticCharts
+#check SimpleGraph.Copy.comp
+#check SimpleGraph.Copy.free
+#check SimpleGraph.Copy.free_anti
+#check SimpleGraph.Copy.not_free
+#check SimpleGraph.Free.mono
+#check SimpleGraph.Free.of_copy
+#check LinearEquiv.surjective
+#check Units.val_ne_zero
+#check Units.ext

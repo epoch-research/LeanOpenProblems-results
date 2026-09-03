@@ -1,0 +1,15 @@
+import Submission.InterceptGoodTranslationExplore
+import Submission.InterceptCollisionCorrectionExplore
+#check sq_eq_sq_iff_eq_or_eq_neg
+#check sq_eq_sq_iff_eq_or_eq_neg'
+#check Finset.card_le_card
+#check Finset.card_image_le
+#check Finset.card_filter_le
+#check Finset.one_lt_card
+#check Finset.one_lt_card_iff
+#check Finset.exists_ne_map_eq_of_card_lt_of_maps_to
+#check Finset.card_le_two
+#check Finset.mem_biUnion
+#check Finset.filter_biUnion
+#check Erdos66OriginRepair.pairCount_comm
+#print Erdos66InterceptCurve.value_collision

@@ -1,0 +1,19 @@
+import Submission.BridgeGlue
+
+/-! Axiom audit for BridgeGlue. -/
+#print axioms Erdos583BridgeGlueDevelopment.union_path_shared_edge
+#print axioms Erdos583BridgeGlueDevelopment.merge_partial_partitions
+#print axioms Erdos583BridgeGlueDevelopment.terminal_edge_rep
+#print axioms Erdos583BridgeGlueDevelopment.glue_spanning_sides
+#print axioms Erdos583BridgeGlueDevelopment.within_le
+#print axioms Erdos583BridgeGlueDevelopment.within_support
+#print axioms Erdos583BridgeGlueDevelopment.lift_induce_within
+#print axioms Erdos583BridgeGlueDevelopment.glue_cut_sides
+#print axioms Erdos583BridgeGlueDevelopment.cut_side_connected
+#print axioms Erdos583BridgeGlueDevelopment.ceil_half
+#print axioms Erdos583BridgeGlueDevelopment.augmented_budget
+#print axioms Erdos583BridgeGlueDevelopment.augmented_budget_even
+#print axioms Erdos583BridgeGlueDevelopment.gallai_of_cut_side_budgets
+#print axioms Erdos583BridgeGlueDevelopment.failed_minimal_cut_even
+#print axioms Erdos583BridgeGlueDevelopment.bridge_cut
+#print axioms Erdos583BridgeGlueDevelopment.cut_singleton_degree

@@ -1,0 +1,16 @@
+import Submission.SquareRootReciprocal
+
+/-! Exact-type and axiom-dependency audit. -/
+
+#check @Erdos821.AnalyticSieve.sieved_progression_prime_reciprocal_count
+#print axioms Erdos821.AnalyticSieve.sieved_progression_prime_reciprocal_count
+#check @Erdos821.eventually_square_root_prime_count
+#print axioms Erdos821.eventually_square_root_prime_count
+#check @Erdos821.square_root_prime_reciprocal_divergence
+#print axioms Erdos821.square_root_prime_reciprocal_divergence
+#check @Erdos821.square_root_predecessor_series_divergence
+#print axioms Erdos821.square_root_predecessor_series_divergence
+#check @Erdos821.square_root_predecessor_full_dyadic_density
+#print axioms Erdos821.square_root_predecessor_full_dyadic_density
+#check @Erdos821.square_root_predecessors_infinite
+#print axioms Erdos821.square_root_predecessors_infinite

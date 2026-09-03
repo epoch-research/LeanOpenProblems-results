@@ -1,0 +1,12 @@
+import Submission.UpperDensityOneLogLimitExplore
+import Submission.PrescribedLogSpikesExplore
+#check Summable.congr_cofinite
+#check summable_congr_cofinite
+#check Filter.not_frequently
+#check Filter.frequently_iff
+#check tendsto_nhds_unique_of_frequently_eq
+#check Real.summable_one_div_nat_add_rpow
+#check Nat.cofinite_eq_atTop
+#check Filter.Eventually.frequently
+#check Filter.EventuallyLE
+#check Summable.of_norm_bounded

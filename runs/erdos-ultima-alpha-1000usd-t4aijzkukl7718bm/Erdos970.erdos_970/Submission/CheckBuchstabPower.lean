@@ -1,0 +1,9 @@
+import Submission.BuchstabRefinement
+#check Real.mul_rpow
+#check Real.one_le_rpow
+#check one_le_pow₀
+#check Real.rpow_nonneg
+#check Summable.sum_le_tsum
+#check Real.summable_nat_rpow_inv
+#check Real.summable_nat_rpow
+#check Real.summable_one_div_nat_rpow

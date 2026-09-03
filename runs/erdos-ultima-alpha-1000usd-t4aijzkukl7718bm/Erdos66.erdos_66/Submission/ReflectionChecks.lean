@@ -1,0 +1,15 @@
+import Submission.ReflectionRoundingPatchExplore
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_bij
+#check Finset.sum_sigma'
+#check Finset.sum_fiberwise
+#check Finset.exists_le_card_fiber_of_mul_le_card_of_maps_to
+#check Finset.sum_range_sub
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.isLittleO_log_id_atTop
+#check harmonic_mono
+#check harmonic_one
+#check harmonic_pos
+#check Nat.le_pow
+#check Nat.pow_le_pow_left
+#check Nat.pow_le_pow_right

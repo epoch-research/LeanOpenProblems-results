@@ -1,0 +1,15 @@
+import Submission.ThetaLinearSingletonBudget
+import Submission.SingletonBudgetInstability
+/-! Combined audit for the singleton-budget reduction and its limitation. -/
+#print axioms Erdos713ThetaLinearSingletonBudget.degree_square
+#print axioms Erdos713ThetaLinearSingletonBudget.incidence_square
+#print axioms Erdos713ThetaLinearSingletonBudget.many_singletons
+#print axioms Erdos713SingletonBudgetInstability.singleton_lower
+#print axioms Erdos713SingletonBudgetInstability.row_bounds
+#print axioms Erdos713SingletonBudgetInstability.column_bounds
+#print axioms Erdos713SingletonBudgetInstability.edges_upper
+#print axioms Erdos713SingletonBudgetInstability.base_no_singletons
+#print axioms Erdos713SingletonBudgetInstability.base_edges
+#print axioms Erdos713SingletonBudgetInstability.added_edges_le
+#print axioms Erdos713SingletonBudgetInstability.singleton_ratio
+#print axioms Erdos713SingletonBudgetInstability.cheap_cleanup

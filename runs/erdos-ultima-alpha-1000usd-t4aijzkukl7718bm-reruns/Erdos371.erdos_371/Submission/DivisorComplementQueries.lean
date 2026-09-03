@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.sum_div_divisors
+#check Nat.sum_divisors_eq_sum_divisorsAntidiagonal
+#check Nat.div_mem_divisors
+#check Nat.div_div_self
+#check Nat.div_mul_cancel
+#check Nat.one_mem_divisors
+#check Nat.self_mem_divisors
+#check Finset.sum_comm
+#check Nat.coprime_succ_self
+#check Nat.eq_one_of_dvd_coprimes

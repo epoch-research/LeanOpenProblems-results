@@ -1,0 +1,8 @@
+import FormalConjecturesUtil
+#check exists_nat_one_div_lt
+#check exists_nat_one_div_lt_of_pos
+#check exists_nat_gt
+#check tendsto_one_div_add_atTop_nhds_zero_nat
+#check tendsto_one_div_add_atTop_nhds_zero_nat
+#check Filter.Tendsto.eventually_lt_const
+#check Finset.card_pos

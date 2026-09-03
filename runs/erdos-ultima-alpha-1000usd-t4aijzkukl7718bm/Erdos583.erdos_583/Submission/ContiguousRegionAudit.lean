@@ -1,0 +1,9 @@
+import Submission.ContiguousRegion
+
+/-! Axiom audit for the parity-free contiguous-carrier obstruction. -/
+#print axioms Erdos583ContiguousRegionDevelopment.unique_crossing_bridge
+#print axioms Erdos583ContiguousRegionDevelopment.path_ends_ne
+#print axioms Erdos583ContiguousRegionDevelopment.single_tail_port_degree
+#print axioms Erdos583ContiguousRegionDevelopment.failure_no_single_tail
+#print axioms Erdos583ContiguousRegionDevelopment.failure_no_contiguous_region
+#print axioms Erdos583ContiguousRegionDevelopment.failure_no_single_contiguous_member

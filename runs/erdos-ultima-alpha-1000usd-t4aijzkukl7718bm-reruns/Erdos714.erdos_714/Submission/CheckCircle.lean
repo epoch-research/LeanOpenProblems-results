@@ -1,0 +1,17 @@
+import Submission.UpperHalfPlaneFusion
+#check Finset.mem_roots
+#check Polynomial.mem_roots
+#check Polynomial.X_pow_sub_C_ne_zero
+#check Finset.offDiag_card
+#check Finset.mem_offDiag
+#check Finset.card_le_four
+#check Finset.exists_mem_notMem_of_card_lt_card
+#check IsSquare
+#check Finset.card_image_of_injOn
+#check Finset.card_le_card
+#check SimpleGraph.Copy.comp
+#check Finset.exists_mem_ne
+#check Finset.card_erase_of_mem
+#check Finset.card_erase_le
+#check Finset.card_le_card_iff
+#check Finset.card_le_degree_of_subset_roots

@@ -1,0 +1,12 @@
+import Submission.HarmonicExceptionalProfileExplore
+#check Real.rpow_sub
+#check Real.rpow_pos_of_pos
+#check Real.rpow_ne_zero
+#check Real.rpow_le_rpow_of_exponent_le
+#check Real.rpow_le_rpow
+#check Real.tendsto_rpow_atTop
+#check Real.tendsto_rpow_atTop_of_pos
+#check Monotone.rpow_const
+#check Real.rpow_le_rpow_left_iff
+#check Real.rpow_neg
+#check Real.rpow_natCast

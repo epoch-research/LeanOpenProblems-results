@@ -1,0 +1,10 @@
+import Submission.QuadraticWindowRoundingExplore
+#check Filter.tendsto_pow_atTop
+#check tendsto_pow_atTop
+#check Filter.Tendsto.const_div_atTop
+#check Filter.Tendsto.div_atTop
+#check Filter.tendsto_natCast_atTop_atTop
+#check Filter.Tendsto.congr'
+#check Finset.sum_le_sum
+#check Real.sqrt_nonneg
+#check Finset.card_pos

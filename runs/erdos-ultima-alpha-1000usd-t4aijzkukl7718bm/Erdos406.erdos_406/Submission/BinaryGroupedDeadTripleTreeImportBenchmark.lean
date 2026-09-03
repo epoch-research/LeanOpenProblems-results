@@ -1,0 +1,2 @@
+import Submission.BinaryGroupedDeadTripleTreeProbe
+#print axioms Erdos406GroupedDeadTripleExported.powerBound

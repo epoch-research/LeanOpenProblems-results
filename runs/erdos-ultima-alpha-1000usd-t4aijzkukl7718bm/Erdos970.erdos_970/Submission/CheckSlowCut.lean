@@ -1,0 +1,17 @@
+import Submission.BuchstabDoubleCostContraction
+#check Nat.le_floor
+#check Nat.le_floor_iff
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check Real.exp_nat_mul
+#check Real.exp_mul
+#check Nat.primesBelow_mono
+#check Finset.sum_subset
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_image
+#check Real.log_min
+#check Finset.mem_primesBelow
+#check Real.pow_div_factorial_le_exp
+#check Real.exp_sub
+#check Nat.cast_min
+#check Erdos970.RecursiveSieve.Buchstab.primeKeep

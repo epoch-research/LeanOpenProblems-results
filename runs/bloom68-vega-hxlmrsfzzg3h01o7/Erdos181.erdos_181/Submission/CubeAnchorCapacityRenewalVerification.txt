@@ -1,0 +1,12 @@
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+Exact all-orders Gram/direct-sampling cases: 3840
+Permutation forcing (queries, input/output pairs, preserved positions): (1796, 190754, 128798)
+Conditional LLL (families, ALL partial queries, hit-set cylinders, polynomial moments): (48, 267548, 3776, 96)
+Exact read-d Holder moment cases: 308
+Finite-population / distinct-sampling cases: (23820, 860)
+Range-pruning and renormalization cases: 20
+Constant budgets (parameter cases, dimensions, largest dimension bit-length): (35112, 2926, 513)
+Syndromes (same-class pairs, explicit neighbor cases, theorem-scale shifts): (3164, 92844, 7936)
+Hadamard certificate (actual matching prefixes, edges, squares, initial/final max load): (5, 80, 80, Fraction(152912, 178940587), Fraction(16, 8191))
+Independent certificate replay, GF(2)-rank/domain cases: 80
+PASS: all audits. The full constant-C embedding and capacity renewal remain UNPROVED.

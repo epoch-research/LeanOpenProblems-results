@@ -1,0 +1,6 @@
+import Submission.TwoSidedCubicRouting
+#check CharP.ringChar_of_prime_eq_zero
+#check prime_dvd_char_iff_dvd_card
+#check FiniteField.even_card_of_char_two
+#check FiniteField.card
+#check FiniteField.odd_card_of_char_ne_two

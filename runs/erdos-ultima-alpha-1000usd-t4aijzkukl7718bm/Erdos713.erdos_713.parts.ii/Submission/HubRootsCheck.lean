@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Fin.succAboveEmb
+#check Fin.succAbove_ne
+#check Fin.succAbove_ne_zero
+#check Fin.succAbove_injective
+#check Fin.castSuccEmb
+#check Option.get
+#check Option.get_of_ne_none
+#check Option.some_get
+#check Option.isSome_iff_ne_none
+#check SimpleGraph.Copy.induce
+#check Fintype.card_le_of_embedding
+#check Finset.card_le_card
+#check Fintype.card_subtype_compl

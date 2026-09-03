@@ -1,0 +1,13 @@
+import Submission.ExactBracketPatternHostExplore
+import Submission.LocalDifferencePotentialExplore
+import Submission.LocalDifferenceCompactnessExplore
+#check Erdos66BernoulliMatchingPolynomial.matchingPoly_binary_disjoint
+#check Erdos66BernoulliMatchingPolynomial.matchingPoly_eq_expect
+#check Erdos66BernoulliMatchingPolynomial.matchingPoly_le_exp
+#check Erdos66DisjointMatchingPolynomial.matchingPoly_disjoint
+#check Erdos66LocalDifferenceCompactness.localDiff_restrict
+#check Erdos66NaturalPatternRestriction.restrict
+#check Erdos66FiniteRepBernoulli.restrict
+#check Nat.left_le_pair
+#check Nat.unpair_left_le
+#check Nat.unpair_right_le

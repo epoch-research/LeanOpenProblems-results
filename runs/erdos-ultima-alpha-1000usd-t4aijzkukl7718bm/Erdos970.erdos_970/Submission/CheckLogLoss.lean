@@ -1,0 +1,23 @@
+import Submission.LogCriticalVoid
+import Submission.SubexponentialSquareCubicReduction
+open Filter Real
+#check tendsto_natCast_atTop_atTop
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
+#check tendsto_pow_mul_exp_neg_atTop_nhds_zero
+#check isLittleO_pow_exp_pos_mul_atTop
+#check isLittleO_pow_const_const_pow
+#check Nat.pow_le_pow_iff_right
+#check Nat.pow_le_pow_iff_left
+#check Nat.log_le_self
+#check Nat.pow_log_le_self
+#check Nat.lt_pow_succ_log_self
+#check Nat.log_pow
+#check Real.log_natCast_nonneg
+#check Real.log_two_lt_d9
+#check Real.log_two_gt_d9
+#check Real.sqrt_mul
+#check Real.sqrt_pow_two
+#check Nat.cast_pow
+#check Erdos970.GapAverages.square_cubic_scaled_tail
+#check Erdos970.GapAverages.quadratic_bound_of_eventually_scaled

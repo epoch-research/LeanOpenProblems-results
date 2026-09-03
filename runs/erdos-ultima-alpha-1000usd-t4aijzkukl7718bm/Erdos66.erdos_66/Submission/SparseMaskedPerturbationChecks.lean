@@ -1,0 +1,16 @@
+import Submission.ExactBracketCentralSurgeryExplore
+import Submission.PowerExceptionalCountingExplore
+import Submission.DensityOneNoLimitExplore
+#check Real.sqrt_pow
+#check Real.rpow_natCast
+#check Real.rpow_mul
+#check Real.rpow_le_rpow
+#check summable_geometric_of_lt_one
+#check summable_geometric_of_abs_lt_one
+#check Erdos66SummableExceptionalSet.exists_exceptional_set
+#check Erdos66PowerExceptionalCounting.power_exception_count_limit
+#check Erdos66SummableScaleCounting.reciprocal_scale_count_zero
+#check Erdos66DensityOneNoLimit.frequently_outside
+#check StrictMono.injective
+#check Nat.pow_right_strictMono
+#check Nat.pow_right_injective

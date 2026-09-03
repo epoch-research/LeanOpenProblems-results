@@ -1,0 +1,27 @@
+All positive Hall-incidence and reservoir audits passed (integer/rational arithmetic).
+       428  DRC smaller-cube constructions
+       612  actual-host whole-cover entropy identities, GOOD retained
+         1  additional actual-host whole-cover entropy identities, type-compressed
+       150  dyadic all-dimensional corollary base/induction numerical checks
+      1384  exact DRC common-neighbour/bad-set moment identities
+      1710  exact full-profile entropy/refinement ledgers
+       632  exact hypergeometric MGFs and without-replacement bounds
+      1896  exact no-refinement occupancy KL inequalities
+       447  extensions with errors at the already embedded face columns
+       756  extensions with genuinely missing reservoir edges
+        18  fibres with a nonzero full-profile information tax
+      2349  fixed-anchor exact entropy rebasing/minimality checks
+     40320  full injections represented in nontrivial-profile audit
+     41184  full positive candidate-neighbourhood incidences
+     37008  full-incidence heavy-load to fixed host-pool implications
+       346  global complete reservoir complementary completions
+       550  global complete reservoir red completions
+     14371  integer near-reservoir parameter instances
+      1968  joint support/positive tilted-price identities at actual prefixes
+      2332  literal cube embeddings, all vertices and edges checked
+        75  nonuniform completion-weighted prefix laws in joint-price audit
+      2028  rectangular positive-domain permanents counted exactly
+    296569  required original cube edges checked
+      1558  robust complete/near-complete reservoir extensions
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+These checks do not prove the diffuse/global entropy surplus or R(Q_d)=O(2^d).

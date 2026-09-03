@@ -1,0 +1,15 @@
+import Submission.ParitySeparation
+#check Set.Infinite.diff
+#check Set.Infinite.sdiff
+#check Nat.infinite_setOf_prime
+#check Set.Infinite.exists_subset_card_eq
+#check Set.infinite_Ioi
+#check Nat.exists_infinite_primes
+#check Finset.le_sup
+#check Finset.sup_union
+#check Finset.sup_insert
+#check Finset.sup_lt_iff
+#check Finset.disjoint_left
+#check Finset.card_union_of_disjoint
+#check Nat.sub_mul
+#check Nat.mul_sub

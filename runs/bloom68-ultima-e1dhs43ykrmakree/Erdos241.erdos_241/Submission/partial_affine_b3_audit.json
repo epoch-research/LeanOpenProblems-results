@@ -1,0 +1,200 @@
+{
+  "status": "scoped uniform results only; unrestricted critical problem unresolved",
+  "partial_identities": [
+    {
+      "label": "selected_random_flat",
+      "field_degree": 5,
+      "flat_size": 4,
+      "field_modulus": "x^5 + x^2 + 1",
+      "affine_points": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "direction_points": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "affine_shift": 1,
+      "subsets_checked": 16,
+      "b3_subsets_checked": 12,
+      "inverse_pair_checks": 9,
+      "scaled_frobenius_stable": false
+    },
+    {
+      "label": "selected_random_flat",
+      "field_degree": 8,
+      "flat_size": 8,
+      "field_modulus": "x^8 + x^4 + x^3 + x^2 + 1",
+      "affine_points": [
+        1,
+        241,
+        251,
+        11,
+        105,
+        153,
+        147,
+        99
+      ],
+      "direction_points": [
+        0,
+        240,
+        250,
+        10,
+        104,
+        152,
+        146,
+        98
+      ],
+      "affine_shift": 1,
+      "subsets_checked": 256,
+      "b3_subsets_checked": 120,
+      "inverse_pair_checks": 420,
+      "scaled_frobenius_stable": false
+    },
+    {
+      "label": "selected_random_flat",
+      "field_degree": 9,
+      "flat_size": 8,
+      "field_modulus": "x^9 + x^4 + 1",
+      "affine_points": [
+        1,
+        392,
+        201,
+        320,
+        238,
+        359,
+        38,
+        431
+      ],
+      "direction_points": [
+        0,
+        393,
+        200,
+        321,
+        239,
+        358,
+        39,
+        430
+      ],
+      "affine_shift": 1,
+      "subsets_checked": 256,
+      "b3_subsets_checked": 174,
+      "inverse_pair_checks": 806,
+      "scaled_frobenius_stable": false
+    },
+    {
+      "label": "frobenius_stable_8_point_flat",
+      "field_degree": 8,
+      "flat_size": 8,
+      "field_modulus": "x^8 + x^4 + x^3 + x^2 + 1",
+      "affine_points": [
+        10,
+        11,
+        220,
+        221,
+        146,
+        147,
+        68,
+        69
+      ],
+      "direction_points": [
+        0,
+        1,
+        214,
+        215,
+        152,
+        153,
+        78,
+        79
+      ],
+      "affine_shift": 10,
+      "subsets_checked": 256,
+      "b3_subsets_checked": 37,
+      "inverse_pair_checks": 36,
+      "scaled_frobenius_stable": true
+    }
+  ],
+  "critical_invariant_family": [
+    {
+      "j": 1,
+      "ell": 4,
+      "n": 20,
+      "k": 7,
+      "t": 1,
+      "operator_polynomial": "T^7 + T^5 + T^2 + 1",
+      "flat_size": 128,
+      "maximal_subfield_intersection_dimensions": {
+        "10": null,
+        "4": 3
+      },
+      "full_field_sample_frobenius_order": 20,
+      "cycle_counts_from_proof": {
+        "4": 2,
+        "20": 6
+      },
+      "orbit_cardinality_upper_bound": 82,
+      "cubic_ratio_upper_bound": 0.5258260019550343,
+      "enumerated_cycle_counts": {
+        "20": 6,
+        "4": 2
+      },
+      "three_factor_identities_checked": 128
+    },
+    {
+      "j": 2,
+      "ell": 16,
+      "n": 80,
+      "k": 27,
+      "t": 3,
+      "operator_polynomial": "T^27 + T^23 + T^22 + T^19 + T^18 + T^17 + T^15 + T^14 + T^13 + T^12 + T^10 + T^9 + T^8 + T^5 + T^4 + 1",
+      "flat_size": 134217728,
+      "maximal_subfield_intersection_dimensions": {
+        "40": null,
+        "16": 15
+      },
+      "full_field_sample_frobenius_order": 80,
+      "cycle_counts_from_proof": {
+        "16": 2048,
+        "80": 1677312
+      },
+      "orbit_cardinality_upper_bound": 88918016,
+      "cubic_ratio_upper_bound": 0.581526671742786
+    }
+  ],
+  "reciprocal_cancellation_bose": [
+    {
+      "e": 4,
+      "q": 16,
+      "field_degree": 12,
+      "affine_binary_dimension": 4,
+      "full_size": 16,
+      "partial_size": 14,
+      "partial_density": "7/8",
+      "full_repeated_triples_checked": 816,
+      "partial_repeated_triples_checked": 560,
+      "full_reciprocal_nonzero": true,
+      "partial_reciprocal_zero": true,
+      "cubic_ratio": "392/585",
+      "cubic_ratio_decimal": 0.67008547008547
+    },
+    {
+      "e": 7,
+      "q": 128,
+      "field_degree": 21,
+      "affine_binary_dimension": 7,
+      "full_size": 128,
+      "partial_size": 126,
+      "partial_density": "63/64",
+      "full_repeated_triples_checked": 357760,
+      "partial_repeated_triples_checked": 341376,
+      "full_reciprocal_nonzero": true,
+      "partial_reciprocal_zero": true,
+      "cubic_ratio": "40824/42799",
+      "cubic_ratio_decimal": 0.9538540620107946
+    }
+  ]
+}

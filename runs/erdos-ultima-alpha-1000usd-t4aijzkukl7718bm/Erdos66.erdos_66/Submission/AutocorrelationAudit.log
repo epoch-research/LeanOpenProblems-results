@@ -1,0 +1,15 @@
+'Erdos66AutocorrelationStability.corr_error_le_conv_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AutocorrelationStability.cyclic_weighted_corr_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalAutocorrelation.push_corr_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalAutocorrelation.partial_weighted_corr_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalAutocorrelation.weighted_corr_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AutocorrelationAbel.ratio_zero_abel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AutocorrelationAbel.harmonic_sq_series_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AutocorrelationAbel.witness_error_ratio_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessAutocorrelation.witness_normalized_error_energy_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66WitnessAutocorrelation.natural_corr_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessAutocorrelation.witness_normalized_corr_error_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

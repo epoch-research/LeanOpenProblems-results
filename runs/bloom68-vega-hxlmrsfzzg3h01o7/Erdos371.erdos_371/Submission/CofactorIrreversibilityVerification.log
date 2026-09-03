@@ -1,0 +1,26 @@
+Arithmetic: 999,998 edge checks; 33,806 max-product checks; 8 exact vertex/multiplicity checks.
+Potential obstruction: 49,997 exact dyadic defects of absolute value 1; two potential classes and three deletion sets checked.
+X | V(cofactor) | L1(cofactor) | irreversible(cofactor) | signed I | L1(prime) | both prime labels > sqrt(2X+1)
+1000 | 88 | 354 | 33 | 3 | 757 | 231
+10000 | 403 | 3630 | 431 | 5 | 7889 | 2994
+100000 | 1894 | 36966 | 5513 | 3 | 80389 | 34090
+1000000 | 9108 | 367422 | 67420 | 72 | 810655 | 368860
+Fully irreversible biased four-cycle at X=1,000,000 verified: [186353, 456246, 842897, 925806]
+Prime deletion checks:
+  X=1000: four prime-class deletion/cover inequalities verified.
+  X=10000: four prime-class deletion/cover inequalities verified.
+  X=100000: four prime-class deletion/cover inequalities verified.
+Actual edge-disjoint cycle decompositions after all opposite-edge cancellations:
+  X=1000: deleted LPF-2 edges=16, cancelled=632, retained=350, cycles=48, cycle edges=318, paths=4, path edges=32, max cycle=14, irreversible cycle edges=32.
+  X=10000: deleted LPF-2 edges=24, cancelled=6354, retained=3620, cycles=370, cycle edges=3550, paths=8, path edges=70, max cycle=40, irreversible cycle edges=428.
+  X=100000: deleted LPF-2 edges=30, cancelled=63018, retained=36950, cycles=2593, cycle edges=36866, paths=10, path edges=84, max cycle=98, irreversible cycle edges=5507.
+One retained biased cycle (illustration, not the asymptotic obstruction):
+  indices= [33866, 39591, 18424, 85525]
+  cofactor vertices= [574, 477, 392, 275] ; cofactor current= -2
+  prime-label pairs= [(59, 71), (83, 101), (47, 67), (311, 149)]
+Degree pruning:
+  X=1000: 2-core of irreversible graph: 0 / 33 edges retained; pruning bound verified.
+  X=10000: 3-core of irreversible graph: 0 / 431 edges retained; pruning bound verified.
+  X=100000: 4-core of irreversible graph: 4152 / 5513 edges retained; pruning bound verified.
+  X=1000000: 5-core of irreversible graph: 62078 / 67420 edges retained; pruning bound verified.
+PASS. These finite checks do not prove Hildebrand's theorem, a density asymptotic, or cancellation of S(X).

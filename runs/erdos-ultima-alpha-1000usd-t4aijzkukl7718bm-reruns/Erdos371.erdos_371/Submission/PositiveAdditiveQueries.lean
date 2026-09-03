@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.perm_primeFactorsList_mul
+#check List.Perm.sum_eq
+#check List.sum_map_add
+#check Nat.Prime.primeFactorsList
+#check Nat.primeFactorsList_prime
+#check Nat.primeFactorsList_eq_singleton
+#check List.length_le_sum_of_one_le
+#check Nat.primeCounting
+#check Finset.card_Icc
+#check Nat.mem_primeFactorsList

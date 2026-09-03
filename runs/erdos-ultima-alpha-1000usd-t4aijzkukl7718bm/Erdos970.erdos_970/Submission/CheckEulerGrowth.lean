@@ -1,0 +1,13 @@
+import Submission.BuchstabEulerUniformMain
+import Submission.BuchstabSmoothGrowth
+#check exists_nat_pow_near
+#check exists_pow_lt_of_lt_one
+#check exists_nat_gt
+#check exists_pow_lt
+#check Nat.pow_log_le_self
+#check Nat.lt_pow_succ_log_self
+#check Nat.ceil_lt_add_one
+#check Real.log_two_gt_d9
+#check Real.exp_nat_mul
+#check pow_mul
+#check Nat.cast_pow

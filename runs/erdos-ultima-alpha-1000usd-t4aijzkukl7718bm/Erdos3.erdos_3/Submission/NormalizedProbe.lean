@@ -1,0 +1,12 @@
+import Submission.CrossSpectralSymmetry
+import Submission.SmallBaseQuadraticIntegration
+#check AddChar.sub_apply
+#check AddChar.neg_apply
+#check AddChar.map_add_eq_mul
+#check Erdos3LocalQuadraticIntegration.halfHom
+#check Erdos3UniformLocalQuadraticInverse.doubledBohr_eq_bohr_pullback
+#check Erdos3LocalPhaseDuality.mul_conj_eq_one
+#check Erdos3FiniteFourier.mul_conj_eq_one
+#check Equiv.Set.ofEq
+#check Finset.equivOfEq
+#check Fintype.expect_congr

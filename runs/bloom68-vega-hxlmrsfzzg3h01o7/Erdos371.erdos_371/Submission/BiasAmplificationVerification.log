@@ -1,0 +1,21 @@
+tensor d=1: centered operator norm 0.200000000000
+  exact maximum scalar current=1/15, ascent=2/5
+tensor d=2: centered operator norm 0.200000000000
+  exact maximum scalar current=19/225, ascent=38/75
+tensor d=3: centered operator norm 0.200000000000
+tensor d=4: centered operator norm 0.200000000000
+Markov block entropy checked through length 6; rate=1.060601805612
+nonuniform marginal tensor check: eta=91/100, norm=0.030000000000
+centered order-matrix spectrum checked for q=2,...,64
+epsilon=.01: rational scalar current bound=4458079583/35694859200 < 1/8
+  scalar ascent < 9/16; majority d=100001 error <= 0.00673761011016
+  certified majority/scalar disagreement > 0.430815308112
+independent majority d=2501, epsilon=1/15: error=0.000421847231738
+  Hoeffding bound=0.00385733874424; scalar ascent <= 4/5
+  majority/scalar disagreement >= 0.196142661256
+all 8 normalized Boolean homomorphisms are characters; majority is not
+raw gap-copy identity checked on 640,000 (n,k) pairs
+  exact finite aggregation difference=0; bound=2040
+decreasing-rearrangement extremizer checked: exact weight 19/20
+Spec.lean unchanged: d48bb112dcd4fd5c98dae80077b7384df62a14ef9a919fe7d476b9c5ace427bb
+All checks passed.

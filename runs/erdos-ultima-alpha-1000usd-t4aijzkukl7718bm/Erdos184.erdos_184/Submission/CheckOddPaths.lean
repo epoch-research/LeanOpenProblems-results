@@ -1,0 +1,17 @@
+import Submission.OddForestReduction
+#check SimpleGraph.Walk.IsPath.neighborSet_toSubgraph_start
+#check SimpleGraph.Walk.IsPath.ncard_neighborSet_toSubgraph_internal_eq_two
+#check SimpleGraph.Walk.IsPath.support_nodup
+#check SimpleGraph.Walk.toSubgraph_cons
+#check SimpleGraph.Subgraph.spanningCoe_sup
+#check SimpleGraph.Subgraph.spanningCoe_singleEdge
+#check SimpleGraph.card_neighborSet_eq_degree
+#check SimpleGraph.degree_induce_of_neighborSet_subset
+#check SimpleGraph.even_card_odd_degree_vertices
+#check List.mem_toFinset
+#check Finset.card_eq_one
+#check SimpleGraph.Reachable.exists_isPath
+#check SimpleGraph.Walk.IsPath.mapLe
+#check SimpleGraph.Walk.edges_mapLe_eq_edges
+#check SimpleGraph.Walk.IsPath.ncard_neighborSet_toSubgraph_eq_one
+#check SimpleGraph.Walk.IsPath.neighborSet_toSubgraph_start_eq

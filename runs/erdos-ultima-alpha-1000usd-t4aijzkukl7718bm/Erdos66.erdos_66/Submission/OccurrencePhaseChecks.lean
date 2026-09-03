@@ -1,0 +1,12 @@
+import Submission.TranslatedPrefixPaletteExplore
+#check ZMod.finEquiv
+#check ZMod.equivFin
+#check ZMod.sum_univ_val
+#check ZMod.sum_val
+#check Fin.sum_univ_eq_sum_range
+#check Equiv.sum_comp
+#check ZMod.cast_val_eq_self
+#check ZMod.natCast_zmod_val
+#check ZMod.val_injective
+#check Finset.sum_bij
+#check Nat.cast_lt

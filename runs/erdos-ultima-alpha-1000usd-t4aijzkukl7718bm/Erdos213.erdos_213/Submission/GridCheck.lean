@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Complex.sq_norm
+#check Complex.normSq_eq_norm_sq
+#check Complex.mul_conj
+#check Complex.mul_conj'
+#check Complex.add_conj
+#check Complex.real_smul
+#check Complex.ofReal_mul
+#check Collinear
+#check NonTrilinear
+#check Complex.ext_iff

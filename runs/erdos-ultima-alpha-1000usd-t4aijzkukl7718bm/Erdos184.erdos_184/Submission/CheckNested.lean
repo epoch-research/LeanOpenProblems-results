@@ -1,0 +1,10 @@
+import Submission.EdgeHullPotential
+#check SimpleGraph.Connected
+#check SimpleGraph.Connected.preconnected
+#check SimpleGraph.Connected.nonempty
+#check SimpleGraph.Reachable
+#check SimpleGraph.Walk.rec
+#check SimpleGraph.Reachable.trans
+#check Relation.ReflTransGen.head_induction_on
+#check SimpleGraph.ConnectedComponent
+#check SimpleGraph.ConnectedComponent.connected_induce

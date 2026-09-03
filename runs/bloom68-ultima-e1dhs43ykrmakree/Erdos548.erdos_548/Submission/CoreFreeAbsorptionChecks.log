@@ -1,0 +1,29 @@
+Core theorem: old regular-core families and K_k-boundary copies verified.
+CORE-FIRST RECLASSIFICATION, all normalized critical hosts through n=9:
+  core terminal 827
+  absorption 9209
+  cross but no budget 2638
+  no cross cut 11964
+  whole-host bipartite terminal 27
+  large-cross terminal only 1
+AFTER THE NEW MATCHING-DEFECT BLOCK TERMINAL: {'core terminal': 827, 'matching-defect block terminal': 17482, 'absorption': 2682, 'no cross cut': 3080, 'large-cross terminal only': 1, 'cross but no budget': 594}
+Core-free no-cut family: r=4..20; exact (k-3)-degeneracy for r>=6.
+Explicit k=15 example: no (8,8)-colored core, but K_8,8 minus a 3-edge matching.
+ Near-biclique sides: [0, 2, 3, 4, 11, 13, 14, 15] [1, 5, 6, 8, 10, 16, 17, 18] missing: [(2, 5), (4, 10), (11, 8)]
+ This host is TERMINAL by the asymmetric Hall bound, not uncovered.
+New high-internal-core lemma: core-free matching-cone hosts are terminal too.
+Explicit noncaterpillar subcubic T_16: zero-spare-capacity Hall copy: {0: 1, 3: 5, 6: 6, 8: 8, 9: 10, 11: 16, 12: 17, 14: 18, 1: 2, 2: 0, 4: 3, 5: 15, 7: 4, 10: 11, 13: 13, 15: 14}
+Two-tetra family for every r>=11: CL handles Delta>=4; a near-clique handles Delta<=3.
+Modular no-cut family: exact (k-2)-degeneracy for r=5..20; terminal for every r>=5.
+ All 23,030 target trees at r=5,6,7 embedded: {'rooted near-clique plus outside leaf': 20893, 'high-internal tree': 2137}
+Stronger matching-defect k-block terminal (k>=4): {'nonstar targets': 2274, 'full target copies': 25550}
+ Every matching size and boundary-vertex orbit checked for 4<=k<=12.
+EXACT ORDER-10, k=7 COVERAGE (six nonspider subcubic trees):
+ Host counts: {'absorbing/large-cross cut': 1531, 'one-apex CL': 53087, 'remaining for tree-specific tests': 920, 'core terminal': 224}
+ Remaining host/tree pairs: {((4, 4), 'colored core'): 1734, ((3, 5), 'colored core'): 2640, ((4, 4), 'local degree-two quotient lift'): 1026, ((3, 5), 'local degree-two quotient lift'): 120}
+ No residual pair after independent local-lift verification.
+ AFTER THE NEW MATCHING-DEFECT BLOCK TERMINAL:
+  Host counts: {'absorbing/large-cross cut': 594, 'matching-defect block terminal': 13693, 'one-apex CL': 40915, 'remaining for tree-specific tests': 336, 'core terminal': 224}
+  Remaining pairs: {((4, 4), 'local degree-two quotient lift'): 486, ((3, 5), 'colored core'): 963, ((4, 4), 'colored core'): 522, ((3, 5), 'local degree-two quotient lift'): 45}
+VERIFICATION COUNTS: {'old regular-core hosts correctly terminal': 20, 'constructive copies verified': 108682, 'explicit degeneracy orders': 15, 'high-internal-core copies': 680, 'near-clique blocks excluded in example': 1160, 'near-clique improving swaps': 30940, 'unrooted near-clique copies': 100, 'modular independent-cut exclusions': 11328, 'root-preserving near-clique copies': 20893, 'complement-forest matching certificates': 29133, 'matching-block copies in the former 920-host residue': 3504, 'local quotient lifts verified': 1146, 'local quotient improving swaps': 1169}
+PASS. No global extraction/coverage assertion. Seconds: 74.73

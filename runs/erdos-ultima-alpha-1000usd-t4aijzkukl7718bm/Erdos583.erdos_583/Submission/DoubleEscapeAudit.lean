@@ -1,0 +1,9 @@
+import Submission.DoubleEscape
+/-! Axiom audit of the two-escape argument. -/
+#print axioms Erdos583DoubleEscapeDevelopment.starts_eq_of_iterate_eq
+#print axioms Erdos583DoubleEscapeDevelopment.reverse_root_tracked
+#print axioms Erdos583DoubleEscapeDevelopment.realize_escape_orbit
+#print axioms Erdos583DoubleEscapeDevelopment.successor_data
+#print axioms Erdos583DoubleEscapeDevelopment.two_distinct_escapes
+#print axioms Erdos583DoubleEscapeDevelopment.expose_escape_avoiding
+#print axioms Erdos583DoubleEscapeDevelopment.repair_protected_any

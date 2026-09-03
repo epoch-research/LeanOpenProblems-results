@@ -1,0 +1,9 @@
+import Submission.LocalQuadraticRegularityFactor
+#print axioms Erdos3FixedCenterQuadraticAverage.stable_fixed_approximation
+#print axioms Erdos3FixedCenterQuadraticAverage.shifted_phase_quadratic
+#print axioms Erdos3SampledQuadraticAverage.stable_average_local_factor
+#print axioms Erdos3ClippedSumPerturbation.clippedSum_mean_sq_sub
+#print axioms Erdos3CommonQuadraticWindow.common_window_card_bound
+#print axioms Erdos3SampledClippedFactor.clippedFactor_bounds
+#print axioms Erdos3SampledClippedFactor.clippedFactor_lipschitz
+#print axioms Erdos3LocalQuadraticRegularityFactor.weak_U3_local_factor

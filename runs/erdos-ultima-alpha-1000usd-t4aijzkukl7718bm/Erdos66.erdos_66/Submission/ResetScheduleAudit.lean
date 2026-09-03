@@ -1,0 +1,10 @@
+import Submission.ResetScheduleCounterexampleExplore
+/-! Axiom audit for host logarithmic resets and their schedule obstruction. -/
+#print axioms Erdos66HostLogarithmicReset.exists_host_logarithmic_resets
+#print axioms Erdos66ResetScheduleFootprint.limitSet_change_bound
+#print axioms Erdos66ResetScheduleFootprint.eventually_constant_coordinate
+#print axioms Erdos66OneSidedReset.exists_one_sided_reset
+#print axioms Erdos66ResetAbsorption.limitSet_recovers_host
+#print axioms Erdos66ResetAbsorption.limitSet_host_rep_bound
+#print axioms Erdos66ResetAbsorption.limitSet_not_one
+#print axioms Erdos66ResetScheduleCounterexample.exists_convergent_reset_schedule_with_wrong_limit

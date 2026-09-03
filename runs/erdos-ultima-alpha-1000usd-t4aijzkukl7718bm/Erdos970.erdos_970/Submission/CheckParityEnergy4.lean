@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+#check Finset.sdiff_inter_self_left
+#check Finset.sdiff_inter_self_right
+#check Finset.prod_sdiff
+#check Finset.inter_subset_left
+#check Finset.inter_subset_right
+#check Finset.prod_sdiff_mul_prod_inter
+#check Finset.prod_union_inter
+#check Nat.Coprime.prod_left
+#check Odd.prod
+#check Finset.prod_ne_zero_iff
+#check Finset.sum_powerset_insert
+#check Finset.inter_insert
+#check Finset.insert_inter
+#check Finset.insert_inter_insert
+#check Finset.prod_pow
+#check Finset.prod_mul_distrib

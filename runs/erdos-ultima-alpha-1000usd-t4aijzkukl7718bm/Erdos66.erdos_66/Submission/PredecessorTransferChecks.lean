@@ -1,0 +1,12 @@
+import Submission.LocatedIntervalPredecessorExplore
+#check Nat.findGreatest_of_ne_zero
+#check Nat.findGreatest_eq_iff
+#check Finset.filter_eq_empty_iff
+#check Finset.filter_eq_empty_iff'
+#check Real.log_pow
+#check Real.log_natCast
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_le
+#check Filter.Tendsto.eventually_lt_atTop
+#check Real.sqrt_le_sqrt

@@ -1,0 +1,7 @@
+import Submission.IndependentThreeEvenSharp
+
+/-! Exact axiom audit for guarded restoration and critical neighborhoods. -/
+#print axioms Erdos583IndependentThreeEvenSharpDevelopment.delete_edge_neighbor_card_other
+#print axioms Erdos583IndependentThreeEvenSharpDevelopment.delete_edge_neighbor_card_left
+#print axioms Erdos583IndependentThreeEvenSharpDevelopment.sharp_independent_three_two_neighbors
+#print axioms Erdos583IndependentThreeEvenSharpDevelopment.sharp_three_even_two_neighbors

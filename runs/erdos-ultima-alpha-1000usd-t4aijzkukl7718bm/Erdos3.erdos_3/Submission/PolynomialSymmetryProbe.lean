@@ -1,0 +1,10 @@
+import Submission.SpectralSkewSymmetry
+#check Nat.lt_two_pow_self
+#check Nat.add_one_le_two_pow
+#check geom_sum_mul
+#check mul_geom_sum
+#check AddChar.nsmul_apply
+#check AddChar.pow_apply
+#check AddChar.map_nsmul_eq_pow
+#check Finset.card_image_le
+#check Finset.sum_range_pow

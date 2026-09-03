@@ -1,0 +1,15 @@
+import Submission.LocalQuadraticFlattening
+#check Fintype.exists_ne_map_eq_of_card_lt
+#check Finite.exists_ne_map_eq_of_card_lt
+#check Finset.exists_ne_map_eq_of_card_lt_of_maps_to
+#check Finset.exists_ne_map_eq_of_card_lt
+#check Fintype.card_le_of_injective
+#check Finset.card_univ
+#check AddChar.map_nsmul_eq_pow
+#check AddChar.map_nsmul
+#check AddChar.map_sub_eq_div
+#check Nat.sub_add_cancel
+#check Nat.mul_sub_left_distrib
+#check sub_nsmul
+#check Nat.clog
+#check nsmul_add

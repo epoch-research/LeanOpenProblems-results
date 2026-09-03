@@ -1,0 +1,47 @@
+Balanced-bin exact minima and Jensen bounds: PASS (75 parameter pairs)
+Cross-support / unique-circumcenter / lens inequalities:
+  Pythagorean arc equality: m=5, s=1, d=1, sF=10, T_B=10, T_far=10, lens=10
+  two cross radii separated by 10^(-40): m=6, s=1, d=2, sF=2, T_B=10, T_far=12, lens=16
+  two exterior centers, nonzero lower bound: m=42, s=2, d=20, sF=4, T_B=8, T_far=1356, lens=9886
+  tall rectangle, two exterior centers: m=80, s=2, d=35, sF=20, T_B=40, T_far=23678, lens=74722
+  integer grid, four exterior centers: m=49, s=4, d=28, sF=0, T_B=0, T_far=1036, lens=4280
+  rational random 1: m=14, s=7, d=73, sF=0, T_B=0, T_far=22, lens=80
+  rational random 2: m=14, s=7, d=67, sF=0, T_B=0, T_far=26, lens=79
+  rational random 3: m=14, s=7, d=66, sF=0, T_B=0, T_far=19, lens=89
+  rational random 4: m=14, s=7, d=63, sF=0, T_B=0, T_far=29, lens=82
+  rational random 5: m=14, s=7, d=62, sF=0, T_B=0, T_far=21, lens=69
+  rational random 6: m=14, s=7, d=62, sF=0, T_B=0, T_far=29, lens=91
+  rational random 7: m=14, s=7, d=58, sF=0, T_B=0, T_far=19, lens=72
+  rational random 8: m=14, s=7, d=68, sF=0, T_B=0, T_far=22, lens=77
+  PASS: all comparisons exact, with no distance tolerances
+Proper field-core bound: PASS (Q-core m=169, Q(sqrt(2))-core m=625; exact shifts down to 10^(-40))
+One-corner perturbation identity D(P)=D(G)+L^2-1:
+  L=2: n=4, D(G)=2, D(P)=5 (all pairs)
+  L=3: n=9, D(G)=5, D(P)=13 (all pairs)
+  L=4: n=16, D(G)=9, D(P)=24 (all pairs)
+  L=6: n=36, D(G)=19, D(P)=54 (all pairs)
+  L=9: n=81, D(G)=41, D(P)=121 (all pairs)
+  L=12: n=144, D(G)=70, D(P)=213 (all pairs)
+  L=20: n=400, D(G)=179, D(P)=578 (exact old/new support disjointness)
+  L=50: n=2500, D(G)=992, D(P)=3491 (exact old/new support disjointness)
+  L=100: n=10000, D(G)=3663, D(P)=13662 (exact old/new support disjointness)
+  L=200: n=40000, D(G)=13647, D(P)=53646 (exact old/new support disjointness)
+  PASS
+Growing-grid lens obstruction:
+  N=200, |A|=40401, box sizes=(9, 9, 9), certified lens triples >= 729
+  N=400, |A|=160801, box sizes=(25, 25, 25), certified lens triples >= 15625
+  N=1000, |A|=1002001, box sizes=(121, 121, 121), certified lens triples >= 1771561
+  N=2000, |A|=4004001, box sizes=(441, 441, 441), certified lens triples >= 85766121
+  PASS: fixed positive-volume boxes give Omega(N^6), not O(N^4 log^2 N)
+Finite cubic-bin bound and cubic-moment Euler factors: PASS
+Finite disk-cover inequality with actual exterior centers:
+  L=8: n=289, |P0|=81, tested centers=81, assigned actual-center triples=0, balanced-bin RHS=0
+  L=16: n=1089, |P0|=289, tested centers=289, assigned actual-center triples=0, balanced-bin RHS=0
+  L=24: n=2401, |P0|=625, tested centers=625, assigned actual-center triples=0, balanced-bin RHS=0
+  L=32: n=4225, |P0|=1089, tested centers=1089, assigned actual-center triples=0, balanced-bin RHS=0
+  L=48: n=9409, |P0|=2401, tested centers=2401, assigned actual-center triples=0, balanced-bin RHS=0
+  L=64: n=16641, |P0|=4225, tested centers=81, assigned actual-center triples=40, balanced-bin RHS=0
+  L=128: n=66049, |P0|=16641, tested centers=81, assigned actual-center triples=940, balanced-bin RHS=0
+  PASS: all selected disks admissible; every witness has its actual exterior center
+  The asymptotic cubic-log growth uses the proved moment asymptotic, not these small cases.
+ALL EXACT FINITE CHECKS PASSED

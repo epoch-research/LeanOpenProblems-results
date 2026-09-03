@@ -1,0 +1,8 @@
+import Submission.SingleIntersectionSeparation
+
+/-! Axiom audit for the unique-intersection separation criterion. -/
+#print axioms Erdos583SingleIntersectionSeparationDevelopment.separated_of_distinct_owners
+#print axioms Erdos583SingleIntersectionSeparationDevelopment.replace_pair_separated
+#print axioms Erdos583SingleIntersectionSeparationDevelopment.swap_single_intersection
+#print axioms Erdos583SingleIntersectionSeparationDevelopment.separate_at_single_intersection
+#print axioms Erdos583SingleIntersectionSeparationDevelopment.forced_owner_no_single_intersection

@@ -1,0 +1,12 @@
+import Submission.Capped19Arithmetic
+import Submission.No9Completion
+#check Erdos7AllDigits.exists_cardinality_period_minimal_odd_cover
+#check Erdos7Compression.exists_prime_initial_minimal_odd_cover
+#check Erdos7Digits.arithmetic_irredundant_factorization_sum_bound
+#check Erdos7Digits.factorization_finset_lcm
+#check Erdos7Reduction.arithmetic_irredundant_prime_sum_bound
+#check Erdos7Digits.primeFactors_finset_lcm
+#check Nat.Prime.pow_dvd_iff_le_factorization
+#check Erdos7Reduction.HasOddArithmeticCover
+#check Erdos7No9Certificate.arithmetic_exists_nine
+#print Erdos7Compression.exists_prime_initial_minimal_odd_cover

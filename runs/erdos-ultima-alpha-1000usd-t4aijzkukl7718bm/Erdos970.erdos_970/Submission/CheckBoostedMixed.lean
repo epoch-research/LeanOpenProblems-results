@@ -1,0 +1,13 @@
+import Submission.SieveCertificateTransfer
+#check mul_max_of_nonneg
+#check mul_max_of_nonneg_left
+#check max_mul_of_nonneg
+#check Finset.disjoint_empty_left
+#check Finset.prod_ite_mem
+#check Bool.or_eq_false_iff
+#check Finset.disjoint_image
+#check Finset.disjoint_image_iff
+#check Finset.sum_boole
+#check Finset.prod_image
+#check Finset.card_image_of_injective
+#check mul_le_mul_of_nonneg_left

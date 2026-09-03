@@ -1,0 +1,12 @@
+import Submission.TipParity
+/-! Axiom audit for tip-path parity bounds. -/
+#print axioms Erdos583TipParityDevelopment.shortest_path_neighbor_not_mem
+#print axioms Erdos583TipParityDevelopment.support_evenCount_eq
+#print axioms Erdos583TipParityDevelopment.delete_path_degree_parity
+#print axioms Erdos583TipParityDevelopment.delete_path_evenCount_le_of_two_isolated
+#print axioms Erdos583TipParityDevelopment.degree_two_internal_isolated
+#print axioms Erdos583TipParityDevelopment.exists_path_internal_two
+#print axioms Erdos583TipParityDevelopment.support_card_bound_two_missing
+#print axioms Erdos583TipParityDevelopment.failure_path_isolating_two_even
+#print axioms Erdos583TipParityDevelopment.two_degree_two_implies_six_even
+#print axioms Erdos583TipParityDevelopment.degree_two_at_most_one_of_five_even

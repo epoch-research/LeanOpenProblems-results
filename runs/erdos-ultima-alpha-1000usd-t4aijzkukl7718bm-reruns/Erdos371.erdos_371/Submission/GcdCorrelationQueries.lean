@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.gcd_dvd_left
+#check Nat.gcd_dvd_right
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd
+#check Nat.dvd_sub'
+#check Nat.dvd_sub
+#check Nat.Coprime.dvd_of_dvd_mul_right
+#check Nat.Coprime.dvd_of_dvd_mul_left
+#check Nat.pos_of_dvd_of_pos
+#check Nat.mul_div_cancel'
+#check Nat.gcd_pos_of_pos_left
+#check Nat.gcd_mul_left
+#check Nat.div_mul_cancel
+#check Finset.sum_le_sum

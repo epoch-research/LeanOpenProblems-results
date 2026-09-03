@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+open Matrix
+#check SpecialLinearGroup
+#check Matrix.SpecialLinearGroup.ext
+#check Matrix.SpecialLinearGroup.coe_mul
+#check Matrix.SpecialLinearGroup.coe_one
+#check Matrix.SpecialLinearGroup.coe_inv
+#check Matrix.det_fin_three
+#check Matrix.mul_fin_three
+#check Commute.inv_left
+#check inv_eq_of_mul_eq_one_right
+#check inv_eq_of_mul_eq_one_left
+#check Matrix.SpecialLinearGroup.mk_coe

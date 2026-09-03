@@ -1,0 +1,12 @@
+import Submission.WeightedPrimeCrossCancellation
+#check Finset.sum_subset
+#check Finset.sum_bij
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.sum_filter_add_sum_filter_not'
+#check Finset.sum_fiberwise
+#check Finset.sum_nbij
+#check Finset.sum_filter
+#check Nat.Prime.not_dvd_one
+#check Nat.dvd_add_iff_left
+#check Nat.dvd_sub'
+#check Finset.sum_eq_sum_iff_of_le

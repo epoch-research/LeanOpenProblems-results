@@ -1,0 +1,8 @@
+import Submission.BeattyRowScales
+#print axioms Erdos972PrefixPrimeRotation.simultaneous_prefix_bound
+#print axioms Erdos972DiscreteFejer.kernelWeight_grid_sum
+#print axioms Erdos972WeightedIntervalDiscrepancy.weighted_interval_discrepancy
+#print axioms Erdos972WeightedPrimeRotation.mangoldt_arc_discrepancy
+#print axioms Erdos972RootScaleArc.exists_log_weighted_uniform_arc_scale
+#print axioms Erdos972BeattyRows.mangoldtRow_eq_arc
+#print axioms Erdos972BeattyRowScales.exists_common_beatty_row_scale

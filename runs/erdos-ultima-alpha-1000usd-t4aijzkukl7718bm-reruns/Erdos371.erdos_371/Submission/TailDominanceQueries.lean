@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check List.Forall₂.imp
+#check List.Forall₂.imp_of_mem
+#check List.Forall₂.prod_le_prod'
+#check List.Forall₂.flip
+#check List.prod_pos
+#check List.prod_pos_iff
+#check List.forall_mem_of_forall₂_left
+#check Finset.sum_Ico_sub
+#check Nat.div_le_of_le_mul
+#check Nat.div_le_of_le_mul'
+#check Nat.mul_le_mul_left

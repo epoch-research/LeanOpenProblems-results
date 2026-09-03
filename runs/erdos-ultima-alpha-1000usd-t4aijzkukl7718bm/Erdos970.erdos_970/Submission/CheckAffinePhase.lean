@@ -1,0 +1,16 @@
+import Submission.GapVarianceSubadditive
+import Submission.IntervalRescaling
+#check Fintype.bijective_iff_injective_and_card
+#check Finite.injective_iff_surjective
+#check Finite.surjective_of_injective
+#check Equiv.ofBijective
+#check Equiv.piCongrRight
+#check Equiv.sum_comp
+#check Fintype.sum_equiv
+#check Nat.ModEq.cancel_left_of_coprime
+#check Nat.ModEq.add_left_cancel'
+#check Finset.sum_image
+#check Finset.sum_bij
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_of_maps_to
+#check Nat.mod_add_div

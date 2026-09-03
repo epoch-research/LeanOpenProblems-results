@@ -1,0 +1,12 @@
+import Submission.SharpSmoothCorrelation
+
+/-! Axiom audit of the strengthened smoothing comparison. This is not a
+proof of the original prime-pair conjecture. -/
+#print axioms Erdos972SharpSmoothMangoldt.exp_slope_error
+#print axioms Erdos972SharpSmoothMangoldt.expDivisorSum_le_two_factors
+#print axioms Erdos972SharpSmoothMangoldt.smoothMangoldt_error_sharp
+#print axioms Erdos972SharpSmoothCorrelation.sum_output_mangoldt_le
+#print axioms Erdos972SharpSmoothCorrelation.smoothCorrelation_error_sharp
+#print axioms Erdos972SharpSmoothCorrelation.variable_sharp_error_tendsto
+#print axioms Erdos972SharpSmoothCorrelation.cubeParameter_correlation_error_tendsto
+#print axioms Erdos972SharpSmoothCorrelation.sharp_regime_damping_tendsto_one

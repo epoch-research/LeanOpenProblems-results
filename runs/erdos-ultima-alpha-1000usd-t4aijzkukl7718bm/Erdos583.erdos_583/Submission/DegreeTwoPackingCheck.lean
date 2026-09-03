@@ -1,0 +1,14 @@
+import Submission.Work
+#check Finset.card_biUnion
+#check Finset.card_le_card
+#check Finset.disjoint_left
+#check Set.toFinset_card
+#check Set.ncard_eq_toFinset_card
+#check Set.toFinset_insert
+#check Set.mem_toFinset
+#check Finset.sum_const_nat
+#check Finset.sum_const
+#check Set.PairwiseDisjoint
+#check Finset.card_le_univ
+#check Finset.card_le_card_of_injOn
+#check SimpleGraph.neighborSet

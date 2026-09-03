@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+import Submission.UpToExpandingRegularization
+#check SimpleGraph.Copy
+#check SimpleGraph.IsContained
+#check Erdos713Theta3.contains_c6
+#check Erdos713Theta3.contains_C6
+#check SimpleGraph.Copy.ofInjective
+#check Equiv.sumCongr
+#check Sum.map_injective
+#check Finset.sum_bij
+#check Finset.card_filter
+#check SimpleGraph.Iso.card_edgeFinset_eq

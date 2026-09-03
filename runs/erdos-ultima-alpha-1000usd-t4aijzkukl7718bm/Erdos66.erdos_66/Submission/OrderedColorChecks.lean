@@ -1,0 +1,17 @@
+import Submission.FixedPatternColorEnergyExplore
+import Submission.PairWeightedRootTransferExplore
+#check Equiv.prodComm
+#check Equiv.sum_comp
+#check Fintype.sum_prod_type
+#check Finset.sum_comm
+#check Finset.sum_eq_single
+#check Finset.sum_congr
+#check Fin.sum_univ_eq_sum_range
+#check Fin.sum_univ_eq_sum_range'
+#check Finset.sum_fin_eq_sum_range
+#check sq_le_two_mul_sq_add_sq
+#check add_sq_le_two_mul_sq_add_sq
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Finset.sum_le_sum
+#check Finset.sum_filter
+#check Finset.sum_ite_irrel

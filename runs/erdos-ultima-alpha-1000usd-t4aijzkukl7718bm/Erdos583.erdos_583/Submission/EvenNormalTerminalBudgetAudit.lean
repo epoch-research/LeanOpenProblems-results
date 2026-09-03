@@ -1,0 +1,8 @@
+import Submission.EvenNormalTerminalBudget
+
+/-! Axiom audit for the even-order normal terminal bound. -/
+#print axioms Erdos583EvenNormalTerminalBudgetDevelopment.four_terminals_at_cycle_vertex
+#print axioms Erdos583EvenNormalTerminalBudgetDevelopment.normal_complement_at_most_one
+#print axioms Erdos583EvenNormalTerminalBudgetDevelopment.four_terminals_cover_missing
+#print axioms Erdos583EvenNormalTerminalBudgetDevelopment.terminal_intersections_sum_eq
+#print axioms Erdos583EvenNormalTerminalBudgetDevelopment.even_normal_components_le_two

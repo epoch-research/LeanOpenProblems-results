@@ -1,0 +1,14 @@
+import Submission.ArcTwoCover
+import Submission.InfiniteTriangleRamsey
+#check Set.ne_iff
+#check Set.ext_iff
+#check Function.Embedding.nat
+#check Encodable.encode_injective
+#check Fin.equivBool
+#check Equiv.boolEquivFin
+#check Bool.finTwoEquiv
+#check Nat.succ_injective
+#check SimpleGraph.Hom.injective_of_top_hom
+#check Erdos595ArcTwoCover.arc_two_cover
+#check Erdos595Work.countable_union_of_finite_union
+#check Function.cantor_injective

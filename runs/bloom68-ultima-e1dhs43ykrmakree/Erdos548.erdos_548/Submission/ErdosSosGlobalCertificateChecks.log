@@ -1,0 +1,26 @@
+{
+  "status": "ALL CHECKS PASSED",
+  "counts": {
+    "critical_subset_type_bounds": 30789,
+    "direct_critical_subset_audits": 43512,
+    "blocked_leaf_direct_subset_audits": 43512,
+    "blocked_leaf_explicit_decompositions": 38,
+    "blocked_leaf_all_pin_flow_checks": 228,
+    "explicit_obstruction_decompositions": 406,
+    "disconnected_intersection_families": 26,
+    "independent_obstruction_flows": 55,
+    "critical_atlas_hosts": 136,
+    "atlas_fractional_flows": 4297,
+    "odd_flows": 1747,
+    "spanning_blue_reachable": 2329,
+    "nonspanning_blue_reachable": 1968,
+    "even_flows": 2550,
+    "genuinely_fractional_flows": 2550,
+    "additional_rational_budget_flows": 37,
+    "nonhalf_integral_outputs": 37,
+    "split_subset_type_bounds": 47345,
+    "even_large_split_flows": 85
+  },
+  "seconds": 78.046,
+  "spec_sha256": "674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103"
+}

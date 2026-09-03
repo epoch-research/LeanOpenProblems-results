@@ -1,0 +1,15 @@
+Gaussian gcd lemma: 2300 exhaustive small triples checked
+Gcd, residue, and support-discrepancy identities: 100 further sets checked; huge-coordinate gcd checks included
+Rational rotation identity: 14 exact checks passed
+Clipping construction X=256: n=96, T=4, D=97, all finite identities passed
+Clipping construction X=5184: n=2000, T=6, D=1487, all finite identities passed
+Clipping construction X=46656: n=17872, T=7, D=11661, all finite identities passed
+Clipping construction X=131072: n=50752, T=8, D=31064, all finite identities passed
+Colored K_n realization: n=96, D=97, all counts and pinned capacities checked
+Primitive extension n=97: gcd=1, energy/mass formulas, all 73 ideal representatives with norm<n,
+  and full periodizations (including modulo K=n!) agree with one actual endpoint residue set
+PSD obstruction j=1, X=5184, n=2000: quadratic form / n = -25 (exact)
+  Primitive lift: exact quadratic form = -49488
+PSD obstruction j=2, X=46656, n=17872: quadratic form / n = -25 (exact)
+  Primitive lift: exact quadratic form = -446288
+All verification checks passed. No actual point-set counterexample is claimed.

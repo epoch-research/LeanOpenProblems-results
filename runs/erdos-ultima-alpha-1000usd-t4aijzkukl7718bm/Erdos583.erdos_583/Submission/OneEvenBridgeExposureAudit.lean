@@ -1,0 +1,7 @@
+import Submission.OneEvenBridgeExposure
+
+/-! Axiom audit for sharp one-even bridge exposure. -/
+#print axioms Erdos583OneEvenBridgeExposureDevelopment.induced_neighbor_card_of_subset
+#print axioms Erdos583OneEvenBridgeExposureDevelopment.expose_cut_away_from_even
+#print axioms Erdos583OneEvenBridgeExposureDevelopment.one_even_card_eq_of_bound
+#print axioms Erdos583OneEvenBridgeExposureDevelopment.one_even_bridge_exposure

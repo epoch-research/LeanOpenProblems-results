@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Nat.mem_primesBelow
+#check Real.rpow_sub
+#check Real.rpow_one
+#check Real.rpow_neg
+#check Real.summable_nat_rpow
+#check Real.sqrt_pos
+#check Real.log_sqrt
+#check Summable.mul_left
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Summable.sum_le_tsum
+#check Real.log_le_sub_one_of_pos
+#check abs_le

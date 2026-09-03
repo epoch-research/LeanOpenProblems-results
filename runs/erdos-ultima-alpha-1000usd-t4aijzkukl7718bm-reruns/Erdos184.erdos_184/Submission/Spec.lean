@@ -1,0 +1,48 @@
+import FormalConjecturesUtil
+
+/-!
+# Erdős Problem 184
+
+*References:*
+- [erdosproblems.com/184](https://www.erdosproblems.com/184)
+- [BM22] Bucić, M. and Montgomery, R., Towards the Erdős-Gallai Cycle Decomposition Conjecture.
+  arXiv:2211.07689 (2022).
+- [CFS14] Conlon, David and Fox, Jacob and Sudakov, Benny, Cycle packing. Random Structures
+  Algorithms (2014), 608-626.
+- [EGP66] Erdős, Paul and Goodman, A. W. and Pósa, Lajos, The representation of a graph by set
+  intersections. Canadian J. Math. (1966), 106-112.
+- [Er71] Erdős, P., Some unsolved problems in graph theory and combinatorial analysis. Combinatorial
+  Mathematics and its Applications (Proc. Conf., Oxford, 1969) (1971), 97-109.
+-/
+
+open Filter SimpleGraph
+
+namespace Erdos184
+
+/--
+A graph $H$ is a cycle or an edge if it is connected and 2-regular, or if it has exactly one edge.
+-/
+def IsCycleOrEdge {U : Type*} [Fintype U] (H : SimpleGraph U) : Prop :=
+  open scoped Classical in
+  (H.Connected ∧ H.IsRegularOfDegree 2) ∨ H.edgeFinset.card = 1
+
+/-- D is a decomposition of G into subgraphs. -/
+def IsDecomposition {V : Type*} (G : SimpleGraph V) (D : Finset G.Subgraph) : Prop :=
+  Set.PairwiseDisjoint (D : Set G.Subgraph) (fun H ↦ H.edgeSet) ∧
+  (⋃ H ∈ D, H.edgeSet) = G.edgeSet
+
+open scoped Classical in
+/--
+Any graph on $n$ vertices can be decomposed into $O(n)$ many edge-disjoint cycles and edges.
+-/
+theorem erdos_184 :
+    ∃ f : ℕ → ℝ,
+      (f =O[atTop] fun n : ℕ ↦ (n : ℝ)) ∧
+      ∀ {V : Type*} [Fintype V] [DecidableEq V] (G : SimpleGraph V),
+      ∃ (D : Finset G.Subgraph),
+        (∀ H ∈ D, IsCycleOrEdge H.coe) ∧
+        IsDecomposition G D ∧
+        (D.card : ℝ) ≤ f (Fintype.card V) := by
+  sorry
+
+end Erdos184

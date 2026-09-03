@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+import Submission.UpToEightCore
+#check Erdos713RateRegularization.exists_almost_regular_below
+#check Erdos713Rate.rate_of_C4_upper
+#check Real.rpow_mul
+#check Real.rpow_natCast
+#check Real.rpow_two
+#check Real.sqrt_sq_eq_abs
+#check pow_le_pow_left₀
+#check SimpleGraph.degree_le_maxDegree
+#check Asymptotics.isBigO_iff
+#check Filter.eventually_atTop
+#check Real.rpow_sub

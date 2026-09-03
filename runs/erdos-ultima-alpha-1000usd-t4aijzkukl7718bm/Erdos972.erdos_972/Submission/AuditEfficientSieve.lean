@@ -1,0 +1,13 @@
+import Submission.EfficientPrimeAlmostPrime
+
+/-! Axiom audit for the smaller-factor almost-prime theorem. -/
+#print axioms Erdos972SharpReciprocalPrimeCost.mangoldt_floor_sum
+#print axioms Erdos972SharpReciprocalPrimeCost.reciprocal_mangoldt_log_upper
+#print axioms Erdos972SharpReciprocalPrimeCost.eventually_primeCost_upper
+#print axioms Erdos972SharpReciprocalPrimeCost.eventually_lowerMain_sixteen
+#print axioms Erdos972EfficientSieveScale.fastRoot_eligible
+#print axioms Erdos972EfficientSieveScale.fast_floor_output_power_bound
+#print axioms Erdos972EfficientPrimeAlmostPrime.exists_prime_rough_log_scale
+#print axioms Erdos972EfficientPrimeAlmostPrime.frequently_many_prime_almostPrime_pairs
+#print axioms Erdos972EfficientPrimeAlmostPrime.exists_prime_almostPrime_beyond
+#print axioms Erdos972EfficientPrimeAlmostPrime.infinite_prime_almostPrime_inputs

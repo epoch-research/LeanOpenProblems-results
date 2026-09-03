@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check isLittleO_log_rpow_atTop
+#check Real.isLittleO_log_id_atTop
+#check Real.log_sqrt
+#check Real.sqrt_mul_self
+#check Nat.pow_pos
+#check Nat.not_dvd_sub_one
+#check Nat.dvd_add_iff_left
+#check Nat.prime_maxPrimeFac_of_one_lt
+#check Real.le_sqrt
+#check Nat.primeFactors

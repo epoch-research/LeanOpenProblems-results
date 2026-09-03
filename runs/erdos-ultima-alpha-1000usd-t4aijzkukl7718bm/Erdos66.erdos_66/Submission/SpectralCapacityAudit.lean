@@ -1,0 +1,16 @@
+import Submission.SpectralCapacityExplore
+
+/-! Axiom audit of the scalar multiscale energy and conditional capacity tests. -/
+
+#print axioms Erdos66DyadicPrefixEnergy.running
+#print axioms Erdos66DyadicPrefixEnergy.running_step_sq
+#print axioms Erdos66DyadicPrefixEnergy.finite_energy_with_tail
+#print axioms Erdos66DyadicPrefixEnergy.finite_energy
+#print axioms Erdos66DyadicPrefixEnergy.summable_running_sq
+#print axioms Erdos66DyadicPrefixEnergy.running_eq_scaled_prefix
+#print axioms Erdos66DyadicPrefixEnergy.summable_scaled_prefix_sq
+#print axioms Erdos66DyadicPrefixEnergy.no_eventual_harmonic_floor
+#print axioms Erdos66SpectralCapacity.normalized_prefix_floor
+#print axioms Erdos66SpectralCapacity.finite_scaled_prefix_energy
+#print axioms Erdos66SpectralCapacity.finite_critical_capacity_budget
+#print axioms Erdos66SpectralCapacity.critical_capacity_unbounded

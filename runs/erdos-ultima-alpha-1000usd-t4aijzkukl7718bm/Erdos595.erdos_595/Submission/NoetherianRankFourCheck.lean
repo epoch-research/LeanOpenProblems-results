@@ -1,0 +1,7 @@
+import Submission.NoetherianTriangleExtension
+#check LinearMap.BilinForm.linearIndependent_of_iIsOrtho
+#check LinearIndependent.fintype_card_le_finrank
+#check LinearMap.BilinForm.IsOrtho
+#check LinearMap.BilinForm.iIsOrtho
+#check Submodule.fg_span_iff_fg_span_finset_subset
+#check SimpleGraph.topEmbeddingOfNotCliqueFree

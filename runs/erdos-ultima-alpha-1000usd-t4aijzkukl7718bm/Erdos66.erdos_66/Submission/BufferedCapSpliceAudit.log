@@ -1,0 +1,6 @@
+'Erdos66BufferedCapSplice.exists_capped_splice' depends on axioms: [propext, Classical.choice, Quot.sound]
+Submission/BufferedCapSpliceAudit.lean:2:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Erdos66BufferedCapSplice.normalized_limit_of_agree_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BufferedCapSplice.sumRep_abs_sub_le_of_agree_above' depends on axioms: [propext, Classical.choice, Quot.sound]

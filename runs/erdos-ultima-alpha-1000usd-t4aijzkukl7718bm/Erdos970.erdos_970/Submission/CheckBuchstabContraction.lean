@@ -1,0 +1,21 @@
+import FormalConjecturesUtil
+open Real MeasureTheory Set
+#check integral_Ioi_exp_neg
+#check integral_exp_mul_Ioi
+#check integral_Ioi_exp_mul
+#check integral_exp_neg_Ioi
+#check integrableOn_Ioi_exp_mul
+#check integrableOn_exp_mul_Ioi
+#check integral_Ioi_eq_integral_Ici
+#check integral_Ioi_add_Ioi
+#check intervalIntegral.integral_add_adjacent_intervals
+#check integral_Ioi_sub_Ioi
+#check integral_Ioi_mul_deriv_eq_deriv_mul
+#check integral_Ioi_deriv_eq_sub
+#check MeasureTheory.Integrable.mono'
+#check MeasureTheory.IntegrableOn.mono'
+#check Real.exp_one_lt_d9
+#check Real.exp_one_lt_three
+#check intervalIntegral.integral_exp
+#check integral_Ioi_deriv_eq_sub'
+#check integral_Ioi_mul_exp_neg

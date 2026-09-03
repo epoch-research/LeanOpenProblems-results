@@ -1,0 +1,13 @@
+import Submission.TranslatedRadixRowMassExplore
+
+/-! Axiom audit for translated-row cardinality and its iteration obstruction. -/
+#print axioms Erdos66TranslatedRadixRowMass.radixRow
+#print axioms Erdos66TranslatedRadixRowMass.mem_radixRow
+#print axioms Erdos66TranslatedRadixRowMass.periodic_eq_block
+#print axioms Erdos66TranslatedRadixRowMass.patched_zero_row
+#print axioms Erdos66TranslatedRadixRowMass.patched_nonzero_row
+#print axioms Erdos66TranslatedRadixRowMass.patched_nonzero_row_card
+#print axioms Erdos66TranslatedRadixRowMass.patched_two_block_count
+#print axioms Erdos66TranslatedRadixRowMass.witness_eventually_strict_two_block_mass
+#print axioms Erdos66TranslatedRadixRowMass.agrees_two_blocks_count
+#print axioms Erdos66TranslatedRadixRowMass.no_log_limit_of_frequent_row_mass_dichotomy

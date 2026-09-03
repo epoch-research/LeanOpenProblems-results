@@ -1,0 +1,21 @@
+import Submission.ReflectionCubic
+import Submission.CentralReflection
+import Submission.CentralReflectionPairing
+import Submission.CentralReflectionGeneral
+import Submission.CentralMetricInverse
+import Submission.CentralOutputField
+import Submission.CentralOutputReflection
+
+/-! Axiom audits of the construction-specific central reflection results. -/
+
+#print axioms Erdos213.ReflectionCubic.rational_no_root
+#print axioms Erdos213.ReflectionCubic.no_quadratic_root
+#print axioms Erdos213.CentralReflection.no_reflection_case
+#print axioms Erdos213.CentralReflection.matching_complete
+#print axioms Erdos213.CentralReflection.no_reflection_permutation
+#print axioms Erdos213.CentralReflection.arbitrary_source_paired_singleton_fixed
+#print axioms Erdos213.CentralReflection.arbitrary_source_nontrilinear_no_paired_six
+#print axioms Erdos213.CentralMetricInverse.scaled_output_distances_iff
+#print axioms Erdos213.CentralOutputField.quadratic_of_scaled_output_distances
+#print axioms Erdos213.CentralOutputReflection.paired_singleton_fixed
+#print axioms Erdos213.CentralOutputReflection.nontrilinear_no_paired_six

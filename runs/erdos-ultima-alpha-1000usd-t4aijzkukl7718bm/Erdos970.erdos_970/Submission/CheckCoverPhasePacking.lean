@@ -1,0 +1,14 @@
+import Submission.OptimalCoverCore
+#check Nat.modEq_and_modEq_iff_modEq_mul
+#check Nat.ModEq.and
+#check Nat.ModEq.mul
+#check Nat.ModEq.eq_of_lt_of_lt
+#check Nat.Prime.coprime_iff_ne
+#check Finset.offDiag_card
+#check Finset.card_offDiag
+#check Finset.mem_offDiag
+#check Finset.card_le_card_of_injective
+#check Nat.modEq_iff_dvd
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd
+#check Nat.modEq_and_modEq_iff_modEq_lcm

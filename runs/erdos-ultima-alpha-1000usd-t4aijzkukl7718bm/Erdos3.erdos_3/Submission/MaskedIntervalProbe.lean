@@ -1,0 +1,16 @@
+import Submission.MaskedUniformityCounting
+#check Complex.ofReal_prod
+#check Complex.ofReal_expect
+#check Complex.ofReal_natCast
+#check Nat.div_mul_le_self
+#check Nat.exists_prime_lt_and_le_two_mul
+#check Finset.expect_mul
+#check Finset.mul_expect
+#check ZMod.val_cast_of_lt
+#check ZMod.val_natCast_of_lt
+#check Finset.card_image_of_injOn
+#check Finset.prod_nonneg
+#check Finset.prod_le_prod
+#check Finset.expect_nonneg
+#check Fintype.expect_const
+#check Finset.sum_image

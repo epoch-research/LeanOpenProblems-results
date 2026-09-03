@@ -1,0 +1,15 @@
+import Submission.GreedyCoverOrder
+#check List.toFinset_card_of_nodup
+#check List.card_toFinset
+#check List.toFinset_card_le
+#check List.toFinset_card_of_nodup
+#check List.mem_permutations
+#check List.Perm.toFinset_eq
+#check List.perm_iff_count
+#check List.perm_ext_iff_of_nodup
+#check List.Perm.of_nodup_nodup_toFinset_eq
+#check List.perm_of_nodup_nodup_toFinset_eq
+#check List.perm_iff_toFinset_eq
+#check List.Perm.of_nodup
+#check Finset.sort_nodup
+#check Erdos970.not_isJacobsthalBound_iff_cover

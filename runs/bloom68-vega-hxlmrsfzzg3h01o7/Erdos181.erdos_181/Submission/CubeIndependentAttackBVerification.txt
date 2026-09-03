@@ -1,0 +1,15 @@
+PASS cross-edge Binomial(q,1/4) law: 4 exhaustive sizes
+PASS planted-edge perturbation: 4096 exhaustive pairs of patterns
+PASS cube induced-edge inequality: all 65814 subsets for d=0,...,4
+PASS exact matching-factorization/Hölder overlap inequality: 1072 cases
+PASS endpoint-lift counting bijection: 661 bipartite hosts
+PASS planted injective-cube expectation bound: 4 exact averages
+PASS full-square kernel, conflict correction, and norm bound: 530 matrices
+PASS random-matrix fourth moment: exact averages for t=1,2,3
+PASS finite entropy-gap constants: 3844 dimensions, worst correction=0.164095424<1/4
+PASS all-matching density constants: worst delta=2.32830643762e-10<1/12
+PASS all five probability tails at k=256 are individually <2^-64
+PASS auxiliary greedy lower bound against exact complete-biclique counts
+PASS conditional sufficiency arithmetic for the explicitly UNPROVED estimate: 1536 cases
+PASS Spec.lean unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+All finite audits passed. The densegraph cube theorem and estimate (26) remain unproved.

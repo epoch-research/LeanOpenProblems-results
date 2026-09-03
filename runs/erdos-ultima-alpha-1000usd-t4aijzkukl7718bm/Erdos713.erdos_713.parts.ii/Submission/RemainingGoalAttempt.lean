@@ -1,0 +1,18633 @@
+import FormalConjecturesUtil
+
+/-!
+# Erdős Problem 713
+
+*References:*
+- [erdosproblems.com/713](https://www.erdosproblems.com/713)
+-/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713Forest
+
+open scoped Classical in
+theorem tree_copy_of_degree_bound {V W : Type*} [Fintype V] [Nonempty V]
+    [Fintype W] (G : SimpleGraph V) [DecidableRel G.Adj] (T : SimpleGraph W) (hT : T.IsTree)
+    (hdeg : ∀ v, Fintype.card W ≤ G.degree v) : Nonempty (Copy T G) := by
+  classical
+  revert hdeg
+  revert T
+  refine Fintype.induction_subsingleton_or_nontrivial
+    (P := fun W _ => ∀ T : SimpleGraph W, T.IsTree →
+      (∀ v, Fintype.card W ≤ G.degree v) → Nonempty (Copy T G)) W ?_ ?_
+  · intro W _ _ T _ _
+    let v : V := Classical.choice inferInstance
+    refine ⟨⟨⟨fun _ => v, ?_⟩, Function.injective_of_subsingleton _⟩⟩
+    intro x y hxy
+    exact (hxy.ne (Subsingleton.elim _ _)).elim
+  · intro W _ _ ih T hT hdeg
+    obtain ⟨x, hx⟩ := hT.exists_vert_degree_one_of_nontrivial
+    obtain ⟨y, hxy, hy⟩ := degree_eq_one_iff_existsUnique_adj.mp hx
+    have hsmall : Fintype.card ↥({x}ᶜ : Set W) < Fintype.card W :=
+      Fintype.card_subtype_lt (x := x) (by simp)
+    have hT' : (T.induce {x}ᶜ).IsTree :=
+      ⟨hT.isConnected.induce_compl_singleton_of_degree_eq_one hx, hT.IsAcyclic.induce _⟩
+    obtain ⟨f⟩ := ih ↥({x}ᶜ : Set W) hsmall (T.induce {x}ᶜ) hT'
+      (fun v => hsmall.le.trans (hdeg v))
+    let y' : ↥({x}ᶜ : Set W) := ⟨y, by simpa using hxy.ne.symm⟩
+    let S : Finset V := Finset.univ.image f
+    have hS : S.card < (G.neighborFinset (f y')).card := by
+      calc
+        S.card ≤ Fintype.card ↥({x}ᶜ : Set W) := by
+          simpa only [Finset.card_univ] using (Finset.card_image_le (s := Finset.univ) (f := f))
+        _ < Fintype.card W := hsmall
+        _ ≤ (G.neighborFinset (f y')).card := hdeg _
+    obtain ⟨z, hz, hzS⟩ := Finset.exists_mem_notMem_of_card_lt_card hS
+    have hzadj : G.Adj (f y') z := by simpa using hz
+    have hzf : ∀ w, z ≠ f w := by
+      intro w heq
+      apply hzS
+      exact heq ▸ Finset.mem_image.mpr ⟨w, Finset.mem_univ _, rfl⟩
+    let g : W → V := fun w => if h : w = x then z else f ⟨w, by simpa using h⟩
+    have hg : ∀ w (hw : w ≠ x), g w = f ⟨w, by simpa using hw⟩ := by
+      intro w hw
+      simp [g, hw]
+    have hgx : g x = z := by simp [g]
+    refine ⟨⟨⟨g, ?_⟩, ?_⟩⟩
+    · intro u v huv
+      by_cases hu : u = x
+      · subst u
+        have hv : v = y := hy v huv
+        subst v
+        simpa [hgx, hg y hxy.ne.symm, y'] using hzadj.symm
+      · by_cases hv : v = x
+        · subst v
+          have hu' : u = y := hy u huv.symm
+          subst u
+          simpa [hgx, hg y hxy.ne.symm, y'] using hzadj
+        · rw [hg u hu, hg v hv]
+          exact f.toHom.map_rel' huv
+    · intro u v huv
+      change g u = g v at huv
+      by_cases hu : u = x
+      · by_cases hv : v = x
+        · exact hu.trans hv.symm
+        · rw [hu, hgx, hg v hv] at huv
+          exact (hzf _ huv).elim
+      · by_cases hv : v = x
+        · rw [hv, hgx, hg u hu] at huv
+          exact (hzf _ huv.symm).elim
+        · rw [hg u hu, hg v hv] at huv
+          exact congrArg Subtype.val (f.injective huv)
+
+open scoped Classical in
+theorem free_tree_edge_bound {W V : Type*} [Fintype W] [Fintype V]
+    (T : SimpleGraph W) (hT : T.IsTree) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hfree : T.Free G) :
+    G.edgeFinset.card ≤ Fintype.card W * Fintype.card V := by
+  classical
+  revert G
+  refine Fintype.induction_subsingleton_or_nontrivial
+    (P := fun V _ => ∀ G : SimpleGraph V, ∀ _ : DecidableRel G.Adj, T.Free G →
+      G.edgeFinset.card ≤ Fintype.card W * Fintype.card V) V ?_ ?_
+  · intro V _ _ G _ _
+    have hG : G = ⊥ := Subsingleton.elim _ _
+    rw [edgeFinset_eq_empty.mpr hG]
+    exact Nat.zero_le _
+  · intro V _ _ ih G _ hfree
+    by_cases hdeg : ∀ v, Fintype.card W ≤ G.degree v
+    · exact (hfree (tree_copy_of_degree_bound G T hT hdeg)).elim
+    · push_neg at hdeg
+      obtain ⟨v, hv⟩ := hdeg
+      have hsmall : Fintype.card ↥({v}ᶜ : Set V) < Fintype.card V :=
+        Fintype.card_subtype_lt (x := v) (by simp)
+      have hfree' : T.Free (G.induce {v}ᶜ) :=
+        fun h => hfree (h.trans ⟨Copy.induce G {v}ᶜ⟩)
+      have hbound := ih ↥({v}ᶜ : Set V) hsmall (G.induce {v}ᶜ) inferInstance hfree'
+      rw [card_edgeFinset_induce_compl_singleton,
+        card_edgeFinset_deleteIncidenceSet, Fintype.card_compl_set] at hbound
+      simp only [Fintype.card_unique] at hbound
+      calc
+        G.edgeFinset.card = (G.edgeFinset.card - G.degree v) + G.degree v :=
+          (Nat.sub_add_cancel (G.degree_le_card_edgeFinset v)).symm
+        _ ≤ Fintype.card W * (Fintype.card V - 1) + Fintype.card W :=
+          Nat.add_le_add hbound hv.le
+        _ = Fintype.card W * Fintype.card V := by
+          rw [← Nat.mul_succ, Nat.succ_eq_add_one, Nat.sub_add_cancel Fintype.card_pos]
+
+open scoped Classical in
+theorem extremal_tree_bound {W : Type*} [Fintype W] (T : SimpleGraph W)
+    (hT : T.IsTree) (n : ℕ) : extremalNumber n T ≤ Fintype.card W * n := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+  intro G _ hfree
+  exact free_tree_edge_bound T hT G hfree
+
+open scoped Classical in
+theorem extremal_forest_bound {W : Type*} [Fintype W] [Nonempty W]
+    (F : SimpleGraph W) (hF : F.IsAcyclic) (n : ℕ) :
+    extremalNumber n F ≤ Fintype.card W * n := by
+  classical
+  obtain ⟨T, hFT, hT⟩ := exists_maximal_isAcyclic_of_le_isAcyclic
+    (G := (⊤ : SimpleGraph W)) le_top hF
+  have ht : T.IsTree := connected_top.maximal_le_isAcyclic_iff_isTree le_top |>.mp hT
+  calc
+    extremalNumber n F ≤ extremalNumber n T :=
+      (show F ⊑ T from ⟨Copy.ofLE F T hFT⟩).extremalNumber_le
+    _ ≤ Fintype.card W * n := extremal_tree_bound T ht n
+
+theorem exponent_le_of_isBigO {a b : ℝ}
+    (h : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ b)) : a ≤ b := by
+  by_contra hab
+  have hba : b < a := lt_of_not_ge hab
+  obtain ⟨C, _, hC⟩ := h.exists_pos
+  have hdiv : ∀ᶠ n : ℕ in atTop, (n : ℝ) ^ (a - b) ≤ C := by
+    filter_upwards [hC.bound, eventually_gt_atTop (0 : ℕ)] with n hn hnp
+    have hnpos : (0 : ℝ) < n := Nat.cast_pos.mpr hnp
+    rw [Real.rpow_sub hnpos, div_le_iff₀ (Real.rpow_pos_of_pos hnpos b)]
+    simpa only [Real.norm_of_nonneg (Real.rpow_nonneg hnpos.le _)] using hn
+  have htop : Tendsto (fun n : ℕ => (n : ℝ) ^ (a - b)) atTop atTop :=
+    (tendsto_rpow_atTop (sub_pos.mpr hba)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨n, hn, hn'⟩ := (hdiv.and (htop.eventually_gt_atTop C)).exists
+  exact (not_lt_of_ge hn) hn'
+
+theorem forest_exponent_eq_one {W : Type*} [Fintype W] [Nonempty W]
+    (F : SimpleGraph W) (hF : F.IsAcyclic) {a c : ℝ} (ha : 1 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n F : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = 1 := by
+  have hb : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (1 : ℝ)) := by
+    apply IsBigO.of_bound (Fintype.card W : ℝ)
+    filter_upwards with n
+    simp only [Real.norm_natCast, Real.rpow_one]
+    exact_mod_cast extremal_forest_bound F hF n
+  have hp : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (1 : ℝ)) :=
+    (isBigO_const_mul_left_iff hc.ne').mp (h.isBigO_symm.trans hb)
+  exact le_antisymm (exponent_le_of_isBigO hp) ha
+
+open scoped Classical in
+theorem rational_exponent_of_acyclic (q : ℕ) (G : SimpleGraph (Fin q))
+    (hG : G.IsAcyclic) (he : 2 ≤ G.edgeFinset.card)
+    (a c : ℝ) (ha : a ∈ Set.Ico 1 2) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  have hq : 0 < q := by
+    have hbound := G.card_edgeFinset_le_card_choose_two
+    simp only [Fintype.card_fin] at hbound
+    by_contra hq
+    have hq' : q = 0 := Nat.eq_zero_of_not_pos hq
+    simp only [hq', Nat.choose_zero_succ] at hbound
+    omega
+  letI : Nonempty (Fin q) := Fin.pos_iff_nonempty.mp hq
+  have ha1 := forest_exponent_eq_one G hG ha.1 hc h
+  exact ⟨1, by simpa using ha1.symm⟩
+
+end Erdos713Forest
+
+namespace Erdos713C4
+
+open Finset
+
+abbrev K22 := completeBipartiteGraph (Fin 2) (Fin 2)
+
+theorem no_rectangle {V : Type*} {G : SimpleGraph V} (h : K22.Free G)
+    {u v a b : V} (huv : u ≠ v) (hab : a ≠ b)
+    (hua : G.Adj u a) (hva : G.Adj v a)
+    (hub : G.Adj u b) (hvb : G.Adj v b) : False := by
+  classical
+  apply h
+  apply completeBipartiteGraph_isContained_iff.mpr
+  refine ⟨{u, v}, {a, b}, by simp [huv], by simp [hab], ?_⟩
+  intro x hx y hy
+  simp only [mem_coe, mem_insert, mem_singleton] at hx hy
+  rcases hx with rfl | rfl <;> rcases hy with rfl | rfl <;> assumption
+
+theorem unique_common_of_free {V : Type*} {G : SimpleGraph V} (h : K22.Free G)
+    {u v a b : V} (huv : u ≠ v)
+    (hua : G.Adj u a) (hva : G.Adj v a)
+    (hub : G.Adj u b) (hvb : G.Adj v b) : a = b := by
+  by_contra hab
+  exact no_rectangle h huv hab hua hva hub hvb
+
+theorem free_of_unique_common {V : Type*} {G : SimpleGraph V}
+    (h : ∀ {u v a b : V}, u ≠ v → G.Adj u a → G.Adj v a →
+      G.Adj u b → G.Adj v b → a = b) : K22.Free G := by
+  rintro ⟨f⟩
+  have huv : f (.inl 0) ≠ f (.inl 1) := fun he => by
+    have := f.injective he
+    simp at this
+  have he := h huv
+    (f.toHom.map_rel' (show K22.Adj (.inl 0) (.inr 0) by simp [K22, completeBipartiteGraph]))
+    (f.toHom.map_rel' (show K22.Adj (.inl 1) (.inr 0) by simp [K22, completeBipartiteGraph]))
+    (f.toHom.map_rel' (show K22.Adj (.inl 0) (.inr 1) by simp [K22, completeBipartiteGraph]))
+    (f.toHom.map_rel' (show K22.Adj (.inl 1) (.inr 1) by simp [K22, completeBipartiteGraph]))
+  have := f.injective he
+  simp at this
+
+open scoped Classical in
+theorem common_card_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (h : K22.Free G) (u v : V) :
+    Fintype.card (G.commonNeighbors u v) ≤ 1 + if u = v then Fintype.card V else 0 := by
+  classical
+  by_cases huv : u = v
+  · simp only [huv, ↓reduceIte]
+    exact (Fintype.card_subtype_le _).trans (by omega)
+  · simp only [huv, ↓reduceIte, add_zero]
+    letI : Subsingleton (G.commonNeighbors u v) := ⟨fun a b => by
+      apply Subtype.ext
+      exact unique_common_of_free h huv a.prop.1 a.prop.2 b.prop.1 b.prop.2⟩
+    exact Fintype.card_le_one_iff_subsingleton.mpr inferInstance
+
+open scoped Classical in
+theorem sum_degree_sq_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (h : K22.Free G) :
+    ∑ v, G.degree v ^ 2 ≤ 2 * Fintype.card V ^ 2 := by
+  classical
+  let r : V → V × V → Prop := fun x p => G.Adj x p.1 ∧ G.Adj x p.2
+  have hAbove (x : V) :
+      ((univ : Finset (V × V)).bipartiteAbove r x).card = G.degree x ^ 2 := by
+    have hs : (univ : Finset (V × V)).bipartiteAbove r x =
+        G.neighborFinset x ×ˢ G.neighborFinset x := by
+      ext p
+      simp [r, bipartiteAbove]
+    rw [hs, card_product, card_neighborFinset_eq_degree, pow_two]
+  have hBelow (p : V × V) :
+      ((univ : Finset V).bipartiteBelow r p).card =
+        Fintype.card (G.commonNeighbors p.1 p.2) := by
+    have hs : (univ : Finset V).bipartiteBelow r p =
+        (G.commonNeighbors p.1 p.2).toFinset := by
+      ext x
+      simp [r, bipartiteBelow, mem_commonNeighbors, adj_comm]
+    rw [hs, Set.toFinset_card]
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := (univ : Finset V)) (t := (univ : Finset (V × V)))
+  simp_rw [hAbove, hBelow] at hsum
+  rw [hsum, Fintype.sum_prod_type]
+  calc
+    ∑ u, ∑ v, Fintype.card (G.commonNeighbors u v) ≤
+        ∑ u : V, ∑ v : V, (1 + if u = v then Fintype.card V else 0) := by
+      apply Finset.sum_le_sum
+      intro u _
+      apply Finset.sum_le_sum
+      intro v _
+      exact common_card_le G h u v
+    _ = 2 * Fintype.card V ^ 2 := by
+      simp [sum_add_distrib, sum_ite_eq, pow_two, Nat.mul_add]
+      ring
+
+open scoped Classical in
+theorem edge_sq_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (h : K22.Free G) :
+    G.edgeFinset.card ^ 2 ≤ Fintype.card V ^ 3 := by
+  have hc := sq_sum_le_card_mul_sum_sq (s := univ) (f := fun v => G.degree v)
+  rw [card_univ, sum_degrees_eq_twice_card_edges] at hc
+  have hb := sum_degree_sq_bound G h
+  have hm := Nat.mul_le_mul_left (Fintype.card V) hb
+  nlinarith
+
+open scoped Classical in
+theorem edge_rpow_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (h : K22.Free G) :
+    (G.edgeFinset.card : ℝ) ≤ (Fintype.card V : ℝ) ^ ((3 : ℝ) / 2) := by
+  have hsq : (G.edgeFinset.card : ℝ) ^ 2 ≤ (Fintype.card V : ℝ) ^ 3 := by
+    exact_mod_cast edge_sq_bound G h
+  have hpow : ((Fintype.card V : ℝ) ^ ((3 : ℝ) / 2)) ^ 2 =
+      (Fintype.card V : ℝ) ^ 3 := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul (Nat.cast_nonneg _)]
+    norm_num
+  have hn : 0 ≤ (Fintype.card V : ℝ) ^ ((3 : ℝ) / 2) := by positivity
+  nlinarith
+
+theorem extremal_upper (n : ℕ) :
+    (extremalNumber n K22 : ℝ) ≤ (n : ℝ) ^ ((3 : ℝ) / 2) := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  exact edge_rpow_bound G hG
+
+def affineGraph (F : Type*) [Field F] : SimpleGraph ((F × F) ⊕ (F × F)) where
+  Adj u v := match u, v with
+    | .inl p, .inr l => p.2 = l.1 * p.1 + l.2
+    | .inr l, .inl p => p.2 = l.1 * p.1 + l.2
+    | _, _ => False
+  symm u v := by cases u <;> cases v <;> simp
+  loopless u := by cases u <;> simp
+
+instance affineGraph_decidable (F : Type*) [Field F] [DecidableEq F] :
+    DecidableRel (affineGraph F).Adj := by
+  intro u v
+  cases u <;> cases v <;> dsimp [affineGraph] <;> infer_instance
+
+theorem rectangle_unique {F : Type*} [Field F] {p q l r : F × F} (hpq : p ≠ q)
+    (hlp : p.2 = l.1 * p.1 + l.2) (hlq : q.2 = l.1 * q.1 + l.2)
+    (hrp : p.2 = r.1 * p.1 + r.2) (hrq : q.2 = r.1 * q.1 + r.2) : l = r := by
+  have hx : p.1 ≠ q.1 := by
+    intro hx
+    apply hpq
+    apply Prod.ext hx
+    rw [hlp, hlq, hx]
+  have hm : (l.1 - r.1) * (p.1 - q.1) = 0 := by
+    linear_combination -hlp + hlq + hrp - hrq
+  have ha : l.1 = r.1 := sub_eq_zero.mp
+    ((mul_eq_zero.mp hm).resolve_right (sub_ne_zero.mpr hx))
+  apply Prod.ext ha
+  linear_combination -hlp + hrp - ha * p.1
+
+theorem affineGraph_free (F : Type*) [Field F] : K22.Free (affineGraph F) := by
+  apply free_of_unique_common
+  intro u v a b huv hua hva hub hvb
+  cases u <;> cases v <;> cases a <;> cases b <;>
+    simp only [affineGraph] at hua hva hub hvb
+  all_goals simp only [ne_eq, Sum.inl.injEq, Sum.inr.injEq] at huv ⊢
+  · exact rectangle_unique huv hua hva hub hvb
+  · by_contra hab
+    exact huv (rectangle_unique hab hua hub hva hvb)
+
+open scoped Classical in
+theorem affineGraph_degree_left (F : Type*) [Field F] [Fintype F] [DecidableEq F] (p : F × F) :
+    (affineGraph F).degree (.inl p) = Fintype.card F := by
+  classical
+  let f : F → (affineGraph F).neighborSet (.inl p) :=
+    fun a => ⟨.inr (a, p.2 - a * p.1), by
+      change p.2 = a * p.1 + (p.2 - a * p.1)
+      ring⟩
+  have hi : Function.Injective f := by
+    intro a b hab
+    have he := congrArg Subtype.val hab
+    exact congrArg Prod.fst (Sum.inr.inj he)
+  have hs : Function.Surjective f := by
+    rintro ⟨w, hw⟩
+    cases w with
+    | inl q => exact hw.elim
+    | inr l =>
+      refine ⟨l.1, ?_⟩
+      apply Subtype.ext
+      apply congrArg Sum.inr
+      refine Prod.ext ?_ ?_
+      · rfl
+      · change p.2 = l.1 * p.1 + l.2 at hw
+        dsimp
+        linear_combination hw
+  rw [← card_neighborSet_eq_degree]
+  exact (Fintype.card_congr (Equiv.ofBijective f ⟨hi, hs⟩)).symm
+
+open scoped Classical in
+theorem affineGraph_degree_right (F : Type*) [Field F] [Fintype F] [DecidableEq F] (l : F × F) :
+    (affineGraph F).degree (.inr l) = Fintype.card F := by
+  classical
+  let f : F → (affineGraph F).neighborSet (.inr l) :=
+    fun x => ⟨.inl (x, l.1 * x + l.2), rfl⟩
+  have hi : Function.Injective f := by
+    intro a b hab
+    have he := congrArg Subtype.val hab
+    exact congrArg Prod.fst (Sum.inl.inj he)
+  have hs : Function.Surjective f := by
+    rintro ⟨w, hw⟩
+    cases w with
+    | inr p => exact hw.elim
+    | inl p =>
+      refine ⟨p.1, ?_⟩
+      apply Subtype.ext
+      apply congrArg Sum.inl
+      change p.2 = l.1 * p.1 + l.2 at hw
+      exact Prod.ext rfl hw.symm
+  rw [← card_neighborSet_eq_degree]
+  exact (Fintype.card_congr (Equiv.ofBijective f ⟨hi, hs⟩)).symm
+
+open scoped Classical in
+theorem affineGraph_edges (F : Type*) [Field F] [Fintype F] [DecidableEq F] :
+    (affineGraph F).edgeFinset.card = Fintype.card F ^ 3 := by
+  classical
+  have hsum := (affineGraph F).sum_degrees_eq_twice_card_edges
+  rw [Fintype.sum_sum_type] at hsum
+  simp_rw [affineGraph_degree_left, affineGraph_degree_right, sum_const, card_univ,
+    Fintype.card_prod, smul_eq_mul] at hsum
+  nlinarith
+
+theorem extremal_lower_prime (p : ℕ) (hp : p.Prime) :
+    p ^ 3 ≤ extremalNumber (2 * p ^ 2) K22 := by
+  letI : Fact p.Prime := ⟨hp⟩
+  classical
+  have h := card_edgeFinset_le_extremalNumber (affineGraph_free (ZMod p))
+  rw [affineGraph_edges] at h
+  simpa [Fintype.card_sum, Fintype.card_prod, ZMod.card, pow_two, two_mul] using h
+
+theorem exponent_le_of_isBigO {a b : ℝ}
+    (h : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ b)) : a ≤ b := by
+  by_contra hab
+  have hba : b < a := lt_of_not_ge hab
+  obtain ⟨C, _, hC⟩ := h.exists_pos
+  have hdiv : ∀ᶠ n : ℕ in atTop, (n : ℝ) ^ (a - b) ≤ C := by
+    filter_upwards [hC.bound, eventually_gt_atTop (0 : ℕ)] with n hn hnp
+    have hnpos : (0 : ℝ) < n := Nat.cast_pos.mpr hnp
+    rw [Real.rpow_sub hnpos, div_le_iff₀ (Real.rpow_pos_of_pos hnpos b)]
+    simpa only [Real.norm_of_nonneg (Real.rpow_nonneg hnpos.le _)] using hn
+  have htop : Tendsto (fun n : ℕ => (n : ℝ) ^ (a - b)) atTop atTop :=
+    (tendsto_rpow_atTop (sub_pos.mpr hba)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨n, hn, hn'⟩ := (hdiv.and (htop.eventually_gt_atTop C)).exists
+  exact (not_lt_of_ge hn) hn'
+
+theorem lower_exponent_of_prime_bound {f : ℕ → ℕ} {a : ℝ}
+    (hO : (fun n : ℕ => (f n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ a))
+    (hlow : ∀ p : ℕ, p.Prime → p ^ 3 ≤ f (2 * p ^ 2)) : (3 : ℝ) / 2 ≤ a := by
+  by_contra ha
+  have ha' : a < (3 : ℝ) / 2 := lt_of_not_ge ha
+  obtain ⟨C, _, hC⟩ := hO.exists_pos
+  have ht : Tendsto (fun p : ℕ => 2 * p ^ 2) atTop atTop := by
+    apply tendsto_atTop_mono _ tendsto_id
+    intro p
+    by_cases hp : p = 0
+    · simp [hp]
+    · have hp' : 1 ≤ p := Nat.one_le_iff_ne_zero.mpr hp
+      change p ≤ 2 * p ^ 2
+      nlinarith [Nat.mul_le_mul_left p hp']
+  have hratio : ∀ᶠ p : ℕ in atTop,
+      p.Prime → (p : ℝ) ^ (3 - 2 * a) ≤ C * (2 : ℝ) ^ a := by
+    filter_upwards [ht.eventually hC.bound, eventually_gt_atTop (0 : ℕ)] with p hp hpos
+    intro hprime
+    have hp0 : (0 : ℝ) < p := Nat.cast_pos.mpr hpos
+    have hl : (p : ℝ) ^ 3 ≤ (f (2 * p ^ 2) : ℝ) := by
+      exact_mod_cast hlow p hprime
+    have hu : (f (2 * p ^ 2) : ℝ) ≤ C * (2 * (p : ℝ) ^ 2) ^ a := by
+      rw [Real.norm_natCast, Real.norm_of_nonneg
+        (Real.rpow_nonneg (Nat.cast_nonneg (2 * p ^ 2)) a)] at hp
+      simpa only [Nat.cast_mul, Nat.cast_ofNat, Nat.cast_pow] using hp
+    have he := hl.trans hu
+    have hp2 : ((p : ℝ) ^ 2) ^ a = (p : ℝ) ^ (2 * a) := by
+      rw [← Real.rpow_natCast, ← Real.rpow_mul hp0.le]
+      norm_num
+    rw [Real.mul_rpow (by norm_num) (sq_nonneg _), hp2] at he
+    rw [Real.rpow_sub hp0,
+      div_le_iff₀ (Real.rpow_pos_of_pos hp0 (2 * a))]
+    have hp3 : (p : ℝ) ^ (3 : ℝ) = (p : ℝ) ^ (3 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (p : ℝ) 3
+    rw [hp3]
+    simpa only [mul_assoc] using he
+  have htop : Tendsto (fun p : ℕ => (p : ℝ) ^ (3 - 2 * a)) atTop atTop :=
+    (tendsto_rpow_atTop (by linarith : 0 < 3 - 2 * a)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨N, hN⟩ := eventually_atTop.mp
+    (hratio.and (htop.eventually_gt_atTop (C * (2 : ℝ) ^ a)))
+  obtain ⟨p, hpN, hp⟩ := Nat.exists_infinite_primes N
+  exact (not_lt_of_ge ((hN p hpN).1 hp)) ((hN p hpN).2)
+
+theorem exponent_eq_three_halves {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n K22 : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (3 : ℝ) / 2 := by
+  have hUpper : (fun n : ℕ => (extremalNumber n K22 : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((3 : ℝ) / 2)) := by
+    apply isBigO_of_le
+    intro n
+    rw [Real.norm_natCast, Real.norm_of_nonneg (by positivity)]
+    exact extremal_upper n
+  have hpower : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((3 : ℝ) / 2)) :=
+    (isBigO_const_mul_left_iff hc.ne').mp (h.isBigO_symm.trans hUpper)
+  have hO : (fun n : ℕ => (extremalNumber n K22 : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc.ne').mp h.isBigO
+  exact le_antisymm (exponent_le_of_isBigO hpower)
+    (lower_exponent_of_prime_bound hO extremal_lower_prime)
+
+theorem rational_exponent {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n K22 : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3 / 2, ?_⟩
+  simpa using (exponent_eq_three_halves hc h).symm
+
+theorem rational_exponent_of_iso {W : Type*} {G : SimpleGraph W}
+    (e : G ≃g K22) {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  apply rational_exponent hc
+  simpa only [extremalNumber_congr_right e] using h
+
+end Erdos713C4
+
+namespace Erdos713K2t
+
+open Finset
+
+abbrev K2t (t : ℕ) := completeBipartiteGraph (Fin 2) (Fin t)
+
+open scoped Classical in
+theorem common_card_lt {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {t : ℕ} (h : (K2t t).Free G) {u v : V} (huv : u ≠ v) :
+    Fintype.card (G.commonNeighbors u v) < t := by
+  classical
+  by_contra ht
+  have ht' : t ≤ (G.commonNeighbors u v).toFinset.card := by
+    rw [Set.toFinset_card]
+    exact Nat.le_of_not_gt ht
+  obtain ⟨R, hR, hcardR⟩ := Finset.exists_subset_card_eq ht'
+  apply h
+  apply completeBipartiteGraph_isContained_iff.mpr
+  refine ⟨{u, v}, R, by simp [huv], by simpa using hcardR, ?_⟩
+  intro x hx y hy
+  have hy' : y ∈ G.commonNeighbors u v := by simpa using hR hy
+  simp only [mem_coe, mem_insert, mem_singleton] at hx
+  rcases hx with rfl | rfl
+  · exact hy'.1
+  · exact hy'.2
+
+open scoped Classical in
+theorem common_card_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {t : ℕ} (h : (K2t t).Free G) (u v : V) :
+    Fintype.card (G.commonNeighbors u v) ≤ t + if u = v then Fintype.card V else 0 := by
+  classical
+  by_cases huv : u = v
+  · simp only [huv, ↓reduceIte]
+    exact (Fintype.card_subtype_le _).trans (by omega)
+  · simpa only [huv, ↓reduceIte, add_zero] using (common_card_lt G h huv).le
+
+open scoped Classical in
+theorem sum_degree_sq_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {t : ℕ} (h : (K2t t).Free G) :
+    ∑ v, G.degree v ^ 2 ≤ (t + 1) * Fintype.card V ^ 2 := by
+  classical
+  let r : V → V × V → Prop := fun x p => G.Adj x p.1 ∧ G.Adj x p.2
+  have hAbove (x : V) :
+      ((univ : Finset (V × V)).bipartiteAbove r x).card = G.degree x ^ 2 := by
+    have hs : (univ : Finset (V × V)).bipartiteAbove r x =
+        G.neighborFinset x ×ˢ G.neighborFinset x := by
+      ext p
+      simp [r, bipartiteAbove]
+    rw [hs, card_product, card_neighborFinset_eq_degree, pow_two]
+  have hBelow (p : V × V) :
+      ((univ : Finset V).bipartiteBelow r p).card =
+        Fintype.card (G.commonNeighbors p.1 p.2) := by
+    have hs : (univ : Finset V).bipartiteBelow r p =
+        (G.commonNeighbors p.1 p.2).toFinset := by
+      ext x
+      simp [r, bipartiteBelow, mem_commonNeighbors, adj_comm]
+    rw [hs, Set.toFinset_card]
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := (univ : Finset V)) (t := (univ : Finset (V × V)))
+  simp_rw [hAbove, hBelow] at hsum
+  rw [hsum, Fintype.sum_prod_type]
+  calc
+    ∑ u, ∑ v, Fintype.card (G.commonNeighbors u v) ≤
+        ∑ u : V, ∑ v : V, (t + if u = v then Fintype.card V else 0) := by
+      apply Finset.sum_le_sum
+      intro u _
+      apply Finset.sum_le_sum
+      intro v _
+      exact common_card_le G h u v
+    _ = (t + 1) * Fintype.card V ^ 2 := by
+      simp [sum_add_distrib, sum_ite_eq, pow_two, Nat.mul_add]
+      ring
+
+open scoped Classical in
+theorem edge_sq_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {t : ℕ} (h : (K2t t).Free G) :
+    G.edgeFinset.card ^ 2 ≤ (t + 1) * Fintype.card V ^ 3 := by
+  have hc := sq_sum_le_card_mul_sum_sq (s := univ) (f := fun v => G.degree v)
+  rw [card_univ, sum_degrees_eq_twice_card_edges] at hc
+  have hb := sum_degree_sq_bound G h
+  have hm := Nat.mul_le_mul_left (Fintype.card V) hb
+  nlinarith
+
+open scoped Classical in
+theorem edge_rpow_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {t : ℕ} (h : (K2t t).Free G) :
+    (G.edgeFinset.card : ℝ) ≤ ((t : ℝ) + 1) * (Fintype.card V : ℝ) ^ ((3 : ℝ) / 2) := by
+  have hsq : (G.edgeFinset.card : ℝ) ^ 2 ≤
+      ((t : ℝ) + 1) * (Fintype.card V : ℝ) ^ 3 := by
+    exact_mod_cast edge_sq_bound G h
+  have hpow : ((Fintype.card V : ℝ) ^ ((3 : ℝ) / 2)) ^ 2 =
+      (Fintype.card V : ℝ) ^ 3 := by
+    rw [← Real.rpow_natCast, ← Real.rpow_mul (Nat.cast_nonneg _)]
+    norm_num
+  have hc : (t : ℝ) + 1 ≤ ((t : ℝ) + 1) ^ 2 := by
+    nlinarith [Nat.cast_nonneg (α := ℝ) t]
+  have hm := mul_le_mul_of_nonneg_right hc
+    (pow_nonneg (Nat.cast_nonneg (α := ℝ) (Fintype.card V)) 3)
+  have heq : (((t : ℝ) + 1) * (Fintype.card V : ℝ) ^ ((3 : ℝ) / 2)) ^ 2 =
+      ((t : ℝ) + 1) ^ 2 * (Fintype.card V : ℝ) ^ 3 := by
+    rw [mul_pow, hpow]
+  have hn : 0 ≤ ((t : ℝ) + 1) * (Fintype.card V : ℝ) ^ ((3 : ℝ) / 2) := by positivity
+  nlinarith
+
+theorem extremal_upper (t n : ℕ) :
+    (extremalNumber n (K2t t) : ℝ) ≤ ((t : ℝ) + 1) * (n : ℝ) ^ ((3 : ℝ) / 2) := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  exact edge_rpow_bound G hG
+
+theorem contains_K22 {t : ℕ} (ht : 2 ≤ t) : Erdos713C4.K22 ⊑ K2t t := by
+  refine ⟨⟨⟨Sum.map id (Fin.castLE ht), ?_⟩, ?_⟩⟩
+  · intro u v huv
+    cases u <;> cases v <;> simpa [Erdos713C4.K22, K2t, completeBipartiteGraph] using huv
+  · exact Sum.map_injective.mpr ⟨Function.injective_id, Fin.castLE_injective ht⟩
+
+theorem exponent_eq_of_containment {W : Type*} {G : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713C4.K22 ⊑ G) (hhi : G ⊑ K2t t) {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (3 : ℝ) / 2 := by
+  have hUpper : (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((3 : ℝ) / 2)) := by
+    apply IsBigO.of_bound ((t : ℝ) + 1)
+    filter_upwards with n
+    rw [Real.norm_natCast, Real.norm_of_nonneg (by positivity)]
+    calc
+      (extremalNumber n G : ℝ) ≤ (extremalNumber n (K2t t) : ℝ) := by
+        exact_mod_cast hhi.extremalNumber_le (n := n)
+      _ ≤ ((t : ℝ) + 1) * (n : ℝ) ^ ((3 : ℝ) / 2) := extremal_upper t n
+  have hpower : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((3 : ℝ) / 2)) :=
+    (isBigO_const_mul_left_iff hc.ne').mp (h.isBigO_symm.trans hUpper)
+  have hO : (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc.ne').mp h.isBigO
+  apply le_antisymm (Erdos713C4.exponent_le_of_isBigO hpower)
+  apply Erdos713C4.lower_exponent_of_prime_bound hO
+  intro p hp
+  exact (Erdos713C4.extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rational_exponent_of_containment {W : Type*} {G : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713C4.K22 ⊑ G) (hhi : G ⊑ K2t t) {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3 / 2, ?_⟩
+  simpa using (exponent_eq_of_containment hlo hhi hc h).symm
+
+theorem rational_exponent {t : ℕ} (ht : 2 ≤ t) {a c : ℝ} (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n (K2t t) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) :=
+  rational_exponent_of_containment (contains_K22 ht) (.refl _) hc h
+
+end Erdos713K2t
+
+namespace Erdos713SmallCore
+
+open Finset
+
+open scoped Classical in
+theorem exists_two_neighbors {W : Type*} [Fintype W] (H : SimpleGraph W)
+    [DecidableRel H.Adj] (v : W) (hd : 2 ≤ H.degree v) :
+    ∃ x y, H.Adj v x ∧ H.Adj v y ∧ x ≠ y := by
+  have hc : 1 < (H.neighborFinset v).card := by
+    rw [card_neighborFinset_eq_degree]
+    omega
+  obtain ⟨x, hx, y, hy, hxy⟩ := one_lt_card.mp hc
+  exact ⟨x, y, by simpa using hx, by simpa using hy, hxy⟩
+
+open scoped Classical in
+theorem adjacent_of_left_right {W : Type*} [Fintype W] (H : SimpleGraph W)
+    [DecidableRel H.Adj] {t : ℕ} (f : Copy H (Erdos713K2t.K2t t))
+    {u v : W} {i : Fin 2} {j : Fin t}
+    (hu : f u = Sum.inl i) (hv : f v = Sum.inr j) (hd : 2 ≤ H.degree v) :
+    H.Adj u v := by
+  classical
+  obtain ⟨x, y, hx, hy, hxy⟩ := exists_two_neighbors H v hd
+  have hfx := f.toHom.map_rel' hx
+  have hfy := f.toHom.map_rel' hy
+  change (Erdos713K2t.K2t t).Adj (f v) (f x) at hfx
+  change (Erdos713K2t.K2t t).Adj (f v) (f y) at hfy
+  cases hX : f x with
+  | inr a => simp [hX, hv, Erdos713K2t.K2t, completeBipartiteGraph] at hfx
+  | inl a =>
+    cases hY : f y with
+    | inr b => simp [hY, hv, Erdos713K2t.K2t, completeBipartiteGraph] at hfy
+    | inl b =>
+      have hab : a ≠ b := by
+        intro he
+        exact hxy (f.injective (hX.trans ((congrArg Sum.inl he).trans hY.symm)))
+      have hi : i = a ∨ i = b := by omega
+      rcases hi with hi | hi
+      · have he : u = x := f.injective (hu.trans ((congrArg Sum.inl hi).trans hX.symm))
+        exact he ▸ hx.symm
+      · have he : u = y := f.injective (hu.trans ((congrArg Sum.inl hi).trans hY.symm))
+        exact he ▸ hy.symm
+
+open scoped Classical in
+theorem contains_K22_of_degree_two {W : Type*} [Fintype W] [Nonempty W]
+    (H : SimpleGraph W) [DecidableRel H.Adj] {t : ℕ}
+    (hd : ∀ v, 2 ≤ H.degree v) (hH : H ⊑ Erdos713K2t.K2t t) : Erdos713C4.K22 ⊑ H := by
+  classical
+  obtain ⟨f⟩ := hH
+  have hleft : ∃ (u : W) (i : Fin 2), f u = Sum.inl i := by
+    let v : W := Classical.choice inferInstance
+    obtain ⟨w, hw⟩ := (H.degree_pos_iff_exists_adj v).mp (by have := hd v; omega)
+    have hfw := f.toHom.map_rel' hw
+    change (Erdos713K2t.K2t t).Adj (f v) (f w) at hfw
+    cases hv : f v with
+    | inl i => exact ⟨v, i, hv⟩
+    | inr j =>
+      cases hw' : f w with
+      | inl i => exact ⟨w, i, hw'⟩
+      | inr k => simp [hv, hw', Erdos713K2t.K2t, completeBipartiteGraph] at hfw
+  obtain ⟨u, i, hu⟩ := hleft
+  obtain ⟨x, y, hux, huy, hxy⟩ := exists_two_neighbors H u (hd u)
+  have hright {z : W} (hz : H.Adj u z) : ∃ j : Fin t, f z = Sum.inr j := by
+    have hF := f.toHom.map_rel' hz
+    change (Erdos713K2t.K2t t).Adj (f u) (f z) at hF
+    cases hZ : f z with
+    | inl j => simp [hu, hZ, Erdos713K2t.K2t, completeBipartiteGraph] at hF
+    | inr j => exact ⟨j, rfl⟩
+  obtain ⟨j, hX⟩ := hright hux
+  obtain ⟨k, hY⟩ := hright huy
+  obtain ⟨a, b, hxa, hxb, hab⟩ := exists_two_neighbors H x (hd x)
+  have hv : ∃ v, v ≠ u ∧ H.Adj x v := by
+    by_cases hau : a = u
+    · exact ⟨b, fun hbu => hab (hau.trans hbu.symm), hxb⟩
+    · exact ⟨a, hau, hxa⟩
+  obtain ⟨v, hvu, hxv⟩ := hv
+  have hV : ∃ l : Fin 2, f v = Sum.inl l := by
+    have hF := f.toHom.map_rel' hxv
+    change (Erdos713K2t.K2t t).Adj (f x) (f v) at hF
+    cases hV : f v with
+    | inl l => exact ⟨l, rfl⟩
+    | inr l => simp [hX, hV, Erdos713K2t.K2t, completeBipartiteGraph] at hF
+  obtain ⟨l, hV⟩ := hV
+  have hvy : H.Adj v y := adjacent_of_left_right H f hV hY (hd y)
+  apply completeBipartiteGraph_isContained_iff.mpr
+  refine ⟨{u, v}, {x, y}, by simp [hvu.symm], by simp [hxy], ?_⟩
+  intro a ha b hb
+  simp only [mem_coe, mem_insert, mem_singleton] at ha hb
+  rcases ha with rfl | rfl <;> rcases hb with rfl | rfl
+  · exact hux
+  · exact huy
+  · exact hxv.symm
+  · exact hvy
+
+open scoped Classical in
+theorem contained_of_small_bipartition {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (S : Set W) (hS : Nat.card S ≤ 2)
+    (hB : H.IsBipartiteWith S Sᶜ) : H ⊑ Erdos713K2t.K2t (Fintype.card W) := by
+  classical
+  let eL : S ↪ Fin 2 := Classical.choice
+    (Function.Embedding.nonempty_of_card_le (by
+      simpa only [Nat.card_eq_fintype_card, Fintype.card_fin] using hS))
+  let eR : ↥(Sᶜ) ↪ Fin (Fintype.card W) :=
+    (Function.Embedding.subtype _).trans (Fintype.equivFin W).toEmbedding
+  let e := (Equiv.Set.sumCompl S).symm.toEmbedding.trans (eL.sumMap eR)
+  refine ⟨⟨⟨e, ?_⟩, e.injective⟩⟩
+  intro u v huv
+  rcases hB.2 huv with ⟨hu, hv⟩ | ⟨hu, hv⟩
+  · have hv' : v ∉ S := hv
+    simp [e, Equiv.Set.sumCompl_symm_apply_of_mem hu,
+      Equiv.Set.sumCompl_symm_apply_of_notMem hv', Erdos713K2t.K2t, completeBipartiteGraph]
+  · have hu' : u ∉ S := hu
+    simp [e, Equiv.Set.sumCompl_symm_apply_of_mem hv,
+      Equiv.Set.sumCompl_symm_apply_of_notMem hu', Erdos713K2t.K2t, completeBipartiteGraph]
+
+open scoped Classical in
+theorem small_bipartite_contained {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (hB : H.IsBipartite) (hcard : Fintype.card W ≤ 5) :
+    H ⊑ Erdos713K2t.K2t (Fintype.card W) := by
+  classical
+  obtain ⟨χ⟩ := hB
+  let S : Set W := {v | χ v = 0}
+  have hS : H.IsBipartiteWith S Sᶜ := by
+    refine ⟨disjoint_compl_right, ?_⟩
+    intro u v huv
+    have hχ := χ.valid huv
+    simp only [S, Set.mem_setOf_eq, Set.mem_compl_iff]
+    omega
+  by_cases hcS : Nat.card S ≤ 2
+  · exact contained_of_small_bipartition H S hcS hS
+  · have hcSc : Nat.card ↥(Sᶜ) ≤ 2 := by
+      have he : Nat.card ↥(Sᶜ) = Fintype.card W - Nat.card S := by
+        simp only [Nat.card_eq_fintype_card, Fintype.card_compl_set]
+      rw [he]
+      omega
+    apply contained_of_small_bipartition H Sᶜ hcSc
+    simpa only [compl_compl] using hS.symm
+
+theorem contains_K22_of_not_acyclic {W : Type*} [Fintype W]
+    (G : SimpleGraph W) {t : ℕ} (hcyc : ¬ G.IsAcyclic)
+    (hhi : G ⊑ Erdos713K2t.K2t t) : Erdos713C4.K22 ⊑ G := by
+  classical
+  simp only [SimpleGraph.IsAcyclic, not_forall, not_not] at hcyc
+  obtain ⟨v, p, hp⟩ := hcyc
+  let C := p.toSubgraph
+  have hv : v ∈ C.verts := by simp [C]
+  letI : Nonempty C.verts := ⟨⟨v, hv⟩⟩
+  have hd : ∀ w, 2 ≤ C.coe.degree w := by
+    intro w
+    rw [Subgraph.coe_degree, Subgraph.degree, ← Nat.card_eq_fintype_card, Nat.card_coe_set_eq]
+    exact (hp.ncard_neighborSet_toSubgraph_eq_two (by simpa [C] using w.property)).ge
+  exact (contains_K22_of_degree_two C.coe (fun w => by simpa using hd w)
+    (C.coe_isContained.trans hhi)).trans C.coe_isContained
+
+open scoped Classical in
+theorem rational_exponent_of_contained {q : ℕ} (G : SimpleGraph (Fin q))
+    {t : ℕ} (hhi : G ⊑ Erdos713K2t.K2t t) (hEdges : 2 ≤ G.edgeFinset.card)
+    {a c : ℝ} (ha : a ∈ Set.Ico 1 2) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  by_cases hForest : G.IsAcyclic
+  · exact Erdos713Forest.rational_exponent_of_acyclic q G hForest hEdges a c ha hc h
+  exact Erdos713K2t.rational_exponent_of_containment
+    (contains_K22_of_not_acyclic G hForest hhi) hhi hc h
+
+open scoped Classical in
+theorem rational_exponent_of_small_bipartition {q : ℕ} (G : SimpleGraph (Fin q))
+    (S : Set (Fin q)) (hS : Nat.card S ≤ 2) (hB : G.IsBipartiteWith S Sᶜ)
+    (hEdges : 2 ≤ G.edgeFinset.card) {a c : ℝ} (ha : a ∈ Set.Ico 1 2) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) :=
+  rational_exponent_of_contained G (contained_of_small_bipartition G S hS hB) hEdges ha hc h
+
+open scoped Classical in
+theorem rational_exponent_of_card_le_five {q : ℕ} (G : SimpleGraph (Fin q))
+    (hB : G.IsBipartite) (hcard : q ≤ 5) (hEdges : 2 ≤ G.edgeFinset.card)
+    {a c : ℝ} (ha : a ∈ Set.Ico 1 2) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) :=
+  rational_exponent_of_contained G
+    (small_bipartite_contained G hB (by simpa using hcard)) hEdges ha hc h
+
+end Erdos713SmallCore
+
+namespace Erdos713KST
+
+open Finset
+
+abbrev Kst (s t : ℕ) := completeBipartiteGraph (Fin s) (Fin t)
+
+open scoped Classical in
+theorem common_card_lt {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {s t : ℕ} (h : (Kst s t).Free G) (f : Fin s ↪ V) :
+    (univ.filter (fun v => ∀ i, G.Adj v (f i))).card < t := by
+  classical
+  by_contra ht
+  obtain ⟨R, hR, hcardR⟩ := exists_subset_card_eq (Nat.le_of_not_gt ht)
+  apply h
+  apply completeBipartiteGraph_isContained_iff.mpr
+  refine ⟨univ.map f, R, by simp, by simpa using hcardR, ?_⟩
+  intro u hu v hv
+  change u ∈ (univ.map f : Finset V) at hu
+  obtain ⟨i, _, rfl⟩ := Finset.mem_map.mp hu
+  exact ((mem_filter.mp (hR hv)).2 i).symm
+
+open scoped Classical in
+theorem sum_descFactorial_degree_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {s t : ℕ} (h : (Kst s t).Free G) :
+    ∑ v, (G.degree v).descFactorial s ≤ t * (Fintype.card V) ^ s := by
+  classical
+  let r : V → (Fin s ↪ V) → Prop := fun v f => ∀ i, G.Adj v (f i)
+  have hAbove (v : V) : ((univ : Finset (Fin s ↪ V)).bipartiteAbove r v).card =
+      (G.degree v).descFactorial s := by
+    let e : ↥((univ : Finset (Fin s ↪ V)).bipartiteAbove r v) ≃
+        (Fin s ↪ G.neighborSet v) :=
+      { toFun := fun f =>
+          ⟨fun i => ⟨f.val i, ((mem_bipartiteAbove r).mp f.prop).2 i⟩,
+            fun i j hij => f.val.injective (congrArg Subtype.val hij)⟩
+        invFun := fun f =>
+          ⟨f.trans (Function.Embedding.subtype _),
+            (mem_bipartiteAbove r).mpr ⟨mem_univ _, fun i => (f i).prop⟩⟩
+        left_inv := by intro f; rfl
+        right_inv := by intro f; rfl }
+    rw [← Fintype.card_coe, Fintype.card_congr e, Fintype.card_embedding_eq,
+      Fintype.card_fin, card_neighborSet_eq_degree]
+  have hBelow (f : Fin s ↪ V) : ((univ : Finset V).bipartiteBelow r f).card ≤ t :=
+    (common_card_lt G h f).le
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := (univ : Finset V)) (t := (univ : Finset (Fin s ↪ V)))
+  simp_rw [hAbove] at hsum
+  rw [hsum]
+  calc
+    ∑ f : Fin s ↪ V, ((univ : Finset V).bipartiteBelow r f).card ≤
+        ∑ _ : Fin s ↪ V, t := sum_le_sum fun f _ => hBelow f
+    _ = t * (Fintype.card V).descFactorial s := by simp [Nat.mul_comm]
+    _ ≤ t * (Fintype.card V) ^ s :=
+      Nat.mul_le_mul_left t (Nat.descFactorial_le_pow _ _)
+
+/-- A deliberately coarse polynomial bound for powers in terms of falling factorials. -/
+theorem pow_le_descFactorial (d s : ℕ) :
+    d ^ s ≤ (s + 1) ^ s * (d.descFactorial s + 1) := by
+  by_cases hsd : s ≤ d
+  · have hx : 0 < d + 1 - s := by omega
+    have hsx : s ≤ s * (d + 1 - s) := Nat.le_mul_of_pos_right s hx
+    have hd : d ≤ (s + 1) * (d + 1 - s) := by
+      rw [Nat.add_mul, one_mul]
+      omega
+    calc
+      d ^ s ≤ ((s + 1) * (d + 1 - s)) ^ s := Nat.pow_le_pow_left hd _
+      _ = (s + 1) ^ s * (d + 1 - s) ^ s := Nat.mul_pow _ _ _
+      _ ≤ (s + 1) ^ s * d.descFactorial s :=
+        Nat.mul_le_mul_left _ (Nat.pow_sub_le_descFactorial d s)
+      _ ≤ (s + 1) ^ s * (d.descFactorial s + 1) :=
+        Nat.mul_le_mul_left _ (Nat.le_succ _)
+  · have hd : d ≤ s + 1 := by omega
+    calc
+      d ^ s ≤ (s + 1) ^ s := Nat.pow_le_pow_left hd _
+      _ ≤ (s + 1) ^ s * (d.descFactorial s + 1) :=
+        Nat.le_mul_of_pos_right _ (Nat.succ_pos _)
+
+open scoped Classical in
+theorem sum_degree_pow_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {s t : ℕ} (hs : 1 ≤ s) (h : (Kst s t).Free G) :
+    ∑ v, G.degree v ^ s ≤ (s + 1) ^ s * (t + 1) * (Fintype.card V) ^ s := by
+  calc
+    ∑ v, G.degree v ^ s ≤ ∑ v, (s + 1) ^ s * ((G.degree v).descFactorial s + 1) :=
+      sum_le_sum fun v _ => pow_le_descFactorial _ _
+    _ = (s + 1) ^ s * ((∑ v, (G.degree v).descFactorial s) + Fintype.card V) := by
+      simp [sum_add_distrib, ← mul_sum]
+    _ ≤ (s + 1) ^ s * (t * (Fintype.card V) ^ s + (Fintype.card V) ^ s) :=
+      Nat.mul_le_mul_left _ (Nat.add_le_add (sum_descFactorial_degree_le G h)
+        (Nat.le_self_pow (by omega) _))
+    _ = (s + 1) ^ s * (t + 1) * (Fintype.card V) ^ s := by ring
+
+open scoped Classical in
+theorem edge_pow_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {s t : ℕ} (hs : 1 ≤ s) (h : (Kst s t).Free G) :
+    G.edgeFinset.card ^ s ≤ (s + 1) ^ s * (t + 1) * (Fintype.card V) ^ (s - 1 + s) := by
+  have hJ := Real.rpow_sum_le_const_mul_sum_rpow_of_nonneg univ
+    (f := fun v => (G.degree v : ℝ)) (show (1 : ℝ) ≤ s by exact_mod_cast hs)
+    (fun v _ => Nat.cast_nonneg _)
+  have he : (s : ℝ) - 1 = ((s - 1 : ℕ) : ℝ) := by
+    rw [Nat.cast_sub hs, Nat.cast_one]
+  rw [he] at hJ
+  simp only [Real.rpow_natCast, card_univ] at hJ
+  have hJN : (∑ v, G.degree v) ^ s ≤
+      Fintype.card V ^ (s - 1) * ∑ v, G.degree v ^ s := by exact_mod_cast hJ
+  rw [sum_degrees_eq_twice_card_edges] at hJN
+  calc
+    G.edgeFinset.card ^ s ≤ (2 * G.edgeFinset.card) ^ s :=
+      Nat.pow_le_pow_left (by omega) _
+    _ ≤ Fintype.card V ^ (s - 1) * ∑ v, G.degree v ^ s := hJN
+    _ ≤ Fintype.card V ^ (s - 1) *
+        ((s + 1) ^ s * (t + 1) * Fintype.card V ^ s) :=
+      Nat.mul_le_mul_left _ (sum_degree_pow_le G hs h)
+    _ = (s + 1) ^ s * (t + 1) * Fintype.card V ^ (s - 1 + s) := by
+      rw [pow_add]
+      ring
+
+open scoped Classical in
+theorem extremal_pow_le (s t n : ℕ) (hs : 1 ≤ s) :
+    (extremalNumber n (Kst s t)) ^ s ≤ (s + 1) ^ s * (t + 1) * n ^ (s - 1 + s) := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | (Kst s t).Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ s ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hfree : (Kst s t).Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using edge_pow_le G hs hfree
+  · rw [not_nonempty_iff_eq_empty.mp hS]
+    simp [Nat.ne_of_gt (lt_of_lt_of_le Nat.zero_lt_one hs)]
+
+theorem exponent_upper_of_containment {W : Type*} {H : SimpleGraph W}
+    {s t : ℕ} (hs : 1 ≤ s) (hH : H ⊑ Kst s t) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ 2 - 1 / (s : ℝ) := by
+  have hO : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ)) :=
+    (isBigO_const_mul_left_iff hc).mp h.isBigO_symm
+  have hP : (fun n : ℕ => (n : ℝ) ^ (a * (s : ℝ))) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ) ^ s) := by
+    simpa only [Real.rpow_mul_natCast (Nat.cast_nonneg _)] using hO.pow s
+  have hB : (fun n : ℕ => (extremalNumber n H : ℝ) ^ s) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((s - 1 + s : ℕ) : ℝ)) := by
+    apply IsBigO.of_bound (((s + 1) ^ s * (t + 1) : ℕ) : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _),
+      Real.rpow_natCast, Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    exact_mod_cast (Nat.pow_le_pow_left (hH.extremalNumber_le (n := n)) s).trans
+      (extremal_pow_le s t n hs)
+  have hExp := Erdos713Forest.exponent_le_of_isBigO (hP.trans hB)
+  have hs' : (0 : ℝ) < s := by exact_mod_cast (lt_of_lt_of_le Nat.zero_lt_one hs)
+  have he : ((s - 1 + s : ℕ) : ℝ) = 2 * (s : ℝ) - 1 := by
+    rw [Nat.cast_add, Nat.cast_sub hs, Nat.cast_one]
+    ring
+  rw [he] at hExp
+  calc
+    a ≤ (2 * (s : ℝ) - 1) / (s : ℝ) := (le_div_iff₀ hs').mpr hExp
+    _ = 2 - 1 / (s : ℝ) := by field_simp
+
+/-- A two-colouring gives an injective homomorphism into a finite complete
+bipartite graph after retaining the vertex label within each colour class. -/
+theorem bipartite_contained {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (hH : H.IsBipartite) :
+    H ⊑ Kst (Fintype.card W) (Fintype.card W) := by
+  classical
+  obtain ⟨χ⟩ := hH
+  let e := Fintype.equivFin W
+  let f : W → Fin (Fintype.card W) ⊕ Fin (Fintype.card W) :=
+    fun v => if χ v = 0 then Sum.inl (e v) else Sum.inr (e v)
+  refine ⟨⟨⟨f, ?_⟩, ?_⟩⟩
+  · intro u v huv
+    have hχ : χ u ≠ χ v := χ.valid huv
+    by_cases hu : χ u = 0 <;> by_cases hv : χ v = 0
+    · exact (hχ (hu.trans hv.symm)).elim
+    · simp [f, hu, hv, Kst, completeBipartiteGraph]
+    · simp [f, hu, hv, Kst, completeBipartiteGraph]
+    · have heq : χ u = χ v := by omega
+      exact (hχ heq).elim
+  · intro u v huv
+    change f u = f v at huv
+    by_cases hu : χ u = 0 <;> by_cases hv : χ v = 0
+    · simpa [f, hu, hv] using huv
+    · simp [f, hu, hv] at huv
+    · simp [f, hu, hv] at huv
+    · simpa [f, hu, hv] using huv
+
+theorem bipartite_exponent_upper {W : Type*} [Fintype W] [Nonempty W]
+    (H : SimpleGraph W) (hH : H.IsBipartite) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ 2 - 1 / (Fintype.card W : ℝ) :=
+  exponent_upper_of_containment Fintype.card_pos (bipartite_contained H hH) hc h
+
+end Erdos713KST
+
+namespace Erdos713Norm
+
+open Finset
+
+variable {F : Type*} [Field F]
+
+/-- The multiplicative expression used for a quadratic norm. -/
+def normMap (σ : F →+* F) : F →*₀ F where
+  toFun x := x * σ x
+  map_zero' := by simp
+  map_one' := by simp
+  map_mul' x y := by simp only [map_mul]; ring
+
+@[simp]
+theorem normMap_apply (σ : F →+* F) (x : F) : normMap σ x = x * σ x := rfl
+
+theorem normMap_ne_zero (σ : F →+* F) {x : F} (hx : x ≠ 0) : normMap σ x ≠ 0 :=
+  mul_ne_zero hx ((map_ne_zero σ).mpr hx)
+
+/-- Two norm-circle equations with distinct centres have at most two solutions.
+The argument only needs an injective field endomorphism. -/
+theorem norm_circles_no_three (σ : F →+* F) {c d A B x y z : F} (hcd : c ≠ d)
+    (hx : normMap σ (x + c) = A) (hx' : normMap σ (x + d) = B)
+    (hy : normMap σ (y + c) = A) (hy' : normMap σ (y + d) = B)
+    (hz : normMap σ (z + c) = A) (hz' : normMap σ (z + d) = B) :
+    x = y ∨ x = z ∨ y = z := by
+  have hroot (v : F) (h1 : normMap σ (v + c) = A) (h2 : normMap σ (v + d) = B) :
+      (σ c - σ d) * (v + c) * (v + d) - A * (v + d) + B * (v + c) = 0 := by
+    simp only [normMap_apply, map_add] at h1 h2
+    linear_combination (v + d) * h1 - (v + c) * h2
+  have hxP := hroot x hx hx'
+  have hyP := hroot y hy hy'
+  have hzP := hroot z hz hz'
+  have hp : (σ c - σ d) * (x - y) * (x - z) * (y - z) = 0 := by
+    linear_combination (y - z) * hxP + (z - x) * hyP + (x - y) * hzP
+  by_contra hn
+  push_neg at hn
+  exact (mul_ne_zero (mul_ne_zero (mul_ne_zero
+    (sub_ne_zero.mpr (σ.injective.ne hcd)) (sub_ne_zero.mpr hn.1))
+    (sub_ne_zero.mpr hn.2.1)) (sub_ne_zero.mpr hn.2.2)) hp
+
+theorem normalized_circle (σ : F →+* F) {r s z a a₀ b : F}
+    (hrs : r ≠ s) (hsz : s + z ≠ 0) (ha₀ : a₀ ≠ 0) (hb : b ≠ 0)
+    (h1 : normMap σ (r + z) = a * b) (h2 : normMap σ (s + z) = a₀ * b) :
+    normMap σ ((s + z)⁻¹ + (r - s)⁻¹) = a / (a₀ * normMap σ (r - s)) := by
+  have hdiff : r - s ≠ 0 := sub_ne_zero.mpr hrs
+  have he : (s + z)⁻¹ + (r - s)⁻¹ = (r + z) / ((s + z) * (r - s)) := by
+    field_simp
+    ring
+  rw [he, map_div₀, map_mul, h1, h2]
+  field_simp
+
+/-- The algebraic obstruction to a complete three-by-three rectangle. -/
+theorem no_norm_rectangle (σ : F →+* F) (a A b B : Fin 3 → F)
+    (hA : ∀ i, A i ≠ 0) (hB : ∀ j, B j ≠ 0)
+    (haA : Function.Injective (fun i => (a i, A i)))
+    (hbB : Function.Injective (fun j => (b j, B j)))
+    (he : ∀ i j, normMap σ (a i + b j) = A i * B j) : False := by
+  have ha : Function.Injective a := by
+    intro i k hik
+    have hmul : A i * B 0 = A k * B 0 := by rw [← he, hik, he]
+    exact haA (Prod.ext hik (mul_right_cancel₀ (hB 0) hmul))
+  have hb : Function.Injective b := by
+    intro j k hjk
+    have hmul : A 0 * B j = A 0 * B k := by rw [← he, hjk, he]
+    exact hbB (Prod.ext hjk (mul_left_cancel₀ (hA 0) hmul))
+  have hsum (j : Fin 3) : a 2 + b j ≠ 0 := by
+    intro hz
+    have hh := he 2 j
+    rw [hz, map_zero] at hh
+    exact mul_ne_zero (hA 2) (hB j) hh.symm
+  let x : Fin 3 → F := fun j => (a 2 + b j)⁻¹
+  let c : F := (a 0 - a 2)⁻¹
+  let d : F := (a 1 - a 2)⁻¹
+  have hc : c ≠ d := by
+    intro hcd
+    have hh : a 0 = a 1 := sub_left_injective (inv_injective hcd)
+    exact (show (0 : Fin 3) ≠ 1 by decide) (ha hh)
+  have hcircle0 (j : Fin 3) : normMap σ (x j + c) =
+      A 0 / (A 2 * normMap σ (a 0 - a 2)) :=
+    normalized_circle σ (ha.ne (by decide : (0 : Fin 3) ≠ 2)) (hsum j)
+      (hA 2) (hB j) (he 0 j) (he 2 j)
+  have hcircle1 (j : Fin 3) : normMap σ (x j + d) =
+      A 1 / (A 2 * normMap σ (a 1 - a 2)) :=
+    normalized_circle σ (ha.ne (by decide : (1 : Fin 3) ≠ 2)) (hsum j)
+      (hA 2) (hB j) (he 1 j) (he 2 j)
+  have hx : Function.Injective x := by
+    intro j k hjk
+    exact hb (add_left_cancel (inv_injective hjk))
+  rcases norm_circles_no_three σ hc (hcircle0 0) (hcircle1 0)
+      (hcircle0 1) (hcircle1 1) (hcircle0 2) (hcircle1 2) with hh | hh | hh
+  · exact (show (0 : Fin 3) ≠ 1 by decide) (hx hh)
+  · exact (show (0 : Fin 3) ≠ 2 by decide) (hx hh)
+  · exact (show (1 : Fin 3) ≠ 2 by decide) (hx hh)
+
+section Graph
+
+variable (K F : Type*) [Field K] [Field F] [Algebra K F]
+
+abbrev Vertex := F × Kˣ
+
+def graph : SimpleGraph (Vertex K F ⊕ Vertex K F) where
+  Adj u v := match u, v with
+    | Sum.inl x, Sum.inr y => Algebra.norm K (x.1 + y.1) = (x.2 : K) * (y.2 : K)
+    | Sum.inr y, Sum.inl x => Algebra.norm K (x.1 + y.1) = (x.2 : K) * (y.2 : K)
+    | _, _ => False
+  symm := by intro u v; cases u <;> cases v <;> simp
+  loopless := by intro v; cases v <;> simp
+
+def project : Vertex K F ⊕ Vertex K F → Vertex K F := Sum.elim id id
+
+theorem eq_of_common_neighbor {u v w : Vertex K F ⊕ Vertex K F}
+    (hu : (graph K F).Adj u w) (hv : (graph K F).Adj v w)
+    (he : project K F u = project K F v) : u = v := by
+  cases u <;> cases v <;> cases w <;> simp_all [graph, project]
+
+theorem norm_eq_of_adj {u v : Vertex K F ⊕ Vertex K F} (h : (graph K F).Adj u v) :
+    Algebra.norm K ((project K F u).1 + (project K F v).1) =
+      ((project K F u).2 : K) * ((project K F v).2 : K) := by
+  cases u <;> cases v <;> simp_all [graph, project, add_comm, mul_comm]
+
+theorem vertex_embed_injective : Function.Injective
+    (fun x : Vertex K F => (x.1, algebraMap K F (x.2 : K))) := by
+  intro x y h
+  apply Prod.ext
+  · exact congrArg (fun z : F × F => z.1) h
+  exact Units.ext ((algebraMap K F).injective (congrArg (fun z : F × F => z.2) h))
+
+theorem graph_free (σ : F →+* F)
+    (hNorm : ∀ x : F, algebraMap K F (Algebra.norm K x) = normMap σ x) :
+    (completeBipartiteGraph (Fin 3) (Fin 3)).Free (graph K F) := by
+  rintro ⟨f⟩
+  have hAdj (i j : Fin 3) : (graph K F).Adj (f (Sum.inl i)) (f (Sum.inr j)) :=
+    f.toHom.map_rel' (by simp [completeBipartiteGraph])
+  let L : Fin 3 → Vertex K F := fun i => project K F (f (Sum.inl i))
+  let R : Fin 3 → Vertex K F := fun j => project K F (f (Sum.inr j))
+  have hL : Function.Injective L := by
+    intro i k hik
+    exact Sum.inl.inj (f.injective (eq_of_common_neighbor K F (hAdj i 0) (hAdj k 0) hik))
+  have hR : Function.Injective R := by
+    intro j k hjk
+    exact Sum.inr.inj (f.injective
+      (eq_of_common_neighbor K F (hAdj 0 j).symm (hAdj 0 k).symm hjk))
+  apply no_norm_rectangle σ (fun i => (L i).1) (fun i => algebraMap K F ((L i).2 : K))
+    (fun j => (R j).1) (fun j => algebraMap K F ((R j).2 : K))
+  · intro i
+    exact (map_ne_zero _).mpr (L i).2.ne_zero
+  · intro j
+    exact (map_ne_zero _).mpr (R j).2.ne_zero
+  · exact (vertex_embed_injective K F).comp hL
+  · exact (vertex_embed_injective K F).comp hR
+  · intro i j
+    rw [← hNorm, ← map_mul]
+    exact congrArg (algebraMap K F) (norm_eq_of_adj K F (hAdj i j))
+
+variable [FiniteDimensional K F]
+
+noncomputable def leftNeighbors (v : Vertex K F) : Fˣ ↪ (graph K F).neighborSet (Sum.inl v) where
+  toFun z := ⟨Sum.inr ((z : F) - v.1, (Units.mk0 (Algebra.norm K (z : F))
+      (Algebra.norm_ne_zero_iff.mpr z.ne_zero)) / v.2), by
+    change Algebra.norm K (v.1 + ((z : F) - v.1)) = _
+    rw [show v.1 + ((z : F) - v.1) = z by ring]
+    simp only [Units.val_div_eq_div_val, Units.val_mk0]
+    exact (mul_div_cancel₀ _ v.2.ne_zero).symm⟩
+  inj' := by
+    intro z w h
+    have h' := congrArg (fun t => (project K F t.val).1) h
+    change (z : F) - v.1 = (w : F) - v.1 at h'
+    exact Units.ext (sub_left_injective h')
+
+noncomputable def rightNeighbors (v : Vertex K F) : Fˣ ↪ (graph K F).neighborSet (Sum.inr v) where
+  toFun z := ⟨Sum.inl ((z : F) - v.1, (Units.mk0 (Algebra.norm K (z : F))
+      (Algebra.norm_ne_zero_iff.mpr z.ne_zero)) / v.2), by
+    change Algebra.norm K (((z : F) - v.1) + v.1) = _
+    simp only [sub_add_cancel, Units.val_div_eq_div_val, Units.val_mk0]
+    exact (div_mul_cancel₀ _ v.2.ne_zero).symm⟩
+  inj' := by
+    intro z w h
+    have h' := congrArg (fun t => (project K F t.val).1) h
+    change (z : F) - v.1 = (w : F) - v.1 at h'
+    exact Units.ext (sub_left_injective h')
+
+open scoped Classical in
+theorem degree_lower [Fintype K] [Fintype F] (v : Vertex K F ⊕ Vertex K F) :
+    Fintype.card F - 1 ≤ (graph K F).degree v := by
+  classical
+  have hcard : Fintype.card Fˣ = Fintype.card F - 1 := Fintype.card_units F
+  rw [← hcard, ← card_neighborSet_eq_degree]
+  cases v with
+  | inl v => exact Fintype.card_le_of_embedding (leftNeighbors K F v)
+  | inr v => exact Fintype.card_le_of_embedding (rightNeighbors K F v)
+
+open scoped Classical in
+theorem edge_lower [Fintype K] [Fintype F] :
+    Fintype.card F * (Fintype.card K - 1) * (Fintype.card F - 1) ≤ (graph K F).edgeFinset.card := by
+  classical
+  have hsum : ∑ v : Vertex K F ⊕ Vertex K F, (Fintype.card F - 1) ≤
+      ∑ v : Vertex K F ⊕ Vertex K F, (graph K F).degree v :=
+    sum_le_sum fun v _ => degree_lower K F v
+  rw [sum_degrees_eq_twice_card_edges] at hsum
+  simp only [sum_const, card_univ, Fintype.card_sum, Fintype.card_prod, Fintype.card_units,
+    Nat.nsmul_eq_mul, Vertex] at hsum
+  nlinarith
+
+theorem extremal_lower [Fintype K] [Fintype F]
+    (hfree : (completeBipartiteGraph (Fin 3) (Fin 3)).Free (graph K F)) :
+    Fintype.card F * (Fintype.card K - 1) * (Fintype.card F - 1) ≤
+      extremalNumber (2 * Fintype.card F * (Fintype.card K - 1))
+        (completeBipartiteGraph (Fin 3) (Fin 3)) := by
+  classical
+  have hE := edge_lower K F
+  have hExt := card_edgeFinset_le_extremalNumber hfree
+  have hN : Fintype.card (Vertex K F ⊕ Vertex K F) =
+      2 * Fintype.card F * (Fintype.card K - 1) := by
+    simp only [Vertex, Fintype.card_sum, Fintype.card_prod, Fintype.card_units]
+    ring
+  rw [hN] at hExt
+  exact hE.trans hExt
+
+end Graph
+
+section FiniteField
+
+variable (p : ℕ) [Fact p.Prime]
+
+theorem finite_norm_formula (x : GaloisField p 2) :
+    algebraMap (ZMod p) (GaloisField p 2) (Algebra.norm (ZMod p) x) =
+      normMap (frobenius (GaloisField p 2) p) x := by
+  have hp : 1 < p := (Fact.out : p.Prime).one_lt
+  have hK : Nat.card (ZMod p) = p := by simp [Nat.card_eq_fintype_card]
+  have hF : Nat.card (GaloisField p 2) = p ^ 2 := GaloisField.card p 2 (by decide)
+  have he : (p ^ 2 - 1) / (p - 1) = p + 1 := by
+    have hp1 : 0 < p - 1 := by omega
+    have hmul : p ^ 2 - 1 = (p + 1) * (p - 1) := by
+      have he1 : p - 1 + 1 = p := Nat.sub_add_cancel (by omega)
+      have hp2 : 1 ≤ p ^ 2 := by nlinarith
+      have he2 := Nat.sub_add_cancel hp2
+      nlinarith
+    rw [hmul, Nat.mul_div_cancel _ hp1]
+  rw [FiniteField.algebraMap_norm_eq_pow, hK, hF, he, normMap_apply, frobenius_def,
+    pow_succ, mul_comm]
+
+theorem finite_graph_free :
+    (completeBipartiteGraph (Fin 3) (Fin 3)).Free (graph (ZMod p) (GaloisField p 2)) :=
+  graph_free (ZMod p) (GaloisField p 2) (frobenius (GaloisField p 2) p)
+    (finite_norm_formula p)
+
+end FiniteField
+
+abbrev K33 := completeBipartiteGraph (Fin 3) (Fin 3)
+
+set_option maxHeartbeats 400000 in
+theorem extremal_lower_prime (p : ℕ) (hp : p.Prime) :
+    p ^ 5 ≤ 4 * extremalNumber (2 * p ^ 2 * (p - 1)) K33 := by
+  classical
+  letI : Fact p.Prime := ⟨hp⟩
+  letI : Fintype (GaloisField p 2) := Fintype.ofFinite _
+  have hF : Fintype.card (GaloisField p 2) = p ^ 2 := by
+    rw [Fintype.card_eq_nat_card]
+    exact GaloisField.card p 2 (by decide)
+  have hBound := extremal_lower (ZMod p) (GaloisField p 2) (finite_graph_free p)
+  rw [hF, ZMod.card] at hBound
+  have hp1 : p ≤ 2 * (p - 1) := by have := hp.two_le; omega
+  have hp2 : p ^ 2 ≤ 2 * (p ^ 2 - 1) := by
+    have hh : 2 ≤ p ^ 2 := by nlinarith only [hp.two_le]
+    omega
+  have hprod := Nat.mul_le_mul_left (p ^ 2) (Nat.mul_le_mul hp1 hp2)
+  have hlow : p ^ 5 ≤ 4 * (p ^ 2 * (p - 1) * (p ^ 2 - 1)) := by
+    nlinarith only [hprod]
+  exact hlow.trans (Nat.mul_le_mul_left 4 hBound)
+
+theorem lower_exponent_of_prime_bound {f : ℕ → ℕ} {a : ℝ} (ha : 0 ≤ a)
+    (hO : (fun n : ℕ => (f n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ a))
+    (hlow : ∀ p : ℕ, p.Prime → p ^ 5 ≤ 4 * f (2 * p ^ 2 * (p - 1))) :
+    (5 : ℝ) / 3 ≤ a := by
+  by_contra hna
+  have ha' : a < (5 : ℝ) / 3 := lt_of_not_ge hna
+  obtain ⟨C, hCpos, hC⟩ := hO.exists_pos
+  have ht : Tendsto (fun p : ℕ => 2 * p ^ 2 * (p - 1)) atTop atTop := by
+    apply tendsto_atTop.2
+    intro N
+    filter_upwards [eventually_ge_atTop (max N 2)] with p hp
+    have hp2 : 2 ≤ p := (le_max_right _ _).trans hp
+    have hpN : N ≤ p := (le_max_left _ _).trans hp
+    have hp1 : 1 ≤ p - 1 := by omega
+    have hpow : p ≤ 2 * p ^ 2 := by nlinarith
+    have hprod := Nat.mul_le_mul_left (2 * p ^ 2) hp1
+    omega
+  have hratio : ∀ᶠ p : ℕ in atTop,
+      p.Prime → (p : ℝ) ^ (5 - 3 * a) ≤ 4 * C * (2 : ℝ) ^ a := by
+    filter_upwards [ht.eventually hC.bound, eventually_gt_atTop (0 : ℕ)] with p hp hpos
+    intro hprime
+    have hp0 : (0 : ℝ) < p := Nat.cast_pos.mpr hpos
+    have hl : (p : ℝ) ^ 5 ≤ 4 * (f (2 * p ^ 2 * (p - 1)) : ℝ) := by
+      exact_mod_cast hlow p hprime
+    have hsize : ((2 * p ^ 2 * (p - 1) : ℕ) : ℝ) ≤ 2 * (p : ℝ) ^ 3 := by
+      have hb := Nat.mul_le_mul_left (2 * p ^ 2) (Nat.sub_le p 1)
+      have hb' : 2 * p ^ 2 * (p - 1) ≤ 2 * p ^ 3 := by nlinarith only [hb]
+      exact_mod_cast hb'
+    have hu : (f (2 * p ^ 2 * (p - 1)) : ℝ) ≤ C * (2 * (p : ℝ) ^ 3) ^ a := by
+      rw [Real.norm_natCast, Real.norm_of_nonneg
+        (Real.rpow_nonneg (Nat.cast_nonneg _) a)] at hp
+      exact hp.trans (mul_le_mul_of_nonneg_left
+        (Real.rpow_le_rpow (Nat.cast_nonneg _) hsize ha) hCpos.le)
+    have he : (p : ℝ) ^ 5 ≤ 4 * C * (2 * (p : ℝ) ^ 3) ^ a := by
+      nlinarith only [hl, hu]
+    have hp3 : ((p : ℝ) ^ 3) ^ a = (p : ℝ) ^ (3 * a) := by
+      rw [← Real.rpow_natCast, ← Real.rpow_mul hp0.le]
+      norm_num
+    rw [Real.mul_rpow (by norm_num) (pow_nonneg hp0.le 3), hp3] at he
+    rw [Real.rpow_sub hp0, div_le_iff₀ (Real.rpow_pos_of_pos hp0 (3 * a))]
+    have hp5 : (p : ℝ) ^ (5 : ℝ) = (p : ℝ) ^ (5 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (p : ℝ) 5
+    rw [hp5]
+    simpa only [mul_assoc] using he
+  have htop : Tendsto (fun p : ℕ => (p : ℝ) ^ (5 - 3 * a)) atTop atTop :=
+    (tendsto_rpow_atTop (by linarith : 0 < 5 - 3 * a)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨N, hN⟩ := eventually_atTop.mp
+    (hratio.and (htop.eventually_gt_atTop (4 * C * (2 : ℝ) ^ a)))
+  obtain ⟨p, hpN, hp⟩ := Nat.exists_infinite_primes N
+  exact (not_lt_of_ge ((hN p hpN).1 hp)) ((hN p hpN).2)
+
+end Erdos713Norm
+
+namespace Erdos713K3t
+
+abbrev K3t (t : ℕ) := completeBipartiteGraph (Fin 3) (Fin t)
+
+theorem exponent_eq_of_containment {W : Type*} {H : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713Norm.K33 ⊑ H) (hhi : H ⊑ K3t t) {a c : ℝ} (ha : 0 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (5 : ℝ) / 3 := by
+  have hu : a ≤ (5 : ℝ) / 3 := by
+    have hh := Erdos713KST.exponent_upper_of_containment (by decide : 1 ≤ 3) hhi hc.ne' h
+    norm_num at hh
+    exact hh
+  have hO : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc.ne').mp h.isBigO
+  apply le_antisymm hu
+  apply Erdos713Norm.lower_exponent_of_prime_bound ha hO
+  intro p hp
+  exact (Erdos713Norm.extremal_lower_prime p hp).trans
+    (Nat.mul_le_mul_left 4 hlo.extremalNumber_le)
+
+theorem rational_exponent_of_containment {W : Type*} {H : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713Norm.K33 ⊑ H) (hhi : H ⊑ K3t t) {a c : ℝ} (ha : 0 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨5 / 3, ?_⟩
+  simpa using (exponent_eq_of_containment hlo hhi ha hc h).symm
+
+theorem contains_K33 {t : ℕ} (ht : 3 ≤ t) : Erdos713Norm.K33 ⊑ K3t t := by
+  refine ⟨⟨⟨Sum.map id (Fin.castLE ht), ?_⟩, ?_⟩⟩
+  · intro u v huv
+    cases u <;> cases v <;> simpa [Erdos713Norm.K33, K3t, completeBipartiteGraph] using huv
+  · exact Sum.map_injective.mpr ⟨Function.injective_id, Fin.castLE_injective ht⟩
+
+theorem rational_exponent {t : ℕ} (ht : 3 ≤ t) {a c : ℝ} (ha : 0 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n (K3t t) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) :=
+  rational_exponent_of_containment (contains_K33 ht) (.refl _) ha hc h
+
+end Erdos713K3t
+
+
+namespace Erdos713Leaf
+
+open Finset
+
+theorem exists_pruned {V : Type*} [Fintype V] (G : SimpleGraph V) (d : ℕ) :
+    ∃ K : SimpleGraph V, K ≤ G ∧
+      (∀ v, Nat.card (K.neighborSet v) = 0 ∨ d ≤ Nat.card (K.neighborSet v)) ∧
+      Nat.card G.edgeSet ≤ Nat.card K.edgeSet + d * Fintype.card V := by
+  classical
+  let S : Finset (SimpleGraph V) := {K | K ≤ G}
+  let weight : SimpleGraph V → ℤ := fun K =>
+    (Nat.card K.edgeSet : ℤ) - (d : ℤ) * Nat.card K.support
+  obtain ⟨K, hKS, hmax⟩ := exists_max_image S weight
+    (show S.Nonempty from ⟨G, by simp [S]⟩)
+  have hKG : K ≤ G := by simpa [S] using hKS
+  refine ⟨K, hKG, ?_, ?_⟩
+  · intro v
+    by_cases hd : d ≤ Nat.card (K.neighborSet v)
+    · exact Or.inr hd
+    left
+    by_contra hz
+    have hpos : 0 < K.degree v := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using Nat.pos_of_ne_zero hz
+    have hlt : K.degree v < d := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using Nat.lt_of_not_ge hd
+    have hv : v ∈ K.support := (K.degree_pos_iff_mem_support v).mp hpos
+    have hDel : K.deleteIncidenceSet v ∈ S := by
+      simpa [S] using (K.deleteIncidenceSet_le v).trans hKG
+    have hm := hmax (K.deleteIncidenceSet v) hDel
+    dsimp only [weight] at hm
+    have he : Nat.card (K.deleteIncidenceSet v).edgeSet + K.degree v = Nat.card K.edgeSet := by
+      simpa only [Nat.card_eq_fintype_card, ← edgeFinset_card,
+        card_edgeFinset_deleteIncidenceSet] using
+        Nat.sub_add_cancel (K.degree_le_card_edgeFinset v)
+    have hs : Nat.card (K.deleteIncidenceSet v).support + 1 ≤ Nat.card K.support := by
+      have hb := K.card_support_deleteIncidenceSet hv
+      have hp : 0 < Fintype.card K.support := Fintype.card_pos_iff.mpr ⟨⟨v, hv⟩⟩
+      have hh : Fintype.card (K.deleteIncidenceSet v).support + 1 ≤ Fintype.card K.support := by omega
+      simpa only [Nat.card_eq_fintype_card] using hh
+    have hei : (Nat.card (K.deleteIncidenceSet v).edgeSet : ℤ) + K.degree v =
+        (Nat.card K.edgeSet : ℤ) := by exact_mod_cast he
+    have hsi : (Nat.card (K.deleteIncidenceSet v).support : ℤ) + 1 ≤
+        (Nat.card K.support : ℤ) := by exact_mod_cast hs
+    have hlti : (K.degree v : ℤ) < (d : ℤ) := by exact_mod_cast hlt
+    have hmul := mul_le_mul_of_nonneg_left hsi (Int.natCast_nonneg d)
+    nlinarith
+  · have hm := hmax G (by simp [S])
+    dsimp only [weight] at hm
+    have hs : Nat.card G.support ≤ Fintype.card V := by
+      simpa only [Nat.card_eq_fintype_card] using Fintype.card_subtype_le (· ∈ G.support)
+    have hsi : (Nat.card G.support : ℤ) ≤ (Fintype.card V : ℤ) := by exact_mod_cast hs
+    have hmul := mul_le_mul_of_nonneg_left hsi (Int.natCast_nonneg d)
+    have hprod : 0 ≤ (d : ℤ) * Nat.card K.support := by positivity
+    have hb : (Nat.card G.edgeSet : ℤ) ≤
+        (Nat.card K.edgeSet : ℤ) + (d : ℤ) * Fintype.card V := by nlinarith
+    exact_mod_cast hb
+
+open scoped Classical in
+theorem extend_leaf {V W : Type*} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x y : W} (hx : T.degree x = 1) (hxy : T.Adj x y)
+    (f : Copy (T.induce {x}ᶜ) G)
+    (hdeg : Fintype.card W ≤ G.degree (f ⟨y, by simpa using hxy.ne.symm⟩)) : T ⊑ G := by
+  classical
+  obtain ⟨y₀, hy₀, huniq⟩ := degree_eq_one_iff_existsUnique_adj.mp hx
+  have hy : ∀ w, T.Adj x w → w = y :=
+    fun w hw => (huniq w hw).trans (huniq y hxy).symm
+  have hsmall : Fintype.card ↥({x}ᶜ : Set W) < Fintype.card W :=
+    Fintype.card_subtype_lt (x := x) (by simp)
+  let y' : ↥({x}ᶜ : Set W) := ⟨y, by simpa using hxy.ne.symm⟩
+  let S : Finset V := Finset.univ.image f
+  have hS : S.card < (G.neighborFinset (f y')).card := by
+    calc
+      S.card ≤ Fintype.card ↥({x}ᶜ : Set W) := by
+        simpa only [Finset.card_univ] using (Finset.card_image_le (s := Finset.univ) (f := f))
+      _ < Fintype.card W := hsmall
+      _ ≤ (G.neighborFinset (f y')).card := hdeg
+  obtain ⟨z, hz, hzS⟩ := Finset.exists_mem_notMem_of_card_lt_card hS
+  have hzadj : G.Adj (f y') z := by simpa using hz
+  have hzf : ∀ w, z ≠ f w := by
+    intro w heq
+    apply hzS
+    exact heq ▸ Finset.mem_image.mpr ⟨w, Finset.mem_univ _, rfl⟩
+  let g : W → V := fun w => if h : w = x then z else f ⟨w, by simpa using h⟩
+  have hg : ∀ w (hw : w ≠ x), g w = f ⟨w, by simpa using hw⟩ := by
+    intro w hw
+    simp [g, hw]
+  have hgx : g x = z := by simp [g]
+  refine ⟨⟨⟨g, ?_⟩, ?_⟩⟩
+  · intro u v huv
+    by_cases hu : u = x
+    · subst u
+      have hv : v = y := hy v huv
+      subst v
+      simpa [hgx, hg y hxy.ne.symm, y'] using hzadj.symm
+    · by_cases hv : v = x
+      · subst v
+        have hu' : u = y := hy u huv.symm
+        subst u
+        simpa [hgx, hg y hxy.ne.symm, y'] using hzadj
+      · rw [hg u hu, hg v hv]
+        exact f.toHom.map_rel' huv
+  · intro u v huv
+    change g u = g v at huv
+    by_cases hu : u = x
+    · by_cases hv : v = x
+      · exact hu.trans hv.symm
+      · rw [hu, hgx, hg v hv] at huv
+        exact (hzf _ huv).elim
+    · by_cases hv : v = x
+      · rw [hv, hgx, hg u hu] at huv
+        exact (hzf _ huv.symm).elim
+      · rw [hg u hu, hg v hv] at huv
+        exact congrArg Subtype.val (f.injective huv)
+
+theorem exists_neighbor_not_range {V U : Type*} [Fintype V] [Fintype U]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (f : U → V) (u : V)
+    (hcard : Fintype.card U < G.degree u) :
+    ∃ w, G.Adj u w ∧ ∀ a, w ≠ f a := by
+  classical
+  have hc : (univ.image f).card < (G.neighborFinset u).card := by
+    calc
+      (univ.image f).card ≤ Fintype.card U := by
+        simpa only [card_univ] using card_image_le (s := univ) (f := f)
+      _ < (G.neighborFinset u).card := hcard
+  obtain ⟨w, hw, hwf⟩ := exists_mem_notMem_of_card_lt_card hc
+  refine ⟨w, by simpa using hw, ?_⟩
+  intro a ha
+  exact hwf (ha ▸ mem_image.mpr ⟨a, mem_univ _, rfl⟩)
+
+noncomputable def move_isolated {U V : Type*} {A : SimpleGraph U} {B : SimpleGraph V}
+    (f : Copy A B) (y : U) (hy : ∀ v, ¬A.Adj y v) (w : V) (hw : ∀ a, w ≠ f a) :
+    Copy A B := by
+  classical
+  refine ⟨⟨Function.update (⇑f) y w, ?_⟩, ?_⟩
+  · intro u v huv
+    have hu : u ≠ y := fun he => hy v (he ▸ huv)
+    have hv : v ≠ y := fun he => hy u (he ▸ huv.symm)
+    simpa only [Function.update_of_ne hu, Function.update_of_ne hv] using f.toHom.map_rel' huv
+  · intro u v huv
+    change Function.update (⇑f) y w u = Function.update (⇑f) y w v at huv
+    by_cases hu : u = y
+    · by_cases hv : v = y
+      · exact hu.trans hv.symm
+      · rw [hu, Function.update_self, Function.update_of_ne hv] at huv
+        exact (hw v huv).elim
+    · by_cases hv : v = y
+      · rw [hv, Function.update_self, Function.update_of_ne hu] at huv
+        exact (hw u huv.symm).elim
+      · apply f.injective
+        simpa [hu, hv] using huv
+
+@[simp]
+theorem move_isolated_self {U V : Type*} {A : SimpleGraph U} {B : SimpleGraph V}
+    (f : Copy A B) (y : U) (hy : ∀ v, ¬A.Adj y v) (w : V) (hw : ∀ a, w ≠ f a) :
+    move_isolated f y hy w hw y = w := by
+  classical
+  simp [move_isolated]
+
+open scoped Classical in
+theorem free_leaf_edge_bound {V W : Type*} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x y : W} (hx : T.degree x = 1) (hxy : T.Adj x y) (hfree : T.Free G) :
+    G.edgeFinset.card ≤ extremalNumber (Fintype.card V) (T.induce {x}ᶜ) +
+      Fintype.card W * Fintype.card V := by
+  classical
+  obtain ⟨K, hKG, hdeg, hbound⟩ := exists_pruned G (Fintype.card W)
+  by_cases hK : K = ⊥
+  · have he : Nat.card K.edgeSet = 0 := by simp [hK]
+    rw [he, zero_add] at hbound
+    have hb := hbound.trans (Nat.le_add_left (Fintype.card W * Fintype.card V)
+      (extremalNumber (Fintype.card V) (T.induce {x}ᶜ)))
+    simpa only [Nat.card_eq_fintype_card, ← edgeFinset_card] using hb
+  have hdpos (u v : V) (huv : K.Adj u v) : Fintype.card W ≤ K.degree u := by
+    have hp : 0 < K.degree u := (K.degree_pos_iff_exists_adj _).mpr ⟨_, huv⟩
+    rcases hdeg u with hh | hh
+    · rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hh
+      omega
+    · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hh
+  have hKfree : (T.induce {x}ᶜ).Free K := by
+    rintro ⟨f⟩
+    let y' : ↥({x}ᶜ : Set W) := ⟨y, by simpa using hxy.ne.symm⟩
+    by_cases hz : ∃ z, z ≠ x ∧ T.Adj y z
+    · obtain ⟨z, hzx, hyz⟩ := hz
+      let z' : ↥({x}ᶜ : Set W) := ⟨z, by simpa using hzx⟩
+      have hAdj : K.Adj (f y') (f z') := f.toHom.map_rel' hyz
+      exact hfree ((extend_leaf K T hx hxy f (hdpos _ _ hAdj)).mono_right hKG)
+    · have hyiso : ∀ v, ¬(T.induce {x}ᶜ).Adj y' v := by
+        intro v hv
+        apply hz
+        exact ⟨v.val, v.prop, hv⟩
+      obtain ⟨u, v, huv⟩ := ne_bot_iff_exists_adj.mp hK
+      have hsmall : Fintype.card ↥({x}ᶜ : Set W) < Fintype.card W :=
+        Fintype.card_subtype_lt (x := x) (by simp)
+      obtain ⟨w, huw, hw⟩ := exists_neighbor_not_range K f u
+        (hsmall.trans_le (hdpos _ _ huv))
+      let f' := move_isolated f y' hyiso w hw
+      have he : f' y' = w := move_isolated_self f y' hyiso w hw
+      have hdc : Fintype.card W ≤ Nat.card (K.neighborSet (f' y')) := by
+        rw [he, Nat.card_eq_fintype_card, card_neighborSet_eq_degree]
+        exact hdpos _ _ huw.symm
+      have hd : Fintype.card W ≤ K.degree (f' y') := by
+        simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hdc
+      exact hfree ((extend_leaf K T hx hxy f' hd).mono_right hKG)
+  have hKbound : Nat.card K.edgeSet ≤ extremalNumber (Fintype.card V) (T.induce {x}ᶜ) := by
+    simpa only [Nat.card_eq_fintype_card, ← edgeFinset_card] using
+      card_edgeFinset_le_extremalNumber hKfree
+  have hb := hbound.trans (Nat.add_le_add_right hKbound (Fintype.card W * Fintype.card V))
+  simpa only [Nat.card_eq_fintype_card, ← edgeFinset_card] using hb
+
+open scoped Classical in
+theorem extremal_leaf_upper {W : Type*} [Fintype W]
+    (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x y : W} (hx : T.degree x = 1) (hxy : T.Adj x y) (n : ℕ) :
+    extremalNumber n T ≤ extremalNumber n (T.induce {x}ᶜ) + Fintype.card W * n := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+  intro G _ hfree
+  exact free_leaf_edge_bound G T hx hxy hfree
+
+theorem rpow_isLittleO_nat {a b : ℝ} (hab : a < b) :
+    (fun n : ℕ => (n : ℝ) ^ a) =o[atTop] (fun n : ℕ => (n : ℝ) ^ b) := by
+  apply (isLittleO_iff_tendsto' ?_).mpr
+  · have hlim := (tendsto_rpow_neg_atTop (sub_pos.mpr hab)).comp
+      (tendsto_natCast_atTop_atTop (R := ℝ))
+    apply hlim.congr'
+    filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+    have hn' : (0 : ℝ) < n := Nat.cast_pos.mpr hn
+    simp only [Function.comp_apply, neg_sub, Real.rpow_sub hn']
+  · filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+    have hn' : (0 : ℝ) < n := Nat.cast_pos.mpr hn
+    intro hz
+    exact ((Real.rpow_pos_of_pos hn' b).ne' hz).elim
+
+open scoped Classical in
+theorem leaf_asymptotic {W : Type*} [Fintype W]
+    (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x y : W} (hx : T.degree x = 1) (hxy : T.Adj x y)
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n T : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n (T.induce {x}ᶜ) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  have hLo (n : ℕ) : extremalNumber n (T.induce {x}ᶜ) ≤ extremalNumber n T :=
+    (show (T.induce {x}ᶜ) ⊑ T from ⟨Copy.induce T _⟩).extremalNumber_le
+  have hδnonneg (n : ℕ) :
+      0 ≤ (extremalNumber n T : ℝ) - (extremalNumber n (T.induce {x}ᶜ) : ℝ) := by
+    apply sub_nonneg.mpr
+    exact_mod_cast hLo n
+  have hδbound (n : ℕ) :
+      (extremalNumber n T : ℝ) - (extremalNumber n (T.induce {x}ᶜ) : ℝ) ≤
+        (Fintype.card W : ℝ) * (n : ℝ) := by
+    have hu : (extremalNumber n T : ℝ) ≤ (extremalNumber n (T.induce {x}ᶜ) : ℝ) +
+        (Fintype.card W : ℝ) * (n : ℝ) := by
+      exact_mod_cast extremal_leaf_upper T hx hxy n
+    linarith
+  have hlin : (fun n : ℕ => (extremalNumber n T : ℝ) -
+      (extremalNumber n (T.induce {x}ᶜ) : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)) := by
+    apply IsBigO.of_bound (Fintype.card W : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (hδnonneg n), Real.norm_natCast]
+    exact hδbound n
+  have ho : (fun n : ℕ => (n : ℝ)) =o[atTop] (fun n : ℕ => (n : ℝ) ^ a) := by
+    simpa only [Real.rpow_one] using rpow_isLittleO_nat ha
+  have hδ := hlin.trans_isLittleO (ho.const_mul_right hc)
+  apply (h.sub_isLittleO hδ).congr_left
+  filter_upwards with n
+  simp only [Pi.sub_apply]
+  ring
+
+/- Removing an isolated forbidden vertex changes no sufficiently large extremal number. -/
+
+open scoped Classical in
+theorem extend_isolated {V W : Type*} [Fintype V] [Fintype W]
+    (G : SimpleGraph V) (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x : W} (hx : T.degree x = 0) (f : Copy (T.induce {x}ᶜ) G)
+    (hcard : Fintype.card W ≤ Fintype.card V) : T ⊑ G := by
+  classical
+  have hsmall : Fintype.card ↥({x}ᶜ : Set W) < Fintype.card W :=
+    Fintype.card_subtype_lt (x := x) (by simp)
+  have hS : (Finset.univ.image f).card < (Finset.univ : Finset V).card := by
+    calc
+      (Finset.univ.image f).card ≤ Fintype.card ↥({x}ᶜ : Set W) := by
+        simpa only [Finset.card_univ] using
+          (Finset.card_image_le (s := Finset.univ) (f := f))
+      _ < Fintype.card W := hsmall
+      _ ≤ (Finset.univ : Finset V).card := hcard
+  obtain ⟨z, _, hz⟩ := Finset.exists_mem_notMem_of_card_lt_card hS
+  have hzf : ∀ w, z ≠ f w := by
+    intro w heq
+    exact hz (heq ▸ Finset.mem_image.mpr ⟨w, Finset.mem_univ _, rfl⟩)
+  let g : W → V := fun w => if h : w = x then z else f ⟨w, by simpa using h⟩
+  have hg : ∀ w (hw : w ≠ x), g w = f ⟨w, by simpa using hw⟩ := by
+    intro w hw
+    simp [g, hw]
+  have hgx : g x = z := by simp [g]
+  have hiso : ∀ w, ¬ T.Adj x w := by
+    intro w hw
+    have hd := hw.degree_pos_left
+    omega
+  refine ⟨⟨⟨g, ?_⟩, ?_⟩⟩
+  · intro u v huv
+    have hu : u ≠ x := fun he => hiso v (he ▸ huv)
+    have hv : v ≠ x := fun he => hiso u (he ▸ huv.symm)
+    rw [hg u hu, hg v hv]
+    exact f.toHom.map_rel' huv
+  · intro u v huv
+    change g u = g v at huv
+    by_cases hu : u = x
+    · by_cases hv : v = x
+      · exact hu.trans hv.symm
+      · rw [hu, hgx, hg v hv] at huv
+        exact (hzf _ huv).elim
+    · by_cases hv : v = x
+      · rw [hv, hgx, hg u hu] at huv
+        exact (hzf _ huv.symm).elim
+      · rw [hg u hu, hg v hv] at huv
+        exact congrArg Subtype.val (f.injective huv)
+
+open scoped Classical in
+theorem extremal_isolated_eq {W : Type*} [Fintype W]
+    (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x : W} (hx : T.degree x = 0) {n : ℕ} (hn : Fintype.card W ≤ n) :
+    extremalNumber n T = extremalNumber n (T.induce {x}ᶜ) := by
+  apply le_antisymm
+  · rw [← Fintype.card_fin n, extremalNumber_le_iff]
+    intro G _ hfree
+    apply card_edgeFinset_le_extremalNumber
+    rintro ⟨f⟩
+    exact hfree (extend_isolated G T hx f (by simpa using hn))
+  · exact (show (T.induce {x}ᶜ) ⊑ T from ⟨Copy.induce T _⟩).extremalNumber_le
+
+open scoped Classical in
+theorem isolated_asymptotic {W : Type*} [Fintype W]
+    (T : SimpleGraph W) [DecidableRel T.Adj]
+    {x : W} (hx : T.degree x = 0) {a c : ℝ}
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n T : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n (T.induce {x}ᶜ) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  apply h.congr_left
+  filter_upwards [eventually_ge_atTop (Fintype.card W)] with n hn
+  rw [extremal_isolated_eq T hx hn]
+
+end Erdos713Leaf
+
+namespace Erdos713C6
+
+open Finset
+
+abbrev C6 := cycleGraph 6
+
+def bipGraph {P L : Type*} (R : P → L → Prop) : SimpleGraph (P ⊕ L) where
+  Adj u v := match u, v with
+    | Sum.inl x, Sum.inr y => R x y
+    | Sum.inr y, Sum.inl x => R x y
+    | _, _ => False
+  symm := by intro u v; cases u <;> cases v <;> simp
+  loopless := by intro v; cases v <;> simp
+
+theorem right_of_adj_left {P L : Type*} {R : P → L → Prop} {x : P} {v : P ⊕ L}
+    (h : (bipGraph R).Adj (Sum.inl x) v) : ∃ y, v = Sum.inr y ∧ R x y := by
+  cases v with
+  | inl y => exact h.elim
+  | inr y => exact ⟨y, rfl, h⟩
+
+theorem left_of_adj_right {P L : Type*} {R : P → L → Prop} {y : L} {v : P ⊕ L}
+    (h : (bipGraph R).Adj (Sum.inr y) v) : ∃ x, v = Sum.inl x ∧ R x y := by
+  cases v with
+  | inl x => exact ⟨x, rfl, h⟩
+  | inr x => exact h.elim
+
+theorem injective_triple_of_map {U V : Type*} (f : Fin 6 → V) (hf : Function.Injective f)
+    (g : U → V) (x : Fin 3 → U) (k : Fin 3 → Fin 6) (hk : Function.Injective k)
+    (he : ∀ i, f (k i) = g (x i)) : Function.Injective x := by
+  intro i j hij
+  apply hk
+  apply hf
+  rw [he i, he j, hij]
+
+theorem free_of_no_hexagon {P L : Type*} (R : P → L → Prop)
+    (h : ∀ (a : Fin 3 → P) (b : Fin 3 → L), Function.Injective a → Function.Injective b →
+      (∀ i, R (a i) (b i)) → (∀ i, R (a (i + 1)) (b i)) → False) :
+    C6.Free (bipGraph R) := by
+  rintro ⟨f⟩
+  have h01 := f.toHom.map_rel' (show C6.Adj 0 1 by decide)
+  have h12 := f.toHom.map_rel' (show C6.Adj 1 2 by decide)
+  have h23 := f.toHom.map_rel' (show C6.Adj 2 3 by decide)
+  have h34 := f.toHom.map_rel' (show C6.Adj 3 4 by decide)
+  have h45 := f.toHom.map_rel' (show C6.Adj 4 5 by decide)
+  have h50 := f.toHom.map_rel' (show C6.Adj 5 0 by decide)
+  change (bipGraph R).Adj (f 0) (f 1) at h01
+  change (bipGraph R).Adj (f 1) (f 2) at h12
+  change (bipGraph R).Adj (f 2) (f 3) at h23
+  change (bipGraph R).Adj (f 3) (f 4) at h34
+  change (bipGraph R).Adj (f 4) (f 5) at h45
+  change (bipGraph R).Adj (f 5) (f 0) at h50
+  cases e0 : f 0 with
+  | inl x₀ =>
+    rw [e0] at h01
+    obtain ⟨y₀, e1, h00⟩ := right_of_adj_left h01
+    rw [e1] at h12
+    obtain ⟨x₁, e2, h10⟩ := left_of_adj_right h12
+    rw [e2] at h23
+    obtain ⟨y₁, e3, h11⟩ := right_of_adj_left h23
+    rw [e3] at h34
+    obtain ⟨x₂, e4, h21⟩ := left_of_adj_right h34
+    rw [e4] at h45
+    obtain ⟨y₂, e5, h22⟩ := right_of_adj_left h45
+    have h02 : R x₀ y₂ := by simpa only [e5, e0] using h50
+    apply h ![x₀, x₁, x₂] ![y₀, y₁, y₂]
+    · apply injective_triple_of_map f f.injective Sum.inl _ ![0, 2, 4] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_triple_of_map f f.injective Sum.inr _ ![1, 3, 5] (by decide)
+      intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+  | inr y₀ =>
+    rw [e0] at h01
+    obtain ⟨x₀, e1, h00⟩ := left_of_adj_right h01
+    rw [e1] at h12
+    obtain ⟨y₁, e2, h01'⟩ := right_of_adj_left h12
+    rw [e2] at h23
+    obtain ⟨x₁, e3, h11⟩ := left_of_adj_right h23
+    rw [e3] at h34
+    obtain ⟨y₂, e4, h12'⟩ := right_of_adj_left h34
+    rw [e4] at h45
+    obtain ⟨x₂, e5, h22⟩ := left_of_adj_right h45
+    have h20 : R x₂ y₀ := by simpa only [e5, e0] using h50
+    apply h ![x₀, x₁, x₂] ![y₁, y₂, y₀]
+    · apply injective_triple_of_map f f.injective Sum.inl _ ![1, 3, 5] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_triple_of_map f f.injective Sum.inr _ ![2, 4, 0] (by decide)
+      intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+
+abbrev Triple (F : Type*) := F × F × F
+
+def WengerRel {F : Type*} [Field F] (p l : Triple F) : Prop :=
+  p.2.1 = l.1 * p.1 + l.2.1 ∧ p.2.2 = l.1 ^ 2 * p.1 + l.2.2
+
+abbrev wengerGraph (F : Type*) [Field F] := bipGraph (WengerRel (F := F))
+
+theorem point_eq_of_x_eq {F : Type*} [Field F] {p q l : Triple F}
+    (hp : WengerRel p l) (hq : WengerRel q l) (h : p.1 = q.1) : p = q := by
+  apply Prod.ext h
+  apply Prod.ext <;> dsimp
+  · rw [hp.1, hq.1, h]
+  · rw [hp.2, hq.2, h]
+
+theorem line_eq_of_slope_eq {F : Type*} [Field F] {p l m : Triple F}
+    (hl : WengerRel p l) (hm : WengerRel p m) (h : l.1 = m.1) : l = m := by
+  apply Prod.ext h
+  apply Prod.ext <;> dsimp
+  · linear_combination hm.1 - hl.1 - p.1 * h
+  · have ht := hl.2
+    rw [h] at ht
+    exact add_left_cancel (ht.symm.trans hm.2)
+
+theorem wenger_no_hexagon {F : Type*} [Field F] (p l : Fin 3 → Triple F)
+    (hp : Function.Injective p) (hl : Function.Injective l)
+    (hA : ∀ i, WengerRel (p i) (l i)) (hB : ∀ i, WengerRel (p (i + 1)) (l i)) : False := by
+  have h01 : (l 0).1 ≠ (l 1).1 := by
+    intro h
+    exact (show (0 : Fin 3) ≠ 1 by decide)
+      (hl (line_eq_of_slope_eq (hB 0) (hA 1) h))
+  have h02 : (l 0).1 ≠ (l 2).1 := by
+    intro h
+    exact (show (0 : Fin 3) ≠ 2 by decide)
+      (hl (line_eq_of_slope_eq (hA 0) (hB 2) h))
+  have hx01 : (p 0).1 ≠ (p 1).1 := by
+    intro h
+    exact (show (0 : Fin 3) ≠ 1 by decide)
+      (hp (point_eq_of_x_eq (hA 0) (hB 0) h))
+  have hb0 : WengerRel (p 1) (l 0) := hB 0
+  have hb1 : WengerRel (p 2) (l 1) := hB 1
+  have hb2 : WengerRel (p 0) (l 2) := hB 2
+  have hy : (l 0).1 * ((p 0).1 - (p 1).1) +
+      (l 1).1 * ((p 1).1 - (p 2).1) + (l 2).1 * ((p 2).1 - (p 0).1) = 0 := by
+    linear_combination -(hA 0).1 + hb0.1 - (hA 1).1 + hb1.1 -
+      (hA 2).1 + hb2.1
+  have hz : (l 0).1 ^ 2 * ((p 0).1 - (p 1).1) +
+      (l 1).1 ^ 2 * ((p 1).1 - (p 2).1) + (l 2).1 ^ 2 * ((p 2).1 - (p 0).1) = 0 := by
+    linear_combination -(hA 0).2 + hb0.2 - (hA 1).2 + hb1.2 -
+      (hA 2).2 + hb2.2
+  have hprod : ((l 0).1 - (l 1).1) * ((l 0).1 - (l 2).1) *
+      ((p 0).1 - (p 1).1) = 0 := by
+    linear_combination hz - ((l 1).1 + (l 2).1) * hy
+  exact mul_ne_zero (mul_ne_zero (sub_ne_zero.mpr h01) (sub_ne_zero.mpr h02))
+    (sub_ne_zero.mpr hx01) hprod
+
+theorem wengerGraph_free (F : Type*) [Field F] : C6.Free (wengerGraph F) :=
+  free_of_no_hexagon WengerRel wenger_no_hexagon
+
+def leftNeighbors {F : Type*} [Field F] (p : Triple F) :
+    F ↪ (wengerGraph F).neighborSet (Sum.inl p) where
+  toFun a := ⟨Sum.inr (a, p.2.1 - a * p.1, p.2.2 - a ^ 2 * p.1), by
+    change WengerRel p _
+    constructor <;> dsimp <;> ring⟩
+  inj' := by
+    intro a b h
+    exact congrArg (fun v => Sum.elim (fun x : Triple F => x.1)
+      (fun x : Triple F => x.1) v.val) h
+
+def rightNeighbors {F : Type*} [Field F] (l : Triple F) :
+    F ↪ (wengerGraph F).neighborSet (Sum.inr l) where
+  toFun x := ⟨Sum.inl (x, l.1 * x + l.2.1, l.1 ^ 2 * x + l.2.2), by
+    change WengerRel _ l
+    exact ⟨rfl, rfl⟩⟩
+  inj' := by
+    intro a b h
+    exact congrArg (fun v => Sum.elim (fun x : Triple F => x.1)
+      (fun x : Triple F => x.1) v.val) h
+
+open scoped Classical in
+theorem wengerGraph_degree_lower (F : Type*) [Field F] [Fintype F]
+    (v : Triple F ⊕ Triple F) : Fintype.card F ≤ (wengerGraph F).degree v := by
+  classical
+  rw [← card_neighborSet_eq_degree]
+  cases v with
+  | inl p => exact Fintype.card_le_of_embedding (leftNeighbors p)
+  | inr l => exact Fintype.card_le_of_embedding (rightNeighbors l)
+
+open scoped Classical in
+theorem wengerGraph_edge_lower (F : Type*) [Field F] [Fintype F] :
+    Fintype.card F ^ 4 ≤ (wengerGraph F).edgeFinset.card := by
+  classical
+  have hh : ∑ v : Triple F ⊕ Triple F, Fintype.card F ≤
+      ∑ v : Triple F ⊕ Triple F, (wengerGraph F).degree v :=
+    sum_le_sum fun v _ => wengerGraph_degree_lower F v
+  rw [sum_degrees_eq_twice_card_edges] at hh
+  simp only [sum_const, card_univ, Fintype.card_sum, Triple, Fintype.card_prod,
+    Nat.nsmul_eq_mul] at hh
+  nlinarith
+
+theorem extremal_lower_prime (p : ℕ) (hp : p.Prime) :
+    p ^ 4 ≤ extremalNumber (2 * p ^ 3) C6 := by
+  classical
+  letI : Fact p.Prime := ⟨hp⟩
+  have he := wengerGraph_edge_lower (ZMod p)
+  have hExt := card_edgeFinset_le_extremalNumber (wengerGraph_free (ZMod p))
+  have hc : Fintype.card (Triple (ZMod p) ⊕ Triple (ZMod p)) = 2 * p ^ 3 := by
+    simp only [Triple, Fintype.card_sum, Fintype.card_prod, ZMod.card]
+    ring
+  rw [hc] at hExt
+  rw [ZMod.card] at he
+  exact he.trans hExt
+
+theorem lower_exponent_of_prime_bound {f : ℕ → ℕ} {a : ℝ}
+    (hO : (fun n : ℕ => (f n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ a))
+    (hlow : ∀ p : ℕ, p.Prime → p ^ 4 ≤ f (2 * p ^ 3)) : (4 : ℝ) / 3 ≤ a := by
+  by_contra ha
+  have ha' : a < (4 : ℝ) / 3 := lt_of_not_ge ha
+  obtain ⟨C, _, hC⟩ := hO.exists_pos
+  have ht : Tendsto (fun p : ℕ => 2 * p ^ 3) atTop atTop := by
+    apply tendsto_atTop_mono _ tendsto_id
+    intro p
+    have hp := Nat.le_self_pow (by decide : 3 ≠ 0) p
+    change p ≤ 2 * p ^ 3
+    omega
+  have hratio : ∀ᶠ p : ℕ in atTop,
+      p.Prime → (p : ℝ) ^ (4 - 3 * a) ≤ C * (2 : ℝ) ^ a := by
+    filter_upwards [ht.eventually hC.bound, eventually_gt_atTop (0 : ℕ)] with p hp hpos
+    intro hprime
+    have hp0 : (0 : ℝ) < p := Nat.cast_pos.mpr hpos
+    have hl : (p : ℝ) ^ 4 ≤ (f (2 * p ^ 3) : ℝ) := by exact_mod_cast hlow p hprime
+    have hu : (f (2 * p ^ 3) : ℝ) ≤ C * (2 * (p : ℝ) ^ 3) ^ a := by
+      rw [Real.norm_natCast, Real.norm_of_nonneg
+        (Real.rpow_nonneg (Nat.cast_nonneg (2 * p ^ 3)) a)] at hp
+      simpa only [Nat.cast_mul, Nat.cast_ofNat, Nat.cast_pow] using hp
+    have he := hl.trans hu
+    have hp3 : ((p : ℝ) ^ 3) ^ a = (p : ℝ) ^ (3 * a) := by
+      rw [← Real.rpow_natCast, ← Real.rpow_mul hp0.le]
+      norm_num
+    rw [Real.mul_rpow (by norm_num) (pow_nonneg hp0.le 3), hp3] at he
+    rw [Real.rpow_sub hp0, div_le_iff₀ (Real.rpow_pos_of_pos hp0 (3 * a))]
+    have hp4 : (p : ℝ) ^ (4 : ℝ) = (p : ℝ) ^ (4 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (p : ℝ) 4
+    rw [hp4]
+    simpa only [mul_assoc] using he
+  have htop : Tendsto (fun p : ℕ => (p : ℝ) ^ (4 - 3 * a)) atTop atTop :=
+    (tendsto_rpow_atTop (by linarith : 0 < 4 - 3 * a)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨N, hN⟩ := eventually_atTop.mp
+    (hratio.and (htop.eventually_gt_atTop (C * (2 : ℝ) ^ a)))
+  obtain ⟨p, hpN, hp⟩ := Nat.exists_infinite_primes N
+  exact (not_lt_of_ge ((hN p hpN).1 hp)) ((hN p hpN).2)
+
+theorem exponent_lower_of_containment {W : Type*} {H : SimpleGraph W}
+    (hH : C6 ⊑ H) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : (4 : ℝ) / 3 ≤ a := by
+  have hO : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc).mp h.isBigO
+  apply lower_exponent_of_prime_bound hO
+  intro p hp
+  exact (extremal_lower_prime p hp).trans hH.extremalNumber_le
+
+end Erdos713C6
+
+namespace Erdos713C6
+
+open Finset
+
+theorem pathGraph_six_tree : (pathGraph 6).IsTree := by
+  letI : DecidableRel (pathGraph 6).Adj := fun u v =>
+    decidable_of_iff (u.val + 1 = v.val ∨ v.val + 1 = u.val) pathGraph_adj.symm
+  apply isTree_iff_connected_and_card.mpr
+  refine ⟨pathGraph_connected 5, ?_⟩
+  rw [Nat.card_eq_fintype_card, ← edgeFinset_card, Nat.card_eq_fintype_card, Fintype.card_fin]
+  decide
+
+theorem injective_pair {U : Type*} {x y : U} (hxy : x ≠ y) :
+    Function.Injective ![x, y] := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;> simp_all
+
+theorem free_path_of_no_alternating_path {P L : Type*} (R : P → L → Prop)
+    (h : ∀ (a : Fin 3 → P) (b : Fin 2 → L), Function.Injective a → Function.Injective b →
+      R (a 0) (b 0) → R (a 1) (b 0) → R (a 1) (b 1) → R (a 2) (b 1) → False) :
+    (pathGraph 6).Free (bipGraph R) := by
+  rintro ⟨f⟩
+  have h01 := f.toHom.map_rel' (show (pathGraph 6).Adj 0 1 by simp [pathGraph_adj])
+  have h12 := f.toHom.map_rel' (show (pathGraph 6).Adj 1 2 by simp [pathGraph_adj])
+  have h23 := f.toHom.map_rel' (show (pathGraph 6).Adj 2 3 by simp [pathGraph_adj])
+  have h34 := f.toHom.map_rel' (show (pathGraph 6).Adj 3 4 by simp [pathGraph_adj])
+  have h45 := f.toHom.map_rel' (show (pathGraph 6).Adj 4 5 by simp [pathGraph_adj])
+  change (bipGraph R).Adj (f 0) (f 1) at h01
+  change (bipGraph R).Adj (f 1) (f 2) at h12
+  change (bipGraph R).Adj (f 2) (f 3) at h23
+  change (bipGraph R).Adj (f 3) (f 4) at h34
+  change (bipGraph R).Adj (f 4) (f 5) at h45
+  cases e0 : f 0 with
+  | inl x₀ =>
+    rw [e0] at h01
+    obtain ⟨y₀, e1, h00⟩ := right_of_adj_left h01
+    rw [e1] at h12
+    obtain ⟨x₁, e2, h10⟩ := left_of_adj_right h12
+    rw [e2] at h23
+    obtain ⟨y₁, e3, h11⟩ := right_of_adj_left h23
+    rw [e3] at h34
+    obtain ⟨x₂, e4, h21⟩ := left_of_adj_right h34
+    apply h ![x₀, x₁, x₂] ![y₀, y₁] ?_ ?_ h00 h10 h11 h21
+    · apply injective_triple_of_map f f.injective Sum.inl _ ![0, 2, 4] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_pair
+      intro hy
+      have he : f 1 = f 3 := e1.trans ((congrArg Sum.inr hy).trans e3.symm)
+      exact (show (1 : Fin 6) ≠ 3 by decide) (f.injective he)
+  | inr y₀ =>
+    rw [e0] at h01
+    obtain ⟨x₀, e1, _⟩ := left_of_adj_right h01
+    rw [e1] at h12
+    obtain ⟨y₁, e2, h01'⟩ := right_of_adj_left h12
+    rw [e2] at h23
+    obtain ⟨x₁, e3, h11⟩ := left_of_adj_right h23
+    rw [e3] at h34
+    obtain ⟨y₂, e4, h12'⟩ := right_of_adj_left h34
+    rw [e4] at h45
+    obtain ⟨x₂, e5, h22⟩ := left_of_adj_right h45
+    apply h ![x₀, x₁, x₂] ![y₁, y₂] ?_ ?_ h01' h11 h12' h22
+    · apply injective_triple_of_map f f.injective Sum.inl _ ![1, 3, 5] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_pair
+      intro hy
+      have he : f 2 = f 4 := e2.trans ((congrArg Sum.inr hy).trans e4.symm)
+      exact (show (2 : Fin 6) ≠ 4 by decide) (f.injective he)
+
+open scoped Classical in
+theorem edge_bound_no_alternating_path {P L : Type*} [Fintype P] [Fintype L]
+    (R : P → L → Prop)
+    (h : ∀ (a : Fin 3 → P) (b : Fin 2 → L), Function.Injective a → Function.Injective b →
+      R (a 0) (b 0) → R (a 1) (b 0) → R (a 1) (b 1) → R (a 2) (b 1) → False) :
+    (bipGraph R).edgeFinset.card ≤ 6 * (Fintype.card P + Fintype.card L) := by
+  have hh := Erdos713Forest.free_tree_edge_bound (pathGraph 6) pathGraph_six_tree
+    (bipGraph R) (free_path_of_no_alternating_path R h)
+  simpa only [Fintype.card_fin, Fintype.card_sum] using hh
+
+end Erdos713C6
+
+namespace Erdos713C6
+
+open Finset
+
+theorem contained_of_hexagon {V : Type*} (G : SimpleGraph V) (a b : Fin 3 → V)
+    (ha : Function.Injective a) (hb : Function.Injective b)
+    (hab : ∀ i j, a i ≠ b j)
+    (hA : ∀ i, G.Adj (a i) (b i)) (hB : ∀ i, G.Adj (a (i + 1)) (b i)) : C6 ⊑ G := by
+  let g : Fin 6 → V := ![a 0, b 0, a 1, b 1, a 2, b 2]
+  have h00 := hA 0
+  have h11 := hA 1
+  have h22 := hA 2
+  have h10 : G.Adj (a 1) (b 0) := hB 0
+  have h21 : G.Adj (a 2) (b 1) := hB 1
+  have h02 : G.Adj (a 0) (b 2) := hB 2
+  have hba (i j) : b i ≠ a j := (hab j i).symm
+  refine ⟨⟨⟨g, ?_⟩, ?_⟩⟩
+  · have hStep (i : Fin 6) : G.Adj (g i) (g (i + 1)) := by
+      fin_cases i <;> dsimp [g]
+      all_goals first | assumption | exact h00.symm | exact h11.symm | exact h22.symm |
+        exact h10.symm | exact h21.symm | exact h02.symm
+    intro u v huv
+    rcases cycleGraph_adj.mp huv with he | he
+    · rw [sub_eq_iff_eq_add'.mp he]
+      exact (hStep v).symm
+    · rw [sub_eq_iff_eq_add'.mp he]
+      exact hStep u
+  · intro u v huv
+    change g u = g v at huv
+    fin_cases u <;> fin_cases v <;> simp_all [g, ha.eq_iff, hb.eq_iff]
+
+theorem free_path_of_no_alternating_path_sets {V : Type*} (G : SimpleGraph V)
+    {A B : Set V} (hBip : G.IsBipartiteWith A B)
+    (h : ∀ (a : Fin 3 → V) (b : Fin 2 → V), Function.Injective a → Function.Injective b →
+      (∀ i, a i ∈ A) → (∀ j, b j ∈ B) →
+      G.Adj (a 0) (b 0) → G.Adj (a 1) (b 0) → G.Adj (a 1) (b 1) → G.Adj (a 2) (b 1) → False) :
+    (pathGraph 6).Free G := by
+  rintro ⟨f⟩
+  have h01 := f.toHom.map_rel' (show (pathGraph 6).Adj 0 1 by simp [pathGraph_adj])
+  have h12 := f.toHom.map_rel' (show (pathGraph 6).Adj 1 2 by simp [pathGraph_adj])
+  have h23 := f.toHom.map_rel' (show (pathGraph 6).Adj 2 3 by simp [pathGraph_adj])
+  have h34 := f.toHom.map_rel' (show (pathGraph 6).Adj 3 4 by simp [pathGraph_adj])
+  have h45 := f.toHom.map_rel' (show (pathGraph 6).Adj 4 5 by simp [pathGraph_adj])
+  rcases hBip.mem_of_adj h01 with ⟨h0, h1⟩ | ⟨h0, h1⟩
+  · have h2 := hBip.symm.mem_of_mem_adj h1 h12
+    have h3 := hBip.mem_of_mem_adj h2 h23
+    have h4 := hBip.symm.mem_of_mem_adj h3 h34
+    apply h (f ∘ ![0, 2, 4]) (f ∘ ![1, 3])
+      (f.injective.comp (by decide)) (f.injective.comp (by decide))
+      (by intro i; fin_cases i <;> assumption) (by intro i; fin_cases i <;> assumption)
+      h01 h12.symm h23 h34.symm
+  · have h2 := hBip.mem_of_mem_adj h1 h12
+    have h3 := hBip.symm.mem_of_mem_adj h2 h23
+    have h4 := hBip.mem_of_mem_adj h3 h34
+    have h5 := hBip.symm.mem_of_mem_adj h4 h45
+    apply h (f ∘ ![1, 3, 5]) (f ∘ ![2, 4])
+      (f.injective.comp (by decide)) (f.injective.comp (by decide))
+      (by intro i; fin_cases i <;> assumption) (by intro i; fin_cases i <;> assumption)
+      h12 h23.symm h34 h45.symm
+
+open scoped Classical in
+theorem edge_bound_no_alternating_path_sets {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] {A B : Finset V} (hBip : G.IsBipartiteWith A B)
+    (h : ∀ (a : Fin 3 → V) (b : Fin 2 → V), Function.Injective a → Function.Injective b →
+      (∀ i, a i ∈ A) → (∀ j, b j ∈ B) →
+      G.Adj (a 0) (b 0) → G.Adj (a 1) (b 0) → G.Adj (a 1) (b 1) → G.Adj (a 2) (b 1) → False) :
+    G.edgeFinset.card ≤ 6 * (A.card + B.card) := by
+  classical
+  have hfree := free_path_of_no_alternating_path_sets G hBip h
+  have hs : G.support ⊆ (↑(A ∪ B) : Set V) := by
+    simpa only [coe_union] using isBipartiteWith_support_subset hBip
+  have hiFree : (pathGraph 6).Free (G.induce (↑(A ∪ B) : Set V)) := by
+    intro hc
+    exact hfree (hc.trans ⟨Copy.induce G _⟩)
+  have hh := Erdos713Forest.free_tree_edge_bound (pathGraph 6) pathGraph_six_tree
+    (G.induce (↑(A ∪ B) : Set V)) hiFree
+  have hEq : Nat.card (G.induce (↑(A ∪ B) : Set V)).edgeSet = Nat.card G.edgeSet := by
+    simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using
+      card_edgeFinset_induce_of_support_subset hs
+  have hc : Nat.card ↥(↑(A ∪ B) : Set V) = A.card + B.card := by
+    simp only [Nat.card_coe_set_eq, Set.ncard_coe_finset,
+      card_union_of_disjoint (disjoint_coe.mp hBip.disjoint)]
+  have hh' : Nat.card (G.induce (↑(A ∪ B) : Set V)).edgeSet ≤ 6 * (A.card + B.card) := by
+    simpa only [edgeFinset_card, Fintype.card_fin, Fintype.card_eq_nat_card, Nat.card_fin, hc] using hh
+  rw [hEq] at hh'
+  simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using hh'
+
+end Erdos713C6
+namespace Erdos713C6
+
+open Finset
+
+theorem injective_triple {U : Type*} {x y z : U} (hxy : x ≠ y) (hxz : x ≠ z) (hyz : y ≠ z) :
+    Function.Injective ![x, y, z] := by
+  intro i j hij
+  fin_cases i <;> fin_cases j <;> simp_all
+
+open scoped Classical in
+theorem degree_cube_le {V : Type*} [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hBip : G.IsBipartite) (hfree : C6.Free G) (d : ℕ)
+    (hd : ∀ u v, G.Adj u v → d ≤ G.degree u) {v w : V} (hvw : G.Adj v w) :
+    d ^ 3 ≤ 24 ^ 3 * Fintype.card V := by
+  classical
+  obtain ⟨χ⟩ := hBip
+  let A := G.neighborFinset v
+  let B := (A.biUnion (fun a => G.neighborFinset a)).erase v
+  let C := (B.biUnion (fun b => G.neighborFinset b)) \ A
+  have hA (a : V) : a ∈ A ↔ G.Adj v a := mem_neighborFinset G v a
+  have hB (b : V) : b ∈ B ↔ b ≠ v ∧ ∃ a ∈ A, G.Adj a b := by
+    simp [B, mem_biUnion]
+  have hC (c : V) : c ∈ C ↔ (∃ b ∈ B, G.Adj b c) ∧ c ∉ A := by
+    simp [C, mem_biUnion]
+  have hcolA {a : V} (ha : a ∈ A) : χ a ≠ χ v := (χ.valid ((hA a).mp ha)).symm
+  have hcolB {b : V} (hb : b ∈ B) : χ b = χ v := by
+    obtain ⟨_, a, ha, hab⟩ := (hB b).mp hb
+    have hh := χ.valid hab
+    have hh' := hcolA ha
+    omega
+  have hcolC {c : V} (hc : c ∈ C) : χ c ≠ χ v := by
+    obtain ⟨⟨b, hb, hbc⟩, _⟩ := (hC c).mp hc
+    have hh := (χ.valid hbc).symm
+    rwa [hcolB hb] at hh
+  have hcross {x y : V} (hx : χ x = χ v) (hy : χ y ≠ χ v) : x ≠ y := by
+    intro he
+    exact hy (he ▸ hx)
+  have hAB : Disjoint A B := by
+    apply Finset.disjoint_left.mpr
+    intro x hx hx'
+    exact hcolA hx (hcolB hx')
+  have hBC : Disjoint B C := by
+    apply Finset.disjoint_left.mpr
+    intro x hx hx'
+    exact hcolC hx' (hcolB hx)
+  have hAC : Disjoint A C := by
+    apply Finset.disjoint_left.mpr
+    intro x hx hx'
+    exact ((hC x).mp hx').2 hx
+  have hBnot {b : V} (hb : b ∈ B) : b ≠ v := ((hB b).mp hb).1
+  have hCA {c a : V} (hc : c ∈ C) (ha : a ∈ A) : c ≠ a := by
+    intro he
+    exact ((hC c).mp hc).2 (he ▸ ha)
+  have hNoAB (a : Fin 3 → V) (b : Fin 2 → V)
+      (ha : Function.Injective a) (hb : Function.Injective b)
+      (haA : ∀ i, a i ∈ A) (hbB : ∀ j, b j ∈ B)
+      (h00 : G.Adj (a 0) (b 0)) (h10 : G.Adj (a 1) (b 0))
+      (h11 : G.Adj (a 1) (b 1)) (h21 : G.Adj (a 2) (b 1)) : False := by
+    apply hfree
+    apply contained_of_hexagon G a ![b 0, b 1, v] ha
+      (injective_triple (hb.ne (by decide)) (hBnot (hbB 0)) (hBnot (hbB 1)))
+    · intro i j
+      fin_cases j
+      · exact (hcross (hcolB (hbB 0)) (hcolA (haA i))).symm
+      · exact (hcross (hcolB (hbB 1)) (hcolA (haA i))).symm
+      · exact (hcross rfl (hcolA (haA i))).symm
+    · intro i; fin_cases i
+      · exact h00
+      · exact h11
+      · exact ((hA _).mp (haA 2)).symm
+    · intro i; fin_cases i
+      · exact h10
+      · exact h21
+      · exact ((hA _).mp (haA 0)).symm
+  have parent_eq {b₁ b₂ c a₁ a₂ : V}
+      (hb₁ : b₁ ∈ B) (hb₂ : b₂ ∈ B) (hc : c ∈ C) (ha₁ : a₁ ∈ A) (ha₂ : a₂ ∈ A)
+      (hne : b₁ ≠ b₂) (he₁ : G.Adj a₁ b₁) (he₂ : G.Adj a₂ b₂)
+      (hf₁ : G.Adj b₁ c) (hf₂ : G.Adj b₂ c) : a₁ = a₂ := by
+    by_contra hneA
+    apply hfree
+    apply contained_of_hexagon G ![v, b₁, b₂] ![a₁, c, a₂]
+      (injective_triple (hBnot hb₁).symm (hBnot hb₂).symm hne)
+      (injective_triple (hCA hc ha₁).symm hneA (hCA hc ha₂))
+    · intro i j
+      apply hcross
+      · fin_cases i
+        · rfl
+        · exact hcolB hb₁
+        · exact hcolB hb₂
+      · fin_cases j
+        · exact hcolA ha₁
+        · exact hcolC hc
+        · exact hcolA ha₂
+    · intro i; fin_cases i
+      · exact (hA _).mp ha₁
+      · exact hf₁
+      · exact he₂.symm
+    · intro i; fin_cases i
+      · exact he₁.symm
+      · exact hf₂
+      · exact (hA _).mp ha₂
+  have hNoBC (b : Fin 3 → V) (c : Fin 2 → V)
+      (hb : Function.Injective b) (hc : Function.Injective c)
+      (hbB : ∀ i, b i ∈ B) (hcC : ∀ j, c j ∈ C)
+      (h00 : G.Adj (b 0) (c 0)) (h10 : G.Adj (b 1) (c 0))
+      (h11 : G.Adj (b 1) (c 1)) (h21 : G.Adj (b 2) (c 1)) : False := by
+    obtain ⟨a₀, ha₀, he₀⟩ := ((hB _).mp (hbB 0)).2
+    obtain ⟨a₁, ha₁, he₁⟩ := ((hB _).mp (hbB 1)).2
+    obtain ⟨a₂, ha₂, he₂⟩ := ((hB _).mp (hbB 2)).2
+    have h01 := parent_eq (hbB 0) (hbB 1) (hcC 0) ha₀ ha₁
+      (hb.ne (by decide)) he₀ he₁ h00 h10
+    have h12 := parent_eq (hbB 1) (hbB 2) (hcC 1) ha₁ ha₂
+      (hb.ne (by decide)) he₁ he₂ h11 h21
+    have hb0a : G.Adj (b 0) a₁ := by simpa only [h01] using he₀.symm
+    have hb2a : G.Adj (b 2) a₁ := by simpa only [← h12] using he₂.symm
+    apply hfree
+    apply contained_of_hexagon G b ![c 0, c 1, a₁] hb
+      (injective_triple (hc.ne (by decide)) (hCA (hcC 0) ha₁) (hCA (hcC 1) ha₁))
+    · intro i j
+      apply hcross (hcolB (hbB i))
+      fin_cases j
+      · exact hcolC (hcC 0)
+      · exact hcolC (hcC 1)
+      · exact hcolA ha₁
+    · intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+  let AB := G.between (↑A) (↑B)
+  let BC := G.between (↑B) (↑C)
+  have hABip : AB.IsBipartiteWith A B := between_isBipartiteWith (disjoint_coe.mpr hAB)
+  have hBCip : BC.IsBipartiteWith B C := between_isBipartiteWith (disjoint_coe.mpr hBC)
+  have heAB : AB.edgeFinset.card ≤ 6 * (A.card + B.card) := by
+    apply edge_bound_no_alternating_path_sets AB hABip
+    intro a b ha hb haA hbB h00 h10 h11 h21
+    exact hNoAB a b ha hb haA hbB h00.1 h10.1 h11.1 h21.1
+  have heBC : BC.edgeFinset.card ≤ 6 * (B.card + C.card) := by
+    apply edge_bound_no_alternating_path_sets BC hBCip
+    intro b c hb hc hbB hcC h00 h10 h11 h21
+    exact hNoBC b c hb hc hbB hcC h00.1 h10.1 h11.1 h21.1
+  have hADeg (a : V) (ha : a ∈ A) : d ≤ AB.degree a + 1 := by
+    have hsub : G.neighborFinset a ⊆ insert v (AB.neighborFinset a) := by
+      intro b hb
+      by_cases hbv : b = v
+      · simp [hbv]
+      · apply mem_insert_of_mem
+        rw [mem_neighborFinset]
+        exact ⟨(mem_neighborFinset _ _ _).mp hb, Or.inl ⟨ha, (hB b).mpr ⟨hbv, a, ha,
+          (mem_neighborFinset _ _ _).mp hb⟩⟩⟩
+    have hh := (card_le_card hsub).trans (card_insert_le v (AB.neighborFinset a))
+    simp only [card_neighborFinset_eq_degree] at hh
+    exact (hd a v ((hA a).mp ha).symm).trans hh
+  have hBDeg (b : V) (hb : b ∈ B) : d ≤ AB.degree b + BC.degree b := by
+    have hsub : G.neighborFinset b ⊆ AB.neighborFinset b ∪ BC.neighborFinset b := by
+      intro c hc
+      by_cases hcA : c ∈ A
+      · apply mem_union_left
+        rw [mem_neighborFinset]
+        exact ⟨(mem_neighborFinset _ _ _).mp hc, Or.inr ⟨hb, hcA⟩⟩
+      · apply mem_union_right
+        rw [mem_neighborFinset]
+        exact ⟨(mem_neighborFinset _ _ _).mp hc, Or.inl ⟨hb,
+          (hC c).mpr ⟨⟨b, hb, (mem_neighborFinset _ _ _).mp hc⟩, hcA⟩⟩⟩
+    have hh := (card_le_card hsub).trans (card_union_le _ _)
+    simp only [card_neighborFinset_eq_degree] at hh
+    obtain ⟨a, ha, hab⟩ := ((hB b).mp hb).2
+    exact (hd b a hab.symm).trans hh
+  have hsA : d * A.card ≤ AB.edgeFinset.card + A.card := by
+    have hh := sum_le_sum (s := A) (fun a ha => hADeg a ha)
+    rw [sum_add_distrib, isBipartiteWith_sum_degrees_eq_card_edges hABip] at hh
+    simpa only [sum_const, Nat.nsmul_eq_mul, mul_one, one_mul, mul_comm] using hh
+  have hsB : d * B.card ≤ AB.edgeFinset.card + BC.edgeFinset.card := by
+    have hh := sum_le_sum (s := B) (fun b hb => hBDeg b hb)
+    rw [sum_add_distrib, isBipartiteWith_sum_degrees_eq_card_edges hABip.symm,
+      isBipartiteWith_sum_degrees_eq_card_edges hBCip] at hh
+    simpa only [sum_const, Nat.nsmul_eq_mul, mul_comm] using hh
+  have hdA : d ≤ A.card := hd v w hvw
+  have hACn : A.card + C.card ≤ Fintype.card V := by
+    rw [← card_union_of_disjoint hAC]
+    exact card_le_univ _
+  have hnp : 1 ≤ Fintype.card V := Fintype.card_pos_iff.mpr ⟨v⟩
+  by_cases hd24 : d ≤ 24
+  · exact (Nat.pow_le_pow_left hd24 3).trans
+      (Nat.le_mul_of_pos_right _ hnp)
+  · have hd14 : 14 ≤ d := by omega
+    have hd24' : 24 ≤ d := by omega
+    have h1 : d * A.card ≤ 12 * B.card := by
+      have hh := Nat.mul_le_mul_right A.card hd14
+      nlinarith
+    have h2 : d * B.card ≤ 12 * Fintype.card V := by
+      have hh := Nat.mul_le_mul_right B.card hd24'
+      nlinarith
+    have hd2 : d ^ 2 ≤ 12 * B.card := by
+      have hh := Nat.mul_le_mul_left d hdA
+      nlinarith
+    have hh := Nat.mul_le_mul_left d hd2
+    have h3 : d ^ 3 ≤ 144 * Fintype.card V := by nlinarith
+    nlinarith
+
+end Erdos713C6
+
+
+namespace Erdos713C6
+
+open Finset
+
+open scoped Classical in
+theorem bipartite_edge_cube_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (hBip : G.IsBipartite) (hfree : C6.Free G) :
+    G.edgeFinset.card ^ 3 ≤ (64 * (24 ^ 3 + 1)) * Fintype.card V ^ 4 := by
+  classical
+  let e := G.edgeFinset.card
+  let n := Fintype.card V
+  by_cases he : e = 0
+  · change e ^ 3 ≤ _
+    simp [he]
+  have hGne : G ≠ ⊥ := by
+    intro hG
+    apply he
+    exact congrArg Finset.card (edgeFinset_eq_empty.mpr hG)
+  obtain ⟨u, v, huv⟩ := ne_bot_iff_exists_adj.mp hGne
+  have hn : 0 < n := Fintype.card_pos_iff.mpr ⟨u⟩
+  let d := e / (2 * n)
+  have hdiv : d * (2 * n) ≤ e := Nat.div_mul_le_self e (2 * n)
+  obtain ⟨K, hKG, hd, hbound⟩ := Erdos713Leaf.exists_pruned G d
+  have hKne : K ≠ ⊥ := by
+    intro hK
+    have hB : e ≤ d * n := by
+      simpa only [hK, edgeSet_bot, Nat.card_eq_fintype_card, Fintype.card_ofIsEmpty,
+        zero_add, ← edgeFinset_card] using hbound
+    nlinarith only [hB, hdiv, Nat.pos_of_ne_zero he]
+  obtain ⟨x, y, hxy⟩ := ne_bot_iff_exists_adj.mp hKne
+  have hKBip : K.IsBipartite := Colorable.of_hom (Copy.ofLE K G hKG).toHom hBip
+  have hKfree : C6.Free K := fun hc => hfree (hc.mono_right hKG)
+  have hd' (x y : V) (hxy : K.Adj x y) : d ≤ K.degree x := by
+    rcases hd x with hz | hb
+    · have hpos : 0 < K.degree x := hxy.degree_pos_left
+      rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hz
+      omega
+    · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hb
+  have hd3 : d ^ 3 ≤ 24 ^ 3 * n := degree_cube_le K hKBip hKfree d hd' hxy
+  have heUpper : e ≤ 2 * n * (d + 1) :=
+    (Nat.lt_mul_div_succ e (by omega : 0 < 2 * n)).le
+  have hdAdd : (d + 1) ^ 3 ≤ 8 * (d ^ 3 + 1) := by
+    by_cases hd0 : d = 0
+    · simp [hd0]
+    · have hle : d + 1 ≤ 2 * d := by omega
+      have hh := Nat.pow_le_pow_left hle 3
+      nlinarith only [hh]
+  have he3 : e ^ 3 ≤ 8 * n ^ 3 * (d + 1) ^ 3 := by
+    have hh := Nat.pow_le_pow_left heUpper 3
+    nlinarith only [hh]
+  have hm1 := Nat.mul_le_mul_left (8 * n ^ 3) hdAdd
+  have hm2 := Nat.mul_le_mul_left (64 * n ^ 3) (Nat.add_le_add_right hd3 1)
+  have hm3 := Nat.mul_le_mul_left (64 * n ^ 3)
+    (show 24 ^ 3 * n + 1 ≤ (24 ^ 3 + 1) * n by omega)
+  change e ^ 3 ≤ (64 * (24 ^ 3 + 1)) * n ^ 4
+  nlinarith only [he3, hm1, hm2, hm3]
+
+end Erdos713C6
+
+
+namespace Erdos713Cut
+
+open Finset
+
+variable {V : Type*}
+
+def cut (G : SimpleGraph V) (χ : V → Bool) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ χ u ≠ χ v
+  symm := fun u v h => ⟨h.1.symm, h.2.symm⟩
+  loopless := fun v h => h.1.ne rfl
+
+theorem cut_le (G : SimpleGraph V) (χ : V → Bool) : cut G χ ≤ G := fun _ _ h => h.1
+
+theorem cut_bipartite (G : SimpleGraph V) (χ : V → Bool) : (cut G χ).IsBipartite := by
+  let C : (cut G χ).Coloring Bool := ⟨χ, fun h => h.2⟩
+  simpa using C.colorable
+
+open scoped Classical in
+theorem twice_card_colorings [Fintype V] {u v : V} (huv : u ≠ v) :
+    2 * (univ.filter (fun χ : V → Bool => χ u ≠ χ v)).card = Fintype.card (V → Bool) := by
+  classical
+  let p : (V → Bool) → Prop := fun χ => χ u ≠ χ v
+  let flip : (V → Bool) → (V → Bool) := fun χ => Function.update χ u (!(χ u))
+  have hinv : Function.Involutive flip := by
+    intro χ
+    funext w
+    by_cases hw : w = u
+    · subst w
+      simp [flip]
+    · simp [flip, hw]
+  have hcard : (univ.filter p).card = (univ.filter (fun χ => ¬p χ)).card := by
+    apply card_bijective flip hinv.bijective
+    intro χ
+    cases h₁ : χ u <;> cases h₂ : χ v <;>
+      simp [p, flip, huv, huv.symm, h₁, h₂]
+  have hh := card_filter_add_card_filter_not (s := (univ : Finset (V → Bool))) p
+  rw [← hcard] at hh
+  simpa only [card_univ, two_mul] using hh
+
+open scoped Classical in
+theorem exists_bipartite_half [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj] :
+    ∃ K : SimpleGraph V, K ≤ G ∧ K.IsBipartite ∧ G.edgeFinset.card ≤ 2 * K.edgeFinset.card := by
+  classical
+  let r : (V → Bool) → G.Dart → Prop := fun χ d => χ d.fst ≠ χ d.snd
+  have hAbove (χ : V → Bool) :
+      ((univ : Finset G.Dart).bipartiteAbove r χ).card = 2 * (cut G χ).edgeFinset.card := by
+    let e : ↥((univ : Finset G.Dart).bipartiteAbove r χ) ≃ (cut G χ).Dart :=
+      { toFun := fun d => ⟨d.val.toProd, ⟨d.val.adj, ((mem_bipartiteAbove r).mp d.prop).2⟩⟩
+        invFun := fun d => ⟨⟨d.toProd, d.adj.1⟩,
+          (mem_bipartiteAbove r).mpr ⟨mem_univ _, d.adj.2⟩⟩
+        left_inv := by intro d; rfl
+        right_inv := by intro d; rfl }
+    rw [← Fintype.card_coe, Fintype.card_congr e, dart_card_eq_twice_card_edges]
+  have hBelow (d : G.Dart) :
+      2 * ((univ : Finset (V → Bool)).bipartiteBelow r d).card = Fintype.card (V → Bool) :=
+    twice_card_colorings d.adj.ne
+  obtain ⟨χ₀, _, hmax⟩ := exists_max_image (univ : Finset (V → Bool))
+    (fun χ => (cut G χ).edgeFinset.card) ⟨fun _ => false, mem_univ _⟩
+  refine ⟨cut G χ₀, cut_le G χ₀, cut_bipartite G χ₀, ?_⟩
+  let N := Fintype.card (V → Bool)
+  let M := (cut G χ₀).edgeFinset.card
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow (r := r)
+    (s := (univ : Finset (V → Bool))) (t := (univ : Finset G.Dart))
+  simp_rw [hAbove] at hsum
+  have hDouble : 4 * (∑ χ : V → Bool, (cut G χ).edgeFinset.card) =
+      (2 * G.edgeFinset.card) * N := by
+    calc
+      4 * (∑ χ : V → Bool, (cut G χ).edgeFinset.card) =
+          2 * (∑ χ : V → Bool, 2 * (cut G χ).edgeFinset.card) := by
+        rw [← mul_sum]
+        ring
+      _ = 2 * (∑ d : G.Dart, ((univ : Finset (V → Bool)).bipartiteBelow r d).card) :=
+        congrArg (2 * ·) hsum
+      _ = ∑ d : G.Dart, 2 * ((univ : Finset (V → Bool)).bipartiteBelow r d).card := by rw [mul_sum]
+      _ = ∑ _ : G.Dart, N := sum_congr rfl fun d _ => hBelow d
+      _ = (2 * G.edgeFinset.card) * N := by
+        simp only [sum_const, card_univ, Nat.nsmul_eq_mul, dart_card_eq_twice_card_edges]
+  have hSumle : (∑ χ : V → Bool, (cut G χ).edgeFinset.card) ≤ N * M := by
+    calc
+      (∑ χ : V → Bool, (cut G χ).edgeFinset.card) ≤ ∑ _ : V → Bool, M :=
+        sum_le_sum fun χ hχ => hmax χ hχ
+      _ = N * M := by simp only [sum_const, card_univ, Nat.nsmul_eq_mul, N]
+  have hN : 0 < N := Fintype.card_pos_iff.mpr ⟨fun _ => false⟩
+  have hMul : N * G.edgeFinset.card ≤ N * (2 * M) := by
+    nlinarith only [hDouble, hSumle]
+  exact (mul_le_mul_iff_right₀ hN).mp (by simpa only [mul_comm] using hMul)
+
+end Erdos713Cut
+
+namespace Erdos713C6
+
+open Finset
+
+open scoped Classical in
+theorem edge_cube_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (hfree : C6.Free G) :
+    G.edgeFinset.card ^ 3 ≤ (512 * (24 ^ 3 + 1)) * Fintype.card V ^ 4 := by
+  classical
+  obtain ⟨K, hKG, hKBip, hhalf⟩ := Erdos713Cut.exists_bipartite_half G
+  have hKfree : C6.Free K := fun hc => hfree (hc.mono_right hKG)
+  have hb := bipartite_edge_cube_le K hKBip hKfree
+  have hp := Nat.pow_le_pow_left hhalf 3
+  nlinarith only [hb, hp]
+
+theorem extremal_cube_le (n : ℕ) :
+    (extremalNumber n C6) ^ 3 ≤ (512 * (24 ^ 3 + 1)) * n ^ 4 := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | C6.Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ 3 ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hfree : C6.Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using edge_cube_le G hfree
+  · rw [not_nonempty_iff_eq_empty.mp hS]
+    simp
+
+theorem exponent_upper_of_containment {W : Type*} {H : SimpleGraph W}
+    (hH : H ⊑ C6) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ (4 : ℝ) / 3 := by
+  have hO : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ)) :=
+    (isBigO_const_mul_left_iff hc).mp h.isBigO_symm
+  have hP : (fun n : ℕ => (n : ℝ) ^ (a * (3 : ℝ))) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ) ^ (3 : ℕ)) := by
+    have he (n : ℕ) : ((n : ℝ) ^ a) ^ (3 : ℕ) = (n : ℝ) ^ (a * (3 : ℝ)) := by
+      have hh := Real.rpow_mul_natCast (Nat.cast_nonneg (α := ℝ) n) a 3
+      norm_num only [Nat.cast_ofNat] at hh
+      exact hh.symm
+    simpa only [he] using hO.pow 3
+  have hB : (fun n : ℕ => (extremalNumber n H : ℝ) ^ (3 : ℕ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (4 : ℝ)) := by
+    apply IsBigO.of_bound ((512 * (24 ^ 3 + 1) : ℕ) : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    have hn4 : (n : ℝ) ^ (4 : ℝ) = (n : ℝ) ^ (4 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (n : ℝ) 4
+    rw [hn4, Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    exact_mod_cast (Nat.pow_le_pow_left (hH.extremalNumber_le (n := n)) 3).trans
+      (extremal_cube_le n)
+  have hExp := Erdos713Forest.exponent_le_of_isBigO (hP.trans hB)
+  linarith
+
+theorem exponent_eq_of_containment {W : Type*} {H : SimpleGraph W}
+    (hlo : C6 ⊑ H) (hhi : H ⊑ C6) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (4 : ℝ) / 3 :=
+  le_antisymm (exponent_upper_of_containment hhi hc h) (exponent_lower_of_containment hlo hc h)
+
+theorem rational_exponent_of_containment {W : Type*} {H : SimpleGraph W}
+    (hlo : C6 ⊑ H) (hhi : H ⊑ C6) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨4 / 3, ?_⟩
+  simpa using (exponent_eq_of_containment hlo hhi hc h).symm
+
+theorem rational_exponent {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n C6 : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) :=
+  rational_exponent_of_containment (.refl _) (.refl _) hc h
+
+end Erdos713C6
+
+
+namespace Erdos713Core
+
+universe u
+
+/-- The asymptotic hypothesis with a nonzero coefficient rules out an empty
+forbidden graph, for any real exponent. -/
+theorem nonempty_of_asymptotic {W : Type u} (G : SimpleGraph W) {a c : ℝ}
+    (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : Nonempty W := by
+  classical
+  by_contra hW
+  letI : IsEmpty W := not_nonempty_iff.mp hW
+  have hzero (n : ℕ) : extremalNumber n G = 0 := by
+    apply Nat.eq_zero_of_le_zero
+    rw [← Fintype.card_fin n, extremalNumber_le_iff]
+    intro K _ hfree
+    exact (hfree IsContained.of_isEmpty).elim
+  have he : IsEquivalent atTop (fun n : ℕ => c * (n : ℝ) ^ a) 0 := by
+    apply h.symm.congr_right
+    filter_upwards with n
+    simp [hzero]
+  have hev := isEquivalent_zero_iff_eventually_zero.mp he
+  obtain ⟨n, hn, hnpos⟩ := (hev.and (eventually_gt_atTop (0 : ℕ))).exists
+  exact mul_ne_zero hc (Real.rpow_pos_of_pos (Nat.cast_pos.mpr hnpos) a).ne' hn
+
+end Erdos713Core
+
+namespace Erdos713DRC
+
+open Finset
+
+open scoped Classical in
+theorem clean_set {V : Type*} [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (U : Finset V) (k : ℕ) :
+    ∃ S : Finset V, S ⊆ U ∧
+      U.card ≤ S.card + ((U ×ˢ U).filter
+        (fun p => Fintype.card (G.commonNeighbors p.1 p.2) < k)).card ∧
+      ∀ x ∈ S, ∀ y ∈ S, k ≤ Fintype.card (G.commonNeighbors x y) := by
+  classical
+  let B := (U ×ˢ U).filter (fun p => Fintype.card (G.commonNeighbors p.1 p.2) < k)
+  let S := U \ B.image Prod.fst
+  refine ⟨S, sdiff_subset, ?_, ?_⟩
+  · have hh := card_le_card_sdiff_add_card (s := U) (t := B.image Prod.fst)
+    exact hh.trans (Nat.add_le_add_left (card_image_le) _)
+  · intro x hx y hy
+    by_contra hh
+    have hB : (x, y) ∈ B := mem_filter.mpr
+      ⟨mem_product.mpr ⟨(mem_sdiff.mp hx).1, (mem_sdiff.mp hy).1⟩, lt_of_not_ge hh⟩
+    exact (mem_sdiff.mp hx).2 (mem_image_of_mem Prod.fst hB)
+
+open scoped Classical in
+theorem sum_common_eq_sum_degree_sq {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] :
+    ∑ p : V × V, Fintype.card (G.commonNeighbors p.1 p.2) = ∑ v, G.degree v ^ 2 := by
+  classical
+  let r : V → V × V → Prop := fun x p => G.Adj x p.1 ∧ G.Adj x p.2
+  have hAbove (x : V) : ((univ : Finset (V × V)).bipartiteAbove r x).card = G.degree x ^ 2 := by
+    have hs : (univ : Finset (V × V)).bipartiteAbove r x =
+        G.neighborFinset x ×ˢ G.neighborFinset x := by
+      ext p
+      simp [r, bipartiteAbove]
+    rw [hs, card_product, card_neighborFinset_eq_degree, pow_two]
+  have hBelow (p : V × V) : ((univ : Finset V).bipartiteBelow r p).card =
+      Fintype.card (G.commonNeighbors p.1 p.2) := by
+    have hs : (univ : Finset V).bipartiteBelow r p = (G.commonNeighbors p.1 p.2).toFinset := by
+      ext x
+      simp [r, bipartiteBelow, mem_commonNeighbors, adj_comm]
+    rw [hs, Set.toFinset_card]
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := (univ : Finset V)) (t := (univ : Finset (V × V)))
+  simpa only [hAbove, hBelow] using hsum.symm
+
+open scoped Classical in
+theorem sum_bad_pairs_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (k : ℕ) :
+    ∑ p : V × V, (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+      (G.commonNeighbors p.1 p.2).toFinset).filter
+        (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card ≤
+      k ^ 2 * Fintype.card V ^ 2 := by
+  classical
+  let r : (V × V) → (V × V) → Prop := fun p q =>
+    G.Adj p.1 q.1 ∧ G.Adj p.2 q.1 ∧ G.Adj p.1 q.2 ∧ G.Adj p.2 q.2 ∧
+      Fintype.card (G.commonNeighbors q.1 q.2) < k
+  have hAbove (p : V × V) : ((univ : Finset (V × V)).bipartiteAbove r p) =
+      (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+      (G.commonNeighbors p.1 p.2).toFinset).filter
+        (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)) := by
+    ext q
+    simp [r, bipartiteAbove, mem_commonNeighbors, and_assoc]
+  have hBelow (q : V × V) : ((univ : Finset (V × V)).bipartiteBelow r q).card ≤ k ^ 2 := by
+    by_cases hq : Fintype.card (G.commonNeighbors q.1 q.2) < k
+    · have he : ((univ : Finset (V × V)).bipartiteBelow r q) =
+          (G.commonNeighbors q.1 q.2).toFinset ×ˢ (G.commonNeighbors q.1 q.2).toFinset := by
+        ext p
+        simp only [mem_bipartiteBelow, mem_univ, true_and, r, mem_product,
+          Set.mem_toFinset, mem_commonNeighbors, hq, and_true]
+        constructor
+        · rintro ⟨h1, h2, h3, h4⟩
+          exact ⟨⟨h1.symm, h3.symm⟩, h2.symm, h4.symm⟩
+        · rintro ⟨⟨h1, h2⟩, h3, h4⟩
+          exact ⟨h1.symm, h3.symm, h2.symm, h4.symm⟩
+      rw [he, card_product, Set.toFinset_card, ← pow_two]
+      exact Nat.pow_le_pow_left hq.le 2
+    · have he : ((univ : Finset (V × V)).bipartiteBelow r q) = ∅ := by
+        ext p
+        simp only [mem_bipartiteBelow, mem_univ, r, hq, and_false, notMem_empty, iff_self]
+      simp [he]
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := (univ : Finset (V × V))) (t := (univ : Finset (V × V)))
+  simp_rw [hAbove] at hsum
+  rw [hsum]
+  calc
+    _ ≤ ∑ _ : V × V, k ^ 2 := sum_le_sum fun q _ => hBelow q
+    _ = _ := by simp [Fintype.card_prod, pow_two, mul_comm]
+
+open scoped Classical in
+theorem degree_sq_le_of_no_heavy_set {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (s k : ℕ)
+    (h : ∀ S : Finset V, (∀ x ∈ S, ∀ y ∈ S,
+      k ≤ Fintype.card (G.commonNeighbors x y)) → S.card ≤ s) :
+    ∑ v, G.degree v ^ 2 ≤ (s + k ^ 2) * Fintype.card V ^ 2 := by
+  classical
+  have hrow (p : V × V) : Fintype.card (G.commonNeighbors p.1 p.2) ≤
+      s + (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+      (G.commonNeighbors p.1 p.2).toFinset).filter
+        (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card := by
+    obtain ⟨S, _, hcard, hgood⟩ := clean_set G (G.commonNeighbors p.1 p.2).toFinset k
+    rw [Set.toFinset_card] at hcard
+    exact hcard.trans (Nat.add_le_add_right (h S hgood) _)
+  rw [← sum_common_eq_sum_degree_sq]
+  calc
+    _ ≤ ∑ p : V × V, (s + (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+        (G.commonNeighbors p.1 p.2).toFinset).filter
+          (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card) :=
+      sum_le_sum fun p _ => hrow p
+    _ ≤ s * Fintype.card V ^ 2 + k ^ 2 * Fintype.card V ^ 2 := by
+      rw [sum_add_distrib]
+      have hc : (∑ _ : V × V, s) = s * Fintype.card V ^ 2 := by
+        simp [Fintype.card_prod, pow_two, mul_comm]
+      rw [hc]
+      exact Nat.add_le_add_left (sum_bad_pairs_le G k) _
+    _ = _ := by ring
+
+end Erdos713DRC
+
+namespace Erdos713DRC
+
+open Finset
+
+open Erdos713C6
+
+open scoped Classical in
+theorem contained_of_heavy_set {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (S : Finset V) (hS : Fintype.card A ≤ S.card)
+    (hgood : ∀ x ∈ S, ∀ y ∈ S,
+      Fintype.card A + Fintype.card B ≤ Fintype.card (G.commonNeighbors x y)) :
+    bipGraph R ⊑ G := by
+  classical
+  obtain ⟨f, hf⟩ := Function.Embedding.exists_of_card_le_finset hS
+  choose u v huv using hR
+  let L := (univ : Finset A).image f
+  let t : B → Finset V := fun b => (G.commonNeighbors (f (u b)) (f (v b))).toFinset \ L
+  have hL : L.card ≤ Fintype.card A := by
+    exact (card_image_le).trans (by simp)
+  have ht (b : B) : Fintype.card B ≤ (t b).card := by
+    have hg := hgood (f (u b)) (hf ⟨u b, rfl⟩) (f (v b)) (hf ⟨v b, rfl⟩)
+    have hh := card_le_card_sdiff_add_card (s := (G.commonNeighbors (f (u b)) (f (v b))).toFinset)
+      (t := L)
+    rw [Set.toFinset_card] at hh
+    dsimp only [t]
+    omega
+  have hHall (U : Finset B) : U.card ≤ (U.biUnion t).card := by
+    rcases U.eq_empty_or_nonempty with rfl | hU
+    · simp
+    obtain ⟨b, hb⟩ := hU
+    exact (card_le_univ U).trans ((ht b).trans (card_le_card (subset_biUnion_of_mem t hb)))
+  obtain ⟨g, hginj, hg⟩ := (all_card_le_biUnion_card_iff_exists_injective t).mp hHall
+  have hdis (a : A) (b : B) : f a ≠ g b := by
+    intro hab
+    have hh := (mem_sdiff.mp (hg b)).2
+    exact hh (hab ▸ mem_image_of_mem f (mem_univ a))
+  have hAdj (a : A) (b : B) (hab : R a b) : G.Adj (f a) (g b) := by
+    have hh : g b ∈ G.commonNeighbors (f (u b)) (f (v b)) := by
+      simpa only [Set.mem_toFinset] using (mem_sdiff.mp (hg b)).1
+    rcases huv b a hab with rfl | rfl
+    · exact hh.1
+    · exact hh.2
+  refine ⟨⟨⟨Sum.elim f g, ?_⟩, ?_⟩⟩
+  · intro x y hxy
+    cases x with
+    | inl a =>
+      cases y with
+      | inl a' => exact hxy.elim
+      | inr b => exact hAdj a b hxy
+    | inr b =>
+      cases y with
+      | inl a => exact (hAdj a b hxy).symm
+      | inr b' => exact hxy.elim
+  · intro x y hxy
+    change Sum.elim f g x = Sum.elim f g y at hxy
+    cases x with
+    | inl a =>
+      cases y with
+      | inl a' => exact congrArg Sum.inl (f.injective hxy)
+      | inr b => exact (hdis a b hxy).elim
+    | inr b =>
+      cases y with
+      | inl a => exact (hdis a b hxy.symm).elim
+      | inr b' => exact congrArg Sum.inr (hginj hxy)
+
+open scoped Classical in
+theorem degree_two_edge_sq_le {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (hfree : (bipGraph R).Free G) :
+    G.edgeFinset.card ^ 2 ≤
+      (Fintype.card A + (Fintype.card A + Fintype.card B) ^ 2) * Fintype.card V ^ 3 := by
+  classical
+  have hb := degree_sq_le_of_no_heavy_set G (Fintype.card A) (Fintype.card A + Fintype.card B)
+    (fun S hg => by
+      by_contra hcard
+      exact hfree (contained_of_heavy_set R G hR S (by omega) hg))
+  have hc := sq_sum_le_card_mul_sum_sq (s := univ) (f := fun v => G.degree v)
+  rw [card_univ, sum_degrees_eq_twice_card_edges] at hc
+  have hm := Nat.mul_le_mul_left (Fintype.card V) hb
+  nlinarith
+
+end Erdos713DRC
+
+
+namespace Erdos713DRC
+
+open Finset
+open Erdos713C6
+
+theorem pair_cover_of_card_le_two {A : Type*} [Nonempty A] (U : Finset A) (hU : U.card ≤ 2) :
+    ∃ u v, ∀ a ∈ U, a = u ∨ a = v := by
+  classical
+  by_cases h0 : U.card = 0
+  · refine ⟨Classical.arbitrary A, Classical.arbitrary A, ?_⟩
+    simp [card_eq_zero.mp h0]
+  by_cases h1 : U.card = 1
+  · obtain ⟨u, rfl⟩ := card_eq_one.mp h1
+    exact ⟨u, u, by simp⟩
+  obtain ⟨u, v, _, rfl⟩ := card_eq_two.mp (show U.card = 2 by omega)
+  exact ⟨u, v, by simp⟩
+
+open scoped Classical in
+theorem pair_cover_of_degree_two {A B : Type*} [Fintype A] [Nonempty A]
+    (R : A → B → Prop) (hR : ∀ b, Fintype.card {a // R a b} ≤ 2) :
+    ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v := by
+  classical
+  intro b
+  obtain ⟨u, v, h⟩ := pair_cover_of_card_le_two (univ.filter (R · b))
+    (by simpa only [Fintype.card_subtype] using hR b)
+  exact ⟨u, v, fun a ha => h a (mem_filter.mpr ⟨mem_univ _, ha⟩)⟩
+
+theorem extremal_sq_le {A B : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v) (n : ℕ) :
+    (extremalNumber n (bipGraph R)) ^ 2 ≤
+      (Fintype.card A + (Fintype.card A + Fintype.card B) ^ 2) * n ^ 3 := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | (bipGraph R).Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ 2 ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hfree : (bipGraph R).Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using degree_two_edge_sq_le R G hR hfree
+  · rw [not_nonempty_iff_eq_empty.mp hS]
+    simp
+
+theorem exponent_upper_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hH : H ⊑ bipGraph R) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ (3 : ℝ) / 2 := by
+  have hO : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ)) :=
+    (isBigO_const_mul_left_iff hc).mp h.isBigO_symm
+  have hP : (fun n : ℕ => (n : ℝ) ^ (a * (2 : ℝ))) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ) ^ (2 : ℕ)) := by
+    have he (n : ℕ) : ((n : ℝ) ^ a) ^ (2 : ℕ) = (n : ℝ) ^ (a * (2 : ℝ)) := by
+      have hh := Real.rpow_mul_natCast (Nat.cast_nonneg (α := ℝ) n) a 2
+      norm_num only [Nat.cast_ofNat] at hh
+      exact hh.symm
+    simpa only [he] using hO.pow 2
+  have hB : (fun n : ℕ => (extremalNumber n H : ℝ) ^ (2 : ℕ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (3 : ℝ)) := by
+    apply IsBigO.of_bound ((Fintype.card A + (Fintype.card A + Fintype.card B) ^ 2 : ℕ) : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    have hn3 : (n : ℝ) ^ (3 : ℝ) = (n : ℝ) ^ (3 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (n : ℝ) 3
+    rw [hn3, Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    exact_mod_cast (Nat.pow_le_pow_left (hH.extremalNumber_le (n := n)) 2).trans
+      (extremal_sq_le R hR n)
+  have hExp := Erdos713C4.exponent_le_of_isBigO (hP.trans hB)
+  linarith
+
+theorem exponent_eq_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph R)
+    {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (3 : ℝ) / 2 := by
+  apply le_antisymm (exponent_upper_of_containment R hR hhi hc h)
+  have hO : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc).mp h.isBigO
+  apply Erdos713C4.lower_exponent_of_prime_bound hO
+  intro p hp
+  exact (Erdos713C4.extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rational_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph R)
+    {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3 / 2, ?_⟩
+  simpa using (exponent_eq_of_containment R hR hlo hhi hc h).symm
+
+end Erdos713DRC
+
+
+namespace Erdos713Anchors
+open Finset Erdos713C6 Erdos713DRC
+
+def augmented {A B : Type*} (R : A → B → Prop) (a : A) : Fin 2 ⊕ B → Prop :=
+  Sum.elim (fun _ => True) (R a)
+
+theorem bipGraph_contained_of_maps {A B V : Type*} (R : A → B → Prop) (G : SimpleGraph V)
+    (f : A → V) (g : B → V) (hf : Function.Injective f) (hg : Function.Injective g)
+    (hdis : ∀ a b, f a ≠ g b) (hAdj : ∀ a b, R a b → G.Adj (f a) (g b)) :
+    bipGraph R ⊑ G := by
+  refine ⟨⟨⟨Sum.elim f g, ?_⟩, ?_⟩⟩
+  · intro x y hxy
+    cases x with
+    | inl a =>
+      cases y with
+      | inl a' => exact hxy.elim
+      | inr b => exact hAdj a b hxy
+    | inr b =>
+      cases y with
+      | inl a => exact (hAdj a b hxy).symm
+      | inr b' => exact hxy.elim
+  · intro x y hxy
+    change Sum.elim f g x = Sum.elim f g y at hxy
+    cases x with
+    | inl a =>
+      cases y with
+      | inl a' => exact congrArg Sum.inl (hf hxy)
+      | inr b => exact (hdis a b hxy).elim
+    | inr b =>
+      cases y with
+      | inl a => exact (hdis a b hxy.symm).elim
+      | inr b' => exact congrArg Sum.inr (hg hxy)
+
+open scoped Classical in
+theorem contained_of_anchored_heavy_set {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (z : Fin 2 ↪ V) (S : Finset V) (hS : Fintype.card A ≤ S.card)
+    (hSz : ∀ a ∈ S, ∀ i, G.Adj a (z i))
+    (hgood : ∀ x ∈ S, ∀ y ∈ S,
+      Fintype.card A + Fintype.card B + 2 ≤ Fintype.card (G.commonNeighbors x y)) :
+    bipGraph (augmented R) ⊑ G := by
+  classical
+  obtain ⟨f, hf⟩ := Function.Embedding.exists_of_card_le_finset hS
+  choose u v huv using hR
+  let L := (univ : Finset A).image f ∪ (univ : Finset (Fin 2)).image z
+  let t : B → Finset V := fun b => (G.commonNeighbors (f (u b)) (f (v b))).toFinset \ L
+  have hL : L.card ≤ Fintype.card A + 2 := by
+    apply (card_union_le _ _).trans
+    exact Nat.add_le_add ((card_image_le).trans (by simp)) ((card_image_le).trans (by simp))
+  have ht (b : B) : Fintype.card B ≤ (t b).card := by
+    have hg := hgood (f (u b)) (hf ⟨u b, rfl⟩) (f (v b)) (hf ⟨v b, rfl⟩)
+    have hh := card_le_card_sdiff_add_card (s := (G.commonNeighbors (f (u b)) (f (v b))).toFinset)
+      (t := L)
+    rw [Set.toFinset_card] at hh
+    dsimp only [t]
+    omega
+  have hHall (U : Finset B) : U.card ≤ (U.biUnion t).card := by
+    rcases U.eq_empty_or_nonempty with rfl | hU
+    · simp
+    obtain ⟨b, hb⟩ := hU
+    exact (card_le_univ U).trans ((ht b).trans (card_le_card (subset_biUnion_of_mem t hb)))
+  obtain ⟨g, hginj, hg⟩ := (all_card_le_biUnion_card_iff_exists_injective t).mp hHall
+  have hdis (a : A) (b : B) : f a ≠ g b := by
+    intro hab
+    exact (mem_sdiff.mp (hg b)).2
+      (hab ▸ mem_union_left _ (mem_image_of_mem f (mem_univ a)))
+  have hdisz (i : Fin 2) (b : B) : z i ≠ g b := by
+    intro hab
+    exact (mem_sdiff.mp (hg b)).2
+      (hab ▸ mem_union_right _ (mem_image_of_mem z (mem_univ i)))
+  have hAdj (a : A) (b : B) (hab : R a b) : G.Adj (f a) (g b) := by
+    have hh : g b ∈ G.commonNeighbors (f (u b)) (f (v b)) := by
+      simpa only [Set.mem_toFinset] using (mem_sdiff.mp (hg b)).1
+    rcases huv b a hab with rfl | rfl
+    · exact hh.1
+    · exact hh.2
+  apply bipGraph_contained_of_maps (augmented R) G f (Sum.elim z g) f.injective
+  · intro x y hxy
+    cases x with
+    | inl i =>
+      cases y with
+      | inl j => exact congrArg Sum.inl (z.injective hxy)
+      | inr b => exact (hdisz i b hxy).elim
+    | inr b =>
+      cases y with
+      | inl i => exact (hdisz i b hxy.symm).elim
+      | inr b' => exact congrArg Sum.inr (hginj hxy)
+  · intro a b
+    cases b with
+    | inl i => exact (hSz (f a) (hf ⟨a, rfl⟩) i).ne
+    | inr b => exact hdis a b
+  · intro a b hab
+    cases b with
+    | inl i => exact hSz (f a) (hf ⟨a, rfl⟩) i
+    | inr b => exact hAdj a b hab
+
+open scoped Classical in
+theorem degree_sq_le_of_no_anchored_heavy_set {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (s k : ℕ)
+    (h : ∀ x y : V, x ≠ y → ∀ S : Finset V, S ⊆ (G.commonNeighbors x y).toFinset →
+      (∀ u ∈ S, ∀ v ∈ S, k ≤ Fintype.card (G.commonNeighbors u v)) → S.card ≤ s) :
+    ∑ v, G.degree v ^ 2 ≤ (s + k ^ 2 + 1) * Fintype.card V ^ 2 := by
+  classical
+  have hrow (p : V × V) : Fintype.card (G.commonNeighbors p.1 p.2) ≤
+      s + (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+      (G.commonNeighbors p.1 p.2).toFinset).filter
+        (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card +
+        if p.1 = p.2 then Fintype.card V else 0 := by
+    by_cases hp : p.1 = p.2
+    · simp only [hp, ite_true]
+      have hc : Fintype.card (G.commonNeighbors p.2 p.2) ≤ Fintype.card V :=
+        Fintype.card_le_of_injective (f := fun x : G.commonNeighbors p.2 p.2 => x.val)
+          Subtype.val_injective
+      omega
+    · simp only [hp, ite_false, add_zero]
+      obtain ⟨S, hS, hcard, hgood⟩ := clean_set G (G.commonNeighbors p.1 p.2).toFinset k
+      rw [Set.toFinset_card] at hcard
+      exact hcard.trans (Nat.add_le_add_right (h p.1 p.2 hp S hS hgood) _)
+  rw [← sum_common_eq_sum_degree_sq]
+  calc
+    _ ≤ ∑ p : V × V, (s + (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+        (G.commonNeighbors p.1 p.2).toFinset).filter
+          (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card +
+          if p.1 = p.2 then Fintype.card V else 0) := sum_le_sum fun p _ => hrow p
+    _ ≤ s * Fintype.card V ^ 2 + k ^ 2 * Fintype.card V ^ 2 + Fintype.card V ^ 2 := by
+      simp only [sum_add_distrib]
+      have hc : (∑ _ : V × V, s) = s * Fintype.card V ^ 2 := by
+        simp [Fintype.card_prod, pow_two, mul_comm]
+      have hd : (∑ p : V × V, if p.1 = p.2 then Fintype.card V else 0) =
+          Fintype.card V ^ 2 := by
+        simp [Fintype.sum_prod_type, pow_two]
+      rw [hc, hd]
+      exact Nat.add_le_add_right (Nat.add_le_add_left (sum_bad_pairs_le G k) _) _
+    _ = _ := by ring
+
+open scoped Classical in
+theorem augmented_edge_sq_le {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (hfree : (bipGraph (augmented R)).Free G) :
+    G.edgeFinset.card ^ 2 ≤
+      (Fintype.card A + (Fintype.card A + Fintype.card B + 2) ^ 2 + 1) * Fintype.card V ^ 3 := by
+  classical
+  have hb := degree_sq_le_of_no_anchored_heavy_set G (Fintype.card A)
+    (Fintype.card A + Fintype.card B + 2) (by
+      intro x y hxy S hS hg
+      by_contra hcard
+      let z : Fin 2 ↪ V := ⟨![x,y], by
+        intro i j hij
+        fin_cases i <;> fin_cases j <;> simp_all⟩
+      apply hfree
+      apply contained_of_anchored_heavy_set R G hR z S (by omega) ?_ hg
+      intro a ha i
+      have hh : a ∈ G.commonNeighbors x y := by simpa only [Set.mem_toFinset] using hS ha
+      fin_cases i
+      · exact hh.1.symm
+      · exact hh.2.symm)
+  have hc := sq_sum_le_card_mul_sum_sq (s := univ) (f := fun v => G.degree v)
+  rw [card_univ, sum_degrees_eq_twice_card_edges] at hc
+  have hm := Nat.mul_le_mul_left (Fintype.card V) hb
+  nlinarith
+
+end Erdos713Anchors
+
+
+namespace Erdos713Anchors
+open Finset Erdos713C6 Erdos713DRC
+
+theorem extremal_sq_le {A B : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v) (n : ℕ) :
+    (extremalNumber n (bipGraph (augmented R))) ^ 2 ≤
+      (Fintype.card A + (Fintype.card A + Fintype.card B + 2) ^ 2 + 1) * n ^ 3 := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | (bipGraph (augmented R)).Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ 2 ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hfree : (bipGraph (augmented R)).Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using augmented_edge_sq_le R G hR hfree
+  · rw [not_nonempty_iff_eq_empty.mp hS]
+    simp
+
+theorem exponent_upper_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hH : H ⊑ bipGraph (augmented R)) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ (3 : ℝ) / 2 := by
+  have hO : (fun n : ℕ => (n : ℝ) ^ a) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ)) :=
+    (isBigO_const_mul_left_iff hc).mp h.isBigO_symm
+  have hP : (fun n : ℕ => (n : ℝ) ^ (a * (2 : ℝ))) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H : ℝ) ^ (2 : ℕ)) := by
+    have he (n : ℕ) : ((n : ℝ) ^ a) ^ (2 : ℕ) = (n : ℝ) ^ (a * (2 : ℝ)) := by
+      have hh := Real.rpow_mul_natCast (Nat.cast_nonneg (α := ℝ) n) a 2
+      norm_num only [Nat.cast_ofNat] at hh
+      exact hh.symm
+    simpa only [he] using hO.pow 2
+  have hB : (fun n : ℕ => (extremalNumber n H : ℝ) ^ (2 : ℕ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (3 : ℝ)) := by
+    apply IsBigO.of_bound ((Fintype.card A + (Fintype.card A + Fintype.card B + 2) ^ 2 + 1 : ℕ) : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    have hn3 : (n : ℝ) ^ (3 : ℝ) = (n : ℝ) ^ (3 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (n : ℝ) 3
+    rw [hn3, Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+    exact_mod_cast (Nat.pow_le_pow_left (hH.extremalNumber_le (n := n)) 2).trans
+      (extremal_sq_le R hR n)
+  have hExp := Erdos713C4.exponent_le_of_isBigO (hP.trans hB)
+  linarith
+
+theorem exponent_eq_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph (augmented R))
+    {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (3 : ℝ) / 2 := by
+  apply le_antisymm (exponent_upper_of_containment R hR hhi hc h)
+  have hO : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc).mp h.isBigO
+  apply Erdos713C4.lower_exponent_of_prime_bound hO
+  intro p hp
+  exact (Erdos713C4.extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rational_of_containment {A B W : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph (augmented R))
+    {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3 / 2, ?_⟩
+  simpa using (exponent_eq_of_containment R hR hlo hhi hc h).symm
+
+
+end Erdos713Anchors
+
+
+namespace Erdos713Anchors
+open Finset Erdos713C6 Erdos713DRC
+
+open scoped Classical in
+theorem contained_in_augmented {A B : Type*} [Fintype A] [Fintype B]
+    (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2) :
+    bipGraph R ⊑ bipGraph (augmented (fun a (b : ↥(Eᶜ)) => R a b.val)) := by
+  classical
+  let e : E ↪ Fin 2 := Classical.choice (Function.Embedding.nonempty_of_card_le
+    (by simpa only [Nat.card_eq_fintype_card, Fintype.card_fin] using hE))
+  let g : B ↪ Fin 2 ⊕ ↥(Eᶜ) := (Equiv.Set.sumCompl E).symm.toEmbedding.trans
+    (e.sumMap (Function.Embedding.refl _))
+  apply bipGraph_contained_of_maps R _ Sum.inl (fun b => Sum.inr (g b)) Sum.inl_injective
+    (Sum.inr_injective.comp g.injective) (by simp)
+  intro a b hab
+  by_cases hb : b ∈ E
+  · simp [g, Equiv.Set.sumCompl_symm_apply_of_mem hb, bipGraph, augmented]
+  · simpa [g, Equiv.Set.sumCompl_symm_apply_of_notMem hb, bipGraph, augmented] using hab
+
+open scoped Classical in
+theorem rational_of_exceptional_columns {A B W : Type*} [Fintype A] [Fintype B] [Nonempty A]
+    (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2)
+    (hR : ∀ b ∉ E, Nat.card {a // R a b} ≤ 2)
+    {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph R)
+    {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  let R' : A → ↥(Eᶜ) → Prop := fun a b => R a b.val
+  have hR' (b : ↥(Eᶜ)) : Fintype.card {a // R' a b} ≤ 2 := by
+    simpa only [R', Nat.card_eq_fintype_card] using hR b.val b.prop
+  exact rational_of_containment R' (pair_cover_of_degree_two R' hR') hlo
+    (hhi.trans (contained_in_augmented R E hE)) hc h
+
+
+end Erdos713Anchors
+
+namespace Erdos713Six
+
+open Finset
+open Erdos713C6
+
+instance decidable_bipGraph {P L : Type*} (R : P → L → Prop) [∀ p l, Decidable (R p l)] :
+    DecidableRel (bipGraph R).Adj := by
+  intro u v
+  cases u <;> cases v <;> dsimp [bipGraph] <;> infer_instance
+
+abbrev crown := bipGraph (fun i j : Fin 3 => i ≠ j)
+
+def cycle_crown_iso : C6 ≃g crown where
+  toFun := ![Sum.inl 0, Sum.inr 2, Sum.inl 1, Sum.inr 0, Sum.inl 2, Sum.inr 1]
+  invFun := Sum.elim ![0, 2, 4] ![3, 5, 1]
+  left_inv := by decide
+  right_inv := by decide
+  map_rel_iff' := by decide
+
+theorem complement_permutation (R : Fin 3 → Fin 3 → Prop)
+    (hTwo : ∀ i, ∃ j k, j ≠ k ∧ R i j ∧ R i k)
+    (hNo : ∀ i k j l, i ≠ k → j ≠ l → R i j → R k j → R i l → R k l → False) :
+    ∃ σ : Equiv.Perm (Fin 3), ∀ i j, R i j ↔ j ≠ σ i := by
+  classical
+  have hmiss (i : Fin 3) : ∃ j, ¬R i j := by
+    by_contra hm
+    push_neg at hm
+    obtain ⟨j, k, hjk, hij, hik⟩ := hTwo (i + 1)
+    exact hNo i (i + 1) j k (by fin_cases i <;> decide) hjk (hm j) hij (hm k) hik
+  choose f hf using hmiss
+  have hR (i j : Fin 3) : R i j ↔ j ≠ f i := by
+    constructor
+    · intro hij he
+      exact hf i (he ▸ hij)
+    · intro hj
+      obtain ⟨a, b, hab, hia, hib⟩ := hTwo i
+      have ha : a ≠ f i := fun he => hf i (he ▸ hia)
+      have hb : b ≠ f i := fun he => hf i (he ▸ hib)
+      have hjab : j = a ∨ j = b := by omega
+      rcases hjab with rfl | rfl <;> assumption
+  have hinj : Function.Injective f := by
+    intro i k hik
+    by_contra hne
+    obtain ⟨a, b, hab, hia, hib⟩ := hTwo i
+    apply hNo i k a b hne hab hia ?_ hib ?_
+    · apply (hR k a).mpr
+      intro he
+      exact (hR i a).mp hia (he.trans hik.symm)
+    · apply (hR k b).mpr
+      intro he
+      exact (hR i b).mp hib (he.trans hik.symm)
+  exact ⟨Equiv.ofBijective f ⟨hinj, Finite.surjective_of_injective hinj⟩, hR⟩
+
+noncomputable def crown_matrix_iso (R : Fin 3 → Fin 3 → Prop) (σ : Equiv.Perm (Fin 3))
+    (hR : ∀ i j, R i j ↔ j ≠ σ i) : crown ≃g bipGraph R where
+  toEquiv := Equiv.sumCongr (Equiv.refl _) σ
+  map_rel_iff' := by
+    intro u v
+    cases u <;> cases v <;> simp [crown, bipGraph, hR, ne_comm]
+
+
+end Erdos713Six
+
+
+namespace Erdos713ThreeSide
+open Finset Erdos713C6
+
+theorem complement_of_pair : ∀ i j : Fin 3, i ≠ j →
+    ∃ k : Fin 3, ∀ a, a ≠ k → a = i ∨ a = j := by decide
+
+theorem pair_avoiding : ∀ k : Fin 3, ∃ i j : Fin 3, i ≠ j ∧ i ≠ k ∧ j ≠ k := by decide
+
+open scoped Classical in
+theorem right_card_le_three_of_no_rectangle {B : Type*} [Fintype B]
+    (R : Fin 3 → B → Prop)
+    (hd : ∀ b, 2 ≤ Nat.card ((bipGraph R).neighborSet (Sum.inr b)))
+    (hfree : Erdos713C4.K22.Free (bipGraph R)) : Fintype.card B ≤ 3 := by
+  classical
+  have hcol (b : B) : ∃ k : Fin 3, ∀ a, a ≠ k → R a b := by
+    have hd' : 2 ≤ (bipGraph R).degree (Sum.inr b) := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd b
+    obtain ⟨x, y, hx, hy, hxy⟩ := Erdos713SmallCore.exists_two_neighbors (bipGraph R) (Sum.inr b) hd'
+    obtain ⟨i, hxi, hib⟩ := left_of_adj_right hx
+    obtain ⟨j, hyj, hjb⟩ := left_of_adj_right hy
+    have hij : i ≠ j := fun he => hxy (hxi.trans ((congrArg Sum.inl he).trans hyj.symm))
+    obtain ⟨k, hk⟩ := complement_of_pair i j hij
+    refine ⟨k, ?_⟩
+    intro a ha
+    rcases hk a ha with rfl | rfl
+    · exact hib
+    · exact hjb
+  choose k hk using hcol
+  have hinj : Function.Injective k := by
+    intro b b' hbb
+    by_contra hne
+    obtain ⟨i, j, hij, hik, hjk⟩ := pair_avoiding (k b)
+    exact Erdos713C4.no_rectangle hfree (u := Sum.inl i) (v := Sum.inl j)
+      (a := Sum.inr b) (b := Sum.inr b') (by simpa using hij) (by simpa using hne)
+      (hk b i hik) (hk b j hjk) (hk b' i (hbb ▸ hik)) (hk b' j (hbb ▸ hjk))
+  simpa only [Fintype.card_fin] using Fintype.card_le_of_injective k hinj
+
+theorem matrix_contained_K3t {B : Type*} [Fintype B] (R : Fin 3 → B → Prop) :
+    bipGraph R ⊑ Erdos713K3t.K3t (Fintype.card B) := by
+  classical
+  let e := Fintype.equivFin B
+  refine ⟨⟨⟨Sum.map id e, ?_⟩, Sum.map_injective.mpr ⟨Function.injective_id, e.injective⟩⟩⟩
+  intro u v huv
+  cases u <;> cases v <;> simp_all [bipGraph, Erdos713K3t.K3t, completeBipartiteGraph]
+
+theorem contains_K33_of_three_full_columns {B : Type*} [Fintype B]
+    (R : Fin 3 → B → Prop) (hc : 3 ≤ Nat.card {b // ∀ a, R a b}) :
+    Erdos713Norm.K33 ⊑ bipGraph R := by
+  classical
+  let e : Fin 3 ↪ {b // ∀ a, R a b} := Classical.choice (Function.Embedding.nonempty_of_card_le
+    (by simpa only [Fintype.card_fin, Nat.card_eq_fintype_card] using hc))
+  have he : Erdos713Norm.K33 = bipGraph (fun (_ _ : Fin 3) => True) := by
+    ext u v
+    cases u <;> cases v <;> simp [Erdos713Norm.K33, completeBipartiteGraph, bipGraph]
+  rw [he]
+  apply Erdos713Anchors.bipGraph_contained_of_maps _ _ Sum.inl (fun b => Sum.inr (e b).val)
+    Sum.inl_injective (Sum.inr_injective.comp (Subtype.val_injective.comp e.injective)) (by simp)
+  intro a b _
+  exact (e b).prop a
+
+open scoped Classical in
+theorem nonfull_column_small {B : Type*} (R : Fin 3 → B → Prop) (b : B)
+    (hb : ¬∀ a, R a b) : Nat.card {a // R a b} ≤ 2 := by
+  classical
+  have hne : (univ.filter (R · b) : Finset (Fin 3)) ≠ univ := by
+    intro he
+    apply hb
+    intro a
+    have ha : a ∈ univ.filter (R · b) := by rw [he]; exact mem_univ _
+    exact (mem_filter.mp ha).2
+  have hc := (card_lt_iff_ne_univ _).mpr hne
+  simp only [Fintype.card_fin] at hc
+  simpa only [Nat.card_eq_fintype_card, Fintype.card_subtype] using (show
+    (univ.filter (R · b)).card ≤ 2 by omega)
+
+theorem matrix_iso_C6_of_no_rectangle {B : Type*} [Fintype B]
+    (R : Fin 3 → B → Prop) (hd : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v))
+    (hfree : Erdos713C4.K22.Free (bipGraph R)) : Nonempty (bipGraph R ≃g C6) := by
+  classical
+  have hcard : Fintype.card B = 3 := by
+    apply le_antisymm (right_card_le_three_of_no_rectangle R (fun b => hd (Sum.inr b)) hfree)
+    by_contra hsmall
+    let e : B ↪ Fin 2 := Classical.choice (Function.Embedding.nonempty_of_card_le
+      (by simp only [Fintype.card_fin]; omega))
+    have hhi : bipGraph R ⊑ Erdos713K2t.K2t 3 := by
+      let f : Fin 3 ⊕ B → Fin 2 ⊕ Fin 3 := Sum.elim Sum.inr (Sum.inl ∘ e)
+      refine ⟨⟨⟨f, ?_⟩, ?_⟩⟩
+      · intro u v huv
+        cases u <;> cases v <;>
+          simp_all [f, bipGraph, Erdos713K2t.K2t, completeBipartiteGraph]
+      · intro u v huv
+        cases u <;> cases v <;> simp_all [f, e.injective.eq_iff]
+    apply hfree
+    exact Erdos713SmallCore.contains_K22_of_degree_two (bipGraph R)
+      (fun v => by simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd v) hhi
+  let e : B ≃ Fin 3 := Fintype.equivFinOfCardEq hcard
+  let R' : Fin 3 → Fin 3 → Prop := fun i j => R i (e.symm j)
+  let f : bipGraph R ≃g bipGraph R' :=
+    { toEquiv := Equiv.sumCongr (Equiv.refl _) e
+      map_rel_iff' := by
+        intro u v
+        cases u <;> cases v <;> simp [bipGraph, R'] }
+  have hd' : ∀ v, 2 ≤ Nat.card ((bipGraph R').neighborSet v) := by
+    intro v
+    rw [Nat.card_congr (f.symm.mapNeighborSet v)]
+    exact hd (f.symm v)
+  have hfree' : Erdos713C4.K22.Free (bipGraph R') :=
+    fun hc => hfree (hc.trans ⟨f.symm.toCopy⟩)
+  have hTwo (i : Fin 3) : ∃ j k, j ≠ k ∧ R' i j ∧ R' i k := by
+    have hdeg : 2 ≤ (bipGraph R').degree (Sum.inl i) := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd' (Sum.inl i)
+    obtain ⟨x, y, hx, hy, hxy⟩ := Erdos713SmallCore.exists_two_neighbors (bipGraph R') (Sum.inl i) hdeg
+    obtain ⟨j, hj, hij⟩ := right_of_adj_left hx
+    obtain ⟨k, hk, hik⟩ := right_of_adj_left hy
+    exact ⟨j, k, fun he => hxy (hj.trans ((congrArg Sum.inr he).trans hk.symm)), hij, hik⟩
+  have hNo : ∀ i k j l, i ≠ k → j ≠ l → R' i j → R' k j → R' i l → R' k l → False := by
+    intro i k j l hik hjl hij hkj hil hkl
+    exact Erdos713C4.no_rectangle hfree' (u := Sum.inl i) (v := Sum.inl k)
+      (a := Sum.inr j) (b := Sum.inr l) (by simpa using hik) (by simpa using hjl) hij hkj hil hkl
+  obtain ⟨σ, hσ⟩ := Erdos713Six.complement_permutation R' hTwo hNo
+  exact ⟨f.trans ((Erdos713Six.cycle_crown_iso.trans
+    (Erdos713Six.crown_matrix_iso R' σ hσ)).symm)⟩
+
+theorem rational_matrix_core {B : Type*} [Fintype B] (R : Fin 3 → B → Prop)
+    (hd : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v)) {a c : ℝ} (ha : 1 < a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n (bipGraph R) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  by_cases hFull : 3 ≤ Nat.card {b // ∀ i, R i b}
+  · exact Erdos713K3t.rational_exponent_of_containment
+      (contains_K33_of_three_full_columns R hFull) (matrix_contained_K3t R) (by linarith) hc h
+  by_cases hC4 : Erdos713C4.K22 ⊑ bipGraph R
+  · exact Erdos713Anchors.rational_of_exceptional_columns R {b | ∀ i, R i b}
+      (by change Nat.card {b // ∀ i, R i b} ≤ 2; omega) (fun b hb => nonfull_column_small R b hb) hC4 (.refl _) hc.ne' h
+  obtain ⟨e⟩ := matrix_iso_C6_of_no_rectangle R hd hC4
+  exact Erdos713C6.rational_exponent_of_containment ⟨e.symm.toCopy⟩ ⟨e.toCopy⟩ hc.ne' h
+
+end Erdos713ThreeSide
+
+
+namespace Erdos713ThreeSide
+open Finset Erdos713C6
+universe u
+
+theorem exists_matrix_iso {W : Type*} [Fintype W] (H : SimpleGraph W) (S : Set W)
+    (hB : H.IsBipartiteWith S Sᶜ) (hS : Nat.card S = 3) :
+    ∃ R : Fin 3 → ↥(Sᶜ) → Prop, Nonempty (H ≃g bipGraph R) := by
+  classical
+  let eL : S ≃ Fin 3 := Fintype.equivFinOfCardEq (by simpa only [Nat.card_eq_fintype_card] using hS)
+  let eR : ↥(Sᶜ) ≃ ↥(Sᶜ) := Equiv.refl _
+  let e : W ≃ Fin 3 ⊕ ↥(Sᶜ) := (Equiv.Set.sumCompl S).symm.trans (Equiv.sumCongr eL eR)
+  let R : Fin 3 → ↥(Sᶜ) → Prop := fun i j => H.Adj (e.symm (Sum.inl i)) (e.symm (Sum.inr j))
+  have hl (i : Fin 3) : e.symm (Sum.inl i) ∈ S := (eL.symm i).prop
+  have hr (j : ↥(Sᶜ)) : e.symm (Sum.inr j) ∈ Sᶜ := (eR.symm j).prop
+  have hnoL (i j : Fin 3) : ¬H.Adj (e.symm (Sum.inl i)) (e.symm (Sum.inl j)) := by
+    intro hij
+    exact (hB.mem_of_mem_adj (hl i) hij) (hl j)
+  have hnoR (i j : ↥(Sᶜ)) : ¬H.Adj (e.symm (Sum.inr i)) (e.symm (Sum.inr j)) := by
+    intro hij
+    exact hr j (hB.symm.mem_of_mem_adj (hr i) hij)
+  have he : H.comap e.symm = bipGraph R := by
+    ext u v
+    cases u with
+    | inl i =>
+      cases v with
+      | inl j => exact iff_false_intro (hnoL i j)
+      | inr j => rfl
+    | inr i =>
+      cases v with
+      | inl j => exact adj_comm H _ _
+      | inr j => exact iff_false_intro (hnoR i j)
+  refine ⟨R, ⟨?_⟩⟩
+  rw [← he]
+  exact (SimpleGraph.Iso.comap e.symm H).symm
+
+theorem rational_core_of_small_bipartition {W : Type*} [Fintype W] [Nonempty W]
+    (H : SimpleGraph W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3)
+    (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v)) {a c : ℝ} (ha : 1 < a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  by_cases hS2 : Nat.card S ≤ 2
+  · have hhi := Erdos713SmallCore.contained_of_small_bipartition H S hS2 hB
+    have hd' : ∀ v, 2 ≤ H.degree v := by
+      intro v
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd v
+    have hlo := Erdos713SmallCore.contains_K22_of_degree_two H hd' hhi
+    exact Erdos713K2t.rational_exponent_of_containment hlo hhi hc h
+  obtain ⟨R, ⟨e⟩⟩ := exists_matrix_iso H S hB (by omega)
+  have hDeg : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v) := by
+    intro v
+    rw [Nat.card_congr (e.symm.mapNeighborSet v)]
+    exact hd (e.symm v)
+  apply rational_matrix_core R hDeg ha hc
+  simpa only [extremalNumber_congr_right e] using h
+
+/-- A bipartite forbidden graph with a colour class of size at most three has a
+rational pure-power asymptotic exponent, including leaves and isolated vertices. -/
+theorem rational_of_small_bipartition {W : Type u} [Fintype W]
+    (H : SimpleGraph W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3)
+    {a c : ℝ} (ha : 1 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  by_cases ha1 : a = 1
+  · exact ⟨1, by simpa using ha1.symm⟩
+  have ha' : 1 < a := lt_of_le_of_ne ha (Ne.symm ha1)
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ (G : SimpleGraph W) (S : Set W), G.IsBipartiteWith S Sᶜ → Nat.card S ≤ 3 →
+        IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+          (fun n : ℕ => c * (n : ℝ) ^ a) → a ∈ Set.range ((↑) : ℚ → ℝ) from
+    hP _ W rfl H S hB hS h
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW G S hB hS h
+    by_cases hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)
+    · letI : Nonempty W := Erdos713Core.nonempty_of_asymptotic G hc.ne' h
+      exact rational_core_of_small_bipartition G S hB hS hd ha' hc h
+    push_neg at hd
+    obtain ⟨x, hx⟩ := hd
+    have hx' : G.degree x < 2 := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hx
+    have hsmall : Fintype.card ↥({x}ᶜ : Set W) < k :=
+      (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hW
+    let T : Set ↥({x}ᶜ : Set W) := {v | v.val ∈ S}
+    have hB' : (G.induce {x}ᶜ).IsBipartiteWith T Tᶜ := by
+      refine ⟨disjoint_compl_right, ?_⟩
+      intro u v huv
+      exact hB.2 huv
+    have hT : Nat.card T ≤ 3 := by
+      let f : T ↪ S := ⟨fun v => ⟨v.val.val, v.prop⟩, by
+        intro u v huv
+        apply Subtype.ext
+        apply Subtype.ext
+        exact congrArg (fun z : S => z.val) huv⟩
+      have hh := Fintype.card_le_of_embedding f
+      simp only [Fintype.card_eq_nat_card] at hh
+      exact hh.trans hS
+    apply ih _ hsmall _ rfl (G.induce {x}ᶜ) T hB' hT
+    have hx01 : G.degree x = 0 ∨ G.degree x = 1 := by omega
+    rcases hx01 with hx0 | hx1
+    · exact Erdos713Leaf.isolated_asymptotic G hx0 h
+    · obtain ⟨y, hxy, _⟩ := degree_eq_one_iff_existsUnique_adj.mp hx1
+      exact Erdos713Leaf.leaf_asymptotic G hx1 hxy ha' hc.ne' h
+
+theorem rational_exponent_all_small_graphs {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (hB : H.IsBipartite) (hcard : Fintype.card W ≤ 7)
+    {a c : ℝ} (ha : 1 ≤ a) (hc : 0 < c)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  obtain ⟨χ⟩ := hB
+  let S : Set W := {v | χ v = 0}
+  have hS : H.IsBipartiteWith S Sᶜ := by
+    refine ⟨disjoint_compl_right, ?_⟩
+    intro u v huv
+    have hχ := χ.valid huv
+    simp only [S, Set.mem_setOf_eq, Set.mem_compl_iff]
+    omega
+  by_cases hcS : Nat.card S ≤ 3
+  · exact rational_of_small_bipartition H S hS hcS ha hc h
+  have hcomp : Nat.card ↥(Sᶜ) = Fintype.card W - Nat.card S := by
+    simp only [Nat.card_eq_fintype_card, Fintype.card_compl_set]
+  exact rational_of_small_bipartition H Sᶜ
+    (by simpa only [compl_compl] using hS.symm) (by omega) ha hc h
+
+end Erdos713ThreeSide
+
+
+
+namespace Erdos713Union
+open Finset
+
+open scoped Classical in
+theorem edges_le_induce_compl_add {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (S : Finset V) :
+    G.edgeFinset.card ≤ Nat.card (G.induce (S : Set V)ᶜ).edgeSet + S.card * Fintype.card V := by
+  classical
+  let B := (S ×ˢ (univ : Finset V)).image (fun p => s(p.1, p.2))
+  have hcov : G.edgeFinset ⊆ (G.edgeFinset ∩ ((S : Set V)ᶜ).toFinset.sym2) ∪ B := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      by_cases hu : u ∈ S
+      · exact mem_union_right _ (mem_image.mpr ⟨(u,v), mem_product.mpr ⟨hu, mem_univ _⟩, rfl⟩)
+      by_cases hv : v ∈ S
+      · exact mem_union_right _ (mem_image.mpr
+          ⟨(v,u), mem_product.mpr ⟨hv, mem_univ _⟩, Sym2.eq_swap⟩)
+      · exact mem_union_left _ (mem_inter.mpr ⟨he, by simp [hu, hv]⟩)
+  have hB : B.card ≤ S.card * Fintype.card V := by
+    exact card_image_le.trans (by rw [card_product, card_univ])
+  have hinner : (G.edgeFinset ∩ ((S : Set V)ᶜ).toFinset.sym2).card =
+      Nat.card (G.induce (S : Set V)ᶜ).edgeSet := by
+    rw [← map_edgeFinset_induce, card_map, edgeFinset_card, Fintype.card_eq_nat_card]
+  exact ((card_le_card hcov).trans (card_union_le _ _)).trans
+    (by rw [hinner]; exact Nat.add_le_add_left hB _)
+
+theorem sum_contained_of_disjoint_copies {A B V : Type*} {H₁ : SimpleGraph A} {H₂ : SimpleGraph B}
+    {G : SimpleGraph V} (f : H₁.Copy G) (g : H₂.Copy G) (hdis : ∀ a b, f a ≠ g b) : H₁ ⊕g H₂ ⊑ G := by
+  refine ⟨⟨⟨Sum.elim f g, ?_⟩, ?_⟩⟩
+  · intro u v huv
+    cases u with
+    | inl a =>
+      cases v with
+      | inl a' => exact f.toHom.map_adj huv
+      | inr b => simp at huv
+    | inr b =>
+      cases v with
+      | inl a => simp at huv
+      | inr b' => exact g.toHom.map_adj huv
+  · intro u v huv
+    change Sum.elim f g u = Sum.elim f g v at huv
+    cases u with
+    | inl a =>
+      cases v with
+      | inl a' => exact congrArg Sum.inl (f.injective huv)
+      | inr b => exact (hdis a b huv).elim
+    | inr b =>
+      cases v with
+      | inl a => exact (hdis a b huv.symm).elim
+      | inr b' => exact congrArg Sum.inr (g.injective huv)
+
+open scoped Classical in
+theorem free_sum_bound {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (hfree : (H₁ ⊕g H₂).Free G) : G.edgeFinset.card ≤
+      extremalNumber (Fintype.card V) H₁ + extremalNumber (Fintype.card V - Fintype.card A) H₂ +
+        Fintype.card A * Fintype.card V := by
+  classical
+  by_cases hf : H₁.Free G
+  · exact (card_edgeFinset_le_extremalNumber hf).trans (by omega)
+  obtain ⟨f⟩ := not_not.mp hf
+  let S := (univ : Finset A).image f
+  have hS : S.card = Fintype.card A := by
+    change ((univ : Finset A).image f.toHom).card = _
+    rw [card_image_of_injective _ f.injective, card_univ]
+  have hcard : Fintype.card ↥((S : Set V)ᶜ) = Fintype.card V - Fintype.card A := by
+    rw [Fintype.card_compl_set]
+    have hh : Nat.card (S : Set V) = Fintype.card A := by
+      simpa only [Nat.card_coe_set_eq, Set.ncard_coe_finset] using hS
+    simp only [Fintype.card_eq_nat_card, hh] at hh ⊢
+  have hKfree : H₂.Free (G.induce (S : Set V)ᶜ) := by
+    rintro ⟨g⟩
+    apply hfree
+    apply sum_contained_of_disjoint_copies f ((Copy.induce G _).comp g)
+    intro a b hab
+    change f a = (g b).val at hab
+    have hb : (g b).val ∉ S := (g b).prop
+    exact hb (hab ▸ mem_image_of_mem f (mem_univ a))
+  have he := card_edgeFinset_le_extremalNumber hKfree
+  simp only [edgeFinset_card, Fintype.card_eq_nat_card] at he
+  have hcard' : Nat.card ↥((S : Set V)ᶜ) = Fintype.card V - Fintype.card A := by
+    simpa only [Fintype.card_eq_nat_card] using hcard
+  rw [hcard'] at he
+  have hb := edges_le_induce_compl_add G S
+  rw [hS] at hb
+  omega
+
+open scoped Classical in
+theorem extremal_sum_bound {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (n : ℕ) :
+    extremalNumber n (H₁ ⊕g H₂) ≤ extremalNumber n H₁ +
+      extremalNumber (n - Fintype.card A) H₂ + Fintype.card A * n := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+  intro G _ hG
+  exact free_sum_bound H₁ H₂ G hG
+
+end Erdos713Union
+
+namespace Erdos713Rate
+open Finset
+
+/-- An attained upper growth exponent, with a matching lower threshold among
+exponents at least one. No pure-power asymptotic is assumed for the graph. -/
+structure HasRate {W : Type*} (H : SimpleGraph W) (r : ℝ) : Prop where
+  one_le : 1 ≤ r
+  upper : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r)
+  lower : ∀ a : ℝ, 1 ≤ a →
+    ((fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ a)) → r ≤ a
+
+theorem exponent_eq {W : Type*} {H : SimpleGraph W} {r a c : ℝ} (hr : HasRate H r)
+    (ha : 1 ≤ a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = r := by
+  apply le_antisymm
+  · exact Erdos713Forest.exponent_le_of_isBigO
+      (((isBigO_const_mul_left_iff hc).mp h.isBigO_symm).trans hr.upper)
+  · exact hr.lower a ha ((isBigO_const_mul_right_iff hc).mp h.isBigO)
+
+theorem rpow_mono_bigO {a b : ℝ} (hab : a ≤ b) :
+    (fun n : ℕ => (n : ℝ) ^ a) =O[atTop] (fun n : ℕ => (n : ℝ) ^ b) := by
+  apply IsBigO.of_bound 1
+  filter_upwards [eventually_ge_atTop (1 : ℕ)] with n hn
+  rw [Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _),
+    Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _), one_mul]
+  exact Real.rpow_le_rpow_of_exponent_le (by exact_mod_cast hn) hab
+
+theorem cast_linear_bigO {r : ℝ} (hr : 1 ≤ r) (d : ℕ) :
+    (fun n : ℕ => ((d * n : ℕ) : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r) := by
+  have h : (fun n : ℕ => (n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r) := by
+    simpa only [Real.rpow_one] using rpow_mono_bigO hr
+  simpa only [Nat.cast_mul] using h.const_mul_left (d : ℝ)
+
+theorem shifted_upper {f : ℕ → ℝ} {r : ℝ} (hr : 0 ≤ r) (d : ℕ)
+    (h : f =O[atTop] (fun n : ℕ => (n : ℝ) ^ r)) :
+    (fun n : ℕ => f (n - d)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r) := by
+  have ht : Tendsto (fun n : ℕ => n - d) atTop atTop := tendsto_atTop.2 (fun N => by
+    filter_upwards [eventually_ge_atTop (N + d)] with n hn
+    omega)
+  have hh : (fun n : ℕ => f (n - d)) =O[atTop] (fun n : ℕ => ((n - d : ℕ) : ℝ) ^ r) :=
+    h.comp_tendsto ht
+  apply hh.trans
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _),
+    Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _), one_mul]
+  exact Real.rpow_le_rpow (Nat.cast_nonneg _) (by exact_mod_cast Nat.sub_le n d) hr
+
+theorem extremal_mono_bigO {U W : Type*} {G : SimpleGraph U} {H : SimpleGraph W} (hGH : G ⊑ H) :
+    (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop] (fun n : ℕ => (extremalNumber n H : ℝ)) := by
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast, Real.norm_natCast, one_mul]
+  exact_mod_cast hGH.extremalNumber_le (n := n)
+
+theorem sum_rate {A B : Type*} [Fintype A] [Fintype B] {H₁ : SimpleGraph A} {H₂ : SimpleGraph B}
+    {r₁ r₂ : ℝ} (h₁ : HasRate H₁ r₁) (h₂ : HasRate H₂ r₂) : HasRate (H₁ ⊕g H₂) (max r₁ r₂) := by
+  refine ⟨h₁.one_le.trans (le_max_left _ _), ?_, ?_⟩
+  · have hA := h₁.upper.trans (rpow_mono_bigO (le_max_left r₁ r₂))
+    have hB := (shifted_upper (by linarith [h₂.one_le] : 0 ≤ r₂) (Fintype.card A) h₂.upper).trans
+      (rpow_mono_bigO (le_max_right r₁ r₂))
+    have hC := cast_linear_bigO (h₁.one_le.trans (le_max_left r₁ r₂)) (Fintype.card A)
+    apply IsBigO.trans _ ((hA.add hB).add hC)
+    apply IsBigO.of_bound 1
+    filter_upwards with n
+    rw [Real.norm_natCast, Real.norm_of_nonneg (by positivity), one_mul]
+    exact_mod_cast Erdos713Union.extremal_sum_bound H₁ H₂ n
+  · intro a ha h
+    apply max_le
+    · exact h₁.lower a ha ((extremal_mono_bigO ⟨Embedding.sumInl.toCopy⟩).trans h)
+    · exact h₂.lower a ha ((extremal_mono_bigO ⟨Embedding.sumInr.toCopy⟩).trans h)
+
+end Erdos713Rate
+
+
+namespace Erdos713Rate
+open Finset
+
+theorem upper_of_power_bound {f : ℕ → ℕ} {k m C : ℕ} (hk : k ≠ 0)
+    (hb : ∀ n, f n ^ k ≤ C * n ^ m) :
+    (fun n : ℕ => (f n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ ((m : ℝ) / k)) := by
+  have hk' : (k : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr hk
+  have he (n : ℕ) : ((n : ℝ) ^ ((m : ℝ) / k)) ^ k = (n : ℝ) ^ m := by
+    rw [← Real.rpow_mul_natCast (Nat.cast_nonneg _), div_mul_cancel₀ _ hk', Real.rpow_natCast]
+  apply IsBigO.of_pow hk
+  change (fun n : ℕ => (f n : ℝ) ^ k) =O[atTop]
+    (fun n : ℕ => ((n : ℝ) ^ ((m : ℝ) / k)) ^ k)
+  simp only [he]
+  apply IsBigO.of_bound (C : ℝ)
+  filter_upwards with n
+  rw [Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _),
+    Real.norm_of_nonneg (pow_nonneg (Nat.cast_nonneg _) _)]
+  exact_mod_cast hb n
+
+theorem forest_rate {W : Type*} [Fintype W] (H : SimpleGraph W) (hF : H.IsAcyclic) : HasRate H 1 := by
+  classical
+  refine ⟨le_rfl, ?_, fun a ha _ => ha⟩
+  by_cases hW : Nonempty W
+  · letI := hW
+    apply IsBigO.of_bound (Fintype.card W : ℝ)
+    filter_upwards with n
+    rw [Real.norm_natCast, Real.rpow_one, Real.norm_natCast]
+    exact_mod_cast Erdos713Forest.extremal_forest_bound H hF n
+  · letI : IsEmpty W := not_nonempty_iff.mp hW
+    have hz (n : ℕ) : extremalNumber n H = 0 := by
+      apply Nat.eq_zero_of_le_zero
+      rw [← Fintype.card_fin n, extremalNumber_le_iff]
+      intro K _ hfree
+      exact (hfree IsContained.of_isEmpty).elim
+    simp only [hz, Nat.cast_zero]
+    exact isBigO_zero _ _
+
+theorem iso_rate {U W : Type*} {G : SimpleGraph U} {H : SimpleGraph W}
+    (e : G ≃g H) {r : ℝ} (h : HasRate H r) : HasRate G r := by
+  refine ⟨h.one_le, (extremal_mono_bigO ⟨e.toCopy⟩).trans h.upper, ?_⟩
+  intro a ha hG
+  exact h.lower a ha ((extremal_mono_bigO ⟨e.symm.toCopy⟩).trans hG)
+
+open scoped Classical in
+theorem leaf_rate {W : Type*} [Fintype W] (H : SimpleGraph W) [DecidableRel H.Adj]
+    {x y : W} (hx : H.degree x = 1) (hxy : H.Adj x y) {r : ℝ}
+    (hr : HasRate (H.induce {x}ᶜ) r) : HasRate H r := by
+  refine ⟨hr.one_le, ?_, ?_⟩
+  · have hu := hr.upper.add (cast_linear_bigO hr.one_le (Fintype.card W))
+    apply IsBigO.trans _ hu
+    apply IsBigO.of_bound 1
+    filter_upwards with n
+    rw [Real.norm_natCast, Real.norm_of_nonneg (by positivity), one_mul]
+    exact_mod_cast Erdos713Leaf.extremal_leaf_upper H hx hxy n
+  · intro a ha h
+    exact hr.lower a ha ((extremal_mono_bigO ⟨Copy.induce H _⟩).trans h)
+
+open scoped Classical in
+theorem isolated_rate {W : Type*} [Fintype W] (H : SimpleGraph W) [DecidableRel H.Adj]
+    {x : W} (hx : H.degree x = 0) {r : ℝ} (hr : HasRate (H.induce {x}ᶜ) r) : HasRate H r := by
+  refine ⟨hr.one_le, ?_, ?_⟩
+  · apply hr.upper.congr' _ Filter.EventuallyEq.rfl
+    filter_upwards [eventually_ge_atTop (Fintype.card W)] with n hn
+    rw [Erdos713Leaf.extremal_isolated_eq H hx hn]
+  · intro a ha h
+    exact hr.lower a ha ((extremal_mono_bigO ⟨Copy.induce H _⟩).trans h)
+
+theorem rate_of_C4_upper {W : Type*} {H : SimpleGraph W} (hlo : Erdos713C4.K22 ⊑ H)
+    (hu : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((3 : ℝ) / 2))) : HasRate H ((3 : ℝ) / 2) := by
+  refine ⟨by norm_num, hu, ?_⟩
+  intro a _ h
+  apply Erdos713C4.lower_exponent_of_prime_bound h
+  intro p hp
+  exact (Erdos713C4.extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rate_of_C6_upper {W : Type*} {H : SimpleGraph W} (hlo : Erdos713C6.C6 ⊑ H)
+    (hu : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((4 : ℝ) / 3))) : HasRate H ((4 : ℝ) / 3) := by
+  refine ⟨by norm_num, hu, ?_⟩
+  intro a _ h
+  apply Erdos713C6.lower_exponent_of_prime_bound h
+  intro p hp
+  exact (Erdos713C6.extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rate_of_K33_upper {W : Type*} {H : SimpleGraph W} (hlo : Erdos713Norm.K33 ⊑ H)
+    (hu : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((5 : ℝ) / 3))) : HasRate H ((5 : ℝ) / 3) := by
+  refine ⟨by norm_num, hu, ?_⟩
+  intro a ha h
+  apply Erdos713Norm.lower_exponent_of_prime_bound (by linarith) h
+  intro p hp
+  exact (Erdos713Norm.extremal_lower_prime p hp).trans (Nat.mul_le_mul_left 4 hlo.extremalNumber_le)
+
+theorem k2t_rate {W : Type*} {H : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ Erdos713K2t.K2t t) : HasRate H ((3 : ℝ) / 2) := by
+  apply rate_of_C4_upper hlo
+  apply (extremal_mono_bigO hhi).trans
+  apply IsBigO.of_bound ((t : ℝ) + 1)
+  filter_upwards with n
+  rw [Real.norm_natCast, Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _)]
+  exact Erdos713K2t.extremal_upper t n
+
+theorem k3t_rate {W : Type*} {H : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713Norm.K33 ⊑ H) (hhi : H ⊑ Erdos713K3t.K3t t) : HasRate H ((5 : ℝ) / 3) := by
+  apply rate_of_K33_upper hlo
+  apply (extremal_mono_bigO hhi).trans
+  simpa only [Nat.cast_ofNat] using upper_of_power_bound (by decide : 3 ≠ 0)
+    (fun n => Erdos713KST.extremal_pow_le 3 t n (by decide))
+
+theorem c6_rate {W : Type*} {H : SimpleGraph W}
+    (hlo : Erdos713C6.C6 ⊑ H) (hhi : H ⊑ Erdos713C6.C6) : HasRate H ((4 : ℝ) / 3) := by
+  apply rate_of_C6_upper hlo
+  apply (extremal_mono_bigO hhi).trans
+  simpa only [Nat.cast_ofNat] using upper_of_power_bound (by decide : 3 ≠ 0)
+    Erdos713C6.extremal_cube_le
+
+
+end Erdos713Rate
+
+namespace Erdos713Rate
+open Erdos713C6
+
+theorem two_exception_columns_rate {A B W : Type*} [Fintype A] [Fintype B] [Nonempty A]
+    (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2)
+    (hR : ∀ b ∉ E, Nat.card {a // R a b} ≤ 2) {H : SimpleGraph W}
+    (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ bipGraph R) : HasRate H ((3:ℝ)/2) := by
+  classical
+  let R' : A → ↥(Eᶜ) → Prop := fun a b => R a b.val
+  have hR' (b : ↥(Eᶜ)) : Fintype.card {a // R' a b} ≤ 2 := by
+    simpa only [R',Nat.card_eq_fintype_card] using hR b.val b.prop
+  apply rate_of_C4_upper hlo
+  apply (extremal_mono_bigO (hhi.trans (Erdos713Anchors.contained_in_augmented R E hE))).trans
+  simpa only [Nat.cast_ofNat] using upper_of_power_bound (by decide : 2 ≠ 0)
+    (Erdos713Anchors.extremal_sq_le R' (Erdos713DRC.pair_cover_of_degree_two R' hR'))
+
+end Erdos713Rate
+
+
+namespace Erdos713ThreeSide
+open Erdos713C6 Erdos713Rate
+universe u
+
+theorem rate_matrix_core {B : Type*} [Fintype B] (R : Fin 3 → B → Prop)
+    (hd : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v)) :
+    ∃ r : ℚ, HasRate (bipGraph R) (r : ℝ) := by
+  classical
+  by_cases hFull : 3 ≤ Nat.card {b // ∀ i, R i b}
+  · refine ⟨5/3, ?_⟩
+    simpa using k3t_rate (contains_K33_of_three_full_columns R hFull) (matrix_contained_K3t R)
+  by_cases hC4 : Erdos713C4.K22 ⊑ bipGraph R
+  · refine ⟨3/2, ?_⟩
+    simpa using two_exception_columns_rate R {b | ∀ i, R i b}
+      (by change Nat.card {b // ∀ i, R i b} ≤ 2; omega)
+      (fun b hb => nonfull_column_small R b hb) hC4 (.refl _)
+  obtain ⟨e⟩ := matrix_iso_C6_of_no_rectangle R hd hC4
+  refine ⟨4/3, ?_⟩
+  simpa using c6_rate ⟨e.symm.toCopy⟩ ⟨e.toCopy⟩
+
+theorem rate_core_of_small_bipartition {W : Type*} [Fintype W] [Nonempty W]
+    (H : SimpleGraph W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3)
+    (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v)) : ∃ r : ℚ, HasRate H (r : ℝ) := by
+  classical
+  by_cases hS2 : Nat.card S ≤ 2
+  · have hhi := Erdos713SmallCore.contained_of_small_bipartition H S hS2 hB
+    have hd' : ∀ v, 2 ≤ H.degree v := by
+      intro v
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hd v
+    have hlo := Erdos713SmallCore.contains_K22_of_degree_two H hd' hhi
+    refine ⟨3/2, ?_⟩
+    simpa using k2t_rate hlo hhi
+  obtain ⟨R,⟨e⟩⟩ := exists_matrix_iso H S hB (by omega)
+  have hDeg : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v) := by
+    intro v
+    rw [Nat.card_congr (e.symm.mapNeighborSet v)]
+    exact hd (e.symm v)
+  obtain ⟨r,hr⟩ := rate_matrix_core R hDeg
+  exact ⟨r,iso_rate e hr⟩
+
+theorem rate_of_small_bipartition {W : Type u} [Fintype W]
+    (H : SimpleGraph W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3) :
+    ∃ r : ℚ, HasRate H (r : ℝ) := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ (G : SimpleGraph W) (S : Set W), G.IsBipartiteWith S Sᶜ → Nat.card S ≤ 3 →
+        ∃ r : ℚ, HasRate G (r : ℝ) from hP _ W rfl H S hB hS
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW G S hB hS
+    by_cases hne : Nonempty W
+    swap
+    · letI : IsEmpty W := not_nonempty_iff.mp hne
+      exact ⟨1, by simpa using forest_rate G (by intro v; exact isEmptyElim v)⟩
+    letI := hne
+    by_cases hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)
+    · exact rate_core_of_small_bipartition G S hB hS hd
+    push_neg at hd
+    obtain ⟨x,hx⟩ := hd
+    have hx' : G.degree x < 2 := by
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hx
+    have hsmall : Fintype.card ↥({x}ᶜ : Set W) < k :=
+      (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hW
+    let T : Set ↥({x}ᶜ : Set W) := {v | v.val ∈ S}
+    have hB' : (G.induce {x}ᶜ).IsBipartiteWith T Tᶜ := by
+      refine ⟨disjoint_compl_right, ?_⟩
+      intro u v huv
+      exact hB.2 huv
+    have hT : Nat.card T ≤ 3 := by
+      let f : T ↪ S := ⟨fun v => ⟨v.val.val,v.prop⟩, by
+        intro u v huv
+        apply Subtype.ext
+        apply Subtype.ext
+        exact congrArg (fun z : S => z.val) huv⟩
+      have hh := Fintype.card_le_of_embedding f
+      simp only [Fintype.card_eq_nat_card] at hh
+      exact hh.trans hS
+    obtain ⟨r,hr⟩ := ih _ hsmall _ rfl (G.induce {x}ᶜ) T hB' hT
+    refine ⟨r, ?_⟩
+    have hx01 : G.degree x = 0 ∨ G.degree x = 1 := by omega
+    rcases hx01 with hx0 | hx1
+    · exact isolated_rate G hx0 hr
+    · obtain ⟨y,hxy,_⟩ := degree_eq_one_iff_existsUnique_adj.mp hx1
+      exact leaf_rate G hx1 hxy hr
+
+theorem small_bipartition_of_card_le_seven {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (hB : H.IsBipartite) (hcard : Fintype.card W ≤ 7) :
+    ∃ S : Set W, H.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3 := by
+  classical
+  obtain ⟨χ⟩ := hB
+  let S : Set W := {v | χ v = 0}
+  have hS : H.IsBipartiteWith S Sᶜ := by
+    refine ⟨disjoint_compl_right, ?_⟩
+    intro u v huv
+    have hχ := χ.valid huv
+    simp only [S,Set.mem_setOf_eq,Set.mem_compl_iff]
+    omega
+  by_cases hcS : Nat.card S ≤ 3
+  · exact ⟨S,hS,hcS⟩
+  have hcomp : Nat.card ↥(Sᶜ) = Fintype.card W - Nat.card S := by
+    simp only [Nat.card_eq_fintype_card,Fintype.card_compl_set]
+  exact ⟨Sᶜ,by simpa only [compl_compl] using hS.symm,by omega⟩
+
+theorem rate_of_card_le_seven {W : Type*} [Fintype W]
+    (H : SimpleGraph W) (hB : H.IsBipartite) (hcard : Fintype.card W ≤ 7) :
+    ∃ r : ℚ, HasRate H (r : ℝ) := by
+  obtain ⟨S,hS,hcard⟩ := small_bipartition_of_card_le_seven H hB hcard
+  exact rate_of_small_bipartition H S hS hcard
+
+end Erdos713ThreeSide
+
+namespace Erdos713ComponentRates
+open Erdos713Rate
+universe u v
+
+noncomputable def splitIso {W : Type*} (G : SimpleGraph W) (S : Set W)
+    (hS : ∀ u v, G.Adj u v → (u ∈ S ↔ v ∈ S)) :
+    G.induce S ⊕g G.induce Sᶜ ≃g G := by
+  classical
+  refine ⟨Equiv.Set.sumCompl S, ?_⟩
+  rintro (u | u) (v | v)
+  · rfl
+  · change G.Adj u.val v.val ↔ (false = true)
+    simp only [Bool.false_eq_true, iff_false]
+    exact fun huv => v.prop ((hS _ _ huv).mp u.prop)
+  · change G.Adj u.val v.val ↔ (false = true)
+    simp only [Bool.false_eq_true, iff_false]
+    exact fun huv => u.prop ((hS _ _ huv).mpr v.prop)
+  · rfl
+
+noncomputable def fibreComplementIso {W I : Type*} (G : SimpleGraph W)
+    (χ : W → I) {i j : I} (hij : j ≠ i) :
+    (G.induce {w | χ w ≠ i}).induce {w | χ w.val = j} ≃g G.induce {w | χ w = j} := by
+  let e : {w : {w // χ w ≠ i} // χ w.val = j} ≃ {w // χ w = j} :=
+    { toFun := fun w => ⟨w.val.val, w.prop⟩
+      invFun := fun w => ⟨⟨w.val, by simpa only [w.prop] using hij⟩, w.prop⟩
+      left_inv := fun w => rfl
+      right_inv := fun w => rfl }
+  exact ⟨e, Iff.rfl⟩
+
+
+open scoped Classical in
+theorem rate_of_fibres {W : Type u} [Fintype W] {I : Type v}
+    (G : SimpleGraph W) (χ : W → I)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v)
+    (hR : ∀ i, ∃ r : ℚ, HasRate (G.induce {w | χ w = i}) (r : ℝ)) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ (G : SimpleGraph W) (χ : W → I),
+      (∀ u v, G.Adj u v → χ u = χ v) →
+      (∀ i, ∃ r : ℚ, HasRate (G.induce {w | χ w = i}) (r : ℝ)) →
+        ∃ r : ℚ, HasRate G (r : ℝ) from hP _ W rfl G χ hχ hR
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW G χ hχ hR
+    by_cases hne : Nonempty W
+    swap
+    · letI : IsEmpty W := not_nonempty_iff.mp hne
+      exact ⟨1,by simpa using forest_rate G (by intro v; exact isEmptyElim v)⟩
+    let w : W := hne.some
+    let i : I := χ w
+    let S : Set W := {v | χ v = i}
+    have hsmall : Fintype.card ↥(Sᶜ) < k :=
+      (Fintype.card_subtype_lt (x := w) (by simp [S,i])).trans_eq hW
+    have hχ' : ∀ u v : ↥(Sᶜ), (G.induce Sᶜ).Adj u v → χ u.val = χ v.val := by
+      intro u v huv
+      exact hχ _ _ huv
+    have hR' : ∀ j, ∃ r : ℚ,
+        HasRate ((G.induce Sᶜ).induce {v : ↥(Sᶜ) | χ v.val = j}) (r : ℝ) := by
+      intro j
+      by_cases hj : j = i
+      · subst j
+        letI : IsEmpty {v : ↥(Sᶜ) // χ v.val = i} := ⟨fun v => v.val.prop v.prop⟩
+        exact ⟨1,by simpa using forest_rate _ (by intro v; exact isEmptyElim v)⟩
+      · obtain ⟨r,hr⟩ := hR j
+        exact ⟨r,iso_rate (fibreComplementIso G χ hj) hr⟩
+    obtain ⟨r₂,hSc⟩ := ih _ hsmall _ rfl (G.induce Sᶜ) (fun v => χ v.val) hχ' hR'
+    obtain ⟨r₁,hr₁⟩ := hR i
+    have he : G.induce S ⊕g G.induce Sᶜ ≃g G := splitIso G S (by
+      intro u v huv
+      change χ u = i ↔ χ v = i
+      rw [hχ u v huv])
+    refine ⟨max r₁ r₂,?_⟩
+    simpa only [Rat.cast_max] using iso_rate he.symm (sum_rate hr₁ hSc)
+
+open scoped Classical in
+theorem rate_of_components {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hR : ∀ C : G.ConnectedComponent, ∃ r : ℚ, HasRate C.toSimpleGraph (r : ℝ)) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  apply rate_of_fibres G G.connectedComponentMk
+  · intro u v huv
+    exact ConnectedComponent.connectedComponentMk_eq_of_adj huv
+  · intro C
+    exact hR C
+
+open scoped Classical in
+theorem rate_of_small_component_bipartitions {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hS : ∀ C : G.ConnectedComponent, ∃ S : Set C,
+      C.toSimpleGraph.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  apply rate_of_components G
+  intro C
+  obtain ⟨S,hB,hcard⟩ := hS C
+  exact Erdos713ThreeSide.rate_of_small_bipartition C.toSimpleGraph S hB hcard
+
+open scoped Classical in
+theorem rate_of_small_components {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite)
+    (hcard : ∀ C : G.ConnectedComponent, Nat.card C ≤ 7) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  apply rate_of_components G
+  intro C
+  exact Erdos713ThreeSide.rate_of_card_le_seven C.toSimpleGraph
+    (hB.of_hom C.toSimpleGraph_hom) (by simpa only [Nat.card_eq_fintype_card] using hcard C)
+
+open scoped Classical in
+theorem rational_of_component_rates {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hR : ∀ C : G.ConnectedComponent, ∃ r : ℚ, HasRate C.toSimpleGraph (r : ℝ))
+    {a c : ℝ} (ha : 1 ≤ a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := rate_of_components G hR
+  exact ⟨r,(exponent_eq hr ha hc h).symm⟩
+
+open scoped Classical in
+theorem rational_of_small_component_bipartitions {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hS : ∀ C : G.ConnectedComponent, ∃ S : Set C,
+      C.toSimpleGraph.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3)
+    {a c : ℝ} (ha : 1 ≤ a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := rate_of_small_component_bipartitions G hS
+  exact ⟨r,(exponent_eq hr ha hc h).symm⟩
+
+end Erdos713ComponentRates
+
+namespace Erdos713Pruning
+open Erdos713Rate
+universe u
+
+/-- A finite sequence of deletions of vertices of degree at most one. -/
+inductive PrunesTo {W : Type u} (G : SimpleGraph W) : Set W → Prop where
+  | start : PrunesTo G Set.univ
+  | delete {S : Set W} (h : PrunesTo G S) (x : S)
+      (hx : Nat.card ((G.induce S).neighborSet x) ≤ 1) : PrunesTo G (S \ {x.val})
+
+noncomputable def eraseIso {W : Type*} (G : SimpleGraph W) (S : Set W) (x : S) :
+    ((G.induce S).induce {x}ᶜ) ≃g G.induce (S \ {x.val}) := by
+  let e : ↥({x}ᶜ : Set S) ≃ ↥(S \ {x.val}) :=
+    { toFun := fun v => ⟨v.val.val,v.val.prop,fun hv => v.prop (Subtype.ext hv)⟩
+      invFun := fun v => ⟨⟨v.val,v.prop.1⟩,fun hv => v.prop.2 (congrArg Subtype.val hv)⟩
+      left_inv := fun _ => rfl
+      right_inv := fun _ => rfl }
+  exact ⟨e,Iff.rfl⟩
+
+theorem exists_core {W : Type u} [Fintype W] (G : SimpleGraph W) :
+    ∃ S : Set W, PrunesTo G S ∧ ∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v) := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ S : Set W, Fintype.card S = k → PrunesTo G S →
+      ∃ T : Set W, PrunesTo G T ∧ ∀ v, 2 ≤ Nat.card ((G.induce T).neighborSet v) from
+    hP _ Set.univ rfl .start
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro S hcard hS
+    by_cases hd : ∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)
+    · exact ⟨S,hS,hd⟩
+    push_neg at hd
+    obtain ⟨x,hx⟩ := hd
+    have hsmall : Fintype.card ↥(S \ {x.val}) < k := by
+      rw [← Fintype.card_congr (eraseIso G S x).toEquiv]
+      exact (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hcard
+    exact ih _ hsmall _ (by simp only [Fintype.card_eq_nat_card]) (.delete hS x (by omega))
+
+/-- No induced subgraph of minimum degree two loses a vertex during pruning. -/
+theorem PrunesTo.retains {W : Type u} [Fintype W] {G : SimpleGraph W} {S T : Set W}
+    (hP : PrunesTo G S) (hT : ∀ v, 2 ≤ Nat.card ((G.induce T).neighborSet v)) : T ⊆ S := by
+  classical
+  induction hP with
+  | start => exact Set.subset_univ T
+  | @delete S hS x hx ih =>
+    intro v hv
+    refine ⟨ih hv,?_⟩
+    intro he
+    have hxT : x.val ∈ T := he ▸ hv
+    let f : (G.induce T).neighborSet ⟨x.val,hxT⟩ ↪ (G.induce S).neighborSet x :=
+      ⟨fun w => ⟨⟨w.val.val,ih w.val.prop⟩,w.prop⟩,by
+        intro w z hwz
+        apply Subtype.ext
+        apply Subtype.ext
+        exact congrArg (fun y : (G.induce S).neighborSet x => y.val.val) hwz⟩
+    have hf := Fintype.card_le_of_embedding f
+    simp only [Fintype.card_eq_nat_card] at hf
+    have hd := hT ⟨x.val,hxT⟩
+    omega
+
+theorem core_unique {W : Type u} [Fintype W] {G : SimpleGraph W} {S T : Set W}
+    (hS : PrunesTo G S) (hT : PrunesTo G T)
+    (hdS : ∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v))
+    (hdT : ∀ v, 2 ≤ Nat.card ((G.induce T).neighborSet v)) : S = T :=
+  Set.Subset.antisymm (hT.retains hdS) (hS.retains hdT)
+
+noncomputable def coreVertices {W : Type u} [Fintype W] (G : SimpleGraph W) : Set W :=
+  Classical.choose (exists_core G)
+
+theorem core_prunes {W : Type u} [Fintype W] (G : SimpleGraph W) :
+    PrunesTo G (coreVertices G) := (Classical.choose_spec (exists_core G)).1
+
+theorem core_min_degree {W : Type u} [Fintype W] (G : SimpleGraph W) :
+    ∀ v, 2 ≤ Nat.card ((G.induce (coreVertices G)).neighborSet v) :=
+  (Classical.choose_spec (exists_core G)).2
+
+theorem PrunesTo.asymptotic {W : Type u} [Fintype W] {G : SimpleGraph W} {S : Set W}
+    (hP : PrunesTo G S) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^a)) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^a) := by
+  classical
+  induction hP with
+  | start => simpa only [extremalNumber_congr_right (induceUnivIso G)] using h
+  | @delete S hS x hx ih =>
+    have hx' : (G.induce S).degree x ≤ 1 := by
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hx
+    have hdel : IsEquivalent atTop
+        (fun n : ℕ => (extremalNumber n ((G.induce S).induce {x}ᶜ) : ℝ))
+        (fun n : ℕ => c*(n : ℝ)^a) := by
+      by_cases hz : (G.induce S).degree x = 0
+      · exact Erdos713Leaf.isolated_asymptotic _ hz ih
+      · have h1 : (G.induce S).degree x = 1 := by omega
+        obtain ⟨y,hxy,_⟩ := degree_eq_one_iff_existsUnique_adj.mp h1
+        exact Erdos713Leaf.leaf_asymptotic _ h1 hxy ha hc ih
+    simpa only [extremalNumber_congr_right (eraseIso G S x)] using hdel
+
+theorem PrunesTo.rate {W : Type u} [Fintype W] {G : SimpleGraph W} {S : Set W}
+    (hP : PrunesTo G S) {r : ℝ} (hR : HasRate (G.induce S) r) : HasRate G r := by
+  classical
+  induction hP with
+  | start => exact iso_rate (induceUnivIso G).symm hR
+  | @delete S hS x hx ih =>
+    apply ih
+    have hdel := iso_rate (eraseIso G S x) hR
+    have hx' : (G.induce S).degree x ≤ 1 := by
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hx
+    by_cases hz : (G.induce S).degree x = 0
+    · exact isolated_rate _ hz hdel
+    · have h1 : (G.induce S).degree x = 1 := by omega
+      obtain ⟨y,hxy,_⟩ := degree_eq_one_iff_existsUnique_adj.mp h1
+      exact leaf_rate _ h1 hxy hdel
+
+def SmallComponents {W : Type*} (G : SimpleGraph W) : Prop :=
+  ∀ C : G.ConnectedComponent, ∃ S : Set C,
+    C.toSimpleGraph.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3
+
+theorem PrunesTo.rational_of_small_components {W : Type u} [Fintype W]
+    {G : SimpleGraph W} {S : Set W} (hP : PrunesTo G S)
+    (hS : SmallComponents (G.induce S)) {a c : ℝ} (ha : 1 ≤ a) (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  classical
+  obtain ⟨r,hr⟩ := Erdos713ComponentRates.rate_of_small_component_bipartitions (G.induce S) hS
+  exact ⟨r,(exponent_eq (hP.rate hr) ha hc h).symm⟩
+
+theorem component_min_degree {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)) (C : G.ConnectedComponent) :
+    ∀ v, 2 ≤ Nat.card (C.toSimpleGraph.neighborSet v) := by
+  intro v
+  let e : C.toSimpleGraph.neighborSet v ≃ G.neighborSet v.val :=
+    { toFun := fun w => ⟨w.val.val,w.prop⟩
+      invFun := fun w => ⟨⟨w.val,C.mem_supp_of_adj_mem_supp v.prop w.prop⟩,w.prop⟩
+      left_inv := fun _ => rfl
+      right_inv := fun _ => rfl }
+  rw [Nat.card_congr e]
+  exact hd v.val
+
+end Erdos713Pruning
+
+
+/- Compact packing and bounded-blocker sampling infrastructure for rooted
+gluing. Only the required portions of the earlier verified development are
+included; this file does not import the admitted conjecture. -/
+open Filter SimpleGraph Asymptotics Finset
+
+namespace Erdos713Fan
+structure Packing {W V : Type*} (H : SimpleGraph W) (G : SimpleGraph V) (x : W) (v : V) (t : ℕ) where
+  copies : Fin t → H.Copy G
+  root : ∀ i, copies i x = v
+  disjoint : ∀ i j, i ≠ j → ∀ a b, a ≠ x → b ≠ x → copies i a ≠ copies j b
+
+def Packing.empty {W V : Type*} (H : SimpleGraph W) (G : SimpleGraph V) (x : W) (v : V) :
+    Packing H G x v 0 where
+  copies := Fin.elim0
+  root i := Fin.elim0 i
+  disjoint i := Fin.elim0 i
+
+noncomputable def Packing.blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x : W} {v : V} {t : ℕ} (p : Packing H G x v t) : Finset V := by
+  classical
+  exact univ.biUnion (fun i => (univ.filter (fun a => a ≠ x)).image (p.copies i))
+
+lemma Packing.mem_blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x : W} {v : V} {t : ℕ} (p : Packing H G x v t) {z : V} :
+    z ∈ p.blocker ↔ ∃ i a, a ≠ x ∧ p.copies i a = z := by
+  classical
+  simp [blocker]
+
+lemma Packing.root_not_mem_blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x : W} {v : V} {t : ℕ} (p : Packing H G x v t) : v ∉ p.blocker := by
+  rintro hv
+  obtain ⟨i, a, ha, hav⟩ := p.mem_blocker.mp hv
+  exact ha ((p.copies i).injective (hav.trans (p.root i).symm))
+
+lemma Packing.card_blocker_le {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x : W} {v : V} {t : ℕ} (p : Packing H G x v t) : p.blocker.card ≤ t * Fintype.card W := by
+  classical
+  calc
+    p.blocker.card ≤ ∑ i : Fin t, ((univ.filter (fun a => a ≠ x)).image (p.copies i)).card :=
+      card_biUnion_le
+    _ ≤ ∑ _ : Fin t, Fintype.card W := sum_le_sum fun _ _ =>
+      (card_image_le).trans ((card_filter_le _ _).trans_eq (card_univ))
+    _ = _ := by simp
+
+noncomputable def Packing.cons {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x : W} {v : V} {t : ℕ} (p : Packing H G x v t) (f : H.Copy G) (hf : f x = v)
+    (havoid : ∀ a, a ≠ x → f a ∉ p.blocker) : Packing H G x v (t + 1) where
+  copies := Fin.cases f p.copies
+  root i := by induction i using Fin.cases <;> simp [hf, p.root]
+  disjoint i j hij a b ha hb := by
+    induction i using Fin.cases with
+    | zero =>
+      induction j using Fin.cases with
+      | zero => exact (hij rfl).elim
+      | succ j =>
+        simp only [Fin.cases_zero, Fin.cases_succ]
+        intro hab
+        exact havoid a ha (p.mem_blocker.mpr ⟨j, b, hb, hab.symm⟩)
+    | succ i =>
+      induction j using Fin.cases with
+      | zero =>
+        simp only [Fin.cases_zero, Fin.cases_succ]
+        intro hab
+        exact havoid b hb (p.mem_blocker.mpr ⟨i, a, ha, hab⟩)
+      | succ j =>
+        simp only [Fin.cases_succ]
+        exact p.disjoint i j (fun h => hij (congrArg Fin.succ h)) a b ha hb
+
+theorem packing_or_blocker {W V : Type*} [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V)
+    (x : W) (v : V) (t : ℕ) : Nonempty (Packing H G x v t) ∨
+    ∃ B : Finset V, v ∉ B ∧ B.card ≤ t * Fintype.card W ∧
+      ∀ f : H.Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B := by
+  classical
+  induction t with
+  | zero => exact Or.inl ⟨Packing.empty H G x v⟩
+  | succ t ih =>
+    rcases ih with hp | ⟨B, hv, hc, hB⟩
+    · obtain ⟨p⟩ := hp
+      change Packing H G x v t at p
+      by_cases h : ∃ f : H.Copy G, f x = v ∧ ∀ a, a ≠ x → f a ∉ p.blocker
+      · obtain ⟨f, hf, havoid⟩ := h
+        exact Or.inl ⟨p.cons f hf havoid⟩
+      · right
+        refine ⟨p.blocker, p.root_not_mem_blocker, p.card_blocker_le.trans ?_, ?_⟩
+        · exact Nat.mul_le_mul_right _ (Nat.le_succ _)
+        · intro f hf
+          have hh : ¬∀ a, a ≠ x → f a ∉ p.blocker := fun hh => h ⟨f, hf, hh⟩
+          push_neg at hh
+          exact hh
+    · exact Or.inr ⟨B, hv, hc.trans (Nat.mul_le_mul_right _ (Nat.le_succ _)), hB⟩
+
+
+end Erdos713Fan
+
+namespace Erdos713Blocking
+open Finset
+
+theorem card_fixed_pattern {V K : Type*} [Fintype V] [Fintype K] (S : Set V) (p : V → K) :
+    Nat.card {f : V → K // ∀ v ∈ S, f v = p v} =
+      Nat.card K ^ (Nat.card V - Nat.card S) := by
+  classical
+  let e : {f : V → K // ∀ v ∈ S, f v = p v} ≃ (↥(Sᶜ) → K) :=
+    { toFun := fun f i => f.val i.val
+      invFun := fun f => ⟨fun i => if h : i ∈ S then p i else f ⟨i, h⟩, by
+        intro i hi
+        simp only [dif_pos hi]⟩
+      left_inv := by
+        intro f
+        apply Subtype.ext
+        funext i
+        by_cases hi : i ∈ S
+        · simpa only [dif_pos hi] using (f.prop i hi).symm
+        · simp only [dif_neg hi]
+      right_inv := by
+        intro f
+        funext i
+        simp only [dif_neg i.prop] }
+  simp only [Nat.card_eq_fintype_card]
+  rw [Fintype.card_congr e, Fintype.card_fun, Fintype.card_compl_set]
+
+def selected {V : Type*} (B : V → Finset V) (σ : V → Bool) (v : V) : Prop :=
+  σ v = true ∧ ∀ w ∈ B v, σ w = false
+
+def keep {V : Type*} (G : SimpleGraph V) (B : V → Finset V) (σ : V → Bool) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ selected B σ u ∧ selected B σ v
+  symm _ _ huv := ⟨huv.1.symm, huv.2.2, huv.2.1⟩
+  loopless u huv := G.loopless u huv.1
+
+theorem keep_le {V : Type*} (G : SimpleGraph V) (B : V → Finset V) (σ : V → Bool) : keep G B σ ≤ G :=
+  fun _ _ huv => huv.1
+
+open scoped Classical in
+set_option maxHeartbeats 1000000 in
+theorem pair_survival {V : Type*} [Fintype V] (B : V → Finset V) (k : ℕ)
+    (hk : ∀ v, (B v).card ≤ k) {u v : V}
+    (huu : u ∉ B u) (hvv : v ∉ B v) (huv : v ∉ B u) (hvu : u ∉ B v) :
+    Fintype.card (V → Bool) ≤ 2 ^ (2 * k + 2) *
+      Nat.card {σ : V → Bool // selected B σ u ∧ selected B σ v} := by
+  classical
+  let T : Finset V := insert u (insert v (B u ∪ B v))
+  let p : V → Bool := fun z => if z = u ∨ z = v then true else false
+  have hT : T.card ≤ 2 * k + 2 := by
+    have hh := card_insert_le u (insert v (B u ∪ B v))
+    have hi := card_insert_le v (B u ∪ B v)
+    have hj := card_union_le (B u) (B v)
+    dsimp only [T]
+    have hku := hk u
+    have hkv := hk v
+    omega
+  have hTn : T.card ≤ Fintype.card V := card_le_univ _
+  have hp : ∀ σ : V → Bool, (∀ z ∈ T, σ z = p z) → selected B σ u ∧ selected B σ v := by
+    intro σ hσ
+    have hu : σ u = true := by simpa only [p, if_pos (Or.inl rfl)] using hσ u (by simp [T])
+    have hv : σ v = true := by simpa only [p, if_pos (Or.inr rfl)] using hσ v (by simp [T])
+    refine ⟨⟨hu, ?_⟩, ⟨hv, ?_⟩⟩
+    · intro z hz
+      have hzu : z ≠ u := fun he => huu (he ▸ hz)
+      have hzv : z ≠ v := fun he => huv (he ▸ hz)
+      simpa only [p, hzu, hzv, or_self, if_false] using hσ z (by simp [T, hz])
+    · intro z hz
+      have hzu : z ≠ u := fun he => hvu (he ▸ hz)
+      have hzv : z ≠ v := fun he => hvv (he ▸ hz)
+      simpa only [p, hzu, hzv, or_self, if_false] using hσ z (by simp [T, hz])
+  have hcard : 2 ^ (Fintype.card V - T.card) ≤
+      Nat.card {σ : V → Bool // selected B σ u ∧ selected B σ v} := by
+    let e : {σ : V → Bool // ∀ z ∈ T, σ z = p z} ↪
+        {σ : V → Bool // selected B σ u ∧ selected B σ v} :=
+      ⟨fun σ => ⟨σ.val, hp σ.val σ.prop⟩, by
+        intro a b h
+        apply Subtype.ext
+        exact congrArg (fun σ : {σ : V → Bool // selected B σ u ∧ selected B σ v} => σ.val) h⟩
+    have hh := Fintype.card_le_of_embedding e
+    simp only [Fintype.card_eq_nat_card] at hh
+    have hf : Nat.card {σ : V → Bool // ∀ z ∈ T, σ z = p z} =
+        2 ^ (Fintype.card V - T.card) := by
+      have hfixed := card_fixed_pattern (T : Set V) p
+      rw [Nat.card_coe_set_eq, Set.ncard_coe_finset] at hfixed
+      simpa only [mem_coe, Nat.card_eq_fintype_card, Fintype.card_bool] using hfixed
+    exact hf ▸ hh
+  calc
+    Fintype.card (V → Bool) = 2 ^ Fintype.card V := by simp
+    _ = 2 ^ T.card * 2 ^ (Fintype.card V - T.card) := by
+      rw [← pow_add, Nat.add_sub_of_le hTn]
+    _ ≤ 2 ^ (2 * k + 2) * Nat.card {σ : V → Bool // selected B σ u ∧ selected B σ v} :=
+      Nat.mul_le_mul (Nat.pow_le_pow_right (by decide) hT) hcard
+
+open scoped Classical in
+set_option maxHeartbeats 2000000 in
+theorem edges_le_of_keep_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (B : V → Finset V) (k M : ℕ) (hb : ∀ v, v ∉ B v) (hk : ∀ v, (B v).card ≤ k)
+    (hM : ∀ σ : V → Bool, (keep G B σ).edgeFinset.card ≤ M) :
+    G.edgeFinset.card ≤ 2 ^ (2 * k + 2) * M + k * Fintype.card V := by
+  classical
+  let D : Finset (Sym2 V) := univ.biUnion (fun u => (B u).image (fun v => s(u,v)))
+  let E : Finset (Sym2 V) := G.edgeFinset \ D
+  let C := 2 ^ (2 * k + 2)
+  let A := Fintype.card (V → Bool)
+  let rel : (V → Bool) → Sym2 V → Prop := fun σ e => e ∈ (keep G B σ).edgeFinset
+  have hD : D.card ≤ k * Fintype.card V := by
+    calc
+      D.card ≤ ∑ u, ((B u).image (fun v => s(u,v))).card := card_biUnion_le
+      _ ≤ ∑ u : V, k := sum_le_sum fun u _ => card_image_le.trans (hk u)
+      _ = _ := by simp [Nat.mul_comm]
+  have hBelow : ∀ e ∈ E, A ≤ C * ((univ : Finset (V → Bool)).bipartiteBelow rel e).card := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      have hgood : s(u,v) ∈ G.edgeFinset ∧ s(u,v) ∉ D := mem_sdiff.mp he
+      have hadj : G.Adj u v := by simpa using hgood.1
+      have huv : v ∉ B u := by
+        intro hh
+        apply hgood.2
+        exact mem_biUnion.mpr ⟨u, mem_univ _, mem_image.mpr ⟨v, hh, rfl⟩⟩
+      have hvu : u ∉ B v := by
+        intro hh
+        apply hgood.2
+        exact mem_biUnion.mpr ⟨v, mem_univ _, mem_image.mpr ⟨u, hh, by simp⟩⟩
+      have hrel (σ : V → Bool) : rel σ s(u,v) ↔ selected B σ u ∧ selected B σ v := by
+        change (s(u,v) ∈ (keep G B σ).edgeFinset) ↔ _
+        simp only [mem_edgeFinset, mem_edgeSet, keep, hadj, true_and]
+      have hh := pair_survival B k hk (hb u) (hb v) huv hvu
+      simpa only [A, C, Nat.card_eq_fintype_card, Fintype.card_subtype, bipartiteBelow, hrel] using hh
+  have hAbove (σ : V → Bool) : (E.bipartiteAbove rel σ).card ≤ M := by
+    apply (card_le_card (show E.bipartiteAbove rel σ ⊆ (keep G B σ).edgeFinset from ?_)).trans (hM σ)
+    intro e he
+    exact (mem_filter.mp he).2
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := rel) (s := (univ : Finset (V → Bool))) (t := E)
+  have hCount : E.card * A ≤ C * (A * M) := by
+    calc
+      E.card * A = ∑ _e ∈ E, A := by simp
+      _ ≤ ∑ e ∈ E, C * ((univ : Finset (V → Bool)).bipartiteBelow rel e).card :=
+        sum_le_sum hBelow
+      _ = C * ∑ σ : V → Bool, (E.bipartiteAbove rel σ).card := by
+        rw [← mul_sum, ← hsum]
+      _ ≤ C * ∑ _σ : V → Bool, M := Nat.mul_le_mul_left C (sum_le_sum fun σ _ => hAbove σ)
+      _ = C * (A * M) := by simp [A]
+  have hA : 0 < A := Fintype.card_pos
+  have hE : E.card ≤ C * M := Nat.le_of_mul_le_mul_left
+    (show A * E.card ≤ A * (C * M) by nlinarith only [hCount]) hA
+  exact (card_le_card_sdiff_add_card (s := G.edgeFinset) (t := D)).trans (Nat.add_le_add hE hD)
+
+
+end Erdos713Blocking
+
+namespace Erdos713Gluing
+open Finset Erdos713Fan Erdos713Rate Erdos713Blocking
+universe u v
+
+abbrev Vertex {W T : Type*} (_x : W) (y : T) := W ⊕ {b : T // b ≠ y}
+
+def wedge {W T : Type*} (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T) :
+    SimpleGraph (Vertex x y) where
+  Adj
+    | Sum.inl a, Sum.inl b => H.Adj a b
+    | Sum.inl a, Sum.inr b => a = x ∧ J.Adj y b.val
+    | Sum.inr a, Sum.inl b => b = x ∧ J.Adj a.val y
+    | Sum.inr a, Sum.inr b => J.Adj a.val b.val
+  symm := by
+    rintro (a | a) (b | b) hab
+    · exact hab.symm
+    · exact ⟨hab.1, hab.2.symm⟩
+    · exact ⟨hab.1, hab.2.symm⟩
+    · exact hab.symm
+  loopless := by
+    rintro (a | a) haa
+    · exact H.loopless a haa
+    · exact J.loopless a.val haa
+
+def leftCopy {W T : Type*} (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T) :
+    H.Copy (wedge H x J y) := ⟨⟨Sum.inl, fun hab => hab⟩, Sum.inl_injective⟩
+
+noncomputable def rightCopy {W T : Type*} (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T) :
+    J.Copy (wedge H x J y) := by
+  classical
+  let f : T → Vertex x y := fun b => if h : b = y then Sum.inl x else Sum.inr ⟨b, h⟩
+  refine ⟨⟨f, ?_⟩, ?_⟩
+  · intro a b hab
+    by_cases ha : a = y <;> by_cases hb : b = y
+    · subst a; subst b; exact (J.loopless _ hab).elim
+    · subst a; simpa [f, wedge, hb] using hab
+    · subst b; simpa [f, wedge, ha] using hab
+    · simpa [f, wedge, ha, hb] using hab
+  · intro a b hab
+    change f a = f b at hab
+    by_cases ha : a = y <;> by_cases hb : b = y
+    · exact ha.trans hb.symm
+    · simp [f, ha, hb] at hab
+    · simp [f, ha, hb] at hab
+    · simpa [f, ha, hb] using hab
+
+noncomputable def commonRootCopy {W T V : Type*} {H : SimpleGraph W} {J : SimpleGraph T}
+    {G : SimpleGraph V} {x : W} {y : T} (f : H.Copy G) (g : J.Copy G)
+    (hroot : f x = g y) (hdis : ∀ a b, b ≠ y → f a ≠ g b) : (wedge H x J y).Copy G := by
+  let F : Vertex x y → V := Sum.elim f (fun b => g b.val)
+  refine ⟨⟨F, ?_⟩, ?_⟩
+  · rintro (a | a) (b | b) hab
+    · exact f.toHom.map_adj hab
+    · change G.Adj (f a) (g b.val)
+      obtain ⟨rfl, hab⟩ := hab
+      rw [hroot]
+      exact g.toHom.map_adj hab
+    · change G.Adj (g a.val) (f b)
+      obtain ⟨rfl, hab⟩ := hab
+      rw [hroot]
+      exact g.toHom.map_adj hab
+    · exact g.toHom.map_adj hab
+  · rintro (a | a) (b | b) hab
+    · exact congrArg Sum.inl (f.injective hab)
+    · exact (hdis a b.val b.prop hab).elim
+    · exact (hdis b a.val a.prop hab.symm).elim
+    · exact congrArg Sum.inr (Subtype.ext (g.injective hab))
+
+theorem exists_disjoint_petal {W T V : Type*} [Fintype T] {H : SimpleGraph W} {J : SimpleGraph T}
+    {G : SimpleGraph V} {x : W} {z : V}
+    (p : Packing H G x z (Fintype.card T + 1)) (g : J.Copy G) :
+    ∃ i, ∀ a, a ≠ x → ∀ b, p.copies i a ≠ g b := by
+  classical
+  by_contra hh
+  push_neg at hh
+  choose a ha b hab using hh
+  have hinj : Function.Injective b := by
+    intro i j hij
+    by_contra hne
+    exact p.disjoint i j hne (a i) (a j) (ha i) (ha j)
+      ((hab i).trans ((congrArg g hij).trans (hab j).symm))
+  have hc := Fintype.card_le_of_injective b hinj
+  simp only [Fintype.card_fin] at hc
+  omega
+
+theorem contained_of_packing {W T V : Type*} [Fintype T] {H : SimpleGraph W} {J : SimpleGraph T}
+    {G : SimpleGraph V} {x : W} {y : T} {z : V}
+    (p : Packing H G x z (Fintype.card T + 1)) (g : J.Copy G) (hg : g y = z) :
+    wedge H x J y ⊑ G := by
+  classical
+  obtain ⟨i, hi⟩ := exists_disjoint_petal p g
+  refine ⟨commonRootCopy (p.copies i) g ((p.root i).trans hg.symm) ?_⟩
+  intro a b hb
+  by_cases ha : a = x
+  · subst a
+    intro hab
+    have hh : g y = g b := hg.trans ((p.root i).symm.trans hab)
+    exact hb (g.injective hh).symm
+  · exact hi a ha b
+
+theorem blockers_or_no_right {W T V : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T) (G : SimpleGraph V)
+    (hfree : (wedge H x J y).Free G) : ∀ v, ∃ B : Finset V,
+    v ∉ B ∧ B.card ≤ (Fintype.card T + 1) * Fintype.card W ∧
+      ((∀ f : H.Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B) ∨
+       (∀ g : J.Copy G, g y = v → False)) := by
+  intro v
+  rcases packing_or_blocker H G x v (Fintype.card T + 1) with hp | ⟨B, hv, hc, hB⟩
+  · obtain ⟨p⟩ := hp
+    refine ⟨∅, by simp, by simp, Or.inr ?_⟩
+    intro g hg
+    exact hfree (contained_of_packing p g hg)
+  · exact ⟨B, hv, hc, Or.inl hB⟩
+
+def rest {V : Type*} (G : SimpleGraph V) (S : Set V) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ u ∉ S ∧ v ∉ S
+  symm _ _ huv := ⟨huv.1.symm, huv.2.2, huv.2.1⟩
+  loopless u huv := G.loopless u huv.1
+
+lemma rest_le {V : Type*} (G : SimpleGraph V) (S : Set V) : rest G S ≤ G := fun _ _ h => h.1
+
+end Erdos713Gluing
+
+namespace Erdos713SwitchGluing
+open Erdos713Gluing
+def inside {V : Type*} (G : SimpleGraph V) (S : Set V) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ u ∈ S ∧ v ∈ S
+  symm _ _ h := ⟨h.1.symm, h.2.2, h.2.1⟩
+  loopless u h := G.loopless u h.1
+
+def cross {V : Type*} (G : SimpleGraph V) (S : Set V) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ ((u ∈ S ∧ v ∉ S) ∨ (v ∈ S ∧ u ∉ S))
+  symm _ _ h := ⟨h.1.symm, h.2.symm⟩
+  loopless u h := G.loopless u h.1
+
+lemma inside_le {V : Type*} (G : SimpleGraph V) (S : Set V) : inside G S ≤ G := fun _ _ h => h.1
+
+lemma cross_le {V : Type*} (G : SimpleGraph V) (S : Set V) : cross G S ≤ G := fun _ _ h => h.1
+
+open scoped Classical in
+lemma edge_split {V : Type*} [Fintype V] (G : SimpleGraph V) (S : Set V) :
+    G.edgeFinset.card ≤ (inside G S).edgeFinset.card + (cross G S).edgeFinset.card +
+      (rest G S).edgeFinset.card := by
+  classical
+  apply (card_le_card (show G.edgeFinset ⊆
+      (inside G S).edgeFinset ∪ (cross G S).edgeFinset ∪ (rest G S).edgeFinset from ?_)).trans
+    ((card_union_le _ _).trans (Nat.add_le_add_right (card_union_le _ _) _))
+  intro e he
+  induction e using Sym2.inductionOn with
+  | hf u v =>
+    have huv : G.Adj u v := by simpa using he
+    by_cases hu : u ∈ S <;> by_cases hv : v ∈ S <;>
+      simp [inside, cross, rest, huv, hu, hv]
+
+
+end Erdos713SwitchGluing
+
+/- One-sided Kővári–Sós–Turán bounds, keeping track of the root's
+bipartition side. No unrestricted gluing theorem is assumed. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713OrientedKST
+open Erdos713KST
+
+noncomputable def copyOfEmbeddings {V : Type*} (G : SimpleGraph V) {s t : ℕ}
+    (f : Fin s ↪ V) (g : Fin t ↪ V)
+    (hadj : ∀ i j, G.Adj (f i) (g j)) : (Kst s t).Copy G := by
+  refine ⟨⟨Sum.elim f g, ?_⟩, ?_⟩
+  · rintro (i | j) (i' | j') h
+    · simp at h
+    · exact hadj i j'
+    · exact (hadj i' j).symm
+    · simp at h
+  · rintro (i | j) (i' | j') h
+    · exact congrArg Sum.inl (f.injective h)
+    · exact ((hadj i j').ne h).elim
+    · exact ((hadj i' j).ne h.symm).elim
+    · exact congrArg Sum.inr (g.injective h)
+
+open scoped Classical in
+lemma sum_descFactorial_degree_le {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : Set V) {s t : ℕ}
+    (hno : ∀ (f : Fin s ↪ V) (g : Fin t ↪ V),
+      (∀ i j, G.Adj (f i) (g j)) → (∀ j, g j ∈ T) → False) :
+    ∑ v ∈ T.toFinset, (G.degree v).descFactorial s ≤ t * (Fintype.card V)^s := by
+  classical
+  let r : V → (Fin s ↪ V) → Prop := fun v f => ∀ i, G.Adj v (f i)
+  have hAbove (v : V) : ((univ : Finset (Fin s ↪ V)).bipartiteAbove r v).card =
+      (G.degree v).descFactorial s := by
+    let e : ↥((univ : Finset (Fin s ↪ V)).bipartiteAbove r v) ≃
+        (Fin s ↪ G.neighborSet v) :=
+      { toFun := fun f =>
+          ⟨fun i => ⟨f.val i, ((mem_bipartiteAbove r).mp f.prop).2 i⟩,
+            fun i j hij => f.val.injective (congrArg Subtype.val hij)⟩
+        invFun := fun f =>
+          ⟨f.trans (Function.Embedding.subtype _),
+            (mem_bipartiteAbove r).mpr ⟨mem_univ _, fun i => (f i).prop⟩⟩
+        left_inv := by intro f; rfl
+        right_inv := by intro f; rfl }
+    rw [← Fintype.card_coe, Fintype.card_congr e, Fintype.card_embedding_eq,
+      Fintype.card_fin, card_neighborSet_eq_degree]
+  have hBelow (f : Fin s ↪ V) : (T.toFinset.bipartiteBelow r f).card ≤ t := by
+    by_contra hn
+    obtain ⟨g,hg⟩ := Function.Embedding.exists_of_card_le_finset
+      (show Fintype.card (Fin t) ≤ (T.toFinset.bipartiteBelow r f).card by
+        simpa using (show t ≤ (T.toFinset.bipartiteBelow r f).card by omega))
+    have hm (j : Fin t) := (mem_bipartiteBelow r).mp (hg ⟨j,rfl⟩)
+    exact hno f g (fun i j => ((hm j).2 i).symm)
+      (fun j => Set.mem_toFinset.mp (hm j).1)
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := r) (s := T.toFinset) (t := (univ : Finset (Fin s ↪ V)))
+  simp_rw [hAbove] at hsum
+  rw [hsum]
+  calc
+    ∑ f : Fin s ↪ V, (T.toFinset.bipartiteBelow r f).card ≤
+        ∑ _ : Fin s ↪ V, t := sum_le_sum fun f _ => hBelow f
+    _ = t * (Fintype.card V).descFactorial s := by simp [Nat.mul_comm]
+    _ ≤ t * (Fintype.card V)^s := Nat.mul_le_mul_left t (Nat.descFactorial_le_pow _ _)
+
+open scoped Classical in
+lemma sum_degree_pow_le {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : Set V) {s t : ℕ}
+    (hs : 1 ≤ s)
+    (hno : ∀ (f : Fin s ↪ V) (g : Fin t ↪ V),
+      (∀ i j, G.Adj (f i) (g j)) → (∀ j, g j ∈ T) → False) :
+    ∑ v ∈ T.toFinset, G.degree v ^ s ≤
+      (s+1)^s * (t+1) * (Fintype.card V)^s := by
+  have hT : T.toFinset.card ≤ Fintype.card V := card_le_univ _
+  calc
+    ∑ v ∈ T.toFinset, G.degree v ^ s ≤
+        ∑ v ∈ T.toFinset, (s+1)^s*((G.degree v).descFactorial s+1) :=
+      sum_le_sum fun _ _ => pow_le_descFactorial _ _
+    _ = (s+1)^s*((∑ v ∈ T.toFinset, (G.degree v).descFactorial s)+T.toFinset.card) := by
+      simp [sum_add_distrib, ← mul_sum]
+    _ ≤ (s+1)^s*(t*(Fintype.card V)^s+(Fintype.card V)^s) :=
+      Nat.mul_le_mul_left _ (Nat.add_le_add (sum_descFactorial_degree_le G T hno)
+        (hT.trans (Nat.le_self_pow (by omega) _)))
+    _ = _ := by ring
+
+open scoped Classical in
+lemma edge_pow_le {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : Set V) {s t : ℕ}
+    (hB : G.IsBipartiteWith T Tᶜ) (hs : 1 ≤ s)
+    (hno : ∀ (f : Fin s ↪ V) (g : Fin t ↪ V),
+      (∀ i j, G.Adj (f i) (g j)) → (∀ j, g j ∈ T) → False) :
+    G.edgeFinset.card^s ≤ (s+1)^s*(t+1)*(Fintype.card V)^(s-1+s) := by
+  have hJ := Real.rpow_sum_le_const_mul_sum_rpow_of_nonneg T.toFinset
+    (f := fun v => (G.degree v : ℝ)) (show (1 : ℝ) ≤ s by exact_mod_cast hs)
+    (fun _ _ => Nat.cast_nonneg _)
+  have he : (s : ℝ)-1 = ((s-1 : ℕ) : ℝ) := by rw [Nat.cast_sub hs,Nat.cast_one]
+  rw [he] at hJ
+  simp only [Real.rpow_natCast] at hJ
+  have hJN : (∑ v ∈ T.toFinset, G.degree v)^s ≤
+      T.toFinset.card^(s-1)*∑ v ∈ T.toFinset, G.degree v^s := by exact_mod_cast hJ
+  have hE : ∑ v ∈ T.toFinset, G.degree v = G.edgeFinset.card :=
+    isBipartiteWith_sum_degrees_eq_card_edges (s := T.toFinset) (t := Tᶜ.toFinset)
+      (by simpa using hB)
+  rw [hE] at hJN
+  calc
+    G.edgeFinset.card^s ≤ T.toFinset.card^(s-1)*∑ v ∈ T.toFinset, G.degree v^s := hJN
+    _ ≤ (Fintype.card V)^(s-1)*((s+1)^s*(t+1)*(Fintype.card V)^s) :=
+      Nat.mul_le_mul (Nat.pow_le_pow_left (card_le_univ _) _)
+        (sum_degree_pow_le G T hs hno)
+    _ = _ := by rw [pow_add]; ring
+
+open scoped Classical in
+/-- A complete bipartite copy can be forced with any specified root on a
+specified side of a bipartite host, with the usual KST upper exponent. -/
+lemma edge_pow_le_of_root_excluded {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (S : Set V) {s t : ℕ}
+    (hB : G.IsBipartiteWith S Sᶜ) (hs : 1 ≤ s) (ht : 1 ≤ t)
+    (x : Fin s ⊕ Fin t) (hroot : ∀ f : (Kst s t).Copy G, f x ∉ S) :
+    G.edgeFinset.card^s ≤ (s+1)^s*(t+1)*(Fintype.card V)^(s-1+s) := by
+  classical
+  cases x with
+  | inl i =>
+    apply edge_pow_le G Sᶜ (by simpa using hB.symm) hs
+    intro f g hadj hg
+    apply hroot (copyOfEmbeddings G f g hadj)
+    change f i ∈ S
+    have hh := hB.mem_of_adj (hadj i ⟨0,by omega⟩)
+    exact (hh.resolve_right (fun h => hg ⟨0,by omega⟩ h.2)).1
+  | inr j =>
+    apply edge_pow_le G S hB hs
+    intro f g hadj hg
+    exact hroot (copyOfEmbeddings G f g hadj) (hg j)
+
+end Erdos713OrientedKST
+
+/- Root-independent one-vertex gluing when one piece is complete bipartite.
+The proof uses the one-sided KST estimate, not a root-moving automorphism. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713KstGluing
+open Erdos713KST Erdos713Gluing Erdos713Blocking Erdos713Rate Erdos713SwitchGluing
+
+lemma real_bound_of_power {e n s m C : ℕ} (hs : 1 ≤ s) (hC : 1 ≤ C)
+    (h : e^s ≤ C*n^m) :
+    (e : ℝ) ≤ (C : ℝ)*(n : ℝ)^((m : ℝ)/s) := by
+  have hs0 : s ≠ 0 := by omega
+  have hsR : (s : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr hs0
+  have hpow : ((n : ℝ)^((m : ℝ)/s))^s = (n : ℝ)^m := by
+    rw [← Real.rpow_mul_natCast (Nat.cast_nonneg _),div_mul_cancel₀ _ hsR,Real.rpow_natCast]
+  apply le_of_pow_le_pow_left₀ hs0 (by positivity)
+  rw [mul_pow,hpow]
+  have hCpow : (C : ℝ) ≤ (C : ℝ)^s := le_self_pow₀ (by exact_mod_cast hC) hs0
+  exact (show (e : ℝ)^s ≤ (C : ℝ)*(n : ℝ)^m by exact_mod_cast h).trans
+    (mul_le_mul_of_nonneg_right hCpow (by positivity))
+
+lemma index_ge_one {s : ℕ} (hs : 1 ≤ s) :
+    (1 : ℝ) ≤ ((s-1+s : ℕ) : ℝ)/s := by
+  apply (le_div_iff₀ (show (0 : ℝ) < s by exact_mod_cast (show 0 < s by omega))).mpr
+  simp only [one_mul]
+  exact_mod_cast (show s ≤ s-1+s by omega)
+
+open scoped Classical in
+lemma real_edges_le_of_keep_bound {V : Type*} [Fintype V]
+    (G : SimpleGraph V) (B : V → Finset V) (k : ℕ) (M : ℝ)
+    (hb : ∀ v, v ∉ B v) (hk : ∀ v, (B v).card ≤ k) (hM0 : 0 ≤ M)
+    (hM : ∀ σ : V → Bool, ((keep G B σ).edgeFinset.card : ℝ) ≤ M) :
+    (G.edgeFinset.card : ℝ) ≤ (2^(2*k+2) : ℕ)*M + (k*Fintype.card V : ℕ) := by
+  have hh := edges_le_of_keep_bound G B k ⌊M⌋₊ hb hk
+    (fun σ => Nat.le_floor (hM σ))
+  have hr : (G.edgeFinset.card : ℝ) ≤ (2^(2*k+2) : ℕ)*(⌊M⌋₊ : ℝ) +
+      (k*Fintype.card V : ℕ) := by exact_mod_cast hh
+  have hmul := mul_le_mul_of_nonneg_left (Nat.floor_le hM0)
+    (show (0 : ℝ) ≤ (2^(2*k+2) : ℕ) by positivity)
+  linarith
+
+lemma no_isolates {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) :
+    ∀ a, ∃ b, (Kst s t).Adj a b := by
+  rintro (a | b)
+  · exact ⟨Sum.inr ⟨0,by omega⟩,by simp⟩
+  · exact ⟨Sum.inl ⟨0,by omega⟩,by simp⟩
+
+lemma cross_isBipartiteWith {V : Type*} (G : SimpleGraph V) (S : Set V) :
+    (cross G S).IsBipartiteWith S Sᶜ := by
+  refine ⟨disjoint_compl_right,?_⟩
+  intro u v huv
+  exact huv.2.imp id And.symm
+
+open scoped Classical in
+lemma free_edge_bound {T V : Type*} [Fintype T] [Fintype V]
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z) (G : SimpleGraph V)
+    {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) (x : Fin s ⊕ Fin t)
+    (hfree : (wedge (Kst s t) x J y).Free G) :
+    (G.edgeFinset.card : ℝ) ≤
+      (2^(2*((Fintype.card T+1)*(s+t))+2) : ℕ) *
+        ((extremalNumber (Fintype.card V) (Kst s t) : ℝ) +
+          (((s+1)^s*(t+1) : ℕ) : ℝ)*(Fintype.card V : ℝ)^(((s-1+s : ℕ) : ℝ)/s) +
+          (extremalNumber (Fintype.card V) J : ℝ)) +
+      (((Fintype.card T+1)*(s+t))*Fintype.card V : ℕ) := by
+  classical
+  choose B hb hk hB using blockers_or_no_right (Kst s t) x J y G hfree
+  let S : Set V := {v | ∀ f : (Kst s t).Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B v}
+  have hNoJ (v : V) (hv : v ∉ S) (g : J.Copy G) (hg : g y = v) : False := by
+    rcases hB v with hleft | hright
+    · exact hv hleft
+    · exact hright g hg
+  apply real_edges_le_of_keep_bound G B ((Fintype.card T+1)*(s+t)) _ hb
+    (by simpa only [Fintype.card_sum,Fintype.card_fin] using hk) (by positivity)
+  intro σ
+  let K := keep G B σ
+  have hsel (f : (Kst s t).Copy K) (a : Fin s ⊕ Fin t) : selected B σ (f a) := by
+    obtain ⟨b,hab⟩ := no_isolates hs ht a
+    exact (f.toHom.map_adj hab).2.1
+  have hRoot (f : (Kst s t).Copy K) : f x ∉ S := by
+    intro hfx
+    let g : (Kst s t).Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp f
+    obtain ⟨b,_,hmem⟩ := hfx g rfl
+    exact Bool.noConfusion ((hsel f b).1.symm.trans ((hsel f x).2 (f b) hmem))
+  have hInside : (Kst s t).Free (inside K S) := by
+    rintro ⟨f⟩
+    let g : (Kst s t).Copy K := (Copy.ofLE _ _ (inside_le K S)).comp f
+    obtain ⟨b,hxb⟩ := no_isolates hs ht x
+    exact hRoot g (f.toHom.map_adj hxb).2.1
+  have hCross : ((cross K S).edgeFinset.card : ℝ) ≤
+      (((s+1)^s*(t+1) : ℕ) : ℝ)*(Fintype.card V : ℝ)^(((s-1+s : ℕ) : ℝ)/s) := by
+    apply real_bound_of_power hs (Nat.succ_le_of_lt (by positivity))
+    exact Erdos713OrientedKST.edge_pow_le_of_root_excluded (cross K S) S
+      (cross_isBipartiteWith K S) hs ht x
+        (fun f => hRoot ((Copy.ofLE _ _ (cross_le K S)).comp f))
+  have hRest : J.Free (rest K S) := by
+    rintro ⟨f⟩
+    let g : J.Copy G := (Copy.ofLE _ _ ((rest_le K S).trans (keep_le G B σ))).comp f
+    obtain ⟨z,hyz⟩ := hy
+    exact hNoJ (f y) (f.toHom.map_adj hyz).2.1 g rfl
+  have hA := card_edgeFinset_le_extremalNumber hInside
+  have hR := card_edgeFinset_le_extremalNumber hRest
+  have hSplit := Erdos713SwitchGluing.edge_split K S
+  have hA' : ((inside K S).edgeFinset.card : ℝ) ≤ extremalNumber (Fintype.card V) (Kst s t) := by
+    exact_mod_cast hA
+  have hR' : ((rest K S).edgeFinset.card : ℝ) ≤ extremalNumber (Fintype.card V) J := by
+    exact_mod_cast hR
+  have hSplit' : (K.edgeFinset.card : ℝ) ≤ (inside K S).edgeFinset.card +
+      (cross K S).edgeFinset.card + (rest K S).edgeFinset.card := by exact_mod_cast hSplit
+  exact hSplit'.trans (by linarith)
+
+lemma wedge_upper {T : Type*} [Fintype T]
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) (x : Fin s ⊕ Fin t)
+    {b : ℝ} (hb : 1 ≤ b)
+    (hJ : (fun n : ℕ => (extremalNumber n J : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^b)) :
+    (fun n : ℕ => (extremalNumber n (wedge (Kst s t) x J y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^(max (((s-1+s : ℕ) : ℝ)/s) b)) := by
+  classical
+  let k := (Fintype.card T+1)*(s+t)
+  let C : ℕ := 2^(2*k+2)
+  let r : ℝ := ((s-1+s : ℕ) : ℝ)/s
+  let D : ℕ := (s+1)^s*(t+1)
+  have hH : (fun n : ℕ => (extremalNumber n (Kst s t) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r) :=
+    upper_of_power_bound (by omega : s ≠ 0) (fun n => extremal_pow_le s t n hs)
+  have hH' := hH.trans (rpow_mono_bigO (le_max_left r b))
+  have hD := (rpow_mono_bigO (le_max_left r b)).const_mul_left (D : ℝ)
+  have hJ' := hJ.trans (rpow_mono_bigO (le_max_right r b))
+  have hA := ((hH'.add hD).add hJ').const_mul_left (C : ℝ)
+  have hL := cast_linear_bigO (hb.trans (le_max_right r b)) k
+  apply IsBigO.trans _ (hA.add hL)
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (by positivity),one_mul]
+  rw [← Fintype.card_fin n,extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  simpa only [C,k,D,r,edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using
+    free_edge_bound J y hy G hs ht x hG
+
+lemma wedge_rate {T : Type*} [Fintype T]
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) (x : Fin s ⊕ Fin t)
+    {b : ℝ} (hH : HasRate (Kst s t) (((s-1+s : ℕ) : ℝ)/s)) (hJ : HasRate J b) :
+    HasRate (wedge (Kst s t) x J y) (max (((s-1+s : ℕ) : ℝ)/s) b) := by
+  refine ⟨hJ.one_le.trans (le_max_right _ _),
+    wedge_upper J y hy hs ht x hJ.one_le hJ.upper,?_⟩
+  intro a ha h
+  exact max_le (hH.lower a ha ((extremal_mono_bigO ⟨leftCopy _ _ _ _⟩).trans h))
+    (hJ.lower a ha ((extremal_mono_bigO ⟨rightCopy _ _ _ _⟩).trans h))
+
+
+/-- A copy of the left piece extends to a copy of the glued graph, with the
+shared root mapped to the image of the old root. -/
+def wedgeCopy {A B T : Type*} {H : SimpleGraph A} {L : SimpleGraph B}
+    (f : H.Copy L) (x : A) (J : SimpleGraph T) (y : T) :
+    (wedge H x J y).Copy (wedge L (f x) J y) := by
+  refine ⟨⟨Sum.map f id,?_⟩,?_⟩
+  · rintro (a | a) (b | b) hab
+    · exact f.toHom.map_adj hab
+    · exact ⟨congrArg f hab.1,hab.2⟩
+    · exact ⟨congrArg f hab.1,hab.2⟩
+    · exact hab
+  · rintro (a | a) (b | b) hab
+    · exact congrArg Sum.inl (f.injective (Sum.inl.inj hab))
+    · change Sum.inl (f a) = (Sum.inr b : Erdos713Gluing.Vertex (f x) y) at hab
+      cases hab
+    · change Sum.inr a = (Sum.inl (f b) : Erdos713Gluing.Vertex (f x) y) at hab
+      cases hab
+    · exact congrArg Sum.inr (Sum.inr.inj hab)
+
+lemma wedge_rate_of_containment {A T : Type*} [Fintype T]
+    (H : SimpleGraph A) (x : A) (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) (hhi : H ⊑ Kst s t)
+    {b : ℝ} (hH : HasRate H (((s-1+s : ℕ) : ℝ)/s)) (hJ : HasRate J b) :
+    HasRate (wedge H x J y) (max (((s-1+s : ℕ) : ℝ)/s) b) := by
+  obtain ⟨f⟩ := hhi
+  refine ⟨hJ.one_le.trans (le_max_right _ _),?_,?_⟩
+  · exact (extremal_mono_bigO ⟨wedgeCopy f x J y⟩).trans
+      (wedge_upper J y hy hs ht (f x) hJ.one_le hJ.upper)
+  · intro a ha h
+    exact max_le (hH.lower a ha ((extremal_mono_bigO ⟨leftCopy _ _ _ _⟩).trans h))
+      (hJ.lower a ha ((extremal_mono_bigO ⟨rightCopy _ _ _ _⟩).trans h))
+
+lemma wedge_k2t_rate {A T : Type*} [Fintype T]
+    (H : SimpleGraph A) (x : A) (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {t : ℕ} (ht : 1 ≤ t) (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ Erdos713K2t.K2t t)
+    {b : ℝ} (hJ : HasRate J b) : HasRate (wedge H x J y) (max ((3 : ℝ)/2) b) := by
+  exact wedge_rate_of_containment H x J y hy (s := 2) (by decide) ht hhi
+    (by simpa using k2t_rate hlo hhi) hJ
+
+lemma wedge_k3t_rate {A T : Type*} [Fintype T]
+    (H : SimpleGraph A) (x : A) (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {t : ℕ} (ht : 1 ≤ t) (hlo : Erdos713Norm.K33 ⊑ H) (hhi : H ⊑ Erdos713K3t.K3t t)
+    {b : ℝ} (hJ : HasRate J b) : HasRate (wedge H x J y) (max ((5 : ℝ)/3) b) := by
+  exact wedge_rate_of_containment H x J y hy (s := 3) (by decide) ht hhi
+    (by simpa using k3t_rate hlo hhi) hJ
+
+end Erdos713KstGluing
+
+/- Rational-rate certificates built from the completed families, components,
+leaf pruning, isomorphisms, and the newly proved rooted K2t/K3t gluings.
+This does not assert that every finite bipartite graph has such a certificate. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713Assembly
+open Erdos713Rate Erdos713Gluing
+universe u
+
+inductive Assembly : {W : Type u} → SimpleGraph W → Prop where
+  | forest {W : Type u} [Fintype W] (G : SimpleGraph W) (h : G.IsAcyclic) : Assembly G
+  | side {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+      (hB : G.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3) : Assembly G
+  | twoBase {W : Type u} (G : SimpleGraph W) {t : ℕ}
+      (hlo : Erdos713C4.K22 ⊑ G) (hhi : G ⊑ Erdos713K2t.K2t t) : Assembly G
+  | threeBase {W : Type u} (G : SimpleGraph W) {t : ℕ}
+      (hlo : Erdos713Norm.K33 ⊑ G) (hhi : G ⊑ Erdos713K3t.K3t t) : Assembly G
+  | iso {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+      (e : G ≃g H) (h : Assembly H) : Assembly G
+  | components {W : Type u} [Fintype W] (G : SimpleGraph W)
+      (h : ∀ C : G.ConnectedComponent, Assembly C.toSimpleGraph) : Assembly G
+  | prunes {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+      (hP : Erdos713Pruning.PrunesTo G S) (h : Assembly (G.induce S)) : Assembly G
+  | wedgeTwo {W T : Type u} [Fintype T]
+      (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T)
+      (hy : ∃ z, J.Adj y z) {t : ℕ} (ht : 1 ≤ t)
+      (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ Erdos713K2t.K2t t)
+      (hJ : Assembly J) : Assembly (wedge H x J y)
+  | wedgeThree {W T : Type u} [Fintype T]
+      (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T)
+      (hy : ∃ z, J.Adj y z) {t : ℕ} (ht : 1 ≤ t)
+      (hlo : Erdos713Norm.K33 ⊑ H) (hhi : H ⊑ Erdos713K3t.K3t t)
+      (hJ : Assembly J) : Assembly (wedge H x J y)
+
+lemma Assembly.rate {W : Type u} {G : SimpleGraph W} (h : Assembly G) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  induction h with
+  | forest G hF => exact ⟨1,by simpa using forest_rate G hF⟩
+  | side G S hB hS => exact Erdos713ThreeSide.rate_of_small_bipartition G S hB hS
+  | twoBase G hlo hhi => exact ⟨3/2,by norm_num; exact k2t_rate hlo hhi⟩
+  | threeBase G hlo hhi => exact ⟨5/3,by norm_num; exact k3t_rate hlo hhi⟩
+  | iso e h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,iso_rate e hr⟩
+  | components G h ih => exact Erdos713ComponentRates.rate_of_components G ih
+  | prunes G S hP h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,hP.rate hr⟩
+  | wedgeTwo H x J y hy ht hlo hhi hJ ih =>
+    obtain ⟨r,hr⟩ := ih
+    refine ⟨max (3/2) r,?_⟩
+    simpa only [Rat.cast_max,Rat.cast_div,Rat.cast_ofNat] using
+      Erdos713KstGluing.wedge_k2t_rate H x J y hy ht hlo hhi hr
+  | wedgeThree H x J y hy ht hlo hhi hJ ih =>
+    obtain ⟨r,hr⟩ := ih
+    refine ⟨max (5/3) r,?_⟩
+    simpa only [Rat.cast_max,Rat.cast_div,Rat.cast_ofNat] using
+      Erdos713KstGluing.wedge_k3t_rate H x J y hy ht hlo hhi hr
+
+lemma Assembly.rational {W : Type u} {G : SimpleGraph W} (hG : Assembly G)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := hG.rate
+  exact ⟨r,(exponent_eq hr hα hc h).symm⟩
+
+lemma of_small_components {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : Erdos713Pruning.SmallComponents G) : Assembly G := by
+  classical
+  apply Assembly.components G
+  intro C
+  obtain ⟨S,hB,hS⟩ := h C
+  exact Assembly.side C.toSimpleGraph S hB hS
+
+
+end Erdos713Assembly
+
+
+
+/- One-sided dependent random choice with two anchors, preserving the
+bipartition placement of every vertex in the embedded forbidden graph. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713OrientedAnchors
+open Erdos713C6 Erdos713DRC Erdos713Anchors
+
+noncomputable def copyOfMaps {A B V : Type*} (R : A → B → Prop) (G : SimpleGraph V)
+    (f : A → V) (g : B → V) (hf : Function.Injective f) (hg : Function.Injective g)
+    (hdis : ∀ a b, f a ≠ g b) (hadj : ∀ a b, R a b → G.Adj (f a) (g b)) :
+    (bipGraph R).Copy G := by
+  refine ⟨⟨Sum.elim f g,?_⟩,?_⟩
+  · rintro (a | b) (a' | b') h
+    · exact h.elim
+    · exact hadj a b' h
+    · exact (hadj a' b h).symm
+    · exact h.elim
+  · rintro (a | b) (a' | b') h
+    · exact congrArg Sum.inl (hf h)
+    · exact (hdis a b' h).elim
+    · exact (hdis a' b h.symm).elim
+    · exact congrArg Sum.inr (hg h)
+
+open scoped Classical in
+lemma oriented_copy_of_heavy_set {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (T : Set V) (hB : G.IsBipartiteWith T Tᶜ)
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (z : Fin 2 ↪ V) (hz : ∀ i, z i ∉ T)
+    (S : Finset V) (hS : Fintype.card A ≤ S.card) (hST : ∀ a ∈ S, a ∈ T)
+    (hSz : ∀ a ∈ S, ∀ i, G.Adj a (z i))
+    (hgood : ∀ x ∈ S, ∀ y ∈ S,
+      Fintype.card A+Fintype.card B+2 ≤ Fintype.card (G.commonNeighbors x y)) :
+    ∃ f : (bipGraph (augmented R)).Copy G,
+      (∀ a, f (Sum.inl a) ∈ T) ∧ (∀ b, f (Sum.inr b) ∉ T) := by
+  classical
+  obtain ⟨f,hf⟩ := Function.Embedding.exists_of_card_le_finset hS
+  choose u v huv using hR
+  let L := (univ : Finset A).image f ∪ (univ : Finset (Fin 2)).image z
+  let t : B → Finset V := fun b => (G.commonNeighbors (f (u b)) (f (v b))).toFinset \ L
+  have hL : L.card ≤ Fintype.card A+2 := by
+    apply (card_union_le _ _).trans
+    exact Nat.add_le_add ((card_image_le).trans (by simp)) ((card_image_le).trans (by simp))
+  have ht (b : B) : Fintype.card B ≤ (t b).card := by
+    have hg := hgood (f (u b)) (hf ⟨u b,rfl⟩) (f (v b)) (hf ⟨v b,rfl⟩)
+    have hh := card_le_card_sdiff_add_card (s := (G.commonNeighbors (f (u b)) (f (v b))).toFinset)
+      (t := L)
+    rw [Set.toFinset_card] at hh
+    dsimp only [t]
+    omega
+  have hHall (U : Finset B) : U.card ≤ (U.biUnion t).card := by
+    rcases U.eq_empty_or_nonempty with rfl | hU
+    · simp
+    obtain ⟨b,hb⟩ := hU
+    exact (card_le_univ U).trans ((ht b).trans (card_le_card (subset_biUnion_of_mem t hb)))
+  obtain ⟨g,hginj,hg⟩ := (all_card_le_biUnion_card_iff_exists_injective t).mp hHall
+  have hdis (a : A) (b : B) : f a ≠ g b := by
+    intro hab
+    exact (mem_sdiff.mp (hg b)).2
+      (hab ▸ mem_union_left _ (mem_image_of_mem f (mem_univ a)))
+  have hdisz (i : Fin 2) (b : B) : z i ≠ g b := by
+    intro hab
+    exact (mem_sdiff.mp (hg b)).2
+      (hab ▸ mem_union_right _ (mem_image_of_mem z (mem_univ i)))
+  have hgCommon (b : B) : g b ∈ G.commonNeighbors (f (u b)) (f (v b)) := by
+    simpa only [Set.mem_toFinset] using (mem_sdiff.mp (hg b)).1
+  have hAdj (a : A) (b : B) (hab : R a b) : G.Adj (f a) (g b) := by
+    rcases huv b a hab with rfl | rfl
+    · exact (hgCommon b).1
+    · exact (hgCommon b).2
+  have hinj : Function.Injective (Sum.elim z g) := by
+    rintro (i | b) (j | b') hij
+    · exact congrArg Sum.inl (z.injective hij)
+    · exact (hdisz i b' hij).elim
+    · exact (hdisz j b hij.symm).elim
+    · exact congrArg Sum.inr (hginj hij)
+  have hdis' : ∀ a b, f a ≠ Sum.elim z g b := by
+    intro a b
+    cases b with
+    | inl i => exact (hSz (f a) (hf ⟨a,rfl⟩) i).ne
+    | inr b => exact hdis a b
+  have hAdj' : ∀ a b, augmented R a b → G.Adj (f a) (Sum.elim z g b) := by
+    intro a b hab
+    cases b with
+    | inl i => exact hSz (f a) (hf ⟨a,rfl⟩) i
+    | inr b => exact hAdj a b hab
+  refine ⟨copyOfMaps (augmented R) G f (Sum.elim z g) f.injective hinj hdis' hAdj',?_,?_⟩
+  · intro a
+    exact hST (f a) (hf ⟨a,rfl⟩)
+  · rintro (i | b)
+    · exact hz i
+    · exact hB.mem_of_mem_adj (hST (f (u b)) (hf ⟨u b,rfl⟩)) (hgCommon b).1
+
+open scoped Classical in
+lemma sum_degree_sq_eq_common_shore {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : Set V) (hB : G.IsBipartiteWith T Tᶜ) :
+    (∑ v ∈ T.toFinset, G.degree v^2) =
+      ∑ p ∈ Tᶜ.toFinset ×ˢ Tᶜ.toFinset, Fintype.card (G.commonNeighbors p.1 p.2) := by
+  classical
+  let U := Tᶜ.toFinset ×ˢ Tᶜ.toFinset
+  let r : V → V × V → Prop := fun x p => G.Adj x p.1 ∧ G.Adj x p.2
+  have hAbove (v : V) (hv : v ∈ T.toFinset) : (U.bipartiteAbove r v).card = G.degree v^2 := by
+    have hs : U.bipartiteAbove r v = G.neighborFinset v ×ˢ G.neighborFinset v := by
+      ext p
+      simp only [mem_bipartiteAbove,U,mem_product,mem_neighborFinset,r]
+      constructor
+      · exact fun h => h.2
+      · intro h
+        exact ⟨⟨Set.mem_toFinset.mpr (hB.mem_of_mem_adj (Set.mem_toFinset.mp hv) h.1),
+          Set.mem_toFinset.mpr (hB.mem_of_mem_adj (Set.mem_toFinset.mp hv) h.2)⟩,h⟩
+    rw [hs,card_product,card_neighborFinset_eq_degree,pow_two]
+  have hBelow (p : V × V) (hp : p ∈ U) : (T.toFinset.bipartiteBelow r p).card =
+      Fintype.card (G.commonNeighbors p.1 p.2) := by
+    have hp1 : p.1 ∈ Tᶜ := Set.mem_toFinset.mp (mem_product.mp hp).1
+    have hs : T.toFinset.bipartiteBelow r p = (G.commonNeighbors p.1 p.2).toFinset := by
+      ext v
+      simp only [mem_bipartiteBelow,Set.mem_toFinset,mem_commonNeighbors,r]
+      constructor
+      · exact fun h => ⟨h.2.1.symm,h.2.2.symm⟩
+      · exact fun h => ⟨hB.symm.mem_of_mem_adj hp1 h.1,h.1.symm,h.2.symm⟩
+    rw [hs,Set.toFinset_card]
+  calc
+    _ = ∑ v ∈ T.toFinset, (U.bipartiteAbove r v).card :=
+      sum_congr rfl (fun v hv => (hAbove v hv).symm)
+    _ = ∑ p ∈ U, (T.toFinset.bipartiteBelow r p).card :=
+      sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow r
+    _ = _ := sum_congr rfl hBelow
+
+open scoped Classical in
+lemma degree_sq_le_of_no_heavy_shore {V : Type*} [Fintype V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (T : Set V) (hB : G.IsBipartiteWith T Tᶜ)
+    (s k : ℕ)
+    (h : ∀ x ∈ Tᶜ, ∀ y ∈ Tᶜ, x ≠ y → ∀ S : Finset V,
+      S ⊆ (G.commonNeighbors x y).toFinset →
+      (∀ u ∈ S, ∀ v ∈ S, k ≤ Fintype.card (G.commonNeighbors u v)) → S.card ≤ s) :
+    ∑ v ∈ T.toFinset, G.degree v^2 ≤ (s+k^2+1)*Fintype.card V^2 := by
+  classical
+  let U := Tᶜ.toFinset ×ˢ Tᶜ.toFinset
+  let bad (p : V × V) := (((G.commonNeighbors p.1 p.2).toFinset ×ˢ
+      (G.commonNeighbors p.1 p.2).toFinset).filter
+        (fun q => Fintype.card (G.commonNeighbors q.1 q.2) < k)).card
+  have hrow (p : V × V) (hp : p ∈ U) : Fintype.card (G.commonNeighbors p.1 p.2) ≤
+      s+bad p+(if p.1 = p.2 then Fintype.card V else 0) := by
+    by_cases he : p.1 = p.2
+    · have hc : Fintype.card (G.commonNeighbors p.1 p.2) ≤ Fintype.card V :=
+        Fintype.card_le_of_injective _ Subtype.val_injective
+      simp only [if_pos he]
+      omega
+    · simp only [if_neg he,add_zero]
+      obtain ⟨S,hS,hcard,hgood⟩ := clean_set G (G.commonNeighbors p.1 p.2).toFinset k
+      rw [Set.toFinset_card] at hcard
+      exact hcard.trans (Nat.add_le_add_right (h p.1 (Set.mem_toFinset.mp (mem_product.mp hp).1)
+        p.2 (Set.mem_toFinset.mp (mem_product.mp hp).2) he S hS hgood) _)
+  have hbad : ∑ p ∈ U, bad p ≤ k^2*Fintype.card V^2 := by
+    exact (Finset.sum_le_univ_sum_of_nonneg (fun _ => Nat.zero_le _)).trans (sum_bad_pairs_le G k)
+  have hdiag : (∑ p ∈ U, if p.1 = p.2 then Fintype.card V else 0) ≤ Fintype.card V^2 := by
+    have hh : (∑ p : V × V, if p.1 = p.2 then Fintype.card V else 0) = Fintype.card V^2 := by
+      simp [Fintype.sum_prod_type,pow_two]
+    rw [← hh]
+    exact Finset.sum_le_univ_sum_of_nonneg (fun _ => Nat.zero_le _)
+  have hconst : (∑ _p ∈ U, s) ≤ s*Fintype.card V^2 := by
+    have hc : U.card ≤ Fintype.card V^2 := by simpa [Fintype.card_prod,pow_two] using card_le_univ U
+    simpa [mul_comm] using Nat.mul_le_mul_left s hc
+  rw [sum_degree_sq_eq_common_shore G T hB]
+  calc
+    _ ≤ ∑ p ∈ U, (s+bad p+(if p.1 = p.2 then Fintype.card V else 0)) := sum_le_sum hrow
+    _ ≤ s*Fintype.card V^2+k^2*Fintype.card V^2+Fintype.card V^2 := by
+      simp only [sum_add_distrib]
+      exact Nat.add_le_add (Nat.add_le_add hconst hbad) hdiag
+    _ = _ := by ring
+
+open scoped Classical in
+lemma edge_sq_le_of_no_oriented_copy {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (T : Set V) (hB : G.IsBipartiteWith T Tᶜ)
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (hno : ∀ f : (bipGraph (augmented R)).Copy G,
+      (∀ a, f (Sum.inl a) ∈ T) → (∀ b, f (Sum.inr b) ∉ T) → False) :
+    G.edgeFinset.card^2 ≤
+      (Fintype.card A+(Fintype.card A+Fintype.card B+2)^2+1)*Fintype.card V^3 := by
+  classical
+  have hb := degree_sq_le_of_no_heavy_shore G T hB (Fintype.card A)
+    (Fintype.card A+Fintype.card B+2) (by
+      intro x hx y hy hxy S hS hgood
+      by_contra hcard
+      let z : Fin 2 ↪ V := ⟨![x,y],by intro i j hij; fin_cases i <;> fin_cases j <;> simp_all⟩
+      have hz : ∀ i, z i ∉ T := by intro i; fin_cases i <;> assumption
+      have hST : ∀ v ∈ S, v ∈ T := by
+        intro v hv
+        have hh : v ∈ G.commonNeighbors x y := Set.mem_toFinset.mp (hS hv)
+        exact hB.symm.mem_of_mem_adj hx hh.1
+      have hSz : ∀ v ∈ S, ∀ i, G.Adj v (z i) := by
+        intro v hv i
+        have hh : v ∈ G.commonNeighbors x y := Set.mem_toFinset.mp (hS hv)
+        fin_cases i
+        · exact hh.1.symm
+        · exact hh.2.symm
+      obtain ⟨f,hf,hf'⟩ := oriented_copy_of_heavy_set R G T hB hR z hz S (by omega) hST hSz hgood
+      exact hno f hf hf')
+  have hc := sq_sum_le_card_mul_sum_sq (s := T.toFinset) (f := fun v => G.degree v)
+  have hE : ∑ v ∈ T.toFinset, G.degree v = G.edgeFinset.card :=
+    isBipartiteWith_sum_degrees_eq_card_edges (s := T.toFinset) (t := Tᶜ.toFinset) (by simpa using hB)
+  rw [hE] at hc
+  have hmult := Nat.mul_le_mul (card_le_univ T.toFinset) hb
+  exact hc.trans (by convert hmult using 1 <;> ring)
+
+open scoped Classical in
+lemma edge_sq_le_of_root_excluded {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (R : A → B → Prop) (G : SimpleGraph V) [DecidableRel G.Adj]
+    (S : Set V) (hB : G.IsBipartiteWith S Sᶜ)
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v)
+    (x : A ⊕ (Fin 2 ⊕ B))
+    (hroot : ∀ f : (bipGraph (augmented R)).Copy G, f x ∉ S) :
+    G.edgeFinset.card^2 ≤
+      (Fintype.card A+(Fintype.card A+Fintype.card B+2)^2+1)*Fintype.card V^3 := by
+  classical
+  cases x with
+  | inl a =>
+    exact edge_sq_le_of_no_oriented_copy R G S hB hR (fun f hf _ => hroot f (hf a))
+  | inr b =>
+    apply edge_sq_le_of_no_oriented_copy R G Sᶜ (by simpa using hB.symm) hR
+    intro f _ hf
+    exact hroot f (not_not.mp (hf b))
+
+end Erdos713OrientedAnchors
+
+/- Polynomial edge bounds when a designated forbidden root is excluded
+from one prescribed shore of a bipartite host. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713RootPower
+open Erdos713Rate Erdos713KST Erdos713C6 Erdos713Anchors Erdos713ThreeSide
+
+/-- Host graphs use Fin n, which suffices for extremal-number bounds. -/
+def RootPowerBound {W : Type*} (H : SimpleGraph W) (x : W) (r : ℝ) : Prop :=
+  ∃ C : ℝ, 0 ≤ C ∧ ∀ n : ℕ, ∀ G : SimpleGraph (Fin n), ∀ S : Set (Fin n),
+    G.IsBipartiteWith S Sᶜ → (∀ f : H.Copy G, f x ∉ S) →
+      (Nat.card G.edgeSet : ℝ) ≤ C*(n : ℝ)^r
+
+lemma RootPowerBound.of_copy {A B : Type*} {H : SimpleGraph A} {J : SimpleGraph B}
+    (f : H.Copy J) (x : A) {r : ℝ} (h : RootPowerBound J (f x) r) : RootPowerBound H x r := by
+  obtain ⟨C,hC,hbound⟩ := h
+  refine ⟨C,hC,?_⟩
+  intro n G S hB hroot
+  exact hbound n G S hB (fun g => hroot (g.comp f))
+
+lemma kst {s t : ℕ} (hs : 1 ≤ s) (ht : 1 ≤ t) (x : Fin s ⊕ Fin t) :
+    RootPowerBound (Kst s t) x (((s-1+s : ℕ) : ℝ)/s) := by
+  classical
+  refine ⟨((s+1)^s*(t+1) : ℕ),by positivity,?_⟩
+  intro n G S hB hroot
+  have hp := Erdos713OrientedKST.edge_pow_le_of_root_excluded G S hB hs ht x hroot
+  have hb := Erdos713KstGluing.real_bound_of_power hs (Nat.succ_le_of_lt (by positivity)) hp
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using hb
+
+lemma augmented {A B : Type*} [Fintype A] [Fintype B] (R : A → B → Prop)
+    (hR : ∀ b, ∃ u v, ∀ a, R a b → a = u ∨ a = v) (x : A ⊕ (Fin 2 ⊕ B)) :
+    RootPowerBound (bipGraph (Erdos713Anchors.augmented R)) x ((3 : ℝ)/2) := by
+  classical
+  refine ⟨(Fintype.card A+(Fintype.card A+Fintype.card B+2)^2+1 : ℕ),by positivity,?_⟩
+  intro n G S hB hroot
+  have hp := Erdos713OrientedAnchors.edge_sq_le_of_root_excluded R G S hB hR x hroot
+  have hb := Erdos713KstGluing.real_bound_of_power (by decide : 1 ≤ 2)
+    (Nat.succ_le_of_lt (by positivity)) hp
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin,Nat.cast_ofNat] using hb
+
+lemma exceptional_columns {A B W : Type*} [Fintype A] [Fintype B] [Nonempty A]
+    (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2)
+    (hR : ∀ b ∉ E, Nat.card {a // R a b} ≤ 2) {H : SimpleGraph W}
+    (hhi : H ⊑ bipGraph R) (x : W) : RootPowerBound H x ((3 : ℝ)/2) := by
+  classical
+  let R' : A → ↥(Eᶜ) → Prop := fun a b => R a b.val
+  have hR' (b : ↥(Eᶜ)) : Fintype.card {a // R' a b} ≤ 2 := by
+    simpa only [R',Nat.card_eq_fintype_card] using hR b.val b.prop
+  obtain ⟨f⟩ := hhi.trans (contained_in_augmented R E hE)
+  exact (augmented R' (Erdos713DRC.pair_cover_of_degree_two R' hR') (f x)).of_copy f x
+
+lemma cycle_root_move (n : ℕ) (x a : Fin n) :
+    ∃ e : cycleGraph n ≃g cycleGraph n, e x = a := by
+  cases n with
+  | zero => exact x.elim0
+  | succ n =>
+    let e : cycleGraph (n+1) ≃g cycleGraph (n+1) :=
+      ⟨Equiv.addRight (a-x),by intro u v; exact circulantGraph_adj_translate⟩
+    refine ⟨e,?_⟩
+    change x+(a-x) = a
+    abel
+
+lemma c6 (x : Fin 6) : RootPowerBound C6 x ((4 : ℝ)/3) := by
+  classical
+  refine ⟨(512*(24^3+1) : ℕ),by positivity,?_⟩
+  intro n G S hB hroot
+  have hfree : C6.Free G := by
+    rintro ⟨f⟩
+    have hx : f x ∈ Sᶜ := hroot f
+    have hadj : C6.Adj x (x+1) := by rw [cycleGraph_adj]; exact Or.inr (by simp)
+    have hmem : f (x+1) ∈ S := hB.symm.mem_of_mem_adj hx (f.toHom.map_adj hadj)
+    obtain ⟨e,he⟩ := cycle_root_move 6 x (x+1)
+    have hh := hroot (f.comp e.toCopy)
+    change f (e x) ∉ S at hh
+    exact hh (he ▸ hmem)
+  have hb := Erdos713KstGluing.real_bound_of_power (by decide : 1 ≤ 3)
+    (by norm_num : 1 ≤ 512*(24^3+1)) (Erdos713C6.edge_cube_le G hfree)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin,Nat.cast_ofNat] using hb
+
+lemma matrix_core {B : Type*} [Fintype B] (R : Fin 3 → B → Prop)
+    (hd : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v)) :
+    ∃ r : ℚ, HasRate (bipGraph R) (r : ℝ) ∧
+      ∀ x, RootPowerBound (bipGraph R) x (r : ℝ) := by
+  classical
+  by_cases hFull : 3 ≤ Nat.card {b // ∀ i, R i b}
+  · have hBcard : 1 ≤ Fintype.card B := by
+      have hh := Fintype.card_subtype_le (fun b : B => ∀ i, R i b)
+      simp only [Fintype.card_eq_nat_card] at hh ⊢
+      omega
+    obtain ⟨f⟩ := matrix_contained_K3t R
+    refine ⟨5/3,by simpa using k3t_rate (contains_K33_of_three_full_columns R hFull) ⟨f⟩,?_⟩
+    intro x
+    simpa using (kst (s := 3) (by decide) hBcard (f x)).of_copy f x
+  by_cases hC4 : Erdos713C4.K22 ⊑ bipGraph R
+  · have hE : Nat.card {b // ∀ i, R i b} ≤ 2 := by omega
+    have hr := two_exception_columns_rate R {b | ∀ i, R i b}
+      hE (fun b hb => nonfull_column_small R b hb) hC4 (.refl _)
+    refine ⟨3/2,by simpa using hr,?_⟩
+    intro x
+    simpa using exceptional_columns R {b | ∀ i, R i b} hE
+      (fun b hb => nonfull_column_small R b hb) (.refl _) x
+  obtain ⟨e⟩ := matrix_iso_C6_of_no_rectangle R hd hC4
+  refine ⟨4/3,by simpa using c6_rate ⟨e.symm.toCopy⟩ ⟨e.toCopy⟩,?_⟩
+  intro x
+  simpa using (c6 (e x)).of_copy e.toCopy x
+
+lemma small_core {W : Type*} [Fintype W] [Nonempty W]
+    (H : SimpleGraph W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ)
+    (hS : Nat.card S ≤ 3) (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v)) :
+    ∃ r : ℚ, HasRate H (r : ℝ) ∧ ∀ x, RootPowerBound H x (r : ℝ) := by
+  classical
+  by_cases hS2 : Nat.card S ≤ 2
+  · have hhi := Erdos713SmallCore.contained_of_small_bipartition H S hS2 hB
+    have hd' : ∀ v, 2 ≤ H.degree v := by
+      intro v
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hd v
+    have hlo := Erdos713SmallCore.contains_K22_of_degree_two H hd' hhi
+    obtain ⟨f⟩ := hhi
+    refine ⟨3/2,by simpa using k2t_rate hlo ⟨f⟩,?_⟩
+    intro x
+    simpa using (kst (s := 2) (by decide) (Nat.succ_le_of_lt Fintype.card_pos) (f x)).of_copy f x
+  obtain ⟨R,⟨e⟩⟩ := exists_matrix_iso H S hB (by omega)
+  have hd' : ∀ v, 2 ≤ Nat.card ((bipGraph R).neighborSet v) := by
+    intro v
+    rw [Nat.card_congr (e.symm.mapNeighborSet v)]
+    exact hd (e.symm v)
+  obtain ⟨r,hr,hroot⟩ := matrix_core R hd'
+  exact ⟨r,iso_rate e hr,fun x => (hroot (e x)).of_copy e.toCopy x⟩
+
+end Erdos713RootPower
+
+/- One-vertex gluing from a proved one-shore rooted upper bound. The bound
+is a hypothesis here, not an assertion about all forbidden graphs. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713RootPower
+open Erdos713Rate Erdos713Gluing Erdos713Blocking Erdos713SwitchGluing
+
+open scoped Classical in
+lemma free_edge_bound {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    (a C : ℝ) (hC : 0 ≤ C) (n : ℕ) (G : SimpleGraph (Fin n))
+    (hfree : (wedge H x J y).Free G)
+    (hcross : ∀ K : SimpleGraph (Fin n), ∀ S : Set (Fin n),
+      K.IsBipartiteWith S Sᶜ → (∀ f : H.Copy K, f x ∉ S) →
+        (Nat.card K.edgeSet : ℝ) ≤ C*(n : ℝ)^a) :
+    (G.edgeFinset.card : ℝ) ≤
+      (2^(2*((Fintype.card T+1)*Fintype.card W)+2) : ℕ) *
+        ((extremalNumber n H : ℝ)+C*(n : ℝ)^a+(extremalNumber n J : ℝ)) +
+      (((Fintype.card T+1)*Fintype.card W)*n : ℕ) := by
+  classical
+  choose B hb hk hB using blockers_or_no_right H x J y G hfree
+  let S : Set (Fin n) := {v | ∀ f : H.Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B v}
+  have hNoJ (v : Fin n) (hv : v ∉ S) (g : J.Copy G) (hg : g y = v) : False := by
+    rcases hB v with hleft | hright
+    · exact hv hleft
+    · exact hright g hg
+  suffices hh : (G.edgeFinset.card : ℝ) ≤
+      (2^(2*((Fintype.card T+1)*Fintype.card W)+2) : ℕ) *
+        ((extremalNumber n H : ℝ)+C*(n : ℝ)^a+(extremalNumber n J : ℝ)) +
+      (((Fintype.card T+1)*Fintype.card W)*Fintype.card (Fin n) : ℕ) by
+    simpa only [Fintype.card_fin] using hh
+  apply Erdos713KstGluing.real_edges_le_of_keep_bound G B
+    ((Fintype.card T+1)*Fintype.card W) _ hb hk (by positivity)
+  intro σ
+  let K := keep G B σ
+  have hsel (f : H.Copy K) (a : W) : selected B σ (f a) := by
+    obtain ⟨b,hab⟩ := hNoIso a
+    exact (f.toHom.map_adj hab).2.1
+  have hRoot (f : H.Copy K) : f x ∉ S := by
+    intro hfx
+    let g : H.Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp f
+    obtain ⟨b,_,hmem⟩ := hfx g rfl
+    exact Bool.noConfusion ((hsel f b).1.symm.trans ((hsel f x).2 (f b) hmem))
+  have hInside : H.Free (inside K S) := by
+    rintro ⟨f⟩
+    obtain ⟨b,hxb⟩ := hNoIso x
+    exact hRoot ((Copy.ofLE _ _ (inside_le K S)).comp f) (f.toHom.map_adj hxb).2.1
+  have hCross : ((cross K S).edgeFinset.card : ℝ) ≤ C*(n : ℝ)^a := by
+    have hh := hcross (cross K S) S (Erdos713KstGluing.cross_isBipartiteWith K S)
+      (fun f => hRoot ((Copy.ofLE _ _ (cross_le K S)).comp f))
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh
+  have hRest : J.Free (rest K S) := by
+    rintro ⟨f⟩
+    obtain ⟨z,hyz⟩ := hy
+    exact hNoJ (f y) (f.toHom.map_adj hyz).2.1
+      ((Copy.ofLE _ _ ((rest_le K S).trans (keep_le G B σ))).comp f) rfl
+  have hA : ((inside K S).edgeFinset.card : ℝ) ≤ extremalNumber (Fintype.card (Fin n)) H := by
+    exact_mod_cast card_edgeFinset_le_extremalNumber hInside
+  have hR : ((rest K S).edgeFinset.card : ℝ) ≤ extremalNumber (Fintype.card (Fin n)) J := by
+    exact_mod_cast card_edgeFinset_le_extremalNumber hRest
+  have hSplit : (K.edgeFinset.card : ℝ) ≤ (inside K S).edgeFinset.card +
+      (cross K S).edgeFinset.card + (rest K S).edgeFinset.card := by
+    exact_mod_cast Erdos713SwitchGluing.edge_split K S
+  simp only [Fintype.card_fin] at hA hR
+  exact hSplit.trans (by linarith)
+
+lemma wedge_upper {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z) {a b : ℝ}
+    (hb : 1 ≤ b) (hRoot : RootPowerBound H x a)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^a))
+    (hJ : (fun n : ℕ => (extremalNumber n J : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^b)) :
+    (fun n : ℕ => (extremalNumber n (wedge H x J y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^(max a b)) := by
+  classical
+  obtain ⟨D,hD,hroot⟩ := hRoot
+  let k := (Fintype.card T+1)*Fintype.card W
+  let C : ℕ := 2^(2*k+2)
+  have hH' := hH.trans (rpow_mono_bigO (le_max_left a b))
+  have hD' := (rpow_mono_bigO (le_max_left a b)).const_mul_left D
+  have hJ' := hJ.trans (rpow_mono_bigO (le_max_right a b))
+  have hA := ((hH'.add hD').add hJ').const_mul_left (C : ℝ)
+  have hL := cast_linear_bigO (hb.trans (le_max_right a b)) k
+  apply IsBigO.trans _ (hA.add hL)
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (by positivity),one_mul]
+  rw [← Fintype.card_fin n,extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  simpa only [C,k,edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using
+    free_edge_bound H x hNoIso J y hy a D hD n G hG (hroot n)
+
+lemma wedge_rate {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z) {a b : ℝ}
+    (hH : HasRate H a) (hJ : HasRate J b) (hRoot : RootPowerBound H x a) :
+    HasRate (wedge H x J y) (max a b) := by
+  refine ⟨hJ.one_le.trans (le_max_right _ _),
+    wedge_upper H x hNoIso J y hy hJ.one_le hRoot hH.upper hJ.upper,?_⟩
+  intro r hr h
+  exact max_le (hH.lower r hr ((extremal_mono_bigO ⟨leftCopy _ _ _ _⟩).trans h))
+    (hJ.lower r hr ((extremal_mono_bigO ⟨rightCopy _ _ _ _⟩).trans h))
+
+lemma small_core_wedge_rate {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ)
+    (hS : Nat.card S ≤ 3) (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v))
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {b : ℚ} (hJ : HasRate J (b : ℝ)) :
+    ∃ r : ℚ, HasRate (wedge H x J y) (r : ℝ) := by
+  classical
+  letI : Nonempty W := ⟨x⟩
+  obtain ⟨a,hH,hroot⟩ := small_core H S hB hS hd
+  have hNoIso : ∀ v, ∃ w, H.Adj v w := by
+    intro v
+    apply (H.degree_pos_iff_exists_adj v).mp
+    have hh : 2 ≤ H.degree v := by
+      simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hd v
+    omega
+  refine ⟨max a b,?_⟩
+  simpa only [Rat.cast_max] using wedge_rate H x hNoIso J y hy hH hJ (hroot x)
+
+lemma exceptional_columns_wedge_rate {A B W T : Type*}
+    [Fintype A] [Fintype B] [Nonempty A] [Fintype W] [Fintype T]
+    (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2)
+    (hR : ∀ b ∉ E, Nat.card {a // R a b} ≤ 2)
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ Erdos713C6.bipGraph R)
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+    {b : ℝ} (hJ : HasRate J b) : HasRate (wedge H x J y) (max ((3 : ℝ)/2) b) :=
+  wedge_rate H x hNoIso J y hy (two_exception_columns_rate R E hE hR hlo hhi) hJ
+    (exceptional_columns R E hE hR hhi x)
+
+
+
+lemma edge_wedge_rate {T : Type*} [Fintype T] (J : SimpleGraph T) (y : T)
+    (hy : ∃ z, J.Adj y z) (x : Fin 1 ⊕ Fin 1) {b : ℝ} (hJ : HasRate J b) :
+    HasRate (wedge (Erdos713KST.Kst 1 1) x J y) b := by
+  have hH : HasRate (Erdos713KST.Kst 1 1) 1 := by
+    refine ⟨le_rfl,?_,fun r hr _ => hr⟩
+    simpa using upper_of_power_bound (by decide : 1 ≠ 0)
+      (fun n => Erdos713KST.extremal_pow_le 1 1 n (by decide))
+  simpa only [Nat.sub_self,Nat.zero_add,Nat.cast_one,div_one,max_eq_right hJ.one_le] using
+    Erdos713KstGluing.wedge_rate J y hy (s := 1) (t := 1) (by decide) (by decide) x
+      (by simpa using hH) hJ
+
+end Erdos713RootPower
+
+/- Enlarged finite assembly certificates using all the oriented small-core
+bounds. These certificates do not cover all finite bipartite graphs. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713RootAssembly
+open Erdos713Rate Erdos713Gluing
+universe u
+
+inductive Assembly : {W : Type u} → SimpleGraph W → Prop where
+  | base {W : Type u} {G : SimpleGraph W} (h : Erdos713Assembly.Assembly G) : Assembly G
+  | iso {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+      (e : G ≃g H) (h : Assembly H) : Assembly G
+  | components {W : Type u} [Fintype W] (G : SimpleGraph W)
+      (h : ∀ C : G.ConnectedComponent, Assembly C.toSimpleGraph) : Assembly G
+  | prunes {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+      (hP : Erdos713Pruning.PrunesTo G S) (h : Assembly (G.induce S)) : Assembly G
+  | wedgeSmallCore {W T : Type u} [Fintype W] [Fintype T]
+      (H : SimpleGraph W) (x : W) (S : Set W) (hB : H.IsBipartiteWith S Sᶜ)
+      (hS : Nat.card S ≤ 3) (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v))
+      (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+      (hJ : Assembly J) : Assembly (wedge H x J y)
+  | wedgeEdge {T : Type u} [Fintype T] (J : SimpleGraph T) (y : T)
+      (hy : ∃ z, J.Adj y z) (x : Fin 1 ⊕ Fin 1) (hJ : Assembly J) :
+      Assembly (wedge (Erdos713KST.Kst 1 1) x J y)
+  | wedgeExceptional {A B W T : Type u}
+      [Fintype A] [Fintype B] [Nonempty A] [Fintype W] [Fintype T]
+      (R : A → B → Prop) (E : Set B) (hE : Nat.card E ≤ 2)
+      (hR : ∀ b ∉ E, Nat.card {a // R a b} ≤ 2)
+      (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+      (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ Erdos713C6.bipGraph R)
+      (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z)
+      (hJ : Assembly J) : Assembly (wedge H x J y)
+
+lemma Assembly.side {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+    (hB : G.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3) : Assembly G :=
+  .base (Erdos713Assembly.Assembly.side G S hB hS)
+
+
+lemma Assembly.rate {W : Type u} {G : SimpleGraph W} (h : Assembly G) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  induction h with
+  | base h => exact h.rate
+  | iso e h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,iso_rate e hr⟩
+  | components G h ih => exact Erdos713ComponentRates.rate_of_components G ih
+  | prunes G S hP h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,hP.rate hr⟩
+  | wedgeSmallCore H x S hB hS hd J y hy hJ ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact Erdos713RootPower.small_core_wedge_rate H x S hB hS hd J y hy hr
+  | wedgeEdge J y hy x hJ ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,Erdos713RootPower.edge_wedge_rate J y hy x hr⟩
+  | wedgeExceptional R E hE hR H x hNoIso hlo hhi J y hy hJ ih =>
+    obtain ⟨r,hr⟩ := ih
+    refine ⟨max (3/2) r,?_⟩
+    simpa only [Rat.cast_max,Rat.cast_div,Rat.cast_ofNat] using
+      Erdos713RootPower.exceptional_columns_wedge_rate R E hE hR H x hNoIso hlo hhi J y hy hr
+
+lemma Assembly.rational {W : Type u} {G : SimpleGraph W} (hG : Assembly G)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := hG.rate
+  exact ⟨r,(exponent_eq hr hα hc h).symm⟩
+
+end Erdos713RootAssembly
+
+
+/- Finite end-piece decomposition for connected graphs. These graph-theoretic
+lemmas do not assert rationality of arbitrary extremal exponents. -/
+open SimpleGraph
+namespace Erdos713Blocks
+universe u
+variable {V : Type u} {G : SimpleGraph V}
+
+/-- Deleting any vertex leaves a preconnected graph. Single vertices and edges
+are permitted by this convention; no nonempty deletion is required. -/
+def NoCut (G : SimpleGraph V) : Prop := ∀ x : V, (G.induce {x}ᶜ).Preconnected
+
+lemma NoCut.map {W : Type*} {H : SimpleGraph W} (h : NoCut G)
+    (f : G →g H) (hf : Function.Bijective f) : NoCut H := by
+  intro y
+  obtain ⟨x,rfl⟩ := hf.2 y
+  let g : (G.induce {x}ᶜ) →g (H.induce {f x}ᶜ) :=
+    { toFun := fun v => ⟨f v.val,fun he => v.prop (hf.1 he)⟩
+      map_rel' := fun hvw => f.map_adj hvw }
+  apply (h x).map g
+  rintro ⟨v,hv⟩
+  obtain ⟨w,hw⟩ := hf.2 v
+  have hwx : w ≠ x := by intro he; exact hv (hw.symm.trans (congrArg f he))
+  exact ⟨⟨w,hwx⟩,Subtype.ext hw⟩
+
+
+/-- A maximal nonempty induced connected subgraph with no cut vertex.
+This convention includes bridge edges and isolated singleton blocks. -/
+structure IsBlock (G : SimpleGraph V) (S : Set V) : Prop where
+  connected : (G.induce S).Connected
+  noCut : NoCut (G.induce S)
+  maximal : ∀ T : Set V, S ⊆ T → (G.induce T).Connected → NoCut (G.induce T) → T = S
+
+lemma exists_block_superset [Fintype V] (S : Set V)
+    (hS : (G.induce S).Connected) (hNC : NoCut (G.induce S)) :
+    ∃ T : Set V, S ⊆ T ∧ IsBlock G T := by
+  classical
+  let P : Finset (Set V) := Finset.univ.filter
+    (fun T => S ⊆ T ∧ (G.induce T).Connected ∧ NoCut (G.induce T))
+  have hSP : S ∈ P := by simp [P,hS,hNC]
+  obtain ⟨T,hT,hmax⟩ := P.exists_max_image (fun T => Nat.card T) ⟨S,hSP⟩
+  obtain ⟨hST,hConn,hNoCut⟩ := (Finset.mem_filter.mp hT).2
+  refine ⟨T,hST,hConn,hNoCut,?_⟩
+  intro U hTU hU hUNC
+  have hUP : U ∈ P := by simp [P,hST.trans hTU,hU,hUNC]
+  have hc := hmax U hUP
+  by_contra he
+  have hlt := Set.ncard_lt_ncard (Set.ssubset_iff_subset_ne.mpr ⟨hTU,Ne.symm he⟩)
+  simp only [Nat.card_coe_set_eq] at hc
+  omega
+
+/-- All vertices of S except its root have no neighbours outside S. -/
+structure Lobe (G : SimpleGraph V) (S : Set V) (x : V) : Prop where
+  root_mem : x ∈ S
+  other : ∃ u ∈ S, u ≠ x
+  closed : ∀ u ∈ S, u ≠ x → ∀ v, G.Adj u v → v ∈ S
+
+lemma mem_of_reachable_closed {S : Set V}
+    (hS : ∀ u ∈ S, ∀ v, G.Adj u v → v ∈ S)
+    {u v : V} (hu : u ∈ S) (h : G.Reachable u v) : v ∈ S := by
+  obtain ⟨p⟩ := h
+  induction p with
+  | nil => exact hu
+  | cons hadj p ih => exact ih (hS _ hu _ hadj)
+
+lemma Lobe.connected {S : Set V} {x : V} (h : Lobe G S x) (hG : G.Connected) :
+    (G.induce S).Connected := by
+  rw [connected_iff_exists_forall_reachable]
+  refine ⟨⟨x,h.root_mem⟩,?_⟩
+  let R : Set V := {v | ∀ hv : v ∈ S, (G.induce S).Reachable ⟨x,h.root_mem⟩ ⟨v,hv⟩}
+  have hR : ∀ u ∈ R, ∀ v, G.Adj u v → v ∈ R := by
+    intro u hu v huv hv
+    by_cases huS : u ∈ S
+    · exact (hu huS).trans (show (G.induce S).Adj ⟨u,huS⟩ ⟨v,hv⟩ from huv).reachable
+    by_cases he : v = x
+    · subst v; exact .rfl
+    · exact (huS (h.closed v hv he u huv.symm)).elim
+  rintro ⟨v,hv⟩
+  exact mem_of_reachable_closed hR (u := x) (by intro _; exact .rfl) (hG x v) hv
+
+/-- A disconnected vertex deletion has a nonempty closed part avoiding any
+prescribed vertex, and leaves another vertex outside the part and the cut. -/
+lemma cut_piece (x w : V) (hw : ¬ (G.induce {w}ᶜ).Preconnected) :
+    ∃ U : Set V, U.Nonempty ∧ w ∉ U ∧ x ∉ U ∧
+      (∃ b, b ≠ w ∧ b ∉ U) ∧
+      ∀ a ∈ U, ∀ b, G.Adj a b → b = w ∨ b ∈ U := by
+  classical
+  have hpair : ∃ a b : ↥({w}ᶜ : Set V),
+      ¬ (G.induce {w}ᶜ).Reachable a b ∧
+      ∀ hx : x ≠ w, ¬ (G.induce {w}ᶜ).Reachable a ⟨x,hx⟩ := by
+    by_cases hx : x = w
+    · obtain ⟨a,b,hab⟩ := not_forall.mp hw |>.imp (fun a ha => not_forall.mp ha)
+      exact ⟨a,b,hab,fun hx' => (hx' hx).elim⟩
+    · have ha : ∃ a, ¬ (G.induce {w}ᶜ).Reachable a ⟨x,hx⟩ := by
+        by_contra hh
+        push_neg at hh
+        exact hw (fun a b => (hh a).trans (hh b).symm)
+      obtain ⟨a,ha⟩ := ha
+      exact ⟨a,⟨x,hx⟩,ha,fun _ => ha⟩
+  obtain ⟨a,b,hab,hax⟩ := hpair
+  let U : Set V := {v | ∃ hv : v ≠ w, (G.induce {w}ᶜ).Reachable a ⟨v,hv⟩}
+  refine ⟨U,⟨a.val,a.prop,.rfl⟩,?_,?_,⟨b.val,b.prop,?_⟩,?_⟩
+  · rintro ⟨hh,_⟩; exact hh rfl
+  · rintro ⟨hx,h⟩; exact hax hx h
+  · rintro ⟨_,h⟩; exact hab h
+  · intro v hv z hvz
+    by_cases hz : z = w
+    · exact Or.inl hz
+    · obtain ⟨hv,ha⟩ := hv
+      exact Or.inr ⟨hz,ha.trans (show (G.induce {w}ᶜ).Adj ⟨v,hv⟩ ⟨z,hz⟩ from hvz).reachable⟩
+
+lemma lobe_refine_of_cut {S : Set V} {x : V} (h : Lobe G S x)
+    (w : S) (hw : ¬ ((G.induce S).induce {w}ᶜ).Preconnected) :
+    ∃ T : Set V, T ⊂ S ∧ Lobe G T w.val := by
+  classical
+  obtain ⟨U,⟨a,ha⟩,hwU,hxU,⟨b,hbw,hbU⟩,hU⟩ :=
+    cut_piece (G := G.induce S) ⟨x,h.root_mem⟩ w hw
+  let T : Set V := Subtype.val '' (insert w U)
+  have hTS : T ⊆ S := by rintro v ⟨v,hv,rfl⟩; exact v.prop
+  have hbT : b.val ∉ T := by
+    rintro ⟨z,hz,he⟩
+    have hzb : z = b := Subtype.ext he
+    subst z
+    exact (Set.mem_insert_iff.mp hz).elim hbw hbU
+  refine ⟨T,Set.ssubset_iff_subset_ne.mpr ⟨hTS,?_⟩,?_,?_,?_⟩
+  · intro he; exact hbT (he.symm ▸ b.prop)
+  · exact ⟨w,Set.mem_insert _ _,rfl⟩
+  · refine ⟨a.val,⟨a,Set.mem_insert_of_mem _ ha,rfl⟩,?_⟩
+    intro he; exact hwU (Subtype.ext he ▸ ha)
+  · intro z hz hzw v hzv
+    obtain ⟨z,hz,rfl⟩ := hz
+    have hzU : z ∈ U := (Set.mem_insert_iff.mp hz).resolve_left
+      (fun he => hzw (congrArg Subtype.val he))
+    have hzx : z.val ≠ x := by
+      intro he
+      have hz : z = (⟨x,h.root_mem⟩ : S) := Subtype.ext he
+      exact hxU (hz ▸ hzU)
+    have hvS : v ∈ S := h.closed z.val z.prop hzx v hzv
+    rcases hU z hzU ⟨v,hvS⟩ hzv with he | he
+    · exact ⟨⟨v,hvS⟩,Set.mem_insert_iff.mpr (Or.inl he),rfl⟩
+    · exact ⟨⟨v,hvS⟩,Set.mem_insert_of_mem _ he,rfl⟩
+
+lemma exists_minimal_lobe [Fintype V] (h : ∃ S x, Lobe G S x) :
+    ∃ S x, Lobe G S x ∧ NoCut (G.induce S) := by
+  classical
+  have hk : ∃ k : ℕ, ∃ S x, Lobe G S x ∧ Fintype.card S = k := by
+    obtain ⟨S,x,h⟩ := h
+    exact ⟨_,S,x,h,rfl⟩
+  obtain ⟨S,x,hS,hcard⟩ := Nat.find_spec hk
+  refine ⟨S,x,hS,?_⟩
+  intro w
+  by_contra hw
+  obtain ⟨T,hTS,hT⟩ := lobe_refine_of_cut hS w hw
+  have hlt : Fintype.card T < Fintype.card S := by
+    let f : T → S := fun z => ⟨z.val,hTS.le z.prop⟩
+    apply Fintype.card_lt_of_injective_not_surjective f
+    · intro a b he
+      have hv : a.val = b.val := congrArg (fun q : S => q.val) he
+      exact Subtype.ext hv
+    · intro hf
+      apply hTS.ne
+      apply Set.Subset.antisymm hTS.le
+      intro v hv
+      obtain ⟨z,hz⟩ := hf ⟨v,hv⟩
+      have he : z.val = v := congrArg (fun q : S => q.val) hz
+      exact he ▸ z.prop
+  have hle := Nat.find_min' hk (show ∃ S x, Lobe G S x ∧ Fintype.card S = Fintype.card T from
+    ⟨T,w.val,hT,rfl⟩)
+  omega
+
+
+lemma Lobe.complement {S : Set V} {x : V} (h : Lobe G S x) (hS : S ≠ Set.univ) :
+    Lobe G (insert x Sᶜ) x := by
+  classical
+  refine ⟨Set.mem_insert _ _,?_,?_⟩
+  · obtain ⟨v,hv⟩ := not_forall.mp (fun hh => hS (Set.eq_univ_of_forall hh))
+    exact ⟨v,Or.inr hv,fun he => hv (he.symm ▸ h.root_mem)⟩
+  · intro u hu hux v huv
+    have huS : u ∉ S := (Set.mem_insert_iff.mp hu).resolve_left hux
+    by_cases hvS : v ∈ S
+    · by_cases hvx : v = x
+      · exact Or.inl hvx
+      · exact (huS (h.closed v hvS hvx u huv.symm)).elim
+    · exact Or.inr hvS
+
+lemma Lobe.root_adj {S : Set V} {x : V} (h : Lobe G S x) (hG : G.Connected) :
+    ∃ v : S, (G.induce S).Adj ⟨x,h.root_mem⟩ v := by
+  obtain ⟨v,hv,hvx⟩ := h.other
+  apply (G.induce S).mem_support.mp
+  apply mem_support_of_reachable (v := (⟨v,hv⟩ : S))
+    (fun he => hvx (congrArg Subtype.val he).symm)
+  exact h.connected hG _ _
+
+lemma Lobe.card_ge_three [Fintype V] {S : Set V} {x : V} (h : Lobe G S x)
+    (hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)) : 3 ≤ Nat.card S := by
+  classical
+  obtain ⟨v,hv,hvx⟩ := h.other
+  let f : G.neighborSet v ↪ (G.induce S).neighborSet ⟨v,hv⟩ :=
+    ⟨fun w => ⟨⟨w.val,h.closed v hv hvx w.val w.prop⟩,w.prop⟩,by
+      intro a b he
+      exact Subtype.ext (congrArg (fun q : (G.induce S).neighborSet ⟨v,hv⟩ => q.val.val) he)⟩
+  have hle := Fintype.card_le_of_embedding f
+  have hlt := (G.induce S).degree_lt_card_verts ⟨v,hv⟩
+  have hvd := hd v
+  rw [Nat.card_eq_fintype_card]
+  simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] at hvd hle
+  omega
+
+lemma NoCut.min_degree [Fintype V] (h : NoCut G) (hG : G.Connected)
+    (hcard : 3 ≤ Fintype.card V) : ∀ v, 2 ≤ Nat.card (G.neighborSet v) := by
+  classical
+  haveI : Nontrivial V := Fintype.one_lt_card_iff_nontrivial.mp (by omega)
+  intro v
+  have hpos := hG.preconnected.degree_pos_of_nontrivial v
+  simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree]
+  by_contra hv
+  have hv1 : G.degree v = 1 := by omega
+  obtain ⟨w,hvw,hw⟩ := degree_eq_one_iff_existsUnique_adj.mp hv1
+  have hpair : ({v,w} : Finset V).card ≤ 2 := by
+    simpa using List.toFinset_card_le ([v,w] : List V)
+  obtain ⟨z,_,hz⟩ := Finset.exists_mem_notMem_of_card_lt_card
+    (s := ({v,w} : Finset V)) (t := Finset.univ) (by
+      simpa only [Finset.card_univ] using hpair.trans_lt (show 2 < Fintype.card V by omega))
+  simp only [Finset.mem_insert,Finset.mem_singleton,not_or] at hz
+  let a : ↥({w}ᶜ : Set V) := ⟨v,hvw.ne⟩
+  let b : ↥({w}ᶜ : Set V) := ⟨z,hz.2⟩
+  have hclosed : ∀ p ∈ ({a} : Set ↥({w}ᶜ : Set V)), ∀ q,
+      (G.induce {w}ᶜ).Adj p q → q ∈ ({a} : Set ↥({w}ᶜ : Set V)) := by
+    intro p hp q hpq
+    have he : p = a := Set.mem_singleton_iff.mp hp
+    subst p
+    exact (q.prop (hw q.val hpq)).elim
+  have hb := mem_of_reachable_closed hclosed (u := a) (Set.mem_singleton a) (h w a b)
+  exact hz.1 (congrArg Subtype.val (Set.mem_singleton_iff.mp hb))
+
+lemma exists_end_piece [Fintype V] (hG : G.Connected)
+    (hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)) :
+    ∃ S x, Lobe G S x ∧ (G.induce S).Connected ∧ NoCut (G.induce S) ∧
+      ∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v) := by
+  classical
+  obtain ⟨x⟩ := hG.nonempty
+  obtain ⟨y,hxy⟩ : ∃ y, G.Adj x y := by
+    apply (G.degree_pos_iff_exists_adj x).mp
+    have hx := hd x
+    simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using (show 0 < Nat.card (G.neighborSet x) by omega)
+  obtain ⟨S,w,hS,hNC⟩ := exists_minimal_lobe (G := G)
+    ⟨Set.univ,x,Set.mem_univ x,⟨y,Set.mem_univ y,hxy.ne.symm⟩,by simp⟩
+  exact ⟨S,w,hS,hS.connected hG,hNC,hNC.min_degree (hS.connected hG) (by simpa only [Fintype.card_eq_nat_card] using hS.card_ge_three hd)⟩
+
+end Erdos713Blocks
+
+/- Graph-theoretic assembly from a condition on all connected no-cut
+subgraphs, rather than from a supplied gluing certificate. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713Blocks
+open Erdos713RootAssembly Erdos713Gluing
+universe u
+
+/-- Every finite connected no-cut subgraph has a bipartition shore of size
+at most three. This is a structural hypothesis, not a claim about all graphs. -/
+def SmallPieces {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ {T : Type u} [Fintype T] (H : SimpleGraph T), H ⊑ G → H.Connected → NoCut H →
+    ∃ S : Set T, H.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3
+
+lemma SmallPieces.of_contained {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+    (h : SmallPieces G) (hHG : H ⊑ G) : SmallPieces H := by
+  intro A _ J hJ hConn hNC
+  exact h J (hJ.trans hHG) hConn hNC
+
+
+/-- The same small-shore condition, stated just for induced no-cut pieces. -/
+def InducedSmallPieces {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ S : Set W, (G.induce S).Connected → NoCut (G.induce S) →
+    ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3
+
+lemma small_shore_of_copy {W T : Type u} [Fintype W] [Fintype T]
+    {G : SimpleGraph W} {H : SimpleGraph T} (f : H.Copy G) (S : Set W)
+    (hS : G.IsBipartiteWith S Sᶜ) (hc : Nat.card S ≤ 3) :
+    ∃ A : Set T, H.IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 := by
+  classical
+  refine ⟨f ⁻¹' S,⟨disjoint_compl_right,fun _ _ hab => hS.2 (f.toHom.map_adj hab)⟩,?_⟩
+  let e : ↥(f ⁻¹' S) ↪ S :=
+    ⟨fun a => ⟨f a.val,a.prop⟩,fun a b he => Subtype.ext (f.injective (congrArg Subtype.val he))⟩
+  have he := Fintype.card_le_of_embedding e
+  simp only [Fintype.card_eq_nat_card] at he
+  exact he.trans hc
+
+lemma induced_small_pieces_iff {W : Type u} [Fintype W] {G : SimpleGraph W} :
+    InducedSmallPieces G ↔ SmallPieces G := by
+  classical
+  constructor
+  · intro h T _ H hHG hH hNC
+    obtain ⟨f⟩ := hHG
+    let g : H.Copy (G.induce (Set.range f)) :=
+      ⟨⟨fun a => ⟨f a,⟨a,rfl⟩⟩,fun hab => f.toHom.map_adj hab⟩,
+        fun a b he => f.injective (congrArg Subtype.val he)⟩
+    have hg : Function.Surjective g := by
+      rintro ⟨v,⟨a,rfl⟩⟩
+      exact ⟨a,rfl⟩
+    obtain ⟨A,hA,hcard⟩ := h (Set.range f) (hH.map g.toHom hg)
+      (hNC.map g.toHom ⟨g.injective,hg⟩)
+    exact small_shore_of_copy g A hA hcard
+  · intro h S hS hNC
+    exact h (G.induce S) ⟨Copy.induce G S⟩ hS hNC
+
+
+/-- Every block has a bipartition shore of size at most three. -/
+def SmallBlocks {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ S : Set W, IsBlock G S →
+    ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3
+
+lemma small_blocks_iff_induced {W : Type u} [Fintype W] {G : SimpleGraph W} :
+    SmallBlocks G ↔ InducedSmallPieces G := by
+  classical
+  constructor
+  · intro h S hConn hNC
+    obtain ⟨T,hST,hT⟩ := exists_block_superset S hConn hNC
+    obtain ⟨A,hA,hcard⟩ := h T hT
+    exact small_shore_of_copy (induceHomOfLE G hST).toCopy A hA hcard
+  · intro h S hS
+    exact h S hS.connected hS.noCut
+
+noncomputable def lobeWedgeIso {W : Type u} {G : SimpleGraph W} {S : Set W} {x : W}
+    (h : Lobe G S x) :
+    wedge (G.induce S) ⟨x,h.root_mem⟩ (G.induce (insert x Sᶜ)) ⟨x,Or.inl rfl⟩ ≃g G := by
+  classical
+  let y : ↥(insert x Sᶜ) := ⟨x,Or.inl rfl⟩
+  let f : S ⊕ {b : ↥(insert x Sᶜ) // b ≠ y} → W :=
+    Sum.elim Subtype.val (fun b => b.val.val)
+  have hright (b : {b : ↥(insert x Sᶜ) // b ≠ y}) : b.val.val ∉ S := by
+    exact (Set.mem_insert_iff.mp b.val.prop).resolve_left (fun he => b.prop (Subtype.ext he))
+  have hinj : Function.Injective f := by
+    rintro (a | a) (b | b) he <;> dsimp [f] at he
+    · exact congrArg Sum.inl (Subtype.ext he)
+    · exact (hright b (he ▸ a.prop)).elim
+    · exact (hright a (he.symm ▸ b.prop)).elim
+    · exact congrArg Sum.inr (Subtype.ext (Subtype.ext he))
+  have hsurj : Function.Surjective f := by
+    intro v
+    by_cases hv : v ∈ S
+    · exact ⟨Sum.inl ⟨v,hv⟩,rfl⟩
+    · refine ⟨Sum.inr ⟨⟨v,Or.inr hv⟩,?_⟩,rfl⟩
+      intro he
+      have hvx : v = x := congrArg (fun q : ↥(insert x Sᶜ) => q.val) he
+      exact hv (hvx.symm ▸ h.root_mem)
+  refine ⟨Equiv.ofBijective f ⟨hinj,hsurj⟩,?_⟩
+  rintro (a | a) (b | b)
+  · exact Iff.rfl
+  · change G.Adj a.val b.val.val ↔ a = ⟨x,h.root_mem⟩ ∧ G.Adj x b.val.val
+    constructor
+    · intro hab
+      have he : a.val = x := by
+        by_contra he
+        exact hright b (h.closed a.val a.prop he b.val.val hab)
+      exact ⟨Subtype.ext he,he ▸ hab⟩
+    · rintro ⟨rfl,hab⟩; exact hab
+  · change G.Adj a.val.val b.val ↔ b = ⟨x,h.root_mem⟩ ∧ G.Adj a.val.val x
+    constructor
+    · intro hab
+      have he : b.val = x := by
+        by_contra he
+        exact hright a (h.closed b.val b.prop he a.val.val hab.symm)
+      exact ⟨Subtype.ext he,he ▸ hab⟩
+    · rintro ⟨rfl,hab⟩; exact hab
+  · exact Iff.rfl
+
+lemma small_pieces_assembly {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : SmallPieces G) : Assembly G := by
+  classical
+  suffices hh : ∀ n : ℕ, ∀ (W : Type u) [Fintype W] (G : SimpleGraph W),
+      Fintype.card W = n → SmallPieces G → Assembly G from
+    hh _ W G rfl h
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro W _ G hcard h
+    by_cases hConn : G.Connected
+    · by_cases hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)
+      · obtain ⟨S,x,hL,hHConn,hHNC,hHd⟩ := exists_end_piece hConn hd
+        obtain ⟨A,hA,hAs⟩ := h (G.induce S) ⟨Copy.induce G S⟩ hHConn hHNC
+        by_cases hS : S = Set.univ
+        · subst S
+          exact .iso (induceUnivIso G).symm (.side _ A hA hAs)
+        let T : Set W := insert x Sᶜ
+        have hT := hL.complement hS
+        have hsmall : Fintype.card T < n := by
+          obtain ⟨v,hv,hvx⟩ := hL.other
+          have hn : v ∉ T := by simpa only [T,Set.mem_insert_iff,Set.mem_compl_iff,not_or,not_not] using ⟨hvx,hv⟩
+          exact (Fintype.card_subtype_lt (x := v) hn).trans_eq hcard
+        have hJ : Assembly (G.induce T) := ih _ hsmall T (G.induce T) rfl
+          (h.of_contained ⟨Copy.induce G T⟩)
+        have hroot := hT.root_adj hConn
+        exact .iso (lobeWedgeIso hL).symm
+          (.wedgeSmallCore (G.induce S) ⟨x,hL.root_mem⟩ A hA hAs hHd
+            (G.induce T) ⟨x,hT.root_mem⟩ hroot hJ)
+      · push_neg at hd
+        obtain ⟨x,hx⟩ := hd
+        have hsmall : Fintype.card ↥({x}ᶜ : Set W) < n :=
+          (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hcard
+        have hJ : Assembly (G.induce {x}ᶜ) := ih _ hsmall _ _ rfl
+          (h.of_contained ⟨Copy.induce G {x}ᶜ⟩)
+        have hx' : Nat.card ((G.induce Set.univ).neighborSet ⟨x,Set.mem_univ x⟩) ≤ 1 := by
+          rw [Nat.card_congr ((induceUnivIso G).mapNeighborSet ⟨x,Set.mem_univ x⟩)]
+          exact Nat.le_of_lt_succ hx
+        have hp : Erdos713Pruning.PrunesTo G {x}ᶜ := by
+          convert Erdos713Pruning.PrunesTo.delete (.start (G := G)) ⟨x,Set.mem_univ x⟩ hx' using 1
+          ext v
+          simp
+        exact .prunes G _ hp hJ
+    · apply Assembly.components G
+      intro C
+      let f : C.toSimpleGraph.Copy G := ⟨C.toSimpleGraph_hom,Subtype.val_injective⟩
+      have hns : ¬ Function.Surjective (fun v : C => v.val) := by
+        intro hs
+        exact hConn (C.connected_toSimpleGraph.map C.toSimpleGraph_hom hs)
+      have hsmall := (Fintype.card_lt_of_injective_not_surjective
+        (fun v : C => v.val) Subtype.val_injective hns).trans_eq hcard
+      exact ih _ hsmall C C.toSimpleGraph rfl (h.of_contained ⟨f⟩)
+
+lemma rational_of_small_pieces {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : SmallPieces G) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) :=
+  (small_pieces_assembly G h).rational hα hc hAsymptotic
+
+
+lemma induced_small_pieces_assembly {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : InducedSmallPieces G) : Assembly G :=
+  small_pieces_assembly G (induced_small_pieces_iff.mp h)
+
+lemma exists_large_noCut_of_not_assembly {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite) (hG : ¬ Assembly G) :
+    ∃ S : Set W, (G.induce S).Connected ∧ NoCut (G.induce S) ∧
+      (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      ∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A := by
+  classical
+  have hn : ¬ InducedSmallPieces G := fun h => hG (induced_small_pieces_assembly G h)
+  unfold InducedSmallPieces at hn
+  push_neg at hn
+  obtain ⟨S,hConn,hNC,hS⟩ := hn
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc : 8 ≤ Nat.card S := by
+    by_contra hc
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hS A hA)
+  refine ⟨S,hConn,hNC,hSB,hc,hNC.min_degree hConn ?_,?_⟩
+  · simpa only [Fintype.card_eq_nat_card] using (show 3 ≤ Nat.card S by omega)
+  · intro A hA
+    exact hS A hA
+
+
+lemma small_blocks_assembly {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : SmallBlocks G) : Assembly G :=
+  induced_small_pieces_assembly G (small_blocks_iff_induced.mp h)
+
+lemma rational_of_small_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : SmallBlocks G) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) :=
+  (small_blocks_assembly G h).rational hα hc hAsymptotic
+
+lemma assembly_of_block_card_le_seven {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite)
+    (hcard : ∀ S : Set W, IsBlock G S → Nat.card S ≤ 7) : Assembly G := by
+  classical
+  apply small_blocks_assembly G
+  intro S hS
+  exact Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S)
+    (Colorable.of_hom (Copy.induce G S).toHom hB)
+    (by simpa only [Fintype.card_eq_nat_card] using hcard S hS)
+
+lemma exists_large_block_of_not_assembly {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite) (hG : ¬ Assembly G) :
+    ∃ S : Set W, IsBlock G S ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      ∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A := by
+  classical
+  have hn : ¬ SmallBlocks G := fun h => hG (small_blocks_assembly G h)
+  unfold SmallBlocks at hn
+  push_neg at hn
+  obtain ⟨S,hBlock,hS⟩ := hn
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc : 8 ≤ Nat.card S := by
+    by_contra hc
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hS A hA)
+  refine ⟨S,hBlock,hSB,hc,hBlock.noCut.min_degree hBlock.connected ?_,?_⟩
+  · simpa only [Fintype.card_eq_nat_card] using (show 3 ≤ Nat.card S by omega)
+  · intro A hA
+    exact hS A hA
+
+end Erdos713Blocks
+
+/- Compact extraction of the verified even-cycle upper bound and the C10 rate. -/
+
+/- Path-colouring lemmas for an even cycle with a chord. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713EvenCycle
+
+lemma periodic_mod {A : Type*} {c : ℤ → A} {p : ℤ} (hp : Function.Periodic c p) (z : ℤ) :
+    c (z % p) = c z := by
+  rw [Int.emod_def]
+  simpa only [mul_comm] using hp.sub_int_mul_eq (x := z) (z / p)
+
+lemma periodic_eq_on_interval {A : Type*} {f g : ℤ → A} {p : ℤ}
+    (hp : 0 < p) (hf : Function.Periodic f p) (hg : Function.Periodic g p)
+    (h : ∀ i, 0 ≤ i → i < p → f i = g i) : f = g := by
+  funext i
+  rw [← periodic_mod hf i, ← periodic_mod hg i]
+  exact h _ (Int.emod_nonneg _ hp.ne') (Int.emod_lt_of_pos _ hp)
+
+lemma periodic_of_chord_paths {A : Type*} {c : ℤ → A} {l m : ℤ}
+    (hl : 0 < l) (hm : 1 < m) (hper : Function.Periodic c l)
+    (hLong : ∀ a, 0 ≤ a → a < l → c (-a) = c (m + l - 1 - a))
+    (hFirst : ∀ a, 0 ≤ a → a < min m l → c a = c (m + l - 1 - a))
+    (hSecond : ∀ a, 0 ≤ a → a < min m l → c (1 - l + a) = c (m - a)) :
+    Function.Periodic c 2 := by
+  have hNeg : Function.Periodic (fun a => c (-a)) l := by
+    intro a
+    simpa only [neg_add_rev, sub_eq_add_neg, add_comm] using hper.sub_eq (-a)
+  have hLong' : ∀ a, c (-a) = c (m - 1 - a) := by
+    have hh : (fun a => c (-a)) = (fun a => c (m - 1 - a)) := by
+      apply periodic_eq_on_interval hl hNeg (hper.const_sub (m - 1))
+      intro a ha hal
+      have hh := hLong a ha hal
+      convert hh using 1
+      rw [show m + l - 1 - a = (m - 1 - a) + l by ring, hper]
+    exact congrFun hh
+  have hmp : Function.Periodic c (m - 1) := by
+    intro z
+    simpa only [neg_neg, sub_neg_eq_add, add_comm] using (hLong' (-z)).symm
+  let p := min l (m - 1)
+  have hp : 0 < p := by dsimp [p]; omega
+  have hpPer : Function.Periodic c p := by
+    by_cases hh : l ≤ m - 1
+    · simpa only [p, min_eq_left hh] using hper
+    · simpa only [p, min_eq_right (le_of_not_ge hh)] using hmp
+  have hpml : p ≤ min m l := by dsimp [p]; omega
+  have hReflect0 : ∀ z, c z = c (m - 1 - z) := by
+    have hh : c = (fun z => c (m - 1 - z)) := by
+      apply periodic_eq_on_interval hp hpPer (hpPer.const_sub (m - 1))
+      intro a ha hap
+      have hh := hFirst a ha (lt_of_lt_of_le hap hpml)
+      convert hh using 1
+      rw [show m + l - 1 - a = (m - 1 - a) + l by ring, hper]
+    exact congrFun hh
+  have hReflect1 : ∀ z, c (1 + z) = c (m - z) := by
+    have hh : (fun z => c (1 + z)) = (fun z => c (m - z)) := by
+      apply periodic_eq_on_interval hp (hpPer.const_add 1) (hpPer.const_sub m)
+      intro a ha hap
+      have hh := hSecond a ha (lt_of_lt_of_le hap hpml)
+      convert hh using 1
+      rw [show 1 - l + a = (1 + a) - l by ring, hper.sub_eq]
+    exact congrFun hh
+  intro z
+  calc
+    c (z + 2) = c (m - 1 - z) := by
+      convert hReflect1 (z + 1) using 1 <;> congr 1 <;> ring
+    _ = c z := (hReflect0 z).symm
+
+/-- Every simple path of a fixed length has equally coloured endpoints. -/
+def PathMonochromatic {V A : Type*} (G : SimpleGraph V) (c : V → A) (l : ℤ) : Prop :=
+  ∀ p : ℤ → V, Set.InjOn p (Set.Icc 0 l) →
+    (∀ i, 0 ≤ i → i < l → G.Adj (p i) (p (i + 1))) → c (p 0) = c (p l)
+
+lemma eq_of_dvd_of_bounds {n a b : ℤ} (hdiv : n ∣ a - b)
+    (hlo : -n < a - b) (hhi : a - b < n) : a = b := by
+  rcases le_total b a with h | h
+  · have hh := Int.eq_zero_of_dvd_of_nonneg_of_lt (by omega : 0 ≤ a - b) hhi hdiv
+    omega
+  · have hd : n ∣ b - a := by simpa only [neg_sub] using dvd_neg.mpr hdiv
+    have hh := Int.eq_zero_of_dvd_of_nonneg_of_lt (by omega : 0 ≤ b - a)
+      (by omega : b - a < n) hd
+    omega
+
+lemma endpoints_equal_of_positions {V A : Type*} {G : SimpleGraph V} {c : V → A}
+    {l n m : ℤ} (hc : PathMonochromatic G c l) (f : ℤ → V)
+    (hinj : ∀ i j, f i = f j → n ∣ i - j)
+    (hadj : ∀ i, G.Adj (f i) (f (i + 1))) (hchord : G.Adj (f 0) (f m))
+    (p : ℤ → ℤ) (hp : Set.InjOn p (Set.Icc 0 l))
+    (hb : ∀ i ∈ Set.Icc 0 l, ∀ j ∈ Set.Icc 0 l, -n < p i - p j ∧ p i - p j < n)
+    (hs : ∀ i, 0 ≤ i → i < l →
+      p (i + 1) = p i + 1 ∨ p i = p (i + 1) + 1 ∨ p i = 0 ∧ p (i + 1) = m) :
+    c (f (p 0)) = c (f (p l)) := by
+  apply hc (f ∘ p)
+  · intro i hi j hj hij
+    exact hp hi hj (eq_of_dvd_of_bounds (hinj _ _ hij) (hb i hi j hj).1 (hb i hi j hj).2)
+  · intro i hi hil
+    change G.Adj (f (p i)) (f (p (i + 1)))
+    rcases hs i hi hil with h | h | ⟨h, h'⟩
+    · rw [h]; exact hadj _
+    · rw [h]; exact (hadj _).symm
+    · rw [h, h']; exact hchord
+
+lemma two_periodic_of_long_chorded_cycle {V A : Type*} {G : SimpleGraph V} {c : V → A}
+    {l n m : ℤ} (hl : 0 < l) (hm : 1 < m) (hml : m + l ≤ n)
+    (hc : PathMonochromatic G c l) (f : ℤ → V)
+    (hinj : ∀ i j, f i = f j → n ∣ i - j)
+    (hadj : ∀ i, G.Adj (f i) (f (i + 1))) (hchord : G.Adj (f 0) (f m)) :
+    Function.Periodic (c ∘ f) 2 := by
+  have hper : Function.Periodic (c ∘ f) l := by
+    intro z
+    have hh := hc (fun i => f (z + i)) ?_ ?_
+    · simpa only [Function.comp_apply, add_zero] using hh.symm
+    · intro i hi j hj hij
+      dsimp at hij
+      have hd := hinj _ _ hij
+      have hh := eq_of_dvd_of_bounds hd (by rcases hi with ⟨_, _⟩; rcases hj with ⟨_, _⟩; omega)
+        (by rcases hi with ⟨_, _⟩; rcases hj with ⟨_, _⟩; omega)
+      omega
+    · intro i hi hil
+      simpa only [add_assoc] using hadj (z + i)
+  apply periodic_of_chord_paths hl hm hper
+  · intro a ha hal
+    let p : ℤ → ℤ := fun i => if i ≤ a then i - a else m + i - a - 1
+    have hh := endpoints_equal_of_positions hc f hinj hadj hchord p ?_ ?_ ?_
+    · simpa only [Function.comp_apply, p, if_pos ha, if_neg (by omega : ¬l ≤ a), zero_sub, show m + l - a - 1 = m + l - 1 - a by ring] using hh
+    · intro i hi j hj hij
+      dsimp [p] at hij
+      split_ifs at hij <;> omega
+    · intro i hi j hj
+      dsimp [p]
+      rcases hi with ⟨hi0, hil⟩; rcases hj with ⟨hj0, hjl⟩
+      split_ifs <;> constructor <;> omega
+    · intro i hi hil
+      dsimp [p]
+      split_ifs <;> omega
+  · intro a ha hal
+    have ham : a < m := lt_of_lt_of_le hal (min_le_left _ _)
+    have hal' : a < l := lt_of_lt_of_le hal (min_le_right _ _)
+    let p : ℤ → ℤ := fun i => if i ≤ a then a - i else m + i - a - 1
+    have hh := endpoints_equal_of_positions hc f hinj hadj hchord p ?_ ?_ ?_
+    · simpa only [Function.comp_apply, p, if_pos ha, if_neg (by omega : ¬l ≤ a), sub_zero, show m + l - a - 1 = m + l - 1 - a by ring] using hh
+    · intro i hi j hj hij
+      dsimp [p] at hij
+      rcases hi with ⟨hi0, hil⟩; rcases hj with ⟨hj0, hjl⟩
+      split_ifs at hij <;> omega
+    · intro i hi j hj
+      dsimp [p]
+      rcases hi with ⟨hi0, hil⟩; rcases hj with ⟨hj0, hjl⟩
+      split_ifs <;> constructor <;> omega
+    · intro i hi hil
+      dsimp [p]
+      split_ifs <;> omega
+  · intro a ha hal
+    have ham : a < m := lt_of_lt_of_le hal (min_le_left _ _)
+    have hal' : a < l := lt_of_lt_of_le hal (min_le_right _ _)
+    let b : ℤ := l - 1 - a
+    have hb : 0 ≤ b := by dsimp [b]; omega
+    have hbl : b < l := by dsimp [b]; omega
+    let p : ℤ → ℤ := fun i => if i ≤ b then i - b else m - i + b + 1
+    have hh := endpoints_equal_of_positions hc f hinj hadj hchord p ?_ ?_ ?_
+    · have he0 : p 0 = 1 - l + a := by
+        dsimp only [p]
+        rw [if_pos hb]
+        dsimp [b]
+        ring
+      have hel : p l = m - a := by
+        dsimp only [p]
+        rw [if_neg (by omega : ¬l ≤ b)]
+        dsimp [b]
+        ring
+      simpa only [Function.comp_apply, he0, hel] using hh
+    · intro i hi j hj hij
+      dsimp [p] at hij
+      rcases hi with ⟨hi0, hil⟩; rcases hj with ⟨hj0, hjl⟩
+      dsimp [b] at hij
+      split_ifs at hij <;> omega
+    · intro i hi j hj
+      dsimp [p, b]
+      rcases hi with ⟨hi0, hil⟩; rcases hj with ⟨hj0, hjl⟩
+      split_ifs <;> constructor <;> omega
+    · intro i hi hil
+      dsimp [p]
+      split_ifs <;> omega
+
+def cyclicLift {V : Type*} (n : ℕ) (f : ℕ → V) (i : ℤ) : V :=
+  f ((i % (n : ℤ)).toNat)
+
+lemma cyclicLift_nat {V : Type*} {n : ℕ} (f : ℕ → V) {i : ℕ} (hi : i < n) :
+    cyclicLift n f i = f i := by
+  simp only [cyclicLift, Int.emod_eq_of_lt (Int.natCast_nonneg i) (show (i : ℤ) < (n : ℤ) by exact_mod_cast hi),
+    Int.toNat_natCast]
+
+lemma cyclicLift_inj {V : Type*} {n : ℕ} (hn : 0 < n) (f : ℕ → V)
+    (hf : Set.InjOn f (Set.Iio n)) (i j : ℤ) (hij : cyclicLift n f i = cyclicLift n f j) :
+    (n : ℤ) ∣ i - j := by
+  have hn' : 0 < (n : ℤ) := by exact_mod_cast hn
+  have hpos (z : ℤ) : 0 ≤ z % (n : ℤ) := Int.emod_nonneg _ hn'.ne'
+  have hlt (z : ℤ) : z % (n : ℤ) < n := Int.emod_lt_of_pos _ hn'
+  have hIn (z : ℤ) : (z % (n : ℤ)).toNat ∈ Set.Iio n :=
+    (Int.toNat_lt (hpos z)).mpr (hlt z)
+  have hh := hf (hIn i) (hIn j) hij
+  have hh' := congrArg (fun k : ℕ => (k : ℤ)) hh
+  simp only [Int.toNat_of_nonneg (hpos i), Int.toNat_of_nonneg (hpos j)] at hh'
+  exact Int.modEq_iff_dvd.mp hh'.symm
+
+lemma cyclicLift_adj {V : Type*} {G : SimpleGraph V} {n : ℕ} (hn : 2 ≤ n) (f : ℕ → V)
+    (hs : ∀ i, i + 1 < n → G.Adj (f i) (f (i + 1)))
+    (he : G.Adj (f (n - 1)) (f 0)) (z : ℤ) :
+    G.Adj (cyclicLift n f z) (cyclicLift n f (z + 1)) := by
+  have hn' : 0 < (n : ℤ) := by omega
+  have hz0 := Int.emod_nonneg z hn'.ne'
+  have hzn := Int.emod_lt_of_pos z hn'
+  have hStep : (z + 1) % (n : ℤ) = (z % (n : ℤ) + 1) % (n : ℤ) := by
+    rw [Int.add_emod, Int.emod_eq_of_lt (by omega : (0 : ℤ) ≤ 1) (by omega : (1 : ℤ) < n)]
+  dsimp only [cyclicLift]
+  rw [hStep]
+  by_cases hz : z % (n : ℤ) + 1 = n
+  · rw [hz, Int.emod_self, Int.toNat_zero]
+    have hh : (z % (n : ℤ)).toNat = n - 1 := by omega
+    rw [hh]
+    exact he
+  · rw [Int.emod_eq_of_lt (by omega : 0 ≤ z % (n : ℤ) + 1) (by omega)]
+    rw [Int.toNat_add hz0 (by omega)]
+    exact hs _ (by omega)
+
+lemma colours_equal_on_cycle_parity {V A : Type*} {G : SimpleGraph V} {c : V → A}
+    {l n m : ℕ} (hl : 0 < l) (hm : 1 < m) (hml : m + l ≤ n)
+    (hc : PathMonochromatic G c l) (f : ℕ → V) (hf : Set.InjOn f (Set.Iio n))
+    (hs : ∀ i, i + 1 < n → G.Adj (f i) (f (i + 1)))
+    (he : G.Adj (f (n - 1)) (f 0)) (hchord : G.Adj (f 0) (f m))
+    {i j : ℕ} (hi : i < n) (hj : j < n) (hij : i % 2 = j % 2) : c (f i) = c (f j) := by
+  have hper : Function.Periodic (c ∘ cyclicLift n f) 2 := by
+    apply two_periodic_of_long_chorded_cycle (n := (n : ℤ)) (m := (m : ℤ))
+      (by exact_mod_cast hl) (by exact_mod_cast hm)
+      (by exact_mod_cast hml) hc _ (cyclicLift_inj (by omega) f hf)
+      (cyclicLift_adj (by omega) f hs he)
+    simpa only [show (0 : ℤ) = ((0 : ℕ) : ℤ) from rfl,
+      cyclicLift_nat f (show 0 < n by omega), cyclicLift_nat f (show m < n by omega)] using hchord
+  have hi' := periodic_mod hper (i : ℤ)
+  have hj' := periodic_mod hper (j : ℤ)
+  have heq : (i : ℤ) % 2 = (j : ℤ) % 2 := by exact_mod_cast hij
+  rw [heq] at hi'
+  have hh := hi'.symm.trans hj'
+  simpa only [Function.comp_apply, cyclicLift_nat f hi, cyclicLift_nat f hj] using hh
+
+open scoped Classical in
+lemma exists_long_chorded_cycle {V : Type*} [Fintype V] [Nonempty V]
+    (G : SimpleGraph V) (l : ℕ) (hl : 0 < l) (hd : ∀ v, l + 2 ≤ G.degree v) :
+    ∃ (n m : ℕ) (f : ℕ → V), 1 < m ∧ m + l ≤ n ∧ Set.InjOn f (Set.Iio n) ∧
+      (∀ i, i + 1 < n → G.Adj (f i) (f (i + 1))) ∧
+      G.Adj (f (n - 1)) (f 0) ∧ G.Adj (f 0) (f m) := by
+  classical
+  obtain ⟨u, v, p, hp, hmax⟩ := Walk.exists_isPath_forall_isPath_length_le_length G
+  have hNbr {w : V} (hw : G.Adj u w) : w ∈ p.support := by
+    by_contra hh
+    have hpath : (p.cons hw.symm).IsPath := Walk.cons_isPath_iff _ _ |>.mpr ⟨hp, hh⟩
+    have he := hmax w v (p.cons hw.symm) hpath
+    simp only [Walk.length_cons] at he
+    omega
+  let S : Finset ℕ := (Finset.range (p.length + 1)).filter (fun i => G.Adj u (p.getVert i))
+  have hS (i : ℕ) : i ∈ S ↔ i ≤ p.length ∧ G.Adj u (p.getVert i) := by
+    simp only [S, Finset.mem_filter, Finset.mem_range, Nat.lt_succ_iff]
+  have hCard : S.card = G.degree u := by
+    rw [← card_neighborFinset_eq_degree]
+    apply Finset.card_bij (fun i _ => p.getVert i)
+    · intro i hi
+      exact (mem_neighborFinset G u _).mpr ((hS i).mp hi).2
+    · intro i hi j hj hij
+      exact hp.getVert_injOn ((hS i).mp hi).1 ((hS j).mp hj).1 hij
+    · intro w hw
+      obtain ⟨i, hiw, hi⟩ := Walk.mem_support_iff_exists_getVert.mp
+        (hNbr ((mem_neighborFinset G u w).mp hw))
+      exact ⟨i, (hS i).mpr ⟨hi, by simpa only [hiw] using (mem_neighborFinset G u w).mp hw⟩, hiw⟩
+  have hS0 : 0 ∉ S := by
+    intro hh
+    have hbad := ((hS 0).mp hh).2
+    exact G.loopless u (by simpa only [Walk.getVert_zero] using hbad)
+  have hCard' : l + 2 ≤ S.card := by rw [hCard]; exact hd u
+  have hNonempty : S.Nonempty := Finset.card_pos.mp (by omega)
+  let t := S.max' hNonempty
+  have ht : t ∈ S := Finset.max'_mem S hNonempty
+  have htlen : t ≤ p.length := ((hS t).mp ht).1
+  have hErCard : l + 1 ≤ (S.erase 1).card := by
+    have hh : S.card - 1 ≤ (S.erase 1).card := Finset.pred_card_le_card_erase
+    omega
+  have hEr : (S.erase 1).Nonempty := Finset.card_pos.mp (by omega)
+  let m := (S.erase 1).min' hEr
+  have hmMem : m ∈ S.erase 1 := Finset.min'_mem _ hEr
+  have hmS : m ∈ S := Finset.mem_of_mem_erase hmMem
+  have hm1 : m ≠ 1 := (Finset.mem_erase.mp hmMem).1
+  have hm0 : m ≠ 0 := fun hh => hS0 (hh ▸ hmS)
+  have hm : 1 < m := by omega
+  have hSub : S.erase 1 ⊆ Finset.Icc m t := by
+    intro i hi
+    exact Finset.mem_Icc.mpr ⟨Finset.min'_le _ i hi,
+      Finset.le_max' S i (Finset.mem_of_mem_erase hi)⟩
+  have hGap := Finset.card_le_card hSub
+  rw [Nat.card_Icc] at hGap
+  have hml : m + l ≤ t + 1 := by omega
+  refine ⟨t + 1, m, p.getVert, hm, hml, ?_, ?_, ?_, ?_⟩
+  · intro i hi j hj hij
+    exact hp.getVert_injOn (x₁ := i) (x₂ := j)
+      (by change i ≤ p.length; change i < t + 1 at hi; omega)
+      (by change j ≤ p.length; change j < t + 1 at hj; omega) hij
+  · intro i hi
+    exact p.adj_getVert_succ (by omega)
+  · simpa only [Nat.add_sub_cancel, Walk.getVert_zero] using ((hS t).mp ht).2.symm
+  · simpa only [Walk.getVert_zero] using ((hS m).mp hmS).2
+
+open Fin.NatCast
+lemma colours_equal_on_fin_cycle {A : Type*} {n m l : ℕ} [NeZero n]
+    (D : SimpleGraph (Fin n)) (c : Fin n → A) (hl : 0 < l) (hm : 1 < m) (hml : m + l ≤ n)
+    (hc : PathMonochromatic D c l) (hs : ∀ x, D.Adj x (x + 1)) (he : D.Adj 0 (↑m : Fin n))
+    {x y : Fin n} (hxy : x.val % 2 = y.val % 2) : c x = c y := by
+  have hNat : Set.InjOn (fun i : ℕ => (↑i : Fin n)) (Set.Iio n) := by
+    intro i hi j hj hij
+    have hh := congrArg Fin.val hij
+    simpa only [Fin.val_natCast, Nat.mod_eq_of_lt hi, Nat.mod_eq_of_lt hj] using hh
+  have hStep (i : ℕ) (_hi : i + 1 < n) : D.Adj (↑i : Fin n) (↑(i + 1) : Fin n) := by
+    simpa only [Nat.cast_add, Nat.cast_one] using hs (↑i : Fin n)
+  have hEnd : D.Adj (↑(n - 1) : Fin n) (0 : Fin n) := by
+    have hh := hs (↑(n - 1) : Fin n)
+    have heq : (↑(n - 1) : Fin n) + 1 = 0 := by
+      apply Fin.ext
+      simp only [Fin.val_add, Fin.val_natCast, Fin.val_one', Fin.val_zero]
+      rw [Nat.mod_eq_of_lt (by omega : n - 1 < n), Nat.mod_eq_of_lt (by omega : 1 < n),
+        Nat.sub_add_cancel (by omega : 1 ≤ n), Nat.mod_self]
+    rwa [heq] at hh
+  have hh := colours_equal_on_cycle_parity hl hm hml hc (fun i : ℕ => (↑i : Fin n)) hNat
+    hStep hEnd he x.isLt y.isLt hxy
+  simpa only [Fin.cast_val_eq_self] using hh
+
+
+end Erdos713EvenCycle
+
+/- Breadth-first ancestry and the construction of cycles from layer paths. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713BreadthFirst
+
+lemma contained_of_cyclic_chain {V : Type*} (G : SimpleGraph V) {n : ℕ} (hn : 3 ≤ n)
+    (f : ℕ → V) (hf : Set.InjOn f (Set.Iio n))
+    (hs : ∀ i, i + 1 < n → G.Adj (f i) (f (i + 1)))
+    (he : G.Adj (f (n - 1)) (f 0)) : cycleGraph n ⊑ G := by
+  obtain ⟨k, rfl⟩ : ∃ k, n = k + 2 := ⟨n - 2, by omega⟩
+  let g : Fin (k + 2) → V := fun i => f i.val
+  have hStep (i : Fin (k + 2)) : G.Adj (g i) (g (i + 1)) := by
+    by_cases hi : i.val + 1 < k + 2
+    · have hh : (i + 1).val = i.val + 1 := by
+        simp only [Fin.val_add, Fin.val_one, Nat.mod_eq_of_lt hi]
+      simpa only [g, hh] using hs i.val hi
+    · have hi' : i.val = k + 1 := by omega
+      have hh : (i + 1).val = 0 := by simp [Fin.val_add, Fin.val_one, hi']
+      simpa only [g, hi', hh, Nat.add_sub_cancel] using he
+  refine ⟨⟨⟨g, ?_⟩, ?_⟩⟩
+  · intro u v huv
+    rcases cycleGraph_adj.mp huv with h | h
+    · rw [sub_eq_iff_eq_add'.mp h]
+      exact (hStep v).symm
+    · rw [sub_eq_iff_eq_add'.mp h]
+      exact hStep u
+  · intro i j hij
+    apply Fin.ext
+    exact hf i.isLt j.isLt hij
+
+lemma cycle_of_two_paths {V : Type*} (G : SimpleGraph V) {l m : ℕ}
+    (hl : 0 < l) (hm : 0 < m) (hn : 3 ≤ l + m) (p q : ℕ → V)
+    (hp : Set.InjOn p (Set.Iic l)) (hq : Set.InjOn q (Set.Iic m))
+    (hs : ∀ i, i < l → G.Adj (p i) (p (i + 1)))
+    (ht : ∀ i, i < m → G.Adj (q i) (q (i + 1)))
+    (hStart : p 0 = q m) (hEnd : p l = q 0)
+    (hCross : ∀ i ≤ l, ∀ j ≤ m, p i = q j → (i = 0 ∧ j = m) ∨ (i = l ∧ j = 0)) :
+    cycleGraph (l + m) ⊑ G := by
+  let f : ℕ → V := fun i => if i ≤ l then p i else q (i - l)
+  apply contained_of_cyclic_chain G hn f
+  · intro i hi j hj hij
+    change i < l + m at hi
+    change j < l + m at hj
+    dsimp [f] at hij
+    split_ifs at hij with hi' hj' hj'
+    · exact hp hi' hj' hij
+    · have hh := hCross i hi' (j - l) (by omega) hij
+      omega
+    · have hh := hCross j hj' (i - l) (by omega) hij.symm
+      omega
+    · have hh := hq (by change i - l ≤ m; omega) (by change j - l ≤ m; omega) hij
+      omega
+  · intro i hi
+    dsimp only [f]
+    by_cases hil : i < l
+    · rw [if_pos (by omega), if_pos (by omega)]
+      exact hs i hil
+    by_cases he : i = l
+    · subst i
+      rw [if_pos le_rfl, if_neg (by omega), hEnd]
+      simpa using ht 0 hm
+    · rw [if_neg (by omega), if_neg (by omega)]
+      have hh := ht (i - l) (by omega)
+      simpa only [show i + 1 - l = i - l + 1 by omega] using hh
+  · have hlast : l ≤ l + m - 1 := by omega
+    dsimp only [f]
+    rw [if_pos (by omega : 0 ≤ l)]
+    by_cases hm1 : m = 1
+    · subst m
+      simp only [Nat.add_sub_cancel, if_pos le_rfl]
+      rw [hEnd, hStart]
+      exact ht 0 (by omega)
+    · rw [if_neg (by omega : ¬l + m - 1 ≤ l), hStart]
+      have hh := ht (m - 1) (by omega)
+      simpa only [show l + m - 1 - l = m - 1 by omega, Nat.sub_add_cancel hm] using hh
+
+structure Layering {V : Type*} (G : SimpleGraph V) (root : V) where
+  level : V → ℕ
+  zero_iff : ∀ v, level v = 0 ↔ v = root
+  parent : V → V
+  parent_adj : ∀ v, v ≠ root → G.Adj v (parent v)
+  parent_level : ∀ v, v ≠ root → level (parent v) + 1 = level v
+
+namespace Layering
+variable {V : Type*} {G : SimpleGraph V} {root : V} (L : Layering G root)
+
+lemma level_iterate (v : V) (n : ℕ) (hn : n ≤ L.level v) :
+    L.level (L.parent^[n] v) = L.level v - n := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    have hi := ih (by omega)
+    have hv : L.parent^[n] v ≠ root := by
+      intro hh
+      have hz : L.level (L.parent^[n] v) = 0 := (L.zero_iff _).mpr hh
+      omega
+    have hh := L.parent_level _ hv
+    rw [Function.iterate_succ_apply']
+    omega
+
+def ancestor (v : V) (j : ℕ) : V := L.parent^[L.level v - j] v
+
+lemma ancestor_level (v : V) {j : ℕ} (hj : j ≤ L.level v) :
+    L.level (L.ancestor v j) = j := by
+  dsimp [ancestor]
+  rw [L.level_iterate _ _ (Nat.sub_le _ _)]
+  omega
+
+lemma ancestor_top (v : V) : L.ancestor v (L.level v) = v := by simp [ancestor]
+
+lemma ancestor_zero (v : V) : L.ancestor v 0 = root :=
+  (L.zero_iff _).mp (L.ancestor_level v (Nat.zero_le _))
+
+lemma ancestor_parent (v : V) {j : ℕ} (hj : j < L.level v) :
+    L.parent (L.ancestor v (j + 1)) = L.ancestor v j := by
+  dsimp [ancestor]
+  rw [← Function.iterate_succ_apply' (f := L.parent) (L.level v - (j + 1)) v]
+  congr 1
+  omega
+
+lemma ancestor_adj (v : V) {j : ℕ} (hj : j < L.level v) :
+    G.Adj (L.ancestor v j) (L.ancestor v (j + 1)) := by
+  have hv : L.ancestor v (j + 1) ≠ root := by
+    intro hh
+    have hz := (L.zero_iff _).mpr hh
+    rw [L.ancestor_level v (by omega)] at hz
+    omega
+  have hh := (L.parent_adj _ hv).symm
+  rwa [L.ancestor_parent v hj] at hh
+
+lemma ancestor_ancestor (v : V) {i j : ℕ} (hij : i ≤ j) (hj : j ≤ L.level v) :
+    L.ancestor (L.ancestor v j) i = L.ancestor v i := by
+  dsimp only [ancestor]
+  rw [L.level_iterate _ _ (Nat.sub_le _ _)]
+  rw [← Function.iterate_add_apply]
+  congr 1
+  omega
+
+lemma ancestor_coalesce {v w : V} {i j : ℕ} (hij : i ≤ j)
+    (hv : j ≤ L.level v) (hw : j ≤ L.level w)
+    (he : L.ancestor v j = L.ancestor w j) : L.ancestor v i = L.ancestor w i := by
+  rw [← L.ancestor_ancestor v hij hv, he, L.ancestor_ancestor w hij hw]
+
+end Layering
+
+lemma exists_dist_predecessor {V : Type*} (G : SimpleGraph V) (hconn : G.Connected)
+    (root v : V) (hv : v ≠ root) :
+    ∃ w, G.Adj v w ∧ G.dist root w + 1 = G.dist root v := by
+  obtain ⟨p, hp⟩ := hconn.exists_walk_length_eq_dist v root
+  cases p with
+  | nil => exact (hv rfl).elim
+  | @cons v w root h p =>
+    refine ⟨w, h, ?_⟩
+    have hlo := G.dist_le p
+    have hhi := hconn.dist_triangle (u := v) (v := w) (w := root)
+    rw [dist_eq_one_iff_adj.mpr h] at hhi
+    simp only [Walk.length_cons] at hp
+    rw [dist_comm (u := root) (v := w), dist_comm (u := root) (v := v)]
+    omega
+
+noncomputable def Layering.ofConnected {V : Type*} (G : SimpleGraph V)
+    (hconn : G.Connected) (root : V) : Layering G root := by
+  classical
+  let p : V → V := fun v => if h : v = root then root
+    else (exists_dist_predecessor G hconn root v h).choose
+  refine ⟨G.dist root, fun v => hconn.dist_eq_zero_iff.trans eq_comm, p, ?_, ?_⟩
+  · intro v hv
+    dsimp only [p]
+    rw [dif_neg hv]
+    exact (exists_dist_predecessor G hconn root v hv).choose_spec.1
+  · intro v hv
+    dsimp only [p]
+    rw [dif_neg hv]
+    exact (exists_dist_predecessor G hconn root v hv).choose_spec.2
+
+lemma colouring_path_parity {V : Type*} {G : SimpleGraph V} (χ : G.Coloring (Fin 2))
+    {u v : V} (p : G.Walk u v) : ((χ u).val + p.length) % 2 = (χ v).val := by
+  induction p with
+  | nil => simpa using Nat.mod_eq_of_lt (χ _).isLt
+  | @cons u w v h p ih =>
+    have hu := (χ u).isLt
+    have hw := (χ w).isLt
+    have hne : (χ u).val ≠ (χ w).val := fun hh => χ.valid h (Fin.ext hh)
+    simp only [Walk.length_cons]
+    omega
+
+lemma adj_dist_diff_one {V : Type*} {G : SimpleGraph V} (hconn : G.Connected)
+    (hBip : G.IsBipartite) (root : V) {u v : V} (huv : G.Adj u v) :
+    G.dist root u + 1 = G.dist root v ∨ G.dist root v + 1 = G.dist root u := by
+  obtain ⟨χ⟩ := hBip
+  have hNe : G.dist root u ≠ G.dist root v := by
+    intro hh
+    obtain ⟨p, hp⟩ := hconn.exists_walk_length_eq_dist root u
+    obtain ⟨q, hq⟩ := hconn.exists_walk_length_eq_dist root v
+    have hc1 := colouring_path_parity χ p
+    have hc2 := colouring_path_parity χ q
+    rw [hp, hh] at hc1
+    rw [hq] at hc2
+    exact χ.valid huv (Fin.ext (hc1.symm.trans hc2))
+  have hh := huv.diff_dist_adj (u := root)
+  omega
+
+lemma Layering.path_below {V : Type*} {G : SimpleGraph V} {root : V}
+    (L : Layering G root) {a b : V} {i j : ℕ} (ha : L.level a = i) (hb : L.level b = i)
+    (hj : j < i) (hc : L.ancestor a j = L.ancestor b j)
+    (hne : L.ancestor a (j + 1) ≠ L.ancestor b (j + 1)) :
+    ∃ q : ℕ → V, q 0 = b ∧ q (2 * (i - j)) = a ∧
+      Set.InjOn q (Set.Iic (2 * (i - j))) ∧
+      (∀ t, t < 2 * (i - j) → G.Adj (q t) (q (t + 1))) ∧
+      (∀ t, 0 < t → t < 2 * (i - j) → L.level (q t) < i) := by
+  let d := i - j
+  have hd : 0 < d := by dsimp [d]; omega
+  have hid : j + d = i := by dsimp [d]; omega
+  let q : ℕ → V := fun t => if t ≤ d then L.ancestor b (i - t)
+    else L.ancestor a (j + (t - d))
+  have hCross (t s : ℕ) (ht : t ≤ d) (hs : d < s) (hs' : s ≤ 2 * d) :
+      L.ancestor b (i - t) ≠ L.ancestor a (j + (s - d)) := by
+    intro he
+    have hEq := congrArg L.level he
+    rw [L.ancestor_level b (by omega), L.ancestor_level a (by omega)] at hEq
+    have hr : j + 1 ≤ i - t := by omega
+    rw [← hEq] at he
+    have hh := L.ancestor_coalesce hr (by omega : i - t ≤ L.level b)
+      (by omega : i - t ≤ L.level a) he
+    exact hne hh.symm
+  refine ⟨q, ?_, ?_, ?_, ?_, ?_⟩
+  · dsimp only [q]
+    rw [if_pos (Nat.zero_le _), Nat.sub_zero, ← hb, L.ancestor_top]
+  · dsimp only [q]
+    rw [if_neg (by omega : ¬2 * (i - j) ≤ d)]
+    have he : j + (2 * (i - j) - d) = i := by dsimp [d]; omega
+    rw [he, ← ha, L.ancestor_top]
+  · intro t ht s hs he
+    change t ≤ 2 * (i - j) at ht
+    change s ≤ 2 * (i - j) at hs
+    change t ≤ 2 * d at ht
+    change s ≤ 2 * d at hs
+    dsimp only [q] at he
+    split_ifs at he with ht' hs' hs'
+    · have hh := congrArg L.level he
+      rw [L.ancestor_level b (by omega), L.ancestor_level b (by omega)] at hh
+      omega
+    · exact (hCross t s ht' (by omega) hs he).elim
+    · exact (hCross s t hs' (by omega) ht he.symm).elim
+    · have hh := congrArg L.level he
+      rw [L.ancestor_level a (by omega), L.ancestor_level a (by omega)] at hh
+      omega
+  · intro t ht
+    change t < 2 * d at ht
+    dsimp only [q]
+    by_cases ht' : t < d
+    · rw [if_pos (by omega), if_pos (by omega)]
+      have hh := (L.ancestor_adj b (j := i - (t + 1)) (by omega)).symm
+      simpa only [show i - (t + 1) + 1 = i - t by omega] using hh
+    by_cases htd : t = d
+    · subst t
+      rw [if_pos le_rfl, if_neg (by omega)]
+      have hleft : i - d = j := by omega
+      have hright : j + (d + 1 - d) = j + 1 := by omega
+      rw [hleft, hright, ← hc]
+      exact L.ancestor_adj a (by omega)
+    · rw [if_neg (by omega), if_neg (by omega)]
+      have hh := L.ancestor_adj a (j := j + (t - d)) (by omega)
+      simpa only [show j + (t + 1 - d) = j + (t - d) + 1 by omega] using hh
+  · intro t ht ht'
+    change t < 2 * d at ht'
+    dsimp only [q]
+    split_ifs with htd
+    · rw [L.ancestor_level b (by omega)]
+      omega
+    · rw [L.ancestor_level a (by omega)]
+      omega
+
+lemma Layering.cycle_of_layer_path {V : Type*} {G : SimpleGraph V} {root : V}
+    (L : Layering G root) {i j l : ℕ} (hj : j < i) (hl : 0 < l)
+    (hn : 3 ≤ l + 2 * (i - j)) (p : ℕ → V)
+    (hp : Set.InjOn p (Set.Iic l)) (hs : ∀ t, t < l → G.Adj (p t) (p (t + 1)))
+    (hlevels : ∀ t ≤ l, i ≤ L.level (p t))
+    (hstart : L.level (p 0) = i) (hend : L.level (p l) = i)
+    (hc : L.ancestor (p 0) j = L.ancestor (p l) j)
+    (hne : L.ancestor (p 0) (j + 1) ≠ L.ancestor (p l) (j + 1)) :
+    cycleGraph (l + 2 * (i - j)) ⊑ G := by
+  obtain ⟨q, hq0, hqEnd, hqInj, hqAdj, hqLev⟩ := L.path_below hstart hend hj hc hne
+  apply cycle_of_two_paths G hl (by omega) hn p q hp hqInj hs hqAdj hqEnd.symm hq0.symm
+  intro t ht s hs he
+  by_cases hs0 : s = 0
+  · subst s
+    rw [hq0] at he
+    exact Or.inr ⟨hp ht (show l ∈ Set.Iic l from Nat.le_refl l) he, rfl⟩
+  by_cases hsEnd : s = 2 * (i - j)
+  · subst s
+    rw [hqEnd] at he
+    exact Or.inl ⟨hp ht (show 0 ∈ Set.Iic l from Nat.zero_le _) he, rfl⟩
+  have hh := hqLev s (by omega) (by omega)
+  rw [← he] at hh
+  exact (not_lt_of_ge (hlevels t ht) hh).elim
+
+lemma colouring_chain_parity {V : Type*} {G : SimpleGraph V} (χ : G.Coloring (Fin 2))
+    (p : ℕ → V) (l : ℕ) (hs : ∀ t, t < l → G.Adj (p t) (p (t + 1))) :
+    ((χ (p 0)).val + l) % 2 = (χ (p l)).val := by
+  induction l with
+  | zero => simpa using Nat.mod_eq_of_lt (χ (p 0)).isLt
+  | succ l ih =>
+    have hh := ih (fun t ht => hs t (by omega))
+    have hne : (χ (p l)).val ≠ (χ (p (l + 1))).val :=
+      fun he => χ.valid (hs l (by omega)) (Fin.ext he)
+    have h0 := (χ (p 0)).isLt
+    have h1 := (χ (p l)).isLt
+    have h2 := (χ (p (l + 1))).isLt
+    omega
+
+lemma pullback_cycle_step {V : Type*} (G : SimpleGraph V) {n : ℕ} [NeZero n]
+    (hn : 2 ≤ n) (f : ℕ → V) (hs : ∀ i, i + 1 < n → G.Adj (f i) (f (i + 1)))
+    (he : G.Adj (f (n - 1)) (f 0)) :
+    ∀ x : Fin n, (G.comap (fun x : Fin n => f x.val)).Adj x (x + 1) := by
+  intro x
+  change G.Adj (f x.val) (f (x + 1).val)
+  by_cases hx : x.val + 1 < n
+  · have hh : (x + 1).val = x.val + 1 := by
+      simp only [Fin.val_add, Fin.val_one', Nat.mod_eq_of_lt (by omega : 1 < n),
+        Nat.mod_eq_of_lt hx]
+    rw [hh]
+    exact hs _ hx
+  · have hx' : x.val = n - 1 := by omega
+    have hh : (x + 1).val = 0 := by
+      simp only [Fin.val_add, Fin.val_one', Nat.mod_eq_of_lt (by omega : 1 < n), hx']
+      rw [Nat.sub_add_cancel (by omega : 1 ≤ n), Nat.mod_self]
+    rw [hx', hh]
+    exact he
+
+open scoped Classical in
+noncomputable def levelColouring {V : Type*} {G K : SimpleGraph V} {root : V}
+    (L : Layering G root) (i : ℕ)
+    (hK : ∀ u v, K.Adj u v →
+      (L.level u = i ∧ L.level v = i + 1) ∨ (L.level u = i + 1 ∧ L.level v = i)) :
+    K.Coloring (Fin 2) where
+  toFun v := if L.level v = i then 0 else 1
+  map_rel' := by
+    intro u v huv
+    change (if L.level u = i then (0 : Fin 2) else 1) ≠
+      (if L.level v = i then (0 : Fin 2) else 1)
+    rcases hK u v huv with ⟨hu, hv⟩ | ⟨hu, hv⟩ <;> simp [hu, hv]
+
+open Fin.NatCast
+
+lemma Layering.ancestors_equal_on_chorded_cycle {V : Type*} {G : SimpleGraph V} {root : V}
+    (L : Layering G root) {k i n m : ℕ} [NeZero n] (hk : 2 ≤ k) (hi : i < k)
+    (hm : 1 < m) (hLong : m + (2 * k - 2) ≤ n)
+    (D : SimpleGraph (Fin n)) (e : Fin n → V) (he : Function.Injective e)
+    (hMap : ∀ x y, D.Adj x y → G.Adj (e x) (e y))
+    (hLevel : ∀ x y, D.Adj x y →
+      (L.level (e x) = i ∧ L.level (e y) = i + 1) ∨
+      (L.level (e x) = i + 1 ∧ L.level (e y) = i))
+    (hStep : ∀ x, D.Adj x (x + 1)) (hChord : D.Adj 0 (m : Fin n))
+    (hFree : (cycleGraph (2 * k)).Free G) :
+    ∀ j ≤ i, ∀ x y, L.level (e x) = i → L.level (e y) = i →
+      L.ancestor (e x) j = L.ancestor (e y) j := by
+  classical
+  let χ : D.Coloring (Fin 2) :=
+    { toFun := fun x => if L.level (e x) = i then 0 else 1
+      map_rel' := by
+        intro x y hxy
+        change (if L.level (e x) = i then (0 : Fin 2) else 1) ≠
+          (if L.level (e y) = i then (0 : Fin 2) else 1)
+        rcases hLevel x y hxy with ⟨hx, hy⟩ | ⟨hx, hy⟩ <;> simp [hx, hy] }
+  have hχ (x : Fin n) : χ x = (if L.level (e x) = i then 0 else 1) := rfl
+  have hRange (x : Fin n) : L.level (e x) = i ∨ L.level (e x) = i + 1 := by
+    rcases hLevel x (x + 1) (hStep x) with h | h
+    · exact Or.inl h.1
+    · exact Or.inr h.1
+  have hFormula (x : Fin n) : ((χ 0).val + x.val) % 2 = (χ x).val := by
+    have hh := colouring_chain_parity χ (fun t : ℕ => (t : Fin n)) x.val
+      (fun t _ => by simpa only [Nat.cast_add, Nat.cast_one] using hStep (t : Fin n))
+    simpa only [Nat.cast_zero, Fin.cast_val_eq_self] using hh
+  have hParity (x y : Fin n) (hx : L.level (e x) = i) (hy : L.level (e y) = i) :
+      x.val % 2 = y.val % 2 := by
+    have hhx := hFormula x
+    have hhy := hFormula y
+    have hχx : χ x = 0 := by rw [hχ, if_pos hx]
+    have hχy : χ y = 0 := by rw [hχ, if_pos hy]
+    rw [hχx] at hhx
+    rw [hχy] at hhy
+    have hh0 := (χ 0).isLt
+    simp only [Fin.val_zero] at hhx hhy
+    omega
+  intro j
+  induction j with
+  | zero => intro _ x y _ _; rw [L.ancestor_zero, L.ancestor_zero]
+  | succ j ih =>
+    intro hj x y hx hy
+    let l := 2 * (k - i + j)
+    have hl : 0 < l := by dsimp [l]; omega
+    have hll : l ≤ 2 * k - 2 := by dsimp [l]; omega
+    have hj' : j < i := by omega
+    have hnEq : l + 2 * (i - j) = 2 * k := by dsimp [l]; omega
+    let c : Fin n → Option V := fun z => if L.level (e z) = i
+      then some (L.ancestor (e z) (j + 1)) else none
+    have hMono : Erdos713EvenCycle.PathMonochromatic D c l := by
+      intro p hp hAdj
+      have hSame : χ (p 0) = χ (p (l : ℤ)) := by
+        have hh := colouring_chain_parity χ (fun t : ℕ => p (t : ℤ)) l (by
+          intro t ht
+          simpa only [Nat.cast_add, Nat.cast_one] using hAdj (t : ℤ)
+            (Int.natCast_nonneg t) (by exact_mod_cast ht))
+        simp only [Nat.cast_zero] at hh
+        have hc0 := (χ (p 0)).isLt
+        have hEven : l % 2 = 0 := by dsimp [l]; omega
+        apply Fin.ext
+        omega
+      by_cases ha : L.level (e (p 0)) = i
+      · have hb : L.level (e (p (l : ℤ))) = i := by
+          by_contra hb
+          have hχa : χ (p 0) = 0 := by rw [hχ, if_pos ha]
+          have hχb : χ (p (l : ℤ)) = 1 := by rw [hχ, if_neg hb]
+          rw [hχa, hχb] at hSame
+          exact (by decide : (0 : Fin 2) ≠ 1) hSame
+        have hAnc : L.ancestor (e (p 0)) (j + 1) = L.ancestor (e (p (l : ℤ))) (j + 1) := by
+          by_contra hne
+          have hCycle := L.cycle_of_layer_path hj' hl (by omega : 3 ≤ l + 2 * (i - j))
+            (fun t : ℕ => e (p (t : ℤ))) ?_ ?_ ?_ ha hb (ih (by omega) _ _ ha hb) hne
+          · rw [hnEq] at hCycle
+            exact hFree hCycle
+          · intro t ht s hs hEq
+            have hh := hp (show (t : ℤ) ∈ Set.Icc 0 (l : ℤ) from
+                ⟨Int.natCast_nonneg t, by exact_mod_cast ht⟩)
+              (show (s : ℤ) ∈ Set.Icc 0 (l : ℤ) from
+                ⟨Int.natCast_nonneg s, by exact_mod_cast hs⟩) (he hEq)
+            exact_mod_cast hh
+          · intro t ht
+            apply hMap
+            simpa only [Nat.cast_add, Nat.cast_one] using hAdj (t : ℤ)
+              (Int.natCast_nonneg t) (by exact_mod_cast ht)
+          · intro t _
+            change i ≤ L.level (e (p (t : ℤ)))
+            rcases hRange (p (t : ℤ)) with h | h <;> omega
+        simp only [c, if_pos ha, if_pos hb, hAnc]
+      · have hb : L.level (e (p (l : ℤ))) ≠ i := by
+          intro hb
+          have hχa : χ (p 0) = 1 := by rw [hχ, if_neg ha]
+          have hχb : χ (p (l : ℤ)) = 0 := by rw [hχ, if_pos hb]
+          rw [hχa, hχb] at hSame
+          exact (by decide : (1 : Fin 2) ≠ 0) hSame
+        simp only [c, if_neg ha, if_neg hb]
+    have hh := Erdos713EvenCycle.colours_equal_on_fin_cycle D c hl hm (by omega)
+      hMono hStep hChord (hParity x y hx hy)
+    simpa only [c, if_pos hx, if_pos hy, Option.some.injEq] using hh
+
+open scoped Classical in
+lemma Layering.no_dense_layer {V W : Type*} [Fintype W] [Nonempty W]
+    {G : SimpleGraph V} {root : V} (L : Layering G root) {k i : ℕ} (hk : 2 ≤ k) (hi : i < k)
+    (K : SimpleGraph W) (e : W → V) (he : Function.Injective e)
+    (hMap : ∀ x y, K.Adj x y → G.Adj (e x) (e y))
+    (hLevel : ∀ x y, K.Adj x y →
+      (L.level (e x) = i ∧ L.level (e y) = i + 1) ∨
+      (L.level (e x) = i + 1 ∧ L.level (e y) = i))
+    (hFree : (cycleGraph (2 * k)).Free G) (hDeg : ∀ x, 2 * k ≤ K.degree x) : False := by
+  classical
+  obtain ⟨n, m, f, hm, hLong, hf, hs, heEnd, heChord⟩ :=
+    Erdos713EvenCycle.exists_long_chorded_cycle K (2 * k - 2) (by omega)
+      (fun x => by have hh := hDeg x; omega)
+  have hn : 4 ≤ n := by omega
+  letI : NeZero n := ⟨by omega⟩
+  let D := K.comap (fun x : Fin n => f x.val)
+  let g : Fin n → V := fun x => e (f x.val)
+  have hg : Function.Injective g := by
+    intro x y hxy
+    exact Fin.ext (hf x.isLt y.isLt (he hxy))
+  have hDMap (x y : Fin n) (hxy : D.Adj x y) : G.Adj (g x) (g y) := hMap _ _ hxy
+  have hDLevel (x y : Fin n) (hxy : D.Adj x y) :
+      (L.level (g x) = i ∧ L.level (g y) = i + 1) ∨
+      (L.level (g x) = i + 1 ∧ L.level (g y) = i) := hLevel _ _ hxy
+  have hDStep : ∀ x, D.Adj x (x + 1) := pullback_cycle_step K (by omega) f hs heEnd
+  have hDChord : D.Adj 0 (m : Fin n) := by
+    change K.Adj (f (0 : Fin n).val) (f (m : Fin n).val)
+    simpa only [Fin.val_zero, Fin.val_natCast, Nat.mod_eq_of_lt (by omega : m < n)] using heChord
+  have hAnc := L.ancestors_equal_on_chorded_cycle hk hi hm hLong D g hg hDMap hDLevel
+    hDStep hDChord hFree
+  have hUnique (x y : Fin n) (hx : L.level (g x) = i) (hy : L.level (g y) = i) : x = y := by
+    have hh := hAnc i (Nat.le_refl i) x y hx hy
+    have htx : L.ancestor (g x) i = g x := by rw [← hx, L.ancestor_top]
+    have hty : L.ancestor (g y) i = g y := by rw [← hy, L.ancestor_top]
+    rw [htx, hty] at hh
+    exact hg hh
+  have h01 := hLevel (f 0) (f 1) (hs 0 (by omega))
+  have h12 := hLevel (f 1) (f 2) (hs 1 (by omega))
+  have h23 := hLevel (f 2) (f 3) (hs 2 (by omega))
+  rcases h01 with ⟨h0, h1⟩ | ⟨h0, h1⟩
+  · have h2 : L.level (e (f 2)) = i := by omega
+    have hh := hUnique ⟨0, by omega⟩ ⟨2, by omega⟩ h0 h2
+    have hbad := congrArg Fin.val hh
+    norm_num at hbad
+  · have h3 : L.level (e (f 3)) = i := by omega
+    have hh := hUnique ⟨1, by omega⟩ ⟨3, by omega⟩ h1 h3
+    have hbad := congrArg Fin.val hh
+    norm_num at hbad
+
+open scoped Classical in
+lemma Layering.layer_edge_bound {V W : Type*} [Fintype W]
+    {G : SimpleGraph V} {root : V} (L : Layering G root) {k i : ℕ} (hk : 2 ≤ k) (hi : i < k)
+    (K : SimpleGraph W) (e : W → V) (he : Function.Injective e)
+    (hMap : ∀ x y, K.Adj x y → G.Adj (e x) (e y))
+    (hLevel : ∀ x y, K.Adj x y →
+      (L.level (e x) = i ∧ L.level (e y) = i + 1) ∨
+      (L.level (e x) = i + 1 ∧ L.level (e y) = i))
+    (hFree : (cycleGraph (2 * k)).Free G) : K.edgeFinset.card ≤ 2 * k * Fintype.card W := by
+  classical
+  obtain ⟨Q, hQK, hDeg, hBound⟩ := Erdos713Leaf.exists_pruned K (2 * k)
+  have hQ : Q = ⊥ := by
+    by_contra hQ
+    obtain ⟨x, y, hxy⟩ := ne_bot_iff_exists_adj.mp hQ
+    letI : Nonempty Q.support := ⟨⟨x, y, hxy⟩⟩
+    refine L.no_dense_layer hk hi (Q.induce Q.support) (e ∘ Subtype.val)
+      (he.comp Subtype.val_injective) ?_ ?_ hFree ?_
+    · intro u v huv
+      exact hMap _ _ (hQK huv)
+    · intro u v huv
+      exact hLevel _ _ (hQK huv)
+    · intro u
+      rw [Q.degree_induce_support]
+      rcases hDeg u.val with hz | hd
+      · have hp := (Q.degree_pos_iff_mem_support u.val).mpr u.prop
+        rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hz
+        omega
+      · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd
+  rw [hQ] at hBound
+  simpa only [edgeSet_bot, Nat.card_eq_fintype_card, Fintype.card_ofIsEmpty, zero_add,
+    ← edgeFinset_card] using hBound
+
+namespace Layering
+open Finset
+variable {V : Type*} [Fintype V] {G : SimpleGraph V} {root : V} (L : Layering G root)
+
+noncomputable def levelFinset (i : ℕ) : Finset V := by
+  classical
+  exact univ.filter (fun v => L.level v = i)
+
+@[simp] lemma mem_levelFinset (v : V) (i : ℕ) : v ∈ L.levelFinset i ↔ L.level v = i := by
+  classical
+  simp [levelFinset]
+
+lemma levelFinset_disjoint {i j : ℕ} (hij : i ≠ j) :
+    Disjoint (L.levelFinset i) (L.levelFinset j) := by
+  classical
+  apply Finset.disjoint_left.mpr
+  intro v hv hv'
+  exact hij ((L.mem_levelFinset v i).mp hv |>.symm.trans ((L.mem_levelFinset v j).mp hv'))
+
+def between (i : ℕ) : SimpleGraph V := G.between (↑(L.levelFinset i)) (↑(L.levelFinset (i + 1)))
+
+lemma between_bipartite (i : ℕ) : (L.between i).IsBipartiteWith
+    (↑(L.levelFinset i)) (↑(L.levelFinset (i + 1))) :=
+  between_isBipartiteWith (Finset.disjoint_coe.mpr (L.levelFinset_disjoint (by omega)))
+
+lemma between_le (i : ℕ) : L.between i ≤ G := fun _ _ h => h.1
+
+lemma between_levels (i : ℕ) {u v : V} (h : (L.between i).Adj u v) :
+    (L.level u = i ∧ L.level v = i + 1) ∨ (L.level u = i + 1 ∧ L.level v = i) := by
+  simpa only [Finset.mem_coe, mem_levelFinset] using h.2
+
+open scoped Classical in
+lemma between_edge_bound {k i : ℕ} (hk : 2 ≤ k) (hi : i < k)
+    (hFree : (cycleGraph (2 * k)).Free G) :
+    (L.between i).edgeFinset.card ≤ 2 * k * ((L.levelFinset i).card + (L.levelFinset (i + 1)).card) := by
+  classical
+  let S := L.levelFinset i ∪ L.levelFinset (i + 1)
+  have hSupp : (L.between i).support ⊆ (S : Set V) := by
+    rintro v ⟨w, hvw⟩
+    rcases hvw.2 with ⟨hv, _⟩ | ⟨hv, _⟩
+    · exact mem_union_left _ hv
+    · exact mem_union_right _ hv
+  have hb := L.layer_edge_bound hk hi ((L.between i).induce (S : Set V)) Subtype.val
+    Subtype.val_injective (fun _ _ h => h.1) (fun _ _ h => L.between_levels i h) hFree
+  have he : Nat.card ((L.between i).induce (S : Set V)).edgeSet = Nat.card (L.between i).edgeSet := by
+    simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using card_edgeFinset_induce_of_support_subset hSupp
+  have hc : Nat.card ↥(S : Set V) = (L.levelFinset i).card + (L.levelFinset (i + 1)).card := by
+    rw [Nat.card_coe_set_eq, Set.ncard_coe_finset]
+    exact card_union_of_disjoint (L.levelFinset_disjoint (by omega))
+  simp only [edgeFinset_card, Fintype.card_eq_nat_card, he, hc] at hb ⊢
+  exact hb
+
+lemma levelFinset_zero : L.levelFinset 0 = {root} := by
+  classical
+  ext v
+  simp only [mem_levelFinset, mem_singleton, L.zero_iff]
+
+open scoped Classical in
+lemma degree_root_eq_card_level_one
+    (hStep : ∀ u v, G.Adj u v → L.level u + 1 = L.level v ∨ L.level v + 1 = L.level u) :
+    G.degree root = (L.levelFinset 1).card := by
+  classical
+  rw [← card_neighborFinset_eq_degree]
+  congr 1
+  ext v
+  rw [mem_neighborFinset, mem_levelFinset]
+  have hr : L.level root = 0 := (L.zero_iff root).mpr rfl
+  constructor
+  · intro h
+    have hh := hStep root v h
+    omega
+  · intro hv
+    have hv' : v ≠ root := by intro he; rw [he, hr] at hv; omega
+    have hp := L.parent_level v hv'
+    have hp' : L.parent v = root := (L.zero_iff _).mp (by omega)
+    have hh := (L.parent_adj v hv').symm
+    simpa only [hp'] using hh
+
+open scoped Classical in
+lemma layer_degree_sum (d i : ℕ) (hDeg : ∀ v, d ≤ G.degree v)
+    (hStep : ∀ u v, G.Adj u v → L.level u + 1 = L.level v ∨ L.level v + 1 = L.level u) :
+    d * (L.levelFinset (i + 1)).card ≤
+      (L.between i).edgeFinset.card + (L.between (i + 1)).edgeFinset.card := by
+  classical
+  have hD (v : V) (hv : v ∈ L.levelFinset (i + 1)) :
+      d ≤ (L.between i).degree v + (L.between (i + 1)).degree v := by
+    have hvl : L.level v = i + 1 := (L.mem_levelFinset v _).mp hv
+    have hSub : G.neighborFinset v ⊆ (L.between i).neighborFinset v ∪
+        (L.between (i + 1)).neighborFinset v := by
+      intro w hw
+      have hvw : G.Adj v w := (mem_neighborFinset G v w).mp hw
+      rcases hStep v w hvw with h | h
+      · apply mem_union_right
+        rw [mem_neighborFinset]
+        exact ⟨hvw, Or.inl ⟨hv, (L.mem_levelFinset w _).mpr (by omega)⟩⟩
+      · apply mem_union_left
+        rw [mem_neighborFinset]
+        exact ⟨hvw, Or.inr ⟨hv, (L.mem_levelFinset w _).mpr (by omega)⟩⟩
+    have hh := (card_le_card hSub).trans (card_union_le _ _)
+    simp only [card_neighborFinset_eq_degree] at hh
+    exact (hDeg v).trans hh
+  have hh := sum_le_sum (s := L.levelFinset (i + 1)) (fun v hv => hD v hv)
+  rw [sum_add_distrib, isBipartiteWith_sum_degrees_eq_card_edges (L.between_bipartite i).symm,
+    isBipartiteWith_sum_degrees_eq_card_edges (L.between_bipartite (i + 1))] at hh
+  simpa only [sum_const, Nat.nsmul_eq_mul, mul_comm] using hh
+
+end Layering
+
+lemma numerical_layer_growth {k d N : ℕ} (hk : 1 ≤ k) (hN : 1 ≤ N) (a : ℕ → ℕ)
+    (ha0 : a 0 = 1) (ha1 : d ≤ a 1) (haN : a k ≤ N)
+    (hRec : ∀ j, j + 1 < k → d * a (j + 1) ≤
+      2 * k * (a j + a (j + 1)) + 2 * k * (a (j + 1) + a (j + 2))) :
+    d ^ k ≤ (12 * k) ^ k * N := by
+  by_cases hd : d ≤ 12 * k
+  · exact (Nat.pow_le_pow_left hd k).trans (Nat.le_mul_of_pos_right _ hN)
+  have hd' : 12 * k ≤ d := by omega
+  have hk' : 0 < 4 * k := by omega
+  have hGrow : ∀ j, j < k → d * a j ≤ 4 * k * a (j + 1) ∧ a j ≤ a (j + 1) := by
+    intro j
+    induction j with
+    | zero =>
+      intro _
+      rw [ha0, mul_one]
+      refine ⟨ha1.trans (Nat.le_mul_of_pos_left _ hk'), ?_⟩
+      change 1 ≤ a 1
+      omega
+    | succ j ih =>
+      intro hj
+      have hprev := ih (by omega)
+      have hh := hRec j hj
+      have hp := Nat.mul_le_mul_left (2 * k) hprev.2
+      have hdc := Nat.mul_le_mul_right (a (j + 1)) hd'
+      have hnext : d * a (j + 1) ≤ 4 * k * a (j + 2) := by nlinarith only [hh, hp, hdc]
+      refine ⟨hnext, ?_⟩
+      have hm := Nat.mul_le_mul_right (a (j + 1)) (show 4 * k ≤ d by omega)
+      exact Nat.le_of_mul_le_mul_left (hm.trans hnext) hk'
+  have hPow : ∀ j, j ≤ k → d ^ j ≤ (4 * k) ^ j * a j := by
+    intro j
+    induction j with
+    | zero => intro _; simp [ha0]
+    | succ j ih =>
+      intro hj
+      have hp := ih (by omega)
+      have hg := (hGrow j (by omega)).1
+      calc
+        d ^ (j + 1) = d * d ^ j := pow_succ' _ _
+        _ ≤ d * ((4 * k) ^ j * a j) := Nat.mul_le_mul_left _ hp
+        _ = (4 * k) ^ j * (d * a j) := by ring
+        _ ≤ (4 * k) ^ j * (4 * k * a (j + 1)) := Nat.mul_le_mul_left _ hg
+        _ = (4 * k) ^ (j + 1) * a (j + 1) := by ring
+  calc
+    d ^ k ≤ (4 * k) ^ k * a k := hPow k (Nat.le_refl k)
+    _ ≤ (4 * k) ^ k * N := Nat.mul_le_mul_left _ haN
+    _ ≤ (12 * k) ^ k * N := Nat.mul_le_mul_right _ (Nat.pow_le_pow_left (by omega) k)
+
+open scoped Classical in
+lemma Layering.degree_power_bound {V : Type*} [Fintype V] {G : SimpleGraph V} {root : V}
+    (L : Layering G root) {k d : ℕ} (hk : 2 ≤ k)
+    (hFree : (cycleGraph (2 * k)).Free G) (hDeg : ∀ v, d ≤ G.degree v)
+    (hStep : ∀ u v, G.Adj u v → L.level u + 1 = L.level v ∨ L.level v + 1 = L.level u) :
+    d ^ k ≤ (12 * k) ^ k * Fintype.card V := by
+  classical
+  apply numerical_layer_growth (by omega) (Fintype.card_pos_iff.mpr ⟨root⟩)
+    (fun j => (L.levelFinset j).card)
+  · rw [L.levelFinset_zero]
+    simp
+  · have hh := hDeg root
+    rwa [L.degree_root_eq_card_level_one hStep] at hh
+  · exact Finset.card_le_univ _
+  · intro j hj
+    exact (L.layer_degree_sum d j hDeg hStep).trans (Nat.add_le_add
+      (L.between_edge_bound hk (by omega) hFree) (L.between_edge_bound hk hj hFree))
+
+open scoped Classical in
+lemma connected_degree_power_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (hconn : G.Connected) (hBip : G.IsBipartite) {k d : ℕ} (hk : 2 ≤ k)
+    (hFree : (cycleGraph (2 * k)).Free G) (hDeg : ∀ v, d ≤ G.degree v) :
+    d ^ k ≤ (12 * k) ^ k * Fintype.card V := by
+  classical
+  let root : V := hconn.nonempty.some
+  exact (Layering.ofConnected G hconn root).degree_power_bound hk hFree hDeg
+    (fun _ _ h => adj_dist_diff_one hconn hBip root h)
+
+open scoped Classical in
+lemma degree_power_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (hBip : G.IsBipartite) {k d : ℕ} (hk : 2 ≤ k)
+    (hFree : (cycleGraph (2 * k)).Free G)
+    (hDeg : ∀ u v, G.Adj u v → d ≤ G.degree u) {u v : V} (huv : G.Adj u v) :
+    d ^ k ≤ (12 * k) ^ k * Fintype.card V := by
+  classical
+  let C := G.connectedComponentMk u
+  have hu : u ∈ C.supp := rfl
+  have hSupp : C.supp ⊆ G.support := by
+    intro w hw
+    by_cases hwu : w = u
+    · subst w; exact ⟨v, huv⟩
+    · exact mem_support_of_reachable hwu (C.reachable_of_mem_supp hw hu)
+  let H := G.induce C.supp
+  have hCDeg (w : ↥C.supp) : d ≤ H.degree w := by
+    have hSub : G.neighborSet w.val ⊆ C.supp := by
+      intro z hz
+      exact C.mem_supp_of_adj_mem_supp w.prop hz
+    have heq : H.degree w = G.degree w.val := degree_induce_of_neighborSet_subset hSub
+    rw [heq]
+    obtain ⟨z, hwz⟩ := hSupp w.prop
+    exact hDeg w.val z hwz
+  have hCFree : (cycleGraph (2 * k)).Free H :=
+    fun hc => hFree (hc.trans ⟨Copy.induce G C.supp⟩)
+  have hh := connected_degree_power_bound H C.connected_toSimpleGraph
+    (Colorable.of_hom (Copy.induce G C.supp).toHom hBip) hk hCFree hCDeg
+  exact hh.trans (Nat.mul_le_mul_left _ (Fintype.card_subtype_le (· ∈ C.supp)))
+
+open scoped Classical in
+lemma bipartite_edge_power_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (hBip : G.IsBipartite) {k : ℕ} (hk : 2 ≤ k) (hFree : (cycleGraph (2 * k)).Free G) :
+    G.edgeFinset.card ^ k ≤ 4 ^ k * ((12 * k) ^ k + 1) * Fintype.card V ^ (k + 1) := by
+  classical
+  let e := G.edgeFinset.card
+  let n := Fintype.card V
+  by_cases he : e = 0
+  · change e ^ k ≤ _
+    simp [he, show k ≠ 0 by omega]
+  have hGne : G ≠ ⊥ := by
+    intro hh
+    exact he (by simp [e, hh])
+  obtain ⟨u, v, huv⟩ := ne_bot_iff_exists_adj.mp hGne
+  have hn : 0 < n := Fintype.card_pos_iff.mpr ⟨u⟩
+  let d := e / (2 * n)
+  have hdiv : d * (2 * n) ≤ e := Nat.div_mul_le_self e (2 * n)
+  obtain ⟨K, hKG, hDeg, hBound⟩ := Erdos713Leaf.exists_pruned G d
+  have hKne : K ≠ ⊥ := by
+    intro hK
+    have hb : e ≤ d * n := by
+      simpa only [hK, edgeSet_bot, Nat.card_eq_fintype_card, Fintype.card_ofIsEmpty,
+        zero_add, ← edgeFinset_card] using hBound
+    nlinarith only [hb, hdiv, Nat.pos_of_ne_zero he]
+  obtain ⟨x, y, hxy⟩ := ne_bot_iff_exists_adj.mp hKne
+  have hKBip : K.IsBipartite := Colorable.of_hom (Copy.ofLE K G hKG).toHom hBip
+  have hKFree : (cycleGraph (2 * k)).Free K := fun hc => hFree (hc.mono_right hKG)
+  have hKD (x y : V) (hxy : K.Adj x y) : d ≤ K.degree x := by
+    rcases hDeg x with hz | hd
+    · have hp : 0 < K.degree x := hxy.degree_pos_left
+      rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hz
+      omega
+    · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd
+  have hdk : d ^ k ≤ (12 * k) ^ k * n := degree_power_bound K hKBip hk hKFree hKD hxy
+  have heUpper : e ≤ 2 * n * (d + 1) := (Nat.lt_mul_div_succ e (by omega : 0 < 2 * n)).le
+  have hAdd : (d + 1) ^ k ≤ 2 ^ k * (d ^ k + 1) := by
+    by_cases hd0 : d = 0
+    · simp only [hd0, zero_add, one_pow, zero_pow (by omega : k ≠ 0)]
+      simpa only [mul_one] using Nat.one_le_pow k 2 (by decide : 0 < 2)
+    · calc
+        (d + 1) ^ k ≤ (2 * d) ^ k := Nat.pow_le_pow_left (by omega) k
+        _ = 2 ^ k * d ^ k := mul_pow _ _ _
+        _ ≤ 2 ^ k * (d ^ k + 1) := Nat.mul_le_mul_left _ (by omega)
+  change e ^ k ≤ 4 ^ k * ((12 * k) ^ k + 1) * n ^ (k + 1)
+  calc
+    e ^ k ≤ (2 * n * (d + 1)) ^ k := Nat.pow_le_pow_left heUpper k
+    _ = (2 * n) ^ k * (d + 1) ^ k := mul_pow _ _ _
+    _ ≤ (2 * n) ^ k * (2 ^ k * (d ^ k + 1)) := Nat.mul_le_mul_left _ hAdd
+    _ = 4 ^ k * n ^ k * (d ^ k + 1) := by
+      rw [show (4 : ℕ) = 2 * 2 by decide, mul_pow, mul_pow]
+      ring
+    _ ≤ 4 ^ k * n ^ k * ((12 * k) ^ k * n + 1) :=
+      Nat.mul_le_mul_left _ (Nat.add_le_add_right hdk 1)
+    _ ≤ 4 ^ k * n ^ k * (((12 * k) ^ k + 1) * n) :=
+      Nat.mul_le_mul_left _ (by nlinarith)
+    _ = 4 ^ k * ((12 * k) ^ k + 1) * n ^ (k + 1) := by rw [pow_succ]; ring
+
+open scoped Classical in
+lemma edge_power_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    {k : ℕ} (hk : 2 ≤ k) (hFree : (cycleGraph (2 * k)).Free G) :
+    G.edgeFinset.card ^ k ≤ 8 ^ k * ((12 * k) ^ k + 1) * Fintype.card V ^ (k + 1) := by
+  classical
+  obtain ⟨K, hKG, hKBip, hhalf⟩ := Erdos713Cut.exists_bipartite_half G
+  have hKFree : (cycleGraph (2 * k)).Free K := fun hc => hFree (hc.mono_right hKG)
+  calc
+    G.edgeFinset.card ^ k ≤ (2 * K.edgeFinset.card) ^ k := Nat.pow_le_pow_left hhalf k
+    _ = 2 ^ k * K.edgeFinset.card ^ k := mul_pow _ _ _
+    _ ≤ 2 ^ k * (4 ^ k * ((12 * k) ^ k + 1) * Fintype.card V ^ (k + 1)) :=
+      Nat.mul_le_mul_left _ (bipartite_edge_power_bound K hKBip hk hKFree)
+    _ = 8 ^ k * ((12 * k) ^ k + 1) * Fintype.card V ^ (k + 1) := by
+      rw [show (8 : ℕ) ^ k = 2 ^ k * 4 ^ k by simpa using (mul_pow (2 : ℕ) 4 k)]
+      ring
+
+lemma extremal_power_bound {k : ℕ} (hk : 2 ≤ k) (n : ℕ) :
+    (extremalNumber n (cycleGraph (2 * k))) ^ k ≤ 8 ^ k * ((12 * k) ^ k + 1) * n ^ (k + 1) := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | (cycleGraph (2 * k)).Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ k ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := Finset.exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hFree : (cycleGraph (2 * k)).Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using edge_power_bound G hk hFree
+  · rw [Finset.not_nonempty_iff_eq_empty.mp hS]
+    simp [show k ≠ 0 by omega]
+
+end Erdos713BreadthFirst
+
+/- A polynomial incidence construction excluding ten-cycles. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713C10
+open Finset Erdos713C6
+
+theorem singleton_colour {A : Type*} (a : Fin 5 → A)
+    (ha : ∀ i, a i ≠ a (i + 1)) : ∃ i, ∀ j, a j = a i → j = i := by
+  classical
+  have h0 : a 0 ≠ a 1 := ha 0
+  have h1 : a 1 ≠ a 2 := ha 1
+  have h2 : a 2 ≠ a 3 := ha 2
+  have h3 : a 3 ≠ a 4 := ha 3
+  have h4 : a 4 ≠ a 0 := ha 4
+  by_cases h02 : a 0 = a 2
+  · by_cases h14 : a 1 = a 4
+    · refine ⟨3, ?_⟩
+      intro j hj
+      fin_cases j <;> simp_all
+    · refine ⟨4, ?_⟩
+      intro j hj
+      fin_cases j <;> simp_all
+  by_cases h03 : a 0 = a 3
+  · by_cases h14 : a 1 = a 4
+    · refine ⟨2, ?_⟩
+      intro j hj
+      fin_cases j <;> simp_all
+    · refine ⟨1, ?_⟩
+      intro j hj
+      fin_cases j <;> simp_all
+  · refine ⟨0, ?_⟩
+    intro j hj
+    fin_cases j <;> simp_all
+
+theorem weighted_eval_zero {I F : Type*} [Fintype I] [Field F] (a r : I → F) {m : ℕ}
+    (hm : ∀ k < m, ∑ i, r i * a i ^ k = 0) (P : Polynomial F) (hP : P.natDegree < m) :
+    ∑ i, r i * P.eval (a i) = 0 := by
+  classical
+  simp_rw [Polynomial.eval_eq_sum_range' hP, mul_sum]
+  rw [sum_comm]
+  apply sum_eq_zero
+  intro k hk
+  calc
+    ∑ i, r i * (P.coeff k * a i ^ k) = P.coeff k * ∑ i, r i * a i ^ k := by
+      rw [mul_sum]
+      apply sum_congr rfl
+      intro i _
+      ring
+    _ = 0 := by rw [hm k (mem_range.mp hk), mul_zero]
+
+theorem singleton_moment_zero {I F : Type*} [Fintype I] [Field F] (a r : I → F)
+    (hm : ∀ k < Fintype.card I, ∑ i, r i * a i ^ k = 0) (i : I)
+    (hi : ∀ j, a j = a i → j = i) : r i = 0 := by
+  classical
+  let P : Polynomial F := ∏ j ∈ (univ.erase i), (Polynomial.X - Polynomial.C (a j))
+  have hP : P.natDegree < Fintype.card I := by
+    calc
+      P.natDegree ≤ ∑ j ∈ univ.erase i, (Polynomial.X - Polynomial.C (a j)).natDegree :=
+        Polynomial.natDegree_prod_le _ _
+      _ = Fintype.card I - 1 := by simp
+      _ < Fintype.card I := Nat.sub_lt (Fintype.card_pos_iff.mpr ⟨i⟩) (by decide)
+  have hEval (j : I) (hj : j ≠ i) : P.eval (a j) = 0 := by
+    simp only [P, Polynomial.eval_prod, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C]
+    apply prod_eq_zero (mem_erase.mpr ⟨hj, mem_univ _⟩)
+    exact sub_self _
+  have hNonzero : P.eval (a i) ≠ 0 := by
+    simp only [P, Polynomial.eval_prod, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C]
+    apply prod_ne_zero_iff.mpr
+    intro j hj
+    exact sub_ne_zero.mpr (fun hh => (mem_erase.mp hj).1 (hi j hh.symm))
+  have hh := weighted_eval_zero a r hm P hP
+  have hs : ∑ j, r j * P.eval (a j) = r i * P.eval (a i) := by
+    apply sum_eq_single i
+    · intro j _ hj
+      rw [hEval j hj, mul_zero]
+    · simp
+  rw [hs] at hh
+  exact (mul_eq_zero.mp hh).resolve_right hNonzero
+
+abbrev Coordinates (F : Type*) := F × (Fin 4 → F)
+
+def Incidence {F : Type*} [Field F] (p l : Coordinates F) : Prop :=
+  ∀ j : Fin 4, p.2 j = l.1 ^ (j.val + 1) * p.1 + l.2 j
+
+abbrev incidenceGraph (F : Type*) [Field F] := bipGraph (Incidence (F := F))
+
+theorem point_eq_of_x_eq {F : Type*} [Field F] {p q l : Coordinates F}
+    (hp : Incidence p l) (hq : Incidence q l) (h : p.1 = q.1) : p = q := by
+  apply Prod.ext h
+  funext j
+  rw [hp j, hq j, h]
+
+theorem line_eq_of_slope_eq {F : Type*} [Field F] {p l m : Coordinates F}
+    (hl : Incidence p l) (hm : Incidence p m) (h : l.1 = m.1) : l = m := by
+  apply Prod.ext h
+  funext j
+  have hh := hl j
+  rw [h] at hh
+  exact add_left_cancel (hh.symm.trans (hm j))
+
+theorem sum_next_sub {F : Type*} [Field F] (x : Fin 5 → F) : ∑ i, (x (i + 1) - x i) = 0 := by
+  rw [sum_sub_distrib]
+  apply sub_eq_zero.mpr
+  exact Equiv.sum_comp (Equiv.addRight (1 : Fin 5)) x
+
+theorem no_decagon {F : Type*} [Field F] (p l : Fin 5 → Coordinates F)
+    (hp : Function.Injective p) (hl : Function.Injective l)
+    (hA : ∀ i, Incidence (p i) (l i)) (hB : ∀ i, Incidence (p (i + 1)) (l i)) : False := by
+  have hNe : ∀ i : Fin 5, i ≠ i + 1 := by decide
+  let a : Fin 5 → F := fun i => (l i).1
+  let r : Fin 5 → F := fun i => (p (i + 1)).1 - (p i).1
+  have hAdj : ∀ i, a i ≠ a (i + 1) := by
+    intro i he
+    exact hNe i (hl (line_eq_of_slope_eq (hB i) (hA (i + 1)) he))
+  have hr : ∀ i, r i ≠ 0 := by
+    intro i he
+    have hx : (p i).1 = (p (i + 1)).1 := (sub_eq_zero.mp he).symm
+    exact hNe i (hp (point_eq_of_x_eq (hA i) (hB i) hx))
+  have hm : ∀ k < Fintype.card (Fin 5), ∑ i, r i * a i ^ k = 0 := by
+    intro k hk
+    by_cases hk0 : k = 0
+    · subst k
+      simpa only [pow_zero, mul_one, r] using sum_next_sub (fun i => (p i).1)
+    have hk5 : k < 5 := by simpa using hk
+    let j : Fin 4 := ⟨k - 1, by omega⟩
+    have hj : j.val + 1 = k := by dsimp [j]; omega
+    have hStep (i : Fin 5) : r i * a i ^ k = (p (i + 1)).2 j - (p i).2 j := by
+      have hhA := hA i j
+      have hhB := hB i j
+      rw [hj] at hhA hhB
+      dsimp only [r, a]
+      linear_combination hhA - hhB
+    simp_rw [hStep]
+    exact sum_next_sub (fun i => (p i).2 j)
+  obtain ⟨i, hi⟩ := singleton_colour a hAdj
+  exact hr i (singleton_moment_zero a r hm i hi)
+
+abbrev C10 := cycleGraph 10
+
+theorem injective_of_map {I J U V : Type*} (f : J → V) (hf : Function.Injective f)
+    (g : U → V) (x : I → U) (k : I → J) (hk : Function.Injective k)
+    (he : ∀ i, f (k i) = g (x i)) : Function.Injective x := by
+  intro i j hij
+  apply hk
+  apply hf
+  rw [he i, he j, hij]
+
+theorem free_of_no_decagon {P L : Type*} (R : P → L → Prop)
+    (h : ∀ (a : Fin 5 → P) (b : Fin 5 → L), Function.Injective a → Function.Injective b →
+      (∀ i, R (a i) (b i)) → (∀ i, R (a (i + 1)) (b i)) → False) :
+    C10.Free (bipGraph R) := by
+  rintro ⟨f⟩
+  have h01 := f.toHom.map_rel' (show C10.Adj 0 1 by decide)
+  have h12 := f.toHom.map_rel' (show C10.Adj 1 2 by decide)
+  have h23 := f.toHom.map_rel' (show C10.Adj 2 3 by decide)
+  have h34 := f.toHom.map_rel' (show C10.Adj 3 4 by decide)
+  have h45 := f.toHom.map_rel' (show C10.Adj 4 5 by decide)
+  have h56 := f.toHom.map_rel' (show C10.Adj 5 6 by decide)
+  have h67 := f.toHom.map_rel' (show C10.Adj 6 7 by decide)
+  have h78 := f.toHom.map_rel' (show C10.Adj 7 8 by decide)
+  have h89 := f.toHom.map_rel' (show C10.Adj 8 9 by decide)
+  have h90 := f.toHom.map_rel' (show C10.Adj 9 0 by decide)
+  change (bipGraph R).Adj (f 0) (f 1) at h01
+  change (bipGraph R).Adj (f 1) (f 2) at h12
+  change (bipGraph R).Adj (f 2) (f 3) at h23
+  change (bipGraph R).Adj (f 3) (f 4) at h34
+  change (bipGraph R).Adj (f 4) (f 5) at h45
+  change (bipGraph R).Adj (f 5) (f 6) at h56
+  change (bipGraph R).Adj (f 6) (f 7) at h67
+  change (bipGraph R).Adj (f 7) (f 8) at h78
+  change (bipGraph R).Adj (f 8) (f 9) at h89
+  change (bipGraph R).Adj (f 9) (f 0) at h90
+  cases e0 : f 0 with
+  | inl x0 =>
+    rw [e0] at h01
+    obtain ⟨y0, e1, hR0⟩ := right_of_adj_left h01
+    rw [e1] at h12
+    obtain ⟨x1, e2, hR1⟩ := left_of_adj_right h12
+    rw [e2] at h23
+    obtain ⟨y1, e3, hR2⟩ := right_of_adj_left h23
+    rw [e3] at h34
+    obtain ⟨x2, e4, hR3⟩ := left_of_adj_right h34
+    rw [e4] at h45
+    obtain ⟨y2, e5, hR4⟩ := right_of_adj_left h45
+    rw [e5] at h56
+    obtain ⟨x3, e6, hR5⟩ := left_of_adj_right h56
+    rw [e6] at h67
+    obtain ⟨y3, e7, hR6⟩ := right_of_adj_left h67
+    rw [e7] at h78
+    obtain ⟨x4, e8, hR7⟩ := left_of_adj_right h78
+    rw [e8] at h89
+    obtain ⟨y4, e9, hR8⟩ := right_of_adj_left h89
+    have hR9 : R x0 y4 := by simpa only [e9, e0] using h90
+    apply h ![x0, x1, x2, x3, x4] ![y0, y1, y2, y3, y4]
+    · apply injective_of_map f f.injective Sum.inl _ ![0, 2, 4, 6, 8] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_of_map f f.injective Sum.inr _ ![1, 3, 5, 7, 9] (by decide)
+      intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+  | inr y0 =>
+    rw [e0] at h01
+    obtain ⟨x0, e1, hR0⟩ := left_of_adj_right h01
+    rw [e1] at h12
+    obtain ⟨y1, e2, hR1⟩ := right_of_adj_left h12
+    rw [e2] at h23
+    obtain ⟨x1, e3, hR2⟩ := left_of_adj_right h23
+    rw [e3] at h34
+    obtain ⟨y2, e4, hR3⟩ := right_of_adj_left h34
+    rw [e4] at h45
+    obtain ⟨x2, e5, hR4⟩ := left_of_adj_right h45
+    rw [e5] at h56
+    obtain ⟨y3, e6, hR5⟩ := right_of_adj_left h56
+    rw [e6] at h67
+    obtain ⟨x3, e7, hR6⟩ := left_of_adj_right h67
+    rw [e7] at h78
+    obtain ⟨y4, e8, hR7⟩ := right_of_adj_left h78
+    rw [e8] at h89
+    obtain ⟨x4, e9, hR8⟩ := left_of_adj_right h89
+    have hR9 : R x4 y0 := by simpa only [e9, e0] using h90
+    apply h ![x0, x1, x2, x3, x4] ![y1, y2, y3, y4, y0]
+    · apply injective_of_map f f.injective Sum.inl _ ![1, 3, 5, 7, 9] (by decide)
+      intro i; fin_cases i <;> assumption
+    · apply injective_of_map f f.injective Sum.inr _ ![2, 4, 6, 8, 0] (by decide)
+      intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+    · intro i; fin_cases i <;> assumption
+
+theorem incidenceGraph_free (F : Type*) [Field F] : C10.Free (incidenceGraph F) :=
+  free_of_no_decagon Incidence no_decagon
+
+def leftNeighbors {F : Type*} [Field F] (p : Coordinates F) :
+    F ↪ (incidenceGraph F).neighborSet (Sum.inl p) where
+  toFun a := ⟨Sum.inr (a, fun j => p.2 j - a ^ (j.val + 1) * p.1), by
+    change Incidence p _
+    intro j
+    dsimp
+    ring⟩
+  inj' := by
+    intro a b h
+    exact congrArg (fun v => Sum.elim (fun x : Coordinates F => x.1)
+      (fun x : Coordinates F => x.1) v.val) h
+
+def rightNeighbors {F : Type*} [Field F] (l : Coordinates F) :
+    F ↪ (incidenceGraph F).neighborSet (Sum.inr l) where
+  toFun x := ⟨Sum.inl (x, fun j => l.1 ^ (j.val + 1) * x + l.2 j), by
+    change Incidence _ l
+    intro j
+    rfl⟩
+  inj' := by
+    intro a b h
+    exact congrArg (fun v => Sum.elim (fun x : Coordinates F => x.1)
+      (fun x : Coordinates F => x.1) v.val) h
+
+open scoped Classical in
+theorem incidenceGraph_degree_lower (F : Type*) [Field F] [Fintype F]
+    (v : Coordinates F ⊕ Coordinates F) : Fintype.card F ≤ (incidenceGraph F).degree v := by
+  classical
+  rw [← card_neighborSet_eq_degree]
+  cases v with
+  | inl p => exact Fintype.card_le_of_embedding (leftNeighbors p)
+  | inr l => exact Fintype.card_le_of_embedding (rightNeighbors l)
+
+open scoped Classical in
+theorem incidenceGraph_edge_lower (F : Type*) [Field F] [Fintype F] :
+    Fintype.card F ^ 6 ≤ (incidenceGraph F).edgeFinset.card := by
+  classical
+  have hh : ∑ v : Coordinates F ⊕ Coordinates F, Fintype.card F ≤
+      ∑ v : Coordinates F ⊕ Coordinates F, (incidenceGraph F).degree v :=
+    sum_le_sum fun v _ => incidenceGraph_degree_lower F v
+  rw [sum_degrees_eq_twice_card_edges] at hh
+  simp only [sum_const, card_univ, Fintype.card_sum, Coordinates, Fintype.card_prod,
+    Fintype.card_fun, Fintype.card_fin, Nat.nsmul_eq_mul] at hh
+  nlinarith
+
+theorem extremal_lower_prime (p : ℕ) (hp : p.Prime) :
+    p ^ 6 ≤ extremalNumber (2 * p ^ 5) C10 := by
+  classical
+  letI : Fact p.Prime := ⟨hp⟩
+  have he := incidenceGraph_edge_lower (ZMod p)
+  have hExt := card_edgeFinset_le_extremalNumber (incidenceGraph_free (ZMod p))
+  have hc : Fintype.card (Coordinates (ZMod p) ⊕ Coordinates (ZMod p)) = 2 * p ^ 5 := by
+    simp only [Coordinates, Fintype.card_sum, Fintype.card_prod, Fintype.card_fun,
+      Fintype.card_fin, ZMod.card]
+    ring
+  rw [hc] at hExt
+  rw [ZMod.card] at he
+  exact he.trans hExt
+
+theorem lower_exponent_of_prime_bound {f : ℕ → ℕ} {a : ℝ}
+    (hO : (fun n : ℕ => (f n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ a))
+    (hlow : ∀ p : ℕ, p.Prime → p ^ 6 ≤ f (2 * p ^ 5)) : (6 : ℝ) / 5 ≤ a := by
+  by_contra ha
+  have ha' : a < (6 : ℝ) / 5 := lt_of_not_ge ha
+  obtain ⟨C, _, hC⟩ := hO.exists_pos
+  have ht : Tendsto (fun p : ℕ => 2 * p ^ 5) atTop atTop := by
+    apply tendsto_atTop_mono _ tendsto_id
+    intro p
+    have hp := Nat.le_self_pow (by decide : 5 ≠ 0) p
+    change p ≤ 2 * p ^ 5
+    omega
+  have hratio : ∀ᶠ p : ℕ in atTop,
+      p.Prime → (p : ℝ) ^ (6 - 5 * a) ≤ C * (2 : ℝ) ^ a := by
+    filter_upwards [ht.eventually hC.bound, eventually_gt_atTop (0 : ℕ)] with p hp hpos
+    intro hprime
+    have hp0 : (0 : ℝ) < p := Nat.cast_pos.mpr hpos
+    have hl : (p : ℝ) ^ 6 ≤ (f (2 * p ^ 5) : ℝ) := by exact_mod_cast hlow p hprime
+    have hu : (f (2 * p ^ 5) : ℝ) ≤ C * (2 * (p : ℝ) ^ 5) ^ a := by
+      rw [Real.norm_natCast, Real.norm_of_nonneg
+        (Real.rpow_nonneg (Nat.cast_nonneg (2 * p ^ 5)) a)] at hp
+      simpa only [Nat.cast_mul, Nat.cast_ofNat, Nat.cast_pow] using hp
+    have he := hl.trans hu
+    have hp3 : ((p : ℝ) ^ 5) ^ a = (p : ℝ) ^ (5 * a) := by
+      rw [← Real.rpow_natCast, ← Real.rpow_mul hp0.le]
+      norm_num
+    rw [Real.mul_rpow (by norm_num) (pow_nonneg hp0.le 5), hp3] at he
+    rw [Real.rpow_sub hp0, div_le_iff₀ (Real.rpow_pos_of_pos hp0 (5 * a))]
+    have hp4 : (p : ℝ) ^ (6 : ℝ) = (p : ℝ) ^ (6 : ℕ) := by
+      exact_mod_cast Real.rpow_natCast (p : ℝ) 6
+    rw [hp4]
+    simpa only [mul_assoc] using he
+  have htop : Tendsto (fun p : ℕ => (p : ℝ) ^ (6 - 5 * a)) atTop atTop :=
+    (tendsto_rpow_atTop (by linarith : 0 < 6 - 5 * a)).comp tendsto_natCast_atTop_atTop
+  obtain ⟨N, hN⟩ := eventually_atTop.mp
+    (hratio.and (htop.eventually_gt_atTop (C * (2 : ℝ) ^ a)))
+  obtain ⟨p, hpN, hp⟩ := Nat.exists_infinite_primes N
+  exact (not_lt_of_ge ((hN p hpN).1 hp)) ((hN p hpN).2)
+
+theorem exponent_lower_of_containment {W : Type*} {H : SimpleGraph W}
+    (hH : C10 ⊑ H) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : (6 : ℝ) / 5 ≤ a := by
+  have hO : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a) :=
+    (isBigO_const_mul_right_iff hc).mp h.isBigO
+  apply lower_exponent_of_prime_bound hO
+  intro p hp
+  exact (extremal_lower_prime p hp).trans hH.extremalNumber_le
+
+
+end Erdos713C10
+
+/- Upper growth rates for even cycles, and the exact power threshold for the ten-cycle. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713EvenCycle
+
+theorem upper {k : ℕ} (hk : 2 ≤ k) :
+    (fun n : ℕ => (extremalNumber n (cycleGraph (2 * k)) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ (((k + 1 : ℕ) : ℝ) / k)) :=
+  Erdos713Rate.upper_of_power_bound (by omega) (Erdos713BreadthFirst.extremal_power_bound hk)
+
+theorem exponent_upper_of_containment {W : Type*} {H : SimpleGraph W} {k : ℕ} (hk : 2 ≤ k)
+    (hH : H ⊑ cycleGraph (2 * k)) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ≤ ((k + 1 : ℕ) : ℝ) / k := by
+  apply Erdos713Forest.exponent_le_of_isBigO
+  exact ((isBigO_const_mul_left_iff hc).mp h.isBigO_symm).trans
+    ((Erdos713Rate.extremal_mono_bigO hH).trans (upper hk))
+
+theorem rate_upper_of_containment {W : Type*} {H : SimpleGraph W} {k : ℕ} (hk : 2 ≤ k)
+    (hH : H ⊑ cycleGraph (2 * k)) {a : ℝ} (h : Erdos713Rate.HasRate H a) :
+    a ≤ ((k + 1 : ℕ) : ℝ) / k := by
+  have hk' : (0 : ℝ) < k := by exact_mod_cast (show 0 < k by omega)
+  apply h.lower _ ((le_div_iff₀ hk').mpr ?_)
+    ((Erdos713Rate.extremal_mono_bigO hH).trans (upper hk))
+  simp only [one_mul, Nat.cast_add, Nat.cast_one]
+  linarith
+
+end Erdos713EvenCycle
+
+namespace Erdos713C10
+
+theorem rate_of_containment {W : Type*} {H : SimpleGraph W}
+    (hlo : C10 ⊑ H) (hhi : H ⊑ C10) : Erdos713Rate.HasRate H ((6 : ℝ) / 5) := by
+  refine ⟨by norm_num, ?_, ?_⟩
+  · apply (Erdos713Rate.extremal_mono_bigO hhi).trans
+    simpa only [Nat.reduceAdd, Nat.reduceMul, Nat.cast_ofNat] using
+      Erdos713EvenCycle.upper (by decide : 2 ≤ 5)
+  · intro a _ h
+    apply lower_exponent_of_prime_bound h
+    intro p hp
+    exact (extremal_lower_prime p hp).trans hlo.extremalNumber_le
+
+theorem rate : Erdos713Rate.HasRate C10 ((6 : ℝ) / 5) :=
+  rate_of_containment (IsContained.refl _) (IsContained.refl _)
+
+theorem exponent_eq_of_containment {W : Type*} {H : SimpleGraph W}
+    (hlo : C10 ⊑ H) (hhi : H ⊑ C10) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a = (6 : ℝ) / 5 := by
+  have ha := exponent_lower_of_containment hlo hc h
+  exact Erdos713Rate.exponent_eq (rate_of_containment hlo hhi) (by linarith) hc h
+
+theorem rational_exponent_of_containment {W : Type*} {H : SimpleGraph W}
+    (hlo : C10 ⊑ H) (hhi : H ⊑ C10) {a c : ℝ} (hc : c ≠ 0)
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) : a ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨6 / 5, ?_⟩
+  simpa using (exponent_eq_of_containment hlo hhi hc h).symm
+
+
+end Erdos713C10
+
+/- Rooted power bounds from an actual root-moving self-copy. In particular,
+ordinary cycle upper bounds give bounds at every designated cycle root. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713RootPower
+open Erdos713Rate
+
+lemma global_free_bound_of_upper {W : Type*} (H : SimpleGraph W) {r : ℝ}
+    (hr : 0 ≤ r)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r)) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ n (G : SimpleGraph (Fin n)), H.Free G →
+      (Nat.card G.edgeSet : ℝ) ≤ C*(n : ℝ)^r := by
+  classical
+  obtain ⟨C,hC,hbound⟩ := h.exists_pos
+  obtain ⟨N,hN⟩ := eventually_atTop.mp hbound.bound
+  let M : ℕ := (range N).sup (fun n => extremalNumber n H)
+  refine ⟨C+M,by positivity,?_⟩
+  intro n G hG
+  by_cases hn : n = 0
+  · subst n
+    have he : G = ⊥ := Subsingleton.elim _ _
+    simp only [he,edgeSet_bot,Nat.card_eq_fintype_card,Fintype.card_ofIsEmpty,Nat.cast_zero]
+    positivity
+  have hnp : (1 : ℝ) ≤ n := by exact_mod_cast (show 1 ≤ n by omega)
+  have hpow : 1 ≤ (n : ℝ)^r := Real.one_le_rpow hnp hr
+  have he : (Nat.card G.edgeSet : ℝ) ≤ extremalNumber n H := by
+    exact_mod_cast (by simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using
+      card_edgeFinset_le_extremalNumber hG)
+  apply he.trans
+  by_cases hnN : N ≤ n
+  · have hh := hN n hnN
+    rw [Real.norm_natCast,Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg n) _)] at hh
+    exact hh.trans (mul_le_mul_of_nonneg_right (le_add_of_nonneg_right (Nat.cast_nonneg M))
+      (Real.rpow_nonneg (Nat.cast_nonneg n) _))
+  · have hm : (extremalNumber n H : ℝ) ≤ M := by
+      exact_mod_cast (Finset.le_sup (f := fun n => extremalNumber n H) (mem_range.mpr (by omega : n < N)))
+    have hM : (0 : ℝ) ≤ M := Nat.cast_nonneg M
+    nlinarith
+
+lemma of_root_shift {W : Type*} (H : SimpleGraph W) (x : W) (e : H.Copy H)
+    (he : H.Adj x (e x)) {r : ℝ} (hr : 0 ≤ r)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r)) : RootPowerBound H x r := by
+  obtain ⟨C,hC,hbound⟩ := global_free_bound_of_upper H hr h
+  refine ⟨C,hC,?_⟩
+  intro n G S hB hroot
+  apply hbound n G
+  rintro ⟨f⟩
+  have hmem : f (e x) ∈ S := hB.symm.mem_of_mem_adj (hroot f) (f.toHom.map_adj he)
+  exact hroot (f.comp e) hmem
+
+lemma cycle_of_upper {m : ℕ} (hm : 2 ≤ m) (x : Fin m) {r : ℝ} (hr : 0 ≤ r)
+    (h : (fun n : ℕ => (extremalNumber n (cycleGraph m) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r)) : RootPowerBound (cycleGraph m) x r := by
+  obtain ⟨k,rfl⟩ : ∃ k, m = k+2 := ⟨m-2,by omega⟩
+  obtain ⟨e,he⟩ := cycle_root_move (k+2) x (x+1)
+  apply of_root_shift _ x e.toCopy _ hr h
+  change (cycleGraph (k+2)).Adj x (e x)
+  rw [he,cycleGraph_adj]
+  exact Or.inr (by simp)
+
+lemma c10 (x : Fin 10) : RootPowerBound Erdos713C10.C10 x ((6 : ℝ)/5) :=
+  cycle_of_upper (by decide) x (by norm_num) Erdos713C10.rate.upper
+
+lemma even_cycle_upper {k : ℕ} (hk : 2 ≤ k) (x : Fin (2*k)) :
+    RootPowerBound (cycleGraph (2*k)) x (((k+1 : ℕ) : ℝ)/k) :=
+  cycle_of_upper (by omega) x (by positivity) (Erdos713EvenCycle.upper hk)
+
+
+lemma wedge_rate_of_root_shift {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ v, ∃ w, H.Adj v w)
+    (e : H.Copy H) (he : H.Adj x (e x))
+    (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z) {a b : ℝ}
+    (hH : HasRate H a) (hJ : HasRate J b) :
+    HasRate (Erdos713Gluing.wedge H x J y) (max a b) :=
+  wedge_rate H x hNoIso J y hy hH hJ
+    (of_root_shift H x e he (le_trans (by norm_num) hH.one_le) hH.upper)
+
+end Erdos713RootPower
+
+namespace Erdos713CycleCore
+
+lemma iso_of_min_degree_two_copy {W T : Type*} [Fintype W] [Nonempty W] [Fintype T]
+    {H : SimpleGraph W} {G : SimpleGraph T} (f : H.Copy G)
+    (hH : ∀ v, 2 ≤ Nat.card (H.neighborSet v))
+    (hG : ∀ v, Nat.card (G.neighborSet v) = 2) (hConn : G.Connected) : Nonempty (H ≃g G) := by
+  classical
+  have hlocal (a : W) (v : T) (hav : G.Adj (f a) v) : ∃ b, H.Adj a b ∧ f b = v := by
+    let g : H.neighborSet a → G.neighborSet (f a) := fun b => ⟨f b.val,f.toHom.map_adj b.prop⟩
+    have hinj : Function.Injective g := by
+      intro b c he
+      exact Subtype.ext (f.injective (congrArg (fun q : G.neighborSet (f a) => q.val) he))
+    have hcard : Fintype.card (H.neighborSet a) = Fintype.card (G.neighborSet (f a)) := by
+      have hle := Fintype.card_le_of_injective g hinj
+      have hlow := hH a
+      have htwo := hG (f a)
+      simp only [Fintype.card_eq_nat_card] at hle ⊢
+      omega
+    have hsurj := ((Fintype.bijective_iff_injective_and_card g).mpr ⟨hinj,hcard⟩).2
+    obtain ⟨b,hb⟩ := hsurj ⟨v,hav⟩
+    exact ⟨b.val,b.prop,congrArg (fun q : G.neighborSet (f a) => q.val) hb⟩
+  have hclosed : ∀ a ∈ Set.range f, ∀ b, G.Adj a b → b ∈ Set.range f := by
+    rintro a ⟨a,rfl⟩ b hab
+    obtain ⟨c,_,hc⟩ := hlocal a b hab
+    exact ⟨c,hc⟩
+  have hsurj : Function.Surjective f := by
+    let a : W := Classical.arbitrary W
+    intro v
+    exact Erdos713Blocks.mem_of_reachable_closed hclosed ⟨a,rfl⟩ (hConn (f a) v)
+  refine ⟨⟨Equiv.ofBijective f ⟨f.injective,hsurj⟩,?_⟩⟩
+  intro a b
+  change G.Adj (f a) (f b) ↔ H.Adj a b
+  constructor
+  · intro hab
+    obtain ⟨c,hac,hcb⟩ := hlocal a (f b) hab
+    exact f.injective hcb ▸ hac
+  · exact f.toHom.map_adj
+
+lemma contained_c10 {W : Type*} [Fintype W] [Nonempty W] (H : SimpleGraph W)
+    (hd : ∀ v, 2 ≤ Nat.card (H.neighborSet v)) (hH : H ⊑ Erdos713C10.C10) :
+    Nonempty (H ≃g Erdos713C10.C10) := by
+  obtain ⟨f⟩ := hH
+  apply iso_of_min_degree_two_copy f hd _ cycleGraph_connected
+  intro v
+  simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using
+    (cycleGraph_degree_three_le (n := 7) (v := v))
+
+end Erdos713CycleCore
+
+/- Rational-rate assembly allowing ten-cycle pieces and arbitrary pieces
+with a proved matching rational rooted power bound. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713CycleAssembly
+open Erdos713Rate Erdos713Gluing Erdos713RootPower Erdos713Blocks
+universe u
+
+inductive Assembly : {W : Type u} → SimpleGraph W → Prop where
+  | old {W : Type u} {G : SimpleGraph W} (h : Erdos713RootAssembly.Assembly G) : Assembly G
+  | iso {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+      (e : G ≃g H) (h : Assembly H) : Assembly G
+  | components {W : Type u} [Fintype W] (G : SimpleGraph W)
+      (h : ∀ C : G.ConnectedComponent, Assembly C.toSimpleGraph) : Assembly G
+  | prunes {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+      (hp : Erdos713Pruning.PrunesTo G S) (h : Assembly (G.induce S)) : Assembly G
+  | ten {W : Type u} (G : SimpleGraph W)
+      (hlo : Erdos713C10.C10 ⊑ G) (hhi : G ⊑ Erdos713C10.C10) : Assembly G
+  | wedgeRooted {W T : Type u} [Fintype W] [Fintype T]
+      (H : SimpleGraph W) (x : W) (hNoIso : ∀ v, ∃ w, H.Adj v w)
+      (a : ℚ) (hH : HasRate H (a : ℝ)) (hRoot : RootPowerBound H x (a : ℝ))
+      (J : SimpleGraph T) (y : T) (hy : ∃ z, J.Adj y z) (hJ : Assembly J) :
+      Assembly (wedge H x J y)
+
+lemma Assembly.side {W : Type u} [Fintype W] (G : SimpleGraph W) (S : Set W)
+    (hB : G.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3) : Assembly G :=
+  .old (.side G S hB hS)
+
+lemma Assembly.rate {W : Type u} {G : SimpleGraph W} (h : Assembly G) :
+    ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  induction h with
+  | old h => exact h.rate
+  | iso e h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,iso_rate e hr⟩
+  | components G h ih => exact Erdos713ComponentRates.rate_of_components G ih
+  | prunes G S hp h ih =>
+    obtain ⟨r,hr⟩ := ih
+    exact ⟨r,hp.rate hr⟩
+  | ten G hlo hhi => exact ⟨6/5,by simpa using Erdos713C10.rate_of_containment hlo hhi⟩
+  | wedgeRooted H x hNoIso a hH hRoot J y hy hJ ih =>
+    obtain ⟨b,hb⟩ := ih
+    refine ⟨max a b,?_⟩
+    simpa only [Rat.cast_max] using wedge_rate H x hNoIso J y hy hH hb hRoot
+
+lemma Assembly.rational {W : Type u} {G : SimpleGraph W} (hG : Assembly G)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := hG.rate
+  exact ⟨r,(exponent_eq hr hα hc h).symm⟩
+
+/-- The atom condition is hereditary under (not necessarily induced) copies. -/
+def Piece {W : Type u} (G : SimpleGraph W) : Prop :=
+  (∃ S : Set W, G.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3) ∨ G ⊑ Erdos713C10.C10
+
+lemma Piece.of_contained {W T : Type u} [Fintype W] [Fintype T]
+    {G : SimpleGraph W} {H : SimpleGraph T} (h : Piece G) (hHG : H ⊑ G) : Piece H := by
+  rcases h with ⟨S,hS,hc⟩ | h
+  · obtain ⟨f⟩ := hHG
+    exact Or.inl (small_shore_of_copy f S hS hc)
+  · exact Or.inr (hHG.trans h)
+
+lemma Piece.assembly {W : Type u} [Fintype W] [Nonempty W] {G : SimpleGraph W}
+    (h : Piece G) (hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)) : Assembly G := by
+  rcases h with ⟨S,hS,hc⟩ | h
+  · exact .side G S hS hc
+  · obtain ⟨e⟩ := Erdos713CycleCore.contained_c10 G hd h
+    exact .ten G ⟨e.symm.toCopy⟩ h
+
+lemma Piece.rooted_rate {W : Type u} [Fintype W] [Nonempty W] {G : SimpleGraph W}
+    (h : Piece G) (hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)) :
+    ∃ r : ℚ, HasRate G (r : ℝ) ∧ ∀ x, RootPowerBound G x (r : ℝ) := by
+  rcases h with ⟨S,hS,hc⟩ | h
+  · exact small_core G S hS hc hd
+  · obtain ⟨e⟩ := Erdos713CycleCore.contained_c10 G hd h
+    refine ⟨6/5,by simpa using iso_rate e Erdos713C10.rate,?_⟩
+    intro x
+    simpa using (c10 (e x)).of_copy e.toCopy x
+
+def Pieces {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ {T : Type u} [Fintype T] (H : SimpleGraph T), H ⊑ G → H.Connected → NoCut H → Piece H
+
+lemma Pieces.of_contained {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+    (h : Pieces G) (hHG : H ⊑ G) : Pieces H := by
+  intro A _ J hJ hConn hNC
+  exact h J (hJ.trans hHG) hConn hNC
+
+/-- Every block either has a shore of size at most three or is contained in C10. -/
+def Blocks {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ S : Set W, IsBlock G S → Piece (G.induce S)
+
+lemma blocks_iff_pieces {W : Type u} [Fintype W] {G : SimpleGraph W} :
+    Blocks G ↔ Pieces G := by
+  classical
+  constructor
+  · intro h T _ H hHG hH hNC
+    obtain ⟨f⟩ := hHG
+    let g : H.Copy (G.induce (Set.range f)) :=
+      ⟨⟨fun a => ⟨f a,⟨a,rfl⟩⟩,fun hab => f.toHom.map_adj hab⟩,
+        fun a b he => f.injective (congrArg Subtype.val he)⟩
+    have hg : Function.Surjective g := by
+      rintro ⟨v,⟨a,rfl⟩⟩
+      exact ⟨a,rfl⟩
+    obtain ⟨S,hRS,hS⟩ := exists_block_superset (Set.range f)
+      (hH.map g.toHom hg) (hNC.map g.toHom ⟨g.injective,hg⟩)
+    exact (h S hS).of_contained ⟨((induceHomOfLE G hRS).toCopy).comp g⟩
+  · intro h S hS
+    exact h (G.induce S) ⟨Copy.induce G S⟩ hS.connected hS.noCut
+
+lemma pieces_assembly {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : Pieces G) : Assembly G := by
+  classical
+  suffices hh : ∀ n : ℕ, ∀ (W : Type u) [Fintype W] (G : SimpleGraph W),
+      Fintype.card W = n → Pieces G → Assembly G from
+    hh _ W G rfl h
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro W _ G hcard h
+    by_cases hConn : G.Connected
+    · by_cases hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)
+      · obtain ⟨S,x,hL,hHConn,hHNC,hHd⟩ := exists_end_piece hConn hd
+        haveI : Nonempty S := hHConn.nonempty
+        have hPiece := h (G.induce S) ⟨Copy.induce G S⟩ hHConn hHNC
+        by_cases hS : S = Set.univ
+        · subst S
+          exact .iso (induceUnivIso G).symm (hPiece.assembly hHd)
+        let T : Set W := insert x Sᶜ
+        have hT := hL.complement hS
+        have hsmall : Fintype.card T < n := by
+          obtain ⟨v,hv,hvx⟩ := hL.other
+          have hn : v ∉ T := by simpa only [T,Set.mem_insert_iff,Set.mem_compl_iff,not_or,not_not] using ⟨hvx,hv⟩
+          exact (Fintype.card_subtype_lt (x := v) hn).trans_eq hcard
+        have hJ : Assembly (G.induce T) := ih _ hsmall T (G.induce T) rfl
+          (h.of_contained ⟨Copy.induce G T⟩)
+        have hroot := hT.root_adj hConn
+        obtain ⟨a,ha,hRoot⟩ := hPiece.rooted_rate hHd
+        have hNoIso : ∀ v, ∃ w, (G.induce S).Adj v w := by
+          intro v
+          apply ((G.induce S).degree_pos_iff_exists_adj v).mp
+          have hdv := hHd v
+          simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] at hdv
+          omega
+        exact .iso (lobeWedgeIso hL).symm
+          (.wedgeRooted (G.induce S) ⟨x,hL.root_mem⟩ hNoIso a ha (hRoot _)
+            (G.induce T) ⟨x,hT.root_mem⟩ hroot hJ)
+      · push_neg at hd
+        obtain ⟨x,hx⟩ := hd
+        have hsmall : Fintype.card ↥({x}ᶜ : Set W) < n :=
+          (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hcard
+        have hJ : Assembly (G.induce {x}ᶜ) := ih _ hsmall _ _ rfl
+          (h.of_contained ⟨Copy.induce G {x}ᶜ⟩)
+        have hx' : Nat.card ((G.induce Set.univ).neighborSet ⟨x,Set.mem_univ x⟩) ≤ 1 := by
+          rw [Nat.card_congr ((induceUnivIso G).mapNeighborSet ⟨x,Set.mem_univ x⟩)]
+          exact Nat.le_of_lt_succ hx
+        have hp : Erdos713Pruning.PrunesTo G {x}ᶜ := by
+          convert Erdos713Pruning.PrunesTo.delete (.start (G := G)) ⟨x,Set.mem_univ x⟩ hx' using 1
+          ext v
+          simp
+        exact .prunes G _ hp hJ
+    · apply Assembly.components G
+      intro C
+      let f : C.toSimpleGraph.Copy G := ⟨C.toSimpleGraph_hom,Subtype.val_injective⟩
+      have hns : ¬ Function.Surjective (fun v : C => v.val) := by
+        intro hs
+        exact hConn (C.connected_toSimpleGraph.map C.toSimpleGraph_hom hs)
+      have hsmall := (Fintype.card_lt_of_injective_not_surjective
+        (fun v : C => v.val) Subtype.val_injective hns).trans_eq hcard
+      exact ih _ hsmall C C.toSimpleGraph rfl (h.of_contained ⟨f⟩)
+
+
+lemma blocks_assembly {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : Blocks G) : Assembly G := pieces_assembly G (blocks_iff_pieces.mp h)
+
+lemma rational_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : Blocks G) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) :=
+  (blocks_assembly G h).rational hα hc hAsymptotic
+
+
+lemma assembly_of_blocks_small_or_c10 {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite)
+    (hblocks : ∀ S : Set W, IsBlock G S → Nat.card S ≤ 7 ∨ G.induce S ⊑ Erdos713C10.C10) :
+    Assembly G := by
+  classical
+  apply blocks_assembly G
+  intro S hS
+  rcases hblocks S hS with hcard | hTen
+  · exact Or.inl (Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S)
+      (Colorable.of_hom (Copy.induce G S).toHom hB)
+      (by simpa only [Fintype.card_eq_nat_card] using hcard))
+  · exact Or.inr hTen
+
+lemma exists_remaining_block {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hB : G.IsBipartite) (hG : ¬ Assembly G) :
+    ∃ S : Set W, IsBlock G S ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      (∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A) ∧
+      ¬ G.induce S ⊑ Erdos713C10.C10 := by
+  classical
+  have hn : ¬ Blocks G := fun h => hG (blocks_assembly G h)
+  unfold Blocks at hn
+  push_neg at hn
+  obtain ⟨S,hBlock,hS⟩ := hn
+  have hSmall : ¬ ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 :=
+    fun h => hS (Or.inl h)
+  push_neg at hSmall
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc : 8 ≤ Nat.card S := by
+    by_contra hc
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hSmall A hA)
+  refine ⟨S,hBlock,hSB,hc,hBlock.noCut.min_degree hBlock.connected ?_,?_,?_⟩
+  · simpa only [Fintype.card_eq_nat_card] using (show 3 ≤ Nat.card S by omega)
+  · intro A hA
+    exact hSmall A hA
+  · exact fun h => hS (Or.inr h)
+
+end Erdos713CycleAssembly
+
+/-! Conditional rate reduction using actual maximal blocks, with no hereditary
+assumption on the class of blocks. This does not assert the rate hypothesis for
+arbitrary blocks. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713Blocks
+universe u
+variable {V : Type u} {G : SimpleGraph V}
+
+/-- Flatten a twice-induced graph. -/
+noncomputable def induceImageIso (G : SimpleGraph V) (T : Set V) (U : Set T) :
+    ((G.induce T).induce U) ≃g G.induce (Subtype.val '' U) := by
+  let f : U → ↥(Subtype.val '' U) := fun v => ⟨v.val.val,⟨v.val,v.prop,rfl⟩⟩
+  have hf : Function.Bijective f := by
+    constructor
+    · intro v w he
+      apply Subtype.ext
+      apply Subtype.ext
+      exact congrArg (fun z : ↥(Subtype.val '' U) => z.val) he
+    · rintro ⟨v,⟨w,hw,rfl⟩⟩
+      exact ⟨⟨w,hw⟩,rfl⟩
+  exact ⟨Equiv.ofBijective f hf,Iff.rfl⟩
+
+/-- A connected no-cut piece meeting a lobe away from the root stays inside
+that lobe. The root need not belong to the piece. -/
+lemma Lobe.subset_of_inter {S A : Set V} {x : V} (h : Lobe G S x)
+    (hA : (G.induce A).Connected) (hNC : NoCut (G.induce A))
+    (hi : ∃ u ∈ A, u ∈ S ∧ u ≠ x) : A ⊆ S := by
+  classical
+  obtain ⟨u,huA,huS,hux⟩ := hi
+  intro v hvA
+  by_cases hvx : v = x
+  · exact hvx ▸ h.root_mem
+  by_cases hxA : x ∈ A
+  · let z : A := ⟨x,hxA⟩
+    let B := (G.induce A).induce {z}ᶜ
+    let a : ↥({z}ᶜ : Set A) := ⟨⟨u,huA⟩,fun he => hux (congrArg Subtype.val he)⟩
+    let b : ↥({z}ᶜ : Set A) := ⟨⟨v,hvA⟩,fun he => hvx (congrArg Subtype.val he)⟩
+    have hclosed : ∀ p ∈ {p : ↥({z}ᶜ : Set A) | p.val.val ∈ S}, ∀ q,
+        B.Adj p q → q ∈ {p : ↥({z}ᶜ : Set A) | p.val.val ∈ S} := by
+      intro p hp q hpq
+      exact h.closed p.val.val hp (fun he => p.prop (Subtype.ext he)) q.val.val hpq
+    exact mem_of_reachable_closed hclosed (u := a) huS (hNC z a b)
+  · have hclosed : ∀ p ∈ {p : A | p.val ∈ S}, ∀ q,
+        (G.induce A).Adj p q → q ∈ {p : A | p.val ∈ S} := by
+      intro p hp q hpq
+      exact h.closed p.val hp (fun he => hxA (he ▸ p.prop)) q.val hpq
+    exact mem_of_reachable_closed hclosed (u := ⟨u,huA⟩) huS (hA _ ⟨v,hvA⟩)
+
+lemma Lobe.isBlock {S : Set V} {x : V} (h : Lobe G S x)
+    (hS : (G.induce S).Connected) (hNC : NoCut (G.induce S)) : IsBlock G S := by
+  refine ⟨hS,hNC,?_⟩
+  intro T hST hT hTNC
+  obtain ⟨u,hu,hux⟩ := h.other
+  exact Set.Subset.antisymm (h.subset_of_inter hT hTNC ⟨u,hST hu,hu,hux⟩) hST
+
+/-- An abstract lifting criterion for an actual induced block: no connected
+no-cut extension of its image is allowed to leave the induction set. -/
+lemma IsBlock.lift {T : Set V} {U : Set T} (h : IsBlock (G.induce T) U)
+    (hclosed : ∀ A : Set V, Subtype.val '' U ⊆ A → (G.induce A).Connected →
+      NoCut (G.induce A) → A ⊆ T) : IsBlock G (Subtype.val '' U) := by
+  classical
+  let e := induceImageIso G T U
+  refine ⟨h.connected.map e.toHom e.surjective,
+    h.noCut.map e.toHom e.bijective,?_⟩
+  intro A hUA hA hANC
+  have hAT := hclosed A hUA hA hANC
+  let B : Set T := Subtype.val ⁻¹' A
+  have hIB : Subtype.val '' B = A := by
+    ext v
+    constructor
+    · rintro ⟨w,hw,rfl⟩; exact hw
+    · intro hv; exact ⟨⟨v,hAT hv⟩,hv,rfl⟩
+  have hUB : U ⊆ B := by intro v hv; exact hUA ⟨v,hv,rfl⟩
+  have hBConn : ((G.induce T).induce B).Connected := by
+    apply (induceImageIso G T B).connected_iff.mpr
+    rw [hIB]
+    exact hA
+  have hBNC : NoCut ((G.induce T).induce B) := by
+    have hh : NoCut (G.induce (Subtype.val '' B)) := by
+      rw [hIB]
+      exact hANC
+    exact hh.map (induceImageIso G T B).symm.toHom (induceImageIso G T B).symm.bijective
+  exact hIB.symm.trans (congrArg (fun U => Subtype.val '' U) (h.maximal B hUB hBConn hBNC))
+
+lemma IsBlock.lift_lobe [Fintype V] {T : Set V} {U : Set T} {x : V}
+    (h : IsBlock (G.induce T) U) (hL : Lobe G T x) (hc : 2 ≤ Nat.card U) :
+    IsBlock G (Subtype.val '' U) := by
+  classical
+  apply h.lift
+  intro A hUA hA hANC
+  have hi : ∃ u ∈ U, u.val ≠ x := by
+    by_contra hn
+    push_neg at hn
+    have hsub : Subsingleton U := ⟨by
+      intro a b
+      exact Subtype.ext (Subtype.ext ((hn a.val a.prop).trans (hn b.val b.prop).symm))⟩
+    haveI := hsub
+    have hc' : Nat.card U = 1 := Nat.card_eq_one_iff_unique.mpr ⟨hsub,h.connected.nonempty⟩
+    omega
+  obtain ⟨u,hu,hux⟩ := hi
+  exact hL.subset_of_inter hA hANC ⟨u.val,hUA ⟨u,hu,rfl⟩,u.prop,hux⟩
+
+lemma IsBlock.lift_prunes [Fintype V] {T : Set V} {U : Set T}
+    (h : IsBlock (G.induce T) U) (hp : Erdos713Pruning.PrunesTo G T)
+    (hc : 3 ≤ Nat.card U) : IsBlock G (Subtype.val '' U) := by
+  classical
+  apply h.lift
+  intro A hUA hA hANC
+  have hcard : 3 ≤ Fintype.card A := by
+    let f : U ↪ A := ⟨fun v => ⟨v.val.val,hUA ⟨v.val,v.prop,rfl⟩⟩,by
+      intro v w he
+      apply Subtype.ext
+      apply Subtype.ext
+      exact congrArg (fun z : A => z.val) he⟩
+    have hc' : 3 ≤ Fintype.card U := by simpa only [Fintype.card_eq_nat_card] using hc
+    exact hc'.trans (Fintype.card_le_of_embedding f)
+  exact hp.retains (hANC.min_degree hA hcard)
+
+lemma IsBlock.lift_component (C : G.ConnectedComponent) {U : Set C}
+    (h : IsBlock C.toSimpleGraph U) : IsBlock G (Subtype.val '' U) := by
+  apply h.lift
+  intro A hUA hA hANC
+  obtain ⟨u⟩ := h.connected.nonempty
+  have hclosed : ∀ p ∈ {p : A | p.val ∈ C.supp}, ∀ q,
+      (G.induce A).Adj p q → q ∈ {p : A | p.val ∈ C.supp} := by
+    intro p hp q hpq
+    exact C.mem_supp_of_adj_mem_supp hp hpq
+  intro v hv
+  exact mem_of_reachable_closed hclosed
+    (u := ⟨u.val.val,hUA ⟨u.val,u.prop,rfl⟩⟩) u.val.prop (hA _ ⟨v,hv⟩)
+
+end Erdos713Blocks
+
+namespace Erdos713ActualBlocks
+open Erdos713Blocks Erdos713Rate Erdos713RootPower Erdos713Gluing
+universe u
+
+/-- An ordinary rational threshold together with the matching bound at every
+possible attachment root. This is data to be proved, not a universal axiom. -/
+def RootedRate {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∃ r : ℚ, HasRate G (r : ℝ) ∧ ∀ x, RootPowerBound G x (r : ℝ)
+
+lemma RootedRate.of_iso {W T : Type u} {G : SimpleGraph W} {H : SimpleGraph T}
+    (e : G ≃g H) (h : RootedRate H) : RootedRate G := by
+  obtain ⟨r,hr,hroot⟩ := h
+  exact ⟨r,iso_rate e hr,fun x => (hroot (e x)).of_copy e.toCopy x⟩
+
+/-- Rate data is requested only for actual maximal blocks of order at least
+three. Bridge edges and isolated vertices need no separate hypothesis. -/
+def BlockRates {W : Type u} (G : SimpleGraph W) : Prop :=
+  ∀ S : Set W, IsBlock G S → 3 ≤ Nat.card S → RootedRate (G.induce S)
+
+lemma BlockRates.induce {W : Type u} [Fintype W] {G : SimpleGraph W}
+    (h : BlockRates G) (T : Set W)
+    (hlift : ∀ U : Set T, IsBlock (G.induce T) U → 3 ≤ Nat.card U →
+      IsBlock G (Subtype.val '' U)) : BlockRates (G.induce T) := by
+  intro U hU hc
+  let e := induceImageIso G T U
+  have hc' : 3 ≤ Nat.card ↥(Subtype.val '' U) := by
+    rw [← Nat.card_congr e.toEquiv]
+    exact hc
+  exact (h _ (hlift U hU hc) hc').of_iso e
+
+lemma BlockRates.lobe {W : Type u} [Fintype W] {G : SimpleGraph W}
+    (h : BlockRates G) {T : Set W} {x : W} (hL : Lobe G T x) :
+    BlockRates (G.induce T) :=
+  h.induce T (fun _ hU hc => hU.lift_lobe hL (by omega))
+
+lemma BlockRates.prunes {W : Type u} [Fintype W] {G : SimpleGraph W}
+    (h : BlockRates G) {T : Set W} (hp : Erdos713Pruning.PrunesTo G T) :
+    BlockRates (G.induce T) :=
+  h.induce T (fun _ hU hc => hU.lift_prunes hp hc)
+
+lemma BlockRates.component {W : Type u} [Fintype W] {G : SimpleGraph W}
+    (h : BlockRates G) (C : G.ConnectedComponent) : BlockRates C.toSimpleGraph :=
+  h.induce C.supp (fun _ hU _ => hU.lift_component C)
+
+/-- Matched rational rate bounds on actual cyclic blocks imply a rational
+attained growth threshold for the whole graph. No rate hypothesis is made on
+proper subgraphs of a block. -/
+lemma rate_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : BlockRates G) : ∃ r : ℚ, HasRate G (r : ℝ) := by
+  classical
+  suffices hh : ∀ n : ℕ, ∀ (W : Type u) [Fintype W] (G : SimpleGraph W),
+      Fintype.card W = n → BlockRates G → ∃ r : ℚ, HasRate G (r : ℝ) from
+    hh _ W G rfl h
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro W _ G hcard h
+    by_cases hConn : G.Connected
+    · by_cases hd : ∀ v, 2 ≤ Nat.card (G.neighborSet v)
+      · obtain ⟨S,x,hL,hSConn,hSNC,hSd⟩ := exists_end_piece hConn hd
+        obtain ⟨a,ha,hRoot⟩ := h S (hL.isBlock hSConn hSNC) (hL.card_ge_three hd)
+        by_cases hS : S = Set.univ
+        · subst S
+          exact ⟨a,iso_rate (induceUnivIso G).symm ha⟩
+        let T : Set W := insert x Sᶜ
+        have hT := hL.complement hS
+        have hsmall : Fintype.card T < n := by
+          obtain ⟨v,hv,hvx⟩ := hL.other
+          have hn : v ∉ T := by
+            simpa only [T,Set.mem_insert_iff,Set.mem_compl_iff,not_or,not_not] using ⟨hvx,hv⟩
+          exact (Fintype.card_subtype_lt (x := v) hn).trans_eq hcard
+        obtain ⟨b,hb⟩ := ih _ hsmall T (G.induce T) rfl (h.lobe hT)
+        have hNoIso : ∀ v, ∃ w, (G.induce S).Adj v w := by
+          intro v
+          apply ((G.induce S).degree_pos_iff_exists_adj v).mp
+          have hdv := hSd v
+          simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] at hdv
+          omega
+        refine ⟨max a b,iso_rate (lobeWedgeIso hL).symm ?_⟩
+        simpa only [Rat.cast_max] using wedge_rate (G.induce S) ⟨x,hL.root_mem⟩ hNoIso
+          (G.induce T) ⟨x,hT.root_mem⟩ (hT.root_adj hConn) ha hb (hRoot _)
+      · push_neg at hd
+        obtain ⟨x,hx⟩ := hd
+        have hsmall : Fintype.card ↥({x}ᶜ : Set W) < n :=
+          (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hcard
+        have hx' : Nat.card ((G.induce Set.univ).neighborSet ⟨x,Set.mem_univ x⟩) ≤ 1 := by
+          rw [Nat.card_congr ((induceUnivIso G).mapNeighborSet ⟨x,Set.mem_univ x⟩)]
+          exact Nat.le_of_lt_succ hx
+        have hp : Erdos713Pruning.PrunesTo G {x}ᶜ := by
+          convert Erdos713Pruning.PrunesTo.delete (.start (G := G)) ⟨x,Set.mem_univ x⟩ hx' using 1
+          ext v
+          simp
+        obtain ⟨r,hr⟩ := ih _ hsmall _ _ rfl (h.prunes hp)
+        exact ⟨r,hp.rate hr⟩
+    · apply Erdos713ComponentRates.rate_of_components G
+      intro C
+      have hns : ¬ Function.Surjective (fun v : C => v.val) := by
+        intro hs
+        exact hConn (C.connected_toSimpleGraph.map C.toSimpleGraph_hom hs)
+      have hsmall := (Fintype.card_lt_of_injective_not_surjective
+        (fun v : C => v.val) Subtype.val_injective hns).trans_eq hcard
+      exact ih _ hsmall C C.toSimpleGraph rfl (h.component C)
+
+lemma rational_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : BlockRates G) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr⟩ := rate_of_blocks G h
+  exact ⟨r,(exponent_eq hr hα hc hAsymptotic).symm⟩
+
+lemma exists_unmatched_block {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (h : ¬ BlockRates G) :
+    ∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧ ¬ RootedRate (G.induce S) := by
+  classical
+  unfold BlockRates at h
+  push_neg at h
+  obtain ⟨S,hS,hc,hn⟩ := h
+  exact ⟨S,hS,hc,hS.noCut.min_degree hS.connected
+    (by simpa only [Fintype.card_eq_nat_card] using hc),hn⟩
+
+/-- The earlier small-shore/C10 block class satisfies the new analytic data. -/
+lemma BlockRates.of_cycle_blocks {W : Type u} [Fintype W] {G : SimpleGraph W}
+    (h : Erdos713CycleAssembly.Blocks G) : BlockRates G := by
+  classical
+  intro S hS hc
+  haveI : Nonempty S := hS.connected.nonempty
+  exact (h S hS).rooted_rate (hS.noCut.min_degree hS.connected
+    (by simpa only [Fintype.card_eq_nat_card] using hc))
+
+/-- Root-shifting symmetry makes an ordinary rational rate sufficient. -/
+lemma RootedRate.of_root_shift {W : Type u} {G : SimpleGraph W}
+    (hr : ∃ r : ℚ, HasRate G (r : ℝ))
+    (hshift : ∀ x, ∃ e : G.Copy G, G.Adj x (e x)) : RootedRate G := by
+  obtain ⟨r,hr⟩ := hr
+  refine ⟨r,hr,?_⟩
+  intro x
+  obtain ⟨e,he⟩ := hshift x
+  exact Erdos713RootPower.of_root_shift G x e he (by linarith [hr.one_le]) hr.upper
+
+/-- Failure of the actual-block hypothesis produces one block outside all
+completed small-shore and C10 cases, and without matching rational rooted data.
+This asserts no exact asymptotic for the selected block. -/
+lemma exists_remaining_block {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hB : G.IsBipartite) (h : ¬ BlockRates G) :
+    ∃ S : Set W, IsBlock G S ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      (∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A) ∧
+      ¬ G.induce S ⊑ Erdos713C10.C10 ∧ ¬ RootedRate (G.induce S) := by
+  classical
+  obtain ⟨S,hS,hc,hd,hn⟩ := exists_unmatched_block G h
+  haveI : Nonempty S := hS.connected.nonempty
+  have hNP : ¬ Erdos713CycleAssembly.Piece (G.induce S) :=
+    fun hp => hn (hp.rooted_rate hd)
+  have hSmall : ¬ ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 :=
+    fun hh => hNP (Or.inl hh)
+  push_neg at hSmall
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc' : 8 ≤ Nat.card S := by
+    by_contra hc'
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hSmall A hA)
+  exact ⟨S,hS,hSB,hc',hd,fun A hA => hSmall A hA,fun hh => hNP (Or.inr hh),hn⟩
+
+end Erdos713ActualBlocks
+
+
+/-! Attained superlinear thresholds, unlike exact leading constants, pass to
+at least one connected component. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713Rate
+
+lemma HasRate.unique {W : Type*} {G : SimpleGraph W} {r s : ℝ}
+    (hr : HasRate G r) (hs : HasRate G s) : r = s :=
+  le_antisymm (hr.lower s hs.one_le hs.upper) (hs.lower r hr.one_le hr.upper)
+
+lemma rate_of_asymptotic {W : Type*} {G : SimpleGraph W} {a c : ℝ}
+    (ha : 1 ≤ a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^a)) : HasRate G a := by
+  refine ⟨ha,(isBigO_const_mul_right_iff hc).mp h.isBigO,?_⟩
+  intro r hr hu
+  exact Erdos713Forest.exponent_le_of_isBigO
+    (((isBigO_const_mul_left_iff hc).mp h.isBigO_symm).trans hu)
+
+lemma sum_upper {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) {r : ℝ} (hr : 1 ≤ r)
+    (h₁ : (fun n : ℕ => (extremalNumber n H₁ : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r))
+    (h₂ : (fun n : ℕ => (extremalNumber n H₂ : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r) := by
+  have hB := shifted_upper (by linarith : 0 ≤ r) (Fintype.card A) h₂
+  have hC := cast_linear_bigO hr (Fintype.card A)
+  apply IsBigO.trans _ ((h₁.add hB).add hC)
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (by positivity),one_mul]
+  exact_mod_cast Erdos713Union.extremal_sum_bound H₁ H₂ n
+end Erdos713Rate
+
+namespace Erdos713ComponentRates
+open Erdos713Rate
+universe u v
+
+/-- Finitely many subcritical fibre bounds combine to one subcritical bound.
+The set of labels may be infinite: only finitely many fibres are inhabited. -/
+lemma subcritical_upper_of_fibres {W : Type u} [Fintype W] {I : Type v}
+    (G : SimpleGraph W) (χ : W → I) {r : ℝ} (hr : 1 < r)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v)
+    (hR : ∀ i, ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (fun n : ℕ => (extremalNumber n (G.induce {w | χ w = i}) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^a)) :
+    ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^a) := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ (G : SimpleGraph W) (χ : W → I),
+      (∀ u v, G.Adj u v → χ u = χ v) →
+      (∀ i, ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n (G.induce {w | χ w = i}) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) →
+        ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+          (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^a) from
+    hP _ W rfl G χ hχ hR
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW G χ hχ hR
+    by_cases hne : Nonempty W
+    swap
+    · letI : IsEmpty W := not_nonempty_iff.mp hne
+      exact ⟨1,le_rfl,hr,(forest_rate G (by intro v; exact isEmptyElim v)).upper⟩
+    let w : W := hne.some
+    let i : I := χ w
+    let S : Set W := {v | χ v = i}
+    have hsmall : Fintype.card ↥(Sᶜ) < k :=
+      (Fintype.card_subtype_lt (x := w) (by simp [S,i])).trans_eq hW
+    have hχ' : ∀ u v : ↥(Sᶜ), (G.induce Sᶜ).Adj u v → χ u.val = χ v.val := by
+      intro u v huv
+      exact hχ _ _ huv
+    have hR' : ∀ j, ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n
+          ((G.induce Sᶜ).induce {v : ↥(Sᶜ) | χ v.val = j}) : ℝ)) =O[atTop]
+            (fun n : ℕ => (n : ℝ)^a) := by
+      intro j
+      by_cases hj : j = i
+      · subst j
+        letI : IsEmpty {v : ↥(Sᶜ) // χ v.val = i} := ⟨fun v => v.val.prop v.prop⟩
+        exact ⟨1,le_rfl,hr,(forest_rate _ (by intro v; exact (v.val.prop v.prop).elim)).upper⟩
+      · obtain ⟨a,ha,har,hu⟩ := hR j
+        exact ⟨a,ha,har,(extremal_mono_bigO ⟨(fibreComplementIso G χ hj).toCopy⟩).trans hu⟩
+    obtain ⟨a₂,ha₂,ha₂r,hSc⟩ := ih _ hsmall _ rfl (G.induce Sᶜ) (fun v => χ v.val) hχ' hR'
+    obtain ⟨a₁,ha₁,ha₁r,hS⟩ := hR i
+    have he : G.induce S ⊕g G.induce Sᶜ ≃g G := splitIso G S (by
+      intro u v huv
+      change χ u = i ↔ χ v = i
+      rw [hχ u v huv])
+    refine ⟨max a₁ a₂,ha₁.trans (le_max_left _ _),max_lt ha₁r ha₂r,?_⟩
+    exact (extremal_mono_bigO ⟨he.symm.toCopy⟩).trans
+      (sum_upper _ _ (ha₁.trans (le_max_left _ _))
+        (hS.trans (rpow_mono_bigO (le_max_left _ _)))
+        (hSc.trans (rpow_mono_bigO (le_max_right _ _))))
+
+/-- At least one component attains the same superlinear growth threshold.
+No pure-power asymptotic, nor its constant, is claimed for that component. -/
+lemma exists_component_rate {W : Type u} [Fintype W] (G : SimpleGraph W)
+    {r : ℝ} (hr : 1 < r) (hR : HasRate G r) :
+    ∃ C : G.ConnectedComponent, HasRate C.toSimpleGraph r := by
+  classical
+  by_contra hn
+  push_neg at hn
+  have hsub : ∀ C : G.ConnectedComponent, ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^a) := by
+    intro C
+    have hu := (extremal_mono_bigO
+      (show C.toSimpleGraph ⊑ G from ⟨⟨C.toSimpleGraph_hom,Subtype.val_injective⟩⟩)).trans hR.upper
+    have hl : ¬ ∀ a : ℝ, 1 ≤ a →
+        ((fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) → r ≤ a := fun hl => hn C ⟨hr.le,hu,hl⟩
+    push_neg at hl
+    obtain ⟨a,ha,hu,hlt⟩ := hl
+    exact ⟨a,ha,hlt,hu⟩
+  obtain ⟨a,ha,har,hu⟩ := subcritical_upper_of_fibres G G.connectedComponentMk hr
+    (fun _ _ huv => ConnectedComponent.connectedComponentMk_eq_of_adj huv) hsub
+  exact (not_lt_of_ge (hR.lower a ha hu)) har
+
+end Erdos713ComponentRates
+
+/- Root invariance on connected forbidden graphs and encoding a rooted power
+bound by gluing two copies at adjacent roots. No rationality of these bounds is
+assumed or asserted. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713RootPower
+open Erdos713Rate Erdos713Gluing
+
+lemma RootPowerBound.of_adj {W : Type*} {H : SimpleGraph W} {x y : W} {r : ℝ}
+    (h : RootPowerBound H x r) (hxy : H.Adj x y) : RootPowerBound H y r := by
+  obtain ⟨C,hC,hbound⟩ := h
+  refine ⟨C,hC,?_⟩
+  intro n G S hB hroot
+  apply hbound n G Sᶜ (by simpa only [compl_compl] using hB.symm)
+  intro f
+  simpa only [Set.mem_compl_iff,not_not] using
+    hB.symm.mem_of_mem_adj (hroot f) (f.toHom.map_adj hxy.symm)
+
+lemma RootPowerBound.of_reachable {W : Type*} {H : SimpleGraph W} {x y : W} {r : ℝ}
+    (h : RootPowerBound H x r) (hxy : H.Reachable x y) : RootPowerBound H y r := by
+  obtain ⟨p⟩ := hxy
+  have hh : ∀ {u v : W}, H.Walk u v → RootPowerBound H u r → RootPowerBound H v r := by
+    intro u v p
+    induction p with
+    | nil => exact id
+    | cons hadj p ih => exact fun hu => ih (hu.of_adj hadj)
+  exact hh p h
+
+lemma rootPowerBound_iff_of_connected {W : Type*} {H : SimpleGraph W}
+    (hH : H.Connected) (x y : W) (r : ℝ) : RootPowerBound H x r ↔ RootPowerBound H y r :=
+  ⟨fun h => h.of_reachable (hH x y),fun h => h.of_reachable (hH y x)⟩
+
+/-- Opposite-shore gluing is free whenever all copies place the original root
+outside the designated shore. This needs only adjacency of the two roots. -/
+lemma opposite_wedge_free {W V : Type*} (H : SimpleGraph W) {x y : W}
+    (hxy : H.Adj x y) (G : SimpleGraph V) (S : Set V)
+    (hB : G.IsBipartiteWith S Sᶜ) (hroot : ∀ f : H.Copy G, f x ∉ S) :
+    (wedge H x H y).Free G := by
+  classical
+  rintro ⟨f⟩
+  let a : H.Copy G := f.comp (leftCopy H x H y)
+  let b : H.Copy G := f.comp (rightCopy H x H y)
+  have he : a x = b y := by simp [a,b,leftCopy,rightCopy,Copy.comp]
+  have hby : b y ∈ Sᶜ := he ▸ hroot a
+  exact hroot b (hB.symm.mem_of_mem_adj hby (b.toHom.map_adj hxy.symm))
+
+lemma of_opposite_wedge_upper {W : Type*} (H : SimpleGraph W) {x y : W}
+    (hxy : H.Adj x y) {r : ℝ} (hr : 0 ≤ r)
+    (h : (fun n : ℕ => (extremalNumber n (wedge H x H y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r)) : RootPowerBound H x r := by
+  obtain ⟨C,hC,hbound⟩ := global_free_bound_of_upper (wedge H x H y) hr h
+  exact ⟨C,hC,fun n G S hB hroot => hbound n G (opposite_wedge_free H hxy G S hB hroot)⟩
+
+/-- A rooted bound implies the ordinary bound, by retaining a bipartite
+subgraph with at least half of the host's edges. -/
+lemma RootPowerBound.upper {W : Type*} {H : SimpleGraph W} {x : W} {r : ℝ}
+    (h : RootPowerBound H x r) :
+    (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r) := by
+  classical
+  obtain ⟨C,hC,hbound⟩ := h
+  apply IsBigO.of_bound (2*C)
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg n) r)]
+  rw [← Fintype.card_fin n,extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  obtain ⟨K,hKG,hKB,hhalf⟩ := Erdos713Cut.exists_bipartite_half G
+  obtain ⟨χ⟩ := hKB
+  let S : Set (Fin n) := {v | χ v = 0}
+  have hS : K.IsBipartiteWith S Sᶜ := by
+    refine ⟨disjoint_compl_right,?_⟩
+    intro u v huv
+    have hc := χ.valid huv
+    simp only [S,Set.mem_setOf_eq,Set.mem_compl_iff]
+    omega
+  have hb := hbound n K S hS (fun f =>
+    (hG ((show H ⊑ K from ⟨f⟩).mono_right hKG)).elim)
+  have hhalf' : (G.edgeFinset.card : ℝ) ≤ 2*(K.edgeFinset.card : ℝ) := by exact_mod_cast hhalf
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hhalf' ⊢
+  simp only [Nat.card_fin]
+  linarith
+
+/-- For exponents at least one, the rooted upper-bound problem is exactly an
+ordinary upper-bound problem for two copies glued at adjacent roots. -/
+lemma opposite_wedge_upper_iff {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ v, ∃ w, H.Adj v w) {x y : W} (hxy : H.Adj x y)
+    {r : ℝ} (hr : 1 ≤ r) :
+    ((fun n : ℕ => (extremalNumber n (wedge H x H y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r)) ↔ RootPowerBound H x r := by
+  constructor
+  · exact of_opposite_wedge_upper H hxy (by linarith)
+  · intro h
+    simpa only [max_self] using wedge_upper H x hNoIso H y ⟨x,hxy.symm⟩ hr h h.upper h.upper
+
+/-- An attained threshold for the rooted problem, not necessarily equal to
+an ordinary threshold for H. -/
+structure HasRootRate {W : Type*} (H : SimpleGraph W) (x : W) (r : ℝ) : Prop where
+  one_le : 1 ≤ r
+  upper : RootPowerBound H x r
+  lower : ∀ a : ℝ, 1 ≤ a → RootPowerBound H x a → r ≤ a
+
+lemma HasRootRate.of_reachable {W : Type*} {H : SimpleGraph W} {x y : W} {r : ℝ}
+    (h : HasRootRate H x r) (hxy : H.Reachable x y) : HasRootRate H y r :=
+  ⟨h.one_le,h.upper.of_reachable hxy,
+    fun a ha hu => h.lower a ha (hu.of_reachable hxy.symm)⟩
+
+lemma opposite_wedge_rate_iff {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ v, ∃ w, H.Adj v w) {x y : W} (hxy : H.Adj x y) {r : ℝ} :
+    HasRate (wedge H x H y) r ↔ HasRootRate H x r := by
+  constructor
+  · intro h
+    refine ⟨h.one_le,(opposite_wedge_upper_iff H hNoIso hxy h.one_le).mp h.upper,?_⟩
+    intro a ha hu
+    exact h.lower a ha ((opposite_wedge_upper_iff H hNoIso hxy ha).mpr hu)
+  · intro h
+    refine ⟨h.one_le,(opposite_wedge_upper_iff H hNoIso hxy h.one_le).mpr h.upper,?_⟩
+    intro a ha hu
+    exact h.lower a ha ((opposite_wedge_upper_iff H hNoIso hxy ha).mp hu)
+
+end Erdos713RootPower
+
+namespace Erdos713ActualBlocks
+open Erdos713Rate Erdos713RootPower Erdos713Gluing
+
+/-- For a connected graph, one attachment root suffices. -/
+lemma RootedRate.of_one_root {W : Type*} {G : SimpleGraph W} (hG : G.Connected)
+    (x : W) {r : ℚ} (hr : HasRate G (r : ℝ)) (hroot : RootPowerBound G x (r : ℝ)) :
+    RootedRate G :=
+  ⟨r,hr,fun y => hroot.of_reachable (hG x y)⟩
+
+/-- Matching rooted data can equivalently be checked by an ordinary upper
+bound for the opposite-root double of the block. -/
+lemma rootedRate_iff_opposite_wedge {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hNoIso : ∀ v, ∃ w, G.Adj v w) {x y : W} (hxy : G.Adj x y) :
+    RootedRate G ↔ ∃ r : ℚ, HasRate G (r : ℝ) ∧
+      (fun n : ℕ => (extremalNumber n (wedge G x G y) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^(r : ℝ)) := by
+  constructor
+  · rintro ⟨r,hr,hroot⟩
+    exact ⟨r,hr,(opposite_wedge_upper_iff G hNoIso hxy hr.one_le).mpr (hroot x)⟩
+  · rintro ⟨r,hr,hu⟩
+    exact RootedRate.of_one_root hG x hr
+      ((opposite_wedge_upper_iff G hNoIso hxy hr.one_le).mp hu)
+
+lemma unmatched_opposite_wedge {W : Type*} [Fintype W] {G : SimpleGraph W}
+    (hG : G.Connected) (hNoIso : ∀ v, ∃ w, G.Adj v w) (h : ¬ RootedRate G)
+    {x y : W} (hxy : G.Adj x y) {r : ℚ} (hr : HasRate G (r : ℝ)) :
+    ¬ (fun n : ℕ => (extremalNumber n (wedge G x G y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^(r : ℝ)) :=
+  fun hu => h ((rootedRate_iff_opposite_wedge G hG hNoIso hxy).mpr ⟨r,hr,hu⟩)
+
+end Erdos713ActualBlocks
+
+
+/- Rooted upper bounds are closed under one-vertex gluing. This is distinct
+from claiming that rooted and ordinary thresholds of every block coincide. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713RootPower
+open Erdos713Rate Erdos713Gluing Erdos713Blocking Erdos713SwitchGluing
+
+lemma rooted_copy_of_packing {W T V : Type*} [Fintype T]
+    {H : SimpleGraph W} {J : SimpleGraph T} {G : SimpleGraph V} {x : W} {y : T} {z : V}
+    (p : Erdos713Fan.Packing H G x z (Fintype.card T+1)) (g : J.Copy G) (hg : g y = z) :
+    ∃ f : (Erdos713Gluing.wedge H x J y).Copy G, f (Sum.inl x) = z := by
+  classical
+  obtain ⟨i,hi⟩ := exists_disjoint_petal p g
+  have hdis : ∀ a b, b ≠ y → p.copies i a ≠ g b := by
+    intro a b hb
+    by_cases ha : a = x
+    · subst a
+      intro he
+      exact hb (g.injective (hg.trans ((p.root i).symm.trans he))).symm
+    · exact hi a ha b
+  exact ⟨commonRootCopy (p.copies i) g ((p.root i).trans hg.symm) hdis,p.root i⟩
+
+lemma rooted_blockers {W T V : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (J : SimpleGraph T) (y : T) (G : SimpleGraph V)
+    (S : Set V) (hroot : ∀ f : (Erdos713Gluing.wedge H x J y).Copy G, f (Sum.inl x) ∉ S) :
+    ∀ v, ∃ B : Finset V, v ∉ B ∧ B.card ≤ (Fintype.card T+1)*Fintype.card W ∧
+      (v ∈ S → (∀ f : H.Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B) ∨
+        (∀ g : J.Copy G, g y = v → False)) := by
+  classical
+  intro v
+  by_cases hvS : v ∈ S
+  · rcases Erdos713Fan.packing_or_blocker H G x v (Fintype.card T+1) with hp | ⟨B,hv,hc,hB⟩
+    · obtain ⟨p⟩ := hp
+      refine ⟨∅,by simp,by simp,fun _ => Or.inr ?_⟩
+      intro g hg
+      obtain ⟨f,hf⟩ := rooted_copy_of_packing p g hg
+      exact hroot f (hf.symm ▸ hvS)
+    · exact ⟨B,hv,hc,fun _ => Or.inl hB⟩
+  · exact ⟨∅,by simp,by simp,fun hv => (hvS hv).elim⟩
+
+lemma edge_split_shore {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (S A : Set V) (hB : G.IsBipartiteWith S Sᶜ) (hAS : A ⊆ S) :
+    Nat.card G.edgeSet ≤ Nat.card (cross G A).edgeSet + Nat.card (cross G (S \ A)).edgeSet := by
+  classical
+  simp only [← Fintype.card_eq_nat_card,← edgeFinset_card]
+  apply (Finset.card_le_card (show G.edgeFinset ⊆
+    (cross G A).edgeFinset ∪ (cross G (S \ A)).edgeFinset from ?_)).trans (Finset.card_union_le _ _)
+  intro e he
+  induction e using Sym2.inductionOn with
+  | hf u v =>
+    have huv : G.Adj u v := by simpa using he
+    rcases hB.2 huv with ⟨hu,hv⟩ | ⟨hu,hv⟩
+    · change v ∉ S at hv
+      have hvA : v ∉ A := fun hvA => hv (hAS hvA)
+      by_cases huA : u ∈ A
+      · simp [cross,huv,huA,hvA]
+      · simp [cross,huv,hu,huA,hv]
+    · change u ∉ S at hu
+      have huA : u ∉ A := fun huA => hu (hAS huA)
+      by_cases hvA : v ∈ A
+      · simp [cross,huv,huA,hvA]
+      · simp [cross,huv,hv,hvA,hu]
+
+lemma rooted_wedge_edge_bound {W T : Type*} [Fintype W] [Fintype T]
+    (H : SimpleGraph W) (x : W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (J : SimpleGraph T) (y : T) {r C D : ℝ} (hC : 0 ≤ C) (hD : 0 ≤ D)
+    (hH : ∀ n (G : SimpleGraph (Fin n)) (S : Set (Fin n)), G.IsBipartiteWith S Sᶜ →
+      (∀ f : H.Copy G, f x ∉ S) → (Nat.card G.edgeSet : ℝ) ≤ C*(n : ℝ)^r)
+    (hJ : ∀ n (G : SimpleGraph (Fin n)) (S : Set (Fin n)), G.IsBipartiteWith S Sᶜ →
+      (∀ f : J.Copy G, f y ∉ S) → (Nat.card G.edgeSet : ℝ) ≤ D*(n : ℝ)^r)
+    (n : ℕ) (G : SimpleGraph (Fin n)) (S : Set (Fin n)) (hBip : G.IsBipartiteWith S Sᶜ)
+    (hroot : ∀ f : (Erdos713Gluing.wedge H x J y).Copy G, f (Sum.inl x) ∉ S) :
+    (Nat.card G.edgeSet : ℝ) ≤
+      (2^(2*((Fintype.card T+1)*Fintype.card W)+2) : ℕ)*((C+D)*(n : ℝ)^r) +
+        (((Fintype.card T+1)*Fintype.card W)*n : ℕ) := by
+  classical
+  choose B hb hk hB using rooted_blockers H x J y G S hroot
+  let A : Set (Fin n) := {v | v ∈ S ∧ ∀ f : H.Copy G, f x = v → ∃ a, a ≠ x ∧ f a ∈ B v}
+  have hNoJ (v : Fin n) (hv : v ∈ S \ A) (g : J.Copy G) (hg : g y = v) : False := by
+    rcases hB v hv.1 with hl | hr
+    · exact hv.2 ⟨hv.1,hl⟩
+    · exact hr g hg
+  have hfree : ∀ σ : Fin n → Bool,
+      ((keep G B σ).edgeFinset.card : ℝ) ≤ (C+D)*(n : ℝ)^r := by
+    intro σ
+    let K := keep G B σ
+    have hsel (f : H.Copy K) (a : W) : selected B σ (f a) := by
+      obtain ⟨b,hab⟩ := hNoIso a
+      exact (f.toHom.map_adj hab).2.1
+    have hHRoot (f : H.Copy K) : f x ∉ A := by
+      intro hfx
+      let g : H.Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp f
+      obtain ⟨b,_,hmem⟩ := hfx.2 g rfl
+      exact Bool.noConfusion ((hsel f b).1.symm.trans ((hsel f x).2 (f b) hmem))
+    have hleft := hH n (cross K A) A (Erdos713KstGluing.cross_isBipartiteWith K A)
+      (fun f => hHRoot ((Copy.ofLE _ _ (cross_le K A)).comp f))
+    have hright := hJ n (cross K (S \ A)) (S \ A)
+      (Erdos713KstGluing.cross_isBipartiteWith K (S \ A)) (by
+        intro f hf
+        exact hNoJ (f y) hf
+          ((Copy.ofLE _ _ ((cross_le K (S \ A)).trans (keep_le G B σ))).comp f) rfl)
+    have hKB : K.IsBipartiteWith S Sᶜ := ⟨hBip.1,by intro u v hvw; exact hBip.2 hvw.1⟩
+    have hsplit := edge_split_shore K S A hKB (fun _ hv => hv.1)
+    have hsplit' : (Nat.card K.edgeSet : ℝ) ≤
+        Nat.card (cross K A).edgeSet + Nat.card (cross K (S \ A)).edgeSet := by exact_mod_cast hsplit
+    simp only [edgeFinset_card,Fintype.card_eq_nat_card]
+    linarith
+  have hh := Erdos713KstGluing.real_edges_le_of_keep_bound G B
+    ((Fintype.card T+1)*Fintype.card W) _ hb hk (by positivity) hfree
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using hh
+
+lemma RootPowerBound.wedge {W T : Type*} [Fintype W] [Fintype T]
+    {H : SimpleGraph W} {J : SimpleGraph T} {x : W} {y : T} {r : ℝ}
+    (hH : RootPowerBound H x r) (hJ : RootPowerBound J y r)
+    (hr : 1 ≤ r) (hNoIso : ∀ a, ∃ b, H.Adj a b) :
+    RootPowerBound (Erdos713Gluing.wedge H x J y) (Sum.inl x) r := by
+  classical
+  obtain ⟨C,hC,hH⟩ := hH
+  obtain ⟨D,hD,hJ⟩ := hJ
+  let k := (Fintype.card T+1)*Fintype.card W
+  refine ⟨(2^(2*k+2) : ℕ)*(C+D)+k,by positivity,?_⟩
+  intro n G S hB hroot
+  have hn : (n : ℝ) ≤ (n : ℝ)^r := by
+    by_cases hn : n = 0
+    · subst n; simp only [Nat.cast_zero]; positivity
+    · have hn' : (1 : ℝ) ≤ n := by exact_mod_cast (show 1 ≤ n by omega)
+      simpa only [Real.rpow_one] using Real.rpow_le_rpow_of_exponent_le hn' hr
+  have hh := rooted_wedge_edge_bound H x hNoIso J y hC hD hH hJ n G S hB hroot
+  change (Nat.card G.edgeSet : ℝ) ≤ (2^(2*k+2) : ℕ)*((C+D)*(n : ℝ)^r) + (k*n : ℕ) at hh
+  simp only [Nat.cast_mul] at hh
+  have hk : (0 : ℝ) ≤ k := Nat.cast_nonneg k
+  nlinarith
+
+lemma RootPowerBound.mono {W : Type*} {H : SimpleGraph W} {x : W} {a b : ℝ}
+    (h : RootPowerBound H x a) (hab : a ≤ b) : RootPowerBound H x b := by
+  classical
+  obtain ⟨C,hC,hbound⟩ := h
+  refine ⟨C,hC,?_⟩
+  intro n G S hB hroot
+  by_cases hn : n = 0
+  · subst n
+    have he : G = ⊥ := Subsingleton.elim _ _
+    simp only [he,edgeSet_bot,Nat.card_eq_fintype_card,Fintype.card_ofIsEmpty,Nat.cast_zero]
+    positivity
+  have hn' : (1 : ℝ) ≤ n := by exact_mod_cast (show 1 ≤ n by omega)
+  exact (hbound n G S hB hroot).trans
+    (mul_le_mul_of_nonneg_left (Real.rpow_le_rpow_of_exponent_le hn' hab) hC)
+
+lemma HasRootRate.unique {W : Type*} {H : SimpleGraph W} {x : W} {a b : ℝ}
+    (hA : HasRootRate H x a) (hB : HasRootRate H x b) : a = b :=
+  le_antisymm (hA.lower b hB.one_le hB.upper) (hB.lower a hA.one_le hA.upper)
+
+lemma HasRootRate.wedge {W T : Type*} [Fintype W] [Fintype T]
+    {H : SimpleGraph W} {J : SimpleGraph T} {x : W} {y : T} {a b : ℝ}
+    (hH : HasRootRate H x a) (hJ : HasRootRate J y b)
+    (hNoIso : ∀ v, ∃ w, H.Adj v w) :
+    HasRootRate (Erdos713Gluing.wedge H x J y) (Sum.inl x) (max a b) := by
+  refine ⟨hH.one_le.trans (le_max_left _ _),
+    (hH.upper.mono (le_max_left _ _)).wedge (hJ.upper.mono (le_max_right _ _))
+      (hH.one_le.trans (le_max_left _ _)) hNoIso,?_⟩
+  intro c hc hRoot
+  apply max_le
+  · exact hH.lower c hc (hRoot.of_copy (leftCopy H x J y) x)
+  · have hh : RootPowerBound (Erdos713Gluing.wedge H x J y) ((rightCopy H x J y) y) c := by
+      simpa [rightCopy] using hRoot
+    exact hJ.lower c hc (hh.of_copy (rightCopy H x J y) y)
+
+/-- Opposite-root doubling does not further increase the rooted threshold. -/
+lemma opposite_wedge_root_rate_iff {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ v, ∃ w, H.Adj v w) {x y : W} (hxy : H.Adj x y) {r : ℝ} :
+    HasRootRate (Erdos713Gluing.wedge H x H y) (Sum.inl x) r ↔ HasRootRate H x r := by
+  constructor
+  · intro h
+    refine ⟨h.one_le,h.upper.of_copy (leftCopy H x H y) x,?_⟩
+    intro a ha hu
+    exact h.lower a ha (hu.wedge (hu.of_adj hxy) ha hNoIso)
+  · intro h
+    simpa only [max_self] using h.wedge (h.of_reachable hxy.reachable) hNoIso
+
+lemma opposite_wedge_matched {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ v, ∃ w, H.Adj v w) {x y : W} (hxy : H.Adj x y) {r : ℝ} :
+    HasRate (Erdos713Gluing.wedge H x H y) r ↔ HasRootRate (Erdos713Gluing.wedge H x H y) (Sum.inl x) r :=
+  (opposite_wedge_rate_iff H hNoIso hxy).trans (opposite_wedge_root_rate_iff H hNoIso hxy).symm
+
+end Erdos713RootPower
+
+namespace Erdos713Gluing
+lemma wedge_connected {W T : Type*} {H : SimpleGraph W} {J : SimpleGraph T}
+    (hH : H.Connected) (hJ : J.Connected) (x : W) (y : T) : (wedge H x J y).Connected := by
+  classical
+  rw [connected_iff_exists_forall_reachable]
+  refine ⟨Sum.inl x,?_⟩
+  rintro (a | b)
+  · exact (hH x a).map (leftCopy H x J y).toHom
+  · have hh := (hJ y b.val).map (rightCopy H x J y).toHom
+    simpa [rightCopy,b.prop] using hh
+
+lemma wedge_bipartite {W T : Type*} {H : SimpleGraph W} {J : SimpleGraph T}
+    (hH : H.IsBipartite) (hJ : J.IsBipartite) (x : W) (y : T) : (wedge H x J y).IsBipartite := by
+  classical
+  obtain ⟨cH⟩ := hH
+  obtain ⟨cJ⟩ := hJ
+  let d : Fin 2 := cH x - cJ y
+  have hd : cJ y+d = cH x := by dsimp [d]; abel
+  let c : Vertex x y → Fin 2 := Sum.elim cH (fun b => cJ b.val+d)
+  refine ⟨Coloring.mk c ?_⟩
+  rintro (a | a) (b | b) hab he
+  · exact cH.valid hab he
+  · obtain ⟨rfl,hab⟩ := hab
+    exact cJ.valid hab (add_right_cancel ((hd.trans he) : cJ y+d = cJ b.val+d))
+  · obtain ⟨rfl,hab⟩ := hab
+    exact cJ.valid hab (add_right_cancel ((he.trans hd.symm) : cJ a.val+d = cJ y+d))
+  · exact cJ.valid hab (add_right_cancel he)
+
+end Erdos713Gluing
+
+namespace Erdos713ActualBlocks
+open Erdos713Rate Erdos713RootPower Erdos713Gluing
+
+/-- The opposite-root double of a connected graph has matching rooted bounds
+at any rate it attains, even if its original block's ordinary rate is unknown. -/
+lemma opposite_wedge_rootedRate {W : Type*} [Fintype W] {H : SimpleGraph W}
+    (hH : H.Connected) (hNoIso : ∀ v, ∃ w, H.Adj v w) {x y : W} (hxy : H.Adj x y)
+    {r : ℚ} (hr : HasRate (wedge H x H y) (r : ℝ)) : RootedRate (wedge H x H y) :=
+  RootedRate.of_one_root (wedge_connected hH hH x y) (Sum.inl x) hr
+    ((opposite_wedge_matched H hNoIso hxy).mp hr).upper
+
+end Erdos713ActualBlocks
+
+/- Rooted upper bounds and attained superlinear rooted thresholds localize to
+actual cyclic blocks of a finite connected graph. No rationality is assumed. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713RootBlocks
+open Erdos713Blocks Erdos713Rate Erdos713RootPower Erdos713Gluing
+universe u
+
+lemma root_bound_small {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hc : Nat.card W ≤ 2) (x : W) : RootPowerBound G x 1 := by
+  classical
+  have he : Nonempty (W ↪ (Fin 1 ⊕ Fin 1)) := by
+    apply Function.Embedding.nonempty_of_card_le
+    simpa using hc
+  obtain ⟨e⟩ := he
+  let f : G.Copy (Erdos713KST.Kst 1 1) := ⟨⟨e,by
+    intro a b hab
+    have hne := e.injective.ne hab.ne
+    cases ha : e a with
+    | inl v =>
+      cases hb : e b with
+      | inl w => exact (hne (ha.trans ((congrArg Sum.inl (Subsingleton.elim v w)).trans hb.symm))).elim
+      | inr w => simp [Erdos713KST.Kst,completeBipartiteGraph]
+    | inr v =>
+      cases hb : e b with
+      | inl w => simp [Erdos713KST.Kst,completeBipartiteGraph]
+      | inr w => exact (hne (ha.trans ((congrArg Sum.inr (Subsingleton.elim v w)).trans hb.symm))).elim⟩,
+    e.injective⟩
+  simpa using (kst (s := 1) (t := 1) (by decide) (by decide) (f x)).of_copy f x
+
+lemma Lobe.no_isolates {W : Type*} [Fintype W] {G : SimpleGraph W}
+    {S : Set W} {x : W} (hL : Lobe G S x) (hG : G.Connected) :
+    ∀ v, ∃ w, (G.induce S).Adj v w := by
+  classical
+  obtain ⟨u,hu,hux⟩ := hL.other
+  haveI : Nontrivial S := ⟨⟨⟨u,hu⟩,⟨x,hL.root_mem⟩,
+    fun he => hux (congrArg Subtype.val he)⟩⟩
+  intro v
+  exact ((G.induce S).degree_pos_iff_exists_adj v).mp
+    ((hL.connected hG).preconnected.degree_pos_of_nontrivial v)
+
+/-- No data is needed for bridge edges or isolated singleton blocks. -/
+def BlockUpper {W : Type u} (G : SimpleGraph W) (r : ℝ) : Prop :=
+  ∀ S : Set W, IsBlock G S → 3 ≤ Nat.card S → ∀ x, RootPowerBound (G.induce S) x r
+
+lemma BlockUpper.lobe {W : Type u} [Fintype W] {G : SimpleGraph W} {r : ℝ}
+    (h : BlockUpper G r) {T : Set W} {x : W} (hL : Lobe G T x) : BlockUpper (G.induce T) r := by
+  intro U hU hc y
+  let e := induceImageIso G T U
+  have hc' : 3 ≤ Nat.card ↥(Subtype.val '' U) := by
+    rw [← Nat.card_congr e.toEquiv]
+    exact hc
+  exact (h _ (hU.lift_lobe hL (by omega)) hc' (e y)).of_copy e.toCopy y
+
+/-- The rooted upper bound of a finite connected graph is determined by its
+actual cyclic blocks. This direction assembles bounds at one fixed exponent. -/
+lemma root_bound_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} (hr : 1 ≤ r) (h : BlockUpper G r) :
+    ∀ x, RootPowerBound G x r := by
+  classical
+  suffices hh : ∀ n : ℕ, ∀ (W : Type u) [Fintype W] (G : SimpleGraph W),
+      Fintype.card W = n → G.Connected → BlockUpper G r → ∀ x, RootPowerBound G x r from
+    hh _ W G rfl hG h
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro W _ G hc hG h z
+    by_cases hsmall : Nat.card W ≤ 2
+    · exact (root_bound_small G hsmall z).mono hr
+    haveI : Nontrivial W := Fintype.one_lt_card_iff_nontrivial.mp
+      (by simpa only [Fintype.card_eq_nat_card] using (show 1 < Nat.card W by omega))
+    obtain ⟨x⟩ := hG.nonempty
+    obtain ⟨y,hxy⟩ := (G.degree_pos_iff_exists_adj x).mp (hG.preconnected.degree_pos_of_nontrivial x)
+    obtain ⟨S,x,hL,hNC⟩ := exists_minimal_lobe (G := G)
+      ⟨Set.univ,x,Set.mem_univ x,⟨y,Set.mem_univ y,hxy.ne.symm⟩,by simp⟩
+    have hSC := hL.connected hG
+    have hSRoot : ∀ w, RootPowerBound (G.induce S) w r := by
+      by_cases hSCard : 3 ≤ Nat.card S
+      · exact h S (hL.isBlock hSC hNC) hSCard
+      · intro w
+        exact (root_bound_small (G.induce S) (by omega) w).mono hr
+    by_cases hS : S = Set.univ
+    · subst S
+      exact (hSRoot ((induceUnivIso G).symm z)).of_copy (induceUnivIso G).symm.toCopy z
+    let T : Set W := insert x Sᶜ
+    have hT := hL.complement hS
+    have hTsmall : Fintype.card T < n := by
+      obtain ⟨v,hv,hvx⟩ := hL.other
+      have hn : v ∉ T := by
+        simpa only [T,Set.mem_insert_iff,Set.mem_compl_iff,not_or,not_not] using ⟨hvx,hv⟩
+      exact (Fintype.card_subtype_lt (x := v) hn).trans_eq hc
+    have hTConn := hT.connected hG
+    have hTRoot := ih _ hTsmall T (G.induce T) rfl hTConn (h.lobe hT)
+    have hRoot := (hSRoot ⟨x,hL.root_mem⟩).wedge (hTRoot ⟨x,hT.root_mem⟩) hr (Lobe.no_isolates hL hG)
+    let e := lobeWedgeIso hL
+    have hWConn := wedge_connected hSC hTConn ⟨x,hL.root_mem⟩ ⟨x,hT.root_mem⟩
+    exact (hRoot.of_reachable (hWConn _ (e.symm z))).of_copy e.symm.toCopy z
+
+lemma blockUpper_of_root_bound {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} {x : W} (h : RootPowerBound G x r) : BlockUpper G r := by
+  intro S hS hc y
+  exact (h.of_reachable (hG x y.val)).of_copy (Copy.induce G S) y
+
+lemma root_bound_iff_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} (hr : 1 ≤ r) (x : W) :
+    RootPowerBound G x r ↔ BlockUpper G r :=
+  ⟨blockUpper_of_root_bound G hG,fun h => root_bound_of_blocks G hG hr h x⟩
+
+/-- Any attained superlinear rooted threshold is attained by an actual cyclic
+block. This transfers the threshold, not an exact asymptotic. -/
+lemma exists_block_root_rate {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {x : W} {r : ℝ} (hr : 1 < r) (hR : HasRootRate G x r) :
+    ∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧ ∀ y, HasRootRate (G.induce S) y r := by
+  classical
+  by_contra hn
+  push_neg at hn
+  have hu := blockUpper_of_root_bound G hG hR.upper
+  have hEach (S : Set W) : ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (IsBlock G S → 3 ≤ Nat.card S → ∀ y, RootPowerBound (G.induce S) y a) := by
+    by_cases hS : IsBlock G S ∧ 3 ≤ Nat.card S
+    · obtain ⟨y,hy⟩ := hn S hS.1 hS.2
+      have hl : ¬ ∀ a : ℝ, 1 ≤ a → RootPowerBound (G.induce S) y a → r ≤ a :=
+        fun hl => hy ⟨hr.le,hu S hS.1 hS.2 y,hl⟩
+      push_neg at hl
+      obtain ⟨a,ha,hroot,har⟩ := hl
+      exact ⟨a,ha,har,fun _ _ z => hroot.of_reachable (hS.1.connected y z)⟩
+    · exact ⟨1,le_rfl,hr,fun hBlock hc => (hS ⟨hBlock,hc⟩).elim⟩
+  choose a ha har hEach using hEach
+  obtain ⟨S₀,_,hmax⟩ := Finset.exists_max_image (Finset.univ : Finset (Set W)) a
+    ⟨∅,Finset.mem_univ _⟩
+  have hBound : BlockUpper G (a S₀) := by
+    intro S hS hc y
+    exact (hEach S hS hc y).mono (hmax S (Finset.mem_univ _))
+  exact (not_lt_of_ge (hR.lower (a S₀) (ha S₀)
+    (root_bound_of_blocks G hG (ha S₀) hBound x))) (har S₀)
+
+lemma hasRootRate_of_matched {W : Type*} {G : SimpleGraph W} {x : W} {r : ℝ}
+    (hR : HasRate G r) (hRoot : RootPowerBound G x r) : HasRootRate G x r :=
+  ⟨hR.one_le,hRoot,fun a ha hu => hR.lower a ha hu.upper⟩
+
+/-- Either some actual cyclic block attains the original exponent as a rooted
+threshold, or every opposite-root double of the connected graph fails the
+original power upper bound. No exponent of a double is asserted. -/
+lemma root_block_or_double_gap {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hNoIso : ∀ v, ∃ w, G.Adj v w) {r : ℝ}
+    (hr : 1 < r) (hR : HasRate G r) :
+    (∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧ ∀ y, HasRootRate (G.induce S) y r) ∨
+    (∀ x y, G.Adj x y →
+      ¬ (fun n : ℕ => (extremalNumber n (wedge G x G y) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^r)) := by
+  classical
+  obtain ⟨x⟩ := hG.nonempty
+  by_cases hx : RootPowerBound G x r
+  · exact Or.inl (exists_block_root_rate G hG hr (hasRootRate_of_matched hR hx))
+  · refine Or.inr (fun y z hyz hu => hx ?_)
+    exact ((opposite_wedge_upper_iff G hNoIso hyz hr.le).mp hu).of_reachable (hG y x)
+
+/-- The block supplied at an irrational rooted threshold lies outside every
+completed small-shore/C10 case. It carries no ordinary asymptotic claim. -/
+lemma exists_remaining_root_block {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hB : G.IsBipartite) {x : W} {r : ℝ}
+    (hr : 1 < r) (hR : HasRootRate G x r) (hIrr : r ∉ Set.range ((↑) : ℚ → ℝ)) :
+    ∃ S : Set W, IsBlock G S ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      (∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A) ∧
+      ¬ G.induce S ⊑ Erdos713C10.C10 ∧
+      (∀ y, HasRootRate (G.induce S) y r) ∧ ¬ Erdos713ActualBlocks.RootedRate (G.induce S) := by
+  classical
+  obtain ⟨S,hS,hc,hRate⟩ := exists_block_root_rate G hG hr hR
+  haveI : Nonempty S := hS.connected.nonempty
+  have hd := hS.noCut.min_degree hS.connected (by
+    simpa only [Fintype.card_eq_nat_card] using hc)
+  have hNoRoot : ¬ Erdos713ActualBlocks.RootedRate (G.induce S) := by
+    rintro ⟨q,hq,hRoot⟩
+    let y : S := Classical.arbitrary S
+    exact hIrr ⟨q,(hasRootRate_of_matched hq (hRoot y)).unique (hRate y)⟩
+  have hPiece : ¬ Erdos713CycleAssembly.Piece (G.induce S) :=
+    fun hp => hNoRoot (hp.rooted_rate hd)
+  have hSmall : ¬ ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 :=
+    fun hh => hPiece (Or.inl hh)
+  push_neg at hSmall
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc' : 8 ≤ Nat.card S := by
+    by_contra hc'
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hSmall A hA)
+  exact ⟨S,hS,hSB,hc',hd,fun A hA => hSmall A hA,
+    fun hh => hPiece (Or.inr hh),hRate,hNoRoot⟩
+
+/-- Rational attained rooted thresholds of the actual cyclic blocks combine
+to a rational attained rooted threshold. The ordinary rates of the blocks do
+not appear in this hypothesis. -/
+lemma rational_root_rate_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected)
+    (hBlocks : ∀ S : Set W, IsBlock G S → 3 ≤ Nat.card S →
+      ∃ q : ℚ, ∀ y, HasRootRate (G.induce S) y (q : ℝ)) :
+    ∃ q : ℚ, ∀ x, HasRootRate G x (q : ℝ) := by
+  classical
+  have hEach (S : Set W) : ∃ q : ℚ, 1 ≤ (q : ℝ) ∧
+      ((IsBlock G S ∧ 3 ≤ Nat.card S) → ∀ y, HasRootRate (G.induce S) y (q : ℝ)) ∧
+      (¬ (IsBlock G S ∧ 3 ≤ Nat.card S) → q = 1) := by
+    by_cases hS : IsBlock G S ∧ 3 ≤ Nat.card S
+    · obtain ⟨q,hq⟩ := hBlocks S hS.1 hS.2
+      obtain ⟨y⟩ := hS.1.connected.nonempty
+      exact ⟨q,(hq y).one_le,fun _ => hq,fun hn => (hn hS).elim⟩
+    · exact ⟨1,by norm_num,fun hh => (hS hh).elim,fun _ => rfl⟩
+  choose q hOne hRates hDefault using hEach
+  obtain ⟨S₀,_,hmax⟩ := Finset.exists_max_image (Finset.univ : Finset (Set W)) q
+    ⟨∅,Finset.mem_univ _⟩
+  have hBound : BlockUpper G (q S₀ : ℝ) := by
+    intro S hS hc y
+    exact (hRates S ⟨hS,hc⟩ y).upper.mono (by exact_mod_cast hmax S (Finset.mem_univ _))
+  refine ⟨q S₀,fun x => ⟨hOne S₀,root_bound_of_blocks G hG (hOne S₀) hBound x,?_⟩⟩
+  intro a ha hu
+  by_cases hS : IsBlock G S₀ ∧ 3 ≤ Nat.card S₀
+  · obtain ⟨y⟩ := hS.1.connected.nonempty
+    exact (hRates S₀ hS y).lower a ha (blockUpper_of_root_bound G hG hu S₀ hS.1 hS.2 y)
+  · simpa only [hDefault S₀ hS,Rat.cast_one] using ha
+
+lemma opposite_double_rate_of_blocks {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hNoIso : ∀ v, ∃ w, G.Adj v w)
+    (hBlocks : ∀ S : Set W, IsBlock G S → 3 ≤ Nat.card S →
+      ∃ q : ℚ, ∀ y, HasRootRate (G.induce S) y (q : ℝ))
+    {x y : W} (hxy : G.Adj x y) : ∃ q : ℚ, HasRate (wedge G x G y) (q : ℝ) := by
+  obtain ⟨q,hq⟩ := rational_root_rate_of_blocks G hG hBlocks
+  exact ⟨q,(opposite_wedge_rate_iff G hNoIso hxy).mpr (hq x)⟩
+
+lemma tree_root_bound {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hTree : G.IsTree) (x : W) : RootPowerBound G x 1 := by
+  classical
+  apply root_bound_of_blocks G hTree.isConnected le_rfl
+  intro S hS hc y
+  haveI : Nontrivial S := Fintype.one_lt_card_iff_nontrivial.mp
+    (by simpa only [Fintype.card_eq_nat_card] using (show 1 < Nat.card S by omega))
+  have ht : (G.induce S).IsTree := ⟨hS.connected,hTree.IsAcyclic.induce S⟩
+  obtain ⟨v,hv⟩ := ht.exists_vert_degree_one_of_nontrivial
+  have hd := hS.noCut.min_degree hS.connected
+    (by simpa only [Fintype.card_eq_nat_card] using hc) v
+  simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree,hv] at hd
+  omega
+
+end Erdos713RootBlocks
+
+/- Sampling with bounded blockers attached to edges, rather than vertices.
+Every forbidden copy must contain an edge whose blocker meets that copy. -/
+open SimpleGraph Finset
+namespace Erdos713EdgeBlockers
+open Erdos713Blocking
+universe u v
+
+variable {W : Type u} {V : Type v} {H : SimpleGraph W} {G : SimpleGraph V}
+
+def UsesEdge (f : H.Copy G) (e : Sym2 V) : Prop :=
+  ∃ a b, H.Adj a b ∧ s(f a,f b) = e
+
+def Blocked (H : SimpleGraph W) (G : SimpleGraph V) (k : ℕ) : Prop :=
+  ∃ B : Sym2 V → Finset V,
+    (∀ e ∈ G.edgeSet, (B e).card ≤ k) ∧
+    (∀ e ∈ G.edgeSet, ∀ v ∈ e, v ∉ B e) ∧
+    (∀ f : H.Copy G, ∃ e, UsesEdge f e ∧ ∃ a, f a ∈ B e)
+
+def keep (G : SimpleGraph V) (B : Sym2 V → Finset V) (σ : V → Bool) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ selected (fun _ => B s(u,v)) σ u ∧ selected (fun _ => B s(u,v)) σ v
+  symm u v h := by
+    refine ⟨h.1.symm,?_⟩
+    have he : s(v,u) = s(u,v) := Sym2.eq_swap
+    rw [he]
+    exact h.2.symm
+  loopless u h := G.loopless u h.1
+
+lemma keep_le (G : SimpleGraph V) (B : Sym2 V → Finset V) (σ : V → Bool) : keep G B σ ≤ G :=
+  fun _ _ h => h.1
+
+lemma keep_free (H : SimpleGraph W) (G : SimpleGraph V) (B : Sym2 V → Finset V)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (hHits : ∀ f : H.Copy G, ∃ e, UsesEdge f e ∧ ∃ a, f a ∈ B e) (σ : V → Bool) :
+    H.Free (keep G B σ) := by
+  rintro ⟨f⟩
+  let g : H.Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp f
+  obtain ⟨e,⟨u,v,huv,he⟩,a,ha⟩ := hHits g
+  change s(f u,f v) = e at he
+  change f a ∈ B e at ha
+  obtain ⟨b,hab⟩ := hNoIso a
+  have htrue : σ (f a) = true := (f.toHom.map_adj hab).2.1.1
+  have hfalse : σ (f a) = false := (f.toHom.map_adj huv).2.1.2 (f a) (he.symm ▸ ha)
+  exact Bool.noConfusion (htrue.symm.trans hfalse)
+
+lemma edges_le_of_keep_bound [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj]
+    (B : Sym2 V → Finset V) (k M : ℕ)
+    (hsmall : ∀ e ∈ G.edgeSet, (B e).card ≤ k)
+    (hdis : ∀ e ∈ G.edgeSet, ∀ v ∈ e, v ∉ B e)
+    (hM : ∀ σ : V → Bool, Nat.card (keep G B σ).edgeSet ≤ M) :
+    G.edgeFinset.card ≤ 2^(2*k+2)*M := by
+  classical
+  let C := 2^(2*k+2)
+  let A := Fintype.card (V → Bool)
+  let E := G.edgeFinset
+  let rel : (V → Bool) → Sym2 V → Prop := fun σ e => e ∈ (keep G B σ).edgeFinset
+  have hBelow : ∀ e ∈ E, A ≤ C*((univ : Finset (V → Bool)).bipartiteBelow rel e).card := by
+    intro e he
+    have heG : e ∈ G.edgeSet := by simpa only [E,mem_edgeFinset] using he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      have hadj : G.Adj u v := heG
+      have hu : u ∉ B s(u,v) := hdis _ heG u (by simp)
+      have hv : v ∉ B s(u,v) := hdis _ heG v (by simp)
+      have hrel (σ : V → Bool) : rel σ s(u,v) ↔
+          selected (fun _ => B s(u,v)) σ u ∧ selected (fun _ => B s(u,v)) σ v := by
+        change s(u,v) ∈ (keep G B σ).edgeFinset ↔ _
+        simp only [mem_edgeFinset,mem_edgeSet,keep,hadj,true_and]
+      have hh := pair_survival (fun _ => B s(u,v)) k (fun _ => hsmall _ heG) hu hv hv hu
+      simpa only [A,C,Nat.card_eq_fintype_card,Fintype.card_subtype,bipartiteBelow,hrel] using hh
+  have hAbove (σ : V → Bool) : (E.bipartiteAbove rel σ).card ≤ M := by
+    apply (card_le_card (show E.bipartiteAbove rel σ ⊆ (keep G B σ).edgeFinset from ?_)).trans
+      (by simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hM σ)
+    intro e he
+    exact (mem_filter.mp he).2
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := rel) (s := (univ : Finset (V → Bool))) (t := E)
+  have hCount : E.card*A ≤ C*(A*M) := by
+    calc
+      E.card*A = ∑ _e ∈ E, A := by simp
+      _ ≤ ∑ e ∈ E, C*((univ : Finset (V → Bool)).bipartiteBelow rel e).card := sum_le_sum hBelow
+      _ = C*∑ σ : V → Bool, (E.bipartiteAbove rel σ).card := by rw [← mul_sum,← hsum]
+      _ ≤ C*∑ _σ : V → Bool, M := Nat.mul_le_mul_left C (sum_le_sum fun σ _ => hAbove σ)
+      _ = C*(A*M) := by simp [A]
+  have hA : 0 < A := Fintype.card_pos
+  exact Nat.le_of_mul_le_mul_left (show A*E.card ≤ A*(C*M) by nlinarith only [hCount]) hA
+
+lemma Blocked.edge_bound [Fintype V] (h : Blocked H G k) (hNoIso : ∀ a, ∃ b, H.Adj a b) :
+    Nat.card G.edgeSet ≤ 2^(2*k+2)*extremalNumber (Fintype.card V) H := by
+  classical
+  obtain ⟨B,hsmall,hdis,hHits⟩ := h
+  have hh := edges_le_of_keep_bound G B k (extremalNumber (Fintype.card V) H) hsmall hdis (by
+    intro σ
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using
+      card_edgeFinset_le_extremalNumber (keep_free H G B hNoIso hHits σ))
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh
+
+end Erdos713EdgeBlockers
+
+
+/- A graph above the edge-blocker bound has a nonempty subgraph in which
+copies through every edge avoid any prescribed bounded vertex set. -/
+open SimpleGraph Finset
+namespace Erdos713EdgeBlockers
+universe u v
+variable {W : Type u} {V : Type v} {H : SimpleGraph W} {G : SimpleGraph V} {k : ℕ}
+
+def HasBlocker (H : SimpleGraph W) (G : SimpleGraph V) (e : Sym2 V) (k : ℕ) : Prop :=
+  ∃ B : Finset V, B.card ≤ k ∧ (∀ v ∈ e, v ∉ B) ∧
+    ∀ f : H.Copy G, UsesEdge f e → ∃ a, f a ∈ B
+
+lemma blocked_bot (H : SimpleGraph W) (hEdge : ∃ x y, H.Adj x y) (k : ℕ) :
+    Blocked H (⊥ : SimpleGraph V) k := by
+  refine ⟨fun _ => ∅,by simp,by simp,?_⟩
+  intro f
+  obtain ⟨x,y,hxy⟩ := hEdge
+  exact (f.toHom.map_adj hxy).elim
+
+lemma Blocked.of_delete {e : Sym2 V} (hLocal : HasBlocker H G e k)
+    (hRest : Blocked H (G.deleteEdges {e}) k) : Blocked H G k := by
+  classical
+  obtain ⟨B,hcard,havoid,hHits⟩ := hLocal
+  obtain ⟨R,hRcard,hRavoid,hRhits⟩ := hRest
+  let Q : Sym2 V → Finset V := fun d => if d = e then B else R d
+  refine ⟨Q,?_,?_,?_⟩
+  · intro d hd
+    by_cases he : d = e
+    · simpa [Q,he] using hcard
+    · have hd' : d ∈ (G.deleteEdges {e}).edgeSet := by simp [edgeSet_deleteEdges,hd,he]
+      simpa [Q,he] using hRcard d hd'
+  · intro d hd v hv
+    by_cases he : d = e
+    · subst d
+      simpa [Q] using havoid v hv
+    · have hd' : d ∈ (G.deleteEdges {e}).edgeSet := by simp [edgeSet_deleteEdges,hd,he]
+      simpa [Q,he] using hRavoid d hd' v hv
+  · intro f
+    by_cases hf : UsesEdge f e
+    · obtain ⟨a,ha⟩ := hHits f hf
+      exact ⟨e,hf,a,by simpa [Q] using ha⟩
+    · let f' : H.Copy (G.deleteEdges {e}) := ⟨⟨f,by
+        intro a b hab
+        refine deleteEdges_adj.mpr ⟨f.toHom.map_adj hab,?_⟩
+        intro he
+        exact hf ⟨a,b,hab,he⟩⟩,f.injective⟩
+      obtain ⟨d,hd,a,ha⟩ := hRhits f'
+      have hd' : UsesEdge f d := hd
+      have hde : d ≠ e := fun he => hf (he ▸ hd')
+      exact ⟨d,hd',a,by simpa only [Q,if_neg hde] using ha⟩
+
+lemma exists_unblocked_core [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V)
+    (hEdge : ∃ x y, H.Adj x y) (hG : ¬ Blocked H G k) :
+    ∃ K : SimpleGraph V, K ≤ G ∧ K ≠ ⊥ ∧ ∀ e ∈ K.edgeSet, ¬ HasBlocker H K e k := by
+  classical
+  let P : Finset (SimpleGraph V) := univ.filter (fun K => K ≤ G ∧ ¬ Blocked H K k)
+  have hGP : G ∈ P := by simp [P,hG]
+  obtain ⟨K,hK,hmin⟩ := P.exists_min_image (fun K => Nat.card K.edgeSet) ⟨G,hGP⟩
+  obtain ⟨hKG,hn⟩ := (mem_filter.mp hK).2
+  refine ⟨K,hKG,?_,?_⟩
+  · intro he; exact hn (he ▸ blocked_bot H hEdge k)
+  · intro e he hBlock
+    let L := K.deleteEdges {e}
+    have hLn : ¬ Blocked H L k := fun hh => hn (hh.of_delete hBlock)
+    have hLP : L ∈ P := by
+      simp only [P,mem_filter,mem_univ,true_and]
+      exact ⟨(K.deleteEdges_le {e}).trans hKG,hLn⟩
+    have hle := hmin L hLP
+    have heF : e ∈ K.edgeFinset := by simpa only [mem_edgeFinset] using he
+    have heL : e ∉ L.edgeFinset := by simp [L,mem_edgeFinset,edgeSet_deleteEdges]
+    have hs : L.edgeFinset ⊂ K.edgeFinset := Finset.ssubset_iff_subset_ne.mpr
+      ⟨edgeFinset_mono (K.deleteEdges_le {e}),fun hh => heL (hh.symm ▸ heF)⟩
+    have hc := card_lt_card hs
+    simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hc
+    omega
+
+/-- Copies through every edge can avoid any bounded set not containing its
+endpoints. Avoidance applies to the entire copy, not only its internal vertices. -/
+def Extensible (H : SimpleGraph W) (G : SimpleGraph V) (k : ℕ) : Prop :=
+  ∀ e ∈ G.edgeSet, ∀ B : Finset V, B.card ≤ k → (∀ v ∈ e, v ∉ B) →
+    ∃ f : H.Copy G, UsesEdge f e ∧ ∀ a, f a ∉ B
+
+lemma extensible_of_unblocked (h : ∀ e ∈ G.edgeSet, ¬ HasBlocker H G e k) : Extensible H G k := by
+  classical
+  intro e he B hc havoid
+  by_contra hn
+  apply h e he
+  refine ⟨B,hc,havoid,?_⟩
+  intro f hf
+  by_contra hh
+  push_neg at hh
+  exact hn ⟨f,hf,hh⟩
+
+lemma exists_extensible_core [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) (hEdge : ∃ x y, H.Adj x y)
+    (hDense : 2^(2*k+2)*extremalNumber (Fintype.card V) H < Nat.card G.edgeSet) :
+    ∃ K : SimpleGraph V, K ≤ G ∧ K ≠ ⊥ ∧ Extensible H K k := by
+  have hn : ¬ Blocked H G k := fun hh => (not_lt_of_ge (hh.edge_bound hNoIso)) hDense
+  obtain ⟨K,hK,hne,hExt⟩ := exists_unblocked_core H G hEdge hn
+  exact ⟨K,hK,hne,extensible_of_unblocked hExt⟩
+
+end Erdos713EdgeBlockers
+
+
+/- Fixed finite ladders have extremal exponent 3/2, via a square-extensible
+edge core. This is a special case, not the general rationality conjecture. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713Ladder
+open Erdos713EdgeBlockers Erdos713Rate
+
+def graph (n : ℕ) : SimpleGraph (Fin n ⊕ Fin n) where
+  Adj
+    | .inl i, .inl j => i.val+1 = j.val ∨ j.val+1 = i.val
+    | .inr i, .inr j => i.val+1 = j.val ∨ j.val+1 = i.val
+    | .inl i, .inr j => i = j
+    | .inr i, .inl j => i = j
+  symm := by
+    rintro (i | i) (j | j) h
+    · exact h.symm
+    · exact h.symm
+    · exact h.symm
+    · exact h.symm
+  loopless := by rintro (i | i) h <;> omega
+
+instance (n : ℕ) : DecidableRel (graph n).Adj := by
+  rintro (i | i) (j | j) <;> dsimp [graph] <;> infer_instance
+
+structure SquareExtension {V : Type*} (G : SimpleGraph V) (u v : V) (B : Finset V) where
+  a : V
+  b : V
+  ne : a ≠ b
+  au : a ≠ u
+  av : a ≠ v
+  bu : b ≠ u
+  bv : b ≠ v
+  left : G.Adj u a
+  right : G.Adj v b
+  rung : G.Adj a b
+  avoid_a : a ∉ B
+  avoid_b : b ∉ B
+
+def SquareExtension.symm {V : Type*} {G : SimpleGraph V} {u v : V} {B : Finset V}
+    (h : SquareExtension G u v B) : SquareExtension G v u B :=
+  ⟨h.b,h.a,h.ne.symm,h.bv,h.bu,h.av,h.au,h.right,h.left,h.rung.symm,h.avoid_b,h.avoid_a⟩
+
+lemma square_of_copy {V : Type*} {G : SimpleGraph V} (f : Erdos713C4.K22.Copy G)
+    (i j : Fin 2) (B : Finset V) (hB : ∀ a, f a ∉ B) :
+    Nonempty (SquareExtension G (f (.inl i)) (f (.inr j)) B) := by
+  have hi : i+1 ≠ i := by fin_cases i <;> decide
+  have hj : j+1 ≠ j := by fin_cases j <;> decide
+  refine ⟨f (.inr (j+1)),f (.inl (i+1)),?_,?_,?_,?_,?_,?_,?_,?_,hB _,hB _⟩
+  · exact f.injective.ne (by simp)
+  · exact f.injective.ne (by simp)
+  · exact f.injective.ne (by simpa using hj)
+  · exact f.injective.ne (by simpa using hi)
+  · exact f.injective.ne (by simp)
+  · exact f.toHom.map_adj (by simp [Erdos713C4.K22,completeBipartiteGraph])
+  · exact f.toHom.map_adj (by simp [Erdos713C4.K22,completeBipartiteGraph])
+  · exact f.toHom.map_adj (by simp [Erdos713C4.K22,completeBipartiteGraph])
+
+lemma square_of_extensible {V : Type*} {G : SimpleGraph V} {k : ℕ}
+    (h : Extensible Erdos713C4.K22 G k) {u v : V} (huv : G.Adj u v)
+    (B : Finset V) (hc : B.card ≤ k) (hu : u ∉ B) (hv : v ∉ B) :
+    Nonempty (SquareExtension G u v B) := by
+  obtain ⟨f,⟨i,j,hij,he⟩,hB⟩ := h s(u,v) huv B hc (by
+    intro w hw
+    rcases Sym2.mem_iff.mp hw with rfl | rfl
+    · exact hu
+    · exact hv)
+  have hh : Nonempty (SquareExtension G (f i) (f j) B) := by
+    rcases i with i | i <;> rcases j with j | j
+    · simp [Erdos713C4.K22,completeBipartiteGraph] at hij
+    · exact square_of_copy f i j B hB
+    · obtain ⟨h⟩ := square_of_copy f j i B hB
+      exact ⟨h.symm⟩
+    · simp [Erdos713C4.K22,completeBipartiteGraph] at hij
+  rcases Sym2.eq_iff.mp he with ⟨hu,hv⟩ | ⟨hu,hv⟩
+  · simpa only [hu,hv] using hh
+  · obtain ⟨h⟩ := hh
+    exact ⟨by simpa only [hu,hv] using h.symm⟩
+
+lemma cons_rails {V : Type*} {G : SimpleGraph V} {n : ℕ} (a : V) (f : Fin (n+1) → V)
+    (hnew : G.Adj a (f 0))
+    (hOld : ∀ i j, i.val+1 = j.val ∨ j.val+1 = i.val → G.Adj (f i) (f j)) :
+    ∀ i j : Fin (n+2), i.val+1 = j.val ∨ j.val+1 = i.val →
+      G.Adj ((Fin.cons a f : Fin (n+2) → V) i) ((Fin.cons a f : Fin (n+2) → V) j) := by
+  intro i j
+  induction i using Fin.cases with
+  | zero =>
+    induction j using Fin.cases with
+    | zero => intro h; simp at h
+    | succ j =>
+      intro h
+      have hj : j = 0 := Fin.ext (by simp only [Fin.val_zero,Fin.val_succ] at h ⊢; omega)
+      subst j
+      exact hnew
+  | succ i =>
+    induction j using Fin.cases with
+    | zero =>
+      intro h
+      have hi : i = 0 := Fin.ext (by simp only [Fin.val_zero,Fin.val_succ] at h ⊢; omega)
+      subst i
+      exact hnew.symm
+    | succ j =>
+      intro h
+      exact hOld i j (by simp only [Fin.val_succ] at h; omega)
+
+noncomputable def extendCopy {V : Type*} {G : SimpleGraph V} {n : ℕ}
+    (f : (graph (n+1)).Copy G) (a b : V) (hab : G.Adj a b)
+    (hleft : G.Adj a (f (.inl 0))) (hright : G.Adj b (f (.inr 0)))
+    (ha : ∀ z, a ≠ f z) (hb : ∀ z, b ≠ f z) : (graph (n+2)).Copy G := by
+  let L : Fin (n+2) → V := Fin.cons a (fun i => f (.inl i))
+  let R : Fin (n+2) → V := Fin.cons b (fun i => f (.inr i))
+  have hL : Function.Injective L := Fin.cons_injective_of_injective
+    (by rintro ⟨i,hi⟩; exact ha (.inl i) hi.symm) (f.injective.comp Sum.inl_injective)
+  have hR : Function.Injective R := Fin.cons_injective_of_injective
+    (by rintro ⟨i,hi⟩; exact hb (.inr i) hi.symm) (f.injective.comp Sum.inr_injective)
+  have hLR : ∀ i j, L i ≠ R j := by
+    intro i j
+    induction i using Fin.cases with
+    | zero =>
+      induction j using Fin.cases with
+      | zero => exact hab.ne
+      | succ j => exact ha (.inr j)
+    | succ i =>
+      induction j using Fin.cases with
+      | zero => exact (hb (.inl i)).symm
+      | succ j => exact f.injective.ne (by simp)
+  have hRailsL := cons_rails a (fun i => f (.inl i)) hleft
+    (fun i j hij => f.toHom.map_adj (show (graph (n+1)).Adj (.inl i) (.inl j) from hij))
+  have hRailsR := cons_rails b (fun i => f (.inr i)) hright
+    (fun i j hij => f.toHom.map_adj (show (graph (n+1)).Adj (.inr i) (.inr j) from hij))
+  have hRungs (i : Fin (n+2)) : G.Adj (L i) (R i) := by
+    induction i using Fin.cases with
+    | zero => exact hab
+    | succ i => exact f.toHom.map_adj (show (graph (n+1)).Adj (.inl i) (.inr i) from rfl)
+  refine ⟨⟨Sum.elim L R,?_⟩,?_⟩
+  · rintro (i | i) (j | j) hij
+    · exact hRailsL i j hij
+    · change i = j at hij
+      subst j
+      exact hRungs i
+    · change i = j at hij
+      subst j
+      exact (hRungs i).symm
+    · exact hRailsR i j hij
+  · rintro (i | i) (j | j) hij
+    · exact congrArg Sum.inl (hL hij)
+    · exact (hLR i j hij).elim
+    · exact (hLR j i hij.symm).elim
+    · exact congrArg Sum.inr (hR hij)
+
+lemma contained_of_extensible {V : Type*} [Fintype V] {G : SimpleGraph V} {k : ℕ}
+    (hG : G ≠ ⊥) (hExt : Extensible Erdos713C4.K22 G k) :
+    ∀ n : ℕ, 2*(n+1) ≤ k → graph (n+1) ⊑ G := by
+  classical
+  intro n
+  induction n with
+  | zero =>
+    intro _
+    obtain ⟨u,v,huv⟩ : ∃ u v, G.Adj u v := by
+      by_contra hn
+      apply hG
+      ext u v
+      push_neg at hn
+      simp [hn u v]
+    refine ⟨⟨⟨Sum.elim (fun _ => u) (fun _ => v),?_⟩,?_⟩⟩
+    · rintro (i | i) (j | j) hij
+      · fin_cases i; fin_cases j; simp [graph] at hij
+      · exact huv
+      · exact huv.symm
+      · fin_cases i; fin_cases j; simp [graph] at hij
+    · rintro (i | i) (j | j) hij
+      · exact congrArg Sum.inl (Fin.ext (by omega))
+      · exact (huv.ne hij).elim
+      · exact (huv.ne hij.symm).elim
+      · exact congrArg Sum.inr (Fin.ext (by omega))
+  | succ n ih =>
+    intro hk
+    obtain ⟨f⟩ := ih (by omega)
+    let U : Finset V := univ.image f
+    let u := f (Sum.inl 0)
+    let v := f (Sum.inr 0)
+    let B := U \ {u,v}
+    have huv : G.Adj u v := f.toHom.map_adj (show (graph (n+1)).Adj (.inl 0) (.inr 0) from rfl)
+    have hc : B.card ≤ k := by
+      have hU : U.card ≤ 2*(n+1) := (card_image_le).trans_eq (by simp; omega)
+      exact (card_le_card sdiff_subset).trans (hU.trans (by omega))
+    obtain ⟨h⟩ := square_of_extensible hExt huv B hc (by simp [B]) (by simp [B])
+    have ha (z) : h.a ≠ f z := by
+      intro he
+      have hmem : h.a ∈ U := he.symm ▸ mem_image_of_mem f (mem_univ z)
+      exact h.avoid_a (mem_sdiff.mpr ⟨hmem,by simp [h.au,h.av]⟩)
+    have hb (z) : h.b ≠ f z := by
+      intro he
+      have hmem : h.b ∈ U := he.symm ▸ mem_image_of_mem f (mem_univ z)
+      exact h.avoid_b (mem_sdiff.mpr ⟨hmem,by simp [h.bu,h.bv]⟩)
+    exact ⟨extendCopy f h.a h.b h.rung h.left.symm h.right.symm ha hb⟩
+
+lemma free_edge_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    {m : ℕ} (hm : 1 ≤ m) (hfree : (graph m).Free G) :
+    Nat.card G.edgeSet ≤ 2^(2*(2*m)+2)*extremalNumber (Fintype.card V) Erdos713C4.K22 := by
+  by_contra hn
+  have hNoIso : ∀ a, ∃ b, Erdos713C4.K22.Adj a b := by
+    rintro (i | i)
+    · exact ⟨.inr 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+    · exact ⟨.inl 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+  have hEdge : ∃ a b, Erdos713C4.K22.Adj a b :=
+    ⟨.inl 0,.inr 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+  obtain ⟨K,hKG,hne,hExt⟩ := exists_extensible_core Erdos713C4.K22 G hNoIso hEdge (Nat.lt_of_not_ge hn)
+  obtain ⟨n,rfl⟩ : ∃ n, m = n+1 := ⟨m-1,by omega⟩
+  exact hfree ((contained_of_extensible hne hExt n (by omega)).mono_right hKG)
+
+lemma extremal_bound (m n : ℕ) (hm : 1 ≤ m) :
+    extremalNumber n (graph m) ≤ 2^(2*(2*m)+2)*extremalNumber n Erdos713C4.K22 := by
+  classical
+  rw [← Fintype.card_fin n,extremalNumber_le_iff]
+  intro G _ hG
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using free_edge_bound G hm hG
+
+lemma upper (m : ℕ) (hm : 1 ≤ m) :
+    (fun n : ℕ => (extremalNumber n (graph m) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^((3 : ℝ)/2)) := by
+  apply IsBigO.of_bound (2^(2*(2*m)+2) : ℕ)
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg n) _)]
+  have hh : (extremalNumber n (graph m) : ℝ) ≤
+      (2^(2*(2*m)+2) : ℕ)*(extremalNumber n Erdos713C4.K22 : ℝ) := by
+    exact_mod_cast extremal_bound m n hm
+  exact hh.trans (mul_le_mul_of_nonneg_left (Erdos713C4.extremal_upper n) (by positivity))
+
+def monotoneCopy {m n : ℕ} (h : m ≤ n) : (graph m).Copy (graph n) := by
+  let e := (Fin.castLEEmb h).sumMap (Fin.castLEEmb h)
+  refine ⟨⟨e,?_⟩,e.injective⟩
+  rintro (i | i) (j | j) hij
+  · exact hij
+  · exact congrArg (Fin.castLE h) hij
+  · exact congrArg (Fin.castLE h) hij
+  · exact hij
+
+def squareMap : Fin 2 ⊕ Fin 2 → Fin 2 ⊕ Fin 2 :=
+  Sum.elim (fun i => if i = 0 then .inl 0 else .inr 1)
+    (fun i => if i = 0 then .inr 0 else .inl 1)
+
+def squareCopy : Erdos713C4.K22.Copy (graph 2) := by
+  letI : DecidableRel Erdos713C4.K22.Adj := by
+    intro a b
+    dsimp [Erdos713C4.K22,completeBipartiteGraph]
+    infer_instance
+  exact ⟨⟨squareMap,by decide⟩,by decide⟩
+
+lemma contains_square {m : ℕ} (hm : 2 ≤ m) : Erdos713C4.K22 ⊑ graph m :=
+  ⟨(monotoneCopy hm).comp squareCopy⟩
+
+lemma rate {m : ℕ} (hm : 2 ≤ m) : HasRate (graph m) ((3 : ℝ)/2) :=
+  rate_of_C4_upper (contains_square hm) (upper m (by omega))
+
+lemma rational {m : ℕ} (hm : 2 ≤ m) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n (graph m) : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3/2,?_⟩
+  norm_num
+  exact (exponent_eq (rate hm) hα hc h).symm
+
+def flipIso (m : ℕ) : graph m ≃g graph m :=
+  ⟨Equiv.sumComm _ _,by rintro (i | i) (j | j) <;> rfl⟩
+
+lemma root_bound {m : ℕ} (hm : 1 ≤ m) (x : Fin m ⊕ Fin m) :
+    Erdos713RootPower.RootPowerBound (graph m) x ((3 : ℝ)/2) := by
+  apply Erdos713RootPower.of_root_shift (graph m) x (flipIso m).toCopy _ (by norm_num) (upper m hm)
+  cases x <;> rfl
+
+lemma rate_of_containment {W : Type*} {H : SimpleGraph W} {m : ℕ}
+    (hm : 1 ≤ m) (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ graph m) :
+    HasRate H ((3 : ℝ)/2) :=
+  rate_of_C4_upper hlo ((extremal_mono_bigO hhi).trans (upper m hm))
+
+lemma rooted_rate_of_containment {W : Type*} {H : SimpleGraph W} {m : ℕ}
+    (hm : 1 ≤ m) (hlo : Erdos713C4.K22 ⊑ H) (hhi : H ⊑ graph m) :
+    Erdos713ActualBlocks.RootedRate H := by
+  obtain ⟨f⟩ := hhi
+  refine ⟨3/2,by simpa using rate_of_containment hm hlo ⟨f⟩,?_⟩
+  intro x
+  simpa using (root_bound hm (f x)).of_copy f x
+
+lemma isBipartite (m : ℕ) : (graph m).IsBipartite := by
+  let c : Fin m ⊕ Fin m → Fin 2 := Sum.elim
+    (fun i => ⟨i.val%2,by omega⟩) (fun i => ⟨(i.val+1)%2,by omega⟩)
+  refine ⟨Coloring.mk c ?_⟩
+  rintro (i | i) (j | j) hij he
+  · have hh := congrArg Fin.val he
+    change i.val%2 = j.val%2 at hh
+    change i.val+1 = j.val ∨ j.val+1 = i.val at hij
+    omega
+  · change i = j at hij
+    subst j
+    have hh := congrArg Fin.val he
+    change i.val%2 = (i.val+1)%2 at hh
+    omega
+  · change i = j at hij
+    subst j
+    have hh := congrArg Fin.val he
+    change (i.val+1)%2 = i.val%2 at hh
+    omega
+  · have hh := congrArg Fin.val he
+    change (i.val+1)%2 = (j.val+1)%2 at hh
+    change i.val+1 = j.val ∨ j.val+1 = i.val at hij
+    omega
+
+lemma block_rates_of_ladder_blocks {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (h : ∀ S : Set W, Erdos713Blocks.IsBlock G S → 3 ≤ Nat.card S →
+      Erdos713CycleAssembly.Piece (G.induce S) ∨
+      ∃ m : ℕ, 1 ≤ m ∧ Erdos713C4.K22 ⊑ G.induce S ∧ G.induce S ⊑ graph m) :
+    Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hc
+  rcases h S hS hc with hp | ⟨m,hm,hlo,hhi⟩
+  · haveI : Nonempty S := hS.connected.nonempty
+    exact hp.rooted_rate (hS.noCut.min_degree hS.connected
+      (by simpa only [Fintype.card_eq_nat_card] using hc))
+  · exact rooted_rate_of_containment hm hlo hhi
+
+end Erdos713Ladder
+
+/-! Iterated fresh squares attached along existing edges. Aligned embeddings
+in square-extensible cores supply rooted as well as ordinary upper bounds.
+This is a special family, not a resolution of the general conjecture. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713Squares
+open Erdos713EdgeBlockers Erdos713Ladder Erdos713Rate Erdos713RootPower
+
+/-- Keep the old graph and attach the path u--false--true--v. -/
+def attach {W : Type*} (H : SimpleGraph W) (u v : W) : SimpleGraph (W ⊕ Bool) where
+  Adj
+    | .inl a, .inl b => H.Adj a b
+    | .inl a, .inr false => a = u
+    | .inl a, .inr true => a = v
+    | .inr false, .inl b => b = u
+    | .inr true, .inl b => b = v
+    | .inr a, .inr b => a ≠ b
+  symm := by
+    rintro (a | a) (b | b) h
+    · exact h.symm
+    · cases b <;> exact h
+    · cases a <;> exact h
+    · cases a <;> cases b <;> exact h.symm
+  loopless := by
+    rintro (a | a) h
+    · exact H.loopless a h
+    · cases a <;> exact h rfl
+
+def oldCopy {W : Type*} (H : SimpleGraph W) (u v : W) : H.Copy (attach H u v) :=
+  ⟨⟨Sum.inl,fun h => h⟩,Sum.inl_injective⟩
+
+/-- The two distinguished vertices are the original base edge, unchanged by
+subsequent attachments. Finiteness instances are stored at attachment steps. -/
+inductive Built : {W : Type} → SimpleGraph W → W → W → Prop
+  | edge : Built (⊤ : SimpleGraph Bool) false true
+  | step {W : Type} [Fintype W] {H : SimpleGraph W} {x y : W}
+      (h : Built H x y) (u v : W) (huv : H.Adj u v) :
+      Built (attach H u v) (.inl x) (.inl y)
+
+lemma Built.adj {W : Type} {H : SimpleGraph W} {x y : W} (h : Built H x y) : H.Adj x y := by
+  induction h with
+  | edge => simp
+  | step h u v huv ih => exact ih
+
+lemma attach_connected {W : Type*} {H : SimpleGraph W} (hH : H.Connected) (u v : W) :
+    (attach H u v).Connected := by
+  apply (connected_iff_exists_forall_reachable _).mpr
+  refine ⟨.inl u,?_⟩
+  rintro (w | w)
+  · exact (hH u w).map (oldCopy H u v).toHom
+  · cases w
+    · exact (show (attach H u v).Adj (.inl u) (.inr false) from rfl).reachable
+    · exact ((hH u v).map (oldCopy H u v).toHom).trans
+        (show (attach H u v).Adj (.inl v) (.inr true) from rfl).reachable
+
+lemma Built.connected {W : Type} {H : SimpleGraph W} {x y : W} (h : Built H x y) :
+    H.Connected := by
+  induction h with
+  | edge => exact connected_top
+  | step h u v huv ih => exact attach_connected ih u v
+
+noncomputable def extendCopy {W V : Type*} {H : SimpleGraph W} {G : SimpleGraph V}
+    (f : H.Copy G) (u v : W) (a b : V) (hab : G.Adj a b)
+    (hua : G.Adj (f u) a) (hvb : G.Adj (f v) b)
+    (ha : ∀ z, a ≠ f z) (hb : ∀ z, b ≠ f z) : (attach H u v).Copy G := by
+  refine ⟨⟨Sum.elim f (fun t => if t then b else a),?_⟩,?_⟩
+  · rintro (z | z) (w | w) hzw
+    · exact f.toHom.map_adj hzw
+    · cases w <;> dsimp only [attach] at hzw <;> subst z
+      · exact hua
+      · exact hvb
+    · cases z <;> dsimp only [attach] at hzw <;> subst w
+      · exact hua.symm
+      · exact hvb.symm
+    · cases z <;> cases w
+      · exact (hzw rfl).elim
+      · exact hab
+      · exact hab.symm
+      · exact (hzw rfl).elim
+  · rintro (z | z) (w | w) he
+    · exact congrArg Sum.inl (f.injective he)
+    · cases w
+      · exact (ha z he.symm).elim
+      · exact (hb z he.symm).elim
+    · cases z
+      · exact (ha w he).elim
+      · exact (hb w he).elim
+    · cases z <;> cases w
+      · rfl
+      · exact (hab.ne he).elim
+      · exact (hab.ne he.symm).elim
+      · rfl
+
+/-- Every oriented host edge can be the designated base edge. Later square
+attachments do not alter the old vertex images. -/
+lemma Built.aligned_embedding {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) {V : Type*} [Fintype V] {G : SimpleGraph V} {k : ℕ}
+    (hExt : Extensible Erdos713C4.K22 G k) (hk : Nat.card W ≤ k)
+    {a b : V} (hab : G.Adj a b) :
+    ∃ f : H.Copy G, f x = a ∧ f y = b := by
+  classical
+  induction h with
+  | edge =>
+    let f : (⊤ : SimpleGraph Bool).Copy G := ⟨⟨fun t => if t then b else a,by
+      rintro (_ | _) (_ | _) h
+      · exact (h rfl).elim
+      · exact hab
+      · exact hab.symm
+      · exact (h rfl).elim⟩,by
+      rintro (_ | _) (_ | _) he
+      · rfl
+      · exact (hab.ne he).elim
+      · exact (hab.ne he.symm).elim
+      · rfl⟩
+    exact ⟨f,rfl,rfl⟩
+  | @step W _ H x y h u v huv ih =>
+    have hkOld : Nat.card W ≤ k := by
+      simpa only [Nat.card_eq_fintype_card,Fintype.card_sum,Fintype.card_bool] using
+        (show Fintype.card W ≤ k by
+          simp only [Nat.card_eq_fintype_card,Fintype.card_sum,Fintype.card_bool] at hk
+          omega)
+    obtain ⟨f,hfx,hfy⟩ := ih hkOld
+    let U : Finset V := univ.image f
+    let B : Finset V := U \ {f u,f v}
+    have hc : B.card ≤ k := (card_le_card sdiff_subset).trans
+      (card_image_le.trans (by simpa only [card_univ,Fintype.card_eq_nat_card] using hkOld))
+    obtain ⟨s⟩ := square_of_extensible hExt (f.toHom.map_adj huv) B hc (by simp [B]) (by simp [B])
+    have hsa (z) : s.a ≠ f z := by
+      intro he
+      have hmem : s.a ∈ U := he.symm ▸ mem_image_of_mem f (mem_univ z)
+      exact s.avoid_a (mem_sdiff.mpr ⟨hmem,by simpa only [mem_insert,mem_singleton,not_or] using And.intro s.au s.av⟩)
+    have hsb (z) : s.b ≠ f z := by
+      intro he
+      have hmem : s.b ∈ U := he.symm ▸ mem_image_of_mem f (mem_univ z)
+      exact s.avoid_b (mem_sdiff.mpr ⟨hmem,by simpa only [mem_insert,mem_singleton,not_or] using And.intro s.bu s.bv⟩)
+    exact ⟨extendCopy f u v s.a s.b s.rung s.left s.right hsa hsb,hfx,hfy⟩
+
+lemma Built.root_edge_bound {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) {V : Type*} [Fintype V] (G : SimpleGraph V) (S : Set V)
+    (hB : G.IsBipartiteWith S Sᶜ) (hroot : ∀ f : H.Copy G, f x ∉ S) :
+    Nat.card G.edgeSet ≤ 2^(2*Nat.card W+2)*extremalNumber (Fintype.card V) Erdos713C4.K22 := by
+  by_contra hn
+  have hNoIso : ∀ a, ∃ b, Erdos713C4.K22.Adj a b := by
+    rintro (i | i)
+    · exact ⟨.inr 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+    · exact ⟨.inl 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+  have hEdge : ∃ a b, Erdos713C4.K22.Adj a b :=
+    ⟨.inl 0,.inr 0,by simp [Erdos713C4.K22,completeBipartiteGraph]⟩
+  obtain ⟨K,hKG,hne,hExt⟩ := exists_extensible_core Erdos713C4.K22 G hNoIso hEdge (Nat.lt_of_not_ge hn)
+  obtain ⟨u,v,huv⟩ : ∃ u v, K.Adj u v := by
+    by_contra hh
+    apply hne
+    ext u v
+    push_neg at hh
+    simp [hh u v]
+  have hbad {u v : V} (huv : K.Adj u v) (hu : u ∈ S) : False := by
+    obtain ⟨f,hfx,hfy⟩ := h.aligned_embedding hExt le_rfl huv
+    let g : H.Copy G := (Copy.ofLE K G hKG).comp f
+    apply hroot g
+    change f x ∈ S
+    rwa [hfx]
+  rcases hB.mem_of_adj (hKG huv) with h | h
+  · exact hbad huv h.1
+  · exact hbad huv.symm h.2
+
+lemma Built.root_bound_base {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) : RootPowerBound H x ((3 : ℝ)/2) := by
+  refine ⟨(2^(2*Nat.card W+2) : ℕ),by positivity,?_⟩
+  intro n G S hB hroot
+  have hb := h.root_edge_bound G S hB hroot
+  simp only [Fintype.card_fin] at hb
+  have hb' : (Nat.card G.edgeSet : ℝ) ≤
+      (2^(2*Nat.card W+2) : ℕ)*(extremalNumber n Erdos713C4.K22 : ℝ) := by
+    exact_mod_cast hb
+  exact hb'.trans (mul_le_mul_of_nonneg_left (Erdos713C4.extremal_upper n) (by positivity))
+
+lemma Built.root_bound {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) (z : W) : RootPowerBound H z ((3 : ℝ)/2) :=
+  h.root_bound_base.of_reachable (h.connected x z)
+
+lemma Built.upper {W : Type} {H : SimpleGraph W} {x y : W} (h : Built H x y) :
+    (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^((3 : ℝ)/2)) := h.root_bound_base.upper
+
+lemma rate_of_containment {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) {A : Type*} {J : SimpleGraph A}
+    (hlo : Erdos713C4.K22 ⊑ J) (hhi : J ⊑ H) : HasRate J ((3 : ℝ)/2) :=
+  rate_of_C4_upper hlo ((extremal_mono_bigO hhi).trans h.upper)
+
+lemma rooted_rate_of_containment {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) {A : Type*} {J : SimpleGraph A}
+    (hlo : Erdos713C4.K22 ⊑ J) (hhi : J ⊑ H) : Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨f⟩ := hhi
+  refine ⟨3/2,by simpa using rate_of_containment h hlo ⟨f⟩,?_⟩
+  intro a
+  simpa using (h.root_bound (f a)).of_copy f a
+
+lemma Built.isBipartite {W : Type} {H : SimpleGraph W} {x y : W} (h : Built H x y) :
+    H.IsBipartite := by
+  induction h with
+  | edge =>
+    exact ⟨Coloring.mk (fun b => if b then 1 else 0) (by decide)⟩
+  | @step W _ H x y h u v huv ih =>
+    obtain ⟨χ⟩ := ih
+    let f : W ⊕ Bool → Fin 2 := Sum.elim χ (fun b => if b then χ u else χ v)
+    refine ⟨Coloring.mk f ?_⟩
+    rintro (a | a) (b | b) hab
+    · exact χ.valid hab
+    · cases b <;> dsimp only [attach] at hab <;> subst a
+      · exact χ.valid huv
+      · exact (χ.valid huv).symm
+    · cases a <;> dsimp only [attach] at hab <;> subst b
+      · exact (χ.valid huv).symm
+      · exact χ.valid huv
+    · cases a <;> cases b
+      · exact (hab rfl).elim
+      · exact (χ.valid huv).symm
+      · exact χ.valid huv
+      · exact (hab rfl).elim
+
+lemma contains_square_attach {W : Type*} (H : SimpleGraph W) (u v : W)
+    (huv : H.Adj u v) : Erdos713C4.K22 ⊑ attach H u v := by
+  classical
+  let f : Fin 2 ⊕ Fin 2 → W ⊕ Bool := Sum.elim
+    (fun i => if i = 0 then .inl u else .inr true)
+    (fun i => if i = 0 then .inl v else .inr false)
+  refine ⟨⟨⟨f,?_⟩,?_⟩⟩
+  · rintro (i | i) (j | j) hij
+    · simp [Erdos713C4.K22,completeBipartiteGraph] at hij
+    · fin_cases i <;> fin_cases j <;> simp [f,attach,huv]
+    · fin_cases i <;> fin_cases j <;> simp [f,attach,huv.symm]
+    · simp [Erdos713C4.K22,completeBipartiteGraph] at hij
+  · rintro (i | i) (j | j) he <;> fin_cases i <;> fin_cases j <;>
+      simp_all [f,huv.ne,huv.ne.symm]
+
+lemma step_rate {W : Type} [Fintype W] {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) (u v : W) (huv : H.Adj u v) :
+    Erdos713ActualBlocks.RootedRate (attach H u v) :=
+  rooted_rate_of_containment (h.step u v huv) (contains_square_attach H u v huv) (.refl _)
+
+lemma Built.rooted_rate {W : Type} {H : SimpleGraph W} {x y : W}
+    (h : Built H x y) : Erdos713ActualBlocks.RootedRate H := by
+  cases h with
+  | edge =>
+    have hr (z : Bool) : RootPowerBound (⊤ : SimpleGraph Bool) z 1 :=
+      Erdos713RootBlocks.root_bound_small _ (by simp [Nat.card_eq_fintype_card]) z
+    refine ⟨1,?_,?_⟩
+    · norm_num only [Rat.cast_one]
+      exact ⟨le_rfl,(hr false).upper,fun a ha _ => ha⟩
+    · simpa only [Rat.cast_one] using hr
+  | step h u v huv => exact step_rate h u v huv
+
+/-- Containment between a square and a finite square-attachment construction.
+The square containment condition must not be discarded. -/
+def Sandwich {A : Type*} (J : SimpleGraph A) : Prop :=
+  ∃ (W : Type) (H : SimpleGraph W) (x y : W), Built H x y ∧ Erdos713C4.K22 ⊑ J ∧ J ⊑ H
+
+lemma Sandwich.rate {A : Type*} {J : SimpleGraph A} (h : Sandwich J) : HasRate J ((3 : ℝ)/2) := by
+  obtain ⟨W,H,x,y,h,hlo,hhi⟩ := h
+  exact rate_of_containment h hlo hhi
+
+lemma Sandwich.rooted_rate {A : Type*} {J : SimpleGraph A} (h : Sandwich J) :
+    Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨W,H,x,y,h,hlo,hhi⟩ := h
+  exact rooted_rate_of_containment h hlo hhi
+
+lemma Sandwich.rational {A : Type*} {J : SimpleGraph A} (hJ : Sandwich J)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n J : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨3/2,?_⟩
+  norm_num
+  exact (exponent_eq hJ.rate hα hc h).symm
+
+lemma block_rates_of_square_blocks {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (h : ∀ S : Set W, Erdos713Blocks.IsBlock G S → 3 ≤ Nat.card S →
+      Erdos713CycleAssembly.Piece (G.induce S) ∨ Sandwich (G.induce S)) :
+    Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hc
+  rcases h S hS hc with hp | hp
+  · haveI : Nonempty S := hS.connected.nonempty
+    exact hp.rooted_rate (hS.noCut.min_degree hS.connected
+      (by simpa only [Fintype.card_eq_nat_card] using hc))
+  · exact hp.rooted_rate
+
+end Erdos713Squares
+
+/-! One-vertex cloning and its obstruction by a single identification in the
+forbidden graph. These lemmas do not assume or establish rationality. -/
+open SimpleGraph Finset
+namespace Erdos713Cloning
+
+variable {V W : Type*}
+
+def project (v : V) : Option V → V
+  | none => v
+  | some w => w
+
+@[simp] lemma project_none (v : V) : project v none = v := rfl
+@[simp] lemma project_some (v w : V) : project v (some w) = w := rfl
+
+def clone (G : SimpleGraph V) (v : V) : SimpleGraph (Option V) := G.comap (project v)
+
+@[simp] lemma clone_adj (G : SimpleGraph V) (v : V) (a b : Option V) :
+    (clone G v).Adj a b ↔ G.Adj (project v a) (project v b) := Iff.rfl
+
+def oldCopy (G : SimpleGraph V) (v : V) : G.Copy (clone G v) :=
+  ⟨⟨some,fun h => h⟩,Option.some_injective V⟩
+
+def projectionHom (G : SimpleGraph V) (v : V) : clone G v →g G :=
+  ⟨project v,fun h => h⟩
+
+def neighborEquiv (G : SimpleGraph V) (v : V) :
+    (clone G v).neighborSet none ≃ G.neighborSet v where
+  toFun w := ⟨project v w,w.property⟩
+  invFun w := ⟨some w,w.property⟩
+  left_inv w := by
+    apply Subtype.ext
+    rcases w with ⟨_ | w,hw⟩
+    · exact (G.loopless v hw).elim
+    · rfl
+  right_inv w := rfl
+
+lemma clone_delete_none (G : SimpleGraph V) (v : V) :
+    (clone G v).deleteIncidenceSet none = G.map ⟨some,Option.some_injective V⟩ := by
+  ext a b
+  cases a <;> cases b <;> simp [deleteIncidenceSet_adj,clone_adj,map_adj]
+
+lemma card_edges_clone [Fintype V] (G : SimpleGraph V) (v : V) :
+    Nat.card (clone G v).edgeSet = Nat.card G.edgeSet + Nat.card (G.neighborSet v) := by
+  classical
+  have hdel := (clone G v).card_edgeFinset_deleteIncidenceSet none
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card,clone_delete_none] at hdel
+  have hmap := card_edgeFinset_map (⟨some,Option.some_injective V⟩ : V ↪ Option V) G
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hmap
+  rw [hmap] at hdel
+  have hle := (clone G v).degree_le_card_edgeFinset none
+  have hdeg : (clone G v).degree none = Nat.card (G.neighborSet v) := by
+    rw [← card_neighborSet_eq_degree,Fintype.card_eq_nat_card]
+    exact Nat.card_congr (neighborEquiv G v)
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card,hdeg] at hdel hle
+  omega
+
+lemma safe_clone_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (v : V)
+    (h : H.Free (clone G v)) :
+    Nat.card G.edgeSet + Nat.card (G.neighborSet v) ≤ extremalNumber (Fintype.card V+1) H := by
+  classical
+  have hh := card_edgeFinset_le_extremalNumber h
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card,card_edges_clone] at hh
+  simpa only [Nat.card_eq_fintype_card,Fintype.card_option] using hh
+
+/-- The projection of an obstructing copy identifies exactly two nonadjacent
+vertices, and sends their common image to the cloned host vertex. -/
+def SingleFold (H : SimpleGraph W) (G : SimpleGraph V) (v : V) : Prop :=
+  ∃ a b : W, a ≠ b ∧ ¬ H.Adj a b ∧ ∃ f : H →g G,
+    f a = v ∧ f b = v ∧
+    ∀ u w, f u = f w → u = w ∨ (u = a ∧ w = b) ∨ (u = b ∧ w = a)
+
+lemma project_eq_cases (v : V) (a b : Option V) (h : project v a = project v b) :
+    a = b ∨ (a = none ∧ b = some v) ∨ (a = some v ∧ b = none) := by
+  cases a <;> cases b <;> simp_all
+
+lemma fold_of_obstructed (H : SimpleGraph W) (G : SimpleGraph V) (v : V)
+    (hfree : H.Free G) (hcopy : H ⊑ clone G v) : SingleFold H G v := by
+  classical
+  obtain ⟨f⟩ := hcopy
+  let g : H →g G := (projectionHom G v).comp f.toHom
+  have hn : ¬ Function.Injective g := fun hg => hfree ⟨⟨g,hg⟩⟩
+  obtain ⟨u,w,he,hne⟩ := Function.not_injective_iff.mp hn
+  change project v (f u) = project v (f w) at he
+  have hex : ∃ a b, f a = none ∧ f b = some v := by
+    rcases project_eq_cases v (f u) (f w) he with hh | hh | hh
+    · exact (hne (f.injective hh)).elim
+    · exact ⟨u,w,hh⟩
+    · exact ⟨w,u,hh.2,hh.1⟩
+  obtain ⟨a,b,ha,hb⟩ := hex
+  have hab : a ≠ b := by intro he; subst b; rw [ha] at hb; cases hb
+  have hga : g a = v := by change project v (f a) = v; rw [ha]; rfl
+  have hgb : g b = v := by change project v (f b) = v; rw [hb]; rfl
+  refine ⟨a,b,hab,?_,g,hga,hgb,?_⟩
+  · intro hadj
+    have hh := g.map_adj hadj
+    rw [hga,hgb] at hh
+    exact G.loopless v hh
+  · intro u w huw
+    change project v (f u) = project v (f w) at huw
+    rcases project_eq_cases v (f u) (f w) huw with hh | hh | hh
+    · exact Or.inl (f.injective hh)
+    · exact Or.inr (Or.inl ⟨f.injective (hh.1.trans ha.symm),f.injective (hh.2.trans hb.symm)⟩)
+    · exact Or.inr (Or.inr ⟨f.injective (hh.1.trans hb.symm),f.injective (hh.2.trans ha.symm)⟩)
+
+lemma SingleFold.obstructed {H : SimpleGraph W} {G : SimpleGraph V} {v : V}
+    (h : SingleFold H G v) : H ⊑ clone G v := by
+  classical
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber⟩ := h
+  let g : W → Option V := fun w => if w = a then none else some (f w)
+  have hproj (w : W) : project v (g w) = f w := by
+    by_cases hw : w = a
+    · subst w; simp [g,ha]
+    · simp [g,hw]
+  refine ⟨⟨⟨g,?_⟩,?_⟩⟩
+  · intro u w huw
+    change G.Adj (project v (g u)) (project v (g w))
+    rw [hproj,hproj]
+    exact f.map_adj huw
+  · intro u w huw
+    change g u = g w at huw
+    have he : f u = f w := by simpa only [hproj] using congrArg (project v) huw
+    rcases hfiber u w he with he | ⟨rfl,rfl⟩ | ⟨rfl,rfl⟩
+    · exact he
+    · simp [g,hab.symm] at huw
+    · simp [g,hab.symm] at huw
+
+lemma fold_iff_obstructed (H : SimpleGraph W) (G : SimpleGraph V) (v : V) (hfree : H.Free G) :
+    SingleFold H G v ↔ H ⊑ clone G v := ⟨SingleFold.obstructed,fold_of_obstructed H G v hfree⟩
+
+/-- A graph on one fewer vertex obtained by identifying a with b. The
+nonadjacency assumption prevents a loop at the identified vertex. -/
+def identified (H : SimpleGraph W) (a b : W) (hnab : ¬ H.Adj a b) :
+    SimpleGraph {w : W // w ≠ a} where
+  Adj u w := H.Adj u.val w.val ∨
+    (u.val = b ∧ H.Adj a w.val) ∨ (w.val = b ∧ H.Adj a u.val)
+  symm u w h := by
+    rcases h with h | h | h
+    · exact Or.inl h.symm
+    · exact Or.inr (Or.inr h)
+    · exact Or.inr (Or.inl h)
+  loopless u h := by
+    rcases h with h | ⟨he,h⟩ | ⟨he,h⟩
+    · exact H.loopless _ h
+    · exact hnab (he ▸ h)
+    · exact hnab (he ▸ h)
+
+lemma SingleFold.identified_copy {H : SimpleGraph W} {G : SimpleGraph V} {v : V}
+    (h : SingleFold H G v) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      ∃ f : (identified H a b hnab).Copy G, f ⟨b,hab.symm⟩ = v := by
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber⟩ := h
+  let g : {w : W // w ≠ a} → V := fun w => f w.val
+  refine ⟨a,b,hab,hnab,⟨⟨g,?_⟩,?_⟩,hb⟩
+  · intro u w huw
+    rcases huw with huw | ⟨hub,haw⟩ | ⟨hwb,hau⟩
+    · exact f.map_adj huw
+    · change G.Adj (f u.val) (f w.val)
+      rw [hub,hb,← ha]
+      exact f.map_adj haw
+    · change G.Adj (f u.val) (f w.val)
+      rw [hwb,hb,← ha]
+      exact (f.map_adj hau).symm
+  · intro u w huw
+    apply Subtype.ext
+    rcases hfiber u.val w.val huw with he | ⟨hu,hw⟩ | ⟨hu,hw⟩
+    · exact he
+    · exact (u.property hu).elim
+    · exact (w.property hw).elim
+
+end Erdos713Cloning
+
+/-! Future power-ratio records yield small forward increments along an
+unbounded sequence. This is a numerical consequence, not rationality. -/
+open Filter Asymptotics Finset
+open scoped Topology
+namespace Erdos713FutureRecords
+
+lemma ratio_limit {f : ℕ → ℝ} {α c : ℝ}
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n : ℕ => f n/(n : ℝ)^α) atTop (𝓝 c) := by
+  have hd : (fun n : ℕ => f n/(n : ℝ)^α) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α/(n : ℝ)^α) := h.div .refl
+  apply IsEquivalent.tendsto_const
+  apply hd.congr_right
+  filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+  exact mul_div_cancel_right₀ _ (Real.rpow_pos_of_pos (by exact_mod_cast hn) α).ne'
+
+lemma higher_ratio_zero {f : ℕ → ℝ} {α c r : ℝ} (har : α < r)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n : ℕ => f n/(n : ℝ)^r) atTop (𝓝 0) := by
+  have hp : Tendsto (fun n : ℕ => (n : ℝ)^(α-r)) atTop (𝓝 0) := by
+    simpa only [neg_sub] using (tendsto_rpow_neg_atTop (sub_pos.mpr har)).comp
+      (tendsto_natCast_atTop_atTop (R := ℝ))
+  have hh := (ratio_limit h).mul hp
+  simp only [mul_zero] at hh
+  apply hh.congr'
+  filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+  have hpos : (0 : ℝ) < n := by exact_mod_cast hn
+  rw [Real.rpow_sub hpos]
+  field_simp [(Real.rpow_pos_of_pos hpos α).ne']
+
+lemma eventually_pos {f : ℕ → ℝ} {α c : ℝ} (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) : ∀ᶠ n in atTop, 0 < f n := by
+  filter_upwards [(ratio_limit h).eventually_const_lt hc,eventually_gt_atTop (0 : ℕ)] with n hn hnp
+  have hp := Real.rpow_pos_of_pos (show (0 : ℝ) < n by exact_mod_cast hnp) α
+  exact (div_pos_iff_of_pos_right hp).mp hn
+
+lemma exists_tail_max {f : ℕ → ℝ} (h : Tendsto f atTop (𝓝 0)) (N : ℕ) (hN : 0 < f N) :
+    ∃ n, N ≤ n ∧ 0 < f n ∧ ∀ j, N ≤ j → f j ≤ f n := by
+  obtain ⟨M,hM⟩ := eventually_atTop.mp (h.eventually_lt_const hN)
+  obtain ⟨n,hn,hmax⟩ := (Icc N (max N M)).exists_max_image f ⟨N,by simp⟩
+  have hNn := hmax N (by simp)
+  refine ⟨n,(mem_Icc.mp hn).1,hN.trans_le hNn,?_⟩
+  intro j hNj
+  by_cases hj : j ≤ max N M
+  · exact hmax j (mem_Icc.mpr ⟨hNj,hj⟩)
+  · exact (hM j (by omega)).le.trans hNn
+
+lemma increment_upper {x r : ℝ} (hx : 0 ≤ x) (hr : 1 ≤ r) :
+    (x+1)^r-x^r ≤ r*(x+1)^(r-1) := by
+  have hh := (convexOn_rpow hr).slope_le_of_hasDerivAt
+    (show x ∈ Set.Ici (0 : ℝ) from hx)
+    (show x+1 ∈ Set.Ici (0 : ℝ) from by change 0 ≤ x+1; linarith)
+    (show x < x+1 by linarith) (Real.hasDerivAt_rpow_const (Or.inr hr))
+  simpa only [slope_def_field,add_sub_cancel_left,div_one] using hh
+
+lemma eventual_increment_upper {r s : ℝ} (hr : 1 ≤ r) (hrs : r < s) :
+    ∀ᶠ n : ℕ in atTop, ((n : ℝ)+1)^r-(n : ℝ)^r ≤ s*(n : ℝ)^(r-1) := by
+  have hRatio : Tendsto (fun n : ℕ => (1+1/(n : ℝ))^(r-1)) atTop (𝓝 1) := by
+    have hb : Tendsto (fun n : ℕ => 1+1/(n : ℝ)) atTop (𝓝 (1+0 : ℝ)) :=
+      tendsto_const_nhds.add (tendsto_one_div_atTop_nhds_zero_nat (𝕜 := ℝ))
+    simpa using hb.rpow_const (p := r-1) (Or.inr (sub_nonneg.mpr hr))
+  have hT : Tendsto (fun n : ℕ => r*(1+1/(n : ℝ))^(r-1)) atTop (𝓝 r) := by
+    simpa using hRatio.const_mul r
+  filter_upwards [hT.eventually_lt_const hrs,eventually_gt_atTop (0 : ℕ)] with n hn hnp
+  have hp : (0 : ℝ) < n := by exact_mod_cast hnp
+  have he : ((n : ℝ)+1)^(r-1) = (1+1/(n : ℝ))^(r-1)*(n : ℝ)^(r-1) := by
+    rw [← Real.mul_rpow (by positivity) hp.le]
+    congr 1
+    field_simp
+  have hi := increment_upper hp.le hr
+  rw [he] at hi
+  have hm := mul_le_mul_of_nonneg_right hn.le (Real.rpow_nonneg hp.le (r-1))
+  nlinarith
+
+lemma change_ratio (f : ℕ → ℝ) (r s : ℝ) {n : ℕ} (hn : 0 < n) :
+    f n/(n : ℝ)^r = (f n/(n : ℝ)^s)*(n : ℝ)^(s-r) := by
+  have hp : (0 : ℝ) < n := by exact_mod_cast hn
+  rw [Real.rpow_sub hp]
+  field_simp [(Real.rpow_pos_of_pos hp s).ne']
+
+lemma lower_ratio_top {f : ℕ → ℝ} {α c r : ℝ} (hra : r < α) (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n : ℕ => f n/(n : ℝ)^r) atTop atTop := by
+  have hp : Tendsto (fun n : ℕ => (n : ℝ)^(α-r)) atTop atTop :=
+    (tendsto_rpow_atTop (sub_pos.mpr hra)).comp tendsto_natCast_atTop_atTop
+  apply ((ratio_limit h).pos_mul_atTop hc hp).congr'
+  filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+  exact (change_ratio f r α hn).symm
+
+lemma exists_past_record {f : ℕ → ℝ} {α c r : ℝ} (hra : r < α) (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      ∀ j, j ≤ n → f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r := by
+  let g : ℕ → ℝ := fun n => f n/(n : ℝ)^r
+  obtain ⟨j,hj,hsmall⟩ := (range (N+1)).exists_max_image g ⟨0,by simp⟩
+  obtain ⟨p,hp⟩ := ((lower_ratio_top hra hc h).eventually_gt_atTop (max (g j) 0)).exists
+  obtain ⟨n,hn,hmax⟩ := (range (p+1)).exists_max_image g ⟨p,by simp⟩
+  have hnlarge : max (g j) 0 < g n := hp.trans_le (hmax p (by simp))
+  have hN : N < n := by
+    by_contra hNn
+    have hh := hsmall n (mem_range.mpr (by omega))
+    exact (not_lt_of_ge hh) ((le_max_left _ _).trans_lt hnlarge)
+  have hnp : 0 < n := by omega
+  have hpos : 0 < f n :=
+    (div_pos_iff_of_pos_right (Real.rpow_pos_of_pos (by exact_mod_cast hnp) r)).mp
+      ((le_max_right _ _).trans_lt hnlarge)
+  refine ⟨n,hN.le,hnp,hpos,?_⟩
+  intro k hk
+  exact hmax k (mem_range.mpr (by have := mem_range.mp hn; omega))
+
+/-- Taking a maximum of the higher-exponent ratio over a tail preserves the
+past lower-exponent record. Both controls concern the same index. -/
+lemma exists_two_sided_record {f : ℕ → ℝ} {α c r s : ℝ} (hra : r < α) (has : α < s)
+    (hc : 0 < c) (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      (∀ j, 0 < j → j ≤ n → f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r) ∧
+      (∀ j, n ≤ j → f j/(j : ℝ)^s ≤ f n/(n : ℝ)^s) := by
+  obtain ⟨m,hm,hmp,hmf,hpast⟩ := exists_past_record hra hc h N
+  obtain ⟨n,hmn,hnpos,htail⟩ := exists_tail_max (higher_ratio_zero has h) m
+    (div_pos hmf (Real.rpow_pos_of_pos (by exact_mod_cast hmp) s))
+  have hnp : 0 < n := hmp.trans_le hmn
+  have hnreal : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hnf : 0 < f n := (div_pos_iff_of_pos_right (Real.rpow_pos_of_pos hnreal s)).mp hnpos
+  have htransfer {j : ℕ} (hjp : 0 < j) (hjn : j ≤ n)
+      (hj : f j/(j : ℝ)^s ≤ f n/(n : ℝ)^s) :
+      f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r := by
+    rw [change_ratio f r s hjp,change_ratio f r s hnp]
+    exact mul_le_mul hj
+      (Real.rpow_le_rpow (Nat.cast_nonneg j) (by exact_mod_cast hjn) (by linarith))
+      (Real.rpow_nonneg (Nat.cast_nonneg j) (s-r)) hnpos.le
+  refine ⟨n,hm.trans hmn,hnp,hnf,?_,fun j hj => htail j (hmn.trans hj)⟩
+  intro j hjp hjn
+  by_cases hjm : j ≤ m
+  · exact (hpast j hjm).trans (htransfer hmp hmn (htail m le_rfl))
+  · exact htransfer hjp hjn (htail j (by omega))
+
+/-- A pure power exponent below s gives arbitrarily late positive terms whose
+forward increment is at most s*f(n)/n. No global monotonicity is required. -/
+lemma exists_small_increment {f : ℕ → ℝ} {α c s : ℝ} (hα : 1 ≤ α) (hc : 0 < c)
+    (hαs : α < s) (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧ (n : ℝ)*(f (n+1)-f n) ≤ s*f n := by
+  obtain ⟨r,har,hrs⟩ := exists_between hαs
+  obtain ⟨M,hM⟩ := eventually_atTop.mp (eventual_increment_upper (hα.trans har.le) hrs)
+  obtain ⟨L,hL⟩ := eventually_atTop.mp (eventually_pos hc h)
+  let K := max (max N M) (max L 1)
+  have hKpos : 0 < K := by dsimp [K]; omega
+  have hKr : (0 : ℝ) < K := by exact_mod_cast hKpos
+  have hKf : 0 < f K := hL K (by dsimp [K]; omega)
+  obtain ⟨n,hn,hnpos,hmax⟩ := exists_tail_max (higher_ratio_zero har h) K
+    (div_pos hKf (Real.rpow_pos_of_pos hKr r))
+  have hnp : 0 < n := hKpos.trans_le hn
+  have hnr : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hnf : 0 < f n := (div_pos_iff_of_pos_right (Real.rpow_pos_of_pos hnr r)).mp hnpos
+  refine ⟨n,by dsimp [K] at hn; omega,hnp,hnf,?_⟩
+  let C : ℝ := f n/(n : ℝ)^r
+  have hC : 0 < C := hnpos
+  have he : C*(n : ℝ)^r = f n := div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnr r).ne'
+  have hstep : f (n+1) ≤ C*((n : ℝ)+1)^r := by
+    have hh := hmax (n+1) (by omega)
+    simp only [Nat.cast_add,Nat.cast_one] at hh
+    rw [div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < n+1 by positivity) r)] at hh
+    simpa only [Nat.cast_add,Nat.cast_one] using hh
+  have hu := hM n (by dsimp [K] at hn; omega)
+  have hpow : (n : ℝ)*(n : ℝ)^(r-1) = (n : ℝ)^r := by
+    rw [Real.rpow_sub hnr,Real.rpow_one]
+    field_simp
+  have hmul := mul_le_mul_of_nonneg_left hu (show 0 ≤ (n : ℝ)*C by positivity)
+  have hmul2 := mul_le_mul_of_nonneg_left hstep hnr.le
+  have hex : (n : ℝ)*C*((n : ℝ)^r) = (n : ℝ)*f n := by rw [mul_assoc,he]
+  have hex2 : (n : ℝ)*C*(s*(n : ℝ)^(r-1)) = s*f n := by
+    calc
+      _ = s*C*((n : ℝ)*(n : ℝ)^(r-1)) := by ring
+      _ = s*f n := by rw [hpow,mul_assoc,he]
+  rw [hex2] at hmul
+  nlinarith
+
+lemma exists_small_increment_with_past {f : ℕ → ℝ} {α c a s : ℝ}
+    (hα : 1 ≤ α) (hc : 0 < c) (haa : a < α) (hαs : α < s)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      (∀ j, 0 < j → j ≤ n → f j/(j : ℝ)^a ≤ f n/(n : ℝ)^a) ∧
+      (n : ℝ)*(f (n+1)-f n) ≤ s*f n := by
+  obtain ⟨r,har,hrs⟩ := exists_between hαs
+  obtain ⟨M,hM⟩ := eventually_atTop.mp (eventual_increment_upper (hα.trans har.le) hrs)
+  obtain ⟨n,hn,hnp,hnf,hpast,hfuture⟩ := exists_two_sided_record haa har hc h (max N M)
+  have hnr : (0 : ℝ) < n := by exact_mod_cast hnp
+  refine ⟨n,by omega,hnp,hnf,hpast,?_⟩
+  let C : ℝ := f n/(n : ℝ)^r
+  have hC : 0 < C := div_pos hnf (Real.rpow_pos_of_pos hnr r)
+  have he : C*(n : ℝ)^r = f n := div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnr r).ne'
+  have hstep : f (n+1) ≤ C*((n : ℝ)+1)^r := by
+    have hh := hfuture (n+1) (by omega)
+    simp only [Nat.cast_add,Nat.cast_one] at hh
+    rw [div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < n+1 by positivity) r)] at hh
+    simpa only [Nat.cast_add,Nat.cast_one] using hh
+  have hu := hM n (by omega)
+  have hpow : (n : ℝ)*(n : ℝ)^(r-1) = (n : ℝ)^r := by
+    rw [Real.rpow_sub hnr,Real.rpow_one]
+    field_simp
+  have hmul := mul_le_mul_of_nonneg_left hu (show 0 ≤ (n : ℝ)*C by positivity)
+  have hmul2 := mul_le_mul_of_nonneg_left hstep hnr.le
+  have hex : (n : ℝ)*C*((n : ℝ)^r) = (n : ℝ)*f n := by rw [mul_assoc,he]
+  have hex2 : (n : ℝ)*C*(s*(n : ℝ)^(r-1)) = s*f n := by
+    calc
+      _ = s*C*((n : ℝ)*(n : ℝ)^(r-1)) := by ring
+      _ = s*f n := by rw [hpow,mul_assoc,he]
+  rw [hex2] at hmul
+  nlinarith
+
+
+end Erdos713FutureRecords
+
+/-! Along an unbounded sequence of exact extremal graphs, a positive fraction
+of total degree is carried by vertices at which cloning creates the forbidden
+graph. The obstructions project to single-identification patterns. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713Cloning
+
+lemma mass_bound {W : Type*} (H : SimpleGraph W) {n : ℕ} (G : SimpleGraph (Fin n))
+    (hfree : H.Free G) (he : Nat.card G.edgeSet = extremalNumber n H)
+    {s : ℝ} (hs : 0 ≤ s)
+    (hinc : (n : ℝ)*((extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)) ≤
+      s*(extremalNumber n H : ℝ)) :
+    ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  classical
+  let D : ℝ := max ((extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)) 0
+  have hD : 0 ≤ D := le_max_right _ _
+  have hBD : (n : ℝ)*D ≤ s*(Nat.card G.edgeSet : ℝ) := by
+    rw [he]
+    by_cases hd : 0 ≤ (extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)
+    · simpa only [D,max_eq_left hd] using hinc
+    · have hd' : (extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ) ≤ 0 := le_of_not_ge hd
+      simp only [D,max_eq_right hd',mul_zero]
+      positivity
+  let B : Finset (Fin n) := univ.filter (SingleFold H G)
+  refine ⟨B,fun v hv => (mem_filter.mp hv).2,?_⟩
+  have hlocal (v : Fin n) : (Nat.card (G.neighborSet v) : ℝ) ≤
+      (if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0)+D := by
+    by_cases hv : SingleFold H G v
+    · simp only [if_pos hv]
+      linarith
+    · have hc : H.Free (clone G v) := fun hh => hv (fold_of_obstructed H G v hfree hh)
+      have hh := safe_clone_bound H G v hc
+      simp only [Fintype.card_fin] at hh
+      have hh' : (Nat.card G.edgeSet : ℝ)+(Nat.card (G.neighborSet v) : ℝ) ≤
+          (extremalNumber (n+1) H : ℝ) := by exact_mod_cast hh
+      rw [he] at hh'
+      have hle : (extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ) ≤ D := le_max_left _ _
+      simp only [if_neg hv,zero_add]
+      linarith
+  have hsum := sum_le_sum (fun v (_ : v ∈ (univ : Finset (Fin n))) => hlocal v)
+  rw [sum_add_distrib] at hsum
+  simp only [sum_const,card_univ,Fintype.card_fin,nsmul_eq_mul] at hsum
+  have hsumdeg : (∑ v : Fin n, (Nat.card (G.neighborSet v) : ℝ)) = 2*(Nat.card G.edgeSet : ℝ) := by
+    have hh := G.sum_degrees_eq_twice_card_edges
+    simp only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hh
+    exact_mod_cast hh
+  have hBsum : (∑ v : Fin n, if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0) =
+      ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by simp only [B,sum_filter]
+  rw [hsumdeg,hBsum] at hsum
+  linarith
+
+lemma exists_extremal_of_pos {W : Type*} (H : SimpleGraph W) (n : ℕ)
+    (hn : 0 < extremalNumber n H) :
+    ∃ G : SimpleGraph (Fin n), H.Free G ∧ Nat.card G.edgeSet = extremalNumber n H := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | H.Free G}
+  have hS : S.Nonempty := by
+    by_contra hs
+    have he : S = ∅ := not_nonempty_iff_eq_empty.mp hs
+    change 0 < S.sup (fun G => G.edgeFinset.card) at hn
+    simp only [he,sup_empty,bot_eq_zero,lt_self_iff_false] at hn
+  obtain ⟨G,hG,he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+  refine ⟨G,by simpa [S] using hG,?_⟩
+  change Nat.card G.edgeSet = S.sup (fun G => G.edgeFinset.card)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using he.symm
+
+lemma of_asymptotic {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 ≤ α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (s : ℝ) (hαs : α < s) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ ∃ G : SimpleGraph (Fin n), H.Free G ∧
+      Nat.card G.edgeSet = extremalNumber n H ∧ 0 < Nat.card G.edgeSet ∧
+      ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨n,hn,hnp,hpos,hinc⟩ := Erdos713FutureRecords.exists_small_increment hα hc hαs h N
+  have hpos' : 0 < extremalNumber n H := by exact_mod_cast hpos
+  obtain ⟨G,hfree,he⟩ := exists_extremal_of_pos H n hpos'
+  exact ⟨n,hn,hnp,G,hfree,he,he.symm ▸ hpos',
+    mass_bound H G hfree he (by linarith) hinc⟩
+
+/-- If the exponent is strictly below two, the obstruction mass is positive.
+The same witnesses carry copies of a graph on one fewer forbidden vertex. -/
+lemma exists_identification_witnesses {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (hα : α ∈ Set.Ico 1 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ ∃ G : SimpleGraph (Fin n), H.Free G ∧
+      Nat.card G.edgeSet = extremalNumber n H ∧
+      ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b, identified H a b hnab ⊑ G := by
+  obtain ⟨s,has,hs2⟩ := exists_between hα.2
+  obtain ⟨n,hn,hnp,G,hfree,he,hpos,B,hB,hmass⟩ := of_asymptotic H hα.1 hc h s has N
+  have hsumpos : 0 < ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) :=
+    (mul_pos (sub_pos.mpr hs2) (by exact_mod_cast hpos)).trans_le hmass
+  have hBne : B.Nonempty := by
+    by_contra hn
+    rw [not_nonempty_iff_eq_empty.mp hn,sum_empty] at hsumpos
+    exact (lt_irrefl 0 hsumpos)
+  obtain ⟨v,hv⟩ := hBne
+  obtain ⟨a,b,hab,hnab,f,hfv⟩ := (hB v hv).identified_copy
+  exact ⟨n,hn,hnp,G,hfree,he,a,b,hab,hnab,⟨f⟩⟩
+
+end Erdos713Cloning
+
+/-! Two-sided power records give exact extremal witnesses with minimum degree,
+cut expansion, and positive cloning-obstruction mass on the same graph. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713Cloning
+open Erdos713SwitchGluing
+
+open scoped Classical in
+lemma inside_edges_le {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (S : Finset V) :
+    Nat.card (inside G (S : Set V)).edgeSet ≤ extremalNumber S.card H := by
+  classical
+  have heq : inside G (S : Set V) = (G.induce (S : Set V)).spanningCoe := by
+    ext u v
+    constructor
+    · rintro ⟨h,hu,hv⟩
+      exact ⟨⟨u,hu⟩,⟨v,hv⟩,h,rfl,rfl⟩
+    · rintro ⟨a,b,h,rfl,rfl⟩
+      exact ⟨h,a.property,b.property⟩
+  rw [heq]
+  have hmap := card_edgeFinset_map (Function.Embedding.subtype (fun v => v ∈ (S : Set V)))
+    (G.induce (S : Set V))
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hmap
+  rw [hmap]
+  have hf : H.Free (G.induce (S : Set V)) := fun h => hFree (h.trans ⟨Copy.induce G _⟩)
+  have hc : Nat.card (S : Set V) = S.card := by
+    rw [Nat.card_eq_fintype_card]
+    exact Fintype.card_coe S
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,hc] using
+    card_edgeFinset_le_extremalNumber hf
+
+lemma edges_le_parts_and_cut {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (S : Finset V) :
+    Nat.card G.edgeSet ≤ extremalNumber S.card H + extremalNumber (Fintype.card V-S.card) H +
+      Nat.card (cross G (S : Set V)).edgeSet := by
+  classical
+  have hRest : Erdos713Gluing.rest G (S : Set V) = inside G ((Sᶜ : Finset V) : Set V) := by
+    ext u v
+    simp [Erdos713Gluing.rest,inside]
+  have hA := inside_edges_le H G hFree S
+  have hB := inside_edges_le H G hFree Sᶜ
+  rw [card_compl] at hB
+  have hsplit := edge_split G (S : Set V)
+  rw [hRest] at hsplit
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hsplit
+  omega
+
+lemma rpow_factor {x r : ℝ} (hx : 0 ≤ x) (hr : 1 < r) : x^r = x*x^(r-1) := by
+  by_cases hx0 : x = 0
+  · simp [hx0,Real.zero_rpow (by linarith : r ≠ 0)]
+  · rw [Real.rpow_sub_one hx0]
+    field_simp
+
+noncomputable abbrev expansionConstant (r : ℝ) : ℝ := 1 - (1/2 : ℝ)^(r-1)
+
+lemma expansionConstant_pos {r : ℝ} (hr : 1 < r) : 0 < expansionConstant r := by
+  exact sub_pos.mpr (Real.rpow_lt_one (by norm_num) (by norm_num) (by linarith))
+
+lemma power_gap {n s r : ℝ} (hn : 0 ≤ n) (hs : 0 ≤ s) (hS : 2*s ≤ n) (hr : 1 < r) :
+    expansionConstant r * s * n^(r-1) ≤ n^r-s^r-(n-s)^r := by
+  have hns : 0 ≤ n-s := by linarith
+  have hb := Real.rpow_le_rpow hns (show n-s ≤ n by linarith) (by linarith : 0 ≤ r-1)
+  have ha := Real.rpow_le_rpow hs (show s ≤ (1/2 : ℝ)*n by linarith) (by linarith : 0 ≤ r-1)
+  rw [Real.mul_rpow (by norm_num : (0 : ℝ) ≤ 1/2) hn] at ha
+  have hA := mul_le_mul_of_nonneg_left ha hs
+  have hB := mul_le_mul_of_nonneg_left hb hns
+  rw [rpow_factor hn hr,rpow_factor hs hr,rpow_factor hns hr]
+  dsimp only [expansionConstant]
+  nlinarith
+
+lemma record_cut_bound {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) {r C : ℝ} (hr : 1 < r) (hC : 0 ≤ C)
+    (hEdges : (Nat.card G.edgeSet : ℝ) = C*(Fintype.card V : ℝ)^r)
+    (hUpper : ∀ j : ℕ, j ≤ Fintype.card V → (extremalNumber j H : ℝ) ≤ C*(j : ℝ)^r)
+    (S : Finset V) (hS : 2*S.card ≤ Fintype.card V) :
+    expansionConstant r * C * S.card * (Fintype.card V : ℝ)^(r-1) ≤
+      (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+  classical
+  have hs : S.card ≤ Fintype.card V := card_le_univ S
+  have he : (Nat.card G.edgeSet : ℝ) ≤ (extremalNumber S.card H : ℝ) +
+      (extremalNumber (Fintype.card V-S.card) H : ℝ) +
+        (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+    exact_mod_cast edges_le_parts_and_cut H G hFree S
+  have hA := hUpper S.card hs
+  have hB := hUpper (Fintype.card V-S.card) (Nat.sub_le _ _)
+  rw [Nat.cast_sub hs] at hB
+  have hp := mul_le_mul_of_nonneg_left
+    (power_gap (Nat.cast_nonneg (Fintype.card V)) (Nat.cast_nonneg S.card)
+      (by exact_mod_cast hS) hr) hC
+  rw [hEdges] at he
+  nlinarith
+
+
+lemma degree_lower_of_record {W : Type*} (H : SimpleGraph W) {n : ℕ}
+    (G : SimpleGraph (Fin n)) (hfree : H.Free G) (he : Nat.card G.edgeSet = extremalNumber n H)
+    {r C : ℝ} (hEq : (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r)
+    (hUpper : ∀ j : ℕ, j ≤ n → (extremalNumber j H : ℝ) ≤ C*(j : ℝ)^r) (v : Fin n) :
+    C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ) := by
+  classical
+  have hDel := card_edgeFinset_deleteIncidenceSet_le_extremalNumber hfree v
+  rw [card_edgeFinset_deleteIncidenceSet] at hDel
+  have hNat : G.edgeFinset.card ≤ extremalNumber (n-1) H + G.degree v := by
+    simp only [Fintype.card_fin] at hDel
+    have hh := G.degree_le_card_edgeFinset v
+    omega
+  simp only [edgeFinset_card,← card_neighborSet_eq_degree,Fintype.card_eq_nat_card,he] at hNat
+  have hReal : (extremalNumber n H : ℝ) ≤ (extremalNumber (n-1) H : ℝ) +
+      (Nat.card (G.neighborSet v) : ℝ) := by exact_mod_cast hNat
+  have hh := hUpper (n-1) (Nat.sub_le _ _)
+  rw [he] at hEq
+  nlinarith
+
+lemma extremal_zero {W : Type*} (H : SimpleGraph W) : extremalNumber 0 H = 0 := by
+  classical
+  apply Nat.eq_zero_of_le_zero
+  rw [← Fintype.card_fin 0,extremalNumber_le_iff]
+  intro G _ _
+  have hh := G.card_edgeFinset_le_card_choose_two
+  simpa using hh
+
+lemma joint_of_asymptotic {W : Type*} (H : SimpleGraph W) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n : ℕ, N ≤ n ∧ 0 < n ∧ ∃ C : ℝ, 0 < C ∧ ∃ G : SimpleGraph (Fin n),
+      H.Free G ∧ Nat.card G.edgeSet = extremalNumber n H ∧
+      (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r ∧
+      (∀ j : ℕ, j ≤ n → (extremalNumber j H : ℝ) ≤ C*(j : ℝ)^r) ∧
+      (∀ v, C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ)) ∧
+      (∀ S : Finset (Fin n), 2*S.card ≤ n →
+        expansionConstant r*C*S.card*(n : ℝ)^(r-1) ≤
+          (Nat.card (cross G (S : Set (Fin n))).edgeSet : ℝ)) ∧
+      ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨n,hn,hnp,hpos,hpast,hinc⟩ :=
+    Erdos713FutureRecords.exists_small_increment_with_past (by linarith) hc hra has h N
+  have hnpR : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hpos' : 0 < extremalNumber n H := by exact_mod_cast hpos
+  let C : ℝ := (extremalNumber n H : ℝ)/(n : ℝ)^r
+  have hC : 0 < C := div_pos hpos (Real.rpow_pos_of_pos hnpR r)
+  have hEq : (extremalNumber n H : ℝ) = C*(n : ℝ)^r :=
+    (div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnpR r).ne').symm
+  have hUpper : ∀ j : ℕ, j ≤ n → (extremalNumber j H : ℝ) ≤ C*(j : ℝ)^r := by
+    intro j hj
+    by_cases hj0 : j = 0
+    · subst j
+      simp [extremal_zero,Real.zero_rpow (by linarith : r ≠ 0)]
+    · exact (div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < j by exact_mod_cast Nat.pos_of_ne_zero hj0) r)).mp
+        (hpast j (Nat.pos_of_ne_zero hj0) hj)
+  obtain ⟨G,hfree,he⟩ := exists_extremal_of_pos H n hpos'
+  have hEqG : (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r := by rwa [he]
+  refine ⟨n,hn,hnp,C,hC,G,hfree,he,hEqG,hUpper,
+    degree_lower_of_record H G hfree he hEqG hUpper,?_,
+    mass_bound H G hfree he (by linarith) hinc⟩
+  intro S hS
+  simpa only [Fintype.card_fin] using record_cut_bound H G hfree hr hC.le
+    (by simpa only [Fintype.card_fin] using hEqG)
+    (by simpa only [Fintype.card_fin] using hUpper) S
+    (by simpa only [Fintype.card_fin] using hS)
+
+end Erdos713Cloning
+
+/-! Extremal numbers restricted to bipartite hosts. They are comparable with
+ordinary extremal numbers, but no equality or exact-asymptotic transfer is
+asserted. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713BipExtremal
+
+open scoped Classical in
+noncomputable def number (n : ℕ) {W : Type*} (H : SimpleGraph W) : ℕ :=
+  ({G : SimpleGraph (Fin n) | H.Free G ∧ G.IsBipartite} : Finset _).sup
+    (fun G => G.edgeFinset.card)
+
+lemma card_bound_fin {W : Type*} (H : SimpleGraph W) {n : ℕ} (G : SimpleGraph (Fin n))
+    (hfree : H.Free G) (hB : G.IsBipartite) : Nat.card G.edgeSet ≤ number n H := by
+  classical
+  change Nat.card G.edgeSet ≤
+    ({K : SimpleGraph (Fin n) | H.Free K ∧ K.IsBipartite} : Finset _).sup (fun K => K.edgeFinset.card)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using
+    (le_sup (f := fun K : SimpleGraph (Fin n) => K.edgeFinset.card)
+      (show G ∈ ({K : SimpleGraph (Fin n) | H.Free K ∧ K.IsBipartite} : Finset _) by exact mem_filter.mpr ⟨mem_univ G,hfree,hB⟩))
+
+lemma card_bound {W V : Type*} [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V)
+    (hfree : H.Free G) (hB : G.IsBipartite) : Nat.card G.edgeSet ≤ number (Fintype.card V) H := by
+  classical
+  let e := Fintype.equivFin V
+  let K := G.map e.toEmbedding
+  let i : G ≃g K := Iso.map e G
+  have hf : H.Free K := fun hh => hfree (hh.trans ⟨i.symm.toCopy⟩)
+  have hb : K.IsBipartite := hB.of_hom i.symm.toHom
+  have hc := card_bound_fin H K hf hb
+  have hi := i.card_edgeFinset_eq
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hi
+  rwa [← hi] at hc
+
+lemma number_le {W : Type*} (H : SimpleGraph W) (n : ℕ) : number n H ≤ extremalNumber n H := by
+  classical
+  unfold number
+  apply Finset.sup_le
+  intro G hG
+  obtain ⟨hf,hb⟩ : H.Free G ∧ G.IsBipartite := by simpa using hG
+  simpa only [Fintype.card_fin] using card_edgeFinset_le_extremalNumber hf
+
+lemma ordinary_le_two {W : Type*} (H : SimpleGraph W) (n : ℕ) :
+    extremalNumber n H ≤ 2*number n H := by
+  classical
+  rw [← Fintype.card_fin n,extremalNumber_le_iff]
+  intro G _ hf
+  obtain ⟨K,hKG,hKB,hhalf⟩ := Erdos713Cut.exists_bipartite_half G
+  have hfree : H.Free K := fun hh => hf (hh.mono_right hKG)
+  have hk := card_bound_fin H K hfree hKB
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hhalf ⊢
+  simpa only [Fintype.card_fin,Nat.card_fin] using hhalf.trans (Nat.mul_le_mul_left 2 hk)
+
+lemma exists_extremal_of_pos {W : Type*} (H : SimpleGraph W) (n : ℕ) (hn : 0 < number n H) :
+    ∃ G : SimpleGraph (Fin n), H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | H.Free G ∧ G.IsBipartite}
+  have hS : S.Nonempty := by
+    by_contra hs
+    have he : S = ∅ := not_nonempty_iff_eq_empty.mp hs
+    change 0 < S.sup (fun G => G.edgeFinset.card) at hn
+    simp only [he,sup_empty,bot_eq_zero,lt_self_iff_false] at hn
+  obtain ⟨G,hG,he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+  obtain ⟨hf,hb⟩ : H.Free G ∧ G.IsBipartite := by simpa [S] using hG
+  refine ⟨G,hf,hb,?_⟩
+  change Nat.card G.edgeSet = S.sup (fun G => G.edgeFinset.card)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using he.symm
+
+lemma number_zero {W : Type*} (H : SimpleGraph W) : number 0 H = 0 :=
+  Nat.eq_zero_of_le_zero ((number_le H 0).trans_eq (Erdos713Cloning.extremal_zero H))
+
+lemma clone_bipartite {V : Type*} {G : SimpleGraph V} (hG : G.IsBipartite) (v : V) :
+    (Erdos713Cloning.clone G v).IsBipartite := hG.of_hom (Erdos713Cloning.projectionHom G v)
+
+lemma safe_clone_bound {W V : Type*} [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V)
+    (hB : G.IsBipartite) (v : V) (hfree : H.Free (Erdos713Cloning.clone G v)) :
+    Nat.card G.edgeSet+Nat.card (G.neighborSet v) ≤ number (Fintype.card V+1) H := by
+  have hh := card_bound H (Erdos713Cloning.clone G v) hfree (clone_bipartite hB v)
+  simpa only [Erdos713Cloning.card_edges_clone,Fintype.card_option] using hh
+
+open scoped Topology in
+lemma higher_ratio_zero {W : Type*} (H : SimpleGraph W) {α c r : ℝ} (har : α < r)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n : ℕ => (number n H : ℝ)/(n : ℝ)^r) atTop (𝓝 0) := by
+  apply squeeze_zero (fun n => div_nonneg (Nat.cast_nonneg _) (Real.rpow_nonneg (Nat.cast_nonneg _) _))
+    (fun n => div_le_div_of_nonneg_right (Nat.cast_le.mpr (number_le H n))
+      (Real.rpow_nonneg (Nat.cast_nonneg _) _))
+  exact Erdos713FutureRecords.higher_ratio_zero har h
+
+lemma lower_ratio_top {W : Type*} (H : SimpleGraph W) {α c r : ℝ} (hra : r < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n : ℕ => (number n H : ℝ)/(n : ℝ)^r) atTop atTop := by
+  have ht : Tendsto (fun n : ℕ => (1/2 : ℝ)*((extremalNumber n H : ℝ)/(n : ℝ)^r)) atTop atTop :=
+    Tendsto.const_mul_atTop (by norm_num) (Erdos713FutureRecords.lower_ratio_top hra hc h)
+  apply tendsto_atTop_mono' atTop _ ht
+  filter_upwards with n
+  have hh : (1/2 : ℝ)*(extremalNumber n H : ℝ) ≤ (number n H : ℝ) := by
+    have hh : (extremalNumber n H : ℝ) ≤ 2*(number n H : ℝ) := by exact_mod_cast ordinary_le_two H n
+    linarith
+  simpa only [mul_div_assoc] using div_le_div_of_nonneg_right hh (Real.rpow_nonneg (Nat.cast_nonneg n) r)
+
+end Erdos713BipExtremal
+
+/-! Two-sided power records require only one diverging lower-exponent ratio
+and one vanishing higher-exponent ratio. They do not require a leading constant. -/
+open Filter Asymptotics Finset
+open scoped Topology
+namespace Erdos713FutureRecords
+
+lemma past_record_of_limit {f : ℕ → ℝ} {r : ℝ}
+    (hlim : Tendsto (fun n : ℕ => f n/(n : ℝ)^r) atTop atTop) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      ∀ j, j ≤ n → f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r := by
+  let g : ℕ → ℝ := fun n => f n/(n : ℝ)^r
+  obtain ⟨j,hj,hsmall⟩ := (range (N+1)).exists_max_image g ⟨0,by simp⟩
+  obtain ⟨p,hp⟩ := (hlim.eventually_gt_atTop (max (g j) 0)).exists
+  obtain ⟨n,hn,hmax⟩ := (range (p+1)).exists_max_image g ⟨p,by simp⟩
+  have hnlarge : max (g j) 0 < g n := hp.trans_le (hmax p (by simp))
+  have hN : N < n := by
+    by_contra hNn
+    have hh := hsmall n (mem_range.mpr (by omega))
+    exact (not_lt_of_ge hh) ((le_max_left _ _).trans_lt hnlarge)
+  have hnp : 0 < n := by omega
+  have hpos : 0 < f n :=
+    (div_pos_iff_of_pos_right (Real.rpow_pos_of_pos (by exact_mod_cast hnp) r)).mp
+      ((le_max_right _ _).trans_lt hnlarge)
+  refine ⟨n,hN.le,hnp,hpos,?_⟩
+  intro k hk
+  exact hmax k (mem_range.mpr (by have := mem_range.mp hn; omega))
+
+lemma two_sided_record_of_limits {f : ℕ → ℝ} {r s : ℝ} (hrs : r < s)
+    (hlo : Tendsto (fun n : ℕ => f n/(n : ℝ)^r) atTop atTop)
+    (hhi : Tendsto (fun n : ℕ => f n/(n : ℝ)^s) atTop (𝓝 0)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      (∀ j, 0 < j → j ≤ n → f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r) ∧
+      (∀ j, n ≤ j → f j/(j : ℝ)^s ≤ f n/(n : ℝ)^s) := by
+  obtain ⟨m,hm,hmp,hmf,hpast⟩ := past_record_of_limit hlo N
+  obtain ⟨n,hmn,hnpos,htail⟩ := exists_tail_max hhi m
+    (div_pos hmf (Real.rpow_pos_of_pos (by exact_mod_cast hmp) s))
+  have hnp : 0 < n := hmp.trans_le hmn
+  have hnreal : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hnf : 0 < f n := (div_pos_iff_of_pos_right (Real.rpow_pos_of_pos hnreal s)).mp hnpos
+  have htransfer {j : ℕ} (hjp : 0 < j) (hjn : j ≤ n)
+      (hj : f j/(j : ℝ)^s ≤ f n/(n : ℝ)^s) :
+      f j/(j : ℝ)^r ≤ f n/(n : ℝ)^r := by
+    rw [change_ratio f r s hjp,change_ratio f r s hnp]
+    exact mul_le_mul hj
+      (Real.rpow_le_rpow (Nat.cast_nonneg j) (by exact_mod_cast hjn) (by linarith))
+      (Real.rpow_nonneg (Nat.cast_nonneg j) (s-r)) hnpos.le
+  refine ⟨n,hm.trans hmn,hnp,hnf,?_,fun j hj => htail j (hmn.trans hj)⟩
+  intro j hjp hjn
+  by_cases hjm : j ≤ m
+  · exact (hpast j hjm).trans (htransfer hmp hmn (htail m le_rfl))
+  · exact htransfer hjp hjn (htail j (by omega))
+
+lemma small_increment_with_past_of_limits {f : ℕ → ℝ} {a r s : ℝ}
+    (har : a < r) (hr : 1 ≤ r) (hrs : r < s)
+    (hlo : Tendsto (fun n : ℕ => f n/(n : ℝ)^a) atTop atTop)
+    (hhi : Tendsto (fun n : ℕ => f n/(n : ℝ)^r) atTop (𝓝 0)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ 0 < f n ∧
+      (∀ j, 0 < j → j ≤ n → f j/(j : ℝ)^a ≤ f n/(n : ℝ)^a) ∧
+      (n : ℝ)*(f (n+1)-f n) ≤ s*f n := by
+  obtain ⟨M,hM⟩ := eventually_atTop.mp (eventual_increment_upper hr hrs)
+  obtain ⟨n,hn,hnp,hnf,hpast,hfuture⟩ := two_sided_record_of_limits har hlo hhi (max N M)
+  have hnr : (0 : ℝ) < n := by exact_mod_cast hnp
+  refine ⟨n,by omega,hnp,hnf,hpast,?_⟩
+  let C : ℝ := f n/(n : ℝ)^r
+  have hC : 0 < C := div_pos hnf (Real.rpow_pos_of_pos hnr r)
+  have he : C*(n : ℝ)^r = f n := div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnr r).ne'
+  have hstep : f (n+1) ≤ C*((n : ℝ)+1)^r := by
+    have hh := hfuture (n+1) (by omega)
+    simp only [Nat.cast_add,Nat.cast_one] at hh
+    rw [div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < n+1 by positivity) r)] at hh
+    simpa only [Nat.cast_add,Nat.cast_one] using hh
+  have hu := hM n (by omega)
+  have hpow : (n : ℝ)*(n : ℝ)^(r-1) = (n : ℝ)^r := by
+    rw [Real.rpow_sub hnr,Real.rpow_one]
+    field_simp
+  have hmul := mul_le_mul_of_nonneg_left hu (show 0 ≤ (n : ℝ)*C by positivity)
+  have hmul2 := mul_le_mul_of_nonneg_left hstep hnr.le
+  have hex : (n : ℝ)*C*((n : ℝ)^r) = (n : ℝ)*f n := by rw [mul_assoc,he]
+  have hex2 : (n : ℝ)*C*(s*(n : ℝ)^(r-1)) = s*f n := by
+    calc
+      _ = s*C*((n : ℝ)*(n : ℝ)^(r-1)) := by ring
+      _ = s*f n := by rw [hpow,mul_assoc,he]
+  rw [hex2] at hmul
+  nlinarith
+
+end Erdos713FutureRecords
+
+/-! Joint witnesses extremal among bipartite H-free graphs. They need not be
+ordinary exact extremal graphs, and no exact asymptotic for the bipartite
+extremal number is inferred. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713BipExtremal
+open Erdos713Cloning Erdos713SwitchGluing
+
+lemma mass_bound {W : Type*} (H : SimpleGraph W) {n : ℕ} (G : SimpleGraph (Fin n))
+    (hfree : H.Free G) (hB : G.IsBipartite) (he : Nat.card G.edgeSet = number n H)
+    {s : ℝ} (hs : 0 ≤ s)
+    (hinc : (n : ℝ)*((number (n+1) H : ℝ)-(number n H : ℝ)) ≤
+      s*(number n H : ℝ)) :
+    ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  classical
+  let D : ℝ := max ((number (n+1) H : ℝ)-(number n H : ℝ)) 0
+  have hD : 0 ≤ D := le_max_right _ _
+  have hBD : (n : ℝ)*D ≤ s*(Nat.card G.edgeSet : ℝ) := by
+    rw [he]
+    by_cases hd : 0 ≤ (number (n+1) H : ℝ)-(number n H : ℝ)
+    · simpa only [D,max_eq_left hd] using hinc
+    · have hd' : (number (n+1) H : ℝ)-(number n H : ℝ) ≤ 0 := le_of_not_ge hd
+      simp only [D,max_eq_right hd',mul_zero]
+      positivity
+  let B : Finset (Fin n) := univ.filter (SingleFold H G)
+  refine ⟨B,fun v hv => (mem_filter.mp hv).2,?_⟩
+  have hlocal (v : Fin n) : (Nat.card (G.neighborSet v) : ℝ) ≤
+      (if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0)+D := by
+    by_cases hv : SingleFold H G v
+    · simp only [if_pos hv]
+      linarith
+    · have hc : H.Free (clone G v) := fun hh => hv (fold_of_obstructed H G v hfree hh)
+      have hh := safe_clone_bound H G hB v hc
+      simp only [Fintype.card_fin] at hh
+      have hh' : (Nat.card G.edgeSet : ℝ)+(Nat.card (G.neighborSet v) : ℝ) ≤
+          (number (n+1) H : ℝ) := by exact_mod_cast hh
+      rw [he] at hh'
+      have hle : (number (n+1) H : ℝ)-(number n H : ℝ) ≤ D := le_max_left _ _
+      simp only [if_neg hv,zero_add]
+      linarith
+  have hsum := sum_le_sum (fun v (_ : v ∈ (univ : Finset (Fin n))) => hlocal v)
+  rw [sum_add_distrib] at hsum
+  simp only [sum_const,card_univ,Fintype.card_fin,nsmul_eq_mul] at hsum
+  have hsumdeg : (∑ v : Fin n, (Nat.card (G.neighborSet v) : ℝ)) = 2*(Nat.card G.edgeSet : ℝ) := by
+    have hh := G.sum_degrees_eq_twice_card_edges
+    simp only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hh
+    exact_mod_cast hh
+  have hBsum : (∑ v : Fin n, if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0) =
+      ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by simp only [B,sum_filter]
+  rw [hsumdeg,hBsum] at hsum
+  linarith
+
+open scoped Classical in
+lemma inside_edges_le {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (hB : G.IsBipartite) (S : Finset V) :
+    Nat.card (inside G (S : Set V)).edgeSet ≤ number S.card H := by
+  classical
+  have heq : inside G (S : Set V) = (G.induce (S : Set V)).spanningCoe := by
+    ext u v
+    constructor
+    · rintro ⟨h,hu,hv⟩
+      exact ⟨⟨u,hu⟩,⟨v,hv⟩,h,rfl,rfl⟩
+    · rintro ⟨a,b,h,rfl,rfl⟩
+      exact ⟨h,a.property,b.property⟩
+  rw [heq]
+  have hmap := card_edgeFinset_map (Function.Embedding.subtype (fun v => v ∈ (S : Set V)))
+    (G.induce (S : Set V))
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hmap
+  rw [hmap]
+  have hf : H.Free (G.induce (S : Set V)) := fun h => hFree (h.trans ⟨Copy.induce G _⟩)
+  have hc : Nat.card (S : Set V) = S.card := by
+    rw [Nat.card_eq_fintype_card]
+    exact Fintype.card_coe S
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,hc] using
+    card_bound H (G.induce (S : Set V)) hf (hB.of_hom (Copy.induce G _).toHom)
+
+lemma edges_le_parts_and_cut {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (hB : G.IsBipartite) (S : Finset V) :
+    Nat.card G.edgeSet ≤ number S.card H + number (Fintype.card V-S.card) H +
+      Nat.card (cross G (S : Set V)).edgeSet := by
+  classical
+  have hRest : Erdos713Gluing.rest G (S : Set V) = inside G ((Sᶜ : Finset V) : Set V) := by
+    ext u v
+    simp [Erdos713Gluing.rest,inside]
+  have hA := inside_edges_le H G hFree hB S
+  have hB := inside_edges_le H G hFree hB Sᶜ
+  rw [card_compl] at hB
+  have hsplit := edge_split G (S : Set V)
+  rw [hRest] at hsplit
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hsplit
+  omega
+
+lemma record_cut_bound {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (hB : G.IsBipartite) {r C : ℝ} (hr : 1 < r) (hC : 0 ≤ C)
+    (hEdges : (Nat.card G.edgeSet : ℝ) = C*(Fintype.card V : ℝ)^r)
+    (hUpper : ∀ j : ℕ, j ≤ Fintype.card V → (number j H : ℝ) ≤ C*(j : ℝ)^r)
+    (S : Finset V) (hS : 2*S.card ≤ Fintype.card V) :
+    expansionConstant r * C * S.card * (Fintype.card V : ℝ)^(r-1) ≤
+      (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+  classical
+  have hs : S.card ≤ Fintype.card V := card_le_univ S
+  have he : (Nat.card G.edgeSet : ℝ) ≤ (number S.card H : ℝ) +
+      (number (Fintype.card V-S.card) H : ℝ) +
+        (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+    exact_mod_cast edges_le_parts_and_cut H G hFree hB S
+  have hA := hUpper S.card hs
+  have hB := hUpper (Fintype.card V-S.card) (Nat.sub_le _ _)
+  rw [Nat.cast_sub hs] at hB
+  have hp := mul_le_mul_of_nonneg_left
+    (power_gap (Nat.cast_nonneg (Fintype.card V)) (Nat.cast_nonneg S.card)
+      (by exact_mod_cast hS) hr) hC
+  rw [hEdges] at he
+  nlinarith
+
+
+lemma degree_lower_of_record {W : Type*} (H : SimpleGraph W) {n : ℕ}
+    (G : SimpleGraph (Fin n)) (hfree : H.Free G) (hB : G.IsBipartite)
+    (he : Nat.card G.edgeSet = number n H)
+    {r C : ℝ} (hEq : (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r)
+    (hUpper : ∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r) (v : Fin n) :
+    C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ) := by
+  classical
+  have hf : H.Free (G.induce {v}ᶜ) := fun hh => hfree (hh.trans ⟨Copy.induce G _⟩)
+  have hb : (G.induce {v}ᶜ).IsBipartite := hB.of_hom (Copy.induce G _).toHom
+  have hDel := card_bound H (G.induce {v}ᶜ) hf hb
+  have hcard : Fintype.card ({v}ᶜ : Set (Fin n)) = n-1 := by
+    change Fintype.card {w : Fin n // ¬ w = v} = n-1
+    rw [Fintype.card_subtype_compl]
+    simp
+  have hi := G.card_edgeFinset_induce_compl_singleton v
+  have hd := G.card_edgeFinset_deleteIncidenceSet v
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hi hd
+  rw [hi,hd,hcard] at hDel
+  have hNat : Nat.card G.edgeSet ≤ number (n-1) H + G.degree v := by
+    have hh := G.degree_le_card_edgeFinset v
+    simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hh
+    omega
+  simp only [← card_neighborSet_eq_degree,Fintype.card_eq_nat_card,he] at hNat
+  have hReal : (number n H : ℝ) ≤ (number (n-1) H : ℝ) +
+      (Nat.card (G.neighborSet v) : ℝ) := by exact_mod_cast hNat
+  have hh := hUpper (n-1) (Nat.sub_le _ _)
+  rw [he] at hEq
+  nlinarith
+
+lemma bipartite_identified_copy {W V : Type*} {H : SimpleGraph W} {G : SimpleGraph V} {v : V}
+    (hG : G.IsBipartite) (h : SingleFold H G v) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      ∃ f : (identified H a b hnab).Copy G, f ⟨b,hab.symm⟩ = v := by
+  obtain ⟨a,b,hab,hnab,f,hf⟩ := h.identified_copy
+  exact ⟨a,b,hab,hnab,hG.of_hom f.toHom,f,hf⟩
+
+lemma joint_of_asymptotic {W : Type*} (H : SimpleGraph W) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n : ℕ, N ≤ n ∧ 0 < n ∧ ∃ C : ℝ, 0 < C ∧ ∃ G : SimpleGraph (Fin n),
+      H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+      (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r ∧
+      (∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r) ∧
+      (∀ v, C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ)) ∧
+      (∀ S : Finset (Fin n), 2*S.card ≤ n →
+        expansionConstant r*C*S.card*(n : ℝ)^(r-1) ≤
+          (Nat.card (cross G (S : Set (Fin n))).edgeSet : ℝ)) ∧
+      ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨t,hat,hts⟩ := exists_between has
+  obtain ⟨n,hn,hnp,hpos,hpast,hinc⟩ :=
+    Erdos713FutureRecords.small_increment_with_past_of_limits (hra.trans hat) (by linarith) hts
+      (lower_ratio_top H hra hc h) (higher_ratio_zero H hat h) N
+  have hnpR : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hpos' : 0 < number n H := by exact_mod_cast hpos
+  let C : ℝ := (number n H : ℝ)/(n : ℝ)^r
+  have hC : 0 < C := div_pos hpos (Real.rpow_pos_of_pos hnpR r)
+  have hEq : (number n H : ℝ) = C*(n : ℝ)^r :=
+    (div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnpR r).ne').symm
+  have hUpper : ∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r := by
+    intro j hj
+    by_cases hj0 : j = 0
+    · subst j
+      simp [number_zero,Real.zero_rpow (by linarith : r ≠ 0)]
+    · exact (div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < j by exact_mod_cast Nat.pos_of_ne_zero hj0) r)).mp
+        (hpast j (Nat.pos_of_ne_zero hj0) hj)
+  obtain ⟨G,hfree,hB,he⟩ := exists_extremal_of_pos H n hpos'
+  have hEqG : (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r := by rwa [he]
+  refine ⟨n,hn,hnp,C,hC,G,hfree,hB,he,by simpa only [he] using ordinary_le_two H n,
+    hEqG,hUpper,degree_lower_of_record H G hfree hB he hEqG hUpper,?_,
+    mass_bound H G hfree hB he (by linarith) hinc⟩
+  intro S hS
+  simpa only [Fintype.card_fin] using record_cut_bound H G hfree hB hr hC.le
+    (by simpa only [Fintype.card_fin] using hEqG)
+    (by simpa only [Fintype.card_fin] using hUpper) S
+    (by simpa only [Fintype.card_fin] using hS)
+
+end Erdos713BipExtremal
+
+/-! A fixed smaller bipartite identification pattern persists in arbitrarily
+large bipartite-extremal hosts. Containment does not transfer a growth rate
+or an exact asymptotic to that pattern. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713BipExtremal
+open Erdos713Cloning
+
+lemma finite_cofinal {I : Type*} [Fintype I] {P : I → ℕ → Prop}
+    (h : ∀ N : ℕ, ∃ i n, N ≤ n ∧ P i n) :
+    ∃ i, ∀ N : ℕ, ∃ n, N ≤ n ∧ P i n := by
+  classical
+  by_contra hn
+  push_neg at hn
+  choose N hN using hn
+  obtain ⟨i,n,hnn,hp⟩ := h ((univ : Finset I).sup N)
+  exact hN i n ((Finset.le_sup (f := N) (mem_univ i)).trans hnn) hp
+
+lemma identification_witness {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n, N ≤ n ∧ 0 < n ∧ ∃ G : SimpleGraph (Fin n), H.Free G ∧ G.IsBipartite ∧
+      Nat.card G.edgeSet = number n H ∧ extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+      ∃ a b : W, a ≠ b ∧ ∃ hnab : ¬ H.Adj a b, identified H a b hnab ⊑ G := by
+  obtain ⟨r,hr,hra⟩ := exists_between hα
+  obtain ⟨s,has,hs2⟩ := exists_between ha2
+  obtain ⟨n,hn,hnp,C,hC,G,hfree,hB,he,hhalf,hEq,hUpper,hDeg,hCut,B,hFold,hmass⟩ :=
+    joint_of_asymptotic H hr hra has hc h N
+  have hEpos : (0 : ℝ) < Nat.card G.edgeSet := by
+    rw [hEq]
+    exact mul_pos hC (Real.rpow_pos_of_pos (by exact_mod_cast hnp) r)
+  have hMassPos : 0 < ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) :=
+    (mul_pos (sub_pos.mpr hs2) hEpos).trans_le hmass
+  have hBne : B.Nonempty := by
+    by_contra hn
+    rw [not_nonempty_iff_eq_empty.mp hn,sum_empty] at hMassPos
+    exact lt_irrefl 0 hMassPos
+  obtain ⟨v,hv⟩ := hBne
+  obtain ⟨a,b,hab,hnab,f,hfv⟩ := (hFold v hv).identified_copy
+  exact ⟨n,hn,hnp,G,hfree,hB,he,hhalf,a,b,hab,hnab,⟨f⟩⟩
+
+/-- The pair being identified can be fixed before the size threshold is chosen.
+No exponent or exact leading constant is asserted for the identified graph. -/
+lemma fixed_identification {W : Type*} [Fintype W] (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ a b : W, a ≠ b ∧ ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      ∀ N : ℕ, ∃ n, N ≤ n ∧ 0 < n ∧ ∃ G : SimpleGraph (Fin n),
+        H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+        extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧ identified H a b hnab ⊑ G := by
+  let P (p : W × W) (n : ℕ) : Prop := 0 < n ∧ ∃ G : SimpleGraph (Fin n),
+    H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+    extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+    p.1 ≠ p.2 ∧ ∃ hnab : ¬ H.Adj p.1 p.2, identified H p.1 p.2 hnab ⊑ G
+  have hP : ∀ N : ℕ, ∃ p n, N ≤ n ∧ P p n := by
+    intro N
+    obtain ⟨n,hn,hnp,G,hfree,hB,he,hhalf,a,b,hab,hnab,hJ⟩ := identification_witness H hα ha2 hc h N
+    exact ⟨(a,b),n,hn,hnp,G,hfree,hB,he,hhalf,hab,hnab,hJ⟩
+  obtain ⟨p,hp⟩ := finite_cofinal hP
+  obtain ⟨n,hn,hnp,G,hfree,hB,he,hhalf,hab,hnab,hJ⟩ := hp 0
+  have hJB : (identified H p.1 p.2 hnab).IsBipartite := hB.of_hom hJ.some.toHom
+  refine ⟨p.1,p.2,hab,hnab,hJB,?_⟩
+  intro N
+  obtain ⟨n,hn,hnp,G,hfree,hB,he,hhalf,hab',hnab',hJ⟩ := hp N
+  exact ⟨n,hn,hnp,G,hfree,hB,he,hhalf,hJ⟩
+
+lemma card_identified_vertices {W : Type*} [Fintype W] (a : W) :
+    Nat.card {w : W // w ≠ a}+1 = Nat.card W := by
+  classical
+  haveI : Nonempty W := ⟨a⟩
+  rw [Nat.card_eq_fintype_card,Nat.card_eq_fintype_card]
+  rw [Fintype.card_subtype_compl]
+  simp only [Fintype.card_unique]
+  have hp : 0 < Fintype.card W := Fintype.card_pos
+  omega
+
+end Erdos713BipExtremal
+
+/-! Cloning into a selected part of a neighbourhood. The resulting supported
+folds remember the images of the neighbours of the newly cloned vertex. -/
+open SimpleGraph Finset
+namespace Erdos713PartialCloning
+open Erdos713Cloning
+variable {V W : Type*}
+
+def partialClone (G : SimpleGraph V) (Q : Finset V) : SimpleGraph (Option V) where
+  Adj
+    | none,none => False
+    | none,some w => w ∈ Q
+    | some u,none => u ∈ Q
+    | some u,some w => G.Adj u w
+  symm := by rintro (_ | u) (_ | w) h <;> first | exact h | exact h.symm
+  loopless := by rintro (_ | u) h; exact h; exact G.loopless u h
+
+lemma partial_le_clone (G : SimpleGraph V) (v : V) (Q : Finset V)
+    (hQ : ∀ w ∈ Q, G.Adj v w) : partialClone G Q ≤ clone G v := by
+  rintro (_ | u) (_ | w) h
+  · exact h.elim
+  · exact hQ w h
+  · exact (hQ u h).symm
+  · exact h
+
+lemma partial_bipartite {G : SimpleGraph V} (hB : G.IsBipartite) (v : V) (Q : Finset V)
+    (hQ : ∀ w ∈ Q, G.Adj v w) : (partialClone G Q).IsBipartite :=
+  (Erdos713BipExtremal.clone_bipartite hB v).of_hom
+    (Copy.ofLE _ _ (partial_le_clone G v Q hQ)).toHom
+
+def neighborEquiv (G : SimpleGraph V) (Q : Finset V) :
+    (partialClone G Q).neighborSet none ≃ Q where
+  toFun w := by
+    rcases w with ⟨_ | w,hw⟩
+    · exact hw.elim
+    · exact ⟨w,hw⟩
+  invFun w := ⟨some w,w.property⟩
+  left_inv := by rintro ⟨_ | w,hw⟩; exact hw.elim; rfl
+  right_inv w := rfl
+
+lemma delete_none (G : SimpleGraph V) (Q : Finset V) :
+    (partialClone G Q).deleteIncidenceSet none = G.map ⟨some,Option.some_injective V⟩ := by
+  ext a b
+  cases a <;> cases b <;> simp [deleteIncidenceSet_adj,partialClone,map_adj]
+
+lemma card_edges [Fintype V] (G : SimpleGraph V) (Q : Finset V) :
+    Nat.card (partialClone G Q).edgeSet = Nat.card G.edgeSet+Q.card := by
+  classical
+  have hdel := (partialClone G Q).card_edgeFinset_deleteIncidenceSet none
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card,delete_none] at hdel
+  have hmap := card_edgeFinset_map (⟨some,Option.some_injective V⟩ : V ↪ Option V) G
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hmap
+  rw [hmap] at hdel
+  have hle := (partialClone G Q).degree_le_card_edgeFinset none
+  have hdeg : (partialClone G Q).degree none = Q.card := by
+    rw [← card_neighborSet_eq_degree,Fintype.card_eq_nat_card]
+    exact (Nat.card_congr (neighborEquiv G Q)).trans (by simp)
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card,hdeg] at hdel hle
+  omega
+
+lemma safe_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (hB : G.IsBipartite)
+    (v : V) (Q : Finset V) (hQ : ∀ w ∈ Q, G.Adj v w) (hfree : H.Free (partialClone G Q)) :
+    Nat.card G.edgeSet+Q.card ≤ Erdos713BipExtremal.number (Fintype.card V+1) H := by
+  have hh := Erdos713BipExtremal.card_bound H (partialClone G Q) hfree (partial_bipartite hB v Q hQ)
+  simpa only [card_edges,Fintype.card_option] using hh
+
+/-- All neighbours of the first identified vertex have images in Q. The
+other vertices of the folded copy are NOT required to lie in Q. -/
+def SupportedFold (H : SimpleGraph W) (G : SimpleGraph V) (v : V) (Q : Finset V) : Prop :=
+  ∃ a b : W, a ≠ b ∧ ¬ H.Adj a b ∧ ∃ f : H →g G,
+    f a = v ∧ f b = v ∧
+    (∀ u w, f u = f w → u = w ∨ (u = a ∧ w = b) ∨ (u = b ∧ w = a)) ∧
+    ∀ w, H.Adj a w → f w ∈ Q
+
+lemma SupportedFold.fold {H : SimpleGraph W} {G : SimpleGraph V} {v : V} {Q : Finset V}
+    (h : SupportedFold H G v Q) : SingleFold H G v := by
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber,hs⟩ := h
+  exact ⟨a,b,hab,hnab,f,ha,hb,hfiber⟩
+
+lemma roots_of_copy (H : SimpleGraph W) (G : SimpleGraph V) (v : V) (hfree : H.Free G)
+    (f : H.Copy (clone G v)) : ∃ a b, f a = none ∧ f b = some v := by
+  classical
+  let g : H →g G := (projectionHom G v).comp f.toHom
+  have hn : ¬ Function.Injective g := fun hg => hfree ⟨⟨g,hg⟩⟩
+  obtain ⟨u,w,he,hne⟩ := Function.not_injective_iff.mp hn
+  change project v (f u) = project v (f w) at he
+  rcases project_eq_cases v (f u) (f w) he with hh | hh | hh
+  · exact (hne (f.injective hh)).elim
+  · exact ⟨u,w,hh⟩
+  · exact ⟨w,u,hh.2,hh.1⟩
+
+lemma supported_of_copy (H : SimpleGraph W) (G : SimpleGraph V) (v : V) (Q : Finset V)
+    (hQ : ∀ w ∈ Q, G.Adj v w) (hfree : H.Free G) (hcopy : H ⊑ partialClone G Q) :
+    SupportedFold H G v Q := by
+  classical
+  obtain ⟨f⟩ := hcopy
+  let f' : H.Copy (clone G v) := (Copy.ofLE _ _ (partial_le_clone G v Q hQ)).comp f
+  obtain ⟨a,b,ha,hb⟩ := roots_of_copy H G v hfree f'
+  change f a = none at ha
+  change f b = some v at hb
+  let g : H →g G := (projectionHom G v).comp f'.toHom
+  have hab : a ≠ b := by intro he; subst b; rw [ha] at hb; cases hb
+  have hga : g a = v := by change project v (f a) = v; rw [ha]; rfl
+  have hgb : g b = v := by change project v (f b) = v; rw [hb]; rfl
+  refine ⟨a,b,hab,?_,g,hga,hgb,?_,?_⟩
+  · intro hadj
+    have hh := g.map_adj hadj
+    rw [hga,hgb] at hh
+    exact G.loopless v hh
+  · intro u w huw
+    change project v (f u) = project v (f w) at huw
+    rcases project_eq_cases v (f u) (f w) huw with hh | hh | hh
+    · exact Or.inl (f.injective hh)
+    · exact Or.inr (Or.inl ⟨f.injective (hh.1.trans ha.symm),f.injective (hh.2.trans hb.symm)⟩)
+    · exact Or.inr (Or.inr ⟨f.injective (hh.1.trans hb.symm),f.injective (hh.2.trans ha.symm)⟩)
+  · intro w haw
+    have hh := f.toHom.map_adj haw
+    change (partialClone G Q).Adj (f a) (f w) at hh
+    rw [ha] at hh
+    change project v (f w) ∈ Q
+    cases hw : f w with
+    | none => rw [hw] at hh; exact hh.elim
+    | some z => rw [hw] at hh; exact hh
+
+lemma SupportedFold.small_support [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {v : V} {Q : Finset V} (h : SupportedFold H G v Q) (hNoIso : ∀ a, ∃ b, H.Adj a b) :
+    ∃ A : Finset V, A ⊆ Q ∧ A.Nonempty ∧ (∀ w ∈ A, G.Adj v w) ∧
+      A.card ≤ Fintype.card W ∧ SupportedFold H G v A := by
+  classical
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber,hs⟩ := h
+  let A := (univ.filter (H.Adj a)).image f
+  have hmem (w : W) (hw : H.Adj a w) : f w ∈ A :=
+    mem_image_of_mem f (mem_filter.mpr ⟨mem_univ w,hw⟩)
+  refine ⟨A,?_,?_,?_,?_,a,b,hab,hnab,f,ha,hb,hfiber,hmem⟩
+  · intro z hz
+    obtain ⟨w,hw,rfl⟩ := mem_image.mp hz
+    exact hs w (mem_filter.mp hw).2
+  · obtain ⟨w,hw⟩ := hNoIso a
+    exact ⟨f w,hmem w hw⟩
+  · intro z hz
+    obtain ⟨w,hw,rfl⟩ := mem_image.mp hz
+    have hh := f.map_adj (mem_filter.mp hw).2
+    rwa [ha] at hh
+  · exact card_image_le.trans ((card_filter_le _ _).trans_eq (card_univ))
+
+end Erdos713PartialCloning
+
+
+/-! Maximal disjoint neighbourhood supports leave a safe partial clone.
+Disjointness is only for these supports, not for whole folded copies. -/
+open SimpleGraph Finset
+namespace Erdos713PartialCloning
+open Erdos713Cloning
+variable {W V : Type*}
+
+lemma SupportedFold.card_ge_min_degree [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {v : V} {A : Finset V} (h : SupportedFold H G v A) {k : ℕ}
+    (hdeg : ∀ a, k ≤ Nat.card (H.neighborSet a)) : k ≤ A.card := by
+  classical
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber,hs⟩ := h
+  let e : H.neighborSet a ↪ A := ⟨fun w => ⟨f w.val,hs w.val w.property⟩,by
+    intro u w he
+    apply Subtype.ext
+    have hEq : f u.val = f w.val := congrArg Subtype.val he
+    rcases hfiber u.val w.val hEq with hh | ⟨hu,hw⟩ | ⟨hu,hw⟩
+    · exact hh
+    · have huAdj : H.Adj a u.val := u.property
+      exact (huAdj.ne hu.symm).elim
+    · have hwAdj : H.Adj a w.val := w.property
+      exact (hwAdj.ne hw.symm).elim⟩
+  have hle : Nat.card (H.neighborSet a) ≤ A.card := by
+    simpa only [Nat.card_eq_fintype_card,Fintype.card_coe] using Fintype.card_le_of_injective e e.injective
+  exact (hdeg a).trans hle
+
+/-- A bounded nonempty neighbour support carrying a folded copy. -/
+def SmallSupport [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V) (v : V) (A : Finset V) : Prop :=
+  A.Nonempty ∧ (∀ w ∈ A, G.Adj v w) ∧ A.card ≤ Fintype.card W ∧ SupportedFold H G v A
+
+def Packing [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V) (v : V)
+    (F : Finset (Finset V)) : Prop :=
+  (∀ A ∈ F, SmallSupport H G v A) ∧ (F : Set (Finset V)).PairwiseDisjoint id
+
+lemma packing_empty [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V) (v : V) :
+    Packing H G v ∅ := by simp [Packing]
+
+/-- The uncovered neighbours form an H-free partial clone. -/
+lemma exists_packing_with_safe_remainder [Fintype W] [Fintype V]
+    (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (G : SimpleGraph V) (hfree : H.Free G) (v : V) :
+    ∃ F : Finset (Finset V), Packing H G v F ∧
+      ∃ Q : Finset V, (∀ w ∈ Q, G.Adj v w) ∧ H.Free (partialClone G Q) ∧
+        Nat.card (G.neighborSet v) ≤ Q.card+Fintype.card W*F.card := by
+  classical
+  let P : Finset (Finset (Finset V)) := univ.filter (Packing H G v)
+  have hP : P.Nonempty := ⟨∅,mem_filter.mpr ⟨mem_univ _,packing_empty H G v⟩⟩
+  obtain ⟨F,hFP,hmax⟩ := P.exists_max_image Finset.card hP
+  have hF : Packing H G v F := (mem_filter.mp hFP).2
+  let N := G.neighborFinset v
+  let U := F.biUnion id
+  let Q := N \ U
+  have hQ : ∀ w ∈ Q, G.Adj v w := by
+    intro w hw
+    simpa only [N,mem_neighborFinset] using (mem_sdiff.mp hw).1
+  have hSafe : H.Free (partialClone G Q) := by
+    intro hcopy
+    obtain ⟨A,hAQ,hNe,hAdj,hCard,hFold⟩ :=
+      (supported_of_copy H G v Q hQ hfree hcopy).small_support hNoIso
+    have hSmall : SmallSupport H G v A := ⟨hNe,hAdj,hCard,hFold⟩
+    have hAU : ∀ w ∈ A, w ∉ U := fun w hw => (mem_sdiff.mp (hAQ hw)).2
+    have hAnot : A ∉ F := by
+      intro hAF
+      obtain ⟨w,hw⟩ := hNe
+      exact hAU w hw (mem_biUnion.mpr ⟨A,hAF,hw⟩)
+    have hDis (B : Finset V) (hBF : B ∈ F) : Disjoint A B := by
+      apply Finset.disjoint_left.mpr
+      intro w hwA hwB
+      exact hAU w hwA (mem_biUnion.mpr ⟨B,hBF,hwB⟩)
+    have hNew : Packing H G v (insert A F) := by
+      refine ⟨?_,?_⟩
+      · intro B hB
+        rcases mem_insert.mp hB with rfl | hB
+        · exact hSmall
+        · exact hF.1 B hB
+      · simpa only [coe_insert] using hF.2.insert_of_notMem hAnot hDis
+    have hm := hmax (insert A F) (mem_filter.mpr ⟨mem_univ _,hNew⟩)
+    rw [card_insert_of_notMem hAnot] at hm
+    omega
+  have hN : N.card = Nat.card (G.neighborSet v) := by
+    simp only [N,card_neighborFinset_eq_degree,← card_neighborSet_eq_degree,Fintype.card_eq_nat_card]
+  have hNU : N ⊆ Q ∪ U := by
+    intro w hw
+    by_cases hwU : w ∈ U
+    · exact mem_union_right Q hwU
+    · exact mem_union_left U (mem_sdiff.mpr ⟨hw,hwU⟩)
+  have hCount : N.card ≤ Q.card+U.card := (card_le_card hNU).trans (card_union_le Q U)
+  have hUnion : U.card ≤ Fintype.card W*F.card := by
+    calc
+      U.card ≤ ∑ A ∈ F, A.card := card_biUnion_le
+      _ ≤ ∑ _A ∈ F, Fintype.card W := sum_le_sum (fun A hA => (hF.1 A hA).2.2.1)
+      _ = Fintype.card W*F.card := by simp [Nat.mul_comm]
+  refine ⟨F,hF,Q,hQ,hSafe,?_⟩
+  rw [hN] at hCount
+  omega
+
+lemma exists_support_packing [Fintype W] [Fintype V]
+    (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (G : SimpleGraph V) (hfree : H.Free G) (hB : G.IsBipartite) (v : V) :
+    ∃ F : Finset (Finset V), Packing H G v F ∧
+      Nat.card G.edgeSet+Nat.card (G.neighborSet v) ≤
+        Erdos713BipExtremal.number (Fintype.card V+1) H+Fintype.card W*F.card := by
+  obtain ⟨F,hF,Q,hQ,hSafe,hDeg⟩ := exists_packing_with_safe_remainder H hNoIso G hfree v
+  have hs := safe_bound H G hB v Q hQ hSafe
+  exact ⟨F,hF,by omega⟩
+
+end Erdos713PartialCloning
+
+
+/-! A support of a forbidden single fold has bounded common neighbourhood.
+The bound is for the full common neighbourhood, not only the designated root. -/
+open SimpleGraph Finset
+namespace Erdos713PartialCloning
+variable {W V : Type*}
+
+open scoped Classical in
+lemma SupportedFold.common_neighbors_le [Fintype W] [Fintype V] [DecidableEq V]
+    {H : SimpleGraph W} {G : SimpleGraph V} {v : V} {A : Finset V}
+    (hfree : H.Free G) (h : SupportedFold H G v A) :
+    (univ.filter (fun u => ∀ w ∈ A, G.Adj u w)).card ≤ Fintype.card W - 1 := by
+  classical
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber,hs⟩ := h
+  let I := (univ.erase a).image f
+  have hmem (w : W) (hw : w ≠ a) : f w ∈ I :=
+    mem_image_of_mem f (mem_erase.mpr ⟨hw,mem_univ _⟩)
+  have hsubset : univ.filter (fun u => ∀ w ∈ A, G.Adj u w) ⊆ I := by
+    intro u hu
+    have huAdj := (mem_filter.mp hu).2
+    by_contra huI
+    let g : H →g G := {
+      toFun := fun w => if w = a then u else f w
+      map_rel' := by
+        intro x y hxy
+        by_cases hx : x = a
+        · subst x
+          have hy : y ≠ a := hxy.ne.symm
+          simp only [if_neg hy]
+          exact huAdj (f y) (hs y hxy)
+        · by_cases hy : y = a
+          · subst y
+            simp only [if_neg hx]
+            exact (huAdj (f x) (hs x hxy.symm)).symm
+          · simp only [if_neg hx,if_neg hy]
+            exact f.map_adj hxy }
+    have hg : Function.Injective g := by
+      intro x y he
+      change (if x = a then u else f x) = (if y = a then u else f y) at he
+      by_cases hx : x = a
+      · by_cases hy : y = a
+        · exact hx.trans hy.symm
+        · simp only [if_pos hx,if_neg hy] at he
+          exact (huI (he ▸ hmem y hy)).elim
+      · by_cases hy : y = a
+        · simp only [if_neg hx,if_pos hy] at he
+          exact (huI (he ▸ hmem x hx)).elim
+        · simp only [if_neg hx,if_neg hy] at he
+          rcases hfiber x y he with hh | ⟨hxa,hyb⟩ | ⟨hxb,hya⟩
+          · exact hh
+          · exact (hx hxa).elim
+          · exact (hy hya).elim
+    exact hfree ⟨⟨g,hg⟩⟩
+  calc
+    _ ≤ I.card := card_le_card hsubset
+    _ ≤ (univ.erase a).card := card_image_le
+    _ = Fintype.card W - 1 := by simp
+
+open scoped Classical in
+/-- Counting occurrences of supports at roots. Disjointness within each
+packing is not required for this multiplicity bound. -/
+lemma support_occurrences_le [Fintype W] [Fintype V] [DecidableEq V]
+    {H : SimpleGraph W} {G : SimpleGraph V} (hfree : H.Free G)
+    (F : V → Finset (Finset V))
+    (hF : ∀ v A, A ∈ F v → SmallSupport H G v A) :
+    ∑ v, (F v).card ≤ (Fintype.card W-1)*(univ.biUnion F).card := by
+  classical
+  let U := univ.biUnion F
+  have hRoots (A : Finset V) (hAU : A ∈ U) :
+      (univ.filter (fun v => A ∈ F v)).card ≤ Fintype.card W-1 := by
+    obtain ⟨v,hv,hAv⟩ := mem_biUnion.mp hAU
+    have hBound := (hF v A hAv).2.2.2.common_neighbors_le hfree
+    apply le_trans (card_le_card ?_) hBound
+    intro w hw
+    exact mem_filter.mpr ⟨mem_univ w,(hF w A (mem_filter.mp hw).2).2.1⟩
+  have hCount : ∑ v, (F v).card = ∑ A ∈ U, (univ.filter (fun v => A ∈ F v)).card := by
+    calc
+      ∑ v, (F v).card = ∑ v, ∑ A ∈ U, (if A ∈ F v then 1 else 0 : ℕ) := by
+        apply sum_congr rfl
+        intro v hv
+        have hSub : F v ⊆ U := fun A hA => mem_biUnion.mpr ⟨v,mem_univ v,hA⟩
+        rw [← sum_filter]
+        simp only [sum_const,smul_eq_mul,mul_one]
+        congr 1
+        ext A
+        simp only [mem_filter]
+        exact ⟨fun hA => ⟨hSub hA,hA⟩,fun hA => hA.2⟩
+      _ = ∑ A ∈ U, ∑ v, (if A ∈ F v then 1 else 0 : ℕ) := sum_comm
+      _ = _ := by
+        apply sum_congr rfl
+        intro A hA
+        rw [← sum_filter]
+        simp
+  rw [hCount]
+  calc
+    _ ≤ ∑ _A ∈ U, (Fintype.card W-1) := sum_le_sum hRoots
+    _ = _ := by simp [U,Nat.mul_comm]
+
+end Erdos713PartialCloning
+
+
+/-! Summing partial-cloning bounds on a single bipartite extremal host. -/
+open SimpleGraph Finset
+namespace Erdos713PartialCloning
+
+lemma packing_mass {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) {n : ℕ} (G : SimpleGraph (Fin n))
+    (hfree : H.Free G) (hB : G.IsBipartite)
+    (he : Nat.card G.edgeSet = Erdos713BipExtremal.number n H)
+    {s : ℝ}
+    (hinc : (n : ℝ)*((Erdos713BipExtremal.number (n+1) H : ℝ)-
+      (Erdos713BipExtremal.number n H : ℝ)) ≤ s*(Erdos713BipExtremal.number n H : ℝ)) :
+    ∃ F : Fin n → Finset (Finset (Fin n)),
+      (∀ v, Packing H G v (F v)) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤ (Fintype.card W : ℝ)*∑ v, ((F v).card : ℝ) := by
+  classical
+  choose F hF hlocal using fun v => exists_support_packing H hNoIso G hfree hB v
+  refine ⟨F,hF,?_⟩
+  have hlocalR (v : Fin n) : (Nat.card G.edgeSet : ℝ)+(Nat.card (G.neighborSet v) : ℝ) ≤
+      (Erdos713BipExtremal.number (n+1) H : ℝ)+(Fintype.card W : ℝ)*((F v).card : ℝ) := by
+    have hh := hlocal v
+    simp only [Fintype.card_fin] at hh
+    exact_mod_cast hh
+  have hsum := sum_le_sum (fun v (_ : v ∈ (univ : Finset (Fin n))) => hlocalR v)
+  simp only [sum_add_distrib,sum_const,card_univ,Fintype.card_fin,nsmul_eq_mul,
+    ← mul_sum] at hsum
+  have hsumdeg : (∑ v : Fin n, (Nat.card (G.neighborSet v) : ℝ)) = 2*(Nat.card G.edgeSet : ℝ) := by
+    have hh := G.sum_degrees_eq_twice_card_edges
+    simp only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hh
+    exact_mod_cast hh
+  rw [hsumdeg,he] at hsum
+  rw [he]
+  nlinarith
+
+end Erdos713PartialCloning
+
+
+/-! Quantitative support packings on the same extremal expanding hosts.
+The forward increment bound is retained rather than inferred for a separately
+chosen family of graphs. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713BipExtremal
+open Erdos713Cloning Erdos713SwitchGluing
+
+lemma joint_with_increment {W : Type*} (H : SimpleGraph W) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n : ℕ, N ≤ n ∧ 0 < n ∧ ∃ C : ℝ, 0 < C ∧ ∃ G : SimpleGraph (Fin n),
+      H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+      (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r ∧
+      (∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r) ∧
+      (∀ v, C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ)) ∧
+      (∀ S : Finset (Fin n), 2*S.card ≤ n →
+        expansionConstant r*C*S.card*(n : ℝ)^(r-1) ≤
+          (Nat.card (cross G (S : Set (Fin n))).edgeSet : ℝ)) ∧
+      (n : ℝ)*((number (n+1) H : ℝ)-(number n H : ℝ)) ≤ s*(number n H : ℝ) ∧
+      ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤ ∑ v ∈ B, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨t,hat,hts⟩ := exists_between has
+  obtain ⟨n,hn,hnp,hpos,hpast,hinc⟩ :=
+    Erdos713FutureRecords.small_increment_with_past_of_limits (hra.trans hat) (by linarith) hts
+      (lower_ratio_top H hra hc h) (higher_ratio_zero H hat h) N
+  have hnpR : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hpos' : 0 < number n H := by exact_mod_cast hpos
+  let C : ℝ := (number n H : ℝ)/(n : ℝ)^r
+  have hC : 0 < C := div_pos hpos (Real.rpow_pos_of_pos hnpR r)
+  have hEq : (number n H : ℝ) = C*(n : ℝ)^r :=
+    (div_mul_cancel₀ _ (Real.rpow_pos_of_pos hnpR r).ne').symm
+  have hUpper : ∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r := by
+    intro j hj
+    by_cases hj0 : j = 0
+    · subst j
+      simp [number_zero,Real.zero_rpow (by linarith : r ≠ 0)]
+    · exact (div_le_iff₀ (Real.rpow_pos_of_pos (show (0 : ℝ) < j by exact_mod_cast Nat.pos_of_ne_zero hj0) r)).mp
+        (hpast j (Nat.pos_of_ne_zero hj0) hj)
+  obtain ⟨G,hfree,hB,he⟩ := exists_extremal_of_pos H n hpos'
+  have hEqG : (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r := by rwa [he]
+  refine ⟨n,hn,hnp,C,hC,G,hfree,hB,he,by simpa only [he] using ordinary_le_two H n,
+    hEqG,hUpper,degree_lower_of_record H G hfree hB he hEqG hUpper,?_,hinc,
+    mass_bound H G hfree hB he (by linarith) hinc⟩
+  intro S hS
+  simpa only [Fintype.card_fin] using record_cut_bound H G hfree hB hr hC.le
+    (by simpa only [Fintype.card_fin] using hEqG)
+    (by simpa only [Fintype.card_fin] using hUpper) S
+    (by simpa only [Fintype.card_fin] using hS)
+
+end Erdos713BipExtremal
+namespace Erdos713PartialCloning
+open Erdos713BipExtremal Erdos713SwitchGluing Erdos713Cloning
+
+open scoped Classical in
+lemma distinct_packing_mass {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) {n : ℕ} (G : SimpleGraph (Fin n))
+    (hfree : H.Free G) (hB : G.IsBipartite)
+    (he : Nat.card G.edgeSet = number n H) {s : ℝ}
+    (hinc : (n : ℝ)*((number (n+1) H : ℝ)-(number n H : ℝ)) ≤ s*(number n H : ℝ)) :
+    ∃ F : Fin n → Finset (Finset (Fin n)),
+      (∀ v, Packing H G v (F v)) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤ (Fintype.card W : ℝ)*∑ v, ((F v).card : ℝ) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+        (Fintype.card W : ℝ)*(Fintype.card W-1 : ℕ)*(univ.biUnion F).card := by
+  classical
+  obtain ⟨F,hF,hmass⟩ := packing_mass H hNoIso G hfree hB he hinc
+  refine ⟨F,hF,hmass,hmass.trans ?_⟩
+  have hCount := support_occurrences_le hfree F (fun v => (hF v).1)
+  have hReal : (∑ v, ((F v).card : ℝ)) ≤
+      (Fintype.card W-1 : ℕ)*(univ.biUnion F).card := by exact_mod_cast hCount
+  simpa only [mul_assoc] using mul_le_mul_of_nonneg_left hReal (Nat.cast_nonneg (Fintype.card W))
+
+open scoped Classical in
+/-- All properties refer to one and the same bipartite-extremal host. -/
+lemma joint_supports_of_asymptotic {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ n : ℕ, N ≤ n ∧ 0 < n ∧ ∃ C : ℝ, 0 < C ∧ ∃ G : SimpleGraph (Fin n),
+      H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+      (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r ∧
+      (∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r) ∧
+      (∀ v, C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ)) ∧
+      (∀ S : Finset (Fin n), 2*S.card ≤ n →
+        expansionConstant r*C*S.card*(n : ℝ)^(r-1) ≤
+          (Nat.card (cross G (S : Set (Fin n))).edgeSet : ℝ)) ∧
+      (n : ℝ)*((number (n+1) H : ℝ)-(number n H : ℝ)) ≤ s*(number n H : ℝ) ∧
+      ∃ F : Fin n → Finset (Finset (Fin n)),
+        (∀ v, Packing H G v (F v)) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤ (Fintype.card W : ℝ)*∑ v, ((F v).card : ℝ) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+          (Fintype.card W : ℝ)*(Fintype.card W-1 : ℕ)*(univ.biUnion F).card := by
+  classical
+  obtain ⟨n,hn,hnp,C,hC,G,hfree,hB,he,hhalf,hEq,hUpper,hDeg,hCut,hinc,hFold⟩ :=
+    joint_with_increment H hr hra has hc h N
+  exact ⟨n,hn,hnp,C,hC,G,hfree,hB,he,hhalf,hEq,hUpper,hDeg,hCut,hinc,
+    distinct_packing_mass H hNoIso G hfree hB he hinc⟩
+
+end Erdos713PartialCloning
+
+
+/-! Lower rooted thresholds localize to actual blocks without an attained
+rooted upper bound. This yields an ordinary-block-rate or genuine polynomial
+root-gap dichotomy, not rationality of either threshold. -/
+open SimpleGraph Filter Asymptotics
+namespace Erdos713RootBlocks
+open Erdos713Blocks Erdos713Rate Erdos713RootPower Erdos713Gluing
+universe u
+
+/-- A lower threshold for rooted power bounds; no upper bound is asserted. -/
+def RootLower {W : Type*} (H : SimpleGraph W) (x : W) (r : ℝ) : Prop :=
+  ∀ a : ℝ, 1 ≤ a → RootPowerBound H x a → r ≤ a
+
+lemma RootLower.of_reachable {W : Type*} {H : SimpleGraph W} {x y : W} {r : ℝ}
+    (h : RootLower H x r) (hxy : H.Reachable x y) : RootLower H y r :=
+  fun a ha hu => h a ha (hu.of_reachable hxy.symm)
+
+lemma root_lower_of_rate {W : Type*} {H : SimpleGraph W} {r : ℝ}
+    (h : HasRate H r) (x : W) : RootLower H x r :=
+  fun a ha hu => h.lower a ha hu.upper
+
+/-- Finite extraction needs a lower threshold only. The selected block need
+not have a rooted upper bound at r. -/
+lemma exists_block_root_lower {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {x : W} {r : ℝ} (hr : 1 < r) (hR : RootLower G x r) :
+    ∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧ ∀ y, RootLower (G.induce S) y r := by
+  classical
+  by_contra hn
+  push_neg at hn
+  have hEach (S : Set W) : ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (IsBlock G S → 3 ≤ Nat.card S → ∀ y, RootPowerBound (G.induce S) y a) := by
+    by_cases hS : IsBlock G S ∧ 3 ≤ Nat.card S
+    · obtain ⟨y,hy⟩ := hn S hS.1 hS.2
+      change ¬ ∀ a : ℝ, 1 ≤ a → RootPowerBound (G.induce S) y a → r ≤ a at hy
+      push_neg at hy
+      obtain ⟨a,ha,hroot,har⟩ := hy
+      exact ⟨a,ha,har,fun _ _ z => hroot.of_reachable (hS.1.connected y z)⟩
+    · exact ⟨1,le_rfl,hr,fun hBlock hc => (hS ⟨hBlock,hc⟩).elim⟩
+  choose a ha har hEach using hEach
+  obtain ⟨S₀,_,hmax⟩ := Finset.exists_max_image (Finset.univ : Finset (Set W)) a
+    ⟨∅,Finset.mem_univ _⟩
+  have hBound : BlockUpper G (a S₀) := by
+    intro S hS hc y
+    exact (hEach S hS hc y).mono (hmax S (Finset.mem_univ _))
+  exact (not_lt_of_ge (hR (a S₀) (ha S₀)
+    (root_bound_of_blocks G hG (ha S₀) hBound x))) (har S₀)
+
+/-- The same selected cyclic block either has the ordinary rate r, or has an
+ordinary upper bound strictly below r while all rooted upper exponents are
+at least r. Thus the second alternative is not merely a logarithmic gap. -/
+lemma ordinary_block_or_strict_root_gap {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} (hr : 1 < r) (hR : HasRate G r) :
+    ∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧
+      (∀ y, RootLower (G.induce S) y r) ∧
+      (HasRate (G.induce S) r ∨ ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) := by
+  classical
+  obtain ⟨x⟩ := hG.nonempty
+  obtain ⟨S,hS,hc,hLower⟩ := exists_block_root_lower G hG hr (root_lower_of_rate hR x)
+  refine ⟨S,hS,hc,hLower,?_⟩
+  by_cases hRate : HasRate (G.induce S) r
+  · exact Or.inl hRate
+  · right
+    have hupper : (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^r) :=
+      (extremal_mono_bigO ⟨Copy.induce G S⟩).trans hR.upper
+    have hNoLower : ¬ ∀ a : ℝ, 1 ≤ a →
+        ((fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) → r ≤ a :=
+      fun hh => hRate ⟨hr.le,hupper,hh⟩
+    push_neg at hNoLower
+    obtain ⟨a,ha,hu,har⟩ := hNoLower
+    exact ⟨a,ha,har,hu⟩
+
+lemma RootLower.not_opposite_upper {W : Type*} {H : SimpleGraph W} {x y : W}
+    {r a : ℝ} (h : RootLower H x r) (hxy : H.Adj x y) (ha : 1 ≤ a) (har : a < r) :
+    ¬ (fun n : ℕ => (extremalNumber n (wedge H x H y) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^a) := by
+  intro hu
+  exact (not_lt_of_ge (h a ha (of_opposite_wedge_upper H hxy (by linarith) hu))) har
+
+/-- A genuine root gap contains a positive rational-width gap. No upper rate
+or exact asymptotic is inferred for the opposite-root doubles. -/
+lemma rational_bracket_of_strict_root_gap {W : Type*} (H : SimpleGraph W)
+    {r a : ℝ} (ha : 1 ≤ a) (har : a < r)
+    (hu : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^a)) (hLower : ∀ x, RootLower H x r) :
+    ∃ p q : ℚ, 1 ≤ p ∧ p < q ∧ (q : ℝ) < r ∧
+      (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^(p : ℝ)) ∧
+      ∀ x y, H.Adj x y →
+        ¬ (fun n : ℕ => (extremalNumber n (wedge H x H y) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^(q : ℝ)) := by
+  obtain ⟨p,hap,hpr⟩ := exists_rat_btwn har
+  obtain ⟨q,hpq,hqr⟩ := exists_rat_btwn hpr
+  have hp : (1 : ℝ) ≤ p := ha.trans hap.le
+  have hq : (1 : ℝ) ≤ q := hp.trans hpq.le
+  refine ⟨p,q,by exact_mod_cast hp,by exact_mod_cast hpq,hqr,
+    hu.trans (rpow_mono_bigO hap.le),?_⟩
+  intro x y hxy
+  exact (hLower x).not_opposite_upper hxy hq hqr
+
+/-- One root-shifting self-copy per actual cyclic block suffices to localize
+an attained ordinary exponent. No rationality of the block rates is assumed. -/
+lemma exists_block_ordinary_rate_of_shifts {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hG : G.Connected) {r : ℝ} (hr : 1 < r) (hR : HasRate G r)
+    (hShift : ∀ S : Set W, IsBlock G S → 3 ≤ Nat.card S →
+      ∃ x : S, ∃ e : (G.induce S).Copy (G.induce S), (G.induce S).Adj x (e x)) :
+    ∃ S : Set W, IsBlock G S ∧ 3 ≤ Nat.card S ∧ HasRate (G.induce S) r := by
+  obtain ⟨S,hS,hc,hLower,hAlt⟩ := ordinary_block_or_strict_root_gap G hG hr hR
+  refine ⟨S,hS,hc,?_⟩
+  rcases hAlt with hRate | ⟨a,ha,har,hu⟩
+  · exact hRate
+  · obtain ⟨x,e,he⟩ := hShift S hS hc
+    exact ((not_lt_of_ge (hLower x a ha
+      (of_root_shift (G.induce S) x e he (by linarith) hu))) har).elim
+
+
+/-- At an irrational ordinary rate, the SAME block from the rate-or-gap
+alternative is outside the completed small-shore/C10 families. -/
+lemma remaining_block_with_rate_or_gap {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (hG : G.Connected) (hB : G.IsBipartite)
+    {r : ℝ} (hr : 1 < r) (hR : HasRate G r)
+    (hIrr : r ∉ Set.range ((↑) : ℚ → ℝ)) :
+    ∃ S : Set W, IsBlock G S ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      (∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A) ∧
+      ¬ G.induce S ⊑ Erdos713C10.C10 ∧
+      ¬ Erdos713ActualBlocks.RootedRate (G.induce S) ∧
+      (∀ y, RootLower (G.induce S) y r) ∧
+      (HasRate (G.induce S) r ∨ ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) := by
+  classical
+  obtain ⟨S,hS,hc,hLower,hAlt⟩ := ordinary_block_or_strict_root_gap G hG hr hR
+  haveI : Nonempty S := hS.connected.nonempty
+  have hd := hS.noCut.min_degree hS.connected (by
+    simpa only [Fintype.card_eq_nat_card] using hc)
+  have hu : (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r) :=
+    (extremal_mono_bigO ⟨Copy.induce G S⟩).trans hR.upper
+  have hNoRoot : ¬ Erdos713ActualBlocks.RootedRate (G.induce S) := by
+    rintro ⟨q,hq,hRoot⟩
+    let x : S := Classical.arbitrary S
+    exact hIrr ⟨q,le_antisymm (hq.lower r hr.le hu) (hLower x q hq.one_le (hRoot x))⟩
+  have hPiece : ¬ Erdos713CycleAssembly.Piece (G.induce S) :=
+    fun hp => hNoRoot (hp.rooted_rate hd)
+  have hSmall : ¬ ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 :=
+    fun hh => hPiece (Or.inl hh)
+  push_neg at hSmall
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc' : 8 ≤ Nat.card S := by
+    by_contra hc'
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hSmall A hA)
+  exact ⟨S,hS,hSB,hc',hd,fun A hA => hSmall A hA,
+    fun hh => hPiece (Or.inr hh),hNoRoot,hLower,hAlt⟩
+
+end Erdos713RootBlocks
+
+
+
+/- Copies can be moved into a vertex set containing the support, provided
+that the set is large enough to accommodate isolated forbidden vertices. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713Support
+universe u
+
+open scoped Classical in
+theorem contained_induce_of_support_subset {W : Type u} [Fintype W] {V : Type*} [Fintype V]
+    (H : SimpleGraph W) (G : SimpleGraph V) (S : Set V) (hS : G.support ⊆ S)
+    (hcard : Fintype.card W ≤ Nat.card S) (h : H ⊑ G) : H ⊑ G.induce S := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ H : SimpleGraph W, Fintype.card W ≤ Nat.card S → H ⊑ G → H ⊑ G.induce S from
+    hP _ W rfl H hcard h
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW H hc hHG
+    by_cases hNoIso : ∀ a, ∃ b, H.Adj a b
+    · obtain ⟨f⟩ := hHG
+      have hfS (a : W) : f a ∈ S := by
+        obtain ⟨b, hab⟩ := hNoIso a
+        exact hS ⟨f b, f.toHom.map_adj hab⟩
+      refine ⟨⟨⟨fun a => ⟨f a, hfS a⟩, ?_⟩, ?_⟩⟩
+      · exact fun hab => f.toHom.map_adj hab
+      · intro a b hab
+        exact f.injective (congrArg Subtype.val hab)
+    · push_neg at hNoIso
+      obtain ⟨x, hx⟩ := hNoIso
+      have hx0 : H.degree x = 0 := by
+        apply (H.degree_eq_zero_iff_notMem_support x).mpr
+        rintro ⟨b, hb⟩
+        exact hx b hb
+      have hsmall : Fintype.card ↥({x}ᶜ : Set W) < k :=
+        (Fintype.card_subtype_lt (x := x) (by simp)).trans_eq hW
+      have hc' : Fintype.card ↥({x}ᶜ : Set W) ≤ Nat.card S :=
+        (Fintype.card_subtype_le _).trans hc
+      have h' := ih _ hsmall _ rfl (H.induce {x}ᶜ) hc' ((show H.induce {x}ᶜ ⊑ H from
+        ⟨Copy.induce H _⟩).trans hHG)
+      obtain ⟨f⟩ := h'
+      exact Erdos713Leaf.extend_isolated (G.induce S) H hx0 f (by
+        simpa only [Nat.card_eq_fintype_card] using hc)
+
+open scoped Classical in
+theorem edges_le_of_free_induce {W V : Type*} [Fintype W] [Fintype V]
+    (H : SimpleGraph W) (G : SimpleGraph V) (S : Set V) (hS : G.support ⊆ S)
+    (hfree : H.Free (G.induce S)) :
+    G.edgeFinset.card ≤ extremalNumber (Fintype.card V) H + Fintype.card W * Fintype.card V := by
+  classical
+  by_cases hc : Fintype.card W ≤ Nat.card S
+  · have hfree' : H.Free G := fun h => hfree (contained_induce_of_support_subset H G S hS hc h)
+    exact (card_edgeFinset_le_extremalNumber hfree').trans (Nat.le_add_right _ _)
+  · have hcardS : Nat.card S ≤ Fintype.card V := by
+      simpa only [Nat.card_eq_fintype_card] using Fintype.card_subtype_le (· ∈ S)
+    have hEdges : G.edgeFinset.card ≤ Fintype.card W * Fintype.card V := by
+      rw [← card_edgeFinset_induce_of_support_subset hS]
+      calc
+        (G.induce S).edgeFinset.card ≤ (Fintype.card S).choose 2 := card_edgeFinset_le_card_choose_two
+        _ ≤ Fintype.card S ^ 2 := Nat.choose_le_pow _ _
+        _ ≤ Fintype.card W * Fintype.card V := by
+          rw [Fintype.card_eq_nat_card, pow_two]
+          exact Nat.mul_le_mul (by omega) hcardS
+    exact hEdges.trans (Nat.le_add_left _ _)
+
+
+end Erdos713Support
+
+/- Disjoint unions differ from the maximum of their extremal functions by
+at most a linear error, even when the forbidden graphs have isolated vertices. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713SharpUnion
+open Finset Erdos713Union
+
+open scoped Classical in
+theorem free_sum_max_bound {A B V : Type*} [Fintype A] [Fintype B] [Fintype V]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (G : SimpleGraph V)
+    (hfree : (H₁ ⊕g H₂).Free G) : G.edgeFinset.card ≤
+      max (extremalNumber (Fintype.card V) H₁) (extremalNumber (Fintype.card V) H₂) +
+        (Fintype.card A + Fintype.card B) * Fintype.card V := by
+  classical
+  by_cases hf : H₁.Free G
+  · exact (card_edgeFinset_le_extremalNumber hf).trans
+      ((le_max_left _ _).trans (Nat.le_add_right _ _))
+  obtain ⟨f⟩ := not_not.mp hf
+  let S : Finset V := univ.image f
+  let T : Set V := (S : Set V)ᶜ
+  let K := (G.induce T).spanningCoe
+  have hS : S.card = Fintype.card A := by
+    change ((univ : Finset A).image f.toHom).card = _
+    rw [card_image_of_injective _ f.injective, card_univ]
+  have hKfree : H₂.Free (G.induce T) := by
+    rintro ⟨g⟩
+    apply hfree
+    apply sum_contained_of_disjoint_copies f ((Copy.induce G _).comp g)
+    intro a b hab
+    change f a = (g b).val at hab
+    exact (g b).prop (hab ▸ mem_image_of_mem f (mem_univ a))
+  have hSupp : K.support ⊆ T := by
+    change ((G.induce T).map (Function.Embedding.subtype _)).support ⊆ T
+    rw [support_map]
+    rintro v ⟨w, _, rfl⟩
+    exact w.prop
+  have he := Erdos713Support.edges_le_of_free_induce H₂ K T hSupp (by
+    simpa only [K, induce_spanningCoe] using hKfree)
+  have hKeq : Nat.card K.edgeSet = Nat.card (G.induce T).edgeSet := by
+    have hh := card_edgeFinset_map (Function.Embedding.subtype (· ∈ T)) (G.induce T)
+    simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using hh
+  simp only [edgeFinset_card, Fintype.card_eq_nat_card] at he
+  rw [hKeq] at he
+  have hb := edges_le_induce_compl_add G S
+  rw [hS] at hb
+  have hmax : extremalNumber (Fintype.card V) H₂ ≤
+      max (extremalNumber (Fintype.card V) H₁) (extremalNumber (Fintype.card V) H₂) := le_max_right _ _
+  rw [Nat.add_mul]
+  simp only [edgeFinset_card, Fintype.card_eq_nat_card] at hb hmax ⊢
+  dsimp only [T] at he
+  omega
+
+open scoped Classical in
+theorem extremal_sum_max_bound {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (n : ℕ) :
+    extremalNumber n (H₁ ⊕g H₂) ≤ max (extremalNumber n H₁) (extremalNumber n H₂) +
+      (Fintype.card A + Fintype.card B) * n := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+  intro G _ hfree
+  simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using free_sum_max_bound H₁ H₂ G hfree
+
+theorem max_le_extremal_sum {A B : Type*} (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (n : ℕ) :
+    max (extremalNumber n H₁) (extremalNumber n H₂) ≤ extremalNumber n (H₁ ⊕g H₂) := by
+  apply max_le
+  · exact (show H₁ ⊑ H₁ ⊕g H₂ from ⟨Embedding.sumInl.toCopy⟩).extremalNumber_le
+  · exact (show H₂ ⊑ H₁ ⊕g H₂ from ⟨Embedding.sumInr.toCopy⟩).extremalNumber_le
+
+theorem equivalent_iff_of_linear_gap {f g : ℕ → ℕ} (C : ℕ)
+    (hlo : ∀ n, g n ≤ f n) (hhi : ∀ n, f n ≤ g n + C * n)
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) :
+    IsEquivalent atTop (fun n : ℕ => (f n : ℝ)) (fun n : ℕ => c * (n : ℝ) ^ a) ↔
+      IsEquivalent atTop (fun n : ℕ => (g n : ℝ)) (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  have hδnonneg (n : ℕ) : 0 ≤ (f n : ℝ) - (g n : ℝ) := by
+    apply sub_nonneg.mpr
+    exact_mod_cast hlo n
+  have hδbound (n : ℕ) : (f n : ℝ) - (g n : ℝ) ≤ (C : ℝ) * (n : ℝ) := by
+    have hh : (f n : ℝ) ≤ (g n : ℝ) + (C : ℝ) * (n : ℝ) := by exact_mod_cast hhi n
+    linarith
+  have hlin : (fun n : ℕ => (f n : ℝ) - (g n : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)) := by
+    apply IsBigO.of_bound (C : ℝ)
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (hδnonneg n), Real.norm_natCast]
+    exact hδbound n
+  have ho : (fun n : ℕ => (n : ℝ)) =o[atTop] (fun n : ℕ => (n : ℝ) ^ a) := by
+    simpa only [Real.rpow_one] using Erdos713Leaf.rpow_isLittleO_nat ha
+  have hδ := hlin.trans_isLittleO (ho.const_mul_right hc)
+  constructor
+  · intro h
+    apply (h.sub_isLittleO hδ).congr_left
+    filter_upwards with n
+    simp only [Pi.sub_apply]
+    ring
+  · intro h
+    apply (h.add_isLittleO hδ).congr_left
+    filter_upwards with n
+    simp only [Pi.add_apply]
+    ring
+
+theorem sum_asymptotic_iff_max {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) ↔
+    IsEquivalent atTop (fun n : ℕ => max (extremalNumber n H₁ : ℝ) (extremalNumber n H₂ : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  simpa only [Nat.cast_max] using equivalent_iff_of_linear_gap
+    (Fintype.card A + Fintype.card B) (max_le_extremal_sum H₁ H₂)
+    (extremal_sum_max_bound H₁ H₂) ha hc
+
+theorem right_asymptotic_iff_of_subdominant_left {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (hsmall : (fun n : ℕ => (extremalNumber n H₁ : ℝ)) =o[atTop]
+      (fun n : ℕ => (n : ℝ) ^ a)) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) ↔
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n H₂ : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  let C := Fintype.card A + Fintype.card B
+  have hLo (n : ℕ) : extremalNumber n H₂ ≤ extremalNumber n (H₁ ⊕g H₂) :=
+    (le_max_right _ _).trans (max_le_extremal_sum H₁ H₂ n)
+  have hδnonneg (n : ℕ) : 0 ≤ (extremalNumber n (H₁ ⊕g H₂) : ℝ) - (extremalNumber n H₂ : ℝ) := by
+    apply sub_nonneg.mpr
+    exact_mod_cast hLo n
+  have hhi (n : ℕ) : extremalNumber n (H₁ ⊕g H₂) ≤
+      extremalNumber n H₂ + (extremalNumber n H₁ + C * n) := by
+    have hh := extremal_sum_max_bound H₁ H₂ n
+    have hm : max (extremalNumber n H₁) (extremalNumber n H₂) ≤
+        extremalNumber n H₁ + extremalNumber n H₂ := max_le (by omega) (by omega)
+    dsimp only [C]
+    omega
+  have hδO : (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ) - (extremalNumber n H₂ : ℝ)) =O[atTop]
+      (fun n : ℕ => (extremalNumber n H₁ : ℝ) + ((C * n : ℕ) : ℝ)) := by
+    apply IsBigO.of_bound 1
+    filter_upwards with n
+    rw [Real.norm_of_nonneg (hδnonneg n), Real.norm_of_nonneg (by positivity), one_mul]
+    have hh : (extremalNumber n (H₁ ⊕g H₂) : ℝ) ≤
+        (extremalNumber n H₂ : ℝ) + ((extremalNumber n H₁ : ℝ) + ((C * n : ℕ) : ℝ)) := by
+      exact_mod_cast hhi n
+    linarith
+  have hlin : (fun n : ℕ => ((C * n : ℕ) : ℝ)) =o[atTop] (fun n : ℕ => (n : ℝ) ^ a) := by
+    simpa only [Nat.cast_mul, Real.rpow_one] using
+      (Erdos713Leaf.rpow_isLittleO_nat ha).const_mul_left (C : ℝ)
+  have hδ := hδO.trans_isLittleO ((hsmall.add hlin).const_mul_right hc)
+  constructor
+  · intro h
+    apply (h.sub_isLittleO hδ).congr_left
+    filter_upwards with n
+    simp only [Pi.sub_apply]
+    ring
+  · intro h
+    apply (h.add_isLittleO hδ).congr_left
+    filter_upwards with n
+    simp only [Pi.add_apply]
+    ring
+
+theorem right_asymptotic_of_irrational_of_left_rate {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) {r : ℚ} (hr : Erdos713Rate.HasRate H₁ (r : ℝ))
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) (hIrr : a ∉ Set.range ((↑) : ℚ → ℝ))
+    (h : IsEquivalent atTop (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a)) :
+    IsEquivalent atTop (fun n : ℕ => (extremalNumber n H₂ : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ a) := by
+  have hle : (r : ℝ) ≤ a := hr.lower a ha.le
+    ((Erdos713Rate.extremal_mono_bigO (show H₁ ⊑ H₁ ⊕g H₂ from ⟨Embedding.sumInl.toCopy⟩)).trans
+      ((isBigO_const_mul_right_iff hc).mp h.isBigO))
+  have hlt : (r : ℝ) < a := lt_of_le_of_ne hle (fun he => hIrr ⟨r, he⟩)
+  exact (right_asymptotic_iff_of_subdominant_left H₁ H₂ ha hc
+    (hr.upper.trans_isLittleO (Erdos713Leaf.rpow_isLittleO_nat hlt))).mp h
+
+
+end Erdos713SharpUnion
+
+namespace Erdos713SharpUnion
+open Finset Erdos713ComponentRates
+universe u v
+
+/-- A finite union of components contained in one forbidden graph differs
+from that graph's extremal function by at most a linear term. No assumption
+about isolated vertices or monotonicity in the host order is required. -/
+theorem sum_asymptotic_iff_of_contained {A B : Type*} [Fintype A] [Fintype B]
+    (H₁ : SimpleGraph A) (H₂ : SimpleGraph B) (h₂ : H₂ ⊑ H₁)
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) :
+    (fun n : ℕ => (extremalNumber n (H₁ ⊕g H₂) : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) ↔
+    (fun n : ℕ => (extremalNumber n H₁ : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  have hmax (n : ℕ) : max (extremalNumber n H₁ : ℝ) (extremalNumber n H₂ : ℝ) =
+      (extremalNumber n H₁ : ℝ) := by
+    apply max_eq_left
+    exact_mod_cast h₂.extremalNumber_le (n := n)
+  simpa only [hmax] using sum_asymptotic_iff_max H₁ H₂ ha hc
+
+/-- Uniformly bounding the extremal numbers of the fibres bounds the entire
+finite graph up to a linear error. The label type need not be finite. -/
+theorem extremal_fibres_upper {W : Type u} [Fintype W] {I : Type v}
+    (G : SimpleGraph W) (χ : W → I)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v) (n M : ℕ)
+    (hF : ∀ i, extremalNumber n (G.induce {w | χ w = i}) ≤ M) :
+    extremalNumber n G ≤ M + (Fintype.card W)^2 * n := by
+  classical
+  suffices hP : ∀ k : ℕ, ∀ (W : Type u) [Fintype W], Fintype.card W = k →
+      ∀ (G : SimpleGraph W) (χ : W → I),
+      (∀ u v, G.Adj u v → χ u = χ v) →
+      (∀ i, extremalNumber n (G.induce {w | χ w = i}) ≤ M) →
+      extremalNumber n G ≤ M + k^2 * n from
+    hP _ W rfl G χ hχ hF
+  intro k
+  induction k using Nat.strong_induction_on with
+  | h k ih =>
+    intro W _ hW G χ hχ hF
+    by_cases hne : Nonempty W
+    swap
+    · letI : IsEmpty W := not_nonempty_iff.mp hne
+      rw [← Fintype.card_fin n, extremalNumber_le_iff]
+      intro K _ hfree
+      exact (hfree IsContained.of_isEmpty).elim
+    let w : W := hne.some
+    let i := χ w
+    let S : Set W := {v | χ v = i}
+    have hsmall : Fintype.card ↥(Sᶜ) < k :=
+      (Fintype.card_subtype_lt (x := w) (by simp [S,i])).trans_eq hW
+    have hχ' : ∀ u v : ↥(Sᶜ), (G.induce Sᶜ).Adj u v → χ u.val = χ v.val := by
+      intro u v huv
+      exact hχ _ _ huv
+    have hF' : ∀ j, extremalNumber n
+        ((G.induce Sᶜ).induce {v : ↥(Sᶜ) | χ v.val = j}) ≤ M := by
+      intro j
+      by_cases hj : j = i
+      · subst j
+        rw [← Fintype.card_fin n, extremalNumber_le_iff]
+        intro K _ hfree
+        exact (hfree (@IsContained.of_isEmpty _ _ _ _ ⟨fun v => v.val.prop v.prop⟩)).elim
+      · exact (show (G.induce Sᶜ).induce {v : ↥(Sᶜ) | χ v.val = j} ⊑
+            G.induce {v | χ v = j} from
+          ⟨(fibreComplementIso G χ hj).toCopy⟩).extremalNumber_le.trans (hF j)
+    have hSc := ih _ hsmall _ rfl (G.induce Sᶜ) (fun v => χ v.val) hχ' hF'
+    have he : G.induce S ⊕g G.induce Sᶜ ≃g G := splitIso G S (by
+      intro u v huv
+      change χ u = i ↔ χ v = i
+      rw [hχ u v huv])
+    have hcard : Fintype.card S + Fintype.card ↥(Sᶜ) = k := by
+      rw [Fintype.card_compl_set]
+      have hle := Fintype.card_subtype_le (· ∈ S)
+      simp only [Fintype.card_eq_nat_card] at hW hle ⊢
+      change Nat.card S ≤ Nat.card W at hle
+      omega
+    have hmax : max (extremalNumber n (G.induce S)) (extremalNumber n (G.induce Sᶜ)) ≤
+        M + (Fintype.card ↥(Sᶜ))^2 * n :=
+      max_le ((hF i).trans (Nat.le_add_right _ _)) hSc
+    have hsquare : (Fintype.card ↥(Sᶜ))^2 + k ≤ k^2 := by
+      have h₁ := Nat.mul_le_mul_right k (Nat.succ_le_of_lt hsmall)
+      have h₂ := Nat.mul_le_mul_left (Fintype.card ↥(Sᶜ)) hsmall.le
+      nlinarith
+    rw [← extremalNumber_congr_right he]
+    calc
+      extremalNumber n (G.induce S ⊕g G.induce Sᶜ) ≤
+          max (extremalNumber n (G.induce S)) (extremalNumber n (G.induce Sᶜ)) + k*n := by
+        simpa only [hcard] using extremal_sum_max_bound (G.induce S) (G.induce Sᶜ) n
+      _ ≤ M + ((Fintype.card ↥(Sᶜ))^2 + k)*n := by
+        nlinarith [hmax]
+      _ ≤ M + k^2*n := Nat.add_le_add_left (Nat.mul_le_mul_right n hsquare) M
+
+theorem fibres_asymptotic_iff_of_contained {W : Type u} [Fintype W] {I : Type v}
+    {U : Type*} (G : SimpleGraph W) (χ : W → I) (J : SimpleGraph U)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v) (hJ : J ⊑ G)
+    (hF : ∀ i, G.induce {w | χ w = i} ⊑ J)
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) :
+    (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) ↔
+    (fun n : ℕ => (extremalNumber n J : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  apply equivalent_iff_of_linear_gap ((Fintype.card W)^2)
+    (fun _ => hJ.extremalNumber_le) _ ha hc
+  intro n
+  exact extremal_fibres_upper G χ hχ n (extremalNumber n J)
+    (fun i => (hF i).extremalNumber_le)
+
+theorem component_asymptotic_iff_of_contained {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (C : G.ConnectedComponent)
+    (hC : ∀ D : G.ConnectedComponent, D.toSimpleGraph ⊑ C.toSimpleGraph)
+    {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0) :
+    (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) ↔
+    (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  classical
+  exact fibres_asymptotic_iff_of_contained G G.connectedComponentMk C.toSimpleGraph
+    (fun _ _ huv => ConnectedComponent.connectedComponentMk_eq_of_adj huv)
+    ⟨⟨C.toSimpleGraph_hom,Subtype.val_injective⟩⟩ hC ha hc
+
+end Erdos713SharpUnion
+
+namespace Erdos713SharpUnion
+open Erdos713Rate Erdos713ComponentRates
+universe u v
+
+/-- Removing one fibre leaves a subcritical extremal function when every
+other fibre has an upper bound with exponent strictly below a. -/
+theorem complement_subcritical_upper {W : Type u} [Fintype W] {I : Type v}
+    (G : SimpleGraph W) (χ : W → I) (i : I) {a : ℝ} (ha : 1 < a)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v)
+    (hF : ∀ j, j ≠ i → ∃ b : ℝ, 1 ≤ b ∧ b < a ∧
+      (fun n : ℕ => (extremalNumber n (G.induce {w | χ w = j}) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^b)) :
+    ∃ b : ℝ, 1 ≤ b ∧ b < a ∧
+      (fun n : ℕ => (extremalNumber n (G.induce {w | χ w ≠ i}) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^b) := by
+  classical
+  apply subcritical_upper_of_fibres (G.induce {w | χ w ≠ i}) (fun w => χ w.val) ha
+    (fun u v huv => hχ u.val v.val huv)
+  intro j
+  by_cases hj : j = i
+  · subst j
+    exact ⟨1,le_rfl,ha,(forest_rate _ (by
+      intro v
+      exact (v.val.prop v.prop).elim)).upper⟩
+  · obtain ⟨b,hb,hba,hu⟩ := hF j hj
+    exact ⟨b,hb,hba,(extremal_mono_bigO ⟨(fibreComplementIso G χ hj).toCopy⟩).trans hu⟩
+
+/-- A unique non-subcritical fibre inherits the original exact asymptotic,
+with its leading constant unchanged. -/
+theorem fibre_asymptotic_of_other_subcritical {W : Type u} [Fintype W] {I : Type v}
+    (G : SimpleGraph W) (χ : W → I) (i : I) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (hχ : ∀ u v, G.Adj u v → χ u = χ v)
+    (hF : ∀ j, j ≠ i → ∃ b : ℝ, 1 ≤ b ∧ b < a ∧
+      (fun n : ℕ => (extremalNumber n (G.induce {w | χ w = j}) : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^b))
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) :
+    (fun n : ℕ => (extremalNumber n (G.induce {w | χ w = i}) : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  classical
+  let S : Set W := {w | χ w = i}
+  obtain ⟨b,hb,hba,hu⟩ := complement_subcritical_upper G χ i ha hχ hF
+  have he : G.induce Sᶜ ⊕g G.induce S ≃g G := Iso.sumComm.trans (splitIso G S (by
+    intro u v huv
+    change χ u = i ↔ χ v = i
+    rw [hχ u v huv]))
+  have heq (n : ℕ) : extremalNumber n (G.induce Sᶜ ⊕g G.induce S) = extremalNumber n G :=
+    extremalNumber_congr_right he
+  apply (right_asymptotic_iff_of_subdominant_left (G.induce Sᶜ) (G.induce S) ha hc
+    (hu.trans_isLittleO (Erdos713Leaf.rpow_isLittleO_nat hba))).mp
+  simpa only [heq] using h
+
+theorem component_asymptotic_of_unique_rate {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (C : G.ConnectedComponent) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a))
+    (hUnique : ∀ D : G.ConnectedComponent, HasRate D.toSimpleGraph a → D = C) :
+    (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  classical
+  have hG := rate_of_asymptotic ha.le hc h
+  apply fibre_asymptotic_of_other_subcritical G G.connectedComponentMk C ha hc
+    (fun _ _ huv => ConnectedComponent.connectedComponentMk_eq_of_adj huv) _ h
+  intro D hDC
+  have hu := (extremal_mono_bigO
+    (show D.toSimpleGraph ⊑ G from ⟨⟨D.toSimpleGraph_hom,Subtype.val_injective⟩⟩)).trans hG.upper
+  have hn : ¬ HasRate D.toSimpleGraph a := fun hd => hDC (hUnique D hd)
+  have hl : ¬ ∀ b : ℝ, 1 ≤ b →
+      ((fun n : ℕ => (extremalNumber n D.toSimpleGraph : ℝ)) =O[atTop]
+        (fun n : ℕ => (n : ℝ)^b)) → a ≤ b := fun hl => hn ⟨ha.le,hu,hl⟩
+  push_neg at hl
+  obtain ⟨b,hb,hU,hba⟩ := hl
+  exact ⟨b,hb,hba,hU⟩
+
+/-- For any chosen component, failure of exact asymptotic transfer requires
+another component attaining the same exponent. No individual limit follows
+from the existence of several tied thresholds. -/
+theorem component_asymptotic_or_competitor {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (C : G.ConnectedComponent) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) :
+    ((fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) ∨
+    ∃ D : G.ConnectedComponent, D ≠ C ∧ HasRate D.toSimpleGraph a := by
+  classical
+  by_cases hUnique : ∀ D : G.ConnectedComponent, HasRate D.toSimpleGraph a → D = C
+  · exact Or.inl (component_asymptotic_of_unique_rate G C ha hc h hUnique)
+  · push_neg at hUnique
+    obtain ⟨D,hD,hDC⟩ := hUnique
+    exact Or.inr ⟨D,hDC,hD⟩
+
+theorem exact_component_or_two_rates {W : Type u} [Fintype W]
+    (G : SimpleGraph W) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) :
+    (∃ C : G.ConnectedComponent,
+      (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+        (fun n : ℕ => c * (n : ℝ)^a)) ∨
+    ∃ C D : G.ConnectedComponent, C ≠ D ∧ HasRate C.toSimpleGraph a ∧
+      HasRate D.toSimpleGraph a := by
+  obtain ⟨C,hC⟩ := exists_component_rate G ha (rate_of_asymptotic ha.le hc h)
+  rcases component_asymptotic_or_competitor G C ha hc h with hExact | ⟨D,hDC,hD⟩
+  · exact Or.inl ⟨C,hExact⟩
+  · exact Or.inr ⟨C,D,hDC.symm,hC,hD⟩
+
+end Erdos713SharpUnion
+
+namespace Erdos713SharpUnion
+open Finset Erdos713Rate Erdos713ComponentRates
+universe u
+
+lemma asymptotic_of_small_gap {f g E : ℕ → ℕ} {a c : ℝ}
+    (hlo : ∀ n, g n ≤ f n) (hhi : ∀ n, f n ≤ g n + E n)
+    (hE : (fun n => (E n : ℝ)) =o[atTop] (fun n => c*(n : ℝ)^a))
+    (h : (fun n => (f n : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^a)) :
+    (fun n => (g n : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^a) := by
+  have hδO : (fun n => (f n : ℝ) - (g n : ℝ)) =O[atTop] (fun n => (E n : ℝ)) := by
+    apply IsBigO.of_bound 1
+    filter_upwards with n
+    have hlo' : (g n : ℝ) ≤ f n := by exact_mod_cast hlo n
+    have hhi' : (f n : ℝ) ≤ (g n : ℝ) + (E n : ℝ) := by exact_mod_cast hhi n
+    rw [Real.norm_of_nonneg (sub_nonneg.mpr hlo'), Real.norm_natCast, one_mul]
+    linarith
+  apply (h.sub_isLittleO (hδO.trans_isLittleO hE)).congr_left
+  filter_upwards with n
+  simp only [Pi.sub_apply]
+  ring
+
+/-- It suffices for C to contain all components attaining the exponent.
+The other components contribute only a smaller-order error. -/
+theorem component_asymptotic_of_rate_domination {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (C : G.ConnectedComponent) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a))
+    (hDom : ∀ D : G.ConnectedComponent, HasRate D.toSimpleGraph a →
+      D.toSimpleGraph ⊑ C.toSimpleGraph) :
+    (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a) := by
+  classical
+  let K := (univ : Finset G.ConnectedComponent).filter
+    (fun D => ¬ D.toSimpleGraph ⊑ C.toSimpleGraph)
+  have hG := rate_of_asymptotic ha.le hc h
+  have hSmall (D : G.ConnectedComponent) (hD : D ∈ K) :
+      (fun n : ℕ => (extremalNumber n D.toSimpleGraph : ℝ)) =o[atTop]
+        (fun n : ℕ => (n : ℝ)^a) := by
+    have hn : ¬ HasRate D.toSimpleGraph a := fun hR =>
+      (mem_filter.mp hD).2 (hDom D hR)
+    have hu := (extremal_mono_bigO
+      (show D.toSimpleGraph ⊑ G from ⟨⟨D.toSimpleGraph_hom,Subtype.val_injective⟩⟩)).trans hG.upper
+    have hl : ¬ ∀ b : ℝ, 1 ≤ b →
+        ((fun n : ℕ => (extremalNumber n D.toSimpleGraph : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^b)) → a ≤ b := fun hl => hn ⟨ha.le,hu,hl⟩
+    push_neg at hl
+    obtain ⟨b,hb,hU,hba⟩ := hl
+    exact hU.trans_isLittleO (Erdos713Leaf.rpow_isLittleO_nat hba)
+  let E : ℕ → ℕ := fun n => (∑ D ∈ K, extremalNumber n D.toSimpleGraph) +
+    (Fintype.card W)^2*n
+  have hE : (fun n => (E n : ℝ)) =o[atTop] (fun n => c*(n : ℝ)^a) := by
+    have hSum := IsLittleO.sum hSmall
+    have hlin : (fun n : ℕ => (((Fintype.card W)^2*n : ℕ) : ℝ)) =o[atTop]
+        (fun n => (n : ℝ)^a) := by
+      simpa only [Nat.cast_mul,Real.rpow_one] using
+        (Erdos713Leaf.rpow_isLittleO_nat ha).const_mul_left (((Fintype.card W)^2 : ℕ) : ℝ)
+    apply IsLittleO.const_mul_right hc
+    simpa only [E,Nat.cast_add,Nat.cast_sum] using hSum.add hlin
+  have hhi (n : ℕ) : extremalNumber n G ≤ extremalNumber n C.toSimpleGraph + E n := by
+    have hF : ∀ D : G.ConnectedComponent, extremalNumber n D.toSimpleGraph ≤
+        extremalNumber n C.toSimpleGraph + ∑ D ∈ K, extremalNumber n D.toSimpleGraph := by
+      intro D
+      by_cases hDC : D.toSimpleGraph ⊑ C.toSimpleGraph
+      · exact hDC.extremalNumber_le.trans (Nat.le_add_right _ _)
+      · have hDK : D ∈ K := mem_filter.mpr ⟨mem_univ _,hDC⟩
+        exact (single_le_sum (f := fun D => extremalNumber n D.toSimpleGraph)
+          (fun _ _ => Nat.zero_le _) hDK).trans (Nat.le_add_left _ _)
+    have hh := extremal_fibres_upper G G.connectedComponentMk
+      (fun _ _ huv => ConnectedComponent.connectedComponentMk_eq_of_adj huv) n _ hF
+    simpa only [E,Nat.add_assoc] using hh
+  exact asymptotic_of_small_gap
+    (fun _ => (show C.toSimpleGraph ⊑ G from
+      ⟨⟨C.toSimpleGraph_hom,Subtype.val_injective⟩⟩).extremalNumber_le) hhi hE h
+
+/-- Failure of exact transfer to C forces a threshold component not contained
+in C. Merely duplicating components or adding smaller patterns is harmless. -/
+theorem component_asymptotic_or_uncontained_rate {W : Type u} [Fintype W]
+    (G : SimpleGraph W) (C : G.ConnectedComponent) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) :
+    ((fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) ∨
+    ∃ D : G.ConnectedComponent, ¬ D.toSimpleGraph ⊑ C.toSimpleGraph ∧
+      HasRate D.toSimpleGraph a := by
+  classical
+  by_cases hDom : ∀ D : G.ConnectedComponent, HasRate D.toSimpleGraph a →
+      D.toSimpleGraph ⊑ C.toSimpleGraph
+  · exact Or.inl (component_asymptotic_of_rate_domination G C ha hc h hDom)
+  · push_neg at hDom
+    obtain ⟨D,hD,hDC⟩ := hDom
+    exact Or.inr ⟨D,not_nonempty_iff.mpr hDC,hD⟩
+
+private lemma greatest_of_total {I : Type*} (s : Finset I) (hs : s.Nonempty)
+    (R : I → I → Prop) (hr : ∀ i, R i i) (ht : ∀ i j k, R i j → R j k → R i k)
+    (hTotal : ∀ i ∈ s, ∀ j ∈ s, R i j ∨ R j i) :
+    ∃ i ∈ s, ∀ j ∈ s, R j i := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simp at hs
+  | @insert a s has ih =>
+    by_cases hs' : s.Nonempty
+    · obtain ⟨b,hbs,hb⟩ := ih hs' (fun i hi j hj =>
+        hTotal i (mem_insert_of_mem hi) j (mem_insert_of_mem hj))
+      rcases hTotal b (mem_insert_of_mem hbs) a (mem_insert_self _ _) with hba | hab
+      · refine ⟨a,mem_insert_self _ _,?_⟩
+        intro j hj
+        rcases mem_insert.mp hj with rfl | hjs
+        · exact hr _
+        · exact ht j b a (hb j hjs) hba
+      · refine ⟨b,mem_insert_of_mem hbs,?_⟩
+        intro j hj
+        rcases mem_insert.mp hj with rfl | hjs
+        · exact hab
+        · exact hb j hjs
+    · have he : s = ∅ := not_nonempty_iff_eq_empty.mp hs'
+      subst s
+      exact ⟨a,mem_insert_self _ _,by simpa using hr a⟩
+
+/-- Either one connected component has the exact original asymptotic, or
+two containment-incomparable components both attain the exponent. -/
+theorem exact_component_or_incomparable_rates {W : Type u} [Fintype W]
+    (G : SimpleGraph W) {a c : ℝ} (ha : 1 < a) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n G : ℝ)) ~[atTop]
+      (fun n : ℕ => c * (n : ℝ)^a)) :
+    (∃ C : G.ConnectedComponent,
+      (fun n : ℕ => (extremalNumber n C.toSimpleGraph : ℝ)) ~[atTop]
+        (fun n : ℕ => c * (n : ℝ)^a)) ∨
+    ∃ C D : G.ConnectedComponent, ¬ C.toSimpleGraph ⊑ D.toSimpleGraph ∧
+      ¬ D.toSimpleGraph ⊑ C.toSimpleGraph ∧ HasRate C.toSimpleGraph a ∧
+      HasRate D.toSimpleGraph a := by
+  classical
+  let S := (univ : Finset G.ConnectedComponent).filter (fun C => HasRate C.toSimpleGraph a)
+  obtain ⟨C₀,hC₀⟩ := exists_component_rate G ha (rate_of_asymptotic ha.le hc h)
+  have hS : S.Nonempty := ⟨C₀,mem_filter.mpr ⟨mem_univ _,hC₀⟩⟩
+  by_cases hTotal : ∀ C ∈ S, ∀ D ∈ S,
+      C.toSimpleGraph ⊑ D.toSimpleGraph ∨ D.toSimpleGraph ⊑ C.toSimpleGraph
+  · obtain ⟨C,hCS,hC⟩ := greatest_of_total S hS
+      (fun C D => C.toSimpleGraph ⊑ D.toSimpleGraph) (fun _ => .refl _)
+      (fun _ _ _ h₁ h₂ => h₁.trans h₂) hTotal
+    exact Or.inl ⟨C,component_asymptotic_of_rate_domination G C ha hc h
+      (fun D hD => hC D (mem_filter.mpr ⟨mem_univ _,hD⟩))⟩
+  · push_neg at hTotal
+    obtain ⟨C,hCS,D,hDS,hCD,hDC⟩ := hTotal
+    exact Or.inr ⟨C,D,not_nonempty_iff.mpr hCD,not_nonempty_iff.mpr hDC,
+      (mem_filter.mp hCS).2,(mem_filter.mp hDS).2⟩
+
+end Erdos713SharpUnion
+
+
+/- Extremal bounds for several internally disjoint paths of length three. -/
+
+open Filter SimpleGraph Asymptotics Finset
+
+namespace Erdos713Theta3
+open Erdos713C6 Finset
+
+abbrev Vertex (t : ℕ) := Option (Fin t) ⊕ Option (Fin t)
+
+def Rel {t : ℕ} : Option (Fin t) → Option (Fin t) → Prop
+  | none, none => False
+  | none, some _ => True
+  | some _, none => True
+  | some i, some j => i = j
+
+abbrev theta (t : ℕ) : SimpleGraph (Vertex t) := bipGraph (Rel (t := t))
+
+lemma option_injective {I V : Type*} (v : V) (f : I → V) (hf : Function.Injective f)
+    (hv : ∀ i, v ≠ f i) : Function.Injective (fun x : Option I => x.elim v f) := by
+  rintro (i | i) (j | j) h
+  · rfl
+  · exact (hv j h).elim
+  · exact (hv i h.symm).elim
+  · exact congrArg some (hf h)
+
+lemma contained_of_paths {V : Type*} (G : SimpleGraph V) {t : ℕ}
+    (u v : V) (a b : Fin t → V) (ha : Function.Injective a) (hb : Function.Injective b)
+    (huv : u ≠ v) (hub : ∀ i, u ≠ b i) (hva : ∀ i, v ≠ a i)
+    (hba : ∀ i j, b i ≠ a j)
+    (h0 : ∀ i, G.Adj u (a i)) (h1 : ∀ i, G.Adj (a i) (b i)) (h2 : ∀ i, G.Adj (b i) v) :
+    theta t ⊑ G := by
+  let left : Option (Fin t) → V := fun x => x.elim u b
+  let right : Option (Fin t) → V := fun x => x.elim v a
+  have hleft : Function.Injective left := option_injective u b hb hub
+  have hright : Function.Injective right := option_injective v a ha hva
+  have hDis (i j : Option (Fin t)) : left i ≠ right j := by
+    cases i with
+    | none =>
+      cases j with
+      | none => exact huv
+      | some j => exact (h0 j).ne
+    | some i =>
+      cases j with
+      | none => exact (h2 i).ne
+      | some j => exact hba i j
+  have hLR (i j : Option (Fin t)) (hij : Rel i j) : G.Adj (left i) (right j) := by
+    cases i with
+    | none =>
+      cases j with
+      | none => exact hij.elim
+      | some j => exact h0 j
+    | some i =>
+      cases j with
+      | none => exact h2 i
+      | some j =>
+        change i = j at hij
+        subst j
+        exact (h1 i).symm
+  refine ⟨⟨⟨Sum.elim left right, ?_⟩, ?_⟩⟩
+  · rintro (i | i) (j | j) hij
+    · exact hij.elim
+    · exact hLR i j hij
+    · exact (hLR j i hij).symm
+    · exact hij.elim
+  · rintro (i | i) (j | j) hij
+    · exact congrArg Sum.inl (hleft hij)
+    · exact (hDis i j hij).elim
+    · exact (hDis j i hij.symm).elim
+    · exact congrArg Sum.inr (hright hij)
+
+lemma distinct_representatives {I V : Type*} [Fintype I] (S : I → Finset V)
+    (hS : ∀ i, Fintype.card I ≤ (S i).card) :
+    ∃ f : I → V, Function.Injective f ∧ ∀ i, f i ∈ S i := by
+  classical
+  apply (all_card_le_biUnion_card_iff_exists_injective S).mp
+  intro U
+  rcases U.eq_empty_or_nonempty with rfl | hU
+  · simp
+  obtain ⟨i, hi⟩ := hU
+  exact (card_le_univ U).trans ((hS i).trans (card_le_card (subset_biUnion_of_mem S hi)))
+
+open scoped Classical in
+lemma contained_of_rooted_bipartite {V : Type*} [Fintype V]
+    (G K : SimpleGraph V) (hKG : K ≤ G) {A B : Finset V} (hBip : K.IsBipartiteWith A B)
+    (root c : V) (hrootA : root ∉ A) (hrootB : root ∉ B) (hc : c ∈ A)
+    (hRoot : ∀ a ∈ A, G.Adj root a) (t : ℕ) (hdc : t ≤ K.degree c)
+    (hD : ∀ b, K.Adj c b → t + 1 ≤ K.degree b) : theta t ⊑ G := by
+  classical
+  obtain ⟨b, hb⟩ := Function.Embedding.exists_of_card_le_finset
+    (show Fintype.card (Fin t) ≤ (K.neighborFinset c).card by simpa using hdc)
+  have hbAdj (i : Fin t) : K.Adj c (b i) := (mem_neighborFinset K c _).mp (hb ⟨i, rfl⟩)
+  have hbB (i : Fin t) : b i ∈ B := hBip.mem_of_mem_adj hc (hbAdj i)
+  let S : Fin t → Finset V := fun i => (K.neighborFinset (b i)).erase c
+  have hS (i : Fin t) : Fintype.card (Fin t) ≤ (S i).card := by
+    have hh := hD (b i) (hbAdj i)
+    have hcMem : c ∈ K.neighborFinset (b i) := (mem_neighborFinset K _ _).mpr (hbAdj i).symm
+    simp only [S, Fintype.card_fin, card_erase_of_mem hcMem, card_neighborFinset_eq_degree]
+    omega
+  obtain ⟨a, ha, haS⟩ := distinct_representatives S hS
+  have haAdj (i : Fin t) : K.Adj (b i) (a i) :=
+    (mem_neighborFinset K _ _).mp (mem_of_mem_erase (haS i))
+  have haA (i : Fin t) : a i ∈ A := hBip.symm.mem_of_mem_adj (hbB i) (haAdj i)
+  apply contained_of_paths G root c a b ha b.injective
+  · intro he; exact hrootA (he ▸ hc)
+  · intro i he; exact hrootB (he ▸ hbB i)
+  · intro i he; exact (mem_erase.mp (haS i)).1 he.symm
+  · intro i j he
+    exact Set.disjoint_left.mp hBip.disjoint (haA j) (he ▸ hbB i)
+  · intro i; exact hRoot (a i) (haA i)
+  · intro i; exact hKG (haAdj i).symm
+  · intro i; exact hKG (hbAdj i).symm
+
+theorem exists_support_pruned {V : Type*} [Fintype V] (G : SimpleGraph V) (d : ℕ) :
+    ∃ K : SimpleGraph V, K ≤ G ∧
+      (∀ v, Nat.card (K.neighborSet v) = 0 ∨ d ≤ Nat.card (K.neighborSet v)) ∧
+      Nat.card G.edgeSet ≤ Nat.card K.edgeSet + d * Nat.card G.support := by
+  classical
+  let S : Finset (SimpleGraph V) := {K | K ≤ G}
+  let weight : SimpleGraph V → ℤ := fun K =>
+    (Nat.card K.edgeSet : ℤ) - (d : ℤ) * Nat.card K.support
+  obtain ⟨K, hKS, hmax⟩ := exists_max_image S weight
+    (show S.Nonempty from ⟨G, by simp [S]⟩)
+  have hKG : K ≤ G := by simpa [S] using hKS
+  refine ⟨K, hKG, ?_, ?_⟩
+  · intro v
+    by_cases hd : d ≤ Nat.card (K.neighborSet v)
+    · exact Or.inr hd
+    left
+    by_contra hz
+    have hpos : 0 < K.degree v := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using Nat.pos_of_ne_zero hz
+    have hlt : K.degree v < d := by
+      simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using Nat.lt_of_not_ge hd
+    have hv : v ∈ K.support := (K.degree_pos_iff_mem_support v).mp hpos
+    have hDel : K.deleteIncidenceSet v ∈ S := by
+      simpa [S] using (K.deleteIncidenceSet_le v).trans hKG
+    have hm := hmax (K.deleteIncidenceSet v) hDel
+    dsimp only [weight] at hm
+    have he : Nat.card (K.deleteIncidenceSet v).edgeSet + K.degree v = Nat.card K.edgeSet := by
+      simpa only [Nat.card_eq_fintype_card, ← edgeFinset_card,
+        card_edgeFinset_deleteIncidenceSet] using
+        Nat.sub_add_cancel (K.degree_le_card_edgeFinset v)
+    have hs : Nat.card (K.deleteIncidenceSet v).support + 1 ≤ Nat.card K.support := by
+      have hb := K.card_support_deleteIncidenceSet hv
+      have hp : 0 < Fintype.card K.support := Fintype.card_pos_iff.mpr ⟨⟨v, hv⟩⟩
+      have hh : Fintype.card (K.deleteIncidenceSet v).support + 1 ≤ Fintype.card K.support := by omega
+      simpa only [Nat.card_eq_fintype_card] using hh
+    have hei : (Nat.card (K.deleteIncidenceSet v).edgeSet : ℤ) + K.degree v =
+        (Nat.card K.edgeSet : ℤ) := by exact_mod_cast he
+    have hsi : (Nat.card (K.deleteIncidenceSet v).support : ℤ) + 1 ≤
+        (Nat.card K.support : ℤ) := by exact_mod_cast hs
+    have hlti : (K.degree v : ℤ) < (d : ℤ) := by exact_mod_cast hlt
+    have hmul := mul_le_mul_of_nonneg_left hsi (Int.natCast_nonneg d)
+    nlinarith
+  · have hm := hmax G (by simp [S])
+    dsimp only [weight] at hm
+    have hprod : 0 ≤ (d : ℤ) * Nat.card K.support := by positivity
+    have hb : (Nat.card G.edgeSet : ℤ) ≤
+        (Nat.card K.edgeSet : ℤ) + (d : ℤ) * Nat.card G.support := by nlinarith
+    exact_mod_cast hb
+
+open scoped Classical in
+lemma rooted_edge_bound {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G)
+    {A B : Finset V} (hBip : K.IsBipartiteWith A B) (root : V)
+    (hrootA : root ∉ A) (hrootB : root ∉ B) (hRoot : ∀ a ∈ A, G.Adj root a)
+    (t : ℕ) (hFree : (theta t).Free G) :
+    K.edgeFinset.card ≤ (t + 1) * (A.card + B.card) := by
+  classical
+  obtain ⟨Q, hQK, hDeg, hBound⟩ := exists_support_pruned K (t + 1)
+  have hQ : Q = ⊥ := by
+    by_contra hQ
+    obtain ⟨u, v, huv⟩ := ne_bot_iff_exists_adj.mp hQ
+    have hBipQ : Q.IsBipartiteWith A B := ⟨hBip.disjoint, by intro u v h; exact hBip.mem_of_adj (hQK h)⟩
+    have hD {a b : V} (hab : Q.Adj a b) : t + 1 ≤ Q.degree a := by
+      rcases hDeg a with hz | hd
+      · have hp : 0 < Q.degree a := hab.degree_pos_left
+        rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hz
+        omega
+      · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hd
+    obtain ⟨c, hc, w, hcw⟩ : ∃ c ∈ A, ∃ w, Q.Adj c w := by
+      rcases hBipQ.mem_of_adj huv with ⟨hu, _⟩ | ⟨_, hv⟩
+      · exact ⟨u, hu, v, huv⟩
+      · exact ⟨v, hv, u, huv.symm⟩
+    exact hFree (contained_of_rooted_bipartite G Q (hQK.trans hKG) hBipQ root c
+      hrootA hrootB hc hRoot t (by have hh := hD hcw; omega) (fun _ h => hD h.symm))
+  have hCard : Nat.card K.support ≤ A.card + B.card := by
+    have hh := (Set.ncard_le_ncard (isBipartiteWith_support_subset hBip)).trans
+      (Set.ncard_union_le (A : Set V) (B : Set V))
+    simpa only [Nat.card_coe_set_eq, Set.ncard_coe_finset] using hh
+  rw [hQ] at hBound
+  have hh : Nat.card K.edgeSet ≤ (t + 1) * Nat.card K.support := by
+    simpa only [edgeSet_bot, Nat.card_eq_fintype_card, Fintype.card_ofIsEmpty, zero_add] using hBound
+  have hh' := hh.trans (Nat.mul_le_mul_left (t + 1) hCard)
+  simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using hh'
+
+open scoped Classical in
+lemma parent_count_bound {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G)
+    {A B C : Finset V} (hBip : K.IsBipartiteWith B C)
+    (hAB : Disjoint A B) (hAC : Disjoint A C) (parent : V → V)
+    (hParent : ∀ b ∈ B, parent b ∈ A ∧ G.Adj (parent b) b)
+    (root : V) (hrB : root ∉ B) (hrC : root ∉ C) (hRoot : ∀ a ∈ A, G.Adj root a)
+    (t : ℕ) (hFree : (theta t).Free G) (c : V) (hc : c ∈ C) :
+    ((K.neighborFinset c).image parent).card ≤ t := by
+  classical
+  by_contra hh
+  obtain ⟨a, ha⟩ := Function.Embedding.exists_of_card_le_finset
+    (show Fintype.card (Fin t) ≤ ((K.neighborFinset c).image parent).card by simpa using (by omega : t ≤ _))
+  have hA (i : Fin t) : ∃ b ∈ K.neighborFinset c, parent b = a i := mem_image.mp (ha ⟨i, rfl⟩)
+  choose b hb hpb using hA
+  have hbAdj (i : Fin t) : K.Adj c (b i) := (mem_neighborFinset K c _).mp (hb i)
+  have hbB (i : Fin t) : b i ∈ B := hBip.symm.mem_of_mem_adj hc (hbAdj i)
+  have haA (i : Fin t) : a i ∈ A := by rw [← hpb i]; exact (hParent (b i) (hbB i)).1
+  have hbinj : Function.Injective b := by
+    intro i j hij
+    apply a.injective
+    rw [← hpb i, ← hpb j, hij]
+  apply hFree
+  apply contained_of_paths G root c a b a.injective hbinj
+  · intro he; exact hrC (he ▸ hc)
+  · intro i he; exact hrB (he ▸ hbB i)
+  · intro i he; exact Finset.disjoint_left.mp hAC (haA i) (he ▸ hc)
+  · intro i j he; exact Finset.disjoint_left.mp hAB (haA j) (he ▸ hbB i)
+  · intro i; exact hRoot (a i) (haA i)
+  · intro i
+    have hh := (hParent (b i) (hbB i)).2
+    simpa only [hpb i] using hh
+  · intro i; exact hKG (hbAdj i).symm
+
+open scoped Classical in
+noncomputable def fiberNeighbors {V : Type*} [Fintype V] (K : SimpleGraph V)
+    (parent : V → V) (c a : V) : Finset V := (K.neighborFinset c).filter (fun b => parent b = a)
+
+open scoped Classical in
+noncomputable def heavyNeighbors {V : Type*} [Fintype V] (K : SimpleGraph V)
+    (parent : V → V) (t : ℕ) (b : V) : Finset V :=
+  (K.neighborFinset b).filter (fun c => t + 1 ≤ (fiberNeighbors K parent c (parent b)).card)
+
+open scoped Classical in
+lemma heavy_neighbors_bound {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G)
+    {A B C : Finset V} (hBip : K.IsBipartiteWith B C) (hAC : Disjoint A C)
+    (parent : V → V) (hParent : ∀ b ∈ B, parent b ∈ A ∧ G.Adj (parent b) b)
+    (t : ℕ) (hFree : (theta t).Free G) (b₀ : V) (hb₀ : b₀ ∈ B) :
+    (heavyNeighbors K parent t b₀).card ≤ t := by
+  classical
+  by_contra hh
+  obtain ⟨c, hc⟩ := Function.Embedding.exists_of_card_le_finset
+    (show Fintype.card (Fin t) ≤ (heavyNeighbors K parent t b₀).card by simpa using (by omega : t ≤ _))
+  have hData (i : Fin t) : K.Adj b₀ (c i) ∧
+      t + 1 ≤ (fiberNeighbors K parent (c i) (parent b₀)).card := by
+    simpa only [heavyNeighbors, Finset.mem_coe, mem_filter, mem_neighborFinset] using hc ⟨i, rfl⟩
+  have hcC (i : Fin t) : c i ∈ C := hBip.mem_of_mem_adj hb₀ (hData i).1
+  let S : Fin t → Finset V := fun i => (fiberNeighbors K parent (c i) (parent b₀)).erase b₀
+  have hS (i : Fin t) : Fintype.card (Fin t) ≤ (S i).card := by
+    have hh := (hData i).2
+    have he : (fiberNeighbors K parent (c i) (parent b₀)).card - 1 ≤ (S i).card :=
+      pred_card_le_card_erase
+    simp only [Fintype.card_fin]
+    omega
+  obtain ⟨b, hb, hbS⟩ := distinct_representatives S hS
+  have hbData (i : Fin t) : K.Adj (c i) (b i) ∧ parent (b i) = parent b₀ := by
+    simpa only [fiberNeighbors, mem_filter, mem_neighborFinset] using mem_of_mem_erase (hbS i)
+  have hbB (i : Fin t) : b i ∈ B := hBip.symm.mem_of_mem_adj (hcC i) (hbData i).1
+  apply hFree
+  apply contained_of_paths G (parent b₀) b₀ b c hb c.injective
+  · exact (hParent b₀ hb₀).2.ne
+  · intro i he
+    exact Finset.disjoint_left.mp hAC (hParent b₀ hb₀).1 (he ▸ hcC i)
+  · intro i he
+    exact (mem_erase.mp (hbS i)).1 he.symm
+  · intro i j he
+    exact Set.disjoint_left.mp hBip.disjoint (hbB j) (he ▸ hcC i)
+  · intro i
+    have hh := (hParent (b i) (hbB i)).2
+    simpa only [(hbData i).2] using hh
+  · intro i; exact hKG (hbData i).1.symm
+  · intro i; exact hKG (hData i).1.symm
+
+lemma weak_fibers_card_le {V A : Type*} (S : Finset V) (parent : V → A) [DecidableEq A]
+    (t : ℕ) :
+    (S.filter (fun b => (S.filter (fun x => parent x = parent b)).card ≤ t)).card ≤
+      (S.image parent).card * t := by
+  classical
+  let W := S.filter (fun b => (S.filter (fun x => parent x = parent b)).card ≤ t)
+  have hMap : Set.MapsTo parent (↑W) (↑(S.image parent)) := by
+    intro b hb
+    exact mem_image_of_mem parent (mem_filter.mp hb).1
+  have hF (a : A) : (W.filter (fun b => parent b = a)).card ≤ t := by
+    by_cases hE : (W.filter (fun b => parent b = a)).Nonempty
+    · obtain ⟨b, hb⟩ := hE
+      have hbW := (mem_filter.mp hb).1
+      have hba := (mem_filter.mp hb).2
+      have hh := (mem_filter.mp hbW).2
+      rw [hba] at hh
+      exact (card_le_card (filter_subset_filter _ (filter_subset _ _))).trans hh
+    · rw [not_nonempty_iff_eq_empty.mp hE]
+      simp
+  change W.card ≤ _
+  rw [card_eq_sum_card_fiberwise hMap]
+  calc
+    ∑ a ∈ S.image parent, (W.filter (fun b => parent b = a)).card ≤ ∑ _a ∈ S.image parent, t :=
+      sum_le_sum (fun a _ => hF a)
+    _ = (S.image parent).card * t := by simp
+
+open scoped Classical in
+lemma parented_edge_bound {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G)
+    {A B C : Finset V} (hBip : K.IsBipartiteWith B C)
+    (hAB : Disjoint A B) (hAC : Disjoint A C) (parent : V → V)
+    (hParent : ∀ b ∈ B, parent b ∈ A ∧ G.Adj (parent b) b)
+    (root : V) (hrB : root ∉ B) (hrC : root ∉ C) (hRoot : ∀ a ∈ A, G.Adj root a)
+    (t : ℕ) (hFree : (theta t).Free G) :
+    K.edgeFinset.card ≤ t * B.card + t ^ 2 * C.card := by
+  classical
+  let rel : V → V → Prop := fun b c => K.Adj b c ∧ (fiberNeighbors K parent c (parent b)).card ≤ t
+  have hBelow (c : V) (hc : c ∈ C) : (B.bipartiteBelow rel c).card ≤ t ^ 2 := by
+    have hEq : B.bipartiteBelow rel c = (K.neighborFinset c).filter
+        (fun b => (fiberNeighbors K parent c (parent b)).card ≤ t) := by
+      ext b
+      simp only [mem_bipartiteBelow, mem_filter, mem_neighborFinset, rel]
+      constructor
+      · rintro ⟨_, hbc, hh⟩
+        exact ⟨hbc.symm, hh⟩
+      · rintro ⟨hcb, hh⟩
+        exact ⟨hBip.symm.mem_of_mem_adj hc hcb, hcb.symm, hh⟩
+    rw [hEq]
+    have hWeak := weak_fibers_card_le (K.neighborFinset c) parent t
+    have hP := parent_count_bound G K hKG hBip hAB hAC parent hParent root hrB hrC hRoot t hFree c hc
+    have hh := hWeak.trans (Nat.mul_le_mul_right t hP)
+    simpa only [fiberNeighbors, pow_two] using hh
+  have hRow (b : V) (hb : b ∈ B) : K.degree b ≤ t + (C.bipartiteAbove rel b).card := by
+    have hSub : K.neighborFinset b ⊆ heavyNeighbors K parent t b ∪ C.bipartiteAbove rel b := by
+      intro c hc
+      have hbc : K.Adj b c := (mem_neighborFinset K b c).mp hc
+      have hcC : c ∈ C := hBip.mem_of_mem_adj hb hbc
+      by_cases hh : t + 1 ≤ (fiberNeighbors K parent c (parent b)).card
+      · exact mem_union_left _ (mem_filter.mpr ⟨hc, hh⟩)
+      · apply mem_union_right
+        exact (mem_bipartiteAbove rel).mpr ⟨hcC, hbc, by omega⟩
+    have hh := (card_le_card hSub).trans (card_union_le _ _)
+    rw [card_neighborFinset_eq_degree] at hh
+    exact hh.trans (Nat.add_le_add_right
+      (heavy_neighbors_bound G K hKG hBip hAC parent hParent t hFree b hb) _)
+  have hs := sum_le_sum (s := B) (fun b hb => hRow b hb)
+  rw [isBipartiteWith_sum_degrees_eq_card_edges hBip, sum_add_distrib] at hs
+  rw [sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow (r := rel) (s := B) (t := C)] at hs
+  have hw := sum_le_sum (s := C) (fun c hc => hBelow c hc)
+  simp only [sum_const, Nat.nsmul_eq_mul] at hs hw
+  nlinarith only [hs, hw]
+
+lemma three_level_degree_cube {d M A B C N : ℕ} (hN : 1 ≤ N) (hA : d ≤ A)
+    (hAC : A + C ≤ N) (h1 : d * A ≤ A + M * (A + B))
+    (h2 : d * B ≤ M * (A + B) + M * (B + C)) :
+    d ^ 3 ≤ (4 * (M + 1)) ^ 3 * N := by
+  by_cases hd : d ≤ 4 * (M + 1)
+  · exact (Nat.pow_le_pow_left hd 3).trans (Nat.le_mul_of_pos_right _ hN)
+  have hd1 : 2 * (M + 1) ≤ d := by omega
+  have hd2 : 4 * M ≤ d := by omega
+  have hg1 : d * A ≤ 2 * M * B := by
+    have hh := Nat.mul_le_mul_right A hd1
+    nlinarith only [h1, hh]
+  have hg2 : d * B ≤ 2 * M * N := by
+    have hh := Nat.mul_le_mul_right B hd2
+    have hh' := Nat.mul_le_mul_left M hAC
+    nlinarith only [h2, hh, hh']
+  have hdSq : d ^ 2 ≤ 2 * M * B := by
+    have hh := Nat.mul_le_mul_left d hA
+    nlinarith only [hg1, hh]
+  have hdCube : d ^ 3 ≤ 4 * M ^ 2 * N := by
+    have hh := Nat.mul_le_mul_left d hdSq
+    have hh' := Nat.mul_le_mul_left (2 * M) hg2
+    nlinarith only [hh, hh']
+  have hC : 4 * M ^ 2 ≤ (4 * (M + 1)) ^ 3 := by nlinarith [sq_nonneg (M : ℤ)]
+  exact hdCube.trans (Nat.mul_le_mul_right N hC)
+
+open scoped Classical in
+lemma connected_degree_cube {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (hconn : G.Connected) (hBip : G.IsBipartite) (t d : ℕ) (hFree : (theta t).Free G)
+    (hDeg : ∀ v, d ≤ G.degree v) :
+    d ^ 3 ≤ (4 * ((t + 1) ^ 2 + 1)) ^ 3 * Fintype.card V := by
+  classical
+  let root : V := hconn.nonempty.some
+  let L := Erdos713BreadthFirst.Layering.ofConnected G hconn root
+  let A := L.levelFinset 1
+  let B := L.levelFinset 2
+  let C := L.levelFinset 3
+  have hStep : ∀ u v, G.Adj u v → L.level u + 1 = L.level v ∨ L.level v + 1 = L.level u :=
+    fun _ _ h => Erdos713BreadthFirst.adj_dist_diff_one hconn hBip root h
+  have hRootZero : L.level root = 0 := (L.zero_iff root).mpr rfl
+  have hRootA : root ∉ A := by intro hh; have hh' := (L.mem_levelFinset root 1).mp hh; omega
+  have hRootB : root ∉ B := by intro hh; have hh' := (L.mem_levelFinset root 2).mp hh; omega
+  have hRootC : root ∉ C := by intro hh; have hh' := (L.mem_levelFinset root 3).mp hh; omega
+  have hRoot (a : V) (ha : a ∈ A) : G.Adj root a := by
+    have hla : L.level a = 1 := (L.mem_levelFinset a 1).mp ha
+    have ha' : a ≠ root := by intro hh; rw [hh, hRootZero] at hla; omega
+    have hp := L.parent_level a ha'
+    have hp' : L.parent a = root := (L.zero_iff _).mp (by omega)
+    simpa only [hp'] using (L.parent_adj a ha').symm
+  have hParent (b : V) (hb : b ∈ B) : L.parent b ∈ A ∧ G.Adj (L.parent b) b := by
+    have hlb : L.level b = 2 := (L.mem_levelFinset b 2).mp hb
+    have hb' : b ≠ root := by intro hh; rw [hh, hRootZero] at hlb; omega
+    have hp := L.parent_level b hb'
+    exact ⟨(L.mem_levelFinset _ 1).mpr (by omega), (L.parent_adj b hb').symm⟩
+  have hAB : Disjoint A B := L.levelFinset_disjoint (by decide)
+  have hAC : Disjoint A C := L.levelFinset_disjoint (by decide)
+  have heAB : (L.between 1).edgeFinset.card ≤ (t + 1) * (A.card + B.card) :=
+    rooted_edge_bound G (L.between 1) (L.between_le 1) (L.between_bipartite 1)
+      root hRootA hRootB hRoot t hFree
+  have heBC : (L.between 2).edgeFinset.card ≤ t * B.card + t ^ 2 * C.card :=
+    parented_edge_bound G (L.between 2) (L.between_le 2) (L.between_bipartite 2)
+      hAB hAC L.parent hParent root hRootB hRootC hRoot t hFree
+  have heZero : (L.between 0).edgeFinset.card ≤ A.card := by
+    have hh := isBipartiteWith_sum_degrees_eq_card_edges (L.between_bipartite 0)
+    rw [L.levelFinset_zero, sum_singleton] at hh
+    rw [← hh, ← L.degree_root_eq_card_level_one hStep]
+    exact (L.between 0).degree_le_of_le (L.between_le 0)
+  have hA : d ≤ A.card := by
+    have hh := hDeg root
+    rwa [L.degree_root_eq_card_level_one hStep] at hh
+  have hACn : A.card + C.card ≤ Fintype.card V := by
+    rw [← card_union_of_disjoint hAC]
+    exact card_le_univ _
+  have hCoeff : t + 1 ≤ (t + 1) ^ 2 := by nlinarith
+  have hCoeff' : t ≤ (t + 1) ^ 2 := by nlinarith
+  have hCoeff'' : t ^ 2 ≤ (t + 1) ^ 2 := Nat.pow_le_pow_left (by omega) 2
+  have heAB' := heAB.trans (Nat.mul_le_mul_right (A.card + B.card) hCoeff)
+  have heBC' : (L.between 2).edgeFinset.card ≤ (t + 1) ^ 2 * (B.card + C.card) := by
+    have hh := Nat.mul_le_mul_right B.card hCoeff'
+    have hh' := Nat.mul_le_mul_right C.card hCoeff''
+    nlinarith only [heBC, hh, hh']
+  apply three_level_degree_cube (Fintype.card_pos_iff.mpr ⟨root⟩) hA hACn
+  · exact (L.layer_degree_sum d 0 hDeg hStep).trans (Nat.add_le_add heZero heAB')
+  · exact (L.layer_degree_sum d 1 hDeg hStep).trans (Nat.add_le_add heAB' heBC')
+
+open scoped Classical in
+lemma degree_cube {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (hBip : G.IsBipartite) (t d : ℕ)
+    (hFree : (theta t).Free G)
+    (hDeg : ∀ u v, G.Adj u v → d ≤ G.degree u) {u v : V} (huv : G.Adj u v) :
+    d ^ 3 ≤ (4 * ((t + 1) ^ 2 + 1)) ^ 3 * Fintype.card V := by
+  classical
+  let C := G.connectedComponentMk u
+  have hu : u ∈ C.supp := rfl
+  have hSupp : C.supp ⊆ G.support := by
+    intro w hw
+    by_cases hwu : w = u
+    · subst w; exact ⟨v, huv⟩
+    · exact mem_support_of_reachable hwu (C.reachable_of_mem_supp hw hu)
+  let H := G.induce C.supp
+  have hCDeg (w : ↥C.supp) : d ≤ H.degree w := by
+    have hSub : G.neighborSet w.val ⊆ C.supp := by
+      intro z hz
+      exact C.mem_supp_of_adj_mem_supp w.prop hz
+    have heq : H.degree w = G.degree w.val := degree_induce_of_neighborSet_subset hSub
+    rw [heq]
+    obtain ⟨z, hwz⟩ := hSupp w.prop
+    exact hDeg w.val z hwz
+  have hCFree : (theta t).Free H :=
+    fun hc => hFree (hc.trans ⟨Copy.induce G C.supp⟩)
+  have hh := connected_degree_cube H C.connected_toSimpleGraph
+    (Colorable.of_hom (Copy.induce G C.supp).toHom hBip) t d hCFree hCDeg
+  exact hh.trans (Nat.mul_le_mul_left _ (Fintype.card_subtype_le (· ∈ C.supp)))
+
+
+open scoped Classical in
+theorem bipartite_edge_cube_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (hBip : G.IsBipartite) (t : ℕ) (hfree : (theta t).Free G) :
+    G.edgeFinset.card ^ 3 ≤ (64 * ((4 * ((t + 1) ^ 2 + 1)) ^ 3 + 1)) * Fintype.card V ^ 4 := by
+  classical
+  let e := G.edgeFinset.card
+  let n := Fintype.card V
+  by_cases he : e = 0
+  · change e ^ 3 ≤ _
+    simp [he]
+  have hGne : G ≠ ⊥ := by
+    intro hG
+    apply he
+    exact congrArg Finset.card (edgeFinset_eq_empty.mpr hG)
+  obtain ⟨u, v, huv⟩ := ne_bot_iff_exists_adj.mp hGne
+  have hn : 0 < n := Fintype.card_pos_iff.mpr ⟨u⟩
+  let d := e / (2 * n)
+  have hdiv : d * (2 * n) ≤ e := Nat.div_mul_le_self e (2 * n)
+  obtain ⟨K, hKG, hd, hbound⟩ := Erdos713Leaf.exists_pruned G d
+  have hKne : K ≠ ⊥ := by
+    intro hK
+    have hB : e ≤ d * n := by
+      simpa only [hK, edgeSet_bot, Nat.card_eq_fintype_card, Fintype.card_ofIsEmpty,
+        zero_add, ← edgeFinset_card] using hbound
+    nlinarith only [hB, hdiv, Nat.pos_of_ne_zero he]
+  obtain ⟨x, y, hxy⟩ := ne_bot_iff_exists_adj.mp hKne
+  have hKBip : K.IsBipartite := Colorable.of_hom (Copy.ofLE K G hKG).toHom hBip
+  have hKfree : (theta t).Free K := fun hc => hfree (hc.mono_right hKG)
+  have hd' (x y : V) (hxy : K.Adj x y) : d ≤ K.degree x := by
+    rcases hd x with hz | hb
+    · have hpos : 0 < K.degree x := hxy.degree_pos_left
+      rw [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] at hz
+      omega
+    · simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree] using hb
+  have hd3 : d ^ 3 ≤ (4 * ((t + 1) ^ 2 + 1)) ^ 3 * n := degree_cube K hKBip t d hKfree hd' hxy
+  have heUpper : e ≤ 2 * n * (d + 1) :=
+    (Nat.lt_mul_div_succ e (by omega : 0 < 2 * n)).le
+  have hdAdd : (d + 1) ^ 3 ≤ 8 * (d ^ 3 + 1) := by
+    by_cases hd0 : d = 0
+    · simp [hd0]
+    · have hle : d + 1 ≤ 2 * d := by omega
+      have hh := Nat.pow_le_pow_left hle 3
+      nlinarith only [hh]
+  have he3 : e ^ 3 ≤ 8 * n ^ 3 * (d + 1) ^ 3 := by
+    have hh := Nat.pow_le_pow_left heUpper 3
+    nlinarith only [hh]
+  have hm1 := Nat.mul_le_mul_left (8 * n ^ 3) hdAdd
+  have hm2 := Nat.mul_le_mul_left (64 * n ^ 3) (Nat.add_le_add_right hd3 1)
+  have hm3 := Nat.mul_le_mul_left (64 * n ^ 3)
+    (show (4 * ((t + 1) ^ 2 + 1)) ^ 3 * n + 1 ≤ ((4 * ((t + 1) ^ 2 + 1)) ^ 3 + 1) * n by nlinarith)
+  change e ^ 3 ≤ (64 * ((4 * ((t + 1) ^ 2 + 1)) ^ 3 + 1)) * n ^ 4
+  nlinarith only [he3, hm1, hm2, hm3]
+
+
+open scoped Classical in
+theorem edge_cube_le {V : Type*} [Fintype V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (t : ℕ) (hfree : (theta t).Free G) :
+    G.edgeFinset.card ^ 3 ≤ (512 * ((4 * ((t + 1) ^ 2 + 1)) ^ 3 + 1)) * Fintype.card V ^ 4 := by
+  classical
+  obtain ⟨K, hKG, hKBip, hhalf⟩ := Erdos713Cut.exists_bipartite_half G
+  have hKfree : (theta t).Free K := fun hc => hfree (hc.mono_right hKG)
+  have hb := bipartite_edge_cube_le K hKBip t hKfree
+  have hp := Nat.pow_le_pow_left hhalf 3
+  nlinarith only [hb, hp]
+
+theorem extremal_cube_le (t n : ℕ) :
+    (extremalNumber n (theta t)) ^ 3 ≤ (512 * ((4 * ((t + 1) ^ 2 + 1)) ^ 3 + 1)) * n ^ 4 := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | (theta t).Free G}
+  change (S.sup (fun G => G.edgeFinset.card)) ^ 3 ≤ _
+  by_cases hS : S.Nonempty
+  · obtain ⟨G, hG, he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    rw [he]
+    have hfree : (theta t).Free G := by simpa [S] using hG
+    simpa only [Fintype.card_fin] using edge_cube_le G t hfree
+  · rw [not_nonempty_iff_eq_empty.mp hS]
+    simp
+
+
+theorem upper (t : ℕ) :
+    (fun n : ℕ => (extremalNumber n (theta t) : ℝ)) =O[atTop]
+      (fun n : ℕ => (n : ℝ) ^ ((4 : ℝ) / 3)) := by
+  simpa only [Nat.cast_ofNat] using Erdos713Rate.upper_of_power_bound (by decide : 3 ≠ 0)
+    (extremal_cube_le t)
+
+lemma c6_contained {t : ℕ} (ht : 2 ≤ t) : Erdos713C6.C6 ⊑ theta t := by
+  let i0 : Fin t := ⟨0, by omega⟩
+  let i1 : Fin t := ⟨1, by omega⟩
+  have hij : i0 ≠ i1 := by intro h; have hh := congrArg Fin.val h; norm_num [i0, i1] at hh
+  apply Erdos713C6.contained_of_hexagon (theta t)
+    ![Sum.inl none, Sum.inl (some i0), Sum.inl (some i1)]
+    ![Sum.inr (some i0), Sum.inr none, Sum.inr (some i1)]
+  · apply Erdos713C6.injective_triple <;> simp [hij]
+  · apply Erdos713C6.injective_triple <;> simp [hij]
+  · intro i j; fin_cases i <;> fin_cases j <;> simp
+  · intro i; fin_cases i <;> simp [theta, bipGraph, Rel]
+  · intro i; fin_cases i <;> simp [theta, bipGraph, Rel]
+
+theorem rate_of_containment {W : Type*} {H : SimpleGraph W} {t : ℕ}
+    (hlo : Erdos713C6.C6 ⊑ H) (hhi : H ⊑ theta t) : Erdos713Rate.HasRate H ((4 : ℝ) / 3) :=
+  Erdos713Rate.rate_of_C6_upper hlo ((Erdos713Rate.extremal_mono_bigO hhi).trans (upper t))
+
+theorem rate {t : ℕ} (ht : 2 ≤ t) : Erdos713Rate.HasRate (theta t) ((4 : ℝ) / 3) :=
+  rate_of_containment (c6_contained ht) (IsContained.refl _)
+
+end Erdos713Theta3
+
+namespace Erdos713Theta3
+open Erdos713RootPower Erdos713Rate
+
+def flipIso (t : ℕ) : theta t ≃g theta t :=
+  ⟨Equiv.sumComm _ _,by
+    rintro (a | a) (b | b) <;> cases a <;> cases b <;>
+      simp [theta,Erdos713C6.bipGraph,Rel,eq_comm]⟩
+
+lemma connected {t : ℕ} (ht : 1 ≤ t) : (theta t).Connected := by
+  let i : Fin t := ⟨0,by omega⟩
+  have h₀ : (theta t).Adj (.inl (some i)) (.inr (some i)) := by
+    simp [theta,Erdos713C6.bipGraph,Rel]
+  have h₁ : (theta t).Adj (.inr (some i)) (.inl none) := by
+    simp [theta,Erdos713C6.bipGraph,Rel]
+  have h₂ : (theta t).Adj (.inl (some i)) (.inr none) := by
+    simp [theta,Erdos713C6.bipGraph,Rel]
+  have hN := h₀.reachable.trans h₁.reachable
+  apply (connected_iff_exists_forall_reachable _).mpr
+  refine ⟨.inl (some i),?_⟩
+  rintro (a | b)
+  · cases a with
+    | none => exact hN
+    | some a =>
+      exact h₂.reachable.trans (show (theta t).Adj (.inr none) (.inl (some a)) by
+        simp [theta,Erdos713C6.bipGraph,Rel]).reachable
+  · cases b with
+    | none => exact h₂.reachable
+    | some b =>
+      exact hN.trans (show (theta t).Adj (.inl none) (.inr (some b)) by
+        simp [theta,Erdos713C6.bipGraph,Rel]).reachable
+
+lemma root_bound {t : ℕ} (ht : 1 ≤ t) (x : Vertex t) :
+    RootPowerBound (theta t) x ((4 : ℝ)/3) := by
+  let i : Fin t := ⟨0,by omega⟩
+  let y : Vertex t := .inl (some i)
+  have hy : (theta t).Adj y ((flipIso t) y) := by
+    simp [y,flipIso,theta,Erdos713C6.bipGraph,Rel]
+  exact (of_root_shift (theta t) y (flipIso t).toCopy hy (by norm_num) (upper t)).of_reachable
+    (connected ht y x)
+
+lemma rooted_rate_of_containment {T : Type*} {J : SimpleGraph T} {t : ℕ} (ht : 1 ≤ t)
+    (hlo : Erdos713C6.C6 ⊑ J) (hhi : J ⊑ theta t) : Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨f⟩ := hhi
+  refine ⟨4/3,by simpa using rate_of_containment hlo ⟨f⟩,?_⟩
+  intro x
+  simpa using (root_bound ht (f x)).of_copy f x
+
+def Sandwich {T : Type*} (J : SimpleGraph T) : Prop :=
+  ∃ t : ℕ, 1 ≤ t ∧ Erdos713C6.C6 ⊑ J ∧ J ⊑ theta t
+
+lemma Sandwich.rate {T : Type*} {J : SimpleGraph T} (hJ : Sandwich J) : HasRate J ((4 : ℝ)/3) := by
+  obtain ⟨t,_,hlo,hhi⟩ := hJ
+  exact rate_of_containment hlo hhi
+
+lemma Sandwich.rooted_rate {T : Type*} {J : SimpleGraph T} (hJ : Sandwich J) :
+    Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨t,ht,hlo,hhi⟩ := hJ
+  exact rooted_rate_of_containment ht hlo hhi
+
+lemma Sandwich.rational {T : Type*} {J : SimpleGraph T} (hJ : Sandwich J)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n J : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  refine ⟨4/3,?_⟩
+  norm_num
+  exact hJ.rate.unique (rate_of_asymptotic hα hc h)
+
+end Erdos713Theta3
+
+
+/- Fresh copies attached along existing edges. The base pattern must admit
+self-copies aligning its distinguished edge with any oriented edge. This is
+an explicit hypothesis, not an assertion about arbitrary bipartite graphs. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713EdgeAttachments
+open Erdos713EdgeBlockers Erdos713Rate Erdos713RootPower
+
+abbrev Interior {A : Type*} (x y : A) := {z : A // z ≠ x ∧ z ≠ y}
+
+/-- Paste F along u-v, retaining all other vertices of F as fresh vertices. -/
+def paste {A W : Type*} (F : SimpleGraph A) (x y : A) (H : SimpleGraph W)
+    (u v : W) : SimpleGraph (W ⊕ Interior x y) where
+  Adj
+    | .inl a, .inl b => H.Adj a b
+    | .inl a, .inr b => (a = u ∧ F.Adj x b.val) ∨ (a = v ∧ F.Adj y b.val)
+    | .inr a, .inl b => (b = u ∧ F.Adj x a.val) ∨ (b = v ∧ F.Adj y a.val)
+    | .inr a, .inr b => F.Adj a.val b.val
+  symm := by
+    rintro (a | a) (b | b) h
+    · exact h.symm
+    · exact h
+    · exact h
+    · exact h.symm
+  loopless := by
+    rintro (a | a) h
+    · exact H.loopless a h
+    · exact F.loopless a.val h
+
+def oldCopy {A W : Type*} (F : SimpleGraph A) (x y : A) (H : SimpleGraph W) (u v : W) :
+    H.Copy (paste F x y H u v) := ⟨⟨Sum.inl,fun h => h⟩,Sum.inl_injective⟩
+
+noncomputable def petalMap {A W : Type*} (x y : A) (u v : W) (z : A) : W ⊕ Interior x y := by
+  classical
+  exact if hx : z = x then .inl u else if hy : z = y then .inl v else .inr ⟨z,hx,hy⟩
+
+lemma petalMap_injective {A W : Type*} {x y : A} {u v : W} (huv : u ≠ v) :
+    Function.Injective (petalMap x y u v) := by
+  classical
+  intro a b hab
+  by_cases hax : a = x <;> by_cases hay : a = y <;>
+    by_cases hbx : b = x <;> by_cases hby : b = y <;>
+    simp_all [petalMap]
+
+noncomputable def petalCopy {A W : Type*} (F : SimpleGraph A) {x y : A} (hxy : F.Adj x y)
+    (H : SimpleGraph W) {u v : W} (huv : H.Adj u v) : F.Copy (paste F x y H u v) := by
+  classical
+  refine ⟨⟨petalMap x y u v,?_⟩,petalMap_injective huv.ne⟩
+  intro a b hab
+  by_cases hax : a = x <;> by_cases hay : a = y <;>
+    by_cases hbx : b = x <;> by_cases hby : b = y <;>
+    simp_all [petalMap,paste,huv.symm]
+  all_goals first | exact Or.inl hab.symm | exact Or.inr hab.symm
+
+/-- The alignment assumption keeps orientation; undirected edge transitivity
+alone is not silently substituted for this condition. -/
+def Alignable {A : Type*} (F : SimpleGraph A) (x y : A) : Prop :=
+  ∀ a b, F.Adj a b → ∃ e : F.Copy F, e x = a ∧ e y = b
+
+lemma aligned_extension {A V : Type*} {F : SimpleGraph A} {x y : A}
+    (hAlign : Alignable F x y) {G : SimpleGraph V} {k : ℕ}
+    (hExt : Extensible F G k) {u v : V} (huv : G.Adj u v)
+    (B : Finset V) (hc : B.card ≤ k) (hu : u ∉ B) (hv : v ∉ B) :
+    ∃ f : F.Copy G, f x = u ∧ f y = v ∧ ∀ a, f a ∉ B := by
+  obtain ⟨f,⟨a,b,hab,he⟩,hB⟩ := hExt s(u,v) huv B hc (by
+    intro w hw
+    rcases Sym2.mem_iff.mp hw with rfl | rfl
+    · exact hu
+    · exact hv)
+  rcases Sym2.eq_iff.mp he with ⟨hfu,hfv⟩ | ⟨hfv,hfu⟩
+  · obtain ⟨e,hex,hey⟩ := hAlign a b hab
+    refine ⟨f.comp e,?_,?_,fun z => hB (e z)⟩
+    · change f (e x) = u
+      rwa [hex]
+    · change f (e y) = v
+      rwa [hey]
+  · obtain ⟨e,hex,hey⟩ := hAlign b a hab.symm
+    refine ⟨f.comp e,?_,?_,fun z => hB (e z)⟩
+    · change f (e x) = u
+      rwa [hex]
+    · change f (e y) = v
+      rwa [hey]
+
+noncomputable def extendCopy {A W V : Type*} {F : SimpleGraph A} {x y : A}
+    {H : SimpleGraph W} {G : SimpleGraph V} (f : H.Copy G) (u v : W)
+    (g : F.Copy G) (hx : g x = f u) (hy : g y = f v)
+    (hAvoid : ∀ a : Interior x y, ∀ w, g a.val ≠ f w) :
+    (paste F x y H u v).Copy G := by
+  refine ⟨⟨Sum.elim f (fun a => g a.val),?_⟩,?_⟩
+  · rintro (a | a) (b | b) hab
+    · exact f.toHom.map_adj hab
+    · rcases hab with ⟨rfl,hb⟩ | ⟨rfl,hb⟩
+      · change G.Adj (f a) (g b.val)
+        rw [← hx]
+        exact g.toHom.map_adj hb
+      · change G.Adj (f a) (g b.val)
+        rw [← hy]
+        exact g.toHom.map_adj hb
+    · rcases hab with ⟨rfl,ha⟩ | ⟨rfl,ha⟩
+      · change G.Adj (g a.val) (f b)
+        rw [← hx]
+        exact (g.toHom.map_adj ha).symm
+      · change G.Adj (g a.val) (f b)
+        rw [← hy]
+        exact (g.toHom.map_adj ha).symm
+    · exact g.toHom.map_adj hab
+  · rintro (a | a) (b | b) hab
+    · exact congrArg Sum.inl (f.injective hab)
+    · exact (hAvoid b a hab.symm).elim
+    · exact (hAvoid a b hab).elim
+    · exact congrArg Sum.inr (Subtype.ext (g.injective hab))
+
+lemma paste_connected {A W : Type*} {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hF : F.Connected) {H : SimpleGraph W} (hH : H.Connected) {u v : W} (huv : H.Adj u v) :
+    (paste F x y H u v).Connected := by
+  classical
+  apply (connected_iff_exists_forall_reachable _).mpr
+  refine ⟨.inl u,?_⟩
+  rintro (w | w)
+  · exact (hH u w).map (oldCopy F x y H u v).toHom
+  · have hp := (hF x w.val).map (petalCopy F hxy H huv).toHom
+    change (paste F x y H u v).Reachable (petalMap x y u v x)
+      (petalMap x y u v w.val) at hp
+    simpa only [petalMap,dif_pos rfl,dif_neg w.prop.1,dif_neg w.prop.2] using hp
+
+/-- The distinguished edge stays fixed as fresh copies are attached. -/
+inductive Built {A : Type} (F : SimpleGraph A) (x y : A) :
+    {W : Type} → SimpleGraph W → W → W → Prop
+  | base : Built F x y F x y
+  | step {W : Type} [Fintype W] {H : SimpleGraph W} {a b : W}
+      (h : Built F x y H a b) (u v : W) (huv : H.Adj u v) :
+      Built F x y (paste F x y H u v) (.inl a) (.inl b)
+
+lemma Built.adj {A W : Type} {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) : H.Adj a b := by
+  induction h with
+  | base => exact hxy
+  | step h u v huv ih => exact ih
+
+lemma Built.connected {A W : Type} {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hF : F.Connected) {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) : H.Connected := by
+  induction h with
+  | base => exact hF
+  | step h u v huv ih => exact paste_connected hxy hF ih huv
+
+lemma Built.contains {A W : Type} {F : SimpleGraph A} {x y : A}
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) : F ⊑ H := by
+  induction h with
+  | base => exact .refl _
+  | @step W _ H a b h u v huv ih => exact ih.trans ⟨oldCopy F x y H u v⟩
+
+end Erdos713EdgeAttachments
+
+namespace Erdos713EdgeAttachments
+open Erdos713EdgeBlockers Erdos713Rate Erdos713RootPower
+
+lemma Built.finite {A W : Type} [Finite A] {F : SimpleGraph A} {x y : A}
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) : Finite W := by
+  induction h with
+  | base => infer_instance
+  | step h u v huv ih => infer_instance
+
+/-- Every old vertex image is retained in each attachment. The avoidance
+condition concerns the entire fresh copy, not only a local support. -/
+lemma Built.aligned_embedding {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hAlign : Alignable F x y) {H : SimpleGraph W} {a b : W} (h : Built F x y H a b)
+    {V : Type*} [Fintype V] {G : SimpleGraph V} {k : ℕ}
+    (hExt : Extensible F G k) (hk : Nat.card W ≤ k) {p q : V} (hpq : G.Adj p q) :
+    ∃ f : H.Copy G, f a = p ∧ f b = q := by
+  classical
+  induction h with
+  | base =>
+    obtain ⟨f,hx,hy,_⟩ := aligned_extension hAlign hExt hpq ∅ (by simp) (by simp) (by simp)
+    exact ⟨f,hx,hy⟩
+  | @step W _ H a b h u v huv ih =>
+    have hkOld : Nat.card W ≤ k := by
+      have hle : Nat.card W ≤ Nat.card (W ⊕ Interior x y) :=
+        Nat.card_le_card_of_injective (f := fun z : W => (Sum.inl z : W ⊕ Interior x y))
+          Sum.inl_injective
+      exact hle.trans hk
+    obtain ⟨f,hfa,hfb⟩ := ih hkOld
+    let U : Finset V := univ.image f
+    let B : Finset V := U \ {f u,f v}
+    have hc : B.card ≤ k := (card_le_card sdiff_subset).trans
+      (card_image_le.trans (by simpa only [card_univ,Fintype.card_eq_nat_card] using hkOld))
+    obtain ⟨g,hgx,hgy,hAvoid⟩ := aligned_extension hAlign hExt (f.toHom.map_adj huv)
+      B hc (by simp [B]) (by simp [B])
+    have hNew (z : Interior x y) (w : W) : g z.val ≠ f w := by
+      intro he
+      have hmem : g z.val ∈ U := he.symm ▸ mem_image_of_mem f (mem_univ w)
+      have hxu : g z.val ≠ f u := fun hh => z.prop.1 (g.injective (hh.trans hgx.symm))
+      have hyv : g z.val ≠ f v := fun hh => z.prop.2 (g.injective (hh.trans hgy.symm))
+      exact hAvoid z.val (mem_sdiff.mpr ⟨hmem,by
+        simpa only [mem_insert,mem_singleton,not_or] using And.intro hxu hyv⟩)
+    exact ⟨extendCopy f u v g hgx hgy hNew,hfa,hfb⟩
+
+lemma Built.root_edge_bound {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b)
+    {V : Type*} [Fintype V] (G : SimpleGraph V) (S : Set V)
+    (hB : G.IsBipartiteWith S Sᶜ) (hroot : ∀ f : H.Copy G, f a ∉ S) :
+    Nat.card G.edgeSet ≤ 2^(2*Nat.card W+2)*extremalNumber (Fintype.card V) F := by
+  by_contra hn
+  obtain ⟨K,hKG,hne,hExt⟩ := exists_extensible_core F G hNoIso ⟨x,y,hxy⟩ (Nat.lt_of_not_ge hn)
+  obtain ⟨u,v,huv⟩ := ne_bot_iff_exists_adj.mp hne
+  have hbad {u v : V} (huv : K.Adj u v) (hu : u ∈ S) : False := by
+    obtain ⟨f,hfa,hfb⟩ := h.aligned_embedding hAlign hExt le_rfl huv
+    let g : H.Copy G := (Copy.ofLE K G hKG).comp f
+    apply hroot g
+    change f a ∈ S
+    rwa [hfa]
+  rcases hB.mem_of_adj (hKG huv) with hh | hh
+  · exact hbad huv hh.1
+  · exact hbad huv.symm hh.2
+
+lemma global_extremal_bound_of_upper {A : Type*} (F : SimpleGraph A) {r : ℝ}
+    (hr : 0 ≤ r)
+    (hU : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ n : ℕ, (extremalNumber n F : ℝ) ≤ C*(n : ℝ)^r := by
+  classical
+  obtain ⟨C,hC,hbound⟩ := global_free_bound_of_upper F hr hU
+  refine ⟨C,hC,?_⟩
+  intro n
+  rw [← Fintype.card_fin n,extremalNumber_le_iff_of_nonneg _ (by positivity)]
+  intro G _ hG
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_fin] using hbound n G hG
+
+lemma Built.root_bound_base {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) {r : ℝ} (hr : 0 ≤ r)
+    (hU : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    RootPowerBound H a r := by
+  obtain ⟨C,hC,hbound⟩ := global_extremal_bound_of_upper F hr hU
+  let L : ℕ := 2^(2*Nat.card W+2)
+  refine ⟨(L : ℝ)*C,by positivity,?_⟩
+  intro n G S hB hroot
+  have hb := h.root_edge_bound hxy hNoIso hAlign G S hB hroot
+  simp only [Fintype.card_fin] at hb
+  have hb' : (Nat.card G.edgeSet : ℝ) ≤ (L : ℝ)*(extremalNumber n F : ℝ) := by
+    exact_mod_cast hb
+  exact hb'.trans (by
+    rw [mul_assoc]
+    exact mul_le_mul_of_nonneg_left (hbound n) (Nat.cast_nonneg L))
+
+lemma Built.root_bound {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hF : F.Connected) (hNoIso : ∀ z, ∃ w, F.Adj z w)
+    (hAlign : Alignable F x y) {H : SimpleGraph W} {a b : W} (h : Built F x y H a b)
+    {r : ℝ} (hr : 0 ≤ r)
+    (hU : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r))
+    (z : W) : RootPowerBound H z r :=
+  (h.root_bound_base hxy hNoIso hAlign hr hU).of_reachable ((h.connected hxy hF) a z)
+
+lemma Built.upper {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) {r : ℝ} (hr : 0 ≤ r)
+    (hU : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r) :=
+  (h.root_bound_base hxy hNoIso hAlign hr hU).upper
+
+lemma rate_of_containment {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) {r : ℝ} (hR : HasRate F r)
+    {T : Type*} {J : SimpleGraph T} (hlo : F ⊑ J) (hhi : J ⊑ H) : HasRate J r := by
+  refine ⟨hR.one_le,(extremal_mono_bigO hhi).trans
+    (h.upper hxy hNoIso hAlign (by linarith [hR.one_le]) hR.upper),?_⟩
+  intro s hs hJ
+  exact hR.lower s hs ((extremal_mono_bigO hlo).trans hJ)
+
+lemma rooted_rate_of_containment {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hF : F.Connected) (hNoIso : ∀ z, ∃ w, F.Adj z w)
+    (hAlign : Alignable F x y) {H : SimpleGraph W} {a b : W} (h : Built F x y H a b)
+    {r : ℚ} (hR : HasRate F (r : ℝ)) {T : Type*} {J : SimpleGraph T}
+    (hlo : F ⊑ J) (hhi : J ⊑ H) : Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨f⟩ := hhi
+  refine ⟨r,rate_of_containment hxy hNoIso hAlign h hR hlo ⟨f⟩,?_⟩
+  intro z
+  exact (h.root_bound hxy hF hNoIso hAlign (by linarith [hR.one_le]) hR.upper (f z)).of_copy f z
+
+end Erdos713EdgeAttachments
+
+namespace Erdos713EdgeAttachments
+open Erdos713Rate Erdos713RootPower
+
+lemma cycle_alignable (n : ℕ) : Alignable (cycleGraph (n+2)) (0 : Fin (n+2)) 1 := by
+  intro a b hab
+  rcases cycleGraph_adj.mp hab with hab | hab
+  · let e : cycleGraph (n+2) ≃g cycleGraph (n+2) :=
+      ⟨Equiv.subLeft a,by
+        intro u v
+        change (cycleGraph (n+2)).Adj (a-u) (a-v) ↔ (cycleGraph (n+2)).Adj u v
+        have h₁ : (a-u)-(a-v) = v-u := by abel
+        have h₂ : (a-v)-(a-u) = u-v := by abel
+        simp only [cycleGraph_adj,h₁,h₂,or_comm]⟩
+    refine ⟨e.toCopy,?_,?_⟩
+    · change a - 0 = a
+      simp
+    · change a - 1 = b
+      have hh : a = 1+b := sub_eq_iff_eq_add.mp hab
+      rw [hh]
+      abel
+  · let e : cycleGraph (n+2) ≃g cycleGraph (n+2) :=
+      ⟨Equiv.addRight a,by intro u v; exact circulantGraph_adj_translate⟩
+    refine ⟨e.toCopy,?_,?_⟩
+    · change 0 + a = a
+      simp
+    · change 1+a = b
+      exact (sub_eq_iff_eq_add.mp hab).symm
+
+lemma cycle_base_adj (n : ℕ) : (cycleGraph (n+2)).Adj (0 : Fin (n+2)) 1 := by
+  rw [cycleGraph_adj]
+  exact Or.inr (by simp)
+
+lemma cycle_no_isolates (n : ℕ) (z : Fin (n+2)) : ∃ w, (cycleGraph (n+2)).Adj z w := by
+  refine ⟨z+1,?_⟩
+  rw [cycleGraph_adj]
+  exact Or.inr (by simp)
+
+/-- The lower-containment hypothesis is essential: a subgraph of a cycle
+attachment construction need not have the base cycle's exponent. -/
+def Sandwich {A : Type} (F : SimpleGraph A) (x y : A) {T : Type*} (J : SimpleGraph T) : Prop :=
+  ∃ (W : Type) (H : SimpleGraph W) (a b : W), Built F x y H a b ∧ F ⊑ J ∧ J ⊑ H
+
+lemma Sandwich.rate {A : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {r : ℝ} (hR : HasRate F r) {T : Type*} {J : SimpleGraph T} (h : Sandwich F x y J) :
+    HasRate J r := by
+  obtain ⟨W,H,a,b,hB,hlo,hhi⟩ := h
+  exact rate_of_containment hxy hNoIso hAlign hB hR hlo hhi
+
+lemma Sandwich.rooted_rate {A : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hF : F.Connected) (hNoIso : ∀ z, ∃ w, F.Adj z w)
+    (hAlign : Alignable F x y) {r : ℚ} (hR : HasRate F (r : ℝ))
+    {T : Type*} {J : SimpleGraph T} (h : Sandwich F x y J) :
+    Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨W,H,a,b,hB,hlo,hhi⟩ := h
+  exact rooted_rate_of_containment hxy hF hNoIso hAlign hB hR hlo hhi
+
+lemma Sandwich.rational {A : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {r : ℚ} (hR : HasRate F (r : ℝ)) {T : Type*} {J : SimpleGraph T} (hJ : Sandwich F x y J)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (h : (fun n : ℕ => (extremalNumber n J : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  exact ⟨r,(hJ.rate hxy hNoIso hAlign hR).unique (rate_of_asymptotic hα hc h)⟩
+
+lemma cycle_sandwich_rooted_rate {n : ℕ} {r : ℚ}
+    (hR : HasRate (cycleGraph (n+2)) (r : ℝ)) {T : Type*} {J : SimpleGraph T}
+    (hJ : Sandwich (cycleGraph (n+2)) 0 1 J) : Erdos713ActualBlocks.RootedRate J :=
+  hJ.rooted_rate (cycle_base_adj n) (cycleGraph_connected (n := n+1))
+    (cycle_no_isolates n) (cycle_alignable n) hR
+
+lemma hexagon_sandwich_rate {T : Type*} {J : SimpleGraph T}
+    (hJ : Sandwich Erdos713C6.C6 0 1 J) : HasRate J ((4 : ℝ)/3) :=
+  hJ.rate (cycle_base_adj 4) (cycle_no_isolates 4) (cycle_alignable 4)
+    (Erdos713Rate.c6_rate (.refl _) (.refl _))
+
+lemma hexagon_sandwich_rooted_rate {T : Type*} {J : SimpleGraph T}
+    (hJ : Sandwich Erdos713C6.C6 0 1 J) : Erdos713ActualBlocks.RootedRate J :=
+  cycle_sandwich_rooted_rate (r := 4/3)
+    (by simpa using Erdos713Rate.c6_rate (.refl Erdos713C6.C6) (.refl _)) hJ
+
+lemma decagon_sandwich_rate {T : Type*} {J : SimpleGraph T}
+    (hJ : Sandwich Erdos713C10.C10 0 1 J) : HasRate J ((6 : ℝ)/5) :=
+  hJ.rate (cycle_base_adj 8) (cycle_no_isolates 8) (cycle_alignable 8) Erdos713C10.rate
+
+lemma decagon_sandwich_rooted_rate {T : Type*} {J : SimpleGraph T}
+    (hJ : Sandwich Erdos713C10.C10 0 1 J) : Erdos713ActualBlocks.RootedRate J :=
+  cycle_sandwich_rooted_rate (r := 6/5) (by simpa using Erdos713C10.rate) hJ
+
+/-- Mixed actual blocks can use either new cycle-attachment family or any
+previously proved piece. This invokes actual block decomposition. -/
+lemma block_rates_of_cycle_attachment_blocks {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (h : ∀ S : Set W, Erdos713Blocks.IsBlock G S →
+      3 ≤ Nat.card S →
+        Erdos713CycleAssembly.Piece (G.induce S) ∨
+        Sandwich Erdos713C6.C6 0 1 (G.induce S) ∨
+        Sandwich Erdos713C10.C10 0 1 (G.induce S)) : Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hCyc
+  rcases h S hS hCyc with hOld | hHex | hDec
+  · haveI : Nonempty S := hS.connected.nonempty
+    exact hOld.rooted_rate (hS.noCut.min_degree hS.connected
+      (by simpa only [Fintype.card_eq_nat_card] using hCyc))
+  · exact hexagon_sandwich_rooted_rate hHex
+  · exact decagon_sandwich_rooted_rate hDec
+
+end Erdos713EdgeAttachments
+
+namespace Erdos713EdgeAttachments
+open Erdos713EdgeBlockers
+
+lemma paste_isBipartite {A W : Type*} {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hF : F.IsBipartite) {H : SimpleGraph W} (hH : H.IsBipartite)
+    {u v : W} (huv : H.Adj u v) : (paste F x y H u v).IsBipartite := by
+  obtain ⟨χF⟩ := hF
+  obtain ⟨χH⟩ := hH
+  let ε : Fin 2 := χH u - χF x
+  let ψ : F.Coloring (Fin 2) := Coloring.mk (fun z => χF z + ε) (by
+    intro a b hab he
+    exact χF.valid hab (add_right_cancel he))
+  have hx : ψ x = χH u := by change χF x + (χH u - χF x) = χH u; abel
+  have hy : ψ y = χH v := by
+    have h₁ := ψ.valid hxy
+    have h₂ := χH.valid huv
+    rw [hx] at h₁
+    omega
+  let χ : W ⊕ Interior x y → Fin 2 := Sum.elim χH (fun z => ψ z.val)
+  refine ⟨Coloring.mk χ ?_⟩
+  rintro (a | a) (b | b) hab
+  · exact χH.valid hab
+  · change χH a ≠ ψ b.val
+    rcases hab with ⟨rfl,hb⟩ | ⟨rfl,hb⟩
+    · rw [← hx]; exact ψ.valid hb
+    · rw [← hy]; exact ψ.valid hb
+  · change ψ a.val ≠ χH b
+    rcases hab with ⟨rfl,ha⟩ | ⟨rfl,ha⟩
+    · rw [← hx]; exact (ψ.valid ha).symm
+    · rw [← hy]; exact (ψ.valid ha).symm
+  · exact ψ.valid hab
+
+lemma Built.isBipartite {A W : Type} {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hF : F.IsBipartite)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) : H.IsBipartite := by
+  induction h with
+  | base => exact hF
+  | step h u v huv ih => exact paste_isBipartite hxy hF ih huv
+
+lemma Built.free_edge_bound {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b)
+    {V : Type*} [Fintype V] (G : SimpleGraph V) (hFree : H.Free G) :
+    Nat.card G.edgeSet ≤ 2^(2*Nat.card W+2)*extremalNumber (Fintype.card V) F := by
+  by_contra hn
+  obtain ⟨K,hKG,hne,hExt⟩ := exists_extensible_core F G hNoIso ⟨x,y,hxy⟩ (Nat.lt_of_not_ge hn)
+  obtain ⟨u,v,huv⟩ := ne_bot_iff_exists_adj.mp hne
+  obtain ⟨f,_,_⟩ := h.aligned_embedding hAlign hExt le_rfl huv
+  exact hFree ((show H ⊑ K from ⟨f⟩).mono_right hKG)
+
+lemma Built.extremal_bound {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hNoIso : ∀ z, ∃ w, F.Adj z w) (hAlign : Alignable F x y)
+    {H : SimpleGraph W} {a b : W} (h : Built F x y H a b) (n : ℕ) :
+    extremalNumber n H ≤ 2^(2*Nat.card W+2)*extremalNumber n F := by
+  classical
+  rw [← Fintype.card_fin n,extremalNumber_le_iff]
+  intro G _ hG
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using h.free_edge_bound hxy hNoIso hAlign G hG
+
+end Erdos713EdgeAttachments
+
+/-! A single smaller bipartite quotient carries quantitative cloning mass
+cofinally. This does not transfer an extremal rate to that quotient. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713FixedFold
+open Erdos713Cloning Erdos713BipExtremal Erdos713SwitchGluing
+set_option maxHeartbeats 2000000
+
+/-- A copy of the quotient by this specified ordered pair, with the merged
+vertex at the specified host root. -/
+def AtPair {W V : Type*} (H : SimpleGraph W) (G : SimpleGraph V)
+    (p : W × W) (v : V) : Prop :=
+  ∃ hab : p.1 ≠ p.2, ∃ hnab : ¬ H.Adj p.1 p.2,
+    ∃ f : (identified H p.1 p.2 hnab).Copy G, f ⟨p.2,hab.symm⟩ = v
+
+lemma exists_pair_of_fold {W V : Type*} {H : SimpleGraph W} {G : SimpleGraph V}
+    {v : V} (h : SingleFold H G v) : ∃ p, AtPair H G p v := by
+  obtain ⟨a,b,hab,hnab,f,hf⟩ := h.identified_copy
+  exact ⟨(a,b),hab,hnab,f,hf⟩
+
+/-- Finite weighted pigeonholing, without asserting that the chosen roots
+are a positive proportion of all host vertices. -/
+lemma weighted_pair {W V : Type*} [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V)
+    (B : Finset V) (hB : ∀ v ∈ B, SingleFold H G v) (w : V → ℝ)
+    {L : ℝ} (hL : 0 < L) (hMass : L ≤ ∑ v ∈ B, w v) :
+    ∃ p : W × W, ∃ F : Finset V, F ⊆ B ∧ F.Nonempty ∧
+      (∀ v ∈ F, AtPair H G p v) ∧
+      L ≤ (Fintype.card W : ℝ)^2 * ∑ v ∈ F, w v := by
+  classical
+  have hBne : B.Nonempty := by
+    by_contra he
+    simp only [not_nonempty_iff_eq_empty.mp he,sum_empty] at hMass
+    linarith
+  obtain ⟨v,hv⟩ := hBne
+  obtain ⟨p₀,hp₀⟩ := exists_pair_of_fold (hB v hv)
+  haveI : Nonempty (W × W) := ⟨p₀⟩
+  have he : ∀ v ∈ B, ∃ p : W × W, AtPair H G p v :=
+    fun v hv => exists_pair_of_fold (hB v hv)
+  choose p hp using he
+  let label : V → W × W := fun v => if hv : v ∈ B then p v hv else p₀
+  let M : W × W → ℝ := fun i => ∑ v ∈ B.filter (fun v => label v = i), w v
+  obtain ⟨i,hi,hmax⟩ := (univ : Finset (W × W)).exists_max_image M univ_nonempty
+  have hsum : (∑ v ∈ B, w v) = ∑ i : W × W, M i := by
+    symm
+    exact sum_fiberwise_of_maps_to (g := label) (t := univ) (fun _ _ => mem_univ _) w
+  have hle : (∑ i : W × W, M i) ≤ (Fintype.card W : ℝ)^2*M i := by
+    calc
+      _ ≤ ∑ _j : W × W, M i := sum_le_sum (fun j hj => hmax j hj)
+      _ = _ := by simp [pow_two]
+  let F := B.filter (fun v => label v = i)
+  have hbound : L ≤ (Fintype.card W : ℝ)^2 * ∑ v ∈ F, w v := hMass.trans (hsum.le.trans hle)
+  refine ⟨i,F,filter_subset _ _,?_,?_,hbound⟩
+  · by_contra he
+    simp only [not_nonempty_iff_eq_empty.mp he,sum_empty,mul_zero] at hbound
+    linarith
+  · intro v hv
+    have hvB := (mem_filter.mp hv).1
+    have hvi : p v hvB = i := by simpa only [label,dif_pos hvB] using (mem_filter.mp hv).2
+    exact hvi ▸ hp v hvB
+
+/-- Geometry and forward-increment control on one bipartite-class extremal
+host. The exact ordinary leading constant is not asserted for this host. -/
+def Joint {W : Type*} (H : SimpleGraph W) (r s : ℝ) (n : ℕ) (G : SimpleGraph (Fin n)) : Prop :=
+  0 < n ∧ H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H ∧
+    extremalNumber n H ≤ 2*Nat.card G.edgeSet ∧
+    ∃ C : ℝ, 0 < C ∧ (Nat.card G.edgeSet : ℝ) = C*(n : ℝ)^r ∧
+      (∀ j : ℕ, j ≤ n → (number j H : ℝ) ≤ C*(j : ℝ)^r) ∧
+      (∀ v, C*((n : ℝ)^r-((n-1 : ℕ) : ℝ)^r) ≤ (Nat.card (G.neighborSet v) : ℝ)) ∧
+      (∀ S : Finset (Fin n), 2*S.card ≤ n →
+        expansionConstant r*C*S.card*(n : ℝ)^(r-1) ≤
+          (Nat.card (cross G (S : Set (Fin n))).edgeSet : ℝ)) ∧
+      (n : ℝ)*((number (n+1) H : ℝ)-(number n H : ℝ)) ≤ s*(number n H : ℝ)
+
+lemma mass_witness {W : Type*} [Fintype W] (H : SimpleGraph W) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hs : s < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ p : W × W, ∃ n, N ≤ n ∧ ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧
+      ∃ F : Finset (Fin n), F.Nonempty ∧ (∀ v ∈ F, AtPair H G p v) ∧
+        (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+          (Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨n,hn,hnp,C,hC,G,hfree,hB,he,hhalf,hEq,hUpper,hDeg,hCut,hinc,B,hFold,hmass⟩ :=
+    joint_with_increment H hr hra has hc h N
+  have hE : (0 : ℝ) < Nat.card G.edgeSet := by
+    rw [hEq]
+    exact mul_pos hC (Real.rpow_pos_of_pos (by exact_mod_cast hnp) r)
+  obtain ⟨p,F,hFB,hFne,hF,hMF⟩ := weighted_pair H G B hFold
+    (fun v => (Nat.card (G.neighborSet v) : ℝ)) (mul_pos (sub_pos.mpr hs) hE) hmass
+  exact ⟨p,n,hn,G,⟨hnp,hfree,hB,he,hhalf,C,hC,hEq,hUpper,hDeg,hCut,hinc⟩,F,hFne,hF,hMF⟩
+
+/-- The SAME ordered pair is fixed before the size threshold. Every retained
+root has a quotient-copy whose merged vertex maps there, and these roots
+carry a fixed positive fraction of the host's total edge mass. -/
+theorem fixed_pair_mass {W : Type*} [Fintype W] (H : SimpleGraph W) {α c r s : ℝ}
+    (hr : 1 < r) (hra : r < α) (has : α < s) (hs : s < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      ∀ N : ℕ, ∃ n, N ≤ n ∧ ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧
+        ∃ F : Finset (Fin n), F.Nonempty ∧
+          (∀ v ∈ F, ∃ f : (identified H a b hnab).Copy G, f ⟨b,hab.symm⟩ = v) ∧
+          (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+            (Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ) := by
+  let P (p : W × W) (n : ℕ) : Prop := ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧
+    ∃ F : Finset (Fin n), F.Nonempty ∧ (∀ v ∈ F, AtPair H G p v) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+        (Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ)
+  obtain ⟨p,hp⟩ := finite_cofinal (P := P) (mass_witness H hr hra has hs hc h)
+  obtain ⟨n,_,G,hJoint,F,hFne,hF,hMass⟩ := hp 0
+  obtain ⟨v,hv⟩ := hFne
+  obtain ⟨hab,hnab,f,hfv⟩ := hF v hv
+  refine ⟨p.1,p.2,hab,hnab,hJoint.2.2.1.of_hom f.toHom,?_⟩
+  intro N
+  obtain ⟨n,hn,G,hJoint,F,hFne,hF,hMass⟩ := hp N
+  refine ⟨n,hn,G,hJoint,F,hFne,?_,hMass⟩
+  intro v hv
+  obtain ⟨hab',hnab',f,hf⟩ := hF v hv
+  exact ⟨f,hf⟩
+
+/-- Cardinality control follows from the maximum possible host degree, not
+from an unproved almost-regularity condition. -/
+lemma degree_mass_le {V : Type*} [Fintype V] (G : SimpleGraph V) (F : Finset V) :
+    (∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ)) ≤ (Fintype.card V : ℝ)*F.card := by
+  have hd (v : V) : (Nat.card (G.neighborSet v) : ℝ) ≤ (Fintype.card V : ℝ) := by
+    have hh := Nat.card_le_card_of_injective
+      (fun z : G.neighborSet v => z.val) Subtype.val_injective
+    rw [Nat.card_eq_fintype_card (α := V)] at hh
+    exact_mod_cast hh
+  calc
+    _ ≤ ∑ _v ∈ F, (Fintype.card V : ℝ) := sum_le_sum (fun v _ => hd v)
+    _ = _ := by simp [mul_comm]
+
+/-- A root-mass witness retains all the joint properties on its SAME host. -/
+def MassAt {W : Type*} [Fintype W] (H : SimpleGraph W) (p : W × W)
+    (r s : ℝ) (n : ℕ) : Prop :=
+  ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧
+    ∃ F : Finset (Fin n), F.Nonempty ∧ (∀ v ∈ F, AtPair H G p v) ∧
+      (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+        (Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ)
+
+def NearMass {W : Type*} [Fintype W] (H : SimpleGraph W) (p : W × W)
+    (α ε : ℝ) (n : ℕ) : Prop :=
+  ∃ r s : ℝ, 1 < r ∧ r < α ∧ α-ε < r ∧ α < s ∧ s < 2 ∧ s < α+ε ∧ MassAt H p r s n
+
+lemma NearMass.mono {W : Type*} [Fintype W] {H : SimpleGraph W} {p : W × W}
+    {α ε δ : ℝ} {n : ℕ} (h : NearMass H p α ε n) (hεδ : ε ≤ δ) : NearMass H p α δ n := by
+  obtain ⟨r,s,hr,hra,hεr,has,hs,hsε,hM⟩ := h
+  exact ⟨r,s,hr,hra,by linarith,has,hs,by linarith,hM⟩
+
+lemma near_mass_witness {W : Type*} [Fintype W] (H : SimpleGraph W) {α c ε : ℝ}
+    (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c) (hε : 0 < ε)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N : ℕ) :
+    ∃ p : W × W, ∃ n, N ≤ n ∧ NearMass H p α ε n := by
+  obtain ⟨r,hr,hra⟩ := exists_between (show max 1 (α-ε) < α by
+    exact max_lt hα (by linarith))
+  obtain ⟨s,has,hs⟩ := exists_between (show α < min 2 (α+ε) by
+    exact lt_min hα2 (by linarith))
+  have hr1 : 1 < r := (le_max_left _ _).trans_lt hr
+  have hrε : α-ε < r := (le_max_right _ _).trans_lt hr
+  have hs2 : s < 2 := hs.trans_le (min_le_left _ _)
+  have hsε : s < α+ε := hs.trans_le (min_le_right _ _)
+  obtain ⟨p,n,hn,hM⟩ := mass_witness H hr1 hra has hs2 hc h N
+  exact ⟨p,n,hn,r,s,hr1,hra,hrε,has,hs2,hsε,hM⟩
+
+/-- One ordered identification pair works independently of BOTH the size
+threshold and the requested accuracy of the exponents r,s around alpha. -/
+theorem uniform_pair_mass {W : Type*} [Fintype W] (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ p : W × W, ∀ ε : ℝ, 0 < ε → ∀ N : ℕ, ∃ n, N ≤ n ∧ NearMass H p α ε n := by
+  let P (p : W × W) (k : ℕ) : Prop := ∃ n, k ≤ n ∧ NearMass H p α (1/(k+1)) n
+  have hP : ∀ N, ∃ p k, N ≤ k ∧ P p k := by
+    intro N
+    obtain ⟨p,n,hn,hM⟩ := near_mass_witness H hα hα2 hc
+      (show (0 : ℝ) < 1/(N+1) by positivity) h N
+    exact ⟨p,N,le_rfl,n,hn,hM⟩
+  obtain ⟨p,hp⟩ := finite_cofinal hP
+  refine ⟨p,?_⟩
+  intro ε hε N
+  obtain ⟨K,hK⟩ := exists_nat_one_div_lt hε
+  obtain ⟨k,hk,n,hkn,hM⟩ := hp (max N K)
+  have hKk : (K : ℝ)+1 ≤ (k : ℝ)+1 := by
+    exact_mod_cast (Nat.add_le_add_right ((le_max_right N K).trans hk) 1)
+  have hεk : (1 : ℝ)/(k+1) < ε :=
+    (one_div_le_one_div_of_le (by positivity : (0 : ℝ) < K+1) hKk).trans_lt hK
+  exact ⟨n,(le_max_left N K).trans (hk.trans hkn),hM.mono hεk.le⟩
+
+lemma MassAt.identification {W : Type*} [Fintype W] {H : SimpleGraph W} {p : W × W}
+    {r s : ℝ} {n : ℕ} (h : MassAt H p r s n) :
+    ∃ hab : p.1 ≠ p.2, ∃ hnab : ¬ H.Adj p.1 p.2,
+      (identified H p.1 p.2 hnab).IsBipartite := by
+  obtain ⟨G,hJ,F,hFne,hF,hMass⟩ := h
+  obtain ⟨v,hv⟩ := hFne
+  obtain ⟨hab,hnab,f,hf⟩ := hF v hv
+  exact ⟨hab,hnab,hJ.2.2.1.of_hom f.toHom⟩
+
+/-- The fixed quotient is bipartite and strictly smaller; the mass and
+near-exponent witness statements still assert no rate for that quotient. -/
+theorem uniform_identification_mass {W : Type*} [Fintype W] (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      Nat.card {w : W // w ≠ a}+1 = Nat.card W ∧
+      ∀ ε : ℝ, 0 < ε → ∀ N : ℕ, ∃ n, N ≤ n ∧ NearMass H (a,b) α ε n := by
+  obtain ⟨p,hp⟩ := uniform_pair_mass H hα hα2 hc h
+  obtain ⟨n,hn,r,s,hr,hra,hεr,has,hs,hsε,hM⟩ := hp 1 (by norm_num) 0
+  obtain ⟨hab,hnab,hB⟩ := hM.identification
+  exact ⟨p.1,p.2,hab,hnab,hB,card_identified_vertices p.1,hp⟩
+
+/-- The fixed quotient occurs at arbitrarily many DISTINCT root images in
+the same joint witnesses. No disjointness of the full copies is asserted. -/
+theorem uniform_identification_many_roots {W : Type*} [Fintype W] (H : SimpleGraph W) {α c : ℝ}
+    (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      ∀ ε : ℝ, 0 < ε → ∀ N K : ℕ, ∃ n, N ≤ n ∧ ∃ r s : ℝ,
+        1 < r ∧ r < α ∧ α-ε < r ∧ α < s ∧ s < 2 ∧ s < α+ε ∧
+        ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧
+          ∃ F : Finset (Fin n), K < F.card ∧
+            (∀ v ∈ F, ∃ f : (identified H a b hnab).Copy G, f ⟨b,hab.symm⟩ = v) ∧
+            (2-s)*(Nat.card G.edgeSet : ℝ) ≤
+              (Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨a,b,hab,hnab,hB,hcard,hp⟩ := uniform_identification_mass H hα hα2 hc h
+  refine ⟨a,b,hab,hnab,hB,?_⟩
+  intro ε hε N K
+  let δ : ℝ := (2-α)/2
+  have hδ : 0 < δ := by dsimp [δ]; linarith
+  have hlim : Tendsto (fun n : ℕ => (number n H : ℝ)/(n : ℝ)) atTop atTop := by
+    simpa only [Real.rpow_one] using lower_ratio_top H hα hc h
+  obtain ⟨L,hL⟩ := eventually_atTop.mp (hlim.eventually_gt_atTop
+    ((Fintype.card W : ℝ)^2*K/δ))
+  obtain ⟨n,hn,r,s,hr,hra,hεr,has,hs,hsε,G,hJ,F,hFne,hF,hMass⟩ :=
+    hp (min ε δ) (lt_min hε hδ) (max N L)
+  have hδs : δ < 2-s := by
+    have hh : s < α+δ := hsε.trans_le (add_le_add le_rfl (min_le_right ε δ))
+    dsimp [δ] at hh ⊢
+    linarith
+  have he : (Nat.card G.edgeSet : ℝ) = (number n H : ℝ) := by exact_mod_cast hJ.2.2.2.1
+  have hsmall : δ*(Nat.card G.edgeSet : ℝ) ≤
+      (Fintype.card W : ℝ)^2 * ((n : ℝ)*F.card) := by
+    calc
+      _ ≤ (2-s)*(Nat.card G.edgeSet : ℝ) :=
+        mul_le_mul_of_nonneg_right hδs.le (Nat.cast_nonneg _)
+      _ ≤ _ := hMass.trans (mul_le_mul_of_nonneg_left
+        (by simpa only [Fintype.card_fin] using degree_mass_le G F) (sq_nonneg _))
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hJ.1
+  have hlarge := hL n ((le_max_right N L).trans hn)
+  have hlarge' : (Fintype.card W : ℝ)^2*K*(n : ℝ) < δ*(Nat.card G.edgeSet : ℝ) := by
+    rw [he]
+    have hh := (lt_div_iff₀ hnR).mp hlarge
+    have hm := mul_lt_mul_of_pos_left hh hδ
+    have hEq : δ*((Fintype.card W : ℝ)^2*K/δ*(n : ℝ)) =
+        (Fintype.card W : ℝ)^2*K*(n : ℝ) := by field_simp
+    rwa [hEq] at hm
+  have hKF : K < F.card := by
+    by_contra hNot
+    have hle : (F.card : ℝ) ≤ K := by exact_mod_cast (le_of_not_gt hNot)
+    have hh := mul_le_mul_of_nonneg_left hle (mul_nonneg (sq_nonneg (Fintype.card W : ℝ)) hnR.le)
+    nlinarith
+  refine ⟨n,(le_max_left N L).trans hn,r,s,hr,hra,?_,has,hs,?_,G,hJ,F,hKF,?_,hMass⟩
+  · have hh := min_le_left ε δ
+    linarith
+  · exact hsε.trans_le (add_le_add le_rfl (min_le_left ε δ))
+  · intro v hv
+    obtain ⟨hab',hnab',f,hf⟩ := hF v hv
+    exact ⟨f,hf⟩
+
+end Erdos713FixedFold
+
+
+/-! Extremal bounds for copies glued along a common edge. -/
+
+open Filter SimpleGraph Asymptotics
+
+namespace Erdos713EdgeFan
+open Finset Erdos713Rate
+
+abbrev Vertex {W : Type*} (x y : W) (t : ℕ) := Bool ⊕ (Fin t × {w : W // w ≠ x ∧ w ≠ y})
+
+def base {W : Type*} (x y : W) {t : ℕ} : Vertex x y t → W :=
+  Sum.elim (fun b => if b then y else x) (fun z => z.2.val)
+
+def fan {W : Type*} (H : SimpleGraph W) (x y : W) (t : ℕ) : SimpleGraph (Vertex x y t) where
+  Adj a b := H.Adj (base x y a) (base x y b) ∧
+    match a, b with
+    | Sum.inr (i, _), Sum.inr (j, _) => i = j
+    | _, _ => True
+  symm := by
+    rintro (a | ⟨i,a⟩) (b | ⟨j,b⟩) h
+    · exact ⟨h.1.symm, trivial⟩
+    · exact ⟨h.1.symm, trivial⟩
+    · exact ⟨h.1.symm, trivial⟩
+    · exact ⟨h.1.symm, h.2.symm⟩
+  loopless a h := H.loopless _ h.1
+
+noncomputable def petalMap {W : Type*} (x y : W) {t : ℕ} (i : Fin t) : W → Vertex x y t := by
+  classical
+  exact fun w => if h : w = x then Sum.inl false else
+    if h' : w = y then Sum.inl true else Sum.inr (i, ⟨w,h,h'⟩)
+
+lemma base_petalMap {W : Type*} {x y : W} (hxy : x ≠ y) {t : ℕ} (i : Fin t) (w : W) :
+    base x y (petalMap x y i w) = w := by
+  classical
+  by_cases hx : w = x <;> by_cases hy : w = y <;> simp [petalMap, base, hx, hy, hxy.symm]
+
+noncomputable def petalCopy {W : Type*} (H : SimpleGraph W) {x y : W} (hxy : x ≠ y)
+    {t : ℕ} (i : Fin t) : H.Copy (fan H x y t) := by
+  classical
+  refine ⟨⟨petalMap x y i, ?_⟩, ?_⟩
+  · intro a b hab
+    refine ⟨?_, ?_⟩
+    · simpa only [base_petalMap hxy] using hab
+    · by_cases ha : a = x <;> by_cases ha' : a = y <;>
+        by_cases hb : b = x <;> by_cases hb' : b = y <;> simp [petalMap, ha, ha', hb, hb', hxy.symm]
+  · change Function.Injective (petalMap x y i)
+    intro a b hab
+    have hh := congrArg (base x y) hab
+    simpa only [base_petalMap hxy] using hh
+
+structure Packing {W V : Type*} (H : SimpleGraph W) (G : SimpleGraph V)
+    (x y : W) (u v : V) (t : ℕ) where
+  copies : Fin t → H.Copy G
+  left : ∀ i, copies i x = u
+  right : ∀ i, copies i y = v
+  disjoint : ∀ i j, i ≠ j → ∀ a b,
+    (a ≠ x ∧ a ≠ y) → (b ≠ x ∧ b ≠ y) → copies i a ≠ copies j b
+
+def Packing.empty {W V : Type*} (H : SimpleGraph W) (G : SimpleGraph V)
+    (x y : W) (u v : V) : Packing H G x y u v 0 where
+  copies := Fin.elim0
+  left i := Fin.elim0 i
+  right i := Fin.elim0 i
+  disjoint i := Fin.elim0 i
+
+noncomputable def Packing.blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) : Finset V := by
+  classical
+  exact univ.biUnion (fun i => (univ.filter (fun a => a ≠ x ∧ a ≠ y)).image (p.copies i))
+
+lemma Packing.mem_blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) {z : V} :
+    z ∈ p.blocker ↔ ∃ i a, (a ≠ x ∧ a ≠ y) ∧ p.copies i a = z := by
+  classical
+  simp [blocker]
+
+lemma Packing.left_not_mem_blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) : u ∉ p.blocker := by
+  intro hu
+  obtain ⟨i,a,ha,he⟩ := p.mem_blocker.mp hu
+  exact ha.1 ((p.copies i).injective (he.trans (p.left i).symm))
+
+lemma Packing.right_not_mem_blocker {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) : v ∉ p.blocker := by
+  intro hv
+  obtain ⟨i,a,ha,he⟩ := p.mem_blocker.mp hv
+  exact ha.2 ((p.copies i).injective (he.trans (p.right i).symm))
+
+lemma Packing.card_blocker_le {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) : p.blocker.card ≤ t * Fintype.card W := by
+  classical
+  calc
+    p.blocker.card ≤ ∑ i : Fin t, ((univ.filter (fun a => a ≠ x ∧ a ≠ y)).image (p.copies i)).card :=
+      card_biUnion_le
+    _ ≤ ∑ _ : Fin t, Fintype.card W := sum_le_sum fun _ _ =>
+      card_image_le.trans ((card_filter_le _ _).trans_eq card_univ)
+    _ = _ := by simp
+
+noncomputable def Packing.cons {W V : Type*} [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) (f : H.Copy G)
+    (hfx : f x = u) (hfy : f y = v) (havoid : ∀ a, (a ≠ x ∧ a ≠ y) → f a ∉ p.blocker) :
+    Packing H G x y u v (t + 1) where
+  copies := Fin.cases f p.copies
+  left i := by induction i using Fin.cases <;> simp [hfx, p.left]
+  right i := by induction i using Fin.cases <;> simp [hfy, p.right]
+  disjoint i j hij a b ha hb := by
+    induction i using Fin.cases with
+    | zero =>
+      induction j using Fin.cases with
+      | zero => exact (hij rfl).elim
+      | succ j =>
+        simp only [Fin.cases_zero, Fin.cases_succ]
+        intro hab
+        exact havoid a ha (p.mem_blocker.mpr ⟨j,b,hb,hab.symm⟩)
+    | succ i =>
+      induction j using Fin.cases with
+      | zero =>
+        simp only [Fin.cases_zero, Fin.cases_succ]
+        intro hab
+        exact havoid b hb (p.mem_blocker.mpr ⟨i,a,ha,hab⟩)
+      | succ j =>
+        simp only [Fin.cases_succ]
+        exact p.disjoint i j (fun h => hij (congrArg Fin.succ h)) a b ha hb
+
+lemma packing_or_blocker {W V : Type*} [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V)
+    (x y : W) (u v : V) (t : ℕ) : Nonempty (Packing H G x y u v t) ∨
+    ∃ B : Finset V, u ∉ B ∧ v ∉ B ∧ B.card ≤ t * Fintype.card W ∧
+      ∀ f : H.Copy G, f x = u → f y = v → ∃ a, (a ≠ x ∧ a ≠ y) ∧ f a ∈ B := by
+  classical
+  induction t with
+  | zero => exact Or.inl ⟨Packing.empty H G x y u v⟩
+  | succ t ih =>
+    rcases ih with hp | ⟨B,hu,hv,hc,hB⟩
+    · obtain ⟨p⟩ := hp
+      change Packing H G x y u v t at p
+      by_cases hh : ∃ f : H.Copy G, f x = u ∧ f y = v ∧ ∀ a, (a ≠ x ∧ a ≠ y) → f a ∉ p.blocker
+      · obtain ⟨f,hfx,hfy,havoid⟩ := hh
+        exact Or.inl ⟨p.cons f hfx hfy havoid⟩
+      · refine Or.inr ⟨p.blocker,p.left_not_mem_blocker,p.right_not_mem_blocker,
+          p.card_blocker_le.trans (Nat.mul_le_mul_right _ (Nat.le_succ _)), ?_⟩
+        intro f hfx hfy
+        have hh' : ¬ ∀ a, (a ≠ x ∧ a ≠ y) → f a ∉ p.blocker := fun hh' => hh ⟨f,hfx,hfy,hh'⟩
+        push_neg at hh'
+        exact hh'
+    · exact Or.inr ⟨B,hu,hv,hc.trans (Nat.mul_le_mul_right _ (Nat.le_succ _)),hB⟩
+
+noncomputable def Packing.toCopy {W V : Type*} {H : SimpleGraph W} {G : SimpleGraph V}
+    {x y : W} {u v : V} {t : ℕ} (p : Packing H G x y u v t) (hxy : x ≠ y) (ht : 1 ≤ t) :
+    (fan H x y t).Copy G := by
+  let i0 : Fin t := ⟨0, by omega⟩
+  let f : Vertex x y t → V := Sum.elim (fun b => if b then v else u) (fun z => p.copies z.1 z.2.val)
+  have hroot (i : Fin t) (b : Bool) : f (Sum.inl b) = p.copies i (base x y (Sum.inl b : Vertex x y t)) := by
+    cases b <;> simp [f, base, p.left, p.right]
+  refine ⟨⟨f, ?_⟩, ?_⟩
+  · rintro (a | ⟨i,a⟩) (b | ⟨j,b⟩) hab
+    · rw [hroot i0 a, hroot i0 b]
+      exact (p.copies i0).toHom.map_adj hab.1
+    · rw [hroot j a]
+      exact (p.copies j).toHom.map_adj hab.1
+    · rw [hroot i b]
+      exact (p.copies i).toHom.map_adj hab.1
+    · have hij : i = j := hab.2
+      subst j
+      exact (p.copies i).toHom.map_adj hab.1
+  · change Function.Injective f
+    rintro (a | ⟨i,a⟩) (b | ⟨j,b⟩) hab
+    · rw [hroot i0 a, hroot i0 b] at hab
+      have hh := (p.copies i0).injective hab
+      cases a <;> cases b <;> simp_all [base, Ne.symm hxy]
+    · rw [hroot j a] at hab
+      have hh := (p.copies j).injective hab
+      cases a
+      · exact (b.prop.1 (by simpa [base] using hh.symm)).elim
+      · exact (b.prop.2 (by simpa [base] using hh.symm)).elim
+    · rw [hroot i b] at hab
+      have hh := (p.copies i).injective hab
+      cases b <;> simp_all [base, a.prop.1, a.prop.2]
+    · by_cases hij : i = j
+      · subst j
+        have hh : a = b := Subtype.ext ((p.copies i).injective hab)
+        subst b
+        rfl
+      · exact (p.disjoint i j hij a b a.prop b.prop hab).elim
+
+lemma blockers_of_free {W V : Type*} [Fintype W] (H : SimpleGraph W) (G : SimpleGraph V)
+    {x y : W} (hxy : x ≠ y) {t : ℕ} (ht : 1 ≤ t) (hfree : (fan H x y t).Free G) :
+    ∀ u v, ∃ B : Finset V, u ∉ B ∧ v ∉ B ∧ B.card ≤ t * Fintype.card W ∧
+      ∀ f : H.Copy G, f x = u → f y = v → ∃ a, (a ≠ x ∧ a ≠ y) ∧ f a ∈ B := by
+  intro u v
+  rcases packing_or_blocker H G x y u v t with hp | hB
+  · obtain ⟨p⟩ := hp
+    exact (hfree ⟨p.toCopy hxy ht⟩).elim
+  · exact hB
+
+
+def kept {V : Type*} (B : V → V → Finset V) (σ : V → Bool) (u v : V) : Prop :=
+  σ u = true ∧ σ v = true ∧ (∀ z ∈ B u v, σ z = false) ∧ ∀ z ∈ B v u, σ z = false
+
+def keep {V : Type*} (G : SimpleGraph V) (B : V → V → Finset V) (σ : V → Bool) : SimpleGraph V where
+  Adj u v := G.Adj u v ∧ kept B σ u v
+  symm _ _ h := ⟨h.1.symm, h.2.2.1, h.2.1, h.2.2.2.2, h.2.2.2.1⟩
+  loopless u h := G.loopless u h.1
+
+lemma keep_le {V : Type*} (G : SimpleGraph V) (B : V → V → Finset V) (σ : V → Bool) :
+    keep G B σ ≤ G := fun _ _ h => h.1
+
+open scoped Classical in
+lemma pair_survival {V : Type*} [Fintype V] (B : V → V → Finset V) (k : ℕ)
+    (hk : ∀ u v, (B u v).card ≤ k) (hb : ∀ u v, u ∉ B u v ∧ v ∉ B u v)
+    {u v : V} (huv : u ≠ v) :
+    Fintype.card (V → Bool) ≤ 2 ^ (2 * k + 2) * Nat.card {σ : V → Bool // kept B σ u v} := by
+  classical
+  let D : V → Finset V := fun w => if w = u then B u v else B v u
+  have hD (w : V) : (D w).card ≤ k := by dsimp [D]; split_ifs <;> exact hk _ _
+  have hDu : D u = B u v := by simp [D]
+  have hDv : D v = B v u := by simp [D,huv.symm]
+  have hh := Erdos713Blocking.pair_survival D k hD
+    (show u ∉ D u by simpa [hDu] using (hb u v).1)
+    (show v ∉ D v by simpa [hDv] using (hb v u).1)
+    (show v ∉ D u by simpa [hDu] using (hb u v).2)
+    (show u ∉ D v by simpa [hDv] using (hb v u).2)
+  have hiff : (fun σ => Erdos713Blocking.selected D σ u ∧ Erdos713Blocking.selected D σ v) =
+      (fun σ => kept B σ u v) := by
+    funext σ
+    simp only [Erdos713Blocking.selected, hDu, hDv, kept]
+    exact propext (by tauto)
+  simpa only [hiff] using hh
+
+open scoped Classical in
+lemma edges_le_of_keep_bound {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (B : V → V → Finset V) (k M : ℕ) (hb : ∀ u v, u ∉ B u v ∧ v ∉ B u v)
+    (hk : ∀ u v, (B u v).card ≤ k)
+    (hM : ∀ σ : V → Bool, (keep G B σ).edgeFinset.card ≤ M) :
+    G.edgeFinset.card ≤ 2 ^ (2 * k + 2) * M := by
+  classical
+  let C := 2 ^ (2 * k + 2)
+  let A := Fintype.card (V → Bool)
+  let rel : (V → Bool) → Sym2 V → Prop := fun σ e => e ∈ (keep G B σ).edgeFinset
+  have hBelow : ∀ e ∈ G.edgeFinset,
+      A ≤ C * ((univ : Finset (V → Bool)).bipartiteBelow rel e).card := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      have hadj : G.Adj u v := by simpa using he
+      have hrel (σ : V → Bool) : rel σ s(u,v) ↔ kept B σ u v := by
+        change (s(u,v) ∈ (keep G B σ).edgeFinset) ↔ _
+        simp only [mem_edgeFinset, mem_edgeSet, keep, hadj, true_and]
+      have hh := pair_survival B k hk hb hadj.ne
+      simpa only [A, C, Nat.card_eq_fintype_card, Fintype.card_subtype, bipartiteBelow, hrel] using hh
+  have hAbove (σ : V → Bool) : (G.edgeFinset.bipartiteAbove rel σ).card ≤ M := by
+    apply (card_le_card (show G.edgeFinset.bipartiteAbove rel σ ⊆ (keep G B σ).edgeFinset from ?_)).trans (hM σ)
+    intro e he
+    exact (mem_filter.mp he).2
+  have hsum := sum_card_bipartiteAbove_eq_sum_card_bipartiteBelow
+    (r := rel) (s := (univ : Finset (V → Bool))) (t := G.edgeFinset)
+  have hCount : G.edgeFinset.card * A ≤ C * (A * M) := by
+    calc
+      G.edgeFinset.card * A = ∑ _e ∈ G.edgeFinset, A := by simp
+      _ ≤ ∑ e ∈ G.edgeFinset, C * ((univ : Finset (V → Bool)).bipartiteBelow rel e).card :=
+        sum_le_sum hBelow
+      _ = C * ∑ σ : V → Bool, (G.edgeFinset.bipartiteAbove rel σ).card := by
+        rw [← mul_sum, ← hsum]
+      _ ≤ C * ∑ _σ : V → Bool, M := Nat.mul_le_mul_left C (sum_le_sum fun σ _ => hAbove σ)
+      _ = C * (A * M) := by simp [A]
+  have hA : 0 < A := Fintype.card_pos
+  exact Nat.le_of_mul_le_mul_left
+    (show A * G.edgeFinset.card ≤ A * (C * M) by nlinarith only [hCount]) hA
+
+open scoped Classical in
+lemma free_edge_bound {W V : Type*} [Fintype W] [Fintype V]
+    (H : SimpleGraph W) (G : SimpleGraph V) {x y : W} (hxy : H.Adj x y)
+    {t : ℕ} (ht : 1 ≤ t) (hfree : (fan H x y t).Free G) :
+    G.edgeFinset.card ≤ 2 ^ (2 * (t * Fintype.card W) + 2) *
+      (extremalNumber (Fintype.card V) H + Fintype.card W * Fintype.card V) := by
+  classical
+  choose B hleft hright hk hB using blockers_of_free H G hxy.ne ht hfree
+  apply edges_le_of_keep_bound G B (t * Fintype.card W) _ (fun u v => ⟨hleft u v, hright u v⟩) hk
+  intro σ
+  let S : Set V := {v | σ v = true}
+  have hS : (keep G B σ).support ⊆ S := by
+    rintro v ⟨w,hvw⟩
+    exact hvw.2.1
+  apply Erdos713Support.edges_le_of_free_induce H (keep G B σ) S hS
+  rintro ⟨f⟩
+  let g : H.Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp ((Copy.induce _ S).comp f)
+  obtain ⟨a, _, ha⟩ := hB (g x) (g y) g rfl rfl
+  have hkeep : kept B σ (g x) (g y) := (f.toHom.map_adj hxy).2
+  have hfalse : σ (g a) = false := hkeep.2.2.1 (g a) ha
+  have htrue : σ (g a) = true := (f a).prop
+  exact Bool.noConfusion (htrue.symm.trans hfalse)
+
+open scoped Classical in
+lemma extremal_bound {W : Type*} [Fintype W] (H : SimpleGraph W)
+    {x y : W} (hxy : H.Adj x y) {t : ℕ} (ht : 1 ≤ t) (n : ℕ) :
+    extremalNumber n (fan H x y t) ≤ 2 ^ (2 * (t * Fintype.card W) + 2) *
+      (extremalNumber n H + Fintype.card W * n) := by
+  rw [← Fintype.card_fin n, extremalNumber_le_iff]
+  intro G _ hfree
+  simpa only [edgeFinset_card, Fintype.card_eq_nat_card] using free_edge_bound H G hxy ht hfree
+
+lemma upper {W : Type*} [Fintype W] (H : SimpleGraph W)
+    {x y : W} (hxy : H.Adj x y) {t : ℕ} (ht : 1 ≤ t) {r : ℝ} (hr : 1 ≤ r)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r)) :
+    (fun n : ℕ => (extremalNumber n (fan H x y t) : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ) ^ r) := by
+  let C : ℕ := 2 ^ (2 * (t * Fintype.card W) + 2)
+  apply IsBigO.trans _ ((hH.add (cast_linear_bigO hr (Fintype.card W))).const_mul_left (C : ℝ))
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast, Real.norm_of_nonneg (by positivity), one_mul]
+  exact_mod_cast extremal_bound H hxy ht n
+
+lemma rate {W : Type*} [Fintype W] (H : SimpleGraph W)
+    {x y : W} (hxy : H.Adj x y) {t : ℕ} (ht : 1 ≤ t) {r : ℝ} (h : HasRate H r) :
+    HasRate (fan H x y t) r := by
+  refine ⟨h.one_le, upper H hxy ht h.one_le h.upper, ?_⟩
+  intro a ha hA
+  exact h.lower a ha ((extremal_mono_bigO ⟨petalCopy H hxy.ne ⟨0,by omega⟩⟩).trans hA)
+
+lemma rate_of_sandwich {W U : Type*} [Fintype W] (J : SimpleGraph W)
+    {x y : W} (hxy : J.Adj x y) {t : ℕ} (ht : 1 ≤ t)
+    {H : SimpleGraph U} (hlo : J ⊑ H) (hhi : H ⊑ fan J x y t) {r : ℝ} (h : HasRate J r) :
+    HasRate H r := by
+  refine ⟨h.one_le, (extremal_mono_bigO hhi).trans (upper J hxy ht h.one_le h.upper), ?_⟩
+  intro a ha hA
+  exact h.lower a ha ((extremal_mono_bigO hlo).trans hA)
+
+lemma rate_of_sandwich_converse {W U : Type*} [Fintype W] (J : SimpleGraph W)
+    {x y : W} (hxy : J.Adj x y) {t : ℕ} (ht : 1 ≤ t)
+    {H : SimpleGraph U} (hlo : J ⊑ H) (hhi : H ⊑ fan J x y t) {r : ℝ} (h : HasRate H r) :
+    HasRate J r := by
+  refine ⟨h.one_le, (extremal_mono_bigO hlo).trans h.upper, ?_⟩
+  intro a ha hA
+  exact h.lower a ha ((extremal_mono_bigO hhi).trans (upper J hxy ht ha hA))
+
+
+end Erdos713EdgeFan
+
+/-! Same-edge fans preserve oriented rooted bounds. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713EdgeFan
+open Erdos713RootPower
+
+open scoped Classical in
+lemma real_edges_le_of_keep_bound {V : Type*} [Fintype V]
+    (G : SimpleGraph V) (B : V → V → Finset V) (k : ℕ) (M : ℝ)
+    (hb : ∀ u v, u ∉ B u v ∧ v ∉ B u v) (hk : ∀ u v, (B u v).card ≤ k)
+    (hM0 : 0 ≤ M) (hM : ∀ σ : V → Bool, ((keep G B σ).edgeFinset.card : ℝ) ≤ M) :
+    (G.edgeFinset.card : ℝ) ≤ (2^(2*k+2) : ℕ)*M := by
+  have hh := edges_le_of_keep_bound G B k ⌊M⌋₊ hb hk (fun σ => Nat.le_floor (hM σ))
+  have hr : (G.edgeFinset.card : ℝ) ≤ (2^(2*k+2) : ℕ)*(⌊M⌋₊ : ℝ) := by
+    exact_mod_cast hh
+  exact hr.trans (mul_le_mul_of_nonneg_left (Nat.floor_le hM0) (by positivity))
+
+/-- The exclusion is at every vertex of S, not at one individual host vertex. -/
+lemma blockers_of_root_excluded {W V : Type*} [Fintype W]
+    (H : SimpleGraph W) (G : SimpleGraph V) {x y : W} (hxy : x ≠ y)
+    {t : ℕ} (ht : 1 ≤ t) (S : Set V)
+    (hroot : ∀ f : (fan H x y t).Copy G, f (.inl false) ∉ S) :
+    ∀ u v, ∃ B : Finset V, u ∉ B ∧ v ∉ B ∧ B.card ≤ t * Fintype.card W ∧
+      ∀ f : H.Copy G, f x = u → f y = v → u ∈ S →
+        ∃ a, (a ≠ x ∧ a ≠ y) ∧ f a ∈ B := by
+  classical
+  intro u v
+  by_cases hu : u ∈ S
+  · rcases packing_or_blocker H G x y u v t with hp | hB
+    · obtain ⟨p⟩ := hp
+      exact (hroot (p.toCopy hxy ht) (by simpa [Packing.toCopy] using hu)).elim
+    · obtain ⟨B,hbu,hbv,hc,hB⟩ := hB
+      exact ⟨B,hbu,hbv,hc,fun f hx hy _ => hB f hx hy⟩
+  · exact ⟨∅,by simp,by simp,by simp,fun f hx hy hu' => (hu hu').elim⟩
+
+/-- Ordinary fan bounds alone do not imply rooted bounds. This statement
+explicitly assumes the rooted bound for the base. -/
+lemma root_bound {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) {x y : W} (hxy : H.Adj x y)
+    {t : ℕ} (ht : 1 ≤ t) {r : ℝ} (hH : RootPowerBound H x r) :
+    RootPowerBound (fan H x y t) (.inl false) r := by
+  classical
+  obtain ⟨C,hC,hbound⟩ := hH
+  let L : ℕ := 2^(2*(t * Fintype.card W)+2)
+  refine ⟨(L : ℝ)*C,by positivity,?_⟩
+  intro n G S hBip hroot
+  choose B hb₀ hb₁ hk hB using blockers_of_root_excluded H G hxy.ne ht S hroot
+  have hkeep (σ : Fin n → Bool) :
+      ((keep G B σ).edgeFinset.card : ℝ) ≤ C*(n : ℝ)^r := by
+    have hKB : (keep G B σ).IsBipartiteWith S Sᶜ :=
+      ⟨hBip.1,by intro u v h; exact hBip.2 h.1⟩
+    have hRoot (f : H.Copy (keep G B σ)) : f x ∉ S := by
+      intro hf
+      let g : H.Copy G := (Copy.ofLE _ _ (keep_le G B σ)).comp f
+      obtain ⟨a,_,ha⟩ := hB (g x) (g y) g rfl rfl hf
+      have hfalse : σ (g a) = false := (f.toHom.map_adj hxy).2.2.2.1 (g a) ha
+      obtain ⟨b,hab⟩ := hNoIso a
+      have htrue : σ (g a) = true := (f.toHom.map_adj hab).2.1
+      exact Bool.noConfusion (htrue.symm.trans hfalse)
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hbound n (keep G B σ) S hKB hRoot
+  have hh := real_edges_le_of_keep_bound G B (t * Fintype.card W) (C*(n : ℝ)^r)
+    (fun u v => ⟨hb₀ u v,hb₁ u v⟩) hk (by positivity) hkeep
+  simpa only [L,edgeFinset_card,Fintype.card_eq_nat_card,mul_assoc] using hh
+
+end Erdos713EdgeFan
+
+/-! Position-consistent edge attachments. The attached edge is identified
+with the corresponding edge of a specified copy already in the old graph.
+There is no edge-transitivity hypothesis and no assertion that an arbitrary
+attachment has this form. -/
+
+open SimpleGraph Filter Asymptotics
+namespace Erdos713CoherentEdges
+open Erdos713Rate Erdos713EdgeAttachments Erdos713RootPower
+
+/-- Put the old host in the first petal and the fresh copy in the second.
+Their only shared vertices are the endpoints of the prescribed edge. -/
+noncomputable def pasteCopyFan {A W : Type*} {F : SimpleGraph A} {H : SimpleGraph W}
+    (f : F.Copy H) {x y : A} (hxy : F.Adj x y) :
+    (paste F x y H (f x) (f y)).Copy (Erdos713EdgeFan.fan H (f x) (f y) 2) := by
+  classical
+  let f₀ := Erdos713EdgeFan.petalCopy H (f.toHom.map_adj hxy).ne (0 : Fin 2)
+  let f₁ := Erdos713EdgeFan.petalCopy H (f.toHom.map_adj hxy).ne (1 : Fin 2)
+  apply extendCopy f₀ (f x) (f y) (f₁.comp f)
+  · change Erdos713EdgeFan.petalMap (f x) (f y) 1 (f x) =
+      Erdos713EdgeFan.petalMap (f x) (f y) 0 (f x)
+    simp [Erdos713EdgeFan.petalMap]
+  · change Erdos713EdgeFan.petalMap (f x) (f y) 1 (f y) =
+      Erdos713EdgeFan.petalMap (f x) (f y) 0 (f y)
+    simp [Erdos713EdgeFan.petalMap]
+  · intro a w
+    have ha₀ : f a.val ≠ f x := fun h => a.prop.1 (f.injective h)
+    have ha₁ : f a.val ≠ f y := fun h => a.prop.2 (f.injective h)
+    change Erdos713EdgeFan.petalMap (f x) (f y) 1 (f a.val) ≠
+      Erdos713EdgeFan.petalMap (f x) (f y) 0 w
+    simp only [Erdos713EdgeFan.petalMap,dif_neg ha₀,dif_neg ha₁]
+    split_ifs <;> simp
+
+lemma pasteCopyFan_left {A W : Type*} {F : SimpleGraph A} {H : SimpleGraph W}
+    (f : F.Copy H) {x y : A} (hxy : F.Adj x y) :
+    pasteCopyFan f hxy (.inl (f x)) = .inl false := by
+  simp [pasteCopyFan,extendCopy,Erdos713EdgeFan.petalCopy,Erdos713EdgeFan.petalMap]
+
+/-- Unlike arbitrary attachments, the edge roles and orientation match the
+specified old copy. The roles are allowed to vary at each step. -/
+inductive Built {A : Type} (F : SimpleGraph A) :
+    {W : Type} → SimpleGraph W → Prop
+  | base : Built F F
+  | step {W : Type} [Fintype W] {H : SimpleGraph W}
+      (h : Built F H) (f : F.Copy H) (x y : A) (hxy : F.Adj x y) :
+      Built F (paste F x y H (f x) (f y))
+
+lemma Built.finite {A W : Type} [Finite A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) : Finite W := by
+  induction h with
+  | base => infer_instance
+  | step h f x y hxy ih => infer_instance
+
+lemma Built.contains {A W : Type} {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) : F ⊑ H := by
+  induction h with
+  | base => exact .refl _
+  | @step W _ H h f x y hxy ih =>
+    exact ih.trans ⟨oldCopy F x y H (f x) (f y)⟩
+
+lemma Built.connected {A W : Type} {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) (hF : F.Connected) : H.Connected := by
+  induction h with
+  | base => exact hF
+  | step h f x y hxy ih => exact paste_connected hxy hF ih (f.toHom.map_adj hxy)
+
+lemma Built.isBipartite {A W : Type} {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) (hF : F.IsBipartite) : H.IsBipartite := by
+  induction h with
+  | base => exact hF
+  | step h f x y hxy ih => exact paste_isBipartite hxy hF ih (f.toHom.map_adj hxy)
+
+/-- A uniform comparison in n. Isolated forbidden vertices are permitted;
+the additive linear term accounts for them. -/
+lemma Built.extremal_bound {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) :
+    ∃ C : ℕ, ∀ n, extremalNumber n H ≤ C * (extremalNumber n F + n) := by
+  induction h with
+  | base => exact ⟨1,fun n => by simp⟩
+  | @step W _ H h f x y hxy ih =>
+    obtain ⟨C,hC⟩ := ih
+    let K : ℕ := 2 ^ (2 * (2 * Fintype.card W) + 2)
+    refine ⟨K * (C + Fintype.card W),fun n => ?_⟩
+    calc
+      extremalNumber n (paste F x y H (f x) (f y)) ≤
+          extremalNumber n (Erdos713EdgeFan.fan H (f x) (f y) 2) :=
+        (show paste F x y H (f x) (f y) ⊑ Erdos713EdgeFan.fan H (f x) (f y) 2 from
+          ⟨pasteCopyFan f hxy⟩).extremalNumber_le
+      _ ≤ K * (extremalNumber n H + Fintype.card W * n) :=
+        Erdos713EdgeFan.extremal_bound H (f.toHom.map_adj hxy) (by omega) n
+      _ ≤ K * ((C + Fintype.card W) * (extremalNumber n F + n)) := by
+        apply Nat.mul_le_mul_left
+        calc
+          extremalNumber n H + Fintype.card W * n ≤
+              C * (extremalNumber n F + n) + Fintype.card W * n :=
+            Nat.add_le_add_right (hC n) _
+          _ ≤ (C + Fintype.card W) * (extremalNumber n F + n) := by
+            nlinarith
+      _ = _ := (Nat.mul_assoc _ _ _).symm
+
+lemma Built.upper {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) {r : ℝ} (hr : 1 ≤ r)
+    (hF : (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r) := by
+  obtain ⟨C,hC⟩ := h.extremal_bound
+  have hlin := cast_linear_bigO hr 1
+  simp only [one_mul] at hlin
+  apply IsBigO.trans _ ((hF.add hlin).const_mul_left (C : ℝ))
+  apply IsBigO.of_bound 1
+  filter_upwards with n
+  rw [Real.norm_natCast,Real.norm_of_nonneg (by positivity),one_mul]
+  exact_mod_cast hC n
+
+lemma Built.upper_iff {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) {r : ℝ} (hr : 1 ≤ r) :
+    (fun n : ℕ => (extremalNumber n H : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r) ↔
+    (fun n : ℕ => (extremalNumber n F : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r) :=
+  ⟨fun hH => (extremal_mono_bigO h.contains).trans hH,h.upper hr⟩
+
+lemma Built.rate_iff {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) {r : ℝ} : HasRate H r ↔ HasRate F r := by
+  constructor
+  · intro hH
+    refine ⟨hH.one_le,(h.upper_iff hH.one_le).mp hH.upper,?_⟩
+    intro a ha hA
+    exact hH.lower a ha (h.upper ha hA)
+  · intro hF
+    refine ⟨hF.one_le,h.upper hF.one_le hF.upper,?_⟩
+    intro a ha hA
+    exact hF.lower a ha ((h.upper_iff ha).mp hA)
+
+/-- Both containments are required: arbitrary subgraphs of a coherent
+construction need not retain the base exponent. -/
+lemma sandwich_rate_iff {A W T : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) {J : SimpleGraph T}
+    (hlo : F ⊑ J) (hhi : J ⊑ H) {r : ℝ} : HasRate J r ↔ HasRate F r := by
+  constructor
+  · intro hJ
+    refine ⟨hJ.one_le,(extremal_mono_bigO hlo).trans hJ.upper,?_⟩
+    intro a ha hA
+    exact hJ.lower a ha ((extremal_mono_bigO hhi).trans (h.upper ha hA))
+  · intro hF
+    refine ⟨hF.one_le,(extremal_mono_bigO hhi).trans (h.upper hF.one_le hF.upper),?_⟩
+    intro a ha hA
+    exact hF.lower a ha ((extremal_mono_bigO hlo).trans hA)
+
+lemma rational_of_sandwich {A W T : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) {J : SimpleGraph T}
+    (hlo : F ⊑ J) (hhi : J ⊑ H) {r : ℚ} (hF : HasRate F (r : ℝ))
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : IsEquivalent atTop (fun n : ℕ => (extremalNumber n J : ℝ))
+      (fun n : ℕ => c * (n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  exact ⟨r,((sandwich_rate_iff h hlo hhi).mpr hF).unique
+    (rate_of_asymptotic hα hc hAsymptotic)⟩
+
+/-- Coherent pasting preserves rooted bounds when they are known for the
+base. Connectivity moves the retained root to all vertices of the new graph. -/
+lemma Built.root_bounds {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) (hF : F.Connected) {r : ℝ}
+    (hRoots : ∀ x, RootPowerBound F x r) : ∀ z, RootPowerBound H z r := by
+  induction h with
+  | base => exact hRoots
+  | @step W _ H h f x y hxy ih =>
+    intro z
+    have hH := h.connected hF
+    letI : Nontrivial W := ⟨⟨f x,f y,(f.toHom.map_adj hxy).ne⟩⟩
+    have hNoIso : ∀ a, ∃ b, H.Adj a b := hH.preconnected.exists_adj_of_nontrivial
+    have hfan := Erdos713EdgeFan.root_bound H hNoIso (f.toHom.map_adj hxy)
+      (t := 2) (by omega) (ih (f x))
+    have hfan' : RootPowerBound (Erdos713EdgeFan.fan H (f x) (f y) 2)
+        (pasteCopyFan f hxy (.inl (f x))) r := by
+      simpa only [pasteCopyFan_left] using hfan
+    have hpaste := hfan'.of_copy (pasteCopyFan f hxy) (.inl (f x))
+    exact hpaste.of_reachable ((paste_connected hxy hF hH (f.toHom.map_adj hxy)) _ z)
+
+lemma Built.root_bounds_iff {A W : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) (hF : F.Connected) {r : ℝ} :
+    (∀ z, RootPowerBound H z r) ↔ (∀ x, RootPowerBound F x r) := by
+  refine ⟨?_,h.root_bounds hF⟩
+  obtain ⟨f⟩ := h.contains
+  exact fun hh x => (hh (f x)).of_copy f x
+
+lemma sandwich_rooted_rate_iff {A W T : Type} [Fintype A] {F : SimpleGraph A}
+    {H : SimpleGraph W} (h : Built F H) (hF : F.Connected) {J : SimpleGraph T}
+    (hlo : F ⊑ J) (hhi : J ⊑ H) :
+    Erdos713ActualBlocks.RootedRate J ↔ Erdos713ActualBlocks.RootedRate F := by
+  constructor
+  · rintro ⟨r,hr,hRoots⟩
+    obtain ⟨f⟩ := hlo
+    exact ⟨r,(sandwich_rate_iff h ⟨f⟩ hhi).mp hr,fun x => (hRoots (f x)).of_copy f x⟩
+  · rintro ⟨r,hr,hRoots⟩
+    obtain ⟨f⟩ := hhi
+    exact ⟨r,(sandwich_rate_iff h hlo ⟨f⟩).mpr hr,
+      fun z => (h.root_bounds hF hRoots (f z)).of_copy f z⟩
+
+/-- The host may contain additional edges: both arrows denote copies, not
+induced copies. -/
+def Sandwich {A T : Type} (F : SimpleGraph A) (J : SimpleGraph T) : Prop :=
+  ∃ (W : Type) (H : SimpleGraph W), Built F H ∧ F ⊑ J ∧ J ⊑ H
+
+lemma Sandwich.rate_iff {A T : Type} [Fintype A] {F : SimpleGraph A}
+    {J : SimpleGraph T} (h : Sandwich F J) {r : ℝ} : HasRate J r ↔ HasRate F r := by
+  obtain ⟨W,H,h,hlo,hhi⟩ := h
+  exact sandwich_rate_iff h hlo hhi
+
+lemma Sandwich.rooted_rate_iff {A T : Type} [Fintype A] {F : SimpleGraph A}
+    {J : SimpleGraph T} (h : Sandwich F J) (hF : F.Connected) :
+    Erdos713ActualBlocks.RootedRate J ↔ Erdos713ActualBlocks.RootedRate F := by
+  obtain ⟨W,H,h,hlo,hhi⟩ := h
+  exact sandwich_rooted_rate_iff h hF hlo hhi
+
+/-- A concrete family using the already established small-shore base rates.
+The constructed host itself need not have a small bipartition shore. -/
+def SmallSandwich {T : Type} (J : SimpleGraph T) : Prop :=
+  ∃ (q : ℕ) (F : SimpleGraph (Fin q)) (S : Set (Fin q)),
+    F.Connected ∧ F.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3 ∧
+      (∀ v, 2 ≤ Nat.card (F.neighborSet v)) ∧ Sandwich F J
+
+lemma SmallSandwich.rooted_rate {T : Type} {J : SimpleGraph T} (h : SmallSandwich J) :
+    Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨q,F,S,hF,hB,hS,hd,h⟩ := h
+  letI := hF.nonempty
+  exact (h.rooted_rate_iff hF).mpr (small_core F S hB hS hd)
+
+lemma SmallSandwich.rational {T : Type} {J : SimpleGraph T} (h : SmallSandwich J)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : IsEquivalent atTop (fun n : ℕ => (extremalNumber n J : ℝ))
+      (fun n : ℕ => c * (n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr,_⟩ := h.rooted_rate
+  exact ⟨r,hr.unique (rate_of_asymptotic hα hc hAsymptotic)⟩
+
+lemma block_rates_of_small_sandwich_blocks {W : Type} [Fintype W] (G : SimpleGraph W)
+    (h : ∀ S : Set W, Erdos713Blocks.IsBlock G S → 3 ≤ Nat.card S →
+      Erdos713CycleAssembly.Piece (G.induce S) ∨ SmallSandwich (G.induce S)) :
+    Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hCyc
+  rcases h S hS hCyc with hOld | hNew
+  · letI := hS.connected.nonempty
+    exact hOld.rooted_rate (hS.noCut.min_degree hS.connected
+      (by simpa only [Fintype.card_eq_nat_card] using hCyc))
+  · exact hNew.rooted_rate
+
+end Erdos713CoherentEdges
+
+
+/-! Edge gluing preserves oriented rooted bounds under explicit rooted
+hypotheses for both pieces. Edge roles need not be aligned by automorphisms. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713RootedEdges
+open Erdos713EdgeAttachments Erdos713RootPower Erdos713Rate
+
+lemma exists_disjoint_petal {A W V : Type*} [Fintype W] {F : SimpleGraph A}
+    {H : SimpleGraph W} {G : SimpleGraph V} {x y : A} {p q : V}
+    (P : Erdos713EdgeFan.Packing F G x y p q (Fintype.card W+1)) (f : H.Copy G) :
+    ∃ i, ∀ a, (a ≠ x ∧ a ≠ y) → ∀ b, P.copies i a ≠ f b := by
+  classical
+  by_contra hh
+  push_neg at hh
+  choose a ha b hab using hh
+  have hinj : Function.Injective b := by
+    intro i j hij
+    by_contra hne
+    exact P.disjoint i j hne (a i) (a j) (ha i) (ha j)
+      ((hab i).trans ((congrArg f hij).trans (hab j).symm))
+  have hc := Fintype.card_le_of_injective b hinj
+  simp only [Fintype.card_fin] at hc
+  omega
+
+lemma rooted_copy_of_packing {A W V : Type*} [Fintype W] {F : SimpleGraph A}
+    {H : SimpleGraph W} {G : SimpleGraph V} {x y : A} {u v : W} {p q : V}
+    (P : Erdos713EdgeFan.Packing F G x y p q (Fintype.card W+1)) (f : H.Copy G)
+    (hu : f u = p) (hv : f v = q) :
+    ∃ g : (paste F x y H u v).Copy G, g (.inl u) = p := by
+  obtain ⟨i,hi⟩ := exists_disjoint_petal P f
+  exact ⟨extendCopy f u v (P.copies i) ((P.left i).trans hu.symm)
+    ((P.right i).trans hv.symm) (fun a b => hi a.val a.prop b),hu⟩
+
+lemma rooted_blockers {A W V : Type*} [Fintype A] [Fintype W]
+    (F : SimpleGraph A) (x y : A) (H : SimpleGraph W) (u v : W)
+    (G : SimpleGraph V) (S : Set V)
+    (hroot : ∀ f : (paste F x y H u v).Copy G, f (.inl u) ∉ S) :
+    ∀ p q, ∃ B : Finset V, p ∉ B ∧ q ∉ B ∧
+      B.card ≤ (Fintype.card W+1)*Fintype.card A ∧
+      (p ∈ S →
+        (∀ f : F.Copy G, f x = p → f y = q → ∃ a, (a ≠ x ∧ a ≠ y) ∧ f a ∈ B) ∨
+        (∀ f : H.Copy G, f u = p → f v = q → False)) := by
+  classical
+  intro p q
+  by_cases hp : p ∈ S
+  · rcases Erdos713EdgeFan.packing_or_blocker F G x y p q (Fintype.card W+1) with hP | hB
+    · obtain ⟨P⟩ := hP
+      refine ⟨∅,by simp,by simp,by simp,fun _ => Or.inr ?_⟩
+      intro f hu hv
+      obtain ⟨g,hg⟩ := rooted_copy_of_packing P f hu hv
+      exact hroot g (hg.symm ▸ hp)
+    · obtain ⟨B,hp,hq,hc,hB⟩ := hB
+      exact ⟨B,hp,hq,hc,fun _ => Or.inl hB⟩
+  · exact ⟨∅,by simp,by simp,by simp,fun hp' => (hp hp').elim⟩
+
+/-- Keep the edges whose orientation from S satisfies P. -/
+def branch {V : Type*} (G : SimpleGraph V) (S : Set V) (P : V → V → Prop) :
+    SimpleGraph V where
+  Adj u v := G.Adj u v ∧ ((u ∈ S ∧ P u v) ∨ (v ∈ S ∧ P v u))
+  symm _ _ h := ⟨h.1.symm,h.2.symm⟩
+  loopless _ h := G.loopless _ h.1
+
+lemma branch_le {V : Type*} (G : SimpleGraph V) (S : Set V) (P : V → V → Prop) :
+    branch G S P ≤ G := fun _ _ h => h.1
+
+lemma branch_property {V : Type*} {G : SimpleGraph V} {S : Set V} {P : V → V → Prop}
+    (hB : G.IsBipartiteWith S Sᶜ) {u v : V} (hu : u ∈ S) (h : (branch G S P).Adj u v) :
+    P u v := by
+  rcases h.2 with ⟨_,hP⟩ | ⟨hv,_⟩
+  · exact hP
+  · exact (hB.mem_of_mem_adj hu h.1 hv).elim
+
+lemma branch_bipartite {V : Type*} {G : SimpleGraph V} {S : Set V}
+    (hB : G.IsBipartiteWith S Sᶜ) (P : V → V → Prop) :
+    (branch G S P).IsBipartiteWith S Sᶜ :=
+  ⟨hB.1,by intro u v h; exact hB.2 h.1⟩
+
+lemma branch_edge_bound {V : Type*} [Fintype V] {G : SimpleGraph V} {S : Set V}
+    (hB : G.IsBipartiteWith S Sᶜ) (P : V → V → Prop) :
+    Nat.card G.edgeSet ≤ Nat.card (branch G S P).edgeSet +
+      Nat.card (branch G S (fun u v => ¬ P u v)).edgeSet := by
+  classical
+  simp only [← Fintype.card_eq_nat_card,← edgeFinset_card]
+  apply (card_le_card (show G.edgeFinset ⊆
+    (branch G S P).edgeFinset ∪ (branch G S (fun u v => ¬ P u v)).edgeFinset from ?_)).trans
+      (card_union_le _ _)
+  intro e he
+  induction e using Sym2.inductionOn with
+  | hf u v =>
+    have huv : G.Adj u v := by simpa using he
+    rcases hB.2 huv with ⟨hu,hv⟩ | ⟨hu,hv⟩
+    · by_cases hP : P u v <;> simp [branch,huv,hu,hP]
+    · by_cases hP : P v u <;> simp [branch,huv,hv,hP]
+
+/-- This theorem assumes BOTH rooted upper bounds. It does not identify
+ordinary and rooted thresholds for arbitrary graphs. Only the fresh piece
+needs to have no isolated vertices. -/
+lemma root_bound {A W : Type*} [Fintype A] [Fintype W]
+    {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hNoIso : ∀ a, ∃ b, F.Adj a b) {H : SimpleGraph W} {u v : W} (huv : H.Adj u v)
+    {r : ℝ} (hF : RootPowerBound F x r) (hH : RootPowerBound H u r) :
+    RootPowerBound (paste F x y H u v) (.inl u) r := by
+  classical
+  obtain ⟨C,hC,hF⟩ := hF
+  obtain ⟨D,hD,hH⟩ := hH
+  let k : ℕ := (Fintype.card W+1)*Fintype.card A
+  let L : ℕ := 2^(2*k+2)
+  refine ⟨(L : ℝ)*(C+D),by positivity,?_⟩
+  intro n G S hBip hroot
+  choose B hb₀ hb₁ hk hB using rooted_blockers F x y H u v G S hroot
+  let P : Fin n → Fin n → Prop := fun p q =>
+    ∀ f : F.Copy G, f x = p → f y = q → ∃ a, (a ≠ x ∧ a ≠ y) ∧ f a ∈ B p q
+  have hkeep (σ : Fin n → Bool) :
+      ((Erdos713EdgeFan.keep G B σ).edgeFinset.card : ℝ) ≤ (C+D)*(n : ℝ)^r := by
+    let K := Erdos713EdgeFan.keep G B σ
+    have hKB : K.IsBipartiteWith S Sᶜ := ⟨hBip.1,by intro p q h; exact hBip.2 h.1⟩
+    have hRootF (f : F.Copy (branch K S P)) : f x ∉ S := by
+      intro hf
+      let fK : F.Copy K := (Copy.ofLE _ _ (branch_le K S P)).comp f
+      let g : F.Copy G := (Copy.ofLE _ _ (Erdos713EdgeFan.keep_le G B σ)).comp fK
+      have hP : P (g x) (g y) := branch_property hKB hf (f.toHom.map_adj hxy)
+      obtain ⟨a,_,ha⟩ := hP g rfl rfl
+      have hfalse : σ (g a) = false := (fK.toHom.map_adj hxy).2.2.2.1 (g a) ha
+      obtain ⟨b,hab⟩ := hNoIso a
+      have htrue : σ (g a) = true := (fK.toHom.map_adj hab).2.1
+      exact Bool.noConfusion (htrue.symm.trans hfalse)
+    have hRootH (f : H.Copy (branch K S (fun p q => ¬ P p q))) : f u ∉ S := by
+      intro hf
+      let fK : H.Copy K := (Copy.ofLE _ _ (branch_le K S _)).comp f
+      let g : H.Copy G := (Copy.ofLE _ _ (Erdos713EdgeFan.keep_le G B σ)).comp fK
+      have hnP : ¬ P (g u) (g v) := branch_property hKB hf (f.toHom.map_adj huv)
+      rcases hB (g u) (g v) hf with hP | hNoH
+      · exact hnP hP
+      · exact hNoH g rfl rfl
+    have h₁ := hF n (branch K S P) S (branch_bipartite hKB P) hRootF
+    have h₂ := hH n (branch K S (fun p q => ¬ P p q)) S (branch_bipartite hKB _) hRootH
+    have hs : (Nat.card K.edgeSet : ℝ) ≤ (Nat.card (branch K S P).edgeSet : ℝ) +
+        (Nat.card (branch K S (fun p q => ¬ P p q)).edgeSet : ℝ) := by
+      exact_mod_cast branch_edge_bound hKB P
+    simp only [edgeFinset_card,Fintype.card_eq_nat_card]
+    change (Nat.card K.edgeSet : ℝ) ≤ _
+    nlinarith
+  have hh := Erdos713EdgeFan.real_edges_le_of_keep_bound G B k ((C+D)*(n : ℝ)^r)
+    (fun p q => ⟨hb₀ p q,hb₁ p q⟩) hk (by positivity) hkeep
+  simpa only [L,edgeFinset_card,Fintype.card_eq_nat_card,mul_assoc] using hh
+
+lemma root_rate {A W : Type*} [Fintype A] [Fintype W]
+    {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hNoIso : ∀ a, ∃ b, F.Adj a b) {H : SimpleGraph W} {u v : W} (huv : H.Adj u v)
+    {a b : ℝ} (hF : HasRootRate F x a) (hH : HasRootRate H u b) :
+    HasRootRate (paste F x y H u v) (.inl u) (max a b) := by
+  refine ⟨hF.one_le.trans (le_max_left _ _),
+    root_bound hxy hNoIso huv (hF.upper.mono (le_max_left _ _))
+      (hH.upper.mono (le_max_right _ _)),?_⟩
+  intro r hr hR
+  apply max_le
+  · have hR' : RootPowerBound (paste F x y H u v) ((petalCopy F hxy H huv) x) r := by
+      change RootPowerBound (paste F x y H u v) (petalMap x y u v x) r
+      simpa only [petalMap,dif_pos rfl] using hR
+    exact hF.lower r hr (hR'.of_copy (petalCopy F hxy H huv) x)
+  · exact hH.lower r hr (hR.of_copy (oldCopy F x y H u v) u)
+
+lemma rate {A W : Type*} [Fintype A] [Fintype W]
+    {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y)
+    (hNoIso : ∀ a, ∃ b, F.Adj a b) {H : SimpleGraph W} {u v : W} (huv : H.Adj u v)
+    {a b : ℝ} (hF : HasRate F a) (hH : HasRate H b)
+    (hRF : RootPowerBound F x a) (hRH : RootPowerBound H u b) :
+    HasRate (paste F x y H u v) (max a b) := by
+  refine ⟨hF.one_le.trans (le_max_left _ _),
+    (root_bound hxy hNoIso huv (hRF.mono (le_max_left _ _))
+      (hRH.mono (le_max_right _ _))).upper,?_⟩
+  intro r hr hR
+  exact max_le
+    (hF.lower r hr ((extremal_mono_bigO ⟨petalCopy F hxy H huv⟩).trans hR))
+    (hH.lower r hr ((extremal_mono_bigO ⟨oldCopy F x y H u v⟩).trans hR))
+
+lemma rooted_rate {A W : Type*} [Fintype A] [Fintype W]
+    {F : SimpleGraph A} {x y : A} (hxy : F.Adj x y) (hFConn : F.Connected)
+    {H : SimpleGraph W} {u v : W} (huv : H.Adj u v) (hHConn : H.Connected)
+    (hF : Erdos713ActualBlocks.RootedRate F) (hH : Erdos713ActualBlocks.RootedRate H) :
+    Erdos713ActualBlocks.RootedRate (paste F x y H u v) := by
+  obtain ⟨a,hFa,hRF⟩ := hF
+  obtain ⟨b,hHb,hRH⟩ := hH
+  letI : Nontrivial A := ⟨⟨x,y,hxy.ne⟩⟩
+  have hNoIso := hFConn.preconnected.exists_adj_of_nontrivial
+  apply Erdos713ActualBlocks.RootedRate.of_one_root
+    (paste_connected hxy hFConn hHConn huv) (.inl u) (r := max a b)
+  · simpa only [Rat.cast_max] using rate hxy hNoIso huv hFa hHb (hRF x) (hRH u)
+  · simpa only [Rat.cast_max] using root_bound hxy hNoIso huv
+      ((hRF x).mono (le_max_left _ (b : ℝ))) ((hRH u).mono (le_max_right (a : ℝ) _))
+
+/-- Unlike the earlier aligned-embedding argument, this corollary assumes
+rooted base data and does not require edge alignability. -/
+lemma built_root_bounds {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hFConn : F.Connected)
+    {H : SimpleGraph W} {u v : W} (h : Erdos713EdgeAttachments.Built F x y H u v)
+    {r : ℝ} (hR : ∀ z, RootPowerBound F z r) : ∀ z, RootPowerBound H z r := by
+  letI : Nontrivial A := ⟨⟨x,y,hxy.ne⟩⟩
+  have hNoIso := hFConn.preconnected.exists_adj_of_nontrivial
+  induction h with
+  | base => exact hR
+  | @step W _ H a b h u v huv ih =>
+    intro z
+    have hb := root_bound hxy hNoIso huv (hR x) (ih u)
+    exact hb.of_reachable ((paste_connected hxy hFConn (h.connected hxy hFConn) huv) _ z)
+
+lemma built_rate {A W : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hFConn : F.Connected)
+    {H : SimpleGraph W} {u v : W} (h : Erdos713EdgeAttachments.Built F x y H u v)
+    {r : ℝ} (hRate : HasRate F r) (hR : ∀ z, RootPowerBound F z r) : HasRate H r := by
+  refine ⟨hRate.one_le,(built_root_bounds hxy hFConn h hR u).upper,?_⟩
+  intro a ha hA
+  exact hRate.lower a ha ((extremal_mono_bigO h.contains).trans hA)
+
+lemma sandwich_rooted_rate {A T : Type} [Fintype A] {F : SimpleGraph A} {x y : A}
+    (hxy : F.Adj x y) (hFConn : F.Connected) (hF : Erdos713ActualBlocks.RootedRate F)
+    {J : SimpleGraph T} (h : Erdos713EdgeAttachments.Sandwich F x y J) :
+    Erdos713ActualBlocks.RootedRate J := by
+  obtain ⟨W,H,u,v,h,hlo,hhi⟩ := h
+  obtain ⟨r,hRate,hR⟩ := hF
+  obtain ⟨f⟩ := hhi
+  refine ⟨r,⟨hRate.one_le,(extremal_mono_bigO ⟨f⟩).trans
+    (built_rate hxy hFConn h hRate hR).upper,?_⟩,
+    fun z => (built_root_bounds hxy hFConn h hR (f z)).of_copy f z⟩
+  intro a ha hA
+  exact hRate.lower a ha ((extremal_mono_bigO hlo).trans hA)
+
+/-- Finite mixtures of small-shore core pieces glued along arbitrary edges.
+There is no common base graph or alignment assumption. -/
+inductive MixedBuilt : {W : Type} → SimpleGraph W → Prop
+  | base {W : Type} [Fintype W] (F : SimpleGraph W) (S : Set W)
+      (hConn : F.Connected) (hB : F.IsBipartiteWith S Sᶜ) (hS : Nat.card S ≤ 3)
+      (hd : ∀ z, 2 ≤ Nat.card (F.neighborSet z)) : MixedBuilt F
+  | iso {A W : Type} {F : SimpleGraph A} {H : SimpleGraph W}
+      (e : H ≃g F) (h : MixedBuilt F) : MixedBuilt H
+  | join {A W : Type} [Fintype A] [Fintype W]
+      {F : SimpleGraph A} {H : SimpleGraph W} (hF : MixedBuilt F) (hH : MixedBuilt H)
+      (x y : A) (u v : W) (hxy : F.Adj x y) (huv : H.Adj u v) :
+      MixedBuilt (paste F x y H u v)
+
+lemma MixedBuilt.connected {W : Type} {H : SimpleGraph W} (h : MixedBuilt H) : H.Connected := by
+  induction h with
+  | base F S hConn hB hS hd => exact hConn
+  | iso e h ih => exact ih.map e.symm.toHom e.symm.toEquiv.surjective
+  | join hF hH x y u v hxy huv ihF ihH => exact paste_connected hxy ihF ihH huv
+
+lemma MixedBuilt.isBipartite {W : Type} {H : SimpleGraph W} (h : MixedBuilt H) : H.IsBipartite := by
+  induction h with
+  | base F S hConn hB hS hd => exact hB.isBipartite
+  | iso e h ih => exact ih.of_hom e.toHom
+  | join hF hH x y u v hxy huv ihF ihH => exact paste_isBipartite hxy ihF ihH huv
+
+lemma MixedBuilt.rooted_rate {W : Type} {H : SimpleGraph W} (h : MixedBuilt H) :
+    Erdos713ActualBlocks.RootedRate H := by
+  induction h with
+  | base F S hConn hB hS hd =>
+    letI := hConn.nonempty
+    exact small_core F S hB hS hd
+  | iso e h ih => exact ih.of_iso e
+  | join hF hH x y u v hxy huv ihF ihH =>
+    exact Erdos713RootedEdges.rooted_rate hxy hF.connected huv hH.connected ihF ihH
+
+lemma MixedBuilt.rational {W : Type} {H : SimpleGraph W} (h : MixedBuilt H)
+    {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : IsEquivalent atTop (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  obtain ⟨r,hr,_⟩ := h.rooted_rate
+  exact ⟨r,hr.unique (rate_of_asymptotic hα hc hAsymptotic)⟩
+
+lemma block_rates_of_mixed_blocks {W : Type} [Fintype W] (G : SimpleGraph W)
+    (h : ∀ S : Set W, Erdos713Blocks.IsBlock G S → 3 ≤ Nat.card S →
+      Erdos713CycleAssembly.Piece (G.induce S) ∨ MixedBuilt (G.induce S)) :
+    Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hCyc
+  rcases h S hS hCyc with hOld | hNew
+  · letI := hS.connected.nonempty
+    exact hOld.rooted_rate (hS.noCut.min_degree hS.connected
+      (by simpa only [Fintype.card_eq_nat_card] using hCyc))
+  · exact hNew.rooted_rate
+
+end Erdos713RootedEdges
+
+
+/-! Decomposition at separators consisting of the endpoints of an edge. -/
+open SimpleGraph Filter Asymptotics Finset
+namespace Erdos713EdgeSeparators
+open Erdos713Blocks Erdos713RootPower Erdos713RootBlocks Erdos713Rate
+open Erdos713EdgeAttachments
+universe u
+
+/-- Removing the endpoints of an edge leaves a preconnected graph.
+As with NoCut, empty deletions are permitted. -/
+def NoEdgeCut {W : Type*} (G : SimpleGraph W) : Prop :=
+  ∀ x y, G.Adj x y → (G.induce ({x,y}ᶜ : Set W)).Preconnected
+
+lemma NoEdgeCut.of_iso {A W : Type*} {F : SimpleGraph A} {G : SimpleGraph W}
+    (e : G ≃g F) (h : NoEdgeCut F) : NoEdgeCut G := by
+  intro x y hxy
+  let f : (F.induce ({e x,e y}ᶜ : Set A)) →g (G.induce ({x,y}ᶜ : Set W)) :=
+    { toFun := fun z => ⟨e.symm z.val,by
+        intro hz
+        have he : z.val = e x ∨ z.val = e y := by
+          rcases Set.mem_insert_iff.mp hz with hz | hz
+          · exact Or.inl (by simpa using congrArg e hz)
+          · exact Or.inr (by simpa using congrArg e hz)
+        exact z.prop (by simpa using he)⟩
+      map_rel' := fun h => e.symm.toHom.map_adj h }
+  apply (h (e x) (e y) (e.toHom.map_adj hxy)).map f
+  intro z
+  refine ⟨⟨e z.val,?_⟩,?_⟩
+  · intro hz
+    apply z.prop
+    simpa only [Set.mem_insert_iff,Set.mem_singleton_iff,EquivLike.apply_eq_iff_eq] using hz
+  · exact Subtype.ext (e.symm_apply_apply z.val)
+
+/-- Vertices in S away from x,y have no neighbors outside S. -/
+structure EdgeLobe {W : Type*} (G : SimpleGraph W) (S : Set W) (x y : W) : Prop where
+  left_mem : x ∈ S
+  right_mem : y ∈ S
+  edge : G.Adj x y
+  closed : ∀ a ∈ S, a ≠ x → a ≠ y → ∀ b, G.Adj a b → b ∈ S
+
+lemma EdgeLobe.connected {W : Type*} {G : SimpleGraph W} {S : Set W} {x y : W}
+    (h : EdgeLobe G S x y) (hG : G.Connected) : (G.induce S).Connected := by
+  rw [connected_iff_exists_forall_reachable]
+  refine ⟨⟨x,h.left_mem⟩,?_⟩
+  let R : Set W := {v | ∀ hv : v ∈ S,
+    (G.induce S).Reachable ⟨x,h.left_mem⟩ ⟨v,hv⟩}
+  have hR : ∀ a ∈ R, ∀ b, G.Adj a b → b ∈ R := by
+    intro a ha b hab hb
+    by_cases haS : a ∈ S
+    · exact (ha haS).trans (show (G.induce S).Adj ⟨a,haS⟩ ⟨b,hb⟩ from hab).reachable
+    by_cases hbx : b = x
+    · subst b; exact .rfl
+    by_cases hby : b = y
+    · subst b; exact (show (G.induce S).Adj ⟨x,h.left_mem⟩ ⟨y,hb⟩ from h.edge).reachable
+    · exact (haS (h.closed b hb hbx hby a hab.symm)).elim
+  rintro ⟨v,hv⟩
+  exact mem_of_reachable_closed hR (u := x) (by intro _; exact .rfl) (hG x v) hv
+
+lemma EdgeLobe.complement {W : Type*} {G : SimpleGraph W} {S : Set W} {x y : W}
+    (h : EdgeLobe G S x y) : EdgeLobe G (insert x (insert y Sᶜ)) x y := by
+  refine ⟨by simp,by simp,h.edge,?_⟩
+  intro a ha hax hay b hab
+  have haS : a ∉ S := by simpa only [Set.mem_insert_iff,hax,hay,false_or] using ha
+  by_cases hbx : b = x
+  · simp [hbx]
+  by_cases hby : b = y
+  · simp [hby]
+  have hbS : b ∉ S := fun hbS => haS (h.closed b hbS hbx hby a hab.symm)
+  simp [hbS]
+
+lemma edge_cut_lobe {W : Type*} {G : SimpleGraph W} {x y : W} (hxy : G.Adj x y)
+    (hCut : ¬ (G.induce ({x,y}ᶜ : Set W)).Preconnected) :
+    ∃ S : Set W, EdgeLobe G S x y ∧ (∃ a ∈ S, a ≠ x ∧ a ≠ y) ∧ S ≠ Set.univ := by
+  classical
+  obtain ⟨a,b,hab⟩ := not_forall.mp hCut |>.imp (fun a ha => not_forall.mp ha)
+  let U : Set W := {z | ∃ hz : z ∉ ({x,y} : Set W),
+    (G.induce ({x,y}ᶜ : Set W)).Reachable a ⟨z,hz⟩}
+  let S := insert x (insert y U)
+  have hax : a.val ≠ x := fun he => a.prop (by simp [he])
+  have hay : a.val ≠ y := fun he => a.prop (by simp [he])
+  have hbx : b.val ≠ x := fun he => b.prop (by simp [he])
+  have hby : b.val ≠ y := fun he => b.prop (by simp [he])
+  have hbU : b.val ∉ U := by rintro ⟨_,hh⟩; exact hab hh
+  refine ⟨S,⟨by simp [S],by simp [S],hxy,?_⟩,
+    ⟨a.val,by exact Set.mem_insert_of_mem _ (Set.mem_insert_of_mem _ ⟨a.prop,.rfl⟩),hax,hay⟩,?_⟩
+  · intro z hz hzx hzy w hzw
+    have hzU : z ∈ U := by simpa only [S,Set.mem_insert_iff,hzx,hzy,false_or] using hz
+    by_cases hw : w ∈ ({x,y} : Set W)
+    · rcases Set.mem_insert_iff.mp hw with hw | hw <;> simp_all [S]
+    · obtain ⟨hz,ha⟩ := hzU
+      exact Set.mem_insert_of_mem _ (Set.mem_insert_of_mem _
+        ⟨hw,ha.trans (show (G.induce ({x,y}ᶜ : Set W)).Adj ⟨z,hz⟩ ⟨w,hw⟩ from hzw).reachable⟩)
+  · intro hS
+    have hbS : b.val ∈ S := hS.symm ▸ Set.mem_univ b.val
+    simp only [S,Set.mem_insert_iff,hbx,hby,false_or] at hbS
+    exact hbU hbS
+
+/-- The original graph embeds in the edge paste of the two induced sides.
+The closure condition forbids edges between their disjoint interiors. -/
+noncomputable def EdgeLobe.toPaste {W : Type*} {G : SimpleGraph W} {S : Set W} {x y : W}
+    (h : EdgeLobe G S x y) :
+    G.Copy (paste (G.induce S) ⟨x,h.left_mem⟩ ⟨y,h.right_mem⟩
+      (G.induce (insert x (insert y Sᶜ))) ⟨x,by simp⟩ ⟨y,by simp⟩) := by
+  classical
+  let T := insert x (insert y Sᶜ)
+  let xS : S := ⟨x,h.left_mem⟩
+  let yS : S := ⟨y,h.right_mem⟩
+  have hS {w : W} (hw : w ∉ T) : w ∈ S := by
+    by_contra hn
+    exact hw (Set.mem_insert_of_mem _ (Set.mem_insert_of_mem _ hn))
+  have hx {w : W} (hw : w ∉ T) : w ≠ x := by intro he; exact hw (by simp [T,he])
+  have hy {w : W} (hw : w ∉ T) : w ≠ y := by intro he; exact hw (by simp [T,he])
+  let interior (w : W) (hw : w ∉ T) : Interior xS yS :=
+    ⟨⟨w,hS hw⟩,fun he => hx hw (congrArg Subtype.val he),fun he => hy hw (congrArg Subtype.val he)⟩
+  let f : W → T ⊕ Interior xS yS := fun w =>
+    if hw : w ∈ T then .inl ⟨w,hw⟩ else .inr (interior w hw)
+  have hroot {a b : W} (ha : a ∈ T) (hb : b ∉ T) (hab : G.Adj a b) : a = x ∨ a = y := by
+    have haS := h.closed b (hS hb) (hx hb) (hy hb) a hab.symm
+    rcases Set.mem_insert_iff.mp ha with ha | ha
+    · exact Or.inl ha
+    · rcases Set.mem_insert_iff.mp ha with ha | ha
+      · exact Or.inr ha
+      · exact (ha haS).elim
+  refine ⟨⟨f,?_⟩,?_⟩
+  · intro a b hab
+    by_cases ha : a ∈ T <;> by_cases hb : b ∈ T
+    · simpa only [f,dif_pos ha,dif_pos hb,paste] using hab
+    · simp only [f,dif_pos ha,dif_neg hb,paste]
+      rcases hroot ha hb hab with rfl | rfl
+      · exact Or.inl ⟨rfl,hab⟩
+      · exact Or.inr ⟨rfl,hab⟩
+    · simp only [f,dif_neg ha,dif_pos hb,paste]
+      rcases hroot hb ha hab.symm with rfl | rfl
+      · exact Or.inl ⟨rfl,hab.symm⟩
+      · exact Or.inr ⟨rfl,hab.symm⟩
+    · simpa only [f,dif_neg ha,dif_neg hb,paste] using hab
+  · have hf : Function.LeftInverse
+        (Sum.elim (fun w : T => w.val) (fun w : Interior xS yS => w.val.val)) f := by
+      intro w
+      by_cases hw : w ∈ T <;> simp [f,hw,interior]
+    exact hf.injective
+
+lemma EdgeLobe.root_bound {W : Type*} [Fintype W] {G : SimpleGraph W}
+    {S : Set W} {x y : W} (h : EdgeLobe G S x y) (hG : G.Connected) {r : ℝ}
+    (hS : ∀ z, RootPowerBound (G.induce S) z r)
+    (hT : ∀ z, RootPowerBound (G.induce (insert x (insert y Sᶜ))) z r) :
+    ∀ z, RootPowerBound G z r := by
+  classical
+  let xS : S := ⟨x,h.left_mem⟩
+  let yS : S := ⟨y,h.right_mem⟩
+  let T := insert x (insert y Sᶜ)
+  let xT : T := ⟨x,by simp [T]⟩
+  let yT : T := ⟨y,by simp [T]⟩
+  have hxyS : (G.induce S).Adj xS yS := h.edge
+  have hxyT : (G.induce T).Adj xT yT := h.edge
+  have hSC := h.connected hG
+  have hTC := h.complement.connected hG
+  letI : Nontrivial S := ⟨⟨xS,yS,hxyS.ne⟩⟩
+  have hR := Erdos713RootedEdges.root_bound hxyS hSC.preconnected.exists_adj_of_nontrivial
+    hxyT (hS xS) (hT xT)
+  have hC := paste_connected hxyS hSC hTC hxyT
+  intro z
+  exact (hR.of_reachable (hC _ (h.toPaste z))).of_copy h.toPaste z
+
+/-- An induced terminal piece for deletion of clique separators of size one
+or two. This is not an assertion of three-vertex-connectivity. -/
+structure IsAtom {W : Type*} (G : SimpleGraph W) : Prop where
+  connected : G.Connected
+  noCut : NoCut G
+  noEdgeCut : NoEdgeCut G
+
+lemma IsAtom.of_iso {A W : Type*} {F : SimpleGraph A} {G : SimpleGraph W}
+    (e : G ≃g F) (h : IsAtom F) : IsAtom G :=
+  ⟨h.connected.map e.symm.toHom e.symm.toEquiv.surjective,
+    h.noCut.map e.symm.toHom e.symm.bijective,h.noEdgeCut.of_iso e⟩
+
+/-- Bounds are requested only for terminal induced pieces of order at least
+three. Edges and singletons are handled by the baseline exponent one. -/
+def AtomUpper {W : Type*} (G : SimpleGraph W) (r : ℝ) : Prop :=
+  ∀ S : Set W, IsAtom (G.induce S) → 3 ≤ Nat.card S →
+    ∀ x, RootPowerBound (G.induce S) x r
+
+lemma AtomUpper.induce {W : Type*} [Fintype W] {G : SimpleGraph W} {r : ℝ}
+    (h : AtomUpper G r) (T : Set W) : AtomUpper (G.induce T) r := by
+  classical
+  intro U hU hc y
+  let e := induceImageIso G T U
+  have hc' : 3 ≤ Nat.card ↥(Subtype.val '' U) := by
+    rw [← Nat.card_congr e.toEquiv]
+    exact hc
+  exact (h _ (hU.of_iso e.symm) hc' (e y)).of_copy e.toCopy y
+
+/-- A finite connected graph's rooted upper bound is determined by its
+induced pieces with no cut vertex and no adjacent two-vertex separator. -/
+lemma root_bound_of_atoms {W : Type u} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} (hr : 1 ≤ r) (h : AtomUpper G r) :
+    ∀ z, RootPowerBound G z r := by
+  classical
+  suffices hh : ∀ n : ℕ, ∀ (W : Type u) [Fintype W] (G : SimpleGraph W),
+      Fintype.card W = n → G.Connected → AtomUpper G r → ∀ z, RootPowerBound G z r from
+    hh _ W G rfl hG h
+  intro n
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    intro W _ G hc hG h z
+    by_cases hsmall : Nat.card W ≤ 2
+    · exact (root_bound_small G hsmall z).mono hr
+    have hthree : 3 ≤ Nat.card W := by omega
+    by_cases hNC : NoCut G
+    · by_cases hNE : NoEdgeCut G
+      · have hU := h Set.univ ((show IsAtom G from ⟨hG,hNC,hNE⟩).of_iso (induceUnivIso G))
+          (by simpa using hthree)
+        exact (hU ((induceUnivIso G).symm z)).of_copy (induceUnivIso G).symm.toCopy z
+      · change ¬ ∀ x y, G.Adj x y → (G.induce ({x,y}ᶜ : Set W)).Preconnected at hNE
+        push_neg at hNE
+        obtain ⟨x,y,hxy,hcut⟩ := hNE
+        obtain ⟨S,hS,hOther,hProper⟩ := edge_cut_lobe hxy hcut
+        obtain ⟨w,hw⟩ := (Set.ne_univ_iff_exists_notMem S).mp hProper
+        have hScard : Fintype.card S < n := (Fintype.card_subtype_lt hw).trans_eq hc
+        let T := insert x (insert y Sᶜ)
+        have hTcard : Fintype.card T < n := by
+          obtain ⟨v,hv,hvx,hvy⟩ := hOther
+          have hn : v ∉ T := by simp [T,hvx,hvy,hv]
+          exact (Fintype.card_subtype_lt hn).trans_eq hc
+        have hSRoot := ih _ hScard S (G.induce S) rfl (hS.connected hG) (h.induce S)
+        have hTRoot := ih _ hTcard T (G.induce T) rfl (hS.complement.connected hG) (h.induce T)
+        exact hS.root_bound hG hSRoot hTRoot z
+    · haveI : Nontrivial W := Fintype.one_lt_card_iff_nontrivial.mp
+        (by simpa only [Fintype.card_eq_nat_card] using (show 1 < Nat.card W by omega))
+      obtain ⟨x⟩ := hG.nonempty
+      obtain ⟨y,hxy⟩ := hG.preconnected.exists_adj_of_nontrivial x
+      obtain ⟨S,x,hL,hSNC⟩ := exists_minimal_lobe (G := G)
+        ⟨Set.univ,x,Set.mem_univ x,⟨y,Set.mem_univ y,hxy.ne.symm⟩,by simp⟩
+      have hProper : S ≠ Set.univ := by
+        intro hS
+        subst S
+        exact hNC (hSNC.map (induceUnivIso G).toHom (induceUnivIso G).bijective)
+      obtain ⟨w,hw⟩ := (Set.ne_univ_iff_exists_notMem S).mp hProper
+      have hScard : Fintype.card S < n := (Fintype.card_subtype_lt hw).trans_eq hc
+      let T : Set W := insert x Sᶜ
+      have hT := hL.complement hProper
+      have hTcard : Fintype.card T < n := by
+        obtain ⟨v,hv,hvx⟩ := hL.other
+        have hn : v ∉ T := by simp [T,hvx,hv]
+        exact (Fintype.card_subtype_lt hn).trans_eq hc
+      have hSC := hL.connected hG
+      have hTC := hT.connected hG
+      have hSRoot := ih _ hScard S (G.induce S) rfl hSC (h.induce S)
+      have hTRoot := ih _ hTcard T (G.induce T) rfl hTC (h.induce T)
+      have hR := (hSRoot ⟨x,hL.root_mem⟩).wedge (hTRoot ⟨x,hT.root_mem⟩) hr (Erdos713RootBlocks.Lobe.no_isolates hL hG)
+      let e := lobeWedgeIso hL
+      have hC := Erdos713Gluing.wedge_connected hSC hTC ⟨x,hL.root_mem⟩ ⟨x,hT.root_mem⟩
+      exact (hR.of_reachable (hC _ (e.symm z))).of_copy e.symm.toCopy z
+
+lemma atomUpper_of_root_bound {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} {z : W} (h : RootPowerBound G z r) : AtomUpper G r := by
+  intro S hS hc y
+  exact (h.of_reachable (hG z y.val)).of_copy (Copy.induce G S) y
+
+lemma root_bound_iff_atoms {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {r : ℝ} (hr : 1 ≤ r) (z : W) :
+    RootPowerBound G z r ↔ AtomUpper G r :=
+  ⟨atomUpper_of_root_bound G hG,fun h => root_bound_of_atoms G hG hr h z⟩
+
+/-- Finite extraction requires only a rooted lower threshold. The selected
+piece need not have any rooted upper bound at r. -/
+lemma exists_atom_root_lower {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {x : W} {r : ℝ} (hr : 1 < r) (hR : RootLower G x r) :
+    ∃ S : Set W, IsAtom (G.induce S) ∧ 3 ≤ Nat.card S ∧
+      ∀ y, RootLower (G.induce S) y r := by
+  classical
+  by_contra hn
+  push_neg at hn
+  have hEach (S : Set W) : ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+      (IsAtom (G.induce S) → 3 ≤ Nat.card S → ∀ y, RootPowerBound (G.induce S) y a) := by
+    by_cases hS : IsAtom (G.induce S) ∧ 3 ≤ Nat.card S
+    · obtain ⟨y,hy⟩ := hn S hS.1 hS.2
+      change ¬ ∀ a : ℝ, 1 ≤ a → RootPowerBound (G.induce S) y a → r ≤ a at hy
+      push_neg at hy
+      obtain ⟨a,ha,hroot,har⟩ := hy
+      exact ⟨a,ha,har,fun _ _ z => hroot.of_reachable (hS.1.connected y z)⟩
+    · exact ⟨1,le_rfl,hr,fun hAtom hc => (hS ⟨hAtom,hc⟩).elim⟩
+  choose a ha har hEach using hEach
+  obtain ⟨S₀,_,hmax⟩ := Finset.exists_max_image (Finset.univ : Finset (Set W)) a
+    ⟨∅,Finset.mem_univ _⟩
+  have hBound : AtomUpper G (a S₀) := by
+    intro S hS hc y
+    exact (hEach S hS hc y).mono (hmax S (Finset.mem_univ _))
+  exact (not_lt_of_ge (hR (a S₀) (ha S₀)
+    (root_bound_of_atoms G hG (ha S₀) hBound x))) (har S₀)
+
+lemma exists_atom_root_rate {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {x : W} {r : ℝ} (hr : 1 < r) (hR : HasRootRate G x r) :
+    ∃ S : Set W, IsAtom (G.induce S) ∧ 3 ≤ Nat.card S ∧
+      ∀ y, HasRootRate (G.induce S) y r := by
+  obtain ⟨S,hS,hc,hLower⟩ := exists_atom_root_lower G hG hr hR.lower
+  exact ⟨S,hS,hc,fun y => ⟨hr.le,
+    atomUpper_of_root_bound G hG hR.upper S hS hc y,hLower y⟩⟩
+
+/-- The ordinary upper bound passes to the SAME induced piece. Its attained
+ordinary threshold is either r or strictly smaller; only a rooted lower
+threshold is retained in the second branch. -/
+lemma atom_rate_or_gap {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) {x : W} {r : ℝ} (hr : 1 < r) (hR : RootLower G x r)
+    (hU : (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    ∃ S : Set W, IsAtom (G.induce S) ∧ 3 ≤ Nat.card S ∧
+      (∀ y, RootLower (G.induce S) y r) ∧
+      (HasRate (G.induce S) r ∨ ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) := by
+  classical
+  obtain ⟨S,hS,hc,hLower⟩ := exists_atom_root_lower G hG hr hR
+  refine ⟨S,hS,hc,hLower,?_⟩
+  by_cases hRate : HasRate (G.induce S) r
+  · exact Or.inl hRate
+  · right
+    have hupper := (extremal_mono_bigO ⟨Copy.induce G S⟩).trans hU
+    have hNoLower : ¬ ∀ a : ℝ, 1 ≤ a →
+        ((fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) → r ≤ a :=
+      fun hh => hRate ⟨hr.le,hupper,hh⟩
+    push_neg at hNoLower
+    obtain ⟨a,ha,hu,har⟩ := hNoLower
+    exact ⟨a,ha,har,hu⟩
+
+/-- At an irrational threshold, the SAME atom has no small-shore rooted-rate
+certificate. No exact asymptotic is asserted for this induced graph. -/
+lemma remaining_atom_with_rate_or_gap {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hB : G.IsBipartite) {x : W} {r : ℝ}
+    (hr : 1 < r) (hR : RootLower G x r)
+    (hU : (fun n : ℕ => (extremalNumber n G : ℝ)) =O[atTop] (fun n : ℕ => (n : ℝ)^r))
+    (hIrr : r ∉ Set.range ((↑) : ℚ → ℝ)) :
+    ∃ S : Set W, IsAtom (G.induce S) ∧ (G.induce S).IsBipartite ∧ 8 ≤ Nat.card S ∧
+      (∀ v, 2 ≤ Nat.card ((G.induce S).neighborSet v)) ∧
+      (∀ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ → 4 ≤ Nat.card A) ∧
+      ¬ G.induce S ⊑ Erdos713C10.C10 ∧
+      ¬ Erdos713ActualBlocks.RootedRate (G.induce S) ∧
+      (∀ y, RootLower (G.induce S) y r) ∧
+      (HasRate (G.induce S) r ∨ ∃ a : ℝ, 1 ≤ a ∧ a < r ∧
+        (fun n : ℕ => (extremalNumber n (G.induce S) : ℝ)) =O[atTop]
+          (fun n : ℕ => (n : ℝ)^a)) := by
+  classical
+  obtain ⟨S,hS,hc,hLower,hAlt⟩ := atom_rate_or_gap G hG hr hR hU
+  haveI : Nonempty S := hS.connected.nonempty
+  have hd := hS.noCut.min_degree hS.connected (by
+    simpa only [Fintype.card_eq_nat_card] using hc)
+  have hu := (extremal_mono_bigO ⟨Copy.induce G S⟩).trans hU
+  have hNoRoot : ¬ Erdos713ActualBlocks.RootedRate (G.induce S) := by
+    rintro ⟨q,hq,hRoot⟩
+    let z : S := Classical.arbitrary S
+    exact hIrr ⟨q,le_antisymm (hq.lower r hr.le hu) (hLower z q hq.one_le (hRoot z))⟩
+  have hPiece : ¬ Erdos713CycleAssembly.Piece (G.induce S) :=
+    fun hp => hNoRoot (hp.rooted_rate hd)
+  have hSmall : ¬ ∃ A : Set S, (G.induce S).IsBipartiteWith A Aᶜ ∧ Nat.card A ≤ 3 :=
+    fun hh => hPiece (Or.inl hh)
+  push_neg at hSmall
+  have hSB : (G.induce S).IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hB
+  have hc' : 8 ≤ Nat.card S := by
+    by_contra hc'
+    obtain ⟨A,hA,hcard⟩ := Erdos713ThreeSide.small_bipartition_of_card_le_seven (G.induce S) hSB
+      (by simpa only [Fintype.card_eq_nat_card] using (show Nat.card S ≤ 7 by omega))
+    exact (not_lt_of_ge hcard) (hSmall A hA)
+  exact ⟨S,hS,hSB,hc',hd,fun A hA => hSmall A hA,
+    fun hh => hPiece (Or.inr hh),hNoRoot,hLower,hAlt⟩
+
+/-- Matching rational ordinary/rooted data are requested only for atoms. -/
+def AtomRates {W : Type*} (G : SimpleGraph W) : Prop :=
+  ∀ S : Set W, IsAtom (G.induce S) → 3 ≤ Nat.card S →
+    Erdos713ActualBlocks.RootedRate (G.induce S)
+
+lemma rooted_rate_of_atoms {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (hG : G.Connected) (hAtoms : AtomRates G) : Erdos713ActualBlocks.RootedRate G := by
+  classical
+  have hEach (S : Set W) : ∃ q : ℚ, 1 ≤ (q : ℝ) ∧
+      ((IsAtom (G.induce S) ∧ 3 ≤ Nat.card S) →
+        HasRate (G.induce S) (q : ℝ) ∧ ∀ y, RootPowerBound (G.induce S) y (q : ℝ)) ∧
+      (¬ (IsAtom (G.induce S) ∧ 3 ≤ Nat.card S) → q = 1) := by
+    by_cases hS : IsAtom (G.induce S) ∧ 3 ≤ Nat.card S
+    · obtain ⟨q,hq,hRoots⟩ := hAtoms S hS.1 hS.2
+      exact ⟨q,hq.one_le,fun _ => ⟨hq,hRoots⟩,fun hn => (hn hS).elim⟩
+    · exact ⟨1,by norm_num,fun hh => (hS hh).elim,fun _ => rfl⟩
+  choose q hOne hRates hDefault using hEach
+  obtain ⟨S₀,_,hmax⟩ := Finset.exists_max_image (Finset.univ : Finset (Set W)) q
+    ⟨∅,Finset.mem_univ _⟩
+  have hBound : AtomUpper G (q S₀ : ℝ) := by
+    intro S hS hc y
+    exact ((hRates S ⟨hS,hc⟩).2 y).mono (by exact_mod_cast hmax S (Finset.mem_univ _))
+  have hRoots := root_bound_of_atoms G hG (hOne S₀) hBound
+  obtain ⟨x⟩ := hG.nonempty
+  refine ⟨q S₀,⟨hOne S₀,(hRoots x).upper,?_⟩,hRoots⟩
+  intro a ha hu
+  by_cases hS : IsAtom (G.induce S₀) ∧ 3 ≤ Nat.card S₀
+  · exact (hRates S₀ hS).1.lower a ha ((extremal_mono_bigO ⟨Copy.induce G S₀⟩).trans hu)
+  · simpa only [hDefault S₀ hS,Rat.cast_one] using ha
+
+lemma AtomRates.induce {W : Type*} [Fintype W] {G : SimpleGraph W}
+    (h : AtomRates G) (T : Set W) : AtomRates (G.induce T) := by
+  classical
+  intro U hU hc
+  let e := induceImageIso G T U
+  have hc' : 3 ≤ Nat.card ↥(Subtype.val '' U) := by
+    rw [← Nat.card_congr e.toEquiv]
+    exact hc
+  exact (h _ (hU.of_iso e.symm) hc').of_iso e
+
+lemma block_rates_of_atoms {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (h : AtomRates G) : Erdos713ActualBlocks.BlockRates G := by
+  classical
+  intro S hS hc
+  exact rooted_rate_of_atoms (G.induce S) hS.connected (h.induce S)
+
+lemma rational_of_atoms {W : Type*} [Fintype W] (G : SimpleGraph W)
+    (h : AtomRates G) {α c : ℝ} (hα : 1 ≤ α) (hc : c ≠ 0)
+    (hAsymptotic : IsEquivalent atTop (fun n : ℕ => (extremalNumber n G : ℝ))
+      (fun n : ℕ => c*(n : ℝ)^α)) : α ∈ Set.range ((↑) : ℚ → ℝ) :=
+  Erdos713ActualBlocks.rational_of_blocks G (block_rates_of_atoms G h) hα hc hAsymptotic
+
+end Erdos713EdgeSeparators
+
+
+/-! Summation of a power asymptotic. Only the explicit real power function
+is differentiated, never an arbitrary asymptotic sequence. -/
+open Filter Asymptotics Finset
+open scoped Topology
+namespace Erdos713PowerSum
+
+lemma power_increment_limit (p : ℝ) :
+    Tendsto (fun n : ℕ => (n : ℝ) * ((1 + (n : ℝ)⁻¹)^p - 1)) atTop (𝓝 p) := by
+  have hd := (Real.hasDerivAt_rpow_const (x := 1) (p := p) (Or.inl one_ne_zero)).tendsto_slope_zero_right
+  have hi : Tendsto (fun n : ℕ => (n : ℝ)⁻¹) atTop (𝓝[>] 0) :=
+    tendsto_inv_atTop_nhdsGT_zero.comp tendsto_natCast_atTop_atTop
+  simpa only [Function.comp_def,Real.one_rpow,smul_eq_mul,inv_inv,mul_one] using hd.comp hi
+
+lemma power_increment_equiv {p : ℝ} (hp : 0 < p) :
+    (fun n : ℕ => ((n+1 : ℕ) : ℝ)^p - (n : ℝ)^p) ~[atTop]
+      (fun n : ℕ => p*(n : ℝ)^(p-1)) := by
+  apply isEquivalent_of_tendsto_one
+  · filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+    intro he
+    exact (mul_ne_zero hp.ne' (Real.rpow_pos_of_pos (show (0 : ℝ) < n by exact_mod_cast hn) _).ne' he).elim
+  have ht := (power_increment_limit p).div_const p
+  rw [div_self hp.ne'] at ht
+  apply ht.congr'
+  filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+  have hnp : (0 : ℝ) < n := by exact_mod_cast hn
+  have hf : ((n : ℝ)+1)^p = (n : ℝ)^p * (1+(n : ℝ)⁻¹)^p := by
+    rw [← Real.mul_rpow hnp.le (by positivity)]
+    congr 1
+    field_simp
+  change (n : ℝ)*((1+(n : ℝ)⁻¹)^p-1)/p =
+    (((n+1 : ℕ) : ℝ)^p-(n : ℝ)^p)/(p*(n : ℝ)^(p-1))
+  rw [Nat.cast_add,Nat.cast_one,hf,Real.rpow_sub hnp,Real.rpow_one]
+  field_simp [(Real.rpow_pos_of_pos hnp p).ne']
+
+lemma sum_equiv {f g : ℕ → ℝ} (h : f ~[atTop] g) (hg : ∀ n, 0 ≤ g n)
+    (hTop : Tendsto (fun n => ∑ i ∈ range n, g i) atTop atTop) :
+    (fun n => ∑ i ∈ range n, f i) ~[atTop] (fun n => ∑ i ∈ range n, g i) := by
+  have hh := h.sum_range hg hTop
+  change ((fun n => ∑ i ∈ range n, f i) - (fun n => ∑ i ∈ range n, g i)) =o[atTop]
+    (fun n => ∑ i ∈ range n, g i)
+  simpa only [Pi.sub_apply,sum_sub_distrib] using hh
+
+lemma sum_power_equiv {p : ℝ} (hp : 0 < p) :
+    (fun n : ℕ => ∑ i ∈ range n, (i : ℝ)^(p-1)) ~[atTop]
+      (fun n : ℕ => (n : ℝ)^p / p) := by
+  let d : ℕ → ℝ := fun n => (((n+1 : ℕ) : ℝ)^p - (n : ℝ)^p) / p
+  have hd : ∀ n, 0 ≤ d n := by
+    intro n
+    apply div_nonneg _ hp.le
+    exact sub_nonneg.mpr (Real.rpow_le_rpow (Nat.cast_nonneg n) (by norm_num) hp.le)
+  have hsum (n : ℕ) : ∑ i ∈ range n, d i = (n : ℝ)^p / p := by
+    simp only [d,← sum_div]
+    rw [sum_range_sub (fun i : ℕ => (i : ℝ)^p) n,Nat.cast_zero,Real.zero_rpow hp.ne',sub_zero]
+  have hTop : Tendsto (fun n => ∑ i ∈ range n, d i) atTop atTop := by
+    simp_rw [hsum]
+    exact ((tendsto_rpow_atTop hp).comp tendsto_natCast_atTop_atTop).atTop_div_const hp
+  have he : (fun n : ℕ => (n : ℝ)^(p-1)) ~[atTop] d := by
+    have hh := (power_increment_equiv hp).div (IsEquivalent.refl (u := fun _ : ℕ => p) (l := atTop))
+    change d ~[atTop] (fun n : ℕ => p*(n : ℝ)^(p-1)/p) at hh
+    simpa only [mul_div_cancel_left₀ _ hp.ne'] using hh.symm
+  simpa only [hsum] using sum_equiv he hd hTop
+
+lemma sum_asymptotic {f : ℕ → ℝ} {α c : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    (fun n => ∑ i ∈ range n, f i) ~[atTop]
+      (fun n : ℕ => c/(α+1)*(n : ℝ)^(α+1)) := by
+  have hp : 0 < α+1 := by linarith
+  have hPower : (fun n : ℕ => ∑ i ∈ range n, c*(i : ℝ)^α) ~[atTop]
+      (fun n : ℕ => c/(α+1)*(n : ℝ)^(α+1)) := by
+    have hh := (IsEquivalent.refl (u := fun _ : ℕ => c) (l := atTop)).mul (sum_power_equiv hp)
+    change (fun n : ℕ => c * ∑ i ∈ range n, (i : ℝ)^(α+1-1)) ~[atTop]
+      (fun n : ℕ => c*((n : ℝ)^(α+1)/(α+1))) at hh
+    simpa only [add_sub_cancel_right,mul_sum,mul_div_assoc,div_mul_eq_mul_div] using hh
+  have hTop : Tendsto (fun n : ℕ => ∑ i ∈ range n, c*(i : ℝ)^α) atTop atTop :=
+    hPower.symm.tendsto_atTop (((tendsto_rpow_atTop hp).comp tendsto_natCast_atTop_atTop).const_mul_atTop
+      (div_pos hc hp))
+  exact (sum_equiv h (fun n => by positivity) hTop).trans hPower
+
+end Erdos713PowerSum
+
+/-! Summed cloning obstructions. These estimates do not differentiate the
+extremal-number asymptotic or transfer an exponent to a quotient. -/
+open SimpleGraph Filter Asymptotics Finset
+open scoped Topology
+namespace Erdos713CloneAverage
+open Erdos713Cloning Erdos713PartialCloning Erdos713Rate
+
+noncomputable def mass {W V : Type*} [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) : ℝ := by
+  classical
+  exact ∑ v : V, if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0
+
+lemma mass_nonneg {W V : Type*} [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) :
+    0 ≤ mass H G := by
+  classical
+  unfold mass
+  exact sum_nonneg (fun v _ => by split_ifs <;> positivity)
+
+lemma mass_le {W V : Type*} [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) :
+    mass H G ≤ 2*(Nat.card G.edgeSet : ℝ) := by
+  classical
+  have hh := G.sum_degrees_eq_twice_card_edges
+  simp only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hh
+  have hh' : (∑ v : V, (Nat.card (G.neighborSet v) : ℝ)) = 2*(Nat.card G.edgeSet : ℝ) := by
+    exact_mod_cast hh
+  rw [← hh']
+  unfold mass
+  apply sum_le_sum
+  intro v hv
+  split_ifs <;> first | exact le_rfl | positivity
+
+lemma empty_partial_free {W V : Type*} [Nonempty V] (H : SimpleGraph W)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) (G : SimpleGraph V) (hFree : H.Free G) :
+    H.Free (partialClone G ∅) := by
+  classical
+  intro hCopy
+  obtain ⟨a,b,hab,hnab,f,ha,hb,hfiber,hSupport⟩ :=
+    supported_of_copy H G (Classical.arbitrary V) ∅ (by simp) hFree hCopy
+  obtain ⟨w,hw⟩ := hNoIso a
+  exact notMem_empty _ (hSupport w hw)
+
+lemma extremal_step {W : Type*} (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    {n : ℕ} (G : SimpleGraph (Fin n)) (hFree : H.Free G)
+    (he : Nat.card G.edgeSet = extremalNumber n H) :
+    extremalNumber n H ≤ extremalNumber (n+1) H := by
+  classical
+  cases n with
+  | zero =>
+    have hG : G = ⊥ := Subsingleton.elim _ _
+    have hz : extremalNumber 0 H = 0 := by simpa [hG] using he.symm
+    rw [hz]
+    exact Nat.zero_le _
+  | succ n =>
+    have hb := card_edgeFinset_le_extremalNumber (empty_partial_free H hNoIso G hFree)
+    have hh : Nat.card (partialClone G ∅).edgeSet ≤ extremalNumber (n+1+1) H := by
+      simpa only [edgeFinset_card,Nat.card_eq_fintype_card,Fintype.card_option,Fintype.card_fin] using hb
+    simpa only [card_edges,card_empty,add_zero,he] using hh
+
+/-- Pointwise deficit inequality, valid for every exactly extremal host.
+No upper estimate on an individual increment is assumed. -/
+lemma mass_deficit {W : Type*} (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    {n : ℕ} (G : SimpleGraph (Fin n)) (hFree : H.Free G)
+    (he : Nat.card G.edgeSet = extremalNumber n H) :
+    2*(extremalNumber n H : ℝ) - (n : ℝ)*
+      ((extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)) ≤ mass H G := by
+  classical
+  let D : ℝ := (extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)
+  have hD : 0 ≤ D := sub_nonneg.mpr (by exact_mod_cast extremal_step H hNoIso G hFree he)
+  have hlocal (v : Fin n) : (Nat.card (G.neighborSet v) : ℝ) ≤
+      (if SingleFold H G v then (Nat.card (G.neighborSet v) : ℝ) else 0)+D := by
+    by_cases hv : SingleFold H G v
+    · simp only [if_pos hv]
+      linarith
+    · have hc : H.Free (clone G v) := fun hh => hv (fold_of_obstructed H G v hFree hh)
+      have hh := safe_clone_bound H G v hc
+      simp only [Fintype.card_fin] at hh
+      have hh' : (Nat.card G.edgeSet : ℝ)+(Nat.card (G.neighborSet v) : ℝ) ≤
+          (extremalNumber (n+1) H : ℝ) := by exact_mod_cast hh
+      rw [he] at hh'
+      simp only [if_neg hv,zero_add]
+      change (Nat.card (G.neighborSet v) : ℝ) ≤
+        (extremalNumber (n+1) H : ℝ)-(extremalNumber n H : ℝ)
+      linarith
+  have hs := sum_le_sum (fun v (_ : v ∈ (univ : Finset (Fin n))) => hlocal v)
+  rw [sum_add_distrib] at hs
+  have hd := G.sum_degrees_eq_twice_card_edges
+  simp only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hd
+  have hd' : (∑ v : Fin n, (Nat.card (G.neighborSet v) : ℝ)) =
+      2*(extremalNumber n H : ℝ) := by rw [← he]; exact_mod_cast hd
+  simp only [sum_const,card_univ,Fintype.card_fin,nsmul_eq_mul,hd'] at hs
+  change 2*(extremalNumber n H : ℝ) ≤ mass H G+(n : ℝ)*D at hs
+  dsimp only [D] at hs
+  linarith
+
+def deficit (f : ℕ → ℝ) (n : ℕ) : ℝ := 2*f n-(n : ℝ)*(f (n+1)-f n)
+
+lemma sum_deficit (f : ℕ → ℝ) (N : ℕ) :
+    ∑ n ∈ range N, deficit f n =
+      3*(∑ n ∈ range N, f n)-((N : ℝ)-1)*f N-f 0 := by
+  induction N with
+  | zero => simp [deficit]
+  | succ N ih =>
+    rw [sum_range_succ,ih,sum_range_succ]
+    simp only [deficit,Nat.cast_add,Nat.cast_one]
+    ring
+
+lemma deficit_limit {f : ℕ → ℝ} {α c : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun N : ℕ => (∑ n ∈ range N, deficit f n)/(N : ℝ)^(α+1))
+      atTop (𝓝 (c*(2-α)/(α+1))) := by
+  have hp : 0 < α+1 := by linarith
+  have hS := Erdos713FutureRecords.ratio_limit (Erdos713PowerSum.sum_asymptotic hα hc h)
+  have hF := Erdos713FutureRecords.ratio_limit h
+  have hI : Tendsto (fun N : ℕ => (N : ℝ)⁻¹) atTop (𝓝 (0 : ℝ)) :=
+    tendsto_inv_atTop_zero.comp tendsto_natCast_atTop_atTop
+  have hR : Tendsto (fun N : ℕ => 1-(N : ℝ)⁻¹) atTop (𝓝 (1 : ℝ)) := by
+    simpa using tendsto_const_nhds.sub hI
+  have hZero : Tendsto (fun N : ℕ => f 0/(N : ℝ)^(α+1)) atTop (𝓝 0) :=
+    tendsto_const_nhds.div_atTop ((tendsto_rpow_atTop hp).comp tendsto_natCast_atTop_atTop)
+  have ht := ((hS.const_mul 3).sub (hR.mul hF)).sub hZero
+  have he : 3*(c/(α+1))-1*c-0 = c*(2-α)/(α+1) := by field_simp; ring
+  rw [he] at ht
+  apply ht.congr'
+  filter_upwards [eventually_gt_atTop (0 : ℕ)] with N hN
+  have hNp : (0 : ℝ) < N := by exact_mod_cast hN
+  rw [sum_deficit,Real.rpow_add hNp,Real.rpow_one]
+  field_simp
+
+lemma cumulative_lower {W : Type*} (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (G : (n : ℕ) → SimpleGraph (Fin n)) (hFree : ∀ n, H.Free (G n))
+    (he : ∀ n, Nat.card (G n).edgeSet = extremalNumber n H)
+    {α c : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α))
+    (κ : ℝ) (hκ : κ < c*(2-α)/(α+1)) :
+    ∀ᶠ N : ℕ in atTop, κ*(N : ℝ)^(α+1) ≤ ∑ n ∈ range N, mass H (G n) := by
+  have ht := deficit_limit hα hc h
+  filter_upwards [ht.eventually_const_lt hκ,eventually_gt_atTop (0 : ℕ)] with N hN hNp
+  have hpow : (0 : ℝ) < (N : ℝ)^(α+1) := Real.rpow_pos_of_pos (by exact_mod_cast hNp) _
+  have hs : ∑ n ∈ range N, deficit (fun n => (extremalNumber n H : ℝ)) n ≤
+      ∑ n ∈ range N, mass H (G n) :=
+    sum_le_sum (fun n _ => mass_deficit H hNoIso (G n) (hFree n) (he n))
+  exact (le_of_lt ((lt_div_iff₀ hpow).mp hN)).trans hs
+
+lemma excess_deficit_limit {f : ℕ → ℝ} {α c : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (h : f ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) (η : ℝ) :
+    Tendsto (fun N : ℕ => (∑ n ∈ range N, (deficit f n-η*f n))/(N : ℝ)^(α+1))
+      atTop (𝓝 (c*(2-α-η)/(α+1))) := by
+  have hS := Erdos713FutureRecords.ratio_limit (Erdos713PowerSum.sum_asymptotic hα hc h)
+  have ht := (deficit_limit hα hc h).sub (hS.const_mul η)
+  have he : c*(2-α)/(α+1)-η*(c/(α+1)) = c*(2-α-η)/(α+1) := by ring
+  rw [he] at ht
+  convert ht using 1
+  funext N
+  rw [sum_sub_distrib,← mul_sum,sub_div,mul_div_assoc]
+
+lemma cumulative_excess_lower {W : Type*} (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (G : (n : ℕ) → SimpleGraph (Fin n)) (hFree : ∀ n, H.Free (G n))
+    (he : ∀ n, Nat.card (G n).edgeSet = extremalNumber n H)
+    {α c : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α))
+    (η κ : ℝ) (hκ : κ < c*(2-α-η)/(α+1)) :
+    ∀ᶠ N : ℕ in atTop, κ*(N : ℝ)^(α+1) ≤
+      ∑ n ∈ range N, (mass H (G n)-η*(extremalNumber n H : ℝ)) := by
+  have ht := excess_deficit_limit hα hc h η
+  filter_upwards [ht.eventually_const_lt hκ,eventually_gt_atTop (0 : ℕ)] with N hN hNp
+  have hpow : (0 : ℝ) < (N : ℝ)^(α+1) := Real.rpow_pos_of_pos (by exact_mod_cast hNp) _
+  have hs : ∑ n ∈ range N, (deficit (fun n => (extremalNumber n H : ℝ)) n-
+        η*(extremalNumber n H : ℝ)) ≤
+      ∑ n ∈ range N, (mass H (G n)-η*(extremalNumber n H : ℝ)) :=
+    sum_le_sum (fun n _ => sub_le_sub_right (mass_deficit H hNoIso (G n) (hFree n) (he n)) _)
+  exact (le_of_lt ((lt_div_iff₀ hpow).mp hN)).trans hs
+
+/-- Every choice of exactly extremal hosts has a positive lower density of
+sizes carrying a fixed positive cloning-obstruction mass fraction. This
+asserts no minimum degree or past-record property at those sizes. -/
+lemma positive_density {W : Type*} (H : SimpleGraph W) (hNoIso : ∀ a, ∃ b, H.Adj a b)
+    (G : (n : ℕ) → SimpleGraph (Fin n)) (hFree : ∀ n, H.Free (G n))
+    (he : ∀ n, Nat.card (G n).edgeSet = extremalNumber n H)
+    {α c η : ℝ} (hα : 0 ≤ α) (hc : 0 < c) (hη : 0 ≤ η) (hηα : η < 2-α)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ N : ℕ in atTop,
+      δ*(N : ℝ) ≤ ((range N).filter
+        (fun n => η*(extremalNumber n H : ℝ) < mass H (G n))).card := by
+  classical
+  let κ : ℝ := c*(2-α-η)/(α+1)/2
+  have hgap : 0 < 2-α-η := sub_pos.mpr hηα
+  have hαp : 0 < α+1 := by linarith
+  have hκ : 0 < κ := by dsimp [κ]; positivity
+  have hκlt : κ < c*(2-α-η)/(α+1) := by dsimp [κ] at *; linarith
+  obtain ⟨C,hC,hBound⟩ := Erdos713EdgeAttachments.global_extremal_bound_of_upper H hα
+    ((isBigO_const_mul_right_iff hc.ne').mp h.isBigO)
+  have hCpos : 0 < 2*(C+1) := by linarith
+  refine ⟨κ/(2*(C+1)),div_pos hκ hCpos,?_⟩
+  filter_upwards [cumulative_excess_lower H hNoIso G hFree he hα hc h η κ hκlt,
+    eventually_gt_atTop (0 : ℕ)] with N hN hNp
+  let A := (range N).filter (fun n => η*(extremalNumber n H : ℝ) < mass H (G n))
+  have hnBound (n : ℕ) (hn : n ∈ range N) :
+      mass H (G n) ≤ 2*(C+1)*(N : ℝ)^α := by
+    have hnN : (n : ℝ) ≤ N := by exact_mod_cast (mem_range.mp hn).le
+    have hpow := Real.rpow_le_rpow (Nat.cast_nonneg n) hnN hα
+    have hfn := (hBound n).trans (mul_le_mul_of_nonneg_left hpow hC)
+    have hm := mass_le H (G n)
+    rw [he n] at hm
+    nlinarith [Real.rpow_nonneg (Nat.cast_nonneg N) α]
+  have hs : (∑ n ∈ range N, (mass H (G n)-η*(extremalNumber n H : ℝ))) ≤
+      (A.card : ℝ)*(2*(C+1)*(N : ℝ)^α) := by
+    calc
+      _ ≤ ∑ n ∈ range N, if η*(extremalNumber n H : ℝ) < mass H (G n)
+          then 2*(C+1)*(N : ℝ)^α else 0 := by
+        apply sum_le_sum
+        intro n hn
+        split_ifs with hnGood
+        · have hnB := hnBound n hn
+          have hnonneg : 0 ≤ η*(extremalNumber n H : ℝ) := by positivity
+          linarith
+        · linarith
+      _ = _ := by rw [← sum_filter]; simp only [A,sum_const,nsmul_eq_mul]
+  have hPow : (0 : ℝ) < (N : ℝ)^α := Real.rpow_pos_of_pos (by exact_mod_cast hNp) _
+  have hMul : κ*(N : ℝ) ≤ (A.card : ℝ)*(2*(C+1)) := by
+    apply (mul_le_mul_iff_left₀ hPow).mp
+    have hp : (N : ℝ)^(α+1) = (N : ℝ)^α*(N : ℝ) := by
+      rw [Real.rpow_add (by exact_mod_cast hNp),Real.rpow_one]
+    rw [hp] at hN
+    nlinarith
+  change κ/(2*(C+1))*(N : ℝ) ≤ (A.card : ℝ)
+  rw [div_mul_eq_mul_div,div_le_iff₀ hCpos]
+  exact hMul
+
+lemma exists_extremal_family {W : Type*} (H : SimpleGraph W) (hEdge : ∃ a b, H.Adj a b) :
+    ∃ G : (n : ℕ) → SimpleGraph (Fin n),
+      (∀ n, H.Free (G n)) ∧ (∀ n, Nat.card (G n).edgeSet = extremalNumber n H) := by
+  classical
+  have hEach (n : ℕ) : ∃ G : SimpleGraph (Fin n), H.Free G ∧
+      Nat.card G.edgeSet = extremalNumber n H := by
+    let S : Finset (SimpleGraph (Fin n)) := {G | H.Free G}
+    have hBot : H.Free (⊥ : SimpleGraph (Fin n)) := by
+      rintro ⟨f⟩
+      obtain ⟨a,b,hab⟩ := hEdge
+      exact f.toHom.map_adj hab
+    have hS : S.Nonempty := ⟨⊥,by simpa [S] using hBot⟩
+    obtain ⟨G,hG,he⟩ := exists_mem_eq_sup S hS (fun G => G.edgeFinset.card)
+    refine ⟨G,by simpa [S] using hG,?_⟩
+    change Nat.card G.edgeSet = S.sup (fun G => G.edgeFinset.card)
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using he.symm
+  choose G hFree he using hEach
+  exact ⟨G,hFree,he⟩
+
+lemma exists_positive_density {W : Type*} (H : SimpleGraph W) (hEdge : ∃ a b, H.Adj a b)
+    (hNoIso : ∀ a, ∃ b, H.Adj a b) {α c η : ℝ} (hα : 0 ≤ α) (hc : 0 < c)
+    (hη : 0 ≤ η) (hηα : η < 2-α)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ G : (n : ℕ) → SimpleGraph (Fin n),
+      (∀ n, H.Free (G n)) ∧ (∀ n, Nat.card (G n).edgeSet = extremalNumber n H) ∧
+      ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ N : ℕ in atTop,
+        δ*(N : ℝ) ≤ ((range N).filter
+          (fun n => η*(extremalNumber n H : ℝ) < mass H (G n))).card := by
+  obtain ⟨G,hFree,he⟩ := exists_extremal_family H hEdge
+  exact ⟨G,hFree,he,positive_density H hNoIso G hFree he hα hc hη hηα h⟩
+
+end Erdos713CloneAverage
+
+/-! Degree-square symmetrization among bipartite extremal hosts.
+This supplies additional necessary structure, not a rate-transfer theorem. -/
+open SimpleGraph Finset
+namespace Erdos713CloneSymm
+open Erdos713Cloning Erdos713BipExtremal
+
+variable {V W : Type*}
+
+open scoped Classical in
+noncomputable def degreeEnergy [Fintype V] (G : SimpleGraph V) : ℤ :=
+  ∑ x, (Nat.card (G.neighborSet x) : ℤ)^2
+
+open scoped Classical in
+lemma replace_copy_clone (G : SimpleGraph V) (s t : V) :
+    G.replaceVertex s t ⊑ clone G s := by
+  let f : V → Option V := fun x => if x = t then none else some x
+  refine ⟨⟨⟨f,?_⟩,?_⟩⟩
+  · intro x y hxy
+    change G.Adj (project s (f x)) (project s (f y))
+    by_cases hx : x = t <;> by_cases hy : y = t <;>
+      simp_all [f,project,SimpleGraph.replaceVertex]
+  · intro x y hxy
+    change f x = f y at hxy
+    by_cases hx : x = t <;> by_cases hy : y = t <;> simp_all [f]
+
+open scoped Classical in
+lemma replace_bipartite {G : SimpleGraph V} (hB : G.IsBipartite) (s t : V) :
+    (G.replaceVertex s t).IsBipartite := by
+  obtain ⟨f⟩ := replace_copy_clone G s t
+  exact (clone_bipartite hB s).of_hom f.toHom
+
+open scoped Classical in
+lemma safe_replace {H : SimpleGraph W} {G : SimpleGraph V} {s : V}
+    (hs : H.Free (clone G s)) (t : V) : H.Free (G.replaceVertex s t) :=
+  fun h => hs (h.trans (replace_copy_clone G s t))
+
+open scoped Classical in
+lemma degree_as_sum [Fintype V] (G : SimpleGraph V) [DecidableRel G.Adj] (x : V) :
+    (Nat.card (G.neighborSet x) : ℤ) = ∑ y : V, if G.Adj x y then (1 : ℤ) else 0 := by
+  rw [Nat.card_eq_fintype_card,card_neighborSet_eq_degree,← card_neighborFinset_eq_degree,Finset.card_eq_sum_ones]
+  push_cast
+  simpa only [neighborFinset_eq_filter] using
+    (sum_filter (s := univ) (p := G.Adj x) (f := fun _ => (1 : ℤ)))
+
+open scoped Classical in
+lemma replace_degree_other [Fintype V] (G : SimpleGraph V) (s t x : V) (hxt : x ≠ t) :
+    (Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) = (Nat.card (G.neighborSet x) : ℤ) +
+      (if G.Adj x s then 1 else 0) - (if G.Adj x t then 1 else 0) := by
+  rw [degree_as_sum (G.replaceVertex s t) x,degree_as_sum G x]
+  have hR := sum_erase_add (s := (univ : Finset V))
+    (f := fun y => if (G.replaceVertex s t).Adj x y then (1 : ℤ) else 0) (mem_univ t)
+  have hG := sum_erase_add (s := (univ : Finset V))
+    (f := fun y => if G.Adj x y then (1 : ℤ) else 0) (mem_univ t)
+  have he : (∑ y ∈ univ.erase t, if (G.replaceVertex s t).Adj x y then (1 : ℤ) else 0) =
+      ∑ y ∈ univ.erase t, if G.Adj x y then (1 : ℤ) else 0 := by
+    apply sum_congr rfl
+    intro y hy
+    simp only [G.adj_replaceVertex_iff_of_ne s hxt (mem_erase.mp hy).1]
+  have ht : (if (G.replaceVertex s t).Adj x t then (1 : ℤ) else 0) =
+      (if G.Adj x s then 1 else 0) := by simp [SimpleGraph.replaceVertex,hxt]
+  dsimp only at hR hG
+  simp only [he,ht] at hR
+  omega
+
+open scoped Classical in
+lemma replace_degree_source [Fintype V] (G : SimpleGraph V) (s t : V)
+    (hn : ¬ G.Adj s t) : Nat.card ((G.replaceVertex s t).neighborSet s) =
+      Nat.card (G.neighborSet s) := by
+  have he : (G.replaceVertex s t).neighborSet s = G.neighborSet s := by
+    ext y
+    by_cases hy : y = t
+    · subst y
+      simp [hn,not_adj_replaceVertex_same]
+    · exact G.adj_replaceVertex_iff_of_ne_left s hy
+  rw [he]
+
+open scoped Classical in
+lemma replace_degree_target [Fintype V] (G : SimpleGraph V) (s t : V)
+    (hn : ¬ G.Adj s t) : Nat.card ((G.replaceVertex s t).neighborSet t) =
+      Nat.card (G.neighborSet s) := by
+  have he : (G.replaceVertex s t).neighborSet t = G.neighborSet s := by
+    ext y
+    by_cases hy : y = t
+    · subst y
+      simp [hn]
+    · exact G.adj_replaceVertex_iff_of_ne_right s hy
+  rw [he]
+
+open scoped Classical in
+lemma paired_degrees [Fintype V] (G : SimpleGraph V) (s t : V)
+    (hn : ¬ G.Adj s t) (hd : Nat.card (G.neighborSet s) = Nat.card (G.neighborSet t)) (x : V) :
+    (Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) + (Nat.card ((G.replaceVertex t s).neighborSet x) : ℤ) =
+      2*(Nat.card (G.neighborSet x) : ℤ) := by
+  have hn' : ¬ G.Adj t s := fun h => hn h.symm
+  by_cases hx : x = s
+  · subst x
+    rw [replace_degree_source G s t hn,replace_degree_target G t s hn',hd]
+    ring
+  · by_cases hxt : x = t
+    · subst x
+      rw [replace_degree_source G t s hn',replace_degree_target G s t hn,hd]
+      ring
+    · rw [replace_degree_other G s t x hxt,replace_degree_other G t s x hx]
+      ring
+
+/-- Maximize edges first, then the degree-square sum, among bipartite H-free
+hosts on the same vertex type. -/
+structure Optimal [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) : Prop where
+  free : H.Free G
+  bipartite : G.IsBipartite
+  max_edges : ∀ K : SimpleGraph V, H.Free K → K.IsBipartite →
+    Nat.card K.edgeSet ≤ Nat.card G.edgeSet
+  max_energy : ∀ K : SimpleGraph V, H.Free K → K.IsBipartite →
+    Nat.card K.edgeSet = Nat.card G.edgeSet → degreeEnergy K ≤ degreeEnergy G
+
+lemma exists_optimal {H : SimpleGraph W} {n : ℕ} (hn : 0 < number n H) :
+    ∃ G : SimpleGraph (Fin n), Optimal H G ∧ Nat.card G.edgeSet = number n H := by
+  classical
+  let S : Finset (SimpleGraph (Fin n)) := {G | H.Free G ∧ G.IsBipartite ∧
+    Nat.card G.edgeSet = number n H}
+  have hS : S.Nonempty := by
+    obtain ⟨G,hf,hb,he⟩ := exists_extremal_of_pos H n hn
+    exact ⟨G,by simpa only [S,mem_filter,mem_univ,true_and] using And.intro hf (And.intro hb he)⟩
+  obtain ⟨G,hG,hmax⟩ := S.exists_max_image degreeEnergy hS
+  obtain ⟨hf,hb,he⟩ : H.Free G ∧ G.IsBipartite ∧ Nat.card G.edgeSet = number n H := by
+    simpa only [S,mem_filter,mem_univ,true_and] using hG
+  refine ⟨G,⟨hf,hb,?_,?_⟩,he⟩
+  · intro K hK hKB
+    rw [he]
+    exact card_bound_fin H K hK hKB
+  · intro K hK hKB hKe
+    apply hmax K
+    simpa only [S,mem_filter,mem_univ,true_and] using And.intro hK (And.intro hKB (hKe.trans he))
+
+open scoped Classical in
+/-- Only the replacement comparisons needed by the symmetrization argument. -/
+structure CloneOptimal [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) : Prop where
+  max_edges : ∀ s t : V, H.Free (clone G s) →
+    Nat.card (G.replaceVertex s t).edgeSet ≤ Nat.card G.edgeSet
+  max_energy : ∀ s t : V, H.Free (clone G s) →
+    Nat.card (G.replaceVertex s t).edgeSet = Nat.card G.edgeSet →
+      degreeEnergy (G.replaceVertex s t) ≤ degreeEnergy G
+
+lemma Optimal.cloneOptimal [Fintype V] {H : SimpleGraph W} {G : SimpleGraph V}
+    (hopt : Optimal H G) : CloneOptimal H G where
+  max_edges s t hs := hopt.max_edges _ (safe_replace hs t) (replace_bipartite hopt.bipartite s t)
+  max_energy s t hs he := hopt.max_energy _ (safe_replace hs t) (replace_bipartite hopt.bipartite s t) he
+
+open scoped Classical in
+lemma CloneOptimal.safe_degrees_eq [Fintype V] {H : SimpleGraph W} {G : SimpleGraph V}
+    (hopt : CloneOptimal H G) {s t : V} (hn : ¬ G.Adj s t)
+    (hs : H.Free (clone G s)) (ht : H.Free (clone G t)) :
+    Nat.card (G.neighborSet s) = Nat.card (G.neighborSet t) := by
+  have hn' : ¬ G.Adj t s := fun h => hn h.symm
+  have hR := hopt.max_edges s t hs
+  have hL := hopt.max_edges t s ht
+  have hcR := G.card_edgeFinset_replaceVertex_of_not_adj hn
+  have hcL := G.card_edgeFinset_replaceVertex_of_not_adj hn'
+  simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card] at hcR hcL
+  omega
+
+open scoped Classical in
+lemma paired_energy [Fintype V] (G : SimpleGraph V) (s t : V)
+    (hn : ¬ G.Adj s t) (hd : Nat.card (G.neighborSet s) = Nat.card (G.neighborSet t)) :
+    degreeEnergy (G.replaceVertex s t) + degreeEnergy (G.replaceVertex t s) =
+      2*degreeEnergy G + ∑ x : V, 2*((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) -
+        (Nat.card (G.neighborSet x) : ℤ))^2 := by
+  unfold degreeEnergy
+  rw [←sum_add_distrib]
+  calc
+    _ = ∑ x : V, (2*(Nat.card (G.neighborSet x) : ℤ)^2 +
+        2*((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) -
+          (Nat.card (G.neighborSet x) : ℤ))^2) := by
+      apply sum_congr rfl
+      intro x _
+      have hh := paired_degrees G s t hn hd x
+      have he : (Nat.card ((G.replaceVertex t s).neighborSet x) : ℤ) =
+          2*(Nat.card (G.neighborSet x) : ℤ)-(Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) := by
+        omega
+      rw [he]
+      ring
+    _ = _ := by rw [sum_add_distrib,←mul_sum]
+
+open scoped Classical in
+lemma CloneOptimal.safe_twins [Fintype V] {H : SimpleGraph W} {G : SimpleGraph V}
+    (hopt : CloneOptimal H G) {s t : V} (hn : ¬ G.Adj s t)
+    (hs : H.Free (clone G s)) (ht : H.Free (clone G t)) :
+    G.neighborSet s = G.neighborSet t := by
+  have hn' : ¬ G.Adj t s := fun h => hn h.symm
+  have hd := hopt.safe_degrees_eq hn hs ht
+  have heR : Nat.card (G.replaceVertex s t).edgeSet = Nat.card G.edgeSet := by
+    have hh := G.card_edgeFinset_replaceVertex_of_not_adj hn
+    simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card] at hh
+    omega
+  have heL : Nat.card (G.replaceVertex t s).edgeSet = Nat.card G.edgeSet := by
+    have hh := G.card_edgeFinset_replaceVertex_of_not_adj hn'
+    simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card] at hh
+    omega
+  have hR := hopt.max_energy s t hs heR
+  have hL := hopt.max_energy t s ht heL
+  have henergy := paired_energy G s t hn hd
+  have hsum : (∑ x : V, 2*((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) -
+        (Nat.card (G.neighborSet x) : ℤ))^2) ≤ 0 := by omega
+  have heach (x : V) : Nat.card ((G.replaceVertex s t).neighborSet x) =
+      Nat.card (G.neighborSet x) := by
+    have hh := (single_le_sum (f := fun x : V =>
+      2*((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) -
+        (Nat.card (G.neighborSet x) : ℤ))^2)
+      (fun y _ => mul_nonneg (by norm_num) (sq_nonneg _)) (mem_univ x)).trans hsum
+    have hz : ((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) -
+        (Nat.card (G.neighborSet x) : ℤ))^2 = 0 := by
+      nlinarith [sq_nonneg
+          ((Nat.card ((G.replaceVertex s t).neighborSet x) : ℤ) - (Nat.card (G.neighborSet x) : ℤ))]
+    have hh := sq_eq_zero_iff.mp hz
+    omega
+  ext x
+  change G.Adj s x ↔ G.Adj t x
+  by_cases hxt : x = t
+  · subst x
+    simp [hn]
+  · have hh := replace_degree_other G s t x hxt
+    rw [heach x] at hh
+    suffices hiff : G.Adj x s ↔ G.Adj x t from
+      ⟨fun h => (hiff.mp h.symm).symm,fun h => (hiff.mpr h.symm).symm⟩
+    by_cases hxs : G.Adj x s <;> by_cases hxt' : G.Adj x t <;>
+      simp only [hxs,hxt',ite_true,ite_false] at hh ⊢ <;> omega
+
+lemma twins_card_or_degree [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hf : H.Free G)
+    (S : Finset V) {v : V}
+    (hTw : ∀ u ∈ S, G.neighborSet u = G.neighborSet v) :
+    S.card < Fintype.card W ∨ Nat.card (G.neighborSet v) < Fintype.card W := by
+  classical
+  by_contra hh
+  push_neg at hh
+  obtain ⟨A,hAS,hAc⟩ := exists_subset_card_eq hh.1
+  have hd : Fintype.card W ≤ (G.neighborFinset v).card := by
+    simpa only [card_neighborFinset_eq_degree,←card_neighborSet_eq_degree,
+      Fintype.card_eq_nat_card] using hh.2
+  obtain ⟨B,hBN,hBc⟩ := exists_subset_card_eq hd
+  apply hf
+  apply (Erdos713KST.bipartite_contained H hHB).trans
+  apply completeBipartiteGraph_isContained_iff.mpr
+  refine ⟨A,B,by simpa using hAc,by simpa using hBc,?_⟩
+  intro a ha b hb
+  have hb' : b ∈ G.neighborSet v := by simpa using hBN hb
+  rw [← hTw a (hAS ha)] at hb'
+  exact hb'
+
+lemma twins_mass_bound [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hf : H.Free G)
+    (S : Finset V) (hTw : ∀ u ∈ S, ∀ v ∈ S, G.neighborSet u = G.neighborSet v) :
+    (∑ v ∈ S, Nat.card (G.neighborSet v)) ≤ Fintype.card W * Fintype.card V := by
+  classical
+  obtain hS | ⟨v,hv⟩ := S.eq_empty_or_nonempty
+  · simp [hS]
+  have he : (∑ u ∈ S, Nat.card (G.neighborSet u)) = S.card * Nat.card (G.neighborSet v) := by
+    calc
+      _ = ∑ _u ∈ S, Nat.card (G.neighborSet v) := by
+        apply sum_congr rfl
+        intro u hu
+        rw [hTw u hu v hv]
+      _ = _ := by simp
+  rw [he]
+  rcases twins_card_or_degree hHB hf S (fun u hu => hTw u hu v hv) with hcard | hdeg
+  · have hdeg' : Nat.card (G.neighborSet v) ≤ Fintype.card V := by
+      rw [Nat.card_eq_fintype_card]
+      exact Fintype.card_subtype_le _
+    exact Nat.mul_le_mul hcard.le hdeg'
+  · calc
+      _ ≤ Fintype.card V * Fintype.card W := Nat.mul_le_mul (card_le_univ S) hdeg.le
+      _ = _ := Nat.mul_comm _ _
+
+open scoped Classical in
+lemma Optimal.safe_mass_bound [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hopt : Optimal H G) :
+    (∑ v : V, if H.Free (clone G v) then Nat.card (G.neighborSet v) else 0) ≤
+      2*Fintype.card W*Fintype.card V := by
+  classical
+  obtain ⟨c⟩ := hopt.bipartite
+  let S (i : Fin 2) : Finset V := {v | H.Free (clone G v) ∧ c v = i}
+  have hbound (i : Fin 2) : (∑ v ∈ S i, Nat.card (G.neighborSet v)) ≤
+      Fintype.card W * Fintype.card V := by
+    apply twins_mass_bound hHB hopt.free
+    intro u hu v hv
+    obtain ⟨hsu,hcu⟩ : H.Free (clone G u) ∧ c u = i := by simpa [S] using hu
+    obtain ⟨hsv,hcv⟩ : H.Free (clone G v) ∧ c v = i := by simpa [S] using hv
+    apply hopt.cloneOptimal.safe_twins (fun h => c.valid h (hcu.trans hcv.symm)) hsu hsv
+  have he : (∑ v : V, if H.Free (clone G v) then Nat.card (G.neighborSet v) else 0) =
+      (∑ v ∈ S 0, Nat.card (G.neighborSet v)) + (∑ v ∈ S 1, Nat.card (G.neighborSet v)) := by
+    simp only [S,sum_filter]
+    rw [←sum_add_distrib]
+    apply sum_congr rfl
+    intro v _
+    by_cases hv : H.Free (clone G v)
+    · have hcv : c v = 0 ∨ c v = 1 := by omega
+      rcases hcv with hcv | hcv <;> simp [hv,hcv]
+    · simp [hv]
+  rw [he]
+  have h0 := hbound 0
+  have h1 := hbound 1
+  nlinarith
+
+lemma Optimal.obstruction_mass [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hopt : Optimal H G) :
+    2*(Nat.card G.edgeSet : ℝ)-2*Fintype.card W*Fintype.card V ≤
+      Erdos713CloneAverage.mass H G := by
+  classical
+  have hs := hopt.safe_mass_bound hHB
+  have hsR : (∑ v : V, if H.Free (clone G v) then (Nat.card (G.neighborSet v) : ℝ) else 0) ≤
+      2*(Fintype.card W : ℝ)*Fintype.card V := by exact_mod_cast hs
+  have hsplit : Erdos713CloneAverage.mass H G +
+      (∑ v : V, if H.Free (clone G v) then (Nat.card (G.neighborSet v) : ℝ) else 0) =
+        2*(Nat.card G.edgeSet : ℝ) := by
+    unfold Erdos713CloneAverage.mass
+    rw [←sum_add_distrib]
+    calc
+      _ = ∑ v : V, (Nat.card (G.neighborSet v) : ℝ) := by
+        apply sum_congr rfl
+        intro v _
+        by_cases hv : SingleFold H G v
+        · have hn : ¬ H.Free (clone G v) := fun h => h hv.obstructed
+          simp [hv,hn]
+        · have hn : H.Free (clone G v) := fun h => hv (fold_of_obstructed H G v hopt.free h)
+          simp [hv,hn]
+      _ = _ := by
+        have hh := G.sum_degrees_eq_twice_card_edges
+        simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card] at hh
+        exact_mod_cast hh
+  linarith
+
+lemma exists_clique_nonneighbor_cover [Fintype V] (G : SimpleGraph V) (S : Finset V) :
+    ∃ C : Finset V, C ⊆ S ∧ G.IsClique (C : Set V) ∧
+      ∀ v ∈ S, ∃ u ∈ C, ¬ G.Adj v u := by
+  classical
+  let T : Finset (Finset V) := S.powerset.filter (fun C => G.IsClique (C : Set V))
+  have hT : T.Nonempty := ⟨∅,by simp [T]⟩
+  obtain ⟨C,hC,hmax⟩ := T.exists_max_image Finset.card hT
+  obtain ⟨hCS,hClique⟩ : C ⊆ S ∧ G.IsClique (C : Set V) := by simpa [T] using hC
+  refine ⟨C,hCS,hClique,?_⟩
+  intro v hv
+  by_contra hh
+  push_neg at hh
+  have hvC : v ∉ C := fun h => G.loopless v (hh v h)
+  have hCC : G.IsClique ((insert v C : Finset V) : Set V) := by
+    rw [coe_insert,isClique_insert]
+    exact ⟨hClique,fun u hu _ => hh u hu⟩
+  have hCT : insert v C ∈ T := by
+    simp only [T,mem_filter,mem_powerset]
+    exact ⟨insert_subset hv hCS,hCC⟩
+  have hc := hmax (insert v C) hCT
+  rw [card_insert_of_notMem hvC] at hc
+  omega
+
+lemma free_clique_card_lt [Fintype W] {H : SimpleGraph W} {G : SimpleGraph V}
+    (hf : H.Free G) {C : Finset V} (hC : G.IsClique (C : Set V)) : C.card < Fintype.card W := by
+  classical
+  have hcf : G.CliqueFree (Fintype.card W) :=
+    cliqueFree_iff_top_free.mpr (fun h => hf ((IsContained.of_le (show H ≤ ⊤ from le_top)).trans h))
+  by_contra hh
+  obtain ⟨A,hAC,hAc⟩ := exists_subset_card_eq (Nat.le_of_not_lt hh)
+  exact hcf A ⟨hC.subset hAC,hAc⟩
+
+open scoped Classical in
+lemma CloneOptimal.safe_mass_bound [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hf : H.Free G) (hopt : CloneOptimal H G) :
+    (∑ v : V, if H.Free (clone G v) then Nat.card (G.neighborSet v) else 0) ≤
+      (Fintype.card W)^2*Fintype.card V := by
+  classical
+  let S : Finset V := {v | H.Free (clone G v)}
+  obtain ⟨C,hCS,hClique,hCover⟩ := exists_clique_nonneighbor_cover G S
+  have hCard : C.card < Fintype.card W := free_clique_card_lt hf hClique
+  let T (u : V) : Finset V := S.filter (fun v => ¬ G.Adj v u)
+  have hTw (u : V) (hu : u ∈ C) (v : V) (hv : v ∈ T u) : G.neighborSet v = G.neighborSet u := by
+    obtain ⟨hvS,hvu⟩ := mem_filter.mp hv
+    have hvs : H.Free (clone G v) := by simpa only [S,mem_filter,mem_univ,true_and] using hvS
+    have hus : H.Free (clone G u) := by simpa only [S,mem_filter,mem_univ,true_and] using hCS hu
+    exact hopt.safe_twins hvu hvs hus
+  have hBound (u : V) (hu : u ∈ C) : (∑ v ∈ T u, Nat.card (G.neighborSet v)) ≤
+      Fintype.card W*Fintype.card V := by
+    apply twins_mass_bound hHB hf
+    intro v hv w hw
+    exact (hTw u hu v hv).trans (hTw u hu w hw).symm
+  calc
+    _ = ∑ v ∈ S, Nat.card (G.neighborSet v) := by simp [S,sum_filter]
+    _ ≤ ∑ u ∈ C, ∑ v ∈ T u, Nat.card (G.neighborSet v) := by
+      simp only [T,sum_filter]
+      rw [sum_comm]
+      apply sum_le_sum
+      intro v hv
+      obtain ⟨u,hu,hvu⟩ := hCover v hv
+      calc
+        _ = if ¬ G.Adj v u then Nat.card (G.neighborSet v) else 0 := by simp [hvu]
+        _ ≤ _ := single_le_sum (f := fun u : V => if ¬ G.Adj v u then Nat.card (G.neighborSet v) else 0)
+          (fun _ _ => Nat.zero_le _) hu
+    _ ≤ ∑ _u ∈ C, Fintype.card W*Fintype.card V := sum_le_sum hBound
+    _ = C.card*(Fintype.card W*Fintype.card V) := by simp
+    _ ≤ (Fintype.card W)^2*Fintype.card V := by
+      calc
+        _ ≤ Fintype.card W*(Fintype.card W*Fintype.card V) :=
+          Nat.mul_le_mul_right _ hCard.le
+        _ = _ := by ring
+
+/-- Ordinary extremality with the same degree-square tie-breaker. -/
+structure OrdinaryOptimal [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) : Prop where
+  free : H.Free G
+  max_edges : ∀ K : SimpleGraph V, H.Free K → Nat.card K.edgeSet ≤ Nat.card G.edgeSet
+  max_energy : ∀ K : SimpleGraph V, H.Free K →
+    Nat.card K.edgeSet = Nat.card G.edgeSet → degreeEnergy K ≤ degreeEnergy G
+
+lemma OrdinaryOptimal.cloneOptimal [Fintype V] {H : SimpleGraph W} {G : SimpleGraph V}
+    (hopt : OrdinaryOptimal H G) : CloneOptimal H G where
+  max_edges s t hs := hopt.max_edges _ (safe_replace hs t)
+  max_energy s t hs he := hopt.max_energy _ (safe_replace hs t) he
+
+lemma exists_ordinary_optimal (H : SimpleGraph W) (hEdge : ∃ a b, H.Adj a b) (n : ℕ) :
+    ∃ G : SimpleGraph (Fin n), OrdinaryOptimal H G ∧ Nat.card G.edgeSet = extremalNumber n H := by
+  classical
+  obtain ⟨G₀,hf₀,he₀⟩ := Erdos713CloneAverage.exists_extremal_family H hEdge
+  let S : Finset (SimpleGraph (Fin n)) := {G | H.Free G ∧ Nat.card G.edgeSet = extremalNumber n H}
+  have hS : S.Nonempty := ⟨G₀ n,by simpa [S] using And.intro (hf₀ n) (he₀ n)⟩
+  obtain ⟨G,hG,hmax⟩ := S.exists_max_image degreeEnergy hS
+  obtain ⟨hf,he⟩ : H.Free G ∧ Nat.card G.edgeSet = extremalNumber n H := by simpa [S] using hG
+  refine ⟨G,⟨hf,?_,?_⟩,he⟩
+  · intro K hK
+    rw [he]
+    have hh := card_edgeFinset_le_extremalNumber hK
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Fintype.card_fin,Nat.card_fin] using hh
+  · intro K hK hKe
+    apply hmax K
+    simpa only [S,mem_filter,mem_univ,true_and] using And.intro hK (hKe.trans he)
+
+lemma OrdinaryOptimal.obstruction_mass [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hopt : OrdinaryOptimal H G) :
+    2*(Nat.card G.edgeSet : ℝ)-(Fintype.card W : ℝ)^2*Fintype.card V ≤
+      Erdos713CloneAverage.mass H G := by
+  classical
+  have hs := hopt.cloneOptimal.safe_mass_bound hHB hopt.free
+  have hsR : (∑ v : V, if H.Free (clone G v) then (Nat.card (G.neighborSet v) : ℝ) else 0) ≤
+      (Fintype.card W : ℝ)^2*Fintype.card V := by exact_mod_cast hs
+  have hsplit : Erdos713CloneAverage.mass H G +
+      (∑ v : V, if H.Free (clone G v) then (Nat.card (G.neighborSet v) : ℝ) else 0) =
+        2*(Nat.card G.edgeSet : ℝ) := by
+    unfold Erdos713CloneAverage.mass
+    rw [←sum_add_distrib]
+    calc
+      _ = ∑ v : V, (Nat.card (G.neighborSet v) : ℝ) := by
+        apply sum_congr rfl
+        intro v _
+        by_cases hv : SingleFold H G v
+        · have hn : ¬ H.Free (clone G v) := fun h => h hv.obstructed
+          simp [hv,hn]
+        · have hn : H.Free (clone G v) := fun h => hv (fold_of_obstructed H G v hopt.free h)
+          simp [hv,hn]
+      _ = _ := by
+        have hh := G.sum_degrees_eq_twice_card_edges
+        simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card] at hh
+        exact_mod_cast hh
+  linarith
+
+open scoped Classical in
+lemma CloneOptimal.high_safe_card [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hf : H.Free G) (hopt : CloneOptimal H G) :
+    (univ.filter (fun v => H.Free (clone G v) ∧ Fintype.card W ≤ Nat.card (G.neighborSet v))).card ≤
+      (Fintype.card W)^2 := by
+  classical
+  let S : Finset V := {v | H.Free (clone G v) ∧ Fintype.card W ≤ Nat.card (G.neighborSet v)}
+  obtain ⟨C,hCS,hClique,hCover⟩ := exists_clique_nonneighbor_cover G S
+  have hCard : C.card < Fintype.card W := free_clique_card_lt hf hClique
+  let T (u : V) : Finset V := S.filter (fun v => ¬ G.Adj v u)
+  have hBound (u : V) (hu : u ∈ C) : (T u).card ≤ Fintype.card W := by
+    obtain ⟨hus,huDeg⟩ : H.Free (clone G u) ∧ Fintype.card W ≤ Nat.card (G.neighborSet u) := by
+      simpa only [S,mem_filter,mem_univ,true_and] using hCS hu
+    have hTw (v : V) (hv : v ∈ T u) : G.neighborSet v = G.neighborSet u := by
+      obtain ⟨hvS,hvu⟩ := mem_filter.mp hv
+      obtain ⟨hvs,_⟩ : H.Free (clone G v) ∧ Fintype.card W ≤ Nat.card (G.neighborSet v) := by
+        simpa only [S,mem_filter,mem_univ,true_and] using hvS
+      exact hopt.safe_twins hvu hvs hus
+    rcases twins_card_or_degree hHB hf (T u) hTw with hsmall | hsmall
+    · exact hsmall.le
+    · omega
+  change S.card ≤ _
+  calc
+    _ = ∑ _v ∈ S, (1 : ℕ) := by simp
+    _ ≤ ∑ u ∈ C, (T u).card := by
+      simp only [Finset.card_eq_sum_ones,T,sum_filter]
+      rw [sum_comm]
+      apply sum_le_sum
+      intro v hv
+      obtain ⟨u,hu,hvu⟩ := hCover v hv
+      calc
+        _ = if ¬ G.Adj v u then (1 : ℕ) else 0 := by simp [hvu]
+        _ ≤ _ := single_le_sum (f := fun u : V => if ¬ G.Adj v u then (1 : ℕ) else 0)
+          (fun _ _ => Nat.zero_le _) hu
+    _ ≤ ∑ _u ∈ C, Fintype.card W := sum_le_sum hBound
+    _ = C.card*Fintype.card W := by simp
+    _ ≤ (Fintype.card W)^2 := by nlinarith
+
+open scoped Classical in
+lemma CloneOptimal.safe_card_of_min_degree [Fintype V] {H : SimpleGraph W} [Fintype W]
+    (hHB : H.IsBipartite) {G : SimpleGraph V} (hf : H.Free G) (hopt : CloneOptimal H G)
+    (hmin : ∀ v, Fintype.card W ≤ Nat.card (G.neighborSet v)) :
+    (univ.filter (fun v => H.Free (clone G v))).card ≤ (Fintype.card W)^2 := by
+  simpa only [hmin,and_true] using hopt.high_safe_card hHB hf
+
+lemma exists_ordinary_family (H : SimpleGraph W) (hEdge : ∃ a b, H.Adj a b) :
+    ∃ G : (n : ℕ) → SimpleGraph (Fin n),
+      (∀ n, OrdinaryOptimal H (G n)) ∧
+      (∀ n, Nat.card (G n).edgeSet = extremalNumber n H) := by
+  choose G hopt he using exists_ordinary_optimal H hEdge
+  exact ⟨G,hopt,he⟩
+
+open Filter Asymptotics
+open scoped Topology
+lemma asymptotic_obstruction_mass [Fintype W] (H : SimpleGraph W) (hHB : H.IsBipartite)
+    (G : (n : ℕ) → SimpleGraph (Fin n)) (hopt : ∀ n, OrdinaryOptimal H (G n))
+    (he : ∀ n, Nat.card (G n).edgeSet = extremalNumber n H)
+    {α c : ℝ} (hα : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    Tendsto (fun n => Erdos713CloneAverage.mass H (G n)/(extremalNumber n H : ℝ)) atTop (𝓝 2) := by
+  have ht : Tendsto (fun n : ℕ => (extremalNumber n H : ℝ)/(n : ℝ)) atTop atTop := by
+    simpa only [Real.rpow_one] using Erdos713FutureRecords.lower_ratio_top hα hc h
+  have hi : Tendsto (fun n : ℕ => (n : ℝ)/(extremalNumber n H : ℝ)) atTop (𝓝 0) := by
+    simpa only [Function.comp_def,inv_div] using tendsto_inv_atTop_zero.comp ht
+  have hpos : ∀ᶠ n : ℕ in atTop, 0 < (extremalNumber n H : ℝ) := by
+    filter_upwards [ht.eventually_gt_atTop 0] with n hn
+    rcases div_pos_iff.mp hn with hh | hh
+    · exact hh.1
+    · exact ((not_lt_of_ge (Nat.cast_nonneg (extremalNumber n H))) hh.1).elim
+  have hl : Tendsto (fun n : ℕ => (2 : ℝ)-(Fintype.card W : ℝ)^2 *
+      ((n : ℝ)/(extremalNumber n H : ℝ))) atTop (𝓝 2) := by
+    simpa using tendsto_const_nhds.sub (tendsto_const_nhds.mul hi)
+  apply tendsto_of_tendsto_of_tendsto_of_le_of_le' hl tendsto_const_nhds
+  · filter_upwards [hpos] with n hn
+    have hlo := (hopt n).obstruction_mass hHB
+    simp only [he n,Fintype.card_fin] at hlo
+    have hh := div_le_div_of_nonneg_right hlo hn.le
+    convert hh using 1 <;> field_simp
+  · filter_upwards [hpos] with n hn
+    apply (div_le_iff₀ hn).mpr
+    simpa only [he n] using Erdos713CloneAverage.mass_le H (G n)
+
+lemma exists_asymptotic_obstruction_mass [Fintype W] (H : SimpleGraph W)
+    (hHB : H.IsBipartite) (hEdge : ∃ a b, H.Adj a b)
+    {α c : ℝ} (hα : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ G : (n : ℕ) → SimpleGraph (Fin n),
+      (∀ n, OrdinaryOptimal H (G n)) ∧
+      (∀ n, Nat.card (G n).edgeSet = extremalNumber n H) ∧
+      Tendsto (fun n => Erdos713CloneAverage.mass H (G n)/(extremalNumber n H : ℝ)) atTop (𝓝 2) := by
+  obtain ⟨G,hopt,he⟩ := exists_ordinary_family H hEdge
+  exact ⟨G,hopt,he,asymptotic_obstruction_mass H hHB G hopt he hα hc h⟩
+
+end Erdos713CloneSymm
+
+/-! Positive vertex density for one fixed bipartite identification, on
+symmetrized joint extremal witnesses. No extremal rate passes to the quotient. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713SymmRoots
+open Erdos713Cloning Erdos713BipExtremal Erdos713FixedFold Erdos713CloneSymm
+open Erdos713SwitchGluing
+
+lemma power_increment_average {x r : ℝ} (hx : 1 ≤ x) (hr : 1 < r) :
+    x^(r-1) ≤ x^r-(x-1)^r := by
+  have h0 : 0 ≤ x-1 := by linarith
+  have hh := Real.rpow_le_rpow h0 (show x-1 ≤ x by linarith) (by linarith : 0 ≤ r-1)
+  have hm := mul_le_mul_of_nonneg_left hh h0
+  rw [rpow_factor (by linarith : 0 ≤ x) hr,rpow_factor h0 hr]
+  nlinarith
+
+lemma joint_min_average {W : Type*} {H : SimpleGraph W} {r s : ℝ} {n : ℕ}
+    {G : SimpleGraph (Fin n)} (hJ : Joint H r s n G) (hr : 1 < r) (v : Fin n) :
+    (Nat.card G.edgeSet : ℝ)/(n : ℝ) ≤ (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨hn,hf,hb,he,hhalf,C,hC,hEq,hUpper,hDeg,hCut,hInc⟩ := hJ
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn
+  have hn1 : (1 : ℝ) ≤ n := by exact_mod_cast hn
+  have hpred : ((n-1 : ℕ) : ℝ) = (n : ℝ)-1 := by rw [Nat.cast_sub hn,Nat.cast_one]
+  have hlow := mul_le_mul_of_nonneg_left (power_increment_average hn1 hr) hC.le
+  have hd := hDeg v
+  rw [hpred] at hd
+  calc
+    _ = C*(n : ℝ)^(r-1) := by rw [hEq,rpow_factor hnR.le hr]; field_simp
+    _ ≤ C*((n : ℝ)^r-((n : ℝ)-1)^r) := hlow
+    _ ≤ _ := hd
+
+lemma transport_joint {W : Type*} {H : SimpleGraph W} {r s : ℝ} {n : ℕ}
+    {G K : SimpleGraph (Fin n)} (hJ : Joint H r s n G) (hr : 1 < r)
+    (hf : H.Free K) (hb : K.IsBipartite) (he : Nat.card K.edgeSet = number n H) :
+    Joint H r s n K := by
+  obtain ⟨hn,hfG,hbG,heG,hhalf,C,hC,hEq,hUpper,hDeg,hCut,hInc⟩ := hJ
+  have hEqK : (Nat.card K.edgeSet : ℝ) = C*(n : ℝ)^r := by rwa [heG,←he] at hEq
+  refine ⟨hn,hf,hb,he,by simpa only [he] using ordinary_le_two H n,C,hC,hEqK,hUpper,
+    Erdos713BipExtremal.degree_lower_of_record H K hf hb he hEqK hUpper,?_,hInc⟩
+  intro S hS
+  simpa only [Fintype.card_fin] using Erdos713BipExtremal.record_cut_bound H K hf hb hr hC.le
+    (by simpa only [Fintype.card_fin] using hEqK)
+    (by simpa only [Fintype.card_fin] using hUpper) S (by simpa only [Fintype.card_fin] using hS)
+
+lemma optimal_joint {W : Type*} [Fintype W] (H : SimpleGraph W) (hHB : H.IsBipartite)
+    {α c r s : ℝ} (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N D : ℕ) :
+    ∃ n, N ≤ n ∧ ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧ Optimal H G ∧
+      (∀ v, max D (Fintype.card W) ≤ Nat.card (G.neighborSet v)) ∧
+      ∃ B : Finset (Fin n), (∀ v ∈ B, SingleFold H G v) ∧ n ≤ B.card+(Fintype.card W)^2 := by
+  classical
+  have hlim : Tendsto (fun n : ℕ => (number n H : ℝ)/(n : ℝ)) atTop atTop := by
+    simpa only [Real.rpow_one] using lower_ratio_top H (hr.trans hra) hc h
+  obtain ⟨L,hL⟩ := eventually_atTop.mp (hlim.eventually_ge_atTop (max D (Fintype.card W) : ℕ))
+  obtain ⟨n,hn,hnp,C,hC,G₀,hfree,hB,he,hhalf,hEq,hUpper,hDeg,hCut,hinc,hFold⟩ :=
+    joint_with_increment H hr hra has hc h (max N L)
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hpos : 0 < number n H := by
+    have hp : (0 : ℝ) < Nat.card G₀.edgeSet := by rw [hEq]; positivity
+    rw [he] at hp
+    exact_mod_cast hp
+  obtain ⟨G,hOpt,hE⟩ := exists_optimal hpos
+  have hJ₀ : Joint H r s n G₀ := ⟨hnp,hfree,hB,he,hhalf,C,hC,hEq,hUpper,hDeg,hCut,hinc⟩
+  have hJ := transport_joint hJ₀ hr hOpt.free hOpt.bipartite hE
+  have hMin (v : Fin n) : max D (Fintype.card W) ≤ Nat.card (G.neighborSet v) := by
+    have hh := joint_min_average hJ hr v
+    rw [hE] at hh
+    exact_mod_cast (hL n ((le_max_right N L).trans hn)).trans hh
+  let T : Finset (Fin n) := univ.filter (fun v => H.Free (clone G v))
+  have hT : T.card ≤ (Fintype.card W)^2 :=
+    hOpt.cloneOptimal.safe_card_of_min_degree hHB hOpt.free (fun v => (le_max_right _ _).trans (hMin v))
+  refine ⟨n,(le_max_left N L).trans hn,G,hJ,hOpt,hMin,Tᶜ,?_,?_⟩
+  · intro v hv
+    have hv' : ¬ H.Free (clone G v) := by simpa [T] using hv
+    by_contra hfold
+    exact hv' (fun hc => hfold (fold_of_obstructed H G v hOpt.free hc))
+  · simp only [card_compl,card_univ,Fintype.card_fin]
+    have ht := card_le_univ T
+    simp only [Fintype.card_fin] at ht
+    omega
+
+/-- One fixed-pair witness with a positive proportion of root vertices,
+and with the degree mass forced by the SAME past record. -/
+def VertexAt {W : Type*} [Fintype W] (H : SimpleGraph W) (p : W × W)
+    (r s : ℝ) (D n : ℕ) : Prop :=
+  ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧ Optimal H G ∧
+    (∀ v, D ≤ Nat.card (G.neighborSet v)) ∧
+    ∃ F : Finset (Fin n), F.Nonempty ∧ (∀ v ∈ F, AtPair H G p v) ∧
+      n ≤ 2*(Fintype.card W)^2*F.card ∧
+      (Nat.card G.edgeSet : ℝ) ≤ 2*(Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ)
+
+lemma vertex_witness {W : Type*} [Fintype W] (H : SimpleGraph W) (hHB : H.IsBipartite)
+    {α c r s : ℝ} (hr : 1 < r) (hra : r < α) (has : α < s) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N D : ℕ) :
+    ∃ p : W × W, ∃ n, N ≤ n ∧ VertexAt H p r s D n := by
+  obtain ⟨n,hn,G,hJ,hOpt,hMin,B,hFold,hBcard⟩ :=
+    optimal_joint H hHB hr hra has hc h (max N (2*(Fintype.card W)^2+1)) D
+  have hnp : 0 < n := hJ.1
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hnp
+  have hhalf : (n : ℝ)/2 ≤ ∑ _v ∈ B, (1 : ℝ) := by
+    have hcB : n ≤ 2*B.card := by omega
+    have hcBR : (n : ℝ) ≤ 2*(B.card : ℝ) := by exact_mod_cast hcB
+    simp only [sum_const,nsmul_eq_mul,mul_one]
+    linarith
+  obtain ⟨p,F,hFB,hFne,hF,hCount⟩ := weighted_pair H G B hFold (fun _ => (1 : ℝ)) (by positivity) hhalf
+  have hCountR : (n : ℝ) ≤ 2*(Fintype.card W : ℝ)^2*(F.card : ℝ) := by
+    simp only [sum_const,nsmul_eq_mul,mul_one] at hCount
+    linarith
+  have hCountN : n ≤ 2*(Fintype.card W)^2*F.card := by exact_mod_cast hCountR
+  have hmass : (Nat.card G.edgeSet : ℝ) ≤
+      2*(Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ) := by
+    have hlocal := sum_le_sum (fun v (_ : v ∈ F) => joint_min_average hJ hr v)
+    simp only [sum_const,nsmul_eq_mul] at hlocal
+    have hweighted := mul_le_mul_of_nonneg_right hCountR
+      (div_nonneg (Nat.cast_nonneg (Nat.card G.edgeSet)) hnR.le)
+    have hcancel : (n : ℝ)*((Nat.card G.edgeSet : ℝ)/(n : ℝ)) = (Nat.card G.edgeSet : ℝ) := by
+      field_simp
+    rw [hcancel] at hweighted
+    have hmult := mul_le_mul_of_nonneg_left hlocal (show 0 ≤ 2*(Fintype.card W : ℝ)^2 by positivity)
+    nlinarith
+  exact ⟨p,n,(le_max_left _ _).trans hn,G,hJ,hOpt,
+    fun v => (le_max_left _ _).trans (hMin v),F,hFne,hF,hCountN,hmass⟩
+
+def NearVertex {W : Type*} [Fintype W] (H : SimpleGraph W) (p : W × W)
+    (α ε : ℝ) (D n : ℕ) : Prop :=
+  ∃ r s : ℝ, 1 < r ∧ r < α ∧ α-ε < r ∧ α < s ∧ s < 2 ∧ s < α+ε ∧ VertexAt H p r s D n
+
+lemma NearVertex.mono {W : Type*} [Fintype W] {H : SimpleGraph W} {p : W × W}
+    {α ε δ : ℝ} {D E n : ℕ} (h : NearVertex H p α ε D n) (hεδ : ε ≤ δ) (hED : E ≤ D) :
+    NearVertex H p α δ E n := by
+  obtain ⟨r,s,hr,hra,hεr,has,hs,hsε,G,hJ,hOpt,hDeg,F,hFne,hF,hCount,hMass⟩ := h
+  exact ⟨r,s,hr,hra,by linarith,has,hs,by linarith,G,hJ,hOpt,
+    fun v => hED.trans (hDeg v),F,hFne,hF,hCount,hMass⟩
+
+lemma near_vertex_witness {W : Type*} [Fintype W] (H : SimpleGraph W) (hHB : H.IsBipartite)
+    {α c ε : ℝ} (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c) (hε : 0 < ε)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) (N D : ℕ) :
+    ∃ p : W × W, ∃ n, N ≤ n ∧ NearVertex H p α ε D n := by
+  obtain ⟨r,hr,hra⟩ := exists_between (show max 1 (α-ε) < α by
+    exact max_lt hα (by linarith))
+  obtain ⟨s,has,hs⟩ := exists_between (show α < min 2 (α+ε) by
+    exact lt_min hα2 (by linarith))
+  have hr1 : 1 < r := (le_max_left _ _).trans_lt hr
+  have hrε : α-ε < r := (le_max_right _ _).trans_lt hr
+  have hs2 : s < 2 := hs.trans_le (min_le_left _ _)
+  have hsε : s < α+ε := hs.trans_le (min_le_right _ _)
+  obtain ⟨p,n,hn,hV⟩ := vertex_witness H hHB hr1 hra has hc h N D
+  exact ⟨p,n,hn,r,s,hr1,hra,hrε,has,hs2,hsε,hV⟩
+
+/-- The pair is fixed independently of exponent tolerance, minimum degree,
+and size threshold. Vertex density and degree mass are on the SAME host. -/
+theorem uniform_pair_vertices {W : Type*} [Fintype W] (H : SimpleGraph W) (hHB : H.IsBipartite)
+    {α c : ℝ} (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ p : W × W, ∀ ε : ℝ, 0 < ε → ∀ N D : ℕ, ∃ n, N ≤ n ∧ NearVertex H p α ε D n := by
+  let P (p : W × W) (k : ℕ) : Prop := ∃ n, k ≤ n ∧ NearVertex H p α (1/(k+1)) k n
+  have hP : ∀ N, ∃ p k, N ≤ k ∧ P p k := by
+    intro N
+    obtain ⟨p,n,hn,hV⟩ := near_vertex_witness H hHB hα hα2 hc
+      (show (0 : ℝ) < 1/(N+1) by positivity) h N N
+    exact ⟨p,N,le_rfl,n,hn,hV⟩
+  obtain ⟨p,hp⟩ := finite_cofinal hP
+  refine ⟨p,?_⟩
+  intro ε hε N D
+  obtain ⟨K,hK⟩ := exists_nat_one_div_lt hε
+  obtain ⟨k,hk,n,hkn,hV⟩ := hp (max N (max K D))
+  have hNk : N ≤ k := (le_max_left _ _).trans hk
+  have hKk : K ≤ k := (le_max_left K D).trans ((le_max_right _ _).trans hk)
+  have hDk : D ≤ k := (le_max_right K D).trans ((le_max_right _ _).trans hk)
+  have hεk : (1 : ℝ)/(k+1) < ε := by
+    apply (one_div_le_one_div_of_le (by positivity : (0 : ℝ) < K+1) ?_).trans_lt hK
+    exact_mod_cast Nat.add_le_add_right hKk 1
+  exact ⟨n,hNk.trans hkn,hV.mono hεk.le hDk⟩
+
+/-- A single smaller bipartite quotient occurs at at least n/(2*|H|^2)
+distinct roots, on the same secondary-optimal joint hosts. Copies can overlap.
+Neither a power rate nor an exact asymptotic for the quotient is asserted. -/
+theorem uniform_identification_vertices {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hHB : H.IsBipartite) {α c : ℝ} (hα : 1 < α) (hα2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n : ℕ => c*(n : ℝ)^α)) :
+    ∃ a b : W, ∃ hab : a ≠ b, ∃ hnab : ¬ H.Adj a b,
+      (identified H a b hnab).IsBipartite ∧
+      Nat.card {w : W // w ≠ a}+1 = Nat.card W ∧
+      ∀ ε : ℝ, 0 < ε → ∀ N D : ℕ, ∃ n, N ≤ n ∧ ∃ r s : ℝ,
+        1 < r ∧ r < α ∧ α-ε < r ∧ α < s ∧ s < 2 ∧ s < α+ε ∧
+        ∃ G : SimpleGraph (Fin n), Joint H r s n G ∧ Optimal H G ∧
+          (∀ v, D ≤ Nat.card (G.neighborSet v)) ∧
+          ∃ F : Finset (Fin n), F.Nonempty ∧
+            (∀ v ∈ F, ∃ f : (identified H a b hnab).Copy G, f ⟨b,hab.symm⟩ = v) ∧
+            n ≤ 2*(Fintype.card W)^2*F.card ∧
+            (Nat.card G.edgeSet : ℝ) ≤
+              2*(Fintype.card W : ℝ)^2 * ∑ v ∈ F, (Nat.card (G.neighborSet v) : ℝ) := by
+  obtain ⟨p,hp⟩ := uniform_pair_vertices H hHB hα hα2 hc h
+  obtain ⟨n,hn,r,s,hr,hra,hεr,has,hs,hsε,G,hJ,hOpt,hDeg,F,hFne,hF,hCount,hMass⟩ := hp 1 (by norm_num) 0 0
+  obtain ⟨v,hv⟩ := hFne
+  obtain ⟨hab,hnab,f,hf⟩ := hF v hv
+  refine ⟨p.1,p.2,hab,hnab,hJ.2.2.1.of_hom f.toHom,card_identified_vertices p.1,?_⟩
+  intro ε hε N D
+  obtain ⟨n,hn,r,s,hr,hra,hεr,has,hs,hsε,G,hJ,hOpt,hDeg,F,hFne,hF,hCount,hMass⟩ := hp ε hε N D
+  refine ⟨n,hn,r,s,hr,hra,hεr,has,hs,hsε,G,hJ,hOpt,hDeg,F,hFne,?_,hCount,hMass⟩
+  intro v hv
+  obtain ⟨hab',hnab',f,hf⟩ := hF v hv
+  exact ⟨f,hf⟩
+
+end Erdos713SymmRoots
+
+
+/-! Dense hosts cannot have bounded transversals for patterns of strictly
+smaller extremal exponent. This uses the edge count, not root density. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713RobustCopies
+
+variable {U V W : Type*}
+
+def DisjointCopies (k : ℕ) (Q : SimpleGraph U) (G : SimpleGraph V) : Prop :=
+  ∃ f : Fin k → Q.Copy G, ∀ i j, i ≠ j → ∀ u v, f i u ≠ f j v
+
+/-- Taking the maximum avoids assuming monotonicity for patterns with
+isolated vertices at small host orders. -/
+noncomputable def envelope (Q : SimpleGraph U) (n : ℕ) : ℕ :=
+  (range (n+1)).sup (fun m => extremalNumber m Q)
+
+lemma le_envelope (Q : SimpleGraph U) {m n : ℕ} (hmn : m ≤ n) :
+    extremalNumber m Q ≤ envelope Q n := by
+  unfold envelope
+  exact Finset.le_sup (f := fun m => extremalNumber m Q) (mem_range.mpr (by omega))
+
+lemma envelope_upper (Q : SimpleGraph U) {r : ℝ} (hr : 0 ≤ r)
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    (fun n : ℕ => (envelope Q n : ℝ)) =O[atTop] (fun n => (n : ℝ)^r) := by
+  obtain ⟨C,hC,hbound⟩ := Erdos713EdgeAttachments.global_extremal_bound_of_upper Q hr hQ
+  apply IsBigO.of_bound C
+  filter_upwards with n
+  obtain ⟨m,hm,he⟩ := exists_mem_eq_sup (range (n+1)) (by simp) (fun m => extremalNumber m Q)
+  rw [Real.norm_natCast,Real.norm_of_nonneg (Real.rpow_nonneg (Nat.cast_nonneg _) _)]
+  change (((range (n+1)).sup (fun m => extremalNumber m Q) : ℕ) : ℝ) ≤ _
+  rw [he]
+  exact (hbound m).trans (mul_le_mul_of_nonneg_left
+    (Real.rpow_le_rpow (Nat.cast_nonneg _) (by exact_mod_cast (show m ≤ n by simpa using hm)) hr) hC)
+
+lemma edge_bound_after_deletion [Fintype V] (Q : SimpleGraph U) (G : SimpleGraph V)
+    (S : Finset V) (hf : Q.Free (G.induce (S : Set V)ᶜ)) :
+    Nat.card G.edgeSet ≤ envelope Q (Fintype.card V) + S.card*Fintype.card V := by
+  classical
+  have hdel := Erdos713Union.edges_le_induce_compl_add G S
+  have hq := card_edgeFinset_le_extremalNumber hf
+  have hn : Fintype.card ↥((S : Set V)ᶜ) ≤ Fintype.card V := Fintype.card_subtype_le _
+  have hm := le_envelope Q hn
+  simp only [edgeFinset_card, Fintype.card_eq_nat_card] at hq hdel
+  simp only [Fintype.card_eq_nat_card] at hm ⊢
+  exact hdel.trans (Nat.add_le_add_right (hq.trans hm) _)
+
+lemma copy_avoiding_of_edge_bound [Fintype V] (Q : SimpleGraph U) (G : SimpleGraph V)
+    (S : Finset V)
+    (h : envelope Q (Fintype.card V) + S.card*Fintype.card V < Nat.card G.edgeSet) :
+    ∃ f : Q.Copy G, ∀ u, f u ∉ S := by
+  classical
+  have hc : Q ⊑ G.induce (S : Set V)ᶜ := by
+    by_contra hf
+    exact (not_le_of_gt h) (edge_bound_after_deletion Q G S hf)
+  obtain ⟨f⟩ := hc
+  refine ⟨(Copy.induce G _).comp f,fun u => ?_⟩
+  exact (f u).property
+
+lemma disjoint_copies_of_avoidance [Fintype U] [Fintype V] (Q : SimpleGraph U)
+    (G : SimpleGraph V) (k : ℕ)
+    (h : ∀ S : Finset V, S.card ≤ k*Fintype.card U → ∃ f : Q.Copy G, ∀ u, f u ∉ S) :
+    DisjointCopies k Q G := by
+  classical
+  induction k with
+  | zero => exact ⟨Fin.elim0,fun i => Fin.elim0 i⟩
+  | succ k ih =>
+    obtain ⟨f,hf⟩ := ih (fun S hS => h S (hS.trans (Nat.mul_le_mul_right _ (Nat.le_succ k))))
+    let S := univ.biUnion (fun i : Fin k => univ.image (f i))
+    have hS : S.card ≤ k*Fintype.card U := by
+      calc
+        _ ≤ ∑ i : Fin k, (univ.image (f i)).card := card_biUnion_le
+        _ ≤ ∑ _i : Fin k, Fintype.card U := sum_le_sum (fun i _ => card_image_le.trans (by simp))
+        _ = _ := by simp
+    obtain ⟨g,hg⟩ := h S (hS.trans (Nat.mul_le_mul_right _ (Nat.le_succ k)))
+    have hgf (i : Fin k) (u v : U) : g u ≠ f i v := by
+      intro he
+      apply hg u
+      rw [he]
+      exact mem_biUnion.mpr ⟨i,mem_univ _,mem_image.mpr ⟨v,mem_univ _,rfl⟩⟩
+    refine ⟨Fin.cases g f,?_⟩
+    intro i j hij u v
+    cases i using Fin.cases <;> cases j using Fin.cases
+    · exact (hij rfl).elim
+    · exact hgf _ u v
+    · exact (hgf _ v u).symm
+    · exact hf _ _ (fun he => hij (congrArg Fin.succ he)) u v
+
+lemma disjoint_copies_of_edge_bound [Fintype U] [Fintype V] (Q : SimpleGraph U)
+    (G : SimpleGraph V) (k : ℕ)
+    (h : envelope Q (Fintype.card V) + k*Fintype.card U*Fintype.card V < Nat.card G.edgeSet) :
+    DisjointCopies k Q G := by
+  apply disjoint_copies_of_avoidance Q G k
+  intro S hS
+  apply copy_avoiding_of_edge_bound Q G S
+  exact (Nat.add_le_add_left (Nat.mul_le_mul_right _ hS) _).trans_lt h
+
+lemma eventual_edge_gap (H : SimpleGraph W) (Q : SimpleGraph U) {α c r : ℝ}
+    (hr : 1 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) (M : ℕ) :
+    ∀ᶠ n : ℕ in atTop, 2*(envelope Q n + M*n) < extremalNumber n H := by
+  have hO : (fun n : ℕ => (2 : ℝ)*((envelope Q n : ℝ)+(M*n : ℕ))) =O[atTop]
+      (fun n : ℕ => (n : ℝ)^r) := ((envelope_upper Q (by linarith) hQ).add (Erdos713Rate.cast_linear_bigO hr M)).const_mul_left 2
+  obtain ⟨C,hC⟩ := hO.bound
+  have htop := Erdos713FutureRecords.lower_ratio_top hra hc hH
+  filter_upwards [hC,htop.eventually_gt_atTop C,eventually_gt_atTop (0 : ℕ)] with n hbound hlower hn
+  have hp : 0 < (n : ℝ)^r := Real.rpow_pos_of_pos (by exact_mod_cast hn) r
+  have hlo : C*(n : ℝ)^r < (extremalNumber n H : ℝ) := (lt_div_iff₀ hp).mp hlower
+  rw [Real.norm_of_nonneg (by positivity),Real.norm_of_nonneg hp.le] at hbound
+  exact_mod_cast hbound.trans_lt hlo
+
+/-- Every host with at least half the extremal edge count has arbitrarily
+many disjoint Q copies, if Q has a strictly smaller upper exponent. -/
+theorem eventual_disjoint_copies [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c r : ℝ} (hr : 1 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) (k : ℕ) :
+    ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet → DisjointCopies k Q G := by
+  filter_upwards [eventual_edge_gap H Q hr hra hc hH hQ (k*Fintype.card U)] with n hn
+  intro G hG
+  apply disjoint_copies_of_edge_bound Q G k
+  simp only [Fintype.card_fin]
+  omega
+
+/-- Under an irrational exact exponent, every contained pattern with a
+known rational attained rate has a strict exponent gap. -/
+theorem known_subgraphs [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c : ℝ} (ha : 1 ≤ α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hirr : α ∉ Set.range ((↑) : ℚ → ℝ)) (hQH : Q ⊑ H)
+    {r : ℚ} (hQ : Erdos713Rate.HasRate Q (r : ℝ)) (k : ℕ) :
+    ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet → DisjointCopies k Q G := by
+  have hrα : (r : ℝ) ≤ α := hQ.lower α ha
+    ((Erdos713Rate.extremal_mono_bigO hQH).trans (Erdos713Rate.rate_of_asymptotic ha hc.ne' hH).upper)
+  have hrα' : (r : ℝ) < α := lt_of_le_of_ne hrα (fun he => hirr ⟨r,he⟩)
+  exact eventual_disjoint_copies H Q hQ.one_le hrα' hc hH hQ.upper k
+
+end Erdos713RobustCopies
+
+
+/-! Polynomial-size disjoint packings and transversal bounds from a strict
+extremal exponent gap. These are necessary conditions, not rationality. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713RobustCopies
+
+variable {U V W : Type*}
+
+lemma bigO_eventually_lt_power {f : ℕ → ℝ} {r α b : ℝ} (hra : r < α) (hb : 0 < b)
+    (h : f =O[atTop] (fun n : ℕ => (n : ℝ)^r)) :
+    ∀ᶠ n : ℕ in atTop, f n < b*(n : ℝ)^α := by
+  obtain ⟨C,hC⟩ := h.bound
+  have htop := Erdos713FutureRecords.lower_ratio_top (f := fun n : ℕ => b*(n : ℝ)^α)
+    hra hb Asymptotics.IsEquivalent.refl
+  filter_upwards [hC,htop.eventually_gt_atTop C,eventually_gt_atTop (0 : ℕ)] with n hn hlarge hnp
+  have hp : 0 < (n : ℝ)^r := Real.rpow_pos_of_pos (by exact_mod_cast hnp) r
+  have hlow := (lt_div_iff₀ hp).mp hlarge
+  rw [Real.norm_of_nonneg hp.le] at hn
+  have hbound := (le_abs_self (f n)).trans (by simpa only [Real.norm_eq_abs] using hn)
+  exact hbound.trans_lt hlow
+
+lemma scaled_edge_gap (H : SimpleGraph W) (Q : SimpleGraph U) {α c r : ℝ}
+    (hr : 0 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    ∀ᶠ n : ℕ in atTop, 0 < n ∧
+      (envelope Q n : ℝ) < c/8*(n : ℝ)^α ∧
+      c/2*(n : ℝ)^α < (extremalNumber n H : ℝ) := by
+  have henv := bigO_eventually_lt_power hra (by positivity : 0 < c/8) (envelope_upper Q hr hQ)
+  have hlow := (Erdos713FutureRecords.ratio_limit hH).eventually_const_lt
+    (by linarith : c/2 < c)
+  filter_upwards [henv,hlow,eventually_gt_atTop (0 : ℕ)] with n hn hlarge hnp
+  refine ⟨hnp,hn,?_⟩
+  exact (lt_div_iff₀ (Real.rpow_pos_of_pos (by exact_mod_cast hnp) α)).mp hlarge
+
+/-- An explicit polynomial-size packing, on every sufficiently dense host.
+The positive constant is independent of the host and its order. -/
+theorem polynomial_disjoint_copies [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c r : ℝ} (hr : 0 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet →
+        DisjointCopies ⌊δ*(n : ℝ)^(α-1)⌋₊ Q G := by
+  let δ : ℝ := c/(8*((Fintype.card U : ℝ)+1))
+  have hδ : 0 < δ := by dsimp [δ]; positivity
+  have hδq : δ*(Fintype.card U : ℝ) ≤ c/8 := by
+    calc
+      _ ≤ δ*((Fintype.card U : ℝ)+1) := mul_le_mul_of_nonneg_left (by linarith) hδ.le
+      _ = _ := by dsimp [δ]; field_simp
+  refine ⟨δ,hδ,?_⟩
+  filter_upwards [scaled_edge_gap H Q hr hra hc hH hQ] with n hn
+  intro G hG
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn.1
+  let k : ℕ := ⌊δ*(n : ℝ)^(α-1)⌋₊
+  have hfloor : (k : ℝ) ≤ δ*(n : ℝ)^(α-1) := Nat.floor_le (by positivity)
+  have hbudget : (k : ℝ)*(Fintype.card U : ℝ)*(n : ℝ) ≤ c/8*(n : ℝ)^α := by
+    calc
+      _ ≤ (δ*(n : ℝ)^(α-1))*(Fintype.card U : ℝ)*(n : ℝ) :=
+        mul_le_mul_of_nonneg_right
+          (mul_le_mul_of_nonneg_right hfloor (Nat.cast_nonneg _)) hnR.le
+      _ = (δ*(Fintype.card U : ℝ))*(n : ℝ)^α := by
+        rw [Real.rpow_sub_one hnR.ne']
+        field_simp
+      _ ≤ _ := mul_le_mul_of_nonneg_right hδq (Real.rpow_nonneg hnR.le _)
+  have hG' : (extremalNumber n H : ℝ) ≤ 2*(Nat.card G.edgeSet : ℝ) := by exact_mod_cast hG
+  have hbound : (envelope Q n : ℝ)+(k : ℝ)*(Fintype.card U : ℝ)*(n : ℝ) <
+      (Nat.card G.edgeSet : ℝ) := by linarith [hn.2.1,hn.2.2]
+  apply disjoint_copies_of_edge_bound Q G k
+  simpa only [Fintype.card_fin] using (show envelope Q n+k*Fintype.card U*n < Nat.card G.edgeSet by
+    exact_mod_cast hbound)
+
+/-- Every vertex transversal of the Q copies has polynomial size. -/
+theorem polynomial_transversal (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c r : ℝ} (hr : 0 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet → ∀ S : Finset (Fin n),
+        Q.Free (G.induce (S : Set (Fin n))ᶜ) →
+          c/8*(n : ℝ)^(α-1) < (S.card : ℝ) := by
+  filter_upwards [scaled_edge_gap H Q hr hra hc hH hQ] with n hn
+  intro G hG S hS
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn.1
+  have hdel : (Nat.card G.edgeSet : ℝ) ≤ (envelope Q n : ℝ)+(S.card : ℝ)*(n : ℝ) := by
+    exact_mod_cast (by simpa only [Fintype.card_fin] using edge_bound_after_deletion Q G S hS)
+  have hG' : (extremalNumber n H : ℝ) ≤ 2*(Nat.card G.edgeSet : ℝ) := by exact_mod_cast hG
+  have hlow : c/8*(n : ℝ)^α < (S.card : ℝ)*(n : ℝ) := by linarith [hn.2.1,hn.2.2]
+  apply (mul_lt_mul_iff_left₀ hnR).mp
+  calc
+    _ = c/8*(n : ℝ)^α := by rw [Real.rpow_sub_one hnR.ne']; field_simp
+    _ < _ := by simpa only [mul_comm (n : ℝ)] using hlow
+
+/-- Specialization to rational-rate patterns contained in an irrational-rate
+host. No rate for an identification quotient is presumed. -/
+theorem known_subgraphs_polynomial [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c : ℝ} (ha : 1 ≤ α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hirr : α ∉ Set.range ((↑) : ℚ → ℝ)) (hQH : Q ⊑ H)
+    {r : ℚ} (hQ : Erdos713Rate.HasRate Q (r : ℝ)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet →
+        DisjointCopies ⌊δ*(n : ℝ)^(α-1)⌋₊ Q G := by
+  have hrα : (r : ℝ) ≤ α := hQ.lower α ha
+    ((Erdos713Rate.extremal_mono_bigO hQH).trans (Erdos713Rate.rate_of_asymptotic ha hc.ne' hH).upper)
+  have hrα' : (r : ℝ) < α := lt_of_le_of_ne hrα (fun he => hirr ⟨r,he⟩)
+  exact polynomial_disjoint_copies H Q (by linarith [hQ.one_le]) hrα' hc hH hQ.upper
+
+/-- Both conclusions concern the same host, uniformly over all hosts
+satisfying the lower edge bound. -/
+theorem known_subgraphs_quantitative [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c : ℝ} (ha : 1 ≤ α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hirr : α ∉ Set.range ((↑) : ℚ → ℝ)) (hQH : Q ⊑ H)
+    {r : ℚ} (hQ : Erdos713Rate.HasRate Q (r : ℝ)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n),
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet →
+        DisjointCopies ⌊δ*(n : ℝ)^(α-1)⌋₊ Q G ∧
+        ∀ S : Finset (Fin n), Q.Free (G.induce (S : Set (Fin n))ᶜ) →
+          c/8*(n : ℝ)^(α-1) < (S.card : ℝ) := by
+  have hrα : (r : ℝ) ≤ α := hQ.lower α ha
+    ((Erdos713Rate.extremal_mono_bigO hQH).trans (Erdos713Rate.rate_of_asymptotic ha hc.ne' hH).upper)
+  have hrα' : (r : ℝ) < α := lt_of_le_of_ne hrα (fun he => hirr ⟨r,he⟩)
+  obtain ⟨δ,hδ,hpacking⟩ := known_subgraphs_polynomial H Q ha hc hH hirr hQH hQ
+  refine ⟨δ,hδ,?_⟩
+  filter_upwards [hpacking,polynomial_transversal H Q (by linarith [hQ.one_le]) hrα' hc hH hQ.upper]
+    with n hpack htrans
+  exact fun G hG => ⟨hpack G hG,htrans G hG⟩
+
+end Erdos713RobustCopies
+
+
+/-! Bounded blow-ups can make every vertex unsafe to clone. This is a
+structural reduction, not an extremal-rate transfer or a rationality proof. -/
+open SimpleGraph Finset
+namespace Erdos713CloneSaturation
+open Erdos713Cloning
+
+variable {V W : Type*}
+
+def ambient (G : SimpleGraph V) (k : ℕ) : SimpleGraph (V × Fin (k+1)) :=
+  G.comap Prod.fst
+
+def subgraph (G : SimpleGraph V) (k : ℕ) (S : Finset (V × Fin (k+1))) :
+    SimpleGraph S := (ambient G k).induce (↑S)
+
+def HasBase {k : ℕ} (S : Finset (V × Fin (k+1))) : Prop :=
+  ∀ v : V, (v,0) ∈ S
+
+lemma base_copy (G : SimpleGraph V) (k : ℕ) (S : Finset (V × Fin (k+1)))
+    (hS : HasBase S) : G ⊑ subgraph G k S := by
+  refine ⟨⟨⟨fun v => ⟨(v,0),hS v⟩,fun h => h⟩,?_⟩⟩
+  intro u v h
+  exact congrArg (fun x : S => x.val.1) h
+
+lemma degree_lower [Fintype V] (G : SimpleGraph V) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) (hS : HasBase S) (x : S) :
+    Nat.card (G.neighborSet x.val.1) ≤ Nat.card ((subgraph G k S).neighborSet x) := by
+  classical
+  let f : G.neighborSet x.val.1 → (subgraph G k S).neighborSet x :=
+    fun v => ⟨⟨(v.val,0),hS v.val⟩,v.property⟩
+  apply Nat.card_le_card_of_injective f
+  intro u v h
+  exact Subtype.ext (congrArg (fun y : (subgraph G k S).neighborSet x => y.val.val.1) h)
+
+lemma missing_point [Fintype V] [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (G : SimpleGraph V)
+    (hdeg : ∀ v, Fintype.card W ≤ Nat.card (G.neighborSet v))
+    (S : Finset (V × Fin (Fintype.card W+1))) (hS : HasBase S)
+    (hf : H.Free (subgraph G (Fintype.card W) S)) (x : S) :
+    ∃ i : Fin (Fintype.card W+1), (x.val.1,i) ∉ S := by
+  classical
+  by_contra hn
+  push_neg at hn
+  let T : Finset S := univ.filter (fun y => y.val.1 = x.val.1)
+  have htwin : ∀ y ∈ T,
+      (subgraph G (Fintype.card W) S).neighborSet y =
+        (subgraph G (Fintype.card W) S).neighborSet x := by
+    intro y hy
+    have he : y.val.1 = x.val.1 := (mem_filter.mp hy).2
+    ext z
+    change G.Adj y.val.1 z.val.1 ↔ G.Adj x.val.1 z.val.1
+    rw [he]
+  have hcard : Fintype.card W+1 ≤ T.card := by
+    let f : Fin (Fintype.card W+1) → T := fun i =>
+      ⟨⟨(x.val.1,i),hn i⟩,by simp [T]⟩
+    have hi : Function.Injective f := by
+      intro i j h
+      exact congrArg (fun y : T => y.val.val.2) h
+    have hc := Fintype.card_le_of_injective f hi
+    simpa using hc
+  rcases Erdos713CloneSymm.twins_card_or_degree hH hf T htwin with hc | hd
+  · omega
+  · have hdl := (hdeg x.val.1).trans (degree_lower G _ S hS x)
+    omega
+
+open scoped Classical in
+noncomputable def insert_iso (G : SimpleGraph V) (k : ℕ) (S : Finset (V × Fin (k+1)))
+    (x : S) (i : Fin (k+1)) (hi : (x.val.1,i) ∉ S) :
+    clone (subgraph G k S) x ≃g subgraph G k (insert (x.val.1,i) S) := by
+  classical
+  let p : V × Fin (k+1) := (x.val.1,i)
+  let f : Option S → (insert p S : Finset (V × Fin (k+1)))
+    | none => ⟨p,mem_insert_self p S⟩
+    | some y => ⟨y.val,mem_insert_of_mem y.property⟩
+  have hinj : Function.Injective f := by
+    rintro (a|a) (b|b) h
+    · rfl
+    · have he : p = b.val := congrArg Subtype.val h
+      apply False.elim
+      apply hi
+      change p ∈ S
+      rw [he]
+      exact b.property
+    · have he : a.val = p := congrArg Subtype.val h
+      apply False.elim
+      apply hi
+      change p ∈ S
+      rw [← he]
+      exact a.property
+    · apply congrArg some
+      apply Subtype.ext
+      exact congrArg (fun y : (insert p S : Finset (V × Fin (k+1))) => y.val) h
+  have hsurj : Function.Surjective f := by
+    intro y
+    rcases mem_insert.mp y.property with hy | hy
+    · exact ⟨none,Subtype.ext hy.symm⟩
+    · exact ⟨some ⟨y.val,hy⟩,rfl⟩
+  refine ⟨Equiv.ofBijective f ⟨hinj,hsurj⟩,?_⟩
+  rintro (a|a) (b|b) <;> exact Iff.rfl
+
+/-- A bounded blow-up containing the original graph, with no safe full clone.
+The output is not claimed to be extremal, or to satisfy extremal record bounds. -/
+theorem exists_saturated [Fintype V] [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (G : SimpleGraph V) (hf : H.Free G)
+    (hdeg : ∀ v, Fintype.card W ≤ Nat.card (G.neighborSet v)) :
+    ∃ S : Finset (V × Fin (Fintype.card W+1)), HasBase S ∧
+      H.Free (subgraph G (Fintype.card W) S) ∧
+      G ⊑ subgraph G (Fintype.card W) S ∧
+      S.card ≤ (Fintype.card W+1)*Fintype.card V ∧
+      (∀ x : S, Nat.card (G.neighborSet x.val.1) ≤
+        Nat.card ((subgraph G (Fintype.card W) S).neighborSet x)) ∧
+      ∀ x : S, SingleFold H (subgraph G (Fintype.card W) S) x := by
+  classical
+  let k := Fintype.card W
+  let S₀ : Finset (V × Fin (k+1)) := univ.filter (fun y => y.2 = 0)
+  have hb₀ : HasBase S₀ := by intro v; simp [S₀]
+  have hf₀ : H.Free (subgraph G k S₀) := by
+    have hc : subgraph G k S₀ ⊑ G := by
+      refine ⟨⟨⟨fun y => y.val.1,fun h => h⟩,?_⟩⟩
+      intro u v h
+      apply Subtype.ext
+      apply Prod.ext h
+      have hu : u.val.2 = 0 := (mem_filter.mp u.property).2
+      have hv : v.val.2 = 0 := (mem_filter.mp v.property).2
+      exact hu.trans hv.symm
+    exact fun h => hf (h.trans hc)
+  let F : Finset (Finset (V × Fin (k+1))) :=
+    univ.filter (fun S => HasBase S ∧ H.Free (subgraph G k S))
+  have hF : F.Nonempty := ⟨S₀,by simp only [F,mem_filter,mem_univ,true_and]; exact ⟨hb₀,hf₀⟩⟩
+  obtain ⟨S,hSF,hmax⟩ := F.exists_max_image Finset.card hF
+  have hS : HasBase S := (mem_filter.mp hSF).2.1
+  have hfree : H.Free (subgraph G k S) := (mem_filter.mp hSF).2.2
+  refine ⟨S,hS,hfree,base_copy G k S hS,?_,degree_lower G k S hS,?_⟩
+  · have hs := S.card_le_univ
+    simpa only [Fintype.card_prod,Fintype.card_fin,mul_comm] using hs
+  · intro x
+    apply fold_of_obstructed H (subgraph G k S) x hfree
+    by_contra hsafe
+    obtain ⟨i,hi⟩ := missing_point H hH G hdeg S hS hfree x
+    let T := insert (x.val.1,i) S
+    have hT : HasBase T := fun v => mem_insert_of_mem (hS v)
+    have hfT : H.Free (subgraph G k T) := by
+      intro hc
+      exact hsafe (hc.trans ⟨(insert_iso G k S x i hi).symm.toCopy⟩)
+    have hTF : T ∈ F := by
+      simp only [F,mem_filter,mem_univ,true_and]
+      exact ⟨hT,hfT⟩
+    have hc := hmax T hTF
+    have ht : T.card = S.card+1 := card_insert_of_notMem hi
+    omega
+
+lemma bipartite {G : SimpleGraph V} (hG : G.IsBipartite) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) : (subgraph G k S).IsBipartite :=
+  hG.of_hom (show subgraph G k S →g G from ⟨fun x => x.val.1,fun h => h⟩)
+
+lemma vertex_lower [Fintype V] {k : ℕ} {S : Finset (V × Fin (k+1))}
+    (hS : HasBase S) : Fintype.card V ≤ S.card := by
+  let f : V → S := fun v => ⟨(v,0),hS v⟩
+  have hi : Function.Injective f := fun _ _ h => congrArg (fun y : S => y.val.1) h
+  simpa using Fintype.card_le_of_injective f hi
+
+lemma edge_lower [Fintype V] (G : SimpleGraph V) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) (hS : HasBase S) :
+    Nat.card G.edgeSet ≤ Nat.card (subgraph G k S).edgeSet := by
+  obtain ⟨f⟩ := base_copy G k S hS
+  exact Nat.card_le_card_of_injective f.mapEdgeSet f.mapEdgeSet.injective
+
+lemma ambient_degree [Fintype V] (G : SimpleGraph V) (k : ℕ) (x : V × Fin (k+1)) :
+    Nat.card ((ambient G k).neighborSet x) = Nat.card (G.neighborSet x.1)*(k+1) := by
+  let f : (ambient G k).neighborSet x ≃ G.neighborSet x.1 × Fin (k+1) := {
+    toFun := fun y => (⟨y.val.1,y.property⟩,y.val.2)
+    invFun := fun y => ⟨(y.1.val,y.2),y.1.property⟩
+    left_inv := fun y => by cases y; rfl
+    right_inv := fun y => by cases y; rfl }
+  simpa only [Nat.card_prod,Nat.card_fin] using Nat.card_congr f
+
+lemma degree_upper [Fintype V] (G : SimpleGraph V) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) (x : S) :
+    Nat.card ((subgraph G k S).neighborSet x) ≤ Nat.card (G.neighborSet x.val.1)*(k+1) := by
+  let f := (Copy.induce (ambient G k) (↑S)).mapNeighborSet x
+  have h := Nat.card_le_card_of_injective f f.injective
+  exact h.trans_eq (ambient_degree G k x.val)
+
+lemma ambient_edges [Fintype V] (G : SimpleGraph V) (k : ℕ) :
+    Nat.card (ambient G k).edgeSet = (k+1)^2*Nat.card G.edgeSet := by
+  classical
+  have hg := G.sum_degrees_eq_twice_card_edges
+  have ha := (ambient G k).sum_degrees_eq_twice_card_edges
+  simp only [←card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] at hg ha
+  have hs : (∑ x : V × Fin (k+1), Nat.card ((ambient G k).neighborSet x)) =
+      (k+1)^2 * ∑ v : V, Nat.card (G.neighborSet v) := by
+    simp only [ambient_degree,Fintype.sum_prod_type,Finset.sum_const,Finset.card_univ,
+      Fintype.card_fin,smul_eq_mul]
+    simp only [←Finset.mul_sum,←Finset.sum_mul]
+    ring
+  rw [ha,hg] at hs
+  nlinarith only [hs]
+
+lemma edge_upper [Fintype V] (G : SimpleGraph V) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) :
+    Nat.card (subgraph G k S).edgeSet ≤ (k+1)^2*Nat.card G.edgeSet := by
+  let f := (Copy.induce (ambient G k) (↑S)).mapEdgeSet
+  have h := Nat.card_le_card_of_injective f f.injective
+  exact h.trans_eq (ambient_edges G k)
+
+/-- Both sizes and edge counts stay within fixed factors; bipartiteness and
+large minimum degree are preserved. No exact leading constant is asserted. -/
+theorem exists_saturated_bounds [Fintype V] [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (G : SimpleGraph V) (hG : G.IsBipartite) (hf : H.Free G)
+    (hdeg : ∀ v, Fintype.card W ≤ Nat.card (G.neighborSet v)) :
+    ∃ S : Finset (V × Fin (Fintype.card W+1)), HasBase S ∧
+      H.Free (subgraph G (Fintype.card W) S) ∧
+      (subgraph G (Fintype.card W) S).IsBipartite ∧
+      (Fintype.card V ≤ S.card ∧ S.card ≤ (Fintype.card W+1)*Fintype.card V) ∧
+      (Nat.card G.edgeSet ≤ Nat.card (subgraph G (Fintype.card W) S).edgeSet ∧
+        Nat.card (subgraph G (Fintype.card W) S).edgeSet ≤
+          (Fintype.card W+1)^2*Nat.card G.edgeSet) ∧
+      (∀ x : S, Nat.card (G.neighborSet x.val.1) ≤
+        Nat.card ((subgraph G (Fintype.card W) S).neighborSet x) ∧
+        Nat.card ((subgraph G (Fintype.card W) S).neighborSet x) ≤
+          Nat.card (G.neighborSet x.val.1)*(Fintype.card W+1)) ∧
+      ∀ x : S, SingleFold H (subgraph G (Fintype.card W) S) x := by
+  obtain ⟨S,hS,hfree,_,hcard,hdegree,hfold⟩ := exists_saturated H hH G hf hdeg
+  exact ⟨S,hS,hfree,bipartite hG _ S,⟨vertex_lower hS,hcard⟩,
+    ⟨edge_lower G _ S hS,edge_upper G _ S⟩,
+    fun x => ⟨hdegree x,degree_upper G _ S x⟩,hfold⟩
+
+end Erdos713CloneSaturation
+
+/-! Exact extremality under a sufficiently flat quadratic upper support.
+This file does not assert rationality of an extremal exponent. -/
+open SimpleGraph Finset
+namespace Erdos713ExactCloneSaturation
+open Erdos713Cloning Erdos713CloneSaturation Erdos713CloneSymm
+
+variable {V W : Type*}
+
+lemma extra_safe (H : SimpleGraph W) (G : SimpleGraph V) (k : ℕ)
+    (S : Finset (V × Fin (k+1))) (hS : HasBase S)
+    (hf : H.Free (subgraph G k S)) (p : S) (hp : p.val.2 ≠ 0) :
+    H.Free (clone G p.val.1) := by
+  let f : Option V → S
+    | none => p
+    | some v => ⟨(v,0),hS v⟩
+  have hc : clone G p.val.1 ⊑ subgraph G k S := by
+    refine ⟨⟨⟨f,?_⟩,?_⟩⟩
+    · rintro (u|u) (v|v) h <;> exact h
+    · rintro (u|u) (v|v) h
+      · rfl
+      · exact (hp (congrArg (fun y : S => y.val.2) h)).elim
+      · exact (hp (congrArg (fun y : S => y.val.2) h).symm).elim
+      · exact congrArg some (congrArg (fun y : S => y.val.1) h)
+  exact fun h => hf (h.trans hc)
+
+lemma bounded_extra_vertices [Fintype V] [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (G : SimpleGraph V) (hopt : CloneOptimal H G)
+    (hfree : H.Free G) (hmin : ∀ v, Fintype.card W ≤ Nat.card (G.neighborSet v))
+    (S : Finset (V × Fin (Fintype.card W+1))) (hS : HasBase S)
+    (hf : H.Free (subgraph G (Fintype.card W) S)) :
+    S.card ≤ Fintype.card V + (Fintype.card W+1)*(Fintype.card W)^2 := by
+  classical
+  let B : Finset (V × Fin (Fintype.card W+1)) := univ.product {0}
+  let A : Finset V := univ.filter (fun v => H.Free (clone G v))
+  have hs : S ⊆ B ∪ A.product univ := by
+    intro p hp
+    by_cases hp0 : p.2 = 0
+    · apply Finset.mem_union.mpr
+      left
+      exact Finset.mem_product.mpr ⟨mem_univ _,mem_singleton.mpr hp0⟩
+    · apply Finset.mem_union.mpr
+      right
+      apply Finset.mem_product.mpr
+      refine ⟨?_,mem_univ _⟩
+      exact mem_filter.mpr ⟨mem_univ _,extra_safe H G _ S hS hf ⟨p,hp⟩ hp0⟩
+  have hc := (card_le_card hs).trans (card_union_le B (A.product univ))
+  have hA : A.card ≤ (Fintype.card W)^2 := hopt.safe_card_of_min_degree hH hfree hmin
+  have hc' : S.card ≤ Fintype.card V + A.card*(Fintype.card W+1) := by
+    simpa [B] using hc
+  nlinarith
+
+lemma linear_edges_lower [Fintype V] (G : SimpleGraph V) (k d : ℕ)
+    (hdeg : ∀ v, d ≤ Nat.card (G.neighborSet v))
+    (S : Finset (V × Fin (k+1))) (hS : HasBase S) :
+    Nat.card G.edgeSet + d*(S.card-Fintype.card V) ≤
+      Nat.card (subgraph G k S).edgeSet := by
+  classical
+  revert hS
+  refine Finset.strongInductionOn S ?_
+  intro S ih hS
+  by_cases hzero : ∀ p ∈ S, p.2 = 0
+  · have hc : S.card ≤ Fintype.card V := by
+      have hsub : S ⊆ (univ : Finset V).product ({0} : Finset (Fin (k+1))) := by
+        intro p hp
+        exact Finset.mem_product.mpr ⟨mem_univ _,mem_singleton.mpr (hzero p hp)⟩
+      simpa using card_le_card hsub
+    simpa [Nat.sub_eq_zero_of_le hc] using edge_lower G k S hS
+  · push_neg at hzero
+    obtain ⟨p,hpS,hp0⟩ := hzero
+    let T := S.erase p
+    have hT : HasBase T := by
+      intro v
+      apply mem_erase.mpr
+      refine ⟨?_,hS v⟩
+      intro he
+      exact hp0 (congrArg Prod.snd he).symm
+    have hsmall : T ⊂ S := erase_ssubset hpS
+    have hIH := ih T hsmall hT
+    let x : T := ⟨(p.1,0),hT p.1⟩
+    have hmissing : (x.val.1,p.2) ∉ T := by
+      change p ∉ S.erase p
+      simp
+    have heq : insert (x.val.1,p.2) T = S := by
+      change insert p (S.erase p) = S
+      exact insert_erase hpS
+    have he := Iso.card_edgeFinset_eq (insert_iso G k T x p.2 hmissing)
+    simp only [edgeFinset_card,Fintype.card_eq_nat_card,card_edges_clone] at he
+    rw [heq] at he
+    have hd : d ≤ Nat.card ((subgraph G k T).neighborSet x) :=
+      (hdeg p.1).trans (degree_lower G k T hT x)
+    have hc : T.card+1 = S.card := by simpa [T] using card_erase_add_one hpS
+    have hn := vertex_lower hT
+    have hsub : S.card-Fintype.card V = (T.card-Fintype.card V)+1 := by omega
+    calc
+      _ = Nat.card G.edgeSet + d*(T.card-Fintype.card V)+d := by rw [hsub]; ring
+      _ ≤ Nat.card (subgraph G k T).edgeSet +
+          Nat.card ((subgraph G k T).neighborSet x) := Nat.add_le_add hIH hd
+      _ = _ := he
+/-- A quadratic upper support for a natural-valued extremal function. -/
+def QuadSupport (f : ℕ → ℕ) (ε : ℝ) (n : ℕ) : Prop :=
+  ∀ m : ℕ, (f m : ℝ) ≤ (f n : ℝ)+ε*((m : ℝ)^2-(n : ℝ)^2)
+
+lemma record_degree (H : SimpleGraph W) {n : ℕ} (hn : 0 < n)
+    (G : SimpleGraph (Fin n)) (hf : H.Free G)
+    (he : Nat.card G.edgeSet = extremalNumber n H) {ε : ℝ}
+    (hrec : QuadSupport (fun m => extremalNumber m H) ε n) (v : Fin n) :
+    ε*(2*(n : ℝ)-1) ≤ (Nat.card (G.neighborSet v) : ℝ) := by
+  classical
+  have hDel := card_edgeFinset_deleteIncidenceSet_le_extremalNumber hf v
+  rw [card_edgeFinset_deleteIncidenceSet] at hDel
+  have hNat : G.edgeFinset.card ≤ extremalNumber (n-1) H + G.degree v := by
+    simp only [Fintype.card_fin] at hDel
+    have hh := G.degree_le_card_edgeFinset v
+    omega
+  simp only [edgeFinset_card,←card_neighborSet_eq_degree,Fintype.card_eq_nat_card,he] at hNat
+  have hReal : (extremalNumber n H : ℝ) ≤ (extremalNumber (n-1) H : ℝ) +
+      (Nat.card (G.neighborSet v) : ℝ) := by exact_mod_cast hNat
+  have hh := hrec (n-1)
+  have hnm : ((n-1 : ℕ) : ℝ) = (n : ℝ)-1 := by rw [Nat.cast_sub (by omega)]; norm_num
+  rw [hnm] at hh
+  nlinarith only [hReal,hh]
+
+lemma record_safe_degree (H : SimpleGraph W) {n : ℕ}
+    (G : SimpleGraph (Fin n)) (he : Nat.card G.edgeSet = extremalNumber n H) {ε : ℝ}
+    (hrec : QuadSupport (fun m => extremalNumber m H) ε n) (v : Fin n)
+    (hv : H.Free (clone G v)) :
+    (Nat.card (G.neighborSet v) : ℝ) ≤ ε*(2*(n : ℝ)+1) := by
+  have hh := safe_clone_bound H G v hv
+  simp only [Fintype.card_fin,he] at hh
+  have hhR : (extremalNumber n H : ℝ) + (Nat.card (G.neighborSet v) : ℝ) ≤
+      (extremalNumber (n+1) H : ℝ) := by exact_mod_cast hh
+  have hr := hrec (n+1)
+  push_cast at hr
+  nlinarith only [hhR,hr]
+
+/-- A sufficiently flat quadratic support permits an exactly extremal
+clone-saturated host at a uniformly bounded distance in order. -/
+theorem exact_at_quadratic_support [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) {n D : ℕ} (hn : 0 < n) (hQD : Fintype.card W ≤ D)
+    (G : SimpleGraph (Fin n)) (hopt : OrdinaryOptimal H G)
+    (he : Nat.card G.edgeSet = extremalNumber n H) {ε : ℝ} (hε : 0 < ε)
+    (hrec : QuadSupport (fun m => extremalNumber m H) ε n)
+    (hD : (D : ℝ) ≤ ε*(2*(n : ℝ)-1))
+    (hsmall : ε*(((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)^2 +
+      ((Fintype.card W+1)*(Fintype.card W)^2 : ℕ) + (2 : ℝ)) < 1) :
+    ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+      n ≤ Fintype.card U ∧
+      Fintype.card U ≤ n+(Fintype.card W+1)*(Fintype.card W)^2 ∧
+      H.Free J ∧ Nat.card J.edgeSet = extremalNumber (Fintype.card U) H ∧
+      (∀ x, D ≤ Nat.card (J.neighborSet x)) ∧ ∀ x, SingleFold H J x := by
+  classical
+  let L : ℕ := (Fintype.card W+1)*(Fintype.card W)^2
+  have hsmall' : ε*((L : ℝ)^2+L+2) < 1 := by simpa [L] using hsmall
+  have htwo : 2*ε < 1 := by
+    have hL : 0 ≤ (L : ℝ)^2+(L : ℝ) := by positivity
+    nlinarith
+  have hdeg (v : Fin n) : D ≤ Nat.card (G.neighborSet v) := by
+    exact_mod_cast hD.trans (record_degree H hn G hopt.free he hrec v)
+  have hmin (v : Fin n) : Fintype.card W ≤ Nat.card (G.neighborSet v) := (hQD.trans (hdeg v))
+  by_cases hs : ∃ v, H.Free (clone G v)
+  · obtain ⟨v,hv⟩ := hs
+    let d := Nat.card (G.neighborSet v)
+    have hdlo : ε*(2*(n : ℝ)-1) ≤ (d : ℝ) := record_degree H hn G hopt.free he hrec v
+    have hdhi : (d : ℝ) ≤ ε*(2*(n : ℝ)+1) := record_safe_degree H G he hrec v hv
+    have hdmin (w : Fin n) : d ≤ Nat.card (G.neighborSet w) := by
+      by_contra hbad
+      have hbad' : (Nat.card (G.neighborSet w) : ℝ)+1 ≤ d := by
+        exact_mod_cast (show Nat.card (G.neighborSet w)+1 ≤ d by omega)
+      have hw := record_degree H hn G hopt.free he hrec w
+      nlinarith only [hbad',hw,hdhi,htwo]
+    obtain ⟨S,hS,hfree,_,_,hdegree,hfold⟩ := exists_saturated H hH G hopt.free hmin
+    have hnS : n ≤ S.card := by simpa using vertex_lower hS
+    have hSbound : S.card ≤ n+L := by
+      simpa only [Fintype.card_fin] using
+        bounded_extra_vertices H hH G hopt.cloneOptimal hopt.free hmin S hS hfree
+    let t := S.card-n
+    have ht : t ≤ L := by dsimp [t]; omega
+    have hnt : S.card = n+t := by dsimp [t]; omega
+    have hntR : (S.card : ℝ) = (n : ℝ)+t := by exact_mod_cast hnt
+    have htR : (t : ℝ) ≤ L := by exact_mod_cast ht
+    have ht0 : (0 : ℝ) ≤ t := Nat.cast_nonneg _
+    have herr : ε*((t : ℝ)^2+t) < 1 := by
+      have hsq : (t : ℝ)^2 ≤ (L : ℝ)^2 := by nlinarith
+      have hp := mul_le_mul_of_nonneg_left (show (t : ℝ)^2+t ≤ (L : ℝ)^2+L+2 by linarith) hε.le
+      exact hp.trans_lt hsmall'
+    have hupperR : (extremalNumber S.card H : ℝ) <
+        (extremalNumber n H : ℝ)+(d : ℝ)*t+1 := by
+      have hr := hrec S.card
+      rw [hntR] at hr
+      have hm := mul_le_mul_of_nonneg_right hdlo ht0
+      nlinarith only [hr,hm,herr]
+    have hupper : extremalNumber S.card H ≤ extremalNumber n H+d*t := by
+      have hh : extremalNumber S.card H < extremalNumber n H+d*t+1 := by exact_mod_cast hupperR
+      omega
+    have hlower : extremalNumber n H+d*t ≤ Nat.card (subgraph G (Fintype.card W) S).edgeSet := by
+      simpa only [Fintype.card_fin,he] using linear_edges_lower G _ d hdmin S hS
+    have hbound : Nat.card (subgraph G (Fintype.card W) S).edgeSet ≤ extremalNumber S.card H := by
+      have hh := card_edgeFinset_le_extremalNumber hfree
+      simpa only [edgeFinset_card,Fintype.card_eq_nat_card,Nat.card_eq_finsetCard] using hh
+    have hEq : Nat.card (subgraph G (Fintype.card W) S).edgeSet = extremalNumber S.card H :=
+      le_antisymm hbound (hupper.trans hlower)
+    refine ⟨S,inferInstance,subgraph G _ S,?_,?_,hfree,?_,?_,hfold⟩
+    · simpa using hnS
+    · simpa using hSbound
+    · simpa using hEq
+    · intro x
+      exact (hdeg x.val.1).trans (hdegree x)
+  · push_neg at hs
+    refine ⟨Fin n,inferInstance,G,by simp,by simp,hopt.free,by simpa using he,hdeg,?_⟩
+    intro x
+    exact fold_of_obstructed H G x hopt.free (hs x)
+
+end Erdos713ExactCloneSaturation
+
+/-! Quadratic support records from a superlinear, subquadratic exact power
+law, and exactly extremal hosts with no safe full clone. -/
+open SimpleGraph Finset Filter Asymptotics
+open scoped Topology
+namespace Erdos713QuadraticSupports
+open Erdos713ExactCloneSaturation Erdos713Cloning Erdos713CloneSymm
+
+lemma exists_support (f : ℕ → ℕ)
+    (hz : Tendsto (fun n : ℕ => (f n : ℝ)/(n : ℝ)^2) atTop (𝓝 0))
+    {ε : ℝ} (hε : 0 < ε) {k : ℕ} (hk : 0 < (f k : ℝ)-ε*(k : ℝ)^2) :
+    ∃ n : ℕ, QuadSupport f ε n ∧
+      (f k : ℝ)-ε*(k : ℝ)^2 ≤ (f n : ℝ)-ε*(n : ℝ)^2 := by
+  have htail : ∀ᶠ n : ℕ in atTop, (f n : ℝ)-ε*(n : ℝ)^2 < 0 := by
+    filter_upwards [hz.eventually_lt_const hε,eventually_gt_atTop (0 : ℕ)] with n hn hnp
+    have hp : 0 < (n : ℝ)^2 := by positivity
+    have hh := (div_lt_iff₀ hp).mp hn
+    linarith
+  obtain ⟨M,hM⟩ := eventually_atTop.mp htail
+  let g : ℕ → ℝ := fun n => (f n : ℝ)-ε*(n : ℝ)^2
+  obtain ⟨n,hn,hmax⟩ := (range (M+k+1)).exists_max_image g ⟨k,by simp⟩
+  have hkn := hmax k (by simp)
+  refine ⟨n,?_,hkn⟩
+  intro m
+  have hmn : g m ≤ g n := by
+    by_cases hm : m < M+k+1
+    · exact hmax m (mem_range.mpr hm)
+    · exact (hM m (by omega)).le.trans (hk.le.trans hkn)
+  dsimp only [g] at hmn
+  linarith
+
+lemma support_from_linear_record (f : ℕ → ℕ)
+    (hz : Tendsto (fun n : ℕ => (f n : ℝ)/(n : ℝ)^2) atTop (𝓝 0))
+    {k : ℕ} (hk : 0 < k) (hfk : 0 < (f k : ℝ))
+    (hrec : ∀ j : ℕ, j ≤ k → (f j : ℝ) ≤ (f k : ℝ)/(k : ℝ)*j) :
+    ∃ n : ℕ, k < 4*n ∧ QuadSupport f ((f k : ℝ)/(2*(k : ℝ)^2)) n := by
+  let ε : ℝ := (f k : ℝ)/(2*(k : ℝ)^2)
+  have hkR : (0 : ℝ) < k := by exact_mod_cast hk
+  have hε : 0 < ε := by dsimp [ε]; positivity
+  have heq : ε*(k : ℝ)^2 = (f k : ℝ)/2 := by dsimp [ε]; field_simp
+  obtain ⟨n,hn,hmax⟩ := exists_support f hz hε (k := k) (by rw [heq]; linarith)
+  refine ⟨n,?_,hn⟩
+  by_contra hbad
+  have hnk : n ≤ k := by omega
+  have hbadR : 4*(n : ℝ) ≤ k := by exact_mod_cast (show 4*n ≤ k by omega)
+  have hbound := hrec n hnk
+  have hfrac : (f k : ℝ)/(k : ℝ)*n ≤ (f k : ℝ)/4 := by
+    have hh := mul_le_mul_of_nonneg_left hbadR (div_nonneg hfk.le hkR.le)
+    have he : (f k : ℝ)/(k : ℝ)*(k : ℝ) = (f k : ℝ) := div_mul_cancel₀ _ hkR.ne'
+    nlinarith only [hh,he]
+  have hp : 0 ≤ ε*(n : ℝ)^2 := by positivity
+  rw [heq] at hmax
+  linarith
+
+/-- The support can have arbitrarily small curvature, arbitrarily large
+order, and arbitrarily large slope at that order. -/
+theorem cofinal_supports (f : ℕ → ℕ) (hf0 : f 0 = 0) {α c : ℝ}
+    (ha : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (f n : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (N D : ℕ) {η : ℝ} (hη : 0 < η) :
+    ∃ (n : ℕ) (ε : ℝ), N ≤ n ∧ 0 < n ∧ 0 < ε ∧ ε < η ∧
+      QuadSupport f ε n ∧ (D : ℝ) ≤ ε*(2*(n : ℝ)-1) := by
+  have hz : Tendsto (fun n : ℕ => (f n : ℝ)/(n : ℝ)^2) atTop (𝓝 0) := by
+    simpa only [Real.rpow_two] using Erdos713FutureRecords.higher_ratio_zero ha2 h
+  have ht : Tendsto (fun n : ℕ => (f n : ℝ)/(n : ℝ)) atTop atTop := by
+    simpa only [Real.rpow_one] using Erdos713FutureRecords.lower_ratio_top ha hc h
+  let b := min η 1
+  have hb : 0 < b := lt_min hη (by norm_num)
+  have hev : ∀ᶠ k : ℕ in atTop,
+      4*((D : ℝ)+1) < (f k : ℝ)/(k : ℝ) ∧
+      (f k : ℝ)/(k : ℝ)^2 < 2*b :=
+    (ht.eventually_gt_atTop _).and (hz.eventually_lt_const (by positivity))
+  obtain ⟨K,hK⟩ := eventually_atTop.mp hev
+  obtain ⟨k,hkbound,hk,hfk,hrecord⟩ :=
+    Erdos713FutureRecords.exists_past_record ha hc h (max K (4*N+1))
+  have hkK : K ≤ k := (le_max_left _ _).trans hkbound
+  obtain ⟨hlarge,hsmall⟩ := hK k hkK
+  have hkR : (0 : ℝ) < k := by exact_mod_cast hk
+  have hlin : ∀ j : ℕ, j ≤ k → (f j : ℝ) ≤ (f k : ℝ)/(k : ℝ)*j := by
+    intro j hj
+    by_cases hj0 : j = 0
+    · subst j; simp [hf0]
+    · have hjR : (0 : ℝ) < j := by exact_mod_cast Nat.pos_of_ne_zero hj0
+      have hh := hrecord j hj
+      simp only [Real.rpow_one] at hh
+      exact (div_le_iff₀ hjR).mp hh
+  obtain ⟨n,hkn,hrec⟩ := support_from_linear_record f hz hk hfk hlin
+  let ε : ℝ := (f k : ℝ)/(2*(k : ℝ)^2)
+  have hε : 0 < ε := by dsimp [ε]; positivity
+  have heps : ε = ((f k : ℝ)/(k : ℝ)^2)/2 := by dsimp [ε]; ring
+  have hεb : ε < b := by rw [heps]; linarith
+  have hεη : ε < η := hεb.trans_le (min_le_left _ _)
+  have hεone : ε < 1 := hεb.trans_le (min_le_right _ _)
+  have hN : N ≤ n := by have := (le_max_right K (4*N+1)).trans hkbound; omega
+  have hn : 0 < n := by omega
+  refine ⟨n,ε,hN,hn,hε,hεη,hrec,?_⟩
+  have hknR : (k : ℝ) < 4*(n : ℝ) := by exact_mod_cast hkn
+  have hm := mul_lt_mul_of_pos_left hknR hε
+  have heq : 2*ε*(k : ℝ) = (f k : ℝ)/(k : ℝ) := by
+    dsimp [ε]
+    field_simp
+  nlinarith only [hm,heq,hlarge,hεone]
+
+/-- Exact ordinary extremal hosts with arbitrarily large minimum degree
+and a single-fold obstruction at EVERY vertex. This does not assert that
+the output is bipartite or secondary-optimal. -/
+theorem exact_saturated_cofinal {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (hEdge : ∃ a b, H.Adj a b) {α c : ℝ}
+    (ha : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) (N D : ℕ) :
+    ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+      N ≤ Fintype.card U ∧ H.Free J ∧
+      Nat.card J.edgeSet = extremalNumber (Fintype.card U) H ∧
+      (∀ x, D ≤ Nat.card (J.neighborSet x)) ∧ ∀ x, SingleFold H J x := by
+  let L : ℕ := (Fintype.card W+1)*(Fintype.card W)^2
+  let A : ℝ := (L : ℝ)^2+L+2
+  have hA : 0 < A := by dsimp [A]; positivity
+  have hη : 0 < (1 : ℝ)/A := by positivity
+  have hzero : extremalNumber 0 H = 0 := Erdos713Cloning.extremal_zero H
+  obtain ⟨n,ε,hN,hn,hε,hsmall,hrec,hD⟩ := cofinal_supports
+    (fun n => extremalNumber n H) hzero ha ha2 hc h N (max D (Fintype.card W)) hη
+  obtain ⟨G,hopt,he⟩ := exists_ordinary_optimal H hEdge n
+  have hcurv : ε*(((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)^2+
+      ((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)+(2 : ℝ)) < 1 := by
+    have hh := (lt_div_iff₀ hA).mp hsmall
+    simpa [A,L] using hh
+  obtain ⟨U,hU,J,hnJ,_,hf,hE,hdeg,hfold⟩ := exact_at_quadratic_support H hH hn
+    (le_max_right D _) G hopt he hε hrec hD hcurv
+  exact ⟨U,hU,J,hN.trans hnJ,hf,hE,fun x => (le_max_left D _).trans (hdeg x),hfold⟩
+
+end Erdos713QuadraticSupports
+
+/-! Exactly extremal clone-saturated hosts with a uniform relative
+minimum-degree lower bound. This is a necessary condition, not rationality. -/
+open SimpleGraph Finset Filter Asymptotics
+open scoped Topology
+namespace Erdos713RelativeCloneSaturation
+open Erdos713ExactCloneSaturation Erdos713QuadraticSupports Erdos713CloneSymm Erdos713Cloning
+set_option maxHeartbeats 2000000
+
+lemma eventually_doubling {f : ℕ → ℕ} {α c : ℝ} (ha : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (f n : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α)) :
+    ∀ᶠ n : ℕ in atTop, 2*f n ≤ f (2*n) := by
+  have htwo : Tendsto (fun n : ℕ => 2*n) atTop atTop := by
+    apply tendsto_atTop.2
+    intro b
+    filter_upwards [eventually_ge_atTop b] with n hn
+    omega
+  have hpow : (2 : ℝ) < (2 : ℝ)^α := by
+    simpa only [Real.rpow_one] using
+      Real.rpow_lt_rpow_of_exponent_lt (by norm_num : (1 : ℝ) < 2) ha
+  have hlim := Erdos713FutureRecords.ratio_limit h
+  have hlim2 : Tendsto (fun n : ℕ => (f (2*n) : ℝ)/(n : ℝ)^α)
+      atTop (𝓝 (c*(2 : ℝ)^α)) := by
+    apply ((hlim.comp htwo).mul_const ((2 : ℝ)^α)).congr'
+    filter_upwards [eventually_gt_atTop (0 : ℕ)] with n hn
+    have hnR : (0 : ℝ) < n := by exact_mod_cast hn
+    simp only [Function.comp_apply,Nat.cast_mul,Nat.cast_ofNat]
+    rw [Real.mul_rpow (by norm_num : (0 : ℝ) ≤ 2) hnR.le]
+    field_simp [(Real.rpow_pos_of_pos hnR α).ne',
+      (Real.rpow_pos_of_pos (by norm_num : (0 : ℝ) < 2) α).ne']
+  have hp : 0 < c*(2 : ℝ)^α-2*c := by nlinarith
+  filter_upwards [((hlim2.sub (hlim.const_mul 2)).eventually_const_lt hp),
+    eventually_gt_atTop (0 : ℕ)] with n hn hnp
+  have hden : (0 : ℝ) < (n : ℝ)^α := Real.rpow_pos_of_pos (by exact_mod_cast hnp) α
+  have hh : (2 : ℝ)*(f n : ℝ) < (f (2*n) : ℝ) := by
+    have hh' : (2*(f n : ℝ))/(n : ℝ)^α < (f (2*n) : ℝ)/(n : ℝ)^α := by
+      rw [mul_div_assoc]
+      linarith
+    exact (div_lt_div_iff_of_pos_right hden).mp hh'
+  exact_mod_cast hh.le
+
+lemma support_scale {f : ℕ → ℕ} {ε : ℝ} {n : ℕ}
+    (hrec : QuadSupport f ε n) (hd : 2*f n ≤ f (2*n)) :
+    (f n : ℝ) ≤ 3*ε*(n : ℝ)^2 := by
+  have hh := hrec (2*n)
+  have hdR : (2 : ℝ)*(f n : ℝ) ≤ f (2*n) := by exact_mod_cast hd
+  push_cast at hh
+  nlinarith only [hh,hdR]
+
+lemma support_floor_scale {f : ℕ → ℕ} {ε : ℝ} {n : ℕ} (hn : 0 < n)
+    (hε : 0 ≤ ε) (hrec : QuadSupport f ε n) (hd : 2*f n ≤ f (2*n))
+    (hs : 1 ≤ ε*(2*(n : ℝ)-1)) :
+    f n ≤ 6*n*⌊ε*(2*(n : ℝ)-1)⌋₊ := by
+  let D := ⌊ε*(2*(n : ℝ)-1)⌋₊
+  have hD : 1 ≤ D := Nat.le_floor (by simpa using hs)
+  have hDreal : (1 : ℝ) ≤ D := by exact_mod_cast hD
+  have hfloor : ε*(2*(n : ℝ)-1) < (D : ℝ)+1 := Nat.lt_floor_add_one _
+  have hnr : (1 : ℝ) ≤ n := by exact_mod_cast hn
+  have hbase : ε*(n : ℝ) ≤ ε*(2*(n : ℝ)-1) := by nlinarith
+  have hprod := mul_le_mul_of_nonneg_left hbase (show (0 : ℝ) ≤ 3*n by positivity)
+  have hprod' := mul_le_mul_of_nonneg_left hfloor.le (show (0 : ℝ) ≤ 3*n by positivity)
+  have hh := support_scale hrec hd
+  have hlast := mul_le_mul_of_nonneg_left (show (D : ℝ)+1 ≤ 2*D by linarith)
+    (show (0 : ℝ) ≤ 3*n by positivity)
+  have hbound : (f n : ℝ) ≤ 6*(n : ℝ)*D := by nlinarith only [hh,hprod,hprod',hlast]
+  change f n ≤ 6*n*D
+  exact_mod_cast hbound
+
+lemma support_growth {f : ℕ → ℕ} (hf0 : f 0 = 0) {ε : ℝ} {n m : ℕ}
+    (hε : 0 ≤ ε) (hrec : QuadSupport f ε n) (hm : m ≤ 2*n) :
+    f m ≤ 4*f n := by
+  have hzero := hrec 0
+  simp only [hf0,Nat.cast_zero,zero_pow (by decide : 2 ≠ 0),zero_sub,mul_neg] at hzero
+  have hmain := hrec m
+  have hmR : (m : ℝ) ≤ 2*n := by exact_mod_cast hm
+  have hsq : (m : ℝ)^2 ≤ 4*(n : ℝ)^2 := by nlinarith [sq_nonneg ((2 : ℝ)*n-m)]
+  have hmε := mul_le_mul_of_nonneg_left hsq hε
+  have hh : (f m : ℝ) ≤ 4*f n := by nlinarith only [hzero,hmain,hmε]
+  exact_mod_cast hh
+
+/-- Finite quantitative refinement. The output has a fold at every vertex,
+exact extremal edge count, and minimum degree at least e/(24*order). -/
+theorem exact_at_support_relative {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) {n D : ℕ} (hn : 0 < n)
+    (hsize : (Fintype.card W+1)*(Fintype.card W)^2 ≤ n)
+    (G : SimpleGraph (Fin n)) (hopt : OrdinaryOptimal H G)
+    (he : Nat.card G.edgeSet = extremalNumber n H) {ε : ℝ} (hε : 0 < ε)
+    (hrec : QuadSupport (fun m => extremalNumber m H) ε n)
+    (hD : (max (max D (Fintype.card W)) 1 : ℝ) ≤ ε*(2*(n : ℝ)-1))
+    (hsmall : ε*(((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)^2 +
+      ((Fintype.card W+1)*(Fintype.card W)^2 : ℕ) + (2 : ℝ)) < 1)
+    (hdouble : 2*extremalNumber n H ≤ extremalNumber (2*n) H) :
+    ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+      n ≤ Fintype.card U ∧ H.Free J ∧
+      Nat.card J.edgeSet = extremalNumber (Fintype.card U) H ∧
+      (∀ x, D ≤ Nat.card (J.neighborSet x)) ∧
+      (∀ x, Nat.card J.edgeSet ≤ 24*Fintype.card U*Nat.card (J.neighborSet x)) ∧
+      ∀ x, SingleFold H J x := by
+  let d := ⌊ε*(2*(n : ℝ)-1)⌋₊
+  have hd : max (max D (Fintype.card W)) 1 ≤ d := Nat.le_floor (by exact_mod_cast hD)
+  have hQd : Fintype.card W ≤ d :=
+    (le_max_right D (Fintype.card W)).trans ((le_max_left _ _).trans hd)
+  have hDd : D ≤ d := (le_max_left D (Fintype.card W)).trans ((le_max_left _ _).trans hd)
+  have hs : 1 ≤ ε*(2*(n : ℝ)-1) := (le_max_right _ _).trans hD
+  have hdn : (d : ℝ) ≤ ε*(2*(n : ℝ)-1) := Nat.floor_le (by linarith)
+  obtain ⟨U,instU,J,hnu,hun,hf,hE,hdeg,hfold⟩ :=
+    exact_at_quadratic_support H hH hn hQd G hopt he hε hrec hdn hsmall
+  have hscale : extremalNumber n H ≤ 6*n*d := support_floor_scale hn hε.le hrec hdouble hs
+  have hGrowth : extremalNumber (Fintype.card U) H ≤ 4*extremalNumber n H :=
+    support_growth (Erdos713Cloning.extremal_zero H) hε.le hrec (by omega)
+  refine ⟨U,instU,J,hnu,hf,hE,fun x => hDd.trans (hdeg x),?_,hfold⟩
+  intro x
+  rw [hE]
+  calc
+    _ ≤ 4*(6*n*d) := hGrowth.trans (Nat.mul_le_mul_left _ hscale)
+    _ = 24*n*d := by ring
+    _ ≤ 24*Fintype.card U*Nat.card (J.neighborSet x) :=
+      Nat.mul_le_mul (Nat.mul_le_mul_left _ hnu) (hdeg x)
+
+/-- Cofinal exactly extremal hosts combining full clone saturation with a
+uniform relative minimum degree. They need not be bipartite or secondary-optimal. -/
+theorem exact_relative_saturated_cofinal {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (hEdge : ∃ a b, H.Adj a b) {α c : ℝ}
+    (ha : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) (N D : ℕ) :
+    ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+      N ≤ Fintype.card U ∧ H.Free J ∧
+      Nat.card J.edgeSet = extremalNumber (Fintype.card U) H ∧
+      (∀ x, D ≤ Nat.card (J.neighborSet x)) ∧
+      (∀ x, Nat.card J.edgeSet ≤ 24*Fintype.card U*Nat.card (J.neighborSet x)) ∧
+      ∀ x, SingleFold H J x := by
+  obtain ⟨M,hM⟩ := eventually_atTop.mp (eventually_doubling ha hc h)
+  let L : ℕ := (Fintype.card W+1)*(Fintype.card W)^2
+  let A : ℝ := (L : ℝ)^2+L+2
+  have hA : 0 < A := by dsimp [A]; positivity
+  obtain ⟨n,ε,hnN,hn,hε,hsmall,hrec,hD⟩ := cofinal_supports
+    (fun n => extremalNumber n H) (Erdos713Cloning.extremal_zero H) ha ha2 hc h
+    (max (max N M) L) (max (max D (Fintype.card W)) 1)
+    (show 0 < (1 : ℝ)/A by positivity)
+  obtain ⟨G,hopt,he⟩ := exists_ordinary_optimal H hEdge n
+  have hcurv : ε*(((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)^2+
+      ((Fintype.card W+1)*(Fintype.card W)^2 : ℕ)+(2 : ℝ)) < 1 := by
+    have hh := (lt_div_iff₀ hA).mp hsmall
+    simpa [A,L] using hh
+  obtain ⟨U,instU,J,hnu,hf,hE,hdeg,hrelative,hfold⟩ :=
+    exact_at_support_relative H hH hn ((le_max_right _ _).trans hnN) G hopt he hε hrec
+      (by exact_mod_cast hD) hcurv
+      (hM n (((le_max_right _ _).trans (le_max_left _ _)).trans hnN))
+  exact ⟨U,instU,J,(((le_max_left _ _).trans (le_max_left _ _)).trans hnN).trans hnu,
+    hf,hE,hdeg,hrelative,hfold⟩
+
+end Erdos713RelativeCloneSaturation
+
+/-! Uniform expansion from exact extremality and a relative minimum degree. -/
+open SimpleGraph Finset Filter Asymptotics
+open scoped Topology
+namespace Erdos713RelativeExpansion
+open Erdos713Cloning Erdos713SwitchGluing
+set_option maxHeartbeats 2000000
+
+open scoped Classical in
+lemma degree_cut_bound {W V : Type*} [Fintype V] (H : SimpleGraph W)
+    (G : SimpleGraph V) (hFree : H.Free G) (S : Finset V) :
+    (∑ v ∈ S, G.degree v) ≤ 2*extremalNumber S.card H +
+      Nat.card (cross G (S : Set V)).edgeSet := by
+  classical
+  have hdeg (v : V) (hv : v ∈ S) :
+      G.degree v = (inside G (S : Set V)).degree v + (cross G (S : Set V)).degree v := by
+    have heq : G.neighborFinset v = (inside G (S : Set V)).neighborFinset v ∪
+        (cross G (S : Set V)).neighborFinset v := by
+      ext w
+      simp only [mem_union,mem_neighborFinset,inside,cross,Finset.mem_coe]
+      tauto
+    have hd : Disjoint ((inside G (S : Set V)).neighborFinset v)
+        ((cross G (S : Set V)).neighborFinset v) := by
+      rw [Finset.disjoint_left]
+      intro w hw hw'
+      simp only [mem_neighborFinset,inside,cross,Finset.mem_coe] at hw hw'
+      tauto
+    rw [← card_neighborFinset_eq_degree,heq,card_union_of_disjoint hd,
+      card_neighborFinset_eq_degree,card_neighborFinset_eq_degree]
+  have hb : (cross G (S : Set V)).IsBipartiteWith (S : Set V) (Sᶜ : Finset V) := by
+    refine ⟨by simpa only [coe_compl] using (show Disjoint (S : Set V) ((S : Set V)ᶜ) from disjoint_compl_right),?_⟩
+    intro v w hvw
+    change G.Adj v w ∧ _ at hvw
+    simpa only [Finset.mem_coe,mem_compl] using hvw.2.imp id And.symm
+  have hi := sum_le_sum_of_subset (f := fun v => (inside G (S : Set V)).degree v) (subset_univ S)
+  rw [sum_degrees_eq_twice_card_edges] at hi
+  have hcross := isBipartiteWith_sum_degrees_eq_card_edges hb
+  have hEq : (∑ v ∈ S, G.degree v) =
+      (∑ v ∈ S, (inside G (S : Set V)).degree v) +
+      (cross G (S : Set V)).edgeFinset.card := by
+    rw [← hcross,← sum_add_distrib]
+    exact sum_congr rfl hdeg
+  rw [hEq]
+  have hin := inside_edges_le H G hFree S
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hi hin ⊢
+  omega
+
+lemma linear_error_upper (f : ℕ → ℕ) (hf0 : f 0 = 0) {α c C : ℝ}
+    (hC : 0 < C) (hcC : c < C)
+    (h : (fun n : ℕ => (f n : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α)) :
+    ∃ B : ℝ, 0 ≤ B ∧ ∀ n : ℕ, (f n : ℝ) ≤ C*(n : ℝ)^α+B*n := by
+  obtain ⟨M,hM⟩ := eventually_atTop.mp
+    ((Erdos713FutureRecords.ratio_limit h).eventually_lt_const hcC)
+  obtain ⟨k,hk,hmax⟩ := (range (M+1)).exists_max_image f ⟨0,by simp⟩
+  refine ⟨f k,Nat.cast_nonneg _,?_⟩
+  intro n
+  by_cases hn0 : n = 0
+  · subst n; rw [hf0,Nat.cast_zero]; positivity
+  have hnp : 0 < n := Nat.pos_of_ne_zero hn0
+  have hnr : (0 : ℝ) < n := by exact_mod_cast hnp
+  by_cases hn : M ≤ n
+  · have hh := (div_lt_iff₀ (Real.rpow_pos_of_pos hnr α)).mp (hM n hn)
+    nlinarith [mul_nonneg (Nat.cast_nonneg (f k) : (0 : ℝ) ≤ f k) hnr.le]
+  · have hh : f n ≤ f k := hmax n (mem_range.mpr (by omega))
+    have hm : f n ≤ f k*n := hh.trans (Nat.le_mul_of_pos_right _ hnp)
+    have hmR : (f n : ℝ) ≤ (f k : ℝ)*n := by exact_mod_cast hm
+    nlinarith [mul_nonneg hC.le (Real.rpow_nonneg hnr.le α)]
+
+lemma small_cut_bound {α c B δ n s x : ℝ} (ha : 1 < α) (hc : 0 < c)
+    (hn : 0 ≤ n) (hs : 0 ≤ s) (hd : 0 ≤ δ) (hsize : s ≤ δ*n)
+    (hpow : δ^(α-1) = 1/768) (hB : B ≤ c/384*n^(α-1))
+    (hcut : c/48*s*n^(α-1) ≤ 4*c*s^α+2*B*s+x) :
+    c/96*s*n^(α-1) ≤ x := by
+  have hp := Real.rpow_le_rpow hs hsize (show 0 ≤ α-1 by linarith)
+  rw [Real.mul_rpow hd hn,hpow] at hp
+  have hterm := mul_le_mul_of_nonneg_left hp (show 0 ≤ 4*c*s by positivity)
+  have hbterm := mul_le_mul_of_nonneg_right hB (show 0 ≤ 2*s by positivity)
+  rw [rpow_factor hs ha] at hcut
+  nlinarith only [hcut,hterm,hbterm]
+
+lemma large_cut_bound {α c B δ η n s x : ℝ} (ha : 1 < α) (hc : 0 < c)
+    (hn : 0 ≤ n) (hs : 0 ≤ s) (hsize : 2*s ≤ n) (hlarge : δ*n ≤ s)
+    (hη : 0 ≤ η) (heq : η = c*expansionConstant α*δ/8)
+    (hB : B ≤ c*expansionConstant α*δ/4*n^(α-1))
+    (hcut : (c-η)*n^α ≤ (c+η)*(s^α+(n-s)^α)+B*n+x) :
+    c*expansionConstant α/2*s*n^(α-1) ≤ x := by
+  have hk := expansionConstant_pos ha
+  have hp := power_gap hn hs hsize ha
+  have hterm := mul_le_mul_of_nonneg_left hp hc.le
+  have hsum : s^α+(n-s)^α ≤ n^α := by
+    have hh : 0 ≤ expansionConstant α*s*n^(α-1) := by positivity
+    linarith
+  have herr := mul_le_mul_of_nonneg_left hsum hη
+  have hlarge' := mul_le_mul_of_nonneg_right hlarge
+    (show 0 ≤ c*expansionConstant α/4*n^(α-1) by positivity)
+  have hbterm := mul_le_mul_of_nonneg_right hB hn
+  have hfactor := rpow_factor hn ha
+  have heterm : 2*η*n^α ≤ c*expansionConstant α/4*s*n^(α-1) := by
+    rw [heq,hfactor]
+    nlinarith only [hlarge']
+  have hbterm' : B*n ≤ c*expansionConstant α/4*s*n^(α-1) := by
+    nlinarith only [hlarge',hbterm]
+  nlinarith only [hcut,hterm,herr,heterm,hbterm']
+
+/-- Every sufficiently large exact optimizer with the indicated relative
+minimum degree is expanding. The threshold is uniform over all hosts. -/
+theorem eventually_expanding_exact {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (ha : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) :
+    ∃ κ : ℝ, 0 < κ ∧ ∀ᶠ n : ℕ in atTop,
+      ∀ (V : Type) [Fintype V] (G : SimpleGraph V), Fintype.card V = n →
+        H.Free G → Nat.card G.edgeSet = extremalNumber n H →
+        (∀ v, Nat.card G.edgeSet ≤ 24*n*Nat.card (G.neighborSet v)) →
+        ∀ S : Finset V, 2*S.card ≤ n →
+          κ*S.card*(n : ℝ)^(α-1) ≤ (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+  classical
+  let δ : ℝ := (1/768 : ℝ)^((α-1)⁻¹)
+  have hd : 0 < δ := Real.rpow_pos_of_pos (by norm_num) _
+  have hd1 : δ < 1 := Real.rpow_lt_one (by norm_num) (by norm_num) (inv_pos.mpr (by linarith))
+  have hdpow : δ^(α-1) = 1/768 := Real.rpow_inv_rpow (by norm_num) (by linarith)
+  let k := expansionConstant α
+  have hk : 0 < k := expansionConstant_pos ha
+  have hk1 : k < 1 := by
+    have hh := Real.rpow_pos_of_pos (by norm_num : (0 : ℝ) < 1/2) (α-1)
+    dsimp only [k,expansionConstant]
+    linarith
+  let η := c*k*δ/8
+  have hη : 0 < η := by dsimp [η]; positivity
+  have hηc : η < c/2 := by
+    have hh := mul_lt_mul_of_pos_left hk1 hc
+    have hh' := mul_lt_mul_of_pos_left hd1 (mul_pos hc hk)
+    dsimp only [η]
+    nlinarith
+  obtain ⟨B,hB,hUpper⟩ := linear_error_upper (fun n => extremalNumber n H)
+    (extremal_zero H) (show 0 < c+η by positivity) (by linarith) h
+  let κ := min (c/96) (c*k/2)
+  have hκ : 0 < κ := lt_min (by positivity) (by positivity)
+  let b := min (c/384) (c*k*δ/4)
+  have hb : 0 < b := lt_min (by positivity) (by positivity)
+  have htop : Tendsto (fun n : ℕ => b*(n : ℝ)^(α-1)) atTop atTop :=
+    Tendsto.const_mul_atTop hb
+      ((tendsto_rpow_atTop (by linarith : 0 < α-1)).comp tendsto_natCast_atTop_atTop)
+  refine ⟨κ,hκ,?_⟩
+  filter_upwards [htop.eventually_ge_atTop B,
+    (Erdos713FutureRecords.ratio_limit h).eventually_const_lt (show c-η < c by linarith),
+    eventually_gt_atTop (0 : ℕ)] with n hBn hLow hn
+  intro V instV G hcard hFree hE hDeg S hS
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn
+  have hsR : (0 : ℝ) ≤ S.card := Nat.cast_nonneg _
+  have hsNat : S.card ≤ n := by omega
+  have hhalf : (2 : ℝ)*S.card ≤ n := by exact_mod_cast hS
+  have hp : 0 < (n : ℝ)^(α-1) := Real.rpow_pos_of_pos hnR _
+  have hLow' : (c-η)*(n : ℝ)^α ≤ (extremalNumber n H : ℝ) :=
+    ((lt_div_iff₀ (Real.rpow_pos_of_pos hnR α)).mp hLow).le
+  have hLowHalf : c/2*(n : ℝ)^α ≤ (extremalNumber n H : ℝ) := by
+    have hh := mul_le_mul_of_nonneg_right (show c/2 ≤ c-η by linarith)
+      (Real.rpow_nonneg hnR.le α)
+    exact hh.trans hLow'
+  have hBsmall : B ≤ c/384*(n : ℝ)^(α-1) := hBn.trans
+    (mul_le_mul_of_nonneg_right (min_le_left _ _) hp.le)
+  have hBlarge : B ≤ c*k*δ/4*(n : ℝ)^(α-1) := hBn.trans
+    (mul_le_mul_of_nonneg_right (min_le_right _ _) hp.le)
+  by_cases hsmall : (S.card : ℝ) ≤ δ*n
+  · have hmindeg (v : V) : c/48*(n : ℝ)^(α-1) ≤ (G.degree v : ℝ) := by
+      have hh : extremalNumber n H ≤ 24*n*G.degree v := by
+        simpa only [hE,Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using hDeg v
+      have hhR : (extremalNumber n H : ℝ) ≤ 24*(n : ℝ)*(G.degree v : ℝ) := by
+        exact_mod_cast hh
+      rw [rpow_factor hnR.le ha] at hLowHalf
+      nlinarith
+    have hSum := sum_le_sum (s := S) (fun v _ => hmindeg v)
+    simp only [sum_const,nsmul_eq_mul] at hSum
+    have hCut := degree_cut_bound H G hFree S
+    have hCutR : (∑ v ∈ S, (G.degree v : ℝ)) ≤ 2*(extremalNumber S.card H : ℝ)+
+        (Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by exact_mod_cast hCut
+    have hUS : (extremalNumber S.card H : ℝ) ≤ 2*c*(S.card : ℝ)^α+B*S.card := by
+      have hm := mul_le_mul_of_nonneg_right (show c+η ≤ 2*c by linarith)
+        (Real.rpow_nonneg hsR α)
+      exact (hUpper S.card).trans (by linarith)
+    have hcut : c/48*(S.card : ℝ)*(n : ℝ)^(α-1) ≤
+        4*c*(S.card : ℝ)^α+2*B*S.card+(Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+      nlinarith only [hSum,hCutR,hUS]
+    have hout := small_cut_bound ha hc hnR.le hsR hd.le hsmall hdpow hBsmall hcut
+    have hle := mul_le_mul_of_nonneg_right (min_le_left (c/96) (c*k/2))
+      (show 0 ≤ (S.card : ℝ)*(n : ℝ)^(α-1) by positivity)
+    calc
+      _ = κ*((S.card : ℝ)*(n : ℝ)^(α-1)) := by ring
+      _ ≤ c/96*((S.card : ℝ)*(n : ℝ)^(α-1)) := hle
+      _ ≤ _ := by simpa only [mul_assoc] using hout
+  · have hCut := edges_le_parts_and_cut H G hFree S
+    rw [hcard,hE] at hCut
+    have hCutR : (extremalNumber n H : ℝ) ≤ (extremalNumber S.card H : ℝ)+
+        (extremalNumber (n-S.card) H : ℝ)+(Nat.card (cross G (S : Set V)).edgeSet : ℝ) :=
+      by exact_mod_cast hCut
+    have hUS := hUpper S.card
+    have hUT := hUpper (n-S.card)
+    rw [Nat.cast_sub hsNat] at hUT
+    have hcut : (c-η)*(n : ℝ)^α ≤ (c+η)*((S.card : ℝ)^α+((n : ℝ)-S.card)^α)+
+        B*n+(Nat.card (cross G (S : Set V)).edgeSet : ℝ) := by
+      nlinarith only [hLow',hCutR,hUS,hUT]
+    have hout := large_cut_bound ha hc hnR.le hsR hhalf (le_of_not_ge hsmall)
+      hη.le (show η = c*expansionConstant α*δ/8 from rfl) hBlarge hcut
+    have hle := mul_le_mul_of_nonneg_right (min_le_right (c/96) (c*k/2))
+      (show 0 ≤ (S.card : ℝ)*(n : ℝ)^(α-1) by positivity)
+    change c*k/2*(S.card : ℝ)*(n : ℝ)^(α-1) ≤ _ at hout
+    calc
+      _ = κ*((S.card : ℝ)*(n : ℝ)^(α-1)) := by ring
+      _ ≤ c*k/2*((S.card : ℝ)*(n : ℝ)^(α-1)) := hle
+      _ ≤ _ := by simpa only [mul_assoc] using hout
+
+/-- All conclusions hold on the SAME exact ordinary extremal host. In
+particular full clone saturation is compatible with uniform expansion. -/
+theorem exact_saturated_expanders {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (hEdge : ∃ a b, H.Adj a b) {α c : ℝ}
+    (ha : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) :
+    ∃ κ : ℝ, 0 < κ ∧ ∀ N D : ℕ,
+      ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+        N ≤ Fintype.card U ∧ H.Free J ∧
+        Nat.card J.edgeSet = extremalNumber (Fintype.card U) H ∧
+        (∀ v, D ≤ Nat.card (J.neighborSet v)) ∧
+        (∀ v, Nat.card J.edgeSet ≤ 24*Fintype.card U*Nat.card (J.neighborSet v)) ∧
+        (∀ v, SingleFold H J v) ∧
+        ∀ S : Finset U, 2*S.card ≤ Fintype.card U →
+          κ*S.card*(Fintype.card U : ℝ)^(α-1) ≤
+            (Nat.card (cross J (S : Set U)).edgeSet : ℝ) := by
+  obtain ⟨κ,hκ,hExp⟩ := eventually_expanding_exact H ha hc h
+  obtain ⟨M,hM⟩ := eventually_atTop.mp hExp
+  refine ⟨κ,hκ,?_⟩
+  intro N D
+  obtain ⟨U,instU,J,hnu,hf,hE,hdeg,hrelative,hfold⟩ :=
+    Erdos713RelativeCloneSaturation.exact_relative_saturated_cofinal H hH hEdge ha ha2 hc h
+      (max N M) D
+  refine ⟨U,instU,J,(le_max_left _ _).trans hnu,hf,hE,hdeg,hrelative,hfold,?_⟩
+  exact hM (Fintype.card U) ((le_max_right _ _).trans hnu) U J rfl hf hE hrelative
+
+end Erdos713RelativeExpansion
+
+/-! Edges incident to small sets, derived from an extremal power upper bound.
+No exact extremality or clone saturation is claimed after vertex deletion. -/
+open SimpleGraph Finset Filter Asymptotics
+open scoped Topology
+namespace Erdos713SmallSetIncidence
+open Erdos713Cloning Erdos713SwitchGluing
+set_option maxHeartbeats 2000000
+variable {V W : Type*}
+
+noncomputable def label [Fintype V] (s : ℕ) (v : V) : Fin (Fintype.card V/s+1) :=
+  ⟨(Fintype.equivFin V v).val/s,
+    Nat.lt_succ_of_le (Nat.div_le_div_right (Fintype.equivFin V v).isLt.le)⟩
+
+open scoped Classical in
+noncomputable def block [Fintype V] (s : ℕ) (j : Fin (Fintype.card V/s+1)) : Finset V :=
+  univ.filter (fun v => label s v = j)
+
+lemma mem_block [Fintype V] (s : ℕ) (v : V) : v ∈ block s (label s v) := by
+  classical
+  simp [block]
+
+lemma block_card_le [Fintype V] {s : ℕ} (hs : 0 < s) (j : Fin (Fintype.card V/s+1)) :
+    (block s j).card ≤ s := by
+  classical
+  let f : block s j → Fin s := fun v =>
+    ⟨(Fintype.equivFin V v.val).val%s,Nat.mod_lt _ hs⟩
+  have hinj : Function.Injective f := by
+    intro v w he
+    apply Subtype.ext
+    apply (Fintype.equivFin V).injective
+    apply Fin.ext
+    have hmod := congrArg Fin.val he
+    have hv : (Fintype.equivFin V v.val).val/s = j.val :=
+      congrArg Fin.val (mem_filter.mp v.property).2
+    have hw : (Fintype.equivFin V w.val).val/s = j.val :=
+      congrArg Fin.val (mem_filter.mp w.property).2
+    have h1 := Nat.div_add_mod (Fintype.equivFin V v.val).val s
+    have h2 := Nat.div_add_mod (Fintype.equivFin V w.val).val s
+    change (Fintype.equivFin V v.val).val%s = (Fintype.equivFin V w.val).val%s at hmod
+    rw [hv] at h1
+    rw [hw] at h2
+    omega
+  simpa using Fintype.card_le_of_injective f hinj
+
+/-- The spanning subgraph of edges having at least one endpoint in S. -/
+def touch (G : SimpleGraph V) (S : Set V) : SimpleGraph V where
+  Adj v w := G.Adj v w ∧ (v ∈ S ∨ w ∈ S)
+  symm _ _ h := ⟨h.1.symm,h.2.symm⟩
+  loopless v h := G.loopless v h.1
+
+lemma degree_mass_le_touch [Fintype V] (G : SimpleGraph V) (S : Finset V) :
+    (∑ v ∈ S, Nat.card (G.neighborSet v)) ≤ 2*Nat.card (touch G (S : Set V)).edgeSet := by
+  classical
+  have hdeg (v : V) (hv : v ∈ S) : G.degree v = (touch G (S : Set V)).degree v := by
+    apply congrArg Finset.card
+    ext w
+    simp [mem_neighborFinset,touch,hv]
+  have hh := sum_le_sum_of_subset (f := fun v => (touch G (S : Set V)).degree v) (subset_univ S)
+  rw [sum_degrees_eq_twice_card_edges] at hh
+  have he : (∑ v ∈ S, G.degree v) = ∑ v ∈ S, (touch G (S : Set V)).degree v := sum_congr rfl hdeg
+  simp only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree]
+  simpa only [← he,edgeFinset_card] using hh
+
+open scoped Classical in
+lemma touch_cover [Fintype V] (G : SimpleGraph V) (S : Finset V) (s : ℕ) :
+    Nat.card (touch G (S : Set V)).edgeSet ≤
+      ∑ j : Fin (Fintype.card V/s+1), Nat.card (inside G ((S ∪ block s j : Finset V) : Set V)).edgeSet := by
+  classical
+  have hsub : (touch G (S : Set V)).edgeFinset ⊆
+      univ.biUnion (fun j : Fin (Fintype.card V/s+1) =>
+        (inside G ((S ∪ block s j : Finset V) : Set V)).edgeFinset) := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf v w =>
+      have hvw : G.Adj v w ∧ (v ∈ S ∨ w ∈ S) := by simpa [touch] using he
+      rcases hvw.2 with hv | hw
+      · apply mem_biUnion.mpr
+        refine ⟨label s w,mem_univ _,?_⟩
+        simpa only [mem_edgeFinset,inside] using
+          (show G.Adj v w ∧ v ∈ S ∪ block s (label s w) ∧ w ∈ S ∪ block s (label s w) from
+            ⟨hvw.1,mem_union_left _ hv,mem_union_right _ (mem_block s w)⟩)
+      · apply mem_biUnion.mpr
+        refine ⟨label s v,mem_univ _,?_⟩
+        simpa only [mem_edgeFinset,inside] using
+          (show G.Adj v w ∧ v ∈ S ∪ block s (label s v) ∧ w ∈ S ∪ block s (label s v) from
+            ⟨hvw.1,mem_union_right _ (mem_block s v),mem_union_left _ hw⟩)
+  have hh := (card_le_card hsub).trans card_biUnion_le
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh
+
+lemma touch_block_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (hFree : H.Free G)
+    {α C B : ℝ} (ha : 0 ≤ α) (hC : 0 ≤ C) (hB : 0 ≤ B)
+    (hU : ∀ m : ℕ, (extremalNumber m H : ℝ) ≤ C*(m : ℝ)^α+B*m)
+    (S : Finset V) (hs : 0 < S.card) :
+    (Nat.card (touch G (S : Set V)).edgeSet : ℝ) ≤
+      (Fintype.card V/S.card+1 : ℕ)*(C*(2*(S.card : ℝ))^α+2*B*S.card) := by
+  classical
+  have hj (j : Fin (Fintype.card V/S.card+1)) :
+      (Nat.card (inside G ((S ∪ block S.card j : Finset V) : Set V)).edgeSet : ℝ) ≤
+        C*(2*(S.card : ℝ))^α+2*B*S.card := by
+    have hsmall : (S ∪ block S.card j).card ≤ 2*S.card :=
+      (card_union_le _ _).trans (by have hh := block_card_le hs j; omega)
+    have hsmallR : ((S ∪ block S.card j).card : ℝ) ≤ 2*S.card := by exact_mod_cast hsmall
+    have hp := mul_le_mul_of_nonneg_left
+      (Real.rpow_le_rpow (Nat.cast_nonneg _) hsmallR ha) hC
+    have hb := mul_le_mul_of_nonneg_left hsmallR hB
+    have he : (Nat.card (inside G ((S ∪ block S.card j : Finset V) : Set V)).edgeSet : ℝ) ≤
+        (extremalNumber (S ∪ block S.card j).card H : ℝ) :=
+      by exact_mod_cast inside_edges_le H G hFree (S ∪ block S.card j)
+    nlinarith only [he,hU (S ∪ block S.card j).card,hp,hb]
+  have hh : (Nat.card (touch G (S : Set V)).edgeSet : ℝ) ≤
+      ∑ j : Fin (Fintype.card V/S.card+1),
+        (Nat.card (inside G ((S ∪ block S.card j : Finset V) : Set V)).edgeSet : ℝ) :=
+    by exact_mod_cast touch_cover G S S.card
+  have hb := sum_le_sum (s := (univ : Finset (Fin (Fintype.card V/S.card+1)))) (fun j _ => hj j)
+  simp only [sum_const,card_univ,Fintype.card_fin,nsmul_eq_mul] at hb
+  exact hh.trans hb
+
+lemma touch_power_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (hFree : H.Free G)
+    {α C B : ℝ} (ha : 1 < α) (hC : 0 ≤ C) (hB : 0 ≤ B)
+    (hU : ∀ m : ℕ, (extremalNumber m H : ℝ) ≤ C*(m : ℝ)^α+B*m)
+    (S : Finset V) :
+    (Nat.card (touch G (S : Set V)).edgeSet : ℝ) ≤
+      2*C*(2 : ℝ)^α*Fintype.card V*(S.card : ℝ)^(α-1)+4*B*Fintype.card V := by
+  classical
+  by_cases hs0 : S.card = 0
+  · have hS : S = ∅ := card_eq_zero.mp hs0
+    subst S
+    have ht : touch G (∅ : Set V) = ⊥ := by ext v w; simp [touch]
+    simp only [coe_empty,ht]
+    have he : Nat.card ((⊥ : SimpleGraph V).edgeSet) = 0 := by simp
+    rw [he,Nat.cast_zero]
+    positivity
+  have hs : 0 < S.card := Nat.pos_of_ne_zero hs0
+  have hsR : (0 : ℝ) < S.card := by exact_mod_cast hs
+  have hnum : (Fintype.card V/S.card+1)*S.card ≤ 2*Fintype.card V := by
+    have h1 := Nat.div_mul_le_self (Fintype.card V) S.card
+    have h2 := card_le_univ S
+    nlinarith
+  have hnumR : ((Fintype.card V/S.card+1 : ℕ) : ℝ)*S.card ≤ 2*Fintype.card V := by
+    exact_mod_cast hnum
+  have he := touch_block_bound H G hFree (zero_lt_one.trans ha).le hC hB hU S hs
+  have hfac : C*(2*(S.card : ℝ))^α+2*B*S.card =
+      (S.card : ℝ)*(C*(2 : ℝ)^α*(S.card : ℝ)^(α-1)+2*B) := by
+    rw [Real.mul_rpow (by norm_num : (0 : ℝ) ≤ 2) hsR.le,rpow_factor hsR.le ha]
+    ring
+  rw [hfac] at he
+  have hm := mul_le_mul_of_nonneg_right hnumR
+    (show 0 ≤ C*(2 : ℝ)^α*(S.card : ℝ)^(α-1)+2*B by positivity)
+  nlinarith only [he,hm]
+
+lemma degree_mass_power_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (hFree : H.Free G)
+    {α C B : ℝ} (ha : 1 < α) (hC : 0 ≤ C) (hB : 0 ≤ B)
+    (hU : ∀ m : ℕ, (extremalNumber m H : ℝ) ≤ C*(m : ℝ)^α+B*m)
+    (S : Finset V) :
+    (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤
+      4*C*(2 : ℝ)^α*Fintype.card V*(S.card : ℝ)^(α-1)+8*B*Fintype.card V := by
+  have he := touch_power_bound H G hFree ha hC hB hU S
+  have hs : (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤
+      2*(Nat.card (touch G (S : Set V)).edgeSet : ℝ) := by
+    exact_mod_cast degree_mass_le_touch G S
+  linarith
+
+end Erdos713SmallSetIncidence
+
+/-! Uniform small-set and high-degree incidence control in H-free hosts.
+These conclusions do not preserve full clone saturation under deletion. -/
+open SimpleGraph Finset Filter Asymptotics
+open scoped Topology
+namespace Erdos713UniformIncidence
+open Erdos713SmallSetIncidence Erdos713Cloning
+set_option maxHeartbeats 2000000
+variable {V W : Type*}
+
+lemma small_fraction_bound [Fintype V] (H : SimpleGraph W) (G : SimpleGraph V) (hFree : H.Free G)
+    {α C B δ : ℝ} (ha : 1 < α) (hC : 0 ≤ C) (hB : 0 ≤ B) (hd : 0 ≤ δ)
+    (hU : ∀ m : ℕ, (extremalNumber m H : ℝ) ≤ C*(m : ℝ)^α+B*m)
+    (S : Finset V) (hS : (S.card : ℝ) ≤ δ*Fintype.card V) :
+    (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤
+      (4*C*(2 : ℝ)^α*δ^(α-1))*(Fintype.card V : ℝ)^α+8*B*Fintype.card V := by
+  have he := degree_mass_power_bound H G hFree ha hC hB hU S
+  have hp := Real.rpow_le_rpow (Nat.cast_nonneg S.card) hS (show 0 ≤ α-1 by linarith)
+  rw [Real.mul_rpow hd (Nat.cast_nonneg (Fintype.card V))] at hp
+  have hm := mul_le_mul_of_nonneg_left hp
+    (show 0 ≤ 4*C*(2 : ℝ)^α*Fintype.card V by positivity)
+  rw [rpow_factor (Nat.cast_nonneg (Fintype.card V)) ha]
+  nlinarith only [he,hm]
+
+/-- Uniform absolute continuity of degree mass with respect to vertex mass
+at the n^alpha scale. The host need only be H-free, not extremal. -/
+theorem small_set_mass {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (ha : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) {ε : ℝ} (hε : 0 < ε) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop,
+      ∀ (V : Type) [Fintype V] (G : SimpleGraph V), Fintype.card V = n → H.Free G →
+        ∀ S : Finset V, (S.card : ℝ) ≤ δ*n →
+          (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤ ε*(n : ℝ)^α := by
+  let C := 2*c
+  have hC : 0 < C := by dsimp [C]; positivity
+  obtain ⟨B,hB,hU⟩ := Erdos713RelativeExpansion.linear_error_upper
+    (fun n => extremalNumber n H) (extremal_zero H) hC (by dsimp [C]; linarith) h
+  let A := 4*C*(2 : ℝ)^α
+  have hA : 0 < A := by dsimp [A]; positivity
+  let δ := (ε/(2*A))^((α-1)⁻¹)
+  have hd : 0 < δ := Real.rpow_pos_of_pos (by positivity) _
+  have hdpow : δ^(α-1) = ε/(2*A) := Real.rpow_inv_rpow (by positivity) (by linarith)
+  have hcoef : A*δ^(α-1) = ε/2 := by rw [hdpow]; field_simp
+  have ht : Tendsto (fun n : ℕ => (ε/16)*(n : ℝ)^(α-1)) atTop atTop :=
+    Tendsto.const_mul_atTop (by positivity)
+      ((tendsto_rpow_atTop (by linarith : 0 < α-1)).comp tendsto_natCast_atTop_atTop)
+  refine ⟨δ,hd,?_⟩
+  filter_upwards [ht.eventually_ge_atTop B] with n hn
+  intro V instV G hcard hf S hS
+  have hm := small_fraction_bound H G hf ha hC.le hB hd.le hU S (by simpa [hcard] using hS)
+  change (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤
+    (A*δ^(α-1))*(Fintype.card V : ℝ)^α+8*B*Fintype.card V at hm
+  rw [hcoef,hcard] at hm
+  have hb := mul_le_mul_of_nonneg_right hn (show (0 : ℝ) ≤ 8*n by positivity)
+  have hfac := rpow_factor (Nat.cast_nonneg n) ha
+  rw [hfac] at hm ⊢
+  nlinarith only [hm,hb]
+
+/-- High-degree vertices carry arbitrarily little total degree mass when
+the threshold constant is chosen sufficiently large. -/
+theorem high_degree_mass {W : Type*} (H : SimpleGraph W) {α c : ℝ}
+    (ha : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) {ε : ℝ} (hε : 0 < ε) :
+    ∃ K : ℝ, 0 < K ∧ ∀ᶠ n : ℕ in atTop,
+      ∀ (V : Type) [Fintype V] (G : SimpleGraph V), Fintype.card V = n → H.Free G →
+        ∀ S : Finset V, (∀ v ∈ S, K*(n : ℝ)^(α-1) ≤ (Nat.card (G.neighborSet v) : ℝ)) →
+          (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤ ε*(n : ℝ)^α := by
+  classical
+  obtain ⟨δ,hd,hSmall⟩ := small_set_mass H ha hc h hε
+  let K := 4*c/δ
+  have hK : 0 < K := by dsimp [K]; positivity
+  have hkδ : K*δ = 4*c := by dsimp [K]; field_simp
+  have hu : ∀ᶠ n : ℕ in atTop, (extremalNumber n H : ℝ) ≤ 2*c*(n : ℝ)^α := by
+    filter_upwards [(Erdos713FutureRecords.ratio_limit h).eventually_lt_const (show c < 2*c by linarith),
+      eventually_gt_atTop (0 : ℕ)] with n hn hnp
+    exact ((div_lt_iff₀ (Real.rpow_pos_of_pos (by exact_mod_cast hnp : (0 : ℝ) < n) α)).mp hn).le
+  refine ⟨K,hK,?_⟩
+  filter_upwards [hSmall,hu,eventually_gt_atTop (0 : ℕ)] with n hS hU hn
+  intro V instV G hcard hf S hHigh
+  apply hS V G hcard hf S
+  have he : (Nat.card G.edgeSet : ℝ) ≤ (extremalNumber n H : ℝ) := by
+    have hh := card_edgeFinset_le_extremalNumber hf
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card,← hcard] using
+      (show (Nat.card G.edgeSet : ℝ) ≤ (extremalNumber (Fintype.card V) H : ℝ) by
+        exact_mod_cast (by simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh))
+  have hsum : (∑ v : V, (Nat.card (G.neighborSet v) : ℝ)) = 2*(Nat.card G.edgeSet : ℝ) := by
+    exact_mod_cast (by
+      simpa only [← card_neighborSet_eq_degree,edgeFinset_card,Fintype.card_eq_nat_card] using
+        G.sum_degrees_eq_twice_card_edges)
+  have hSub : (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤
+      ∑ v : V, (Nat.card (G.neighborSet v) : ℝ) :=
+    sum_le_sum_of_subset_of_nonneg (subset_univ S) (fun _ _ _ => Nat.cast_nonneg _)
+  have hLow := sum_le_sum (s := S) hHigh
+  simp only [sum_const,nsmul_eq_mul] at hLow
+  rw [hsum] at hSub
+  have hp : 0 < (n : ℝ)^(α-1) := Real.rpow_pos_of_pos (by exact_mod_cast hn) _
+  have hfac := rpow_factor (Nat.cast_nonneg n) ha
+  rw [hfac] at hU
+  have hh : (K*(S.card : ℝ))*(n : ℝ)^(α-1) ≤ (4*c*n)*(n : ℝ)^(α-1) := by
+    nlinarith only [he,hU,hSub,hLow]
+  have hKs : K*(S.card : ℝ) ≤ 4*c*n := (mul_le_mul_iff_left₀ hp).mp hh
+  have heq : 4*c*(n : ℝ) = K*(δ*n) := by rw [← hkδ]; ring
+  rw [heq] at hKs
+  exact (mul_le_mul_iff_right₀ hK).mp hKs
+
+/-- Vertex deletion loses at most the original degree sum of the deleted
+set; no maximum-degree bound is assumed. -/
+lemma edges_le_induce_compl_add_degree [Fintype V] (G : SimpleGraph V) (S : Finset V) :
+    Nat.card G.edgeSet ≤ Nat.card (G.induce (S : Set V)ᶜ).edgeSet +
+      ∑ v ∈ S, Nat.card (G.neighborSet v) := by
+  classical
+  let B := S.biUnion (fun v => G.incidenceFinset v)
+  have hcov : G.edgeFinset ⊆ (G.edgeFinset ∩ ((S : Set V)ᶜ).toFinset.sym2) ∪ B := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      have huv : G.Adj u v := by simpa using he
+      by_cases hu : u ∈ S
+      · apply mem_union_right
+        apply mem_biUnion.mpr
+        refine ⟨u,hu,?_⟩
+        simp [incidenceFinset_eq_filter,huv]
+      by_cases hv : v ∈ S
+      · apply mem_union_right
+        apply mem_biUnion.mpr
+        refine ⟨v,hv,?_⟩
+        simp [incidenceFinset_eq_filter,huv]
+      · exact mem_union_left _ (mem_inter.mpr ⟨he,by simp [hu,hv]⟩)
+  have hB : B.card ≤ ∑ v ∈ S, Nat.card (G.neighborSet v) := by
+    simpa only [card_incidenceFinset_eq_degree,Nat.card_eq_fintype_card,
+      card_neighborSet_eq_degree] using (card_biUnion_le (s := S) (t := fun v => G.incidenceFinset v))
+  have hinner : (G.edgeFinset ∩ ((S : Set V)ᶜ).toFinset.sym2).card =
+      Nat.card (G.induce (S : Set V)ᶜ).edgeSet := by
+    rw [← map_edgeFinset_induce,card_map,edgeFinset_card,Fintype.card_eq_nat_card]
+  have hh := ((card_le_card hcov).trans (card_union_le _ _)).trans (Nat.add_le_add_left hB _)
+  simpa only [hinner,edgeFinset_card,Fintype.card_eq_nat_card] using hh
+
+end Erdos713UniformIncidence
+
+/-! Linear vertex transversals and disjoint packings in dense H-free hosts
+for patterns of strictly smaller extremal exponent. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713LinearRobustCopies
+open Erdos713RobustCopies Erdos713UniformIncidence
+variable {U V W : Type*}
+set_option maxHeartbeats 2000000
+
+lemma edge_bound_after_deletion_degree [Fintype V] (Q : SimpleGraph U) (G : SimpleGraph V)
+    (S : Finset V) (hf : Q.Free (G.induce (S : Set V)ᶜ)) :
+    Nat.card G.edgeSet ≤ envelope Q (Fintype.card V) + ∑ v ∈ S, Nat.card (G.neighborSet v) := by
+  classical
+  have hdel := edges_le_induce_compl_add_degree G S
+  have hq : Nat.card (G.induce (S : Set V)ᶜ).edgeSet ≤
+      extremalNumber (Fintype.card ↥((S : Set V)ᶜ)) Q := by
+    simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using card_edgeFinset_le_extremalNumber hf
+  have hm := le_envelope Q (Fintype.card_subtype_le (fun v : V => v ∈ (S : Set V)ᶜ))
+  exact hdel.trans (Nat.add_le_add_right (hq.trans hm) _)
+
+/-- A strict exponent gap forces every vertex transversal to occupy a
+positive fraction of the host. H-freeness is essential to this refinement. -/
+theorem linear_transversal (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c r : ℝ} (ha : 1 < α) (hr : 0 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), H.Free G →
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet → ∀ S : Finset (Fin n),
+        Q.Free (G.induce (S : Set (Fin n))ᶜ) → δ*n < (S.card : ℝ) := by
+  obtain ⟨δ,hd,hSmall⟩ := small_set_mass H ha hc hH (show 0 < c/8 by positivity)
+  refine ⟨δ,hd,?_⟩
+  filter_upwards [hSmall,scaled_edge_gap H Q hr hra hc hH hQ] with n hsmall hgap
+  intro G hf hG S hS
+  by_contra hbad
+  have hs : (S.card : ℝ) ≤ δ*n := le_of_not_gt hbad
+  have hMass := hsmall (Fin n) G (Fintype.card_fin n) hf S hs
+  have hdel : (Nat.card G.edgeSet : ℝ) ≤ (envelope Q n : ℝ)+
+      ∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ) := by
+    exact_mod_cast (by simpa only [Fintype.card_fin] using edge_bound_after_deletion_degree Q G S hS)
+  have hG' : (extremalNumber n H : ℝ) ≤ 2*(Nat.card G.edgeSet : ℝ) := by exact_mod_cast hG
+  linarith [hgap.2.1,hgap.2.2]
+
+/-- One constant and one eventual threshold give both a linear packing and
+a linear transversal lower bound on the same dense H-free host. -/
+theorem linear_copies_and_transversal [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c r : ℝ} (ha : 1 < α) (hr : 0 ≤ r) (hra : r < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hQ : (fun n : ℕ => (extremalNumber n Q : ℝ)) =O[atTop] (fun n => (n : ℝ)^r)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), H.Free G →
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet →
+        DisjointCopies ⌊δ*(n : ℝ)⌋₊ Q G ∧
+        ∀ S : Finset (Fin n), Q.Free (G.induce (S : Set (Fin n))ᶜ) → δ*n < (S.card : ℝ) := by
+  classical
+  obtain ⟨τ,hτ,hTrans⟩ := linear_transversal H Q ha hr hra hc hH hQ
+  let δ := τ/((Fintype.card U : ℝ)+1)
+  have hd : 0 < δ := by dsimp [δ]; positivity
+  have heq : δ*((Fintype.card U : ℝ)+1) = τ := by dsimp [δ]; field_simp
+  have hdq : δ*(Fintype.card U : ℝ) ≤ τ := by nlinarith
+  have hdτ : δ ≤ τ := by
+    have hh := mul_nonneg hd.le (Nat.cast_nonneg (Fintype.card U) : (0 : ℝ) ≤ Fintype.card U)
+    nlinarith
+  refine ⟨δ,hd,?_⟩
+  filter_upwards [hTrans] with n htrans
+  intro G hf hG
+  refine ⟨?_,?_⟩
+  · apply disjoint_copies_of_avoidance Q G ⌊δ*(n : ℝ)⌋₊
+    intro S hS
+    have hfloor : (⌊δ*(n : ℝ)⌋₊ : ℝ) ≤ δ*n := Nat.floor_le (by positivity)
+    have hsR : (S.card : ℝ) ≤ (⌊δ*(n : ℝ)⌋₊ : ℝ)*Fintype.card U := by exact_mod_cast hS
+    have hSm : (S.card : ℝ) ≤ τ*n := by
+      calc
+        _ ≤ (⌊δ*(n : ℝ)⌋₊ : ℝ)*Fintype.card U := hsR
+        _ ≤ (δ*n)*Fintype.card U := mul_le_mul_of_nonneg_right hfloor (Nat.cast_nonneg _)
+        _ = (δ*Fintype.card U)*n := by ring
+        _ ≤ τ*n := mul_le_mul_of_nonneg_right hdq (Nat.cast_nonneg _)
+    have hcopy : Q ⊑ G.induce (S : Set (Fin n))ᶜ := by
+      by_contra hfree
+      exact (not_lt_of_ge hSm) (htrans G hf hG S hfree)
+    obtain ⟨f⟩ := hcopy
+    exact ⟨(Copy.induce G _).comp f,fun u => (f u).property⟩
+  · intro S hS
+    exact (mul_le_mul_of_nonneg_right hdτ (Nat.cast_nonneg n)).trans_lt (htrans G hf hG S hS)
+
+/-- Rational-rate patterns actually contained in H have a strict exponent
+gap if the exact exponent of H is irrational. No quotient-rate assumption
+is made. -/
+theorem known_subgraphs_linear [Fintype U] (H : SimpleGraph W) (Q : SimpleGraph U)
+    {α c : ℝ} (ha : 1 < α) (hc : 0 < c)
+    (hH : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop] (fun n => c*(n : ℝ)^α))
+    (hirr : α ∉ Set.range ((↑) : ℚ → ℝ)) (hQH : Q ⊑ H)
+    {r : ℚ} (hQ : Erdos713Rate.HasRate Q (r : ℝ)) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), H.Free G →
+      extremalNumber n H ≤ 2*Nat.card G.edgeSet →
+        DisjointCopies ⌊δ*(n : ℝ)⌋₊ Q G ∧
+        ∀ S : Finset (Fin n), Q.Free (G.induce (S : Set (Fin n))ᶜ) → δ*n < (S.card : ℝ) := by
+  have hrα : (r : ℝ) ≤ α := hQ.lower α ha.le
+    ((Erdos713Rate.extremal_mono_bigO hQH).trans (Erdos713Rate.rate_of_asymptotic ha.le hc.ne' hH).upper)
+  have hrα' : (r : ℝ) < α := lt_of_le_of_ne hrα (fun he => hirr ⟨r,he⟩)
+  exact linear_copies_and_transversal H Q ha (by linarith [hQ.one_le]) hrα' hc hH hQ.upper
+
+end Erdos713LinearRobustCopies
+
+/-! High-degree pruning with arbitrarily small vertex and edge loss.
+The pruned graph is not asserted exactly extremal or clone-saturated. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713NearOptimalPruning
+open Erdos713UniformIncidence Erdos713Cloning
+set_option maxHeartbeats 2000000
+variable {V W : Type*}
+
+lemma induce_neighbor_card_le [Fintype V] (G : SimpleGraph V) (S : Set V) (v : S) :
+    Nat.card ((G.induce S).neighborSet v) ≤ Nat.card (G.neighborSet v.val) := by
+  let f : (G.induce S).neighborSet v → G.neighborSet v.val :=
+    fun w => ⟨w.val.val,w.property⟩
+  have hf : Function.Injective f := by
+    intro a b h
+    apply Subtype.ext
+    apply Subtype.ext
+    exact congrArg (fun z : G.neighborSet v.val => z.val) h
+  exact Nat.card_le_card_of_injective f hf
+
+/-- The vertex set removed and its original degree mass are both small,
+uniformly over H-free hosts. The scale is the original order n. -/
+theorem prune_high_degrees (H : SimpleGraph W) {α c : ℝ}
+    (ha : 1 < α) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) {ε : ℝ} (hε : 0 < ε) :
+    ∃ K : ℝ, 0 < K ∧ ∀ᶠ n : ℕ in atTop,
+      ∀ (V : Type) [Fintype V] (G : SimpleGraph V), Fintype.card V = n → H.Free G →
+        ∃ S : Finset V,
+          (S.card : ℝ) ≤ ε*n ∧
+          (∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ)) ≤ ε*(n : ℝ)^α ∧
+          (Nat.card G.edgeSet : ℝ) ≤ (Nat.card (G.induce (S : Set V)ᶜ).edgeSet : ℝ)+ε*(n : ℝ)^α ∧
+          H.Free (G.induce (S : Set V)ᶜ) ∧
+          ∀ v : ↥((S : Set V)ᶜ),
+            (Nat.card ((G.induce (S : Set V)ᶜ).neighborSet v) : ℝ) ≤ K*(n : ℝ)^(α-1) := by
+  classical
+  obtain ⟨K₀,hK₀,hMass⟩ := high_degree_mass H ha hc h hε
+  let K := max 1 K₀
+  have hK : 0 < K := lt_of_lt_of_le zero_lt_one (le_max_left _ _)
+  have hK1 : 1 ≤ K := le_max_left _ _
+  have hKK : K₀ ≤ K := le_max_right _ _
+  refine ⟨K,hK,?_⟩
+  filter_upwards [hMass,eventually_gt_atTop (0 : ℕ)] with n hmass hn
+  intro V instV G hcard hf
+  let S := univ.filter (fun v : V => K*(n : ℝ)^(α-1) < (Nat.card (G.neighborSet v) : ℝ))
+  have hp : 0 < (n : ℝ)^(α-1) := Real.rpow_pos_of_pos (by exact_mod_cast hn) _
+  have hS (v : V) (hv : v ∈ S) : K*(n : ℝ)^(α-1) ≤ (Nat.card (G.neighborSet v) : ℝ) :=
+    (mem_filter.mp hv).2.le
+  have hMassS := hmass V G hcard hf S (fun v hv =>
+    (mul_le_mul_of_nonneg_right hKK hp.le).trans (hS v hv))
+  have hSmall : (S.card : ℝ) ≤ ε*n := by
+    have hsum := sum_le_sum (s := S) hS
+    simp only [sum_const,nsmul_eq_mul] at hsum
+    have hkone := mul_le_mul_of_nonneg_right hK1
+      (show 0 ≤ (S.card : ℝ)*(n : ℝ)^(α-1) by positivity)
+    have hFac := rpow_factor (Nat.cast_nonneg n) ha
+    rw [hFac] at hMassS
+    apply (mul_le_mul_iff_left₀ hp).mp
+    nlinarith only [hsum,hMassS,hkone]
+  have hDel : (Nat.card G.edgeSet : ℝ) ≤
+      (Nat.card (G.induce (S : Set V)ᶜ).edgeSet : ℝ)+ε*(n : ℝ)^α := by
+    have hh : (Nat.card G.edgeSet : ℝ) ≤ (Nat.card (G.induce (S : Set V)ᶜ).edgeSet : ℝ)+
+        ∑ v ∈ S, (Nat.card (G.neighborSet v) : ℝ) := by
+      exact_mod_cast edges_le_induce_compl_add_degree G S
+    exact hh.trans (add_le_add le_rfl hMassS)
+  refine ⟨S,hSmall,hMassS,hDel,fun hQ => hf (hQ.trans ⟨Copy.induce G _⟩),?_⟩
+  intro v
+  have hv : (Nat.card (G.neighborSet v.val) : ℝ) ≤ K*(n : ℝ)^(α-1) := by
+    have hnS : v.val ∉ S := v.property
+    simpa only [S,mem_filter,mem_univ,true_and,not_lt] using hnS
+  exact (Nat.cast_le.mpr (induce_neighbor_card_le G _ v)).trans hv
+
+end Erdos713NearOptimalPruning
+
+/-! Pruning a small edge loss from a finite expander. -/
+open SimpleGraph Finset
+namespace Erdos713QuantitativeExpanderPruning
+open Erdos713SwitchGluing
+
+lemma cross_compl {V : Type*} (G : SimpleGraph V) (S : Set V) : cross G Sᶜ = cross G S := by
+  ext u v
+  by_cases hu : u ∈ S <;> by_cases hv : v ∈ S <;> simp [cross,hu,hv]
+
+lemma cut_loss {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G) (S : Set V) :
+    Nat.card (cross G S).edgeSet + Nat.card K.edgeSet ≤
+      Nat.card G.edgeSet + Nat.card (cross K S).edgeSet := by
+  classical
+  have hi : (cross G S).edgeFinset ∩ K.edgeFinset = (cross K S).edgeFinset := by
+    ext e
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      simp only [mem_inter,mem_edgeFinset,cross]
+      constructor
+      · rintro ⟨⟨_,hh⟩,hk⟩
+        exact ⟨hk,hh⟩
+      · rintro ⟨hk,hh⟩
+        exact ⟨⟨hKG hk,hh⟩,hk⟩
+  have hu : (cross G S).edgeFinset ∪ K.edgeFinset ⊆ G.edgeFinset :=
+    union_subset (edgeFinset_mono (cross_le G S)) (edgeFinset_mono hKG)
+  have hc := card_union_add_card_inter (cross G S).edgeFinset K.edgeFinset
+  rw [hi] at hc
+  have hle := card_le_card hu
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hc hle
+  omega
+
+open scoped Classical in
+lemma cut_union_le {V : Type*} [Fintype V] (G : SimpleGraph V) (U S : Finset V) :
+    Nat.card (cross G ((U ∪ S : Finset V) : Set V)).edgeSet ≤
+      Nat.card (cross G (U : Set V)).edgeSet +
+        Nat.card (cross (inside G ((Uᶜ : Finset V) : Set V)) (S : Set V)).edgeSet := by
+  classical
+  have hsub : (cross G ((U ∪ S : Finset V) : Set V)).edgeFinset ⊆
+      (cross G (U : Set V)).edgeFinset ∪
+        (cross (inside G ((Uᶜ : Finset V) : Set V)) (S : Set V)).edgeFinset := by
+    intro e he
+    induction e using Sym2.inductionOn with
+    | hf u v =>
+      by_cases hu : u ∈ U <;> by_cases hv : v ∈ U <;>
+        by_cases hus : u ∈ S <;> by_cases hvs : v ∈ S <;>
+          simp_all [cross,inside]
+  have hh := (card_le_card hsub).trans (card_union_le _ _)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh
+
+open scoped Classical in
+lemma exists_pruned_expander {V : Type*} [Fintype V] (G K : SimpleGraph V) (hKG : K ≤ G)
+    {h L : ℝ} (hh : 0 < h)
+    (hExp : ∀ S : Finset V, 2*S.card ≤ Fintype.card V →
+      h*S.card ≤ (Nat.card (cross G (S : Set V)).edgeSet : ℝ))
+    (hLoss : (Nat.card G.edgeSet : ℝ) ≤ Nat.card K.edgeSet + L)
+    (hSmall : L ≤ h*(Fintype.card V : ℝ)/16) :
+    ∃ U : Finset V, 8*U.card ≤ Fintype.card V ∧ h*(U.card : ℝ) ≤ 2*L ∧
+      ∀ S : Finset V, S ⊆ Uᶜ → 2*S.card ≤ Fintype.card V-U.card →
+        h/4*S.card ≤
+          (Nat.card (cross (inside K ((Uᶜ : Finset V) : Set V)) (S : Set V)).edgeSet : ℝ) := by
+  classical
+  let phi : Finset V → ℝ := fun U => h/2*U.card - Nat.card (cross K (U : Set V)).edgeSet
+  let T : Finset (Finset V) := univ.filter (fun U => 2*U.card ≤ Fintype.card V)
+  obtain ⟨U,hU,hMax⟩ := exists_max_image T phi ⟨∅,by simp [T]⟩
+  have hUhalf : 2*U.card ≤ Fintype.card V := (mem_filter.mp hU).2
+  have hEmpty : phi ∅ = 0 := by
+    have heq : cross K (∅ : Set V) = ⊥ := by ext u v; simp [cross]
+    simp [phi,heq]
+  have hPhi := hMax ∅ (by simp [T])
+  rw [hEmpty] at hPhi
+  have hKU : (Nat.card (cross K (U : Set V)).edgeSet : ℝ) ≤ h/2*U.card := by
+    dsimp only [phi] at hPhi
+    linarith
+  have hULoss := cut_loss G K hKG (U : Set V)
+  have hULossReal : (Nat.card (cross G (U : Set V)).edgeSet : ℝ) + Nat.card K.edgeSet ≤
+      Nat.card G.edgeSet + Nat.card (cross K (U : Set V)).edgeSet := by exact_mod_cast hULoss
+  have hUE := hExp U hUhalf
+  have hUsmall : 8*U.card ≤ Fintype.card V := by
+    have hm : h*((8 : ℝ)*U.card) ≤ h*Fintype.card V := by nlinarith
+    have hh' := (mul_le_mul_iff_right₀ hh).mp hm
+    exact_mod_cast hh'
+  have hBound : h*(U.card : ℝ) ≤ 2*L := by
+    linarith
+  refine ⟨U,hUsmall,hBound,?_⟩
+  intro S hSU hSsize
+  have hDis : Disjoint U S := by
+    apply Finset.disjoint_left.mpr
+    intro v hvU hvS
+    exact (mem_compl.mp (hSU hvS)) hvU
+  have hCard : (U ∪ S).card = U.card + S.card := card_union_of_disjoint hDis
+  have hUnion := cut_union_le K U S
+  have hUnionReal : (Nat.card (cross K ((U ∪ S : Finset V) : Set V)).edgeSet : ℝ) ≤
+      Nat.card (cross K (U : Set V)).edgeSet +
+        Nat.card (cross (inside K ((Uᶜ : Finset V) : Set V)) (S : Set V)).edgeSet := by
+    exact_mod_cast hUnion
+  by_cases hHalf : 2*(U ∪ S).card ≤ Fintype.card V
+  · have hM := hMax (U ∪ S) (by simp [T,hHalf])
+    dsimp only [phi] at hM
+    rw [hCard,Nat.cast_add] at hM
+    have hs : (0 : ℝ) ≤ h*S.card := mul_nonneg hh.le (Nat.cast_nonneg _)
+    linarith
+  · have hComp : 2*((U ∪ S)ᶜ).card ≤ Fintype.card V := by
+      rw [card_compl]
+      have huN : (U ∪ S).card ≤ Fintype.card V := card_le_univ _
+      omega
+    have hM := hMax ((U ∪ S)ᶜ) (mem_filter.mpr ⟨mem_univ _,hComp⟩)
+    dsimp only [phi] at hM
+    have heq : cross K (((U ∪ S)ᶜ : Finset V) : Set V) =
+        cross K ((U ∪ S : Finset V) : Set V) := by
+      simpa only [coe_compl] using cross_compl K ((U ∪ S : Finset V) : Set V)
+    rw [heq] at hM
+    have hCount : 2*U.card+S.card ≤ 2*((U ∪ S)ᶜ).card := by
+      rw [card_compl,hCard]
+      rw [hCard] at hHalf
+      omega
+    have hCountReal : 2*(U.card : ℝ)+S.card ≤ 2*(((U ∪ S)ᶜ).card : ℝ) := by
+      exact_mod_cast hCount
+    have hm := mul_le_mul_of_nonneg_left hCountReal hh.le
+    nlinarith
+
+
+lemma cross_singleton_card {V : Type*} [Fintype V] (G : SimpleGraph V) (v : V) :
+    Nat.card (cross G {v}).edgeSet = Nat.card (G.neighborSet v) := by
+  classical
+  have he : (cross G {v}).edgeFinset = G.incidenceFinset v := by
+    ext e
+    induction e using Sym2.inductionOn with
+    | hf a b =>
+      simp only [mem_edgeFinset,mem_incidenceFinset,mk'_mem_incidenceSet_iff,cross,Set.mem_singleton_iff]
+      constructor
+      · rintro ⟨hab,⟨ha,_⟩ | ⟨hb,_⟩⟩
+        · exact ⟨hab,Or.inl ha.symm⟩
+        · exact ⟨hab,Or.inr hb.symm⟩
+      · rintro ⟨hab,ha | hb⟩
+        · subst a
+          exact ⟨hab,Or.inl ⟨rfl,hab.ne.symm⟩⟩
+        · subst b
+          exact ⟨hab,Or.inr ⟨rfl,hab.ne⟩⟩
+  have hh := congrArg Finset.card he
+  rw [card_incidenceFinset_eq_degree] at hh
+  simpa only [edgeFinset_card,← card_neighborSet_eq_degree,Fintype.card_eq_nat_card] using hh
+
+open scoped Classical in
+lemma cut_induce_image {V : Type*} [Fintype V] (G : SimpleGraph V) (U : Finset V)
+    (S : Finset U) :
+    Nat.card (cross (G.induce (U : Set V)) (S : Set U)).edgeSet =
+      Nat.card (cross (inside G (U : Set V)) ((S.image Subtype.val : Finset V) : Set V)).edgeSet := by
+  classical
+  let f : U ↪ V := Function.Embedding.subtype (fun v => v ∈ U)
+  have hm (a : U) : a.val ∈ S.image Subtype.val ↔ a ∈ S := by
+    simp only [mem_image,Subtype.val_inj,exists_eq_right]
+  have he : (cross (G.induce (U : Set V)) (S : Set U)).map f =
+      cross (inside G (U : Set V)) ((S.image Subtype.val : Finset V) : Set V) := by
+    ext u v
+    rw [map_adj]
+    constructor
+    · rintro ⟨a,b,hab,rfl,rfl⟩
+      change G.Adj a.val b.val ∧ ((a ∈ S ∧ b ∉ S) ∨ (b ∈ S ∧ a ∉ S)) at hab
+      change (G.Adj a.val b.val ∧ a.val ∈ U ∧ b.val ∈ U) ∧
+        ((a.val ∈ S.image Subtype.val ∧ b.val ∉ S.image Subtype.val) ∨
+          (b.val ∈ S.image Subtype.val ∧ a.val ∉ S.image Subtype.val))
+      simpa only [hm] using And.intro ⟨hab.1,a.prop,b.prop⟩ hab.2
+    · rintro ⟨⟨huv,hu,hv⟩,hab⟩
+      let a : U := ⟨u,hu⟩
+      let b : U := ⟨v,hv⟩
+      refine ⟨a,b,?_,rfl,rfl⟩
+      change G.Adj u v ∧ ((a ∈ S ∧ b ∉ S) ∨ (b ∈ S ∧ a ∉ S))
+      exact ⟨huv,by simpa only [← hm a,← hm b] using hab⟩
+  have hc := card_edgeFinset_map f (cross (G.induce (U : Set V)) (S : Set U))
+  simp only [edgeFinset_card,Fintype.card_eq_nat_card] at hc
+  rw [he] at hc
+  exact hc.symm
+
+lemma degree_induce_le {V : Type*} [Fintype V] (G : SimpleGraph V) (U : Finset V) (v : U) :
+    Nat.card ((G.induce (U : Set V)).neighborSet v) ≤ Nat.card (G.neighborSet v.val) := by
+  let f := (Copy.induce G (U : Set V)).mapNeighborSet v
+  exact Nat.card_le_card_of_injective f f.injective
+
+
+lemma inside_eq_spanningCoe {V : Type*} (G : SimpleGraph V) (S : Set V) :
+    inside G S = (G.induce S).spanningCoe := by
+  ext v w
+  constructor
+  · rintro ⟨h,hv,hw⟩
+    exact ⟨⟨v,hv⟩,⟨w,hw⟩,h,rfl,rfl⟩
+  · rintro ⟨a,b,h,rfl,rfl⟩
+    exact ⟨h,a.property,b.property⟩
+
+lemma inside_card {V : Type*} [Fintype V] (G : SimpleGraph V) (S : Set V) :
+    Nat.card (inside G S).edgeSet = Nat.card (G.induce S).edgeSet := by
+  classical
+  rw [inside_eq_spanningCoe]
+  have hh := card_edgeFinset_map (Function.Embedding.subtype (fun v => v ∈ S)) (G.induce S)
+  simpa only [edgeFinset_card,Fintype.card_eq_nat_card] using hh
+
+open scoped Classical in
+/-- Vertex deletion followed by expander pruning. The bound explicitly
+retains the original deleted set and its edge-loss budget. -/
+lemma prune_vertex_expander {V : Type*} [Fintype V] (G : SimpleGraph V)
+    (S : Finset V) {h L : ℝ} (hh : 0 < h)
+    (hExp : ∀ A : Finset V, 2*A.card ≤ Fintype.card V →
+      h*A.card ≤ (Nat.card (cross G (A : Set V)).edgeSet : ℝ))
+    (hLoss : (Nat.card G.edgeSet : ℝ) ≤ Nat.card (G.induce (S : Set V)ᶜ).edgeSet+L)
+    (hSmall : L ≤ h*(Fintype.card V : ℝ)/16) :
+    ∃ T : Finset V, S ⊆ T ∧ h*(T.card : ℝ) ≤ h*S.card+2*L ∧
+      ∀ A : Finset V, A ⊆ Tᶜ → 2*A.card ≤ Fintype.card V-T.card →
+        h/4*A.card ≤
+          (Nat.card (cross (inside G ((Tᶜ : Finset V) : Set V)) (A : Set V)).edgeSet : ℝ) := by
+  classical
+  let K := inside G (S : Set V)ᶜ
+  have hK : K ≤ G := inside_le G _
+  have hLoss' : (Nat.card G.edgeSet : ℝ) ≤ Nat.card K.edgeSet+L := by
+    simpa only [K,inside_card] using hLoss
+  obtain ⟨U,hU,hUBound,hCuts⟩ := exists_pruned_expander G K hK hh hExp hLoss' hSmall
+  let T := S ∪ U
+  have hST : S ⊆ T := subset_union_left
+  have hUT : U ⊆ T := subset_union_right
+  have hTCard : (T.card : ℝ) ≤ (S.card : ℝ)+U.card := by
+    exact_mod_cast card_union_le S U
+  have hTBound : h*(T.card : ℝ) ≤ h*S.card+2*L := by
+    have hm := mul_le_mul_of_nonneg_left hTCard hh.le
+    linarith
+  refine ⟨T,hST,hTBound,?_⟩
+  intro A hAT hSize
+  have hAU : A ⊆ Uᶜ := by
+    intro v hv
+    exact mem_compl.mpr (fun hvu => (mem_compl.mp (hAT hv)) (hUT hvu))
+  have hSizeU : 2*A.card ≤ Fintype.card V-U.card := by
+    have hh' := card_le_card hUT
+    omega
+  have hCut := hCuts A hAU hSizeU
+  have heq : inside K ((Uᶜ : Finset V) : Set V) = inside G ((Tᶜ : Finset V) : Set V) := by
+    ext v w
+    simp only [inside,K,T,Finset.mem_coe,mem_compl,mem_union,Set.mem_compl_iff]
+    tauto
+  simpa only [heq] using hCut
+
+end Erdos713QuantitativeExpanderPruning
+
+/-! Nearly full-density almost-regular expanding restrictions of exact
+extremal hosts. Neither exact extremality nor fold survival is claimed
+for the restriction. -/
+open SimpleGraph Finset Filter Asymptotics
+namespace Erdos713NearOptimalExpanders
+open Erdos713QuantitativeExpanderPruning Erdos713UniformIncidence Erdos713Cloning
+open Erdos713SwitchGluing
+set_option maxHeartbeats 2000000
+variable {V W : Type*}
+
+/-- Restricting further cannot increase the degree of a retained vertex. -/
+lemma induce_neighbor_antitone [Fintype V] (G : SimpleGraph V) (S T : Set V)
+    (hTS : T ⊆ S) (v : T) :
+    Nat.card ((G.induce T).neighborSet v) ≤
+      Nat.card ((G.induce S).neighborSet ⟨v.val,hTS v.property⟩) := by
+  let f : (G.induce T).neighborSet v → (G.induce S).neighborSet ⟨v.val,hTS v.property⟩ :=
+    fun w => ⟨⟨w.val.val,hTS w.val.property⟩,w.property⟩
+  have hf : Function.Injective f := by
+    intro a b he
+    apply Subtype.ext
+    apply Subtype.ext
+    exact congrArg (fun z : (G.induce S).neighborSet ⟨v.val,hTS v.property⟩ => z.val.val) he
+  exact Nat.card_le_card_of_injective f hf
+
+lemma restriction_expansion [Fintype V] (G : SimpleGraph V) (U : Finset V) (h : ℝ)
+    (hExp : ∀ A : Finset V, A ⊆ U → 2*A.card ≤ U.card →
+      h*A.card ≤ (Nat.card (cross (inside G (U : Set V)) (A : Set V)).edgeSet : ℝ)) :
+    ∀ A : Finset U, 2*A.card ≤ Fintype.card U →
+      h*A.card ≤ (Nat.card (cross (G.induce (U : Set V)) (A : Set U)).edgeSet : ℝ) := by
+  classical
+  intro A hA
+  let S := A.image Subtype.val
+  have hScard : S.card = A.card := card_image_of_injective A Subtype.val_injective
+  have hSsub : S ⊆ U := by
+    intro v hv
+    obtain ⟨w,_,rfl⟩ := mem_image.mp hv
+    exact w.property
+  have hShalf : 2*S.card ≤ U.card := by simpa only [hScard,Fintype.card_coe] using hA
+  have hh := hExp S hSsub hShalf
+  rw [cut_induce_image]
+  simpa only [hScard] using hh
+
+open scoped Classical in
+/-- One upper-degree constant works for all sufficiently large H-free
+expanders. The retained graph loses at most eta*n vertices and eta*n^alpha
+edges, while keeping one quarter of the original expansion coefficient. -/
+theorem regularize_expanders (H : SimpleGraph W) {α c κ η : ℝ}
+    (ha : 1 < α) (hc : 0 < c) (hk : 0 < κ) (hη : 0 < η)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) :
+    ∃ D : ℝ, 0 < D ∧ ∀ᶠ n : ℕ in atTop,
+      ∀ (V : Type) [Fintype V] (G : SimpleGraph V), Fintype.card V = n → H.Free G →
+        (∀ A : Finset V, 2*A.card ≤ n →
+          κ*A.card*(n : ℝ)^(α-1) ≤ (Nat.card (cross G (A : Set V)).edgeSet : ℝ)) →
+        ∃ T : Finset V,
+          (T.card : ℝ) ≤ η*n ∧
+          (Nat.card G.edgeSet : ℝ) ≤
+            (Nat.card (G.induce ((Tᶜ : Finset V) : Set V)).edgeSet : ℝ)+η*(n : ℝ)^α ∧
+          (∀ v : ↥(Tᶜ), (Nat.card ((G.induce ((Tᶜ : Finset V) : Set V)).neighborSet v) : ℝ)
+            ≤ D*(n : ℝ)^(α-1)) ∧
+          ∀ A : Finset ↥(Tᶜ), 2*A.card ≤ Fintype.card ↥(Tᶜ) →
+            κ/4*A.card*(n : ℝ)^(α-1) ≤
+              (Nat.card (cross (G.induce ((Tᶜ : Finset V) : Set V)) (A : Set ↥(Tᶜ))).edgeSet : ℝ) := by
+  classical
+  obtain ⟨δ,hδ,hMass⟩ := small_set_mass H ha hc h hη
+  let δ' := min δ η
+  have hd' : 0 < δ' := lt_min hδ hη
+  let ε := min (κ/32) (κ*δ'/(2*(κ+2)))
+  have hε : 0 < ε := lt_min (by positivity) (by positivity)
+  have hεk : ε ≤ κ/32 := min_le_left _ _
+  have hεδ : ε*(κ+2) ≤ κ*δ'/2 := by
+    have hh := min_le_right (κ/32) (κ*δ'/(2*(κ+2)))
+    have hk2 : 0 < 2*(κ+2) := by positivity
+    have hz := (le_div_iff₀ hk2).mp hh
+    change ε*(2*(κ+2)) ≤ κ*δ' at hz
+    nlinarith
+  obtain ⟨D,hD,hPrune⟩ := Erdos713NearOptimalPruning.prune_high_degrees H ha hc h hε
+  refine ⟨D,hD,?_⟩
+  filter_upwards [hMass,hPrune,eventually_gt_atTop (0 : ℕ)] with n hmass hprune hn
+  intro V instV G hcard hf hExp
+  have hnR : (0 : ℝ) < n := by exact_mod_cast hn
+  have hp : 0 < (n : ℝ)^(α-1) := Real.rpow_pos_of_pos hnR _
+  have hFac := rpow_factor hnR.le ha
+  obtain ⟨S,hScard,hSdeg,hLoss,hSF,hUpper⟩ := hprune V G hcard hf
+  let h₀ := κ*(n : ℝ)^(α-1)
+  have hh₀ : 0 < h₀ := by dsimp [h₀]; positivity
+  have hExp' (A : Finset V) (hA : 2*A.card ≤ Fintype.card V) :
+      h₀*A.card ≤ (Nat.card (cross G (A : Set V)).edgeSet : ℝ) := by
+    have hh := hExp A (by simpa only [hcard] using hA)
+    dsimp only [h₀]
+    nlinarith only [hh]
+  have hSmall : ε*(n : ℝ)^α ≤ h₀*(Fintype.card V : ℝ)/16 := by
+    rw [hcard,hFac]
+    have hh := mul_le_mul_of_nonneg_right hεk (show 0 ≤ (n : ℝ)*(n : ℝ)^(α-1) by positivity)
+    dsimp only [h₀]
+    nlinarith [mul_nonneg hk.le (mul_nonneg hnR.le hp.le)]
+  obtain ⟨T,hST,hTBound,hTCuts⟩ := prune_vertex_expander G S hh₀ hExp' hLoss hSmall
+  have hTsmall : (T.card : ℝ) ≤ δ'*n := by
+    rw [hFac] at hTBound
+    have hs := mul_le_mul_of_nonneg_left hScard hh₀.le
+    have he := mul_le_mul_of_nonneg_right hεδ (show 0 ≤ (n : ℝ)*(n : ℝ)^(α-1) by positivity)
+    have hpos := mul_nonneg (mul_nonneg hk.le hd'.le) (mul_nonneg hnR.le hp.le)
+    have hh : h₀*T.card ≤ h₀*(δ'*n) := by
+      dsimp only [h₀] at *
+      nlinarith only [hTBound,hs,he,hpos]
+    exact (mul_le_mul_iff_right₀ hh₀).mp hh
+  have hTη : (T.card : ℝ) ≤ η*n := hTsmall.trans
+    (mul_le_mul_of_nonneg_right (min_le_right _ _) hnR.le)
+  have hTδ : (T.card : ℝ) ≤ δ*n := hTsmall.trans
+    (mul_le_mul_of_nonneg_right (min_le_left _ _) hnR.le)
+  have hmassT := hmass V G hcard hf T hTδ
+  have hDel : (Nat.card G.edgeSet : ℝ) ≤
+      (Nat.card (G.induce ((Tᶜ : Finset V) : Set V)).edgeSet : ℝ)+η*(n : ℝ)^α := by
+    have hh : (Nat.card G.edgeSet : ℝ) ≤ (Nat.card (G.induce (T : Set V)ᶜ).edgeSet : ℝ)+
+        ∑ v ∈ T, (Nat.card (G.neighborSet v) : ℝ) := by
+      exact_mod_cast edges_le_induce_compl_add_degree G T
+    rw [Finset.coe_compl T]
+    exact hh.trans (add_le_add le_rfl hmassT)
+  have hTS : ((Tᶜ : Finset V) : Set V) ⊆ (S : Set V)ᶜ := by
+    intro v hv
+    exact fun hvs => (mem_compl.mp hv) (hST hvs)
+  refine ⟨T,hTη,hDel,?_,?_⟩
+  · intro v
+    exact (Nat.cast_le.mpr (induce_neighbor_antitone G _ _ hTS v)).trans
+      (hUpper ⟨v.val,hTS v.property⟩)
+  · have hCut := restriction_expansion G Tᶜ (h₀/4) (fun A hAT hA =>
+      hTCuts A hAT (by simpa only [card_compl] using hA))
+    intro A hA
+    have hh := hCut A hA
+    dsimp only [h₀] at hh
+    nlinarith only [hh]
+
+/-- The leading coefficient can be made arbitrarily close to the exact
+extremal coefficient c while the lower degree and expansion constants
+remain fixed. The upper-degree constant may depend on the accuracy. -/
+theorem near_full_density {W : Type*} [Fintype W] (H : SimpleGraph W)
+    (hH : H.IsBipartite) (hEdge : ∃ v w, H.Adj v w) {α c : ℝ}
+    (ha : 1 < α) (ha2 : α < 2) (hc : 0 < c)
+    (h : (fun n : ℕ => (extremalNumber n H : ℝ)) ~[atTop]
+      (fun n => c*(n : ℝ)^α)) :
+    ∃ a : ℝ, 0 < a ∧ ∀ ε : ℝ, 0 < ε → ε < c →
+      ∃ D : ℝ, 0 < D ∧ ∀ N : ℕ,
+        ∃ (U : Type) (_ : Fintype U) (J : SimpleGraph U),
+          N ≤ Fintype.card U ∧ 2 ≤ Fintype.card U ∧ H.Free J ∧
+          (c-ε)*(Fintype.card U : ℝ)^α ≤ (Nat.card J.edgeSet : ℝ) ∧
+          (∀ v, a*(Fintype.card U : ℝ)^(α-1) ≤ (Nat.card (J.neighborSet v) : ℝ) ∧
+            (Nat.card (J.neighborSet v) : ℝ) ≤ D*(Fintype.card U : ℝ)^(α-1)) ∧
+          ∀ A : Finset U, 2*A.card ≤ Fintype.card U →
+            a*A.card*(Fintype.card U : ℝ)^(α-1) ≤
+              (Nat.card (cross J (A : Set U)).edgeSet : ℝ) := by
+  classical
+  obtain ⟨κ,hκ,hWitness⟩ := Erdos713RelativeExpansion.exact_saturated_expanders
+    H hH hEdge ha ha2 hc h
+  refine ⟨κ/4,by positivity,?_⟩
+  intro ε hε hεc
+  let η := min (ε/4) (1/4 : ℝ)
+  have hη : 0 < η := lt_min (by positivity) (by norm_num)
+  have hηε : η ≤ ε/4 := min_le_left _ _
+  have hη1 : η ≤ 1/4 := min_le_right _ _
+  obtain ⟨D,hD,hReg⟩ := regularize_expanders H ha hc hκ hη h
+  obtain ⟨M,hM⟩ := eventually_atTop.mp hReg
+  have hLow : ∀ᶠ n : ℕ in atTop, (c-ε/2)*(n : ℝ)^α ≤ (extremalNumber n H : ℝ) := by
+    filter_upwards [(Erdos713FutureRecords.ratio_limit h).eventually_const_lt (show c-ε/2 < c by linarith),
+      eventually_gt_atTop (0 : ℕ)] with n hn hnp
+    exact ((lt_div_iff₀ (Real.rpow_pos_of_pos (by exact_mod_cast hnp : (0 : ℝ) < n) α)).mp hn).le
+  obtain ⟨L,hL⟩ := eventually_atTop.mp hLow
+  refine ⟨D*(2 : ℝ)^(α-1),by positivity,?_⟩
+  intro N
+  obtain ⟨V,instV,G,hLarge,hFree,hE,hDeg,hRel,hFold,hExp⟩ :=
+    hWitness (max (max (2*N) 4) (max M L)) 0
+  let n := Fintype.card V
+  have hnN : 2*N ≤ n := by dsimp [n]; omega
+  have hn4 : 4 ≤ n := by dsimp [n]; omega
+  have hnM : M ≤ n := by dsimp [n]; omega
+  have hnL : L ≤ n := by dsimp [n]; omega
+  have hnR : (0 : ℝ) < n := by exact_mod_cast (by omega : 0 < n)
+  obtain ⟨T,hTsmall,hLoss,hMax,hCuts⟩ := hM n hnM V G rfl hFree hExp
+  let U := (Tᶜ : Finset V)
+  let J := G.induce (U : Set V)
+  have hCard : Fintype.card U = n-T.card := by simp only [U,Fintype.card_coe,card_compl]; rfl
+  have hTquarter : (T.card : ℝ) ≤ (n : ℝ)/4 := by
+    have hh := mul_le_mul_of_nonneg_right hη1 hnR.le
+    nlinarith
+  have hTnat : 4*T.card ≤ n := by exact_mod_cast (show (4 : ℝ)*T.card ≤ n by linarith)
+  have hmN : N ≤ Fintype.card U := by rw [hCard]; omega
+  have hmtwo : 2 ≤ Fintype.card U := by rw [hCard]; omega
+  have hmle : Fintype.card U ≤ n := by rw [hCard]; omega
+  have hnle : n ≤ 2*Fintype.card U := by rw [hCard]; omega
+  have hmR : (0 : ℝ) < Fintype.card U := by exact_mod_cast (by omega : 0 < Fintype.card U)
+  have hPow : (Fintype.card U : ℝ)^(α-1) ≤ (n : ℝ)^(α-1) :=
+    Real.rpow_le_rpow hmR.le (by exact_mod_cast hmle) (by linarith)
+  have hPow' : (n : ℝ)^(α-1) ≤ (2 : ℝ)^(α-1)*(Fintype.card U : ℝ)^(α-1) := by
+    have hh := Real.rpow_le_rpow hnR.le (show (n : ℝ) ≤ 2*Fintype.card U by exact_mod_cast hnle)
+      (show 0 ≤ α-1 by linarith)
+    rwa [Real.mul_rpow (by norm_num : (0 : ℝ) ≤ 2) hmR.le] at hh
+  have hDenseOld : (c-ε)*(n : ℝ)^α ≤ (Nat.card J.edgeSet : ℝ) := by
+    have hlow := hL n hnL
+    change (Nat.card G.edgeSet : ℝ) ≤ (Nat.card J.edgeSet : ℝ)+η*(n : ℝ)^α at hLoss
+    rw [hE] at hLoss
+    change (extremalNumber n H : ℝ) ≤ (Nat.card J.edgeSet : ℝ)+η*(n : ℝ)^α at hLoss
+    have herr := mul_le_mul_of_nonneg_right hηε (Real.rpow_nonneg hnR.le α)
+    nlinarith only [hlow,hLoss,herr,mul_nonneg hε.le (Real.rpow_nonneg hnR.le α)]
+  have hDense : (c-ε)*(Fintype.card U : ℝ)^α ≤ (Nat.card J.edgeSet : ℝ) :=
+    (mul_le_mul_of_nonneg_left
+      (Real.rpow_le_rpow hmR.le (by exact_mod_cast hmle) (by linarith : 0 ≤ α))
+      (by linarith : 0 ≤ c-ε)).trans hDenseOld
+  have hJFree : H.Free J := fun hQ => hFree (hQ.trans ⟨Copy.induce G _⟩)
+  have hCut (A : Finset U) (hA : 2*A.card ≤ Fintype.card U) :
+      κ/4*A.card*(Fintype.card U : ℝ)^(α-1) ≤
+        (Nat.card (cross J (A : Set U)).edgeSet : ℝ) := by
+    have hh := hCuts A hA
+    have hm := mul_le_mul_of_nonneg_left hPow (show 0 ≤ κ/4*A.card by positivity)
+    exact hm.trans hh
+  refine ⟨U,inferInstance,J,hmN,hmtwo,hJFree,hDense,?_,hCut⟩
+  intro v
+  constructor
+  · have hh := hCut {v} (by simpa only [card_singleton] using hmtwo)
+    simpa only [card_singleton,Nat.cast_one,mul_one,coe_singleton,cross_singleton_card] using hh
+  · have hh := hMax v
+    have hm := mul_le_mul_of_nonneg_left hPow' hD.le
+    change (Nat.card (J.neighborSet v) : ℝ) ≤ _ at hh
+    calc
+      _ ≤ D*(n : ℝ)^(α-1) := hh
+      _ ≤ D*((2 : ℝ)^(α-1)*(Fintype.card U : ℝ)^(α-1)) := hm
+      _ = _ := by ring
+
+end Erdos713NearOptimalExpanders
+
+namespace Erdos713
+set_option maxHeartbeats 2000000
+
+open scoped Classical in
+/--
+Must $\alpha$ be rational?
+
+The same nondegeneracy condition on $G$ is used as in part (i). Rationality means that the real
+number $\alpha$ lies in the image of the canonical embedding $\mathbb{Q}\to\mathbb{R}$.
+-/
+theorem erdos_713.parts.ii :
+    ∀ (q : ℕ) (G : SimpleGraph (Fin q)), G.IsBipartite → 2 ≤ G.edgeFinset.card →
+      ∀ α c : ℝ, α ∈ Set.Ico 1 2 → 0 < c →
+        Asymptotics.IsEquivalent atTop
+          (fun n : ℕ => (extremalNumber n G : ℝ))
+          (fun n : ℕ => c * (n : ℝ) ^ α) →
+        α ∈ Set.range ((↑) : ℚ → ℝ) := by
+  intro q G hBipartite hEdges α c hα hc hAsymptotic
+  by_cases hBlockRates : Erdos713ActualBlocks.BlockRates G
+  · exact Erdos713ActualBlocks.rational_of_blocks G hBlockRates hα.1 hc.ne' hAsymptotic
+  have hNoAtomRates : ¬ Erdos713EdgeSeparators.AtomRates G :=
+    fun h => hBlockRates (Erdos713EdgeSeparators.block_rates_of_atoms G h)
+  by_cases hAssembly : Erdos713CycleAssembly.Assembly G
+  · exact hAssembly.rational hα.1 hc.ne' hAsymptotic
+  by_cases hSquares : Erdos713Squares.Sandwich G
+  · exact hSquares.rational hα.1 hc.ne' hAsymptotic
+  by_cases hTheta : Erdos713Theta3.Sandwich G
+  · exact hTheta.rational hα.1 hc.ne' hAsymptotic
+  by_cases hMixedEdges : Erdos713RootedEdges.MixedBuilt G
+  · exact hMixedEdges.rational hα.1 hc.ne' hAsymptotic
+  by_cases hCoherentSmall : Erdos713CoherentEdges.SmallSandwich G
+  · exact hCoherentSmall.rational hα.1 hc.ne' hAsymptotic
+  by_cases hHex : Erdos713EdgeAttachments.Sandwich Erdos713C6.C6 0 1 G
+  · refine ⟨4/3,?_⟩
+    norm_num
+    exact (Erdos713EdgeAttachments.hexagon_sandwich_rate hHex).unique
+      (Erdos713Rate.rate_of_asymptotic hα.1 hc.ne' hAsymptotic)
+  by_cases hDec : Erdos713EdgeAttachments.Sandwich Erdos713C10.C10 0 1 G
+  · refine ⟨6/5,?_⟩
+    norm_num
+    exact (Erdos713EdgeAttachments.decagon_sandwich_rate hDec).unique
+      (Erdos713Rate.rate_of_asymptotic hα.1 hc.ne' hAsymptotic)
+  by_cases hLadder : ∃ m : ℕ, 1 ≤ m ∧ Erdos713C4.K22 ⊑ G ∧ G ⊑ Erdos713Ladder.graph m
+  · obtain ⟨m,hm,hlo,hhi⟩ := hLadder
+    have hr := Erdos713Ladder.rate_of_containment hm hlo hhi
+    refine ⟨3/2,?_⟩
+    norm_num
+    exact (Erdos713Rate.exponent_eq hr hα.1 hc.ne' hAsymptotic).symm
+  by_cases hForest : G.IsAcyclic
+  · exact Erdos713Forest.rational_exponent_of_acyclic
+      q G hForest hEdges α c hα hc hAsymptotic
+  by_cases hTwo : ∃ t : ℕ, G ⊑ Erdos713K2t.K2t t
+  · obtain ⟨t, hhi⟩ := hTwo
+    exact Erdos713K2t.rational_exponent_of_containment
+      (Erdos713SmallCore.contains_K22_of_not_acyclic G hForest hhi) hhi hc hAsymptotic
+  by_cases hThree : ∃ S : Set (Fin q), G.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3
+  · obtain ⟨S, hS, hcard⟩ := hThree
+    exact Erdos713ThreeSide.rational_of_small_bipartition G S hS hcard hα.1 hc hAsymptotic
+  by_cases hsmall : q ≤ 7
+  · exact Erdos713ThreeSide.rational_exponent_all_small_graphs G hBipartite
+      (by simpa using hsmall) hα.1 hc hAsymptotic
+  by_cases hComponents : ∀ C : G.ConnectedComponent, ∃ S : Set C,
+      C.toSimpleGraph.IsBipartiteWith S Sᶜ ∧ Nat.card S ≤ 3
+  · exact Erdos713ComponentRates.rational_of_small_component_bipartitions
+      G hComponents hα.1 hc.ne' hAsymptotic
+  let S : Set (Fin q) := Erdos713Pruning.coreVertices G
+  have hPrunes : Erdos713Pruning.PrunesTo G S := Erdos713Pruning.core_prunes G
+  by_cases hCoreSmall : Erdos713Pruning.SmallComponents (G.induce S)
+  · exact hPrunes.rational_of_small_components hCoreSmall hα.1 hc.ne' hAsymptotic
+  have hq : 8 ≤ q := by omega
+  by_cases hαone : α = 1
+  · exact ⟨1, by simpa using hαone.symm⟩
+  have hαgt : 1 < α := lt_of_le_of_ne hα.1 (Ne.symm hαone)
+  let H := G.induce S
+  have hHAsymptotic : Asymptotics.IsEquivalent atTop
+      (fun n : ℕ => (extremalNumber n H : ℝ))
+      (fun n : ℕ => c * (n : ℝ) ^ α) := hPrunes.asymptotic hαgt hc.ne' hAsymptotic
+  have hHBipartite : H.IsBipartite := Colorable.of_hom (Copy.induce G S).toHom hBipartite
+  have hHDegree : ∀ v, 2 ≤ Nat.card (H.neighborSet v) := Erdos713Pruning.core_min_degree G
+  have hHNoIsolates : ∀ v, ∃ w, H.Adj v w := by
+    intro v
+    apply (H.degree_pos_iff_exists_adj v).mp
+    have hdv := hHDegree v
+    simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using
+      (show 0 < Nat.card (H.neighborSet v) by omega)
+  have hHNotAssembly : ¬ Erdos713CycleAssembly.Assembly H := fun h =>
+    hAssembly (Erdos713CycleAssembly.Assembly.prunes G S hPrunes h)
+  have hHRate := Erdos713Rate.rate_of_asymptotic hα.1 hc.ne' hHAsymptotic
+  -- Exact transfer holds unless there are containment-incomparable
+  -- components at the same attained exponent. The second branch asserts
+  -- no exact asymptotic for either component.
+  have hHExactComponentAlternative := Erdos713SharpUnion.exact_component_or_incomparable_rates
+    H hαgt hc.ne' hHAsymptotic
+  -- Exact extremal witnesses can simultaneously have a past power record,
+  -- minimum degree, cut expansion, and positive cloning-obstruction mass.
+  -- The identified graphs need not be bipartite, and no rate is transferred.
+  have hHCloneJoint := Erdos713Cloning.joint_of_asymptotic H
+    (r := (1+α)/2) (s := (α+2)/2)
+    (by linarith) (by linarith) (by linarith [hα.2]) hc hHAsymptotic
+  -- A separate family is extremal among bipartite H-free hosts, not among
+  -- all hosts. Its edge count is at least half the ordinary extremal number.
+  have hHBipCloneJoint := Erdos713BipExtremal.joint_of_asymptotic H
+    (r := (1+α)/2) (s := (α+2)/2)
+    (by linarith) (by linarith) (by linarith [hα.2]) hc hHAsymptotic
+  -- On another SAME-host witness family, neighbourhood supports have
+  -- positive packing mass and bounded multiplicity at roots. This does not
+  -- assert disjointness of the entire folded copies or transfer their rates.
+  have hHSupportJoint := Erdos713PartialCloning.joint_supports_of_asymptotic H hHNoIsolates
+    (r := (1+α)/2) (s := (α+2)/2)
+    (by linarith) (by linarith) (by linarith [hα.2]) hc hHAsymptotic
+  -- One fixed smaller bipartite quotient carries positive degree-weighted
+  -- mass independently of size and exponent tolerance. It occurs at arbitrarily
+  -- many distinct roots on the SAME joint witnesses. These are not disjoint
+  -- full copies, and no rate or exact asymptotic passes to the quotient.
+  have hHFixedBipIdentificationMass :=
+    Erdos713FixedFold.uniform_identification_many_roots H hαgt hα.2 hc hHAsymptotic
+  -- A stronger, separate SAME-host selection uses degree-square symmetrization.
+  -- One quotient, fixed before tolerance/size/minimum-degree targets, occurs
+  -- at >= n/(2*|H|^2) distinct roots, carrying >= e(G)/(2*|H|^2) degree mass.
+  -- These bipartite-extremal hosts retain joint records and cut expansion.
+  -- Full copies may overlap, and the quotient inherits no asserted rate.
+  have hHBipSymmetrizedRoots := Erdos713SymmRoots.uniform_identification_vertices H
+    hHBipartite hαgt hα.2 hc hHAsymptotic
+  -- The attained threshold passes to this component; the exact asymptotic does not.
+  obtain ⟨C,hCRate⟩ := Erdos713ComponentRates.exists_component_rate H hαgt hHRate
+  -- For this SAME chosen C, failure of exact transfer forces another
+  -- threshold component not contained in C.
+  have hCExactOrUncontained := Erdos713SharpUnion.component_asymptotic_or_uncontained_rate
+    H C hαgt hc.ne' hHAsymptotic
+  by_cases hCRational : ∃ r : ℚ, Erdos713Rate.HasRate C.toSimpleGraph (r : ℝ)
+  · obtain ⟨r,hr⟩ := hCRational
+    exact ⟨r,hr.unique hCRate⟩
+  have hCNotAssembly : ¬ Erdos713CycleAssembly.Assembly C.toSimpleGraph :=
+    fun h => hCRational h.rate
+  have hCNotBlocks : ¬ Erdos713ActualBlocks.BlockRates C.toSimpleGraph :=
+    fun h => hCRational (Erdos713ActualBlocks.rate_of_blocks C.toSimpleGraph h)
+  -- Matching edge roles are required in the coherent construction. Its
+  -- rate equivalence excludes every base with a known rational rate.
+  have hCNotCoherent : ∀ (k : ℕ) (F : SimpleGraph (Fin k)) (r : ℚ),
+      Erdos713Rate.HasRate F (r : ℝ) →
+        ¬ Erdos713CoherentEdges.Sandwich F C.toSimpleGraph := by
+    intro k F r hF hSandwich
+    exact hCRational ⟨r,hSandwich.rate_iff.mpr hF⟩
+  have hC : ¬ ∃ T : Set C, C.toSimpleGraph.IsBipartiteWith T Tᶜ ∧ Nat.card T ≤ 3 := by
+    rintro ⟨T,hT,hcard⟩
+    exact hCNotAssembly (Erdos713CycleAssembly.Assembly.side C.toSimpleGraph T hT hcard)
+  have hCBipartite : C.toSimpleGraph.IsBipartite := hHBipartite.of_hom C.toSimpleGraph_hom
+  have hCConnected : C.toSimpleGraph.Connected := C.connected_toSimpleGraph
+  -- A separate family is exactly extremal at EVERY size. Summation by
+  -- parts, not termwise differentiation, gives a positive lower density
+  -- of sizes with quantitative cloning-obstruction mass. These hosts are
+  -- not asserted bipartite, regular, or past-record witnesses.
+  obtain ⟨vC⟩ := hCConnected.nonempty
+  obtain ⟨w,hvw⟩ := hHNoIsolates vC.val
+  have hHClonePositiveDensity := Erdos713CloneAverage.exists_positive_density H
+    ⟨vC.val,w,hvw⟩ hHNoIsolates (η := (2-α)/2) (by linarith : 0 ≤ α) hc
+    (by linarith [hα.2]) (by linarith [hα.2]) hHAsymptotic
+  -- Choosing maximum degree-square energy among ordinary edge maximizers
+  -- yields obstruction mass >= 2*ex(n,H)-|H|^2*n at EVERY size. In this
+  -- selected family the mass/ex ratio tends to 2. These hosts are not
+  -- asserted bipartite, regular, or members of the previous record families;
+  -- no rate is transferred to the identified graphs.
+  have hHCloneAlmostAllMass := Erdos713CloneSymm.exists_asymptotic_obstruction_mass H
+    hHBipartite ⟨vC.val,w,hvw⟩ hαgt hc hHAsymptotic
+  -- A SEPARATE cofinal family combines exact ordinary extremality, a fold
+  -- at EVERY vertex, relative minimum degree e/(24*n), and uniform cut
+  -- expansion on the SAME host. Arbitrary absolute degree targets are also
+  -- retained. Small-curvature quadratic supports and integrality preserve
+  -- exact edge maximality. These hosts are not asserted bipartite,
+  -- secondary-optimal, or members of the past/future-record families above.
+  have hHExactAllFold := Erdos713RelativeExpansion.exact_saturated_expanders H
+    hHBipartite ⟨vC.val,w,hvw⟩ hαgt hα.2 hc hHAsymptotic
+  -- Restrictions of exact expanding parents approach the FULL coefficient c.
+  -- One lower-degree/expansion constant is fixed before the accuracy; the
+  -- upper-degree constant may depend on it. The retained hosts are NOT
+  -- asserted exactly extremal, bipartite, secondary-optimal, or saturated,
+  -- and no folded copy is asserted to survive the deletion.
+  have hHNearFullExpanders := Erdos713NearOptimalExpanders.near_full_density H
+    hHBipartite ⟨vC.val,w,hvw⟩ hαgt hα.2 hc hHAsymptotic
+  have hCDegree : ∀ v, 2 ≤ Nat.card (C.toSimpleGraph.neighborSet v) :=
+    Erdos713Pruning.component_min_degree H hHDegree C
+  have hCNoIsolates : ∀ v, ∃ w, C.toSimpleGraph.Adj v w := by
+    intro v
+    apply (C.toSimpleGraph.degree_pos_iff_exists_adj v).mp
+    have hdv := hCDegree v
+    simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using
+      (show 0 < Nat.card (C.toSimpleGraph.neighborSet v) by omega)
+  -- A rooted threshold transfers to a block only in the first alternative.
+  -- The second alternative asserts no rate or asymptotic for a double.
+  have hCRootAlternative := Erdos713RootBlocks.root_block_or_double_gap
+    C.toSimpleGraph hCConnected hCNoIsolates hαgt hCRate
+  have hCCard : 8 ≤ Nat.card C := by
+    by_contra hsmallC
+    apply hC
+    apply Erdos713ThreeSide.small_bipartition_of_card_le_seven C.toSimpleGraph hCBipartite
+    simpa only [Fintype.card_eq_nat_card] using (show Nat.card C ≤ 7 by omega)
+  have hCSides : ∀ T : Set C, C.toSimpleGraph.IsBipartiteWith T Tᶜ → 4 ≤ Nat.card T := by
+    intro T hT
+    by_contra hsmallT
+    exact hC ⟨T,hT,by omega⟩
+  have hαIrr : α ∉ Set.range ((↑) : ℚ → ℝ) := by
+    rintro ⟨t,ht⟩
+    apply hCRational
+    exact ⟨t,by simpa only [ht] using hCRate⟩
+  -- A rational-rate pattern actually contained in H has a STRICT exponent
+  -- gap under irrationality. EVERY sufficiently large host with at least
+  -- half ex(n,H) edges has a polynomial-size disjoint packing of the pattern,
+  -- and no smaller-than-c/8*n^(alpha-1) vertex transversal. These are SAME-host
+  -- conclusions, not inferences from distinct quotient roots. Identification
+  -- quotients need not be contained in H and have no presumed rational rate.
+  have hHRobustKnown : ∀ (k : ℕ) (Q : SimpleGraph (Fin k)) (r : ℚ),
+      Q ⊑ H → Erdos713Rate.HasRate Q (r : ℝ) → ∃ δ : ℝ, 0 < δ ∧
+        ∀ᶠ n : ℕ in atTop, ∀ K : SimpleGraph (Fin n),
+          extremalNumber n H ≤ 2*Nat.card K.edgeSet →
+            Erdos713RobustCopies.DisjointCopies ⌊δ*(n : ℝ)^(α-1)⌋₊ Q K ∧
+            ∀ T : Finset (Fin n), Q.Free (K.induce (T : Set (Fin n))ᶜ) →
+              c/8*(n : ℝ)^(α-1) < (T.card : ℝ) := by
+    intro k Q r hQH hQ
+    exact Erdos713RobustCopies.known_subgraphs_quantitative H Q hα.1 hc hHAsymptotic hαIrr hQH hQ
+  -- In H-FREE dense hosts, uniform small-set incidence bounds strengthen
+  -- this to LINEAR vertex-disjoint packings and LINEAR transversals. All
+  -- previous extremal witness families meet this additional freeness
+  -- hypothesis. The conclusion still concerns actual contained patterns,
+  -- not arbitrary identification quotients, and transfers no rates.
+  have hHLinearKnown : ∀ (k : ℕ) (Q : SimpleGraph (Fin k)) (r : ℚ),
+      Q ⊑ H → Erdos713Rate.HasRate Q (r : ℝ) → ∃ δ : ℝ, 0 < δ ∧
+        ∀ᶠ n : ℕ in atTop, ∀ K : SimpleGraph (Fin n), H.Free K →
+          extremalNumber n H ≤ 2*Nat.card K.edgeSet →
+            Erdos713RobustCopies.DisjointCopies ⌊δ*(n : ℝ)⌋₊ Q K ∧
+            ∀ T : Finset (Fin n), Q.Free (K.induce (T : Set (Fin n))ᶜ) →
+              δ*n < (T.card : ℝ) := by
+    intro k Q r hQH hQ
+    exact Erdos713LinearRobustCopies.known_subgraphs_linear H Q hαgt hc hHAsymptotic hαIrr hQH hQ
+  -- This SAME block has a rooted lower threshold at alpha, and either the
+  -- ordinary attained rate alpha or a genuine positive ordinary/rooted gap.
+  -- Neither alternative asserts an exact asymptotic for the block.
+  obtain ⟨B,hBBlock,hBBipartite,hBCard,hBDegree,hBSides,hBNotC10,hBNotRooted,
+      hBRootLower,hBRateOrGap⟩ :=
+    Erdos713RootBlocks.remaining_block_with_rate_or_gap
+      C.toSimpleGraph hCConnected hCBipartite hαgt hCRate hαIrr
+  have hBConnected := hBBlock.connected
+  have hBNoCut := hBBlock.noCut
+  have hBNotSquares : ¬ Erdos713Squares.Sandwich (C.toSimpleGraph.induce B) :=
+    fun h => hBNotRooted h.rooted_rate
+  have hBNotTheta : ¬ Erdos713Theta3.Sandwich (C.toSimpleGraph.induce B) :=
+    fun h => hBNotRooted h.rooted_rate
+  -- Rooted bounds are transferred only when known for the connected base.
+  -- They are not inferred from its ordinary rate alone.
+  have hBNotCoherent : ∀ (k : ℕ) (F : SimpleGraph (Fin k)),
+      F.Connected → Erdos713ActualBlocks.RootedRate F →
+        ¬ Erdos713CoherentEdges.Sandwich F (C.toSimpleGraph.induce B) := by
+    intro k F hConn hF hSandwich
+    exact hBNotRooted ((hSandwich.rooted_rate_iff hConn).mpr hF)
+  have hBNotCoherentSmall : ¬ Erdos713CoherentEdges.SmallSandwich (C.toSimpleGraph.induce B) :=
+    fun h => hBNotRooted h.rooted_rate
+  -- With matching rooted base data, arbitrary edge attachments also
+  -- preserve the rate. No edge-alignment assumption is needed here.
+  have hBNotArbitraryEdges : ∀ (k : ℕ) (F : SimpleGraph (Fin k)) (x y : Fin k),
+      F.Adj x y → F.Connected → Erdos713ActualBlocks.RootedRate F →
+        ¬ Erdos713EdgeAttachments.Sandwich F x y (C.toSimpleGraph.induce B) := by
+    intro k F x y hxy hConn hF hSandwich
+    exact hBNotRooted (Erdos713RootedEdges.sandwich_rooted_rate hxy hConn hF hSandwich)
+  have hBNotMixedEdges : ¬ Erdos713RootedEdges.MixedBuilt (C.toSimpleGraph.induce B) :=
+    fun h => hBNotRooted h.rooted_rate
+  -- These are conditional on a proved rational rate for the base cycle.
+  -- No rational rate for C8 or for an arbitrary even cycle is assumed.
+  have hBNotCycleAttachments : ∀ n : ℕ, ∀ r : ℚ,
+      Erdos713Rate.HasRate (cycleGraph (n+2)) (r : ℝ) →
+      ¬ Erdos713EdgeAttachments.Sandwich (cycleGraph (n+2)) 0 1 (C.toSimpleGraph.induce B) :=
+    fun n r hr h => hBNotRooted (Erdos713EdgeAttachments.cycle_sandwich_rooted_rate hr h)
+  have hBNotLadder : ∀ m : ℕ, 1 ≤ m → Erdos713C4.K22 ⊑ C.toSimpleGraph.induce B →
+      ¬ C.toSimpleGraph.induce B ⊑ Erdos713Ladder.graph m := by
+    intro m hm hlo hhi
+    exact hBNotRooted (Erdos713Ladder.rooted_rate_of_containment hm hlo hhi)
+  have hBNoIsolates : ∀ v, ∃ w, (C.toSimpleGraph.induce B).Adj v w := by
+    intro v
+    apply ((C.toSimpleGraph.induce B).degree_pos_iff_exists_adj v).mp
+    have hdv := hBDegree v
+    simpa only [Nat.card_eq_fintype_card,card_neighborSet_eq_degree] using
+      (show 0 < Nat.card ((C.toSimpleGraph.induce B).neighborSet v) by omega)
+  -- In the gap branch, rational p<q bracket a STRICT polynomial separation;
+  -- no upper rate or exact asymptotic is asserted for the doubles.
+  have hBSharpAlternative :
+      Erdos713Rate.HasRate (C.toSimpleGraph.induce B) α ∨
+      ∃ p t : ℚ, 1 ≤ p ∧ p < t ∧ (t : ℝ) < α ∧
+        Asymptotics.IsBigO atTop
+          (fun n : ℕ => (extremalNumber n (C.toSimpleGraph.induce B) : ℝ))
+          (fun n : ℕ => (n : ℝ)^(p : ℝ)) ∧
+        ∀ x y, (C.toSimpleGraph.induce B).Adj x y →
+          ¬ Asymptotics.IsBigO atTop
+            (fun n : ℕ => (extremalNumber n
+              (Erdos713Gluing.wedge (C.toSimpleGraph.induce B) x
+                (C.toSimpleGraph.induce B) y) : ℝ))
+            (fun n : ℕ => (n : ℝ)^(t : ℝ)) := by
+    rcases hBRateOrGap with hRate | ⟨a,ha,haα,hu⟩
+    · exact Or.inl hRate
+    · exact Or.inr (Erdos713RootBlocks.rational_bracket_of_strict_root_gap
+        (C.toSimpleGraph.induce B) ha haα hu hBRootLower)
+  -- If this block has a rational ordinary threshold, its opposite-root double
+  -- is not O(n^r) at that same threshold. No rate or exact asymptotic for the
+  -- double is inferred from the asymptotic for the original graph.
+  have hBDouble : ∀ (r : ℚ), Erdos713Rate.HasRate (C.toSimpleGraph.induce B) (r : ℝ) →
+      ∀ x y, (C.toSimpleGraph.induce B).Adj x y →
+        ¬ Asymptotics.IsBigO atTop
+          (fun n : ℕ => (extremalNumber n
+            (Erdos713Gluing.wedge (C.toSimpleGraph.induce B) x (C.toSimpleGraph.induce B) y) : ℝ))
+          (fun n : ℕ => (n : ℝ)^(r : ℝ)) := by
+    intro r hr x y hxy
+    exact Erdos713ActualBlocks.unmatched_opposite_wedge hBConnected hBNoIsolates hBNotRooted hxy hr
+  -- Inside this SAME block, extract an induced atom with no cut vertex
+  -- and no adjacent two-vertex separator. Nonadjacent two-vertex separators
+  -- are not excluded. Only the rooted LOWER threshold passes to this atom.
+  have hBUpper : Asymptotics.IsBigO atTop
+      (fun n : ℕ => (extremalNumber n (C.toSimpleGraph.induce B) : ℝ))
+      (fun n : ℕ => (n : ℝ)^α) :=
+    (Erdos713Rate.extremal_mono_bigO ⟨Copy.induce C.toSimpleGraph B⟩).trans hCRate.upper
+  obtain ⟨b⟩ := hBConnected.nonempty
+  obtain ⟨A,hAAtom,hABipartite,hACard,hADegree,hASides,hANotC10,hANotRooted,
+      hARootLower,hARateOrGap⟩ :=
+    Erdos713EdgeSeparators.remaining_atom_with_rate_or_gap
+      (C.toSimpleGraph.induce B) hBConnected hBBipartite hαgt (hBRootLower b) hBUpper hαIrr
+  have hAConnected := hAAtom.connected
+  have hANoCut := hAAtom.noCut
+  have hANoEdgeCut := hAAtom.noEdgeCut
+  have hAInheritedUpper := Erdos713Rate.extremal_mono_bigO
+    ⟨Copy.induce (C.toSimpleGraph.induce B) A⟩
+  have hANotMixedEdges : ¬ Erdos713RootedEdges.MixedBuilt ((C.toSimpleGraph.induce B).induce A) :=
+    fun h => hANotRooted h.rooted_rate
+  have hASharpAlternative :
+      Erdos713Rate.HasRate ((C.toSimpleGraph.induce B).induce A) α ∨
+      ∃ p t : ℚ, 1 ≤ p ∧ p < t ∧ (t : ℝ) < α ∧
+        Asymptotics.IsBigO atTop
+          (fun n : ℕ => (extremalNumber n ((C.toSimpleGraph.induce B).induce A) : ℝ))
+          (fun n : ℕ => (n : ℝ)^(p : ℝ)) ∧
+        ∀ x y, ((C.toSimpleGraph.induce B).induce A).Adj x y →
+          ¬ Asymptotics.IsBigO atTop
+            (fun n : ℕ => (extremalNumber n
+              (Erdos713Gluing.wedge ((C.toSimpleGraph.induce B).induce A) x
+                ((C.toSimpleGraph.induce B).induce A) y) : ℝ))
+            (fun n : ℕ => (n : ℝ)^(t : ℝ)) := by
+    rcases hARateOrGap with hRate | ⟨a,ha,haα,hu⟩
+    · exact Or.inl hRate
+    · exact Or.inr (Erdos713RootBlocks.rational_bracket_of_strict_root_gap
+        ((C.toSimpleGraph.induce B).induce A) ha haα hu hARootLower)
+  first
+  | solve_by_elim (maxDepth := 4)
+  | exact?
+  | aesop (config := { maxRuleApplications := 500 })
+
+end Erdos713

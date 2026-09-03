@@ -1,0 +1,6 @@
+import Submission.EvenRootEnergy
+/-! Axiom audit for even-root restricted minimization. -/
+#print axioms Erdos583EvenRootEnergyDevelopment.exists_minimum_even_root_energy
+#print axioms Erdos583EvenRootEnergyDevelopment.even_root_quota_eq_two_of_minimum
+#print axioms Erdos583EvenRootEnergyDevelopment.exists_quota_two_root
+#print axioms Erdos583EvenRootEnergyDevelopment.even_even_edge_quota_two_root

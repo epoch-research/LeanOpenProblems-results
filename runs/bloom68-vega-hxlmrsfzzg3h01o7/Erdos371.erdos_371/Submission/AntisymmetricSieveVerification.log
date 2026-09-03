@@ -1,0 +1,22 @@
+Arithmetic tables through 1000001 built.
+PASS: all eight actual factorizations, power cutoffs, determinants,
+      squarefreeness, rough projection, and H_X(n)=-epsilon.
+PASS: 702144 local divisor/residue/marginal equalities.
+PASS: weighted pair difference=2 theta; all even local mu tests fixed; odd twisted mu=-8 theta.
+PASS: the same positive trade has a globally reflection-even nonnegative extension.
+PASS: actual LPF-bin marginals and the first three parity-projection terms unchanged.
+Full fixed-cofactor candidate interval differences, theta=-1,0,1: [-3, -1, 1]
+Whole-block check X= 1000 exponents= ((11, 20), (3, 5), (3, 4), (17, 20)) counts= (9, 7) D= 2 parity components= (7, 5, -5, 1) switch endpoint= 0
+Whole-block check X= 1003 exponents= ((11, 20), (3, 5), (3, 4), (17, 20)) counts= (10, 7) D= 3 parity components= (8, 4, -6, 2) switch endpoint= 1
+Whole-block check X= 10000 exponents= ((11, 20), (3, 5), (3, 4), (17, 20)) counts= (94, 95) D= -1 parity components= (7, 1, 5, -5) switch endpoint= 0
+Whole-block check X= 100000 exponents= ((11, 20), (3, 5), (3, 4), (17, 20)) counts= (1034, 1032) D= 2 parity components= (-21, -17, 41, 53) switch endpoint= 0
+Whole-block check X= 1000000 exponents= ((11, 20), (3, 5), (3, 4), (17, 20)) counts= (10405, 10500) D= -95 parity components= (-214, 140, -156, -182) switch endpoint= 0
+Whole-block check X= 100000 exponents= ((101, 200), (51, 100), (3, 4), (9, 10)) counts= (201, 188) D= 13 parity components= (-13, -5, -23, 37) switch endpoint= 0
+Whole-block check X= 100000 exponents= ((3, 5), (13, 20), (4, 5), (9, 10)) counts= (820, 859) D= -39 parity components= (2, -6, 88, -76) switch endpoint= 0
+PASS: 6560043 whole-block divisor/parity/reflection checks,
+      25261 actual cofactor/CRT incidence checks, and 3648 exhaustive CRT pair checks.
+PASS: 2805 local root-count sign identities.
+PASS: 7708 odd-character orthogonality checks (numerical roots only).
+PASS: 474 balanced-factorization prime-support checks.
+PASS: Spec.lean unchanged: d48bb112dcd4fd5c98dae80077b7384df62a14ef9a919fe7d476b9c5ace427bb
+All finite checks passed. No asymptotic prime-pair claim was tested or assumed.

@@ -1,0 +1,12 @@
+import Submission.ResidueHelly
+#check Finset.exists_minimal
+#check Minimal
+#check minimal_iff_forall_ssubset
+#check Finset.erase_ssubset
+#check Finset.card_lt_card
+#check Finset.ssubset_iff_subset_ne
+#check Finset.erase_subset
+#check Finset.exists_min_image
+#check Set.Finite.exists_minimalFor
+#check Finset.min'_mem
+#check Finset.min'_le

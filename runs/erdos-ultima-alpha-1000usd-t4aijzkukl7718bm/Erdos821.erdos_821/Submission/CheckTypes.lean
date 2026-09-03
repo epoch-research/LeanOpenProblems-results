@@ -1,0 +1,8 @@
+import Submission.Work
+import Submission.Density
+import Submission.Sieve
+#print Erdos821.erdos_821_iff_smooth_shifted_nonsummable
+#check Erdos821.erdos_821_iff_smooth_shifted_all_exponents
+#check Erdos821.erdos_821_iff_full_dyadic_density
+#check Erdos821.Sieve.exists_fixed_smooth_shifted_prime_density
+#check Erdos821.Sieve.smooth_shifted_primes_dyadic_count

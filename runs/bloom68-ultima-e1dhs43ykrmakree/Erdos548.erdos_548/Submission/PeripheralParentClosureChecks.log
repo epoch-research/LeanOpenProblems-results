@@ -1,0 +1,23 @@
+admissible unlabelled target trees audited: 100
+boundary-list forest constructions: 666
+closed regular resistance sets constructed: 150
+critical copies requiring a path rotation: 6
+double-broom copies constructed: 184
+explicit full-critical host certificates: 14
+high-parent copies audited: 678
+neighbor-closure path switches checked: 2184
+nonleaf lemma: boundary branch list: 666
+nonleaf lemma: full branch list: 393
+nonleaf lemma: leaf-parent, high image: 1139
+nonleaf lemma: occupied nonneighbor: 1802
+occupation paths checked: 5608
+parity/deletion formula parameter values: 497
+peripheral case: double broom: 103
+peripheral case: nonstar remainder: 528
+peripheral case: path handle: 47
+positive copies requiring an occupation change: 28
+rooted nonleaf copies audited: 3472
+rooted path rotations checked: 3090
+two-unit list obstruction center pairs checked: 6
+PASS: constructed maps, path switches, resistance identities, critical certificates
+No general ES proof follows from these finite audits. No Lean files edited.

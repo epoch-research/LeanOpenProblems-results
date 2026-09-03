@@ -1,0 +1,18 @@
+'Erdos66TwistedEnergy.corr_twist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TwistedEnergy.twisted_energy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TwistedEnergy.twisted_energy_difference_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66TwistedEnergy.push_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalTwistedEnergy.cyclic_twisted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalTwistedEnergy.natural_twisted_energy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessTwistedEnergy.alternating_prefix_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessTwistedEnergy.twist_profile_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessTwistedEnergy.witness_twisted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WitnessTwistedEnergy.witness_normalized_twist_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.sumRep_even_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.sumRep_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.twist_even_sumRep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.witness_mixed_parity_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.witness_parity_self_sum_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityRepresentation.witness_normalized_parity_imbalance_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

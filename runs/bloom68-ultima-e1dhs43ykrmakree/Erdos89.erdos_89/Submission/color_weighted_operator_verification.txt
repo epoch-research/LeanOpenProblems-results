@@ -1,0 +1,20 @@
+Color projection: exact idempotence, trace preservation, Pi(I)=I, Pi(J)=J.
+3x3 grid PSD counterexample: (e_0+e_8)^T Pi(vv^T)(e_0+e_8)=-5/9.
+20x20 grid: n=400, D=179 < (n-1)/2, longest color has r=4.
+Grid L=3: exact displacement multiplicity inequalities checked; maximum row-l2 norm of W = 0.3026216468; uniform Schur bound <= pi^2/6, lower bound >= 1/4.
+Grid L=8: exact displacement multiplicity inequalities checked; maximum row-l2 norm of W = 0.2967697884; uniform Schur bound <= pi^2/6, lower bound >= 1/4.
+Grid L=20: exact displacement multiplicity inequalities checked; maximum row-l2 norm of W = 0.2998430139; uniform Schur bound <= pi^2/6, lower bound >= 1/4.
+Weighted commutator and Frobenius identities checked exactly on a full-planar example.
+Triangle contribution=-1/8; global row/Frobenius squared ratio=0.8091094041 < 1.
+Exact global row-energy minus Frobenius-energy: -8184414261/65665605904
+Symbolic five-point deficit for all t>3 verified exactly as a rational function.
+Hadamard padding m=4: n=20, D=184, E=808, ED/M^2=1.02958449; Schur test=0.57569391, certified >= 0.43750000; last translation parameter=10
+Hadamard padding m=8: n=72, D=2528, E=10448, ED/M^2=1.01071461; Schur test=0.64448387, certified >= 0.48613591; last translation parameter=31
+Hadamard padding m=16: n=272, D=36736, E=148384, ED/M^2=1.00323471; Schur test=0.75000000, certified >= 0.59375000; last translation parameter=131
+Hadamard m=256 analytic certificate: n=65792, ||M_W|| >= 259/128 = 2.0234375; ||Pi|| >= 259/64 = 4.046875.
+Inverse-degree padding m=4: n=20, D=178, E=904; all repeated colors have ordered multiplicity 6, and the exact core weights are 1 or 1/2.
+Exact block computations and rigorous cross-block error certificates:
+  m=8, T=m^4, n=49160: internal ratio=0.1443827510; actual full-plane ratio <= 0.2887655366; limit as T,R -> infinity = 1/(m-1)=0.1428571429.
+  m=32, T=m^4, n=62914592: internal ratio=0.0322813817; actual full-plane ratio <= 0.0645627635; limit as T,R -> infinity = 1/(m-1)=0.0322580645.
+  m=128, T=m^4, n=67645735040: internal ratio=0.0078743478; actual full-plane ratio <= 0.0157486955; limit as T,R -> infinity = 1/(m-1)=0.0078740157.
+ALL CHECKS PASSED. Computations verify examples/identities, not the unsolved amplification.

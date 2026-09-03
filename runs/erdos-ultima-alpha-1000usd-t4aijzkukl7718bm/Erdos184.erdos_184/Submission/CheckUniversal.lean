@@ -1,0 +1,10 @@
+import Submission.UniversalConnectedBase
+import Submission.VertexSeparatorReduction
+#check Erdos184Work.Critical.number_bot
+#check Erdos184Work.SparseCuts.spanningCoe_induce_adj
+#check Erdos184Work.StarCharacterization.number_eq_zero_iff
+#print Erdos184Work.Critical.number
+#check Set.ncard_eq_toFinset_card'
+#check Nat.card_coe_set_eq
+#check Fintype.instSubsingleton
+#check Fintype.card_congr

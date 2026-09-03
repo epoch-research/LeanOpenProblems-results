@@ -1,0 +1,18 @@
+import Submission.LogarithmicTranslatedSliceExplore
+
+/-! Axiom audit for translation averaging and prescribed-slice lifts. -/
+
+#print axioms Erdos66TranslateKernelAveraging.sum_pairCount
+#print axioms Erdos66TranslateKernelAveraging.sum_translated_pairCount
+#print axioms Erdos66TranslateKernelAveraging.sum_all_translated_pairCount
+#print axioms Erdos66TranslateKernelAveraging.translated_kernel_mean
+#print axioms Erdos66TranslateKernelAveraging.exists_universal_translate_averaging
+#print axioms Erdos66TranslatedSliceLift.translated_assembly_error
+#print axioms Erdos66TranslatedSliceLift.replaceZeroSlice
+#print axioms Erdos66TranslatedSliceLift.replaceZeroSlice_zero
+#print axioms Erdos66TranslatedSliceLift.replaceZeroSlice_off
+#print axioms Erdos66TranslatedSliceLift.replaceZeroSlice_error
+#print axioms Erdos66TranslatedSliceLift.translated_slice_lift_error
+#print axioms Erdos66TranslatedSliceLift.exists_nonzero_member_of_positive_count
+#print axioms Erdos66TranslatedSliceLift.translated_slice_lift_full_projection
+#print axioms Erdos66LogarithmicTranslatedSlice.exists_logarithmic_translated_slice

@@ -1,0 +1,20 @@
+import Submission.UniversalBernsteinActualExplore
+/-! Axiom audit for universal Bernstein color and carry transfers. -/
+#print axioms Erdos66CompleteBernsteinEnergy.edges_card_le
+#print axioms Erdos66CompleteBernsteinEnergy.edgeSum_mgf
+#print axioms Erdos66CompleteBernsteinEnergy.edgeSum_shifted
+#print axioms Erdos66CompleteBernsteinEnergy.exists_complete_bernstein_energy
+#print axioms Erdos66UniversalBernsteinGraph.mask_nonneg
+#print axioms Erdos66UniversalBernsteinGraph.mask_le_one
+#print axioms Erdos66UniversalBernsteinGraph.sym_mask_nonneg
+#print axioms Erdos66UniversalBernsteinGraph.sym_mask_le_one
+#print axioms Erdos66UniversalBernsteinGraph.sym_mask_variance_le
+#print axioms Erdos66UniversalBernsteinGraph.exists_universal_mask_energy
+#print axioms Erdos66UniversalBernsteinGraph.mask_accuracy_of_energy
+#print axioms Erdos66UniversalBernsteinGraph.graph_mask_combination
+#print axioms Erdos66UniversalBernsteinGraph.graph_error_combination
+#print axioms Erdos66UniversalBernsteinGraph.exists_universal_bernstein_graph_accuracy
+#print axioms Erdos66UniversalBernsteinActual.exists_universal_bernstein_actual_mixed
+#print axioms Erdos66UniversalBernsteinActual.exists_universal_bernstein_infinite_mixed
+#print axioms Erdos66UniversalBernsteinActual.exists_bernstein_plane_colors
+#print axioms Erdos66UniversalBernsteinActual.exists_universal_bernstein_natural

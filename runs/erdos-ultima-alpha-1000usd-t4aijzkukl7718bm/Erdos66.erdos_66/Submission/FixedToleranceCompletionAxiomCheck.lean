@@ -1,0 +1,6 @@
+import Submission.FixedToleranceCompletionExplore
+
+/-! Axiom audit for the fixed-tolerance weighted completion criterion. -/
+#print axioms Erdos66FixedToleranceCompletion.allowance_iff_fixed_tolerance_costs
+#print axioms Erdos66FixedToleranceCompletion.completion_of_fixed_tolerance_costs
+#print axioms Erdos66FixedToleranceCompletion.completion_of_tolerance_dependent_power_costs

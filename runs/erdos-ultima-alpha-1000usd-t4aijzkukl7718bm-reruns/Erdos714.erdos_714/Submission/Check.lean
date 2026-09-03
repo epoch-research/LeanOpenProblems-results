@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Real.tendsto_rpow_neg_atTop
+#check tendsto_natCast_atTop_atTop
+#check Filter.Tendsto.const_mul
+#check Filter.Tendsto.add
+#check Filter.Tendsto.eventually
+#check eventually_lt_nhds
+#check Filter.Tendsto.eventually_lt_const
+#check Real.rpow_add
+#check Real.rpow_neg_one
+#check div_le_of_le_mul₀
+#check squeeze_zero'
+#check Filter.Tendsto.squeeze'
+#check mul_le_mul_left
+#check Real.rpow_two

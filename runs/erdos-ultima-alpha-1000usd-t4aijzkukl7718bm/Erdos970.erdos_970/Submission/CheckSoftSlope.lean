@@ -1,0 +1,10 @@
+import Submission.SoftEndpointDerivative
+#check Finset.prod_dvd_prod_of_subset
+#check Finset.prod_dvd_prod_of_dvd
+#check Nat.cast_div
+#check Nat.mod_eq_zero_of_dvd
+#check Nat.dvd_of_mod_eq_zero
+#check Real.slope_def_field
+#check slope_def_field
+#check HasDerivAt.tendsto_slope_zero_right
+#check Finset.single_le_sum

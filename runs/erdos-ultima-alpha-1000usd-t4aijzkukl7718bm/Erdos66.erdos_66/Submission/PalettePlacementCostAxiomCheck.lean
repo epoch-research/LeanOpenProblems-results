@@ -1,0 +1,12 @@
+import Submission.PalettePlacementCostExplore
+
+/-! Axiom audit for the integer placement-cost lemmas. -/
+#print axioms Erdos66PalettePlacementCost.window_pair_mass
+#print axioms Erdos66PalettePlacementCost.finite_window_cost
+#print axioms Erdos66PalettePlacementCost.palette_member_cost
+#print axioms Erdos66PalettePlacementCost.positive_density_cost
+#print axioms Erdos66PalettePlacementCost.positive_density_exponential_cost
+#print axioms Erdos66PalettePlacementCost.eventually_no_polynomial_dense_window
+#print axioms Erdos66PalettePlacementCost.eventually_no_oversized_logarithmic_window
+#print axioms Erdos66PalettePlacementCost.logarithmic_window_coefficient_le
+#print axioms Erdos66PalettePlacementCost.eventually_no_high_palette_level

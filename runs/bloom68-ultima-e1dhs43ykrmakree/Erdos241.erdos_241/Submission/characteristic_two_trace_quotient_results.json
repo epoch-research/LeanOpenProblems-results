@@ -1,0 +1,5323 @@
+{
+  "scope": "Exact diagnostics, not a proof or disproof of Spec.lean",
+  "symbolic_checks": {
+    "berlekamp_numerator_identity": true,
+    "discriminant_product_identity": true,
+    "nonsquare_double_pole_expansion_identity": true
+  },
+  "q16_exhaustive": {
+    "q": 16,
+    "h": 13,
+    "quotient_order": 315,
+    "field_modulus": "x^12 + x^7 + x^6 + x^5 + x^3 + x + 1",
+    "primitive_generator": 2,
+    "trace_zero_parameters": [
+      0,
+      1,
+      1820,
+      1821,
+      2622,
+      2623,
+      3362,
+      3363
+    ],
+    "normalization_covers_every_theta_L_and_c": true,
+    "normalized_theta_count": 4080,
+    "orbit_representatives": 46,
+    "orbit_weight_sum": 4080,
+    "weighted_image_size_histogram": {
+      "8": 3768,
+      "7": 288,
+      "6": 24
+    },
+    "weighted_maximum_subset_size_histogram": {
+      "6": 3000,
+      "5": 1032,
+      "4": 48
+    },
+    "strong_full_images": 0,
+    "global_maximum_strong_B3_subset_size": 6,
+    "every_representative_has_repeated_summand_collision": true,
+    "records": [
+      {
+        "theta": 2,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          1,
+          30,
+          43,
+          54,
+          143,
+          175,
+          217,
+          313
+        ],
+        "parameters_for_logarithms": [
+          0,
+          3363,
+          2623,
+          1821,
+          1,
+          3362,
+          1820,
+          2622
+        ],
+        "collision_supports": 13,
+        "collision_pairs": 19,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            0,
+            6,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          1,
+          30,
+          43,
+          54,
+          175,
+          313
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            0,
+            2623,
+            3362
+          ],
+          "right_parameters": [
+            0,
+            0,
+            1820
+          ],
+          "zeta": 748,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1820,
+            1821,
+            2622,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            0,
+            372,
+            1
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              0,
+              1820,
+              1640
+            ],
+            [
+              372,
+              1821,
+              2622
+            ],
+            [
+              1,
+              2890,
+              1641
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 6,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          41,
+          57,
+          144,
+          153,
+          199,
+          205,
+          271,
+          308
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          2622,
+          0,
+          1820,
+          1821,
+          1,
+          3363,
+          2623
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 18,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          41,
+          57,
+          144,
+          153,
+          199
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            0,
+            1
+          ],
+          "right_parameters": [
+            3362,
+            3362,
+            2623
+          ],
+          "zeta": 4051,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1641,
+            1640,
+            3362,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            2623,
+            2890
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              1,
+              372
+            ],
+            [
+              2623,
+              1820,
+              3158
+            ],
+            [
+              2890,
+              3363,
+              1821
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 8,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          3,
+          33,
+          119,
+          153,
+          173,
+          184,
+          255,
+          290
+        ],
+        "parameters_for_logarithms": [
+          0,
+          1,
+          3362,
+          3363,
+          1821,
+          1820,
+          2622,
+          2623
+        ],
+        "collision_supports": 8,
+        "collision_pairs": 8,
+        "first_collision_value_indices": [
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            0,
+            3,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          3,
+          33,
+          119,
+          153,
+          173,
+          184
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            3362,
+            2623
+          ],
+          "right_parameters": [
+            0,
+            1820,
+            2622
+          ],
+          "zeta": 152,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            373,
+            3363,
+            3362,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3158,
+            1820,
+            2623
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3158,
+              3363,
+              1820
+            ],
+            [
+              1820,
+              2622,
+              3158
+            ],
+            [
+              2623,
+              2891,
+              0
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 10,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          56,
+          63,
+          74,
+          79,
+          165,
+          216,
+          287,
+          293
+        ],
+        "parameters_for_logarithms": [
+          1,
+          3363,
+          1821,
+          3362,
+          2622,
+          2623,
+          0,
+          1820
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 17,
+        "first_collision_value_indices": [
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            4,
+            6
+          ],
+          [
+            1,
+            1,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          56,
+          63,
+          74,
+          79,
+          165
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            2622,
+            0
+          ],
+          "right_parameters": [
+            1,
+            3363,
+            1821
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2623,
+            372,
+            1820,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3363,
+            2622,
+            372
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3363,
+              1820,
+              1821
+            ],
+            [
+              2622,
+              1640,
+              0
+            ],
+            [
+              372,
+              2623,
+              1821
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 12,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          19,
+          57,
+          67,
+          137,
+          145,
+          163,
+          192,
+          275
+        ],
+        "parameters_for_logarithms": [
+          1821,
+          2622,
+          2623,
+          1,
+          0,
+          3362,
+          3363,
+          1820
+        ],
+        "collision_supports": 8,
+        "collision_pairs": 8,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            6,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            4,
+            5,
+            7
+          ],
+          [
+            0,
+            1,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            6,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          19,
+          57,
+          137,
+          145,
+          163,
+          192
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            2622,
+            2622
+          ],
+          "right_parameters": [
+            1821,
+            3363,
+            1820
+          ],
+          "zeta": 2342,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3362,
+            3362,
+            2622,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            0,
+            3362,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              0,
+              2623,
+              1
+            ],
+            [
+              3362,
+              2623,
+              2622
+            ],
+            [
+              1640,
+              3363,
+              372
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 14,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          53,
+          114,
+          181,
+          206,
+          231,
+          275,
+          295,
+          296
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          1,
+          3363,
+          0,
+          1820,
+          2622,
+          3362,
+          1821
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 16,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            0,
+            2,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            3,
+            5,
+            7
+          ],
+          [
+            0,
+            1,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            0,
+            2,
+            4
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          53,
+          114,
+          181,
+          206,
+          275,
+          296
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            0,
+            0
+          ],
+          "right_parameters": [
+            2623,
+            3363,
+            1820
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3158,
+            2622,
+            0,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3158,
+            373,
+            1
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3158,
+              3158,
+              372
+            ],
+            [
+              373,
+              1640,
+              0
+            ],
+            [
+              1,
+              373,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 18,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          34,
+          37,
+          41,
+          50,
+          106,
+          227,
+          239,
+          312
+        ],
+        "parameters_for_logarithms": [
+          0,
+          3363,
+          1821,
+          3362,
+          2622,
+          1820,
+          2623,
+          1
+        ],
+        "collision_supports": 12,
+        "collision_pairs": 12,
+        "first_collision_value_indices": [
+          [
+            1,
+            3,
+            3
+          ],
+          [
+            0,
+            4,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            3,
+            5
+          ],
+          [
+            0,
+            2,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            3,
+            3
+          ],
+          [
+            0,
+            4,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          34,
+          37,
+          41,
+          50,
+          227,
+          312
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3363,
+            3362,
+            3362
+          ],
+          "right_parameters": [
+            0,
+            2622,
+            1
+          ],
+          "zeta": 2342,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1821,
+            2890,
+            1,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            1820,
+            3363
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              1641,
+              2890
+            ],
+            [
+              1820,
+              3362,
+              3159
+            ],
+            [
+              3363,
+              2623,
+              1821
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 22,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          40,
+          57,
+          61,
+          93,
+          205,
+          206,
+          231,
+          280
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          0,
+          1821,
+          2623,
+          3362,
+          3363,
+          1820,
+          1
+        ],
+        "collision_supports": 23,
+        "collision_pairs": 29,
+        "first_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            0,
+            5,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          40,
+          57,
+          61,
+          93,
+          205,
+          231
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            3363,
+            3363
+          ],
+          "right_parameters": [
+            2622,
+            2622,
+            0
+          ],
+          "zeta": 2342,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3159,
+            1641,
+            1821,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            2891,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              0,
+              3362
+            ],
+            [
+              2891,
+              372,
+              1640
+            ],
+            [
+              0,
+              2891,
+              2891
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 24,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          36,
+          82,
+          127,
+          141,
+          146,
+          201,
+          238,
+          252
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1821,
+          2623,
+          3362,
+          0,
+          1820,
+          2622,
+          1
+        ],
+        "collision_supports": 12,
+        "collision_pairs": 16,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            6
+          ],
+          [
+            0,
+            2,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          82,
+          127,
+          141,
+          146,
+          201,
+          252
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3363,
+            3362,
+            2622
+          ],
+          "right_parameters": [
+            3363,
+            2623,
+            1
+          ],
+          "zeta": 3737,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3158,
+            1821,
+            1821,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1820,
+            1,
+            3362
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1820,
+              2890,
+              372
+            ],
+            [
+              1,
+              1640,
+              3362
+            ],
+            [
+              3362,
+              373,
+              0
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 26,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          89,
+          119,
+          131,
+          138,
+          149,
+          159,
+          172,
+          176
+        ],
+        "parameters_for_logarithms": [
+          1821,
+          3362,
+          3363,
+          0,
+          1820,
+          2623,
+          2622,
+          1
+        ],
+        "collision_supports": 19,
+        "collision_pairs": 21,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            0,
+            3,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            4
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          89,
+          131,
+          149,
+          159,
+          172,
+          176
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1821,
+            3362,
+            3362
+          ],
+          "right_parameters": [
+            1821,
+            1821,
+            1820
+          ],
+          "zeta": 3306,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            373,
+            1,
+            3363,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1,
+            3158,
+            1820
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1,
+              1821,
+              1821
+            ],
+            [
+              3158,
+              1821,
+              1
+            ],
+            [
+              1820,
+              1820,
+              3159
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 28,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          84,
+          115,
+          121,
+          199,
+          207,
+          213,
+          278,
+          281
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          3363,
+          1821,
+          1,
+          0,
+          1820,
+          2623,
+          2622
+        ],
+        "collision_supports": 15,
+        "collision_pairs": 18,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            1,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            1,
+            2,
+            4
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            1,
+            1,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          84,
+          115,
+          199,
+          207,
+          213,
+          281
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            1821,
+            0
+          ],
+          "right_parameters": [
+            3362,
+            3363,
+            1820
+          ],
+          "zeta": 2342,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3159,
+            2890,
+            1,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3158,
+            3159,
+            2890
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3158,
+              373,
+              1820
+            ],
+            [
+              3159,
+              1,
+              3159
+            ],
+            [
+              2890,
+              1821,
+              1820
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 32,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          5,
+          68,
+          79,
+          150,
+          180,
+          185,
+          274,
+          293
+        ],
+        "parameters_for_logarithms": [
+          0,
+          2622,
+          1820,
+          2623,
+          3363,
+          1821,
+          3362,
+          1
+        ],
+        "collision_supports": 13,
+        "collision_pairs": 15,
+        "first_collision_value_indices": [
+          [
+            0,
+            4,
+            7
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            2,
+            3,
+            7
+          ],
+          [
+            1,
+            4,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            4,
+            7
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          5,
+          68,
+          79,
+          150,
+          180,
+          274
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            0,
+            3363,
+            1
+          ],
+          "right_parameters": [
+            0,
+            1820,
+            1820
+          ],
+          "zeta": 748,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3363,
+            373,
+            1641,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2890,
+            2622,
+            3159
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2890,
+              2623,
+              1821
+            ],
+            [
+              2622,
+              2891,
+              0
+            ],
+            [
+              3159,
+              372,
+              373
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 34,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          0,
+          18,
+          27,
+          62,
+          74,
+          145,
+          182,
+          258
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1820,
+          1,
+          2622,
+          1821,
+          3362,
+          2623,
+          0
+        ],
+        "collision_supports": 7,
+        "collision_pairs": 7,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            0,
+            1,
+            5
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          18,
+          27,
+          62,
+          74,
+          145,
+          182
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1820,
+            1820,
+            1820
+          ],
+          "right_parameters": [
+            3363,
+            1,
+            1
+          ],
+          "zeta": 748,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            373,
+            372,
+            3159,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3363,
+            3159,
+            372
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3363,
+              2623,
+              373
+            ],
+            [
+              3159,
+              1640,
+              2891
+            ],
+            [
+              372,
+              1,
+              2623
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 36,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          14,
+          35,
+          81,
+          155,
+          186,
+          195,
+          263,
+          313
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          0,
+          3362,
+          3363,
+          1820,
+          1821,
+          2622,
+          1
+        ],
+        "collision_supports": 10,
+        "collision_pairs": 10,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            6,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            3,
+            6,
+            7
+          ],
+          [
+            1,
+            4,
+            5
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            6,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          14,
+          35,
+          155,
+          186,
+          195,
+          313
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            0,
+            0,
+            3363
+          ],
+          "right_parameters": [
+            2623,
+            2622,
+            2622
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3363,
+            1820,
+            373,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2623,
+            1640,
+            3363
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2623,
+              3362,
+              1820
+            ],
+            [
+              1640,
+              373,
+              373
+            ],
+            [
+              3363,
+              3158,
+              1
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 38,
+        "orbit_size": 48,
+        "image_size": 8,
+        "quotient_logarithms": [
+          27,
+          87,
+          97,
+          153,
+          187,
+          213,
+          223,
+          313
+        ],
+        "parameters_for_logarithms": [
+          1,
+          1821,
+          1820,
+          3362,
+          3363,
+          2623,
+          2622,
+          0
+        ],
+        "collision_supports": 30,
+        "collision_pairs": 48,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          27,
+          87,
+          97,
+          153,
+          187
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            1821,
+            3362
+          ],
+          "right_parameters": [
+            1,
+            1,
+            2623
+          ],
+          "zeta": 4051,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            3158,
+            2891,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            3159,
+            1641
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              1640,
+              1
+            ],
+            [
+              3159,
+              372,
+              3363
+            ],
+            [
+              1641,
+              2623,
+              373
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 42,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          54,
+          80,
+          93,
+          96,
+          105,
+          137,
+          295,
+          309
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1,
+          1821,
+          0,
+          3362,
+          1820,
+          2623,
+          2622
+        ],
+        "collision_supports": 11,
+        "collision_pairs": 11,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            0,
+            4,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          54,
+          93,
+          105,
+          137,
+          295,
+          309
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            1,
+            1
+          ],
+          "right_parameters": [
+            3363,
+            1821,
+            1821
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2890,
+            1821,
+            373,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3362,
+            1641,
+            372
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3362,
+              3363,
+              2623
+            ],
+            [
+              1641,
+              3159,
+              3362
+            ],
+            [
+              372,
+              3158,
+              3363
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 44,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          4,
+          24,
+          47,
+          58,
+          168,
+          205,
+          259,
+          291
+        ],
+        "parameters_for_logarithms": [
+          1,
+          2622,
+          1821,
+          0,
+          3362,
+          3363,
+          2623,
+          1820
+        ],
+        "collision_supports": 12,
+        "collision_pairs": 15,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            0,
+            6,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          4,
+          24,
+          47,
+          58,
+          168,
+          205
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            0,
+            3363
+          ],
+          "right_parameters": [
+            1,
+            1,
+            2623
+          ],
+          "zeta": 152,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            0,
+            3159,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1641,
+            3362,
+            1
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1641,
+              2891,
+              1820
+            ],
+            [
+              3362,
+              1641,
+              2891
+            ],
+            [
+              1,
+              373,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 48,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          26,
+          62,
+          70,
+          147,
+          156,
+          184,
+          261,
+          270
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          1821,
+          2623,
+          0,
+          3363,
+          2622,
+          1,
+          1820
+        ],
+        "collision_supports": 21,
+        "collision_pairs": 30,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            2,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            0,
+            2,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          26,
+          62,
+          70,
+          147,
+          156
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            0,
+            2622
+          ],
+          "right_parameters": [
+            3362,
+            2623,
+            1
+          ],
+          "zeta": 3306,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3159,
+            2890,
+            3158,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1640,
+            2623,
+            1
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1640,
+              3159,
+              2890
+            ],
+            [
+              2623,
+              3362,
+              3158
+            ],
+            [
+              1,
+              1641,
+              1
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 50,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          12,
+          63,
+          85,
+          124,
+          196,
+          253,
+          267,
+          289
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          3363,
+          1,
+          1821,
+          2622,
+          0,
+          1820,
+          3362
+        ],
+        "collision_supports": 19,
+        "collision_pairs": 29,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            6
+          ],
+          [
+            0,
+            1,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            4,
+            7
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          12,
+          63,
+          85,
+          124,
+          253,
+          267
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            1,
+            1820
+          ],
+          "right_parameters": [
+            2623,
+            3363,
+            3362
+          ],
+          "zeta": 152,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            0,
+            1640,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            1641,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              0,
+              1640
+            ],
+            [
+              1641,
+              372,
+              0
+            ],
+            [
+              0,
+              1641,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 52,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          11,
+          139,
+          140,
+          165,
+          171,
+          233,
+          253,
+          311
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          0,
+          1,
+          3362,
+          2622,
+          3363,
+          1820,
+          1821
+        ],
+        "collision_supports": 16,
+        "collision_pairs": 18,
+        "first_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          11,
+          139,
+          165,
+          171,
+          233,
+          311
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            3363,
+            3363
+          ],
+          "right_parameters": [
+            2623,
+            2623,
+            1
+          ],
+          "zeta": 1100,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1821,
+            373,
+            2890,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1641,
+            2623,
+            3363
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1641,
+              1641,
+              2891
+            ],
+            [
+              2623,
+              3159,
+              2622
+            ],
+            [
+              3363,
+              1641,
+              3158
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 54,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          25,
+          41,
+          134,
+          177,
+          192,
+          257,
+          280,
+          289
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1,
+          2623,
+          0,
+          2622,
+          1820,
+          3362,
+          1821
+        ],
+        "collision_supports": 8,
+        "collision_pairs": 8,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          25,
+          177,
+          192,
+          257,
+          280,
+          289
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            1,
+            1820
+          ],
+          "right_parameters": [
+            3363,
+            3363,
+            1821
+          ],
+          "zeta": 3306,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3159,
+            372,
+            372,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1821,
+            3362,
+            1821
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1821,
+              1820,
+              1641
+            ],
+            [
+              3362,
+              1640,
+              2890
+            ],
+            [
+              1821,
+              3159,
+              2622
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 56,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          48,
+          73,
+          108,
+          159,
+          208,
+          221,
+          234,
+          281
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          1821,
+          1,
+          3362,
+          0,
+          3363,
+          2622,
+          1820
+        ],
+        "collision_supports": 18,
+        "collision_pairs": 23,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            6
+          ],
+          [
+            0,
+            3,
+            4
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            2,
+            5
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          48,
+          73,
+          108,
+          159,
+          221,
+          234
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            1,
+            3363
+          ],
+          "right_parameters": [
+            2623,
+            2623,
+            1820
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            2891,
+            372,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            3363,
+            2623
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              1,
+              1
+            ],
+            [
+              3363,
+              3158,
+              0
+            ],
+            [
+              2623,
+              2623,
+              2890
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 60,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          17,
+          68,
+          113,
+          116,
+          208,
+          214,
+          253,
+          269
+        ],
+        "parameters_for_logarithms": [
+          1821,
+          3362,
+          1820,
+          0,
+          2622,
+          3363,
+          2623,
+          1
+        ],
+        "collision_supports": 16,
+        "collision_pairs": 19,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            1,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            3
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          17,
+          68,
+          116,
+          208,
+          214,
+          269
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1821,
+            1820,
+            2622
+          ],
+          "right_parameters": [
+            1821,
+            3362,
+            2623
+          ],
+          "zeta": 1100,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3158,
+            2891,
+            1640,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2891,
+            372,
+            3362
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2891,
+              2890,
+              1641
+            ],
+            [
+              372,
+              373,
+              1820
+            ],
+            [
+              3362,
+              2891,
+              3158
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 74,
+        "orbit_size": 24,
+        "image_size": 8,
+        "quotient_logarithms": [
+          118,
+          180,
+          185,
+          220,
+          251,
+          270,
+          307,
+          314
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          2622,
+          1820,
+          1821,
+          1,
+          2623,
+          3363,
+          0
+        ],
+        "collision_supports": 5,
+        "collision_pairs": 6,
+        "first_collision_value_indices": [
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          118,
+          180,
+          185,
+          220,
+          270,
+          307
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            1820,
+            1820
+          ],
+          "right_parameters": [
+            3362,
+            3362,
+            0
+          ],
+          "zeta": 785,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            372,
+            1820,
+            2623,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            2890,
+            2891
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              3159,
+              3159
+            ],
+            [
+              2890,
+              3363,
+              3363
+            ],
+            [
+              2891,
+              2891,
+              3362
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 76,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          3,
+          135,
+          178,
+          199,
+          215,
+          247,
+          289,
+          314
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          1820,
+          1,
+          1821,
+          3363,
+          2623,
+          3362,
+          0
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 17,
+        "first_collision_value_indices": [
+          [
+            0,
+            7,
+            7
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            7,
+            7
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          3,
+          135,
+          178,
+          199,
+          215
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            0,
+            0
+          ],
+          "right_parameters": [
+            2622,
+            1820,
+            1
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            372,
+            3363,
+            1821,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1,
+            2623,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1,
+              0,
+              1820
+            ],
+            [
+              2623,
+              1,
+              1640
+            ],
+            [
+              0,
+              2623,
+              2891
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 82,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          10,
+          24,
+          46,
+          66,
+          89,
+          125,
+          133,
+          210
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          2622,
+          0,
+          1820,
+          1,
+          2623,
+          3363,
+          1821
+        ],
+        "collision_supports": 18,
+        "collision_pairs": 24,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            2,
+            4
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          10,
+          24,
+          66,
+          89,
+          125,
+          133
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            0,
+            1
+          ],
+          "right_parameters": [
+            3362,
+            3362,
+            2623
+          ],
+          "zeta": 700,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1820,
+            2891,
+            3362,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1641,
+            3363,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1641,
+              0,
+              2890
+            ],
+            [
+              3363,
+              1641,
+              373
+            ],
+            [
+              0,
+              3363,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 88,
+        "orbit_size": 96,
+        "image_size": 7,
+        "quotient_logarithms": [
+          59,
+          144,
+          149,
+          181,
+          184,
+          188,
+          190
+        ],
+        "parameters_for_logarithms": [
+          0,
+          2622,
+          1820,
+          3363,
+          1,
+          1821,
+          2623
+        ],
+        "collision_supports": 5,
+        "collision_pairs": 5,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            2,
+            3,
+            5
+          ],
+          [
+            1,
+            4,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          59,
+          144,
+          149,
+          181,
+          184,
+          188
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            2622,
+            1820
+          ],
+          "right_parameters": [
+            0,
+            1821,
+            2623
+          ],
+          "zeta": 3306,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            372,
+            3158,
+            2622,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            3158,
+            1641
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              2622,
+              2622
+            ],
+            [
+              3158,
+              3159,
+              1821
+            ],
+            [
+              1641,
+              1641,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 94,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          94,
+          129,
+          139,
+          176,
+          229,
+          258,
+          283,
+          301
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          0,
+          2623,
+          3363,
+          1821,
+          3362,
+          1,
+          1820
+        ],
+        "collision_supports": 20,
+        "collision_pairs": 24,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            0,
+            2,
+            7
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            3,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          129,
+          139,
+          176,
+          229,
+          258
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            3363,
+            3363
+          ],
+          "right_parameters": [
+            2622,
+            2622,
+            3362
+          ],
+          "zeta": 152,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1641,
+            2623,
+            1820,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            3158,
+            3363
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              372,
+              3362
+            ],
+            [
+              3158,
+              2623,
+              1
+            ],
+            [
+              3363,
+              1820,
+              0
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 96,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          124,
+          128,
+          148,
+          161,
+          212,
+          219,
+          234,
+          255
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1,
+          0,
+          2622,
+          1821,
+          1820,
+          3362,
+          2623
+        ],
+        "collision_supports": 7,
+        "collision_pairs": 7,
+        "first_collision_value_indices": [
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            1,
+            3,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          124,
+          128,
+          148,
+          161,
+          212,
+          234
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            0,
+            0,
+            1821
+          ],
+          "right_parameters": [
+            1,
+            2622,
+            1820
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            2622,
+            2890,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2622,
+            373,
+            1821
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2622,
+              2623,
+              3362
+            ],
+            [
+              373,
+              1641,
+              1820
+            ],
+            [
+              1821,
+              3159,
+              1820
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 98,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          7,
+          110,
+          113,
+          121,
+          146,
+          154,
+          231,
+          262
+        ],
+        "parameters_for_logarithms": [
+          2623,
+          3363,
+          2622,
+          1,
+          3362,
+          1820,
+          1821,
+          0
+        ],
+        "collision_supports": 13,
+        "collision_pairs": 16,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            0,
+            2,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          7,
+          110,
+          121,
+          146,
+          154
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            1,
+            3362
+          ],
+          "right_parameters": [
+            2623,
+            2622,
+            1820
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1640,
+            1,
+            372,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            373,
+            1641,
+            2890
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              373,
+              2891,
+              2891
+            ],
+            [
+              1641,
+              2623,
+              1
+            ],
+            [
+              2890,
+              2890,
+              1820
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 106,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          4,
+          80,
+          89,
+          118,
+          141,
+          148,
+          270,
+          300
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          1821,
+          2623,
+          1820,
+          0,
+          3363,
+          3362,
+          1
+        ],
+        "collision_supports": 16,
+        "collision_pairs": 20,
+        "first_collision_value_indices": [
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            0,
+            3,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            3,
+            3
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          4,
+          89,
+          118,
+          141,
+          148,
+          270
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            3363,
+            3362
+          ],
+          "right_parameters": [
+            2622,
+            1820,
+            1
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2890,
+            1820,
+            3158,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            0,
+            2890,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              0,
+              2891,
+              2622
+            ],
+            [
+              2890,
+              2622,
+              2622
+            ],
+            [
+              1640,
+              2623,
+              373
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 108,
+        "orbit_size": 48,
+        "image_size": 7,
+        "quotient_logarithms": [
+          52,
+          151,
+          178,
+          190,
+          206,
+          214,
+          269
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          1820,
+          0,
+          1821,
+          1,
+          2623,
+          3363
+        ],
+        "collision_supports": 11,
+        "collision_pairs": 16,
+        "first_collision_value_indices": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            0,
+            1,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            0,
+            5,
+            6
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            5,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 4,
+        "maximizer_logarithms": [
+          52,
+          151,
+          178,
+          206
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            1,
+            2623
+          ],
+          "right_parameters": [
+            3362,
+            1820,
+            3363
+          ],
+          "zeta": 1100,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            1640,
+            372,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3158,
+            3363,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3158,
+              3363,
+              1640
+            ],
+            [
+              3363,
+              3362,
+              2623
+            ],
+            [
+              1640,
+              1641,
+              1820
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 110,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          33,
+          42,
+          74,
+          103,
+          141,
+          246,
+          251,
+          268
+        ],
+        "parameters_for_logarithms": [
+          1821,
+          0,
+          2623,
+          1820,
+          1,
+          3362,
+          3363,
+          2622
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 17,
+        "first_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            5,
+            5
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          33,
+          42,
+          74,
+          103,
+          251
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1821,
+            3362,
+            3362
+          ],
+          "right_parameters": [
+            1821,
+            2623,
+            1820
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3159,
+            3158,
+            2890,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3362,
+            1,
+            3158
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3362,
+              2622,
+              3363
+            ],
+            [
+              1,
+              2890,
+              3363
+            ],
+            [
+              3158,
+              2622,
+              2622
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 112,
+        "orbit_size": 96,
+        "image_size": 7,
+        "quotient_logarithms": [
+          4,
+          5,
+          74,
+          86,
+          129,
+          209,
+          271
+        ],
+        "parameters_for_logarithms": [
+          1820,
+          2623,
+          3363,
+          1821,
+          2622,
+          0,
+          1
+        ],
+        "collision_supports": 5,
+        "collision_pairs": 5,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            3,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            3,
+            4
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          4,
+          5,
+          74,
+          86,
+          129
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2623,
+            2623,
+            0
+          ],
+          "right_parameters": [
+            1820,
+            1821,
+            2622
+          ],
+          "zeta": 2342,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            372,
+            1820,
+            373,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            1820,
+            1821
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              373,
+              2891
+            ],
+            [
+              1820,
+              3159,
+              372
+            ],
+            [
+              1821,
+              372,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 114,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          15,
+          56,
+          72,
+          75,
+          86,
+          109,
+          168,
+          287
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          3362,
+          1820,
+          2623,
+          1821,
+          0,
+          3363,
+          1
+        ],
+        "collision_supports": 10,
+        "collision_pairs": 10,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            4,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            6,
+            7
+          ],
+          [
+            0,
+            2,
+            5
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            4,
+            4
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          15,
+          56,
+          72,
+          75,
+          109,
+          168
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            3362,
+            2623
+          ],
+          "right_parameters": [
+            2622,
+            1821,
+            1821
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1821,
+            1640,
+            2891,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3158,
+            1641,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3158,
+              3158,
+              3362
+            ],
+            [
+              1641,
+              3362,
+              1821
+            ],
+            [
+              1640,
+              2890,
+              2623
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 142,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          36,
+          76,
+          98,
+          152,
+          182,
+          198,
+          201,
+          222
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          2622,
+          0,
+          1,
+          2623,
+          1820,
+          3363,
+          1821
+        ],
+        "collision_supports": 14,
+        "collision_pairs": 17,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            4
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          36,
+          76,
+          98,
+          152,
+          198,
+          201
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            2622,
+            2623
+          ],
+          "right_parameters": [
+            3362,
+            3362,
+            1821
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2622,
+            373,
+            373,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            3159,
+            3159,
+            2891
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              3159,
+              2890,
+              2890
+            ],
+            [
+              3159,
+              2891,
+              3158
+            ],
+            [
+              2891,
+              2891,
+              3159
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 154,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          18,
+          36,
+          123,
+          167,
+          179,
+          184,
+          200,
+          287
+        ],
+        "parameters_for_logarithms": [
+          1820,
+          2623,
+          3363,
+          3362,
+          0,
+          1821,
+          2622,
+          1
+        ],
+        "collision_supports": 15,
+        "collision_pairs": 21,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            6
+          ],
+          [
+            0,
+            1,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          36,
+          123,
+          167,
+          179,
+          184,
+          200
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1820,
+            3363,
+            2622
+          ],
+          "right_parameters": [
+            1820,
+            2623,
+            1
+          ],
+          "zeta": 3329,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            372,
+            1820,
+            3158,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2622,
+            3362,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2622,
+              0,
+              1641
+            ],
+            [
+              3362,
+              2622,
+              3158
+            ],
+            [
+              0,
+              3362,
+              372
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 160,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          30,
+          45,
+          94,
+          142,
+          193,
+          213,
+          240,
+          291
+        ],
+        "parameters_for_logarithms": [
+          2622,
+          3363,
+          1820,
+          2623,
+          3362,
+          1821,
+          1,
+          0
+        ],
+        "collision_supports": 16,
+        "collision_pairs": 20,
+        "first_collision_value_indices": [
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            0,
+            3,
+            7
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            2,
+            3,
+            4
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            2,
+            2,
+            3
+          ],
+          [
+            1,
+            1,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          30,
+          45,
+          94,
+          142,
+          213,
+          291
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            2622,
+            3362,
+            1
+          ],
+          "right_parameters": [
+            2622,
+            2623,
+            0
+          ],
+          "zeta": 785,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2890,
+            3158,
+            1820,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1820,
+            2891,
+            2890
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1820,
+              3159,
+              3158
+            ],
+            [
+              2891,
+              3363,
+              2891
+            ],
+            [
+              2890,
+              3363,
+              1641
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 168,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          17,
+          34,
+          51,
+          59,
+          85,
+          98,
+          156,
+          171
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          1820,
+          1,
+          2622,
+          2623,
+          0,
+          1821,
+          3362
+        ],
+        "collision_supports": 19,
+        "collision_pairs": 26,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            0,
+            1,
+            3
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          17,
+          34,
+          59,
+          98,
+          156
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3363,
+            1820,
+            1820
+          ],
+          "right_parameters": [
+            3363,
+            3363,
+            1
+          ],
+          "zeta": 785,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2622,
+            2891,
+            2622,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            372,
+            2623,
+            0
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              372,
+              0,
+              3362
+            ],
+            [
+              2623,
+              372,
+              1
+            ],
+            [
+              0,
+              2623,
+              3158
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 184,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          56,
+          77,
+          125,
+          197,
+          228,
+          272,
+          283,
+          284
+        ],
+        "parameters_for_logarithms": [
+          3362,
+          2622,
+          1,
+          3363,
+          2623,
+          1820,
+          0,
+          1821
+        ],
+        "collision_supports": 18,
+        "collision_pairs": 22,
+        "first_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            3,
+            5
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          56,
+          77,
+          125,
+          197,
+          228
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3362,
+            3363,
+            1820
+          ],
+          "right_parameters": [
+            3362,
+            2622,
+            2622
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2891,
+            1640,
+            1,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1821,
+            2622,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1821,
+              3363,
+              1641
+            ],
+            [
+              2622,
+              1641,
+              3158
+            ],
+            [
+              1640,
+              3158,
+              2623
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 188,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          128,
+          130,
+          186,
+          206,
+          217,
+          265,
+          267,
+          274
+        ],
+        "parameters_for_logarithms": [
+          1,
+          0,
+          3362,
+          2623,
+          2622,
+          1821,
+          3363,
+          1820
+        ],
+        "collision_supports": 11,
+        "collision_pairs": 14,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "six_distinct_collision_value_indices": [
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            0,
+            4,
+            5
+          ]
+        ],
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            5
+          ],
+          [
+            0,
+            0,
+            6
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          130,
+          186,
+          206,
+          217,
+          265,
+          267
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            0,
+            1821
+          ],
+          "right_parameters": [
+            1,
+            1,
+            3363
+          ],
+          "zeta": 148,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3362,
+            0,
+            1821,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1640,
+            0,
+            1
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1640,
+              3362,
+              372
+            ],
+            [
+              0,
+              1640,
+              3362
+            ],
+            [
+              1,
+              1821,
+              3158
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 198,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          1,
+          55,
+          117,
+          122,
+          134,
+          212,
+          251,
+          253
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          2623,
+          1821,
+          0,
+          1,
+          1820,
+          3362,
+          2622
+        ],
+        "collision_supports": 12,
+        "collision_pairs": 15,
+        "first_collision_value_indices": [
+          [
+            0,
+            6,
+            7
+          ],
+          [
+            0,
+            1,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            2,
+            7
+          ],
+          [
+            0,
+            5,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          1,
+          55,
+          117,
+          122,
+          134,
+          253
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3363,
+            3362,
+            2622
+          ],
+          "right_parameters": [
+            3363,
+            2623,
+            1
+          ],
+          "zeta": 748,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            2623,
+            2622,
+            372,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            2623,
+            1,
+            1821
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              2623,
+              2890,
+              1820
+            ],
+            [
+              1,
+              1640,
+              3362
+            ],
+            [
+              1821,
+              372,
+              3363
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 246,
+        "orbit_size": 96,
+        "image_size": 8,
+        "quotient_logarithms": [
+          7,
+          19,
+          64,
+          177,
+          180,
+          189,
+          250,
+          288
+        ],
+        "parameters_for_logarithms": [
+          1820,
+          3362,
+          2623,
+          1,
+          2622,
+          0,
+          3363,
+          1821
+        ],
+        "collision_supports": 9,
+        "collision_pairs": 12,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          19,
+          64,
+          177,
+          180,
+          189,
+          250
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1820,
+            3362,
+            1
+          ],
+          "right_parameters": [
+            1820,
+            1820,
+            0
+          ],
+          "zeta": 1100,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1641,
+            1821,
+            3362,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1641,
+            373,
+            1820
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1641,
+              3362,
+              372
+            ],
+            [
+              373,
+              2890,
+              2891
+            ],
+            [
+              1820,
+              3363,
+              2891
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 280,
+        "orbit_size": 48,
+        "image_size": 7,
+        "quotient_logarithms": [
+          5,
+          30,
+          50,
+          53,
+          145,
+          242,
+          300
+        ],
+        "parameters_for_logarithms": [
+          1,
+          0,
+          2622,
+          1820,
+          3363,
+          1821,
+          3362
+        ],
+        "collision_supports": 4,
+        "collision_pairs": 7,
+        "first_collision_value_indices": [
+          [
+            0,
+            2,
+            6
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            2,
+            6
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          5,
+          30,
+          50,
+          53,
+          145,
+          242
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            2622,
+            3362
+          ],
+          "right_parameters": [
+            1,
+            1,
+            0
+          ],
+          "zeta": 152,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1,
+            3363,
+            0,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1640,
+            2623,
+            2890
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1640,
+              2890,
+              2623
+            ],
+            [
+              2623,
+              2622,
+              3362
+            ],
+            [
+              2890,
+              2623,
+              2622
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 318,
+        "orbit_size": 24,
+        "image_size": 6,
+        "quotient_logarithms": [
+          1,
+          8,
+          64,
+          197,
+          275,
+          310
+        ],
+        "parameters_for_logarithms": [
+          1820,
+          1,
+          2622,
+          3362,
+          0,
+          1821
+        ],
+        "collision_supports": 1,
+        "collision_pairs": 2,
+        "first_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            3
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            1,
+            1,
+            2
+          ],
+          [
+            0,
+            3,
+            3
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 5,
+        "maximizer_logarithms": [
+          1,
+          8,
+          64,
+          275,
+          310
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            1,
+            1,
+            2622
+          ],
+          "right_parameters": [
+            1820,
+            3362,
+            3362
+          ],
+          "zeta": 748,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            3363,
+            3159,
+            2891,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1641,
+            1641,
+            1640
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1641,
+              3159,
+              3158
+            ],
+            [
+              1641,
+              372,
+              3362
+            ],
+            [
+              1640,
+              2890,
+              1641
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      },
+      {
+        "theta": 338,
+        "orbit_size": 48,
+        "image_size": 8,
+        "quotient_logarithms": [
+          12,
+          52,
+          70,
+          138,
+          178,
+          200,
+          260,
+          275
+        ],
+        "parameters_for_logarithms": [
+          3363,
+          0,
+          2623,
+          3362,
+          1,
+          1820,
+          2622,
+          1821
+        ],
+        "collision_supports": 9,
+        "collision_pairs": 12,
+        "first_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            4
+          ]
+        ],
+        "six_distinct_collision_value_indices": null,
+        "repeated_collision_value_indices": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            4
+          ]
+        ],
+        "maximum_strong_B3_subset_size": 6,
+        "maximizer_logarithms": [
+          12,
+          52,
+          70,
+          138,
+          200,
+          260
+        ],
+        "all_subsets_independently_rechecked": true,
+        "polynomial_certificate": {
+          "left_parameters": [
+            3363,
+            0,
+            3362
+          ],
+          "right_parameters": [
+            3363,
+            3363,
+            1
+          ],
+          "zeta": 3719,
+          "zeta_order": 13,
+          "f_coefficients_ascending": [
+            1640,
+            1821,
+            2623,
+            1
+          ],
+          "zeta_quadratic_coefficients_ascending": [
+            1820,
+            3159,
+            1820
+          ],
+          "multiplication_matrix_ascending_basis": [
+            [
+              1820,
+              2622,
+              2623
+            ],
+            [
+              3159,
+              2623,
+              2890
+            ],
+            [
+              1820,
+              3362,
+              1640
+            ]
+          ],
+          "exact_polynomial_collision_identity": true,
+          "matrix_facts_checked": true
+        }
+      }
+    ]
+  },
+  "q256_fixed_field_diagnostic": {
+    "q": 256,
+    "h": 13,
+    "quotient_order": 1290555,
+    "field_modulus": "x^24 + x^16 + x^15 + x^14 + x^13 + x^10 + x^9 + x^7 + x^5 + x^3 + 1",
+    "primitive_generator": 2,
+    "theta": 5269243,
+    "theta_order": 4095,
+    "theta_in_F4096_not_F16": true,
+    "selector": "absolute trace t = 1",
+    "selector_intersection_F16_size": 0,
+    "selector_size": 128,
+    "quotient_image_size": 128,
+    "triple_multisets_including_repeats": 357760,
+    "distinct_triple_product_classes": 314546,
+    "collision_pairs": 46732,
+    "maximum_triple_product_multiplicity": 5,
+    "triple_product_multiplicity_histogram": {
+      "1": 274656,
+      "2": 36758,
+      "3": 2942,
+      "4": 188,
+      "5": 2
+    },
+    "all_unquotiented_Bose_products_distinct": true,
+    "all_quotient_products_checked_independently": true,
+    "witnesses": {
+      "first": {
+        "left_parameters": [
+          13658891,
+          15431433,
+          8886535
+        ],
+        "right_parameters": [
+          13658891,
+          6580727,
+          855428
+        ],
+        "zeta": 8096905,
+        "zeta_order": 13,
+        "f_coefficients_ascending": [
+          4626535,
+          4626534,
+          1141355,
+          1
+        ],
+        "zeta_quadratic_coefficients_ascending": [
+          4534198,
+          1,
+          5522908
+        ],
+        "multiplication_matrix_ascending_basis": [
+          [
+            4534198,
+            1,
+            5763596
+          ],
+          [
+            1,
+            1141355,
+            4534199
+          ],
+          [
+            5522908,
+            1236410,
+            1
+          ]
+        ],
+        "exact_polynomial_collision_identity": true,
+        "matrix_facts_checked": true
+      },
+      "six_distinct": {
+        "left_parameters": [
+          733225,
+          9664784,
+          11035923
+        ],
+        "right_parameters": [
+          13658891,
+          11425983,
+          6256116
+        ],
+        "zeta": 5906897,
+        "zeta_order": 13,
+        "f_coefficients_ascending": [
+          4626535,
+          4626534,
+          1141355,
+          1
+        ],
+        "zeta_quadratic_coefficients_ascending": [
+          5522908,
+          4534198,
+          5763596
+        ],
+        "multiplication_matrix_ascending_basis": [
+          [
+            5522908,
+            243664,
+            1236410
+          ],
+          [
+            4534198,
+            0,
+            1
+          ],
+          [
+            5763596,
+            1141355,
+            4626535
+          ]
+        ],
+        "exact_polynomial_collision_identity": true,
+        "matrix_facts_checked": true
+      },
+      "repeated": {
+        "left_parameters": [
+          13658891,
+          12648801,
+          12128120
+        ],
+        "right_parameters": [
+          13658891,
+          13658891,
+          2411581
+        ],
+        "zeta": 6904352,
+        "zeta_order": 13,
+        "f_coefficients_ascending": [
+          4626535,
+          4626534,
+          1141355,
+          1
+        ],
+        "zeta_quadratic_coefficients_ascending": [
+          243664,
+          5763596,
+          1141354
+        ],
+        "multiplication_matrix_ascending_basis": [
+          [
+            243664,
+            5522909,
+            0
+          ],
+          [
+            5763596,
+            4626535,
+            5522909
+          ],
+          [
+            1141354,
+            0,
+            4626535
+          ]
+        ],
+        "exact_polynomial_collision_identity": true,
+        "matrix_facts_checked": true
+      }
+    }
+  },
+  "asymptotic_bounds_proved_in_note": {
+    "index13_half_trace_cubic_ratio": "1625/1728",
+    "index7_density_five_eighths_cubic_ratio": "109375/110592"
+  }
+}

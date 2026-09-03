@@ -1,0 +1,13 @@
+'Erdos66BlockReplicationLimit.replicate' does not depend on any axioms
+'Erdos66BlockReplicationLimit.palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.replicate_eq_blockSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.lower_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.upper_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.lower_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.upper_palette' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.replicate_rep_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.replicate_rep_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.tendsto_of_all_residues' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.replicate_log_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.log_limit_of_replicate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BlockReplicationLimit.replicate_log_limit_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

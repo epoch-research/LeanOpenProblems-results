@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check intervalIntegral.integral_interval_sub_left
+#check intervalIntegral.integral_interval_sub_right
+#check intervalIntegral.integral_add_adjacent_intervals
+#check intervalIntegral.continuous_parametric_intervalIntegral_of_continuous
+#check intervalIntegral.continuous_parametric_intervalIntegral_of_continuous'
+#check intervalIntegral.continuous_parametric_primitive_of_continuous
+#check intervalIntegral.integral_congr
+#check Set.uIcc_of_le

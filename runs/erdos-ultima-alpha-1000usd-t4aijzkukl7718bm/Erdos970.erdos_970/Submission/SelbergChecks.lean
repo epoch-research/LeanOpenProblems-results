@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Fintype.prod_sum
+#check Fintype.sum_bool
+#check Bool.sum_bool
+#check Finset.prod_ite_mem
+#check Finset.prod_ite
+#check Finset.prod_boole
+#check Finset.prod_div_distrib
+#check Finset.sum_mul_sum
+#check Finset.sum_mul
+#check Finset.mul_sum
+#check Finset.exists_mem_notMem_of_ne
+#check Finset.eq_of_subset_of_card_le
+#check Finset.prod_ne_zero_iff
+#check Nat.radical
+#check Nat.prod_primeFactors

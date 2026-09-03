@@ -1,0 +1,23 @@
+import Submission.ContinuousBuchstabSlowKernel
+open Real Set Filter MeasureTheory
+#check lintegral_const_mul
+#check lintegral_const_mul'
+#check lintegral_mul_const
+#check lintegral_mul_const'
+#check setLIntegral_congr_fun
+#check setLIntegral_congr_fun_ae
+#check lintegral_indicator
+#check Measure.restrict_restrict
+#check Real.volume_Ioo
+#check ContinuousOn.integrableOn_Icc
+#check ContinuousOn.intervalIntegrable
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt
+#check ENNReal.mul_lt_left
+#check ENNReal.mul_lt_mul_right
+#check ENNReal.mul_lt_mul_of_pos_left
+#check measurable_lintegral_prod_right
+#check Measurable.lintegral_prod_right
+#check lintegral_add_left
+#check ENNReal.ofReal_mul
+#check ENNReal.ofReal_div_of_pos
+#check lintegral_mono_ae

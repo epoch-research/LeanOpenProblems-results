@@ -1,0 +1,8 @@
+import Submission.ButterflyRestoration
+
+/-! Axiom audit of graph transfer and budget-aware butterfly restoration. -/
+#print axioms Erdos583OneMemberTransferDevelopment.erase_one_transfer
+#print axioms Erdos583OneMemberTransferDevelopment.replace_one_by_one
+#print axioms Erdos583OneMemberTransferDevelopment.replace_one_keeping_separate
+#print axioms Erdos583ButterflyRestorationDevelopment.butterfly_partition_or_pentagon
+#print axioms Erdos583ButterflyRestorationDevelopment.failure_no_butterfly_partition

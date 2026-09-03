@@ -1,0 +1,30 @@
+'Erdos66CompleteBernsteinEnergy.edges_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteBernsteinEnergy.edgeSum_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteBernsteinEnergy.edgeSum_shifted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteBernsteinEnergy.exists_complete_bernstein_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalBernsteinGraph.mask_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.mask_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.sym_mask_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.sym_mask_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.sym_mask_variance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.exists_universal_mask_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.mask_accuracy_of_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.graph_mask_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.graph_error_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalBernsteinGraph.exists_universal_bernstein_graph_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalBernsteinActual.exists_universal_bernstein_actual_mixed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalBernsteinActual.exists_universal_bernstein_infinite_mixed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalBernsteinActual.exists_bernstein_plane_colors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalBernsteinActual.exists_universal_bernstein_natural' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

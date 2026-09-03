@@ -1,0 +1,13 @@
+import Submission.CarrierLength
+
+/-! Axiom audit for carrier-length optimization. -/
+#print axioms Erdos583CarrierLengthDevelopment.carrierLength
+#print axioms Erdos583CarrierLengthDevelopment.trail_length_of_same_subgraph
+#print axioms Erdos583CarrierLengthDevelopment.carrier_weight_of_same_subgraph
+#print axioms Erdos583CarrierLengthDevelopment.untouched_group_invariants
+#print axioms Erdos583CarrierLengthDevelopment.carrierLength_change_one
+#print axioms Erdos583CarrierLengthDevelopment.exists_shortest_maximum_carriers
+#print axioms Erdos583CarrierLengthDevelopment.marked_prefix_shortens_carrier
+#print axioms Erdos583CarrierLengthDevelopment.shortest_carrier_marked_prefix_nil
+#print axioms Erdos583CarrierLengthDevelopment.first_marked_hit_start_or_free_suffix
+#print axioms Erdos583CarrierLengthDevelopment.fully_marked_group_contains_carrier_endpoint

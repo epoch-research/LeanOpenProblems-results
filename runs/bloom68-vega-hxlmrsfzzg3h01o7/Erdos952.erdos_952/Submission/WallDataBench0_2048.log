@@ -1,0 +1,3 @@
+'Erdos952.WallData.Bench0_2048.accepted' depends on axioms: [propext]
+'Erdos952.WallData.Bench0_2048.path' depends on axioms: [propext, Classical.choice, Quot.sound]
+Erdos952.WallData.Bench0_2048.path : BlackPath 2048 { re := 146, im := -149 } { re := 689, im := -358 }

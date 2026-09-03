@@ -1,0 +1,7 @@
+import Submission.CriticalFiveEvenCutVertex
+
+/-! Axiom audit of the critical-edge cut constraints. -/
+#print axioms Erdos583CriticalFiveEvenCutVertexDevelopment.delete_connected_of_sup_edge
+#print axioms Erdos583CriticalFiveEvenCutVertexDevelopment.critical_five_even_remaining_noncut_after_add
+#print axioms Erdos583CriticalFiveEvenCutVertexDevelopment.critical_five_even_reachable_implies_noncut
+#print axioms Erdos583CriticalFiveEvenCutVertexDevelopment.critical_five_even_cut_separates

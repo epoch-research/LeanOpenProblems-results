@@ -1,0 +1,11 @@
+import Submission.CubicSmallPrimeCancellation
+#check ZMod.val_intCast
+#check ZMod.intCast_val
+#check Int.emod_emod_of_dvd
+#check ZMod.val_natCast
+#check ZMod.castHom
+#check ZMod.cast_intCast
+#check Int.emod_nonneg
+#check Int.natCast_emod
+#check ZMod.val_natCast_of_lt
+#check ZMod.val_cast_of_lt

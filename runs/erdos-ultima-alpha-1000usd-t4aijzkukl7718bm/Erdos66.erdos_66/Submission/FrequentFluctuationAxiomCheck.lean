@@ -1,0 +1,8 @@
+import Submission.FrequentFluctuationExplore
+
+/-! Axiom audit of the unconditional-on-squared-error-limit fluctuation bounds. -/
+#print axioms Erdos66FrequentFluctuation.error_envelope_limit_lower_bound
+#print axioms Erdos66FrequentFluctuation.frequently_squared_error_gt
+#print axioms Erdos66FrequentFluctuation.frequently_abs_harmonic_error_gt
+#print axioms Erdos66FrequentFluctuation.frequently_abs_log_error_gt
+#print axioms Erdos66FrequentFluctuation.exists_large_log_fluctuation

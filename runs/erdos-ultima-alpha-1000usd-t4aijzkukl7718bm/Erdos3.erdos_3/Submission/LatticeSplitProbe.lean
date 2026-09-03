@@ -1,0 +1,17 @@
+import Submission.PrimitiveKernelLattice
+#check Module.Basis.prod
+#check Module.Basis.prod_apply_inl
+#check Module.Basis.prod_apply_inr
+#check Module.Basis.singleton
+#check Module.Basis.singleton_apply
+#check LinearEquiv.ofBijective
+#check LinearEquiv.ofBijective_apply
+#check LinearMap.ker_eq_bot
+#check LinearMap.injective_iff_map_eq_zero
+#check Submodule.coe_sum
+#check Submodule.coe_smul_of_tower
+#check Submodule.IsPrincipal.generator_mem
+#check OrthonormalBasis.mk
+#check Orthonormal.inner_eq_ite
+#check Orthonormal.inner_right_fintype
+#check Module.Basis.map_apply

@@ -1,0 +1,16 @@
+import Submission.IntervalPredecessorRepairExplore
+import Submission.PredecessorRepairParametersExplore
+
+/-! Full audit of the predecessor-repair continuation. -/
+#print axioms Erdos66ProfileLowerGap.profile_square_lower
+#print axioms Erdos66ProfileLowerGap.interval_nonempty_of_length
+#print axioms Erdos66PredecessorCell.predecessor_gap_of_profile
+#print axioms Erdos66PredecessorCell.predecessor_swap_prefix
+#print axioms Erdos66BoundedFiberSelection.bounded_fiber_indicator_bound
+#print axioms Erdos66BoundedFiberSelection.exists_avoid_bounded_fibers_and_small_hits
+#print axioms Erdos66CellSidonSelection.exists_cell_sidon_avoid_and_hits
+#print axioms Erdos66NaturalSymmetricPacket.swapped_symmetric_target
+#print axioms Erdos66PredecessorPacketRepair.exists_predecessor_packet_repair
+#print axioms Erdos66PredecessorCandidateDegree.predecessor_candidate_degrees
+#print axioms Erdos66IntervalPredecessorRepair.exists_interval_predecessor_repair
+#print axioms Erdos66PredecessorRepairParameters.eventually_predecessor_selection_small

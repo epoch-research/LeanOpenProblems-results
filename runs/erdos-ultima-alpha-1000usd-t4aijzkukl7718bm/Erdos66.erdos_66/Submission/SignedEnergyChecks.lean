@@ -1,0 +1,17 @@
+import Submission.SignedRepairStabilityExplore
+#check Finset.sq_sum_le_card_mul_sum_sq
+#check Finset.sum_disjSum
+#check Finset.card_disjSum
+#check Finset.sum_neg_distrib
+#check Finset.disjoint_sdiff_sdiff
+#check Finset.sum_union
+#check Finset.disjoint_left
+#check tendsto_order
+#check le_of_tendsto_of_tendsto
+#check Filter.EventuallyLE.mul
+#check Finset.card_sdiff_add_card_inter
+#check Finset.card_sdiff_le
+#check sq_le_sq₀
+#check pow_le_pow_left₀
+#check mul_self_le_mul_self
+#check Filter.Eventually.const_mul

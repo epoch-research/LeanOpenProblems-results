@@ -1,0 +1,42 @@
+Submission/AdaptivePacketChoiceExplore.lean:57:2: error: unsolved goals
+case h.e'_3.e_a.e_s
+α : Type u_1
+inst✝ : Fintype α
+F : Finset ℕ
+n : ℕ
+x : α → ℕ
+hinj : ∀ (b : Bool), Function.Injective (endpoint n x b)
+z : ℕ
+hh :
+  ↑{a |
+          ∃ b,
+            (fun b a => endpoint n x b a ≤ z ∧ z - endpoint n x b a ∈ F) b a ∨
+              (fun b a => 2 * endpoint n x b a = z) b a}.card ≤
+    2 * ↑F.card + 2 * 1
+⊢ extraHits F n x z =
+    {a |
+      ∃ b, (fun b a => endpoint n x b a ≤ z ∧ z - endpoint n x b a ∈ F) b a ∨ (fun b a => 2 * endpoint n x b a = z) b a}
+Submission/AdaptivePacketChoiceExplore.lean:88:46: error: mod_cast has type
+  {a | assign (endpoint n x b a) ∈ Finset.image assign F}.card ≤ H * (Finset.image assign F).card
+but is expected to have type
+  {a | assign (endpoint n x b a) ∈ Finset.image assign F}.card ≤ H * (Finset.image assign F).card
+Submission/AdaptivePacketChoiceExplore.lean:92:2: error: unsolved goals
+case h.e'_3.e_a.e_s
+α : Type u_1
+inst✝ : Fintype α
+F : Finset ℕ
+assign : ℕ → ℕ
+n : ℕ
+x : α → ℕ
+H : ℕ
+hfiber : ∀ (b : Bool) (r : ℕ), {a | assign (endpoint n x b a) = r}.card ≤ H
+hh :
+  ↑{a | ∃ b, (fun b a => assign (endpoint n x b a) ∈ Finset.image assign F) b a}.card ≤
+    2 * (↑H * ↑(Finset.image assign F).card)
+⊢ usedChoices F assign n x = {a | ∃ b, (fun b a => assign (endpoint n x b a) ∈ Finset.image assign F) b a}
+Submission/AdaptivePacketChoiceExplore.lean:170:0: warning: automatically included section variable(s) unused in theorem `Erdos66AdaptivePacketChoice.assigned_packet_injOn`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

@@ -1,0 +1,11 @@
+import Submission.ExpPowerDominanceExplore
+#check Real.sqrt_exp
+#check Real.sqrt_eq_rpow
+#check Real.exp_neg
+#check Real.tendsto_exp_atBot
+#check Filter.tendsto_neg_atTop_atBot
+#check Polynomial.sum_def
+#check MvPolynomial.eval₂_eq
+#check MvPolynomial.eval_eq
+#check MvPolynomial.eval₂_at_apply
+#check Real.exp_log

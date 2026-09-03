@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check QuadraticForm
+#check QuadraticMap.map_add
+#check QuadraticMap.map_smul
+#check QuadraticMap.polarBilin_apply_apply
+#check QuadraticMap.polarBilin
+#check LinearMap.map_smul₂
+#check IsSquare.div
+#check IsSquare.neg_iff
+#check sub_cube

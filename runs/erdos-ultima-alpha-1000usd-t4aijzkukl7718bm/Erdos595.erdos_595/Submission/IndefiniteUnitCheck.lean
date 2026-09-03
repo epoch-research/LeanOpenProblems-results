@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check dotProduct
+#check dotProduct_comm
+#check dotProduct_self_nonneg
+#check dotProduct_sum
+#check sum_dotProduct
+#check dotProduct_smul
+#check smul_dotProduct
+#check Fintype.linearIndependent_iff
+#check LinearIndependent.fintype_card_le_finrank
+#check Module.finrank_pi
+#check Finset.single_le_sum
+#check Finset.sum_sub_distrib
+#check Finset.sum_eq_zero_iff_of_nonneg
+#check Finset.sum_eq_single
+#check LinearOrderedField

@@ -1,0 +1,13 @@
+import Submission.MovingAnchorPell
+open Polynomial
+#check comp_assoc
+#check mul_comp
+#check add_comp
+#check sub_comp
+#check pow_comp
+#check C_comp
+#check one_comp
+#check Polynomial.Chebyshev.T_add_two
+#check Nat.twoStepInduction
+#check natDegree_comp
+#check comp_mul

@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Polynomial.eq_zero_of_natDegree_lt_card_of_eval_eq_zero
+#check Polynomial.eq_zero_of_natDegree_lt_card_of_eval_eq_zero'
+#check Polynomial.eq_of_natDegree_lt_card_of_eval_eq
+#check Polynomial.funext
+#check Polynomial.coeff_C_mul_X_pow
+#check Fintype.card_units
+#check Fintype.card_units_eq
+#check Fintype.card_ne_zero
+#check SimpleGraph.IsBipartiteWith
+#check Finset.card_biUnion
+#check SimpleGraph.card_edgeFinset_bipartite

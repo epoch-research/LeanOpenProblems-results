@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Nat.log_le_iff_le_pow
+#check Nat.log_le_log
+#check Nat.log_pow
+#check Nat.lt_pow_succ_log_self
+#check Nat.pow_log_le_self
+#check Nat.lt_of_log_lt
+#check Nat.card_multiples
+#check Nat.card_multiples'
+#check Finset.card_biUnion_le
+#check Nat.card_Icc
+#check sq_sum_le_card_mul_sum_sq
+#check Nat.sum_divisorsAntidiagonal

@@ -1,0 +1,14 @@
+import Submission.QuarticTwins
+import Submission.QuarticPairCross
+/-! Axiom audit of quartic-pair and double-suppression reductions. -/
+
+#print axioms Erdos583QuarticPairProxyDevelopment.QuarticData.swapX
+#print axioms Erdos583QuarticPairProxyDevelopment.QuarticData.swapY
+#print axioms Erdos583QuarticPairProxyDevelopment.connected_support_add_supported_edge
+#print axioms Erdos583QuarticPairProxyDevelopment.QuarticData.fresh_cross_reduction
+#print axioms Erdos583QuarticPairProxyDevelopment.QuarticData.shared_cross_reduction
+#print axioms Erdos583QuarticPairCrossDevelopment.QuarticData.both_cross_reduction
+#print axioms Erdos583QuarticPairCrossDevelopment.QuarticData.distinct_pairs_reduction
+#print axioms Erdos583DoubleSuppressionPartitionDevelopment.double_suppression_partition
+#print axioms Erdos583QuarticTwinsDevelopment.restore_path_cover
+#print axioms Erdos583QuarticTwinsDevelopment.failure_no_quartic_twins_data

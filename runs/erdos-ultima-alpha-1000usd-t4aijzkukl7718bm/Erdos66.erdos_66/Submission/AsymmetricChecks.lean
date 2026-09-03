@@ -1,0 +1,10 @@
+import Submission.AsymmetricMixedEnergyExplore
+#check le_of_sq_le_sq
+#check pow_le_pow_iff_left₀
+#check pow_le_pow_left₀
+#check le_of_pow_le_pow_left₀
+#check Erdos66CrossGraph.crossCharFiber_comm
+#check Erdos66CrossGraph.cross_graph_error
+#check Erdos66OriginRepair.pairCount_comm
+#check Nat.le_ceil
+#check Nat.mul_le_mul_right

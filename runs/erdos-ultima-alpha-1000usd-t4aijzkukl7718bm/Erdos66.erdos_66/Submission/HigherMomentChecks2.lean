@@ -1,0 +1,14 @@
+import Submission.AbelErrorEnergyExplore
+#check ConvexOn.map_sum_le_sum
+#check ConvexOn.map_sum_le_of_le_one
+#check ConvexOn.map_sum_le_sum_of_nonneg
+#check ConvexOn.map_add_sum_le
+#check Finset.sum_le_tsum
+#check Summable.sum_le_tsum
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check continuous_pow
+#check Filter.Tendsto.eventually_lt_const
+#check Real.log_le_sub_one_of_pos
+#check Real.neg_log_le_sub_one_of_pos
+#check Real.log_natCast_nonneg
+#check Finset.sum_insertNone

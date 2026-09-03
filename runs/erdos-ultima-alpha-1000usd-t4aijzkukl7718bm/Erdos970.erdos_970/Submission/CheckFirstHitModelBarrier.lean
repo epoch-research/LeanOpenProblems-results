@@ -1,0 +1,14 @@
+import Submission.FirstHitIntegerCutoff
+#check Real.sum_le_exp_of_nonneg
+#check Real.sum_le_exp
+#check Real.exp_bound_div_one_sub_of_interval
+#check Real.exp_pos
+#check Real.log_two_gt_d9
+#check Real.log_two_lt_d9
+#check monotoneOn_of_hasDerivWithinAt_nonneg
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt
+#check hasDerivAt_inv
+#check Real.hasDerivAt_log
+#check ContinuousOn.intervalIntegrable
+#check Real.exp_gt_sum
+#check Real.exp_ge_sum

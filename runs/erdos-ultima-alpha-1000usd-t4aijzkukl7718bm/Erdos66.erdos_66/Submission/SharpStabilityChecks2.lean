@@ -1,0 +1,12 @@
+import Submission.FrequentFluctuationExplore
+#check Filter.Tendsto.const_mul
+#check Filter.Tendsto.pow
+#check Filter.Tendsto.comp
+#check pow_lt_one₀
+#check Real.sqrt_mul
+#check Real.sqrt_div
+#check lt_of_lt_of_le
+#check pow_add
+#check Nat.cast_add
+#check mul_pow
+#check pow_mul

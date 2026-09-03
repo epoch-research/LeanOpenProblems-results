@@ -1,0 +1,8 @@
+import Submission.LeafCubicReduction
+
+/-! Axiom audit for leaf-neighbor suppression. -/
+
+#print axioms Erdos583LeafCubicReductionDevelopment.leaf_cubic_nonedge_reduction
+#print axioms Erdos583LeafCubicReductionDevelopment.leaf_cubic_triangle_of_failure
+#print axioms Erdos583LeafCubicReductionDevelopment.leaf_cubic_no_other_bridge_of_failure
+#print axioms Erdos583LeafCubicReductionDevelopment.two_leaf_neighbors_degree_ge_five

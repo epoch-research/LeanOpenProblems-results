@@ -1,0 +1,32 @@
+import Submission.SharpLargeChild
+
+#check @Erdos821.sum_Icc_neg_rpow_le
+#print axioms Erdos821.sum_Icc_neg_rpow_le
+#check @Erdos821.rough_divisor_weight_sum_sharp
+#print axioms Erdos821.rough_divisor_weight_sum_sharp
+#check @Erdos821.sum_largeDivisorLift_sharp_le
+#print axioms Erdos821.sum_largeDivisorLift_sharp_le
+#check @Erdos821.summable_largeDivisorLift_sharp
+#print axioms Erdos821.summable_largeDivisorLift_sharp
+#check @Erdos821.sum_largeChildParents_sharp_le
+#print axioms Erdos821.sum_largeChildParents_sharp_le
+#check @Erdos821.summable_largeChildParents_sharp
+#print axioms Erdos821.summable_largeChildParents_sharp
+#check @Erdos821.setPowerMass_largeChildParents_sharp_le
+#print axioms Erdos821.setPowerMass_largeChildParents_sharp_le
+#check @Erdos821.sharpLargeChildExponent_bounds
+#print axioms Erdos821.sharpLargeChildExponent_bounds
+#check @Erdos821.summable_largeChildParents_endpoint
+#print axioms Erdos821.summable_largeChildParents_endpoint
+#check @Erdos821.sharpLargeChildExponent_reciprocal
+#print axioms Erdos821.sharpLargeChildExponent_reciprocal
+#check @Erdos821.summable_largeChildParents_reciprocal_sharp
+#print axioms Erdos821.summable_largeChildParents_reciprocal_sharp
+#check @Erdos821.setPowerMass_largeChildParents_reciprocal_sharp_le
+#print axioms Erdos821.setPowerMass_largeChildParents_reciprocal_sharp_le
+#check @Erdos821.summable_largeChildLayer_reciprocal_sharp
+#print axioms Erdos821.summable_largeChildLayer_reciprocal_sharp
+#check @Erdos821.sharpLargeChildMassFactor_step
+#print axioms Erdos821.sharpLargeChildMassFactor_step
+#check @Erdos821.setPowerMass_largeChildLayer_sharp_le
+#print axioms Erdos821.setPowerMass_largeChildLayer_sharp_le

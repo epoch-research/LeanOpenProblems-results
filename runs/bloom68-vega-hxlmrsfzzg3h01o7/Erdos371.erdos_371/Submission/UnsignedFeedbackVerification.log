@@ -1,0 +1,24 @@
+PASS exact recursions, weights, |u|<=5, and cofactor identities for X=1..250 (20108 cofactor checks)
+PASS exact divisor/Cauchy moment inequalities through 5000
+filtration X=200: band=(X^.75,X^.9], good-largest-hit mass=0.00500000
+  feedback energy=0.0450485865, predictable V_U=8.08144224, V_F=15.66304527, K_G=12.76720175
+  I(H_p;unlabelled past) sum=0.77532423, certified finite lower=0.06667592
+  V_F and K_G singleton lower=0.28532787, V_U finite lower=0.65234717
+  verified D>X atoms=3157
+  reflection-quotient singletons=1446, TV sum=0.57204174, lower=0.00483607
+filtration X=1000: band=(X^.75,X^.9], good-largest-hit mass=0.01600000
+  feedback energy=0.0348028671, predictable V_U=42.23793936, V_F=73.42911048, K_G=63.05904411
+  I(H_p;unlabelled past) sum=1.30971190, certified finite lower=0.23649686
+  V_F and K_G singleton lower=3.76627688, V_U finite lower=6.30736199
+  verified D>X atoms=72647
+  reflection-quotient singletons=33834, TV sum=0.65936581, lower=0.01586156
+filtration X=5000: band=(X^.75,X^.9], good-largest-hit mass=0.02700000
+  feedback energy=0.0257127865, predictable V_U=178.80271384, V_F=281.19422672, K_G=249.91057657
+  I(H_p;unlabelled past) sum=1.72796073, certified finite lower=0.36040268
+  V_F and K_G singleton lower=25.80712513, V_U finite lower=25.49839379
+  verified D>X atoms=1541344
+  reflection-quotient singletons=725820, TV sum=0.67337098, lower=0.02693744
+blocked-state X=5000: mass=0.28460000, V_W=76.53061015, lower=0.06009523
+asymptotic constants: kappa=log(27/25)=0.076961041136, b*kappa=0.057720780852
+blocked-state constants: delta=0.153226728608, 4*delta*log(19/18)=0.033138173761
+PASS all finite checks (not a numerical proof of an asymptotic claim).

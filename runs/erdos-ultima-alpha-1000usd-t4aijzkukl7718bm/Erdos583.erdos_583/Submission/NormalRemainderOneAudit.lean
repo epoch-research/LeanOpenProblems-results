@@ -1,0 +1,5 @@
+import Submission.NormalRemainderOne
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583NormalRemainderOneDevelopment.missing_cycle_and_finish_impossible
+#print axioms Erdos583NormalRemainderOneDevelopment.normal_support_compl_card_le_one
+#print axioms Erdos583NormalRemainderOneDevelopment.cubic_root_normal_support

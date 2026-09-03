@@ -1,0 +1,65 @@
+def SunflowerReduction.OriginalTarget : Prop :=
+∃ c, ∀ (n k : ℕ), 0 < n → SunflowerFoundation.f n k < c k ^ n
+def SunflowerReduction.UniformFreeBound : ℕ → ℕ → Prop :=
+fun k C =>
+  ∀ (n : ℕ),
+    0 < n →
+      ∀ {α : Type} (F : Finset (Set α)),
+        (∀ A ∈ F, A.ncard = n) → (∀ A ∈ F, A.Finite) → ¬SunflowerFoundation.HasSunflower F k → F.card ≤ C ^ n
+def SunflowerReduction.AbsoluteProfile.{u_1} : {α : Type u_1} → Finset (Set α) → ℕ → ℕ → Prop :=
+fun {α} F m r => r ^ m < F.card ∧ ∀ (U : Finset α), U.Nonempty → SunflowerReduction.codegree F U ≤ r ^ (m - U.card)
+def SunflowerReduction.AbsoluteProfileSunflower : ℕ → ℕ → Prop :=
+fun k r =>
+  ∀ (m : ℕ),
+    0 < m →
+      ∀ {α : Type} (F : Finset (Set α)),
+        (∀ A ∈ F, A.ncard = m) →
+          (∀ A ∈ F, A.Finite) → SunflowerReduction.AbsoluteProfile F m r → SunflowerFoundation.HasSunflower F k
+SunflowerReduction.originalTarget_iff_uniformFreeBound :
+  SunflowerReduction.OriginalTarget ↔ ∀ (k : ℕ), ∃ C, SunflowerReduction.UniformFreeBound k C
+SunflowerReduction.exists_maximal_large_link.{u_1} {α : Type u_1} (F : Finset (Set α)) (n r : ℕ)
+  (hfinite : ∀ A ∈ F, A.Finite) (hlarge : r ^ n < F.card) :
+  ∃ T, Maximal (fun T => r ^ (n - T.card) < (SunflowerReduction.link F T).card) T
+SunflowerReduction.exists_free_absolute_profile_link.{u_1} {α : Type u_1} (F : Finset (Set α)) (n k r : ℕ)
+  (hfinite : ∀ A ∈ F, A.Finite) (huniform : ∀ A ∈ F, A.ncard = n) (hfree : ¬SunflowerFoundation.HasSunflower F k)
+  (hlarge : r ^ n < F.card) :
+  ∃ T,
+    T.card < n ∧
+      (∀ A ∈ SunflowerReduction.link F T, A.Finite) ∧
+        (∀ A ∈ SunflowerReduction.link F T, A.ncard = n - T.card) ∧
+          ¬SunflowerFoundation.HasSunflower (SunflowerReduction.link F T) k ∧
+            SunflowerReduction.AbsoluteProfile (SunflowerReduction.link F T) (n - T.card) r
+SunflowerReduction.originalTarget_iff_absoluteProfileSunflower :
+  SunflowerReduction.OriginalTarget ↔ ∀ (k : ℕ), ∃ r, SunflowerReduction.AbsoluteProfileSunflower k r
+'SunflowerFoundation.f_is_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerFoundation.threshold_iff_f_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.hasSunflower_iff_exists_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.threshold_succ_iff_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.uniformFreeBound_iff_f_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.pow_add_one_lt_add_two_pow' depends on axioms: [propext, Quot.sound]
+'SunflowerReduction.UniformFreeBound.f_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.originalTarget_iff_uniformFreeBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.diff_injOn_of_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.card_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.isSunflower_image_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.hasSunflower_of_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.not_hasSunflower_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.link_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.link_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.disjoint_of_mem_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.codegree_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.disjoint_of_codegree_link_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.codegree_link_of_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.exists_maximal_large_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.absoluteProfile_of_maximal_large_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.rank_pos_of_card_gt_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.exists_absolute_profile_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.exists_free_absolute_profile_link' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReduction.uniformFreeBound_iff_absoluteProfileSunflower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SunflowerReduction.originalTarget_iff_absoluteProfileSunflower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'SunflowerReductionAudit.literal_target_equivalence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SunflowerReductionAudit.literal_maximal_link_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]

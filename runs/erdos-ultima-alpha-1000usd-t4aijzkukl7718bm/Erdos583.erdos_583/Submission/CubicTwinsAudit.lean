@@ -1,0 +1,8 @@
+import Submission.ShortTriangleCubicExclusion
+
+/-! Axiom audit of common-attachment cubic repairs and the full short-triangle cubic-pair exclusion. -/
+#print axioms Erdos583ResidualOddAttachmentDevelopment.cubic_triangle_residual_odd_lift
+#print axioms Erdos583CubicTwinsFreshDevelopment.cubic_twins_fresh_even_reduction
+#print axioms Erdos583CubicTwinsExistingDevelopment.cubic_twins_existing_reduction
+#print axioms Erdos583CubicTwinsReductionDevelopment.cubic_twins_reduction
+#print axioms Erdos583ShortTriangleCubicExclusionDevelopment.failure_no_short_triangle_cubic_pair

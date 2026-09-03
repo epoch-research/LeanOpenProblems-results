@@ -1,0 +1,17 @@
+import Submission.Work
+open SimpleGraph Erdos583Work
+#check SupportConnected.puncture_add_edge
+#check support_puncture_add_edge_subset
+#check support_card_bound_of_removed
+#check puncture_fresh_internal
+#check DegreeThreeReduction.degree_three_other_neighbors
+#check leaf_isBridge
+#check SimpleGraph.Adj.isBridge_of_degree_eq_one
+#check SimpleGraph.isBridge_of_degree_eq_one
+#check Set.ncard_le_card
+#check Set.ncard_le_univ
+#check Nat.card_le_card_of_injective
+#check SimpleGraph.isBridge_iff_adj_and_not_reachable
+#check SimpleGraph.isBridge_iff
+#check Erdos583Work.BridgeGlue.bridge_of_single_boundary
+#check SimpleGraph.isBridge_iff_adj_and_forall_walk_mem_edges

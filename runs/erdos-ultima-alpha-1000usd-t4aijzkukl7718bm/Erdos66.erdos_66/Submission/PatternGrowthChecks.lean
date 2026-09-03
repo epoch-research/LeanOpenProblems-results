@@ -1,0 +1,17 @@
+import Submission.JointBoundaryTriplePatternsExplore
+#check Nat.pow_le_pow_right
+#check Nat.pow_lt_pow_right
+#check Nat.le_self_pow
+#check Nat.pow_le_pow_left
+#check Nat.pow_lt_pow_left
+#check pow_le_pow_right₀
+#check pow_lt_pow_right₀
+#check Finset.prod_image
+#check Nat.pow_mul
+#check Nat.succ_le_of_lt
+#check lt_of_pow_lt_pow_left₀
+#check Real.log_le_log
+#check Real.log_pow
+#check Real.exp_nat_mul
+#check Real.log_exp
+#check Real.exp_le_exp

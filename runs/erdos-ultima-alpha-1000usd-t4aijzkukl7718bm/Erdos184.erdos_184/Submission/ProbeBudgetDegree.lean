@@ -1,0 +1,8 @@
+import Submission.NonseparatingCoreBudget
+open SimpleGraph
+#check Erdos184Work.Critical.number_sdiff_add_le
+#check Erdos184Work.EvenCore.edge_card_lt_of_ne
+#check Erdos184Work.StarCore.edge_card_lt_of_ne
+#check Erdos184Work.Subfamilies.lowerFamily_property
+#check Erdos184Work.Subfamilies.lowerFamily_card
+#check SimpleGraph.Preconnected.support_eq_univ

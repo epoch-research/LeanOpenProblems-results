@@ -1,0 +1,13 @@
+import Submission.QuotaSurgery
+/-! Axiom audit for arbitrary-quota local surgeries. -/
+#print axioms Erdos583QuotaSurgeryDevelopment.quota_eq_sum_endpoints
+#print axioms Erdos583QuotaSurgeryDevelopment.replace_two_starts_general
+#print axioms Erdos583QuotaSurgeryDevelopment.orient
+#print axioms Erdos583QuotaSurgeryDevelopment.simple_tail_of_one_defect_rep
+#print axioms Erdos583QuotaSurgeryDevelopment.repair_at_outside_start
+#print axioms Erdos583QuotaSurgeryDevelopment.rooted_exposed_rep
+#print axioms Erdos583QuotaSurgeryDevelopment.exposedRoot_repair_of_positive
+#print axioms Erdos583QuotaSurgeryDevelopment.move_at_same_root
+#print axioms Erdos583QuotaSurgeryDevelopment.replace_one_general
+#print axioms Erdos583QuotaSurgeryDevelopment.reroot_closed_member
+#print axioms Erdos583QuotaSurgeryDevelopment.exposedRoot_move_pair_or_repair

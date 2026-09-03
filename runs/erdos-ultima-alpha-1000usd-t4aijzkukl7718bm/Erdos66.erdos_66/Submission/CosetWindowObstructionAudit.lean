@@ -1,0 +1,19 @@
+import Submission.CosetWindowObstructionExplore
+
+/-! Permitted-axiom audit for affine-slice and natural-window bounds. -/
+#print axioms Erdos66AffineOldPlaneSlice.oldPlane_add
+#print axioms Erdos66AffineOldPlaneSlice.off_sub_old
+#print axioms Erdos66AffineOldPlaneSlice.old_curve_count_eq_fresh
+#print axioms Erdos66AffineOldPlaneSlice.off_old_curve_cap
+#print axioms Erdos66AffineOldPlaneSlice.off_old_parabola_cap
+#print axioms Erdos66AffineOldPlaneSlice.off_old_repaired_cap
+#print axioms Erdos66SquareAnnulusMass.square_atTop
+#print axioms Erdos66SquareAnnulusMass.linear_div_square_count_zero
+#print axioms Erdos66SquareAnnulusMass.witness_square_annulus_gt_linear
+#print axioms Erdos66SquareAnnulusMass.witness_eventually_large_window_budget
+#print axioms Erdos66SquareAnnulusMass.no_log_limit_of_frequent_thin_square_annuli
+#print axioms Erdos66CosetWindowObstruction.encoded_coset_window_bound
+#print axioms Erdos66CosetWindowObstruction.encoded_subfield_sized_window_bound
+#print axioms Erdos66CosetWindowObstruction.witness_eventually_many_coset_parameters
+#print axioms Erdos66CosetWindowObstruction.hasCosetWindow_count_bound
+#print axioms Erdos66CosetWindowObstruction.no_log_limit_of_frequent_coset_windows

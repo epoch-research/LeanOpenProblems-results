@@ -1,0 +1,25 @@
+PASS: 1,000,000 exact dyadic/residual identities and finite-sum endpoints.
+PASS: 1,000,000 valley/activity and Boolean identities; cutoff discrepancies lie in the claimed bands.
+DATA ONLY: {'X': 100, 'R(X)': 1, 'bypasses': 71, 'active_bypasses': 71, 'V(X)': 7}
+DATA ONLY: {'X': 1000, 'R(X)': 15, 'bypasses': 705, 'active_bypasses': 705, 'V(X)': 84}
+DATA ONLY: {'X': 10000, 'R(X)': -17, 'bypasses': 6827, 'active_bypasses': 6825, 'V(X)': 903}
+DATA ONLY: {'X': 100000, 'R(X)': 100, 'bypasses': 68078, 'active_bypasses': 68070, 'V(X)': 9691}
+DATA ONLY: {'X': 1000000, 'R(X)': -9, 'bypasses': 679255, 'active_bypasses': 679150, 'V(X)': 102956}
+PASS: high-bypass superquadratic product and all-permutation polynomial escape: 302610 checks on 60522 exactly counted high bypasses.
+DATA ONLY: first high bypasses: [(5, 5, 3, 11), (14, 7, 5, 29), (21, 7, 11, 43), (33, 11, 17, 67), (51, 17, 13, 103)]
+PASS: fixed-cutoff multiplicativity/parity projector: 39000 ; high-bypass Boolean lower bound: 8 cases.
+PASS: fixed-threshold aggregate identities: 42
+PASS: exact rational logarithmic residual and pair-weight corrections: 24
+PASS: ordered-triple CRT/complement checks: 2548
+PASS: all feasible label-permutation bilinear divisibilities: 14560
+PASS: incomplete active triple-fiber current, five independently counted prefixes.
+PASS: actual reversed-label pairs: 0 within the small search, plus two certified nonlocal pairs; active labels unique: 19994
+PASS: 8342 in V pairs nonlocally with 701018, with labels (97,103,71)/(103,97,71).
+PASS: n=2 -> 27 is NOT a largest-factor-preserving triple reflection.
+PASS: all six abc maps, determinants, and positive-integral no-return.
+PASS: nonnegative unimodular no-return matrices: 364
+PASS: termwise radical support congruences: 9999
+c0 = 0.11853551384343307 (analytic constant, not a fitted density)
+kappa = 0.004774760065250238 > 2/585; eta range upper endpoint = 0.21306131942526685
+PASS: Spec.lean unchanged: d48bb112dcd4fd5c98dae80077b7384df62a14ef9a919fe7d476b9c5ace427bb
+All finite checks passed. No numerical test is used to assert a limiting density.

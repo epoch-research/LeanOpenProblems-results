@@ -1,0 +1,41 @@
+import Submission.RestoredInterceptScaleExplore
+
+/-! Axiom audit of pruning and exact first-row restoration. -/
+#print axioms Erdos66InterceptOppositePruning.oppositeCount
+#print axioms Erdos66InterceptOppositePruning.pruned
+#print axioms Erdos66InterceptOppositePruning.pruned_subset
+#print axioms Erdos66InterceptOppositePruning.oppositeCount_sum
+#print axioms Erdos66InterceptOppositePruning.pruned_card_loss
+#print axioms Erdos66InterceptOppositePruning.pruned_admissible
+#print axioms Erdos66InterceptOppositePruning.properEdges_mono
+#print axioms Erdos66InterceptOppositePruning.budgetAt_mono
+#print axioms Erdos66InterceptOppositePruning.budget_mono
+#print axioms Erdos66InterceptOppositePruning.exists_energy_budget_opposites
+#print axioms Erdos66FinitePruningError.weightedFiber
+#print axioms Erdos66FinitePruningError.weightedFiber_l1
+#print axioms Erdos66FinitePruningError.weightedFiber_pruning
+#print axioms Erdos66FinitePruningError.crossCharFiber_pruning
+#print axioms Erdos66FinitePruningError.square_card_loss
+#print axioms Erdos66FinitePruningError.pairCount_union_small
+#print axioms Erdos66FinitePruningError.pairCount_union_abs_error
+#print axioms Erdos66PrunedInterceptBounds.translated_mono
+#print axioms Erdos66PrunedInterceptBounds.l1_from_energy
+#print axioms Erdos66PrunedInterceptBounds.pruned_l1_bound
+#print axioms Erdos66PrunedInterceptBounds.mean_loss
+#print axioms Erdos66PrunedInterceptBounds.pruned_weighted_bound
+#print axioms Erdos66PrunedInterceptBounds.pruned_actual_bound
+#print axioms Erdos66PrunedInterceptBounds.pruned_correction_cubic
+#print axioms Erdos66RestoredInterceptPrefix.restoredPoints
+#print axioms Erdos66RestoredInterceptPrefix.restored
+#print axioms Erdos66RestoredInterceptPrefix.restoredPoints_card
+#print axioms Erdos66RestoredInterceptPrefix.restoredPoints_row_zero
+#print axioms Erdos66RestoredInterceptPrefix.restored_row_zero
+#print axioms Erdos66RestoredInterceptPrefix.restored_error
+#print axioms Erdos66RestoredInterceptPrefix.exists_restored_graph
+#print axioms Erdos66RestoredInterceptPrefix.encoded_restored_prefix
+#print axioms Erdos66RestoredInterceptPrefix.encoded_restored_counts_below
+#print axioms Erdos66RestoredInterceptScale.pruning_relative_cost_bound
+#print axioms Erdos66RestoredInterceptScale.pruning_envelope_limit
+#print axioms Erdos66RestoredInterceptScale.pruning_cost_negligible
+#print axioms Erdos66RestoredInterceptScale.count_cube_div_cutoff_tends_atTop
+#print axioms Erdos66RestoredInterceptScale.cubic_certificate_fails_for_full_prefix

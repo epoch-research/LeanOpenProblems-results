@@ -1,0 +1,12 @@
+import Submission.PrimeSmoothMeanScales
+#check Real.tendsto_log_div_self_atTop
+#check Real.isLittleO_log_id_atTop
+#check Real.isLittleO_log_rpow_atTop
+#check tendsto_pow_atTop
+#check Real.log_le_sub_one_of_pos
+#check Real.log_two_gt_d9
+#check Real.tendsto_log_atTop
+#check tendsto_nhdsWithin_iff
+#check tendsto_nhdsWithin_iff
+#check tendsto_nhdsWithin_iff
+#check Finset.sum_Ico_add'

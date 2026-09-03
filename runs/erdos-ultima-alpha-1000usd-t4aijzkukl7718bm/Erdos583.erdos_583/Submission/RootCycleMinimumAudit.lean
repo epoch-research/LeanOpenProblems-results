@@ -1,0 +1,9 @@
+import Submission.RootCycleMinimum
+
+/-! Allowed-axiom audit of the global cycle-minimization helpers. -/
+
+#print axioms Erdos583RootCycleMinimumDevelopment.exists_global_shortest_cycle
+#print axioms Erdos583RootCycleMinimumDevelopment.rep_of_cons
+#print axioms Erdos583RootCycleMinimumDevelopment.shorten_cycle_by_outside_terminal
+#print axioms Erdos583RootCycleMinimumDevelopment.global_minimum_terminal_not_on_cycle
+#print axioms Erdos583RootCycleMinimumDevelopment.global_minimum_terminal_on_tail

@@ -1,0 +1,13 @@
+import Submission.MatchingCutMarked
+
+/-! Axiom audit of the matching-cut gluing development. -/
+#print axioms Erdos583MatchingCutMarkedDevelopment.lift_marked_contraction
+#print axioms Erdos583MatchingCutMarkedDevelopment.marked_contraction_partition
+#print axioms Erdos583MatchingCutMarkedDevelopment.marked_even_matching_glue
+#print axioms Erdos583MatchingCutMarkedDevelopment.twice_marked_budget
+#print axioms Erdos583MatchingCutMarkedDevelopment.even_matching_cut_reduction
+#print axioms Erdos583MatchingCutMarkedDevelopment.failure_even_matching_cut_odd_sides
+#print axioms Erdos583MatchingCutMarkedDevelopment.odd_failure_no_matching_cut
+#print axioms Erdos583MatchingCutMarkedDevelopment.degree_le_matching_side
+#print axioms Erdos583MatchingCutMarkedDevelopment.odd_failure_no_proper_matching_cut
+#print axioms Erdos583MatchingCutMarkedDevelopment.failure_matching_cut_parity

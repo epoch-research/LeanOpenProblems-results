@@ -1,0 +1,11 @@
+import Submission.DoubleEndpointGlue
+/-! Axiom audit for double endpoint gluing. -/
+#print axioms Erdos583DoubleEndpointGlueDevelopment.union_partitions_tracked
+#print axioms Erdos583DoubleEndpointGlueDevelopment.merge_two_pairs
+#print axioms Erdos583DoubleEndpointGlueDevelopment.two_endpoint_members
+#print axioms Erdos583DoubleEndpointGlueDevelopment.induced_endpoint_union
+#print axioms Erdos583DoubleEndpointGlueDevelopment.map_edge_nonempty
+#print axioms Erdos583DoubleEndpointGlueDevelopment.ne_of_disjoint_nonempty
+#print axioms Erdos583DoubleEndpointGlueDevelopment.nonempty_of_endpoint
+#print axioms Erdos583DoubleEndpointGlueDevelopment.glue_induced_two_pairs
+#print axioms Erdos583DoubleEndpointGlueDevelopment.glue_induced_even_marked

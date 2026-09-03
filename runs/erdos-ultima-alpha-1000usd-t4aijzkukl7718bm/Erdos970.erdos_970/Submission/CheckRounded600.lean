@@ -1,0 +1,9 @@
+import Submission.Rounded600Data
+#check Finset.forall_mem_empty
+#check Finset.forall_mem_insert
+#check Fin.sum_univ_zero
+#check Fin.sum_univ_succ
+#check Int.cast_ite
+#check Int.cast_natCast
+#check Int.cast_nonneg
+#check mul_le_one₀

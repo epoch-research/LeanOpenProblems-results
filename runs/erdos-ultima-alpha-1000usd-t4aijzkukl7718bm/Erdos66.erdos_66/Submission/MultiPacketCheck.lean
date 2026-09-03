@@ -1,0 +1,11 @@
+import Submission.MultiPacketSelectionExplore
+#check Finset.sum_fiberwise
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Fintype.sum_prod_type
+#check Fintype.sum_bool
+#check Finset.sum_const_zero
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.card_filter_le_iff
+#check Finset.sum_mul_sum
+#check Finset.sum_comm

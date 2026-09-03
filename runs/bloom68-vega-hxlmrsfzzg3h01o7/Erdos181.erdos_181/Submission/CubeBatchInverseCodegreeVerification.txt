@@ -1,0 +1,21 @@
+All exact checks passed.
+actual_pruning_and_lll_load_cases: 14
+deficient_batches: 21839
+exhaustive_hypergraphs: 256
+full_conditionals: 896
+full_injection_tilt_comparisons: 84
+general_witness_conditionals: 1216
+general_witness_families: 127
+global_matching_tail_comparisons: 20
+isolation_and_mgf_comparisons: 12
+kernels: 2518
+mixed_batch_capacity_polynomials: 62384
+nonvacuous_small_density_lll_cases: 1
+pair_capacity_polynomials: 9304
+pruning_binomial_comparisons: 720
+random_column_dimensions: 3
+random_hypergraphs: 250
+sharp_anchor_polynomials: 4
+sharp_cube_dimensions: 6
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+No uniform Ramsey assertion was assumed or verified.

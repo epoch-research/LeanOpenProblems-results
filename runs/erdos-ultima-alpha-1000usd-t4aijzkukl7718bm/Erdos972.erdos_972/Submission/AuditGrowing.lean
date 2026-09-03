@@ -1,0 +1,6 @@
+import Submission.GrowingTypeI
+#print axioms Erdos972GrowingTypeI.exists_growing_typeI_scale
+#print axioms Erdos972GrowingTypeI.typeI_uniform_budget
+#print axioms Erdos972MovingCenteredRows.first_common_bound
+#print axioms Erdos972RealLogCenter.commonLogCenter_div_tendsto
+#print axioms Erdos972WeightedBeattyRows.logRow_output_approx

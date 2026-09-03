@@ -1,0 +1,9 @@
+import Submission.SelbergPrimes
+#check hasSum_fintype
+#check hasSum_fintype_of_support_subset
+#check summable_of_finite_support
+#check summable_fintype
+#check summable_of_ne_finset_zero
+#check Set.Finite.summable
+#check summable_fintype
+#check summable_finite

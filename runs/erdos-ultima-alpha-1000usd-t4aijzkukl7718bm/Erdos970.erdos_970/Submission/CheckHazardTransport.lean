@@ -1,0 +1,14 @@
+import Submission.SoftEndpointLocal
+import Submission.GapHazardExample
+#check Fintype.bijective_iff_injective_and_card
+#check Fintype.bijective_iff_injective_and_card_le
+#check Fintype.bijective_iff_injective_and_card_ge
+#check Fintype.bijective_iff_injective_and_card
+#check Finset.sum_range_reflect
+#check Finset.card_congr
+#check Equiv.subtypeEquiv
+#check Nat.coprime_mul_iff_right
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.ModEq.add_left_cancel'
+#check Nat.ModEq.add_right
+#check Nat.ModEq.eq_of_lt_of_lt

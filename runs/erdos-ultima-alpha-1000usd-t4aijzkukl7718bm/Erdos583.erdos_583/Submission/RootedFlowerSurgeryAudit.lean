@@ -1,0 +1,7 @@
+import Submission.RootedFlowerSurgery
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583RootedFlowerSurgeryDevelopment.move_edge_sets
+#print axioms Erdos583RootedFlowerSurgeryDevelopment.member_endpoint_path
+#print axioms Erdos583RootedFlowerSurgeryDevelopment.regular_improve_outside_rep
+#print axioms Erdos583RootedFlowerSurgeryDevelopment.regular_improve_outside

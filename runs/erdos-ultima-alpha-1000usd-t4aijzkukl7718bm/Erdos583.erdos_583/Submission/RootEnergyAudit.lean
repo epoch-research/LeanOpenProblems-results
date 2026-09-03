@@ -1,0 +1,13 @@
+import Submission.RootEnergy
+/-! Axiom audit of root-quota energy and the outside-member bound. -/
+#print axioms Erdos583RootEnergyDevelopment.root_quota_pos
+#print axioms Erdos583RootEnergyDevelopment.exposed_quota_zero
+#print axioms Erdos583RootEnergyDevelopment.two_zero_neighbors
+#print axioms Erdos583RootEnergyDevelopment.pair_energy_balance
+#print axioms Erdos583RootEnergyDevelopment.root_quota_le_two_of_minimum_energy
+#print axioms Erdos583RootEnergyDevelopment.exists_small_root_quota
+#print axioms Erdos583RootEnergyDevelopment.degree_bound_of_all_members_contain_root
+#print axioms Erdos583RootEnergyDevelopment.exists_member_avoiding_small_quota_root
+#print axioms Erdos583RootEnergyDevelopment.sum_quota
+#print axioms Erdos583RootEnergyDevelopment.exists_other_surplus
+#print axioms Erdos583RootEnergyDevelopment.zero_baseline_not_acyclic

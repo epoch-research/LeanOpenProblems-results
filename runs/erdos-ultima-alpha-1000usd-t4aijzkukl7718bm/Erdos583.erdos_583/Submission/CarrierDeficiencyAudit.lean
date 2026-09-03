@@ -1,0 +1,9 @@
+import Submission.CarrierDeficiency
+
+/-! Axiom audit for the carrier-deficiency consequences. -/
+#print axioms Erdos583CarrierDeficiencyDevelopment.touches_iff_support
+#print axioms Erdos583CarrierDeficiencyDevelopment.carrierCount_lt_iff
+#print axioms Erdos583CarrierDeficiencyDevelopment.small_root_deficiency
+#print axioms Erdos583CarrierDeficiencyDevelopment.five_cycle_carrierCount
+#print axioms Erdos583CarrierDeficiencyDevelopment.pentagon_outside_of_preserved_root
+#print axioms Erdos583CarrierDeficiencyDevelopment.exists_optimal_with_root_deficiency

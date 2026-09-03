@@ -1,0 +1,23 @@
+import Submission.QuadraticFourAPBarrier
+open Finset
+open scoped BigOperators Classical ComplexConjugate
+#check AddChar.mulShift
+#check AddChar.mulShift_apply
+#check AddChar.IsPrimitive.ne_zero
+#check AddChar.IsPrimitive.ne_one
+#check AddChar.isPrimitive_iff
+#check AddChar.IsPrimitive.injective
+#check AddChar.IsPrimitive.mulShift_injective
+#check AddChar.sum_mulShift
+#check AddChar.mulShift_injective
+#check AddChar.IsPrimitive.toEquiv
+#check ZMod.addCharEquiv
+#check ZMod.stdAddChar_mul
+#check AddChar.mulShiftEquiv
+#check AddChar.IsPrimitive.mulShift_eq_one_iff
+#check FiniteField.addCharEquiv
+#check AddChar.mulShift_inj
+#check norm_mul
+#check Real.sq_sqrt
+#check Finset.expect_congr
+#check Fintype.expect_equiv

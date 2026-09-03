@@ -1,0 +1,8 @@
+{"name": "Artin-Schreier a=1", "q": 5, "allowed_parameters": 5, "all_triple_multisets": 35, "product_values_with_collisions": 8, "product_values_with_two_squarefree_triples": 0, "seconds": 0.008}
+{"name": "linearized c=1,d=1", "q": 5, "allowed_parameters": 4, "all_triple_multisets": 20, "product_values_with_collisions": 1, "product_values_with_two_squarefree_triples": 0, "seconds": 0.002}
+{"name": "Artin-Schreier after H(t)=1/t", "q": 5, "allowed_parameters": 4, "all_triple_multisets": 20, "product_values_with_collisions": 2, "product_values_with_two_squarefree_triples": 0, "seconds": 0.001}
+{"name": "inseparable c=0,d=1", "q": 5, "allowed_parameters": 4, "all_triple_multisets": 20, "product_values_with_collisions": 1, "product_values_with_two_squarefree_triples": 0, "seconds": 0.002}
+{"name": "Artin-Schreier a=1", "q": 125, "allowed_parameters": 125, "all_triple_multisets": 333375, "product_values_with_collisions": 44163, "product_values_with_two_squarefree_triples": 40496, "seconds": 2.064}
+{"name": "linearized c=1,d=1", "q": 125, "allowed_parameters": 124, "all_triple_multisets": 325500, "product_values_with_collisions": 42488, "product_values_with_two_squarefree_triples": 38978, "seconds": 1.995}
+{"name": "Artin-Schreier after H(t)=1/t", "q": 125, "allowed_parameters": 124, "all_triple_multisets": 325500, "product_values_with_collisions": 42475, "product_values_with_two_squarefree_triples": 38876, "seconds": 1.985}
+All assertions passed; wrote Submission/wild_artin_schreier_b3_audit.json

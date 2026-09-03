@@ -1,0 +1,43 @@
+PASS check_small_completion
+PASS check_cut_identities
+PASS check_all_K6
+PASS check_sampled_full_extractions
+PASS check_noisy_chains
+PASS check_total_error_chains
+PASS check_hierarchies_and_separators
+PASS check_constants
+
+COUNTS
+K6_colorings: 32768
+K6_constructed_C4: 6224
+K6_peeling_steps: 17276
+K6_terminal_core: 26544
+actual_bad_row_vertices: 99
+actual_separator_vertices: 99
+admissible_cut_accounting: 12096
+aggregate_error_chain_cubes: 3
+aggregate_error_cuts: 30
+cut_Z_tests: 21504
+cut_cost_minima: 3840
+exact_uniform_thresholds: 4000
+halving_chains: 1000
+hierarchical_cube_certificates: 24
+hierarchical_peeling_steps: 497
+independent_terminal_cut_tests: 347024
+injective_cube_certificates: 1469
+long_zero_waste_steps: 127
+noisy_chain_cubes: 7
+nonzero_parameter_chain_steps: 171
+random_scope_thresholds: 4
+rectangular_colorings: 4132
+sampled_extracted_cubes: 643
+sampled_full_extractions: 768
+sampled_terminal_core: 125
+separator_packing_tests: 15680
+small_one_sided_instances: 792
+verified_cube_edges: 18823
+verified_cube_squares: 26759
+
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b (unchanged)
+Runtime: 5.229s
+All finite checks passed. The robust-core-to-cube implication is NOT claimed.

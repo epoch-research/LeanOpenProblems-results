@@ -1,0 +1,8 @@
+import Submission.MinimalParityProfile
+
+/-! Exact axiom audit of the counterexample parity profile. -/
+#print axioms Erdos583MinimalParityProfileDevelopment.degree_sum_lower_of_five
+#print axioms Erdos583MinimalParityProfileDevelopment.odd_minimal_edge_lower
+#print axioms Erdos583MinimalParityProfileDevelopment.odd_minimal_order_ge_nine
+#print axioms Erdos583MinimalParityProfileDevelopment.failure_four_even_or_six
+#print axioms Erdos583MinimalParityProfileDevelopment.failure_parity_profile

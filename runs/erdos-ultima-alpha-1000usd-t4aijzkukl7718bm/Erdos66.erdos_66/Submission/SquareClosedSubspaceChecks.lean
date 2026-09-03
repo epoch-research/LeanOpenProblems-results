@@ -1,0 +1,17 @@
+import Submission.OddFieldExtensionExplore
+#check Submodule.smul_mem
+#check Algebra.smul_def
+#check Subring.inv_mem_of_finite
+#check Subfield.ofSubring
+#check FiniteField.pow_card
+#check FiniteField.pow_card_sub_one_eq_one
+#check zpow_card_sub_one_eq_one
+#check pow_card_sub_one_eq_one
+#check pow_card_sub_one
+#check FiniteField.card_le_of_algebra
+#check FiniteDimensional.finrank_mul_finrank
+#check Module.finrank_mul_finrank
+#check Subfield.toIntermediateField
+#check Subalgebra.toIntermediateField
+#check IntermediateField.finrank_dvd
+#check Submodule.one_mem

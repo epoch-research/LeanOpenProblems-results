@@ -1,0 +1,11 @@
+import Submission.TripleDeletionParametersExplore
+import Submission.UniformWidthPacketsExplore
+import Submission.BalancedRepairParametersExplore
+
+/-! Audit of the finite whole-block deletion and repair ingredients. -/
+#print axioms Erdos66TripleDeletionParameters.eventually_deleted_profiles
+#print axioms Erdos66UniformWidthPackets.exists_uniform_width_packets
+#print axioms Erdos66BalancedRepairParameters.goodParameters_card
+#print axioms Erdos66BalancedRepairParameters.exists_pair_avoiding
+#print axioms Erdos66BalancedRepairParameters.exists_balanced_palette
+#print axioms Erdos66BalancedRepairParameters.balanced_pair_count

@@ -1,0 +1,15 @@
+import Submission.RefreshVarianceExplore
+import Submission.RoundingExplore
+#check AdditiveCombinatorics.sumConv_add
+#check AdditiveCombinatorics.add_sumConv
+#check AdditiveCombinatorics.sumConv_def
+#check abs_add_le
+#check Real.exp_lt_one_iff
+#check Real.log_mul
+#check Real.exp_lt_exp
+#check Real.log_pos
+#check Real.log_pow
+#check Real.log_lt_iff_lt_exp
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_const_zero
+#check tendsto_const_nhds

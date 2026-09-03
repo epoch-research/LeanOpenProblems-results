@@ -1,0 +1,9 @@
+Submission/GlobalRankDownwardRepairExplore.lean:99:22: error: Thrown from the linter.style.existsImplication term linter:
+  Application type mismatch: The argument
+    Fin w
+  has type
+    Type
+  of sort `Type 1` but is expected to have type
+    Prop
+  of sort `Type` in the application
+    And (Fin w)

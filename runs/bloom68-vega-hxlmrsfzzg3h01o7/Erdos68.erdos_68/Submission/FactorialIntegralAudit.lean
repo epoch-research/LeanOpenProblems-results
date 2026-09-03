@@ -1,0 +1,11 @@
+import Submission.FactorialIntegralCertificates
+
+#print axioms FactorialIntegralCertificates.scaled_summable_of_exp_bound
+#print axioms FactorialIntegralCertificates.scaled_newton_summable
+#print axioms FactorialIntegralCertificates.newton_integer_linear_form
+#print axioms FactorialIntegralCertificates.positive_integer_linear_form_of_congruence
+#print axioms FactorialIntegralCertificates.endpoint_bezout
+#print axioms FactorialIntegralCertificates.endpoint_reciprocal_identity
+#print axioms FactorialIntegralCertificates.numerator_mod
+#print axioms FactorialIntegralCertificates.numerator_nonzero
+#print axioms FactorialIntegralCertificates.example_tail_positive

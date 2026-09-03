@@ -1,0 +1,11 @@
+import Submission.SharpCapRoundingObstructionExplore
+#check Real.tendsto_log_comp_add_sub_log
+#check Real.tendsto_log_add_one_div_log
+#check Real.tendsto_log_add_const_sub_log
+#check tendsto_add_atTop_nat
+#check Filter.tendsto_add_atTop_iff_nat
+#check Filter.tendsto_add_atTop_iff_nat
+#check Erdos66Cumulative.cumulative_of_log_limit
+#check Asymptotics.IsLittleO.sum_range
+#check Real.log_le_sub_one_of_pos
+#check Real.log_le_sub_one_of_pos

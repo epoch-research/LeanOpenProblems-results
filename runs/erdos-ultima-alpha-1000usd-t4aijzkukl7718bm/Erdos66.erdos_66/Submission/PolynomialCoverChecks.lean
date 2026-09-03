@@ -1,0 +1,9 @@
+import Submission.PolynomialRingGraphCapacityExplore
+#check Finset.card_biUnion_le
+#check Finset.card_biUnion_le_card_mul
+#check Finset.sum_le_card_nsmul
+#check Nat.card_Ico
+#check Finset.card_image_of_injective
+#check Real.sqrt_le_sqrt
+#check Finset.sum_bij
+#check Finset.card_le_sum_card_fiberwise

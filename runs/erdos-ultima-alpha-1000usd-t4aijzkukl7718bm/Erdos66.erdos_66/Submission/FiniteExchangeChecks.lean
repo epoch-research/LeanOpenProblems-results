@@ -1,0 +1,14 @@
+import Submission.TailCapBlockingExplore
+#check Nat.right_le_pair
+#check Nat.left_le_pair
+#check Nat.unpair_pair
+#check Set.Finite.bddAbove
+#check Set.Finite.exists_nat_subset_range
+#check Set.Finite.exists_nat_subset_Iio
+#check Set.Finite.subset
+#check Set.finite_coe_iff
+#check Set.finite_coe_iff
+#check Finset.coe_subset
+#check Set.Finite.toFinset
+#check Set.Finite.bddAbove
+#check Set.mem_sdiff

@@ -1,0 +1,39 @@
+Rational packing checks: PASS
+  boundary-strip bracket < 0.019592345 < 1/4
+  balanced-cardinality factor < 0.412177697 < 1/2
+Carry-free integer autocorrelation: PASS (64 small arrays + 32-bit-digit branch)
+Parity endpoint realization: PASS (19,200 exact rational cases)
+Closed closest-pair disks: PASS (100 configurations)
+Three-parity-class support containment: PASS (44 whole finite supports)
+Random-sampling support gadget: PASS (6,640 vector counts, 120 vertex-disjoint matchings)
+Finite restoration tests (actual D(P), actual D(Q); candidates need not exhaust all disks):
+  R= 16 base               n=   589 D=  325 Phi=  3.2845  certified defect <=  -0.7155
+      closest pair
+  R= 16 full               n=   797 D=  330 Phi=  5.8330  certified defect <=   0.7972
+      center=(4,0), r=11, q=377, D(Q)=168
+  R= 16 outer-width-1      n=   625 D=  330 Phi=  3.5870  certified defect <=  -0.4130
+      closest pair
+  R= 16 outer-width-R/4    n=   685 D=  330 Phi=  4.3088  certified defect <=   0.3088
+      closest pair
+  R= 16 irregular-blocks   n=   685 D=  330 Phi=  4.3088  certified defect <=   0.3088
+      closest pair
+  R= 16 random-37pct       n=   657 D=  330 Phi=  3.9637  certified defect <=  -0.0363
+      closest pair
+  R= 32 base               n=  2397 D= 1183 Phi=  4.1055  certified defect <=   0.1055
+      closest pair
+  R= 32 full               n=  3209 D= 1192 Phi=  7.2475  certified defect <=   0.8122
+      center=(4,0), r=22, q=1517, D(Q)=598
+  R= 32 outer-width-1      n=  2469 D= 1192 Phi=  4.2903  certified defect <=   0.2903
+      closest pair
+  R= 32 outer-width-R/4    n=  2761 D= 1192 Phi=  5.3651  certified defect <=   1.1264
+      center=(-4,-8), r=23, q=1330, D(Q)=646
+  R= 32 irregular-blocks   n=  2777 D= 1189 Phi=  5.4549  certified defect <=   0.6780
+      center=(0,-9), r=22, q=1307, D(Q)=598
+  R= 32 random-37pct       n=  2689 D= 1192 Phi=  5.0890  certified defect <=   0.5074
+      center=(0,9), r=22, q=1280, D(Q)=598
+  Tested 84,720 integer-center/radius candidates, plus closest pairs.
+  Largest certified upper defect in this finite list: 1.126376
+Sparse sample checks (one reproducible sample per radius; not an asymptotic proof):
+  R= 24 theta=0.599489 n=  1088 D=  690 missing required vectors=0; certified defect <= -1.513665
+      closest pair
+ALL CHECKS PASSED. The universal planar disk criterion remains unresolved.

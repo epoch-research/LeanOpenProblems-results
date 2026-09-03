@@ -1,0 +1,16 @@
+import Submission.LayeredDigitAsymptoticExplore
+#check List.ofFn_get
+#check List.ofFn_getElem
+#check List.get_ofFn
+#check Fin.last_zero
+#check Fin.succ_castSucc
+#check Fin.castSucc_succ
+#check Fin.last_succ
+#check Fin.ofNat
+#check pow_unbounded_of_one_lt
+#check Nat.exists_lt_pow
+#check Nat.lt_pow_self
+#check Nat.lt_pow_succ
+#check Nat.lt_two_pow_self
+#check Nat.pow_le_pow_left
+#check Nat.pow_pos

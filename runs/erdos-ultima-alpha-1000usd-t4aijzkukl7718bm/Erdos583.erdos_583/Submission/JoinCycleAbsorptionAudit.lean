@@ -1,0 +1,8 @@
+import Submission.ComplementCycleResidue
+
+/-! Axiom audit for join-cycle absorption and retained core residues. -/
+#print axioms Erdos583JoinCycleAbsorptionDevelopment.predecessor_of_first_visit_avoids
+#print axioms Erdos583JoinCycleAbsorptionDevelopment.join_cycle_absorption_at_first_visit
+#print axioms Erdos583JoinCycleAbsorptionDevelopment.join_cycle_family_absorb_path
+#print axioms Erdos583JoinCycleAbsorptionDevelopment.cycles_absorb_of_disconnected_complement
+#print axioms Erdos583ComplementCycleResidueDevelopment.cycle_residue_absorption

@@ -1,0 +1,5685 @@
+{
+  "description": "Frobenius two-fiber Z6 exact audit; repeated triples included",
+  "field_encoding": "Fq bit-polynomials; K coordinates h0+h1*theta+h2*theta^2",
+  "composition_histogram_keys": "k=number of branch1 summands; values count output fibers by size",
+  "normalization_scope": "Affine theta normalization preserves within-composition fibers, not pure cross fibers",
+  "audits": [
+    {
+      "m": 1,
+      "q": 2,
+      "base_modulus_binary": "0b11",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 1
+      },
+      "total_unordered_triples_with_repetition": 20,
+      "composition_histograms": {
+        "0": {
+          "1": 4
+        },
+        "1": {
+          "1": 4,
+          "2": 1
+        },
+        "2": {
+          "1": 6
+        },
+        "3": {
+          "1": 4
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 4,
+          "2": 2
+        },
+        "1": {
+          "1": 4,
+          "2": 1
+        },
+        "2": {
+          "1": 6
+        }
+      },
+      "parity_system": {
+        "equation_count": 3,
+        "coefficient_rank": 2,
+        "augmented_rank": 3,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "q=2 mixed/pure triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 0,
+            "field_coefficients_h0_h1_h2": [
+              1,
+              1,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ],
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              1,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 0,
+            "field_coefficients_h0_h1_h2": [
+              1,
+              0,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 4,
+          "2": 1
+        },
+        "nonzero_isotropic_vectors": 0,
+        "anisotropic_vectors": 1,
+        "orthogonality_edges": 0,
+        "orthogonality_triangles": 0,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 0,
+        "three_roots_including_1": 0,
+        "double_root_1": 1,
+        "single_root_1": 0,
+        "two_roots_excluding_1": 0
+      },
+      "mixed21_cubic_verified_outputs": 7,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            1,
+            0
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            1,
+            1,
+            1
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 0,
+      "repeated_pair_3_fiber_example": null,
+      "exhaustive_epsilon_vectors_tested": 16,
+      "strong_B3_epsilon_vectors": []
+    },
+    {
+      "m": 3,
+      "q": 8,
+      "base_modulus_binary": "0b1011",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 2
+      },
+      "total_unordered_triples_with_repetition": 816,
+      "composition_histograms": {
+        "0": {
+          "1": 120
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        },
+        "3": {
+          "1": 120
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 192,
+          "2": 24
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        }
+      },
+      "parity_system": {
+        "equation_count": 142,
+        "coefficient_rank": 15,
+        "augmented_rank": 16,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              2,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              2,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              2,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "nonzero_isotropic_vectors": 3,
+        "anisotropic_vectors": 4,
+        "orthogonality_edges": 9,
+        "orthogonality_triangles": 1,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 12,
+        "three_roots_including_1": 12,
+        "double_root_1": 7,
+        "single_root_1": 3,
+        "two_roots_excluding_1": 6
+      },
+      "mixed21_cubic_verified_outputs": 511,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            2,
+            7
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            5,
+            4,
+            3
+          ],
+          "triples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                7
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                1,
+                6
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 9,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          2,
+          7
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 3,
+      "q": 8,
+      "base_modulus_binary": "0b1011",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 4
+      },
+      "total_unordered_triples_with_repetition": 816,
+      "composition_histograms": {
+        "0": {
+          "1": 120
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        },
+        "3": {
+          "1": 120
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 192,
+          "2": 24
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        }
+      },
+      "parity_system": {
+        "equation_count": 142,
+        "coefficient_rank": 15,
+        "augmented_rank": 16,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              4,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              4,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              4,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "nonzero_isotropic_vectors": 3,
+        "anisotropic_vectors": 4,
+        "orthogonality_edges": 9,
+        "orthogonality_triangles": 1,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 12,
+        "three_roots_including_1": 12,
+        "double_root_1": 7,
+        "single_root_1": 3,
+        "two_roots_excluding_1": 6
+      },
+      "mixed21_cubic_verified_outputs": 511,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            4,
+            4
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            7,
+            6,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                6
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                6
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 9,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          4,
+          4
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 3,
+      "q": 8,
+      "base_modulus_binary": "0b1011",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 6
+      },
+      "total_unordered_triples_with_repetition": 816,
+      "composition_histograms": {
+        "0": {
+          "1": 120
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        },
+        "3": {
+          "1": 120
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 192,
+          "2": 24
+        },
+        "1": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "2": {
+          "1": 198,
+          "2": 42,
+          "3": 2
+        }
+      },
+      "parity_system": {
+        "equation_count": 142,
+        "coefficient_rank": 15,
+        "augmented_rank": 16,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              6,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              6,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              6,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 178,
+          "2": 40,
+          "3": 10
+        },
+        "nonzero_isotropic_vectors": 3,
+        "anisotropic_vectors": 4,
+        "orthogonality_edges": 9,
+        "orthogonality_triangles": 1,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 12,
+        "three_roots_including_1": 12,
+        "double_root_1": 7,
+        "single_root_1": 3,
+        "two_roots_excluding_1": 6
+      },
+      "mixed21_cubic_verified_outputs": 511,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            6,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            3,
+            2,
+            7
+          ],
+          "triples": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                7
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                5
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                4
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 9,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          6,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 1
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9234,
+          "2": 1367
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9423,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              1,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              1,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              1,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            1,
+            4
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                26
+              ],
+              [
+                0,
+                30
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            11,
+            11,
+            1
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                8
+              ]
+            ],
+            [
+              [
+                0,
+                6
+              ],
+              [
+                1,
+                14
+              ],
+              [
+                1,
+                15
+              ]
+            ],
+            [
+              [
+                0,
+                13
+              ],
+              [
+                1,
+                26
+              ],
+              [
+                1,
+                27
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          1,
+          4
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              26
+            ],
+            [
+              0,
+              30
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 6
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              6,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              6,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              6,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            6,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                15
+              ],
+              [
+                0,
+                28
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            11,
+            13,
+            6
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                17
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                20
+              ],
+              [
+                1,
+                21
+              ]
+            ],
+            [
+              [
+                0,
+                13
+              ],
+              [
+                1,
+                26
+              ],
+              [
+                1,
+                27
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          6,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              15
+            ],
+            [
+              0,
+              28
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 7
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              7,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              7,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              7,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            7,
+            20
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                19
+              ],
+              [
+                0,
+                24
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            3,
+            20,
+            7
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                19
+              ],
+              [
+                1,
+                18
+              ],
+              [
+                1,
+                19
+              ]
+            ],
+            [
+              [
+                0,
+                24
+              ],
+              [
+                1,
+                16
+              ],
+              [
+                1,
+                17
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          7,
+          20
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              7
+            ]
+          ],
+          [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              19
+            ],
+            [
+              0,
+              24
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 20
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              20,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              20,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              20,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            20,
+            17
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                23
+              ],
+              [
+                0,
+                31
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            15,
+            27,
+            20
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                12
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                28
+              ],
+              [
+                1,
+                29
+              ]
+            ],
+            [
+              [
+                0,
+                27
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          20,
+          17
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              23
+            ],
+            [
+              0,
+              31
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 21
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              21,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              21,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              21,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            21,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                9
+              ],
+              [
+                0,
+                20
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            12,
+            9,
+            21
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                19
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                26
+              ],
+              [
+                1,
+                27
+              ]
+            ],
+            [
+              [
+                0,
+                22
+              ],
+              [
+                1,
+                28
+              ],
+              [
+                1,
+                29
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          21,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 22
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              22,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              22,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              22,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            22,
+            4
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            18,
+            4,
+            22
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                24
+              ],
+              [
+                1,
+                25
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                16
+              ],
+              [
+                1,
+                17
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          22,
+          4
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 23
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              23,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              23,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              23,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            23,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                11
+              ],
+              [
+                0,
+                26
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            3,
+            15,
+            23
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                10
+              ]
+            ],
+            [
+              [
+                0,
+                6
+              ],
+              [
+                1,
+                24
+              ],
+              [
+                1,
+                25
+              ]
+            ],
+            [
+              [
+                0,
+                16
+              ],
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                5
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          23,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              26
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 24
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              24,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              24,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              24,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            24,
+            17
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                15
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            22,
+            20,
+            24
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                9
+              ],
+              [
+                1,
+                24
+              ],
+              [
+                1,
+                25
+              ]
+            ],
+            [
+              [
+                0,
+                26
+              ],
+              [
+                1,
+                26
+              ],
+              [
+                1,
+                27
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          24,
+          17
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              15
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 25
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              25,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              25,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              25,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            25,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                24
+              ],
+              [
+                0,
+                31
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            9,
+            16,
+            25
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                5
+              ]
+            ],
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                6
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                16
+              ],
+              [
+                1,
+                12
+              ],
+              [
+                1,
+                13
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          25,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              24
+            ],
+            [
+              0,
+              31
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 28
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10716,
+          "2": 2340,
+          "3": 500
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              28,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              28,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              28,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            28,
+            17
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                11
+              ],
+              [
+                0,
+                29
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            12,
+            20,
+            28
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                7
+              ]
+            ],
+            [
+              [
+                0,
+                14
+              ],
+              [
+                1,
+                14
+              ],
+              [
+                1,
+                15
+              ]
+            ],
+            [
+              [
+                0,
+                23
+              ],
+              [
+                1,
+                12
+              ],
+              [
+                1,
+                13
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          28,
+          17
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              29
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "m": 5,
+      "q": 32,
+      "base_modulus_binary": "0b100101",
+      "theta_minpoly": {
+        "u": 0,
+        "v": 1,
+        "w": 29
+      },
+      "total_unordered_triples_with_repetition": 45760,
+      "composition_histograms": {
+        "0": {
+          "1": 5984
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        },
+        "3": {
+          "1": 5984
+        }
+      },
+      "mod3_histograms": {
+        "0": {
+          "1": 9816,
+          "2": 1076
+        },
+        "1": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "2": {
+          "1": 10728,
+          "2": 2328,
+          "3": 504
+        }
+      },
+      "parity_system": {
+        "equation_count": 9132,
+        "coefficient_rank": 63,
+        "augmented_rank": 64,
+        "consistent": false
+      },
+      "inconsistency_certificate": {
+        "kind": "uniform repeated-branch0 triangle",
+        "equations": [
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              29,
+              0
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              4,
+              29,
+              4
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          },
+          {
+            "branch1_count_mod3": 1,
+            "field_coefficients_h0_h1_h2": [
+              0,
+              29,
+              5
+            ],
+            "triples": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            ],
+            "epsilon_variables": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "rhs": 1
+          }
+        ],
+        "xor_lhs": 0,
+        "xor_rhs": 1
+      },
+      "trace_orthogonality_graph": {
+        "histogram_prediction": {
+          "1": 10504,
+          "2": 2176,
+          "3": 680
+        },
+        "nonzero_isotropic_vectors": 15,
+        "anisotropic_vectors": 16,
+        "orthogonality_edges": 225,
+        "orthogonality_triangles": 455,
+        "radical_is_zero": true
+      },
+      "mixed21_two_fiber_classification": {
+        "three_roots_excluding_1": 1680,
+        "three_roots_including_1": 240,
+        "double_root_1": 31,
+        "single_root_1": 15,
+        "two_roots_excluding_1": 210
+      },
+      "mixed21_cubic_verified_outputs": 32767,
+      "mixed21_all_nonzero_outputs_verified": true,
+      "maximum_mixed_fiber_examples": {
+        "1": {
+          "branch1_count_mod3": 1,
+          "field_coefficients_h0_h1_h2": [
+            0,
+            29,
+            5
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                19
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        "2": {
+          "branch1_count_mod3": 2,
+          "field_coefficients_h0_h1_h2": [
+            17,
+            11,
+            29
+          ],
+          "triples": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                8
+              ]
+            ],
+            [
+              [
+                0,
+                7
+              ],
+              [
+                1,
+                24
+              ],
+              [
+                1,
+                25
+              ]
+            ],
+            [
+              [
+                0,
+                27
+              ],
+              [
+                1,
+                12
+              ],
+              [
+                1,
+                13
+              ]
+            ]
+          ]
+        }
+      },
+      "repeated_pair_3_fiber_count": 225,
+      "repeated_pair_3_fiber_example": {
+        "branch1_count_mod3": 1,
+        "field_coefficients_h0_h1_h2": [
+          0,
+          29,
+          5
+        ],
+        "triples": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              19
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

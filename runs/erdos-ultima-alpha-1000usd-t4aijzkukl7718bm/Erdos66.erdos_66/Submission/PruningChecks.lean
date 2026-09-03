@@ -1,0 +1,13 @@
+import Submission.InterceptOppositePruningExplore
+#check Finset.sum_sdiff
+#check Finset.sum_sdiff_eq_sub
+#check Finset.sum_union
+#check Finset.card_sdiff_of_subset
+#check Finset.sum_product
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Erdos66OriginRepair.pairCount_mono
+#check Erdos66OriginRepair.pairCount
+#check abs_sub_le
+#check Finset.sum_le_sum
+#check Finset.card_image_le

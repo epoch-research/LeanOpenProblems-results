@@ -1,0 +1,12 @@
+import Submission.SmallDoublingAnnihilation
+#print AddChar
+#check AddChar.doubleDualEmb
+#check AddChar.compAddMonoidHom
+#check AddChar.comp
+#check Fintype.expect_equiv
+#check Finset.card_image_iff
+#check Finset.card_le_card_of_injOn
+#check Finset.card_le_card_of_inj_on
+#check Finset.card_image_of_injOn
+#check Finset.mem_sub
+#check Finset.mem_add

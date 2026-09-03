@@ -1,0 +1,13 @@
+import Submission.IntegerBlockExplore
+import Submission.ResidueSeriesExplore
+#check Nat.tendsto_div_const_atTop
+#check Filter.tendsto_nat_div_atTop
+#check Filter.Tendsto.comp
+#check Finset.sum_boole
+#check Finset.filter_range_le
+#check Finset.filter_range_lt
+#check Nat.tendsto_sub_atTop
+#check Filter.tendsto_add_atTop_iff_nat
+#check Filter.tendsto_add_atTop_nat
+#check Nat.mod_add_div
+#check Filter.tendsto_atTop_mono

@@ -1,0 +1,9 @@
+import Submission.ThreeTransfer
+/-! Axiom audit of the tracked three-member exchange. -/
+#print axioms Erdos583ThreeTransferDevelopment.quota_balance_one_slot
+#print axioms Erdos583ThreeTransferDevelopment.relocate_nil_tracked
+#print axioms Erdos583ThreeTransferDevelopment.hasRoot_of_append_rep
+#print axioms Erdos583ThreeTransferDevelopment.merge_two_tracked
+#print axioms Erdos583ThreeTransferDevelopment.split_nil_tracked
+#print axioms Erdos583ThreeTransferDevelopment.three_member_transfer
+#print axioms Erdos583ThreeTransferDevelopment.shared_endpoint_quota_le_two

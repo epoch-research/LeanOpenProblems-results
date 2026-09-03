@@ -1,0 +1,16 @@
+import Submission.PrimeAlmostPrime
+
+/-! Axiom audit for the completed lower-supported sieve and almost-prime
+output theorem. None of these declarations asserts prime output. -/
+#print axioms Erdos972SelbergLocalCost.localMain_exact
+#print axioms Erdos972SieveMassUpper.sieveAtom_le_divisors
+#print axioms Erdos972SieveMassUpper.sum_sieveAtom_div_le_three
+#print axioms Erdos972SieveMassInterval.sieveAtom_Ioc_bound
+#print axioms Erdos972SieveMassInterval.localMain_upper
+#print axioms Erdos972SelbergLowerMain.reciprocal_mangoldt_bound
+#print axioms Erdos972SelbergLowerMain.lowerMain_power_positive
+#print axioms Erdos972SelbergLowerTest.lowerTest_upper
+#print axioms Erdos972SelbergLowerTest.rough_weight_positive_bound
+#print axioms Erdos972PrimeRoughOutputs.exists_prime_rough_output_scale
+#print axioms Erdos972PrimeAlmostPrime.exists_prime_almost_prime_beyond
+#print axioms Erdos972PrimeAlmostPrime.infinite_prime_almost_prime_inputs

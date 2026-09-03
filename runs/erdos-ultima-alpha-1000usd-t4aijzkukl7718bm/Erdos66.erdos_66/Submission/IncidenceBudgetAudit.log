@@ -1,0 +1,43 @@
+'Erdos66EdgeTripleBudget.Valid' does not depend on any axioms
+'Erdos66EdgeTripleBudget.tripleMass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EdgeTripleBudget.sameEdge_class_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EdgeTripleBudget.different_class_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EdgeTripleBudget.different_two_classes_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EdgeTripleBudget.tripleMass_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66EdgeTripleBudget.tripleMass_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.properEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.rootIndicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.budgetAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.properEdges_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.rootIndicator_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.budgetAt_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.budget_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptIncidenceBudget.exists_low_energy_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.activeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.active_triples_le_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.active_card_cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.collision_curve_active_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptBudgetPointwise.excessSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.excessSum_cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.collision_union_budget_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66InterceptBudgetPointwise.correction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.correction_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.correction_cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptBudgetPointwise.exists_low_energy_pointwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptFlat.admissible_of_outside_opposite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptFlat.weighted_support_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptFlat.actual_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptFlat.exists_budget_anchored_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptScale.cubic_relative_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptScale.exists_relative_anchored_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BudgetInterceptScale.full_prefix_fails_budget_condition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BudgetInterceptScale.prime_prefix_fails_budget_condition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

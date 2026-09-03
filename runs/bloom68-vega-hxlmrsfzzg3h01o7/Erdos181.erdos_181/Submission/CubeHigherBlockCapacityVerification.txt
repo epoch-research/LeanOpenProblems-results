@@ -1,0 +1,7 @@
+Weighted norm/Sidorenko/deletion audits: 384; collision and pin audits: 6644
+Exact weighted auxiliary-edge and disjoint-pair identities: 68 hosts
+Integral entropy/KKT law: 440 configurations; conditional pair laws: 44
+All-order cube-patch formula audits: 16; exact constant/rounding checks: 4089 dimensions
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: exact identities and proof constants checked.
+NOT CLAIMED: outer-cube conditioning, a red/blue augmentation theorem, or R(Q_d)=O(2^d).

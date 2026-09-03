@@ -1,0 +1,15 @@
+import Submission.Spec
+#check Set.infinite_of_forall_exists_gt
+#check Set.infinite_iff_unbounded
+#check Nat.lt_pow_self
+#check Nat.le_pow
+#check Real.exp_one_lt_d9
+#check Real.exp_one_lt_three
+#check Real.le_log_iff_exp_le
+#check Real.rpow_lt_rpow_of_exponent_lt
+#check Real.rpow_le_rpow
+#check sq_le_sq₀
+#check Real.log_natCast_nonneg
+#check Real.log_rpow
+#check Real.log_le_log
+#check Real.log_nonneg

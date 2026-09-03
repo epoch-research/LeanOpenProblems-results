@@ -1,0 +1,13 @@
+import Submission.FiniteLayerCake
+#check IntervalIntegrable.mul_continuousOn
+#check IntervalIntegrable.continuousOn_mul
+#check intervalIntegral.integral_mono_on
+#check intervalIntegral.integral_nonneg_of_ae_restrict
+#check intervalIntegral.integral_nonneg_of_forall
+#check intervalIntegral.integral_const_mul
+#check intervalIntegral.abs_integral_le_integral_abs
+#check intervalIntegral.integral_congr
+#check integral_pow
+#check MeasureTheory.IntegrableOn.mono_set
+#check intervalIntegral.integral_eq_sub_of_hasDerivAt
+#check HasDerivAt.pow

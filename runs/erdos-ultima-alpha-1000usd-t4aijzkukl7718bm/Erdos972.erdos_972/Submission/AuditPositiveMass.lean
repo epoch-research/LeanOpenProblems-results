@@ -1,0 +1,11 @@
+import Submission.RemainderPositiveScales
+
+/-! Axiom audit for the actual-remainder positive-mass lower bounds. -/
+#print axioms Erdos972RemainderPositiveMass.typeIIPart_three_primes
+#print axioms Erdos972PrimeReciprocalBands.reciprocalPrimeMass_power_bands
+#print axioms Erdos972PrimeReciprocalBands.eventually_two_reciprocal_bands
+#print axioms Erdos972RemainderPositiveBudget.three_prime_product_inj
+#print axioms Erdos972RemainderPositiveBudget.positiveMass_lower
+#print axioms Erdos972RemainderPositiveScales.positiveMass_power_bands
+#print axioms Erdos972RemainderPositiveScales.eventually_positiveMass_lower
+#print axioms Erdos972RemainderPositiveScales.not_tendsto_positiveMass_zero

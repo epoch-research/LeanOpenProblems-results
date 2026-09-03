@@ -1,0 +1,3 @@
+import Submission.TranslatedCharacterEnergyExplore
+#print axioms Erdos66TranslatedCharacterEnergy.average_translated_energy
+#print axioms Erdos66TranslatedCharacterEnergy.exists_small_energy_translate

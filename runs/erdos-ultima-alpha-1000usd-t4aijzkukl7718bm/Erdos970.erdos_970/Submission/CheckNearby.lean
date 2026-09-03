@@ -1,0 +1,8 @@
+import Submission.CompletionFullPeriod
+import Submission.LogLossSquareCubicReduction
+open Erdos970 Erdos970.GapAverages
+#check coveredFraction_antitone
+#check coveredFraction_nonneg
+#check pow_le_pow_left₀
+#check Erdos970.OneHitLogConcavity.void_eq_population
+#check Filter.Eventually.and

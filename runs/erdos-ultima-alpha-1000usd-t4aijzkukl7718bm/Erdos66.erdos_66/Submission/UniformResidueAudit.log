@@ -1,0 +1,33 @@
+'Erdos66UniformResidueProfile.residueWeight_prefix_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResidueProfile.projectionError_profile_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResidueProfile.projectionError_l1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResidueProfile.projectionError_profile_square_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformResidueProfile.fractional_residueEnergy_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformWitnessResidue.residueEnergy_uniform_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformWitnessResidue.envelope_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformWitnessResidue.normalized_residueEnergy_le_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformWitnessResidue.witness_all_moduli_energy_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformWitnessResidue.witness_variable_modulus_energy_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformResiduePrefix.prefixEnergy_le_abel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResiduePrefix.prefixEnergy_le_envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResiduePrefix.witness_uniform_prefix_energy_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformResiduePrefix.witness_variable_prefix_energy_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformResidueExceptional.badTargets_energy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformResidueExceptional.witness_uniform_bad_proportion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformResidueExceptional.witness_variable_bad_proportion_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

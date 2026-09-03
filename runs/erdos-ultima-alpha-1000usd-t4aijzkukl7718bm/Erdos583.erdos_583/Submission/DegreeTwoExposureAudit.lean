@@ -1,0 +1,7 @@
+import Submission.DegreeTwoExposure
+/-! Axiom audit for the degree-two exposure construction. -/
+#print axioms Erdos583DegreeTwoExposureDevelopment.avoids_leaf_of_disjoint
+#print axioms Erdos583DegreeTwoExposureDevelopment.force_split_preserving_leaf
+#print axioms Erdos583DegreeTwoExposureDevelopment.force_first_preserving_leaf
+#print axioms Erdos583DegreeTwoExposureDevelopment.projected_member_mem
+#print axioms Erdos583DegreeTwoExposureDevelopment.one_even_degree_two_exposure

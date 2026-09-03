@@ -1,0 +1,6 @@
+import Submission.SeedMatchingRestoration
+
+/-! Audit for seed initialization and guarded restoration. -/
+#print axioms Erdos583SeedMatchingRestorationDevelopment.matching_support_delete
+#print axioms Erdos583SeedMatchingRestorationDevelopment.restore_induced_seed_matching
+#print axioms Erdos583SeedMatchingRestorationDevelopment.gallai_of_seeded_matching

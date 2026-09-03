@@ -1,0 +1,14 @@
+import Submission.HighlyConnectedSingletonLeaf
+#check Erdos184Work.Vertex.exists_vertex_cycle_cover
+#check Erdos184Work.Vertex.even_subgraph_preserving_vertex
+#check Erdos184Work.StarCore.exists_even_star_core_number
+#check Erdos184Work.Critical.number_sdiff_add_le
+#check Erdos184Work.Critical.number_le
+#check Erdos184Work.Compression.delete_edge_degree_left
+#check Erdos184Work.VertexSeparators.number_induce_support
+#check SimpleGraph.degree_deleteEdges
+#check SimpleGraph.degree_edge
+#check SimpleGraph.induce_mono
+#check SimpleGraph.induceMono
+#check Erdos184Work.Critical.number_restore_edge
+#check Erdos184Work.add_edge_decomposition

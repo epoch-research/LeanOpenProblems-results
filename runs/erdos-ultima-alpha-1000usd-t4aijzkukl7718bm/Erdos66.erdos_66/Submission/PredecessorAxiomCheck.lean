@@ -1,0 +1,6 @@
+import Submission.PredecessorCellExplore
+#print axioms Erdos66ProfileLowerGap.profile_square_lower
+#print axioms Erdos66ProfileLowerGap.interval_nonempty_of_length
+#print axioms Erdos66PredecessorCell.predecessor_gap_of_profile
+#print axioms Erdos66PredecessorCell.fiber_card_le
+#print axioms Erdos66PredecessorCell.predecessor_swap_prefix

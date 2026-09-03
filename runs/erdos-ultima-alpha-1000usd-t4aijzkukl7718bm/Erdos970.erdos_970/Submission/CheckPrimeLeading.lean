@@ -1,0 +1,16 @@
+import Submission.WeightedMertens
+#check Nat.primesBelow
+#print Nat.primesBelow
+#check harmonic
+#check harmonic_succ
+#check harmonic_le_one_add_log
+#check harmonic_le_log_add_one
+#check Real.harmonic_le_one_add_log
+#check Nat.primesBelow_card_eq_primeCounting'
+#check Nat.primeCounting
+#check Finset.sum_range_by_parts
+#check Real.tendsto_log_atTop
+#check Filter.Tendsto.eventually_le_const
+#check Filter.Tendsto.eventually_const_lt
+#check Filter.Tendsto.eventually_lt_const
+#check Real.tendsto_natCast_atTop_atTop

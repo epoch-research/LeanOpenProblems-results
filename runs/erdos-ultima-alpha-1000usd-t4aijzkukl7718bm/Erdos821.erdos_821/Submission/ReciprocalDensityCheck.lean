@@ -1,0 +1,18 @@
+import Submission.ReciprocalDensity
+
+/-! Exact-type and axiom audit of the fixed-scale reciprocal divergence results. -/
+
+#check @Erdos821.summable_dyadic_count_of_summable_reciprocal
+#check @Erdos821.not_summable_reciprocal_of_eventual_dyadic_count
+#check @Erdos821.relative_smooth_prime_count_of_sieve
+#check @Erdos821.exists_fixed_smooth_reciprocal_divergence
+#check @Erdos821.predecessor_mem_smooth_of_rational
+#check @Erdos821.summable_rational_reciprocal_of_summable_predecessors
+#check @Erdos821.erdos_821_of_arbitrarily_smooth_reciprocal_divergence
+#print axioms Erdos821.summable_dyadic_count_of_summable_reciprocal
+#print axioms Erdos821.not_summable_reciprocal_of_eventual_dyadic_count
+#print axioms Erdos821.relative_smooth_prime_count_of_sieve
+#print axioms Erdos821.exists_fixed_smooth_reciprocal_divergence
+#print axioms Erdos821.predecessor_mem_smooth_of_rational
+#print axioms Erdos821.summable_rational_reciprocal_of_summable_predecessors
+#print axioms Erdos821.erdos_821_of_arbitrarily_smooth_reciprocal_divergence

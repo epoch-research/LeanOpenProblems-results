@@ -1,0 +1,15 @@
+import Submission.MovingWindowLimitExplore
+import Submission.CountingExplore
+#check Finset.sum_Ico_eq_sum_range
+#check Finset.sum_Ico_eq_sub
+#check Nat.sum_range_id
+#check Finset.card_biUnion_le
+#check Finset.exists_max_image
+#check Nat.pow_le_pow_left
+#check Nat.pow_le_pow_left'
+#check Nat.pow_le_pow_right
+#check Real.sqrt_mul_self
+#check Real.mul_self_sqrt
+#check Real.sqrt_mul
+#check AdditiveCombinatorics.sumRep_mono
+#check Set.ncard_le_ncard

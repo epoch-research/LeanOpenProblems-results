@@ -1,0 +1,13 @@
+import Submission.FreeCarrier
+
+/-! Axiom audit of the FreeCarrier lemmas. -/
+#print axioms Erdos583FreeCarrierDevelopment.exists_maximum_carriers
+#print axioms Erdos583FreeCarrierDevelopment.exists_shortest_maximum_carriers
+#print axioms Erdos583FreeCarrierDevelopment.carrierCount_strict_of_new
+#print axioms Erdos583FreeCarrierDevelopment.suffix_remains_carrier
+#print axioms Erdos583FreeCarrierDevelopment.tight_group_no_carrier_start_rep
+#print axioms Erdos583FreeCarrierDevelopment.tight_group_avoids_carriers
+#print axioms Erdos583FreeCarrierDevelopment.no_tight_outside_components
+#print axioms Erdos583FreeCarrierDevelopment.optimized_cycle_carrier_bound
+#print axioms Erdos583FreeCarrierDevelopment.optimized_cycle_length_bound
+#print axioms Erdos583FreeCarrierDevelopment.exists_optimized_cycle_certificate

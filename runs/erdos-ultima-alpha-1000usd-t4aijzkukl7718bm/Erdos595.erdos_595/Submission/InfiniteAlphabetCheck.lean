@@ -1,0 +1,14 @@
+import Submission.CountableHalesJewettObstruction
+#check Finsupp.support_add
+#check Finsupp.support_smul
+#check Finsupp.support_smul_eq
+#check Finsupp.support_smul_subset
+#check Finset.sum_pos_iff_of_nonneg
+#check Finset.sum_pos'
+#check Finset.single_le_sum
+#check Finsupp.support_nonempty_iff
+#check map_smul
+#check Finset.sum_add_distrib
+#check Finset.mul_sum
+#check LinearMap.map_smul
+#check map_smulₛₗ

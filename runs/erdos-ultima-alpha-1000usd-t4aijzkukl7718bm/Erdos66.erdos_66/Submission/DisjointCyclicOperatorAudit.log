@@ -1,0 +1,26 @@
+'Erdos66NestedDifferencePalette.pairCount_diff_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NestedDifferencePalette.pairCount_diff_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NestedDifferencePalette.layers_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NestedDifferencePalette.layer_count_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NestedDifferencePalette.layer_count_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NestedDifferencePalette.exists_logarithmic_disjoint_cyclic_palette' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCyclicCoarse.nonnegative_weighted_pair_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCyclicCoarse.infinite_mixed_count_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCyclicCoarse.infinite_mixed_count_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCyclicCoarse.exists_universal_cyclic_infinite_transfer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66DisjointBlockOperator.selected_union_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.selected_union_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.colorWeight_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.colorBlocks_mixed_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.naturalOperator_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.naturalOperator_prefix_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.natural_operator_profile_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointBlockOperator.exists_universal_natural_operator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

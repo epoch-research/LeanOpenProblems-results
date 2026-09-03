@@ -1,0 +1,22 @@
+import Submission.FixedTranslateColorRootExplore
+
+/-! Axiom audit for the fixed-pattern color-selection pipeline. -/
+#print axioms Erdos66UniformColorMoments.mean_pair_kernel
+#print axioms Erdos66UniformColorMoments.mean_pair_product_disjoint
+#print axioms Erdos66UniformColorMoments.kernelVariance_identity
+#print axioms Erdos66MatchingColorMoments.matching_kernel_second_moment
+#print axioms Erdos66FixedPatternColorEnergy.sumEdges_matching
+#print axioms Erdos66FixedPatternColorEnergy.mean_colorEnergy_identity
+#print axioms Erdos66FixedPatternColorEnergy.exists_fixed_pattern_color_budget
+#print axioms Erdos66OrderedColorEnergy.orderedFiber_split
+#print axioms Erdos66OrderedColorEnergy.diagonalEnergy
+#print axioms Erdos66OrderedColorEnergy.edgeEnergy_le_ordered
+#print axioms Erdos66OrderedColorEnergy.mean_orderedColorEnergy_le
+#print axioms Erdos66CenteredColorSelection.mean_jointCenteredEnergy_le
+#print axioms Erdos66CenteredColorSelection.exists_joint_centered_budget
+#print axioms Erdos66CenteredColorSelection.matrixSum_sq_le_energy
+#print axioms Erdos66FiniteLabelRootTransfer.labelRootCount_error_sq
+#print axioms Erdos66FiniteLabelRootTransfer.exists_low_energy_pattern
+#print axioms Erdos66FixedTranslateColorRoot.coloredRootCount_error_sq
+#print axioms Erdos66FixedTranslateColorRoot.exists_fixed_translate_root_budget
+#print axioms Erdos66FixedTranslateColorRoot.exists_pattern_for_later_kernels

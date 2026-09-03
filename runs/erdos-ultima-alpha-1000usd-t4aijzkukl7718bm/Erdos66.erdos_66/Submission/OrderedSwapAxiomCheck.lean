@@ -1,0 +1,10 @@
+import Submission.ReflectionSwapCandidatesExplore
+
+/-! Audit of finite count-preserving ordered swaps. -/
+#print axioms Erdos66OrderedPartialReplacement.partial_prefix_difference_le
+#print axioms Erdos66OrderedPartialReplacement.exists_ordered_swap_family
+#print axioms Erdos66FiniteSwapAlgebra.sumRep_swapped_upper
+#print axioms Erdos66FiniteSwapAlgebra.sumRep_swapped_lower
+#print axioms Erdos66FiniteSwapAlgebra.swapped_target_exact
+#print axioms Erdos66SparseOrderedSwap.exists_sparse_ordered_swap
+#print axioms Erdos66ReflectionSwapCandidates.exists_reflection_swap_candidates

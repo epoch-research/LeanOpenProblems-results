@@ -1,0 +1,18 @@
+'Erdos66OddFieldExtension.isSquare_of_odd_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddFieldExtension.isSquare_algebraMap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddFieldExtension.quadraticChar_algebraMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddFieldExtension.curve_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddFieldExtension.outside_parameter_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionCharacterFiber.mapped_charFiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionCharacterFiber.mapped_charFiber_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionCharacterFiber.sum_abs_charFiber_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionCharacterFiber.extended_graphCount_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionFlatSet.parabolaSet_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionFlatSet.repairPoints_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionFlatSet.repaired_old_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66OddExtensionFlatSet.extended_repaired_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareClosedSubspace.mul_mem_of_square_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareClosedSubspace.square_closed_is_intermediate_field' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SquareClosedSubspace.square_closed_finrank_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]

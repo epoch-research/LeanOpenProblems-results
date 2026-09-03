@@ -1,0 +1,27 @@
+import Submission.PairedEvenModelCounting
+import Submission.HigherPhaseDifferences
+open Finset
+open scoped BigOperators Classical
+#check Fin.rev
+#check Fin.revEquiv
+#check Fin.rev_involutive
+#check Fin.sum_univ_add
+#check Fin.sum_univ_succ
+#check Fin.sum_univ_castSucc
+#check Fin.sum_univ_two
+#check Finset.sum_range_add
+#check Finset.sum_range_reflect
+#check Finset.sum_range_reflect_of_pos
+#check fwdDiff_iter_eq_sum_shift
+#check Nat.choose_symm
+#check Odd.neg_one_pow
+#check Odd.neg_pow
+#check neg_one_pow_add
+#check neg_one_pow_eq_neg_one_pow_mod_two
+#check pow_sub₀
+#check neg_one_pow_eq_ite
+#check Fin.sum_univ_succAbove
+#check Equiv.optionCongr
+#check finSuccEquiv
+#check finSumFinEquiv
+#check Equiv.piCongrLeft

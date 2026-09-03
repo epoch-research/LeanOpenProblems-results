@@ -1,0 +1,13 @@
+import Submission.CumulativeRoundingErrorExplore
+#check Real.tendsto_sqrt_atTop
+#check Filter.Tendsto.sqrt
+#check Real.sqrt_sq_eq_abs
+#check Real.continuous_sqrt
+#check Real.sqrt_mul
+#check Real.log_mul
+#check div_le_div_iff₀
+#check Nat.cast_pow
+#check Real.log_natCast_nonneg
+#check harmonic_nonneg
+#check Filter.Tendsto.add_atTop
+#check Real.sqrt_le_sqrt

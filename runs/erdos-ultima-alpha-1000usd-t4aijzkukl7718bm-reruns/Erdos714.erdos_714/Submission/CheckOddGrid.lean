@@ -1,0 +1,12 @@
+import Submission.CubicTraceNormPlane
+import Submission.QuinticNormProduct
+#check Algebra.trace_algebraMap
+#check Algebra.algebraMap_eq_smul_one
+#check Algebra.norm_algebraMap
+#check RingHom.map_ofNat
+#check map_ofNat
+#check map_natCast
+#check Algebra.trace_eq_of_algEquiv
+#check Algebra.trace_algebraMap
+#check FiniteField.norm_surjective
+#check FiniteField.unitsMap_norm_surjective

@@ -1,0 +1,16 @@
+import Submission.LocalTupleCover
+#check SimpleGraph.CliqueFree.of_hom
+#check SimpleGraph.CliqueFree.comap
+#check SimpleGraph.cliqueFree_map_iff
+#check SimpleGraph.map_induce
+#check SimpleGraph.map_adj
+#check SimpleGraph.map_iSup
+#check SimpleGraph.induceHom
+#check SimpleGraph.Hom.comap
+#check SimpleGraph.CliqueFree.of_embedding
+#check SimpleGraph.CliqueFree.of_topEmbedding
+#check Countable.exists_injective_nat
+#check exists_injective_nat
+#check Function.Embedding.trans
+#check Equiv.ofInjective
+#check SimpleGraph.CliqueFree.induce

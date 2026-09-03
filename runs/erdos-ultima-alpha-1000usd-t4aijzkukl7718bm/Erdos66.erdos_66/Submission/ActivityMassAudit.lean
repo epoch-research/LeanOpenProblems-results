@@ -1,0 +1,35 @@
+import Submission.FiniteLogMassBudgetExplore
+import Submission.ActivityMassCarryExplore
+import Submission.ActivityNaturalCarryExplore
+import Submission.ActivityBudgetLimitExplore
+import Submission.ActivitySupportScaleExplore
+
+/-! Axiom audit for the activity-sensitive carry budget. -/
+#print axioms Erdos66FiniteLogMassBudget.log_one_add_le_two_sqrt
+#print axioms Erdos66FiniteLogMassBudget.sum_sqrt_le_sqrt_card_mass
+#print axioms Erdos66FiniteLogMassBudget.budget_nonneg
+#print axioms Erdos66FiniteLogMassBudget.budget_mono_mass
+#print axioms Erdos66FiniteLogMassBudget.log_budget_sum_le
+#print axioms Erdos66ActivityMassCarry.mem_activeSupport
+#print axioms Erdos66ActivityMassCarry.active_empty_off_support
+#print axioms Erdos66ActivityMassCarry.activeSupport_subset_halfSupport
+#print axioms Erdos66ActivityMassCarry.activeSupport_card_le
+#print axioms Erdos66ActivityMassCarry.sum_active_card_on_support
+#print axioms Erdos66ActivityMassCarry.mixedPhaseMass_nonneg
+#print axioms Erdos66ActivityMassCarry.supportCount_nonneg
+#print axioms Erdos66ActivityMassCarry.active_mass_orbit_error
+#print axioms Erdos66ActivityMassCarry.lower_activity_budget
+#print axioms Erdos66ActivityNaturalCarry.upper_activity_budget
+#print axioms Erdos66ActivityNaturalCarry.natural_activity_budget
+#print axioms Erdos66ActivityBudgetLimit.budget_div_identity
+#print axioms Erdos66ActivityBudgetLimit.budget_div_limit
+#print axioms Erdos66ActivityBudgetLimit.constant_scale_ratio_limit
+#print axioms Erdos66ActivityBudgetLimit.budget_div_limit_of_bound
+#print axioms Erdos66ActivityBudgetLimit.two_budget_transfer
+#print axioms Erdos66ActivitySupportScale.active_card_le
+#print axioms Erdos66ActivitySupportScale.support_le_mass
+#print axioms Erdos66ActivitySupportScale.mass_le_horizon_support
+#print axioms Erdos66ActivitySupportScale.thirty_support_le_budget
+#print axioms Erdos66ActivitySupportScale.budget_div_limit_iff_support
+#print axioms Erdos66ActivitySupportScale.quotient_tendsto_atTop
+#print axioms Erdos66ActivityBudgetLimit.two_budget_transfer_of_bounds

@@ -1,0 +1,13 @@
+import Submission.GenericUltrafilterFailure
+import Submission.CountableGenericUniversality
+#check SimpleGraph.induce_cliqueFree
+#check SimpleGraph.CliqueFree.comap
+#check SimpleGraph.Embedding.induce
+#check Set.Infinite.of_injective_forall_mem
+#check Set.Infinite.image
+#check Infinite.of_injective
+#check Ultrafilter.pure_injective
+#check Filter.pure_injective
+#check Set.infinite_range_of_injective
+#check SimpleGraph.Coloring.cliqueFree
+#check SimpleGraph.cliqueFree_of_colorable

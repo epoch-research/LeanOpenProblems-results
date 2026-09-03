@@ -1,0 +1,9 @@
+CRT/cyclotomic exact checks: 2352
+Explicit smooth block center N=30091839012864
+Maximal integer-factor certificates for offsets: [(-3, 141276239497), (-2, 34909326001), (-1, 967489921), (1, 967427713), (2, 34748082001), (3, 137405657593)]
+Factorial valuation and rough-cofactor checks: 10658
+Projective exact cases: 26016; positive integral cases: 796
+Affine finite-field pair-law checks: 424; exact current/Gram/mean-square checks passed
+Rational projection/rank-defect checks: 84
+Spec.lean unchanged, SHA-256: d48bb112dcd4fd5c98dae80077b7384df62a14ef9a919fe7d476b9c5ace427bb
+PASS: all finite exact checks. No claim of an all-scale cancellation proof.

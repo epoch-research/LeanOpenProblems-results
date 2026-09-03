@@ -1,0 +1,17 @@
+import Submission.TranslatedNormFibers
+#check Fintype.equivFin
+#check Fintype.card_coe
+#check Finset.mem_biUnion
+#check SimpleGraph.Free.mono
+#check SimpleGraph.Free.mono_right
+#check SimpleGraph.Copy.mono_right
+#check SimpleGraph.edgeFinset_mono
+#check Finset.card_biUnion_le
+#check Polynomial.card_roots
+#check Polynomial.card_le_degree_of_subset_roots
+#check Polynomial.natDegree_X_pow_sub_C
+#check Polynomial.X_pow_sub_C_ne_zero
+#check Polynomial.natDegree_sub_le
+#check Polynomial.natDegree_pow
+#check pow_sum_le_card_mul_sum_pow
+#print SimpleGraph.Free

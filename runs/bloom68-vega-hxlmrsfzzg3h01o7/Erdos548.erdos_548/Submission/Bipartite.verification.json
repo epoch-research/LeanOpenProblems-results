@@ -1,0 +1,264 @@
+{
+  "status": "verified",
+  "scope": "The Erdős–Sós edge threshold for finite bipartite hosts only",
+  "unrestricted_erdos_sos_claimed": false,
+  "lean_toolchain": "leanprover/lean4:v4.27.0",
+  "main_theorem": "Erdos548.Bipartite.tree_isContained_of_bipartite_edge_threshold",
+  "main_statement": "[Finite A] [Finite V], Nat.card A = k + 1, T.IsTree, G.IsBipartite, ((k : ℚ) - 1) / 2 * Nat.card V < (G.edgeSet.ncard : ℚ) imply T.IsContained G",
+  "source_files": [
+    {
+      "path": "Submission/Bipartite.lean",
+      "sha256": "721a5e1930bbee5bf22e5d2b4c9c068f3f46218ae2e987e0668e24f4cc213f1d",
+      "lines": 493
+    },
+    {
+      "path": "Submission/BipartiteVerification.lean",
+      "sha256": "ffbec3191a9e4fccc64e361dcc3aba29d0c6628c943f03f7e411afb9cf8bc123",
+      "lines": 122
+    }
+  ],
+  "main_imports": [
+    "FormalConjecturesUtil"
+  ],
+  "verification_imports": [
+    "Submission.Bipartite"
+  ],
+  "commands": [
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/Bipartite.olean -i .lake/build/lib/lean/Submission/Bipartite.ilean Submission/Bipartite.lean",
+      "exit_code": 0
+    },
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/BipartiteVerification.olean -i .lake/build/lib/lean/Submission/BipartiteVerification.ilean Submission/BipartiteVerification.lean",
+      "exit_code": 0
+    },
+    {
+      "command": "lake env lean --deps Submission/Bipartite.lean",
+      "exit_code": 0
+    },
+    {
+      "command": "lake env lean --deps Submission/BipartiteVerification.lean",
+      "exit_code": 0
+    }
+  ],
+  "compiler_warnings": 0,
+  "compiler_errors": 0,
+  "axiom_audit": {
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "main_declaration_count": 23,
+    "all_main_declarations_audited": true,
+    "main_axioms_by_declaration": {
+      "_private.Submission.Bipartite.0.Erdos548.Bipartite.bool_eq_of_ne_same": [
+        "propext"
+      ],
+      "Erdos548.Bipartite.card_restrict_color_ne_le": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.card_restrict_color_ne_lt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_adj_fresh_of_coloring": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_color_preserving_copy_of_degree": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.ncard_neighborSet_eq_degree": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.neighborSet_ncard_iso": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.edge_ncard_delete_vertex": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.induceInduceIso": [
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_weighted_core": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_bool_coloring": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.coloring_surjective_of_adj": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.coloring_surjective_of_isTree": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.opposite_color_card_add": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.opposite_color_card_pos": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_color_preserving_copy_of_neighborSet_ncard": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.isContained_of_coloring_cost_lt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_orientation_cost_lt": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.nonempty_of_edge_threshold": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.tree_isContained_of_bipartite_edge_threshold": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.fin_tree_isContained_of_bipartite_edge_threshold": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.erdos_548_bipartite": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.isContained_of_subsingleton": []
+    },
+    "verification_axioms_by_declaration": {
+      "_private.Submission.BipartiteVerification.0.Erdos548.BipartiteVerification.two_vertex_edge_count": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "_private.Submission.BipartiteVerification.0.Erdos548.BipartiteVerification.k23_edge_count": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.tree_isContained_of_bipartite_edge_threshold": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "Erdos548.Bipartite.exists_color_preserving_copy_of_neighborSet_ncard": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "standard_axioms_only": true
+  },
+  "forbidden_constructs_absent": true,
+  "main_declarations": [
+    "bool_eq_of_ne_same",
+    "card_restrict_color_ne_le",
+    "card_restrict_color_ne_lt",
+    "exists_adj_fresh_of_coloring",
+    "exists_color_preserving_copy_of_degree",
+    "ncard_neighborSet_eq_degree",
+    "neighborSet_ncard_iso",
+    "edge_ncard_delete_vertex",
+    "induceInduceIso",
+    "exists_weighted_core",
+    "exists_bool_coloring",
+    "coloring_surjective_of_adj",
+    "coloring_surjective_of_isTree",
+    "opposite_color_card_add",
+    "opposite_color_card_pos",
+    "exists_color_preserving_copy_of_neighborSet_ncard",
+    "isContained_of_coloring_cost_lt",
+    "exists_orientation_cost_lt",
+    "nonempty_of_edge_threshold",
+    "isContained_of_subsingleton",
+    "tree_isContained_of_bipartite_edge_threshold",
+    "fin_tree_isContained_of_bipartite_edge_threshold",
+    "erdos_548_bipartite"
+  ],
+  "verification_example_count": 11,
+  "verification_examples": [
+    "Arbitrary finite types produce an ordinary Copy",
+    "Finite-only greedy theorem preserves both prescribed colorings",
+    "Arbitrary natural-weight core interface",
+    "Strict Fin n theorem without a separate host-size hypothesis",
+    "Specification-style +1 threshold for bipartite hosts",
+    "k=0: edgeless singleton and negative rational threshold",
+    "Empty host never satisfies the strict threshold",
+    "One-vertex target does not embed in an empty host",
+    "k=1: one-edge host suffices",
+    "k=2: equality at the threshold is insufficient",
+    "Nonregular K2,3 host contains every four-vertex tree on arbitrary finite labels"
+  ],
+  "direct_dependencies": {
+    "main": [
+      "/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean",
+      "/workspace/leanproject/.lake/build/lib/lean/FormalConjecturesUtil.olean"
+    ],
+    "verification": [
+      "/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/Bipartite.olean"
+    ]
+  },
+  "protected_files": [
+    {
+      "path": "Submission/Spec.lean",
+      "sha256_before": "674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103",
+      "sha256_after": "674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103",
+      "unchanged": true
+    },
+    {
+      "path": "Submission/Auxiliary.lean",
+      "sha256_before": "227fcc37cac1313bd1d9c8033397195fa990f018c784ba9a53e307f6ef1e28c1",
+      "sha256_after": "227fcc37cac1313bd1d9c8033397195fa990f018c784ba9a53e307f6ef1e28c1",
+      "unchanged": true
+    },
+    {
+      "path": "Submission/Critical.lean",
+      "sha256_before": "c0dc0d37acc9f1ca3173b6d144e326ccfcbf5a63eb98216fa6099e055b9d71ea",
+      "sha256_after": "c0dc0d37acc9f1ca3173b6d144e326ccfcbf5a63eb98216fa6099e055b9d71ea",
+      "unchanged": true
+    }
+  ],
+  "compiled_artifacts": [
+    ".lake/build/lib/lean/Submission/Bipartite.olean",
+    ".lake/build/lib/lean/Submission/Bipartite.ilean",
+    ".lake/build/lib/lean/Submission/BipartiteVerification.olean",
+    ".lake/build/lib/lean/Submission/BipartiteVerification.ilean"
+  ]
+}

@@ -1,0 +1,15 @@
+import Submission.ShortestOddInducedCycle
+#check Nat.card_subtype_iff
+#check Nat.card_eq_fintype_card
+#check Fintype.card_subtype
+#check Fintype.card_ofFinset
+#check Fintype.card_subtype_iff
+#check Nat.card_congr
+#check Equiv.subtypeEquiv
+#check Equiv.subtypeEquivOfSubtype
+#check Equiv.subtypeCongr
+#check SimpleGraph.Walk.length_map
+#check Finset.filter_card_congr
+#check Finset.card_filter
+#check finCongr
+#check Fintype.card_coe

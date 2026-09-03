@@ -1,0 +1,8 @@
+import Submission.Rooted
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.rebuild
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.pivot
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.expose_escape
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.improve
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.of_repeated_start
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.improve_of_repeated_start
+#print axioms Erdos583RootedDevelopment.RootedTailSystem.max_score_no_repeated_start

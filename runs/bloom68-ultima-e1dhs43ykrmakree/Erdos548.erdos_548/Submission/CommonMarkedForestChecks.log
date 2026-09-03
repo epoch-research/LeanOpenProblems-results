@@ -1,0 +1,8 @@
+SPECIAL CASES PASS
+LOCAL SWITCHES PASS 1839848
+CLIQUE GREEDY PASS 149268
+CONSTRUCTIVE ATLAS CL PASS 362970
+ROOTED TREE LOCAL COROLLARY PASS 79782
+CONSTRUCTIVE RANDOM CL PASS 30000 26785
+PROOF BRANCH COUNTS {'calls': 939557, 'clique_escape': 3288, 'clique_grow': 17594, 'isolates_removed': 952826, 'nonstar_finish': 20, 'reserved_leaf': 45410, 'single_tree': 300957, 'star_finish': 1849, 'switch_into_A': 12835, 'switch_mark': 10134, 'switch_nonmark': 2997, 'switch_outside_A': 296}
+ALL CHECKS PASS; seconds 29.18233895301819

@@ -1,0 +1,11 @@
+import Submission.OrderedPartialReplacementExplore
+import Submission.NaturalSidonExtractionExplore
+import Submission.SidonSelectionExplore
+open Erdos66NatPairAlgebra Erdos66OriginRepair
+#check pairs_mono_left
+#check pairs_mono_right
+#check pairs_eq_zero_of_no_partner
+#check pairs_eq_card_of_partner
+#check sumRep_union_self
+#check AdditiveCombinatorics.sumRep_mono
+#check Erdos66Explore.sumRep_mono

@@ -1,0 +1,24 @@
+Exact absorption/deficit/injectivity/collision/chi-square audits: 1506
+Sharp one-center additive constant: equilateral triangle checked.
+punctured diagonal {'L': 8, 'n': 74, 'D': 41, 'm': 2, 'w': 72, 'cap_ratio': 36.0, 'axis_mass_over_m': 0.7520325203252033, 'rigorous_finite_lower': 0.5772357723577236, 'B_over_n': 1.0339485827290706}
+punctured diagonal {'L': 16, 'n': 276, 'D': 134, 'm': 4, 'w': 272, 'cap_ratio': 22.666666666666668, 'axis_mass_over_m': 0.7531094527363185, 'rigorous_finite_lower': 0.4925373134328358, 'B_over_n': 1.3399307808782177}
+punctured diagonal {'L': 24, 'n': 604, 'D': 272, 'm': 4, 'w': 600, 'cap_ratio': 50.0, 'axis_mass_over_m': 0.8305759803921569, 'rigorous_finite_lower': 0.6323529411764706, 'B_over_n': 1.5141580638878067}
+punctured diagonal {'L': 32, 'n': 1061, 'D': 456, 'm': 5, 'w': 1056, 'cap_ratio': 52.8, 'axis_mass_over_m': 0.8425438596491228, 'rigorous_finite_lower': 0.6374269005847953, 'B_over_n': 1.6293818311093473}
+punctured diagonal {'L': 48, 'n': 2358, 'D': 956, 'm': 6, 'w': 2352, 'cap_ratio': 78.4, 'axis_mass_over_m': 0.8713140067742579, 'rigorous_finite_lower': 0.691771269177127, 'B_over_n': 1.7797589262583353}
+rectangle {'L': 16, 'H': 1, 'n': 99, 'D': 95, 'B_over_n': 0.35810738968633704, 'cross_annulus_mass': 0.6842105263157895, 'cross_axes': 45, 'overfull_mass_over_B': {1: 0.570318685669042, 2: 0.5630938242280285, 4: 0.5129156769596199, 8: 0.28429334916864607}, 'WR_ratio': 0.09195179500128584}
+rectangle {'L': 24, 'H': 1, 'n': 147, 'D': 143, 'B_over_n': 0.34974549260263543, 'cross_annulus_mass': 0.9300699300699301, 'cross_axes': 91, 'overfull_mass_over_B': {1: 0.6011289445048966, 2: 0.5978191875226696, 4: 0.5748322451940515, 8: 0.47009883931809937}, 'WR_ratio': 0.09125683219254072}
+rectangle {'L': 32, 'H': 2, 'n': 325, 'D': 312, 'B_over_n': 0.4050197238658777, 'cross_annulus_mass': 1.1826923076923077, 'cross_axes': 297, 'overfull_mass_over_B': {1: 0.49509686949605136, 2: 0.47212414879024733, 4: 0.4436192748788624, 8: 0.31042879057196426}, 'WR_ratio': 0.10522727401200883}
+Exact arithmetic support/energy lower bounds: L=1,...,100.
+large full-fiber annulus {'L': 512, 'H': 32, 'p': (0, 0), 'endpoints': 16730, 'mass_times_D': '8365'}
+large full-fiber annulus {'L': 512, 'H': 32, 'p': (64, 4), 'endpoints': 16732, 'mass_times_D': '8366'}
+large full-fiber annulus {'L': 512, 'H': 32, 'p': (-64, -4), 'endpoints': 16732, 'mass_times_D': '8366'}
+large full-fiber annulus {'L': 1024, 'H': 64, 'p': (0, 0), 'endpoints': 66394, 'mass_times_D': '33197'}
+large full-fiber annulus {'L': 1024, 'H': 64, 'p': (128, 8), 'endpoints': 66412, 'mass_times_D': '33206'}
+large full-fiber annulus {'L': 1024, 'H': 64, 'p': (-128, -8), 'endpoints': 66412, 'mass_times_D': '33206'}
+bulk near-vertical overlap {'L': 512, 'H': 32, 'p': (0, 0), 'v': (0, 1), 'm': 65, 'w': 66560, 'w_over_m_squared': 15.753846153846155, 'constructed': 320}
+bulk near-vertical overlap {'L': 1024, 'H': 64, 'p': (0, 0), 'v': (1, 2), 'm': 65, 'w': 4096, 'w_over_m_squared': 0.9694674556213018, 'constructed': 320}
+bulk near-vertical overlap {'L': 1024, 'H': 64, 'p': (64, 4), 'v': (1, 2), 'm': 65, 'w': 4096, 'w_over_m_squared': 0.9694674556213018, 'constructed': 320}
+bulk near-vertical overlap {'L': 1024, 'H': 64, 'p': (-64, -4), 'v': (-1, 2), 'm': 65, 'w': 4096, 'w_over_m_squared': 0.9694674556213018, 'constructed': 320}
+bulk near-vertical overlap {'L': 2048, 'H': 64, 'p': (0, 0), 'v': (0, 1), 'm': 129, 'w': 528384, 'w_over_m_squared': 31.751937984496124, 'constructed': 2304}
+bulk near-vertical overlap {'L': 2048, 'H': 128, 'p': (128, 8), 'v': (1, 3), 'm': 86, 'w': 21930, 'w_over_m_squared': 2.9651162790697674, 'constructed': 420}
+All exact checks passed. Universal WR remains unresolved.

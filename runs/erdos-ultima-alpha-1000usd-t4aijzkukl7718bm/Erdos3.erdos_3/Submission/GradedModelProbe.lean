@@ -1,0 +1,19 @@
+import Submission.EvenPolynomialFactorCounting
+open Finset
+open scoped BigOperators Classical
+#check Erdos3FiniteSamplingMoments.expect_even_pow_le
+#check Finset.single_le_sum
+#check Finset.expect_eq_sum_div_card
+#check Nat.card_pos
+#check Fintype.card_pos
+#check Fintype.card_pi
+#check Fintype.card_fun
+#check fwdDiff_iter_finset_sum
+#check fwdDiff_iter_const_smul
+#check Erdos3LocalPolynomialPhaseExtension.diffIter_choose_smul_zero
+#check Finset.expect_const
+#check Fintype.expect_const
+#check Pi.add_apply
+#check AddMonoidHom.pi
+#check AddMonoidHom.proj
+#check AddMonoidHom.comp

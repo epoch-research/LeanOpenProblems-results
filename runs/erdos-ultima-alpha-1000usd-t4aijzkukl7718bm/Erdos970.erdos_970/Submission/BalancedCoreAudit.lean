@@ -1,0 +1,13 @@
+import Submission.BalancedCoreLengths
+import Submission.CoreInjectionSharpness
+
+#print axioms Erdos970.OneHitLogConcavity.balanced_core_correlation_le
+#print axioms Erdos970.OneHitLogConcavity.balanced_void_double_le
+#print axioms Erdos970.OneHitLogConcavity.parity_balanced_void_double_le
+#print axioms Erdos970.OneHitLogConcavity.singleton_two_valued
+#print axioms Erdos970.OneHitLogConcavity.full_period_succ_two_valued
+#print axioms Erdos970.OneHitLogConcavity.full_period_pred_two_valued
+#print axioms Erdos970.OneHitLogConcavity.singleton_core_void_double_le
+#print axioms Erdos970.OneHitLogConcavity.uniform_core_injective_iff_of_no_parity
+#print axioms Erdos970.OneHitLogConcavity.uniform_core_injective_iff_of_parity
+#print axioms Erdos970.OneHitLogConcavity.coreCollisionFraction_zero_iff_cutoff

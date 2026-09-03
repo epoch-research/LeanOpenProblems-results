@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.mod_eq_sub_mod
+#check Nat.add_mod
+#check Nat.mod_add_div
+#check Nat.mod_succ
+#check Nat.succ_mod
+#check Nat.div_add_mod
+#check Nat.mod_eq_iff_lt
+#check Nat.mod_eq_of_lt
+#check Finset.sum_mul
+#check Finset.mul_sum

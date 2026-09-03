@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Finset.sum_erase_add
+#check Finset.card_erase_add_one
+#check Finset.sum_boole
+#check Nat.card_coe
+#check Nat.card_le_card_of_injective
+#check sq_lt_sq₀
+#check Nat.card_eq_fintype_card
+#check Fintype.card_subtype
+#check Fintype.card_coe

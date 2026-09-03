@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Int.add_ediv_of_dvd_right
+#check Int.add_mul_ediv_right
+#check Int.add_mul_ediv_left
+#check Int.add_ediv_self
+#check Int.add_ediv_of_dvd_left
+#check Int.ediv_self
+#check Int.ediv_add_ediv_same
+#check Int.add_ediv_of_pos

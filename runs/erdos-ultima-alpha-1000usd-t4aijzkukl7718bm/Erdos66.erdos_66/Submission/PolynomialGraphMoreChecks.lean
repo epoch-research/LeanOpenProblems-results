@@ -1,0 +1,11 @@
+import Submission.PolynomialGraphPeakExplore
+open Filter
+#check Nat.mul_div_right
+#check Nat.mul_div_cancel
+#check Real.tendsto_log_div_id_atTop
+#check Real.tendsto_pow_mul_exp_atTop_nhds_zero
+#check tendsto_natCast_atTop_atTop
+#check Filter.Tendsto.div_const
+#check Nat.floor_lt
+#check Nat.le_of_dvd
+#check Polynomial.eval_map

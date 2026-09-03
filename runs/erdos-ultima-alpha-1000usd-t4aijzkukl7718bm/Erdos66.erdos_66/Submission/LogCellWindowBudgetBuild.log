@@ -1,0 +1,24 @@
+Submission/LogCellWindowBudgetExplore.lean:38:75: error: failed to prove positivity/nonnegativity/nonzeroness
+Submission/LogCellWindowBudgetExplore.lean:112:25: error: Type mismatch
+  pow_le_pow_right₀ hL
+    (have this := ?m.522;
+    this)
+has type
+  L ^ 1 ≤ L ^ 3
+but is expected to have type
+  L ≤ L ^ 3
+Submission/LogCellWindowBudgetExplore.lean:113:25: error: Type mismatch
+  pow_le_pow_right₀ hL
+    (have this := ?m.553;
+    this)
+has type
+  L ^ 1 ≤ L ^ 5
+but is expected to have type
+  L ≤ L ^ 5
+Submission/LogCellWindowBudgetExplore.lean:150:6: error: Type mismatch
+  sub_le_sub_right hmean ?m.1349
+has type
+  ↑m * (Real.exp t * (2 * B * L ^ 5 + ↑m + 1)) / (↑(windowSize N) / 2) - ?m.1349 ≤ 1 - ?m.1349
+but is expected to have type
+  ↑m * (Real.exp t * (2 * B * Real.log ↑N ^ 5 + ↑m + 1) / (↑(windowSize N) / 2)) - 2 * (↑h + 1) * Real.log ↑N ≤
+    1 - 2 * (↑h + 1) * Real.log ↑N

@@ -1,0 +1,30 @@
+import Submission.InverseTotientMoments
+
+/-! Type and axiom audits for the inverse-totient moment criteria. -/
+
+open Erdos821
+
+#check summable_totient_neg_rpow
+#check totient_fiber_tsum
+#check summable_totient_weight_iff
+#check summable_totient_neg_rpow_iff
+#check summable_inverse_totient_first_moment_iff
+#check summable_inverse_totient_second_moment_of_power_bound
+#check not_summable_second_moment_of_infinite_power_exceedance
+#check erdos_821_iff_second_moment_divergence
+#check totient_collision_card
+#check totient_distinct_collision_card
+#check half_lt_of_summable_inverse_totient_second_moment
+#check summable_second_moment_iff_off_diagonal
+#check erdos_821_iff_off_diagonal_divergence
+
+#print axioms summable_totient_neg_rpow_iff
+#print axioms summable_totient_weight_iff
+#print axioms summable_inverse_totient_first_moment_iff
+#print axioms summable_inverse_totient_second_moment_of_power_bound
+#print axioms erdos_821_iff_second_moment_divergence
+#print axioms totient_collision_card
+#print axioms totient_distinct_collision_card
+#print axioms half_lt_of_summable_inverse_totient_second_moment
+#print axioms summable_second_moment_iff_off_diagonal
+#print axioms erdos_821_iff_off_diagonal_divergence

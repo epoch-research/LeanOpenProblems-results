@@ -1,0 +1,23 @@
+Exact balance, finite differences and all 1024 shared-type assignments: 16 6
+Exact balance, finite differences and all 1024 shared-type assignments: 16 8
+Exact balance, finite differences and all 1024 shared-type assignments: 32 6
+Exact balance, finite differences and all 1024 shared-type assignments: 16 16
+K,d, negative moment-load / leading, negative cumulant-load / leading: 16 64 1.1288443760159277 1.128026533247123
+K,d, negative moment-load / leading, negative cumulant-load / leading: 16 256 1.0425756741790293 1.0423380887582967
+K,d, negative moment-load / leading, negative cumulant-load / leading: 16 4096 1.0028852626889329 1.0028697125164434
+K,d, negative moment-load / leading, negative cumulant-load / leading: 16 65536 1.000181227735662 1.0001802530551371
+K,d, negative moment-load / leading, negative cumulant-load / leading: 16 1048576 1.0000113302501 1.0000112693216363
+K,d, negative moment-load / leading, negative cumulant-load / leading: 32 64 1.623016312131864 1.6225816571255656
+K,d, negative moment-load / leading, negative cumulant-load / leading: 32 256 1.1807768299943227 1.18065713705746
+K,d, negative moment-load / leading, negative cumulant-load / leading: 32 4096 1.0118320558223408 1.0118243588025246
+K,d, negative moment-load / leading, negative cumulant-load / leading: 32 65536 1.0007416344308324 1.0007411525226853
+K,d, negative moment-load / leading, negative cumulant-load / leading: 32 1048576 1.0000463604875496 1.000046330364992
+Avoiding-injection character rank, tag sum and fibre capacity: 16 64
+Avoiding-injection character rank, tag sum and fibre capacity: 16 128
+Avoiding-injection character rank, tag sum and fibre capacity: 16 256
+Avoiding-injection character rank, tag sum and fibre capacity: 16 1024
+Avoiding-injection character rank, tag sum and fibre capacity: 32 64
+Avoiding-injection character rank, tag sum and fibre capacity: 32 128
+Avoiding-injection character rank, tag sum and fibre capacity: 32 256
+Avoiding-injection character rank, tag sum and fibre capacity: 32 1024
+PASS. No unrestricted Ramsey conclusion is asserted.

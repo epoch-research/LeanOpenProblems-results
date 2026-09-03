@@ -1,0 +1,11 @@
+import Submission.FiniteThinningApproximation
+#check summable_of_sum_le
+#check summable_iff_sum_le
+#check not_summable_one_div_on_primes
+#check not_summable_one_div_prime
+#check summable_iff_vanishing
+#check summable_iff_sum_range_le
+#check summable_subtype_iff_indicator
+#check Real.summable_iff_not_tendsto_nat_atTop_of_nonneg
+#check summable_iff_hasSum_iff
+#check Filter.Tendsto.atTop_add_const_right

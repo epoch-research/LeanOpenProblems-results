@@ -1,0 +1,14 @@
+import Submission.RoundingExplore
+#check Real.isLittleO_log_rpow_atTop
+#check Real.isLittleO_log_rpow_atTop_iff
+#check Real.isLittleO_log_id_atTop
+#check Real.summable_one_div_nat_rpow
+#check Real.summable_nat_rpow
+#check Summable.of_nonneg_of_le
+#check summable_nat_rpow
+#check Real.rpow_natCast
+#check Real.summable_nat_add_iff
+#check Summable.tsum_le_of_sum_le
+#check Summable.tsum_le_tsum
+#check Asymptotics.IsLittleO.isBigO
+#check Asymptotics.IsBigO.exists_pos

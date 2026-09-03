@@ -1,0 +1,18 @@
+Zykov clique-count inequalities: 6,504
+abstract list systems: 74,954
+actual complementary cube completions: 24,275
+actual injective resamplings: 152,660
+actual-host conditional states: 213
+global/conditional entropy identities: 1,326
+joint certificate-catalogue bounds: 100
+literal forced rectangles: 1,412
+minimal Hall circuit trees: 39,243
+pair-entropy numerical profiles: 40
+positive local clique-fibre bounds: 41,761
+signed active-support disjointness tests: 729
+source block/row intersections: 133,137
+source pair intersections: 174,251
+unary conditional entropy bounds: 213
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: stated finite identities and positive local lemmas.
+NOT PROVED/TESTED: global certificate-to-cube/cut implication; R(Q_d)=O(2^d).

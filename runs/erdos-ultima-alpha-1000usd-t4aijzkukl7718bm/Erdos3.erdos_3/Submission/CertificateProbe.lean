@@ -1,0 +1,17 @@
+import Submission.SimultaneousAvoidanceFrequency
+import Submission.SharpHigherPhaseWeylInverse
+#check Circle.coeHom.map_zpow
+#check Circle.coe_zpow
+#check Circle.coe_prod
+#check Additive.toMul_zsmul
+#check Additive.toMul_sum
+#check Additive.toMul_nsmul
+#check Finset.sum_nsmul
+#check Finset.nsmul_sum
+#check smul_smul
+#check nsmul_zsmul
+#check zsmul_nsmul
+#check Int.natCast_mul
+#check zpow_mul
+#check zpow_natCast_mul
+#check zpow_mul_natCast

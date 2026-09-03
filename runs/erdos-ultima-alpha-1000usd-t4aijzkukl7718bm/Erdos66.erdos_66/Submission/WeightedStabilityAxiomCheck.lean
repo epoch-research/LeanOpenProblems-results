@@ -1,0 +1,4 @@
+import Submission.WeightedSquareStabilityExplore
+#print axioms Erdos66ConvolutionSquareStability.square_mass_difference_le
+#print axioms Erdos66WeightedPushEnergy.tsum_cauchy_schwarz
+#print axioms Erdos66WeightedSquareStability.weighted_square_stability_limit

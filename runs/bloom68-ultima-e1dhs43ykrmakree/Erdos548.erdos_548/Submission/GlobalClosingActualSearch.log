@@ -1,0 +1,16 @@
+actual-search checkpoint 5 15 candidates 5 copy cuts 150 seconds 0.23
+actual-search checkpoint 5 15 candidates 10 copy cuts 300 seconds 0.45
+actual-search checkpoint 5 15 candidates 15 copy cuts 450 seconds 1.14
+actual-search checkpoint 5 15 candidates 20 copy cuts 600 seconds 2.82
+actual-search checkpoint 5 15 candidates 25 copy cuts 750 seconds 6.52
+actual-search checkpoint 5 15 candidates 30 copy cuts 900 seconds 21.49
+actual-search checkpoint 5 15 candidates 35 copy cuts 1050 seconds 77.73
+actual-search result (NO COMPLETE THEOREM) {'r': 5, 'n': 15, 'k': 11, 'Delta': 3, 'structural_rows': 591, 'candidates': 36, 'copy_cuts': 1080, 'iterations': 36, 'solver_status': 'time_budget', 'seconds': 90.02}
+actual-search checkpoint 6 17 candidates 5 copy cuts 150 seconds 0.34
+actual-search checkpoint 6 17 candidates 10 copy cuts 300 seconds 0.77
+actual-search checkpoint 6 17 candidates 15 copy cuts 450 seconds 1.25
+actual-search checkpoint 6 17 candidates 20 copy cuts 600 seconds 2.39
+actual-search checkpoint 6 17 candidates 25 copy cuts 750 seconds 6.74
+actual-search checkpoint 6 17 candidates 30 copy cuts 900 seconds 19.33
+actual-search checkpoint 6 17 candidates 35 copy cuts 1050 seconds 51.97
+actual-search result (NO COMPLETE THEOREM) {'r': 6, 'n': 17, 'k': 13, 'Delta': 4, 'structural_rows': 851, 'candidates': 38, 'copy_cuts': 1140, 'iterations': 38, 'solver_status': 'time_budget', 'seconds': 90.03}

@@ -1,0 +1,11 @@
+import Submission.BudgetInterceptFlatExplore
+#check pow_le_pow_left₀
+#check pow_le_pow_left₀
+#check pow_le_pow_iff_left₀
+#check pow_le_pow_iff_left
+#check pow_lt_pow_left₀
+#check Real.sqrt_le_iff
+#check Real.sqrt_le_left
+#check Real.sqrt_le_iff
+#check Real.le_sqrt
+#check le_of_pow_le_pow_left₀

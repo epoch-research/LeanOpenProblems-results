@@ -1,0 +1,13 @@
+L=210: H_L>0 coefficientwise, Q|H_L, but min(H_L/Q)=-1; 48 uncovered positions
+L=420: H_L>0 coefficientwise, Q|H_L, but min(H_L/Q)=-1; 96 uncovered positions
+L=630: H_L>0 coefficientwise, Q|H_L, but min(H_L/Q)=-1; 144 uncovered positions
+Lift to first 10 primes: N=6469693230, D=119, sigma=9920878441/6469693230>3/2, P>0, f(1)=-1
+For full-period lengths, all Nth-root single-frequency triangle tests pass (by the exact Fourier formula in the report)
+Q coefficients: [1, 4, 9, 15, 21, 26, 29, 29, 26, 21, 15, 9, 4, 1]
+P coefficients: [1, 2, 2, 1, 1, 1, 2, 3, 4, 5, 6, 5, 3, 1]
+D=13; N=210; sigma=247/210; C=37
+One-period excess histogram: {-1: 48, 0: 92, 1: 56, 2: 13, 3: 1}
+Excess minimal recurrence order: 14; hole-indicator order: 210
+j(210)=10 < 14: this is NOT a period-sum counterexample
+All fixed exact certificates passed; no asymptotic claim was tested
+Spec.lean SHA-256: c961aa894dc05a671003b74cd770bf0efc120992bcaaa79466c418b03e1688e7

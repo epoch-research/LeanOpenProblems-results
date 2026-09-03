@@ -1,0 +1,10 @@
+import Submission.ShortTriangleQuarticPairExclusion
+
+/-! Axiom audit of the ordinary-ear exchange and quartic-pair exclusion. -/
+#print axioms Erdos583PathEarExchangeDevelopment.path_ear_exchange
+#print axioms Erdos583PathEarExchangeDevelopment.ear_expansion_support_subset
+#print axioms Erdos583ShortTriangleEarCarrierDevelopment.short_triangle_no_ordinary_ear_chord
+#print axioms Erdos583ShortTriangleTailChordDevelopment.short_triangle_external_chord_in_tail
+#print axioms Erdos583ShortTriangleQuarticPairExclusionDevelopment.four_neighbors_exhaust
+#print axioms Erdos583ShortTriangleQuarticPairExclusionDevelopment.short_walk_noninitial_edges_eq
+#print axioms Erdos583ShortTriangleQuarticPairExclusionDevelopment.failure_no_degree_five_short_triangle_quartic_pair

@@ -1,0 +1,12 @@
+import Submission.AffineLineReplacement
+#check Finset.sum_add_sum_compl
+#check Finset.card_filter_add_card_filter_not
+#check Fintype.card_subtype_compl
+#check Fintype.card_subtype_compl
+#check Fintype.card_congr
+#check Equiv.subtypeProdEquivProd
+#check Equiv.prodSubtype
+#check Finset.card_sdiff
+#check Finset.filter_card_add_filter_neg_card_eq_card
+#check Equiv.ofBijective
+#check Erdos714Packing.free_iff_no_rectangle

@@ -1,0 +1,30 @@
+import Submission.GrowingSubfieldBlockExplore
+
+/-! Permitted-axiom audit for the growing finite-field extension lemmas. -/
+
+#print axioms Erdos66GrowingParameterTranslate.forbiddenTranslate_card
+#print axioms Erdos66GrowingParameterTranslate.translated_avoids
+#print axioms Erdos66GrowingParameterTranslate.translated_no_opposites
+#print axioms Erdos66GrowingParameterTranslate.exists_avoiding_parameter_block
+#print axioms Erdos66GrowingParameterTranslate.crossCharFiber_l1_le
+#print axioms Erdos66GrowingParameterTranslate.charFiber_union
+#print axioms Erdos66GrowingParameterTranslate.charFiber_union_l1
+#print axioms Erdos66GrowingFieldSlice.mem_scalarRange
+#print axioms Erdos66GrowingFieldSlice.scalarRange_card
+#print axioms Erdos66GrowingFieldSlice.zero_mem_scalarRange
+#print axioms Erdos66GrowingFieldSlice.neg_mem_scalarRange
+#print axioms Erdos66GrowingFieldSlice.image_mem_scalarRange
+#print axioms Erdos66GrowingFieldSlice.enlarged_admissible
+#print axioms Erdos66GrowingFieldSlice.enlarged_old_slice
+#print axioms Erdos66GrowingFieldSlice.exists_growing_slice_parameters
+#print axioms Erdos66GrowingOriginRepair.exists_faithful_scalar_enlargement
+#print axioms Erdos66GrowingOriginRepair.mem_partialCurve
+#print axioms Erdos66GrowingOriginRepair.partialCurve_old_slice
+#print axioms Erdos66GrowingOriginRepair.mem_neg_image
+#print axioms Erdos66GrowingOriginRepair.repairPoints_old_slice
+#print axioms Erdos66GrowingOriginRepair.exists_growing_repaired_slice
+#print axioms Erdos66GrowingSubfieldBlock.scalarRange_add
+#print axioms Erdos66GrowingSubfieldBlock.cubic_extension_capacity
+#print axioms Erdos66GrowingSubfieldBlock.exists_subfield_block_extension
+#print axioms Erdos66GrowingSubfieldBlock.growing_error_relative
+#print axioms Erdos66GrowingSubfieldBlock.exists_accurate_subfield_block_extension

@@ -1,0 +1,16 @@
+import Submission.EvenCompositeGain
+
+/-! Axiom audit for the even-cofactor refinement. -/
+
+#print axioms Erdos821.Sieve.even_reciprocal_totient_recurrence
+#print axioms Erdos821.Sieve.even_reciprocal_totient_le_twice_odd
+#print axioms Erdos821.Sieve.even_reciprocal_totient_le_two_thirds
+#print axioms Erdos821.Sieve.even_reciprocal_totient_le_four_thirds_harmonic
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_composite_cofactor_even
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_even
+#print axioms Erdos821.primeProductModuli_odd
+#print axioms Erdos821.even_structured_coefficient_bound
+#print axioms Erdos821.eventually_even_structured_smooth_family
+#print axioms Erdos821.infinite_g_gt_even_composite_uniform
+#print axioms Erdos821.erdos_821_even_composite_range
+#print axioms Erdos821.even_composite_threshold_gt_two_threshold

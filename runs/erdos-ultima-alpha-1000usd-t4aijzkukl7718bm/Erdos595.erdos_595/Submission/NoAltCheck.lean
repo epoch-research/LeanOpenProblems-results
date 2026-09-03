@@ -1,0 +1,11 @@
+import Submission.NoAlternatingBiclique
+#check LinearOrder.lift'
+#check Prod.Lex.lt_iff
+#check Prod.Lex.toLex_lt_toLex
+#check Prod.Lex.toLex_le_toLex
+#check Prod.lex_lt_iff
+#check Prod.Lex.left
+#check toLex_inj
+#check ofLex_toLex
+#check Prod.Lex.fst_le_of_le
+#check StrictMono

@@ -1,0 +1,34 @@
+import Submission.GrowingCofactorReciprocals
+
+/-! Exact types and axiom audit for GrowingCofactorReciprocals. -/
+
+#check Erdos821.bounded_cofactor_parent_count_le_pairs
+#check Erdos821.cofactor_sieve_normalized_error
+#check Erdos821.cofactorSieveConstant_nonneg
+#check Erdos821.bounded_cofactor_parent_normalized_count
+#check Erdos821.rootLogCofactorCutoff_mono
+#check Erdos821.boundedCofactorParentSet_mono
+#check Erdos821.rootLogCofactorParent_count_le
+#check Erdos821.rootLog_block_cutoff_le
+#check Erdos821.harmonic_rootLog_block_le
+#check Erdos821.sqrt_div_sq_eq_rpow
+#check Erdos821.rootLog_cofactor_normalized_count
+#check Erdos821.summable_rootLog_cofactor_parent_reciprocal
+#check Erdos821.not_summable_reciprocal_outside_rootLog_cofactor_parents
+#check Erdos821.prime_outside_rootLog_cofactor_parent_iff
+#check Erdos821.not_summable_rootLog_prime_factor_bound
+#print axioms Erdos821.bounded_cofactor_parent_count_le_pairs
+#print axioms Erdos821.cofactor_sieve_normalized_error
+#print axioms Erdos821.cofactorSieveConstant_nonneg
+#print axioms Erdos821.bounded_cofactor_parent_normalized_count
+#print axioms Erdos821.rootLogCofactorCutoff_mono
+#print axioms Erdos821.boundedCofactorParentSet_mono
+#print axioms Erdos821.rootLogCofactorParent_count_le
+#print axioms Erdos821.rootLog_block_cutoff_le
+#print axioms Erdos821.harmonic_rootLog_block_le
+#print axioms Erdos821.sqrt_div_sq_eq_rpow
+#print axioms Erdos821.rootLog_cofactor_normalized_count
+#print axioms Erdos821.summable_rootLog_cofactor_parent_reciprocal
+#print axioms Erdos821.not_summable_reciprocal_outside_rootLog_cofactor_parents
+#print axioms Erdos821.prime_outside_rootLog_cofactor_parent_iff
+#print axioms Erdos821.not_summable_rootLog_prime_factor_bound

@@ -1,0 +1,29 @@
+Local norm-cylinder images: exact lift enumeration passed for 1042 Gaussian residue classes (including 2-adic extra precision).
+All 1 nonempty masks mod 1: lambda >= delta; min lambda/delta = 1.
+All 15 nonempty masks mod 2: lambda >= delta; min lambda/delta = 1.
+All 511 nonempty masks mod 3: lambda >= delta; min lambda/delta = 1.
+All 65535 nonempty masks mod 4: lambda >= delta; min lambda/delta = 1.
+Mod 5: 30550 sparse/dense masks, including the stronger selected-gap bound, passed.
+680 seeded correlated prime-power/mixed-modulus masks passed; mod 65 uses two split primes.
+Mod 4: |G|=8, |local norm-one reductions|=4, |H|=1.
+Mod 8: |G|=32, |local norm-one reductions|=8, |H|=2.
+Mod 13: |G|=144, |local norm-one reductions|=12, |H|=3.
+Mod 65: |G|=2304, |local norm-one reductions|=48, |H|=12.
+Hilbert-90/unit correction verified exactly, including ramification at 2.
+Mod 13: lambda({0,+/-(2+6i)})=14/169; genuine local exceptions 1,313,677 verified.
+Orientation switch packet 2105=5*421: all 12 locally admissible unit residues attained.
+Exact mod-13 population: X, S(X), locally admissible, actual F_B(X), missing
+1 1 1 0 1
+39 19 1 0 1
+40 20 2 1 1
+1000 330 30 21 9
+10000 2749 237 189 48
+100000 24028 2029 1649 380
+1000000 216341 18153 15059 3094
+Actual endpoint/difference disk inclusions passed for 18 finite periodic disks.
+Exact saturation for every residue mod M=1,...,5 and every norm n<=5000: 25000 checks passed.
+Actual finite cyclic-gap/residue-injection and large-ideal partitions: 400 checks passed.
+Primitive height obstruction: M=101, R=21, n=4, F_B(4R^2)=4, lambda=405/10201.
+Primitive height obstruction: M=1009, R=202, n=4, F_B(4R^2)=4, lambda=4037/1018081.
+Primitive height obstruction: M=10009, R=2002, n=4, F_B(4R^2)=4, lambda=40037/100180081.
+ALL EXACT CHECKS PASSED. These finite checks do not establish an asymptotic or a uniform contraction.

@@ -1,0 +1,49 @@
+'Erdos66KernelSymmetrization.kernelMean_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.kernelMean_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.centered_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.diagonal_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.variance_sym_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.fiber_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.fiber_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.colorEnergy_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66KernelSymmetrization.mean_colorEnergy_le_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.mask_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.centered_mask_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.centered_mask_sq_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.total_mask_variance_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.total_mask_diagonal_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.exists_total_basis_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.fiber_mask_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.colorEnergy_mask_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.colorEnergy_centered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CompleteKernelBasis.exists_universal_centered_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteGraph.exists_universal_graph_kernels' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteGraph.exists_universal_patched_kernels' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteGraph.graphSet_mixed_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteGraph.exists_universal_actual_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteGraph.infinite_graph_mixed_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteGraph.exists_universal_infinite_mixed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteGraph.exists_universal_infinite_patched' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteGraph.infinite_graph_prefix_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.centeredMass_eq_variance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.centeredMass_le_second' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.centeredMass_le_mean_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.relative_accuracy_of_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.exists_universal_graph_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteAccuracy.exists_universal_infinite_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalCompleteAccuracy.mem_infiniteGraphSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalCompleteAccuracy.infiniteGraphSet_full_projection' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

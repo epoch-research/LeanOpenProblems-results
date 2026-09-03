@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+import Submission.SupercriticalUniformTail
+#check Finset.single_le_sum
+#check Finset.sum_Ico_sub
+#check Finset.sum_Ico_sub'
+#check Finset.sum_Ico_succ_sub
+#check Finset.sum_Ico_succ_top
+#check Finset.sum_Ico_eq_sub
+#check Finset.le_sup
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Summable.tendsto_atTop_zero
+#check tendsto_pow_const_div_const_pow
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
+#check pow_mul
+#check Finset.sum_boole
+#check Finset.sum_ite_irrel
+#check Finset.sum_div

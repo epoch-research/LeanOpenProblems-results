@@ -1,0 +1,40 @@
+import Submission.BlockChebyshevSpecialization
+
+/-! Axiom audit for the blockwise sieve and its specialization. -/
+
+#print axioms Erdos821.Sieve.exp_primeTotientMass_scale_upper
+#print axioms Erdos821.Sieve.two_mul_pow_pred_eq
+#print axioms Erdos821.Sieve.evenBlockMass_upper
+#print axioms Erdos821.Sieve.eventually_evenBlockMass_upper
+#print axioms Erdos821.AnalyticSieve.prime_pair_cofactor_odd_modulus_endpoint
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_finset_endpoint
+#print axioms Erdos821.AnalyticSieve.cofactorBlockEndpoint_zero
+#print axioms Erdos821.AnalyticSieve.cofactorBlockEndpoint_succ
+#print axioms Erdos821.AnalyticSieve.cofactorBlockEndpoint_mono
+#print axioms Erdos821.AnalyticSieve.sum_cofactorBlock_partition
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_mass
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_mass_all
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_block_endpoint
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_family_block_endpoint
+#print axioms Erdos821.blockCutoff_properties
+#print axioms Erdos821.block_unit_main_normalized
+#print axioms Erdos821.block_sieve_main_normalized
+#print axioms Erdos821.eventually_block_sieve_main_constant
+#print axioms Erdos821.eventually_block_endpoint_all
+#print axioms Erdos821.block_rough_count_le
+#print axioms Erdos821.eventually_block_total_error_divisor
+#print axioms Erdos821.blockMainLimit_nonneg
+#print axioms Erdos821.eventually_block_chebyshev_retained_weight
+#print axioms Erdos821.eventually_block_chebyshev_smooth_family
+#print axioms Erdos821.infinite_g_gt_block_parameters
+#print axioms Erdos821.blockMainLimit_eq_reciprocal_sum
+#print axioms Erdos821.reciprocal_sq_le_adjacent_diff
+#print axioms Erdos821.adjacent_diff_le_reciprocal_sq
+#print axioms Erdos821.blockMainLimit_le_telescoped
+#print axioms Erdos821.telescoped_le_blockMainLimit
+#print axioms Erdos821.infinite_g_gt_block_telescoped_parameters
+#print axioms Erdos821.infinite_g_gt_block_chebyshev_uniform
+#print axioms Erdos821.infinite_g_gt_point_five_one_eight_two_eight
+#print axioms Erdos821.erdos_821_block_chebyshev_range
+#print axioms Erdos821.erdos_821_point_four_eight_one_seven_two
+#print axioms Erdos821.block_chebyshev_strict_improvement

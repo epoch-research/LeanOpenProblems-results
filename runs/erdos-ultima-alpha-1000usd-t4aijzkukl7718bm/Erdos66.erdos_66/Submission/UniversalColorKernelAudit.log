@@ -1,0 +1,27 @@
+'Erdos66UniversalColorKernelSpan.colorMask_combination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.colorMask_total_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.exists_all_color_kernels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.extendColor_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.matrixSum_color' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.matrixRootCount_color' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.exists_all_label_color_kernels' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalColorKernelSpan.balanced_kernel_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalColorKernelSpan.exists_all_balanced_kernels' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalActualKernel.exists_universal_actual_kernel_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalActualKernel.kernelMean_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalActualKernel.kernel_le_total_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalActualKernel.kernel_second_le_mean_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalActualKernel.exists_universal_actual_relative_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalKernelAccuracy.repair_root_coefficient_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniversalKernelAccuracy.exists_universal_actual_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniversalKernelAccuracy.exists_color_accuracy_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

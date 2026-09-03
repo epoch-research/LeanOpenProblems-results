@@ -1,0 +1,10 @@
+import Submission.MarkedCycleGroups
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583MarkedCycleGroupsDevelopment.marked_group_cycle_closed
+#print axioms Erdos583MarkedCycleGroupsDevelopment.marked_group_cycle_subset
+#print axioms Erdos583MarkedCycleGroupsDevelopment.marked_normal_group_disjoint_cycle
+#print axioms Erdos583MarkedCycleGroupsDevelopment.within_support_eq
+#print axioms Erdos583MarkedCycleGroupsDevelopment.normal_group_marked_of_support
+#print axioms Erdos583MarkedCycleGroupsDevelopment.small_normal_group_marked
+#print axioms Erdos583MarkedCycleGroupsDevelopment.half_normal_group_marked
+#print axioms Erdos583MarkedCycleGroupsDevelopment.small_normal_group_disjoint_cycle

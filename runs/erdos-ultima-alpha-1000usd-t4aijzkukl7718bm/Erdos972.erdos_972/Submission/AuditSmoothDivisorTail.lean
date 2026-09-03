@@ -1,0 +1,11 @@
+import Submission.SmoothTailScales
+
+/-! Axiom audit of the explicit divisor-tail estimates and their parameter tests. -/
+#print axioms Erdos972SmoothDivisorTail.abs_expTail_le
+#print axioms Erdos972SmoothDivisorTail.expTail_energy_bound
+#print axioms Erdos972SmoothDivisorTail.full_truncated_correlation_error
+#print axioms Erdos972SmoothDivisorTail.full_exp_correlation_error
+#print axioms Erdos972SmoothDivisorTail.smooth_correlation_divisor_error
+#print axioms Erdos972SmoothTailScales.slow_damping_weight_tendsto
+#print axioms Erdos972SmoothTailScales.comparison_damping_tendsto_one
+#print axioms Erdos972SmoothTailScales.comparison_tail_budget_tendsto_atTop

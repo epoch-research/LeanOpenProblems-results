@@ -1,0 +1,22 @@
+'Erdos66RotationMassLogBound.rotationSum_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotationSum_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotationSum_block_multiple_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RotationMassLogBound.rotation_small_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotation_mass_log_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotationSum_complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotation_complement_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RotationMassLogBound.rotation_balanced_mass_log_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66DiscreteRotationMass.phase_interval_mass_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DiscreteRotationMass.phase_mass_intervalBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DiscreteRotationMass.phase_balanced_intervalBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DiscreteRotationMass.mass_error_ratio_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DiscreteRotationMass.exists_mass_error_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DiscreteRotationMass.exists_uniform_relative_mass_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MassSensitivePhaseCarry.mass_sensitive_natural_carry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MassSensitivePhaseCarry.balanced_mass_natural_carry' depends on axioms: [propext, Classical.choice, Quot.sound]

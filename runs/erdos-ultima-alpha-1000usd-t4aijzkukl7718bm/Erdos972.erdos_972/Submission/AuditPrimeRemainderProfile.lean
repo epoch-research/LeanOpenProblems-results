@@ -1,0 +1,11 @@
+import Submission.PrimeRemainderProfileIdentity
+/-! Axiom audit of the exact large-prime coefficient and profile identities. -/
+#print axioms Erdos972PrimeRemainderProfileIdentity.truncated_moebius_prime_invariant
+#print axioms Erdos972PrimeRemainderProfileIdentity.divisorCoeff_mul_large_prime
+#print axioms Erdos972PrimeRemainderProfileIdentity.divisorCoeff_prime
+#print axioms Erdos972PrimeRemainderProfileIdentity.largePrimeLog_nonneg
+#print axioms Erdos972PrimeRemainderProfileIdentity.largePrimeLog_le_log
+#print axioms Erdos972PrimeRemainderProfileIdentity.prime_remainder_profile_identity
+#print axioms Erdos972PrimeRemainderProfileIdentity.prime_remainder_profile_pair_identity
+#print axioms Erdos972PrimeRemainderProfileIdentity.tail_prime_pairSum_eq
+#print axioms Erdos972PrimeRemainderProfileIdentity.offDiagonal_profile_identity

@@ -1,0 +1,9 @@
+import Submission.CofactorBilinearCompletion
+
+/-! Independent axiom audit for the product-half-level continuation. -/
+
+#print axioms Erdos821.AnalyticSieve.largeCofactorBilinearConductor_le_divisor_sum
+#print axioms Erdos821.AnalyticSieve.largeCofactorBilinearConductor_harmonic_mean
+#print axioms Erdos821.AnalyticSieve.bilinear_conductor_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.cofactor_bilinear_all_modulus_mean_of_local_weight
+#print axioms Erdos821.AnalyticSieve.exists_cofactor_bilinear_all_modulus_mean_bound

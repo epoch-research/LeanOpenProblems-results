@@ -1,0 +1,2 @@
+forest discount checkpoint 3 forests 2 hosts 759 tests 759
+forest discount obstruction {'e': 4, 'G': [(0, 1), (0, 3), (0, 5), (1, 2), (1, 4), (2, 3), (2, 5), (3, 4), (4, 5)], 'F': [(0, 1), (2, 3), (3, 4), (3, 5)], 'nG': 6, 'nF': 6}

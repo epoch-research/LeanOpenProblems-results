@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+open Polynomial
+#check CharP.cast_eq_zero_iff
+#check CharP.cast_eq_zero
+#check FiniteField.isSquare_neg_one_iff
+#check FiniteField.pow_card
+#check frobenius_def
+#check add_pow_char
+#check FiniteField.card
+#check GaloisField.card
+#check Nat.mod_eq_zero_of_dvd
+#check Nat.cast_pow
+#check Nat.cast_add

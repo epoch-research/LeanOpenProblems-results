@@ -1,0 +1,8 @@
+import Submission.CyclePrefixEndpointObstruction
+
+/-! Axiom audit for cycle-prefix endpoint obstructions. -/
+#print axioms Erdos583CyclePrefixEndpointObstructionDevelopment.cycle_append_support_inter
+#print axioms Erdos583CyclePrefixEndpointObstructionDevelopment.maximum_endpoint_meets_cycle_prefix
+#print axioms Erdos583CyclePrefixEndpointObstructionDevelopment.maximum_root_avoiding_endpoint_two_sides
+#print axioms Erdos583CyclePrefixEndpointObstructionDevelopment.maximum_no_whole_cycle_ear
+#print axioms Erdos583CyclePrefixEndpointObstructionDevelopment.maximum_no_one_touch_cycle_endpoint

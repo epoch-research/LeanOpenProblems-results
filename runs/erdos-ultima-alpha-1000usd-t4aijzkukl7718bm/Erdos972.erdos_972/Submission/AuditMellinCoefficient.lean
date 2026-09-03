@@ -1,0 +1,10 @@
+import Submission.UniformDivisorCoefficient
+
+/-! Axiom audit of actual-coefficient, low-Mellin-frequency estimates. -/
+
+#print axioms Erdos972MellinDivisorCoefficient.divisorCoeff_prefix_error
+#print axioms Erdos972MellinDivisorCoefficient.divisorCoeff_mellin_bound
+#print axioms Erdos972MellinDivisorCoefficient.divisorCoeff_mellin_uniform
+#print axioms Erdos972MertensFromReciprocal.mertens_div_tendsto_zero
+#print axioms Erdos972UniformDivisorCoefficient.eventually_divisorCoeff_prefix_small
+#print axioms Erdos972UniformDivisorCoefficient.eventually_divisorCoeff_mellin_uniform

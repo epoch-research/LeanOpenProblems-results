@@ -1,0 +1,10 @@
+import Submission.StructuredHostExplore
+import Submission.CentralEndpointResetExplore
+#print axioms Erdos66GeneralPatternCosts.exists_general_pattern_rep_costs
+#print axioms Erdos66GeneralPatternPower.exists_general_polynomial_patterns
+#print axioms Erdos66DominatedScaledProfile.exists_dominated_scaled_profile
+#print axioms Erdos66CentralEndpointReset.localized_edit_bound
+#print axioms Erdos66CentralEndpointReset.exists_central_reset
+#print axioms Erdos66HostPatternMean.eventually_host_triple_mean
+#print axioms Erdos66HostPatternSelection.exists_host_pattern_bounds
+#print axioms Erdos66StructuredHost.exists_structured_host

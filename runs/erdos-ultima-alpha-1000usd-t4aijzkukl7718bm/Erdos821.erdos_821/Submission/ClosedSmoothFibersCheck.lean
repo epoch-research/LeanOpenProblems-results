@@ -1,0 +1,12 @@
+import Submission.ClosedSmoothFibers
+
+/-! Type and axiom audit. -/
+
+open Erdos821.ClosedPadding
+
+#check small_core_fibers_of_weak_density
+#print axioms small_core_fibers_of_weak_density
+#check exists_closed_small_radical_fiber_of_weak_density
+#print axioms exists_closed_small_radical_fiber_of_weak_density
+#check exists_fixed_power_closed_small_radical_fibers
+#print axioms exists_fixed_power_closed_small_radical_fibers

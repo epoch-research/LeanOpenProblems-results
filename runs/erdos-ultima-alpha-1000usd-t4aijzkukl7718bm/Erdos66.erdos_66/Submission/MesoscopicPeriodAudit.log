@@ -1,0 +1,12 @@
+'Erdos66MesoscopicPeriodBarrier.clipped_period_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MesoscopicPeriodBarrier.product_resolution_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MesoscopicPeriodBarrier.clipped_window_div_product_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MesoscopicPeriodBarrier.square_scale_log_window_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MesoscopicPeriodBarrier.clipped_no_complete_product_average' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MesoscopicPeriodBarrier.square_scale_clipped_product_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

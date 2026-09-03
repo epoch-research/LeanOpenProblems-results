@@ -1,0 +1,17 @@
+'Erdos66PeriodicMixedDiscrepancy.pairs_periodicSlice' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.pairs_periodicSlice_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.interval_card_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.interval_hist_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.interval_hist_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.interval_periodic_mixed_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PeriodicMixedDiscrepancy.phased_interval_periodic_mixed_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PeriodicMixResolution.budget_forces_small_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixResolution.log_cube_over_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PeriodicMixResolution.eventually_no_small_histogram_certificate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PeriodicMixResolution.phased_certificate_too_large' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,46 @@
+'Erdos66InterceptOppositePruning.oppositeCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.pruned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.pruned_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.oppositeCount_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.pruned_card_loss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.pruned_admissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.properEdges_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.budgetAt_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.budget_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InterceptOppositePruning.exists_energy_budget_opposites' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66FinitePruningError.weightedFiber' depends on axioms: [propext, Quot.sound]
+'Erdos66FinitePruningError.weightedFiber_l1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FinitePruningError.weightedFiber_pruning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FinitePruningError.crossCharFiber_pruning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FinitePruningError.square_card_loss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FinitePruningError.pairCount_union_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66FinitePruningError.pairCount_union_abs_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.translated_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.l1_from_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.pruned_l1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.mean_loss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.pruned_weighted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.pruned_actual_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrunedInterceptBounds.pruned_correction_cubic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restoredPoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restoredPoints_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restoredPoints_row_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restored_row_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.restored_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.exists_restored_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.encoded_restored_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptPrefix.encoded_restored_counts_below' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RestoredInterceptScale.pruning_relative_cost_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptScale.pruning_envelope_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptScale.pruning_cost_negligible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RestoredInterceptScale.count_cube_div_cutoff_tends_atTop' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RestoredInterceptScale.cubic_certificate_fails_for_full_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

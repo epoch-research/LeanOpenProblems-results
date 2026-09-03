@@ -1,0 +1,7 @@
+import Submission.RootHighDegree
+/-! Audit high-degree minimum-energy root selection. -/
+#print axioms Erdos583RootHighDegreeDevelopment.degree_two_root_is_cycle
+#print axioms Erdos583RootHighDegreeDevelopment.root_degree_ge_two
+#print axioms Erdos583RootHighDegreeDevelopment.move_degree_two_root
+#print axioms Erdos583RootHighDegreeDevelopment.exists_small_quota_high_degree_root
+#print axioms Erdos583RootHighDegreeDevelopment.small_quota_high_degree_cases

@@ -1,0 +1,23 @@
+{
+  "id": "Erdos242.erdos_242",
+  "epoch": 1,
+  "uuid": "kMNysEdVeHZSrTPebp8A75",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0
+  },
+  "model_usage": {
+    "epoch/vega-alpha": {
+      "input_tokens": 81723,
+      "output_tokens": 5199907,
+      "total_tokens": 110161281,
+      "input_tokens_cache_write": 15856831,
+      "input_tokens_cache_read": 89022820,
+      "reasoning_tokens": 4300792,
+      "total_cost": 300.0224287500004
+    }
+  },
+  "oeis_id": null
+}

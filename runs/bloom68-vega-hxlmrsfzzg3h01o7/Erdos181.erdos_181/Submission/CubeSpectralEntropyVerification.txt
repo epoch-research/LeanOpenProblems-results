@@ -1,0 +1,20 @@
+Density-preserving thinning: simultaneous failure bound 0.660875605433 < 1
+Suppression exponent: 1/4 + 1/30 - (log 16)/2 = -1.102961027787 < -1
+Finite-population baseline and small-set encoding inequalities: exact checks passed
+Exhaustive containers: rho=1, a=5, systems=15248, big-pool systems=252, fingerprints=15248
+Exhaustive containers: rho=3/4, a=8, systems=15262, big-pool systems=0, fingerprints=15262
+Non-complete 3/4-dense phase: |S|=4, |T|=112, enlarged |T*|=128; only the claimed average-density property survives
+Clone lower bound: M=16, L=3, N=45, actual ||B||=6.545454545, eigen lower bound=5.000000000
+Approximate repeated-profile inequality: 8 non-vacuous tests passed
+Exact biclique occupation polynomials: total hom count and actual injective coefficient agree
+Full collision-Mobius background: exact cancellation checked through fibre size 15
+Actual Q_3 counts in a 10-vertex host: hom=848844, deleted star-phase hom=33580, inj=6192; exact pruning identity passed
+Explicit endpoint regimes: K=1, Lambda=7, C=3136, t=4*2^((d-2)/3), s=84
+  d= 74: budget/h <= 22.7174699; half-injective phase forbidden=False; exp(-h) suppression certified=False
+  d= 98: budget/h <= 1.81785997; half-injective phase forbidden=True; exp(-h) suppression certified=False
+  d=122: budget/h <= 0.13849238; half-injective phase forbidden=True; exp(-h) suppression certified=True
+  d=146: budget/h <= 0.010210532; half-injective phase forbidden=True; exp(-h) suppression certified=True
+  d=170: budget/h <= 0.000735330639; half-injective phase forbidden=True; exp(-h) suppression certified=True
+Fixed-t sufficient threshold N >= (16 beta t C)^4: verified with margin 3/16 < 1/4
+Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: finite checks support the proved phase-elimination theorem; no full embedding theorem is asserted.

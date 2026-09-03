@@ -1,0 +1,11 @@
+import Submission.BudgetScaleFilteredRows
+#check Nat.le_self_pow
+#check Finset.subset_union_right
+#check Finset.sdiff_subset
+#check Finset.sdiff_subset_iff
+#check Finset.union_sdiff_right
+#check Erdos970.GapAverages.count_zero_of_cover
+#check Erdos970.CoverFibers.phaseSurvivors_card
+#check Erdos970.GapAverages.CoverFibers.phaseSurvivors_card
+#check Nat.le_pow
+#check Erdos970.GapAverages.quadratic_bound_of_eventually_scaled

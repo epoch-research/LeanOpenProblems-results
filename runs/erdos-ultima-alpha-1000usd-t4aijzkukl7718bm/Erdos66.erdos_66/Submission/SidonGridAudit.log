@@ -1,0 +1,5 @@
+'Erdos66SidonGrid.sum_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonGrid.grid_rep_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonGrid.exists_mono_rectangle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonGrid.grid_not_sidon_colored' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SidonGrid.exists_cap_four_not_sidon_colored' depends on axioms: [propext, Classical.choice, Quot.sound]

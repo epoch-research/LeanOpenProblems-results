@@ -1,0 +1,16 @@
+PASS original connected signed sums versus log-cumulants: 24 exact rational cases
+PASS isolated-vertex rising-factorial dressing: 225 exact rational cases
+PASS arbitrary vertex-cover occupation formula: 2688 exact moment coefficients
+PASS core-partition logarithm, including Q_3 and shared leaves: 336 exact activity coefficients
+PASS general vertex deletion (degrees 1--4) and parallel-edge leaf response: 18 exact cases
+CHECK PSD does not imply a positive connected response: C_5 host, Delta_Gamma=-4/25, w(P_3)=-2/25
+PASS two-centre EGF against direct moment-cumulants: 48 coefficients, both leaf counts 0--3
+PASS analytic constant arithmetic; 1024 complex-boundary Paley checks; max |W|/bound=0.0012626
+PASS finite isolated-dressing combinatorial majorants: 136 cases
+PASS cube pair-codegree and degree-two pool inequalities: 65778 core subsets, dimensions 2--5
+CHECK dimension-uniform skeleton constants: tau=0.0365163368008, C_conv=11153.9293, C_load=390399.03
+PASS projection-Gram / nowhere-zero-flow identity: 12 all-size-class sample graphs, including bridges and parallel edges
+CHECK even-cycle Gram positivity is not stable under core injectivity: bare=4/125, core-injective=-12/3125
+PASS 2-degenerate positive-core embedding certificate: Q_4 levels 1,2 into Paley(401), min off-diagonal codegree=99, images={0: 0, 1: 1, 2: 2, 3: 3, 4: 5, 5: 4, 6: 7, 7: 6, 8: 8, 9: 10}
+PASS Spec.lean unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+LIMITATION: no claim or verification of the full all-support cube negative-load bound.

@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check iterateFrobenius
+#check iterateFrobenius_def
+#check iterateFrobenius_apply
+#check AdjoinRoot.eval₂_root
+#check AdjoinRoot.aeval_eq
+#check AdjoinRoot.eval₂_root
+#check AdjoinRoot.powerBasis_dim
+#check AdjoinRoot.finite
+#check AdjoinRoot.instCharP
+#check CharP.of_injective_algebraMap
+#check Polynomial.isRoot_of_eval₂_eq_zero
+#check AdjoinRoot.isRoot_root
+#check Finite.of_injective

@@ -1,0 +1,8 @@
+import Submission.UniversalEndpointClosure
+
+/-! Axiom audit for universal endpoint containment. -/
+#print axioms Erdos583UniversalEndpointClosureDevelopment.endpoint_pair_slide
+#print axioms Erdos583UniversalEndpointClosureDevelopment.universally_zero_terminal_contains
+#print axioms Erdos583UniversalEndpointClosureDevelopment.universally_zero_neighbor_quota_bound
+#print axioms Erdos583UniversalEndpointClosureDevelopment.short_tail_terminal_root_contains
+#print axioms Erdos583UniversalEndpointClosureDevelopment.short_tail_terminal_neighbor_quota_bound

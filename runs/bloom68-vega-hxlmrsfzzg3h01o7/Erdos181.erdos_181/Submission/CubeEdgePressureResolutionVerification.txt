@@ -1,0 +1,24 @@
+Q3 on Sp(4,2): hom=1983360; rooted oriented-edge counts={16528}; 120 edges
+Q2 exact trace count=4320; a3>=a2 checked by integers
+Rank/Finner input: 56 exact random-matrix rank distributions and moment bounds checked
+Integer matching audit: exact minimum bad-outer-edge cost=112, threshold=1
+Pinned k=2,d=8,n=12: N=4096, h=256, rows=128; T0 row-list size=992
+Endpoint: every row has the same 16-element list; Hall deficit=112
+Column cost histogram=[16, 190, 470, 620, 460, 182, 30]; all nonzero-cost columns are accessible to m/2 rows
+Sector entropy at k=2: T, F_cap, F_free, capacity gap
+    0    883.16456    883.16456      0.00000
+    1    592.83311    593.30651      0.47341
+    4    159.70384    368.68653    208.98269
+   16  -1189.37776    354.89144   1544.26920
+   64  -6565.37779    354.89136   6920.26914
+  256 -28069.37779    354.89136  28424.26914
+Asymptotic family: k; upper bound on (k+1)Delta; log-surplus margin/b; min_cost/(r*m)
+    2 2.0941e-02 0.491438 0.14583333
+    4 1.9641e-04 3.758880 0.22028097
+    8 2.6493e-08 8.730774 0.30166096
+   16 8.3593e-16 16.420473 0.35882033
+   32 1.5299e-30 31.457359 0.39954100
+   64 9.8036e-60 61.528424 0.42905268
+  128 7.8696e-118 121.670553 0.44985031
+Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: diagnostic identities only; summed EL remains unproved and unrefuted.

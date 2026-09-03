@@ -1,0 +1,15 @@
+import Submission.EulerMassRemainder
+#check Nat.factoredNumbers
+#check Nat.mem_factoredNumbers
+#check Nat.mem_factoredNumbers_iff
+#check EulerProduct.summable_and_hasSum_factoredNumbers_prod_filter_prime_geometric
+#check Real.log_add_one_le_harmonic
+#check Real.log_natCast_add_one_le_harmonic
+#check Real.log_le_harmonic
+#check harmonic
+#check harmonic_eq_sum_Icc
+#check Summable.sum_le_tsum
+#check Summable.sum_le_tsum_of_subset
+#check Nat.primeFactorsList
+#check Nat.primeFactors_subset_primesBelow
+#check Nat.mem_primeFactors

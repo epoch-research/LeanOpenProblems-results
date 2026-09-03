@@ -1,0 +1,14 @@
+import Submission.DegreeTwoReduction
+
+/-! Axiom audit for degree-two suppression. -/
+#print axioms Erdos583DegreeTwoReductionDevelopment.bypass_not_adj_root
+#print axioms Erdos583DegreeTwoReductionDevelopment.bypass_within
+#print axioms Erdos583DegreeTwoReductionDevelopment.bypass_connected
+#print axioms Erdos583DegreeTwoReductionDevelopment.bypass_edgeSet
+#print axioms Erdos583DegreeTwoReductionDevelopment.bypass_triangle
+#print axioms Erdos583DegreeTwoReductionDevelopment.delete_two_path
+#print axioms Erdos583DegreeTwoReductionDevelopment.restore_bypass
+#print axioms Erdos583DegreeTwoReductionDevelopment.degree_two_configuration
+#print axioms Erdos583DegreeTwoReductionDevelopment.degree_two_triangle
+#print axioms Erdos583DegreeTwoReductionDevelopment.no_degree_two_of_odd_failure
+#print axioms Erdos583DegreeTwoReductionDevelopment.min_degree_of_odd_failure

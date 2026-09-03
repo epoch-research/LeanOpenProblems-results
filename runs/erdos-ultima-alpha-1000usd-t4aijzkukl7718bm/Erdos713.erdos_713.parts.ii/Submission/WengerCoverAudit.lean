@@ -1,0 +1,12 @@
+import Submission.WengerCoverRestrictionCount
+/-! Axiom audit for the permutation-cover obstruction. -/
+#print axioms Erdos713WengerCover.contains_of_endpoint_collision
+#print axioms Erdos713WengerCover.field_card_le_sheets
+#print axioms Erdos713WengerCover.graph_edges
+#print axioms Erdos713WengerCover.edge_fifth_bound
+#print axioms Erdos713WengerCoverRestriction.grid_four_free
+#print axioms Erdos713WengerCoverRestriction.restriction_bound
+#print axioms Erdos713WengerCoverRestriction.graph_edges
+#print axioms Erdos713WengerCoverRestriction.graph_edge_fifth_bound
+#print axioms Erdos713WengerCoverRestriction.restriction_of_subgraph
+#print axioms Erdos713WengerCoverRestriction.subgraph_edge_fifth_bound

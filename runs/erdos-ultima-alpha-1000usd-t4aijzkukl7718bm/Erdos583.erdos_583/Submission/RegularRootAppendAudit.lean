@@ -1,0 +1,7 @@
+import Submission.RegularRootAppend
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583RegularRootAppendDevelopment.regularTail_mapLe
+#print axioms Erdos583RegularRootAppendDevelopment.quota_update_endpoint
+#print axioms Erdos583RegularRootAppendDevelopment.regular_append_edge
+#print axioms Erdos583RegularRootAppendDevelopment.regular_append_edge_positive

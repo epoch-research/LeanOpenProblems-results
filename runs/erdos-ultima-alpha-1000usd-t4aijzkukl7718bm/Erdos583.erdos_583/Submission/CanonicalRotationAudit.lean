@@ -1,0 +1,9 @@
+import Submission.CanonicalRotation
+/-! Audit of exact core projection, canonical orientation and two-ended exchange. -/
+#print axioms Erdos583CanonicalRotationDevelopment.own_leaf_purified
+#print axioms Erdos583CanonicalRotationDevelopment.inactive_projection_eq_purified
+#print axioms Erdos583CanonicalRotationDevelopment.lift_permutation_exact
+#print axioms Erdos583CanonicalRotationDevelopment.permutation_of_normal_oriented
+#print axioms Erdos583CanonicalRotationDevelopment.project_normal_exact
+#print axioms Erdos583CanonicalRotationDevelopment.lift_normal_oriented
+#print axioms Erdos583CanonicalRotationDevelopment.normal_single_edge_exchange

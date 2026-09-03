@@ -1,0 +1,15 @@
+'Erdos66MultiplicativeRows.row_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Submission/MultiplicativeRowsAudit.lean:2:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Erdos66MultiplicativeRows.row_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeRows.filtered_row_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeRows.linearSolution_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeRows.same_row_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeNaturalRows.natural_representation_prefix' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66MultiplicativeNaturalRows.natural_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MultiplicativeNaturalRows.prefix_mass_before_singular' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

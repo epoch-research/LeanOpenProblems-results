@@ -1,0 +1,12 @@
+import Submission.EdgeDefect
+/-! Axiom audit of the one-edge, one-defect reduction. -/
+#print axioms Erdos583EdgeDefectDevelopment.decomposition_path_family
+#print axioms Erdos583EdgeDefectDevelopment.decomposition_odd_endpoint
+#print axioms Erdos583EdgeDefectDevelopment.append_new_edge
+#print axioms Erdos583EdgeDefectDevelopment.even_degree_delete_edge_odd
+#print axioms Erdos583EdgeDefectDevelopment.one_defect_of_even_edge_deletion
+#print axioms Erdos583EdgeDefectDevelopment.closed_trail_has_nonbridge_at_root
+#print axioms Erdos583EdgeDefectDevelopment.intersecting_trails_have_nonbridge_at_root
+#print axioms Erdos583EdgeDefectDevelopment.failure_has_even_nonbridge
+#print axioms Erdos583EdgeDefectDevelopment.failure_has_rooted_one_defect
+#print axioms Erdos583EdgeDefectDevelopment.gallai_of_rooted_one_defect_repair

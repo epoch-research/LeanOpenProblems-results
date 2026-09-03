@@ -1,0 +1,17 @@
+import Submission.LinearPrefixExtensionExplore
+import Submission.LogarithmicPrefixExtensionExplore
+
+/-! Axiom audit for conditional first-window extensions. -/
+
+#print axioms Erdos66LinearPrefixExtension.newPoint_embedding
+#print axioms Erdos66LinearPrefixExtension.newPoints_bounds
+#print axioms Erdos66LinearPrefixExtension.coefficient_bounds
+#print axioms Erdos66LinearPrefixExtension.mixed_increment_bits
+#print axioms Erdos66LinearPrefixExtension.extension_count_bits
+#print axioms Erdos66LinearPrefixExtension.exists_linear_prefix_extension
+#print axioms Erdos66LinearPrefixExtension.mixedMean_local_bound
+#print axioms Erdos66LinearPrefixExtension.first_window_capacity
+#print axioms Erdos66LinearPrefixExtension.cutoff_capacity
+#print axioms Erdos66LinearPrefixExtension.exists_profile_prefix_extension
+#print axioms Erdos66LogarithmicPrefixExtension.logarithmic_transition_budget
+#print axioms Erdos66LogarithmicPrefixExtension.exists_logarithmic_prefix_extension

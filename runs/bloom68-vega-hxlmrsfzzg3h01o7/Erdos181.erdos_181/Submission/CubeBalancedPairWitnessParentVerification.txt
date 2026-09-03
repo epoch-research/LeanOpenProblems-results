@@ -1,0 +1,7 @@
+PASS: matching, N=8, d=2, p=1/8, exact balance/degree bound; avoiding injection after 1 valid switches.
+PASS: matching, N=16, d=3, p=45/256, exact balance/degree bound; avoiding injection after 2 valid switches.
+PASS: matching, N=32, d=4, p=5677/32768, exact balance/degree bound; avoiding injection after 2 valid switches.
+PASS: two_cycles, N=32, d=3, p=45/256, exact balance/degree bound; avoiding injection after 3 valid switches.
+PASS: loops, N=32, d=4, p=2899/16384, exact balance/degree bound; avoiding injection after 0 valid switches.
+Spec.lean unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+This audits fixed examples of a paper theorem, not the general balanced claim or Erdős181.

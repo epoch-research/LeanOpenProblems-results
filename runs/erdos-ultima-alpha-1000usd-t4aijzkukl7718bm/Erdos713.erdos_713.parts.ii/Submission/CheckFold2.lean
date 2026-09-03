@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+import Submission.FixedFoldMass
+open Filter
+#check Filter.Tendsto.eventually_gt_atTop
+#check Filter.eventually_atTop.1
+#check Nat.card_le_card_of_injective
+#check Fintype.card_le_of_injective
+#check SimpleGraph.Copy.injective
+#check Finset.card_image_iff
+#check SimpleGraph.Copy
+#check Filter.Tendsto.eventually
+#check Finset.exists_le_sum_fiber_of_maps_to_of_nsmul_le_sum
+#check Real.rpow_le_rpow_of_exponent_ge

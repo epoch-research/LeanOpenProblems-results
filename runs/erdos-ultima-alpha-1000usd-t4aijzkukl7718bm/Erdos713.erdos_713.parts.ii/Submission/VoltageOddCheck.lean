@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Ring.two_ne_zero
+#check Ring.two_ne_zero_iff
+#check CharP.of_prime_eq_zero
+#check CharP.of_prime_eq_zero'
+#check CharP.cast_eq_zero_iff
+#check mul_right_cancel₀
+#check AddSubgroup.index_ker
+#check AddSubgroup.card_mul_index
+#check Finset.card_pair_le
+#check AddMonoidHom.id
+#check frobenius_def

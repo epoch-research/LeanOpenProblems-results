@@ -1,0 +1,36 @@
+'Erdos66PolynomialSquareZeroFiber.residue_val' depends on axioms: [propext]
+'Erdos66PolynomialSquareZeroFiber.offset_square_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialSquareZeroFiber.eval_affine_on_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialSquareZeroFiber.same_fiber_graph_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialSquareZeroFiber.sumValue_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialSquareZeroFiber.within_fiber_sum_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RadixPlaneSumSupport.value_carry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RadixPlaneSumSupport.plane_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RadixPlaneSumSupport.lifted_sum_support_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RadixPlaneSumSupport.encoded_pair_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.encodeGraph_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.encodeGraph_location' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.fiber_sum_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.fiber_card_square_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.largest_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.polynomial_graph_capacity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PolynomialRingGraphCapacity.polynomial_graph_log_capacity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PolynomialRingCoverCapacity.polynomial_cover_capacity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PolynomialRingCoverCapacity.polynomial_cover_log_capacity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PolynomialRingAnnulus.annulus_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingAnnulus.scale_identities' depends on axioms: [propext, Quot.sound]
+'Erdos66PolynomialRingAnnulus.counting_profile_annulus_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingAnnulus.annular_log_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingAnnulus.counting_profile_cover_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingAnnulus.witness_cover_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialRingAnnulus.subcritical_chart_cover_excludes_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

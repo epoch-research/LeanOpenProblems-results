@@ -1,0 +1,15 @@
+import Submission.PrimitiveLatticeSplitting
+#check Module.Basis.constr
+#check LinearEquiv.prodComm
+#check Module.Basis.map_apply
+#check Finset.prod_le_prod
+#check Fintype.prod_sum_type
+#check Fintype.prod_equiv
+#check Module.Basis.ne_zero
+#check Module.Basis.coe_ofZLatticeBasis
+#check Module.Basis.ofZLatticeBasis_apply
+#check IsZLattice.span_top
+#check ZLattice.covolume_pos
+#check Module.finrank_zero_iff
+#check Module.Basis.reindex_apply
+#check Module.Basis.ofEquivFun

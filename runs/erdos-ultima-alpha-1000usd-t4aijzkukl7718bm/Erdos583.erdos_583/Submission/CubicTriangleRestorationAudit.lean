@@ -1,0 +1,8 @@
+import Submission.CubicTriangleSingleton
+
+/-! Axiom audit of the cross-graph member restoration templates. -/
+#print axioms Erdos583TwoMemberExtensionDevelopment.extend_two_members
+#print axioms Erdos583CubicTriangleDistinctEndpointsDevelopment.puncture_walk_avoids_removed
+#print axioms Erdos583CubicTriangleDistinctEndpointsDevelopment.cubic_triangle_distinct_endpoints_lift
+#print axioms Erdos583OneMemberReplacementDevelopment.replace_one_by_two
+#print axioms Erdos583CubicTriangleSingletonDevelopment.cubic_triangle_singleton_lift

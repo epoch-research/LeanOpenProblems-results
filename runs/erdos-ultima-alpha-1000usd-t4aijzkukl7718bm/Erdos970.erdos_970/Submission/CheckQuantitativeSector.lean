@@ -1,0 +1,16 @@
+import Submission.EulerMassRemainder
+import Submission.EulerMassScaling
+#check Real.log_natCast_nonneg
+#check abs_div
+#check div_le_div_of_nonneg_left
+#check Real.log_div
+#check Nat.primesBelow_succ
+#check Nat.primesBelow_succ_of_prime
+#check Finset.prod_insert
+#check Finset.sum_sub_distrib
+#check abs_sub_le
+#check Real.log_two_pos
+#check Nat.lt_floor_add_one
+#check Nat.floor_le
+#check Real.log_le_sub_one_of_pos
+#check Real.log_le_log

@@ -1,0 +1,6 @@
+import Submission.SharpCofactorSieve
+/-! # Axiom audit for SharpCofactorSieve -/
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_mass_thirteen_tenths
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_mass_thirteen_tenths_all
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_block_ambient_thirteen_tenths
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_family_block_ambient_thirteen_tenths

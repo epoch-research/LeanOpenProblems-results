@@ -1,0 +1,107 @@
+{
+  "boolean_and_weighted_defect_identity": {
+    "cyclic_10": {
+      "B2_sets": 91,
+      "B3_sets": 51,
+      "positive_defect_sets": 40
+    },
+    "cyclic_11": {
+      "B2_sets": 177,
+      "B3_sets": 67,
+      "positive_defect_sets": 110
+    },
+    "cyclic_12": {
+      "B2_sets": 193,
+      "B3_sets": 61,
+      "positive_defect_sets": 132
+    },
+    "cyclic_13": {
+      "B2_sets": 352,
+      "B3_sets": 144,
+      "positive_defect_sets": 208
+    },
+    "cyclic_3": {
+      "B2_sets": 7,
+      "B3_sets": 4,
+      "positive_defect_sets": 3
+    },
+    "cyclic_4": {
+      "B2_sets": 9,
+      "B3_sets": 9,
+      "positive_defect_sets": 0
+    },
+    "cyclic_5": {
+      "B2_sets": 16,
+      "B3_sets": 16,
+      "positive_defect_sets": 0
+    },
+    "cyclic_6": {
+      "B2_sets": 19,
+      "B3_sets": 13,
+      "positive_defect_sets": 6
+    },
+    "cyclic_7": {
+      "B2_sets": 43,
+      "B3_sets": 29,
+      "positive_defect_sets": 14
+    },
+    "cyclic_8": {
+      "B2_sets": 49,
+      "B3_sets": 33,
+      "positive_defect_sets": 16
+    },
+    "cyclic_9": {
+      "B2_sets": 100,
+      "B3_sets": 37,
+      "positive_defect_sets": 63
+    },
+    "integer_0_to_12": {
+      "B2_sets": 668,
+      "B3_sets": 314,
+      "positive_defect_sets": 354
+    }
+  },
+  "cartesian_product_characterization": {
+    "3": {
+      "B3_graphs_by_edge_count": {
+        "0": 1,
+        "1": 9,
+        "2": 36,
+        "3": 84,
+        "4": 117,
+        "5": 81
+      },
+      "graphs_checked": 512,
+      "maximum_edges": 5
+    },
+    "4": {
+      "B3_graphs_by_edge_count": {
+        "0": 1,
+        "1": 16,
+        "2": 120,
+        "3": 560,
+        "4": 1784,
+        "5": 3936,
+        "6": 5632,
+        "7": 4096,
+        "8": 72
+      },
+      "graphs_checked": 65536,
+      "maximum_edges": 8
+    }
+  },
+  "sharp_exponent_examples": {
+    "2": {
+      "degree": 3,
+      "edges": 45,
+      "integer_multiset_triples_checked": 16215,
+      "points_per_part": 15
+    },
+    "3": {
+      "degree": 4,
+      "edges": 160,
+      "integer_multiset_triples_checked": 695520,
+      "points_per_part": 40
+    }
+  }
+}

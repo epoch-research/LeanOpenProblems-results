@@ -1,0 +1,19 @@
+import Submission.PlanarPerturbation
+open scoped unitInterval
+#check Int.floor_add_fract
+#check Int.fract_add_floor
+#check Int.fract_nonneg
+#check Int.fract_lt_one
+#check Continuous.exists_forall_le
+#check Function.Periodic.isBounded_range
+#check Function.Periodic.bounded_of_continuous
+#check Path.range_trans
+#check SimpleGraph.Walk.toPath
+#check SimpleGraph.Walk.reachable
+#check Path.range_refl
+#check Path.segment
+#check Zsqrtd.ext
+#check GaussianInt.toComplex_mul
+#check Convex.add_mem
+#check segment_add_const
+#check image_add_const_segment

@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+import Submission.SubcriticalRestrictionTransfer
+#check Finset.sum_biUnion
+#check Finset.sum_product
+#check Finset.sum_product'
+#check Finset.sum_sdiff
+#check Finset.sum_sdiff_sub_sum_sdiff
+#check Nat.tendsto_pow_atTop
+#check tendsto_finset_sum
+#check Filter.Tendsto.finset_sum
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Nat.pow_le_pow_right
+#check Nat.primesBelow_mono
+#check Finset.sum_mul_sum

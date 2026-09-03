@@ -1,0 +1,13 @@
+import Submission.WindowConstraintClosure
+#check Int.ediv_le_ediv
+#check Int.add_mul_ediv_right
+#check Int.add_mul_ediv_left
+#check Int.add_ediv_of_dvd_right
+#check Int.ediv_mul_cancel
+#check Finset.inf'_le
+#check Finset.le_inf'
+#check Int.mul_ediv_cancel
+#check Int.ediv_add_emod
+#check Nat.mod_add_div
+#check mul_le_mul_left
+#check Int.mul_le_mul_left

@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check BitVec.getLsbD_concat
+#check BitVec.getElem_concat
+#check BitVec.concat
+#check BitVec.ofBoolListLE
+#check BitVec.isLt
+#check BitVec.toFin
+#check Nat.testBit_bit_succ
+#check Nat.testBit_bit_zero
+#check Nat.bit
+#check Nat.bit_lt_two_pow_succ
+#check BitVec.getLsbD_append

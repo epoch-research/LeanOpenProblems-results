@@ -1,0 +1,6 @@
+import Submission.UpperDensityOneLogLimitExplore
+/-! Axiom audit for the strengthened fixed-coefficient construction. -/
+#print axioms Erdos66HarmonicExceptionalProfile.exists_summable_potentials
+#print axioms Erdos66PotentialPointwiseEnvelope.exists_exceptions_and_all_envelopes
+#print axioms Erdos66UpperDensityOneLogLimit.exists_globally_bounded_log_limit_off_exception
+#print axioms Erdos66UpperDensityOneLogLimit.exists_two_sided_log_limit_off_exception

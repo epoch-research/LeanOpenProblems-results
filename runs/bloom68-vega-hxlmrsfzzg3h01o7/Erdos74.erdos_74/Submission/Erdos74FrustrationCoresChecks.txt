@@ -1,0 +1,12 @@
+base a=2: tau=23; 98 optimal cuts; every edge critical; exact-rank certificate 35/36; primitive weights
+base a=3: tau=43; 297 optimal cuts; every edge critical; exact-rank certificate 54/55; primitive weights
+base a=4: tau=69; 990 optimal cuts; every edge critical; exact-rank certificate 77/78; primitive weights
+strip a=2, L=2: n=15, m=61, tau=23, chi=8, delta=4; all 61 edges critical; 266 optimum cuts; small core n=11, tau=19
+  direct indecomposability check: necessary binary additive-partition system infeasible (HiGHS); optimum-row rank 39/61
+strip a=2, L=4: n=19, m=69, tau=23, chi=8, delta=4; all 69 edges critical; 434 optimum cuts; small core n=11, tau=19
+  direct indecomposability check: necessary binary additive-partition system infeasible (HiGHS); optimum-row rank 43/69
+strip a=3, L=2: n=21, m=117, tau=43, chi=10, delta=6; all 117 edges critical; 927 optimum cuts; small core n=15, tau=34
+  direct indecomposability check: necessary binary additive-partition system infeasible (HiGHS); optimum-row rank 60/117
+M(K3): chi=4; all 4096 edge subsets checked; exactly four minimum-degree-three subgraphs, none frustration-critical
+sharp factor two: connected critical H has n=13, tau=7, chi=3; G has n=13, tau=7, chi=6, and contains K6
+All checks passed. These checks do not settle Erdos 74.

@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Finset.mem_sdiff
+#check Finset.sum_sdiff_sub
+#check Finset.sum_sdiff
+#check Finset.sum_sdiff_eq_sub
+#check mul_le_mul_right
+#check mul_le_mul_iff_left₀
+#check mul_le_mul_iff_right₀
+#check Nat.card_multiples
+#check Nat.Prime.dvd_mul

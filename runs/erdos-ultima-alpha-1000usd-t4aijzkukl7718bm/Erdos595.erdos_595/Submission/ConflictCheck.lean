@@ -1,0 +1,12 @@
+import Submission.NegativeInner
+#check Set.Countable.to_subtype
+#check Set.to_countable
+#check Set.countable_coe_iff
+#check Option.isSome_iff_exists
+#check Option.some_ne_none
+#check Bool.not_ne_self
+#check Bool.eq_not_iff
+#check Bool.not_eq_self
+#check Set.countable_range
+#check Cardinal.mk_set
+#check Cardinal.mk_prod

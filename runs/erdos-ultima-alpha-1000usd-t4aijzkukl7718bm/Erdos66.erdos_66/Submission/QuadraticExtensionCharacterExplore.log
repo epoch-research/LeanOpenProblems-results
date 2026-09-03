@@ -1,0 +1,14 @@
+Submission/QuadraticExtensionCharacterExplore.lean:43:0: warning: automatically included section variable(s) unused in theorem `Erdos66QuadraticExtensionCharacter.mapped_union_nonsquare_hole`:
+  [Fintype F]
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype F] [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Submission/QuadraticExtensionCharacterExplore.lean:65:0: warning: automatically included section variable(s) unused in theorem `Erdos66QuadraticExtensionCharacter.mapped_root_double`:
+  [Fintype F]
+  [DecidableEq F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype F] [DecidableEq F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`

@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Equiv.subLeft
+#check Equiv.addRight
+#check sub_left_inj
+#check sub_right_injective
+#check SimpleGraph.cycleGraph_connected
+#check SimpleGraph.cycleGraph_bipartite
+#check SimpleGraph.cycleGraph_isBipartite
+#check SimpleGraph.cycleGraph_colorable
+#check SimpleGraph.circulantGraph_adj_translate

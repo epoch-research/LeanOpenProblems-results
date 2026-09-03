@@ -1,0 +1,5 @@
+'Erdos66PolynomialGraphPeak.peak_of_modular_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialGraphPeak.exists_polynomial_graph_peak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PolynomialGraphPeak.no_log_limit_of_polynomial_graph_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

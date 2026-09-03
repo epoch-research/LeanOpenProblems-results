@@ -1,0 +1,17 @@
+import Submission.ArithmeticReduction
+#check Module.End.mul_apply
+#check Module.End.pow_apply
+#check Module.End.natCast_apply
+#check Module.End.one_apply
+#check Finset.sum_apply
+#check LinearMap.sum_apply
+#check smul_pow
+#check Commute.one_right
+#check Commute.one_left
+#check Commute.smul_left
+#check pow_le_one₀
+#check Nat.cast_choose
+#check Nat.cast_le
+#check Finset.sum_congr
+#check Commute.add_pow
+#check Nat.cast_smul_eq_nsmul

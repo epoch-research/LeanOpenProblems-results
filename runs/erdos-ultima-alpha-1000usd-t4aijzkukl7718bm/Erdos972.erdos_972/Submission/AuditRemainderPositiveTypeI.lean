@@ -1,0 +1,11 @@
+import Submission.RemainderGcdProfile
+
+/-! Axiom audit for the exact positive-remainder and gcd-profile identities. -/
+
+#print axioms Erdos972RemainderPositiveTypeI.typeIIPart_isPrimePow_nonpos
+#print axioms Erdos972RemainderPositiveTypeI.mangoldt_le_positive_typeI
+#print axioms Erdos972RemainderPositiveTypeI.positive_remainder_eq_negative_typeI
+#print axioms Erdos972RemainderPositiveTypeI.negative_remainder_eq_majorant_residual
+#print axioms Erdos972RemainderGcdProfile.positive_remainder_gcd_profile
+#print axioms Erdos972RemainderGcdProfile.positiveRemainderProfile_lipschitz
+#print axioms Erdos972RemainderGcdProfile.positive_remainder_same_pattern

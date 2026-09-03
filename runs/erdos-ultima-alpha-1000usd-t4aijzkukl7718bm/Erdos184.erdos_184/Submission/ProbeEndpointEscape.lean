@@ -1,0 +1,16 @@
+import Submission.SubcubicOddPaths
+#check List.Sublist.flatMap
+#check List.filter_sublist
+#check List.Nodup.sublist
+#check List.Sublist.subset
+#check Finset.card_sdiff_add_card_inter
+#check Finset.card_sdiff_add_card_eq_card
+#check List.mem_filter
+#check SimpleGraph.card_neighborFinset_eq_degree
+#check Finset.two_lt_card
+#check Finset.one_lt_card
+#check Finset.one_lt_card_iff
+#check Finset.card_erase_of_mem
+#check List.filter_append
+#check List.length_filter_add_length_filter_neg_eq
+#check List.length_filter_add_length_filter_not

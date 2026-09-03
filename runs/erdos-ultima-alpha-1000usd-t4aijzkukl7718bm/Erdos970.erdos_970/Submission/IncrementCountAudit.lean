@@ -1,0 +1,11 @@
+import Submission.IncrementCountConsequences
+
+/-! Axiom audit of exact one-hit count reduction and conditional increment
+consequences. The largest-prime increment is only a hypothesis. -/
+#print axioms Erdos970.IncrementReduction.cover_remaining_with_prescribed_moduli
+#print axioms Erdos970.IncrementReduction.primeSetBound_union_iff_count_of_injective
+#print axioms Erdos970.IncrementReduction.primeSetBound_union_large_iff_count
+#print axioms Erdos970.IncrementReduction.primeSetBound_union_half_large_iff_count
+#print axioms Erdos970.IncrementReduction.primeSetBound_union_of_increment
+#print axioms Erdos970.IncrementReduction.count_bound_of_largestPrimeIncrement
+#print axioms Erdos970.IncrementReduction.length_lt_increment_envelope_of_few_survivors

@@ -1,0 +1,10 @@
+import Submission.LogBoundaryPolynomialExplore
+#check Finsupp.equivFunOnFinite
+#check Finsupp.equivFunOnFinite_symm_apply
+#check Finsupp.prod_fintype
+#check Finsupp.prod
+#check Fin.prod_univ_two
+#check MvPolynomial.mem_support_iff
+#check Finset.sum_image
+#check Polynomial.eval₂_at_apply
+#check MvPolynomial.eval_eq

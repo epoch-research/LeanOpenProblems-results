@@ -1,0 +1,21 @@
+import Submission.SeparatedCollisionVariance
+open Finset Complex
+#check AddChar.inv_apply_eq_conj
+#check AddChar.inv_apply
+#check AddChar.sum_eq_zero_of_ne_one
+#check Complex.mul_conj
+#check Complex.normSq_eq_norm_sq
+#check Complex.ofReal_injective
+#check Complex.ofReal_sum
+#check ZMod.natCast_eq_natCast_iff
+#check ZMod.natCast_eq_natCast_iff'
+#check ZMod.val_natCast
+#check ZMod.sum_cast
+#check ZMod.sum_ite_eq
+#check Finset.sum_erase_add
+#check Finset.sum_add_sum_compl
+#check AddChar.map_sub_eq_div
+#check AddChar.map_neg_eq_inv
+#check Circle.coe_inv
+#check Circle.inv_eq_conj
+#check AddChar.norm_apply

@@ -1,0 +1,13 @@
+import Submission.BoundedCofactorEnergy
+#check Nat.findGreatest_spec
+#check Nat.findGreatest_is_greatest
+#check Nat.le_findGreatest
+#check Nat.lt_mul_div_succ
+#check summable_pow_mul_geometric_of_norm_lt_one
+#check Summable.tendsto_atTop_zero
+#check tendsto_nat_div_atTop
+#check Filter.Tendsto.mono_left
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check Nat.div_lt_iff_lt_mul
+#check Nat.le_pow
+#check pow_mul

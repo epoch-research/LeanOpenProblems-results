@@ -1,0 +1,13 @@
+import Submission.HeptagonPortRoutes
+
+/-! Four-port core certificate audit. -/
+#print axioms Erdos583HeptagonPortRoutesDevelopment.deleted
+#print axioms Erdos583HeptagonPortRoutesDevelopment.graph
+#print axioms Erdos583HeptagonPortRoutesDevelopment.start
+#print axioms Erdos583HeptagonPortRoutesDevelopment.finish
+#print axioms Erdos583HeptagonPortRoutesDevelopment.walk
+#print axioms Erdos583HeptagonPortRoutesDevelopment.walk_isPath
+#print axioms Erdos583HeptagonPortRoutesDevelopment.finite_disjoint
+#print axioms Erdos583HeptagonPortRoutesDevelopment.walk_disjoint
+#print axioms Erdos583HeptagonPortRoutesDevelopment.finite_cover
+#print axioms Erdos583HeptagonPortRoutesDevelopment.walk_cover

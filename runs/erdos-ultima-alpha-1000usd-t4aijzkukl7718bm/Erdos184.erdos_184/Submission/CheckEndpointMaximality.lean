@@ -1,0 +1,16 @@
+import Submission.EndpointPathMaximality
+#check List.mem_erase_of_ne
+#check List.mem_erase_iff
+#check List.mem_of_mem_erase
+#check List.Nodup.of_append_left
+#check List.Nodup.of_append_right
+#check List.nodup_append_comm
+#check List.disjoint_append_left
+#check List.disjoint_append_right
+#check List.Nodup.disjoint
+#check SimpleGraph.Walk.IsCycle.isCircuit
+#check SimpleGraph.Walk.IsCircuit.isTrail
+#check SimpleGraph.Walk.IsTrail.edges_nodup
+#check List.Perm.cons
+#check List.perm_swap
+#check List.Nodup.of_sublist

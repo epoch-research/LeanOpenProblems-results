@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check of_decide_eq_decide
+#check decide_eq_decide
+#check Nat.mul_right_cancel
+#check Nat.mul_right_cancel₀
+#check Nat.mul_left_cancel
+#check Finset.card_le_card_of_injOn
+#check Nat.modEq_and_modEq_iff_modEq_mul
+#check Nat.ModEq.add_right_cancel'
+#check Finset.card_product
+#check Nat.add_sub_cancel_left
+#check Set.HasDensity

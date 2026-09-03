@@ -1,0 +1,11 @@
+import Submission.UniformSparseRestorationMenuExplore
+
+/-! Permitted-axiom audit for the uniform sparse restoration menu. -/
+
+#print axioms Erdos66SparseRankTransversal.exists_sparse_rank_transversal
+#print axioms Erdos66UniformSparseRestorationMenu.selectedFrom_subset
+#print axioms Erdos66UniformSparseRestorationMenu.selectedFrom_image
+#print axioms Erdos66UniformSparseRestorationMenu.restoredFrom_brackets
+#print axioms Erdos66UniformSparseRestorationMenu.restoredFrom_increment
+#print axioms Erdos66UniformSparseRestorationMenu.restoredFrom_increment_zero_below
+#print axioms Erdos66UniformSparseRestorationMenu.exists_uniform_sparse_restoration_menu

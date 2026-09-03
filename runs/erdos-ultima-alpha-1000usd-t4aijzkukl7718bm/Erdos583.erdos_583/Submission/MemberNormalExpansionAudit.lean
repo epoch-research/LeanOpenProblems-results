@@ -1,0 +1,10 @@
+import Submission.MemberNormalExpansion
+/-! Axiom audit for verified member-group inequalities. -/
+#print axioms Erdos583MemberNormalExpansionDevelopment.one_defect_two_paths
+#print axioms Erdos583MemberNormalExpansionDevelopment.two_path_parts
+#print axioms Erdos583MemberNormalExpansionDevelopment.replace_selected_and_member
+#print axioms Erdos583MemberNormalExpansionDevelopment.normal_group_cannot_save
+#print axioms Erdos583MemberNormalExpansionDevelopment.normal_group_expands
+#print axioms Erdos583MemberNormalExpansionDevelopment.normal_group_exact
+#print axioms Erdos583MemberNormalExpansionDevelopment.tight_normal_group_three_even
+#print axioms Erdos583MemberNormalExpansionDevelopment.tight_normal_group_marked

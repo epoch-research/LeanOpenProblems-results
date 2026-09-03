@@ -1,0 +1,11 @@
+Degree-two quotient theorem: 157814 hosts; 514113 exact biclique-capacity certificates.
+Exact local charging inequalities: 60654
+Full-subset versus compressed criticality checks: 3135
+Zero-spare-capacity P8 lifts: 120384 initial bijections on 209 defect matchings; 87552 initially conflicted; 117216 swaps.
+General colored lifts: 1500 ; initially conflicted: 740 ; swaps: 1048 ; capacity-threshold equality: 1469
+Asymmetric Hall lifts: 2000 ; threshold equality: 1703 ; beyond uniform bound: 1082 ; extra full-capacity K6,15 cases: 500.
+Critical approximate-C5 family: 181800 all-subset-size bounds (t=1..100); 10 explicit nonbipartite, false-twin-free graph audits.
+Critical k=14 host: 1132 nonisomorphic subcubic tree types embedded; 848 completion copies required repair.
+Paley-plus-edge: 16 critical host audits; 139290 direct proper-subset checks through order 17.
+ALL CHECKS PASSED
+{'degree_two_weighted_hosts': 157814, 'degree_two_biclique_certificates': 514113, 'local_charging_inequalities': 60654, 'compressed_criticality_equivalences': 3135, 'spanning_lifts': 120384, 'spanning_defect_graphs': 209, 'spanning_initially_conflicted': 87552, 'spanning_repair_swaps': 117216, 'random_colored_lifts': 1500, 'random_initially_conflicted': 740, 'random_repair_swaps': 1048, 'random_threshold_equality_cases': 1469, 'asymmetric_hall_lifts': 2000, 'asymmetric_hall_threshold_equality': 1703, 'asymmetric_hall_beyond_uniform_bound': 1082, 'asymmetric_full_capacity_lifts': 500, 'critical_family_subset_size_bounds': 181800, 'critical_family_explicit_graph_audits': 10, 'critical_family_subcubic_tree_types': 1132, 'critical_family_tree_types_repaired': 848, 'nonmodular_critical_hosts': 16, 'nonmodular_critical_direct_subsets': 139290}

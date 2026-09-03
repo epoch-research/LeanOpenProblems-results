@@ -1,0 +1,16 @@
+import Submission.SharpGrowingDepth
+
+#check @Erdos821.sharpDepth_compensation
+#print axioms Erdos821.sharpDepth_compensation
+#check @Erdos821.eventually_cubic_depth_budget
+#print axioms Erdos821.eventually_cubic_depth_budget
+#check @Erdos821.sharpDepth_budget_identity
+#print axioms Erdos821.sharpDepth_budget_identity
+#check @Erdos821.sharp_largeChildLayer_count_compensated
+#print axioms Erdos821.sharp_largeChildLayer_count_compensated
+#check @Erdos821.eventually_sharp_growing_largeChildLayer_count_small
+#print axioms Erdos821.eventually_sharp_growing_largeChildLayer_count_small
+#check @Erdos821.eventually_sharp_growing_prime_complement_large
+#print axioms Erdos821.eventually_sharp_growing_prime_complement_large
+#check @Erdos821.negation_forces_sharp_growing_many_avoiding_trees
+#print axioms Erdos821.negation_forces_sharp_growing_many_avoiding_trees

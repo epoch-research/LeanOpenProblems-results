@@ -1,0 +1,12 @@
+import Submission.OptimalCoreGapCap
+
+/-! Axiom audit of gap-based optimal-core prime caps. These results do not
+settle the original quadratic bound. -/
+#print axioms Erdos970.OptimalCoverCore.interval_length_le_gap_mul_survivor_card
+#print axioms Erdos970.OptimalCoverCore.prime_le_gap_mul_survivor_card
+#print axioms Erdos970.OptimalCoverCore.used_prime_le_gap_mul_survivor_card
+#print axioms Erdos970.OptimalCoverCore.two_mul_used_prime_le_gap_mul_survivor_card
+#print axioms Erdos970.OptimalCoverCore.used_prime_le_previous_jacobsthal
+#print axioms Erdos970.OptimalCoverCore.two_mul_used_prime_le_previous_jacobsthal
+#print axioms Erdos970.OptimalCoverCore.used_prime_le_previous_jacobsthal_of_full_cover
+#print axioms Erdos970.OptimalCoverCore.two_mul_used_prime_le_previous_jacobsthal_of_full_cover

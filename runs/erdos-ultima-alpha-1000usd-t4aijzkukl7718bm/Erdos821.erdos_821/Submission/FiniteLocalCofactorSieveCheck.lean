@@ -1,0 +1,7 @@
+import Submission.FiniteLocalCofactorSieve
+
+/-! # Axiom audit -/
+#print axioms Erdos821.AnalyticSieve.prime_pair_cofactor_odd_modulus_ambient_finite
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_finset_ambient_finite
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_block_ambient_finite
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_family_block_ambient_finite

@@ -1,0 +1,13 @@
+import Submission.WeightedSparseCompletionExplore
+
+/-! Axiom audit of matching-based sparse repairs. -/
+#print axioms Erdos66DisjointMean.mean_prod_of_disjoint
+#print axioms Erdos66BoundedConflict.exists_large_disjoint
+#print axioms Erdos66MatchingPartition.mean_partition_le
+#print axioms Erdos66PacketMatching.offPairs_exp_le
+#print axioms Erdos66PacketMatchingMass.mean_offTest_le
+#print axioms Erdos66MatchingPacketSelection.exists_matching_packets
+#print axioms Erdos66InfiniteMatchingSelection.exists_infinite_matching_selection
+#print axioms Erdos66MatchingInfiniteRepair.prescribed_spikes
+#print axioms Erdos66SummableMatchingSpikes.asymptotic_prescribed_spikes
+#print axioms Erdos66WeightedSparseCompletion.summable_exception_completion

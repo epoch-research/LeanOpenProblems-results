@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Complex.normSq_add
+#check Complex.normSq_sub
+#check Complex.normSq_div
+#check Complex.normSq_inv
+#check Complex.normSq_pow
+#check Complex.sq_re
+#check Complex.normSq_ofReal
+#check Complex.normSq_apply
+#check Complex.sq_norm
+#check Complex.norm_sq
+#check Complex.normSq_eq_norm_sq
+#check Complex.ofReal_div
+#check Complex.ofReal_ratCast

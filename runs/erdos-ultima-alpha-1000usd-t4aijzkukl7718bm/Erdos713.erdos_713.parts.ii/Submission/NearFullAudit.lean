@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+import Submission.NearOptimalExpanders
+import Submission.LinearRobustCopies
+
+/-! Audit of near-full-density expanding restrictions; no main admission. -/
+#print axioms Erdos713NearOptimalPruning.prune_high_degrees
+#print axioms Erdos713QuantitativeExpanderPruning.cut_loss
+#print axioms Erdos713QuantitativeExpanderPruning.cut_union_le
+#print axioms Erdos713QuantitativeExpanderPruning.exists_pruned_expander
+#print axioms Erdos713QuantitativeExpanderPruning.cross_singleton_card
+#print axioms Erdos713QuantitativeExpanderPruning.cut_induce_image
+#print axioms Erdos713QuantitativeExpanderPruning.inside_card
+#print axioms Erdos713QuantitativeExpanderPruning.prune_vertex_expander
+#print axioms Erdos713NearOptimalExpanders.induce_neighbor_antitone
+#print axioms Erdos713NearOptimalExpanders.restriction_expansion
+#print axioms Erdos713NearOptimalExpanders.regularize_expanders
+#print axioms Erdos713NearOptimalExpanders.near_full_density

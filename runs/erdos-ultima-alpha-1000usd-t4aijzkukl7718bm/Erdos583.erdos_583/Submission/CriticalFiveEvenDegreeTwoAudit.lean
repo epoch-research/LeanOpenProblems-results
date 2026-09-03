@@ -1,0 +1,8 @@
+import Submission.CriticalFiveEvenDegreeTwo
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583CriticalFiveEvenDegreeTwoDevelopment.critical_five_even_remaining_not_degree_two
+#print axioms Erdos583CriticalFiveEvenDegreeTwoDevelopment.critical_five_even_remaining_degree_ge_four
+#print axioms Erdos583CriticalFiveEvenDegreeTwoDevelopment.degree_two_meets_every_critical_even_edge
+#print axioms Erdos583CriticalFiveEvenDegreeTwoDevelopment.two_degree_two_critical_edge_unique
+#print axioms Erdos583CriticalFiveEvenDegreeTwoDevelopment.one_tail_five_even_off_root_degree_ge_four

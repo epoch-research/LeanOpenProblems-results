@@ -1,0 +1,20 @@
+import Submission.ExactBracketSparseHolesExplore
+
+/-! Permitted-axiom audit for exact-bracket sparse central surgery. -/
+#print axioms Erdos66RemoteCentralDeletion.quotient_square_window
+#print axioms Erdos66RemoteCentralDeletion.central_residual
+#print axioms Erdos66RemoteCentralDeletion.eventually_bounded_central_packet
+#print axioms Erdos66SquareExponentSchedule.index_lt_activeBound
+#print axioms Erdos66SquareExponentSchedule.activeBound_square_le
+#print axioms Erdos66SquareExponentSchedule.activeBound_log_limit
+#print axioms Erdos66SquareExponentSchedule.exists_dominating_schedule
+#print axioms Erdos66SparseCentralDeletion.hits_biUnion_bound
+#print axioms Erdos66SparseCentralDeletion.packetUnion_cutoff_rep
+#print axioms Erdos66SparseCentralDeletion.packetUnion_loss_bound
+#print axioms Erdos66SparseCentralDeletion.off_center_loss_limit
+#print axioms Erdos66SparseCentralDeletion.packetUnion_negligible
+#print axioms Erdos66ExactBracketCentralSurgery.boundary_core_ratio
+#print axioms Erdos66ExactBracketCentralSurgery.exists_central_surgery
+#print axioms Erdos66SparseMaskedPerturbation.sparse_dyadic_power_summable
+#print axioms Erdos66SparseMaskedPerturbation.power_exception_transfer
+#print axioms Erdos66ExactBracketSparseHoles.exists_exact_brackets_and_sparse_holes

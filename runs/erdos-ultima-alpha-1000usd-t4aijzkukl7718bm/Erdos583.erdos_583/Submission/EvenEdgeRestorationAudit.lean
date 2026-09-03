@@ -1,0 +1,7 @@
+import Submission.EvenEdgeRestoration
+/-! Axiom audit for quota-tracked even-edge restoration. -/
+#print axioms Erdos583EvenEdgeRestorationDevelopment.decomposition_path_family_tracked
+#print axioms Erdos583EvenEdgeRestorationDevelopment.restore_of_zero_forest
+#print axioms Erdos583EvenEdgeRestorationDevelopment.acyclic_of_edges_incident
+#print axioms Erdos583EvenEdgeRestorationDevelopment.even_count_delete_edge
+#print axioms Erdos583EvenEdgeRestorationDevelopment.gallai_of_few_even_and_nonedge

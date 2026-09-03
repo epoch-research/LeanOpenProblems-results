@@ -1,0 +1,12 @@
+import Submission.SymmetricExposureTail
+#check Stirling.log_stirlingSeq_formula
+#check Stirling.log_stirlingSeq'_antitone
+#check Stirling.stirlingSeq
+#check Real.log_two_lt_d9
+#check Real.log_three_gt_d9
+#check Real.exp_log
+#check Real.log_pow
+#check Real.isLittleO_log_id_atTop
+#check Real.isLittleO_log_rpow_atTop
+#check Real.isLittleO_log_rpow_rpow_atTop
+#check Asymptotics.IsLittleO.def

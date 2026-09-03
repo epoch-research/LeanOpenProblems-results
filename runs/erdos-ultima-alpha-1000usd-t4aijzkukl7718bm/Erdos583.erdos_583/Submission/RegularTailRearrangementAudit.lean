@@ -1,0 +1,12 @@
+import Submission.RegularTailRearrangement
+
+/-! Exact axiom audit of the auxiliary declarations. -/
+#print axioms Erdos583RegularTailRearrangementDevelopment.closed_vertex_card_eq_iff_cycle
+#print axioms Erdos583RegularTailRearrangementDevelopment.rearranged_sum_lengths
+#print axioms Erdos583RegularTailRearrangementDevelopment.rearranged_sum_vertices
+#print axioms Erdos583RegularTailRearrangementDevelopment.tailDefect_add_vertices
+#print axioms Erdos583RegularTailRearrangementDevelopment.tailDefect_zero_iff
+#print axioms Erdos583RegularTailRearrangementDevelopment.tailDefect_root_positive
+#print axioms Erdos583RegularTailRearrangementDevelopment.rearranged_sum_defects
+#print axioms Erdos583RegularTailRearrangementDevelopment.regular_iff_sum_defects_one
+#print axioms Erdos583RegularTailRearrangementDevelopment.rearranged_regular

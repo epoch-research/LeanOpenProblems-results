@@ -1,0 +1,15 @@
+import Submission.PrimeLeastFactorScales
+
+/-! Axiom audit of the least-factor smoothing comparison. -/
+#print axioms Erdos972LeastFactorSmoothMangoldt.smoothMangoldt_error_leastFactor
+#print axioms Erdos972LeastFactorSmoothMangoldt.weighted_smooth_error
+#print axioms Erdos972LeastFactorSieve.rough_weight_upper
+#print axioms Erdos972LeastFactorSieve.weighted_least_factor_layers
+#print axioms Erdos972LeastFactorSieve.weighted_least_factor_upper
+#print axioms Erdos972LeastFactorSieve.leastFactorBudget_linear
+#print axioms Erdos972LeastFactorCutoff.layerCutoff_bounds
+#print axioms Erdos972LeastFactorCutoff.layerCount_loglog_bound
+#print axioms Erdos972PrimeLeastFactorScales.exists_prime_least_factor_scale
+#print axioms Erdos972PrimeLeastFactorScales.layerParameter_mixed_error
+#print axioms Erdos972PrimeLeastFactorScales.exists_layerParameter_small_error
+#print axioms Erdos972PrimeLeastFactorScales.exists_layerParameter_prime_comparison

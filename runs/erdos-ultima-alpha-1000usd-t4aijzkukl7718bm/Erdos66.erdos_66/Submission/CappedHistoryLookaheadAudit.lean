@@ -1,0 +1,8 @@
+import Submission.CappedHistoryLookaheadExplore
+
+/-! Permitted-axiom audit for the capped accurate-history extension obstruction. -/
+
+
+#print axioms Erdos66CappedHistoryLookahead.sumRep_congr_past_cutoff_of_gap
+#print axioms Erdos66CappedHistoryLookahead.exists_capped_accurate_history_without_next_extension
+#print axioms Erdos66CappedHistoryLookahead.capped_accurate_history_does_not_ensure_next_window

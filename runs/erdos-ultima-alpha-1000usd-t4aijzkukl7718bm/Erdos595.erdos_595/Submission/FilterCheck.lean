@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Infinite.natEmbedding
+#check Quotient.out_eq
+#check Quotient.mk_out
+#check Quotient.exact
+#check Filter.EventuallyEq.rfl
+#check Finset.finite_toSet
+#check SimpleGraph.Hom.comap
+#check Filter.Ultrafilter.of_le
+#check Ultrafilter.of_le
+#check Filter.atTop_neBot
+#check Filter.Product
+#check Filter.Tendsto.eventually

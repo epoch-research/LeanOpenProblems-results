@@ -1,0 +1,11 @@
+import Submission.InsertionMatchingPatternExplore
+
+/-! Audit of actual insertion matching patterns. -/
+#print axioms Erdos66InsertionMatchingPattern.insertionPattern_coeff
+#print axioms Erdos66InsertionMatchingPattern.insertionPattern_disjoint
+#print axioms Erdos66InsertionMatchingPattern.product_extension
+#print axioms Erdos66InsertionMatchingPattern.insertionPattern_eval_add
+#print axioms Erdos66InsertionMatchingPattern.repMean_indicator
+#print axioms Erdos66InsertionMatchingPattern.insertionPattern_value
+#print axioms Erdos66InsertionMatchingPattern.insertionPattern_mean_bound
+#print axioms Erdos66InsertionMatchingPattern.exists_sublog_insertion

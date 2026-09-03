@@ -1,0 +1,14 @@
+import Submission.CenterDensityMinimum
+#check Int.modEq_iff_dvd
+#check Int.emod_emod
+#check Int.dvd_sub_emod
+#check Int.toNat_of_nonneg
+#check Int.emod_nonneg
+#check Int.emod_lt_of_pos
+#check Fin.sum_univ_succ
+#check Finset.sum_filter
+#check Nat.mem_primeFactors
+#check ZMod.coe_int_isUnit_iff_isCoprime
+#check Int.ModEq.symm
+#check Int.ModEq.trans
+#check Int.ModEq.refl

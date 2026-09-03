@@ -1,0 +1,9 @@
+import Submission.LocalCanonicalRows
+#check Fintype.bijective_iff_injective_and_card
+#check Fintype.bijective_iff_injective_and_card_le
+#check Fintype.bijective_iff_surjective_and_card
+#check Fintype.surjective_iff_injective
+#check Finite.surjective_of_injective
+#check Fintype.bijective_iff_injective_and_card
+#check Function.Embedding.surjective_of_card_le
+#check Fintype.bijective_iff_injective_and_card_le

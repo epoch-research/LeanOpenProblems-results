@@ -1,0 +1,15 @@
+import Submission.ScaledFractionalTailExplore
+#check Real.exp_nat_mul
+#check Real.exp_neg
+#check Real.log_pow
+#check Real.log_le_log
+#check Filter.eventually_atTop
+#check Filter.eventually_atTop.1
+#check Filter.eventually_atTop.2
+#check div_sub_one
+#check abs_sub_le
+#check abs_add_le
+#check div_le_iff₀
+#check Finset.mem_Icc
+#check le_div_iff₀
+#check mul_div_cancel_left₀

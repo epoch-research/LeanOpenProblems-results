@@ -1,0 +1,13 @@
+import Submission.SparseGrowthCostsExplore
+#check Real.rpow_le_rpow
+#check Real.rpow_mul
+#check Real.rpow_sub
+#check Real.rpow_neg
+#check Real.rpow_pos_of_pos
+#check Real.self_le_rpow_of_one_le
+#check Real.one_le_rpow
+#check Real.summable_nat_rpow
+#check Real.summable_one_div_nat_rpow
+#check Real.summable_one_div_nat_add_rpow
+#check Real.rpow_natCast
+#check Real.rpow_le_rpow_of_exponent_le

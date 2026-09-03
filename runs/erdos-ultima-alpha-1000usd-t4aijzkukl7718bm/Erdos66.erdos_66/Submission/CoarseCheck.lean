@@ -1,0 +1,11 @@
+import Submission.CoarseCountingExplore
+#check Nat.add_div
+#check Nat.add_mul_div_left
+#check Nat.add_mul_div_right
+#check Nat.mul_add_div
+#check Nat.mul_add_div_left
+#check Nat.mul_add_div_right
+#check Nat.add_div_le_add_div
+#check Nat.add_div_le_add_div_add_one
+#check Nat.div_add_div_le
+#check Nat.add_div_le

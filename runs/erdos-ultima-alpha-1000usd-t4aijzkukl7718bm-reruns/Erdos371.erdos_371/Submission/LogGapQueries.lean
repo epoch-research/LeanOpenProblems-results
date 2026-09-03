@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check tendsto_pow_atTop_atTop
+#check tendsto_nat_pow_atTop_atTop
+#check Nat.tendsto_pow_atTop_atTop
+#check Nat.pow_pred_clog_lt_self
+#check Nat.le_pow_clog
+#check Nat.pow_le_pow_right
+#check Filter.tendsto_pow_atTop

@@ -1,0 +1,12 @@
+'Erdos66WeightedShearEnergy.weighted_sum_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.conv_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.weighted_mass_error_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.self_bound_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.scaleAddEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.weighted_row_shear_error_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66WeightedShearEnergy.normalized_weighted_row_shear_error_sq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalShearEnergyAverage.sum_prefix_indicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalShearEnergyAverage.lower_average_error_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalShearEnergyAverage.lower_average_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,27 @@
+import Submission.MatchingCutGlue
+
+/-! Axiom audit of the matching-cut gluing development. -/
+#print axioms Erdos583MatchingCutGlueDevelopment.flip
+#print axioms Erdos583MatchingCutGlueDevelopment.flip_injective
+#print axioms Erdos583MatchingCutGlueDevelopment.flip_surjective
+#print axioms Erdos583MatchingCutGlueDevelopment.boundary_degree
+#print axioms Erdos583MatchingCutGlueDevelopment.degree_add_twice_avoid_le
+#print axioms Erdos583MatchingCutGlueDevelopment.degree_quota_twice_avoid
+#print axioms Erdos583MatchingCutGlueDevelopment.indexed_decomposition
+#print axioms Erdos583MatchingCutGlueDevelopment.insideArm
+#print axioms Erdos583MatchingCutGlueDevelopment.insideArm_mem
+#print axioms Erdos583MatchingCutGlueDevelopment.insideArm_disjoint
+#print axioms Erdos583MatchingCutGlueDevelopment.joined
+#print axioms Erdos583MatchingCutGlueDevelopment.joined_edges
+#print axioms Erdos583MatchingCutGlueDevelopment.joined_isPath
+#print axioms Erdos583MatchingCutGlueDevelopment.joined_disjoint
+#print axioms Erdos583MatchingCutGlueDevelopment.inside_avoiding_joined
+#print axioms Erdos583MatchingCutGlueDevelopment.outside_avoiding_joined
+#print axioms Erdos583MatchingCutGlueDevelopment.glue
+#print axioms Erdos583MatchingCutGlueDevelopment.matching_glue_quota
+#print axioms Erdos583MatchingCutGlueDevelopment.matching_glue_saving
+#print axioms Erdos583MatchingCutGlueDevelopment.odd_matching_glue
+#print axioms Erdos583MatchingCutGlueDevelopment.contraction_partition
+#print axioms Erdos583MatchingCutGlueDevelopment.odd_matching_cut_reduction
+#print axioms Erdos583MatchingCutGlueDevelopment.failure_odd_matching_cut_even_sides
+#print axioms Erdos583MatchingCutGlueDevelopment.odd_failure_no_odd_matching_cut

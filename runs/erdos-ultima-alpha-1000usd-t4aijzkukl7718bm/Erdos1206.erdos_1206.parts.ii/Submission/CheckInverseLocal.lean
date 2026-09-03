@@ -1,0 +1,10 @@
+import Submission.CubicInverseBaseLocus
+#check IsUnit.mul_eq_zero
+#check IsUnit.mul_left_eq_zero
+#check IsUnit.mul_right_eq_zero
+#check IsUnit.mul_left_cancel
+#check IsUnit.mul_right_cancel
+#check IsUnit.mul_left_inj
+#check Nat.Coprime.isCoprime
+#check ZMod.coe_int_isUnit_iff_isCoprime
+#check ZMod.isUnit_iff_ne_zero

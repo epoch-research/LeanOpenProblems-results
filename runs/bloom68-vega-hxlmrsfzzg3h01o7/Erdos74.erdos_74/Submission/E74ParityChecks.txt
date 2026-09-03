@@ -1,0 +1,126 @@
+E74.walkXor_eq_foldr.{u} {V : Type u} {G : SimpleGraph V} {u v : V} (a : Sym2 V → Bool) (w : G.Walk u v) :
+  walkXor a w = List.foldr (fun e b => a e ^^ b) false w.edges
+E74.walkXor_eq_of_edges_eq.{u} {V : Type u} {G H : SimpleGraph V} {u v x y : V} (a : Sym2 V → Bool) (w : G.Walk u v)
+  (q : H.Walk x y) (h : w.edges = q.edges) : walkXor a w = walkXor a q
+E74.walkXor_congr.{u} {V : Type u} {G : SimpleGraph V} {u v : V} {a b : Sym2 V → Bool} (w : G.Walk u v)
+  (h : ∀ e ∈ w.edges, a e = b e) : walkXor a w = walkXor b w
+E74.walkXor_append.{u} {V : Type u} {G : SimpleGraph V} {u v x : V} (a : Sym2 V → Bool) (w : G.Walk u v)
+  (q : G.Walk v x) : walkXor a (w.append q) = (walkXor a w ^^ walkXor a q)
+E74.walkXor_reverse.{u} {V : Type u} {G : SimpleGraph V} {u v : V} (a : Sym2 V → Bool) (w : G.Walk u v) :
+  walkXor a w.reverse = walkXor a w
+E74.walkXor_copy.{u} {V : Type u} {G : SimpleGraph V} {u v x y : V} (a : Sym2 V → Bool) (w : G.Walk u v) (hu : u = x)
+  (hv : v = y) : walkXor a (w.copy hu hv) = walkXor a w
+E74.walkXor_mapLe.{u} {V : Type u} {G H : SimpleGraph V} {u v : V} (a : Sym2 V → Bool) (hGH : G ≤ H) (w : G.Walk u v) :
+  walkXor a (Walk.mapLe hGH w) = walkXor a w
+E74.walkXor_transfer.{u} {V : Type u} {G H : SimpleGraph V} {u v : V} (a : Sym2 V → Bool) (w : G.Walk u v)
+  (h : ∀ e ∈ w.edges, e ∈ H.edgeSet) : walkXor a (w.transfer H h) = walkXor a w
+E74.walkXor_false.{u} {V : Type u} {G : SimpleGraph V} {u v : V} (w : G.Walk u v) : walkXor (fun x => false) w = false
+E74.walkXor_xor.{u} {V : Type u} {G : SimpleGraph V} {u v : V} (a b : Sym2 V → Bool) (w : G.Walk u v) :
+  walkXor (fun e => a e ^^ b e) w = (walkXor a w ^^ walkXor b w)
+E74.exists_edge_of_walkXor_ne.{u} {V : Type u} {G : SimpleGraph V} {u v : V} {a b : Sym2 V → Bool} (w : G.Walk u v)
+  (h : walkXor a w ≠ walkXor b w) : ∃ e ∈ w.edges, a e ≠ b e
+E74.twist_of_mem.{u} {V : Type u} [DecidableEq V] {S : Finset (Sym2 V)} {e : Sym2 V} (h : e ∈ S) : twist S e = false
+E74.twist_of_not_mem.{u} {V : Type u} [DecidableEq V] {S : Finset (Sym2 V)} {e : Sym2 V} (h : e ∉ S) : twist S e = true
+E74.twist_eq_false_iff.{u} {V : Type u} [DecidableEq V] {S : Finset (Sym2 V)} {e : Sym2 V} : twist S e = false ↔ e ∈ S
+E74.twist_eq_true_iff.{u} {V : Type u} [DecidableEq V] {S : Finset (Sym2 V)} {e : Sym2 V} : twist S e = true ↔ e ∉ S
+E74.twist_congr.{u} {V : Type u} [DecidableEq V] {S T : Finset (Sym2 V)} {e : Sym2 V} (h : e ∈ S ↔ e ∈ T) :
+  twist S e = twist T e
+E74.walkXor_twist_congr.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V} {S T : Finset (Sym2 V)}
+  (w : G.Walk u v) (h : ∀ e ∈ w.edges, e ∈ S ↔ e ∈ T) : walkXor (twist S) w = walkXor (twist T) w
+E74.twist_xor_twist.{u} {V : Type u} [DecidableEq V] (S T : Finset (Sym2 V)) (e : Sym2 V) :
+  (twist S e ^^ twist T e) = decide (e ∈ S ∆ T)
+E74.walkXor_twist_xor_twist.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V} (S T : Finset (Sym2 V))
+  (w : G.Walk u v) : (walkXor (twist S) w ^^ walkXor (twist T) w) = walkXor (fun e => decide (e ∈ S ∆ T)) w
+E74.exists_edge_mem_sdiff_of_walkXor_twist_ne.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V}
+  {S T : Finset (Sym2 V)} (hST : S ⊆ T) (w : G.Walk u v) (h : walkXor (twist S) w ≠ walkXor (twist T) w) :
+  ∃ e ∈ w.edges, e ∈ T ∧ e ∉ S
+E74.twist_badEdges.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V} [Fintype V] (p : V → Bool)
+  (huv : G.Adj u v) : twist (badEdges G p) s(u, v) = (p u ^^ p v)
+E74.walkXor_eq_endpoints.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V} {a : Sym2 V → Bool}
+  (p : V → Bool) (w : G.Walk u v) (ha : ∀ (x y : V), G.Adj x y → a s(x, y) = (p x ^^ p y)) : walkXor a w = (p u ^^ p v)
+E74.walkXor_twist_badEdges.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {u v : V} [Fintype V] (p : V → Bool)
+  (w : G.Walk u v) : walkXor (twist (badEdges G p)) w = (p u ^^ p v)
+E74.walkXor_twist_badEdges_closed.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {v : V} [Fintype V]
+  (p : V → Bool) (w : G.Walk v v) : walkXor (twist (badEdges G p)) w = false
+E74.shortSupport_badEdges.{u} {V : Type u} [DecidableEq V] [Fintype V] (G : SimpleGraph V) (L : ℕ) (p : V → Bool) :
+  ShortSupport G L (badEdges G p)
+E74.ShortSupport.mono_length.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L M : ℕ} {S : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (hML : M ≤ L) : ShortSupport G M S
+E74.ShortSupport.of_le.{u} {V : Type u} [DecidableEq V] {G H : SimpleGraph V} {L : ℕ} {S : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (hHG : H ≤ G) (hSH : ↑S ⊆ H.edgeSet) : ShortSupport H L S
+E74.ShortSupport.mask.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (Z : Set V) (hSZ : ↑S ⊆ (mask G Z).edgeSet) : ShortSupport (mask G Z) L S
+E74.ShortSupport.mask_of_disjoint_ends.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ}
+  {S : Finset (Sym2 V)} (hS : ShortSupport G L S) {Z : Set V} (hSZ : Disjoint (↑(ends S)) Z) :
+  ShortSupport (mask G Z) L S
+E74.ShortSupport.congr.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S T : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (hT : ↑T ⊆ G.edgeSet)
+  (hxor : ∀ (v : V) (w : G.Walk v v), w.length ≤ L → walkXor (twist T) w = walkXor (twist S) w) : ShortSupport G L T
+E74.ShortSupport.congr_edges.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S T : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (hT : ↑T ⊆ G.edgeSet)
+  (hmem : ∀ (v : V) (w : G.Walk v v), w.length ≤ L → ∀ e ∈ w.edges, e ∈ T ↔ e ∈ S) : ShortSupport G L T
+E74.ShortSupport.sdiff.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (A : Finset (Sym2 V))
+  (hxor : ∀ (v : V) (w : G.Walk v v), w.length ≤ L → walkXor (twist (S \ A)) w = walkXor (twist S) w) :
+  ShortSupport G L (S \ A)
+E74.ShortSupport.of_symmDiff.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S T : Finset (Sym2 V)}
+  (hS : ShortSupport G L S) (hT : ↑T ⊆ G.edgeSet)
+  (hzero : ∀ (v : V) (w : G.Walk v v), w.length ≤ L → walkXor (fun e => decide (e ∈ T ∆ S)) w = false) :
+  ShortSupport G L T
+E74.exists_shortSupport.{u} {V : Type u} [DecidableEq V] [Finite V] (G : SimpleGraph V) (L : ℕ) :
+  ∃ S, ShortSupport G L S
+E74.exists_minimalSupport.{u} {V : Type u} [DecidableEq V] [Finite V] (G : SimpleGraph V) (L : ℕ) :
+  ∃ S, MinimalSupport G L S
+E74.MinimalSupport.card_le.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S T : Finset (Sym2 V)}
+  (hS : MinimalSupport G L S) (hT : ShortSupport G L T) : S.card ≤ T.card
+E74.MinimalSupport.card_le_badEdges.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {L : ℕ} {S : Finset (Sym2 V)}
+  [Fintype V] (hS : MinimalSupport G L S) (p : V → Bool) : S.card ≤ (badEdges G p).card
+E74.ShortSupport.exists_edge_not_mem.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {v : V} {L : ℕ}
+  {S D : Finset (Sym2 V)} (hS : ShortSupport G L S) (hD : D ⊆ S) (w : G.Walk v v) (hw : w.length ≤ L)
+  (hxor : walkXor (twist D) w ≠ false) : ∃ e ∈ w.edges, e ∈ S ∧ e ∉ D
+E74.exists_badEdge_not_mem_of_walkXor_ne_false.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {v : V}
+  {D : Finset (Sym2 V)} [Fintype V] (p : V → Bool) (hD : D ⊆ badEdges G p) (w : G.Walk v v)
+  (hxor : walkXor (twist D) w ≠ false) : ∃ e ∈ w.edges, e ∈ badEdges G p ∧ e ∉ D
+E74.exists_badEdge_not_mem_of_short_walkXor_ne_false.{u} {V : Type u} [DecidableEq V] {G : SimpleGraph V} {v : V}
+  {L : ℕ} {D : Finset (Sym2 V)} [Fintype V] (p : V → Bool) (hD : D ⊆ badEdges G p) (w : G.Walk v v) (hw : w.length ≤ L)
+  (hxor : walkXor (twist D) w ≠ false) : ∃ e ∈ w.edges, e ∈ badEdges G p ∧ e ∉ D
+'E74.walkXor_eq_foldr' depends on axioms: [propext]
+'E74.walkXor_eq_of_edges_eq' depends on axioms: [propext]
+'E74.walkXor_congr' depends on axioms: [propext]
+'E74.walkXor_append' depends on axioms: [propext]
+'E74.walkXor_reverse' depends on axioms: [propext, Quot.sound]
+'E74.walkXor_copy' does not depend on any axioms
+'E74.walkXor_mapLe' depends on axioms: [propext, Quot.sound]
+'E74.walkXor_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.walkXor_false' depends on axioms: [propext]
+'E74.walkXor_xor' does not depend on any axioms
+'E74.exists_edge_of_walkXor_ne' depends on axioms: [propext]
+'E74.twist_of_mem' depends on axioms: [propext, Quot.sound]
+'E74.twist_of_not_mem' depends on axioms: [propext, Quot.sound]
+'E74.twist_eq_false_iff' depends on axioms: [propext, Quot.sound]
+'E74.twist_eq_true_iff' depends on axioms: [propext, Quot.sound]
+'E74.twist_congr' depends on axioms: [propext, Quot.sound]
+'E74.walkXor_twist_congr' depends on axioms: [propext, Quot.sound]
+'E74.twist_xor_twist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.walkXor_twist_xor_twist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_edge_mem_sdiff_of_walkXor_twist_ne' depends on axioms: [propext, Quot.sound]
+'E74.twist_badEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.walkXor_eq_endpoints' depends on axioms: [propext]
+'E74.walkXor_twist_badEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.walkXor_twist_badEdges_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.shortSupport_badEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.mono_length' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.mask' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.mask_of_disjoint_ends' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.congr_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.sdiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.of_symmDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_shortSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_minimalSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.MinimalSupport.card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.MinimalSupport.card_le_badEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.ShortSupport.exists_edge_not_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_badEdge_not_mem_of_walkXor_ne_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'E74.exists_badEdge_not_mem_of_short_walkXor_ne_false' depends on axioms: [propext, Classical.choice, Quot.sound]

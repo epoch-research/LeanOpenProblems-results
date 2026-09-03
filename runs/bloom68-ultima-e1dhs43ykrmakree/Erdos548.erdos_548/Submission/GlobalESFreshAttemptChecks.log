@@ -1,0 +1,32 @@
+PASS independent prescribed roots seconds 0.381
+  forced exchange potentials: [6, 3, 2]
+PASS different-list star Hall algorithm seconds 9.058
+PASS canonical one-leaf Hall defects seconds 0.068
+PASS critical cross-core Hall family seconds 0.052
+PASS weighted covariance/nonneighbor decomposition seconds 0.914
+PASS nonmatroid root choices seconds 0.0
+PASS saturated minimal-counterexample arithmetic seconds 1.343
+
+Exact audit totals:
+  1,115 additional different-list star packings
+  181 bad Hall cores with explicit full-tree repairs
+  1,291 canonical deficiency-one Hall systems
+  47,424 critical split induced-subset types
+  742 exact critical-host covariance identities
+  2 exact failed scalar shortcuts
+  3,000 exact star-degree Chebyshev audits
+  255,467 exhaustive disjoint-reservoir star packings
+  1 high-candidate-only star examples
+  429 negative-covariance rooted cases
+  6 nonresistant canonical-Hall unions
+  17,092 prescribed independent-root embeddings
+  1 root-selection matroid counterexamples
+  3 root-theorem boundary counterexamples
+  666,596 saturated surplus/parity identities
+  2,519 star packing root exchanges
+  2,518 star packings needing an exchange
+  1,200 weighted Hall/allocation equivalences
+  all shared Lean hashes unchanged
+  Spec.lean SHA-256 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+elapsed seconds 11.817
+STATUS: partial mathematical progress; unrestricted ES and general CW remain unproved.

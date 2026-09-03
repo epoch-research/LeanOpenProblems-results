@@ -1,0 +1,6 @@
+import Submission.TailBridgeLocation
+/-! Axiom audit for the balanced terminal bridge application. -/
+#print axioms Erdos583TailBridgeLocationDevelopment.length_one_walk_eq
+#print axioms Erdos583TailBridgeLocationDevelopment.tail_last_bridge_length_one
+#print axioms Erdos583TailBridgeLocationDevelopment.balanced_terminal_root_bridge
+#print axioms Erdos583TailBridgeLocationDevelopment.long_cycle_root_component_one_tail

@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+import Submission.RelativeExpansion
+
+/-! Axiom audit of the relative-degree, expanding exact saturation refinement.
+No admitted main theorem is imported. -/
+#print axioms Erdos713RelativeCloneSaturation.eventually_doubling
+#print axioms Erdos713RelativeCloneSaturation.support_scale
+#print axioms Erdos713RelativeCloneSaturation.support_floor_scale
+#print axioms Erdos713RelativeCloneSaturation.support_growth
+#print axioms Erdos713RelativeCloneSaturation.exact_at_support_relative
+#print axioms Erdos713RelativeCloneSaturation.exact_relative_saturated_cofinal
+#print axioms Erdos713RelativeExpansion.degree_cut_bound
+#print axioms Erdos713RelativeExpansion.linear_error_upper
+#print axioms Erdos713RelativeExpansion.small_cut_bound
+#print axioms Erdos713RelativeExpansion.large_cut_bound
+#print axioms Erdos713RelativeExpansion.eventually_expanding_exact
+#print axioms Erdos713RelativeExpansion.exact_saturated_expanders

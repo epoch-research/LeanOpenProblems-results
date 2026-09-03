@@ -1,0 +1,14 @@
+import Submission.EulerMassRemainder
+#check Real.log_add_one_le_harmonic
+#check log_add_one_le_harmonic
+#check log_le_harmonic
+#check harmonic_le_one_add_log
+#check Nat.mem_primeFactorsList
+#check Nat.prime_of_mem_primeFactorsList
+#check Nat.le_of_mem_primeFactorsList
+#check Nat.dvd_of_mem_primeFactorsList
+#check Nat.mem_primesBelow
+#check Finset.sum_subset
+#check Finset.prod_attach
+#check Nat.smoothNumbers
+#check Nat.mem_smoothNumbers

@@ -1,0 +1,20 @@
+import Submission.ShiftedDivisorLowerTransfer
+
+/-! Type and axiom audit. -/
+
+open Erdos821.HigherDivisors
+
+#check divisorProgressionError_nonneg
+#check divisor_progression_sum_le_mangoldtMoment
+#check mangoldtMoment_lower_with_error
+#check mangoldtMoment_factorial_lower_with_error
+#check mangoldtMoment_le_primeMoment_add_nonprime
+#check nonprimeMangoldtMoment_le_of_bound
+#check shiftedPrimeMoment_factorial_lower_with_error
+#print axioms divisorProgressionError_nonneg
+#print axioms divisor_progression_sum_le_mangoldtMoment
+#print axioms mangoldtMoment_lower_with_error
+#print axioms mangoldtMoment_factorial_lower_with_error
+#print axioms mangoldtMoment_le_primeMoment_add_nonprime
+#print axioms nonprimeMangoldtMoment_le_of_bound
+#print axioms shiftedPrimeMoment_factorial_lower_with_error

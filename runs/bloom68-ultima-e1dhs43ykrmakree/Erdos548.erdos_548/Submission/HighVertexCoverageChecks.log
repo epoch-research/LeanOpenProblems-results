@@ -1,0 +1,27 @@
+Critical trap-repair family: ell 3 k 15 n 121 e 848 d(s) 16
+Critical trap-repair family: ell 5 k 35 n 631 e 10728 d(s) 48
+Critical trap-repair family: ell 7 k 63 n 2017 e 62528 d(s) 96
+Even critical trap-repair example: k 12 n 83 e 457 d(s) 12 Delta(T) 4
+Hamiltonian endpoint potential checks: 548
+W_k marked-vertex path coverage checks: 883
+apex-only connected-extension repairs: 28
+bipartite leaf-deletion coverage: 300
+clique-join criticality certificates: 4
+clique-join direct branch: 2245
+clique-join forest branch: 1107
+constructive CL forest calls: 3449
+doubled-quota full critical orientation certificates: 1
+fresh-boundary-edge adaptive repairs: 116
+half-integral critical biclique certificates: 8
+high wing vertex in a complete block: 651
+independent exact maximum-closure tests: 206
+low-Delta internal-role coverage in critical bicliques: 380
+multipartite deficit branch, prescribed high vertex: 2342
+multipartite grouping, prescribed high vertex: 235511
+ordinary copies avoiding the marked high vertex, even parameter: 1
+ordinary copies avoiding the unique maximum: 3
+root-reachable full critical orientation certificates: 3
+spider exceptional-block coverage: 1465
+two-wing all-role obstruction and charge identities: 28
+verified full injective copies: 244149
+PASS. General critical-host high-vertex coverage is NOT claimed.

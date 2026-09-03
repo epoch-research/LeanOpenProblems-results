@@ -1,0 +1,16 @@
+import Submission.GeneralExposureTail
+import Submission.ThreeEighthTail
+import Submission.HardCubicPowerBound
+import Submission.SoftQuadraticLowTail
+#check Erdos970.isJacobsthalBound_mono_k
+#check Erdos970.isJacobsthalBound_antitone
+#check Erdos970.jacobsthalFunction_mono
+#check Real.isLittleO_log_id_atTop
+#check Filter.Eventually.and
+#check Filter.Eventually.filter_mono
+#check Real.tendsto_natCast_atTop_atTop
+#check Real.sqrt_sq_eq_abs
+#check Real.log_sqrt
+#check Real.sq_sqrt
+#check Nat.le_self_pow
+#check Nat.pow_le_pow_right

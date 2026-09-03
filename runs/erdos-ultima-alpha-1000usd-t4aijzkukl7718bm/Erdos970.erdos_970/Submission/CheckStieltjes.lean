@@ -1,0 +1,14 @@
+import Submission.EulerMassQuantitativeSectors
+#check Finset.sum_range_succ
+#check Finset.sum_range_sub'
+#check Finset.sum_range_sub
+#check Finset.sum_range_mul_sub
+#check Finset.sum_range_sub_mul
+#check Finset.sum_mul_antidiagonal
+#check Finset.abs_sum_le_sum_abs
+#check Finset.abs_sum_le_sum_abs
+#check AntitoneOn
+#check Monotone
+#check abs_le
+#check mul_le_mul
+#check Real.div_self_mul_self_pos

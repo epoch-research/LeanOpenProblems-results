@@ -1,0 +1,15 @@
+import Submission.FreshAttack
+import Submission.FreshCertificates
+
+#print axioms FreshFactorialAttack.denominator_pos
+#print axioms FreshFactorialAttack.summable_term
+#print axioms FreshFactorialAttack.scaled_tail_lower
+#print axioms FreshFactorialAttack.scaled_tail_upper
+#print axioms FreshFactorialAttack.consecutive_denominators_coprime
+#print axioms FreshFactorialAttack.clearing_two_denominators_tail_gt_one
+#print axioms FreshFactorialAttack.irrational_iff_arbitrarily_large_window_failures
+#print axioms FreshFactorialAttack.finite_geometric_remainder_pos
+#print axioms FreshFactorialCertificates.denominator_loses_139
+#print axioms FreshFactorialCertificates.exact_lcm_cancellation
+
+#print axioms FreshFactorialAttack.original_series_criterion

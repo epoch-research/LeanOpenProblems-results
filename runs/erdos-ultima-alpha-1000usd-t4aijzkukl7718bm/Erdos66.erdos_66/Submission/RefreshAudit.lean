@@ -1,0 +1,38 @@
+import Submission.BalancedHarmonicRefreshExplore
+import Submission.RefreshBudgetExplore
+/-! Axiom audit for the partial-refresh investigation. -/
+#print axioms Erdos66BernoulliVariance.scalar_centered_mgf
+#print axioms Erdos66BernoulliVariance.centered_mgf_variance
+#print axioms Erdos66BernoulliVariance.exists_summed_variance_bound
+#print axioms Erdos66RefreshAlgebra.blend_bounds
+#print axioms Erdos66RefreshAlgebra.pairConv_comm
+#print axioms Erdos66RefreshAlgebra.pairConv_add_scaled_self
+#print axioms Erdos66RefreshAlgebra.pairConv_bits
+#print axioms Erdos66RefreshAlgebra.refresh_mean
+#print axioms Erdos66RefreshAlgebra.pairConv_restriction
+#print axioms Erdos66RefreshAlgebra.expect_rep
+#print axioms Erdos66RefreshAlgebra.refresh_quadratic_mean
+#print axioms Erdos66RefreshAlgebra.scalar_blend_variance
+#print axioms Erdos66RefreshAlgebra.refresh_diag_bounds
+#print axioms Erdos66RefreshAlgebra.refresh_mean_contraction
+#print axioms Erdos66RepVariance.repVarianceProxy_nonneg
+#print axioms Erdos66RepVariance.repVarianceProxy_le_mean
+#print axioms Erdos66RepVariance.rep_variance_mgf
+#print axioms Erdos66RepVariance.exists_rep_variance_bound
+#print axioms Erdos66RefreshVariance.pair_survival
+#print axioms Erdos66RefreshVariance.variance_binary_comparison
+#print axioms Erdos66RefreshVariance.refresh_variance_mean_bound
+#print axioms Erdos66RefreshVariance.refresh_variance_bound
+#print axioms Erdos66RefreshVariance.exists_refresh
+#print axioms Erdos66HarmonicRefresh.bit_decide_indicator
+#print axioms Erdos66HarmonicRefresh.selected_prefix_count
+#print axioms Erdos66HarmonicRefresh.mixed_profile
+#print axioms Erdos66HarmonicRefresh.harmonic_refresh_variance
+#print axioms Erdos66HarmonicRefresh.exists_harmonic_refresh
+#print axioms Erdos66RefreshBudget.dyadic_budget_forces_exponent
+#print axioms Erdos66RefreshBudget.refresh_budget_tradeoff
+#print axioms Erdos66RefreshBudget.no_small_error_certified_refresh
+
+#print axioms Erdos66BalancedRepVariance.exists_prefix_balanced_variance_bound
+#print axioms Erdos66BalancedHarmonicRefresh.prefix_refresh_invariant
+#print axioms Erdos66BalancedHarmonicRefresh.exists_balanced_harmonic_refresh

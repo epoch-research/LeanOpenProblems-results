@@ -1,0 +1,24 @@
+import Submission.QuadraticLiftUnionExplore
+/-! Axiom audit for the non-Cartesian quadratic field lift. -/
+#print axioms Erdos66QuadraticFieldLift.quad_card
+#print axioms Erdos66QuadraticFieldLift.quad_char
+#print axioms Erdos66QuadraticFieldLift.mem_liftCurve
+#print axioms Erdos66QuadraticFieldLift.liftCurve_zero_slice
+#print axioms Erdos66QuadraticFieldLift.curve_card
+#print axioms Erdos66QuadraticFieldLift.liftCurve_card
+#print axioms Erdos66QuadraticFieldLift.liftCurve_pairCount
+#print axioms Erdos66QuadraticFieldLift.liftCurve_joint_cap
+#print axioms Erdos66QuadraticFieldLift.liftCurve_mean
+#print axioms Erdos66QuadraticExtensionCharacter.base_isSquare
+#print axioms Erdos66QuadraticExtensionCharacter.base_quadraticChar
+#print axioms Erdos66QuadraticExtensionCharacter.mapped_union_nonsquare_hole
+#print axioms Erdos66QuadraticExtensionCharacter.mapped_root_double
+#print axioms Erdos66QuadraticExtensionCharacter.mapped_union_double
+#print axioms Erdos66QuadraticExtensionCharacter.quadratic_extension_hole
+#print axioms Erdos66QuadraticLiftUnion.liftUnion_eq_image
+#print axioms Erdos66QuadraticLiftUnion.liftUnion_zero_slice
+#print axioms Erdos66QuadraticLiftUnion.liftUnion_pairCount
+#print axioms Erdos66QuadraticLiftUnion.nonsquare_im_ne_zero
+#print axioms Erdos66QuadraticLiftUnion.liftUnion_has_new_hole
+#print axioms Erdos66QuadraticLiftUnion.liftUnion_old_target_double
+#print axioms Erdos66QuadraticLiftUnion.not_relative_flat

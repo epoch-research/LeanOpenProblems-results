@@ -1,0 +1,7 @@
+import Submission.SlicePreservingFlatExtensionExplore
+
+/-! Axiom audit of the fixed-first, anchored slice-preserving extension. -/
+#print axioms Erdos66FixedFirstSharedSelection.exists_fixed_first_root_flat
+#print axioms Erdos66AnchoredProductRepair.anchoredSet_preserves_counts
+#print axioms Erdos66AnchoredProductRepair.anchored_repair_bound
+#print axioms Erdos66SlicePreservingFlatExtension.exists_slice_preserving_flat_extension

@@ -1,0 +1,9 @@
+import Submission.PopularBohr
+#check pow_le_pow_of_le_one
+#check pow_le_pow_of_le_one₀
+#check Nat.cast_pow
+#check div_le_div_iff₀
+#check Finset.card_le_univ
+#check div_mul_cancel₀
+#check Finset.Nonempty.card_pos
+#check Finset.expect_div

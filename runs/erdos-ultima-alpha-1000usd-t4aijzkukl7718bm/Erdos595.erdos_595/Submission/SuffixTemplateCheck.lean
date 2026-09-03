@@ -1,0 +1,16 @@
+import Submission.Work
+#check Fin.snoc
+#check Fin.snoc_apply_last
+#check Fin.snoc_castSucc
+#check Fin.snoc_apply_castSucc
+#check Fin.lastCases
+#check Fin.castLE
+#check Ultrafilter.mem_bind
+#check Filter.mem_bind'
+#check Filter.eventually_all
+#check Filter.Eventually.forall
+#check Ultrafilter.eventually_exists_iff
+#check Nat.le_induction
+#check Finset.le_sup
+#check Finset.forall_mem_image
+#check Function.Embedding.sigmaMap

@@ -1,0 +1,12 @@
+import Submission.TwoCarrierRegion
+
+/-! Allowed-axiom audit of general two-carrier cycle-region reduction. -/
+#print axioms Erdos583CyclePortCoverDevelopment.cycle_two_roots
+#print axioms Erdos583CyclePortCoverDevelopment.cycle_two_carrier_cover
+#print axioms Erdos583CyclePortCoverDevelopment.cycle_two_carrier_reduction
+#print axioms Erdos583TwoCarrierRegionDevelopment.tail_neighbor_card_le
+#print axioms Erdos583TwoCarrierRegionDevelopment.four_label_fiber
+#print axioms Erdos583TwoCarrierRegionDevelopment.two_carrier_boundary_capacity
+#print axioms Erdos583TwoCarrierRegionDevelopment.two_carrier_core_cover
+#print axioms Erdos583TwoCarrierRegionDevelopment.two_contiguous_carrier_region
+#print axioms Erdos583TwoCarrierRegionDevelopment.failure_no_two_contiguous_members

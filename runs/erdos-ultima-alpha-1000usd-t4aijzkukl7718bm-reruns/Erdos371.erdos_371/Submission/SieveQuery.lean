@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Set.HasDensity.union
+#check Set.HasDensity.mono
+#check Set.Finite.hasDensity_zero
+#check Set.Finite.hasDensity
+#check Set.finite_Iic
+#check Set.finite_Iio
+#check Finset.filter_union
+#check Finset.filter_or
+#check Filter.Tendsto.const_mul
+#check Filter.Eventually.exists

@@ -1,0 +1,9 @@
+import Submission.SidonColorDefectWitnessExplore
+
+/-! Axiom audit for quantitative color-defect bounds. -/
+#print axioms Erdos66SidonColorDefect.forward_defect_bound
+#print axioms Erdos66SidonColorDefect.sameCellPairs_defect_bound
+#print axioms Erdos66SidonColorDefect.block_energy_defect_bound
+#print axioms Erdos66SidonColorDefect.annular_defect_budget
+#print axioms Erdos66SidonColorDefect.small_color_defect_lower
+#print axioms Erdos66SidonColorDefectWitness.witness_requires_color_defects

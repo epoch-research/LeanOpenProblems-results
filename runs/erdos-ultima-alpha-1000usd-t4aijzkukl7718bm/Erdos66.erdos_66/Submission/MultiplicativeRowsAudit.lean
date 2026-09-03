@@ -1,0 +1,9 @@
+import Submission.MultiplicativeNaturalRowsExplore
+#print axioms Erdos66MultiplicativeRows.row_zero
+#print axioms Erdos66MultiplicativeRows.row_card
+#print axioms Erdos66MultiplicativeRows.filtered_row_count
+#print axioms Erdos66MultiplicativeRows.linearSolution_eq_iff
+#print axioms Erdos66MultiplicativeRows.same_row_pairCount
+#print axioms Erdos66MultiplicativeNaturalRows.natural_representation_prefix
+#print axioms Erdos66MultiplicativeNaturalRows.natural_formula
+#print axioms Erdos66MultiplicativeNaturalRows.prefix_mass_before_singular

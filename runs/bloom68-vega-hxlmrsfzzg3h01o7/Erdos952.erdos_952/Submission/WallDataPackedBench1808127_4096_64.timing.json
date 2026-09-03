@@ -1,0 +1,21 @@
+{
+  "source": "Submission/WallDataPackedBench1808127_4096_64.lean",
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-o",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedBench1808127_4096_64.olean",
+    "/workspace/leanproject/Submission/WallDataPackedBench1808127_4096_64.lean"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 6.894,
+  "user_seconds": 6.34,
+  "system_seconds": 0.587,
+  "max_rss_kib": 3055620,
+  "source_bytes": 7446,
+  "source_lines": 85,
+  "olean_bytes": 193728,
+  "log": "Submission/WallDataPackedBench1808127_4096_64.log"
+}

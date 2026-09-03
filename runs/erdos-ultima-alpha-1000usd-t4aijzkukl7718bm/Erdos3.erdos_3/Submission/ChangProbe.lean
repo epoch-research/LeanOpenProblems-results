@@ -1,0 +1,20 @@
+import Submission.DissociatedRiesz
+open Finset
+open scoped BigOperators Classical ComplexConjugate
+#check div_le_self₀
+#check div_le_self
+#check Complex.norm_log_one_add_sub_self_le
+#check Complex.log_re
+#check Complex.abs_re_le_norm
+#check Real.log_prod
+#check Real.log_pow
+#check Complex.norm_conj
+#check Complex.div_ofReal_re
+#check Complex.ofReal_mul_re
+#check Complex.mul_re
+#check Real.log_div
+#check Finset.expect_pos
+#check Nat.le_floor
+#check Nat.le_floor_iff
+#check Finset.exists_subset_mulSpan_card_le_of_forall_mulDissociated
+#check Real.log_inv

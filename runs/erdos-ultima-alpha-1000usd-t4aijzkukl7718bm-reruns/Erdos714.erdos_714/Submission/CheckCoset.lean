@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check orderOf_eq_prime_pow
+#check pow_injOn_Iio_orderOf
+#check zpow_mod_orderOf
+#check zpow_emod_orderOf
+#check zpow_eq_zpow_emod
+#check Subgroup.mem_zpowers_iff
+#check Subgroup.mem_zpowers
+#check Int.natCast_emod

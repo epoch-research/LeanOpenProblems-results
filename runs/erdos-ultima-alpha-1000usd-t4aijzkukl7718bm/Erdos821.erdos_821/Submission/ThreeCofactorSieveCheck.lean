@@ -1,0 +1,9 @@
+import Submission.ThreeCofactorSieve
+
+/-! # Axiom audit -/
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_corrected_mass
+#print axioms Erdos821.AnalyticSieve.eventually_cofactorBlock_corrected_mass_all
+#print axioms Erdos821.AnalyticSieve.prime_pair_cofactor_odd_modulus_ambient_three
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_finset_ambient_three
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_cofactor_block_ambient_three
+#print axioms Erdos821.AnalyticSieve.sum_prime_pair_family_block_ambient_three

@@ -1,0 +1,9 @@
+import Submission.ShiftedUpperAnnulusExplore
+#print axioms Erdos66UniformCyclicFamily.exists_uniform_cyclic_family
+#print axioms Erdos66ShiftedProfile.tailConv_tendsto
+#print axioms Erdos66ShiftedBlock.shifted_block_error
+#print axioms Erdos66ShiftedFinite.exists_shifted_finite_blocks
+#print axioms Erdos66Translate.sumRep_shift
+#print axioms Erdos66Translate.sumRep_shift_zero
+#print axioms Erdos66Translate.sumRep_shift_eq_sub
+#print axioms Erdos66ShiftedUpperAnnulus.exists_upper_logarithmic_annulus

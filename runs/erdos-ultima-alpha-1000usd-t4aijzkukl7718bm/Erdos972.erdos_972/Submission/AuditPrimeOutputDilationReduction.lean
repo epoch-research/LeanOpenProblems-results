@@ -1,0 +1,9 @@
+import Submission.PrimeOutputDilationReduction
+/-! Axiom audit for the actual signed prime-output dilation comparison. -/
+#print axioms Erdos972PrimeOutputDilationReduction.exists_large_prime_harmonicMass_above
+#print axioms Erdos972PrimeOutputDilationReduction.moebius_prime_dilation_error
+#print axioms Erdos972PrimeOutputDilationReduction.square_row_reindex
+#print axioms Erdos972PrimeOutputDilationReduction.signed_row_dilation_error
+#print axioms Erdos972PrimeOutputDilationReduction.output_signed_dilation_error
+#print axioms Erdos972PrimeOutputDilationReduction.dilation_error_budget
+#print axioms Erdos972PrimeOutputDilationReduction.exists_prime_dilation_comparison

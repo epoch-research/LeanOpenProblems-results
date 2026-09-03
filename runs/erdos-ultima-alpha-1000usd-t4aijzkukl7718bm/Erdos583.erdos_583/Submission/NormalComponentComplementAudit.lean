@@ -1,0 +1,7 @@
+import Submission.NormalComponentComplement
+
+/-! Axiom audit for NormalComponentComplement. -/
+#print axioms Erdos583NormalComponentComplementDevelopment.outside_member_avoids
+#print axioms Erdos583NormalComponentComplementDevelopment.complement_adj_at
+#print axioms Erdos583NormalComponentComplementDevelopment.component_members_disjoint
+#print axioms Erdos583NormalComponentComplementDevelopment.complement_connected

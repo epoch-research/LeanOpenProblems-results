@@ -1,0 +1,24 @@
+import Submission.MixedCompositeGain
+
+/-! Axiom audit of the mixed-root sieve and its unconditional consequence. -/
+
+#print axioms Erdos821.HigherDivisors.mixedDivisorWeight_prime_pow
+#print axioms Erdos821.HigherDivisors.mixedHarmonicMoment_euler_lower
+#print axioms Erdos821.HigherDivisors.mixedHarmonicMoment_totient_lower
+#print axioms Erdos821.HigherDivisors.sum_exact_prime_support_multiplicative_le
+#print axioms Erdos821.Sieve.quadraticRootCount_product_mixed
+#print axioms Erdos821.Sieve.abs_card_pair_conditions_mixed
+#print axioms Erdos821.Sieve.bounded_prime_product_sum_le_const_rpow
+#print axioms Erdos821.Sieve.eventually_bounded_prime_product_error
+#print axioms Erdos821.Sieve.eventually_mixed_prime_pair_sieve_bound
+#print axioms Erdos821.Sieve.mixed_positive_prime_power_sum_le
+#print axioms Erdos821.Sieve.mixedPairDenominator_ge_harmonic
+#print axioms Erdos821.Sieve.mixedPairDenominator_hyperbolic_lower
+#print axioms Erdos821.Sieve.eventually_prime_pair_mixed_explicit_all
+#print axioms Erdos821.Sieve.sum_reciprocal_totient_le_three_harmonic
+#print axioms Erdos821.AnalyticSieve.rough_composite_family_reciprocal_count_mixed
+#print axioms Erdos821.eventually_mixed_structured_smooth_family
+#print axioms Erdos821.infinite_g_gt_mixed_composite_uniform
+#print axioms Erdos821.erdos_821_mixed_composite_range
+
+#print axioms Erdos821.mixed_composite_threshold_gt_hyperbolic_threshold

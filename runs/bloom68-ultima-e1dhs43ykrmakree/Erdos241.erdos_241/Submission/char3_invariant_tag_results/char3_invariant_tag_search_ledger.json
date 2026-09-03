@@ -1,0 +1,1896 @@
+{
+  "cap_seconds": 300.0,
+  "charges": [
+    {
+      "case": "n25_d0",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.011671987012960017,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.781
+    },
+    {
+      "case": "n25_d1",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005464270012453198,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.691
+    },
+    {
+      "case": "n25_d2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.006747065985109657,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.831
+    },
+    {
+      "case": "n25_d3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004634556011296809,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.136
+    },
+    {
+      "case": "n25_d4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0070734869805164635,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 4.5
+    },
+    {
+      "case": "n25_d5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005204996035899967,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.499
+    },
+    {
+      "case": "n25_d6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.006894925027154386,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 4.25
+    },
+    {
+      "case": "n25_d7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004710287961643189,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.211
+    },
+    {
+      "case": "n25_d8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005503950000274926,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.8
+    },
+    {
+      "case": "n24_d0",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005421388021204621,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.128
+    },
+    {
+      "case": "n24_d1",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004199299030005932,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.973
+    },
+    {
+      "case": "n24_d2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005313376954291016,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.869
+    },
+    {
+      "case": "n24_d3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0038375899894163013,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.65
+    },
+    {
+      "case": "n24_d4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004891584045253694,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.693
+    },
+    {
+      "case": "n24_d5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003688292985316366,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.6
+    },
+    {
+      "case": "n24_d6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.006066892005037516,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.799
+    },
+    {
+      "case": "n24_d7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003774915006943047,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.591
+    },
+    {
+      "case": "n24_d8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0038644439773634076,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.552
+    },
+    {
+      "case": "n22_d0_1",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003322595963254571,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.461
+    },
+    {
+      "case": "n22_d0_2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0030884930165484548,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.248
+    },
+    {
+      "case": "n22_d0_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.00467495498014614,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.865
+    },
+    {
+      "case": "n22_d0_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.01129103300627321,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.35
+    },
+    {
+      "case": "n22_d0_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003062495030462742,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.281
+    },
+    {
+      "case": "n22_d0_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0035404720110818744,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.353
+    },
+    {
+      "case": "n22_d0_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0031111269490793347,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.239
+    },
+    {
+      "case": "n22_d0_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004238858004100621,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.146
+    },
+    {
+      "case": "n22_d1_2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0044150930480100214,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.567
+    },
+    {
+      "case": "n22_d1_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002989304019138217,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.173
+    },
+    {
+      "case": "n22_d1_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.00504924199776724,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.276
+    },
+    {
+      "case": "n22_d1_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0033000539988279343,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.415
+    },
+    {
+      "case": "n22_d1_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.011926442035473883,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.368
+    },
+    {
+      "case": "n22_d1_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.01159458002075553,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.299
+    },
+    {
+      "case": "n22_d1_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003227958979550749,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.402
+    },
+    {
+      "case": "n22_d2_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0031439050217159092,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.254
+    },
+    {
+      "case": "n22_d2_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003058970032725483,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.305
+    },
+    {
+      "case": "n22_d2_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003049271006602794,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.254
+    },
+    {
+      "case": "n22_d2_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004698292003013194,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.855
+    },
+    {
+      "case": "n22_d2_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0030281239887699485,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.165
+    },
+    {
+      "case": "n22_d2_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.008404541003983468,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.369
+    },
+    {
+      "case": "n22_d3_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004091026959940791,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.1
+    },
+    {
+      "case": "n22_d3_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003061185998376459,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.008
+    },
+    {
+      "case": "n22_d3_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004500981012824923,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.472
+    },
+    {
+      "case": "n22_d3_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0030917739495635033,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.016
+    },
+    {
+      "case": "n22_d3_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0032666739425621927,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.202
+    },
+    {
+      "case": "n22_d4_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003048549988307059,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.044
+    },
+    {
+      "case": "n22_d4_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004417021991685033,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 2.479
+    },
+    {
+      "case": "n22_d4_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004111058020498604,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.111
+    },
+    {
+      "case": "n22_d4_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0030129740480333567,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.131
+    },
+    {
+      "case": "n22_d5_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004510190978180617,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.471
+    },
+    {
+      "case": "n22_d5_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004802983021363616,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.193
+    },
+    {
+      "case": "n22_d5_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0032992690103128552,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.297
+    },
+    {
+      "case": "n22_d6_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0033793150214478374,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.299
+    },
+    {
+      "case": "n22_d6_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.005076438013929874,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 3.039
+    },
+    {
+      "case": "n22_d7_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004311087017413229,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.167
+    },
+    {
+      "case": "n21_d0_1",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0029583220020867884,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.007
+    },
+    {
+      "case": "n21_d0_2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.00266119500156492,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.887
+    },
+    {
+      "case": "n21_d0_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002540181973017752,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.766
+    },
+    {
+      "case": "n21_d0_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003372959967236966,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.955
+    },
+    {
+      "case": "n21_d0_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.01281205000123009,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.037
+    },
+    {
+      "case": "n21_d0_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003147695038933307,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.194
+    },
+    {
+      "case": "n21_d0_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.003141367982607335,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.878
+    },
+    {
+      "case": "n21_d0_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.004062068008352071,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.904
+    },
+    {
+      "case": "n21_d1_2",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0027084299945272505,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.959
+    },
+    {
+      "case": "n21_d1_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002546148025430739,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.82
+    },
+    {
+      "case": "n21_d1_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0024567689979448915,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.777
+    },
+    {
+      "case": "n21_d1_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0036263639922253788,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.888
+    },
+    {
+      "case": "n21_d1_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0027022389695048332,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.008
+    },
+    {
+      "case": "n21_d1_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002460967982187867,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.826
+    },
+    {
+      "case": "n21_d1_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0027285400428809226,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.999
+    },
+    {
+      "case": "n21_d2_3",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002525674004573375,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.852
+    },
+    {
+      "case": "n21_d2_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0029029729776084423,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.066
+    },
+    {
+      "case": "n21_d2_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0027635139995254576,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.957
+    },
+    {
+      "case": "n21_d2_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0025243210257031024,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.723
+    },
+    {
+      "case": "n21_d2_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.011908810993190855,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.871
+    },
+    {
+      "case": "n21_d2_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0026202619774267077,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.96
+    },
+    {
+      "case": "n21_d3_4",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0037637510104104877,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.837
+    },
+    {
+      "case": "n21_d3_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0030577410361729562,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 1.159
+    },
+    {
+      "case": "n21_d3_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.007198355044238269,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.766
+    },
+    {
+      "case": "n21_d3_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0035895800101570785,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.664
+    },
+    {
+      "case": "n21_d3_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0023125759907998145,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.711
+    },
+    {
+      "case": "n21_d4_5",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0025456059956923127,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.905
+    },
+    {
+      "case": "n21_d4_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0024731659796088934,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.725
+    },
+    {
+      "case": "n21_d4_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.00245145196095109,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.672
+    },
+    {
+      "case": "n21_d4_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002413553011137992,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.72
+    },
+    {
+      "case": "n21_d5_6",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.002497795969247818,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.91
+    },
+    {
+      "case": "n21_d5_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0025892179692164063,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.786
+    },
+    {
+      "case": "n21_d5_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0026462870300747454,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.761
+    },
+    {
+      "case": "n21_d6_7",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0024360889801755548,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.735
+    },
+    {
+      "case": "n21_d6_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0023842070368118584,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.776
+    },
+    {
+      "case": "n21_d7_8",
+      "limit_seconds": 3.0,
+      "process_wall_seconds": 0.0025568779674358666,
+      "status": "UNSAT",
+      "dfs_elapsed_ms": 0.807
+    },
+    {
+      "case": "n21_d0_1_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005713303049560636,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005690007994417101,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005440216977149248,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005524968029931188,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005634063971228898,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005776068021077663,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005757765960879624,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005485428962856531,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005600314005278051,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005511199007742107,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005537324002943933,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005353406013455242,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005619516014121473,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005605242040473968,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005698021035641432,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005466656002681702,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005502319021616131,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005684104980900884,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005797571036964655,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005618048016913235,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00555681501282379,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005243998020887375,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0052524099592119455,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005108609970193356,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005594300047960132,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005785312037914991,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0057844859547913074,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005553938040975481,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005369591002818197,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005443465954158455,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0057162989978678524,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005443242960609496,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005365675024222583,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d6_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00536844099406153,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d6_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005499394959770143,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d7_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005313897971063852,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_1_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009422892006114125,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008723546983674169,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00895246397703886,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00852651399327442,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008638663974124938,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008670634997542948,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008439866011030972,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008821630966849625,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008617513987701386,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00885345897404477,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008888852025847882,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008766665996517986,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008949906972702593,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00904525798978284,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008580752008128911,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009062330995220691,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008659356972202659,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00858662201790139,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009232550975866616,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008628011972177774,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008787524013314396,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008758431999012828,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00847112201154232,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009073208027984947,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009010850044433028,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008781074022408575,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008948088972829282,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008577963977586478,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009307051019277424,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009011182002723217,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0085385279962793,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008433570037595928,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00915772799635306,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d6_7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.008920635969843715,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d6_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00899803900392726,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d7_8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009230939031112939,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d0_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00996677199145779,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d1_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00961103499867022,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01019066502340138,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010475052986294031,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009688087971881032,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009999272006098181,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010095905978232622,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.009946228994522244,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010184676037169993,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d0_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01665670599322766,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d1_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.015713295026216656,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d2_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.016616817971225828,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d3_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01569272903725505,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d4_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.015501345042139292,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d5_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.016594699991401285,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d6_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.016747338057029992,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d7_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.016239313001278788,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d8_clique_differences",
+      "status": "PIGEONHOLE_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.015749157988466322,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_1_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0037899360177107155,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003524383995682001,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033412809716537595,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003440466010943055,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003604839032050222,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003477427992038429,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003481087973341346,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d0_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003525501990225166,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033947309711948037,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003436604980379343,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034081710036844015,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034537449828349054,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003386341966688633,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034678379888646305,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d1_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034423129982315004,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033230939880013466,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003364156000316143,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034317210083827376,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003457354032434523,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034654290066100657,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d2_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033856569789350033,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033207079977728426,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003234756994061172,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034686190192587674,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0032378549803979695,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d3_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034962570061907172,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0035035230102948844,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003432739991694689,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003470390976872295,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d4_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033021990093402565,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003493017051368952,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003246539970859885,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d5_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0033936789841391146,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d6_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003440591972321272,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d6_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0034548260155133903,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n21_d7_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.003271418041549623,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_1_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005284849961753935,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005268349952530116,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0051743119838647544,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005227504996582866,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005459540989249945,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00534983299439773,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005254104034975171,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d0_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005303954996634275,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005221707047894597,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004977462987881154,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005466921022161841,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00525401602499187,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005057481990661472,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005172238976228982,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d1_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00489641900639981,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004784729040693492,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005065190023742616,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004940682963933796,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005193725985009223,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004851479025091976,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d2_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004946709028445184,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00510437396587804,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005114487023092806,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.004879867017734796,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00488065299578011,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d3_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005062299955170602,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005155660968739539,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005311489978339523,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005451255012303591,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d4_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005013824033085257,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005066243989858776,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005217792000621557,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d5_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0054343449883162975,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d6_7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005415437975898385,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d6_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005431780009530485,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n22_d7_8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.005163816036656499,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d0_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006641154992394149,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d1_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00674054300179705,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00672254798701033,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006268761993851513,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006138102035038173,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.0063318099710159,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006376761011779308,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006350126001052558,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n24_d8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.006782204029150307,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d0_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01032478199340403,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d1_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010270779021084309,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d2_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010338052990846336,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d3_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01006832899292931,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d4_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010047696996480227,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d5_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010316247993614525,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d6_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.00999264296842739,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d7_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.010105438996106386,
+      "accounting_kind": "in-process structural certificate search"
+    },
+    {
+      "case": "n25_d8_negation",
+      "status": "NEGATION_ORBIT_CERTIFICATE",
+      "limit_seconds": 1.0,
+      "process_wall_seconds": 0.01017746701836586,
+      "accounting_kind": "in-process structural certificate search"
+    }
+  ],
+  "accounting": "sum of process wall times, including launch/output; solver DFS also reported"
+}

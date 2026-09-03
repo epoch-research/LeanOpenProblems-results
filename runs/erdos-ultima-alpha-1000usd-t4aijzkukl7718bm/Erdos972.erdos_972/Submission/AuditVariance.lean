@@ -1,0 +1,9 @@
+import Submission.RemainderVarianceScales
+
+/-! Axiom audit of the actual-remainder variance lower bound. -/
+#print axioms Erdos972RemainderSemiprimes.typeIIPart_rough_semiprime
+#print axioms Erdos972RemainderSemiprimes.covariance_self_two_clusters
+#print axioms Erdos972PrimeIntervalCounts.eventually_prime_interval_counts
+#print axioms Erdos972RemainderVariance.remainder_variance_lower
+#print axioms Erdos972RemainderVarianceScales.eventually_remainder_variance_lower
+#print axioms Erdos972RemainderVarianceScales.not_tendsto_remainder_variance_zero

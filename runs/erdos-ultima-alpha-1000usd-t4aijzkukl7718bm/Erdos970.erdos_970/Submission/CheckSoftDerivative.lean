@@ -1,0 +1,12 @@
+import Submission.WeakSoftEndpointReduction
+import Submission.GapVarianceSubadditive
+#check HasDerivAt.sum
+#check HasDerivAt.fun_sum
+#check HasDerivAt.div_const
+#check HasDerivAt.const_mul
+#check HasDerivAt.div
+#check Nat.lt_mul_div_succ
+#check Nat.mod_add_div
+#check Nat.cast_div_le
+#check Real.exp_zero
+#check Finset.mul_sum

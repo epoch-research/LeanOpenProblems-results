@@ -1,0 +1,13 @@
+import Submission.EulerMassAsymptotic
+#check le_of_tendsto
+#check Real.log_le_sub_one_of_pos
+#check Real.log_le_self
+#check Real.abs_exp_sub_one_le
+#check Real.exists_nat_gt
+#check Finset.sum_nonneg
+#check Finset.single_le_sum
+#check Finset.le_sup'
+#check Real.norm_exp_sub_one_sub_id_le
+#check HasDerivAt.lipschitzOnWith
+#check Convex.norm_image_sub_le_of_norm_hasFDerivWithin_le
+#check Real.lipschitzOnWith_exp

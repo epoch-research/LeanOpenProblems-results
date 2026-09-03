@@ -1,0 +1,10 @@
+import Submission.PolylogMomentPrimeProxy
+#check Nat.log_pos
+#check Nat.log_pos_iff
+#check Real.exp_nat_mul
+#check Real.log_two_lt_one
+#check one_add_mul_le_pow
+#check one_sub_mul_le_pow
+#check pow_le_pow_left₀
+#check Real.log_le_sub_one_of_pos
+#check Summable.indicator

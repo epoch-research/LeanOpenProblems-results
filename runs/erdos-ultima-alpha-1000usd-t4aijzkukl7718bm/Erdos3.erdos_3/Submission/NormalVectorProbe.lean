@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check InnerProductSpace.toDual
+#check InnerProductSpace.toDual_symm_apply
+#check real_inner_self_eq_norm_sq
+#check ContinuousLinearMap.smulRight
+#check ContinuousLinearMap.codRestrict
+#check ContinuousLinearMap.mem_ker
+#check ContinuousLinearMap.sub_apply
+#check LinearIsometryEquiv.norm_map
+#check ContinuousLinearMap.ker
+#check Submodule.subtypeL
+#check ContinuousLinearMap.coe_smulRight
+#check ContinuousLinearMap.smulRight_apply
+#check LinearMap.smulRight_apply
+#check norm_pos_iff
+#check Submodule.mem_ker

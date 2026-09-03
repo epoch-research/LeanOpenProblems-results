@@ -1,0 +1,16 @@
+import Submission.ResidueSeriesExplore
+#check le_of_tendsto
+#check le_of_tendsto_of_tendsto
+#check Summable.tendsto_sum_tsum_nat
+#check Summable.tendsto_sum_nat
+#check Summable.tsum_le_tsum
+#check Summable.mul_left
+#check Summable.mul_right
+#check summable_geometric_of_lt_one
+#check hasSum_geometric_of_lt_one
+#check tsum_geometric_of_lt_one
+#check tsum_sq_le_tsum_of_le
+#check tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm
+#check Filter.tendsto_const_nhds
+#check Summable.tsum_le_tsum_of_inj
+#check Finset.sum_le_tsum

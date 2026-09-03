@@ -1,0 +1,17 @@
+import Submission.RationalRoute
+#check Nat.pow_log_le_self
+#check Nat.lt_pow_succ_log_self
+#check Nat.log_lt_iff_lt_pow
+#check Nat.pow_log_le_self
+#check Nat.lt_pow_succ_log_self
+#check Nat.log_pow
+#check Nat.pow_le_pow_left
+#check Nat.pow_lt_pow_left
+#check Nat.pow_le_pow_right
+#check pow_le_pow_left₀
+#check pow_lt_pow_left₀
+#check pow_le_pow_right₀
+#check pow_lt_pow_right₀
+#check Erdos972RationalRoute.exists_good_approximant_large_den
+#check Nat.cast_pow
+#print Erdos972RationalRoute.exists_good_approximant_large_den

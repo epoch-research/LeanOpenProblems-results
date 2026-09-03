@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+open Polynomial
+#check coeff_mul
+#check coeff_mul_X_pow
+#check coeff_X_pow_mul
+#check coeff_X_pow
+#check coeff_mul_X_pow'
+#check coeff_X_pow_mul'
+#check coeff_C_mul
+#check coeff_add
+#check coeff_X_pow_self
+#check Finset.sum_range_add
+#check Finset.sum_mul_sq_le_sq_mul_sq

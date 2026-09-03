@@ -1,0 +1,14 @@
+import Submission.PrefixBalancedPaletteExplore
+#check Finset.filter_image
+#check Finset.card_image_of_injective
+#check Finset.card_union_add_card_inter
+#check Finset.filter_or
+#check Finset.card_biUnion_le
+#check Finset.biUnion_mono
+#check Equiv.addLeft
+#check ZMod.val_add_of_le
+#check ZMod.val_add_of_lt
+#check Finset.mem_image
+#check Finset.image_image
+#print Erdos66CyclicThickening.cyclicCount
+#print Erdos66PrefixBalancedPalette.exists_prefix_balanced_complete_palette

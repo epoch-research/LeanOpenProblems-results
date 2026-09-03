@@ -1,0 +1,42 @@
+import Submission.NearCriticalCapacityObstruction
+import Submission.CapacityEndpointObstruction
+
+/-! Axiom audit for the near-critical generic capacity obstruction. -/
+
+#print axioms Erdos773.DenseSidonPartitionScales.branchDegree_bound
+#print axioms Erdos773.DenseSidonPartitionScales.seed_dense
+#print axioms Erdos773.DenseSidonPartitionScales.branching
+#print axioms Erdos773.DenseSidonPartitionScales.exponential_budget
+#print axioms Erdos773.DenseSidonPartitionScales.seed_partition_bound
+#print axioms Erdos773.DenseSidonSeedWitnesses.host_card
+#print axioms Erdos773.DenseSidonSeedWitnesses.mem_seeds
+#print axioms Erdos773.DenseSidonSeedWitnesses.witnesses_nonneg
+#print axioms Erdos773.DenseSidonSeedWitnesses.penalty_nonneg
+#print axioms Erdos773.DenseSidonSeedWitnesses.penalty_large
+#print axioms Erdos773.DenseSidonSeedWitnesses.seeds_card
+#print axioms Erdos773.DenseSidonSeedWitnesses.weighted_witnesses
+#print axioms Erdos773.DenseSidonSeedWitnesses.expected_penalty_bound
+#print axioms Erdos773.DenseSidonSeedWitnesses.entropy_budget
+#print axioms Erdos773.DenseSidonSeedWitnesses.expected_penalty_small
+#print axioms Erdos773.DenseSidonSeedWitnesses.exponential_penalty_budget
+#print axioms Erdos773.IntegerDifferenceCapacityGeneral.obstructions_card
+#print axioms Erdos773.IntegerDifferenceCapacityGeneral.obstructions_size
+#print axioms Erdos773.IntegerDifferenceCapacityGeneral.obstructions_subset
+#print axioms Erdos773.IntegerDifferenceCapacityGeneral.capacity_of_avoids
+#print axioms Erdos773.DenseCapacityScales.capacity_cost
+#print axioms Erdos773.DenseCapacityScales.reward_scales
+#print axioms Erdos773.DenseCapacityScales.capacity_cost_endpoint
+#print axioms Erdos773.DenseCapacityScales.reward_scales_endpoint
+#print axioms Erdos773.DenseGenericCapacityObstruction.expected_reward_of_scale
+#print axioms Erdos773.DenseGenericCapacityObstruction.finite_obstruction_of_reward
+#print axioms Erdos773.DenseGenericCapacityObstruction.expected_reward
+#print axioms Erdos773.DenseGenericCapacityObstruction.finite_obstruction
+#print axioms Erdos773.DenseGenericCapacityObstruction.finite_endpoint_obstruction
+#print axioms Erdos773.NearCriticalCapacityObstruction.polynomial_obstruction
+#print axioms Erdos773.NearCriticalCapacityObstruction.polynomial_power_gap
+#print axioms Erdos773.NearCriticalCapacityObstruction.eventual_polynomial_obstruction
+#print axioms Erdos773.NearCriticalCapacityObstruction.large_carrier
+#print axioms Erdos773.NearCriticalCapacityObstruction.near_linear_scale
+#print axioms Erdos773.NearCriticalCapacityObstruction.near_critical_obstruction
+#print axioms Erdos773.CapacityEndpointObstruction.polynomial_obstruction
+#print axioms Erdos773.CapacityEndpointObstruction.eventual_endpoint_obstruction

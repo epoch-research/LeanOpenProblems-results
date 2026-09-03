@@ -1,0 +1,12 @@
+import Submission.FirstHitTwoScaleDefs
+#check Nat.floor_lt
+#check Nat.lt_floor_add_one
+#check Nat.le_floor
+#check Finset.sum_filter_add_sum_filter_not
+#check Nat.le_nth
+#check StrictMono.add_le_nat
+#check Real.quadratic_le_exp_of_nonneg
+#check Real.sum_le_exp_of_nonneg
+#check Finset.sum_image
+#check Nat.nth_strictMono
+#check Real.exp_nat_mul

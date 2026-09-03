@@ -1,0 +1,12 @@
+import Submission.NormalOrthonormalBasis
+#check OrthonormalBasis.coe_toBasis_repr_apply
+#check Matrix.fromBlocks_apply₁₁
+#check Matrix.fromBlocks_apply₁₂
+#check Matrix.fromBlocks_apply₂₁
+#check Matrix.fromBlocks_apply₂₂
+#check Matrix.fromBlocks_apply₁₁
+#check Submodule.inner_coe
+#check inner_subtype
+#check Module.Basis.det_apply
+#check ZLattice.covolume_eq_det_mul_measureReal
+#check MeasureTheory.Measure.real

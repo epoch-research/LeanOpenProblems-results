@@ -1,0 +1,8 @@
+import Submission.DfaCountingExplore
+#print axioms Erdos66DigitLoopPeak.no_log_limit_of_exponential_peaks
+#print axioms Erdos66DigitLoopPeak.no_log_limit_of_digit_loops
+#print axioms Erdos66DfaLoopCode.lastCode_injective
+#print axioms Erdos66DfaLoopCode.accepted_finset_bound
+#print axioms Erdos66DfaLoopCode.loop_unique_of_log_limit
+#print axioms Erdos66DfaCounting.count_bound
+#print axioms Erdos66DfaCounting.no_nonzero_log_limit

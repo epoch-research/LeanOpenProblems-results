@@ -1,0 +1,12 @@
+import Submission.PrefixFaithfulParabolaLiftExplore
+#check div_left_inj'
+#check div_right_inj'
+#check div_left_injective
+#check Finset.card_bij
+#check Finset.image_erase
+#check Finset.image_erase_of_injective
+#check Finset.card_erase_of_mem
+#check Finset.card_product
+#check Finset.card_erase_add_one
+#check Finset.card_image_of_injective
+#check Finset.erase_image

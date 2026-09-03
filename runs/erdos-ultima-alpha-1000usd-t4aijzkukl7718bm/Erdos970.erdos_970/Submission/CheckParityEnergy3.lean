@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Nat.add_mod_mod
+#check Nat.mod_add_mod
+#check Nat.ModEq.mul_left'
+#check Nat.mod_modEq
+#check Nat.mod_eq_zero
+#check Odd.mul
+#check Finset.prod_union_inter
+#check Finset.prod_union
+#check Finset.prod_sdiff
+#check Finset.prod_gcd
+#check Nat.gcd_prod
+#check Nat.gcd_eq_prod_inter

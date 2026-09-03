@@ -1,0 +1,14 @@
+Colour-swapping digit permutation: PASS (all 10 digit pairs)
+Explicit injections; every required edge checked in BOTH colours
+t | N=5^t | d_t | cube vertices | cube edges per colour | status
+1 | 5 | 1 | 2 | 1 | PASS
+2 | 25 | 3 | 8 | 12 | PASS
+3 | 125 | 5 | 32 | 80 | PASS
+4 | 625 | 7 | 128 | 448 | PASS
+5 | 3125 | 10 | 1024 | 5120 | PASS
+6 | 15625 | 12 | 4096 | 24576 | PASS
+7 | 78125 | 14 | 16384 | 114688 | PASS
+8 | 390625 | 17 | 131072 | 1114112 | PASS
+Total required edge-colour checks: 2518074
+PASS: dimensions, capacities, word validity, injectivity, inverse, edges
+No search performed. All-t theorem proved in CubeLexPentagonAttempt.md.

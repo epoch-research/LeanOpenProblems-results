@@ -1,0 +1,10 @@
+import Submission.CommonBalancedOffDiagonal
+/-! Audit of the uniform sparse-diagonal and balanced-cutoff removal estimates. -/
+#print axioms Erdos972SparseCommonDivisorSupport.commonDivisorSet_card_bound
+#print axioms Erdos972SparseVaughanDiagonal.diagonalAt_sum_eq
+#print axioms Erdos972SparseVaughanDiagonal.diagonalAt_abs_bound
+#print axioms Erdos972SparseVaughanDiagonal.sparse_diagonal_normalized_fourth
+#print axioms Erdos972UniformPrimeFactorError.primeFactorError_normalized_fourth_general
+#print axioms Erdos972SparseDiagonalScales.eventually_small_sparse_diagonal
+#print axioms Erdos972BalancedPrimeFactorErrorScales.eventually_small_balanced_prime_factor_error
+#print axioms Erdos972CommonBalancedOffDiagonal.exists_balanced_typeI_and_prime_offDiagonal_scale

@@ -1,0 +1,15 @@
+import Submission.SelbergLower
+#check Finset.sum_powerset_insert
+#check Finset.powerset_univ
+#check Finset.sum_ite_irrel
+#check Finset.sum_filter
+#check Erdos970.FiniteSelberg.average_basis_mul
+#check Erdos970.FiniteSelberg.hitCoordinate_mul_basis_of_not_mem
+#check Finset.sum_attach
+#check Finset.sum_mul
+#check Fintype.sum_subtype
+#check Finset.sum_subset
+#check Finset.sum_bij
+#check Finset.sum_image
+#check Finset.sum_product
+#check Finset.sum_congr

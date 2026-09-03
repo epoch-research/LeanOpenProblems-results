@@ -1,0 +1,40 @@
+COHERENT-CLOSURE AUDITS (exact integer arithmetic)
+  L=2: n=4, D=2, refinement ranks=[3], fibers=1, coherent dimension=3
+  L=3: n=9, D=5, refinement ranks=[15, 15], fibers=3, coherent dimension=15
+  L=4: n=16, D=9, refinement ranks=[36, 36], fibers=3, coherent dimension=36
+  L=5: n=25, D=14, refinement ranks=[91, 91], fibers=6, coherent dimension=91
+  L=6: n=36, D=19, refinement ranks=[171, 171], fibers=6, coherent dimension=171
+  L=7: n=49, D=26, refinement ranks=[325, 325], fibers=10, coherent dimension=325
+  General radial-block bound checked on three nonsquare samples.
+
+FORMAL QUADRATIC-FORM UNIQUENESS
+  m=2: 4 nonzero one-dimensional gap types, 14 formal planar distance types; no collisions
+  m=3: 9 nonzero one-dimensional gap types, 54 formal planar distance types; no collisions
+  m=4: 16 nonzero one-dimensional gap types, 152 formal planar distance types; no collisions
+  m=5: 25 nonzero one-dimensional gap types, 350 formal planar distance types; no collisions
+  m=6: 36 nonzero one-dimensional gap types, 702 formal planar distance types; no collisions
+  m=7: 49 nonzero one-dimensional gap types, 1274 formal planar distance types; no collisions
+  m=8: 64 nonzero one-dimensional gap types, 2144 formal planar distance types; no collisions
+  m=9: 81 nonzero one-dimensional gap types, 3402 formal planar distance types; no collisions
+  m=10: 100 nonzero one-dimensional gap types, 5150 formal planar distance types; no collisions
+
+EXPLICIT ALGEBRAIC 400-POINT PAIR
+  denominator=100320740
+  numerators=[100209204, 903001668, 2508018276, 4915716820, 8125978708, 12138809204, 16954205844, 22572164596, 28992695316, 36215784564]
+  Both first two power sums of squared positive coordinates match exactly.
+  Grid:      (n,D,E)=(400,179,244716128)
+  Perturbed: (n,D,E)=(400,5150,6725600)
+  Common EDM parameters S=106400, T=39538240; spectrum {-S,-S,S+sqrt(nT),S-sqrt(nT),0^(n-4)}.
+  Common unlabelled coherent algebra has dimension 20100, and a full M_55(R) corner.
+
+HILBERT-FUNCTION AUDITS
+  Two different exact rational Cartesian products have the asserted ranks at every degree through saturation.
+  L=20 full formula sample: [(0, 1), (1, 3), (2, 6), (5, 21), (10, 66), (19, 210), (20, 229), (25, 309), (37, 399), (38, 400), (39, 400)]
+
+HIGH-ORDER EXACT MOMENT/GRAM AUDITS
+  K=2, L=24: 12 positive algebraic roots certified; moments through degree 8 and 15x15 feature Grams agree exactly.
+  K=3, L=28: 14 positive algebraic roots certified; moments through degree 12 and 28x28 feature Grams agree exactly.
+  These explicit polynomial samples audit moment matching, not the generic distance-count assertion;
+  the latter is proved by the local-surjectivity lemma and audited separately above.
+
+ALL EXACT CHECKS PASSED.

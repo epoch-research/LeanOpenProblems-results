@@ -1,0 +1,6 @@
+import Submission.PrimeRemainderProfileIdentity
+#check Finset.sum_Ioc_consecutive
+#check Erdos972PrimePowerError.self_le_floorMul
+#check Erdos972PrimePowerError.primeCorrelation
+#check Finset.sum_subset
+#check Erdos972FourFactorDiagonalSplit.prime_remainder_diagonal_split

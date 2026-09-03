@@ -1,0 +1,15 @@
+import Submission.SievePolynomial
+#check Fintype.sum_sum_type
+#check Fintype.sum_prod_type
+#check Fintype.sum_option
+#check Finset.prod_pair
+#check Finset.sum_boole
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Finset.sum_const
+#check Fintype.card_sum
+#check Finset.card_pos
+#check Finset.sum_mul_sum
+#check Finset.sum_sub_distrib
+#check Finset.sum_ite_irrel
+#check Finset.card_filter

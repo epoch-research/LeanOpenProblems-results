@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+open Filter
+#check Nat.card_multiples
+#check Nat.card_multiples'
+#check Nat.lt_div_add_one
+#check Nat.div_add_mod
+#check tendsto_natCast_div_const_atTop
+#check tendsto_finset_sum
+#check Finset.sum_mul_sum
+#check sq_sum_le_card_mul_sum_sq
+#check Finset.sum_ite_eq'
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd
+#check Nat.Coprime.mul_dvd_iff_dvd_dvd
+#check tendsto_of_tendsto_of_tendsto_of_le_of_le'

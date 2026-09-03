@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+import Submission.LocalSubcriticalCancellation
+import Submission.SupercriticalPrimePairs
+#check Prod.swap_injective
+#check Finset.card_image_of_injective
+#check Finset.card_union_of_disjoint
+#check Finset.sum_union
+#check Finset.sum_image
+#check Finset.sum_filter_add_sum_filter_not
+#check Finset.card_filter_add_card_filter_not
+#check Finset.card_filter_add_card_filter_neg
+#check Finset.card_sub_card
+#check Finset.sum_boole
+#check Nat.cast_sub

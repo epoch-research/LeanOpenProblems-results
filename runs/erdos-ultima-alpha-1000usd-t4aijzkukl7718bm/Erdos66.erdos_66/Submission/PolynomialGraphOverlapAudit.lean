@@ -1,0 +1,10 @@
+import Submission.PolynomialGraphOverlapExplore
+/-! Axiom audit for thinning and overlap bounds. -/
+#print axioms Erdos66PolynomialGraphSubset.local_sumset_card_le
+#print axioms Erdos66PolynomialGraphSubset.local_card_sq_le_cap
+#print axioms Erdos66PolynomialGraphSubset.retained_graph_card_bound
+#print axioms Erdos66PolynomialGraphSubset.input_grid_bijective
+#print axioms Erdos66PolynomialGraphSubset.retainedInputs_card_sq_le_cap
+#print axioms Erdos66PolynomialGraphSubset.retainedInputs_log_envelope
+#print axioms Erdos66PolynomialGraphOverlap.eventually_small_polynomial_overlap_of_envelope
+#print axioms Erdos66PolynomialGraphOverlap.eventually_small_polynomial_overlap

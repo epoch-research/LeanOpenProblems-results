@@ -1,0 +1,10 @@
+import Submission.DegreeTwoBoundary
+/-! Audit of the port-pairing and independent-boundary constructions. -/
+#print axioms Erdos583PortPairingDevelopment.switch_bad_pair
+#print axioms Erdos583PortPairingDevelopment.separate_pairings_of_matching
+#print axioms Erdos583EndpointQuotaDevelopment.exists_positive_quota_pieces
+#print axioms Erdos583EndpointQuotaDevelopment.exists_port_assigned_pieces
+#print axioms Erdos583EndpointQuotaDevelopment.PieceFamily.parts_good
+#print axioms Erdos583DegreeTwoBoundaryDevelopment.separate_endpoint_assignment
+#print axioms Erdos583DegreeTwoBoundaryDevelopment.lift_piece_family
+#print axioms Erdos583DegreeTwoBoundaryDevelopment.pairedExtension_path_partition

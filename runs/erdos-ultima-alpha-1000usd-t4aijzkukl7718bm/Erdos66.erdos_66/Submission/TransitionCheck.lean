@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Finset.sum_card_fiberwise_le_card
+#check Finset.sum_card_fiberwise
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Finset.filter_disjoint
+#check Finset.disjoint_filter_filter
+#check Finset.disjoint_of_subset_left
+#check Finset.card_union_of_disjoint
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.filter_union
+#check Finset.image_union

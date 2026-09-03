@@ -1,0 +1,9 @@
+import Submission.ProtectedEdge
+/-! Audit of local normalization with a marked triangle-free edge. -/
+#print axioms Erdos583ProtectedEdgeDevelopment.trail_isPath_of_subgraph_eq
+#print axioms Erdos583ProtectedEdgeDevelopment.repair_avoiding_single_edge
+#print axioms Erdos583ProtectedEdgeDevelopment.improve_repeated_start_protect_edge
+#print axioms Erdos583ProtectedEdgeDevelopment.protected_no_repeated_start
+#print axioms Erdos583ProtectedEdgeDevelopment.shorten_oriented_no_return
+#print axioms Erdos583ProtectedEdgeDevelopment.strip_chordless_two_edge
+#print axioms Erdos583ProtectedEdgeDevelopment.protected_no_closed_after_first_marked

@@ -1,0 +1,12 @@
+import Submission.MonotoneRotationTubeExplore
+
+/-! Axiom audit for the restricted single-window rotation obstruction. -/
+#print axioms Erdos66ShrinkingRotationTube.floor_window
+#print axioms Erdos66ShrinkingRotationTube.rotationSum_eq_card
+#print axioms Erdos66ShrinkingRotationTube.tube_rep_lower
+#print axioms Erdos66ShrinkingRotationTube.exists_finite_tube_spike
+#print axioms Erdos66ShrinkingRotationTube.exists_uniform_spike_threshold
+#print axioms Erdos66MonotoneRotationTube.tube_count_window_upper
+#print axioms Erdos66MonotoneRotationTube.log_square_div_index_zero
+#print axioms Erdos66MonotoneRotationTube.global_cap_eventually_le_index
+#print axioms Erdos66MonotoneRotationTube.monotone_tube_no_nonzero_limit

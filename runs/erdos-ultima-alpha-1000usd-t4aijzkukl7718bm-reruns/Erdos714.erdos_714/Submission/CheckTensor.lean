@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Nat.le_of_mul_le_mul_left
+#check Nat.mul_le_mul_left
+#check Nat.mul_le_mul_left_iff
+#check mul_le_mul_left
+#check pow_le_pow_left₀
+#check Nat.pow_le_pow_left
+#check Nat.pow_le_pow_right
+#check Nat.pow_pos

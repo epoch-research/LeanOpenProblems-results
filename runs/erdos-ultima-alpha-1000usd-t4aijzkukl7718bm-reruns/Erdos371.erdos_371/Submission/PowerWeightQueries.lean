@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check Real.continuous_const_rpow
+#check Real.continuousAt_const_rpow
+#check Continuous.const_rpow
+#check Real.continuous_rpow
+#check Finset.card_erase_add_one
+#check Finset.card_filter_le
+#check continuous_finset_sum
+#check Metric.continuousAt_iff
+#check tendsto_atTop.2
+#check Filter.tendsto_atTop
+#check ContinuousAt.div_const
+#check Filter.Eventually.exists

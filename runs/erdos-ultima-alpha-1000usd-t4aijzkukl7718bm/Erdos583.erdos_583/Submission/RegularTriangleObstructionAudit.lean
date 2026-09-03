@@ -1,0 +1,11 @@
+import Submission.RegularTriangleObstruction
+
+/-! Axiom audit: local triangle obstruction, not a Gallai disproof. -/
+#print axioms Erdos583RegularTriangleObstructionDevelopment.regular
+#print axioms Erdos583RegularTriangleObstructionDevelopment.zero_set
+#print axioms Erdos583RegularTriangleObstructionDevelopment.root_quota
+#print axioms Erdos583RegularTriangleObstructionDevelopment.edge_card
+#print axioms Erdos583RegularTriangleObstructionDevelopment.connected
+#print axioms Erdos583RegularTriangleObstructionDevelopment.one_defect
+#print axioms Erdos583RegularTriangleObstructionDevelopment.no_two_paths
+#print axioms Erdos583RegularTriangleObstructionDevelopment.budget_free_triangle_repair_false

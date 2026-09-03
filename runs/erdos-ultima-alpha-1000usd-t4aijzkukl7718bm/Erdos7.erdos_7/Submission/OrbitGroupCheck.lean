@@ -1,0 +1,11 @@
+import Submission.ArithmeticReduction
+#check Finset.card_biUnion_le
+#check Finset.card_union_le
+#check Finset.sum_card_fiberwise
+#check Finset.sum_comm
+#check Finset.sum_boole
+#check Finset.sum_le_sum
+#check Fintype.card_coe
+#check Fintype.card_subtype_iff
+#check Nat.pos_of_dvd_of_pos
+#check Finset.card_le_card

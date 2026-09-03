@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check SimpleGraph.ConnectedComponent.connected_toSimpleGraph
+#check SimpleGraph.connectedComponentMk_mem
+#check SimpleGraph.mem_supp_connectedComponentMk
+#check SimpleGraph.ConnectedComponent.mem_supp_iff
+#check SimpleGraph.ConnectedComponent.connectedComponentMk_mem
+#check SimpleGraph.ConnectedComponent.nonempty_supp
+#check SimpleGraph.mem_support_of_reachable
+#check SimpleGraph.Colorable.of_hom

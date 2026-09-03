@@ -1,0 +1,16 @@
+import Submission.AbelErrorEnergyExplore
+import Submission.CumulativeRoundingErrorExplore
+import Submission.WeightedLogExplore
+#check summable_sum_mul_antidiagonal_of_summable_norm
+#check summable_sum_mul_antidiagonal_of_summable_norm
+#check summable_pow_mul_geometric_of_norm_lt_one
+#check Filter.Tendsto.const_div_atTop
+#check tendsto_sum_range_div_atTop_nhds_zero
+#check tendsto_sum_range_div_atTop_nhds
+#check tendsto_arithmetic_mean
+#check Real.tendsto_log_div_id_atTop
+#check harmonic_sum
+#check harmonic_sum_range
+#check summable_geometric_of_lt_one
+#check Summable.of_nonneg_of_le
+#check Erdos66FractionalFourthPower.summable_profile_fourth

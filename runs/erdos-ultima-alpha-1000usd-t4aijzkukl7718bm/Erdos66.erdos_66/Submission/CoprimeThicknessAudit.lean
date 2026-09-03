@@ -1,0 +1,19 @@
+import Submission.UniformCoprimeThicknessExplore
+/-! Axiom audit of the common-prime mixed-thickness construction. -/
+#print axioms Erdos66RectangularRadix.encode_sub
+#print axioms Erdos66RectangularRadix.mixed_count_formula
+#print axioms Erdos66RectangularRadix.encode_nat
+#print axioms Erdos66RectangularCarryAverage.carriedRow_identity
+#print axioms Erdos66RectangularCarryAverage.carriedBox_error
+#print axioms Erdos66CarrySplitFibers.carry_split
+#print axioms Erdos66CarrySplitFibers.averaged_fiber_error
+#print axioms Erdos66CoprimeThickness.count_crt_formula
+#print axioms Erdos66CoprimeThickness.count_parameter_formula
+#print axioms Erdos66CoprimeThickness.count_split_formula
+#print axioms Erdos66CoprimeThickness.mixed_thickness_error
+#print axioms Erdos66CoprimeThicknessGeometry.leftSet_is_thickening
+#print axioms Erdos66CoprimeThicknessGeometry.rightSet_is_thickening
+#print axioms Erdos66CoprimeThickness.leftSet_card
+#print axioms Erdos66CoprimeThickness.rightSet_card
+#print axioms Erdos66CoprimeThickness.actual_mean_scaling
+#print axioms Erdos66UniformCoprimeThickness.every_prime_coprime_thickness_family

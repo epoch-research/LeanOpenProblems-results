@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Set.ncard_le_ncard
+#check Nat.card_coe_set_eq
+#check SimpleGraph.IsBipartiteWith.mono
+#print SimpleGraph.IsBipartiteWith
+#check SimpleGraph.isBipartiteWith_support_subset
+#check Set.ncard_union_le
+#check Finset.card_eq_sum_card_image
+#check Finset.card_eq_sum_card_fiberwise

@@ -1,0 +1,14 @@
+import Submission.FractionalFourthPowerExplore
+import Submission.WeightedSquareStabilityExplore
+#check max_mul_of_nonneg
+#check mul_max_of_nonneg
+#check Filter.Tendsto.eventually_ne
+#check Filter.Tendsto.eventually_pos
+#check Filter.Tendsto.eventually_gt_const
+#check sq_pos_of_pos
+#check max_eq_right
+#check Erdos66ResidueSeries.summable_of_log_limit
+#check AdditiveCombinatorics.sumConv
+#check Finset.mul_sum
+#check Real.sqrt_ne_zero'
+#check Erdos66Generating.sum_indicator_antidiagonal

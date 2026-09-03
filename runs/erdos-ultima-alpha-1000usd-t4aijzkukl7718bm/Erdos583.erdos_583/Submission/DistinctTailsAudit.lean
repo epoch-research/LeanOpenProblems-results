@@ -1,0 +1,9 @@
+import Submission.DistinctTails
+/-! Audit of distinct-label tail exposure, without endpoint bijectivity. -/
+#print axioms Erdos583DistinctTailsDevelopment.rearranged_trans
+#print axioms Erdos583DistinctTailsDevelopment.pivot
+#print axioms Erdos583DistinctTailsDevelopment.realize_escape_orbit
+#print axioms Erdos583DistinctTailsDevelopment.many_distinct_escapes
+#print axioms Erdos583DistinctTailsDevelopment.two_distinct_escapes_of_cycle
+#print axioms Erdos583DistinctTailsDevelopment.two_distinct_escapes
+#print axioms Erdos583DistinctTailsDevelopment.cycle_of_two_zero_successors

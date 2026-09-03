@@ -1,0 +1,6 @@
+import Submission.CrossGraphExplore
+open Erdos66FiniteField Erdos66CrossGraph Erdos66OriginRepair
+#check quadraticChar_abs_le_one
+#check graph_pair_count
+#print graphIndicator
+#print finiteConv

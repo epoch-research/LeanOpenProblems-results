@@ -1,0 +1,10 @@
+'Erdos66CertifiedGlobalUpperClipping.tail_core_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CertifiedGlobalUpperClipping.exists_certified_full_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CertifiedGlobalUpperClipping.exists_certified_upper_clipping_under_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CertifiedGlobalUpperClipping.upper_limit_of_excess_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

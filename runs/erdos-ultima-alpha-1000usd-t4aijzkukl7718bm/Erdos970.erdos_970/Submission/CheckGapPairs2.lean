@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Nat.Coprime.mul_dvd_of_dvd_of_dvd
+#check Nat.Coprime.mul_dvd_iff_dvd_and_dvd
+#check Nat.Coprime.dvd_mul
+#check Nat.cast_sum
+#check Finset.sum_congr
+#check Finset.sum_range_id_mul_two
+#check Finset.sum_range_id_mul_two
+#check Finset.prod_add

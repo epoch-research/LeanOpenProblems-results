@@ -1,0 +1,8 @@
+import Submission.SidonColorWitnessExplore
+
+/-! Audit of the multiscale Sidon-color necessary condition. -/
+#print axioms Erdos66SidonColorBlockEnergy.distinctColorDifferences_of_unique_sums
+#print axioms Erdos66SidonColorBlockEnergy.block_energy_bound
+#print axioms Erdos66SidonColorAnnuli.annular_color_budget
+#print axioms Erdos66SidonColorWitness.witness_requires_logarithmically_many_colors
+#print axioms Erdos66SidonColorWitness.sublog_colors_exclude_witness

@@ -1,0 +1,9 @@
+import Submission.GuardedMatchingRestoration
+
+/-! Audit for guarded matching restoration. -/
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.restore_one_edge_zero_forest_tracked
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.even_vertices_delete_edge_subset
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.even_forest_off_delete_edge
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.restore_even_edge_guarded
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.restore_matching_guarded
+#print axioms Erdos583GuardedMatchingRestorationDevelopment.partition_of_guarded_matching

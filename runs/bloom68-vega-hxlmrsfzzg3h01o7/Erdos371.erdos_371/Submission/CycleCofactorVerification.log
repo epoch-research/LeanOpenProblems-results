@@ -1,0 +1,10 @@
+PASS: 599998 cofactor order reversals; 600000 square-root support checks
+PASS: 6052 simple dyadic cycles, 111649 edge checks; total defect exactly e_2
+Dyadic samples (N, number of cycles, longest cycle, signed current): [(5000, 194, 57, -2), (10000, 316, 82, 52), (50000, 1061, 140, -54)]
+PASS: five full-prefix decompositions and their logarithmic boundary bound
+PASS: zero-defect cofactor cycle; opposite-bias dyadic walks; equal-inventory simple cycles
+PASS: 11 -> 17 -> 13 -> 11 is a genuine directed high-prime triangle
+PASS: narrow-scale numerical cycle and 1000 resultant/gcd checks
+Numerical cycle cofactors: [(536965, 715, 766), (425507, 607, 708), (448346, 746, 597)]
+PASS: slope recursion through k=6; 64 subset-cycle polynomial systems
+All finite checks passed. No asymptotic density or simultaneous-primality conjecture tested.

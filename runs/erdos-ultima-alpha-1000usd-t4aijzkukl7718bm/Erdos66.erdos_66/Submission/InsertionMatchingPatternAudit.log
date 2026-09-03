@@ -1,0 +1,8 @@
+'Erdos66InsertionMatchingPattern.insertionPattern_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.product_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_eval_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.repMean_indicator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.insertionPattern_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66InsertionMatchingPattern.exists_sublog_insertion' depends on axioms: [propext, Classical.choice, Quot.sound]

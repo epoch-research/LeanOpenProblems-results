@@ -1,0 +1,9 @@
+import Submission.AdjacentEndpointUnpairing
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.all_paths_maximum
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.singleton_unpair_split
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.singleton_unpair_carrier
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.separate_adjacent_endpoints_of_neighbor
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.connected_edge_has_other_neighbor
+#print axioms Erdos583AdjacentEndpointUnpairingDevelopment.separate_distinct_endpoints

@@ -1,0 +1,11 @@
+import Submission.PrimeOutputAmplificationScales
+/-! Axiom audit for the weighted amplification and actual good-scale comparison. -/
+#print axioms Erdos972WeightedDivisorAmplification.centeredPair_error
+#print axioms Erdos972WeightedDivisorAmplification.weighted_variance
+#print axioms Erdos972WeightedDivisorAmplification.amplification_sq
+#print axioms Erdos972WeightedDivisorAmplification.amplification_rows_sq
+#print axioms Erdos972WeightedDivisorAmplification.output_moebius_amplification
+#print axioms Erdos972PrimeOutputAmplificationScales.exists_large_prime_harmonicMass
+#print axioms Erdos972PrimeOutputAmplificationScales.exists_small_output_rows
+#print axioms Erdos972PrimeOutputAmplificationScales.amplification_numeric
+#print axioms Erdos972PrimeOutputAmplificationScales.exists_prime_amplifier_comparison

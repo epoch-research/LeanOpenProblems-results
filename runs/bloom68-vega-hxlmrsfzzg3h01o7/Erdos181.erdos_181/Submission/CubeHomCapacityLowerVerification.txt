@@ -1,0 +1,21 @@
+phase P4              d=4096: alpha=0.250000, max fibre/h=0.262460, error=0.012460
+phase P4              d=8192: alpha=0.250000, max fibre/h=0.258813, error=0.008813
+phase C5              d=4096: alpha=0.200000, max fibre/h=0.205687, error=0.005687
+phase C5              d=8192: alpha=0.200000, max fibre/h=0.206277, error=0.006540
+phase star_4          d=4096: alpha=0.500000, max fibre/h=0.500000, error=0.002070
+phase star_4          d=8192: alpha=0.500000, max fibre/h=0.500000, error=0.005131
+phase path_with_loop  d=4096: alpha=0.333333, max fibre/h=0.345741, error=0.019271
+phase path_with_loop  d=8192: alpha=0.333333, max fibre/h=0.335371, error=0.002038
+phase K_2_5           d=4096: alpha=0.250000, max fibre/h=0.256233, error=0.008512
+phase K_2_5           d=8192: alpha=0.250000, max fibre/h=0.254408, error=0.007589
+Exact matching primal/dual, loop incidence, component, and edge-flow audits passed.
+Binomial residues: 198 prescribed (t,ell) pairs; both parities of ell included.
+Ordinary torus lift: 65536 distinct vertices, 524288 red cube edges, 25 clusters of capacity 4900; arbitrary two-coloured interiors audited.
+Nonlinear lazy lattice lift: path-independent, variance=3/4, energy=5/4 <= d/4; exact balanced coordinate fold audited.
+Complementary torus colour: explicit complete bipartite pools >= m/5 each, all tested ell=5..100 and k=1..5.
+Three-cluster exact threshold: kappa_d=2^(d-1), d=2..12; constant 3/2 lower construction only, not an unbounded ratio.
+Triangle-square-cover local density certificate: 243 prescribed colour graphs; exact incidence counts and the majority-colour lower bound passed.
+PASS: all deterministic audits. No Ramsey disproof is claimed.
+
+Pre-existing top-level Submission files verified unchanged: 90
+9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b  Submission/Spec.lean

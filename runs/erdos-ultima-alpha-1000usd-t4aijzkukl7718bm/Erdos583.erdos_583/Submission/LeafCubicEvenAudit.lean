@@ -1,0 +1,5 @@
+import Submission.LeafCubicEven
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583LeafCubicEvenDevelopment.leaf_cubic_even_neighbor_reduction
+#print axioms Erdos583LeafCubicEvenDevelopment.cubic_leaf_neighbors_odd
+#print axioms Erdos583LeafCubicEvenDevelopment.cubic_root_no_leaf_neighbor

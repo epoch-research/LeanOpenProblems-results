@@ -1,0 +1,11 @@
+import Submission.ConstructiveCover
+#check Erdos970.ConstructiveCover.exists_prime_tail_density
+#check Fin.cases
+#check Fin.cons
+#check Finset.biUnion
+#check Finset.le_sup
+#check Finset.card_biUnion
+#check Finset.prod_attach
+#check Finset.prod_biUnion
+#check Fintype.sum_pi
+#check Finset.card_powerset

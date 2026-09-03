@@ -1,0 +1,10 @@
+import Submission.PrefixBalancedDensityOneExplore
+
+/-! Audit of the prefix-preserving two-sided construction. -/
+#print axioms Erdos66CompensatedPipage.exists_compensated_rounding
+#print axioms Erdos66PrefixBalancedTwoSidedSelection.exists_prefix_balanced_selection
+#print axioms Erdos66PrefixBalancedCostCompactness.exists_balanced_summable_costs
+#print axioms Erdos66PrefixBalancedExponentialCosts.exists_balanced_summable_rep_costs
+#print axioms Erdos66PrefixBalancedPowerProfile.exists_balanced_power_potentials
+#print axioms Erdos66PrefixBalancedPowerProfile.exists_harmonic_rounding_with_power_exceptions
+#print axioms Erdos66PrefixBalancedDensityOne.exists_balanced_density_one_profile

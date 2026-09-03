@@ -1,0 +1,20 @@
+{
+  "id": "Erdos1.erdos_1",
+  "epoch": 1,
+  "uuid": "dUHKNhUXgLuAKTA9ekYyWf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/ultima-alpha": {
+      "input_tokens": 412136,
+      "output_tokens": 8558506,
+      "total_tokens": 462027232,
+      "input_tokens_cache_write": 43389670,
+      "input_tokens_cache_read": 409666920,
+      "reasoning_tokens": 6287573,
+      "total_cost": 734.834757499998
+    }
+  },
+  "oeis_id": null
+}

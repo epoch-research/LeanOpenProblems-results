@@ -1,0 +1,8 @@
+layer-edge configurations checked: 38
+nontrivial long-cycle extensions: 6
+nontrivial S!=empty extensions: 3
+all five-vertex graph/cut extensions: 16384
+random arbitrary-S cases, balanced/unbalanced: 307 193
+star skeletons/cuts checked: 54 6080
+rainbow-extension certificates: 200
+ALL CHECKS PASSED

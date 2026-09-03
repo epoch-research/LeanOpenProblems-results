@@ -1,0 +1,54 @@
+Submission/NaturalAutocorrelationExplore.lean:35:13: error: unsolved goals
+case hfg
+m : ℕ
+inst✝ : NeZero m
+f : ℕ → ℝ
+hf : Summable f
+z : ZMod m
+hs : ∀ (x : ZMod m), Summable fun ij => residueTerm m f x ij.1 * residueTerm m f (x + z) ij.2
+ij : ℕ × ℕ
+⊢ (∑ x, if ↑ij.2 = x + z then if ↑ij.1 = x then f ij.1 * f ij.2 else 0 else 0) =
+    if ↑ij.2 = ↑ij.1 + z then f ij.1 * f ij.2 else 0
+Submission/NaturalAutocorrelationExplore.lean:38:46: warning: This simp argument is unused:
+  Finset.sum_ite_eq
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵e̵s̵i̵d̵u̵e̵T̵e̵r̵m̵,̵i̵t̵e̵_̵m̵u̵l̵,̵z̵e̵r̵o̵_̵m̵u̵l̵,̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵i̵t̵e̵_̵e̵q̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵u̵n̵i̵v̵,̵i̵f̵_̵t̵r̵u̵e̵,̵m̵u̵l̵_̵i̵t̵e̵,̵m̵u̵l̵_̵z̵e̵r̵o̵]̵[̲r̲e̲s̲i̲d̲u̲e̲T̲e̲r̲m̲,̲ ̲i̲t̲e̲_̲m̲u̲l̲,̲ ̲z̲e̲r̲o̲_̲m̲u̲l̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲m̲e̲m̲_̲u̲n̲i̲v̲,̲ ̲i̲f̲_̲t̲r̲u̲e̲,̲ ̲m̲u̲l̲_̲i̲t̲e̲,̲ ̲m̲u̲l̲_̲z̲e̲r̲o̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/NaturalAutocorrelationExplore.lean:39:8: warning: This simp argument is unused:
+  Finset.mem_univ
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵e̵s̵i̵d̵u̵e̵T̵e̵r̵m̵,̵i̵t̵e̵_̵m̵u̵l̵,̵z̵e̵r̵o̵_̵m̵u̵l̵,̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵i̵t̵e̵_̵e̵q̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵u̵n̵i̵v̵,̵i̵f̵_̵t̵r̵u̵e̵,̵m̵u̵l̵_̵i̵t̵e̵,̵m̵u̵l̵_̵z̵e̵r̵o̵]̵[̲r̲e̲s̲i̲d̲u̲e̲T̲e̲r̲m̲,̲ ̲i̲t̲e̲_̲m̲u̲l̲,̲ ̲z̲e̲r̲o̲_̲m̲u̲l̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲i̲t̲e̲_̲e̲q̲,̲ ̲i̲f̲_̲t̲r̲u̲e̲,̲ ̲m̲u̲l̲_̲i̲t̲e̲,̲ ̲m̲u̲l̲_̲z̲e̲r̲o̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/NaturalAutocorrelationExplore.lean:39:24: warning: This simp argument is unused:
+  if_true
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵e̵s̵i̵d̵u̵e̵T̵e̵r̵m̵,̵i̵t̵e̵_̵m̵u̵l̵,̵z̵e̵r̵o̵_̵m̵u̵l̵,̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵i̵t̵e̵_̵e̵q̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵u̵n̵i̵v̵,̵i̵f̵_̵t̵r̵u̵e̵,̵m̵u̵l̵_̵i̵t̵e̵,̵m̵u̵l̵_̵z̵e̵r̵o̵]̵[̲r̲e̲s̲i̲d̲u̲e̲T̲e̲r̲m̲,̲ ̲i̲t̲e̲_̲m̲u̲l̲,̲ ̲z̲e̲r̲o̲_̲m̲u̲l̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲s̲u̲m̲_̲i̲t̲e̲_̲e̲q̲,̲ ̲F̲i̲n̲s̲e̲t̲.̲m̲e̲m̲_̲u̲n̲i̲v̲,̲ ̲m̲u̲l̲_̲i̲t̲e̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲m̲u̲l̲_̲z̲e̲r̲o̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Submission/NaturalAutocorrelationExplore.lean:43:82: error: unsolved goals
+case neg
+f : ℕ → ℝ
+hf : Summable f
+h : ℕ
+ij : ℕ × ℕ
+h✝ : ¬ij.2 = ij.1 + h
+⊢ 0 ≤ |f ij.1| * |f ij.2|
+Submission/NaturalAutocorrelationExplore.lean:63:2: error: unsolved goals
+case neg
+f : ℕ → ℝ
+hf : Summable f
+h k : ℕ
+ij : ℕ × ℕ
+h✝ : ¬↑ij.2 = ↑ij.1 + ↑h
+⊢ 0 ≤ |f ij.1| * |f ij.2|
+Submission/NaturalAutocorrelationExplore.lean:67:59: error: unexpected token ')'; expected term
+Submission/NaturalAutocorrelationExplore.lean:100:9: error(lean.unknownIdentifier): Unknown identifier `partial_corr_le_cyclic`

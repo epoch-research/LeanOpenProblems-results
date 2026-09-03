@@ -1,0 +1,19 @@
+import Submission.Work
+open SimpleGraph Erdos583Work
+#check Set.ncard_eq_toFinset_card'
+#check SimpleGraph.Subgraph.neighborSet_subset
+#check SimpleGraph.Subgraph.neighborSet
+#check Finset.card_filter
+#check Finset.filter_filter
+#check SimpleGraph.neighborFinset_def
+#check SimpleGraph.mem_neighborFinset
+#check SimpleGraph.Walk.IsPath.eq_of_mem_support
+#check SimpleGraph.Walk.IsPath.nil_iff
+#check SimpleGraph.Walk.IsPath.isTrail
+#check SimpleGraph.Walk.IsPath.support_nodup
+#check SimpleGraph.Walk.IsPath.eq_nil_iff
+#check SimpleGraph.Walk.IsPath.eq_nil_of_loop
+#check SimpleGraph.Walk.IsPath.start_ne_end
+#check SimpleGraph.Walk.IsPath.not_nil_iff
+#check SimpleGraph.Walk.nil_of_isPath_loop
+#check SimpleGraph.Walk.isPath_nil_iff

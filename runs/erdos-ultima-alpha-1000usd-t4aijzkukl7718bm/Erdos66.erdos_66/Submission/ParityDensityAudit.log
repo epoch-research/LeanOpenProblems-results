@@ -1,0 +1,12 @@
+'Erdos66AbelSquarePrefix.prefix_zero_of_weighted_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelSquarePrefix.witness_parity_prefix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquarePrefixDensity.log_bad_density_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquarePrefixDensity.logBad_density_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquarePrefixDensity.density_zero_of_eventual_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityDensity.paired_ratios_in_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityDensity.witness_parity_self_counts_in_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DensityDiagonal.density_union_of_summable_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DensityDiagonal.exists_density_zero_exception' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ParityDensityException.witness_parity_limits_off_density_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Real.finset_prod_rpow
+#check isLittleO_log_rpow_rpow_atTop
+#check tendsto_rpow_neg_atTop
+#check tendsto_rpow_atTop
+#check Real.continuousAt_rpow_const
+#check Nat.ceil_lt_add_one
+#check Real.log_rpow
+#check Real.rpow_natCast

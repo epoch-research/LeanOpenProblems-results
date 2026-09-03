@@ -1,0 +1,12 @@
+import Submission.NaturalBoundaryMixedExplore
+#check Real.tendsto_sqrt_atTop
+#check tendsto_inv_atTop_zero
+#check Filter.Tendsto.inv_tendsto_atTop
+#check Filter.Tendsto.const_mul
+#check Real.sqrt_sq_eq_abs
+#check Real.sq_sqrt
+#check Real.sqrt_pos.mpr
+#check Filter.not_eventually
+#check Filter.frequently_iff
+#check not_forall
+#check Filter.Frequently

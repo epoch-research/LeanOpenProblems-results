@@ -1,0 +1,349 @@
+import Submission.Work
+import Submission.HexagonMissing
+
+/-! Five shared vertices suffice for absorption unless the cycle is a pentagon. -/
+namespace Erdos583CycleIntersectionSixDevelopment
+open SimpleGraph Erdos583Work
+open Erdos583Work.QuotaTrails Erdos583Work.QuotaSurgery Erdos583Work.TriangleAbsorption
+open Erdos583Work.BridgeGlue Erdos583Work.PentagonIntersection
+open scoped Classical
+set_option maxHeartbeats 2000000
+variable {V : Type*} [Fintype V] {G : SimpleGraph V}
+
+lemma missing_ear_reduction {a b r u v : V} (hru : G.Adj r u) (hvr : G.Adj v r)
+    (R : G.Walk u v) (hRlen : 5 ≤ R.length)
+    (hc : (Walk.cons hru (R.concat hvr)).IsCycle)
+    (P : G.Walk a b) (hp : P.IsPath) (hrP : r ∉ P.support)
+    (hinter : ∃ x ∈ P.support, x ∈ (Walk.cons hru (R.concat hvr)).support)
+    (hd : Disjoint (Walk.cons hru (R.concat hvr)).toSubgraph.edgeSet P.toSubgraph.edgeSet)
+    (hsmall : ((Walk.cons hru (R.concat hvr)).toSubgraph.verts ∩ P.toSubgraph.verts).ncard ≤ 5)
+    (ih : ∀ (H : SimpleGraph V) {s a' b' : V} (C' : H.Walk s s) (P' : H.Walk a' b'),
+      C'.IsCycle → P'.IsPath → 6 ≤ C'.length → C'.length < R.length+2 →
+      (C'.toSubgraph.verts ∩ P'.toSubgraph.verts).ncard ≤ 5 →
+      (∃ x ∈ P'.support, x ∈ C'.support) →
+      Disjoint C'.toSubgraph.edgeSet P'.toSubgraph.edgeSet →
+      TwoPathCover (G := H) (C'.toSubgraph.edgeSet ∪ P'.toSubgraph.edgeSet)) :
+    TwoPathCover (G := G)
+      ((Walk.cons hru (R.concat hvr)).toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet) := by
+  classical
+  let C := Walk.cons hru (R.concat hvr)
+  have hRc : (R.concat hvr).IsPath := (Walk.cons_isCycle_iff _ hru).mp hc |>.1
+  have hRp : R.IsPath := (Walk.concat_isPath_iff hvr).mp hRc |>.1
+  have hrR : r ∉ R.support := (Walk.concat_isPath_iff hvr).mp hRc |>.2
+  have huv : u ≠ v := by
+    intro hh
+    subst v
+    have hnil := (Walk.isPath_iff_eq_nil R).mp hRp
+    simp [hnil] at hRlen
+  have heR : s(u,v) ∉ R.edges := fun hh ↦ by
+    have hh' := endpoint_edge_forces_length_one R hRp hh
+    omega
+  have hdR : Disjoint R.toSubgraph.edgeSet P.toSubgraph.edgeSet := by
+    apply Set.disjoint_left.mpr
+    intro e he hf
+    apply Set.disjoint_left.mp hd _ hf
+    simp only [Walk.mem_edges_toSubgraph,Walk.edges_cons,Walk.edges_concat,List.mem_cons,
+      List.concat_eq_append,List.mem_append]
+    exact Or.inr (Or.inl (R.mem_edges_toSubgraph.mp he))
+  have hCe : C.toSubgraph.edgeSet={s(u,r),s(r,v)} ∪ R.toSubgraph.edgeSet := by
+    ext e
+    simp only [C,Walk.mem_edges_toSubgraph,Walk.edges_cons,Walk.edges_concat,List.mem_cons,
+      List.concat_eq_append,List.mem_append,Set.mem_union,Set.mem_insert_iff,Set.mem_singleton_iff,
+      Sym2.eq_swap (a := r) (b := u),Sym2.eq_swap (a := v) (b := r)]
+    tauto
+  by_cases heP : s(u,v) ∈ P.edges
+  · have huvG : G.Adj u v := P.edges_subset_edgeSet heP
+    obtain ⟨hc',Q,hQ,hsep,hcover,hlen⟩ :=
+      CycleEar.cycle_ear_exchange hru hvr R hc P hp huvG heP hrP hd
+    have hrC' : r ∉ (Walk.cons huvG R.reverse).support := by
+      simp only [Walk.support_cons,Walk.support_reverse,List.mem_cons,List.mem_reverse,not_or]
+      exact ⟨hru.ne,hrR⟩
+    have huQ : u ∈ Q.support := by
+      have he : s(r,u) ∈ (Walk.cons huvG R.reverse).toSubgraph.edgeSet ∪ Q.toSubgraph.edgeSet := by
+        rw [hcover]
+        left
+        simp
+      rcases he with he|he
+      · exact (hrC' (Walk.mem_support_of_mem_edges
+          ((Walk.cons huvG R.reverse).mem_edges_toSubgraph.mp he) (by simp))).elim
+      · exact Walk.mem_support_of_mem_edges (Q.mem_edges_toSubgraph.mp he) (by simp)
+    have hsmall' : ((Walk.cons huvG R.reverse).toSubgraph.verts ∩ Q.toSubgraph.verts).ncard ≤ 5 := by
+      apply (Set.ncard_le_ncard (s := (Walk.cons huvG R.reverse).toSubgraph.verts ∩ Q.toSubgraph.verts)
+        (t := C.toSubgraph.verts ∩ P.toSubgraph.verts) ?_).trans hsmall
+      intro z hz
+      have hzC' : z ∈ (Walk.cons huvG R.reverse).support := by simpa only [Walk.mem_verts_toSubgraph] using hz.1
+      have hzQ : z ∈ Q.support := by simpa only [Walk.mem_verts_toSubgraph] using hz.2
+      have hzr : z ≠ r := fun hh ↦ hrC' (hh ▸ hzC')
+      have hzR : z ∈ R.support := by
+        rcases (show z=u ∨ z ∈ R.support by simpa only [Walk.support_cons,Walk.support_reverse,List.mem_cons,List.mem_reverse] using hzC') with rfl|hz
+        · exact R.start_mem_support
+        · exact hz
+      have hzC : z ∈ C.toSubgraph.verts := by
+        simp only [C,Walk.mem_verts_toSubgraph,Walk.support_cons,Walk.support_concat,
+          List.mem_cons,List.concat_eq_append,List.mem_append]
+        exact Or.inr (Or.inl hzR)
+      refine ⟨hzC,?_⟩
+      rw [Walk.mem_verts_toSubgraph]
+      rcases Walk.mem_support_iff_exists_mem_edges.mp hzQ with rfl|⟨e,heQ,hze⟩
+      · exact P.end_mem_support
+      · have hE : e ∈ C.toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet := by
+          rw [←hcover]; exact Or.inr (Q.mem_edges_toSubgraph.mpr heQ)
+        rcases hE with hEC|hEP
+        · rw [hCe] at hEC
+          rcases hEC with hEar|hER
+          · rcases (show e=s(u,r) ∨ e=s(r,v) by simpa using hEar) with rfl|rfl
+            · have hzu : z=u := (Sym2.mem_iff.mp hze).resolve_right hzr
+              subst z
+              exact P.fst_mem_support_of_mem_edges heP
+            · have hzv : z=v := (Sym2.mem_iff.mp hze).resolve_left hzr
+              subst z
+              exact P.snd_mem_support_of_mem_edges heP
+          · apply False.elim
+            apply Set.disjoint_left.mp hsep _ (Q.mem_edges_toSubgraph.mpr heQ)
+            simp only [Walk.mem_edges_toSubgraph,Walk.edges_cons,Walk.edges_reverse,List.mem_cons,List.mem_reverse]
+            exact Or.inr (R.mem_edges_toSubgraph.mp hER)
+        · exact Walk.mem_support_of_mem_edges (P.mem_edges_toSubgraph.mp hEP) hze
+    have hh := ih G (Walk.cons huvG R.reverse) Q hc' hQ
+      (by simp only [Walk.length_cons,Walk.length_reverse]; omega)
+      (by simp only [Walk.length_cons,Walk.length_reverse]; omega) hsmall'
+      ⟨u,huQ,(Walk.cons huvG R.reverse).start_mem_support⟩ hsep
+    simpa only [hcover] using hh
+  · let H := within G ({r}ᶜ : Set V) ⊔ edge u v
+    have hRle : R.toSubgraph.spanningCoe ≤ H := by
+      intro x y hxy
+      apply Or.inl
+      refine ⟨R.toSubgraph.adj_sub hxy,?_,?_⟩
+      · rintro rfl
+        exact hrR (Walk.mem_support_of_adj_toSubgraph hxy)
+      · rintro rfl
+        exact hrR (Walk.mem_support_of_adj_toSubgraph hxy.symm)
+    have hPle : P.toSubgraph.spanningCoe ≤ H := by
+      intro x y hxy
+      apply Or.inl
+      refine ⟨P.toSubgraph.adj_sub hxy,?_,?_⟩
+      · rintro rfl
+        exact hrP (Walk.mem_support_of_adj_toSubgraph hxy)
+      · rintro rfl
+        exact hrP (Walk.mem_support_of_adj_toSubgraph hxy.symm)
+    have hRE : ∀ e ∈ R.edges, e ∈ H.edgeSet := fun e he ↦
+      edgeSet_mono hRle (R.mem_edges_toSubgraph.mpr he)
+    have hPE : ∀ e ∈ P.edges, e ∈ H.edgeSet := fun e he ↦
+      edgeSet_mono hPle (P.mem_edges_toSubgraph.mpr he)
+    let R' := R.transfer H hRE
+    let P' := P.transfer H hPE
+    have huvH : H.Adj u v := Or.inr ((edge_adj ..).mpr ⟨Or.inl ⟨rfl,rfl⟩,huv⟩)
+    let C' := Walk.cons huvH R'.reverse
+    have hc' : C'.IsCycle := (Walk.cons_isCycle_iff _ huvH).mpr
+      ⟨(hRp.transfer hRE).reverse,by simpa only [R',Walk.edges_reverse,Walk.edges_transfer,List.mem_reverse] using heR⟩
+    have hC'e : C'.toSubgraph.edgeSet={s(u,v)} ∪ R.toSubgraph.edgeSet := by
+      ext e
+      simp only [C',R',Walk.mem_edges_toSubgraph,Walk.edges_cons,Walk.edges_reverse,
+        Walk.edges_transfer,List.mem_cons,List.mem_reverse,Set.mem_union,Set.mem_singleton_iff]
+    have hP'e : P'.toSubgraph.edgeSet=P.toSubgraph.edgeSet := by
+      ext e
+      simp only [P',Walk.mem_edges_toSubgraph,Walk.edges_transfer]
+    have hsep : Disjoint C'.toSubgraph.edgeSet P'.toSubgraph.edgeSet := by
+      rw [hC'e,hP'e]
+      apply disjoint_sup_left.mpr
+      refine ⟨Set.disjoint_left.mpr ?_,hdR⟩
+      rintro e rfl he
+      exact heP (P.mem_edges_toSubgraph.mp he)
+    have hint : ∃ x ∈ P'.support, x ∈ C'.support := by
+      obtain ⟨x,hxP,hxC⟩ := hinter
+      have hxr : x ≠ r := fun hh ↦ hrP (hh ▸ hxP)
+      have hxR : x ∈ R.support := by
+        simpa only [Walk.support_cons,Walk.support_concat,List.concat_eq_append,
+          List.mem_append,List.mem_cons,List.mem_singleton,List.not_mem_nil,hxr,false_or,or_false] using hxC
+      refine ⟨x,by simpa only [P',Walk.support_transfer] using hxP,?_⟩
+      simp only [C',R',Walk.support_cons,Walk.support_reverse,Walk.support_transfer,
+        List.mem_cons,List.mem_reverse]
+      exact Or.inr hxR
+    have hsmall' : (C'.toSubgraph.verts ∩ P'.toSubgraph.verts).ncard ≤ 5 := by
+      apply (Set.ncard_le_ncard (s := C'.toSubgraph.verts ∩ P'.toSubgraph.verts)
+        (t := C.toSubgraph.verts ∩ P.toSubgraph.verts) ?_).trans hsmall
+      intro z hz
+      have hzC' : z=u ∨ z ∈ R.support := by
+        simpa only [C',R',Walk.mem_verts_toSubgraph,Walk.support_cons,
+          Walk.support_reverse,Walk.support_transfer,List.mem_cons,List.mem_reverse] using hz.1
+      have hzC : z ∈ C.toSubgraph.verts := by
+        simp only [C,Walk.mem_verts_toSubgraph,Walk.support_cons,Walk.support_concat,
+          List.mem_cons,List.concat_eq_append,List.mem_append]
+        rcases hzC' with rfl|hzR
+        · exact Or.inr (Or.inl R.start_mem_support)
+        · exact Or.inr (Or.inl hzR)
+      exact ⟨hzC,by simpa only [P',Walk.mem_verts_toSubgraph,Walk.support_transfer] using hz.2⟩
+    have hcover := ih H C' P' hc' (hp.transfer hPE)
+      (by simp only [C',R',Walk.length_cons,Walk.length_reverse,Walk.length_transfer]; omega)
+      (by simp only [C',R',Walk.length_cons,Walk.length_reverse,Walk.length_transfer]; omega)
+      hsmall' hint hsep
+    let ear : G.Walk u v := .cons hru.symm (.cons hvr.symm .nil)
+    have hEar : ear.IsPath := by simp [ear,Walk.cons_isPath_iff,hru.ne.symm,hvr.ne.symm,huv]
+    have hrest : H.deleteEdges {s(u,v)} ≤ G := by
+      intro x y hxy
+      have hh : H.Adj x y ∧ s(x,y) ≠ s(u,v) := by simpa only [deleteEdges_adj,Set.mem_singleton_iff] using hxy
+      rcases hh.1 with hh'|hh'
+      · exact hh'.1
+      · exact (hh.2 ((adj_edge ..).mp hh').1.symm).elim
+    have hrH : r ∉ H.support := by
+      intro hh
+      obtain ⟨x,hx⟩ := (H.mem_support).mp hh
+      rcases hx with hx|hx
+      · exact hx.2.1 rfl
+      · have hx' := (edge_adj ..).mp hx
+        exact hx'.1.elim (fun hh ↦ hru.ne hh.1) (fun hh ↦ hvr.ne hh.1.symm)
+    have hf : ∀ x ∈ ear.support, x ≠ u → x ≠ v → x ∉ H.support := by
+      intro x hx hxu hxv
+      have hxr : x=r := by simpa [ear,Walk.support,hxu,hxv] using hx
+      subst x
+      exact hrH
+    have he0 : s(u,v) ∈ C'.toSubgraph.edgeSet ∪ P'.toSubgraph.edgeSet := by
+      rw [hC'e]; exact Or.inl (Or.inl rfl)
+    have hh := expand_pair ear hEar hrest hf _ he0 hcover
+    have hEarE : ear.toSubgraph.edgeSet=({s(u,r),s(r,v)} : Set (Sym2 V)) := by
+      ext e
+      simp only [ear,Walk.mem_edges_toSubgraph,Walk.edges_cons,Walk.edges_nil,List.mem_cons,
+        List.not_mem_nil,or_false,Set.mem_insert_iff,Set.mem_singleton_iff]
+    have heR' : s(u,v) ∉ R.toSubgraph.edgeSet := by simpa only [Walk.mem_edges_toSubgraph] using heR
+    have heP' : s(u,v) ∉ P.toSubgraph.edgeSet := by simpa only [Walk.mem_edges_toSubgraph] using heP
+    have heEar : s(u,v) ∉ ear.toSubgraph.edgeSet := fun he ↦ by
+      have hl := endpoint_edge_forces_length_one ear hEar (ear.mem_edges_toSubgraph.mp he)
+      simp [ear] at hl
+    have hEq : ((C'.toSubgraph.edgeSet ∪ P'.toSubgraph.edgeSet) \ {s(u,v)}) ∪ ear.toSubgraph.edgeSet =
+        C.toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet := by
+      rw [hC'e,hP'e,hCe,←hEarE]
+      ext e
+      by_cases he : e=s(u,v)
+      · subst e
+        simp only [Set.mem_union,Set.mem_diff,Set.mem_singleton_iff,not_true_eq_false,
+          and_false,heR',heP',heEar,or_false]
+      · simp only [Set.mem_union,Set.mem_diff,Set.mem_singleton_iff,he,not_false_eq_true,and_true,false_or]
+        tauto
+    simpa only [hEq] using hh
+
+
+lemma five_intersection_absorption {G : SimpleGraph V} {a b r : V} (C : G.Walk r r) (hc : C.IsCycle)
+    (hlarge : 6 ≤ C.length) (P : G.Walk a b) (hp : P.IsPath)
+    (hsmall : (C.toSubgraph.verts ∩ P.toSubgraph.verts).ncard ≤ 5)
+    (hinter : ∃ x ∈ P.support, x ∈ C.support)
+    (hd : Disjoint C.toSubgraph.edgeSet P.toSubgraph.edgeSet) :
+    TwoPathCover (G := G) (C.toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet) := by
+  classical
+  by_cases hl : C.length=6
+  · exact Erdos583HexagonMissingDevelopment.small_intersection_absorption C hc hl P hp hsmall hinter hd
+  have hmiss : ∃ x ∈ C.support, x ∉ P.support := by
+    by_contra! hall
+    have hsub : C.toSubgraph.verts ⊆ P.toSubgraph.verts := by
+      intro x hx
+      rw [Walk.mem_verts_toSubgraph] at hx ⊢
+      exact hall x hx
+    have he : C.toSubgraph.verts ∩ P.toSubgraph.verts=C.toSubgraph.verts := Set.inter_eq_left.mpr hsub
+    rw [he,Walk.verts_toSubgraph,cycle_support_ncard hc] at hsmall
+    omega
+  obtain ⟨x,hxC,hxP⟩ := hmiss
+  let D := C.rotate hxC
+  have hD : D.toSubgraph=C.toSubgraph := C.toSubgraph_rotate hxC
+  have hDl : D.length=C.length := by
+    have hh := congrArg Walk.length (C.take_spec hxC)
+    simpa only [D,Walk.rotate,Walk.length_append,Nat.add_comm] using hh
+  obtain ⟨u,v,hxu,hvx,R,hform⟩ := CycleEar.cycle_two_spokes D (hc.rotate hxC)
+  have hRtot : R.length+2=C.length := by
+    rw [hform] at hDl
+    simp only [Walk.length_cons,Walk.length_concat] at hDl
+    omega
+  have hsmallD : (D.toSubgraph.verts ∩ P.toSubgraph.verts).ncard ≤ 5 := by rwa [hD]
+  have hinterD : ∃ z ∈ P.support, z ∈ D.support := by
+    obtain ⟨z,hzP,hzC⟩ := hinter
+    refine ⟨z,hzP,?_⟩
+    rwa [←Walk.mem_verts_toSubgraph,hD,Walk.mem_verts_toSubgraph]
+  have hdD : Disjoint D.toSubgraph.edgeSet P.toSubgraph.edgeSet := by rwa [hD]
+  have hh := missing_ear_reduction hxu hvx R (by omega) (hform ▸ hc.rotate hxC) P hp hxP
+    (by simpa only [hform] using hinterD) (hform ▸ hdD) (hform ▸ hsmallD) (by
+      intro H s a' b' C' P' hC' hP' hlarge' hlen' hsmall' hint' hdis'
+      exact five_intersection_absorption (G := H) C' hC' hlarge' P' hP' hsmall' hint' hdis')
+  simpa only [←hform,hD] using hh
+termination_by C.length
+
+decreasing_by
+  omega
+
+lemma nonabsorbable_five_intersection_pentagon {a b r : V} (C : G.Walk r r) (hC : C.IsCycle)
+    (P : G.Walk a b) (hp : P.IsPath)
+    (hsmall : (C.toSubgraph.verts ∩ P.toSubgraph.verts).ncard ≤ 5)
+    (hinter : ∃ x ∈ P.support, x ∈ C.support)
+    (hd : Disjoint C.toSubgraph.edgeSet P.toSubgraph.edgeSet)
+    (hno : ¬TwoPathCover (G := G) (C.toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet)) : C.length=5 := by
+  have hlo := hC.three_le_length
+  by_contra hne
+  by_cases hshort : C.length ≤ 4
+  · exact hno (CycleIntersectionBound.short_cycle_absorption C hC hshort P hp hinter hd)
+  · exact hno (five_intersection_absorption C hC (by omega) P hp hsmall hinter hd)
+
+lemma nonabsorbable_five_intersection_contiguous {a b r : V} (C : G.Walk r r) (hC : C.IsCycle)
+    (P : G.Walk a b) (hp : P.IsPath)
+    (hsmall : (C.toSubgraph.verts ∩ P.toSubgraph.verts).ncard ≤ 5)
+    (hinter : ∃ x ∈ P.support, x ∈ C.support)
+    (hd : Disjoint C.toSubgraph.edgeSet P.toSubgraph.edgeSet)
+    (hno : ¬TwoPathCover (G := G) (C.toSubgraph.edgeSet ∪ P.toSubgraph.edgeSet)) :
+    C.length=5 ∧ ∃ u v : V, ∃ A : G.Walk a u, ∃ Q : G.Walk u v, ∃ B : G.Walk v b,
+      P=A.append (Q.append B) ∧ Q.IsPath ∧ Q.toSubgraph.verts=C.toSubgraph.verts ∧ Q.length=4 ∧
+      (∀ x ∈ A.support, x ∈ C.support → x=u) ∧
+      (∀ x ∈ B.support, x ∈ C.support → x=v) := by
+  have hl := nonabsorbable_five_intersection_pentagon C hC P hp hsmall hinter hd hno
+  refine ⟨hl,PentagonExcursion.nonabsorbable_contiguous C hC hl P hp hd hno ?_⟩
+  intro x hx
+  by_contra hxp
+  exact hno (five_cycle_missing_absorption C hC hl P hp ⟨x,hx,hxp⟩ hinter hd)
+
+lemma maximal_cycle_intersection_ge_six {k : ℕ} (T : TrailFamily G k)
+    (hm : ∀ U : TrailFamily G k, U.score ≤ T.score) (i j : Fin k) (hij : i ≠ j)
+    {r : V} (C : G.Walk r r) (hC : C.IsCycle) (hl : 6 ≤ C.length)
+    (hi : (T.walk i).toSubgraph=C.toSubgraph) (hj : (T.walk j).IsPath)
+    (hinter : ∃ x ∈ (T.walk j).support, x ∈ C.support) :
+    6 ≤ (C.toSubgraph.verts ∩ (T.walk j).toSubgraph.verts).ncard := by
+  by_contra! hn
+  apply maximal_cycle_not_absorbable T hm i j hij C hC hi hj
+  exact five_intersection_absorption C hC hl (T.walk j) hj (by omega) hinter
+    (by rw [←hi]; exact T.disjoint hij)
+
+lemma single_defect_cycle_intersection_ge_six {k : ℕ} (T : TrailFamily G k)
+    (hs : T.score+1=G.edgeSet.ncard+k)
+    (hm : ∀ U : TrailFamily G k, U.score ≤ T.score) (i j : Fin k) (hij : i ≠ j)
+    {r : V} (C : G.Walk r r) (hC : C.IsCycle) (hl : 6 ≤ C.length)
+    (hi : (T.walk i).toSubgraph=C.toSubgraph)
+    (hinter : ∃ x ∈ (T.walk j).support, x ∈ C.support) :
+    6 ≤ (C.toSubgraph.verts ∩ (T.walk j).toSubgraph.verts).ncard := by
+  have hj := (T.one_defect_other_paths hs i (CycleEar.cycle_member_not_path T i C hC hi)).2 j hij.symm
+  exact maximal_cycle_intersection_ge_six T hm i j hij C hC hl hi hj hinter
+
+lemma maximum_hexagon_carrier_contains {k : ℕ} (T : TrailFamily G k)
+    (hs : T.score+1=G.edgeSet.ncard+k)
+    (hm : ∀ U : TrailFamily G k, U.score ≤ T.score) (i j : Fin k) (hij : i ≠ j)
+    {r : V} (C : G.Walk r r) (hC : C.IsCycle) (hl : C.length=6)
+    (hi : (T.walk i).toSubgraph=C.toSubgraph)
+    (hinter : ∃ x ∈ (T.walk j).support, x ∈ C.support) :
+    ∀ x ∈ C.support, x ∈ (T.walk j).support := by
+  have hb := single_defect_cycle_intersection_ge_six T hs hm i j hij C hC (by omega) hi hinter
+  have he : C.toSubgraph.verts ∩ (T.walk j).toSubgraph.verts=C.toSubgraph.verts := by
+    apply Set.eq_of_subset_of_ncard_le Set.inter_subset_left
+    rw [Walk.verts_toSubgraph,cycle_support_ncard hC,hl]
+    simpa only [Walk.verts_toSubgraph] using hb
+  intro x hx
+  have hh : x ∈ C.toSubgraph.verts ∩ (T.walk j).toSubgraph.verts := by
+    rw [he]; exact C.mem_verts_toSubgraph.mpr hx
+  exact (T.walk j).mem_verts_toSubgraph.mp hh.2
+
+lemma failure_cycle_intersection_ge_six {n : ℕ} (hsmall : VertexCritical.SmallerOrders n)
+    {G : SimpleGraph (Fin n)} (hG : G.Connected)
+    (hfail : ¬∃ D : Finset G.Subgraph, GoodDecomposition G D ∧
+      D.card ≤ ⌈(Fintype.card (Fin n) : ℚ)/2⌉₊)
+    (T : TrailFamily G ⌈(Fintype.card (Fin n) : ℚ)/2⌉₊)
+    (hs : T.score+1=G.edgeSet.ncard+⌈(Fintype.card (Fin n) : ℚ)/2⌉₊)
+    (hm : ∀ U : TrailFamily G ⌈(Fintype.card (Fin n) : ℚ)/2⌉₊, U.score ≤ T.score)
+    (i j : Fin ⌈(Fintype.card (Fin n) : ℚ)/2⌉₊) (hij : i ≠ j) {r : Fin n}
+    (C : G.Walk r r) (hC : C.IsCycle) (hi : (T.walk i).toSubgraph=C.toSubgraph)
+    (hinter : ∃ x ∈ (T.walk j).support, x ∈ C.support) :
+    6 ≤ (C.toSubgraph.verts ∩ (T.walk j).toSubgraph.verts).ncard := by
+  have hl := PentagonExclusion.whole_cycle_length_ge_six hsmall hG hfail T hs hm i C hC hi
+  exact single_defect_cycle_intersection_ge_six T hs hm i j hij C hC hl hi hinter
+
+end Erdos583CycleIntersectionSixDevelopment

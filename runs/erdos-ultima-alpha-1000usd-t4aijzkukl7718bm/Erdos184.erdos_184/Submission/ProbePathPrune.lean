@@ -1,0 +1,16 @@
+import Submission.EndpointSupportCompletion
+#check Erdos184Work.OddPaths.Piece.starting_at
+#check SimpleGraph.Walk.IsPath.of_cons
+#check SimpleGraph.Walk.IsPath.eq_nil
+#check SimpleGraph.Walk.IsPath.nil
+#check SimpleGraph.Walk.IsPath.induce
+#check SimpleGraph.Walk.induce_isPath
+#check SimpleGraph.Walk.edges_induce
+#check SimpleGraph.Walk.map_induce
+#check SimpleGraph.Walk.map_induce_eq
+#check SimpleGraph.Walk.IsPath.eq_of_length_eq_zero
+#check SimpleGraph.Walk.IsPath.eq_nil_of_closed
+#check SimpleGraph.Walk.IsPath.loop_eq_nil
+#check SimpleGraph.Walk.IsPath.nil_of_closed
+#check SimpleGraph.Walk.IsPath.length_eq_zero_of_eq
+#check SimpleGraph.Walk.IsPath.length_eq_zero_iff

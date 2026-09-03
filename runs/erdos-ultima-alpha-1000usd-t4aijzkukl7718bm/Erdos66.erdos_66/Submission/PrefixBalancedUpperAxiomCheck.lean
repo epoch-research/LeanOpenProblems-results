@@ -1,0 +1,8 @@
+import Submission.PrefixBalancedUpperLimitExplore
+
+/-! Axiom audit of ordered upper-potential rounding and its infinite limit. -/
+#print axioms Erdos66OrderedPipageGeometry.two_coordinate_rounding
+#print axioms Erdos66OrderedPositiveRounding.exists_prefix_balanced_rounding
+#print axioms Erdos66PrefixBalancedUpperSelection.exists_prefix_balanced_upper_selection
+#print axioms Erdos66PrefixBalancedUpperLimit.exists_balanced_upper
+#print axioms Erdos66PrefixBalancedUpperLimit.exists_harmonic_rounding_with_upper_bound

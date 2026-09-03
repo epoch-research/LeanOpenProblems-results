@@ -1,0 +1,21 @@
+import Submission.PeriodicPatternComparisonExplore
+import Submission.UniformJointCoprimeThicknessExplore
+import Submission.JointThicknessPrefixExplore
+
+/-! Axiom audit for the common-period comparison and joint thickness bounds. -/
+#print axioms Erdos66PeriodicPatternComparison.periodicLift_count
+#print axioms Erdos66PeriodicPatternComparison.periodic_mixed_count_comparison
+#print axioms Erdos66JointCoprimeThickness.verticalPreimage_fiber_card
+#print axioms Erdos66JointCoprimeThickness.left_count_comparison
+#print axioms Erdos66JointCoprimeThickness.right_count_comparison
+#print axioms Erdos66JointCoprimeThickness.left_left_error
+#print axioms Erdos66JointCoprimeThickness.right_right_error
+#print axioms Erdos66JointCoprimeThickness.cyclicCount_comm
+#print axioms Erdos66JointCoprimeThickness.mixedFiber_card_comm
+#print axioms Erdos66JointCoprimeThickness.twoSet_card
+#print axioms Erdos66JointCoprimeThickness.twoSet_error
+#print axioms Erdos66UniformJointCoprimeThickness.every_prime_joint_coprime_thickness_family
+#print axioms Erdos66JointThicknessPrefix.twoSet_actualMean
+#print axioms Erdos66JointThicknessPrefix.outerTwoSet_card
+#print axioms Erdos66JointThicknessPrefix.outerTwoSet_prefix_error
+#print axioms Erdos66JointThicknessPrefix.every_prime_joint_prefix_family

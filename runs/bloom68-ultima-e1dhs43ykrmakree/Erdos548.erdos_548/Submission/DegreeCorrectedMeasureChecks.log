@@ -1,0 +1,32 @@
+Independent backtracking/subset or split-DP comparisons: 298
+Direct weighted leaf identities: 241
+Unconditioned hom-weight identities: 292
+Split exact tree/leaf tests through r= 1 : 1 2
+Split exact tree/leaf tests through r= 2 : 4 11
+Split exact tree/leaf tests through r= 3 : 15 54
+Split exact tree/leaf tests through r= 4 : 62 280
+Split exact tree/leaf tests through r= 5 : 297 1613
+Split exact tree/leaf tests through r= 6 : 1598 10113
+Split exact tree/leaf tests through r= 7 : 9339 67371
+Critical proper-subset types: 3426430
+Coefficient monotonicity checks: 45149
+Perfect-matching strengthened leaf checks: 4005
+Subdivision cut-formula checks: 200 tree types; 965 leaves
+82-edge counterexample: all 22 weighted ratios >1/8; range 0.2850712778992381 0.2962959293138652
+Average-only weighted inequality FAILS, exact signed difference: -3072907492578/1220703125
+Critical atlas: hosts, trees, leaves, worst ratio: 136 522 1691 1
+Critical search through n,k = 8 3 : 148 546 1751
+Critical search through n,k = 8 4 : 183 651 2066
+Critical search through n,k = 8 5 : 688 3681 12671
+Critical search through n,k = 8 6 : 754 4407 15509
+Critical search through n,k = 8 7 : 759 4522 16014
+Critical search through n,k = 9 3 : 775 4554 16094
+Critical search through n,k = 9 4 : 4423 15498 48926
+Critical search through n,k = 9 5 : 16299 86754 298322
+Critical search through n,k = 9 6 : 24362 175447 645031
+Critical search through n,k = 9 7 : 24656 182209 674725
+Critical search through n,k = 9 8 : 24667 182726 677211
+Finite critical-host candidate audit PASSED: 24667 182726 677211
+This finite audit is NOT a proof of the general critical-host inequality.
+Spec.lean unchanged: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+ALL CHECKS PASSED; seconds: 237.877

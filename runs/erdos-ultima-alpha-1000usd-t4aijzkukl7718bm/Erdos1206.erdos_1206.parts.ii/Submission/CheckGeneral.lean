@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+#check Set.infinite_of_forall_exists_gt
+#check Set.infinite_of_forall_exists_lt
+#check Set.infinite_iff_exists_gt
+#check Set.Infinite.exists_gt
+#check Set.Finite.exists_max_image
+#check Set.Finite.exists_min_image
+#check Set.Finite.exists_maximal_wrt
+#check Set.Finite.exists_maximalFor
+#check Finset.exists_max_image
+#check Finset.max'_mem
+#check Set.Finite.isLUB_csSup

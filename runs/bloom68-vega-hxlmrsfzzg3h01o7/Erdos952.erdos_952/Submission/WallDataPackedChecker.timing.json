@@ -1,0 +1,25 @@
+{
+  "source": "Submission/WallDataPackedChecker.lean",
+  "source_sha256": "41aafb6010993e1845540bc72f18254ad46851a95efe6d37faf75fef2cffdb35",
+  "source_unchanged_during_compile": true,
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-o",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedChecker.olean",
+    "/workspace/leanproject/Submission/WallDataPackedChecker.lean"
+  ],
+  "exit_code": 0,
+  "started_unix": 1788236671.7201104,
+  "finished_unix": 1788236673.5404415,
+  "wall_seconds": 1.82,
+  "user_seconds": 1.33,
+  "system_seconds": 0.539,
+  "max_rss_kib": 2225056,
+  "source_bytes": 2418,
+  "source_lines": 61,
+  "olean_bytes": 217936,
+  "log": "Submission/WallDataPackedChecker.log"
+}

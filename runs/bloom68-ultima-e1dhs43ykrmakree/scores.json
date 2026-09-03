@@ -1,0 +1,29 @@
+[
+  {
+    "name": "proof_scorer",
+    "scorer": "proof_scorer",
+    "reducer": null,
+    "scored_samples": 64,
+    "unscored_samples": 0,
+    "params": {
+      "checker": "SandboxComparator"
+    },
+    "metrics": {
+      "accuracy": {
+        "name": "accuracy",
+        "value": 0.046875,
+        "params": {},
+        "metadata": null
+      },
+      "stderr": {
+        "name": "stderr",
+        "value": 0.026421385270446646,
+        "params": {},
+        "metadata": null
+      }
+    },
+    "metadata": {
+      "note": "Recomputed over the verdict attempts merged from every attempt file of the eval set."
+    }
+  }
+]

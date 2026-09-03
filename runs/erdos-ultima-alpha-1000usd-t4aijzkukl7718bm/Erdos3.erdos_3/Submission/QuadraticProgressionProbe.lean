@@ -1,0 +1,16 @@
+import Submission.FourPatternPolynomialIncrement
+#check Nat.choose_succ_succ
+#check Nat.choose_two_right
+#check Nat.choose_succ_self_right
+#check Nat.choose_one_right
+#check Circle
+#check Circle.coe_mul
+#check Circle.coe_pow
+#check Circle.norm_coe
+#check mul_conj_eq_one
+#check Complex.mul_conj
+#check mul_right_cancel₀
+#check norm_pow_sub_one_le
+#check norm_sub_pow_le
+#check Circle.ofReal
+#check unitary

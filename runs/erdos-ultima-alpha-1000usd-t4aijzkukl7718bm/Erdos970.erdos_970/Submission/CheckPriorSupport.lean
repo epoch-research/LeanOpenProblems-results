@@ -1,0 +1,13 @@
+import Submission.FirstHitTransfer
+#check Nat.nth_strictMono
+#check Nat.nth_monotone
+#check Nat.nth_count
+#check Finset.subset_image_iff
+#check Finset.sum_image
+#check Finset.sum_sum_type
+#check Finset.prod_pos
+#check Real.harmonic_le_one_add_log
+#check harmonic_le_one_add_log
+#check harmonic_le_one_add_log_natCast
+#check harmonic_eq_sum_Icc
+#check Finset.card_le_card

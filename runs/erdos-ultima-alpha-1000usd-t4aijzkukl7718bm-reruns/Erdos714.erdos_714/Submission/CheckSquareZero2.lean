@@ -1,0 +1,11 @@
+import Submission.SquareZeroPolynomial
+#check Equiv.subtypeEquivRight
+#check Ideal.subtype
+#check LinearMap.toAddMonoidHom
+#check Subtype.coe_inj
+#check SimpleGraph.Iso.card_edgeFinset_eq
+#check SimpleGraph.Iso.card_edgeSet
+#check SimpleGraph.card_edgeFinset_eq_of_iso
+#check Ideal.Quotient.mk_surjective
+#check Function.Surjective.hasRightInverse
+#check Ideal.Quotient.eq_zero_iff_mem

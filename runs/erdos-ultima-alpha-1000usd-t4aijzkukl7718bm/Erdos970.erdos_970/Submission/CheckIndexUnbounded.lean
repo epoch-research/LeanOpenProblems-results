@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check Nat.self_le_factorial
+#check Nat.le_factorial
+#check Nat.mul_le_mul_left
+#check Nat.le_mul_of_pos_right
+#check Nat.le_mul_of_pos_left
+#check exists_nat_gt
+#check Real.log_lt_iff_lt_exp
+#check Real.lt_log_iff_exp_lt
+#check Real.exp_pos
+#check Nat.dvd_mul_right
+#check Nat.cast_nonneg
+#check Nat.cast_pos
+#check Finset.sum_le_sum

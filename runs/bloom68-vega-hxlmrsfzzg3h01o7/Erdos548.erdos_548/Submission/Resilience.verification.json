@@ -1,0 +1,194 @@
+{
+  "status": "verified_conditional_bridge_only",
+  "R2_status": "unproved; explicit theorem hypothesis only",
+  "ES_status": "conditional on UniformR2; no unconditional assertion",
+  "verified_at_utc": "2026-09-01T21:07:09.720817+00:00",
+  "lean_version": "Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)",
+  "main_file": "Submission/Resilience.lean",
+  "verification_file": "Submission/ResilienceVerification.lean",
+  "imports": [
+    "Submission.Auxiliary",
+    "Submission.Critical"
+  ],
+  "direct_dependency_paths": [
+    "/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/Auxiliary.olean",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/Critical.olean"
+  ],
+  "commands": [
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/Auxiliary.olean -i .lake/build/lib/lean/Submission/Auxiliary.ilean Submission/Auxiliary.lean",
+      "exit_code": 0,
+      "output": "'Erdos548.Auxiliary.ncard_edgeSet_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Auxiliary.isContained_sum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Auxiliary.doubled_threshold_of_strict' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Auxiliary.plusOneStatement_iff_strictThresholdStatement' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Auxiliary.strictThreshold_of_k_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Auxiliary.plusOneThreshold_of_k_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+    },
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/Critical.olean -i .lake/build/lib/lean/Submission/Critical.ilean Submission/Critical.lean",
+      "exit_code": 0,
+      "output": "'Erdos548.Critical.exists_adj_not_mem_range' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.isContained_of_subsingleton' does not depend on any axioms\n'Erdos548.Critical.isContained_of_isTree_of_card_le_degree_add_one' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.isContained_of_isTree_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_minDegree' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.isContained_of_isTree_of_neighborSet_ncard' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_neighborSet_ncard' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.fin_tree_isContained_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.ncard_edgeSet_iso' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.excess_iso' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.excess_induce_univ' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.excess_of_isEmpty' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.nonempty_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.exists_induced_critical' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.exists_induced_critical_of_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.incidentEdges_empty' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.ncard_incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.image_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.ncard_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.edgeSet_diff_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.ncard_induce_compl_add_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.proper_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.incidentEdges_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.neighborSet_bound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.two_mul_neighborSet_ncard_ge' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.IsInducedCritical.neighborSet_ncard_ge_ceil' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Critical.ncard_neighborSet_eq_degree' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.two_mul_minDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.minDegree_ge_ceil' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.minDegree_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.exists_degree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.maxDegree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.exists_neighborSet_ncard_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.IsInducedCritical.maxDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Critical.exists_critical_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+    },
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/Resilience.olean -i .lake/build/lib/lean/Submission/Resilience.ilean Submission/Resilience.lean",
+      "exit_code": 0,
+      "output": "'Erdos548.Resilience.D_eq_two_mul_excess' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.ncard_deleteEdges_add' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.D_deleteEdges' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.excess_deleteEdges' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.excess_deleteEdges_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.card_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.card_ge_after_deletion' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.TreeUniversal.trans' does not depend on any axioms\n'Erdos548.Resilience.robustUniversal_of_strictAt' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.incidentEdges_eq_internal' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.connected_of_inducedCritical' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.uniformCriticalR2_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.fin_three_tree_missing_edge' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.fin_three_tree_isContained_of_two_neighbors' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Resilience.strictAt_two' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.strictAt_of_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.strictAt_of_uniformCriticalR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.strictAt_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.strictThresholdStatement_of_uniformCriticalR2' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'Erdos548.Resilience.strictThresholdStatement_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.plusOneStatement_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n'Erdos548.Resilience.erdos_548_of_uniformR2' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+    },
+    {
+      "command": "lake env lean -o .lake/build/lib/lean/Submission/ResilienceVerification.olean -i .lake/build/lib/lean/Submission/ResilienceVerification.ilean Submission/ResilienceVerification.lean",
+      "exit_code": 0,
+      "output": "Verified: neither conjectural declaration from Spec is in the environment.\n"
+    },
+    {
+      "command": "lake env lean --deps Submission/Resilience.lean",
+      "exit_code": 0,
+      "output": "/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean\n/workspace/leanproject/.lake/build/lib/lean/Submission/Auxiliary.olean\n/workspace/leanproject/.lake/build/lib/lean/Submission/Critical.olean\n"
+    },
+    {
+      "command": "lake env lean --version",
+      "exit_code": 0,
+      "output": "Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)\n"
+    }
+  ],
+  "axiom_audit": {
+    "Erdos548.Resilience.D_eq_two_mul_excess": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.ncard_deleteEdges_add": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.D_deleteEdges": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.excess_deleteEdges": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.excess_deleteEdges_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.card_ge_of_excess_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.card_ge_after_deletion": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.robustUniversal_of_strictAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.incidentEdges_eq_internal": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.connected_of_inducedCritical": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.uniformCriticalR2_of_uniformR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.fin_three_tree_missing_edge": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.fin_three_tree_isContained_of_two_neighbors": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictAt_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictAt_of_le_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictAt_of_uniformCriticalR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictAt_of_uniformR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictThresholdStatement_of_uniformCriticalR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.strictThresholdStatement_of_uniformR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.plusOneStatement_of_uniformR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.erdos_548_of_uniformR2": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Erdos548.Resilience.TreeUniversal.trans": []
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "theorem_count": 22,
+  "interface_boundary_example_count": 11,
+  "conjectural_declarations_absent": [
+    "Erdos548.erdos_548",
+    "Erdos548.erdos_548.disproof"
+  ],
+  "source_checks": {
+    "no_placeholders": true,
+    "no_native_decide": true,
+    "no_new_axiom_declarations": true,
+    "protected_files_unchanged": true
+  },
+  "source_sha256": {
+    "Submission/Resilience.lean": "bbd948cdc0546b70756069a3a4339abcee6e22be371e65610cac05f7a6048a5b",
+    "Submission/ResilienceVerification.lean": "d586e0f9a545390676e86cde9203386b565f60415f64386bb34f172605004747",
+    "Submission/Spec.lean": "674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103",
+    "Submission/Auxiliary.lean": "227fcc37cac1313bd1d9c8033397195fa990f018c784ba9a53e307f6ef1e28c1",
+    "Submission/Critical.lean": "c0dc0d37acc9f1ca3173b6d144e326ccfcbf5a63eb98216fa6099e055b9d71ea"
+  },
+  "key_results": {
+    "deletion_identity": "Erdos548.Resilience.D_deleteEdges",
+    "positive_excess_after_any_allowed_deletion": "Erdos548.Resilience.excess_deleteEdges_pos",
+    "derived_host_order": "Erdos548.Resilience.card_ge_of_excess_pos",
+    "derived_damaged_host_order": "Erdos548.Resilience.card_ge_after_deletion",
+    "robust_induction_consequence": "Erdos548.Resilience.robustUniversal_of_strictAt",
+    "critical_connectivity": "Erdos548.Resilience.connected_of_inducedCritical",
+    "original_R2_implies_weaker_restriction": "Erdos548.Resilience.uniformCriticalR2_of_uniformR2",
+    "unconditional_k2_base": "Erdos548.Resilience.strictAt_two",
+    "strong_induction_bridge": "Erdos548.Resilience.strictAt_of_uniformCriticalR2",
+    "exact_conditional_target": "Erdos548.Resilience.erdos_548_of_uniformR2"
+  }
+}

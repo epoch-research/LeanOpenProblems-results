@@ -1,0 +1,9 @@
+import Submission.WeightedCharacterEnergyExplore
+import Submission.SharedParameterRootExplore
+
+/-! Audits for shared-label product ingredients, not the original conjecture. -/
+#print axioms Erdos66WeightedCharacterEnergy.average_weighted_translated_energy
+#print axioms Erdos66SharedParameterKernel.sharedKernelCount_identity
+#print axioms Erdos66SharedParameterKernel.sharedKernelCount_error_sq
+#print axioms Erdos66SharedParameterRoot.sharedRootCount_affine
+#print axioms Erdos66SharedParameterRoot.sharedRootCount_error_sq

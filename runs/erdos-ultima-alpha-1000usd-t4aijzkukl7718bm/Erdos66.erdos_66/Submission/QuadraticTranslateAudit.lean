@@ -1,0 +1,33 @@
+import Submission.PaleyBilinearExplore
+import Submission.QuadraticTranslateAnchorExplore
+import Submission.QuadraticTranslateScaleExplore
+
+/-! Axiom audit for the collision-free quadratic-translate branch. -/
+#print axioms Erdos66PaleyBilinear.shiftSum_set_energy
+#print axioms Erdos66PaleyBilinear.bilinear
+#print axioms Erdos66PaleyBilinear.bilinear_comm
+#print axioms Erdos66PaleyBilinear.bilinear_sq_le
+#print axioms Erdos66PaleyBilinear.bilinear_sq_le_card
+#print axioms Erdos66PaleyBilinear.bilinear_real_abs_le
+#print axioms Erdos66QuadraticTranslateAnchor.curve
+#print axioms Erdos66QuadraticTranslateAnchor.lift
+#print axioms Erdos66QuadraticTranslateAnchor.point_injective
+#print axioms Erdos66QuadraticTranslateAnchor.mem_curve
+#print axioms Erdos66QuadraticTranslateAnchor.curves_disjoint
+#print axioms Erdos66QuadraticTranslateAnchor.mem_lift
+#print axioms Erdos66QuadraticTranslateAnchor.lift_row_zero
+#print axioms Erdos66QuadraticTranslateAnchor.curve_card
+#print axioms Erdos66QuadraticTranslateAnchor.lift_card
+#print axioms Erdos66QuadraticTranslateAnchor.curve_pairCount
+#print axioms Erdos66QuadraticTranslateAnchor.curve_pairCount_char
+#print axioms Erdos66QuadraticTranslateAnchor.lift_pairCount_identity
+#print axioms Erdos66QuadraticTranslateAnchor.lift_mixed_sq_error
+#print axioms Erdos66QuadraticTranslateAnchor.lift_mixed_abs_error
+#print axioms Erdos66QuadraticTranslateAnchor.lift_self_abs_error
+#print axioms Erdos66QuadraticTranslateAnchor.encoded_lift_prefix
+#print axioms Erdos66QuadraticTranslateAnchor.encoded_lift_counts_below
+#print axioms Erdos66QuadraticTranslateScale.cutoff_div_count_square_limit
+#print axioms Erdos66QuadraticTranslateScale.sqrt_cutoff_div_count_limit
+#print axioms Erdos66QuadraticTranslateScale.prime_prefix_lift_relative_error
+#print axioms Erdos66QuadraticTranslateScale.full_quadratic_lift_forces_mass
+#print axioms Erdos66QuadraticTranslateScale.eventually_no_full_quadratic_lift

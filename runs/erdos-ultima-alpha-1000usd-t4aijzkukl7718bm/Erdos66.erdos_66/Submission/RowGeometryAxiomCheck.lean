@@ -1,0 +1,9 @@
+import Submission.RowControlledAnnulusExplore
+import Submission.GraphPrefixLimitExplore
+#print axioms Erdos66RowSparsePrefix.union_short_prefix_bound
+#print axioms Erdos66GraphRowGeometry.repaired_graphRows_prefix_bound
+#print axioms Erdos66GraphBlockGeometry.thickened_block_prefix_bound
+#print axioms Erdos66GraphPrefixLimit.tuned_short_prefix_negligible
+#print axioms Erdos66FlatRowFamily.exists_mixed_flat_prime_family_with_rows
+#print axioms Erdos66ShiftedFiniteRows.exists_shifted_finite_blocks_with_rows
+#print axioms Erdos66RowControlledAnnulus.exists_row_controlled_annulus

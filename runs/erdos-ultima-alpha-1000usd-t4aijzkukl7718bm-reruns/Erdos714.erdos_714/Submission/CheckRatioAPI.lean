@@ -1,0 +1,14 @@
+import Submission.RatioFilteredNorm
+#check Equiv.sigmaFiberEquiv
+#check AddMonoidHom.fiberEquivOfSurjective
+#check AddMonoidHom.fiberEquivKerOfSurjective
+#check Fintype.card_congr
+#check Algebra.trace_surjective
+#check Algebra.norm
+#check Units.map
+#check Fintype.card_of_subtype
+#check Finset.card_univ
+#check FiniteField.trace_eq_sum_pow
+#check Algebra.trace_eq_sum_pow
+#check Nat.eq_div_of_mul_eq_left
+#check Nat.eq_div_of_mul_eq_right

@@ -1,0 +1,7 @@
+import Submission.ThreeEvenSharpRestoration
+
+/-! Exact axiom audit of the new sharp restoration restrictions. -/
+#print axioms Erdos583ThreeEvenSharpRestorationDevelopment.sharp_three_even_forest_edge
+#print axioms Erdos583ThreeEvenSharpRestorationDevelopment.triple_even_set_of_card_three
+#print axioms Erdos583ThreeEvenSharpRestorationDevelopment.triple_induce_acyclic_of_nonedge
+#print axioms Erdos583ThreeEvenSharpRestorationDevelopment.sharp_three_even_edge_nonedge

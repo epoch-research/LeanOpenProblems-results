@@ -1,0 +1,11 @@
+import Submission.DensityOneLogLimitExplore
+#check Real.log_exp
+#check Real.le_log_iff_exp_le
+#check Real.log_le_log
+#check tendsto_natCast_atTop_atTop
+#check Nat.le_ceil
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_pos
+#check Real.sqrt_div
+#check Real.sq_sqrt
+#check Real.sqrt_mul

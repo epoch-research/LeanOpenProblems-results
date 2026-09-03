@@ -1,0 +1,12 @@
+import Submission.PurePatternBracketRoundingExplore
+import Submission.MatchingNaturalPatternExplore
+import Submission.SummableTailBudgetExplore
+#check Erdos66BernoulliCostSelection.row_budget
+#check Real.summable_one_div_nat_add_rpow
+#check Real.rpow_def_of_pos
+#check Real.exp_le_one_iff
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Denumerable.instProd
+#check Filter.Tendsto.eventually_le_const
+#check Metric.tendsto_nhds
+#check Finset.sum_range_succ'

@@ -1,0 +1,18 @@
+Exact margins: FR=17/3600, high-cofactor=1/50
+Exact radical/divisor bounds: 99999; cofactor parametrizations: 99999
+Exact two-linear-form local root counts: 21658
+Exact first-cell convolution checks: 30000; good extractions: 13765
+Exact signed-sector endpoint checks: 915
+Nonzero endpoint example: (1719, [43], 1, 2, 1)
+Exact CRT prefix checks: 936
+Finite positive-Fourier tensor checks: 42
+Numerical Fourier transform checks: 12
+Fourier mass interval (explicit tail bound): 1.99746699045874 2.00253304964085
+Numerical arctangent checks: 6
+Finite data (prefix n<X; ratios compared exactly):
+  X=1000: ascents=510, close(R=3/2)=115, close(R=2)=217, central signed current=0
+  X=10000: ascents=5008, close(R=3/2)=1027, close(R=2)=1873, central signed current=-8
+  X=100000: ascents=50079, close(R=3/2)=9073, close(R=2)=15944, central signed current=8
+  X=1000000: ascents=500148, close(R=3/2)=79655, close(R=2)=138073, central signed current=57
+Spec.lean SHA-256 unchanged: d48bb112dcd4fd5c98dae80077b7384df62a14ef9a919fe7d476b9c5ace427bb
+ALL FINITE CHECKS PASSED. Analytic/asymptotic claims require the written proof and cited theorems.

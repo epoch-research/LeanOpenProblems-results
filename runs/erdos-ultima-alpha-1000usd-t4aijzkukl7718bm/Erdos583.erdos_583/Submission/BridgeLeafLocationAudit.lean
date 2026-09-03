@@ -1,0 +1,7 @@
+import Submission.BridgeLeafLocation
+/-! Axiom audit for leaf location at a balanced bridge. -/
+
+#print axioms Erdos583BridgeLeafLocationDevelopment.leaf_neighbors_adj_of_failure_finite
+#print axioms Erdos583BridgeLeafLocationDevelopment.marked_of_half_order_leaf_away
+#print axioms Erdos583BridgeLeafLocationDevelopment.leaf_on_balanced_side_at_boundary
+#print axioms Erdos583BridgeLeafLocationDevelopment.leaf_attached_to_nonleaf_bridge

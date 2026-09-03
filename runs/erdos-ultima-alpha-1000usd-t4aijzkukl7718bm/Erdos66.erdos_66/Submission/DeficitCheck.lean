@@ -1,0 +1,15 @@
+import Submission.WeightedSparseCompletionExplore
+#check Subtype.orderIsoOfNat
+#check Set.Infinite.to_subtype
+#check Set.infinite_coe_iff
+#check Summable.comp_injective
+#check Set.Finite.bddAbove
+#check Set.Finite.eventually_notMem
+#check Set.Finite.eventually_not_mem
+#check Set.infinite_coe_iff
+#check Set.range_subset_iff
+#check Set.finite_or_infinite
+#check Filter.Eventually.of_forall
+#check Set.Finite.isBoundedUnder_le
+#check summable_subtype_iff_indicator
+#check Function.Injective.summable_iff

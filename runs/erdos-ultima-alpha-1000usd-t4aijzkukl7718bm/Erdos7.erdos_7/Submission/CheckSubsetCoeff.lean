@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check AddChar.map_nsmul_eq_pow
+#check Odd.neg_pow
+#check Finset.sum_pair
+#check Finset.sum_filter
+#check Finset.sum_ite_irrel
+#check Finset.sum_ite_eq'
+#check AddChar.map_neg_eq_inv
+#check AddChar.apply_ne_zero
+#check AddChar.norm_apply
+#check pow_ne_zero
+#check ZMod.natCast_self
+#check mul_eq_zero

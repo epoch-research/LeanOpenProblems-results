@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Nat.log_eq_of_pow_le_of_lt_pow
+#check Nat.log_eq_iff
+#check Nat.log_eq_iff_pow_le
+#check Nat.pow_log_le_self
+#check Nat.log_le_self
+#check Nat.lt_of_mul_lt_mul_left
+#check Nat.mul_lt_mul_of_pos_left
+#check Finset.sum_ite_eq
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_irrel

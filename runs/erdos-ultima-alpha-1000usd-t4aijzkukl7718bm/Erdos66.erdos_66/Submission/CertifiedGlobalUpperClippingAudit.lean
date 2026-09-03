@@ -1,0 +1,7 @@
+import Submission.CertifiedGlobalUpperClippingExplore
+
+/-! Axiom audit for certified simultaneous upper clipping. -/
+#print axioms Erdos66CertifiedGlobalUpperClipping.tail_core_union
+#print axioms Erdos66CertifiedGlobalUpperClipping.exists_certified_full_restoration
+#print axioms Erdos66CertifiedGlobalUpperClipping.exists_certified_upper_clipping_under_budget
+#print axioms Erdos66CertifiedGlobalUpperClipping.upper_limit_of_excess_limit

@@ -1,0 +1,12 @@
+import Submission.LinearOrbitCompression
+#check Nat.lt_mul_div_succ
+#check Nat.lt_div_mul_succ
+#check Nat.mul_div_le
+#check Nat.div_mul_le_self
+#check Nat.le_of_mul_le_mul_left
+#check Nat.mul_le_mul_left
+#check Nat.div_pos
+#check Nat.div_lt_iff_lt_mul
+#check Nat.lt_mul_succ_div
+#check Nat.mod_lt
+#check Nat.mod_add_div

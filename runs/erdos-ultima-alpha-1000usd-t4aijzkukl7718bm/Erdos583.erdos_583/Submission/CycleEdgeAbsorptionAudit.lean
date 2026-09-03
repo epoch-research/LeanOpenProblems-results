@@ -1,0 +1,11 @@
+import Submission.CycleEdgeAbsorption
+/-! Axiom audit of the new helper lemmas, not of the unresolved conjecture. -/
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.absorb_repeated_first_edge
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.absorb_root_cycle_edge
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.internal_edge_partition
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.small_group_no_internal_root_edge
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.small_group_root_boundary_unmarked
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.absorb_whole_cycle_edge
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.small_group_cycle_independent
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.small_group_cycle_vertex_unmarked
+#print axioms Erdos583CycleEdgeAbsorptionDevelopment.small_group_cycle_vertex_even

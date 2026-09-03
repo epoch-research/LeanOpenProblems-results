@@ -1,0 +1,22 @@
+Exact support-sensitive motion checks
+grid L=1: n=9, D=5, E=1248, angles=12, rich rows=148, kappa=0.987654
+  2 support thresholds; carrier rich angles=4, nonunits=0, carrier mass=20; all 0 nonunit commutators unsupported; exactly 12 supported unit pairs
+grid L=2: n=25, D=14, E=35136, angles=36, rich rows=2588, kappa=0.774144
+  5 support thresholds; carrier rich angles=12, nonunits=8, carrier mass=100; all 56 nonunit commutators unsupported; exactly 12 supported unit pairs
+grid L=3: n=49, D=26, E=310688, angles=68, rich rows=19300, kappa=0.724596
+  8 support thresholds; carrier rich angles=20, nonunits=16, carrier mass=244; all 240 nonunit commutators unsupported; exactly 12 supported unit pairs
+grid L=4: n=81, D=41, E=1551488, angles=124, rich rows=86772, kappa=0.686436
+  15 support thresholds; carrier rich angles=36, nonunits=32, carrier mass=460; all 992 nonunit commutators unsupported; exactly 12 supported unit pairs
+quotient family m=2, K=8: T=400, L=1600, richnesses=[53, 13]; all distinct quotients have k=1
+quotient family m=3, K=12: T=600, L=3600, richnesses=[125, 29, 13]; all distinct quotients have k=1
+quotient family m=4, K=20: T=2400, L=57600, richnesses=[2213, 533, 229, 125]; all distinct quotients have k=1
+finite field q=7: n=11, D=6, E=2100, ED^2/n^5=0.469417, kappa=1.156273, log(q)=1.945910
+  nonidentity k range [0, 7], full table columns=checked, point and energy identities exact
+finite field q=11: n=27, D=10, E=49956, ED^2/n^5=0.348152, kappa=1.613169, log(q)=2.397895
+  nonidentity k range [0, 15], full table columns=checked, point and energy identities exact
+finite field q=19: n=75, D=18, E=1719356, ED^2/n^5=0.234749, kappa=2.482783, log(q)=2.944439
+  nonidentity k range [4, 30], full table columns=checked, point and energy identities exact
+finite field q=31: n=96, D=30, E=2781192, ED^2/n^5=0.306985, kappa=1.793518, log(q)=3.433987
+  nonidentity k range [0, 24], full table columns=not expanded, point and energy identities exact
+PASS: all exact assertions passed.
+RS is unproved; finite-field examples are not real planar counterexamples.

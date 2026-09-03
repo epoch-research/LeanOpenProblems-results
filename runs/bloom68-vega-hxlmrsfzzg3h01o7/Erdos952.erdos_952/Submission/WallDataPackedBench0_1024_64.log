@@ -1,0 +1,3 @@
+'Erdos952.WallData.PackedBench0_1024_64.accepted' depends on axioms: [propext]
+'Erdos952.WallData.PackedBench0_1024_64.path' depends on axioms: [propext, Classical.choice, Quot.sound]
+Erdos952.WallData.PackedBench0_1024_64.path : BlackPath 1024 { re := 146, im := -149 } { re := 446, im := -211 }

@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check LipschitzWith.min_const
+#check LipschitzWith.max_const
+#check LipschitzWith.const_min
+#check LipschitzWith.const_max
+#check lipschitzWith_id
+#check LipschitzWith.add
+#check LipschitzWith.mul_const
+#check abs_max_sub_max_le_max
+#check abs_min_sub_min_le_max
+#check Real.norm_eq_abs
+#check Set.projIcc
+#check Finset.expect_add_distrib
+#check Finset.expect_mul
+#check Finset.expect_mul_expect

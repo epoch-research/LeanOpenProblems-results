@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check ConvexOn.map_sum_le
+#check ConvexOn.map_add_sum_le
+#check Fin.sum_univ_castSucc
+#check Fin.sum_univ_succAbove
+#check Fin.sum_univ_succ
+#check Finset.sum_range_succ'
+#check Finset.sum_range_succ
+#check Finset.sum_div
+#check Finset.sum_const
+#check Finset.sum_range_reflect

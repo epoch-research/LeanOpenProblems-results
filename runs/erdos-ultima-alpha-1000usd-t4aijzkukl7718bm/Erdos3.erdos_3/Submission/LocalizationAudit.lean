@@ -1,0 +1,13 @@
+import Submission.LocalFactorMean
+/-! Axiom audit for the completed localization branch. -/
+#print axioms Erdos3StepWeightedCounting.weighted_counting_difference
+#print axioms Erdos3DifferenceStepCounting.diffWeight_fourierMass
+#print axioms Erdos3DifferenceStepCounting.difference_counting_bound
+#print axioms Erdos3StableWindowCounting.averaged_local_factor_counting_difference
+#print axioms Erdos3LocalQuadraticRegularityFactor.stable_test_list_local_factor_on_subwindows
+#print axioms Erdos3StableLocalQuadraticFactor.stable_window_local_factor
+#print axioms Erdos3LocalizedPatternCriterion.exists_pattern_of_local_count
+#print axioms Erdos3BohrPatternGeometry.boundary_mass_le
+#print axioms Erdos3QuadraticCircleBridge.local_quadratic_circle_polynomial
+#print axioms Erdos3LocalFactorMean.local_factor_mean_lower
+#check Erdos3BohrPatternGeometry.boundary_mass_le

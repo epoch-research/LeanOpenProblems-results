@@ -1,0 +1,16 @@
+import Submission.UpperDensityOneLogLimitExplore
+import Submission.SuperquadraticCostsExplore
+import Submission.MultiplicityMatchingSpikesExplore
+#check Nat.pow_lt_pow_left
+#check pow_lt_pow_left₀
+#check Nat.pow_left_injective
+#check pow_left_injective
+#check tendsto_nhds_unique_of_frequently_eq
+#check Filter.Tendsto.unique
+#check Filter.Tendsto.frequently
+#check Filter.Frequently.and_eventually
+#check Filter.Frequently.exists
+#check neBot_inf_principal_iff
+#check Nat.ceil_pos
+#check Nat.le_ceil
+#check Real.log_natCast_nonneg

@@ -1,0 +1,7 @@
+PASS: 3782 exhaustive path-parity minima; 1937 forced-majority phase checks
+PASS: 20 original-edge support enumerations agree with parity compression
+PASS: the jump from a_7=1 to a_8=2 requires the even-cycle checks
+PASS: forced alternating parity on the fixed root path at three successive scales
+PASS: all 32768 actual cuts satisfy the path identity; no cut minimizes both short-cycle cores
+PASS: all activation budgets in 14 ensemble stages; all 254 proper nonempty terminal-phase families have a simultaneous bad scale
+These are finite checks, not a solution of Erdős 74.

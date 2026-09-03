@@ -1,0 +1,30 @@
+import Submission.RankCellWindowExplore
+import Submission.AdaptiveSingletonAlgebraExplore
+import Submission.AdaptiveSingletonSelectionExplore
+import Submission.PrescribedRankRelocationExplore
+import Submission.LogCellWindowBudgetExplore
+import Submission.GlobalRankDownwardRepairExplore
+
+/-! Axiom audit of prescribed-rank downward relocation. -/
+#print axioms Erdos66RankCellWindow.count_strict_of_mem
+#print axioms Erdos66RankCellWindow.count_injOn
+#print axioms Erdos66RankCellWindow.rankPoint_at_mem
+#print axioms Erdos66RankCellWindow.mass_add_upper
+#print axioms Erdos66RankCellWindow.exists_rank_cell_window
+#print axioms Erdos66AdaptiveSingletonAlgebra.singleton_pairs
+#print axioms Erdos66AdaptiveSingletonAlgebra.insertionEnergy_step
+#print axioms Erdos66AdaptiveSingletonAlgebra.insertionHits_card
+#print axioms Erdos66AdaptiveSingletonAlgebra.insertionChoices_card
+#print axioms Erdos66AdaptiveSingletonAlgebra.insertionChoices_properties
+#print axioms Erdos66AdaptiveSingletonSelection.exists_adaptive_singletons
+#print axioms Erdos66PrescribedRankRelocation.swapped_downward_exact
+#print axioms Erdos66PrescribedRankRelocation.swapped_error_le_deletion_and_insertion
+#print axioms Erdos66PrescribedRankRelocation.exists_prescribed_rank_relocation
+#print axioms Erdos66LogCellWindowBudget.log_power_sqrt_decay
+#print axioms Erdos66LogCellWindowBudget.log_power_nat_decay
+#print axioms Erdos66LogCellWindowBudget.profile_sqrt_upper
+#print axioms Erdos66LogCellWindowBudget.windowSize_bounds
+#print axioms Erdos66LogCellWindowBudget.eventually_window_mass
+#print axioms Erdos66LogCellWindowBudget.window_degree_bound
+#print axioms Erdos66LogCellWindowBudget.eventually_singleton_window_budget
+#print axioms Erdos66GlobalRankDownwardRepair.uniformly_eventually_downward_rank_repair

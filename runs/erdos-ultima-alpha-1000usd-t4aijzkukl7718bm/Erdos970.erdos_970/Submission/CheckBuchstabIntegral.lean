@@ -1,0 +1,20 @@
+import FormalConjecturesUtil
+open Real Set Filter MeasureTheory
+open scoped Topology
+#check integrableOn_Ioi_deriv_of_nonneg'
+#check integral_Ioi_of_hasDerivAt_of_tendsto'
+#check integral_mono_ae
+#check setIntegral_mono_on
+#check setIntegral_mono_set
+#check ContinuousOn.aestronglyMeasurable
+#check tendsto_pow_mul_exp_neg_atTop_nhds_zero
+#check tendsto_pow_mul_exp_neg_mul_atTop_nhds_zero
+#check integral_comp_add_right
+#check integral_comp_add_right_Ioi
+#check integral_comp_sub_right_Ioi
+#check integral_comp_add_left_Ioi
+#check integral_Ioi_comp_add_left
+#check integrableOn_Ioi_comp_add_left_iff
+#check antitoneOn_of_deriv_nonpos
+#check monotoneOn_of_deriv_nonneg
+#check Real.exp_one_lt_d9

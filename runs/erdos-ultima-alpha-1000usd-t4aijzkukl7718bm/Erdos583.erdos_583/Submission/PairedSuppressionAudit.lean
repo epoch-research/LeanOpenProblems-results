@@ -1,0 +1,16 @@
+import Submission.PairedSuppression
+
+/-! Axiom audit for PairedSuppression. -/
+#print axioms Erdos583PairedSuppressionDevelopment.pairGraph
+#print axioms Erdos583PairedSuppressionDevelopment.pairGraph_adj
+#print axioms Erdos583PairedSuppressionDevelopment.pairGraph_edges
+#print axioms Erdos583PairedSuppressionDevelopment.proxy
+#print axioms Erdos583PairedSuppressionDevelopment.proxy_pair_adj
+#print axioms Erdos583PairedSuppressionDevelopment.proxy_avoids
+#print axioms Erdos583PairedSuppressionDevelopment.proxy_old_edges
+#print axioms Erdos583PairedSuppressionDevelopment.spokes_cover
+#print axioms Erdos583PairedSuppressionDevelopment.restore_pairs
+#print axioms Erdos583PairedSuppressionDevelopment.restore_pairs_and_edge
+#print axioms Erdos583PairedSuppressionDevelopment.proxy_partition
+#print axioms Erdos583PairedSuppressionDevelopment.failure_proxy_collision
+#print axioms Erdos583PairedSuppressionDevelopment.odd_failure_proxy_collision

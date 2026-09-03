@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Nat.dvd_pow_self
+#check dvd_pow
+#check Nat.mul_div_cancel_left
+#check Nat.mul_div_cancel
+#check Fintype.card_subtype
+#check Fintype.card_coe
+#check Finset.sum_coe_sort
+#check Finset.card_attach
+#check Fintype.card_sigma
+#check Finset.dvd_sum
+#check Nat.le_pow
+#check Nat.mem_divisors
+#check Nat.div_pos
+#check Nat.pos_of_mem_divisors

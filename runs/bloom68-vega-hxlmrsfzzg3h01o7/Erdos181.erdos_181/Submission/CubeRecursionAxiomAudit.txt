@@ -1,0 +1,25 @@
+'CubeRecursionInvestigation.cubeSuccIso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.copyBoxOfCopies' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.cubeCopySucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.liftMatchedCube' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.doubling_recurrence_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.doubling_recurrence_bounded_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursionInvestigation.doubling_recurrence_summable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.halving_recurrence_normalized_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursionInvestigation.harmonicGrowth_relative_error_tends_to_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursionInvestigation.harmonicGrowth_not_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeRecursionInvestigation.arbitrary_matching_not_sufficient' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursionInvestigation.arbitrary_matching_not_sufficient_even_two_colors' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'CubeRecursionInvestigation.union_does_not_preserve_cube_freeness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

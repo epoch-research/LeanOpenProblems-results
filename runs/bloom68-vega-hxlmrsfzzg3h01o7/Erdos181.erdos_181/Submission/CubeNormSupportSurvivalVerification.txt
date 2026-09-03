@@ -1,0 +1,4 @@
+PASS: 728 exact Boolean support/face checks; 656 have majority-host strict KKT at lambda=0.
+PASS: 240 exact rational-weight support/face checks (weights divided by 5).
+PASS: 130 exact full-injection packing-product checks.
+PASS: the large-d collision bound decays, since 10 < 2^4.

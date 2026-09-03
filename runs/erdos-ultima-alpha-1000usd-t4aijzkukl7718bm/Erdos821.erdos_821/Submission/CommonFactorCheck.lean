@@ -1,0 +1,10 @@
+import Submission.FiberProducts
+#check Finset.exists_max_image
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.sum_card_fiberwise_eq_card
+#check Nat.gcd_pos_of_pos_left
+#check Nat.mul_div_cancel
+#check Nat.le_div_iff_mul_le
+#check Nat.le_of_mul_le_mul_right

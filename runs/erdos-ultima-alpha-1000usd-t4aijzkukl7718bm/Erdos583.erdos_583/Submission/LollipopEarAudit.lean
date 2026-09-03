@@ -1,0 +1,14 @@
+import Submission.LollipopEar
+/-! Axiom audit for rooted lollipop ear exchanges and minimization. -/
+#print axioms Erdos583LollipopEarDevelopment.edge_disjoint_of_one_common_vertex
+#print axioms Erdos583LollipopEarDevelopment.lollipop_vertex_card
+#print axioms Erdos583LollipopEarDevelopment.ear_exchange_with_tail
+#print axioms Erdos583LollipopEarDevelopment.shorten_rooted_member
+#print axioms Erdos583LollipopEarDevelopment.RootedCycleRep.hasRoot
+#print axioms Erdos583LollipopEarDevelopment.exists_rooted_cycle_rep
+#print axioms Erdos583LollipopEarDevelopment.exists_shortest_rooted_cycle
+#print axioms Erdos583LollipopEarDevelopment.RootedCycleRep.member_not_path
+#print axioms Erdos583LollipopEarDevelopment.RootedCycleRep.no_removable_ear
+#print axioms Erdos583LollipopEarDevelopment.degree_two_cycle_other_avoids
+#print axioms Erdos583LollipopEarDevelopment.shortest_rooted_cycle_no_degree_two
+#print axioms Erdos583LollipopEarDevelopment.exists_shortest_rooted_cycle_structure

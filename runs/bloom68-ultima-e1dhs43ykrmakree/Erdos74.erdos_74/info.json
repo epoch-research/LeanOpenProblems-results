@@ -1,0 +1,20 @@
+{
+  "id": "Erdos74.erdos_74",
+  "epoch": 1,
+  "uuid": "XPZMV4Vttpzg9Ffp7S2BKh",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/ultima-alpha": {
+      "input_tokens": 42719,
+      "output_tokens": 1672946,
+      "total_tokens": 52917067,
+      "input_tokens_cache_write": 7223772,
+      "input_tokens_cache_read": 43977630,
+      "reasoning_tokens": 1265457,
+      "total_cost": 117.53936499999996
+    }
+  },
+  "oeis_id": null
+}

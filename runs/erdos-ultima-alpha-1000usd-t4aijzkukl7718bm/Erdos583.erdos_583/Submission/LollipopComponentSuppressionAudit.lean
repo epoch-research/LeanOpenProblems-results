@@ -1,0 +1,7 @@
+import Submission.LollipopComponentSuppression
+
+/-! Audit for guarded attached-tail suppression. -/
+#print axioms Erdos583RootedCycleNeighborClosureDevelopment.rooted_cycle_avoider_no_chord
+#print axioms Erdos583LollipopComponentSuppressionDevelopment.independent_tail_avoiding_shortcuts
+#print axioms Erdos583LollipopComponentSuppressionDevelopment.no_independent_zero_component_away_from_tail
+#print axioms Erdos583LollipopComponentSuppressionDevelopment.zero_component_tail_hit_or_cycle_edge

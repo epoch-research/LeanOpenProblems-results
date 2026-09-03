@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+import Submission.ProductSignTransport
+#check Nat.mem_divisors
+#check Nat.mem_divisors_self
+#check Nat.dvd_add_iff_right
+#check Nat.dvd_add_iff_left
+#check Nat.mul_left_cancel
+#check Finset.card_le_card_of_injOn
+#check Nat.divisorsAntidiagonal
+#check Nat.divisorsAntidiagonal_card
+#check ArithmeticFunction.sigma_apply
+#check ArithmeticFunction.isLittleO_sigma
+#check Nat.divisorBound

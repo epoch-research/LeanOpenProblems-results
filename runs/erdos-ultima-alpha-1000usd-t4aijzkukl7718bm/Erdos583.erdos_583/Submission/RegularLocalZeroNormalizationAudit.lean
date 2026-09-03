@@ -1,0 +1,7 @@
+import Submission.RegularLocalZeroNormalization
+
+/-! Axiom audit for local zero-neighbor normalization. -/
+#print axioms Erdos583RegularLocalZeroNormalizationDevelopment.max_regular_local_petals_bound
+#print axioms Erdos583RegularLocalZeroNormalizationDevelopment.normalize_regular_one_zero_neighbor
+#print axioms Erdos583RegularLocalZeroNormalizationDevelopment.max_regular_three_zero_neighbors_deficit
+#print axioms Erdos583RegularLocalZeroNormalizationDevelopment.normalize_regular_local_zero_forest

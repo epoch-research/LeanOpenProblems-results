@@ -1,0 +1,10 @@
+import Submission.SparseVaughanDiagonal
+import Submission.PrimeFactorErrorScales
+#check Nat.le_sqrt
+#check Nat.le_sqrt'
+#check Nat.le_sqrt_iff
+#check Nat.sqrt_le_sqrt
+#check Erdos972GrowingTypeI.growingCutoff_eligible
+#check Erdos972PolynomialRowScales.root64_bounds
+#check Erdos972GrowingTypeI.growingCutoff
+#check Erdos972CommonAsymmetricDiagonal.inverse_diagonal_data

@@ -1,0 +1,20 @@
+import Submission.LongLollipopEar
+import Submission.PrivatePathExpansion
+
+/-! Axiom audit for long-ear exchange and private path expansion. -/
+#print axioms Erdos583LongLollipopEarDevelopment.path_expand_fresh_path
+#print axioms Erdos583LongLollipopEarDevelopment.long_cycle_ear_exchange
+#print axioms Erdos583LongLollipopEarDevelopment.long_ear_exchange_with_tail
+#print axioms Erdos583LongLollipopEarDevelopment.shorten_rooted_member_long_ear
+#print axioms Erdos583LongLollipopEarDevelopment.no_long_cycle_ear
+#print axioms Erdos583PrivatePathExpansionDevelopment.adj_sup_finset
+#print axioms Erdos583PrivatePathExpansionDevelopment.chords
+#print axioms Erdos583PrivatePathExpansionDevelopment.arcs
+#print axioms Erdos583PrivatePathExpansionDevelopment.chords_adj
+#print axioms Erdos583PrivatePathExpansionDevelopment.arcs_adj
+#print axioms Erdos583PrivatePathExpansionDevelopment.chords_insert
+#print axioms Erdos583PrivatePathExpansionDevelopment.arcs_insert
+#print axioms Erdos583PrivatePathExpansionDevelopment.expand_private_paths
+#print axioms Erdos583PrivatePathExpansionDevelopment.chords_support_outside
+#print axioms Erdos583PrivatePathExpansionDevelopment.compressed_support_connected
+#print axioms Erdos583PrivatePathExpansionDevelopment.compressed_private_partition

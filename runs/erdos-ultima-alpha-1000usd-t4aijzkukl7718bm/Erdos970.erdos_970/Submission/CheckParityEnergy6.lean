@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check one_add_mul_le_pow
+#check one_add_mul_le_pow_of_nonneg
+#check Finset.prod_le_prod
+#check Finset.prod_const
+#check Nat.exists_infinite_primes
+#check Nat.cast_pow
+#check Odd.mul
+#check Finset.exists_lt_of_sum_lt
+#check Finset.sup_id_eq_sup
+#check Nat.le_mul_of_pos_left
+#check pow_le_pow_left₀
+#check pow_le_pow_right₀
+#check abs_sq
+#check sq_abs
+#check pow_two

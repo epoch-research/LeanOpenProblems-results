@@ -1,0 +1,9 @@
+import Submission.EnergyTransport
+/-! Axiom audit of exact shortening transport and its local energy consequence. -/
+#print axioms Erdos583EnergyTransportDevelopment.escape_slide_receiver_vertices
+#print axioms Erdos583EnergyTransportDevelopment.finish_exposed_receiver_vertices
+#print axioms Erdos583EnergyTransportDevelopment.shorten_oriented_vertex_transfer
+#print axioms Erdos583EnergyTransportDevelopment.vertexEnergy_transfer
+#print axioms Erdos583EnergyTransportDevelopment.shorten_oriented_energy
+#print axioms Erdos583EnergyTransportDevelopment.energy_maximum_recipient_smaller
+#print axioms Erdos583EnergyTransportDevelopment.exists_score_energy_maximum

@@ -1,0 +1,20 @@
+import Submission.QuadraticLogWindowBudgetExplore
+import Submission.RankRestorationSelectionExplore
+import Submission.RankRestorationAlgebraExplore
+import Submission.GlobalRankRestorationExplore
+import Submission.BatchCentralDeletionExplore
+import Submission.BatchRankDownwardClippingExplore
+import Submission.BatchRankHostClippingExplore
+
+/-! Axiom audit of common-potential restoration and simultaneous downward batches. -/
+#print axioms Erdos66QuadraticLogWindowBudget.eventually_quadratic_log_window_budget
+#print axioms Erdos66RankRestorationSelection.exists_rank_restoration
+#print axioms Erdos66RankRestorationAlgebra.swapped_insertion_bound
+#print axioms Erdos66RankRestorationAlgebra.swapped_insertion_compare
+#print axioms Erdos66RankRestorationAlgebra.swap_insertion_compare
+#print axioms Erdos66GlobalRankRestoration.uniformly_eventually_rank_restoration
+#print axioms Erdos66BatchCentralDeletion.union_hits_bound
+#print axioms Erdos66BatchCentralDeletion.union_deletion_loss
+#print axioms Erdos66BatchCentralDeletion.center_core_bounds
+#print axioms Erdos66BatchRankDownwardClipping.uniformly_eventually_batch_downward_clipping
+#print axioms Erdos66BatchRankHostClipping.exists_host_with_logarithmic_batches

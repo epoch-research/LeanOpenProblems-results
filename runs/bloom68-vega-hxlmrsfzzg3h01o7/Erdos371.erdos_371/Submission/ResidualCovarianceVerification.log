@@ -1,0 +1,13 @@
+PASS: all finite algebraic and exponent checks
+CRT classes: 216
+Type III atomic groupings: 25600
+b_z extraction identities: 2349
+coprimality inclusion-exclusion checks: 18225
+direct two-dimensional transform checks: 162
+exact Fourier factorizations: 4194
+exact Ramare coefficient identities: 8000
+exact divisor switches: 255
+exact double-completion factorizations: 2646
+four-sign residue and evenness checks: 4194
+rational exponent blocks: 25
+No floating-point checks, Spec targets, scale averages, or asymptotic claims.

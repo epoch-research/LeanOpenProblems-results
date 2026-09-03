@@ -1,0 +1,13 @@
+import Submission.NaturalShearEnergyAverageExplore
+
+/-! Axiom audit for centered-energy estimates of spatial shear averages. -/
+#print axioms Erdos66WeightedShearEnergy.weighted_sum_pairs
+#print axioms Erdos66WeightedShearEnergy.conv_pairCount
+#print axioms Erdos66WeightedShearEnergy.weighted_mass_error_sq
+#print axioms Erdos66WeightedShearEnergy.self_bound_image
+#print axioms Erdos66WeightedShearEnergy.scaleAddEquiv
+#print axioms Erdos66WeightedShearEnergy.weighted_row_shear_error_sq
+#print axioms Erdos66WeightedShearEnergy.normalized_weighted_row_shear_error_sq
+#print axioms Erdos66NaturalShearEnergyAverage.sum_prefix_indicator
+#print axioms Erdos66NaturalShearEnergyAverage.lower_average_error_sq
+#print axioms Erdos66NaturalShearEnergyAverage.lower_average_error_bound

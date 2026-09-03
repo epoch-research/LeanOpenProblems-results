@@ -1,0 +1,7 @@
+import Submission.TightIntervalTotient
+/-! # Axiom audit for TightIntervalTotient -/
+#print axioms Erdos821.Sieve.odd_reciprocal_totient_euler_le_thirteen_tenths
+#print axioms Erdos821.Sieve.reciprocal_totient_double_interval_le_thirteen_tenths
+#print axioms Erdos821.Sieve.even_reciprocal_totient_interval_le_thirteen_tenths
+#print axioms Erdos821.Sieve.evenBlockMass_upper_thirteen_tenths
+#print axioms Erdos821.Sieve.eventually_evenBlockMass_upper_thirteen_tenths

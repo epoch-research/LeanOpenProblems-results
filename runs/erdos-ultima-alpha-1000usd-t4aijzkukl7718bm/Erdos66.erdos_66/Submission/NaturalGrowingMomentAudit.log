@@ -1,0 +1,11 @@
+'Erdos66NaturalGrowingMomentCounterexample.pointwise_even_power_lt_factorial' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalGrowingMomentCounterexample.log_double_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalGrowingMomentCounterexample.exists_upper_bounded_counterexample' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalGrowingMomentCounterexample.finiteMean_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalGrowingMomentCounterexample.exists_actual_window_mean_counterexample' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

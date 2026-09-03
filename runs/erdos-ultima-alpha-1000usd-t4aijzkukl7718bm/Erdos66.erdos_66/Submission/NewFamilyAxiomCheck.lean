@@ -1,0 +1,6 @@
+import Submission.AsymmetricRepairExplore
+import Submission.MixedPrimeIntervalExplore
+#print axioms Erdos66MixedEnergy.mixed_energy_sq_le
+#print axioms Erdos66PolynomialMixedEnergy.exists_all_mixed_prefix_bounds
+#print axioms Erdos66MixedPrimeInterval.exists_prime_parameter_family
+#print axioms Erdos66AsymmetricRepair.asymmetricRepair_mixed

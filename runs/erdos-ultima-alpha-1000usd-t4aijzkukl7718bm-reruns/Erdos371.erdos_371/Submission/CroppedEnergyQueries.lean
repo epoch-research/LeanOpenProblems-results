@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+#check Nat.tendsto_div_const_atTop
+#check Filter.tendsto_nat_div_atTop
+#check Filter.tendsto_div_const_atTop
+#check Nat.div_lt_iff_lt_mul
+#check Nat.le_div_iff_mul_le
+#check Nat.lt_mul_div_succ
+#check Nat.div_add_mod
+#check Real.log_pow
+#check Real.log_le_log
+#check Real.sqrt_div
+#check Real.sqrt_sq
+#check Real.sq_sqrt
+#check Nat.cast_div_le
+#check Real.sqrt_lt
+#check Filter.tendsto_const_div_atTop_nhds_zero_nat
+#check Filter.Tendsto.eventually

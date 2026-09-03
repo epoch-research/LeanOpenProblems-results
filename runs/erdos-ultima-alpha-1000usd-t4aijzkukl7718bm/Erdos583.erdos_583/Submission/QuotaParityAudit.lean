@@ -1,0 +1,12 @@
+import Submission.QuotaParity
+/-! Axiom audit for arbitrary-quota trail parity. -/
+#print axioms Erdos583QuotaParityDevelopment.degree_sum
+#print axioms Erdos583QuotaParityDevelopment.trail_degree_add_endpoints_even
+#print axioms Erdos583QuotaParityDevelopment.quota_even_iff
+#print axioms Erdos583QuotaParityDevelopment.quota_odd_iff
+#print axioms Erdos583QuotaParityDevelopment.zero_quota_even
+#print axioms Erdos583QuotaParityDevelopment.even_root_quota_ge_two
+#print axioms Erdos583QuotaParityDevelopment.small_root_quota_one_iff
+#print axioms Erdos583QuotaParityDevelopment.normalize_root_with_pair_of_even_forest
+#print axioms Erdos583QuotaParityDevelopment.normalize_even_root_of_even_forest
+#print axioms Erdos583QuotaParityDevelopment.maximum_root_odd_of_even_forest

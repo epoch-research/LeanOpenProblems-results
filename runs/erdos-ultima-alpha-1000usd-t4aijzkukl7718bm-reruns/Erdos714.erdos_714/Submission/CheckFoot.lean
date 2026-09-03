@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check quadraticChar_eq_neg_one_iff_not_isSquare
+#check quadraticChar_eq_one_iff_isSquare
+#check quadraticChar_apply
+#check quadraticChar_mul
+#check quadraticChar_ne_zero
+#check IsSquare.zero
+#check MulChar.map_div
+#check MulChar.map_inv
+#check IsSquare.inv
+#check pow_two

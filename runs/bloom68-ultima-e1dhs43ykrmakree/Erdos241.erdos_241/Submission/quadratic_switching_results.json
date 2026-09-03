@@ -1,0 +1,360 @@
+[
+  {
+    "q": 3,
+    "f": "X^3 + 2*X + 1",
+    "W": "X^2 + 1",
+    "modulus": 13,
+    "sigma": -3,
+    "eligible_W": 3,
+    "B2_verified": true,
+    "triple_collision_pairs": 0,
+    "exponents_by_parameter": [
+      10,
+      9,
+      6
+    ],
+    "negative_by_parameter": [
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "q": 5,
+    "f": "X^3 + 3*X + 3",
+    "W": "X^2 + X + 1",
+    "modulus": 62,
+    "sigma": -1,
+    "eligible_W": 4,
+    "B2_verified": true,
+    "triple_collision_pairs": 3,
+    "certificate": {
+      "I": [
+        0,
+        0,
+        4
+      ],
+      "J": [
+        1,
+        1,
+        2
+      ],
+      "negative_counts": [
+        2,
+        3
+      ],
+      "d": 1,
+      "P": "X^4 + 2*X^3 + X^2 + 3*X + 3",
+      "Q": "X^2",
+      "R": "1",
+      "integer_sums": [
+        94,
+        94
+      ]
+    },
+    "exponents_by_parameter": [
+      23,
+      34,
+      26,
+      38,
+      48
+    ],
+    "negative_by_parameter": [
+      1,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "q": 7,
+    "f": "X^3 + 6*X^2 + 4",
+    "W": "X^2 + 1",
+    "modulus": 171,
+    "sigma": -3,
+    "eligible_W": 11,
+    "B2_verified": true,
+    "triple_collision_pairs": 7,
+    "certificate": {
+      "I": [
+        1,
+        5,
+        5
+      ],
+      "J": [
+        0,
+        3,
+        4
+      ],
+      "negative_counts": [
+        1,
+        2
+      ],
+      "d": 1,
+      "P": "X^4 + X^3 + 6*X^2 + 2*X",
+      "Q": "X^2 + 2*X + 4",
+      "R": "6",
+      "integer_sums": [
+        224,
+        53
+      ]
+    },
+    "exponents_by_parameter": [
+      8,
+      152,
+      43,
+      34,
+      11,
+      36,
+      138
+    ],
+    "negative_by_parameter": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "q": 11,
+    "f": "X^3 + 2*X + 9",
+    "W": "X^2 + 3",
+    "modulus": 665,
+    "sigma": -3,
+    "eligible_W": 27,
+    "B2_verified": true,
+    "triple_collision_pairs": 33,
+    "certificate": {
+      "I": [
+        0,
+        2,
+        2
+      ],
+      "J": [
+        1,
+        1,
+        1
+      ],
+      "negative_counts": [
+        1,
+        3
+      ],
+      "d": 2,
+      "P": "X^5 + 4*X^4 + 8*X^3 + 8*X^2 + 5*X + 7",
+      "Q": "X",
+      "R": "4*X + 2",
+      "integer_sums": [
+        218,
+        1548
+      ]
+    },
+    "exponents_by_parameter": [
+      118,
+      516,
+      50,
+      63,
+      215,
+      86,
+      162,
+      522,
+      108,
+      119,
+      607
+    ],
+    "negative_by_parameter": [
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "q": 19,
+    "f": "X^3 + 4*X + 17",
+    "W": "X^2 + 1",
+    "modulus": 3429,
+    "sigma": 5,
+    "eligible_W": 87,
+    "B2_verified": true,
+    "triple_collision_pairs": 137,
+    "certificate": {
+      "I": [
+        1,
+        2,
+        2
+      ],
+      "J": [
+        0,
+        3,
+        15
+      ],
+      "negative_counts": [
+        0,
+        1
+      ],
+      "d": 1,
+      "P": "X^4 + 14*X^3 + 8*X^2 + 15*X",
+      "Q": "X^2 + X + 7",
+      "R": "13",
+      "integer_sums": [
+        6408,
+        2979
+      ]
+    },
+    "exponents_by_parameter": [
+      1433,
+      1442,
+      2483,
+      360,
+      3011,
+      3271,
+      3100,
+      672,
+      2011,
+      3089,
+      1335,
+      1610,
+      2065,
+      1187,
+      170,
+      1186,
+      2885,
+      1789,
+      1902
+    ],
+    "negative_by_parameter": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0
+    ]
+  },
+  {
+    "q": 31,
+    "f": "X^3 + X + 28",
+    "W": "X^2 + 2",
+    "modulus": 14895,
+    "sigma": 9,
+    "eligible_W": 245,
+    "B2_verified": true,
+    "triple_collision_pairs": 600,
+    "certificate": {
+      "I": [
+        1,
+        3,
+        23
+      ],
+      "J": [
+        0,
+        0,
+        21
+      ],
+      "negative_counts": [
+        1,
+        3
+      ],
+      "d": 2,
+      "P": "X^5 + 6*X^4 + 25*X^3 + 30*X^2",
+      "Q": "X + 8",
+      "R": "29*X + 21",
+      "integer_sums": [
+        27724,
+        27724
+      ]
+    }
+  },
+  {
+    "q": 61,
+    "f": "X^3 + 7*X + 59",
+    "W": "X^2 + 2",
+    "modulus": 113490,
+    "sigma": -1,
+    "eligible_W": 900,
+    "B2_verified": true,
+    "triple_collision_pairs": 4453,
+    "certificate": {
+      "I": [
+        0,
+        5,
+        5
+      ],
+      "J": [
+        1,
+        15,
+        58
+      ],
+      "negative_counts": [
+        1,
+        2
+      ],
+      "d": 1,
+      "P": "X^4 + 53*X^3 + 2*X^2 + 19*X + 47",
+      "Q": "X^2 + 46*X",
+      "R": "7",
+      "integer_sums": [
+        85073,
+        85073
+      ]
+    }
+  },
+  {
+    "q": 101,
+    "f": "X^3 + 3*X + 99",
+    "W": "X^2 + 7",
+    "modulus": 515150,
+    "sigma": -3,
+    "eligible_W": 2502,
+    "B2_verified": true,
+    "triple_collision_pairs": 20060,
+    "certificate": {
+      "I": [
+        1,
+        2,
+        44
+      ],
+      "J": [
+        0,
+        0,
+        53
+      ],
+      "negative_counts": [
+        2,
+        3
+      ],
+      "d": 1,
+      "P": "X^4 + 4*X^3 + 9*X^2",
+      "Q": "X^2 + 98*X + 2",
+      "R": "7",
+      "integer_sums": [
+        1001649,
+        1516799
+      ]
+    }
+  }
+]

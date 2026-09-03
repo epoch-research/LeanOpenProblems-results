@@ -1,0 +1,12 @@
+Submission/AdaptiveHitSelectionExplore.lean:71:4: error: Type mismatch: After simplification, term
+  hsmall
+ has type
+  ∑ z ∈ T, Real.exp (↑m * b z - t * R z) < 1
+but is expected to have type
+  ∑ x ∈ T, Real.exp (t * load s₀ x + ↑m * b x - t * R x) < 1
+Submission/AdaptiveHitSelectionExplore.lean:122:4: error: Type mismatch: After simplification, term
+  hh
+ has type
+  Real.exp (t * load s z - t * R z) ≤ ∑ x ∈ T, Real.exp (t * load s x - t * R x)
+but is expected to have type
+  Real.exp (t * load s z - t * R z) ≤ potential m s

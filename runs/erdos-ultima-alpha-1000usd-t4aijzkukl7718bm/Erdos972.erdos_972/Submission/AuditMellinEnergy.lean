@@ -1,0 +1,12 @@
+import Submission.MellinRemainderEnergy
+
+/-! Axiom audit for unrestricted-frequency Mellin energy bounds. -/
+
+#print axioms Erdos972MellinMeanSquare.frequencySum_mean_square
+#print axioms Erdos972MellinMeanSquare.mellin_mean_square
+#print axioms Erdos972MellinMeanSquare.actual_divisorCoeff_mean_square
+#print axioms Erdos972MellinMeanSquare.dyadic_divisorCoeff_mean_square
+#print axioms Erdos972MellinMeanSquare.vonMangoldt_energy
+#print axioms Erdos972MellinRemainderEnergy.remainder_abs_bound
+#print axioms Erdos972MellinRemainderEnergy.remainder_energy
+#print axioms Erdos972MellinRemainderEnergy.remainder_mellin_mean_square

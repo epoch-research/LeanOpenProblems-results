@@ -1,0 +1,9 @@
+import Submission.SingletonRotation
+/-! Axiom audit of the singleton-token rotation lemmas. -/
+#print axioms Erdos583SingletonRotationDevelopment.escape_slide_receiver
+#print axioms Erdos583SingletonRotationDevelopment.finish_exposed_receiver
+#print axioms Erdos583SingletonRotationDevelopment.shorten_oriented_one_exception
+#print axioms Erdos583SingletonRotationDevelopment.purify_short_core_member
+#print axioms Erdos583SingletonRotationDevelopment.singleton_neighbor_exchange
+#print axioms Erdos583SingletonRotationDevelopment.singleton_augmentation_of_no_purified_neighbor
+#print axioms Erdos583SingletonRotationDevelopment.rooted_singleton_rotation

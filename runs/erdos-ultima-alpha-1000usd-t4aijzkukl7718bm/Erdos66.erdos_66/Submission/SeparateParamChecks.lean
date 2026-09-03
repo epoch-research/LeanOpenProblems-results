@@ -1,0 +1,9 @@
+import Submission.GridBandPartitionExplore
+#check Erdos66ParabolaRepair.exists_unused_parameter
+#check Finset.equivFin
+#check Fintype.equivFinOfCardEq
+#check Finset.equivOfCardEq
+#check Finset.coe_sort_coe
+#check Function.Embedding.injective
+#check Fintype.card_coe
+#check Fintype.card_congr

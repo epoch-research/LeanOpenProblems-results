@@ -1,0 +1,12 @@
+import Submission.PositiveBinaryExpansionExplore
+import Submission.MatchingPartitionExplore
+import Submission.BoundedConflictExplore
+#check Erdos66MatchingPartition.matchings
+#check Finset.card_biUnion_le_card_mul
+#check Finset.card_insert_le
+#check Finset.card_le_three
+#check Finset.sum_sq_le_sum_mul_sum
+#check Finset.prod_le_prod
+#check Finset.prod_biUnion
+#check Finset.prod_const
+#check Finset.mem_triple

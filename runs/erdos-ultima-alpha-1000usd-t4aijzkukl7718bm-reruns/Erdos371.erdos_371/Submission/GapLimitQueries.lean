@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+open Filter
+#check Real.tendsto_log_div_id_atTop
+#check Real.tendsto_log_div_rpow_atTop
+#check Nat.pow_lt_pow_right
+#check Nat.pow_le_pow_iff_left
+#check tendsto_pow_atTop
+#check Nat.find_min
+#check Nat.find_spec

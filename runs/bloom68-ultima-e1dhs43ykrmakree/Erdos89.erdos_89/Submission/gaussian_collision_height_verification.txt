@@ -1,0 +1,23 @@
+Balanced occupancy collision formula: 64 exact minima checked
+Translated grids L=2, r=4, n=16: D=20, all proper ideal rows=10, large rows=9, matching ideals/norms=4/4; exact fibers and gcds passed
+Translated grids L=3, r=4, n=36: D=50, all proper ideal rows=26, large rows=21, matching ideals/norms=8/7; exact fibers and gcds passed
+Translated grids L=4, r=4, n=64: D=93, all proper ideal rows=47, large rows=33, matching ideals/norms=14/11; exact fibers and gcds passed
+Translated grids L=3, r=9, n=81: D=125, all proper ideal rows=61, large rows=56, matching ideals/norms=13/12; exact fibers and gcds passed
+Translated grids L=4, r=16, n=256: D=429, all proper ideal rows=197, large rows=183, matching ideals/norms=26/23; exact fibers and gcds passed
+CRT n=3, H=1: primitive, 1 normalized subsets, 1 exact reciprocal sums, 3 J=1/2 witnesses; D=3, coordinate bits <= 9
+CRT n=3, H=2: primitive, 1 normalized subsets, 1 exact reciprocal sums, 3 J=1/2 witnesses; D=3, coordinate bits <= 18
+CRT n=4, H=1: primitive, 5 normalized subsets, 5 exact reciprocal sums, 6 J=1/2 witnesses; D=6, coordinate bits <= 23
+CRT n=3, H=9: primitive, 1 normalized subsets, 0 exact reciprocal sums, 3 J=1/2 witnesses; D=3, coordinate bits <= 90
+CRT n=5, H=25: primitive, 16 normalized subsets, 0 exact reciprocal sums, 10 J=1/2 witnesses; D=10, coordinate bits <= 1354
+CRT n=7, H=49: primitive, 99 normalized subsets, 0 exact reciprocal sums, 21 J=1/2 witnesses; D=21, coordinate bits <= 6564
+Normalized point tree n=16: 15 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=36: 35 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=64: 63 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=81: 80 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=3: 2 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=3: 2 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=4: 3 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=3: 2 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=5: 4 proper splits; entropy telescoping checked as an exact integer product
+Normalized point tree n=7: 6 proper splits; entropy telescoping checked as an exact integer product
+PASS: all asserted finite checks. No conjectural support-drift inequality was tested or assumed.

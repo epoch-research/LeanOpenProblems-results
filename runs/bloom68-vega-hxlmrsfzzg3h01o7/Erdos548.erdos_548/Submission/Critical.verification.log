@@ -1,0 +1,66 @@
+$ lake env lean --version
+Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+$ lake env lean -o .lake/build/lib/lean/Submission/Critical.olean -i .lake/build/lib/lean/Submission/Critical.ilean Submission/Critical.lean
+'Erdos548.Critical.exists_adj_not_mem_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.isContained_of_subsingleton' does not depend on any axioms
+'Erdos548.Critical.isContained_of_isTree_of_card_le_degree_add_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_minDegree' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.isContained_of_isTree_of_card_eq_succ_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.fin_tree_isContained_of_minDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_edgeSet_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_induce_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.excess_of_isEmpty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.nonempty_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_induced_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_induced_critical_of_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.incidentEdges_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_incidentEdges_singleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.image_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_edgeSet_induce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.edgeSet_diff_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.ncard_induce_compl_add_incidentEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.proper_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.incidentEdges_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.neighborSet_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.two_mul_neighborSet_ncard_ge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.IsInducedCritical.neighborSet_ncard_ge_ceil' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Critical.ncard_neighborSet_eq_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.two_mul_minDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.minDegree_ge_ceil' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.minDegree_ge_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_degree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.maxDegree_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_neighborSet_ncard_ge_of_excess_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.IsInducedCritical.maxDegree_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Critical.exists_critical_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+Compilation exit status: 0
+$ lake env lean Submission/CriticalVerification.lean
+Interface/boundary verification exit status: 0
+
+Source/import/axiom audit: PASS
+Only explicit import: FormalConjecturesUtil
+Direct Lean dependencies: Init.olean, FormalConjecturesUtil.olean
+No sorry/admit/native_decide, no new axiom declarations, no Spec/Auxiliary dependencies.
+All 38 theorem axiom audits complete; union = ['Classical.choice', 'Quot.sound', 'propext']
+Seven interface/boundary examples compiled with no warnings or errors.
+Critical.lean SHA256: c0dc0d37acc9f1ca3173b6d144e326ccfcbf5a63eb98216fa6099e055b9d71ea
+UNCHANGED Submission/Spec.lean SHA256: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+UNCHANGED Submission/Auxiliary.lean SHA256: 227fcc37cac1313bd1d9c8033397195fa990f018c784ba9a53e307f6ef1e28c1

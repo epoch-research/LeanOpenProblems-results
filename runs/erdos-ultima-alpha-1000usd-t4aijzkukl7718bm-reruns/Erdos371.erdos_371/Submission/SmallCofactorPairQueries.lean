@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check Nat.odd_iff_not_even
+#check Nat.odd_iff_not_two_dvd
+#check Nat.Prime.odd_of_ne_two
+#check Nat.Coprime.not_dvd_of_dvd_right
+#check Nat.div_eq_of_lt_le
+#check Nat.div_eq_iff_lt_le
+#check Nat.div_eq_of_lt
+#check Nat.mul_div_cancel
+#check Nat.maxPrimeFac_dvd
+#check Nat.odd_iff
+#check Odd.not_two_dvd_nat
+#check Nat.not_prime_iff_exists_dvd_lt
+#check Nat.le_maxPrimeFac
+#check Finset.Icc_succ_right
+#check Finset.Icc_succ_left

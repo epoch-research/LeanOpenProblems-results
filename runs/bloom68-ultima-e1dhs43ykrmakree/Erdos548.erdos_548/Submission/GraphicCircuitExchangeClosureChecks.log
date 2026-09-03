@@ -1,0 +1,11 @@
+circuit/exchange audits r=2: done
+circuit/exchange audits r=3: done
+circuit/exchange audits r=4: done
+boundary r=2: 1 target trees, all exact maps verified
+boundary r=3: 11 target trees, all exact maps verified
+boundary r=4: 75 target trees, all exact maps verified
+boundary r=5: 473 target trees, all exact maps verified
+unbounded-family construction audited at r=2,...,10
+COUNTS {'boundary_beyond_old_budget': 2240, 'boundary_embeddings': 2240, 'boundary_matching_size_2_embeddings': 922, 'boundary_matching_size_3_embeddings': 234, 'boundary_max_budget_embeddings': 1687, 'circuits': 54, 'clique_boundary_embeddings': 560, 'coincident_attachment_multi_boundary_embeddings': 304, 'component_identity_subsets': 81064, 'cut_identities': 3780, 'cyclic_family_instances': 9, 'cyclic_family_small_set_checks': 1296, 'degree_r_plus_one_interfaces': 74, 'direct_component_counts': 6480, 'fundamental_circuit_extractions': 54, 'hole_relocations': 1295, 'independent_subset_recounts': 2100, 'multi_boundary_embeddings': 1156, 'proper_subset_inequalities': 40532, 'separator_identities': 232, 'tight_contractions': 92, 'verified_exchange_steps': 2055}
+Spec SHA-256: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+PASS in 4.813s; no universal embedding conclusion inferred.

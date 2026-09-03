@@ -1,0 +1,10 @@
+import Submission.LocalCanonicalRows
+#check List.filter_map
+#check List.map_filter
+#check List.get_map
+#check List.getElem_map
+#check List.get_eq_getElem
+#check List.filter_congr
+#check List.filter_map_eq_map
+#check List.filter_map
+#check Sym2.mk

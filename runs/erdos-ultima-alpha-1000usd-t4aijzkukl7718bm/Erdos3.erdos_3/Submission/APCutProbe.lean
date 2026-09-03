@@ -1,0 +1,13 @@
+import Submission.IntervalFourUniformity
+#check ceilDiv_le_iff_le_mul
+#check gc_mul_ceilDiv
+#check Nat.sub_le_sub_right
+#check Finset.sum_Ico_eq_sum_range
+#check Finset.sum_Ico_eq_sum_range'
+#check Fin.sum_univ_eq_sum_range
+#check Finset.sum_range_eq_sum_fin
+#check Finset.sum_range_le_sum_range
+#check Nat.lt_sub_iff_add_lt
+#check Nat.add_sub_assoc
+#check Nat.sub_add_comm
+#check Nat.mod_eq_sub_mod

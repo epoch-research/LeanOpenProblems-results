@@ -1,0 +1,9 @@
+Spec.lean SHA-256 unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+Parity, edge preservation, idempotence, and composition: 842 maps PASS
+Exact P on all 16 square patterns and every block size: 336 cases PASS
+Exact symmetrized K on all 16 square patterns: 96 cases PASS
+Unbiased-fold voter update and exact +2 potential drift: 26208 cases PASS
+Joint-sector PSD correction (exact rational certificates): 9 matrices PASS
+Full-injection Kneser reflection identities: 82 cases PASS
+Full-injection completion identities (no relaxed maps counted as injections): PASS
+All finite audits PASS. Missing global reflection estimate NOT established.

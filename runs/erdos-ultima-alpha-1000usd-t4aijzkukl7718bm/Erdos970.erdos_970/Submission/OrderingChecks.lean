@@ -1,0 +1,10 @@
+import Submission.ContinuousIntervalOrdering
+#check List.orderedInsert
+#check List.orderedInsert_cons
+#check List.insertionSort_cons
+#check List.mem_insertionSort
+#check List.mem_orderedInsert
+#check List.pairwise_insertionSort
+#check List.insertionSort_of_sorted
+#check List.orderedInsert_of_le
+#check List.insertionSort_eq_self

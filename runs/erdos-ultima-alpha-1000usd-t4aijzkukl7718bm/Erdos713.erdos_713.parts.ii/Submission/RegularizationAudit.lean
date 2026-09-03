@@ -1,0 +1,7 @@
+import FormalConjecturesUtil
+import Submission.UpToRegularization
+#print axioms Erdos713Regularization.global_upper
+#print axioms Erdos713Regularization.small_set_deletion_bound
+#print axioms Erdos713Regularization.trim_high_degrees
+#print axioms Erdos713Regularization.exists_almost_regular_witnesses
+#print axioms Erdos713Regularization.exists_almost_regular_graphs

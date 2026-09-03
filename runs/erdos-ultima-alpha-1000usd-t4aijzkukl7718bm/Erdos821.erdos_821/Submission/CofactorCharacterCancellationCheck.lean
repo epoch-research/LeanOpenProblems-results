@@ -1,0 +1,13 @@
+import Submission.CofactorCharacterCancellation
+/-! # Axiom audit for cancellation in cofactor intervals. -/
+#print axioms Erdos821.AnalyticSieve.sum_multiples_natural_interval
+#print axioms Erdos821.AnalyticSieve.polya_vinogradov_natural_interval
+#print axioms Erdos821.AnalyticSieve.primeSiftedCharacter
+#print axioms Erdos821.AnalyticSieve.primeSiftedCharacter_insert
+#print axioms Erdos821.AnalyticSieve.primeSiftedCharacter_prime_mul
+#print axioms Erdos821.AnalyticSieve.primeSiftedCharacter_interval_bound
+#print axioms Erdos821.AnalyticSieve.coprime_iff_avoid_primeFactors
+#print axioms Erdos821.AnalyticSieve.changeLevel_eq_primeSiftedCharacter
+#print axioms Erdos821.AnalyticSieve.changeLevel_interval_character_bound
+#print axioms Erdos821.AnalyticSieve.cofactor_character_interval_bound
+#print axioms Erdos821.AnalyticSieve.exists_uniform_cofactor_character_bound

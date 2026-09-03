@@ -1,0 +1,11 @@
+import Submission.CommonPrimeOffDiagonal
+/-! Axiom audit for the sparse proper-prime-power removal and exact off-diagonal reduction. -/
+#print axioms Erdos972LargeSquareDivisors.proper_prime_power_has_large_square
+#print axioms Erdos972LargeSquareDivisors.pairLargeSquareSet_card_le
+#print axioms Erdos972SparseDivisorMoment.sparse_sum_fourth_bound
+#print axioms Erdos972PrimeFactorError.primeFactorError_normalized_fourth
+#print axioms Erdos972PrimeFactorErrorScales.eventually_small_prime_factor_error
+#print axioms Erdos972FourFactorDiagonalSplit.fourFactor_diagonal_split
+#print axioms Erdos972FourFactorDiagonalSplit.prime_offDiagonal_support
+#print axioms Erdos972PrimeFactorDiagonalScales.eventually_small_prime_diagonal
+#print axioms Erdos972CommonPrimeOffDiagonal.exists_typeI_and_prime_offDiagonal_scale

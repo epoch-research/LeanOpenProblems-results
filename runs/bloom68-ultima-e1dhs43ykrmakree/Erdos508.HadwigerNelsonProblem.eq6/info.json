@@ -1,0 +1,23 @@
+{
+  "id": "Erdos508.HadwigerNelsonProblem.eq6",
+  "epoch": 1,
+  "uuid": "7LdQwVNVgTqKujRgpgxWSH",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0
+  },
+  "model_usage": {
+    "epoch/ultima-alpha": {
+      "input_tokens": 139579,
+      "output_tokens": 3477902,
+      "total_tokens": 181897755,
+      "input_tokens_cache_write": 18408069,
+      "input_tokens_cache_read": 159872205,
+      "reasoning_tokens": 2243512,
+      "total_cost": 300.02148875000046
+    }
+  },
+  "oeis_id": null
+}

@@ -1,0 +1,6 @@
+import Submission.DeficitWeightedCompletionExplore
+
+/-! Axiom audit for actual-deficit weighted completion. -/
+#print axioms Erdos66MultiplicityMatchingSpikes.asymptotic_multiplicity_spikes
+#print axioms Erdos66DeficitWeightedCompletion.completion_of_summable_deficit
+#print axioms Erdos66DeficitWeightedCompletion.completion_of_upper_tail_and_summable_deficit

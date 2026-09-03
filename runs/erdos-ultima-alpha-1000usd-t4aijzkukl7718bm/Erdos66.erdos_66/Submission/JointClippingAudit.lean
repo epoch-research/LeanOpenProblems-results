@@ -1,0 +1,11 @@
+import Submission.JointLogarithmicClippingExplore
+/-! Permitted-axiom audit for joint boundary/triple selection and clipping. -/
+#print axioms Erdos66GeneralCentralTripleMean.eventually_comparable_poly_mean
+#print axioms Erdos66NaturalPositivePattern.exists_pattern_selection
+#print axioms Erdos66PositivePatternCompactness.exists_summable_costs_with_patterns
+#print axioms Erdos66PatternSparsePowerProfile.exists_pattern_sparse_power_potentials
+#print axioms Erdos66PolynomialPatternBudget.exists_polynomial_pattern_bounds
+#print axioms Erdos66JointBoundaryTriplePatterns.exists_joint_pattern_bounds
+#print axioms Erdos66RarePatternCodeGrowth.tripleCode_shift_bound
+#print axioms Erdos66JointBoundaryTripleCounts.exists_joint_boundary_triple_rounding
+#print axioms Erdos66JointLogarithmicClipping.exists_uniform_central_log_clipping

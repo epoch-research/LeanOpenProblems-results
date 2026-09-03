@@ -1,0 +1,23 @@
+'Erdos66RemoteCentralDeletion.quotient_square_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RemoteCentralDeletion.central_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RemoteCentralDeletion.eventually_bounded_central_packet' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SquareExponentSchedule.index_lt_activeBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareExponentSchedule.activeBound_square_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareExponentSchedule.activeBound_log_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SquareExponentSchedule.exists_dominating_schedule' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseCentralDeletion.hits_biUnion_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseCentralDeletion.packetUnion_cutoff_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseCentralDeletion.packetUnion_loss_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseCentralDeletion.off_center_loss_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseCentralDeletion.packetUnion_negligible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketCentralSurgery.boundary_core_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketCentralSurgery.exists_central_surgery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SparseMaskedPerturbation.sparse_dyadic_power_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SparseMaskedPerturbation.power_exception_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactBracketSparseHoles.exists_exact_brackets_and_sparse_holes' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

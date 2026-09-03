@@ -1,0 +1,17 @@
+import Submission.NormPolynomialLevels
+import Submission.TranslatedNormCounts
+#check Polynomial.exists_not_isRoot_of_natDegree_lt_card
+#check Polynomial.exists_eval_ne_zero
+#check Polynomial.ne_zero_of_coeff_ne_zero
+#check Polynomial.card_roots'
+#check Fintype.card_le_of_injective
+#check Fintype.card_subtype_compl
+#check Finset.card_filter_add_card_filter_not
+#check Finset.card_filter_le
+#check Function.Embedding.refl
+#check Fin.castLEEmb
+#check SimpleGraph.IsContained
+#check Erdos714Packing.incidence_edges
+#check Finset.card_le_card_of_injOn
+#check Polynomial.coeff_X_pow
+#check Fintype.sum_prod_type

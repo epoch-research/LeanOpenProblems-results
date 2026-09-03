@@ -1,0 +1,11 @@
+import Submission.RowShearNaturalAverageExplore
+import Submission.CenteredMixedEnergyExplore
+#check AddEquiv.mulLeft
+#check AddEquiv.mulLeft₀
+#check LinearEquiv.mulLeft
+#check Equiv.mulLeft₀
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Finset.sum_fiberwise
+#check Finset.sum_filter
+#check Finset.sum_ite_eq'
+#check Finset.sum_image

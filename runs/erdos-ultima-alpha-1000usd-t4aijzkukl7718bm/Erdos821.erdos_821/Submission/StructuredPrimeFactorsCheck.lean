@@ -1,0 +1,18 @@
+import Submission.StructuredPrimeFactors
+
+/-! Exact-type and axiom audit for structured predecessor prime factors. -/
+
+#check @Erdos821.prime_product_divisor_count_le_choose
+#print axioms Erdos821.prime_product_divisor_count_le_choose
+#check @Erdos821.product_progression_weight_le_structured_count
+#print axioms Erdos821.product_progression_weight_le_structured_count
+#check @Erdos821.eventually_product_mangoldt_weight_lower
+#print axioms Erdos821.eventually_product_mangoldt_weight_lower
+#check @Erdos821.eventually_structured_prime_count
+#print axioms Erdos821.eventually_structured_prime_count
+#check @Erdos821.structuredWitnessPrimes_has_divisor
+#print axioms Erdos821.structuredWitnessPrimes_has_divisor
+#check @Erdos821.structuredWitnessPrimes_smooth
+#print axioms Erdos821.structuredWitnessPrimes_smooth
+#check @Erdos821.eventually_structured_smooth_prime_family
+#print axioms Erdos821.eventually_structured_smooth_prime_family

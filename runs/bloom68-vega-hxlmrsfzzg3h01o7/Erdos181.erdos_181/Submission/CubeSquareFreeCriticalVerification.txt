@@ -1,0 +1,10 @@
+PASS: 4946 exhaustive bipartite hosts; 28129 individual original-edge deletions.
+PASS: full-square peeling budgets and link capacities; 5566 small greedy prism audits.
+PASS: paired-colour rectangle floor, energy increments, degree/codegree stability.
+PASS: exact injective cut-counting bounds for C4 and 256 four-by-four Q3 tests.
+PASS: all prism edges and distinct original endpoints in complete-host tests up to 32 source vertices.
+PASS: 6144 actual-rectangle matching switches and their exact variation formula.
+PASS: 28 explicit reservoir dimension-extensions (all cube edges checked), 48 count-multiplicity tests, and 128 square-budget tests.
+PASS: all-dimensional constants independently reduced to positive polynomials; omitted cube-edge counts.
+NOT ASSERTED: critical cube-free comparison, completion of tree prisms to cubes, or R(Q_d)=O(2^d).
+Spec.lean unchanged: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b

@@ -1,0 +1,28 @@
+'Erdos66VarianceMatchingExponential.mean_exp_variance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66VarianceMatchingExponential.matching_variance_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66VarianceMatchingExponential.colorFiber_variance_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66VarianceMatchingExponential.colorFiber_variance_shifted' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66VarianceMatchingExponential.bernstein_parameters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66VariableThresholdSelection.exists_variable_thresholds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BernsteinColorEnergy.bernsteinEnergy_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinColorEnergy.ordered_energy_of_fiber_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinColorEnergy.exists_bernstein_ordered_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinColorEnergy.exists_bernstein_centered_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BernsteinRootBudget.exists_bernstein_joint_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinRootBudget.exists_pattern_bernstein_root_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BernsteinActualBudget.exists_actual_bernstein_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinBudgetParameters.variance_le_mean_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BernsteinBudgetParameters.variance_le_mean_times_range' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BernsteinBudgetParameters.root_relative_variance_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

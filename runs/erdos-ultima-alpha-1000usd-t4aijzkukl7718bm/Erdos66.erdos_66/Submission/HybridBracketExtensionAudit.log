@@ -1,0 +1,72 @@
+'Erdos66HybridPrefixPrediction.monotone_weighted_prefix_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66HybridPrefixPrediction.hybrid_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.hybrid_eq_profile_add_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.hybrid_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.prefix_error_mixed_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.prefix_error_mixed_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.prefix_error_self_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.transition_bias_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.far_future_bias_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.uniform_far_future_prediction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.finite_mean_eq_conv_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.hybrid_diag_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.far_future_bernoulli_mean_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66HybridPrefixPrediction.uniform_far_future_bernoulli_mean' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66HybridPrefixPrediction.transition_diag_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66HybridPrefixPrediction.transition_bernoulli_bias_control' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.clampMass_of_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.clampMass_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.clamp_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_continuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.old_mass_integer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_finite_brackets' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_rawHybrid_old' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.mass_rawHybrid_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.clampMass_above' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.clampMass_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_le_raw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.raw_le_continuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_l1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.prefix_discrepancy_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClampedPrefixContinuation.continuation_l1_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.unit_mul_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.unit_prod_sub_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.repMean_l1_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.sum_fin_eq_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.selected_pref' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.rounded_old_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.rounded_old_membership' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.rounded_prefix_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.continuation_mean_correction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BracketPreservingExtension.exists_bracket_preserving_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BracketPreservingExtension.harmonic_prefix_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66BracketPreservingExtension.continuation_far_future_mean' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BracketPreservingExtension.continuation_transition_mean' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66BracketPreservingExtension.exists_harmonic_far_extension' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8061/8062] Built Challenge (4.7s)
+  warning: run/Challenge.lean:17:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:17:8: Docstrings should use `$ $` or `$$ $$` for math formulas instead of `\[ \]` or `\( \)`.
+  
+  Note: This linter can be disabled with `set_option linter.style.latex_docstring false`
+  warning: run/Challenge.lean:25:8: declaration uses 'sorry'
+  Build completed successfully (8062 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos714.erdos_714, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8061/8062] Built Solution (3.9s)
+  warning: run/Solution.lean:17:8: declaration uses 'sorry'
+  warning: run/Solution.lean:17:8: Docstrings should use `$ $` or `$$ $$` for math formulas instead of `\[ \]` or `\( \)`.
+  
+  Note: This linter can be disabled with `set_option linter.style.latex_docstring false`
+  warning: run/Solution.lean:25:8: declaration uses 'sorry'
+  Build completed successfully (8062 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos714.erdos_714, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  
+  uncaught exception: Illegal axiom detected: 'sorryAx'
+

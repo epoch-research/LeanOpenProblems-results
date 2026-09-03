@@ -1,0 +1,11 @@
+import Submission.PrimeLogMoments
+#check Real.exp_nat_mul
+#check Real.exp_mul_nat
+#check Nat.floor_le
+#check Nat.le_floor
+#check Nat.le_ceil
+#check Nat.cast_add_one_pos
+#check Finset.sum_subset
+#check Real.log_prod
+#check Real.exp_pos
+#check Finset.card_image_le

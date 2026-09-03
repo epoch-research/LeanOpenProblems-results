@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+import Submission.ExpanderPruning
+open SimpleGraph
+#check SimpleGraph.map_adj
+#check SimpleGraph.Copy.mapNeighborSet
+#check SimpleGraph.Copy.mapNeighborFinset
+#check Nat.card_le_card_of_injective
+#check SimpleGraph.card_incidenceFinset_eq_degree
+#check SimpleGraph.mem_incidenceFinset
+#check SimpleGraph.mem_incidenceSet
+#check Finset.card_image_of_injective
+#check SimpleGraph.card_edgeFinset_map

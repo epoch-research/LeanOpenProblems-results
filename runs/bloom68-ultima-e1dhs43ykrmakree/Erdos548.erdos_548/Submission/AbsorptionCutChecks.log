@@ -1,0 +1,48 @@
+SMALL CRITICAL HOSTS (all nonisomorphic, normalized surplus):
+n k | absorption | large-cross-only | cross/no-budget | no-cross
+4 3 1 0 0 0
+5 3 1 1 0 1
+5 4 2 0 0 0
+6 3 1 0 0 4
+6 4 2 0 0 2
+6 5 2 0 0 0
+7 3 2 0 0 6
+7 4 19 0 6 51
+7 5 19 0 0 10
+7 6 5 0 0 0
+8 3 2 0 0 10
+8 4 6 0 0 29
+8 5 177 0 80 248
+8 6 45 0 0 21
+8 7 5 0 0 0
+9 3 0 0 0 16
+9 4 976 0 85 2587
+9 5 5167 1 900 5808
+9 6 2769 0 1595 3699
+9 7 225 0 0 69
+9 8 11 0 0 0
+Totals by certificate status: {'absorption': 9437, 'large-cross terminal only': 2, 'no cross cut': 12561, 'cross but no budget': 2666}
+First graph6 examples: {'absorption': (4, 3, 'C^'), 'large-cross terminal only': (5, 3, 'DFw'), 'no cross cut': (5, 3, 'DUw'), 'cross but no budget': (7, 4, 'F?rvo')}
+Unit-budget family: t=2..20; all eligible cuts have deficit gap exactly 1.
+Matching-cone equality example: k=9, n=13, two verified absorbing pairs of margin 0.
+Regular-core families: r=3..12, full oriented criticality certificates,
+  no-cut/type certificates, all-subgraph CL obstruction, and explicit embeddings.
+Rook family: max codegree r+1, min neighborhood difference r, clique number r+1;
+  codegree>=3 relation and all outside-neighbor bounds independently audited.
+CHECK COUNTS:
+  complement unit-barrier shape audits: 406
+  constructive tree embeddings checked: 7114
+  critical hosts through order 9: 24666
+  critical zero-gap equality cuts: 2
+  full criticality orientation certificates: 29
+  geng candidates: 26784
+  independent full-cut enumeration comparisons: 135
+  order-k+2 complete classifications: 393
+  proper subsets checked: 14473499
+  rook codegree-relation maximal cliques: 318
+  rook neighborhood-pair audits: 149146
+  rook obstruction hosts: 10
+  saturated-high-clique host audits: 9662
+  sharp high-clique cut identities: 2231
+  unit-budget family cuts checked: 8189
+PASS; Spec.lean unchanged; elapsed seconds: 7.81

@@ -1,0 +1,12 @@
+import Submission.NonbridgeCore
+/-! Axiom audit of graph-level restrictions on critical failures. -/
+#print axioms Erdos583NonbridgeCoreDevelopment.repeated_first_edge_not_bridge
+#print axioms Erdos583NonbridgeCoreDevelopment.exposed_edge_not_bridge
+#print axioms Erdos583NonbridgeCoreDevelopment.two_zero_nonbridge_neighbors
+#print axioms Erdos583NonbridgeCoreDevelopment.two_even_nonbridge_neighbors
+#print axioms Erdos583NonbridgeCoreDevelopment.nonbridge_has_other_neighbor
+#print axioms Erdos583NonbridgeCoreDevelopment.core_no_dead_end
+#print axioms Erdos583NonbridgeCoreDevelopment.core_not_acyclic
+#print axioms Erdos583NonbridgeCoreDevelopment.exists_cycle_no_consecutive_odd
+#print axioms Erdos583NonbridgeCoreDevelopment.core_endpoints_opposite_of_even_forest
+#print axioms Erdos583NonbridgeCoreDevelopment.failure_has_critical_core_cycle

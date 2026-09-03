@@ -1,0 +1,13 @@
+import Submission.FreshOddExtensionExplore
+import Submission.OddExtensionFlatSetExplore
+#check RingHom.fieldRange
+#check RingHom.mem_fieldRange
+#check Erdos66OriginRepair.square_in_base_of_odd_finrank
+#check Finset.sum_image
+#check FiniteDimensional.of_finite
+#check Erdos66OddExtensionFlatSet.planeMap
+#check Subfield.mem_range
+#check Finset.card_bij
+#check Finset.subset_iff
+#check Finset.mem_image_of_mem
+#check Finset.mem_inter

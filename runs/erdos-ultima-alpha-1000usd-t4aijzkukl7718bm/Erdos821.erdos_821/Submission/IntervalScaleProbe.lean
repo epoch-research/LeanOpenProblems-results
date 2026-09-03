@@ -1,0 +1,12 @@
+import Submission.IntervalReciprocalTotient
+#check Real.exp_nat_mul
+#check Real.exp_mul_nat
+#check Finset.sum_Icc_add_sum_Icc
+#check Finset.sum_Icc_eq_sum_range
+#check Nat.even_pow
+#check Even.mul_left
+#check Finset.sum_Icc_succ_top
+#check Finset.sum_Icc_succ_bot
+#check Finset.sum_Icc_eq_sum_Ico_add
+#check Finset.sum_Ico_consecutive
+#check tendsto_pow_const_div_const_pow_of_one_lt

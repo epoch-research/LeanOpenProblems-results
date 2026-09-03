@@ -1,0 +1,12 @@
+import Submission.Spec
+#check Real.log_le_self
+#check Real.log_le_sub_one_of_pos
+#check Real.log_le_log
+#check Real.log_pow
+#check Real.log_mul
+#check Real.log_nonneg
+#check pow_le_pow_left₀
+#check mul_lt_mul_of_pos_right
+#check one_le_pow₀
+#check Set.infinite_range_of_injective
+#check Real.rpow_natCast

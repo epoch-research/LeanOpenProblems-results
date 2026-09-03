@@ -1,0 +1,15 @@
+import Submission.GrowingTypeIIReduction
+open ArithmeticFunction
+#check ArithmeticFunction.mul_apply_prime
+#check Nat.Prime.divisorsAntidiagonal
+#check Nat.Prime.divisors
+#check ArithmeticFunction.vonMangoldt_apply_not_isPrimePow
+#check ArithmeticFunction.vonMangoldt_apply_pow
+#check ArithmeticFunction.moebius_apply_prime
+#check ArithmeticFunction.coe_mul_zeta_apply
+#check Nat.prime_mul_iff
+#check Finset.sum_ite_eq'
+#check Finset.sum_ite_eq
+#check Finset.sum_eq_single
+#check ArithmeticFunction.vonMangoldt_eq_zero_iff
+#print Erdos972Vaughan.typeII_eq_zero_of_le

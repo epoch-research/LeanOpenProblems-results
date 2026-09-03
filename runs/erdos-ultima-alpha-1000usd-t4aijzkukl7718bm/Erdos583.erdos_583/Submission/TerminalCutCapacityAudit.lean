@@ -1,0 +1,11 @@
+import Submission.TerminalCutCapacity
+
+/-! Axiom audit of the terminal cut bounds. -/
+#print axioms Erdos583TerminalCutCapacityDevelopment.boundary_sum_degrees
+#print axioms Erdos583TerminalCutCapacityDevelopment.degree_split_on_set
+#print axioms Erdos583TerminalCutCapacityDevelopment.degree_sum_on_set
+#print axioms Erdos583TerminalCutCapacityDevelopment.boundary_parity_of_all_odd
+#print axioms Erdos583TerminalCutCapacityDevelopment.cutCapacity_parity
+#print axioms Erdos583TerminalCutCapacityDevelopment.boundary_positive_of_connected
+#print axioms Erdos583TerminalCutCapacityDevelopment.triangle_boundary_ge_three
+#print axioms Erdos583TerminalCutCapacityDevelopment.triangle_cutCapacity_ge_three

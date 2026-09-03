@@ -1,0 +1,45 @@
+import Submission.IntegerFiniteSwapAlgebraExplore
+import Submission.FiniteSwapSelectionExplore
+import Submission.BracketOrderedExchangeExplore
+import Submission.BracketSparseSwapExplore
+import Submission.BracketRankMoveExplore
+import Submission.SeparatedBracketMovesExplore
+import Submission.RankCellExchangeExplore
+
+/-! Audit of exact bracket exchange and finite signed selection. -/
+#print axioms Erdos66IntegerFiniteSwapAlgebra.pairCount_mono_right
+#print axioms Erdos66IntegerFiniteSwapAlgebra.swap_card
+#print axioms Erdos66IntegerFiniteSwapAlgebra.upper_self_zero
+#print axioms Erdos66IntegerFiniteSwapAlgebra.deleted_center_zero
+#print axioms Erdos66IntegerFiniteSwapAlgebra.swap_center
+#print axioms Erdos66IntegerFiniteSwapAlgebra.swap_error_bound
+#print axioms Erdos66FiniteSwapSelection.image_mixed_le_hits
+#print axioms Erdos66FiniteSwapSelection.exists_finite_swap
+#print axioms Erdos66BracketOrderedExchange.inter_card_difference_between
+#print axioms Erdos66BracketOrderedExchange.partial_prefix_difference_between
+#print axioms Erdos66BracketOrderedExchange.partial_swap_count_between
+#print axioms Erdos66BracketOrderedExchange.mass_indicator_eq_count
+#print axioms Erdos66BracketOrderedExchange.partial_swap_brackets
+#print axioms Erdos66BracketOrderedExchange.exists_bracket_exchange_cube
+#print axioms Erdos66BracketSparseSwap.exists_bracket_preserving_sparse_swap
+#print axioms Erdos66BracketRankMove.count_zero
+#print axioms Erdos66BracketRankMove.count_succ
+#print axioms Erdos66BracketRankMove.count_monotone
+#print axioms Erdos66BracketRankMove.exists_point_at_rank
+#print axioms Erdos66BracketRankMove.rankPoint_mem
+#print axioms Erdos66BracketRankMove.rankPoint_count
+#print axioms Erdos66BracketRankMove.rankPoint_strictMono
+#print axioms Erdos66BracketRankMove.singleton_swap_difference
+#print axioms Erdos66BracketRankMove.rank_move_brackets
+#print axioms Erdos66BracketRankMove.omitted_point_admits_rank_move
+#print axioms Erdos66SeparatedBracketMoves.delta_ne_zero_location
+#print axioms Erdos66SeparatedBracketMoves.image_prefix_sum
+#print axioms Erdos66SeparatedBracketMoves.family_swap_difference
+#print axioms Erdos66SeparatedBracketMoves.sum_zero_or_single
+#print axioms Erdos66SeparatedBracketMoves.family_brackets
+#print axioms Erdos66RankCellExchange.rankPoint_mass_bounds
+#print axioms Erdos66RankCellExchange.cell_mono
+#print axioms Erdos66RankCellExchange.cell_lower
+#print axioms Erdos66RankCellExchange.cell_upper
+#print axioms Erdos66RankCellExchange.cell_moves_separated
+#print axioms Erdos66RankCellExchange.rank_family_brackets

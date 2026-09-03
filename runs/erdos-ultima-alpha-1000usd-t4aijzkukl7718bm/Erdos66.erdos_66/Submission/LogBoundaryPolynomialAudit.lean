@@ -1,0 +1,13 @@
+import Submission.BoundaryMvPolynomialExplore
+/-! Axiom audit for boundary polynomial nonvanishing. -/
+#print axioms Erdos66ExpPowerDominance.model_ratio_zero
+#print axioms Erdos66ExpPowerDominance.monomial_normalization
+#print axioms Erdos66ExpPowerDominance.exists_dominant
+#print axioms Erdos66ExpPowerDominance.polynomial_eventually_ne_zero
+#print axioms Erdos66LogBoundaryPolynomial.witness_exponential_profile
+#print axioms Erdos66LogBoundaryPolynomial.witness_polynomial_eventually_ne_zero
+#print axioms Erdos66LogBoundaryPolynomial.witness_no_polynomial_identity
+#print axioms Erdos66BoundaryMvPolynomial.polynomial_eval_pair
+#print axioms Erdos66BoundaryMvPolynomial.witness_boundary_eval_ne_zero
+#print axioms Erdos66BoundaryMvPolynomial.boundaryShift_involutive
+#print axioms Erdos66BoundaryMvPolynomial.witness_eval_ne_zero

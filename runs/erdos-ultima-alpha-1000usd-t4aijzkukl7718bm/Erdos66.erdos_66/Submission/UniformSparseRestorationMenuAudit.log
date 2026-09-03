@@ -1,0 +1,11 @@
+'Erdos66SparseRankTransversal.exists_sparse_rank_transversal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformSparseRestorationMenu.selectedFrom_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformSparseRestorationMenu.selectedFrom_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformSparseRestorationMenu.restoredFrom_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformSparseRestorationMenu.restoredFrom_increment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66UniformSparseRestorationMenu.restoredFrom_increment_zero_below' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66UniformSparseRestorationMenu.exists_uniform_sparse_restoration_menu' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

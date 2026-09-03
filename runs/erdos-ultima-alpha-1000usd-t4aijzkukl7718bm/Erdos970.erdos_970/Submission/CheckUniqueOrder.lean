@@ -1,0 +1,14 @@
+import Submission.EssentialCoverOrder
+#check List.Perm.eq_of_pairwise
+#check List.pairwise_cons
+#check Nat.mod_le
+#check Nat.modEq_zero_iff_dvd
+#check Nat.modEq_iff_dvd
+#check Nat.modEq_iff_dvd'
+#check Nat.Prime.dvd_of_dvd_pow
+#check Nat.dvd_prime
+#check Nat.Prime.dvd_iff_eq
+#check Nat.primeCounting'_nth_eq
+#check Nat.primesBelow
+#check Finset.sort_sorted
+#check List.Perm.mem_iff

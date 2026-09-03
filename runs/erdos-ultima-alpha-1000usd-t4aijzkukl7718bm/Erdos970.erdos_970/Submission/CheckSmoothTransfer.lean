@@ -1,0 +1,15 @@
+import Submission.PrimeAllLogMoments
+open Real Set MeasureTheory
+#check IntervalIntegrable.mono_set
+#check IntervalIntegrable.mono_set_ae
+#check intervalIntegrable_iff_integrableOn_Icc_of_le
+#check intervalIntegral.integral_comp_add_right
+#check ContinuousOn.intervalIntegrable
+#check ContinuousOn.integrableOn_Icc
+#check HasDerivAt.continuousAt
+#check Set.uIcc_subset_uIcc
+#check intervalIntegral.integral_add
+#check intervalIntegral.integral_mul_deriv_eq_deriv_mul
+#check intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+#check intervalIntegral.integral_deriv_mul_eq_sub
+#check intervalIntegral.abs_integral_le_integral_abs

@@ -1,0 +1,10 @@
+import Submission.CorrelationVaughan
+#check integral_log
+#check MonotoneOn.integral_le_sum_Ico
+#check MonotoneOn.sum_le_integral_Ico
+#check Finset.sum_Ico_add'
+#check Finset.sum_Ico_succ_top
+#check Finset.sum_Ico_add_one_sub_top
+#check Finset.sum_eq_sum_Ico_succ_bot
+#check Finset.sum_Ico_succ_sub_top
+#check Finset.sum_Ioc_add_eq_sum_Icc

@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Derivation.leibniz
+#check Derivation.leibniz_pow
+#check Derivation.map_one_eq_zero
+#check Derivation.map_one
+#check PowerSeries.derivative.ext
+#check Filter.Tendsto.atTop_add_const
+#check Filter.Tendsto.add_const_atTop
+#check Filter.tendsto_atTop_add_const_right
+#check PowerSeries.coeff_zero_X_mul
+#check PowerSeries.constantCoeff_mul

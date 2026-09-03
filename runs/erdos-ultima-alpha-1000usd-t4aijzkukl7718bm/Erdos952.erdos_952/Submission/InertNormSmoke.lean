@@ -1,0 +1,15 @@
+import Submission.PowerTwoNormObstruction
+#check starRingEnd
+#check starRingEquiv
+#check star_dvd
+#check star_dvd_star_iff
+#check Nat.Prime.coprime_iff_not_dvd
+#check Nat.Prime.coprime_iff_not_dvd
+#check IsCoprime.mul_left
+#check Zsqrtd.intCast_dvd_intCast
+#check GaussianInt.prime_iff_mod_four_eq_three_of_nat_prime
+#check Nat.cast_pow
+#check Prime.dvd_mul
+#check Prime.dvd_or_dvd
+#check Nat.Coprime.mul_right
+#check Nat.Prime.coprime_iff_not_dvd

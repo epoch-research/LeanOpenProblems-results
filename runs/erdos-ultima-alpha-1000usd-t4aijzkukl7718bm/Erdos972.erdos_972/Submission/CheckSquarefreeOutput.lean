@@ -1,0 +1,24 @@
+import Submission.SquarefreePrimeOutputBound
+/-! Signature checks used in the squarefree-support development. -/
+#check Squarefree
+#check Nat.isUnit_iff
+#check Nat.pow_dvd_iff_dvd_floorRoot
+#check ArithmeticFunction.coe_moebius_mul_coe_zeta
+#check ArithmeticFunction.coe_mul_zeta_apply
+#check ArithmeticFunction.one_apply
+#check Nat.le_self_pow
+#check Finset.sum_Ioc_consecutive
+#check sum_Ioc_inv_sq_le_sub
+#check summable_nat_add_iff
+#check Real.summable_one_div_nat_pow
+#check ArithmeticFunction.moebius_sq
+#check ArithmeticFunction.abs_moebius
+#check Nat.lt_succ_sqrt
+#check Nat.sqrt_lt
+#check Nat.sqrt_lt_self
+#check Nat.lt_succ_sqrt'
+#check Finset.sum_Ioc_succ_top
+#check Finset.sum_Ico_eq_sub
+#check HasSum.tendsto_sum_nat
+#check Complex.ofReal_injective
+#check riemannZeta_two

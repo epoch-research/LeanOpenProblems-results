@@ -1,0 +1,20 @@
+import Submission.ShiftedDivisorPole
+
+/-! Type and axiom audit. -/
+
+open Erdos821.HigherDivisors
+
+#check shiftedMangoldtDirichlet_summable
+#check truncated_residue_divisor_weight_le
+#check residueClass_real_summable
+#check shiftedMangoldtDirichlet_fixed_cutoff_lower
+#check harmonicMoment_one_le_succ
+#check exists_harmonicMoment_gt
+#check tendsto_shiftedMangoldtDirichlet_residue
+#print axioms shiftedMangoldtDirichlet_summable
+#print axioms truncated_residue_divisor_weight_le
+#print axioms residueClass_real_summable
+#print axioms shiftedMangoldtDirichlet_fixed_cutoff_lower
+#print axioms harmonicMoment_one_le_succ
+#print axioms exists_harmonicMoment_gt
+#print axioms tendsto_shiftedMangoldtDirichlet_residue

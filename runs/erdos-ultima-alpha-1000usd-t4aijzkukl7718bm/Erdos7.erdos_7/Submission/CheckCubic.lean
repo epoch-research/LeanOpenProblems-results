@@ -1,0 +1,15 @@
+import Submission.CompleteTest
+#check ConvexOn.pow
+#check Monotone.pow
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check ConvexOn.map_sum_le
+#check Finset.sum_le_sum
+#check Nat.cast_mul
+#check Erdos7CompressionSieve.chain_summation_by_parts
+#check ConvexOn.secant_mono
+#check ConvexOn.secant_mono_aux1
+#check ConvexOn.le_map_add_smul
+#check ConvexOn.le_map_smul_add
+#check convexOn_iff_div
+#check Finset.sum_range_add
+#check Finset.sum_range_sub

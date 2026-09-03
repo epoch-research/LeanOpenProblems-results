@@ -1,0 +1,10 @@
+import Submission.CubicLocusProduct
+#check Nat.Prime.pow_dvd_lcm
+#check Nat.factorization_lcm
+#check Nat.lcm_pos
+#check Nat.lcm_ne_zero
+#check Nat.sub_le_iff_le_add
+#check Nat.pow_dvd_pow
+#check Int.dvd_emod_iff
+#check Int.gcd_emod
+#check Nat.factorization_injective

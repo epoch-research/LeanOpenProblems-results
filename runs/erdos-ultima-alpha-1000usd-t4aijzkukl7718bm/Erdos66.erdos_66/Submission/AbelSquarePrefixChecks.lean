@@ -1,0 +1,16 @@
+import Submission.ParityRepresentationExplore
+import Submission.TauberianProfileExplore
+#check Erdos66TauberianProfile.radius
+#check Erdos66TauberianProfile.radius_pos
+#check Erdos66TauberianProfile.radius_lt_one
+#check Erdos66TauberianProfile.radius_pow_tendsto
+#check Real.log_inv
+#check pow_le_pow_right₀
+#check pow_le_pow_left₀
+#check pow_le_pow_of_le_one
+#check Nat.mul_div_le
+#check Nat.lt_mul_div_succ
+#check Nat.le_div_iff_mul_le
+#check Real.log_pow
+#check exists_nat_one_div_lt
+#check exists_nat_gt

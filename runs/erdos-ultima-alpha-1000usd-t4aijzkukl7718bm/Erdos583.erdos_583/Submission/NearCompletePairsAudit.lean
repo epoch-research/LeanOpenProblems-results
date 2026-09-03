@@ -1,0 +1,7 @@
+import Submission.NearCompletePairs
+
+/-! Axiom audit of complete-core first-edge deletion and collision ports. -/
+#print axioms Erdos583FirstEdgeFamilyDeletionDevelopment.tail_edgeSet
+#print axioms Erdos583FirstEdgeFamilyDeletionDevelopment.delete_first_edge_family
+#print axioms Erdos583NearCompletePairsDevelopment.complete_minus_edge_prescribed_pairs
+#print axioms Erdos583NearCompletePairsDevelopment.near_complete_prescribed_pairs

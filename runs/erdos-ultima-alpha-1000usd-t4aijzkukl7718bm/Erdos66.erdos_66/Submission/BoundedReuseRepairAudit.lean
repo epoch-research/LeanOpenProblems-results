@@ -1,0 +1,11 @@
+import Submission.BoundedReuseRepairExplore
+
+/-! Axiom checks for the bounded-reuse capacity results. -/
+#print axioms Erdos66BoundedReuseRepair.packet_incidence_bound
+#print axioms Erdos66BoundedReuseRepair.uniform_packet_incidence_bound
+#print axioms Erdos66BoundedReuseRepair.logarithmic_packet_reuse_bound
+#print axioms Erdos66BoundedReuseRepair.slowly_reused_packet_count_zero
+#print axioms Erdos66BoundedReuseRepair.added_count_limit_zero
+#print axioms Erdos66BoundedReuseRepair.bounded_reuse_packet_mass_zero
+#print axioms Erdos66BoundedReuseRepair.same_coefficient_completion_packet_mass_zero
+#print axioms Erdos66BoundedReuseRepair.same_coefficient_completion_target_count_zero

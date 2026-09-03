@@ -1,0 +1,15 @@
+import Submission.CompleteFilterEdgeCover
+#check Quot.eq
+#check Quot.exists_rep
+#check Relation.EqvGen
+#check Relation.EqvGen.refl
+#check Relation.EqvGen.rel
+#check Relation.EqvGen.symm
+#check Relation.EqvGen.trans
+#check Sym2.map_pair
+#check SimpleGraph.mem_edgeSet
+#check SimpleGraph.CliqueFree.comap
+#check SimpleGraph.cliqueFree_bot
+#check Filter.EventuallyEq.trans
+#check Filter.eventually_of_forall
+#check Ultrafilter.eventually_exists_iff

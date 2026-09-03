@@ -1,0 +1,17 @@
+import Submission.FirstHitIntegral
+#check Nat.ceil_pos
+#check Nat.le_ceil
+#check Nat.ceil_le
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_lt_add_one_iff
+#check Nat.ceil_lt_add_one_iff
+#check Real.exp_log
+#check Real.exp_nat_mul
+#check Real.exp_mul_nat
+#check Real.exp_sub
+#check Real.log_le_log_iff
+#check Real.log_le_iff_le_exp
+#check Nat.ceil_pos.mpr
+#check Finset.prod_le_prod_of_subset_of_one_le
+#check Erdos970.FiniteSelberg.harmonic_le_smallDivisorFamily
+#check Erdos970.FiniteSelberg.primeNormalizer

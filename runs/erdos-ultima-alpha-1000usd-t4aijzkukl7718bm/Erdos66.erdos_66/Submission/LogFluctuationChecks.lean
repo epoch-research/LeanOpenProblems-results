@@ -1,0 +1,16 @@
+import Submission.SquareRootFluctuationExplore
+open Filter
+#check harmonic_succ
+#check Real.tendsto_harmonic_sub_log
+#check tendsto_one_div_add_atTop_nhds_zero_nat
+#check Filter.Tendsto.div_atTop
+#check exists_between
+#check Real.sqrt_pos
+#check Real.sqrt_lt
+#check abs_sub_le
+#check abs_sub_comm
+#check abs_sub_abs_le_abs_sub
+#check abs_sub_abs_le_abs_sub
+#check Real.sqrt_sq_eq_abs
+#check Real.sqrt_lt_sqrt_iff
+#check Real.sq_sqrt

@@ -1,0 +1,23 @@
+actual bipartite host colourings: 584
+actual opposite-colour square-closure checks: 1,042
+complete adaptive certificate-row schedules: 9,264
+complete nested erasure chains: 405
+exact adaptive density-potential recursions: 8,874
+exact joint heat-bath production identities: 771
+exact joint-unit count and entropy-price bounds: 8,874
+exact old-Gamma versus production ledger identities: 405
+exact pair-price ceiling inequalities: 1,215
+exact signed closed-row residual identities: 26,737
+exact two-pair-unit joint-injection counts: 41,261
+exact whole-cover key entropy identities (GOOD allowed): 584
+joint-batch opposite-sign intersection checks: 56,112
+literal complementary or unary cube extractions: 24,395
+multi-atom reveal nodes: 1,027
+nonuniform completion-weighted next-batch laws: 362
+single-star non-root signed-disjointness checks: 1,448
+valid observed common-pair units: 2,070
+valid observed unary units: 406
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: integer/rational audits; entropy identities use exact prime-log vectors.
+NOT PROVED: a sufficient closed-residual surplus or global cube augmentation.
+NO RAMSEY BOUND CLAIMED.

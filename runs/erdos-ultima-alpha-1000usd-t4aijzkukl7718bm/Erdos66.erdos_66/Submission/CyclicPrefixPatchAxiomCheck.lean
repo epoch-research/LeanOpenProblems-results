@@ -1,0 +1,6 @@
+import Submission.CyclicPrefixPatchExplore
+/-! Audits for the prefix-patched cyclic templates. -/
+#print axioms Erdos66CyclicPrefixPatch.count_error_of_agree_off
+#print axioms Erdos66CyclicPrefixPatch.exists_flat_with_prescribed_prefix
+#print axioms Erdos66CyclicPrefixPatch.every_set_is_a_cyclic_prefix_limit
+#print axioms Erdos66CyclicPrefixPatch.logarithmic_templates_with_arbitrary_prefix_limit

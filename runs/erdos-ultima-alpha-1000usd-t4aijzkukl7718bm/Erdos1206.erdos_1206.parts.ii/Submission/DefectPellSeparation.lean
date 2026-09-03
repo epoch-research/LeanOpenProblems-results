@@ -1,0 +1,92 @@
+import Submission.DefectGapBounds
+
+/-!
+A modular gap principle for negative-norm Pell equations, and the associated
+Pell equation obtained by fixing the root-sum defect and first adjacent gap
+of a cubic collision. These are arithmetic lemmas, not a density construction.
+-/
+namespace Erdos1206.DefectPellSeparation
+
+/-- Two nonnegative solutions of the same negative-norm Pell equation in one
+projective residue class are separated by a factor of at least two. No
+assumption that the discriminant is nonsquare is needed. -/
+theorem pell_residue_doubling {D m x y x' y' r : ℤ}
+    (hD : 0 < D) (hm : 0 < m)
+    (hx : 0 ≤ x) (hx' : 0 ≤ x') (hy : 0 < y) (hyy' : y < y')
+    (he : x^2-D*y^2 = -m) (he' : x'^2-D*y'^2 = -m)
+    (hr : m ∣ x-r*y) (hr' : m ∣ x'-r*y')
+    (hrD : m ∣ r^2-D) : 2*y ≤ y' := by
+  let v := x'*y-x*y'
+  let u := D*y*y'-x*x'
+  have hy' : 0 < y' := lt_trans hy hyy'
+  have hv : 0 < v := by
+    have hid : (x'*y)^2-(x*y')^2 = m*(y'^2-y^2) := by
+      dsimp
+      linear_combination y^2*he' - y'^2*he
+    have hys : y^2 < y'^2 := (sq_lt_sq₀ hy.le hy'.le).mpr hyy'
+    have hmul : 0 < m*(y'^2-y^2) := mul_pos hm (sub_pos.mpr hys)
+    have hxp : 0 ≤ x'*y := mul_nonneg hx' hy.le
+    have hxp' : 0 ≤ x*y' := mul_nonneg hx hy'.le
+    have hlt : (x*y')^2 < (x'*y)^2 := by linarith
+    have hh := (sq_lt_sq₀ hxp' hxp).mp hlt
+    exact sub_pos.mpr hh
+  have hud : m ∣ u := by
+    obtain ⟨s,hs⟩ := hr
+    obtain ⟨t,ht⟩ := hr'
+    obtain ⟨q,hq⟩ := hrD
+    refine ⟨-(q*y*y'+r*y*t+r*y'*s+m*s*t), ?_⟩
+    dsimp [u]
+    have hxid : x=r*y+m*s := by linarith
+    have hxid' : x'=r*y'+m*t := by linarith
+    have hDid : D=r^2-m*q := by linarith
+    rw [hxid,hxid',hDid]
+    ring
+  have hu : 0 < u := by
+    have hbound : x^2 < D*y^2 := by linarith
+    have hbound' : x'^2 < D*y'^2 := by linarith
+    have hprod : (x*x')^2 < (D*y*y')^2 := by
+      have h1 := mul_lt_mul_of_pos_right hbound (show 0 < D*y'^2 by positivity)
+      have h2 := mul_le_mul_of_nonneg_left hbound'.le (sq_nonneg x)
+      nlinarith only [h1,h2]
+    have hnonneg : 0 ≤ x*x' := mul_nonneg hx hx'
+    have hnonneg' : 0 ≤ D*y*y' := by positivity
+    exact sub_pos.mpr ((sq_lt_sq₀ hnonneg hnonneg').mp hprod)
+  have hid : u^2-D*v^2=m^2 := by
+    dsimp [u,v]
+    linear_combination (-D*y'^2+x'^2)*he + (-m)*he'
+  have hmu : m < u := by
+    have hpos : 0 < D*v^2 := by positivity
+    have hs : m^2 < u^2 := by linarith
+    exact (sq_lt_sq₀ hm.le hu.le).mp hs
+  have hu2 : 2*m ≤ u := by
+    obtain ⟨q,hq⟩ := hud
+    have hq2 : 2 ≤ q := by
+      by_contra hh
+      have hle : m*q ≤ m := by nlinarith
+      omega
+    nlinarith
+  have hlin : m*y'=u*y+v*x := by
+    dsimp [u,v]
+    linear_combination y'*he
+  have hmul : m*(2*y) ≤ m*y' := by
+    have h1 := mul_le_mul_of_nonneg_right hu2 hy.le
+    have h2 : 0 ≤ v*x := mul_nonneg hv.le hx
+    nlinarith only [hlin,h1,h2]
+  exact (mul_le_mul_iff_right₀ hm).mp hmul
+
+/-- An integral norm equation for fixed defect and first adjacent gap. -/
+theorem collision_pell_equation {a b c d : ℕ}
+    (hab : a<b) (hbc : b<c) (hcd : c<d)
+    (he : a^3+d^3=b^3+c^3) :
+    let k : ℤ := ConicHeightProduct.defect a b c d
+    let x : ℤ := (b:ℤ)-a
+    let y : ℤ := (c:ℤ)-a
+    (3*(2*x*y-2*k*d-k^2))^2 - 9*x*(x-k)*(2*y-k)^2 =
+      -(3*k^2*(3*x*(x-k)+k^2)) := by
+  dsimp
+  have hh := ConicHeightProduct.defect_determinant_identity hab hbc hcd he
+  linear_combination -3*hh
+
+#print axioms pell_residue_doubling
+#print axioms collision_pell_equation
+end Erdos1206.DefectPellSeparation

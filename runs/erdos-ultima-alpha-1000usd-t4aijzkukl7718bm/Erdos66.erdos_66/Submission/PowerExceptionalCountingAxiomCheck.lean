@@ -1,0 +1,5 @@
+import Submission.PowerExceptionalCountingExplore
+/-! Axiom audit for the polynomial exceptional-count construction. -/
+#print axioms Erdos66SummableScaleCounting.count_div_scale_zero
+#print axioms Erdos66PowerExceptionalCounting.exists_power_exceptions_and_envelopes
+#print axioms Erdos66PowerExceptionalCounting.exists_power_saving_density_one_profile

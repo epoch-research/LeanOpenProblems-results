@@ -1,0 +1,19 @@
+import Submission.DigitMemoryLogExplore
+/-! Axiom audit for variable-width digit-program lower bounds. -/
+#print axioms Erdos66DigitBoxExponent.two_point_power_bound
+#print axioms Erdos66DigitBoxExponent.box_card_le_cap_power
+#print axioms Erdos66DigitBoxExponent.accepted_card_le
+#print axioms Erdos66DigitBoxExponent.grouped_base_bound
+#print axioms Erdos66DigitMemoryParameters.lengths_multiply
+#print axioms Erdos66DigitMemoryParameters.eventual_cap_bound
+#print axioms Erdos66DigitMemoryParameters.count_bound_algebra
+#print axioms Erdos66DigitMemoryParameters.count_sq_half
+#print axioms Erdos66DigitMemoryParameters.wordLength_ge
+#print axioms Erdos66DigitMemoryParameters.cutoff_large
+#print axioms Erdos66DigitMemoryLower.grouped_prefix_card_bound
+#print axioms Erdos66DigitMemoryLower.small_width_count_bound
+#print axioms Erdos66DigitMemoryLower.eventual_width_lower_of_caps
+#print axioms Erdos66DigitMemoryLower.eventual_width_lower_of_log_cap
+#print axioms Erdos66DigitMemoryLower.witness_eventual_width_lower
+#print axioms Erdos66DigitMemoryLog.memory_inequality
+#print axioms Erdos66DigitMemoryLog.witness_eventual_memory_lower

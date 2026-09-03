@@ -1,0 +1,16 @@
+'Erdos66AssignedPacketRepair.exists_assigned_packet_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AssignedPacketDegree.assigned_hit_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AssignedPacketDegree.assigned_candidate_degrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AssignedIntervalRepair.nearby_assignment_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AssignedIntervalRepair.assigned_endpoints_separated' depends on axioms: [propext, Quot.sound]
+'Erdos66AssignedIntervalRepair.exists_assigned_interval_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66RankProfileGap.mass_add_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankProfileGap.rank_assignment_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankProfileGap.harmonic_brackets_unbounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankProfileGap.harmonic_rank_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GlobalRankPacketRepair.rank_assigned_swap_brackets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66GlobalRankPacketRepair.eventually_global_rank_packet_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

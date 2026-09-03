@@ -1,0 +1,14 @@
+import Submission.PopulationLowCountBennett
+import Submission.MixedCardinalityAffine
+#check Finset.prod_le_prod_of_subset_of_le_one
+#check Finset.disjoint_sdiff_right
+#check Finset.disjoint_sdiff_self_right
+#check Finset.union_sdiff_self_eq_union
+#check Finset.union_sdiff_self_eq_union
+#check Finset.union_sdiff_cancel_left
+#check Erdos970.GapAverages.density_pos
+#check Erdos970.GapAverages.phaseMean_const
+#check Erdos970.GapAverages.phaseMean_mono
+#check Finset.card_union_le
+#check Nat.sub_le_sub_left
+#print Erdos970.GapAverages.density

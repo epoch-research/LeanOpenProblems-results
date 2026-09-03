@@ -1,0 +1,10 @@
+import Submission.EvenMatchingRestore
+
+/-! Axiom audit for matching restoration under the even-forest hypothesis. -/
+
+#print axioms Erdos583EvenMatchingRestoreDevelopment.even_forest_delete_even_edge
+#print axioms Erdos583EvenMatchingRestoreDevelopment.matching_delete_endpoints
+#print axioms Erdos583EvenMatchingRestoreDevelopment.restore_even_matching
+#print axioms Erdos583EvenMatchingRestoreDevelopment.even_after_matching_iff
+#print axioms Erdos583EvenMatchingRestoreDevelopment.even_forest_perfect_matching
+#print axioms Erdos583EvenMatchingRestoreDevelopment.even_forest_matching_deficiency_le_three

@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+import Submission.RelativeCloneSaturation
+#check SimpleGraph.isBipartiteWith_sum_degrees_eq_card_edges
+#check SimpleGraph.IsBipartiteWith
+#print SimpleGraph.IsBipartiteWith
+#check SimpleGraph.card_neighborFinset_eq_degree
+#check SimpleGraph.mem_neighborFinset
+#check Real.rpow_inv_rpow
+#check Real.rpow_rpow_inv
+#check Real.rpow_mul
+#check Real.rpow_pos_of_pos
+#check Finset.sum_le_sum_of_subset
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_filter

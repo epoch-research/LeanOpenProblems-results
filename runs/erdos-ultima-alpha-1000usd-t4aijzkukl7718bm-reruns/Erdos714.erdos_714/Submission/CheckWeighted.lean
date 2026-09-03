@@ -1,0 +1,14 @@
+import Submission.ColoredTensorThinning
+#check powMonoidHom
+#check MonoidHom.rangeRestrict
+#check MonoidHom.mem_ker
+#check FiniteField.pow_card_sub_one_eq_one
+#check FiniteField.pow_card_sub_one_eq_one_coe
+#check Units.mk0
+#check Fintype.card_units
+#check IsOfFinOrder.pow_card_eq_one
+#check pow_card_eq_one
+#check SimpleGraph.Iso.mapEdgeSet_trans
+#check SimpleGraph.Iso.mapEdgeSet_symm
+#check Fin.sumFinEquiv
+#check Equiv.sumFinEquiv

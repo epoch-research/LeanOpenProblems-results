@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+open Filter
+#check Real.tendsto_exp_neg_atTop_nhds_zero
+#check Real.tendsto_exp_atBot
+#check Filter.Tendsto.const_mul_atTop
+#check Filter.Tendsto.neg_atTop_atBot
+#check Filter.Tendsto.neg_atTop
+#check tendsto_neg_atTop_atBot
+#check Filter.Tendsto.atTop_div_const
+#check tendsto_nat_floor_atTop
+#check Filter.tendsto_const_nhds
+#check Filter.Tendsto.pow

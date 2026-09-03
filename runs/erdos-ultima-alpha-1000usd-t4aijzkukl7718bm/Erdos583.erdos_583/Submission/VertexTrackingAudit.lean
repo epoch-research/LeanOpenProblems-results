@@ -1,0 +1,9 @@
+import Submission.VertexTracking
+/-! Axiom audit of indexed vertex preservation and an internal protected repair. -/
+#print axioms Erdos583VertexTrackingDevelopment.rebuild_vertices
+#print axioms Erdos583VertexTrackingDevelopment.pivot_vertices
+#print axioms Erdos583VertexTrackingDevelopment.expose_escape_vertices
+#print axioms Erdos583VertexTrackingDevelopment.finish_exposed_vertices
+#print axioms Erdos583VertexTrackingDevelopment.repair_active_vertices
+#print axioms Erdos583VertexTrackingDevelopment.chordless_three_verts_determine
+#print axioms Erdos583VertexTrackingDevelopment.repair_chordless_three_path

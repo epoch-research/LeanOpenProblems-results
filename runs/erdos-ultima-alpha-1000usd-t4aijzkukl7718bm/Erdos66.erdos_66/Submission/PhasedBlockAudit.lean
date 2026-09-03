@@ -1,0 +1,19 @@
+import Submission.PhasedBlockOperatorExplore
+import Submission.OccurrencePhaseBalanceExplore
+import Submission.PhasedResidueCountingExplore
+/-! Audit of phased operators and occurrence-phase balancing. -/
+#print axioms Erdos66PhasedBlockOperator.phasedOperator_mem
+#print axioms Erdos66PhasedBlockOperator.phasedOperator_prefix_congr
+#print axioms Erdos66PhasedBlockOperator.phased_operator_profile_error
+#print axioms Erdos66PhasedBlockOperator.exists_universal_phased_operator
+#print axioms Erdos66OccurrencePhaseBalance.sum_occurrences
+#print axioms Erdos66OccurrencePhaseBalance.hit_sum_error
+#print axioms Erdos66OccurrencePhaseBalance.phase_balance
+
+#print axioms Erdos66PhasedResidueCounting.count_residue_blocks
+#print axioms Erdos66PhasedResidueCounting.count_blocks
+#print axioms Erdos66PhasedResidueCounting.balanced_block_residue_discrepancy
+#print axioms Erdos66PhasedResidueCounting.balanced_residue_discrepancy
+
+#print axioms Erdos66PhasedResidueCounting.count_atTop_of_infinite
+#print axioms Erdos66PhasedResidueCounting.balanced_residue_equidistribution

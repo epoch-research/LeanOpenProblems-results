@@ -1,0 +1,21 @@
+import Submission.RotationMassLogBoundExplore
+import Submission.DiscreteRotationMassExplore
+import Submission.MassSensitivePhaseCarryExplore
+
+/-! Audit of the expected-mass rotation and carry bounds. -/
+#print axioms Erdos66RotationMassLogBound.rotationSum_nonneg
+#print axioms Erdos66RotationMassLogBound.rotationSum_mono
+#print axioms Erdos66RotationMassLogBound.rotationSum_block_multiple_upper
+#print axioms Erdos66RotationMassLogBound.rotation_small_mass_bound
+#print axioms Erdos66RotationMassLogBound.rotation_mass_log_bound
+#print axioms Erdos66RotationMassLogBound.rotationSum_complement
+#print axioms Erdos66RotationMassLogBound.rotation_complement_error
+#print axioms Erdos66RotationMassLogBound.rotation_balanced_mass_log_bound
+#print axioms Erdos66DiscreteRotationMass.phase_interval_mass_error
+#print axioms Erdos66DiscreteRotationMass.phase_mass_intervalBound
+#print axioms Erdos66DiscreteRotationMass.phase_balanced_intervalBound
+#print axioms Erdos66DiscreteRotationMass.mass_error_ratio_limit
+#print axioms Erdos66DiscreteRotationMass.exists_mass_error_threshold
+#print axioms Erdos66DiscreteRotationMass.exists_uniform_relative_mass_threshold
+#print axioms Erdos66MassSensitivePhaseCarry.mass_sensitive_natural_carry
+#print axioms Erdos66MassSensitivePhaseCarry.balanced_mass_natural_carry

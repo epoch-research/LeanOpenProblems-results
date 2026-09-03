@@ -1,0 +1,9 @@
+import Submission.SampledClippedFactor
+import Submission.CommonQuadraticWindow
+#check List.map_finRange
+#check List.length_finRange
+#check List.ofFn_get
+#check List.finRange_eq_range
+#check Erdos3ClippedWeakRegularity.clippedSum_bounds
+#check List.get_mem
+#check Erdos3SampledQuadraticAverage.stable_average_local_factor

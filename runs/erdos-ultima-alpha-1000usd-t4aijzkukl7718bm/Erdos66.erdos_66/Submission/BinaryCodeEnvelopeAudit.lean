@@ -1,0 +1,5 @@
+import Submission.BinaryCodeEnvelopeExplore
+/-! Axiom audit for quantitative binary-code restrictions. -/
+#print axioms Erdos66BinaryCodeEnvelope.affine_code_dimension_bound
+#print axioms Erdos66BinaryCodeEnvelope.eventually_no_half_rate_affine_code_of_envelope
+#print axioms Erdos66BinaryCodeEnvelope.eventually_no_half_rate_affine_code

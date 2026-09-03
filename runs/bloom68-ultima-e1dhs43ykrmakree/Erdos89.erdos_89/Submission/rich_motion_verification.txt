@@ -1,0 +1,27 @@
+Strata: t=2, L=1, max tail ratio=1.937500
+Strata: t=4, L=2, max tail ratio=4.571289
+Strata: t=8, L=4, max tail ratio=5.532990
+Strata: t=16, L=8, max tail ratio=4.968277
+Strata: t=32, L=16, max tail ratio=4.857428
+Strata: t=64, L=32, max tail ratio=4.853563
+Strata: t=128, L=64, max tail ratio=4.853561
+Strata: t=256, L=128, max tail ratio=4.853561
+Strata: t=512, L=256, max tail ratio=4.853561
+Strata: t=1024, L=512, max tail ratio=4.853561
+Strata: t=2048, L=1024, max tail ratio=4.853561
+Asymptotic integer parameters and probability-bound constants: PASS
+Abstract domains: n=4, D=2, r=6, rows=31: PASS
+Edge lift and arbitrary-weight entropy: n=4, quadruples=72: PASS
+Abstract domains: n=16, D=4, r=60, rows=4681: PASS
+Edge lift and arbitrary-weight entropy: n=16, quadruples=14400: PASS
+Actual planar Gram domination: n=6, motions=50: PASS
+Dyadic correlation kernel: L=1, L1=1, weak=0.750000: PASS
+Dyadic correlation kernel: L=2, L1=2, weak=1.312500: PASS
+Dyadic correlation kernel: L=4, L1=4, weak=1.816406: PASS
+Dyadic correlation kernel: L=8, L1=8, weak=1.988297: PASS
+Dyadic correlation kernel: L=12, L1=12, weak=1.999268: PASS
+Full rich set: q=4, n=40, k=10, |G|=23, |G^2|=105, doubling=4.565: PASS
+Full rich set: q=5, n=60, k=12, |G|=36, |G^2|=246, doubling=6.833: PASS
+Full rich set: q=6, n=84, k=14, |G|=52, |G^2|=502, doubling=9.654: PASS
+Full rich set: q=8, n=144, k=18, |G|=93, |G^2|=1577, doubling=16.957: PASS
+ALL CHECKS PASSED. The sharp planar conjecture is not proved.

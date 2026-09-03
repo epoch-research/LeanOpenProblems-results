@@ -1,0 +1,6 @@
+import Submission.ComponentMatching
+
+#print axioms Erdos583ComponentMatchingDevelopment.avoid_of_unreachable
+#print axioms Erdos583ComponentMatchingDevelopment.matching_edges_disjoint
+#print axioms Erdos583ComponentMatchingDevelopment.intercomponent_matching_addition
+#print axioms Erdos583ComponentMatchingDevelopment.gallai_of_intercomponent_matching

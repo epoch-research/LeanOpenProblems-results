@@ -1,0 +1,10 @@
+import Submission.CountableUltrapowerExtension
+#check exists_surjective_nat
+#check Set.Countable.to_subtype
+#check Quotient.out_injective
+#check Infinite.of_injective
+#check Filter.Germ.coe_eq
+#check Filter.Germ.const_injective
+#check Filter.Germ.coe_const_injective
+#check Filter.Germ.coe_eq_coe
+#check Filter.Germ.coe_eq

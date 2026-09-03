@@ -1,0 +1,12 @@
+import Submission.LocalQuadraticIntegration
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Finset.sum_mul_le_sqrt_mul_sqrt
+#check Finset.expect_mul_sq_le_sq_mul_sq
+#check RCLike.norm_expect_le
+#check Finset.expect_mul_expect
+#check Finset.expect_eq_sum_div_card
+#check RCLike.wInner_cWeight_eq_expect
+#check inner_mul_inner_self_le
+#check Complex.norm_mul
+#check Finset.mul_sum
+#check Finset.sum_div

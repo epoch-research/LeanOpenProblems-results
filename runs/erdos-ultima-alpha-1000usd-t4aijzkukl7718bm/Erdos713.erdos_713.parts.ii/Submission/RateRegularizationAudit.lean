@@ -1,0 +1,7 @@
+import FormalConjecturesUtil
+import Submission.UpToRateRegularization
+#print axioms Erdos713RateRegularization.exists_record
+#print axioms Erdos713RateRegularization.local_regularization
+#print axioms Erdos713RateRegularization.exists_almost_regular_below
+#print axioms Erdos713RateRegularization.uniform_proper_constant
+#print axioms Erdos713RateRegularization.robust_of_rate

@@ -1,0 +1,13 @@
+'Erdos66ApproximateComplementarity.family_square_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ApproximateComplementarity.family_coordinate_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ApproximateComplementarity.self_energy_cap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ApproximateComplementarity.total_centered_energy_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ApproximateComplementarity.approximate_complementary_family_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ApproximateComplementarity.exists_large_mixed_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ComplementarityErrorFloor.normalized_numeric_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ComplementarityErrorFloor.numeric_limit_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ComplementarityErrorFloor.mixed_error_limit_ge_one' depends on axioms: [propext, Classical.choice, Quot.sound]

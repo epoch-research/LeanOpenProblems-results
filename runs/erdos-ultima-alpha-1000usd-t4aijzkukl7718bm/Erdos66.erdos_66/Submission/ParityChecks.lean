@@ -1,0 +1,11 @@
+import Submission.ParityRepresentationExplore
+#check Summable.comp_injective
+#check Summable.tsum_le_tsum_of_inj
+#check tsum_le_tsum_of_inj
+#check tsum_comp_le_tsum_of_injective
+#check Summable.tsum_even_add_odd
+#check tsum_even_add_odd
+#check Equiv.tsum_eq
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Erdos66ResidueSeries.affine_log_limit
+#check Filter.Tendsto.comp

@@ -1,0 +1,13 @@
+import Submission.FixedToleranceCompletionExplore
+#check Set.Finite.summable
+#check summable_of_finite_support
+#check Function.HasFiniteSupport.summable
+#check Set.Finite.subset
+#check Real.summable_one_div_nat_rpow
+#check Nat.Subtype.orderIsoOfNat
+#check OrderIso.strictMono
+#check Real.rpow_div_natCast
+#check Real.div_rpow
+#check Real.rpow_mul
+#check Finset.card_le_card_of_injOn
+#check Function.Injective.summable_iff

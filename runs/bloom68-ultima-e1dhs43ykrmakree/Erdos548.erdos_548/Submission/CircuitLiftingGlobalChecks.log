@@ -1,0 +1,25 @@
+PASS: exact circuit, density-elimination, interface, and averaging audits
+atlas_r1_circuits: 17
+atlas_r2_circuits: 31
+averaging_histogram_audits: 62
+branch_and_sibling_leaf_interfaces: 3,407
+canonical_one_edge_tight_hulls: 77
+connected_branch_smoothings: 1,288
+elimination_associativity_values: 828,752
+elimination_profiles: 6,013
+elimination_supermodular_pairs: 4,181,824
+exact_adaptive_embedding_identities: 942
+forward_matching_pinches: 8,002
+join_family_induced_type_bounds: 371,963
+join_terminal_constructed_tree_copies: 680
+marked_forest_matching_interfaces: 8,137
+nonedge_Hall_equivalences: 1,346
+one_vertex_slack_sets: 19,469
+one_virtual_edge_terminal_certificates: 138
+oriented_matching_splits: 2,840
+rank_three_fixed_hosts: 4
+simple_oriented_splits: 504
+spanning_admissibility_equivalences: 187
+two_source_spanning_completions: 12
+Spec.lean SHA-256 unchanged: 674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103
+No general safe-split/tree-lifting theorem is asserted or tested as a premise.

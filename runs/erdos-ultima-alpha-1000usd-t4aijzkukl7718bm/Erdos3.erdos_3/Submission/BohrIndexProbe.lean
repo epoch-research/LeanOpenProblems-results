@@ -1,0 +1,16 @@
+import Submission.BohrLocalQuadraticPartition
+import Submission.StableQuadraticDensityIncrement
+#check ZMod.finEquiv
+#check ZMod.finEquiv_apply
+#check ZMod.val_injective
+#check ZMod.natCast_zmod_val
+#check ZMod.val_natCast_of_lt
+#check ZMod.card
+#check Finset.card_equiv
+#check Fintype.expect_equiv
+#check Equiv.subtypeEquiv
+#check Finset.sum_equiv
+#check Finset.card_bij
+#check Equiv.Set.preimage
+#check Erdos3StableQuadraticDensityIncrement.stable_inner_boundary
+#check Erdos3FiniteBohr.card_bohr_lower

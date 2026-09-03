@@ -1,0 +1,13 @@
+K8: k=1, r=2; even packings=1680; cover-good=0; completable=1680; cover-bad but completable=1680; T=2903040; B=2903040; partitions=53760
+K9: k=1, r=2; even packings=3024; cover-good=3024; completable=3024; cover-bad but completable=0; T=47900160; B=0; partitions=193536
+K4,4: k=1, r=2; even packings=576; cover-good=0; completable=288; cover-bad but completable=288; T=82944; B=82944; partitions=18432
+Q3: k=1, r=2; even packings=336; cover-good=0; completable=24; cover-bad but completable=24; T=3456; B=3456; partitions=10752
+complement Q3: k=1, r=2; even packings=576; cover-good=0; completable=72; cover-bad but completable=72; T=10368; B=10368; partitions=18432
+K4,4 singleton blocks: k=0, r=3; even packings=1680; cover-good=48; completable=48; cover-bad but completable=0; T=16416; B=0; partitions=107520
+Q3 singleton blocks: k=0, r=3; even packings=1680; cover-good=48; completable=48; cover-bad but completable=0; T=0; B=0; partitions=107520
+patterned: k=0, r=3; even packings=1680; cover-good=0; completable=0; cover-bad but completable=0; T=5760; B=5760; partitions=107520
+complement patterned: k=0, r=3; even packings=1680; cover-good=0; completable=0; cover-bad but completable=0; T=0; B=0; partitions=107520
+TOTAL: 9 hosts/blockings; 12912 integral even packings; 724992 coordinate-domain partition checks.
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+PASS: exact DRC summation, actual cover certificates, and all lifted edges.
+NOT PROVED: B_R+B_B < T_R+T_B at N >= C*2^d; no uniform embedding.

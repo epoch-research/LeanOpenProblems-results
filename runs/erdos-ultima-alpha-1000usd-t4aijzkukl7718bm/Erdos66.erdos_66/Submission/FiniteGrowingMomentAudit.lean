@@ -1,0 +1,7 @@
+import Submission.FiniteGrowingMomentCounterexampleExplore
+
+/-! Axiom audit for the finite growing-moment obstruction. -/
+#print axioms Erdos66FiniteGrowingMomentCounterexample.factorial_lower
+#print axioms Erdos66FiniteGrowingMomentCounterexample.finite_even_moment_bound
+#print axioms Erdos66FiniteGrowingMomentCounterexample.even_moment_lt_factorial
+#print axioms Erdos66FiniteGrowingMomentCounterexample.exists_logarithmic_counterexample

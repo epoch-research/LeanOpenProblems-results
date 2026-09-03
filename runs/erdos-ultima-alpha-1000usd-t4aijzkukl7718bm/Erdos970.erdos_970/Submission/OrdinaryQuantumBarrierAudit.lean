@@ -1,0 +1,13 @@
+import Submission.ContinuousIntervalQuantumBoundedDilation
+
+/-! Axiom audit of the ordinary-barrier and bounded quantum-comparison results.
+This file is not a proof or disproof of the quadratic Jacobsthal conjecture. -/
+#print axioms Erdos970.ContinuousInterval.envelope_upper_freezes_sqrt
+#print axioms Erdos970.ContinuousInterval.reference_upper_log_source
+#print axioms Erdos970.ContinuousInterval.reference_positive_prime_tail_cost
+#print axioms Erdos970.ContinuousInterval.eventually_reciprocal_sector_lower
+#print axioms Erdos970.ContinuousInterval.exists_polynomial_ordinary_zero_barrier
+#print axioms Erdos970.ContinuousInterval.quantumEnvelope_effective_dilation
+#print axioms Erdos970.ContinuousInterval.eventually_active_trigger_superlinear
+#print axioms Erdos970.ContinuousInterval.effectiveQuantumDilationBudget_uniform_bound
+#print axioms Erdos970.ContinuousInterval.quantumReference_bounded_dilation

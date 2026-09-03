@@ -1,0 +1,7 @@
+import Submission.ThreeEvenDegreeTwo
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583ThreeEvenDegreeTwoDevelopment.delete_vertex_adjacent_neighbor_card
+#print axioms Erdos583ThreeEvenDegreeTwoDevelopment.delete_vertex_nonadjacent_neighbor_card
+#print axioms Erdos583ThreeEvenDegreeTwoDevelopment.sharp_triangle_degree_two
+#print axioms Erdos583ThreeEvenDegreeTwoDevelopment.sharp_three_even_degree_two

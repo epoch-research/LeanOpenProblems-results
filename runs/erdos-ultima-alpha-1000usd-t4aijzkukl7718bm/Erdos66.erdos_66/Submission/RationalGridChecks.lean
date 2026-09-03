@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check ZMod.coe_int_isUnit_iff_isCoprime
+#check Int.isCoprime_iff_nat_coprime
+#check Int.natCast_natAbs
+#check Int.natAbs_natCast
+#check Rat.den_nz
+#check Int.floor_congr
+#check Int.floor_add_intCast
+#check Equiv.sum_comp
+#check Units.val_mul
+#check Units.mulLeft_apply
+#check ZMod.intCast_zmod_eq_zero_iff_dvd
+#check Int.cast_add
+#check Int.cast_natCast

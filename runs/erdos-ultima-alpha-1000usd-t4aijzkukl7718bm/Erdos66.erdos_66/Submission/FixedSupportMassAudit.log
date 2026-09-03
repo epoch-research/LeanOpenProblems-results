@@ -1,0 +1,21 @@
+'Erdos66ResidueSupportMass.support_count_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+Submission/FixedSupportMassAudit.lean:4:0: warning: This file has no module docstring (`/-! ... -/`). Add one after the imports to document the file.
+
+Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+'Erdos66ResidueSupportMass.witness_support_fraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueSupportMass.eventual_core_fraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueSupportMass.eventual_repair_fraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ResidueSupportMass.no_negligible_fixed_support_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66DisjointOperatorSupport.naturalOperator_supported' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointOperatorSupport.no_proper_support_operator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointOperatorSupport.palette_proper_of_mean_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointOperatorSupport.operator_repair_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointOperatorSupport.no_negligible_operator_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66DisjointOperatorSupport.palette_support_sq_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DisjointOperatorSupport.exists_sparse_disjoint_palette' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

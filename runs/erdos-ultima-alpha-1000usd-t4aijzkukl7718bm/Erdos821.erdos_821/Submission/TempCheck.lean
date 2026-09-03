@@ -1,0 +1,9 @@
+import Submission.MomentSmoothTransfer
+import Submission.BinomialMangoldtLower
+#check isLittleO_log_rpow_atTop
+#check Real.isLittleO_log_rpow_atTop
+#check Asymptotics.isLittleO_log_rpow_atTop
+#check Asymptotics.IsLittleO.bound
+#check Nat.le_mul_of_pos_left
+#check le_mul_of_one_le_left
+#check tendsto_pow_atTop_atTop_of_one_lt

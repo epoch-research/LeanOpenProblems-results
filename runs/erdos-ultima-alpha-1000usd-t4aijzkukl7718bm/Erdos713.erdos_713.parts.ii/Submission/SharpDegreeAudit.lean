@@ -1,0 +1,7 @@
+import FormalConjecturesUtil
+import Submission.UpToSharpDegree
+#print axioms Erdos713SharpDegree.rpow_increment_lower
+#print axioms Erdos713SharpDegree.eventual_increment_lower
+#print axioms Erdos713SharpDegree.potential_tendsto
+#print axioms Erdos713SharpDegree.exists_potential_record
+#print axioms Erdos713SharpDegree.exists_sharp_minimum_degree

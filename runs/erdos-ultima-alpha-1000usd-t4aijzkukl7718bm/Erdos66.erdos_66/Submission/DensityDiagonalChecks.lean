@@ -1,0 +1,12 @@
+import Submission.ParityDensityExplore
+#check Prod.dist_eq
+#check Prod.dist_eq_max
+#check tendsto_tsum_of_dominated_convergence
+#check Finset.card_biUnion_le
+#check Finset.card_biUnion_le_card_mul
+#check Summable.sum_le_tsum
+#check Metric.tendsto_nhds
+#check Filter.Tendsto.fst
+#check Filter.Tendsto.snd
+#check Set.mem_iUnion
+#check one_div_pow

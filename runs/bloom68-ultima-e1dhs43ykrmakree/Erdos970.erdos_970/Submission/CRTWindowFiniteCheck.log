@@ -1,0 +1,6 @@
+Euclidean records, exact favorable counts, prefix and gap bounds: 1380 coprime pairs OK
+Exact maximum-union formula against all residue phases: 7350 lengths OK
+17-row counterexample: all 32 rounded counts and 180 ordered block pairs OK; no common roots
+Six-prime cover19, noncovering disjoint-large-prime example, and all-bit remainder-one identity OK
+Spec.lean unchanged: c961aa894dc05a671003b74cd770bf0efc120992bcaaa79466c418b03e1688e7
+No asymptotic Jacobsthal bound is inferred from these checks.

@@ -1,0 +1,31 @@
+Rational palette (1,): 14 nonzero atoms, odd denominator 4620005, T(x*)=0, repaired ratio=2
+Rational palette (1, 3, 5, 7): 56 nonzero atoms, odd denominator 4620005, T(x*)=-14, repaired ratio=2
+Rational palette (1, 101, 10001): 42 nonzero atoms, odd denominator 4620005, T(x*)=-6, repaired ratio=2
+Gaussian digits m=1: n=2, D=1, 1 valuation layers, every layer inequality is equality
+Gaussian digits m=2: n=4, D=3, 2 valuation layers, every layer inequality is equality
+Gaussian digits m=3: n=8, D=7, 3 valuation layers, every layer inequality is equality
+Gaussian digits m=4: n=16, D=14, 4 valuation layers, every layer inequality is equality
+Gaussian digits m=5: n=32, D=29, 5 valuation layers, every layer inequality is equality
+Gaussian digits m=6: n=64, D=59, 6 valuation layers, every layer inequality is equality
+Gaussian digits m=7: n=128, D=114, 7 valuation layers, every layer inequality is equality
+Gaussian digits m=8: n=256, D=223, 8 valuation layers, every layer inequality is equality
+Compression: 224 exact supports checked; triangle witness (-1, 1), images [-1, 1, -2]; independent and triangle families attain their stated bounds
+One-circle SOS m=1: exact identity, Hessian rank 1, optimal complex square count 1
+One-circle SOS m=2: exact identity, Hessian rank 2, optimal complex square count 1
+One-circle SOS m=3: exact identity, Hessian rank 3, optimal complex square count 2
+One-circle SOS m=4: exact identity, Hessian rank 4, optimal complex square count 2
+One-circle SOS m=5: exact identity, Hessian rank 5, optimal complex square count 3
+One-circle SOS m=6: exact identity, Hessian rank 6, optimal complex square count 3
+One-circle SOS m=7: exact identity, Hessian rank 7, optimal complex square count 4
+One-circle SOS m=8: exact identity, Hessian rank 8, optimal complex square count 4
+One-circle SOS m=9: exact identity, Hessian rank 9, optimal complex square count 5
+One-circle SOS m=10: exact identity, Hessian rank 10, optimal complex square count 5
+Circle N=5^0: r2(N)=4, projection norm squared=4
+Circle N=5^1: r2(N)=8, projection norm squared=8
+Circle N=5^2: r2(N)=12, projection norm squared=12
+Circle N=5^3: r2(N)=16, projection norm squared=16
+Circle N=5^4: r2(N)=20, projection norm squared=20
+Circle N=5^5: r2(N)=24, projection norm squared=24
+Circle N=5^6: r2(N)=28, projection norm squared=28
+Circle N=5^7: r2(N)=32, projection norm squared=32
+PASS: all exact finite checks succeeded. Analytic assertions are proved in the accompanying note, not inferred from these tests.

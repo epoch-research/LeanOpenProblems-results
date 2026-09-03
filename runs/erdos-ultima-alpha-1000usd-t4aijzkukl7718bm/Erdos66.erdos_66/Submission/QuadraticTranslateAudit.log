@@ -1,0 +1,36 @@
+'Erdos66PaleyBilinear.shiftSum_set_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PaleyBilinear.bilinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PaleyBilinear.bilinear_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PaleyBilinear.bilinear_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PaleyBilinear.bilinear_sq_le_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PaleyBilinear.bilinear_real_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.curve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.point_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.mem_curve' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.curves_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.mem_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_row_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.curve_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.curve_pairCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.curve_pairCount_char' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_pairCount_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_mixed_sq_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_mixed_abs_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.lift_self_abs_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.encoded_lift_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateAnchor.encoded_lift_counts_below' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateScale.cutoff_div_count_square_limit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuadraticTranslateScale.sqrt_cutoff_div_count_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66QuadraticTranslateScale.prime_prefix_lift_relative_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuadraticTranslateScale.full_quadratic_lift_forces_mass' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66QuadraticTranslateScale.eventually_no_full_quadratic_lift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

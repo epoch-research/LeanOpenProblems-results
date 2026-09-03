@@ -1,0 +1,17 @@
+import Submission.TailEar
+/-! Permitted-axiom audit for the tail-ear lemmas. -/
+#print axioms Erdos583TailEarDevelopment.shortcut_support_subset
+#print axioms Erdos583TailEarDevelopment.shortcut_isPath
+#print axioms Erdos583TailEarDevelopment.shortcut_avoids_ear
+#print axioms Erdos583TailEarDevelopment.tail_ear_exchange
+#print axioms Erdos583TailEarDevelopment.shorten_tail_at_fresh_ear
+#print axioms Erdos583TailEarDevelopment.exists_shortest_tail
+#print axioms Erdos583TailEarDevelopment.shortest_tail_no_fresh_ear
+#print axioms Erdos583TailEarDevelopment.internal_two_edge_form
+#print axioms Erdos583TailEarDevelopment.tail_ear_chord_not_mem
+#print axioms Erdos583TailEarDevelopment.private_nonendpoint_degree_two
+#print axioms Erdos583TailEarDevelopment.shortest_tail_internal_not_private
+#print axioms Erdos583TailEarDevelopment.exists_shortest_rooted_structure
+#print axioms Erdos583TailEarDevelopment.missing_normal_degree_bound
+#print axioms Erdos583TailEarDevelopment.normal_support_spanning_of_min_degree_four
+#print axioms Erdos583TailEarDevelopment.odd_normal_support_spanning

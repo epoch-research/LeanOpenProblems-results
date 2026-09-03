@@ -1,0 +1,134 @@
+All-height bridge: clean source rebuild and kernel audit
+
+$ lake env lean --version
+Lean (version 4.27.0, x86_64-unknown-linux-gnu, commit db93fe1608548721853390a10cd40580fe7d22ae, Release)
+
+$ lake env lean -o .lake/build/lib/lean/Submission/E30Bridge.olean Submission/E30Bridge.lean
+PASS: existing bridge source compiled (exit 0).
+
+$ lake env lean -o .lake/build/lib/lean/Submission/E30HeightBridge.olean Submission/E30HeightBridge.lean
+PASS: independent height helper source compiled (exit 0).
+
+$ lake env lean Submission/E30HeightBridgeAudit.lean
+'Erdos30Research.int_isSidon_iff_differences' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.edgeResidue' does not depend on any axioms
+'Erdos30Research.edgeHeight' does not depend on any axioms
+'Erdos30Research.heightMark' does not depend on any axioms
+'Erdos30Research.EdgeRowsInjective' does not depend on any axioms
+'Erdos30Research.edge_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.residue_height_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.heightMark_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.isSidon_of_edge_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.HeightIndex' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.liftResidue' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.liftHeight' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.liftResidue_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.lift_coordinates_injective' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.liftMark_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.same_residue_heavy' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.allHeight_isSidon' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.edge_quotient_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.heavy_light_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.light_light_carry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.nat_set_of_integer_marks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.allHeight_nat_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.target_modulus_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.target_diameter_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.AllHeightBox' depends on axioms: [propext, Quot.sound]
+'Erdos30Research.AllHeightBox.nat_set' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.not_all_power_bounds_of_allHeight_saving' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.diameter_saving_of_height_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos30Research.not_all_power_bounds_of_allHeight_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+Erdos30Research.int_isSidon_iff_differences (S : Set ℤ) :
+  IsSidon S ↔ ∀ a ∈ S, ∀ b ∈ S, ∀ c ∈ S, ∀ d ∈ S, a ≠ b → a - b = c - d → a = c ∧ b = d
+def Erdos30Research.EdgeRowsInjective.{u_1} : {ι : Type u_1} → ℤ → (ι → ℤ) → (ι → ℤ) → Prop :=
+fun {ι : Type u_1} (m : ℤ) (r v : ι → ℤ) =>
+  ∀ (t : ℤ),
+    0 < t →
+      t < m →
+        Function.Injective fun (e : { e : ι × ι // Erdos30Research.edgeResidue m r e = t }) =>
+          Erdos30Research.edgeHeight r v ↑e
+structure Erdos30Research.AllHeightBox (p L : ℕ) : Type
+number of parameters: 2
+fields:
+  Erdos30Research.AllHeightBox.A : Finset ℤ
+  Erdos30Research.AllHeightBox.b : ℤ → ℤ
+  Erdos30Research.AllHeightBox.heavy_sidon : IsSidon ↑self.A
+  Erdos30Research.AllHeightBox.heavy_card : self.A.card = p + 1
+  Erdos30Research.AllHeightBox.rows : Erdos30Research.EdgeRowsInjective (↑(p ^ 2 - p + 1)) Erdos30Research.liftResidue
+      (Erdos30Research.liftHeight self.b)
+  Erdos30Research.AllHeightBox.heavy_box : ∀ a ∈ self.A, 0 ≤ a ∧ a ≤ ↑L
+  Erdos30Research.AllHeightBox.light_box : ∀ (s : ℤ), 1 ≤ s → s < ↑(p ^ 2 - p + 1) → 0 ≤ self.b s ∧ self.b s ≤ ↑L
+constructor:
+  Erdos30Research.AllHeightBox.mk {p L : ℕ} (A : Finset ℤ) (b : ℤ → ℤ) (heavy_sidon : IsSidon ↑A)
+    (heavy_card : A.card = p + 1)
+    (rows :
+      Erdos30Research.EdgeRowsInjective (↑(p ^ 2 - p + 1)) Erdos30Research.liftResidue (Erdos30Research.liftHeight b))
+    (heavy_box : ∀ a ∈ A, 0 ≤ a ∧ a ≤ ↑L) (light_box : ∀ (s : ℤ), 1 ≤ s → s < ↑(p ^ 2 - p + 1) → 0 ≤ b s ∧ b s ≤ ↑L) :
+    Erdos30Research.AllHeightBox p L
+Erdos30Research.isSidon_of_edge_rows.{u_1} {ι : Type u_1} {m : ℤ} {r v : ι → ℤ} (hm : 0 < m)
+  (hr : ∀ (i : ι), 0 ≤ r i ∧ r i < m)
+  (hzero : ∀ (i j k l : ι), i ≠ j → k ≠ l → r i = r j → r k = r l → v i - v j = v k - v l → i = k ∧ j = l)
+  (hrows : Erdos30Research.EdgeRowsInjective m r v) : IsSidon (Set.range (Erdos30Research.heightMark m r v))
+Erdos30Research.liftMark_injective {m : ℕ} {A : Finset ℤ} (hm : 0 < m) (b : ℤ → ℤ) :
+  Function.Injective (Erdos30Research.heightMark (↑m) Erdos30Research.liftResidue (Erdos30Research.liftHeight b))
+Erdos30Research.allHeight_isSidon {m : ℕ} {A : Finset ℤ} {b : ℤ → ℤ} (hm : 2 ≤ m) (hA : IsSidon ↑A)
+  (hrows : Erdos30Research.EdgeRowsInjective (↑m) Erdos30Research.liftResidue (Erdos30Research.liftHeight b)) :
+  IsSidon (Set.range (Erdos30Research.heightMark (↑m) Erdos30Research.liftResidue (Erdos30Research.liftHeight b)))
+Erdos30Research.edge_quotient_remainder.{u_1} {ι : Type u_1} {m : ℤ} {r v : ι → ℤ} (hm : 0 < m)
+  (hr : ∀ (i : ι), 0 ≤ r i ∧ r i < m) (e : ι × ι) :
+  Erdos30Research.edgeResidue m r e = (r e.1 - r e.2) % m ∧
+    Erdos30Research.edgeHeight r v e = v e.1 - v e.2 + (r e.1 - r e.2) / m
+Erdos30Research.heavy_light_carries {m : ℕ} {A : Finset ℤ} (b : ℤ → ℤ) (a : ↥A) (s : Fin (m - 1)) :
+  Erdos30Research.edgeHeight Erdos30Research.liftResidue (Erdos30Research.liftHeight b) (Sum.inr s, Sum.inl a) =
+      b (↑↑s + 1) - ↑a ∧
+    Erdos30Research.edgeHeight Erdos30Research.liftResidue (Erdos30Research.liftHeight b) (Sum.inl a, Sum.inr s) =
+      ↑a - b (↑↑s + 1) - 1
+Erdos30Research.light_light_carry {m : ℕ} {A : Finset ℤ} (b : ℤ → ℤ) (s t : Fin (m - 1)) :
+  Erdos30Research.edgeHeight Erdos30Research.liftResidue (Erdos30Research.liftHeight b) (Sum.inr s, Sum.inr t) =
+    b (↑↑s + 1) - b (↑↑t + 1) + if ↑s < ↑t then -1 else 0
+Erdos30Research.allHeight_nat_set {m L : ℕ} {A : Finset ℤ} {b : ℤ → ℤ} (hm : 2 ≤ m) (hA : IsSidon ↑A)
+  (hrows : Erdos30Research.EdgeRowsInjective (↑m) Erdos30Research.liftResidue (Erdos30Research.liftHeight b))
+  (hAbox : ∀ a ∈ A, 0 ≤ a ∧ a ≤ ↑L) (hbbox : ∀ (s : ℤ), 1 ≤ s → s < ↑m → 0 ≤ b s ∧ b s ≤ ↑L) :
+  ∃ B ⊆ Finset.Icc 1 (m * (L + 1)), IsSidon ↑B ∧ B.card = m - 1 + A.card
+Erdos30Research.target_diameter_identity {p L : ℕ} (hp : 2 ≤ p) {G : ℤ} (hgap : ↑L + 1 = ↑p ^ 2 + ↑p + 1 - G) :
+  ↑(p ^ 2 + 1) ^ 2 - ↑((p ^ 2 - p + 1) * (L + 1)) = ↑p ^ 2 + ↑(p ^ 2 - p + 1) * G
+Erdos30Research.AllHeightBox.nat_set {p L : ℕ} (C : Erdos30Research.AllHeightBox p L) (hp : 2 ≤ p) :
+  ∃ B ⊆ Finset.Icc 1 ((p ^ 2 - p + 1) * (L + 1)), IsSidon ↑B ∧ B.card = p ^ 2 + 1
+Erdos30Research.not_all_power_bounds_of_allHeight_saving {α c : ℝ} (hα : 0 < α) (hc : 0 < c)
+  (hfamily :
+    ∀ (P : ℕ),
+      ∃ p ≥ P,
+        2 ≤ p ∧
+          ∃ (L : ℕ) (x : Erdos30Research.AllHeightBox p L),
+            ↑((p ^ 2 - p + 1) * (L + 1)) ≤ ↑(p ^ 2 + 1) ^ 2 - c * ↑(p ^ 2 + 1) ^ (1 + α)) :
+  ¬∀ (ε : ℝ), 0 < ε → (fun (N : ℕ) => ↑(Erdos30Research.h N) - √↑N) =O[Filter.atTop] fun (N : ℕ) => ↑N ^ ε
+Erdos30Research.diameter_saving_of_height_gap {p L G c₀ β : ℝ} (hp : 2 ≤ p) (hc₀ : 0 < c₀) (hβ : 0 < β)
+  (hgap : L + 1 = p ^ 2 + p + 1 - G) (hG : c₀ * p ^ β ≤ G) :
+  (p ^ 2 - p + 1) * (L + 1) ≤ (p ^ 2 + 1) ^ 2 - c₀ / 2 / 2 ^ (1 + β / 2) * (p ^ 2 + 1) ^ (1 + β / 2)
+Erdos30Research.not_all_power_bounds_of_allHeight_gap {β c₀ : ℝ} (hβ : 0 < β) (hc₀ : 0 < c₀)
+  (hfamily :
+    ∀ (P : ℕ),
+      ∃ p ≥ P,
+        2 ≤ p ∧
+          ∃ (L : ℕ) (x : Erdos30Research.AllHeightBox p L) (G : ℤ), ↑L + 1 = ↑p ^ 2 + ↑p + 1 - G ∧ c₀ * ↑p ^ β ≤ ↑G) :
+  ¬∀ (ε : ℝ), 0 < ε → (fun (N : ℕ) => ↑(Erdos30Research.h N) - √↑N) =O[Filter.atTop] fun (N : ℕ) => ↑N ^ ε
+
+PASS: all axiom-print commands and semantic examples compiled (exit 0).
+
+$ sha256sum Submission/Spec.lean Submission/E30HeightBridge.lean Submission/E30HeightBridgeAudit.lean
+9ffc327c4d7d8a5c18d2b3a5e4ad04270ebbdcf797bfa372c715f3673c5ca944  Submission/Spec.lean
+78986edb815372e72d7ffc0c05f29b47b335f551079d8ee2950fae55bf0f10b0  Submission/E30HeightBridge.lean
+ed4d6d51a08206fbb95512748505bb9fbdf8ca9b12e44c70e1aeace70ea2819f  Submission/E30HeightBridgeAudit.lean
+
+$ wc -l Submission/E30HeightBridge.lean
+395 Submission/E30HeightBridge.lean
+
+Automated post-audit validation:
+PASS: all 29 top-level helper declarations were axiom-audited.
+PASS: axiom union is exactly ['Classical.choice', 'Quot.sound', 'propext'].
+PASS: no forbidden proof tokens or Spec imports in helper/audit sources.
+PASS: all three Lean source compilations exited 0; no warnings or errors.
+PASS: helper length is 395 lines.
+PASS: logged source hashes match current helper/audit sources.
+PASS: protected Spec checksum is unchanged: 9ffc327c4d7d8a5c18d2b3a5e4ad04270ebbdcf797bfa372c715f3673c5ca944.

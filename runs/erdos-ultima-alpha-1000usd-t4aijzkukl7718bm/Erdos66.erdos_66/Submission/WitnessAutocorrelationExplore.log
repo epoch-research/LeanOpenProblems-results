@@ -1,0 +1,52 @@
+Submission/WitnessAutocorrelationExplore.lean:32:62: error: unsolved goals
+r : ℝ
+hr0 : 0 < r
+hr1 : r < 1
+hL : 1 ≤ -Real.log (1 - r)
+ht : 0 < 1 - r
+hln : -Real.log (1 - r) ≠ 0
+hh : harmonicSqSeries r * squareKernel r ≤ 6 * (-Real.log (1 - r)) ^ 2 / (1 - r) * squareKernel r
+⊢ Real.log (1 - r) / Real.log (1 - r) = 1
+Submission/WitnessAutocorrelationExplore.lean:45:20: error(lean.unknownIdentifier): Unknown identifier `Erdos66ResidueSeries.unit_interval_eventually`
+Submission/WitnessAutocorrelationExplore.lean:46:80: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `1`
+Submission/WitnessAutocorrelationExplore.lean:47:27: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `2`
+Submission/WitnessAutocorrelationExplore.lean:49:6: error(lean.unknownIdentifier): Unknown identifier `Erdos66ResidueSeries.negative_log_one_sub.eventually_ge_atTop`
+Submission/WitnessAutocorrelationExplore.lean:48:20: error(lean.unknownIdentifier): Unknown identifier `Erdos66ResidueSeries.unit_interval_eventually`
+Submission/WitnessAutocorrelationExplore.lean:50:36: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `1`
+Submission/WitnessAutocorrelationExplore.lean:50:44: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `2`
+Submission/WitnessAutocorrelationExplore.lean:78:38: error: Type mismatch: After simplification, term
+  hr1
+ has type
+  r < 1
+but is expected to have type
+  |?m.49| < 1
+Submission/WitnessAutocorrelationExplore.lean:77:56: error: unsolved goals
+A : Set ℕ
+c r : ℝ
+hc : 0 ≤ c
+hr0 : 0 < r
+hr1 : r < 1
+⊢ (Summable fun h => (weightedCorr (indicator A) r h - c * weightedCorr profile r h) ^ 2) ∧
+    corrErrorEnergy A c r ≤ series (errorSq A c) r
+Submission/WitnessAutocorrelationExplore.lean:98:20: error(lean.unknownIdentifier): Unknown identifier `Erdos66ResidueSeries.unit_interval_eventually`
+Submission/WitnessAutocorrelationExplore.lean:99:78: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `2`
+Submission/WitnessAutocorrelationExplore.lean:100:20: error(lean.unknownIdentifier): Unknown identifier `Erdos66ResidueSeries.unit_interval_eventually`
+Submission/WitnessAutocorrelationExplore.lean:101:68: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `1`
+Submission/WitnessAutocorrelationExplore.lean:101:73: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `2`
+Submission/WitnessAutocorrelationExplore.lean:102:27: error: Invalid projection: Type of
+  hr
+is not known; cannot resolve projection `2`

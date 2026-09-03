@@ -1,0 +1,13 @@
+import Submission.PrefixCopyExplore
+import Submission.ResidueCountingExplore
+#check tendsto_order
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check Finset.card_le_card_of_injOn
+#check Finset.card_image_of_injective
+#check Nat.eq_of_mul_eq_mul_left
+#check ZMod.natCast_self
+#check Real.sqrt_mul_self
+#check Real.sqrt_sq
+#check Filter.Tendsto.eventually_lt_const
+#check Nat.cast_pow

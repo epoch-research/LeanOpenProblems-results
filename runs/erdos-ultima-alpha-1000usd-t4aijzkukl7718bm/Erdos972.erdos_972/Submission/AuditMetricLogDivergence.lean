@@ -1,0 +1,12 @@
+import Submission.MetricLogDivergence
+
+/-! Axiom audit of the stronger metric prime-pair conclusions. -/
+#print axioms Erdos972MetricFrequentLinear.localRich_measure_lower
+#print axioms Erdos972MetricFrequentLinear.ae_frequently_linear_widePairs
+#print axioms Erdos972LinearPrefixDivergence.not_summable_div_succ_of_frequently_linear
+#print axioms Erdos972MetricLogDivergence.widePairs_le_primeCorrelation
+#print axioms Erdos972MetricLogDivergence.ae_frequently_linear_primeCorrelation
+#print axioms Erdos972MetricLogDivergence.ae_not_summable_prime
+#print axioms Erdos972MetricLogDivergence.ae_logPrimeCorrelation_tendsto
+#print axioms Erdos972MetricLogDivergence.ae_not_summable_mangoldt
+#print axioms Erdos972MetricLogDivergence.ae_logMangoldtCorrelation_tendsto

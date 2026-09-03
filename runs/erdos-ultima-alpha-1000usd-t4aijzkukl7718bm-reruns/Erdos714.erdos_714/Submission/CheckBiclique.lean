@@ -1,0 +1,10 @@
+import Submission.ColoredTensorThinning
+#check SimpleGraph.edgeFinset_card
+#check SimpleGraph.edgeSet_comap
+#check SimpleGraph.mem_edgeSet_comap
+#check SimpleGraph.Free.anti
+#check Finset.card_congr
+#check Finset.card_eq_of_equiv
+#check SimpleGraph.edgeFinset_congr
+#check Fintype.card_congr
+#check Equiv.subtypeEquiv

@@ -1,0 +1,9 @@
+import Submission.LinearExposureTail
+import Submission.PowerLossDyadicVoidReduction
+#check isLittleO_log_rpow_atTop
+#check Real.rpow_le_rpow_of_exponent_le
+#check Real.rpow_pos_of_pos
+#check Real.log_pow
+#check Erdos970.GapAverages.scaled_quadratic_cap
+#check Erdos970.GapAverages.survivor_of_exponential_tail_of_cap
+#check Erdos970.GapAverages.quadratic_bound_of_eventually_scaled

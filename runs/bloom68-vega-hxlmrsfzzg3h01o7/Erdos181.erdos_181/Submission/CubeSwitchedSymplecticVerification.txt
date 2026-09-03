@@ -1,0 +1,12 @@
+PASS: spanning shear cubes (both colours, all 256 quotient tables at r=4): 512
+PASS: one-point perturbations: injective Q_(r-1), odd weight, no affine derivative: 512
+PASS: higher-dimensional explicit high-degree spanning shear cubes: 6
+PASS: unswitched Q_(r-1) constructions in both colours: 8
+PASS: quadratic-construction audits by case: {'affine': 12, 'Cayley': 12, 'generic quadratic': 150}
+PASS: fixed-framework square criterion and exactly four two-colour switch patterns: 23
+PASS: two-colour affine-flat/list identity: 8
+PASS: Hadamard identity H^2=N I at r=4: PASS
+PASS: maximal-degree/no-affine-cube existence bound at r=64, 1<=c<=16: strictly negative
+PASS: d0 dimension/exponent audit for every even 8<=r<=512: PASS
+PASS: Spec.lean SHA-256 (unchanged): 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+These audits check stated formulas; the all-dimensional claims rest on the proofs in the note.

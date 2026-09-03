@@ -1,0 +1,92 @@
+lemma ncard_neighbor_delete_subgraph_add {V : Type*} [Finite V]
+    {G : SimpleGraph V} (K : G.Subgraph) (v : V) :
+    ((G.deleteEdges K.edgeSet).neighborSet v).ncard + (K.neighborSet v).ncard =
+      (G.neighborSet v).ncard := by
+  have hset : (G.deleteEdges K.edgeSet).neighborSet v =
+      G.neighborSet v \ K.neighborSet v := by
+    ext w
+    simp
+  rw [hset]
+  exact Set.ncard_diff_add_ncard_of_subset (K.neighborSet_subset v)
+
+lemma cycle_neighbor_ncard_even {V : Type*} {G : SimpleGraph V}
+    {a : V} {p : G.Walk a a} (hp : p.IsCycle) (v : V) :
+    Even (p.toSubgraph.neighborSet v).ncard := by
+  classical
+  by_cases hv : v ∈ p.support
+  · rw [hp.ncard_neighborSet_toSubgraph_eq_two hv]
+    exact ⟨1, rfl⟩
+  · have hn : p.toSubgraph.neighborSet v = ∅ := by
+      apply Set.eq_empty_iff_forall_notMem.mpr
+      intro w hw
+      exact hv (Walk.mem_support_of_adj_toSubgraph hw)
+    simp [hn]
+
+lemma delete_cycle_preserves_degree_parity {V : Type*} [Finite V]
+    {G : SimpleGraph V} {a : V} {p : G.Walk a a} (hp : p.IsCycle) (v : V) :
+    ((G.deleteEdges p.toSubgraph.edgeSet).neighborSet v).ncard % 2 =
+      (G.neighborSet v).ncard % 2 := by
+  have hs := ncard_neighbor_delete_subgraph_add p.toSubgraph v
+  have he := Nat.even_iff.mp (cycle_neighbor_ncard_even hp v)
+  omega
+
+/-- On an even number of vertices, every graph is an all-odd-degree graph
+    with the edges of a forest removed. -/
+lemma exists_odd_supergraph_forest_difference {V : Type*} [Fintype V]
+    (G : SimpleGraph V) (hn : Even (Fintype.card V)) :
+    ∃ H : SimpleGraph V, G ≤ H ∧
+      (∀ v, Odd (Nat.card (H.neighborSet v))) ∧ (H \ G).IsAcyclic := by
+  classical
+  let Q (H : SimpleGraph V) := G ≤ H ∧ ∀ v, Odd (Nat.card (H.neighborSet v))
+  have ht : Q ⊤ := by
+    refine ⟨le_top, ?_⟩
+    intro v
+    have hpos : 0 < Fintype.card V := Fintype.card_pos_iff.mpr ⟨v⟩
+    have hmod := Nat.even_iff.mp hn
+    have ho : Odd (Fintype.card V - 1) := by
+      apply Nat.odd_iff.mpr
+      omega
+    simpa only [Nat.card_eq_fintype_card, card_neighborSet_eq_degree,
+      complete_graph_degree] using ho
+  have hex : ∃ n : ℕ, ∃ H : SimpleGraph V, Q H ∧ H.edgeSet.ncard = n :=
+    ⟨(⊤ : SimpleGraph V).edgeSet.ncard, ⊤, ht, rfl⟩
+  obtain ⟨H, hH, hcard⟩ := Nat.find_spec hex
+  have hmin (F : SimpleGraph V) (hF : Q F) : H.edgeSet.ncard ≤ F.edgeSet.ncard := by
+    rw [hcard]
+    exact Nat.find_min' hex ⟨F, hF, rfl⟩
+  refine ⟨H, hH.1, hH.2, ?_⟩
+  intro a p hp
+  let q := p.mapLe (show H \ G ≤ H from sdiff_le)
+  have hq : q.IsCycle := hp.mapLe (show H \ G ≤ H from sdiff_le)
+  have hqe : q.toSubgraph.edgeSet = p.toSubgraph.edgeSet := by
+    simp [q, Walk.mapLe]
+  let F := H.deleteEdges q.toSubgraph.edgeSet
+  have hGF : G ≤ F := by
+    intro u v huv
+    apply deleteEdges_adj.mpr
+    refine ⟨hH.1 huv, ?_⟩
+    intro he
+    rw [hqe] at he
+    have hf := p.toSubgraph.edgeSet_subset he
+    exact hf.2 huv
+  have hF : Q F := by
+    refine ⟨hGF, ?_⟩
+    intro v
+    have hpar := delete_cycle_preserves_degree_parity hq v
+    have hod := hH.2 v
+    simp only [Nat.card_coe_set_eq, Nat.odd_iff] at hod ⊢
+    change (F.neighborSet v).ncard % 2 = 1
+    exact hpar.trans hod
+  have hlt : F.edgeSet.ncard < H.edgeSet.ncard := by
+    apply Set.ncard_lt_ncard (ht := Set.toFinite _)
+    refine ⟨edgeSet_mono (H.deleteEdges_le _), ?_⟩
+    intro hsub
+    have he : s(a, q.snd) ∈ q.toSubgraph.edgeSet := q.toSubgraph_adj_snd hq.not_nil
+    have hhe : s(a, q.snd) ∈ H.edgeSet := q.toSubgraph.edgeSet_subset he
+    have hfe := hsub hhe
+    have hn : s(a, q.snd) ∉ q.toSubgraph.edgeSet := by
+      have hfe' : s(a, q.snd) ∈ H.edgeSet \ q.toSubgraph.edgeSet := by
+        simpa [F] using hfe
+      exact hfe'.2
+    exact hn he
+  exact (not_lt_of_ge (hmin F hF)) hlt

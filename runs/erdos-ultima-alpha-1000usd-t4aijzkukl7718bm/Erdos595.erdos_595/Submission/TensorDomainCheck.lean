@@ -1,0 +1,14 @@
+import FormalConjecturesUtil
+#check TensorProduct.tmul_eq_zero
+#check TensorProduct.tmul_eq_zero_iff
+#check Module.Basis.index_nonempty
+#check Module.Basis.nonempty_index
+#check TensorProduct.AlgebraTensorModule.nontrivial
+#check Algebra.TensorProduct.includeLeft_injective
+#check Algebra.TensorProduct.includeRight_injective
+#check TensorProduct.mk_injective
+#check LinearMap.rTensor_injective
+#check LinearIndependent.ne_zero
+#check Module.Basis.repr_self
+#check LinearMap.exists_apply_ne_zero
+#check LinearMap.nontrivial_of_ne_zero

@@ -1,0 +1,12 @@
+import Submission.EndpointBranches
+#check Function.iterate_succ_apply
+#check Function.iterate_succ_apply'
+#check Function.iterate_add_apply
+#check Finite.surjective_of_injective
+#check Fintype.bijective_iff_injective_and_card
+#check List.nodup_ofFn
+#check Finset.mem_image
+#check Nat.find_min
+#check Nat.find_min'
+#check Function.iterate_map
+#check Set.InjOn

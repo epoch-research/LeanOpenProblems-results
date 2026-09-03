@@ -1,0 +1,15 @@
+import Submission.PrescribedEndpointPaths
+#check SimpleGraph.Walk.induce
+#check SimpleGraph.Walk.toSubgraph
+#check SimpleGraph.Walk.toSubgraphWalk
+#check SimpleGraph.Walk.toSubgraphMap
+#check SimpleGraph.Walk.lift
+#check SimpleGraph.Walk.lift_support
+#check SimpleGraph.Walk.takeUntil
+#check SimpleGraph.Walk.dropUntil
+#check SimpleGraph.Walk.IsPath.takeUntil
+#check SimpleGraph.Walk.IsPath.dropUntil
+#check SimpleGraph.Walk.IsPath.support_takeUntil_inter_support_dropUntil
+#check SimpleGraph.Walk.take_spec
+#check SimpleGraph.Walk.takeUntil_append_dropUntil
+#check SimpleGraph.Walk.IsPath.nil_of_eq

@@ -1,0 +1,6 @@
+import Submission.TypeICovarianceScales
+#print axioms Erdos972ProfileLogShift.profile_log_shift_l1
+#print axioms Erdos972ProfileLogShift.profile_covariance
+#print axioms Erdos972TypeICovariance.typeI_covariance_bound
+#print axioms Erdos972TypeICovarianceScales.eventually_covariance_budget
+#print axioms Erdos972TypeICovarianceScales.exists_growing_typeI_covariance_scale

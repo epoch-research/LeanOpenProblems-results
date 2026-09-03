@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Finset.min'_mem
+#check Finset.max'_mem
+#check Finset.min'_le
+#check Finset.le_max'
+#check Nat.ceil_lt_add_one
+#check Nat.ceil_mono
+#check Finset.mem_Ico
+#check Finset.card_Ico
+#check Finset.sum_congr
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise
+#check Nat.ceil_le
+#check Nat.le_ceil
+#check Nat.ceil_lt_add_one

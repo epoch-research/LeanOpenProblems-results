@@ -1,0 +1,9 @@
+import Submission.PolynomialDimensionLatticeRecurrence
+#check WithLp.toLp
+#check EuclideanSpace.basisFun_repr
+#check OrthonormalBasis.coe_toBasis_repr_apply
+#check OrthonormalBasis.coe_toBasis
+#check ZLattice.covolume_eq_measure_fundamentalDomain
+#check ZSpan.isAddFundamentalDomain
+#check Erdos3CircleIntegerApproximation.ephase_pow
+#check Erdos3CircleIntegerApproximation.ephase_unitAngle

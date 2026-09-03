@@ -1,0 +1,8 @@
+import Submission.SharpFluctuationExplore
+
+/-! Axiom audit of the strengthened fluctuation estimates. -/
+#print axioms Erdos66SharpFluctuation.tilted_weighted_lower_bound
+#print axioms Erdos66SharpFluctuation.sharp_error_envelope_limit_lower_bound
+#print axioms Erdos66SharpFluctuation.sharp_frequently_squared_error_gt
+#print axioms Erdos66SharpFluctuation.sharp_frequently_abs_log_error_gt
+#print axioms Erdos66SharpFluctuation.sharp_exists_large_log_fluctuation

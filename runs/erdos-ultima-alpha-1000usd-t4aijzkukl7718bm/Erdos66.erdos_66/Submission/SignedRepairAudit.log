@@ -1,0 +1,17 @@
+'Erdos66SignedRepairIncidence.midpointDegree_union_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.signed_incidence_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.card_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.centered_signed_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.centered_signed_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.uniform_gain_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairIncidence.normalized_signed_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairStability.same_mass_regular_edits_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66SignedRepairStability.same_counting_regular_edits_empty' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SignedRepairStability.same_counting_frequent_contrast' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66SignedRepairStability.same_coefficient_frequent_contrast' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

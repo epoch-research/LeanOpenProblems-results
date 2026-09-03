@@ -1,0 +1,18 @@
+import Submission.ParityRepresentationExplore
+/-! Axiom audit for alternating-convolution and parity necessary conditions. -/
+#print axioms Erdos66TwistedEnergy.corr_twist
+#print axioms Erdos66TwistedEnergy.twisted_energy_eq
+#print axioms Erdos66TwistedEnergy.twisted_energy_difference_sq
+#print axioms Erdos66TwistedEnergy.push_tendsto
+#print axioms Erdos66NaturalTwistedEnergy.cyclic_twisted_bound
+#print axioms Erdos66NaturalTwistedEnergy.natural_twisted_energy_bound
+#print axioms Erdos66WitnessTwistedEnergy.alternating_prefix_bound
+#print axioms Erdos66WitnessTwistedEnergy.twist_profile_bound
+#print axioms Erdos66WitnessTwistedEnergy.witness_twisted_bound
+#print axioms Erdos66WitnessTwistedEnergy.witness_normalized_twist_zero
+#print axioms Erdos66ParityRepresentation.sumRep_even_succ
+#print axioms Erdos66ParityRepresentation.sumRep_odd
+#print axioms Erdos66ParityRepresentation.twist_even_sumRep
+#print axioms Erdos66ParityRepresentation.witness_mixed_parity_limit
+#print axioms Erdos66ParityRepresentation.witness_parity_self_sum_limit
+#print axioms Erdos66ParityRepresentation.witness_normalized_parity_imbalance_zero

@@ -1,0 +1,12 @@
+import Submission.LineRecoloringPeaksExplore
+#check Erdos66ParabolaRepair.pairCount_mono
+#check Erdos66OriginRepair.pairCount_mono
+#check Fintype.card_prod
+#check Fintype.card_pos_iff
+#check Finset.one_le_card
+#check Nat.one_le_iff_ne_zero
+#check Real.log_mul
+#check Real.log_pow
+#check pow_mul
+#check Nat.lt_pow_self
+#check exists_nat_gt

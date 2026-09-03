@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+import Submission.LinearRobustCopies
+
+/-! Audit of small-set incidence control and linear robust copies.
+No admitted main theorem is imported. -/
+#print axioms Erdos713SmallSetIncidence.block_card_le
+#print axioms Erdos713SmallSetIncidence.touch_cover
+#print axioms Erdos713SmallSetIncidence.degree_mass_le_touch
+#print axioms Erdos713SmallSetIncidence.touch_power_bound
+#print axioms Erdos713SmallSetIncidence.degree_mass_power_bound
+#print axioms Erdos713UniformIncidence.small_set_mass
+#print axioms Erdos713UniformIncidence.high_degree_mass
+#print axioms Erdos713UniformIncidence.edges_le_induce_compl_add_degree
+#print axioms Erdos713LinearRobustCopies.edge_bound_after_deletion_degree
+#print axioms Erdos713LinearRobustCopies.linear_transversal
+#print axioms Erdos713LinearRobustCopies.linear_copies_and_transversal
+#print axioms Erdos713LinearRobustCopies.known_subgraphs_linear

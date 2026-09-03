@@ -1,0 +1,18 @@
+'Erdos66CyclicLiftMixed.first_block_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CyclicLiftMixed.first_block_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CyclicLiftMixed.outer_mixed_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CyclicLiftMixed.first_block_rebase_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CyclicLiftMixed.repeated_clipped_cross_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CyclicLiftMixed.repeated_clipped_prefix_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.repeated_clipped_cross_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.cyclicCount_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.actualMean_comm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.twoPeriod_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.twoPeriod_actual_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ClippedTwoPeriod.twoPeriod_prefix_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicTwoPeriodSystem.rebase_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicTwoPeriodSystem.prefix_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicTwoPeriodSystem.mean_tuning_of_prefix_tuning' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66DyadicTwoPeriodSystem.exists_dyadic_two_period_system' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,6 @@
+Submission/AdaptiveSingletonAlgebraExplore.lean:47:6: error: Type mismatch: After simplification, term
+  ha
+ has type
+  (¬(f a ≤ z ∧ z - f a ∈ A) ∧ ¬(f a ≤ z ∧ z - f a ∈ F)) ∧ ¬2 * f a = z
+but is expected to have type
+  ¬(f a ≤ z ∧ z - f a ∈ A) ∧ ¬(f a ≤ z ∧ z - f a ∈ F) ∧ 2 * f a ≠ z

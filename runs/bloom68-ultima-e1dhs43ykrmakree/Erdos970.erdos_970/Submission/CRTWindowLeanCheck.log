@@ -1,0 +1,21 @@
+'IntegerSieve.CRTWindow.pair_count_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.forcing_iff_maximal_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.record_gap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.disjoint_maximal_columns_of_small_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IntegerSieve.CRTWindow.intersection_count_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.common_remainder_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.alternating_rounding_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.one_windows_iff_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.RecordCount.records_reduce' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.RecordCount.card_records' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.RecordCount.card_favorable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.Examples.rows17_rounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.Examples.all_block_pairs_compatible17' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'IntegerSieve.CRTWindow.Examples.no_residue_realization17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'IntegerSieve.CRTWindow.Examples.nearby_primes_disjoint_maxima' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

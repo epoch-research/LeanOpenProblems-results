@@ -1,0 +1,15 @@
+import Submission.ContinuousIntervalQuantumLogBudget
+import Submission.ContinuousIntervalPolynomialBarrier
+#check summable_nat_add_iff
+#check Real.summable_nat_rpow
+#check Real.summable_one_div_nat_rpow
+#check summable_ite
+#check summable_of_ne_finset_zero
+#check Summable.sum_le_tsum
+#check Finset.sum_le_tsum
+#check Real.exp_sum
+#check div_pos_iff_of_pos
+#check Real.rpow_neg
+#check Real.isLittleO_log_rpow_atTop
+#check Filter.Tendsto.add_atTop
+#check Filter.tendsto_add_atTop_nat

@@ -1,0 +1,12 @@
+import Submission.PositiveSpectralSmoothing
+#check Finset.expect_image
+#check Finset.card_image_of_injective
+#check Finset.card_image_iff
+#check Finset.expect_filter
+#check Fintype.expect_eq_sum_div_card
+#check ZMod.natCast_zmod_eq_natCast_iff
+#check ZMod.natCast_inj_of_lt
+#check Finset.sum_boole
+#check Erdos3FiniteSampling.expect_pi_apply
+#check Pi.single_add
+#check AddChar.prod_apply

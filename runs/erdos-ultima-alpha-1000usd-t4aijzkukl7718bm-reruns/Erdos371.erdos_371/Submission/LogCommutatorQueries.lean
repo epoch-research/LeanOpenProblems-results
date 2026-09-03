@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+#check ArithmeticFunction.vonMangoldt
+#check ArithmeticFunction.vonMangoldt_sum
+#check ArithmeticFunction.sum_vonMangoldt_eq_log
+#check ArithmeticFunction.vonMangoldt_mul_zeta
+#check ArithmeticFunction.isCompletelyMultiplicative_iff
+#check Nat.mem_divisors
+#check Real.sum_log
+#check Real.log_natCast_nonneg
+#check Real.log_le_log
+#check Finset.sum_range_sub
+#check Finset.sum_Ico_sub
+#check Nat.maxPrimeFac_mul

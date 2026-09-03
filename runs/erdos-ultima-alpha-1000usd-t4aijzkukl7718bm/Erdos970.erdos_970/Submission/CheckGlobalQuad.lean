@@ -1,0 +1,12 @@
+import Submission.BuchstabQuantitativeProfile
+#check intervalIntegral.sum_integral_adjacent_intervals
+#check intervalIntegrable_iff_integrableOn_Ioc_of_le
+#check intervalIntegrable_iff_integrableOn_Icc_of_le
+#check AntitoneOn.intervalIntegrable
+#check AntitoneOn.integrableOn_Icc
+#check Real.one_le_exp
+#check Real.add_one_le_exp
+#check Nat.floor_eq_iff
+#check Nat.floor_lt
+#check Nat.floor_pos
+#check intervalIntegral.integral_comp_add_mul

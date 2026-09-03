@@ -1,0 +1,23 @@
+import Submission.RestrictedCofactorWeights
+
+/-! Axiom audit for the restricted cofactor continuation. -/
+
+#print axioms Erdos821.AnalyticSieve.restrictedMass
+#print axioms Erdos821.AnalyticSieve.restrictedNonunitMass
+#print axioms Erdos821.AnalyticSieve.restrictedCofactorWeight
+#print axioms Erdos821.AnalyticSieve.restrictedCofactorPrincipal
+#print axioms Erdos821.AnalyticSieve.restrictedMass_nonneg
+#print axioms Erdos821.AnalyticSieve.restrictedMass_le_mangoldt
+#print axioms Erdos821.AnalyticSieve.restrictedNonunitMass_nonneg
+#print axioms Erdos821.AnalyticSieve.restrictedNonunitMass_le
+#print axioms Erdos821.AnalyticSieve.restricted_twisted_principal
+#print axioms Erdos821.AnalyticSieve.restricted_norm_twisted_le
+#print axioms Erdos821.AnalyticSieve.restricted_lift_difference
+#print axioms Erdos821.AnalyticSieve.restricted_lift_bound
+#print axioms Erdos821.AnalyticSieve.restricted_cofactor_orthogonality
+#print axioms Erdos821.AnalyticSieve.restricted_cofactor_discrepancy
+#print axioms Erdos821.AnalyticSieve.restricted_principal_density_error
+#print axioms Erdos821.AnalyticSieve.restricted_principal_density_lift_error
+#print axioms Erdos821.AnalyticSieve.restricted_coefficient_energy
+#print axioms Erdos821.AnalyticSieve.restrictedBilinearKernel
+#print axioms Erdos821.AnalyticSieve.restricted_primitive_maxPrefix_bilinear_bound

@@ -1,0 +1,11 @@
+import Submission.TripleIntersectionGeometryExplore
+import Submission.WindowPerturbationExplore
+#check Finset.sum_le_sum_of_injOn
+#check Finset.sum_le_sum_of_inj
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Erdos66CumulativeRoundingError.profile_prefix_square_bound
+#check Erdos66QuadraticWindowRounding.prefixMajorant
+#check Real.sqrt_le_iff
+#check Real.log_natCast_add_one_le
+#check Nat.cast_sub
+#check Filter.Tendsto.const_mul_atTop

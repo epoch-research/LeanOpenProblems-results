@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Set.exists_min_image
+#check exists_min_image
+#check Submodule.exists_dual_map_eq_bot_of_notMem
+#check Submodule.map_eq_bot_iff
+#check Submodule.finrank_lt_finrank_of_lt
+#check Submodule.finrank_span_finset_le_card
+#check Submodule.span_induction
+#check Submodule.span_le
+#check Module.Dual.evalEquiv
+#check Module.evalEquiv
+#check Module.Dual.eval
+#check Module.eval
+#check Module.card_eq_pow_finrank
+#check ZMod.val_injective

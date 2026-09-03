@@ -1,0 +1,11 @@
+import Submission.AbelErrorEnergyExplore
+#check Real.log_le_sub_one_of_pos
+#check Real.log_natCast_nonneg
+#check tsum_geometric_of_lt_one
+#check Erdos66Generating.kernel
+#check Erdos66FrequentFluctuation.harmonic_shift_log_bound
+#check Filter.Tendsto.const_div_atTop
+#check nhdsGT_zero_eq_nhdsWithin_pos
+#check Filter.Eventually.of_forall
+#check summable_geometric_of_lt_one
+#print Erdos66Generating.kernel

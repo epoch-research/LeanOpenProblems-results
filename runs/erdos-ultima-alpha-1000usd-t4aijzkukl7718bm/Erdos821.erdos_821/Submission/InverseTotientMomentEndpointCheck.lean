@@ -1,0 +1,21 @@
+import Submission.InverseTotientMomentEndpoint
+
+/-! Type and axiom audits for the endpoint collision estimates. -/
+
+open Erdos821
+
+#check sum_reciprocal_totient_le_harmonic
+#check totient_ge_two_pow_of_input_ge
+#check harmonic_fourfold_block_upper
+#check summable_of_summable_geometric_blocks
+#check eventually_weighted_g_le_div_log_cube
+#check summable_weighted_g_at_totient
+#check summable_inverse_totient_endpoint_log_moment
+#check summable_inverse_totient_second_moment_endpoint
+
+#print axioms sum_reciprocal_totient_le_harmonic
+#print axioms totient_ge_two_pow_of_input_ge
+#print axioms summable_of_summable_geometric_blocks
+#print axioms summable_weighted_g_at_totient
+#print axioms summable_inverse_totient_endpoint_log_moment
+#print axioms summable_inverse_totient_second_moment_endpoint

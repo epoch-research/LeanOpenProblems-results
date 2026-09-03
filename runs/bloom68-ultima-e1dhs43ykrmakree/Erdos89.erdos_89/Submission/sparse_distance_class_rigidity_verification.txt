@@ -1,0 +1,11 @@
+field m=1: 3 exact norm identities; infinitesimal rank=2/4, nullity=2; max coefficient=2
+field m=3: 21 exact norm identities; infinitesimal rank=10/12, nullity=2; max coefficient=5
+field m=5: 55 exact norm identities; infinitesimal rank=18/20, nullity=2; max coefficient=5
+field m=7: 105 exact norm identities; infinitesimal rank=26/28, nullity=2; max coefficient=5
+single unit square: n=4, D=2, exact colored rank=4, nullity=4
+3x3 unit patch: n=9, D=5, exact colored rank=14, nullity=4
+independent thinned integer grid: n=78, D=60, exact colored rank=152, nullity=4
+literal certificate ell=1: N=40401, retained=26148, anchors=6929, triple demands=882, connected anchors and full-box net; max union size=10; PASS
+literal certificate ell=2: N=40401, retained=31504, anchors=4237, triple demands=882, connected anchors and full-box net; max union size=21; PASS
+Spec.lean SHA-256 unchanged: c2fbaabe5ad8088f856ca97625747c7a01754f3c149dd6a493454e776de290db
+ALL SPARSE DISTANCE-CLASS RIGIDITY CHECKS PASSED

@@ -1,0 +1,16 @@
+import Submission.RowSparsePrefixExplore
+import Submission.CyclicThickeningExplore
+import Submission.ParabolaRepairExplore
+import Submission.CharacterEnergyExplore
+#check Finset.filter_biUnion
+#check Finset.biUnion_filter
+#check Finset.card_le_card_of_injOn
+#check Nat.add_mul_div_left
+#check Nat.mul_add_div
+#check Nat.add_mul_mod_self_left
+#check Nat.mul_mod_right
+#check ZMod.natCast_zmod_val
+#check ZMod.val_natCast_of_lt
+#check Nat.div_eq_of_lt_le
+#check Finset.sum_bij
+#check Finset.sum_image

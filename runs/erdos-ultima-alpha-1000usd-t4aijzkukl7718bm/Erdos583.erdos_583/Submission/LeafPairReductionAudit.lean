@@ -1,0 +1,15 @@
+import Submission.LeafPairReduction
+
+/-! Axiom audit for the two-leaf reductions. -/
+
+#print axioms Erdos583LeafPairReductionDevelopment.leaf_data
+#print axioms Erdos583LeafPairReductionDevelopment.delete_two_leaves_connected
+#print axioms Erdos583LeafPairReductionDevelopment.two_leaves_edge_cover
+#print axioms Erdos583LeafPairReductionDevelopment.two_removed_budget
+#print axioms Erdos583LeafPairReductionDevelopment.two_removed_lt
+#print axioms Erdos583LeafPairReductionDevelopment.common_neighbor_reduction
+#print axioms Erdos583LeafPairReductionDevelopment.leaf_neighbors_nonadjacent_reduction
+#print axioms Erdos583LeafPairReductionDevelopment.leaf_neighbors_nonbridge_reduction
+#print axioms Erdos583LeafPairReductionDevelopment.leaf_neighbor_not_leaf_of_failure
+#print axioms Erdos583LeafPairReductionDevelopment.leaf_neighbors_bridge_of_failure
+#print axioms Erdos583LeafPairReductionDevelopment.at_most_two_leaves_of_failure

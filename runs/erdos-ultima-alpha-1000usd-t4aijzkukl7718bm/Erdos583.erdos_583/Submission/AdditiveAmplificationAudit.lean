@@ -1,0 +1,6 @@
+import Submission.AdditiveAmplification
+
+/-! Axiom audit of uniform additive amplification. -/
+#print axioms Erdos583AdditiveAmplificationDevelopment.reduce_odd_uniform_slack
+#print axioms Erdos583AdditiveAmplificationDevelopment.odd_bound_of_uniform_slack
+#print axioms Erdos583AdditiveAmplificationDevelopment.gallai_of_uniform_odd_additive_bound

@@ -1,0 +1,11 @@
+import Submission.FiniteCliqueUltrafilterColoring
+#check Ultrafilter.pure_injective
+#check Filter.pure_injective
+#check Ultrafilter.mem_pure
+#check Erdos595Work.countable_union_ultrafilterGraph_of_countable
+#check Erdos595Work.ultrafilterGraph_countable_coloring
+#check Erdos595Work.ultrafilterGraph
+#print Erdos595Work.fubiniAdj
+#check SimpleGraph.Coloring.ofFintype
+#check SimpleGraph.Coloring.ofCountable
+#check SimpleGraph.colorable_of_countable

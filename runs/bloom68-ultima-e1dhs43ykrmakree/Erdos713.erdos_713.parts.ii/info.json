@@ -1,0 +1,23 @@
+{
+  "id": "Erdos713.erdos_713.parts.ii",
+  "epoch": 1,
+  "uuid": "nHKG3VMWooHoTMwASYZFfj",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0
+  },
+  "model_usage": {
+    "epoch/ultima-alpha": {
+      "input_tokens": 47428,
+      "output_tokens": 3381563,
+      "total_tokens": 161788059,
+      "input_tokens_cache_write": 20724526,
+      "input_tokens_cache_read": 137634542,
+      "reasoning_tokens": 2435199,
+      "total_cost": 300.0295884999997
+    }
+  },
+  "oeis_id": null
+}

@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+open MvPolynomial
+#check totalDegree_sub
+#check totalDegree_add
+#check totalDegree_pow
+#check totalDegree_X
+#check totalDegree_C
+#check totalDegree_mul
+#check totalDegree_le
+#check eval₂
+#check eval₂_pow
+#check eval₂_sub
+#check Int.castRingHom
+#check Finset.le_sup
+#check Finset.sup_le
+#check sq_pos_of_ne_zero
+#check Int.one_le_abs

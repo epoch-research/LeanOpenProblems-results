@@ -1,0 +1,10 @@
+'Erdos66AbelHigherMoment.weighted_tsum_pow_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.geometric_weight_hasSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.geometric_power_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.summable_shifted_power_geometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.log_error_abs_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.summable_log_error_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.normalized_even_moment_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AbelHigherMoment.normalized_even_moment_eventually_gt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

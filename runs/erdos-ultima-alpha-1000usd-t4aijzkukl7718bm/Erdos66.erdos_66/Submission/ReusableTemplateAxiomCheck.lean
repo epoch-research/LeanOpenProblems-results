@@ -1,0 +1,14 @@
+import Submission.ReusableSidonEnergyExplore
+import Submission.SharedEndpointRigidityExplore
+
+/-! Audit of reusable-profile identities and shared-endpoint rigidity. -/
+#print axioms Erdos66ReusableSidonTemplate.reusable_exact
+#print axioms Erdos66ReusableSidonTemplate.reusable_union_profile
+#print axioms Erdos66ReusableSidonTemplate.uniform_mixed_shift_iff
+#print axioms Erdos66ReusableSidonEnergy.mixed_second_factorial_bound
+#print axioms Erdos66ReusableSidonEnergy.high_target_budget
+#print axioms Erdos66ReusableSidonEnergy.reusable_card_lower
+#print axioms Erdos66SharedEndpointRigidity.walk_displacement
+#print axioms Erdos66SharedEndpointRigidity.odd_component_unique
+#print axioms Erdos66SharedEndpointRigidity.bipartite_one_parameter
+#print axioms Erdos66SharedEndpointRigidity.rectangle_realizable_iff

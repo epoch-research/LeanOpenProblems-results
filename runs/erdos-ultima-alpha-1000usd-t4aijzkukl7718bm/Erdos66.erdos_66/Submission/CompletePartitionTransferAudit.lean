@@ -1,0 +1,21 @@
+import Submission.CompletePartitionColorTransferExplore
+
+/-! Axiom audit of the complete parallel-parabola partition transfer. -/
+#print axioms Erdos66FiberColorEnergy.edges_matching
+#print axioms Erdos66FiberColorEnergy.fiber_split
+#print axioms Erdos66FiberColorEnergy.diag_energy
+#print axioms Erdos66FiberColorEnergy.mean_centered_energy_le
+#print axioms Erdos66ParallelParabolaPartition.parallelCurve_disjoint
+#print axioms Erdos66ParallelParabolaPartition.parallelCurve_cover
+#print axioms Erdos66ParallelParabolaPartition.parallelCurve_pairCount
+#print axioms Erdos66ParallelParabolaPartition.rootCoeff_identity
+#print axioms Erdos66ParallelParabolaPartition.rootSum_one
+#print axioms Erdos66ParallelParabolaPartition.rootSum_sq_le_energy
+#print axioms Erdos66CompletePartitionColorTransfer.mean_colorEnergy_le
+#print axioms Erdos66CompletePartitionColorTransfer.rootSum_error_sq
+#print axioms Erdos66CompletePartitionColorTransfer.exists_root_budget
+#print axioms Erdos66CompletePartitionColorTransfer.mem_coloredSet
+#print axioms Erdos66CompletePartitionColorTransfer.coloredSet_card
+#print axioms Erdos66CompletePartitionColorTransfer.coloredSet_fine_projection
+#print axioms Erdos66CompletePartitionColorTransfer.coloredSet_pairCount
+#print axioms Erdos66CompletePartitionColorTransfer.exists_actual_color_budget

@@ -1,0 +1,8 @@
+import Submission.ContinuousCriticalDecayUpper
+#print axioms Erdos970.ContinuousBuchstab.criticalCostKernel_le_three_fourths_mass
+#print axioms Erdos970.ContinuousBuchstab.criticalCostIteration_fixed_obstacle
+#print axioms Erdos970.ContinuousBuchstab.criticalCostIteration_mass_upper
+#print axioms Erdos970.ContinuousBuchstab.criticalCostIteration_first_upper
+#print axioms Erdos970.ContinuousBuchstab.criticalCostIteration_pointwise_decay_upper
+#print axioms Erdos970.ContinuousBuchstab.criticalCostIteration_finite
+#print axioms Erdos970.ContinuousBuchstab.criticalCompactPotential_two_linear

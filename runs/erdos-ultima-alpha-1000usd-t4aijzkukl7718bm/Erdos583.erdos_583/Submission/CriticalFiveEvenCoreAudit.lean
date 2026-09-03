@@ -1,0 +1,7 @@
+import Submission.CriticalFiveEvenCore
+
+/-! Exact axiom audit of the new sharp restoration restrictions. -/
+#print axioms Erdos583CriticalFiveEvenCoreDevelopment.add_edge_adj_of_away
+#print axioms Erdos583CriticalFiveEvenCoreDevelopment.critical_five_even_edge_forces_triangle
+#print axioms Erdos583CriticalFiveEvenCoreDevelopment.critical_five_even_triple_homogeneous
+#print axioms Erdos583CriticalFiveEvenCoreDevelopment.critical_even_edge_mixed_triple_seven_even

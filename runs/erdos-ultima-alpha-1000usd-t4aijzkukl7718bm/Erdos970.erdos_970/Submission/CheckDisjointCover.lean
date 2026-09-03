@@ -1,0 +1,10 @@
+import FormalConjecturesUtil
+#check Nat.chineseRemainder
+#check Nat.chineseRemainder_lt
+#check Nat.count_modEq_card
+#check Finset.card_lt_card
+#check Finset.card_erase_add_one
+#check Nat.mod_mod_of_dvd
+#check Nat.mod_mod_of_dvd
+#check Nat.div_le_div_right
+#check Nat.modEq_and_modEq_iff_modEq_mul

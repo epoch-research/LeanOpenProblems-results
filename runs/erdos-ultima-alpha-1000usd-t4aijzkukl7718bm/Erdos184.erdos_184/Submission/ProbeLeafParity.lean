@@ -1,0 +1,13 @@
+import Submission.OptionPathProjection
+#check SimpleGraph.degree_map
+#check SimpleGraph.degree_sup
+#check SimpleGraph.neighborFinset_map
+#check Fintype.sum_option
+#check Finset.sum_ite_eq
+#check Finset.card_filter
+#check Fintype.card_option
+#check List.count_map_of_injective
+#check List.count_map
+#check List.mem_map_of_injective
+#check List.Nodup.count_le_one
+#check Erdos184Work.OddPaths.Admissible

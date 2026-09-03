@@ -1,0 +1,275 @@
+[
+  {
+    "source": "Submission/WallDataBench0_1024.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_1024.olean",
+      "/workspace/leanproject/Submission/WallDataBench0_1024.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 28.845,
+    "user_seconds": 27.377,
+    "system_seconds": 1.506,
+    "max_rss_kib": 7727520,
+    "source_bytes": 1545,
+    "source_lines": 20,
+    "olean_bytes": 50272,
+    "log": "Submission/WallDataBench0_1024.log"
+  },
+  {
+    "source": "Submission/WallDataBench0_2048.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_2048.olean",
+      "/workspace/leanproject/Submission/WallDataBench0_2048.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 116.725,
+    "user_seconds": 112.099,
+    "system_seconds": 4.656,
+    "max_rss_kib": 24081012,
+    "source_bytes": 2569,
+    "source_lines": 20,
+    "olean_bytes": 51296,
+    "log": "Submission/WallDataBench0_2048.log"
+  },
+  {
+    "source": "Submission/WallDataBench0_256.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_256.olean",
+      "/workspace/leanproject/Submission/WallDataBench0_256.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.665,
+    "user_seconds": 2.962,
+    "system_seconds": 0.735,
+    "max_rss_kib": 2530836,
+    "source_bytes": 772,
+    "source_lines": 20,
+    "olean_bytes": 49504,
+    "log": "Submission/WallDataBench0_256.log"
+  },
+  {
+    "source": "Submission/WallDataBench0_4096.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_4096.olean",
+      "/workspace/leanproject/Submission/WallDataBench0_4096.lean"
+    ],
+    "exit_code": 134,
+    "wall_seconds": 3.411,
+    "user_seconds": 2.774,
+    "system_seconds": 0.675,
+    "max_rss_kib": 2504788,
+    "source_bytes": 4617,
+    "source_lines": 20,
+    "olean_bytes": null,
+    "log": "Submission/WallDataBench0_4096.log"
+  },
+  {
+    "source": "Submission/WallDataBench0_64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataBench0_64.olean",
+      "/workspace/leanproject/Submission/WallDataBench0_64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.9,
+    "user_seconds": 1.379,
+    "system_seconds": 0.571,
+    "max_rss_kib": 2248400,
+    "source_bytes": 575,
+    "source_lines": 20,
+    "olean_bytes": 49312,
+    "log": "Submission/WallDataBench0_64.log"
+  },
+  {
+    "source": "Submission/WallDataListBench1024.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataListBench1024.olean",
+      "/workspace/leanproject/Submission/WallDataListBench1024.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.138,
+    "user_seconds": 2.53,
+    "system_seconds": 0.643,
+    "max_rss_kib": 2310552,
+    "source_bytes": 3978,
+    "source_lines": 12,
+    "olean_bytes": 1350144,
+    "log": "Submission/WallDataListBench1024.log"
+  },
+  {
+    "source": "Submission/WallDataListBench256.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataListBench256.olean",
+      "/workspace/leanproject/Submission/WallDataListBench256.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.01,
+    "user_seconds": 1.495,
+    "system_seconds": 0.56,
+    "max_rss_kib": 2245264,
+    "source_bytes": 1322,
+    "source_lines": 12,
+    "olean_bytes": 387872,
+    "log": "Submission/WallDataListBench256.log"
+  },
+  {
+    "source": "Submission/WallDataListBench4096.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataListBench4096.olean",
+      "/workspace/leanproject/Submission/WallDataListBench4096.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 7.656,
+    "user_seconds": 7.022,
+    "system_seconds": 0.678,
+    "max_rss_kib": 2826300,
+    "source_bytes": 14518,
+    "source_lines": 12,
+    "olean_bytes": 5177312,
+    "log": "Submission/WallDataListBench4096.log"
+  },
+  {
+    "source": "Submission/WallDataListBench64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataListBench64.olean",
+      "/workspace/leanproject/Submission/WallDataListBench64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.796,
+    "user_seconds": 1.318,
+    "system_seconds": 0.524,
+    "max_rss_kib": 2224412,
+    "source_bytes": 660,
+    "source_lines": 12,
+    "olean_bytes": 141296,
+    "log": "Submission/WallDataListBench64.log"
+  },
+  {
+    "source": "Submission/WallDataPackedBench0_1024_64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedBench0_1024_64.olean",
+      "/workspace/leanproject/Submission/WallDataPackedBench0_1024_64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.007,
+    "user_seconds": 2.368,
+    "system_seconds": 0.683,
+    "max_rss_kib": 2361504,
+    "source_bytes": 2273,
+    "source_lines": 37,
+    "olean_bytes": 86656,
+    "log": "Submission/WallDataPackedBench0_1024_64.log"
+  },
+  {
+    "source": "Submission/WallDataPackedBench0_4096_64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedBench0_4096_64.olean",
+      "/workspace/leanproject/Submission/WallDataPackedBench0_4096_64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 7.031,
+    "user_seconds": 6.334,
+    "system_seconds": 0.741,
+    "max_rss_kib": 2977772,
+    "source_bytes": 7409,
+    "source_lines": 85,
+    "olean_bytes": 193776,
+    "log": "Submission/WallDataPackedBench0_4096_64.log"
+  },
+  {
+    "source": "Submission/WallDataPackedBench0_64_64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedBench0_64_64.olean",
+      "/workspace/leanproject/Submission/WallDataPackedBench0_64_64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.805,
+    "user_seconds": 1.37,
+    "system_seconds": 0.482,
+    "max_rss_kib": 2224296,
+    "source_bytes": 658,
+    "source_lines": 22,
+    "olean_bytes": 53776,
+    "log": "Submission/WallDataPackedBench0_64_64.log"
+  },
+  {
+    "source": "Submission/WallDataPackedBench1808127_4096_64.lean",
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-j1",
+      "-o",
+      "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPackedBench1808127_4096_64.olean",
+      "/workspace/leanproject/Submission/WallDataPackedBench1808127_4096_64.lean"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 6.894,
+    "user_seconds": 6.34,
+    "system_seconds": 0.587,
+    "max_rss_kib": 3055620,
+    "source_bytes": 7446,
+    "source_lines": 85,
+    "olean_bytes": 193728,
+    "log": "Submission/WallDataPackedBench1808127_4096_64.log"
+  }
+]

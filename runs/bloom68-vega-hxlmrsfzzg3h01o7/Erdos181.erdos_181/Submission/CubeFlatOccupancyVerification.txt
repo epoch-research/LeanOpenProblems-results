@@ -1,0 +1,22 @@
+PASS tagged paired realization: N=6145, d=10, two colours exactly regular
+PASS explicit red cube in padding; bad families unchanged; apex deletion gives degrees N/2 and N/2-1
+PASS exact common-neighbour lists, phase gating, disjoint-private one-collision maps
+  modified pair blocks: {'boundary': 6144, 'interface': 12288, 'list': 6108, 'ordinary': 16384, 'point-ordinary': 2304, 'point-tag': 2304, 'red-witness': 2304, 'repair': 6108, 'replacement-ordinary': 18432, 'replacement-tag': 18432, 'tagged': 36864}
+PASS Fano tagged source: connected phase subcube, marker gating, exact Z and Y counts
+PASS Fano occupancies sum to r and maximum is <=12r/M; construction fits N=7h+1
+PASS uniform occupancy-cap inequality, including padding for every fixed C>=13
+Tagged refinement: normalized logarithmic excess (negative mass, one-collision maps):
+  a=  10: 0.03669151101147, 0.03198211138583
+  a=  40: 0.1325747789513, 0.1313395261559
+  a= 160: 0.1580375996516, 0.157724942305
+  a= 640: 0.1645026654693, 0.1644242571233
+  a=2560: 0.1661252438209, 0.1661056264242
+PASS tagged factorial exponents approach 1/6 and match independent Stirling constants
+Optimized a=2 log_2 k: normalized excesses approach 1/2:
+  k=  32, a=10: 0.0639448375223, 0.05951246023454
+  k= 128, a=14: 0.3551855617851, 0.3540263245463
+  k= 512, a=18: 0.4555916790507, 0.455298486753
+  k=2048, a=22: 0.4869142063571, 0.4868406937517
+  k=8192, a=26: 0.4962379940239, 0.4962196024153
+PASS optimized lower bounds: (h/2)log h-2h log log h-O(h)
+PASS Spec.lean unchanged; all refinement checks completed

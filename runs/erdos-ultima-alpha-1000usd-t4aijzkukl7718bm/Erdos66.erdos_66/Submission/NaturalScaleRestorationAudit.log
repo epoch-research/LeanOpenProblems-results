@@ -1,0 +1,31 @@
+'Erdos66ExactClippingDemand.clipDemand_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExactClippingDemand.clipDemand_le' depends on axioms: [propext, Quot.sound]
+'Erdos66ExactClippingDemand.exists_central_clipping_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AggregateIncidenceBatchClipping.uniformly_eventually_batch_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalScaleRankWindow.profile_sqrt_log_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleRankWindow.eventually_density_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleRankWindow.normalized_interval_mass_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalScaleRankWindow.count_scale_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleRankWindow.inverse_count_scale_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleRankBudget.augmented_demand_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleRankBudget.eventually_natural_scale_rank_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalScaleRankBudget.sqrt_demand_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66NaturalScaleBracketRestoration.uniformly_eventually_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalScaleBracketRestoration.eventually_sqrt_rank_restoration' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66NaturalScaleBatchClipping.uniformly_eventually_batch_downward_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66ActiveCenterBatchClipping.active_demand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ActiveCenterBatchClipping.uniformly_eventually_active_clipping' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

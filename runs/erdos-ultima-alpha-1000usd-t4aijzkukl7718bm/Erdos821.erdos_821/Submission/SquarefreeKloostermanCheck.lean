@@ -1,0 +1,16 @@
+import Submission.SquarefreeKloosterman
+
+#print axioms Erdos821.Kloosterman.ringKloosterman_equiv
+#print axioms Erdos821.Kloosterman.ringKloosterman_norm_le_card
+#print axioms Erdos821.Kloosterman.primitive_transport
+#print axioms Erdos821.Kloosterman.ringKloosterman_eq
+#print axioms Erdos821.Kloosterman.ringKloosterman_fourth_field
+#print axioms Erdos821.Kloosterman.coordinateChar_apply
+#print axioms Erdos821.Kloosterman.primitive_coordinate
+#print axioms Erdos821.Kloosterman.character_pi_factorization
+#print axioms Erdos821.Kloosterman.ringKloosterman_pi
+#print axioms Erdos821.Kloosterman.ringKloosterman_pi_fourth
+#print axioms Erdos821.Kloosterman.squarefreeCRT_apply
+#print axioms Erdos821.Kloosterman.annihilatorPrimeProduct_dvd_gcd
+#print axioms Erdos821.Kloosterman.annihilatorPrimeProduct_le_gcd
+#print axioms Erdos821.Kloosterman.ringKloosterman_squarefree_fourth

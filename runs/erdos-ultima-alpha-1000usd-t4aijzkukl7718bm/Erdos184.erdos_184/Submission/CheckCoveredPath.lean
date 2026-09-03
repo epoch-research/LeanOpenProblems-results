@@ -1,0 +1,11 @@
+import Submission.EndpointPathMaximality
+#check SimpleGraph.Walk.IsPath.card_neighborSet_toSubgraph
+#check SimpleGraph.Walk.IsPath.neighborSet_toSubgraph_internal
+#check SimpleGraph.Walk.IsPath.neighborSet_toSubgraph_getVert
+#check SimpleGraph.Subgraph.neighborSet_spanningCoe
+#check Erdos184Work.degree_sdiff_add
+#check Nat.mod_two_not_eq_one
+#check Nat.not_even_iff_odd
+#check List.Nodup.disjoint
+#check List.count_eq_zero
+#check List.count_pos_iff

@@ -1,0 +1,10 @@
+import Submission.DoublePetersenCertificates
+#check Finset.union_sdiff_of_subset
+#check Finset.sdiff_union_of_subset
+#check Finset.union_sdiff_cancel_left
+#check Finset.disjoint_sdiff_self_left
+#check Finset.disjoint_sdiff_self_right
+#check Finset.sdiff_union_self_eq_union
+#check Set.PairwiseDisjoint.insert
+#check Finset.card_biUnion
+#check Finset.sum_const_nat

@@ -1,0 +1,11 @@
+import Submission.ParityOneHitDyadic
+
+/-! Axiom audit for the common-core one-hit correlation development. -/
+#print axioms Erdos970.OneHitLogConcavity.population_cover_le_core_correlation
+#print axioms Erdos970.OneHitLogConcavity.populationCoveredFraction_image_add
+#print axioms Erdos970.OneHitLogConcavity.void_double_le_core_second_moment
+#print axioms Erdos970.OneHitLogConcavity.minimum_frequency_mul_void_double_le
+#print axioms Erdos970.OneHitLogConcavity.population_eq_occupancy_of_injective
+#print axioms Erdos970.OneHitLogConcavity.disjoint_population_coverage_of_injective
+#print axioms Erdos970.OneHitLogConcavity.void_double_le_square_add_variance_add_collisions
+#print axioms Erdos970.OneHitLogConcavity.parity_minimum_frequency_mul_void_double_le

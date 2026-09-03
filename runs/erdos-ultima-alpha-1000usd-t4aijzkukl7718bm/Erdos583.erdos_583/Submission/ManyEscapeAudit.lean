@@ -1,0 +1,11 @@
+import Submission.ManyEscape
+/-! Axiom audit of escape multiplicity and protected-family repairs. -/
+#print axioms Erdos583ManyEscapeDevelopment.closed_trail_first_at_neighbor
+#print axioms Erdos583ManyEscapeDevelopment.replace_root_tracked
+#print axioms Erdos583ManyEscapeDevelopment.many_distinct_escapes
+#print axioms Erdos583ManyEscapeDevelopment.expose_escape_avoiding_finset
+#print axioms Erdos583ManyEscapeDevelopment.escape_slide_tracked
+#print axioms Erdos583ManyEscapeDevelopment.finish_exposed_tracked
+#print axioms Erdos583ManyEscapeDevelopment.repair_protected_family
+#print axioms Erdos583ManyEscapeDevelopment.repair_protected_adjacent_ends
+#print axioms Erdos583ManyEscapeDevelopment.protected_maximum_root_degree_le

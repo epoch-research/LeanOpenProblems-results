@@ -1,0 +1,14 @@
+import Submission.StructuredStrictHalfScales
+
+/-! Exact-type and axiom audit for the strict-half structured family. -/
+
+#check @Erdos821.strict_structured_sieve_main_small
+#print axioms Erdos821.strict_structured_sieve_main_small
+#check @Erdos821.eventually_strict_structured_total_error_small
+#print axioms Erdos821.eventually_strict_structured_total_error_small
+#check @Erdos821.eventually_strict_structured_retained_weight
+#print axioms Erdos821.eventually_strict_structured_retained_weight
+#check @Erdos821.eventually_strict_structured_prime_count
+#print axioms Erdos821.eventually_strict_structured_prime_count
+#check @Erdos821.eventually_strict_structured_smooth_family
+#print axioms Erdos821.eventually_strict_structured_smooth_family

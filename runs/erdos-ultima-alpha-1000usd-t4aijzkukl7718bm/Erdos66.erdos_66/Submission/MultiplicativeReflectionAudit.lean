@@ -1,0 +1,9 @@
+import Submission.MultiplicativeReflectionExplore
+
+/-! Axiom audit for the reflected-row obstruction. -/
+#print axioms Erdos66MultiplicativeReflection.reflected_solution
+#print axioms Erdos66MultiplicativeReflection.reflected_row_pairCount
+#print axioms Erdos66MultiplicativeReflection.overlap_le_two_targets
+#print axioms Erdos66MultiplicativeReflection.exists_overlap_peak
+#print axioms Erdos66MultiplicativeReflection.common_parameter_mass_le_overlap
+#print axioms Erdos66MultiplicativeReflection.common_parameter_cap

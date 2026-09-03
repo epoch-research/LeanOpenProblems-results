@@ -1,0 +1,15 @@
+import Submission.FirstHitRefinedPower
+#check Real.log_mul
+#check Real.log_rpow
+#check Real.log_le_sub_one_of_pos
+#check Real.log_two_gt_d9
+#check Real.rpow_add
+#check Real.rpow_natCast
+#check Real.mul_rpow
+#check Real.rpow_mul
+#check Real.log_le_rpow_div
+#check Real.rpow_pos_of_pos
+#check Real.rpow_le_rpow
+#check Real.rpow_le_rpow_of_exponent_le
+#check Real.rpow_one
+#check Real.rpow_two

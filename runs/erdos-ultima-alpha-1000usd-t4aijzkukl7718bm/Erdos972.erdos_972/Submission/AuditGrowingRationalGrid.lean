@@ -1,0 +1,7 @@
+import Submission.GrowingRationalGridObstruction
+/-! Axiom audit of the growing rational-grid estimates. -/
+#print axioms Erdos972GrowingRationalGrid.rationalGrid_norm_sum_bound
+#print axioms Erdos972GrowingRationalGridBudgets.gridBudget_tendsto
+#print axioms Erdos972GrowingRationalGridBudgets.rationalGrid_density_zero
+#print axioms Erdos972GrowingRationalGridObstruction.eventually_rationalGrid_norm_sum_small
+#print axioms Erdos972GrowingRationalGridObstruction.finite_primeSet_forces_negative_growing_grid_complement

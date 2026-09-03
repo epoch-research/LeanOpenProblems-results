@@ -1,0 +1,14 @@
+import Submission.PeriodicMixedDiscrepancyExplore
+import Submission.PeriodicMixResolutionExplore
+/-! Axiom audit for the mixed-count identity and its certificate limitation. -/
+#print axioms Erdos66PeriodicMixedDiscrepancy.pairs_periodicSlice
+#print axioms Erdos66PeriodicMixedDiscrepancy.pairs_periodicSlice_error
+#print axioms Erdos66PeriodicMixedDiscrepancy.interval_card_real
+#print axioms Erdos66PeriodicMixedDiscrepancy.interval_hist_real
+#print axioms Erdos66PeriodicMixedDiscrepancy.interval_hist_error
+#print axioms Erdos66PeriodicMixedDiscrepancy.interval_periodic_mixed_error
+#print axioms Erdos66PeriodicMixedDiscrepancy.phased_interval_periodic_mixed_error
+#print axioms Erdos66PeriodicMixResolution.budget_forces_small_scale
+#print axioms Erdos66PeriodicMixResolution.log_cube_over_nat
+#print axioms Erdos66PeriodicMixResolution.eventually_no_small_histogram_certificate
+#print axioms Erdos66PeriodicMixResolution.phased_certificate_too_large

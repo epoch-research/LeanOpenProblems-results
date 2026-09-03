@@ -1,0 +1,14 @@
+import Submission.SidonColorBlockEnergyExplore
+import Submission.TauberianProfileExplore
+#check Finset.sum_biUnion
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Nat.le_div_iff_mul_le
+#check Nat.div_lt_iff_lt_mul
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check Filter.tendsto_pow_atTop_atTop_of_one_lt
+#check Nat.tendsto_pow_atTop_atTop_of_one_lt
+#check Nat.pow_le_pow_right
+#check Nat.sum_Ico_eq_sub
+#check Real.sqrt_pow
+#check Real.sqrt_pow_two
+#check Nat.cast_sub

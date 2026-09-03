@@ -1,0 +1,8 @@
+import Submission.DilationCoreExplore
+/-! Axiom audit for the dilation-core necessary conditions. -/
+#print axioms Erdos66DilationCore.eventual_dilation_fraction_bound
+#print axioms Erdos66DilationCore.dilation_core_negligible
+#print axioms Erdos66DilationCore.dilation_union_repair_full
+#print axioms Erdos66DilationCore.no_negligible_dilation_repair
+#print axioms Erdos66DilationCore.no_nonzero_log_limit_of_dilation_closed
+#print axioms Erdos66DilationCore.no_nonzero_log_limit_of_square_closed

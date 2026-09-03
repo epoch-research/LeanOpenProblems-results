@@ -1,0 +1,11 @@
+import Submission.QuotaRooted
+/-! Axiom audit for rooted cuts with duplicate endpoint labels. -/
+#print axioms Erdos583QuotaRootedDevelopment.RootedCut.rebuild
+#print axioms Erdos583QuotaRootedDevelopment.active_labels_eq_of_endpoint_perm
+#print axioms Erdos583QuotaRootedDevelopment.RootedCut.rebuild_selected
+#print axioms Erdos583QuotaRootedDevelopment.of_repeated_start
+#print axioms Erdos583QuotaRootedDevelopment.RootedCut.select_labels
+#print axioms Erdos583QuotaRootedDevelopment.RootedCut.outside_endpoint
+#print axioms Erdos583QuotaRootedDevelopment.RootedCut.two_root_exposures
+#print axioms Erdos583QuotaRootedDevelopment.of_repeated_start_rep
+#print axioms Erdos583QuotaRootedDevelopment.hasRoot_of_rep

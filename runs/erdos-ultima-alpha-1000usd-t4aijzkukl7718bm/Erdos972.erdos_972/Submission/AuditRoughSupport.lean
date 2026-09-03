@@ -1,0 +1,9 @@
+import Submission.RemainderRoughSupport
+
+/-! Axiom audit for the sign-support statements. -/
+#print axioms Erdos972RemainderRoughSupport.typeIPart_rough
+#print axioms Erdos972RemainderRoughSupport.typeIIPart_rough
+#print axioms Erdos972RemainderRoughSupport.typeIIPart_rough_nonpos
+#print axioms Erdos972RemainderRoughSupport.positive_remainder_has_small_prime_factor
+#print axioms Erdos972RemainderRoughSupport.rough_remainder_product_nonneg
+#print axioms Erdos972RemainderRoughSupport.raw_remainder_pair_lower

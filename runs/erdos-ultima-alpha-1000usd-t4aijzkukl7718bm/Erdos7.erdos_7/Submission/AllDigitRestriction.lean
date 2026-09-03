@@ -1,0 +1,12 @@
+import Submission.ArithmeticReduction
+
+/-! Re-export of verified arbitrary-digit restriction results. -/
+
+#print axioms Erdos7AllDigits.restrict_arbitrary_digit_cover
+#print axioms Erdos7AllDigits.safe_arbitrary_digit_restriction
+#print axioms Erdos7AllDigits.minimal_period_every_digit_collision
+#print axioms Erdos7AllDigits.minimal_period_adjacent_layer_multiplicity
+#print axioms Erdos7AllDigits.minimal_period_zero_layer_multiplicity
+#print axioms Erdos7AllDigits.minimal_period_prime_exponent_card_bound
+#print axioms Erdos7AllDigits.exists_cardinality_period_minimal_odd_cover
+#print axioms Erdos7AllDigits.arithmetic_minimal_period_prime_exponent_bound

@@ -1,0 +1,26 @@
+import Submission.SmallOrderNormalization
+import Submission.FourContactPatterns
+import Submission.CanonicalAdmissibleReduction
+import Submission.SmallWordTables
+import Submission.FourSingleContactKernel
+import Submission.FourDoubleSquareKernel
+
+/-! Audit of the structural normalization and canonical-kernel transport lemmas. -/
+#print axioms Erdos184Work.SmallOrderNormalization.normalized_valid_all
+#print axioms Erdos184Work.FourNumericalPatterns.four_contacts_classified
+#print axioms Erdos184Work.PairJunctionCoding.slot_mem_range
+#print axioms Erdos184Work.JunctionPairCoding.counts_val
+#print axioms Erdos184Work.PairSlotMarkers.orderedPlace_code
+#print axioms Erdos184Work.CanonicalPairLayout.exists_ordered_family
+#print axioms Erdos184Work.CanonicalPairKernel.normalized_minimal_iff
+#print axioms Erdos184Work.CanonicalPairKernel.normalized_exists_iff
+#print axioms Erdos184Work.IndexedKernelRestrictions.restrictions
+#print axioms Erdos184Work.CanonicalThreeReduction.exists_canonical_kernel
+
+#print axioms Erdos184Work.CanonicalThreeReduction.exists_admissible_canonical_kernel
+#print axioms Erdos184Work.SmallWordTables.complete
+#print axioms Erdos184Work.CanonicalPairLayout.place_eq_fast
+#print axioms Erdos184Work.LabelKernel.RejectionData.sound
+#print axioms Erdos184Work.FlatCanonicalKernel.rejects
+#print axioms Erdos184Work.FourSingleContactKernel.not_restrictions
+#print axioms Erdos184Work.FourDoubleSquareKernel.not_restrictions

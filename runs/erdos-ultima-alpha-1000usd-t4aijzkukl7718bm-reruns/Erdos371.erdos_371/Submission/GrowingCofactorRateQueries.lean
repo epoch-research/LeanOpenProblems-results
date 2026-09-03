@@ -1,0 +1,12 @@
+import Submission.GrowingCofactorEnergy
+#check Real.tendsto_rpow_atTop
+#check Real.rpow_natCast
+#check Real.rpow_mul
+#check Real.rpow_one
+#check Nat.floor_le
+#check Nat.cast_le
+#check pow_le_pow_iff_left₀
+#check Real.le_sqrt_of_sq_le
+#check Real.sqrt_sq
+#check tendsto_nat_floor_atTop
+#check Finset.sum_le_sum_of_subset_of_nonneg

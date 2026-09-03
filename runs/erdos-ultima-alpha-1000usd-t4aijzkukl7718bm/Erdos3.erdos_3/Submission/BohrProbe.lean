@@ -1,0 +1,20 @@
+import Submission.ChangSpectrum
+open Finset
+open scoped BigOperators Classical ComplexConjugate
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Finset.sum_card_fiberwise_eq_card
+#check Finset.exists_le_card_fiber_of_mul_le_card_of_maps_to
+#check Finset.exists_lt_card_fiber_of_mul_lt_card_of_maps_to
+#check Int.floor_le
+#check Int.lt_floor_add_one
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check Nat.floor_lt
+#check Complex.norm_le_abs_re_add_abs_im
+#check Complex.abs_re_le_norm
+#check Complex.abs_im_le_norm
+#check Finset.mem_mulSpan
+#check norm_inv
+#check inv_sub_one
+#check inv_sub_inv

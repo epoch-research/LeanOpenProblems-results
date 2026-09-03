@@ -1,0 +1,12 @@
+import Submission.BinaryPowerCover
+#check Subgroup.card_mul_index
+#check Subgroup.index_ker
+#check Nat.card_le_card_of_injective
+#check Fintype.card_le_of_injective
+#check Fintype.card_le_of_embedding
+#check Nat.pow_le_pow_left
+#check Nat.mul_le_mul_right
+#check Nat.le_of_mul_le_mul_left
+#check Nat.le_of_mul_le_mul_right
+#check Fintype.card_congr
+#check SimpleGraph.Copy.comp

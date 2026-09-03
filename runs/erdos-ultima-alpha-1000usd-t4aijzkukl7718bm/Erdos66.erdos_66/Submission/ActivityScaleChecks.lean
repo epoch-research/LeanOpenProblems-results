@@ -1,0 +1,16 @@
+import Submission.ActivityMassCarryExplore
+import Submission.ActivityBudgetLimitExplore
+#check Finset.card_le_card
+#check Finset.filter_subset
+#check Finset.card_pos
+#check tendsto_order
+#check tendsto_atTop.2
+#check tendsto_nhds_unique
+#check lt_of_tendsto
+#check Filter.Tendsto.eventually_lt_const
+#check Filter.Tendsto.eventually_const_lt
+#check tendsto_const_nhds
+#check squeeze_zero'
+#check Finset.sum_le_sum
+#check Erdos66ShortOrbitCarry.count_sum_eq_active
+#check Finset.one_le_card

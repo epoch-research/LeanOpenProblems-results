@@ -1,0 +1,17 @@
+import FormalConjecturesUtil
+#check Int.induction_on
+#check Int.add_ediv_right
+#check Int.add_ediv_left
+#check Int.ediv_eq_zero_of_lt
+#check Int.ediv_eq_zero_of_lt_le
+#check Finset.sum_range_succ'
+#check ZMod.isUnit_iff_coprime
+#check ZMod.isUnit_intCast_iff
+#check ZMod.isUnit_iff_isCoprime
+#check ZMod.unitOfCoprime
+#check IsUnit.mulLeft_bijective
+#check Units.mulLeft
+#check Equiv.mulLeft
+#check Int.emod_add_ediv
+#check Int.emod_nonneg
+#check Int.emod_lt_of_pos

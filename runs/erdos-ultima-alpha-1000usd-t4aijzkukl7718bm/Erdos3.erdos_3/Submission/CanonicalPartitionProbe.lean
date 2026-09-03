@@ -1,0 +1,9 @@
+import Submission.RefinedProgressionPartition
+#check Option.bind_eq_some_iff
+#check Option.bind_eq_none_iff
+#check Option.ne_none_iff_exists
+#check Finset.cell
+#check Erdos3FinitePartitionIncrement.cellMass
+#check Erdos3FinitePartitionIncrement.cell
+#check Erdos3ProgressionFiberEquivalence.mem_cell_iff
+#check Option.eq_none_iff_forall_not_mem

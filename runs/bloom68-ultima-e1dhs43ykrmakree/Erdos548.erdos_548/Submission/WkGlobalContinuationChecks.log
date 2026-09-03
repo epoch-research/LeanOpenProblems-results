@@ -1,0 +1,17 @@
+all-role punctured-tree color-band patterns: 5824
+constructive covering repairs, all high vertices covered: 16
+criticality affine endpoint checks: 1488
+exact target-sensitive leaf-blocker inequalities: 1884
+exact weighted-apex potential identities: 11722
+explicit defect-zero full copies: 1456
+explicit first-trigger counterexample certificates: 1
+full-critical bipartite host certificates: 16
+one-defect fixed-high trapped starting states: 16
+pendant-star one-defect initializations: 2038
+realized all-role forest color patterns: 2912
+ternary-tree two-vertex separator capacity audits: 7260
+two-unit deletion audits: 162
+verified hole pivots after the global flip: 288
+verified linear-size whole-component flips: 16
+weighted-apex equivalences: 420
+PASS: explicit proofs/constructions audited; unrestricted W_k remains unresolved.

@@ -1,0 +1,20 @@
+import FormalConjecturesUtil
+open Filter Asymptotics
+#check Real.rpow_add
+#check Real.rpow_sub
+#check Real.rpow_mul
+#check Real.rpow_natCast
+#check Real.rpow_natCast_mul
+#check Real.rpow_mul_natCast
+#check Tendsto.finset_sum
+#check tendsto_finset_sum
+#check Finset.sum_eq_single
+#check Filter.Tendsto.eventually_ne
+#check Finset.exists_max_image
+#check isEquivalent_iff_tendsto_one
+#check IsEquivalent.exists_eq_mul
+#check Filter.frequently_atTop
+#check Filter.Eventually.exists
+#check Filter.Frequently.and_eventually
+#check Real.rpow_pos_of_pos
+#check tendsto_natCast_atTop_atTop

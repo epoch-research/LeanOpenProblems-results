@@ -1,0 +1,14 @@
+import Submission.AbstractSumDifferenceFamilyExplore
+#check Finset.image_inter
+#check Finset.card_union_le
+#check Finset.card_le_card
+#check Fintype.card_le_iff
+#check Function.Embedding.nonempty_of_card_le
+#check Fintype.card_subtype_compl
+#check Fintype.card_subtype_neq
+#check Fintype.card_subtype_neq
+#check Fintype.card_subtype
+#check Finset.filter_union_right
+#check Finset.sum_bij
+#check Finset.card_le_card_of_injOn
+#check Finset.card_filter_le_iff

@@ -1,0 +1,14 @@
+import Submission.Work
+#check Finset.exists_max_image
+#check Fin.succAbove_ne
+#check Fin.succAbove_ne_self
+#check Fin.succAbove_right_injective
+#check Fin.succAbove_left_injective
+#check Fin.succAbove_injective
+#check SimpleGraph.CliqueFree.mono
+#check SimpleGraph.CliqueFree.anti
+#check SimpleGraph.IsNClique.card
+#check SimpleGraph.IsClique.eq_of_adj
+#check SimpleGraph.CliqueFree
+#check SimpleGraph.Embedding
+#check Finite.of_injective

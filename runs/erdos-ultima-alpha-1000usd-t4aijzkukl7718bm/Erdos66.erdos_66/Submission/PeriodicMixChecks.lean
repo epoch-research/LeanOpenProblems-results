@@ -1,0 +1,12 @@
+import Submission.PhasedResidueCountingExplore
+import Submission.NatPairAlgebraExplore
+#check Finset.sum_card_fiberwise_eq_card_filter
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.filter_sdiff
+#check Finset.card_sdiff_of_subset
+#check Finset.sum_image
+#check Finset.sum_sub_distrib
+#check Finset.sum_filter
+#check Finset.sum_ite_mem
+#check Real.isLittleO_log_pow_rpow_atTop
+#check Real.tendsto_log_pow_div_rpow_atTop

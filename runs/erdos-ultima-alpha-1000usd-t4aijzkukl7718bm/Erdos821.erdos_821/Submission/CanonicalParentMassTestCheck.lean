@@ -1,0 +1,26 @@
+import Submission.CanonicalParentMassTest
+
+/-! Exact types and axiom audit for CanonicalParentMassTest. -/
+
+#check Erdos821.canonicalTestCoefficients_card
+#check Erdos821.canonicalTestCoefficients_bounds
+#check Erdos821.canonicalTestCoefficients_reciprocal_sum
+#check Erdos821.exists_residue_avoiding_linear_forms
+#check Erdos821.canonicalTestCoefficients_admissible
+#check Erdos821.canonicalTestNormalizedSum_seventy_three
+#check Erdos821.canonicalTestNormalizedSum_gt_one
+#check Erdos821.canonicalRoughParent_unique
+#check Erdos821.canonicalTestForm_mem_parent
+#check Erdos821.canonicalParentReciprocalMass_gt_of_test_pattern
+#check Erdos821.eventual_canonical_contraction_forces_finite_test_patterns
+#print axioms Erdos821.canonicalTestCoefficients_card
+#print axioms Erdos821.canonicalTestCoefficients_bounds
+#print axioms Erdos821.canonicalTestCoefficients_reciprocal_sum
+#print axioms Erdos821.exists_residue_avoiding_linear_forms
+#print axioms Erdos821.canonicalTestCoefficients_admissible
+#print axioms Erdos821.canonicalTestNormalizedSum_seventy_three
+#print axioms Erdos821.canonicalTestNormalizedSum_gt_one
+#print axioms Erdos821.canonicalRoughParent_unique
+#print axioms Erdos821.canonicalTestForm_mem_parent
+#print axioms Erdos821.canonicalParentReciprocalMass_gt_of_test_pattern
+#print axioms Erdos821.eventual_canonical_contraction_forces_finite_test_patterns

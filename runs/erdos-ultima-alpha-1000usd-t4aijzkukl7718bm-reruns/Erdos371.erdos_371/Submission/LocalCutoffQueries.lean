@@ -1,0 +1,12 @@
+import FormalConjecturesUtil
+import Submission.SubcriticalPrimePairCancellation
+#check Finset.card_filter_add_card_filter_neg_eq
+#check Finset.filter_filter
+#check Finset.sum_subset
+#check Finset.sum_subset_zero_on_sdiff
+#check Erdos371ReflectionRange.exists_progression_origin
+#check Erdos371ReflectionRange.progression_remainder
+#check Nat.dvd_sub
+#check Finset.filter_or
+#check Finset.card_union_of_disjoint
+#check Finset.sum_congr

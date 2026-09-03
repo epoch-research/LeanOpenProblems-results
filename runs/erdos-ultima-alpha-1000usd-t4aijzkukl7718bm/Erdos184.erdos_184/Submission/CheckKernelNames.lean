@@ -1,0 +1,14 @@
+import Submission.PathKernelTransport
+#check Finset.card_biUnion
+#check Finset.sum_card_biUnion
+#check Finset.card_biUnion_le
+#check Finset.biUnion_inter
+#check Finset.biUnion_inter_distrib
+#check Erdos184Serial.HasNumber
+#check Erdos184Serial.hasNumber_of_rigid
+#check Erdos184Serial.exists_partition
+#check Erdos184Serial.Code.exists_partition
+#check Erdos184Serial.Partition.valid
+#check Subsingleton.elim
+#check Finset.filter_congr_decidable
+#check Finset.toFinset_congr_decidable

@@ -1,0 +1,14 @@
+import Submission.DeficitWeightedCompletionExplore
+import Submission.SummableExceptionalSetExplore
+import Submission.SuperquadraticCostsExplore
+#check Filter.Tendsto.max
+#check Filter.Tendsto.min
+#check Real.sqrt_le_sqrt
+#check Real.sqrt_eq_rpow
+#check Real.rpow_add
+#check Real.rpow_sub
+#check Asymptotics.IsLittleO.tendsto_div_nhds_zero
+#check Summable.of_norm_bounded_eventually_nat
+#check Filter.EventuallyLE.mul
+#check Erdos66SparseRepair.logScale_div_log_limit
+#check Filter.Tendsto.congr'

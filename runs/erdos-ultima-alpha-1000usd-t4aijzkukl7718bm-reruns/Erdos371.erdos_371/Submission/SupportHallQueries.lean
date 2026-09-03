@@ -1,0 +1,19 @@
+import FormalConjecturesUtil
+/-! Queries for a compressed prime-support Hall criterion. -/
+#check Finset.all_card_le_biUnion_card_iff_existsInjective'
+#check Finset.all_card_le_biUnion_card_iff_existsInjective
+#check Nat.primeFactors_gcd
+#check Nat.Prime.dvd_iff_dvd_gcd
+#check Nat.exists_prime_and_dvd
+#check Nat.gcd_pos_of_pos_left
+#check Nat.gcd_eq_one_iff_coprime
+#check Nat.mem_primeFactors
+#check Finset.biUnion_subset
+#check Finset.mem_biUnion
+#check Finset.filter_subset_filter
+#check Finset.filter_subset_filter_of_subset
+#check Finset.filter_subset_iff
+#check Filter.eventually_all_finset
+#check Filter.eventually_all
+#check Finset.coe_sort_coe
+#check Finset.card_le_card_of_injective

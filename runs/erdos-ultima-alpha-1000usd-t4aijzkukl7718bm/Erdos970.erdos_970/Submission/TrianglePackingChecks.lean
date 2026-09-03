@@ -1,0 +1,10 @@
+import Submission.PatternPackingGeneral
+#check Finset.card_le_two
+#check Finset.orderEmbOfFin
+#check Finset.orderEmbOfFin_mem
+#check Finset.dvd_prod_of_mem
+#check Nat.ModEq.add_left
+#check Nat.ModEq.add_left_cancel'
+#check Nat.modEq_iff_dvd'
+#check Finset.mem_powerset
+#check Erdos970.BrunCriterion.intersection_residue

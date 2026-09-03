@@ -1,0 +1,22 @@
+import Submission.RowShearNaturalAverageExplore
+
+/-! Axiom audit for first-row-fixing shears and ordinary transition averages. -/
+#print axioms Erdos66FirstRowFixingShear.rowShear
+#print axioms Erdos66FirstRowFixingShear.shearSet
+#print axioms Erdos66FirstRowFixingShear.shearSet_first_row
+#print axioms Erdos66FirstRowFixingShear.shearSet_count
+#print axioms Erdos66FirstRowFixingShear.shearSet_uniform_bound_iff
+#print axioms Erdos66FirstRowFixingShear.weightedPair
+#print axioms Erdos66FirstRowFixingShear.weightedPair_one
+#print axioms Erdos66FirstRowFixingShear.weightedPair_shift
+#print axioms Erdos66FirstRowFixingShear.weighted_row_shear_average
+#print axioms Erdos66FirstRowFixingShear.row_shear_complete_average
+#print axioms Erdos66FirstRowFixingShear.retained_row_weighted_average
+#print axioms Erdos66RowShearNaturalAverage.lower_weightedPair
+#print axioms Erdos66RowShearNaturalAverage.lower_comm
+#print axioms Erdos66RowShearNaturalAverage.lower_row_shear_average
+#print axioms Erdos66RowShearNaturalAverage.lower_retained_row_average
+#print axioms Erdos66RowShearNaturalAverage.twoRows
+#print axioms Erdos66RowShearNaturalAverage.twoRows_first_prefix
+#print axioms Erdos66RowShearNaturalAverage.twoRows_first_window
+#print axioms Erdos66RowShearNaturalAverage.first_window_average

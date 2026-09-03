@@ -1,0 +1,13 @@
+import Submission.PrimeFactorErrorScales
+#check Erdos972FloorDiagonalCount.floor_diagonal_iff
+#check Erdos972FloorDiagonalCount.floor_diagonal_of_fract
+#check Erdos972FloorDiagonalCount.diagonalRows
+#check Erdos972FloorDiagonalCount.weighted_diagonal_bound
+#check Finset.sum_eq_single
+#check Finset.sum_filter
+#check Finset.sum_product
+#check Nat.mul_div_le
+#check Nat.le_div_iff_mul_le
+#check Nat.mul_right_cancel
+#check Finset.sum_bij
+#check Finset.sum_bij'

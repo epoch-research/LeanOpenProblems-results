@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check Real.sqrt_mul
+#check Real.sqrt_div
+#check Finset.prod_one_add
+#check Finset.prod_add_one
+#check Real.add_one_le_exp
+#check Real.one_add_le_exp
+#check Real.exp_sum
+#check Finset.prod_div_distrib
+#check Finset.card_biUnion_le
+#check Finset.sum_Icc_succ_top

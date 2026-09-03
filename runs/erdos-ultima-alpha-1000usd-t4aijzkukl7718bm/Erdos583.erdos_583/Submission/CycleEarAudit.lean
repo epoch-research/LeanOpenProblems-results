@@ -1,0 +1,14 @@
+import Submission.CycleEar
+/-! Audit cycle-ear exchanges and shortest-cycle restrictions. -/
+#print axioms Erdos583CycleEarDevelopment.path_expand_fresh_ear
+#print axioms Erdos583CycleEarDevelopment.cycle_ear_exchange
+#print axioms Erdos583CycleEarDevelopment.cycle_member_not_path
+#print axioms Erdos583CycleEarDevelopment.replace_cycle_and_path
+#print axioms Erdos583CycleEarDevelopment.shorten_cycle_member
+#print axioms Erdos583CycleEarDevelopment.exists_shortest_cycle
+#print axioms Erdos583CycleEarDevelopment.other_path_avoids_degree_two_cycle
+#print axioms Erdos583CycleEarDevelopment.cycle_two_spokes
+#print axioms Erdos583CycleEarDevelopment.path_eq_singleton_of_endpoint_edge
+#print axioms Erdos583CycleEarDevelopment.shortest_cycle_no_degree_two
+#print axioms Erdos583CycleEarDevelopment.shortest_cycle_min_degree_three
+#print axioms Erdos583CycleEarDevelopment.exists_cycle_min_degree_three

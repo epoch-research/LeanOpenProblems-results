@@ -1,0 +1,10 @@
+{
+  "proof_scorer": {
+    "value": "C",
+    "explanation": "Currently running on Lean v4.27.0 Running SafeVerify on target file: /workspace/leanproject/_apn_score/target.olean and submission file: /workspace/leanproject/_apn_score/submission.olean. ------------------ Replaying /workspace/leanproject/_apn_score/target.olean Finished setting up the environment. Finished replay. Found 4 declarations. ------------------ Replaying /workspace/leanproject/_apn_score/submission.olean Finished setting up the environment. Finished replay. Found 345 declarations. ------------------ ------------------ ------------------ SafeVerify check passed.",
+    "metadata": {
+      "stage": "safeverify",
+      "safeverify_report": "Key removed from summary (> 1k)"
+    }
+  }
+}

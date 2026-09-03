@@ -1,0 +1,21 @@
+import Submission.FiniteUniformity
+open Finset
+open scoped BigOperators
+#check Finset.expect_mul_self_le
+#check Finset.sq_expect_le_expect_sq
+#check Finset.expect_pow_le
+#check Finset.expect_pow_le_pow_expect
+#check Finset.pow_expect_le_expect_pow
+#check Finset.mul_expect_le
+#check sq_expect_le_expect_sq
+#check ConvexOn.map_expect_le
+#check convexOn_pow
+#check Fin.prod_univ_succ
+#check Finset.prod_mul_distrib
+#check Fintype.expect_prod
+#check Complex.sq_norm
+#check Real.inner_self_eq_norm_sq
+#check Finset.expect_le_expect
+#check Finset.expect_nonneg
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.le_expect

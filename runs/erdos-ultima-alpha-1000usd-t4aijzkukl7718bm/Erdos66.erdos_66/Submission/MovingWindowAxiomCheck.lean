@@ -1,0 +1,8 @@
+import Submission.MovingWindowLimitExplore
+
+/-! Axiom audit for cumulative rounding error and averaged limits. -/
+#print axioms Erdos66CumulativeRoundingError.cumulative_rounding_error_bound
+#print axioms Erdos66QuadraticWindowLimit.rounded_quadratic_window_limit
+#print axioms Erdos66MovingWindowRounding.rounded_moving_error_sq
+#print axioms Erdos66MovingWindowLimit.rounded_moving_window_limit_of_width
+#print axioms Erdos66MovingWindowLimit.rounded_sqrt_window_limit

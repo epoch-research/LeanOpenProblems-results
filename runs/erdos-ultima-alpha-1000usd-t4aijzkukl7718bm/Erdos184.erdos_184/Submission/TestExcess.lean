@@ -1,0 +1,11 @@
+import Submission.RigidityDegree
+#check Finset.sum_attach
+#check Finset.sum_coe_sort
+#check Fintype.sum_subtype
+#check Fintype.sum_subtype_add_sum_subtype
+#check Finset.univ_eq_attach
+#check Finset.sum_sub_distrib
+#check Finset.card_univ
+#check Erdos184Work.MaximumCycles.regular_two_card_edges
+#check Erdos184Work.subgraph_edge_card
+#check Erdos184Work.RigidSwitching.rigid_pair_intersection_le_two

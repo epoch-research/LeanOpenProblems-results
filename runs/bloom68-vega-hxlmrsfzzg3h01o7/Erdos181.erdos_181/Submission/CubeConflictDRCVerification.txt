@@ -1,0 +1,13 @@
+PASS: symplectic transvections preserve all 256 pairings; nonzero-vertex orbit 15, oriented-edge orbit 120.
+PASS: full-root-neighborhood counting lemma: all 4096 small parity assignments, 3906 good; 15624 affine right-hand sides have exactly 16 solutions and valid avoidance counts.
+PASS: k=4, s=3, N=4,194,304, C=32; 4,096 pairwise-disjoint even Q_4 blocks.
+PASS: 65,536 distinct residual common-neighbor blocks; each of 4,096 opposite vertices has this same subfamily.
+PASS: actual injective auxiliary Q_13; 851,968 outer matching-coordinate edges checked; two disjoint DRC roots checked.
+PASS: all residual candidates lie in 1,008 original vertices for 65,536 required slots (Hall deficit 64,528).
+AUDIT: chosen odd blocks use only 28 original vertices; maximum multiplicity 4,096; row-list size 506.
+PASS: same host explicitly contains an ORIGINAL injective Q_17; this example is not a Ramsey counterexample.
+PASS: exact min--sum/stable-row toy audit: 81 simultaneous penalty vectors; common minimum at zero but every sector cap is zero.
+PASS: 765 exact scale audits; 762 also have the capacity obstruction; all have majority density, flux, injective surplus, and the ordinary DRC threshold.
+AUDIT: for C=8192 and even k>=6 in the audited range, (k+1)Delta upper bound <= 3.41107287178e-08.
+Spec.lean SHA-256: 9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+All checks pass. No conflict-free DRC theorem or Ramsey proof is certified.

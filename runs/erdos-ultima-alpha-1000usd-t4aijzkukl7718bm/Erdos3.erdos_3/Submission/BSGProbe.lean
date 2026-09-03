@@ -1,0 +1,13 @@
+import Submission.SmallDifferenceExtraction
+#check Finset.addEnergy_eq_sum_sq'
+#check Finset.card_eq_sum_card_fiberwise
+#check Finset.card_filter_le
+#check Finset.sum_coe_sort
+#check Finset.sum_subtype
+#check Finset.sum_subtype_eq_sum_filter
+#check Finset.sum_image
+#check Finset.sum_product
+#check Finset.card_image_of_injOn
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check Finset.sum_le_sum_of_subset
+#check Finset.le_sum_of_subadditive

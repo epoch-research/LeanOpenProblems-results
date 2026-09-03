@@ -1,0 +1,16 @@
+import FormalConjecturesUtil
+#check isLittleO_rpow_rpow_atTop
+#check Real.exp_le_exp
+#check Real.rpow_def_of_pos
+#check Real.exp_mul
+#check Real.mul_rpow
+#check Asymptotics.IsLittleO.pow
+#check Real.rpow_pos_of_pos
+#check Real.sqrt_div_self
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.rpow_le_rpow_of_exponent_le
+#check Nat.le_ceil
+#check Real.rpow_sub
+#check Real.rpow_neg
+#check Filter.Tendsto.eventually_le_const
+#check Filter.Tendsto.eventually_lt_const

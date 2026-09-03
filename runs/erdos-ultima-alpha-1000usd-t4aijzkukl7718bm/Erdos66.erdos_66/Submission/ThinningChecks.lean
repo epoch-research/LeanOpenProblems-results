@@ -1,0 +1,14 @@
+import Submission.BernoulliConcentrationExplore
+import Submission.CenteredMixedEnergyExplore
+#check Finset.disjoint_singleton
+#check Finset.disjoint_singleton_left
+#check Finset.card_filter
+#check Finset.sum_boole
+#check Finset.filter_subset
+#check Finset.sum_ite_irrel
+#check Erdos66OriginRepair.pairCount
+#check Erdos66MixedEnergy.conv_indicator
+#check Finset.sum_filter
+#check Fintype.card_prod
+#check Finset.card_univ
+#check Function.update

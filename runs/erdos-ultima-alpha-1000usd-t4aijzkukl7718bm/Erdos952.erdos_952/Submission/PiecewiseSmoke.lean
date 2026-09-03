@@ -1,0 +1,12 @@
+import Submission.UniformRealStrip
+import Submission.ModularSuccessorObstruction
+#check Function.iterate_succ_apply
+#check Function.iterate_succ_apply'
+#check Finset.exists_mem_eq_sup
+#check star_ne_zero
+#check Finset.le_sup
+#check Nat.strong_induction_on
+#check Finset.induction_on
+#check Finite.exists_ne_map_eq_of_infinite
+#check Zsqrtd.im_star
+#check Int.natCast_natAbs

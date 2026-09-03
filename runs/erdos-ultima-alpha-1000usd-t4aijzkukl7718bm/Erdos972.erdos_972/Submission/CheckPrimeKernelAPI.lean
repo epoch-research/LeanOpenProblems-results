@@ -1,0 +1,22 @@
+import FormalConjecturesUtil
+/-! API checks for the critical nonlinear proxy. -/
+#check tendsto_pow_atTop_atTop_of_one_lt
+#check tendsto_natCast_atTop_atTop
+#check Summable.of_norm_bounded_eventually
+#check summable_of_sum_le
+#check Finset.sum_fiberwise_of_maps_to
+#check Finset.sum_fiberwise_eq_sum_filter
+#check Finset.card_le_card_of_injOn
+#check Summable.sigma
+#check summable_sigma_iff
+#check Summable.of_injective
+#check Summable.comp_injective
+#check Summable.of_norm_bounded
+#check Summable.subtype
+#check Equiv.summable_iff
+#check Summable.of_nonneg_of_le
+#check summable_of_nonneg_of_le
+#check summable_iff_of_bijective
+#check Nat.primeCounting'_nth_eq
+#check Nat.minFac_le_of_dvd
+#check Nat.div_dvd_of_dvd

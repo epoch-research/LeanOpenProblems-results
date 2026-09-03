@@ -1,0 +1,10 @@
+PASS: random-injection identities, exact variance and moment bounds on 5164 bipartite graphs
+PASS: all 65536 four-by-four graphs; exact cube/matching lift; averaged extremal bound on 65327 Q3-free graphs
+PASS: all 262144 generic auxiliaries on [3]x[3]; exact maxima P3=6, K3=12
+PASS: all 64 four-row constructions; exact C4-free maximum in the construction=48; paired diagonals do not imply full closure
+PASS: dense original obstructions, balanced variant and required error normalizations
+PASS: self-contained random-alteration coefficient, limiting generic coefficient 2, and controlled-error obstruction
+PASS: exact small cube copy counts, birthday inequalities and exponential-rate normalization
+PASS: finite constants in conditional majority-density sufficiency calculation
+PASS: Spec.lean unchanged; SHA256=9cb89c42b7983ce8600b21cf6ffe9861fee7d6baca58206d9fa2d51c0636203b
+No check asserts the missing full-square-graph estimate (18) or the linear Ramsey bound.

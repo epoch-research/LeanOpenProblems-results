@@ -1,0 +1,17 @@
+import Submission.DampedMeanZeta
+
+/-! Axiom audit for fixed-parameter damping and its iterated-limit result.
+None of these declarations settles the original prime-pair conjecture. -/
+
+#print axioms Erdos972DampedDivisorKernel.summable_kernel
+#print axioms Erdos972UniformDampedTail.positiveDivisorSum_energy
+#print axioms Erdos972UniformDampedTail.expTail_uniform_energy
+#print axioms Erdos972UniformDampedTail.exists_uniform_tail_cutoff
+#print axioms Erdos972UniformSmoothCorrelationTail.exists_uniform_correlation_cutoff
+#print axioms Erdos972FixedDampedCorrelation.eventually_uniform_correlation_cutoff
+#print axioms Erdos972FixedDampedCorrelation.divisorMean_tendsto
+#print axioms Erdos972FixedDampedCorrelation.eventually_fixed_full_error
+#print axioms Erdos972FixedDampedCorrelation.exists_fixed_damped_scale_sequence
+#print axioms Erdos972FixedDampedCorrelation.fixed_smooth_mean_on_scales
+#print axioms Erdos972DampedMeanZeta.dampedMean_eq_LSeries
+#print axioms Erdos972DampedMeanZeta.dampedMean_div_tendsto_one

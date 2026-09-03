@@ -1,0 +1,10 @@
+import Submission.OneTailCycleVisits
+
+/-! Exact axiom audit of the one-tail four-visit restriction. -/
+#print axioms Erdos583OneTailCycleVisitsDevelopment.one_tail_first_arc_cover
+#print axioms Erdos583OneTailCycleVisitsDevelopment.maximum_one_tail_first_arc_hit
+#print axioms Erdos583OneTailCycleVisitsDevelopment.reverseCycleRep
+#print axioms Erdos583OneTailCycleVisitsDevelopment.maximum_one_tail_last_arc_hit
+#print axioms Erdos583OneTailCycleVisitsDevelopment.ordered_boundary_four_visits
+#print axioms Erdos583OneTailCycleVisitsDevelopment.maximum_one_tail_four_cycle_visits
+#print axioms Erdos583OneTailCycleVisitsDevelopment.maximum_one_tail_pentagon_avoider_contains

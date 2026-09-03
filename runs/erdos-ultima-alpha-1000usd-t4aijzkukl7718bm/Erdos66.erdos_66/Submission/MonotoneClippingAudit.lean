@@ -1,0 +1,9 @@
+import Submission.ClippingBudgetTransferExplore
+/-! Permitted-axiom audit of simultaneous monotone clipping and its budget. -/
+#print axioms Erdos66MonotoneClipping.exists_upper_clipping
+#print axioms Erdos66MonotoneClipping.exists_clipping_chain
+#print axioms Erdos66MonotoneClipping.clipping_prefix_stable
+#print axioms Erdos66MonotoneClipping.exists_simultaneous_upper_clipping
+#print axioms Erdos66ClippingBudgetTransfer.count_limit_of_small_deletion_budget
+#print axioms Erdos66ClippingBudgetTransfer.clipping_preserves_count_limit_under_budget
+#print axioms Erdos66ClippingBudgetTransfer.excess_sum_bound

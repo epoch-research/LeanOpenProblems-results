@@ -1,0 +1,16 @@
+'Erdos66CommonFactorCylinder.pairCount_full_right' depends on axioms: [propext, Quot.sound]
+'Erdos66CommonFactorCylinder.pairCount_full_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.cylinder_mixed_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.cylinder_left_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.cylinder_right_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.cardKernel_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.cardKernel_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonFactorCylinder.exists_universal_cylinder_mixed_accuracy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66CommonPeriodScale.period_product_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonPeriodScale.period_product_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonPeriodScale.common_period_requires_gcd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonPeriodScale.scale_div_lcm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonPeriodScale.witness_common_period_requires_gcd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66CommonPeriodScale.scale_div_lcm_zero_of_small_gcd' depends on axioms: [propext, Classical.choice, Quot.sound]

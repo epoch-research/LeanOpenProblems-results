@@ -1,0 +1,12 @@
+import Submission.BoundedDiscrepancyPeaksExplore
+
+/-! Axiom audit for the genuine bounded-discrepancy rounding counterexample. -/
+#print axioms Erdos66ReflectionRoundingPatch.exists_reflection_patch
+#print axioms Erdos66FlatProfileWindows.exists_flat_profile_window
+#print axioms Erdos66SetIntervalReplacement.replacement_count_difference
+#print axioms Erdos66LargeReflectionPatch.exists_large_patch
+#print axioms Erdos66ReflectionState.exists_extension
+#print axioms Erdos66BoundedDiscrepancyPeaks.exists_bounded_discrepancy_unbounded_peaks
+#print axioms Erdos66BoundedDiscrepancyPeaks.badRounding_error_prefix
+
+#print axioms Erdos66BoundedDiscrepancyPeaks.badRounding_quadratic_error_not_zero

@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check ZMod.castHom
+#check ZMod.castHom_apply
+#check RingHom.injective
+#check IsSquare
+#print IsSquare
+#check IsSquare.map
+#check _root_.map_ne_zero
+#check CharP.cast_eq_zero
+#check RingHom.map_ofNat
+#check Finset.univ_nonempty

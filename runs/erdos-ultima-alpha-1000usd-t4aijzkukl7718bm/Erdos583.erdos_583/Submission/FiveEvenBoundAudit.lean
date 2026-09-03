@@ -1,0 +1,9 @@
+import Submission.FiveEvenBound
+
+/-! Axiom audit of the five-even path bound. -/
+#print axioms Erdos583FiveEvenBoundDevelopment.delete_even_ends_path_evenCount
+#print axioms Erdos583FiveEvenBoundDevelopment.five_even_bound_of_path
+#print axioms Erdos583FiveEvenBoundDevelopment.five_even_nonclique
+#print axioms Erdos583FiveEvenBoundDevelopment.five_even_clique
+#print axioms Erdos583FiveEvenBoundDevelopment.five_even_path_bound
+#print axioms Erdos583FiveEvenBoundDevelopment.odd_order_at_most_five_even

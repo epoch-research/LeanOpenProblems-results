@@ -1,0 +1,16 @@
+import Submission.MinimalBridgeRestoration
+#check Set.ncard_union_add_ncard_inter
+#check Set.ncard_le_ncard
+#check Set.ncard_le_univ
+#check Set.ncard_univ
+#check Nat.choose_le_pow
+#check Nat.choose_le_self
+#check SimpleGraph.card_edgeFinset_le_card_choose_two
+#check SimpleGraph.card_edgeFinset_le_card_verts_mul
+#check SimpleGraph.sum_degrees_eq_twice_card_edges
+#check SimpleGraph.degree_lt_card_verts
+#check SimpleGraph.Preconnected
+#check Fintype.card_subtype_lt
+#check Nat.mul_sub_left_distrib
+#check Set.ncard_union_eq
+#check Nat.mul_le_mul

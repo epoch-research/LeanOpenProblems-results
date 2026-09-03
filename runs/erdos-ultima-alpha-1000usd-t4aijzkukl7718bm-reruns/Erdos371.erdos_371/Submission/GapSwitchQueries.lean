@@ -1,0 +1,15 @@
+import FormalConjecturesUtil
+#check Nat.ModEq.mul_left_cancel'
+#check Nat.ModEq.mul_left_cancel
+#check Nat.Coprime.of_dvd
+#check Nat.coprime_of_dvd'
+#check Nat.coprime_iff_gcd_eq_one
+#check Nat.Coprime.of_mul_left_left
+#check Nat.coprime_add_self_right
+#check Nat.coprime_add_self_left
+#check Nat.ModEq.coprime_iff
+#check Nat.ModEq.coprime
+#check Nat.modEq_iff_dvd
+#check Nat.ModEq.add_right_cancel'
+#check Nat.div_div_eq_div_mul
+#check harmonic_le_one_add_log

@@ -1,0 +1,17 @@
+import Submission.CommonPrimeOffDiagonal
+#check Nat.Coprime.dvd_mul_right
+#check Nat.Coprime.dvd_mul_left
+#check Nat.coprime_of_lt_prime
+#check Nat.div_eq_iff_eq_mul_left
+#check Nat.div_eq_iff_eq_mul_right
+#check Nat.div_eq_one_iff_dvd
+#check Nat.div_eq_one_iff
+#check Nat.div_mul_cancel
+#check Nat.div_pos
+#check Nat.div_eq_of_lt
+#check Finset.sum_ite_eq'
+#check ArithmeticFunction.coe_zeta_mul_apply
+#check ArithmeticFunction.coe_mul_zeta_apply
+#check ArithmeticFunction.one_apply
+#check Nat.mul_eq_one_iff
+#check Nat.mul_right_cancel

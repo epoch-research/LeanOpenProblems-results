@@ -1,0 +1,6 @@
+import Submission.LogarithmicCompletePaletteExplore
+/-! Axiom audit for logarithmic sparse levels and finite palette completion. -/
+#print axioms Erdos66OddLogTuning.tuned_odd_mean
+#print axioms Erdos66UniformMixedCyclicRelative.every_prime_mixed_cyclic_family
+#print axioms Erdos66LogarithmicMixedFamily.exists_logarithmic_mixed_family
+#print axioms Erdos66LogarithmicCompletePalette.exists_logarithmic_complete_palette

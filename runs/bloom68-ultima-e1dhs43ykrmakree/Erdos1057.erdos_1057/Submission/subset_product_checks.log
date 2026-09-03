@@ -1,0 +1,16 @@
+inverse-pair ordered-divisor tests: 180699
+strip ell=5, h=2: N=10; zero subsets of sizes 1..2
+strip ell=7, h=2: N=14; zero subsets of sizes 1..3
+strip ell=11, h=3: N=33; zero subsets of sizes 1..3
+strip ell=17, h=4: N=68; zero subsets of sizes 1..4
+strip ell=31, h=5: N=155; zero subsets of sizes 1..6
+strip ell=101, h=10: N=1010; zero subsets of sizes 1..10
+CRT r=10: N=1024, component orders=101..149, log|G|=47.919200, N^2<|G|, max 2-coordinate TV=0.950557675
+CRT r=20: N=1048576, component orders=401..521, log|G|=122.530059, N^2<|G|, max 2-coordinate TV=0.0557254482
+CRT r=40: N=1099511627776, component orders=1601..1901, log|G|=298.541679, N^2<|G|, max 2-coordinate TV=7.93701845e-07
+support-injective r=12, s=3, N=220: sum(A)<|G|, generates G, max 1-coordinate TV=0.491119285
+support-injective r=20, s=4, N=4845: sum(A)<|G|, generates G, max 1-coordinate TV=0.2459373
+support-injective r=30, s=5, N=142506: sum(A)<|G|, generates G, max 1-coordinate TV=0.166619113
+squarefree unit-group embedding (modulus, size): (491063, 1010)
+Fourier bound tests (all, nonvacuous): (90, 43)
+All finite checks passed. No asymptotic claim follows from these tests alone.

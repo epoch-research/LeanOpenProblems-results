@@ -1,0 +1,7 @@
+import Submission.ResidueEquidistributionExplore
+/-! Axiom checks for the new necessary conditions. -/
+#print axioms Erdos66ConvRigidity.probability_stability
+#print axioms Erdos66ConvRigidity.tendsto_probability_of_convolution
+#print axioms Erdos66ResidueSeries.push_series_limit
+#print axioms Erdos66ResidueEquidistribution.witness_residue_equidistribution
+#print axioms Erdos66ResidueEquidistribution.witness_infinite_each_residue

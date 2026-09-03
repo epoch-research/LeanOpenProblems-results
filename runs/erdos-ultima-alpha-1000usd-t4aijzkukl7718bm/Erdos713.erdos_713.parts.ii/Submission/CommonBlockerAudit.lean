@@ -1,0 +1,15 @@
+import Submission.SharpCommonBlockerC8
+
+/-! Audit of the common-blocker development; the admitted conjecture is not imported. -/
+#print axioms Erdos713PairCollisionCounting.card_collisionPairs_le
+#print axioms Erdos713PairCollisionCounting.square_le
+#print axioms Erdos713PenalizedDoubleMerge.double_merge_energy
+#print axioms Erdos713PenalizedDoubleMerge.safe_double_after_loss
+#print axioms Erdos713PenalizedDoubleMerge.common_blocker_mem_total
+#print axioms Erdos713CommonBlockerPairCount.square_bound
+#print axioms Erdos713CommonBlockerPairCount.degree_bound
+#print axioms Erdos713CommonBlockerPairCount.eventually_sparse
+#print axioms Erdos713UniformPairCost.highCost_budget
+#print axioms Erdos713UniformPairCost.eventually_few_highCost
+#print axioms Erdos713SharpCommonBlockerC8.eventually_double_slope
+#print axioms Erdos713SharpCommonBlockerC8.joint

@@ -1,0 +1,10 @@
+import Submission.BuchstabPrimeCoordinates
+#check Real.le_sqrt
+#check Real.sqrt_le_sqrt
+#check Nat.ceil_mono
+#check Finset.prod_dvd_prod_of_subset
+#check Nat.le_of_dvd
+#check Erdos970.WeightedMertens.prime_log_moment
+#check Erdos970.FiniteSelberg.firstHitWheel_pos
+#check Real.sqrt_sq
+#check Finset.sum_le_sum_of_subset_of_nonneg

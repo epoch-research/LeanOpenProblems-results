@@ -1,0 +1,25 @@
+{
+  "source": "Submission/WallDataPart23.lean",
+  "source_sha256": "fd7dba1ade608091f599d08de2591ca522f94155a7804f4aaf3e4c43217f9cb9",
+  "source_unchanged_during_compile": true,
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-j1",
+    "-o",
+    "/workspace/leanproject/.lake/build/lib/lean/Submission/WallDataPart23.olean",
+    "/workspace/leanproject/Submission/WallDataPart23.lean"
+  ],
+  "exit_code": 0,
+  "started_unix": 1788236906.4711108,
+  "finished_unix": 1788236997.7931507,
+  "wall_seconds": 91.322,
+  "user_seconds": 89.565,
+  "system_seconds": 1.788,
+  "max_rss_kib": 3075532,
+  "source_bytes": 115927,
+  "source_lines": 1221,
+  "olean_bytes": 1782624,
+  "log": "Submission/WallDataPart23.log"
+}

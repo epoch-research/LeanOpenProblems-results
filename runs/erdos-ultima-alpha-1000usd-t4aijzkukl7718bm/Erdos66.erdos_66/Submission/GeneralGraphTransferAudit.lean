@@ -1,0 +1,47 @@
+import Submission.PatchedGraphSetExplore
+
+/-! Axiom audit of finite graph transfer, interpolation, and patching. -/
+#print axioms Erdos66TranslatedGraphPartition.mem_graphSlice
+#print axioms Erdos66TranslatedGraphPartition.graphSlice_disjoint
+#print axioms Erdos66TranslatedGraphPartition.graphSlice_cover
+#print axioms Erdos66TranslatedGraphPartition.graphSlice_card
+#print axioms Erdos66TranslatedGraphPartition.sumCoeff_le
+#print axioms Erdos66TranslatedGraphPartition.graphSlice_pairCount
+#print axioms Erdos66TranslatedGraphPartition.graphSum_one
+#print axioms Erdos66TranslatedGraphPartition.graphSum_fibers
+#print axioms Erdos66TranslatedGraphPartition.graphSum_sq_le_energy
+#print axioms Erdos66UniformGraphColorTransfer.graphSum_centered
+#print axioms Erdos66UniformGraphColorTransfer.graphSum_error_sq
+#print axioms Erdos66UniformGraphColorTransfer.exists_energy_budget
+#print axioms Erdos66UniformGraphColorTransfer.exists_uniform_graph_budget
+#print axioms Erdos66UniformGraphColorTransfer.mem_graphSet
+#print axioms Erdos66UniformGraphColorTransfer.graphSet_pairCount
+#print axioms Erdos66UniformGraphColorTransfer.exists_actual_uniform_graph_budget
+#print axioms Erdos66QuarticGraph.sumPolynomial_eval
+#print axioms Erdos66QuarticGraph.sumPolynomial_degree
+#print axioms Erdos66QuarticGraph.sumPolynomial_ne_zero
+#print axioms Erdos66QuarticGraph.polynomial_fiber_bound
+#print axioms Erdos66QuarticGraph.quarticGraph_bounded
+#print axioms Erdos66QuarticGraph.quarticGraph_no_reflection
+#print axioms Erdos66EvenPolynomialGraph.reflectionPolynomial_degree
+#print axioms Erdos66EvenPolynomialGraph.reflectionPolynomial_leading
+#print axioms Erdos66EvenPolynomialGraph.even_polynomial_bounded
+#print axioms Erdos66BoundedGraphInterpolation.exists_bounded_interpolant
+#print axioms Erdos66AnchoredGraphColorTransfer.graphSet_eq_on_columns
+#print axioms Erdos66AnchoredGraphColorTransfer.exists_later_anchored_graph
+#print axioms Erdos66AnchoredGraphColorTransfer.constant_prescription_requires_budget
+#print axioms Erdos66HistogramPatch.histogram_change_L1
+#print axioms Erdos66HistogramPatch.histogram_change_L2
+#print axioms Erdos66GraphPatch.sumCoeff_histogram
+#print axioms Erdos66GraphPatch.reflectedPatch_card
+#print axioms Erdos66GraphPatch.pairMap_eq_off_patch
+#print axioms Erdos66GraphPatch.sumCoeff_patch_L1
+#print axioms Erdos66GraphPatch.sumCoeff_patch_L2
+#print axioms Erdos66GraphPatch.graphSum_patch_sq
+#print axioms Erdos66GraphPatch.patched_graph_error_sq
+#print axioms Erdos66GraphPatch.exists_patched_graph_budget
+#print axioms Erdos66PatchedGraphSet.patch_on
+#print axioms Erdos66PatchedGraphSet.patch_off
+#print axioms Erdos66PatchedGraphSet.patched_graphSet_on
+#print axioms Erdos66PatchedGraphSet.patched_graphSet_off
+#print axioms Erdos66PatchedGraphSet.exists_actual_patched_graph_budget

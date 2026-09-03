@@ -1,0 +1,12 @@
+import Submission.WeightedPowerKernel
+#check IsCyclic.card_pow_eq_one_le
+#check IsCyclic.card_pow_eq_one
+#check IsCyclic.card_powMonoidHom_ker
+#check MonoidHom.card_range_mul_card_ker
+#check MonoidHom.card_ker_mul_card_range
+#check Nat.card_congr
+#check Subgroup.card_mul_index
+#check QuotientGroup.quotientKerEquivRange
+#check Units.coe_pow
+#check Nat.dvd_mul_right
+#check Nat.div_eq_of_eq_mul_left

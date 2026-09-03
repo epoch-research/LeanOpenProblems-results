@@ -1,0 +1,14 @@
+import Submission.FirstHitGrid
+#check Finset.Iic_sdiff_Iic
+#check Finset.Icc_sdiff_Icc_left
+#check Finset.sum_sdiff
+#check Finset.sum_Ico_eq_sub
+#check Nat.Ico_succ_succ
+#check Nat.Ioc_eq_Ico
+#check Finset.Ioc_eq_Ico
+#check Finset.Iic_subset_Iic
+#check Finset.sum_Ico_add_sum_Ico
+#check Finset.sum_Icc_add_sum_Ioc
+#check Finset.sum_Ioc_eq_sum_Ico
+#check Finset.sum_Iic_sub_sum_Iic
+#check Finset.Icc_sdiff_Icc_right

@@ -1,0 +1,8 @@
+import Submission.CarrierCoreCounting
+
+/-! Axiom audit of the general core-edge counting lemmas. -/
+#print axioms Erdos583CarrierCoreCountingDevelopment.core_load_bound
+#print axioms Erdos583CarrierCoreCountingDevelopment.full_core_load_carrier_bound
+#print axioms Erdos583CarrierCoreCountingDevelopment.spanning_core_segment_load
+#print axioms Erdos583CarrierCoreCountingDevelopment.spanning_core_segments_carrier_bound
+#print axioms Erdos583CarrierCoreCountingDevelopment.dense_carriers_have_core_gap

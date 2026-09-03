@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+#check SimpleGraph.degree_lt_card_verts
+#check SimpleGraph.degree_eq_zero_iff
+#check SimpleGraph.degree_eq_one_iff_existsUnique_adj
+#check SimpleGraph.mem_support
+#check Fintype.one_lt_card_iff_nontrivial
+#check Fintype.card_subtype_neq
+#check SimpleGraph.Copy.induce
+#check SimpleGraph.Iso.toCopy
+#check SimpleGraph.Copy.comp
+#check SimpleGraph.Copy.trans

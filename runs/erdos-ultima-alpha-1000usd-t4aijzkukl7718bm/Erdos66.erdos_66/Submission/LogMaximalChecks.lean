@@ -1,0 +1,17 @@
+import Submission.MaximalCapWithHolesExplore
+import Submission.AbelHigherMomentExplore
+#check Real.isLittleO_log_rpow_atTop
+#check Real.isLittleO_log_pow_rpow_atTop
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.tendsto_pow_log_div_pow_atTop
+#check tendsto_nat_floor_atTop
+#check Filter.Tendsto.const_mul_atTop
+#check Nat.floor_le
+#check Nat.lt_floor_add_one
+#check Nat.floor_lt
+#check Real.tendsto_log_atTop
+#check Nat.floor_mono
+#check Filter.Tendsto.atTop_add
+#check Filter.Tendsto.add_atTop
+#check Erdos66Explore.sumRep_mono
+#check Erdos66LogTuning.log_nat_atTop

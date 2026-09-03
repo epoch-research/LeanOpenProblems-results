@@ -1,0 +1,17 @@
+import Submission.UniformMatrixSpanExplore
+import Submission.AdaptiveMatrixEnergyExplore
+
+/-! Axiom audit for pair-weighted character transfer and its quantifier limit. -/
+#print axioms Erdos66PairWeightedCharacterEnergy.average_matrix_fiber_energy
+#print axioms Erdos66PairWeightedCharacterEnergy.average_matrix_energy
+#print axioms Erdos66PairWeightedCharacterEnergy.exists_admissible_matrix_budget
+#print axioms Erdos66PairWeightedRootTransfer.matrixRootCount_identity
+#print axioms Erdos66PairWeightedRootTransfer.matrixRootCount_error_sq
+#print axioms Erdos66PairWeightedRootTransfer.exists_matrix_root_budget
+#print axioms Erdos66PairWeightedRootTransfer.exists_matrix_root_transfer
+#print axioms Erdos66UniformMatrixSpan.exists_uniform_matrix_span
+#print axioms Erdos66UniformMatrixSpan.exists_normalized_matrix_span
+#print axioms Erdos66AdaptiveMatrixEnergy.alignedMatrix_zero_one
+#print axioms Erdos66AdaptiveMatrixEnergy.alignedMatrix_energy_lower
+#print axioms Erdos66AdaptiveMatrixEnergy.alignedMatrix_mass_le
+#print axioms Erdos66AdaptiveMatrixEnergy.universal_matrix_budget_requires_large_constant

@@ -1,0 +1,14 @@
+import Submission.Activation
+/-! Axiom audit of exact inactive-vertex operations. -/
+#print axioms Erdos583ActivationDevelopment.split_member
+#print axioms Erdos583ActivationDevelopment.activate_vertex
+#print axioms Erdos583ActivationDevelopment.realize_subset
+#print axioms Erdos583ActivationDevelopment.feasible_downward_closed
+#print axioms Erdos583ActivationDevelopment.projection_inactive_of_owner_eq
+#print axioms Erdos583ActivationDevelopment.exists_normal_inactive_at
+#print axioms Erdos583ActivationDevelopment.feasible_singleton
+#print axioms Erdos583ActivationDevelopment.deactivate_by_append
+#print axioms Erdos583ActivationDevelopment.max_inactive_pair_intersects
+#print axioms Erdos583ActivationDevelopment.path_endpoint_in_pendant_region
+#print axioms Erdos583ActivationDevelopment.no_inactive_pendant_region
+#print axioms Erdos583ActivationDevelopment.gallai_of_at_most_three_even

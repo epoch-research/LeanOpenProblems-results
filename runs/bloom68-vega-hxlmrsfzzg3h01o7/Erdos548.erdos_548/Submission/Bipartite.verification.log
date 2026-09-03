@@ -1,0 +1,73 @@
+# Bipartite-host proof verification
+# Lean toolchain: leanprover/lean4:v4.27.0
+
+$ lake env lean -o .lake/build/lib/lean/Submission/Bipartite.olean -i .lake/build/lib/lean/Submission/Bipartite.ilean Submission/Bipartite.lean
+'_private.Submission.Bipartite.0.Erdos548.Bipartite.bool_eq_of_ne_same' depends on axioms: [propext]
+'Erdos548.Bipartite.card_restrict_color_ne_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.card_restrict_color_ne_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_adj_fresh_of_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_color_preserving_copy_of_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.ncard_neighborSet_eq_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.neighborSet_ncard_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.edge_ncard_delete_vertex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.induceInduceIso' depends on axioms: [Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_weighted_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_bool_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.coloring_surjective_of_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.coloring_surjective_of_isTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.opposite_color_card_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.opposite_color_card_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_color_preserving_copy_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Bipartite.isContained_of_coloring_cost_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.exists_orientation_cost_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.nonempty_of_edge_threshold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos548.Bipartite.isContained_of_subsingleton' does not depend on any axioms
+'Erdos548.Bipartite.tree_isContained_of_bipartite_edge_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Bipartite.fin_tree_isContained_of_bipartite_edge_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Bipartite.erdos_548_bipartite' depends on axioms: [propext, Classical.choice, Quot.sound]
+[exit code 0]
+
+$ lake env lean -o .lake/build/lib/lean/Submission/BipartiteVerification.olean -i .lake/build/lib/lean/Submission/BipartiteVerification.ilean Submission/BipartiteVerification.lean
+'_private.Submission.BipartiteVerification.0.Erdos548.BipartiteVerification.two_vertex_edge_count' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.Submission.BipartiteVerification.0.Erdos548.BipartiteVerification.k23_edge_count' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Bipartite.tree_isContained_of_bipartite_edge_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos548.Bipartite.exists_color_preserving_copy_of_neighborSet_ncard' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+[exit code 0]
+
+$ lake env lean --deps Submission/Bipartite.lean
+/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean
+/workspace/leanproject/.lake/build/lib/lean/FormalConjecturesUtil.olean
+[exit code 0]
+
+$ lake env lean --deps Submission/BipartiteVerification.lean
+/root/.elan/toolchains/leanprover--lean4---v4.27.0/lib/lean/Init.olean
+/workspace/leanproject/.lake/build/lib/lean/Submission/Bipartite.olean
+[exit code 0]
+
+Static checks: PASS
+23/23 main declarations audited; 11/11 interface and boundary examples compiled.
+Only standard axioms used. No proof holes or new axioms.
+Main import: FormalConjecturesUtil only.
+
+Source SHA256:
+721a5e1930bbee5bf22e5d2b4c9c068f3f46218ae2e987e0668e24f4cc213f1d  Submission/Bipartite.lean
+ffbec3191a9e4fccc64e361dcc3aba29d0c6628c943f03f7e411afb9cf8bc123  Submission/BipartiteVerification.lean
+
+Protected files (before and after hashes identical):
+674e59904bc58eb7e92883f5bf20dc5070fa9ec90e1640117895768922c0c103  Submission/Spec.lean  UNCHANGED
+227fcc37cac1313bd1d9c8033397195fa990f018c784ba9a53e307f6ef1e28c1  Submission/Auxiliary.lean  UNCHANGED
+c0dc0d37acc9f1ca3173b6d144e326ccfcbf5a63eb98216fa6099e055b9d71ea  Submission/Critical.lean  UNCHANGED

@@ -1,0 +1,24 @@
+import Submission.LogarithmicFiniteExchangeExplore
+
+/-! Audit for distant blocking certificates and finite-exchange rigidity. -/
+#print axioms Erdos66TailCapBlocking.exists_tail_blocking_extension
+#print axioms Erdos66FiniteExchangeCap.exists_extension
+#print axioms Erdos66FiniteExchangeCap.step_spec
+#print axioms Erdos66FiniteExchangeCap.exists_schedule_late
+#print axioms Erdos66FiniteExchangeCap.states_step
+#print axioms Erdos66FiniteExchangeCap.cutoff_ge
+#print axioms Erdos66FiniteExchangeCap.mem_stable
+#print axioms Erdos66FiniteExchangeCap.rigidSet_mem
+#print axioms Erdos66FiniteExchangeCap.states_subset_rigidSet
+#print axioms Erdos66FiniteExchangeCap.rigidSet_rep
+#print axioms Erdos66FiniteExchangeCap.rigidSet_capped
+#print axioms Erdos66FiniteExchangeCap.rigidSet_tail_certificate
+#print axioms Erdos66FiniteExchangeCap.rigidSet_finite_deletion_rigidity
+#print axioms Erdos66FiniteExchangeCap.rigidSet_maximal
+#print axioms Erdos66FiniteExchangeCap.rigidSet_holes
+#print axioms Erdos66FiniteExchangeCap.rigidSet_peaks
+#print axioms Erdos66FiniteExchangeCap.exists_finitely_rigid_with_holes_and_peaks
+#print axioms Erdos66LogarithmicFiniteExchange.representation_le_of_finite_deletion
+#print axioms Erdos66LogarithmicFiniteExchange.finite_exchange_additions_are_old
+#print axioms Erdos66LogarithmicFiniteExchange.exists_finitely_rigid_log_cap_without_limit
+#print axioms Erdos66LogarithmicFiniteExchange.exists_all_finite_exchanges_blocked

@@ -1,0 +1,9 @@
+import Submission.GeneralQuotaPurification
+
+/-! Axiom audit of the endpoint-refinement development. -/
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.internal_member_of_endpoint_lt_degree
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.split_at_internal_vertex
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.realize_larger_quotas
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.path_family_partition_quota_exact_of_le_degree
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.endpointMultiplicity_le_degree
+#print axioms Erdos583GeneralQuotaPurificationDevelopment.path_family_partition_truncated_quota

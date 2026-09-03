@@ -1,0 +1,32 @@
+'Erdos66RankCellWindow.count_strict_of_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankCellWindow.count_injOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankCellWindow.rankPoint_at_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankCellWindow.mass_add_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66RankCellWindow.exists_rank_cell_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonAlgebra.singleton_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonAlgebra.insertionEnergy_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonAlgebra.insertionHits_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonAlgebra.insertionChoices_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonAlgebra.insertionChoices_properties' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66AdaptiveSingletonSelection.exists_adaptive_singletons' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PrescribedRankRelocation.swapped_downward_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66PrescribedRankRelocation.swapped_error_le_deletion_and_insertion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66PrescribedRankRelocation.exists_prescribed_rank_relocation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogCellWindowBudget.log_power_sqrt_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.log_power_nat_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.profile_sqrt_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.windowSize_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.eventually_window_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.window_degree_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogCellWindowBudget.eventually_singleton_window_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66GlobalRankDownwardRepair.uniformly_eventually_downward_rank_repair' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

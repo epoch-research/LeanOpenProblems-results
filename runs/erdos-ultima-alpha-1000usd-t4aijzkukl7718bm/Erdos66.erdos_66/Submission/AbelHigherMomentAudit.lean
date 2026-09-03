@@ -1,0 +1,10 @@
+import Submission.AbelHigherMomentExplore
+/-! Axiom audit of the geometric Jensen and higher Abel moment results. -/
+#print axioms Erdos66AbelHigherMoment.weighted_tsum_pow_le
+#print axioms Erdos66AbelHigherMoment.geometric_weight_hasSum
+#print axioms Erdos66AbelHigherMoment.geometric_power_mean
+#print axioms Erdos66AbelHigherMoment.summable_shifted_power_geometric
+#print axioms Erdos66AbelHigherMoment.log_error_abs_bound
+#print axioms Erdos66AbelHigherMoment.summable_log_error_even
+#print axioms Erdos66AbelHigherMoment.normalized_even_moment_ge
+#print axioms Erdos66AbelHigherMoment.normalized_even_moment_eventually_gt

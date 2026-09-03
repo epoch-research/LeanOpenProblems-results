@@ -1,0 +1,9 @@
+import FormalConjecturesUtil
+#check Finset.sum_mul_sq_le_sq_mul_sq
+#check Finset.sum_mul_le_sqrt_mul_sqrt
+#check sq_le_sq₀
+#check sq_le_sq'
+#check Real.sq_sqrt
+#check mul_self_le_mul_self
+#check pow_pos
+#check pow_pos_iff_of_even

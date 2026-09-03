@@ -1,0 +1,15 @@
+import Submission.IndependentSuppression
+
+/-! Axiom audit for IndependentSuppression. -/
+#print axioms Erdos583IndependentSuppressionDevelopment.adj_finset_sup
+#print axioms Erdos583IndependentSuppressionDevelopment.chords
+#print axioms Erdos583IndependentSuppressionDevelopment.spokes
+#print axioms Erdos583IndependentSuppressionDevelopment.chords_insert
+#print axioms Erdos583IndependentSuppressionDevelopment.spokes_insert
+#print axioms Erdos583IndependentSuppressionDevelopment.spokes_adj
+#print axioms Erdos583IndependentSuppressionDevelopment.spokes_endpoint
+#print axioms Erdos583IndependentSuppressionDevelopment.spokes_avoid
+#print axioms Erdos583IndependentSuppressionDevelopment.expand_spokes
+#print axioms Erdos583IndependentSuppressionDevelopment.chords_support_outside
+#print axioms Erdos583IndependentSuppressionDevelopment.compressed_support_connected
+#print axioms Erdos583IndependentSuppressionDevelopment.compressed_partition

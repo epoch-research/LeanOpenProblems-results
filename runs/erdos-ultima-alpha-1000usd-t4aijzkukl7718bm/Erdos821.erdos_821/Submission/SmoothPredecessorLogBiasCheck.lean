@@ -1,0 +1,10 @@
+import Submission.SmoothPredecessorLogBias
+
+/-! Independent axiom audit for SmoothPredecessorLogBias. -/
+
+#print axioms Erdos821.AnalyticSieve.smooth_restricted_truncated_log_pointwise
+#print axioms Erdos821.AnalyticSieve.smooth_restricted_truncated_log_lower
+#print axioms Erdos821.AnalyticSieve.smooth_restricted_log_bias
+#print axioms Erdos821.AnalyticSieve.smooth_restricted_log_bias_of_main_bound
+#print axioms Erdos821.AnalyticSieve.smooth_restricted_log_bias_of_sharp_main
+#print axioms Erdos821.AnalyticSieve.smoothMangoldtWeight_support

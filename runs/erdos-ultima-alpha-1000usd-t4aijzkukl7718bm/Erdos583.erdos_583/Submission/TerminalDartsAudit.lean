@@ -1,0 +1,13 @@
+import Submission.TerminalDarts
+
+/-! Allowed-axiom audit of endpoint-tail preservation. -/
+#print axioms Erdos583TerminalDartsDevelopment.realize_escape_orbit_with_tails
+#print axioms Erdos583TerminalDartsDevelopment.iterate_avoids_fixed_before_exit
+#print axioms Erdos583TerminalDartsDevelopment.iterate_neighbors_before_exit
+#print axioms Erdos583TerminalDartsDevelopment.expose_escape_preserving_tails
+#print axioms Erdos583TerminalDartsDevelopment.tail_partner
+#print axioms Erdos583TerminalDartsDevelopment.tail_is_member_prefix
+#print axioms Erdos583TerminalDartsDevelopment.orient_with_tails
+#print axioms Erdos583TerminalDartsDevelopment.escape_slide_with_members
+#print axioms Erdos583TerminalDartsDevelopment.finish_exposed_with_tails
+#print axioms Erdos583TerminalDartsDevelopment.improve_preserving_tails

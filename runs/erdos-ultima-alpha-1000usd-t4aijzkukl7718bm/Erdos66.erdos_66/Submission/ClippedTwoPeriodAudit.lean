@@ -1,0 +1,22 @@
+import Submission.CyclicLiftMixedExplore
+import Submission.ClippedTwoPeriodExplore
+import Submission.DyadicTwoPeriodSystemExplore
+
+/-! Permitted-axiom audit for common-source two-period comparison. -/
+
+#print axioms Erdos66CyclicLiftMixed.first_block_iff
+#print axioms Erdos66CyclicLiftMixed.first_block_prefix
+#print axioms Erdos66CyclicLiftMixed.outer_mixed_blocks
+#print axioms Erdos66CyclicLiftMixed.first_block_rebase_prefix
+#print axioms Erdos66CyclicLiftMixed.repeated_clipped_cross_identity
+#print axioms Erdos66CyclicLiftMixed.repeated_clipped_prefix_agree
+#print axioms Erdos66ClippedTwoPeriod.repeated_clipped_cross_error
+#print axioms Erdos66ClippedTwoPeriod.cyclicCount_comm
+#print axioms Erdos66ClippedTwoPeriod.actualMean_comm
+#print axioms Erdos66ClippedTwoPeriod.twoPeriod_error
+#print axioms Erdos66ClippedTwoPeriod.twoPeriod_actual_error
+#print axioms Erdos66ClippedTwoPeriod.twoPeriod_prefix_agree
+#print axioms Erdos66DyadicTwoPeriodSystem.rebase_self
+#print axioms Erdos66DyadicTwoPeriodSystem.prefix_full
+#print axioms Erdos66DyadicTwoPeriodSystem.mean_tuning_of_prefix_tuning
+#print axioms Erdos66DyadicTwoPeriodSystem.exists_dyadic_two_period_system

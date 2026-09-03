@@ -1,0 +1,22 @@
+Submission/ShortSupportSwapTailExplore.lean:122:56: error: linarith failed to find a contradiction
+case h
+N : ℕ
+hN : 32 ≤ N
+hH : ↑(harmonic (6 * N ^ 32 + 1)) ≤ ↑N ^ 2
+hNp : 0 < N
+hN1 : 1 ≤ N
+hp : ↑N ^ 15 * profile (N ^ 32) ≤ 1
+h15 : 15 * N + 1 ≤ N ^ 15
+h32 : 16 * N + 2 ≤ N ^ 32
+h33 : N ^ 33 = N ^ 32 * N
+A : Set ℕ
+hbr : ∀ (L : ℕ), PrefixBrackets profile A L
+D F : Finset ℕ
+hD : ↑D ⊆ A
+hF : Disjoint (↑F) A
+hs : ∀ u ∈ D ∪ F, u ≤ 15 * N
+z : ℕ
+hz : N ^ 32 * N + 1 ≤ z
+a✝ : z + 1 - (15 * N + 1) < N ^ 32
+⊢ False
+failed

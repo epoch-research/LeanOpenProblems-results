@@ -1,0 +1,18 @@
+All equality checks below use exact integer squared distances.
+  Full P_2 palette: n=10209, D=15444, K=0.661033; this small k is not the asymptotic regime.
+  Filled disk Q_2: n=3173373, certified same-color matching=333; every endpoint checked.
+k=2: outer=8, longest colors=5, diameter cover=4, rare cover=2, cross-maximum cover=4: PASS
+k=3: outer=16, longest colors=14, diameter cover=8, rare cover=2, cross-maximum cover=4: PASS
+k=4: outer=32, longest colors=41, diameter cover=16, rare cover=2, cross-maximum cover=4: PASS
+k=5: outer=64, longest colors=122, diameter cover=32, rare cover=2, cross-maximum cover=4: PASS
+k=6: outer=128, longest colors=365, diameter cover=64, rare cover=2, cross-maximum cover=4: PASS
+k=7: outer=256, longest colors=1094, diameter cover=128, rare cover=2, cross-maximum cover=4: PASS
+k=8: outer=512, longest colors=3281, diameter cover=256, rare cover=2, cross-maximum cover=4: PASS
+Onion rank/depth and cross-maximum endpoint checks: 204 actual point sets: PASS
+Large-k exact parameter checks (not enumeration, not a numerical test of Landau--Ramanujan):
+  k= 16: log n=621.708; log(min first-T cover / sqrt(log n)) >= 5.102; log(prefix-cover/(T sqrt(log n))) = 4.161
+  k= 32: log n=2426.935; log(min first-T cover / sqrt(log n)) >= 12.738; log(prefix-cover/(T sqrt(log n))) = 10.188
+  k= 64: log n=9574.159; log(min first-T cover / sqrt(log n)) >= 28.688; log(prefix-cover/(T sqrt(log n))) = 22.893
+  k=128: log n=38015.690; log(min first-T cover / sqrt(log n)) >= 61.269; log(prefix-cover/(T sqrt(log n))) = 48.988
+Spec.lean SHA256: c2fbaabe5ad8088f856ca97625747c7a01754f3c149dd6a493454e776de290db
+ALL CHECKS PASSED. Asymptotic and universal-quantifier arguments are proved in the accompanying Markdown, not inferred from these tests.

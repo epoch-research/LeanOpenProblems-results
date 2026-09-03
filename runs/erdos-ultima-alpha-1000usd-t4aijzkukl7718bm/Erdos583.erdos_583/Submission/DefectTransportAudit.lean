@@ -1,0 +1,10 @@
+import Submission.DefectTransport
+/-! Axiom audit of exact pendant-defect transfer. -/
+#print axioms Erdos583DefectTransportDevelopment.replace_two_finishes_tracked
+#print axioms Erdos583DefectTransportDevelopment.leafWalk_isTrail
+#print axioms Erdos583DefectTransportDevelopment.leafWalk_ncard
+#print axioms Erdos583DefectTransportDevelopment.concat_ncard
+#print axioms Erdos583DefectTransportDevelopment.pendant_transfer_data
+#print axioms Erdos583DefectTransportDevelopment.transfer_pendant_defect
+#print axioms Erdos583DefectTransportDevelopment.leafWalk_concat_isPath_iff
+#print axioms Erdos583DefectTransportDevelopment.concat_terminal_cycle

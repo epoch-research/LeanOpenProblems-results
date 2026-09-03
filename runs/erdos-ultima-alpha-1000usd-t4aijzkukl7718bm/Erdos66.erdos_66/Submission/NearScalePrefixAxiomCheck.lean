@@ -1,0 +1,7 @@
+import Submission.NearScalePrefixObstructionExplore
+/-! Audit for the near-scale prefix-independent bridge obstruction. -/
+#print axioms Erdos66NaturalSidonExtraction.exists_natSidon_subset
+#print axioms Erdos66NaturalSidonExtraction.natSidon_rep_le_two
+#print axioms Erdos66NearScalePrefixObstruction.reflected_prefix_peak
+#print axioms Erdos66NearScalePrefixObstruction.basis_forces_dense_half
+#print axioms Erdos66NearScalePrefixObstruction.eventually_no_prefix_independent_near_scale_bridge

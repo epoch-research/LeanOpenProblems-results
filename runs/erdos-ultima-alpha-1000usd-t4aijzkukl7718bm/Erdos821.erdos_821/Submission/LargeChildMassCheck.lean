@@ -1,0 +1,36 @@
+import Submission.LargeChildMass
+
+/-! Exact types and axiom audit for LargeChildMass. -/
+
+#check Erdos821.setPowerMass_nonneg
+#check Erdos821.sum_largeChildParents_le
+#check Erdos821.setPowerMass_largeChildParents_le
+#check Erdos821.setPowerMass_exponent_mono
+#check Erdos821.setPowerMass_union_le
+#check Erdos821.zero_not_mem_largeChildLayer
+#check Erdos821.largeChildLayerExponent_reciprocal
+#check Erdos821.setPowerMass_largeChildParents_reciprocal_le
+#check Erdos821.reciprocal_exponent_bounds
+#check Erdos821.nextLargeChildExponent_reciprocal
+#check Erdos821.summable_largeChildParents_reciprocal
+#check Erdos821.summable_largeChildLayer_reciprocal
+#check Erdos821.largeChildMassFactor_step
+#check Erdos821.setPowerMass_largeChildLayer_le
+#check Erdos821.card_set_le_rpow_mass
+#check Erdos821.largeChildLayer_card_le
+#print axioms Erdos821.setPowerMass_nonneg
+#print axioms Erdos821.sum_largeChildParents_le
+#print axioms Erdos821.setPowerMass_largeChildParents_le
+#print axioms Erdos821.setPowerMass_exponent_mono
+#print axioms Erdos821.setPowerMass_union_le
+#print axioms Erdos821.zero_not_mem_largeChildLayer
+#print axioms Erdos821.largeChildLayerExponent_reciprocal
+#print axioms Erdos821.setPowerMass_largeChildParents_reciprocal_le
+#print axioms Erdos821.reciprocal_exponent_bounds
+#print axioms Erdos821.nextLargeChildExponent_reciprocal
+#print axioms Erdos821.summable_largeChildParents_reciprocal
+#print axioms Erdos821.summable_largeChildLayer_reciprocal
+#print axioms Erdos821.largeChildMassFactor_step
+#print axioms Erdos821.setPowerMass_largeChildLayer_le
+#print axioms Erdos821.card_set_le_rpow_mass
+#print axioms Erdos821.largeChildLayer_card_le

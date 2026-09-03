@@ -1,0 +1,10 @@
+DIRECT/DP VERIFIED n 3 trees 1 root profiles 3 seconds 0.0
+DIRECT/DP VERIFIED n 4 trees 3 root profiles 11 seconds 0.0
+DIRECT/DP VERIFIED n 5 trees 6 root profiles 26 seconds 0.001
+DIRECT/DP VERIFIED n 6 trees 12 root profiles 62 seconds 0.003
+DIRECT/DP VERIFIED n 7 trees 23 root profiles 139 seconds 0.009
+DIRECT/DP VERIFIED n 8 trees 46 root profiles 323 seconds 0.036
+DIRECT/DP VERIFIED n 9 trees 93 root profiles 746 seconds 0.121
+DIRECT/DP VERIFIED n 10 trees 199 root profiles 1806 seconds 0.344
+DIRECT/DP VERIFIED n 11 trees 434 root profiles 4391 seconds 0.962
+DIRECT/DP VERIFIED n 12 trees 985 root profiles 11003 seconds 3.372

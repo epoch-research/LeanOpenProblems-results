@@ -1,0 +1,16 @@
+import Submission.RepeatedBlockProfileExplore
+import Submission.CarryExplore
+open Filter
+#check ZMod.val_natCast_of_lt
+#check Finset.image_image
+#check Nat.mod_eq_of_lt
+#check Int.natCast_emod
+#check max_add_add_left
+#check max_eq_right
+#check abs_add_le
+#check abs_le
+#check Nat.mul_div_cancel_left
+#check Nat.div_add_mod
+#check Nat.div_eq_of_lt_le
+#check Nat.div_le_div_right
+#check Erdos66Carry.cyclic_periodization

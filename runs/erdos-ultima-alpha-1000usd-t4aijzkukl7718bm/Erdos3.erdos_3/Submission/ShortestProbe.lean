@@ -1,0 +1,15 @@
+import Submission.PrimitiveLatticeFunctional
+#check Metric.finite_isBounded_inter_isClosed
+#check Metric.isBounded_closedBall
+#check AddSubgroup.isClosed_of_discrete
+#check DiscreteTopology.isDiscrete
+#check Set.Finite.toFinset
+#check Finset.exists_min_image
+#check Metric.mem_closedBall
+#check dist_zero_left
+#check dist_zero_right
+#check Module.Basis.ofZLatticeBasis_span
+#check Module.Basis.repr_eq_zero
+#check Module.Basis.ext_elem
+#check Int.natAbs_ofNat
+#check Submodule.ne_bot_iff

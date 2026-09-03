@@ -1,0 +1,11 @@
+import Submission.LargeDivisorBlockMoment
+#check Nat.mod_add_div
+#check Nat.div_add_mod
+#check Nat.div_mul_le_self
+#check Nat.le_self_pow
+#check Nat.pow_le_pow_right
+#check Nat.lt_mul_div_succ
+#check Nat.le_mul_div_succ
+#check Nat.lt_div_mul_add
+#check Nat.le_ceil
+#check Nat.ceil_le

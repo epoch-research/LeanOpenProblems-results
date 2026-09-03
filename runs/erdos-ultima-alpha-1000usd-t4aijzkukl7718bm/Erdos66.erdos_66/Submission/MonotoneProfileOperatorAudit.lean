@@ -1,0 +1,7 @@
+import Submission.MonotoneProfileOperatorExplore
+/-! Axiom audit of the uniform finite monotone-profile operator. -/
+#print axioms Erdos66MonotoneIntervalFibers.exists_interval_fibers
+#print axioms Erdos66StepConvolutionBridge.weightedProfile_eq_normConv
+#print axioms Erdos66UniversalHeightPalette.exists_universal_height_realizer
+#print axioms Erdos66BoundedProfileQuantization.normConv_quantization_error
+#print axioms Erdos66MonotoneProfileOperator.exists_bounded_monotone_rounding_operator

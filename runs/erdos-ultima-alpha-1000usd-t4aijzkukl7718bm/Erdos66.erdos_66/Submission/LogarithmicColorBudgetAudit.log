@@ -1,0 +1,31 @@
+'Erdos66MatchingColorExponential.mean_exp_centered_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingColorExponential.matching_exp_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66MatchingColorExponential.matching_centered_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExponentialColorSelection.sumEdges_card_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExponentialColorSelection.colorFiber_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExponentialColorSelection.shifted_mgf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExponentialColorSelection.exists_simultaneous_fibers' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66ExponentialColorSelection.exists_simultaneous_ordered_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicColorBudget.listLog_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicColorBudget.exponential_list_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicColorBudget.exists_logarithmic_ordered_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicColorBudget.orderedEnergy_scale' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos66LogarithmicColorBudget.exists_logarithmic_centered_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicRootBudget.exists_logarithmic_joint_energy' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicRootBudget.exists_pattern_logarithmic_root_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicActualBudget.centered_bound_of_nonnegative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Erdos66LogarithmicActualBudget.exists_actual_logarithmic_budget' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

@@ -1,0 +1,10 @@
+import Submission.RealWeightedCharacterEnergyExplore
+import Submission.RandomConstantProfileExplore
+#check harmonic
+#print harmonic
+#check harmonic_le_one_add_log
+#check Real.harmonic_le_one_add_log
+#check harmonic_le_one_add_log
+#check Nat.cast_sum
+#check Rat.cast_sum
+#check Real.harmonic_pos

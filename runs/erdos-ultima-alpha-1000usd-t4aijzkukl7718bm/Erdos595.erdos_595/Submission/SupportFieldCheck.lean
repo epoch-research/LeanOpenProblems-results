@@ -1,0 +1,17 @@
+import Submission.AlgClosedLinearDisjoint
+#check IsAlgClosed.isAlgebraic_iff
+#check IsAlgClosed.eq_algebraMap_of_isAlgebraic
+#check Algebra.IsAlgebraic.algHom_bijective
+#check IsAlgClosed.algebraMap_bijective_of_isIntegral
+#check IntermediateField.eq_bot_of_isAlgClosed_of_isAlgebraic
+#check IsAlgClosed.algebraicClosure_eq_bot_iff
+#check IntermediateField.mem_bot
+#check Algebra.adjoin_mono
+#check Set.image_eq_range
+#check IntermediateField.algebraicIndependent_adjoin_iff
+#check AlgebraicIndependent.matroid_closure_eq
+#check Matroid.mem_closure_iff_exists_finset
+#check Matroid.mem_closure_iff_exists_finite
+#check Set.Finite.exists_finset
+#check Set.Finite.subset_image_iff
+#check Set.Finite.exists_finset_of_subset_range

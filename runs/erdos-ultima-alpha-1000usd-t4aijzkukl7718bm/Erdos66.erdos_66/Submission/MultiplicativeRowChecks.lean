@@ -1,0 +1,12 @@
+import Submission.IntegerBlockExplore
+import Submission.PhasedResidueCountingExplore
+#check Erdos66OriginRepair.pairCount
+#check Finset.filter_image
+#check Finset.card_image_of_injective
+#check Finset.card_filter
+#check ZMod.natCast_zmod_eq_zero_iff_dvd
+#check ZMod.natCast_ne_zero_iff
+#check div_right_inj'
+#check div_left_inj'
+#check add_right_cancel
+#check sub_left_injective

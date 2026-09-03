@@ -1,0 +1,14 @@
+import Submission.UnusedColorAmalgamationExtension
+import Submission.WellOrderedColorExtension
+#check SimpleGraph.Iso
+#check RelIso.map_rel_iff
+#check Sym2.lift
+#check Sym2.inductionOn
+#check Sym2.map_pair_eq
+#check SimpleGraph.induce
+#check Function.extend
+#check Function.Injective.extend_apply
+#check Subtype.val_injective
+#check Erdos595Work.countable_union_iff_edge_coloring
+#check Erdos595BipartiteAmalgamationExtension.exists_extension
+#check Erdos595FiniteAdapted.Valid

@@ -1,0 +1,17 @@
+import Submission.WeakerVoidReduction
+#check Nat.lt_two_pow_self
+#check Nat.log
+#check Nat.lt_pow_succ_log_self
+#check Nat.pow_log_le_self
+#check exists_pow_near
+#check exists_pow_near_of_lt_one
+#check exists_nat_gt
+#check Real.tendsto_pow_log_div_mul_add_atTop
+#check Real.log_le_sub_one_of_pos
+#check tendsto_log_div_rpow_nhdsGT_zero
+#check Real.tendsto_log_div_rpow_atTop
+#check Real.exp_log
+#check Real.rpow_natCast
+#check Erdos970.WeightedMertens.prime_set_density_lower
+#check Erdos970.GapAverages.coveredFraction_bound
+#check Erdos970.GapAverages.quadratic_bound_of_eventually_scaled

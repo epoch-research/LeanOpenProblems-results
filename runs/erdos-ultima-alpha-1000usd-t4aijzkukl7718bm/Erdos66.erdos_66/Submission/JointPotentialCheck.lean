@@ -1,0 +1,15 @@
+import Submission.ClippedRepairExplore
+#check Real.summable_nat_pow_inv
+#check Real.summable_one_div_nat_pow
+#check Real.summable_one_div_nat_rpow
+#check Summable.of_nonneg_of_le
+#check Summable.of_norm_bounded_eventually
+#check summable_of_isBigO_nat
+#check Summable.comp_injective
+#check tendsto_sum_nat_add
+#check Real.sqrt_div_self
+#check Real.tendsto_sqrt_atTop
+#check Filter.Tendsto.div_atTop
+#check Real.exp_nat_mul
+#check Summable.sum_le_tsum
+#check tsum_le_tsum_of_inj

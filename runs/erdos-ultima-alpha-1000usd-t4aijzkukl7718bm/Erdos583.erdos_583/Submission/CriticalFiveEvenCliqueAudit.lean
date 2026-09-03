@@ -1,0 +1,6 @@
+import Submission.CriticalFiveEvenClique
+
+/-! Exact axiom audit of auxiliary declarations. -/
+#print axioms Erdos583CriticalFiveEvenCliqueDevelopment.critical_five_even_remaining_adj
+#print axioms Erdos583CriticalFiveEvenCliqueDevelopment.critical_five_even_remaining_triangle
+#print axioms Erdos583CriticalFiveEvenCliqueDevelopment.critical_even_edge_nonadjacent_remaining_seven_even

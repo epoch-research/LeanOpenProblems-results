@@ -1,0 +1,14 @@
+import Submission.GeometricDistributionCriterion
+
+/-! Exact-type and axiom audit; distribution hypotheses remain explicit. -/
+
+#check @Erdos821.GeometricProgressionDistribution
+#print Erdos821.GeometricProgressionDistribution
+#check @Erdos821.geometric_distribution_smooth_prime_count
+#print axioms Erdos821.geometric_distribution_smooth_prime_count
+#check @Erdos821.eventually_geometric_smooth_prime_family
+#print axioms Erdos821.eventually_geometric_smooth_prime_family
+#check @Erdos821.infinite_g_gt_of_geometric_distribution
+#print axioms Erdos821.infinite_g_gt_of_geometric_distribution
+#check @Erdos821.erdos_821_of_geometric_progression_distribution
+#print axioms Erdos821.erdos_821_of_geometric_progression_distribution

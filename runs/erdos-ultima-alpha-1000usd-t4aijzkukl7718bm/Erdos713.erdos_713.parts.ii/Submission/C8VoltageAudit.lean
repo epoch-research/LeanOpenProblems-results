@@ -1,0 +1,11 @@
+import FormalConjecturesUtil
+import Submission.C8VoltageOdd
+/-! Audit of the completed coordinate-compression obstruction. -/
+#print Erdos713C8VoltageOdd.noninjective_contains_large
+#print axioms Erdos713C8VoltageOdd.not_constant_of_three_ne_zero
+#print axioms Erdos713C8VoltageOdd.not_constant_char_three
+#print axioms Erdos713C8VoltageOdd.not_constant_large
+#print axioms Erdos713C8VoltageOdd.exists_D_class
+#print axioms Erdos713C8VoltageOdd.every_nonzero_is_voltage
+#print axioms Erdos713C8VoltageOdd.noninjective_contains_odd
+#print axioms Erdos713C8VoltageOdd.noninjective_contains_large

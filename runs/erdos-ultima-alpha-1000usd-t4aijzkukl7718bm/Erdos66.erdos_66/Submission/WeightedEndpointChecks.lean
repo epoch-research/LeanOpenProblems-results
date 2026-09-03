@@ -1,0 +1,13 @@
+import FormalConjecturesUtil
+open Filter
+#check Set.Infinite.exists_gt
+#check Set.Infinite.exists_ge
+#check Real.rpow_le_rpow_of_nonpos
+#check Real.rpow_pos_of_pos
+#check Real.rpow_add
+#check Real.isLittleO_log_rpow_atTop
+#check isLittleO_log_rpow_rpow_atTop
+#check tendsto_nhdsWithin_iff
+#check tendsto_nhdsWithin_iff_of_eventually_mem
+#check Filter.Tendsto.const_mul_atTop
+#check Finset.single_le_sum

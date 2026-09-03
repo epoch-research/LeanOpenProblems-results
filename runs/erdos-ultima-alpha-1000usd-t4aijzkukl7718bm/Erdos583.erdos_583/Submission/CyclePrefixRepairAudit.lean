@@ -1,0 +1,8 @@
+import Submission.CyclePrefixRepair
+/-! Permitted-axiom audit. -/
+#print axioms Erdos583CyclePrefixRepairDevelopment.cycle_prefix_exchange
+#print axioms Erdos583CyclePrefixRepairDevelopment.maximum_of_one_defect_failure
+#print axioms Erdos583CyclePrefixRepairDevelopment.fully_marked_outside_group_misses_cycle
+#print axioms Erdos583CyclePrefixRepairDevelopment.tight_outside_group_misses_cycle
+#print axioms Erdos583CyclePrefixRepairDevelopment.outside_group_meeting_cycle_expands
+#print axioms Erdos583CyclePrefixRepairDevelopment.small_outside_group_meeting_cycle_expands

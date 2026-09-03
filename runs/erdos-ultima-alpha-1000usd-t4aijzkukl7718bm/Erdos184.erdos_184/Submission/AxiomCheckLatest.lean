@@ -1,0 +1,5 @@
+import Submission.SquareCoreReduction
+#print axioms Erdos184Work.SquarePieces.square_subfamily_card_le
+#print axioms Erdos184Work.SquarePieces.five_mul_number_le_edges_add_nine_card
+#print axioms Erdos184Work.SquareCoreReduction.number_bound_of_accessibility
+#print axioms Erdos184Work.SquareCoreReduction.asymptotic_of_square_accessibility

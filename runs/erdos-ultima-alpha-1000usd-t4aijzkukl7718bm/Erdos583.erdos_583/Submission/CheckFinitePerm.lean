@@ -1,0 +1,12 @@
+import Submission.Work
+#check List.mem_permutations
+#check List.perm_ext_iff_of_nodup
+#check List.Perm.of_nodup_nodup
+#check List.perm_of_nodup_nodup_toFinset_eq
+#check List.getD_ofFn
+#check List.getElem?_ofFn
+#check List.mem_ofFn
+#check List.getD_eq_getElem
+#check List.getD_eq_getElem?
+#check List.nodup_ofFn
+#check List.getD_eq_getElem_getElem?
