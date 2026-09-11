@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a358340_conjecture_k4",
+  "epoch": 1,
+  "uuid": "2UUJasaDShZUB9qJfxj5PY",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 10517,
+      "output_tokens": 567895,
+      "total_tokens": 123886427,
+      "input_tokens_cache_write": 4244581,
+      "input_tokens_cache_read": 119063434,
+      "reasoning_tokens": 482936,
+      "total_cost": 200.62061649999995
+    }
+  },
+  "oeis_id": "A358340"
+}

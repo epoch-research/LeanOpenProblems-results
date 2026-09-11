@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A229969_conjecture",
+  "epoch": 1,
+  "uuid": "6pCZLFgp5FG2QLsidK6xiJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 105496,
+      "output_tokens": 3667,
+      "total_tokens": 141503,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 32340,
+      "reasoning_tokens": 2012,
+      "total_cost": 0.26146400000000003
+    }
+  },
+  "oeis_id": "A229969"
+}

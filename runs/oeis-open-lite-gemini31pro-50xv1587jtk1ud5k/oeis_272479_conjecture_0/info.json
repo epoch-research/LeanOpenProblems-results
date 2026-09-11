@@ -1,0 +1,20 @@
+{
+  "id": "oeis_272479_conjecture_0",
+  "epoch": 1,
+  "uuid": "BGWYkmy5k8dRAN94CwiKAz",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1960996,
+      "output_tokens": 195562,
+      "total_tokens": 15894830,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 13738272,
+      "reasoning_tokens": 66423,
+      "total_cost": 9.016390400000002
+    }
+  },
+  "oeis_id": "A272479"
+}

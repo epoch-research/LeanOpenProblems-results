@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "At \\(n=67\\), the two distinct inputs \\(147\\) and \\(2055\\) both lie below the search bound \\(2^{68}\\) and have residue-sum expansions \\(1+3+3+3+19+19+19=67\\) and \\(1+3+7+7+7+7+7+7+7+7+7=67\\), respectively. Thus the relevant multiplicity is at least two, contradicting the claimed value of one.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nF(m)=\\sum_{k=1}^{\\lfloor\\log_2 m\\rfloor}(m\\bmod 2^k)\n\\]\nbe sequence A049802. Thus, for a positive integer \\(n\\), \\(a(n)\\) is the number of indices \\(m\\) for which \\(F(m)=n\\). In the stated finite definition, these indices are counted in the range\n\\[\n0\\le m<2^{n+1};\n\\]\nthis range is sufficient because any occurrence of the positive value \\(n\\) lies below that bound.\n\nThe conjecture asserts in particular that \\(a(67)=1\\), since \\(67\\) is one of\n\\[\n1,3,5,9,15,23,35,63,65,67.\n\\]\nWe disprove this by exhibiting two distinct indices at which A049802 has value \\(67\\).\n\nFirst take \\(m=147\\). Since\n\\[\n2^7=128\\le 147<256=2^8,\n\\]\nwe have \\(\\lfloor\\log_2 147\\rfloor=7\\). The required residues are\n\\[\n\\begin{array}{c|ccccccc}\nk&1&2&3&4&5&6&7\\\\ \\hline\n147\\bmod 2^k&1&3&3&3&19&19&19.\n\\end{array}\n\\]\nIndeed, modulo \\(2\\) the residue is \\(1\\); modulo \\(4,8,16\\) the residue is \\(3\\); and\n\\[\n147=4\\cdot32+19=2\\cdot64+19=1\\cdot128+19,\n\\]\nso the final three residues are all \\(19\\). Consequently\n\\[\nF(147)=1+3+3+3+19+19+19=67.\n\\]\n\nNext take \\(m=2055\\). Since\n\\[\n2^{11}=2048\\le2055<4096=2^{12},\n\\]\nwe have \\(\\lfloor\\log_2 2055\\rfloor=11\\). As \\(2055=2048+7\\), its residues are\n\\[\n2055\\bmod2=1,\n\\qquad\n2055\\bmod4=3,\n\\qquad\n2055\\bmod8=7.\n\\]\nFor every \\(k\\) from \\(4\\) through \\(11\\), the number \\(2^k\\) divides \\(2048=2^{11}\\), while \\(0\\le7<2^k\\). Hence\n\\[\n2055\\bmod 2^k=7\\qquad(4\\le k\\le11).\n\\]\nThere are eight values of \\(k\\) in this last range. It follows that\n\\[\nF(2055)=1+3+7+8\\cdot7=11+56=67.\n\\]\n\nThe two indices are distinct. They also both lie in the finite range used to define \\(a(67)\\): clearly \\(147<2^{68}\\), and\n\\[\n2055<4096=2^{12}<2^{68}.\n\\]\nTherefore the set\n\\[\nT=\\left\\{m:0\\le m<2^{68},\\ \n\\sum_{k=1}^{\\lfloor\\log_2m\\rfloor}(m\\bmod2^k)=67\\right\\}\n\\]\ncontains both \\(147\\) and \\(2055\\). Since these are different elements, \\(|T|\\ge2\\). By the definition of A383327, \\(a(67)=|T|\\), so\n\\[\na(67)\\ge2.\n\\]\nIn particular, \\(a(67)\\ne1\\). But \\(67\\) belongs to the conjecture's displayed set, so the conjecture would require \\(a(67)=1\\). This contradiction disproves the universal assertion.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_296075_conjecture_0",
+  "epoch": 1,
+  "uuid": "h3MMJtMge4zngVqbjL55VV",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 43799135,
+      "output_tokens": 1719816,
+      "total_tokens": 429847125,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 384328174,
+      "reasoning_tokens": 520671,
+      "total_cost": 185.1016968
+    }
+  },
+  "oeis_id": "A296075"
+}

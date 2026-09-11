@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Take \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\), so the proposed criterion predicts negativity. But the Möbius sum reduces to \\(8!(H_8-H_4)=25584>0\\), since \\(\\mu(8)=\\mu(4)=0\\), giving a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_n=\\sum_{j=1}^n \\frac1j\n\\]\nbe the \\(n\\)-th harmonic number, and let \\(\\mu\\) denote the Möbius function. The sequence is characterized by\n\\[\n\\sum_{d\\mid n}\\frac{a(d)}{d!}=H_n.\n\\]\nIf we put \\(b(n)=a(n)/n!\\), this relation becomes\n\\[\n\\sum_{d\\mid n}b(d)=H_n.\n\\]\nMöbius inversion therefore gives\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d. \\tag{1}\n\\]\n\nWe disprove the proposed sign characterization by taking \\(n=8\\).\n\nFirst consider the condition involving the number of prime factors. Since\n\\[\n8=2^3,\n\\]\nthe total number of prime factors counted with multiplicity is\n\\[\n\\Omega(8)=3.\n\\]\nThus \\(\\Omega(8)\\) is odd and is at least \\(3\\). Consequently, the conjectured equivalence would require\n\\[\na(8)<0. \\tag{2}\n\\]\n\nWe now evaluate \\(a(8)\\) directly from (1). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nAccordingly,\n\\[\n\\frac{a(8)}{8!}\n =\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8.\n\\]\nRecall that \\(\\mu(m)=0\\) whenever a square of a prime divides \\(m\\), while \\(\\mu(1)=1\\) and \\(\\mu(p)=-1\\) for a prime \\(p\\). Since both \\(8\\) and \\(4\\) are divisible by \\(2^2\\),\n\\[\n\\mu(8)=0,\\qquad \\mu(4)=0.\n\\]\nAlso,\n\\[\n\\mu(2)=-1,\\qquad \\mu(1)=1.\n\\]\nTherefore the divisor sum simplifies to\n\\[\n\\frac{a(8)}{8!}=H_8-H_4.\n\\]\nThe difference of these harmonic numbers is\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this equals\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nIt is already clear from the sum of four positive fractions that this is positive. More explicitly, since \\(8!=40320=48\\cdot840\\),\n\\[\na(8)=8!\\frac{533}{840}\n     =40320\\frac{533}{840}\n     =48\\cdot533\n     =25584>0. \\tag{3}\n\\]\n\nThus \\(n=8\\) satisfies the proposed right-hand condition—\\(\\Omega(8)=3\\) is odd and at least \\(3\\)—but it does not satisfy the proposed left-hand condition, because \\(a(8)=25584>0\\), not \\(a(8)<0\\). This contradicts the claimed equivalence. Hence it is false that, for every positive integer \\(n\\), \\(a(n)<0\\) if and only if \\(\\Omega(n)\\) is odd and at least \\(3\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  }
+}

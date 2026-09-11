@@ -1,0 +1,20 @@
+{
+  "id": "oeis_62567_conjecture_0",
+  "epoch": 1,
+  "uuid": "FzGxwZFrJAU77C6uhHj2ME",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 16051160,
+      "output_tokens": 873036,
+      "total_tokens": 163488432,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 146564236,
+      "reasoning_tokens": 431739,
+      "total_cost": 71.89159919999999
+    }
+  },
+  "oeis_id": "A062567"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_363347_conjecture_2",
+  "epoch": 1,
+  "uuid": "aKcz37bLNZ3Rzq55YbtqDx",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 66,
+      "output_tokens": 75042,
+      "total_tokens": 2160146,
+      "input_tokens_cache_write": 172664,
+      "input_tokens_cache_read": 1912374,
+      "reasoning_tokens": null,
+      "total_cost": 6.389153499999999
+    }
+  },
+  "oeis_id": "A363347"
+}

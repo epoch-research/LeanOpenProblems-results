@@ -1,0 +1,26 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:37:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:45:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, A274274_conjecture_i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (4.1s)
+  warning: run/Solution.lean:22:32: unused variable `x`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:23:25: unused variable `x`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:23:29: unused variable `y`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:32:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, A274274_conjecture_i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  
+  uncaught exception: Challenge and solution theorem statement do not match: 'A274274_conjecture_i'
+

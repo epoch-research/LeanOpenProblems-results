@@ -1,0 +1,20 @@
+{
+  "id": "oeis_361883_conjecture_0",
+  "epoch": 1,
+  "uuid": "4qcLpbkGEL8axwdxad9ZdU",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 1050,
+      "output_tokens": 34304,
+      "total_tokens": 1660474,
+      "input_tokens_cache_write": 132448,
+      "input_tokens_cache_read": 1492672,
+      "reasoning_tokens": 15371,
+      "total_cost": 4.873971999999999
+    }
+  },
+  "oeis_id": "A361883"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_306477_conjecture_1",
+  "epoch": 1,
+  "uuid": "kmH9VdWw34w3djz5Mo4R9X",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 14645,
+      "output_tokens": 359197,
+      "total_tokens": 32623078,
+      "input_tokens_cache_write": 2221718,
+      "input_tokens_cache_read": 30027518,
+      "reasoning_tokens": 237512,
+      "total_cost": 75.905293
+    }
+  },
+  "oeis_id": "A306477"
+}

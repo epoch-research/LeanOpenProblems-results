@@ -1,0 +1,20 @@
+{
+  "id": "oeis_185895_conjecture_1",
+  "epoch": 1,
+  "uuid": "V723Atb9kte7bs3dByZjZ5",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 267,
+      "output_tokens": 81491,
+      "total_tokens": 5611309,
+      "input_tokens_cache_write": 408256,
+      "input_tokens_cache_read": 5121295,
+      "reasoning_tokens": 47342,
+      "total_cost": 14.301715000000005
+    }
+  },
+  "oeis_id": "A185895"
+}

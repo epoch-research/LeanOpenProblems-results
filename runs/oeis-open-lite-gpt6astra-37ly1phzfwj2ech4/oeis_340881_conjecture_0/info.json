@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340881_conjecture_0",
+  "epoch": 1,
+  "uuid": "3Gzb7Nf6u3mzR9HrTiBTL8",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 30,
+      "output_tokens": 3571,
+      "total_tokens": 84187,
+      "input_tokens_cache_write": 14257,
+      "input_tokens_cache_read": 66329,
+      "reasoning_tokens": 714,
+      "total_cost": 0.4233915
+    }
+  },
+  "oeis_id": "A340881"
+}

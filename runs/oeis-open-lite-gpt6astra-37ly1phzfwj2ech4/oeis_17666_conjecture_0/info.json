@@ -1,0 +1,20 @@
+{
+  "id": "oeis_17666_conjecture_0",
+  "epoch": 1,
+  "uuid": "e8rdhBBWVps7R92U7D5skf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 24,
+      "output_tokens": 1541,
+      "total_tokens": 43456,
+      "input_tokens_cache_write": 7724,
+      "input_tokens_cache_read": 34167,
+      "reasoning_tokens": 588,
+      "total_cost": 0.20800700000000003
+    }
+  },
+  "oeis_id": "A017666"
+}

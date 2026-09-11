@@ -1,0 +1,113 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:43:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:65:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a103885_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (19s)
+  warning: run/Solution.lean:165:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:213:22: This simp argument is unused:
+    Nat.reduceAdd
+  
+  Hint: Omit it from the simp argument list.
+    simp only [N̵a̵t̵.̵r̵e̵d̵u̵c̵e̵A̵d̵d̵,̵ ̵zero_add, Bf_zero, Bf_one, Bf_two, Nat.cast_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:216:22: This simp argument is unused:
+    Nat.reduceAdd
+  
+  Hint: Omit it from the simp argument list.
+    simp only [N̵a̵t̵.̵r̵e̵d̵u̵c̵e̵A̵d̵d̵,̵ ̵zero_add, Bf_zero, Bf_one, Bf_two, Nat.cast_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:216:72: This simp argument is unused:
+    Nat.cast_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.reduceAdd, zero_add, Bf_zero, Bf_one, Bf_two,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵z̵e̵r̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:362:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:549:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:589:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:627:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:661:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:682:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:744:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:777:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:857:22: `Nat.add_eq_zero` has been deprecated: Use `Nat.add_eq_zero_iff` instead
+  warning: run/Solution.lean:935:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  info: run/Solution.lean:950:13: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:985:48: This simp argument is unused:
+    Nat.reduceAdd
+  
+  Hint: Omit it from the simp argument list.
+    simp only [R11, R12, R21, R22, M11, M12, M21, N̵a̵t̵.̵r̵e̵d̵u̵c̵e̵A̵d̵d̵,̵ ̵zero_add, Bf_two, Bf_one, Bf_zero,
+    ̵  ̵ ̵ ̵Nat.cast_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1023:30: This simp argument is unused:
+    Nat.cast_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [M11, M12, M21, N̵a̵t̵.̵c̵a̵s̵t̵_̵z̵e̵r̵o̵,̵ ̵add_zero, zero_add]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1023:55: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [M11, M12, M21, Nat.cast_zero, add_zero,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  info: run/Solution.lean:1189:17: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:1216:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1293:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1396:18: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1420:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a103885_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

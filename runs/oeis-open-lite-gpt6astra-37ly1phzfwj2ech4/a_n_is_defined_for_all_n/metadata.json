@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Take \\(n=0\\). Since \\(\\Phi_1(0)=-1\\) and every cyclotomic polynomial \\(\\Phi_k\\) with \\(k>1\\) has constant term \\(1\\), the absolute value of \\(\\Phi_k(0)\\) is always \\(1\\), hence never prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(x)\\) denote the \\(k\\)-th cyclotomic polynomial. The formal statement under consideration quantifies over every natural number \\(n\\), with natural numbers including \\(0\\), and asserts that there is a positive integer \\(k\\) for which\n\\[\n  \\bigl|\\Phi_k(n)\\bigr|\n\\]\nis prime. We disprove this universal statement by taking \\(n=0\\).\n\nSuppose, toward a contradiction, that the assertion were true. Applying it at \\(n=0\\), there would be a natural number \\(k>0\\) such that\n\\[\n  \\bigl|\\Phi_k(0)\\bigr|\n\\]\nis prime. We consider all possible positive values of \\(k\\).\n\nFirst suppose \\(k=1\\). The first cyclotomic polynomial is\n\\[\n  \\Phi_1(x)=x-1.\n\\]\nConsequently,\n\\[\n  \\Phi_1(0)=0-1=-1,\n\\]\nand hence\n\\[\n  \\bigl|\\Phi_1(0)\\bigr|=|-1|=1.\n\\]\nBut \\(1\\) is not prime, contradicting the required primality.\n\nIt remains to consider \\(k\\ne 1\\). Since \\(k\\) is a positive natural number, \\(k\\ne1\\) implies \\(k>1\\). For every cyclotomic polynomial of index greater than one, the constant coefficient is \\(1\\):\n\\[\n  [x^0]\\Phi_k(x)=1 \\qquad (k>1).\n\\]\nEvaluation of a polynomial at zero selects precisely its constant coefficient. Therefore\n\\[\n  \\Phi_k(0)=[x^0]\\Phi_k(x)=1.\n\\]\nIt follows again that\n\\[\n  \\bigl|\\Phi_k(0)\\bigr|=|1|=1,\n\\]\nwhich is not prime. This also contradicts the required primality.\n\nThus neither possible case for a positive \\(k\\)—namely \\(k=1\\) or \\(k>1\\)—can produce a prime value at \\(n=0\\). Equivalently,\n\\[\n  \\forall k\\in\\mathbb N,\\quad k>0\\Longrightarrow\n  \\bigl|\\Phi_k(0)\\bigr|=1,\n\\]\nso no qualifying \\(k\\) exists for \\(n=0\\). Hence the statement\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\quad k>0\\ \\text{and}\\ \\bigl|\\Phi_k(n)\\bigr|\\text{ is prime}\n\\]\nis false.\n\nThis disproof depends essentially on the formal statement allowing \\(n=0\\). If “positive integer \\(n\\)” is instead interpreted as requiring \\(n\\ge1\\), then \\(0\\) is outside the domain, and the argument above does not refute that differently quantified version of the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  }
+}

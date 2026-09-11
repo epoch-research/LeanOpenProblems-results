@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "n9wyX6SaSwyfYiUNuJqMir",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 8700851,
+      "output_tokens": 259409,
+      "total_tokens": 97034759,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 88074499,
+      "reasoning_tokens": 104532,
+      "total_cost": 38.1295098
+    }
+  },
+  "oeis_id": "A053576"
+}

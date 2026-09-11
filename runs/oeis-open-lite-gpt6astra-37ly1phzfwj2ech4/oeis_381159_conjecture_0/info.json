@@ -1,0 +1,20 @@
+{
+  "id": "oeis_381159_conjecture_0",
+  "epoch": 1,
+  "uuid": "hGhemNT3XjMGczNmAjrSp3",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 165,
+      "output_tokens": 4345,
+      "total_tokens": 65897,
+      "input_tokens_cache_write": 11816,
+      "input_tokens_cache_read": 49571,
+      "reasoning_tokens": 1547,
+      "total_cost": 0.41617099999999996
+    }
+  },
+  "oeis_id": "A381159"
+}

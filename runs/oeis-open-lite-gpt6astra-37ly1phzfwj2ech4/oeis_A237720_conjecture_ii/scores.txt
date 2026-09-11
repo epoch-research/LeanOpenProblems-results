@@ -1,0 +1,5 @@
+=== SCORES ===
+proof_scorer: I
+  stage: submission_oversize
+  The sandbox output stream limit of 100 MiB was exceeded.
+

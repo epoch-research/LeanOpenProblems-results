@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "The counterexample is \\(n=0\\): \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\) the constant term of \\(\\Phi_k\\) is \\(1\\). Hence \\(|\\Phi_k(0)|=1\\) for every positive \\(k\\), so no such value is prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Consider the universal statement as formalized:\n\\[\n\\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n\\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere \\(\\mathbb N\\) includes \\(0\\). We disprove this statement by taking\n\\[\nn=0.\n\\]\nWe will show that for every positive integer \\(k\\), the integer \\(|\\Phi_k(0)|\\) is equal to \\(1\\), and hence is not prime.\n\nFirst recall the constant terms of the cyclotomic polynomials. For \\(k=1\\),\n\\[\n\\Phi_1(X)=X-1,\n\\]\nso\n\\[\n\\Phi_1(0)=-1.\n\\]\nFor every \\(k>1\\), one has\n\\[\n\\Phi_k(0)=1.\n\\]\nFor completeness, the latter fact follows by strong induction from the standard cyclotomic factorization\n\\[\nX^m-1=\\prod_{d\\mid m}\\Phi_d(X)\\qquad(m\\geq 1).\n\\]\nIndeed, fix \\(m>1\\), and suppose that \\(\\Phi_d(0)=1\\) for every integer \\(d\\) satisfying \\(1<d<m\\). Evaluating the factorization at \\(X=0\\) gives\n\\[\n-1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nThe divisor \\(d=1\\) contributes \\(\\Phi_1(0)=-1\\). Every proper divisor \\(d>1\\) of \\(m\\) satisfies \\(d<m\\), so by the induction hypothesis each such divisor contributes \\(1\\). Finally, the divisor \\(d=m\\) contributes \\(\\Phi_m(0)\\). Therefore the displayed product reduces to\n\\[\n-1=(-1)\\Phi_m(0),\n\\]\nand hence \\(\\Phi_m(0)=1\\). This proves the constant-term formula for all \\(m>1\\).\n\nNow suppose, toward a contradiction, that the asserted existence statement holds at \\(n=0\\). Then there is a natural number \\(k>0\\) such that \\(|\\Phi_k(0)|\\) is prime. There are two exhaustive cases.\n\n1. If \\(k=1\\), then\n\\[\n|\\Phi_k(0)|=|\\Phi_1(0)|=|-1|=1.\n\\]\n\n2. If \\(k>1\\), then the constant-term result above gives\n\\[\n|\\Phi_k(0)|=|1|=1.\n\\]\n\n(The condition \\(k>0\\) ensures that these are the only cases: a positive natural number is either \\(1\\) or greater than \\(1\\).)\n\nThus every admissible \\(k\findent>0\\) gives \\(|\\Phi_k(0)|=1\\). But \\(1\\) is not prime: by definition a prime natural number is at least \\(2\\) (equivalently, it has exactly the positive divisors \\(1\\) and itself, whereas these are not two distinct divisors for \\(1\\)). This contradicts the required primality of \\(|\\Phi_k(0)|\\). Consequently no positive \\(k\\) works for \\(n=0\\), and therefore\n\\[\n\\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\\ |\\Phi_k(n)|\\text{ is prime}\\Bigr).\n\\]\n\nThere is an important scope distinction. This argument is a disproof of the accepted formal statement because that statement quantifies over all natural numbers and therefore includes \\(n=0\\). The canonical OEIS wording asks about every *positive* integer \\(n\\). Since \\(0\\) is not positive, this counterexample by itself does not disprove the conjecture under that literal positive-integer restriction; it exposes the extra boundary case introduced by formalizing the domain as all of \\(\\mathbb N\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  }
+}

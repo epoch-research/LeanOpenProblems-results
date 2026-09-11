@@ -1,0 +1,107 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:42:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:46:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_355228_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (1460s)
+  warning: run/Solution.lean:711:10: This simp argument is unused:
+    Nat.one_mem_divisors
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵N̵a̵t̵.̵o̵n̵e̵_̵m̵e̵m̵_̵d̵i̵v̵i̵s̵o̵r̵s̵,̵ ̵s̵h̵o̵w̵ ̵2̵^̵a̵[̲s̲h̲o̲w̲ ̲2̲ ̲^̲ ̲a̲ ≠ 0 by positivity]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:711:32: This simp argument is unused:
+    show 2 ^ a ≠ 0 by positivity
+  
+  Hint: Omit it from the simp argument list.
+    simp [Nat.one_mem_divisors,̵ ̵s̵h̵o̵w̵ ̵2̵^̵a̵ ̵≠̵ ̵0̵ ̵b̵y̵ ̵p̵o̵s̵i̵t̵i̵v̵i̵t̵y̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1139:12: This simp argument is unused:
+    Finsupp.single_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵F̵i̵n̵s̵u̵p̵p̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵h̵n̵e̵,̵h̵n̵e̵.̵s̵y̵m̵m̵,̵h̵j̵i̵]̵[̲h̲n̲e̲,̲ ̲h̲n̲e̲.̲s̲y̲m̲m̲,̲ ̲h̲j̲i̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1139:33: This simp argument is unused:
+    hne
+  
+  Hint: Omit it from the simp argument list.
+    simp [Finsupp.single_apply, ̲hne,̵h̵n̵e̵.symm, ̲hji]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1301:5: unused variable `hm`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1384:30: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1569:13: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.add_a̵s̵s̵o̵c̵,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1840:43: This simp argument is unused:
+    List.getElem?_map
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵e̵x̵p̵L̵i̵s̵t̵,̵L̵i̵s̵t̵.̵g̵e̵t̵D̵_̵e̵q̵_̵g̵e̵t̵E̵l̵e̵m̵?̵_̵g̵e̵t̵D̵,̵L̵i̵s̵t̵.̵g̵e̵t̵E̵l̵e̵m̵?̵_̵m̵a̵p̵,̵L̵i̵s̵t̵.̵g̵e̵t̵E̵l̵e̵m̵?̵_̵r̵a̵n̵g̵e̵,̵h̵j̵]̵[̲e̲x̲p̲L̲i̲s̲t̲,̲ ̲L̲i̲s̲t̲.̲g̲e̲t̲D̲_̲e̲q̲_̲g̲e̲t̲E̲l̲e̲m̲?̲_̲g̲e̲t̲D̲,̲ ̲L̲i̲s̲t̲.̲g̲e̲t̲E̲l̲e̲m̲?̲_̲r̲a̲n̲g̲e̲,̲ ̲h̲j̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1840:61: This simp argument is unused:
+    List.getElem?_range
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵e̵x̵p̵L̵i̵s̵t̵,̵L̵i̵s̵t̵.̵g̵e̵t̵D̵_̵e̵q̵_̵g̵e̵t̵E̵l̵e̵m̵?̵_̵g̵e̵t̵D̵,̵L̵i̵s̵t̵.̵g̵e̵t̵E̵l̵e̵m̵?̵_̵m̵a̵p̵,̵L̵i̵s̵t̵.̵g̵e̵t̵E̵l̵e̵m̵?̵_̵r̵a̵n̵g̵e̵,̵h̵j̵]̵[̲e̲x̲p̲L̲i̲s̲t̲,̲ ̲L̲i̲s̲t̲.̲g̲e̲t̲D̲_̲e̲q̲_̲g̲e̲t̲E̲l̲e̲m̲?̲_̲g̲e̲t̲D̲,̲ ̲L̲i̲s̲t̲.̲g̲e̲t̲E̲l̲e̲m̲?̲_̲m̲a̲p̲,̲ ̲h̲j̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1846:8: This simp argument is unused:
+    Function.comp_def
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵F̵u̵n̵c̵t̵i̵o̵n̵.̵c̵o̵m̵p̵_̵d̵e̵f̵,̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵N̵a̵t̵.̵a̵d̵d̵_̵c̵o̵m̵m̵,̵N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵]̵[̲N̲a̲t̲.̲a̲d̲d̲_̲a̲s̲s̲o̲c̲,̲ ̲N̲a̲t̲.̲a̲d̲d̲_̲c̲o̲m̲m̲,̲ ̲N̲a̲t̲.̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1846:26: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵F̵u̵n̵c̵t̵i̵o̵n̵.̵c̵o̵m̵p̵_̵d̵e̵f̵,̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵N̵a̵t̵.̵a̵d̵d̵_̵c̵o̵m̵m̵,̵N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵]̵[̲F̲u̲n̲c̲t̲i̲o̲n̲.̲c̲o̲m̲p̲_̲d̲e̲f̲,̲ ̲N̲a̲t̲.̲a̲d̲d̲_̲c̲o̲m̲m̲,̲ ̲N̲a̲t̲.̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1954:15: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵N̵a̵t̵.̵a̵d̵d̵_̵c̵o̵m̵m̵,̵N̵a̵t̵.̵a̵d̵d̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵]̵[̲N̲a̲t̲.̲a̲d̲d̲_̲c̲o̲m̲m̲,̲ ̲N̲a̲t̲.̲a̲d̲d̲_̲l̲e̲f̲t̲_̲c̲o̲m̲m̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:9873:70: unused variable `hne`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:9878:71: unused variable `hne`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11058:17: This simp argument is unused:
+    hn
+  
+  Hint: Omit it from the simp argument list.
+    simp only [h̵n̵,̵List.take_succ_cons, ̲List.sum_cons]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:16636:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_355228_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

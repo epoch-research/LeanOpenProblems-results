@@ -1,0 +1,20 @@
+{
+  "id": "A211420_general_divisibility_conjecture",
+  "epoch": 1,
+  "uuid": "LmqioGr2ihWgCsufBqdHoH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 12,
+      "output_tokens": 278,
+      "total_tokens": 7919,
+      "input_tokens_cache_write": 1134,
+      "input_tokens_cache_read": 6495,
+      "reasoning_tokens": 39,
+      "total_cost": 0.03469
+    }
+  },
+  "oeis_id": "A211420"
+}

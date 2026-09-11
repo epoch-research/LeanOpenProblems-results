@@ -1,0 +1,55 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.9s)
+  warning: run/Challenge.lean:39:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:44:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, general_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (18s)
+  info: run/Solution.lean:459:46: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:554:69: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:683:37: unused variable `hq`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:790:52: unused variable `hb`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:806:52: unused variable `hb`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1516:66: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵m̵u̵l̵_̵z̵e̵r̵o̵]̵[̲m̲u̲l̲_̲z̲e̲r̲o̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1529:43: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:1531:51: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:1581:28: unused variable `hr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1894:71: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:2514:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, general_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

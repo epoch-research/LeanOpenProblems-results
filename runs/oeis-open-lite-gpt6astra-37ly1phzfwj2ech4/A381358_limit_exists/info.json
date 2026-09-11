@@ -1,0 +1,20 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "Fbjhzhq7ppDU7YkEkp3cfd",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 487,
+      "output_tokens": 34361,
+      "total_tokens": 1493781,
+      "input_tokens_cache_write": 123642,
+      "input_tokens_cache_read": 1335291,
+      "reasoning_tokens": 20159,
+      "total_cost": 4.603735999999998
+    }
+  },
+  "oeis_id": "A381358"
+}

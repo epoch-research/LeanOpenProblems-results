@@ -1,0 +1,47 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.2s)
+  warning: run/Challenge.lean:25:11: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Challenge.lean:34:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:37:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_347865_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (3.9s)
+  warning: run/Solution.lean:5:40: unused variable `c`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:5:51: unused variable `t`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:5:62: unused variable `e`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:6:40: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:6:48: unused variable `c`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:6:59: unused variable `t`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:6:70: unused variable `e`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:12:6: unused variable `is_perfect_square`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:18:12: unused variable `rest`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:27:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_347865_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  
+  uncaught exception: Const does not match between challenge and target 'a'
+

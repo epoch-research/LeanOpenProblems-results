@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A078590_conjecture",
+  "epoch": 1,
+  "uuid": "RbaTmi6b52wC3kFCGPrhpX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 347,
+      "output_tokens": 3603,
+      "total_tokens": 109843,
+      "input_tokens_cache_write": 8065,
+      "input_tokens_cache_read": 97828,
+      "reasoning_tokens": 1443,
+      "total_cost": 0.3822605
+    }
+  },
+  "oeis_id": "A078590"
+}

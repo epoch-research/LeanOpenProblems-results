@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a354747_conjecture_0",
+  "epoch": 1,
+  "uuid": "fjnRLGk6Akvh8tCzCKJarN",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 530,
+      "output_tokens": 27369,
+      "total_tokens": 2513023,
+      "input_tokens_cache_write": 153391,
+      "input_tokens_cache_read": 2331733,
+      "reasoning_tokens": 14554,
+      "total_cost": 5.622870499999999
+    }
+  },
+  "oeis_id": "A354747"
+}

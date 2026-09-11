@@ -1,0 +1,20 @@
+{
+  "id": "oeis_232616_conjecture_i",
+  "epoch": 1,
+  "uuid": "ANpbeaNnLN5vxz3ymdfr7k",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 9862,
+      "output_tokens": 98695,
+      "total_tokens": 7330106,
+      "input_tokens_cache_write": 489102,
+      "input_tokens_cache_read": 6732447,
+      "reasoning_tokens": 70660,
+      "total_cost": 17.879591999999995
+    }
+  },
+  "oeis_id": "A232616"
+}

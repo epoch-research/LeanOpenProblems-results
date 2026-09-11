@@ -1,0 +1,675 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.3s)
+  warning: run/Challenge.lean:20:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:25:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_265709_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (166s)
+  warning: run/Solution.lean:162:34: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1185:29: unused variable `hv`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1254:29: unused variable `hv`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1337:29: unused variable `hv`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:9995:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:10149:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10151:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10152:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10152:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10152:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10152:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10165:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10167:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10168:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10168:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10168:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10168:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10181:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10252:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10284:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10252:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10262:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10274:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10284:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10252:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10284:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10660:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10755:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10777:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10787:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10823:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10833:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10847:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10857:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:10755:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10765:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10777:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10787:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10823:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10833:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10847:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10857:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10755:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10777:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10787:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10823:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10833:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10847:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10857:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:11255:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11462:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11669:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11738:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11807:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11809:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11826:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:11826:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:11826:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:11830:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11832:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11849:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:11849:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:11849:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:11853:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11855:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11856:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11856:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11856:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11856:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11869:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11871:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11872:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11872:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11872:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11872:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11885:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11887:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11888:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11888:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11888:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11888:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11901:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11903:58: unused variable `hH`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11904:35: unused variable `hr4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11904:53: unused variable `hs4`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11904:71: unused variable `hqr`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11904:86: unused variable `hrs`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11917:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:12048:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12058:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12070:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12080:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12104:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12126:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12162:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:12048:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12058:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12070:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12080:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12094:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12104:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12116:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12126:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12162:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12172:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12048:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12058:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12070:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12080:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12104:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12126:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:12162:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13265:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13289:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13299:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13357:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13367:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13403:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13413:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13519:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13529:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13565:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13575:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13633:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13645:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13655:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13669:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13679:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13931:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13945:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13955:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:14059:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:13289:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13299:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13357:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13367:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13403:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13413:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13519:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13529:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13565:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13575:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13633:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13645:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13655:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13669:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13679:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13921:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13931:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13945:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13955:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:14059:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:13265:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13289:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13299:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13357:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13367:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13403:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13413:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13519:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13529:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13565:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13575:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13633:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13645:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13655:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13669:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13679:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13931:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13945:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:13955:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:14059:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:14135:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:14188:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:14198:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:14210:49: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:14188:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:14198:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:14210:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:14220:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:14188:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:14198:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:14210:49: '(norm_num at hs)' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:14550:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:15017:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:15735:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:15988:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16241:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16356:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16471:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16473:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16490:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16490:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16490:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16494:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16496:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16513:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16513:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16513:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16517:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16519:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16536:23: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16536:23: 'first
+  | omega
+  | (norm_num at hr; done)
+  | skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16540:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16542:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16559:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16559:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16559:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16563:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16565:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16582:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16582:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16582:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16586:5: unused variable `hwin`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16588:5: unused variable `hL`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:16605:64: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:16605:56: 'done' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:16605:64: 'skip' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:17377:8: declaration uses 'sorry'
+  warning: run/Solution.lean:17382:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_265709_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  
+  uncaught exception: Illegal axiom detected: 'sorryAx'
+

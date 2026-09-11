@@ -1,0 +1,195 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.3s)
+  warning: run/Challenge.lean:17:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:20:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_48153_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (15s)
+  warning: run/Solution.lean:16:22: This simp argument is unused:
+    eval_comp
+  
+  Hint: Omit it from the simp argument list.
+    simp [diagP, diagQ,̵ ̵e̵v̵a̵l̵_̵c̵o̵m̵p̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:19:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:56:41: This simp argument is unused:
+    Matrix.diagonal_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp [Matrix.algebraMap_eq_diagonal, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵m̵u̵l̵,̵ ̵Matrix.diagonal_apply]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:84:16: `Matrix.mul_eq_one_comm` has been deprecated: Use `mul_eq_one_comm` instead
+  
+  Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.mul_eq_one_comm` to `mul_eq_one_comm x`).
+  warning: run/Solution.lean:224:8: automatically included section variable(s) unused in theorem `_private.Solution.0.QuadraticBias.sqrtN_sq`:
+    [NeZero N]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero N] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:270:8: automatically included section variable(s) unused in theorem `_private.Solution.0.QuadraticBias.unit_two_of_odd`:
+    [NeZero N]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero N] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:361:31: This simp argument is unused:
+    ← exp_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mul_sub, sub_mul,̵ ̵←̵ ̵e̵x̵p̵_̵a̵d̵d̵]
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:373:10: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:373:10: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:387:8: automatically included section variable(s) unused in theorem `_private.Solution.0.QuadraticBias.pair_card`:
+    [NeZero N]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero N] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:449:10: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:449:10: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:565:46: This simp argument is unused:
+    mul_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [Matrix.trace, UFA_apply, QG, pow_two, m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵div_eq_mul_inv,
+    ̵  ̵ ̵ ̵mul_comm, mul_left_comm, mul_sum]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:777:6: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:777:6: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:816:78: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [f, map_add, map_mul, map_natCast, ZMod.natCast_self, zero_mul, z̵e̵r̵o̵_̵a̵d̵d̵,̵ ̵mul_zero, add_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲ZMod.natCast_zmod_val]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:816:88: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [f, map_add, map_mul, map_natCast, ZMod.natCast_self, zero_mul, zero_add, m̵u̵l̵a̲d̲d̲_zero,
+    ̲ a̵d̵d̵_̵z̵e̵r̵o̵,̵  ̲ ̲ ̲ ̲ZMod.natCast_zmod_val]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:819:88: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [f, map_add, map_mul, map_natCast, ZMod.natCast_self, zero_mul, zero_add, m̵u̵l̵a̲d̲d̲_zero,
+    ̲ a̵d̵d̵_̵z̵e̵r̵o̵,̵  ̲ ̲ ̲ ̲ZMod.natCast_zmod_val]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:819:98: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [f, map_add, map_mul, map_natCast, ZMod.natCast_self, zero_mul, zero_add, mul_zero,
+    ̲ a̵d̵d̵_̵z̵e̵r̵o̵,̵  ̲ ̲ ̲ ̲ZMod.natCast_zmod_val]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:907:45: This simp argument is unused:
+    Nat.mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [sum_range_succ, sum_range_zero, Nat.m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵N̵at̵.̵a̵dd_zero, Nat.mul_one, Nat.add_one,
+    ̵  ̵ ̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:907:59: This simp argument is unused:
+    Nat.add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [sum_range_succ, sum_range_zero, Nat.mul_zero, Nat.a̵d̵d̵_̵z̵e̵r̵o̵,̵ ̵N̵a̵t̵.̵mul_one, Nat.add_one,
+    ̵  ̵ ̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:907:73: This simp argument is unused:
+    Nat.mul_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [sum_range_succ, sum_range_zero, Nat.mul_zero, Nat.add_zero, Nat.m̵u̵l̵_̵o̵n̵e̵,̵ ̵N̵at̵.̵a̵dd_one,
+    ̵  ̵ ̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:931:39: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:931:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:937:47: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:937:59: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1044:4: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1116:15: This simp argument is unused:
+    Nat.cast_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.cast_m̵u̵l̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵pow, Nat.cast_ofNat, signChar_two ht]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1116:59: This simp argument is unused:
+    signChar_two ht
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.cast_mul, Nat.cast_pow, Nat.cast_ofNat,̵ ̵s̵i̵g̵n̵C̵h̵a̵r̵_̵t̵w̵o̵ ̵h̵t̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1264:22: This simp argument is unused:
+    char_norm
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵c̵h̵a̵r̵_̵n̵o̵r̵m̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1293:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1365:47: unused variable `hC`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1383:45: unused variable `hC`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1563:4: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1689:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_48153_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

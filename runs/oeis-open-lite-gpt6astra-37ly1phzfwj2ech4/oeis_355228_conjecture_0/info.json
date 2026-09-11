@@ -1,0 +1,20 @@
+{
+  "id": "oeis_355228_conjecture_0",
+  "epoch": 1,
+  "uuid": "YVvzWh4nKhVoGm9YthvTNf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 36122,
+      "output_tokens": 289117,
+      "total_tokens": 28474248,
+      "input_tokens_cache_write": 2043420,
+      "input_tokens_cache_read": 26105589,
+      "reasoning_tokens": 185004,
+      "total_cost": 66.46540900000002
+    }
+  },
+  "oeis_id": "A355228"
+}

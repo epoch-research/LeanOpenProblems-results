@@ -1,0 +1,816 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.8s)
+  warning: run/Challenge.lean:25:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:36:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a190969_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (45s)
+  warning: run/Solution.lean:21:0: automatically included section variable(s) unused in theorem `PSWork.order_zero_of_const_ne_zero`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:67:6: This simp argument is unused:
+    Nat.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_add, ← coeff_zero_eq_constantCoeff, coeff_derivative, zero_add, N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵,̵ ̵Nat.cast_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲zero_add, mul_one, hf1, hg1]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:92:0: automatically included section variable(s) unused in theorem `PSWork.constantCoeff_subst_self`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:202:46: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:407:8: automatically included section variable(s) unused in theorem `EndomorphismWork.EndPair.cast_f`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:435:0: automatically included section variable(s) unused in theorem `EndomorphismWork.EndPair.coeff_one`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:441:0: automatically included section variable(s) unused in theorem `EndomorphismWork.EndPair.ode`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:471:71: This simp argument is unused:
+    Algebra.algebraMap_self_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_pow, map_add, map_sub, map_mul, map_one, map_ofNat, coe_substAlgHom,
+    ̲  ̲ ̲ ̲ ̲ ̲CompositionWork.subst_C hsubst, subst_X h̵s̵u̵b̵s̵t̵,̵ ̵A̵l̵g̵e̵b̵r̵a̵.̵a̵l̵g̵e̵b̵r̵a̵M̵a̵p̵_̵s̵e̵l̵f̵_̵a̵p̵p̵l̵y̵]̵h̲s̲u̲b̲s̲t̲]̲ at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:487:73: This simp argument is unused:
+    Algebra.algebraMap_self_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_mul, coe_substAlgHom, CompositionWork.subst_C hsubst,̵ ̵A̵l̵g̵e̵b̵r̵a̵.̵a̵l̵g̵e̵b̵r̵a̵M̵a̵p̵_̵s̵e̵l̵f̵_̵a̵p̵p̵l̵y̵] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:691:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:691:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:695:0: automatically included section variable(s) unused in theorem `RationalWork.rep_cast`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:698:0: automatically included section variable(s) unused in theorem `RationalWork.rep_zero`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:701:0: automatically included section variable(s) unused in theorem `RationalWork.rep_neg`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:704:0: automatically included section variable(s) unused in theorem `RationalWork.rep_ident`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:830:8: automatically included section variable(s) unused in theorem `MultiplicityWork.eval_quartic`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:833:8: automatically included section variable(s) unused in theorem `MultiplicityWork.eval_quartic_derivative`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:905:22: This simp argument is unused:
+    eval_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_mul, derivative_pow, derivative_C, eval_add, eval_mul,
+    ̵  ̵ ̵ ̵eval_pow, eval_C,
+    ̲ e̵v̵a̵l̵_̵z̵e̵r̵o̵,̵  ̲ ̲zero_mul, add_zero, eval_quartic, hg, mul_zero, zero_add,
+    ̵  ̵ ̵ ̵eval_quartic_derivative] at he
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:905:43: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_mul, derivative_pow, derivative_C, eval_add, eval_mul,
+    ̵  ̵ ̵ ̵eval_pow, eval_C,
+    ̲  ̲ ̲ ̲eval_zero, zero_mul, a̵d̵d̵_̵z̵er̵o̵,̵ ̵e̵val_quartic, hg, mul_zero, zero_add,
+    ̵  ̵ ̵ ̵eval_quartic_derivative] at he
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:911:6: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [homogeneous, derivative_add, derivative_sub, derivative_mul, derivative_pow,
+          derivative_C, derivative_ofNat, eval_add, eval_sub, eval_mul, eval_pow, eval_C, eval_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲eval_ofNat, zero_mul,
+    ̵  ̵ ̵ ̵ ̵ ̵a̵d̵d̵_̵zero,̵ ̵z̵e̵r̵o̵_add, wronskian, hfix]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:965:0: automatically included section variable(s) unused in theorem `RepresentationWork.reduced_odd`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1210:0: automatically included section variable(s) unused in theorem `DegreeWork.homogeneous_degree_left`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1210:52: unused variable `hD`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1243:0: automatically included section variable(s) unused in theorem `DegreeWork.quartic_degree`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1296:0: automatically included section variable(s) unused in theorem `NormDegreeWork.nonconstant`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1341:0: automatically included section variable(s) unused in theorem `NormDegreeWork.multiplier_ne_one`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1351:0: automatically included section variable(s) unused in theorem `NormDegreeWork.fixed_derivative_ne_zero`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1381:0: automatically included section variable(s) unused in theorem `NormDegreeWork.H_degree_finite`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1388:0: automatically included section variable(s) unused in theorem `NormDegreeWork.H_degree_infinity`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1696:0: automatically included section variable(s) unused in theorem `ReciprocityWork.invertX_poly_reverse`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1750:0: automatically included section variable(s) unused in theorem `ReciprocityWork.reciprocal_normal_form`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1929:0: automatically included section variable(s) unused in theorem `IntegralWork.integral_cast`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1933:0: automatically included section variable(s) unused in theorem `IntegralWork.integral_zero`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1937:0: automatically included section variable(s) unused in theorem `IntegralWork.integral_neg`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1941:0: automatically included section variable(s) unused in theorem `IntegralWork.integral_ident`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:1951:30: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:2026:12: `pow_eq_zero` has been deprecated: Use `eq_zero_of_pow_eq_zero` instead
+  warning: run/Solution.lean:2040:38: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:2040:38: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:2199:54: This simp argument is unused:
+    neg_neg
+  
+  Hint: Omit it from the simp argument list.
+    simp only [im_sub, im_intCast, im_star, omega_im, n̵e̵g̵_̵n̵e̵g̵,̵ ̵sub_neg_eq_add,
+    ̵  ̵ ̵ ̵ ̵ ̵zero_add, im_mul, im_natCast,
+    ̲  ̲ ̲ ̲ ̲ ̲re_natCast, zero_mul, add_zero, mul_zero] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2183:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2301:93: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:2301:93: 'omega' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:2331:0: automatically included section variable(s) unused in theorem `PadicSetupWork.trace_identity`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2394:21: `Nat.succ_mul_choose_eq` has been deprecated: Use `Nat.add_one_mul_choose_eq` instead
+  warning: run/Solution.lean:2397:18: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp only [d,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2444:36: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [coeff_sub, coeff_X_mul, coeff_C_mul, coeff_theta, coeff_L, coeff_zero,
+            Nat.cast_add, Nat.cast_one,̵ ̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2468:28: This simp argument is unused:
+    coeff_sub
+  
+  Hint: Omit it from the simp argument list.
+    simp only [coeff_add, c̵o̵e̵f̵f̵_̵s̵u̵b̵,̵ ̵coeff_X_mul, coeff_C_mul, coeff_theta, coeff_zero, Nat.cast_add,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Nat.cast_one, Nat.succ_eq_add_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2468:52: This simp argument is unused:
+    coeff_C_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [coeff_add, coeff_sub, coeff_X_mul, c̵o̵e̵f̵f̵_̵C̵_̵m̵u̵l̵,̵ ̵coeff_theta, coeff_zero, Nat.cast_add,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲Nat.cast_one, Nat.succ_eq_add_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2469:36: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [coeff_add, coeff_sub, coeff_X_mul, coeff_C_mul, coeff_theta, coeff_zero,
+            Nat.cast_add, Nat.cast_one,̵ ̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2491:47: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, coeff_add, coeff_sub, coeff_C_mul, coeff_theta, coeff_X_mul, coeff_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲Nat.cast_one, Nat.cast_zero, z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵mul_zero, sub_zero, one_mul, zero_add, add_zero, h0] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2492:15: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, coeff_add, coeff_sub, coeff_C_mul, coeff_theta, coeff_X_mul,
+    ̵  ̵ ̵ ̵ ̵ ̵coeff_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲Nat.cast_one, Nat.cast_zero, zero_mul, mul_zero, sub_zero,
+    ̵  ̵ ̵ ̵ ̵ ̵one_mul, z̵e̵r̵o̵_̵add,̵ ̵a̵d̵d̵_zero, h0] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2508:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2526:13: This simp argument is unused:
+    derivative_C
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, theta, derivative_mul, derivative_add, derivative_X, one_mul, d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵C̵,̵ ̵zero_mul,
+    ̲  ̲ ̲ ̲zero_add, derivative_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2526:27: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, theta, derivative_mul, derivative_add, derivative_X,
+    ̵  ̵ ̵ ̵one_mul, derivative_C,
+    ̲ z̵e̵r̵o̵_̵m̵u̵l̵,̵  ̲ ̲zero_add, derivative_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2526:37: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, theta, derivative_mul, derivative_add, derivative_X,
+    ̵  ̵ ̵ ̵one_mul, derivative_C,
+    ̲  ̲ ̲ ̲zero_mul, z̵e̵r̵o̵_̵a̵dd̵,̵ ̵d̵erivative_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2526:47: This simp argument is unused:
+    derivative_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [symOp, theta, derivative_mul, derivative_add, derivative_X, one_mul, derivative_C,
+    ̲  ̲ ̲ ̲zero_mul, z̵e̵r̵o̵_̵a̵d̵d̵,̵ ̵d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵o̵f̵N̵a̵t̵]̵z̲e̲r̲o̲_̲a̲d̲d̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2527:31: This simp argument is unused:
+    map_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_sub, map_mul, map_a̵d̵d̵,̵ ̵m̵a̵p̵_̵one, map_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2546:69: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [pow_two, derivative_add, derivative_sub, derivative_mul, derivative_X, derivative_C,
+    ̲  ̲ ̲ ̲derivative_ofNat, derivative_one, derivative_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵zero_mul, add_zero, zero_add, mul_one,
+    ̲  ̲ ̲ ̲one_mul] at hd ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2546:89: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [pow_two, derivative_add, derivative_sub, derivative_mul, derivative_X,
+    ̵  ̵ ̵ ̵derivative_C,
+    ̲  ̲ ̲ ̲derivative_ofNat, derivative_one, derivative_zero, mul_zero, zero_mul, z̲e̲r̲o̲_̲add,̲ ̲m̲u̲l̲_z̵o̲n̲er̵o̵,
+        z̵e̵r̵o_̵a̵d̵d̵,̵ ̵m̵u̵l̵_̵o̵ne,̵ ̵o̵n̵e̵_mul] at hd ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2562:38: This simp argument is unused:
+    derivative_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [theta, derivative_mul, d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵a̵d̵d̵,̵ ̵derivative_X, one_mul, map_add, map_sub, map_mul, map_one,
+    ̲  ̲ ̲ ̲ ̲ ̲map_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2573:46: This simp argument is unused:
+    derivative_sub
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_comp, derivative_add, d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵s̵u̵b̵,̵ ̵derivative_mul, derivative_X, derivative_C,
+    ̲  ̲ ̲ ̲derivative_ofNat, derivative_one, derivative_zero, mul_zero, zero_mul, add_zero, zero_add,
+    ̲  ̲ ̲ ̲mul_one, one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2574:18: This simp argument is unused:
+    derivative_C
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_comp, derivative_add, derivative_sub, derivative_mul, derivative_X,
+    ̲  ̲ ̲ ̲d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵C̵,̵ ̵derivative_ofNat, derivative_one, derivative_zero, mul_zero, zero_mul, add_zero, zero_add,
+    ̲  ̲ ̲ ̲mul_one, one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2574:32: This simp argument is unused:
+    derivative_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_comp, derivative_add, derivative_sub, derivative_mul, derivative_X,
+    ̲  ̲ ̲ ̲derivative_C, d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵o̵f̵N̵a̵t̵,̵ ̵derivative_one, derivative_zero, mul_zero, zero_mul, add_zero, zero_add, mul_one,
+    ̲  ̲ ̲ ̲one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2574:66: This simp argument is unused:
+    derivative_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_comp, derivative_add, derivative_sub, derivative_mul, derivative_X,
+    ̲  ̲ ̲ ̲derivative_C, derivative_ofNat, derivative_one, d̵e̵r̵i̵v̵a̵t̵i̵v̵e̵_̵z̵e̵r̵o̵,̵mul_zero, zero_mul, add_zero, zero_add, mul_one,
+    ̲  ̲ ̲ ̲one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2575:4: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [derivative_comp, derivative_add, derivative_sub, derivative_mul, derivative_X,
+    ̲  ̲ ̲ ̲derivative_C, derivative_ofNat, derivative_one, derivative_zero, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵zero_mul, add_zero, zero_add,
+    ̲  ̲ ̲ ̲mul_one, one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2662:0: automatically included section variable(s) unused in theorem `GeneratingWork.eval₂_intCast`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2669:8: automatically included section variable(s) unused in theorem `GeneratingWork.P_zero`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2682:4: This simp argument is unused:
+    Polynomial.eval₂_C
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Polynomial.eval₂_mul, Polynomial.eval₂_add, Polynomial.eval₂_sub,
+    ̵  ̵ ̵ ̵Polynomial.eval₂_C̵,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵X,
+    ̲  ̲ ̲ ̲Polynomial.eval₂_one, Polynomial.eval₂_ofNat,
+    ̵  ̵ ̵ ̵map_add, map_mul, map_natCast, map_ofNat, map_one,
+    ̲  ̲ ̲ ̲Polynomial.eval₂_natCast] at h
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2694:17: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵s̵u̵b̵_̵c̵a̵n̵c̵e̵l̵,̵[̲N̲a̲t̲.̲a̲d̲d̲_̲s̲u̲b̲_̲c̲a̲n̲c̲e̲l̲,̲ Nat.cast_add, Nat.cast_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2709:8: automatically included section variable(s) unused in theorem `GeneratingWork.coeff_G`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2714:2: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:2713:0: automatically included section variable(s) unused in theorem `GeneratingWork.coeff_X_mul`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2733:27: This simp argument is unused:
+    Nat.cast_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_add, map_sub, coeff_X_mul, coeff_C_mul, coeff_derivative, map_zero, coeff_G,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲N̵a̵t̵.̵c̵a̵s̵t̵_̵a̵d̵d̵,̵ ̵Nat.cast_one, Nat.cast_zero, zero_add, P_zero, P_one, mul_one] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2748:17: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵]̵[̲N̲a̲t̲.̲a̲d̲d̲_̲a̲s̲s̲o̲c̲]̲ at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2752:55: This simp argument is unused:
+    Nat.cast_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_add, map_sub, hX, coeff_C_mul, coeff_X_pow_mul, coeff_derivative, map_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲coeff_G, Nat.cast_add, N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵N̲a̲t̲.̲c̲a̲s̲t̲_̲o̲n̲e̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2768:6: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [show (2 : K⟦X⟧) = C 2 by rfl, pow_two, map_add, map_sub, derivative_X, derivative_C,
+    ̲  ̲ ̲ ̲ ̲ ̲Derivation.map_one_eq_zero, Derivation.leibniz, smul_eq_mul, mul_zero, z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵zero_add, add_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲mul_one, one_mul] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2768:16: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [show (2 : K⟦X⟧) = C 2 by rfl, pow_two, map_add, map_sub, derivative_X, derivative_C,
+    ̲  ̲ ̲ ̲ ̲ ̲Derivation.map_one_eq_zero, Derivation.leibniz, smul_eq_mul, mul_zero, zero_mul, z̵e̵r̵o̵_̵a̵d̵d̵,̵ ̵add_zero,
+    ̲  ̲ ̲ ̲ ̲ ̲mul_one, one_mul] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2768:45: This simp argument is unused:
+    one_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [show (2 : K⟦X⟧) = C 2 by rfl, pow_two, map_add, map_sub, derivative_X, derivative_C,
+    ̲  ̲ ̲ ̲ ̲ ̲Derivation.map_one_eq_zero, Derivation.leibniz, smul_eq_mul, mul_zero, zero_mul, zero_add,
+    ̲  ̲ ̲ ̲ ̲ ̲add_zero, m̵u̵l̵_̵o̵n̵e̵,̵ ̵o̵n̵e̵_̵m̵u̵l̵]̵m̲u̲l̲_̲o̲n̲e̲]̲ at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2941:0: automatically included section variable(s) unused in theorem `NormalizationWork.eps_norm`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:2946:0: automatically included section variable(s) unused in theorem `NormalizationWork.scale_reciprocal`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3045:0: automatically included section variable(s) unused in theorem `ApproxWork.Cong.refl`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3046:0: automatically included section variable(s) unused in theorem `ApproxWork.Cong.symm`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3057:0: automatically included section variable(s) unused in theorem `ApproxWork.Cong.neg`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3060:0: automatically included section variable(s) unused in theorem `ApproxWork.Cong.mono`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3062:0: automatically included section variable(s) unused in theorem `ApproxWork.Cong.mul_left`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3097:0: automatically included section variable(s) unused in theorem `ApproxWork.unit_mul_bound`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3100:0: automatically included section variable(s) unused in theorem `ApproxWork.unit_pow_bound`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3134:0: automatically included section variable(s) unused in theorem `AnalyticCoeffWork.coeff_pow_bound`:
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3158:0: automatically included section variable(s) unused in theorem `AnalyticCoeffWork.log_coeff`:
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3189:78: This simp argument is unused:
+    Nat.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.sub_add_cancel (show 1̵≤̵n̵1̲ ̲≤̲ ̲n̲ by omega), Nat.cast_zero, zero_add, N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵,̵div_one, pow_one,
+    ̲  ̲ ̲ ̲hG0, one_mul] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3194:17: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵[̲a̲d̲d̲_̲a̲s̲s̲o̲c̲,̲ one_add_one_eq_two] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3261:0: automatically included section variable(s) unused in theorem `NormalizedCoeffWork.coefficient_equation`:
+    [CharZero K]
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3309:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:3326:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:3326:85: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:3361:63: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:3361:63: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:3445:12: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:3461:0: automatically included section variable(s) unused in theorem `PadicCoefficientWork.positive_denominator`:
+    [Fact (Nat.Prime p)]
+    [CharZero K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fact (Nat.Prime p)] [CharZero K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3473:0: automatically included section variable(s) unused in theorem `PadicCoefficientWork.coeff_Gquartic_odd`:
+    [CharZero K]
+    [IsUltrametricDist K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [CharZero K] [IsUltrametricDist K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:3566:15: This simp argument is unused:
+    Nat.succ_eq_add_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [N̵a̵t̵.̵s̵u̵c̵c̵_̵e̵q̵_̵a̵d̵d̵_̵o̵n̵e̵,̵ ̵hd, hc, Finset.prod_range_succ, hi]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3667:0: automatically included section variable(s) unused in theorem `CorrectionWork.prod_linear_coeff_one`:
+    [Fintype K]
+    [DecidableEq K]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype K] [DecidableEq K] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  info: run/Solution.lean:3906:4: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:4052:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:4102:32: This simp argument is unused:
+    Polynomial.eval₂_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_mul, ̲map_pow, ̲map_add, ̲map_sub, ̲map_one, ̲map_ofNat, ̲PowerSeries.map_C,
+    ̲ ̲ ̲ ̲ ̲PowerSeries.map_X,
+    ̵  ̵ ̵ ̵Polynomial.coe_eval₂RingHom, ̲Polynomial.eval₂_a̵d̵d̵,̵P̵ol̵y̵no̵m̵i̵a̵l̵.̵ev̵a̵l̵₂̵_̵o̵n̵e̵, ̲Polynomial.eval₂_mul,
+        Polynomial.eval₂_ofNat, ̲Polynomial.eval₂_X] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4102:53: This simp argument is unused:
+    Polynomial.eval₂_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_mul, ̲map_pow, ̲map_add, ̲map_sub, ̲map_one, ̲map_ofNat, ̲PowerSeries.map_C,
+    ̲ ̲ ̲ ̲ ̲PowerSeries.map_X,
+    ̵  ̵ ̵ ̵Polynomial.coe_eval₂RingHom, ̲Polynomial.eval₂_a̵d̵d̵a̲d̲d̲, ̲Polynomial.eval₂_o̵n̵e̵,̵P̵o̵l̵y̵n̵o̵mi̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵m̵ul,
+        Polynomial.eval₂_ofNat, ̲Polynomial.eval₂_X] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4102:74: This simp argument is unused:
+    Polynomial.eval₂_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [map_mul, ̲map_pow, ̲map_add, ̲map_sub, ̲map_one, ̲map_ofNat, ̲PowerSeries.map_C,
+    ̲ ̲ ̲ ̲ ̲PowerSeries.map_X,
+    ̵  ̵ ̵ ̵Polynomial.coe_eval₂RingHom, ̲Polynomial.eval₂_add, ̲Polynomial.eval₂_o̵n̵e̵o̲n̲e̲,P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵m̵u̵l̵,̵
+        Polynomial.eval₂_ofNat, ̲Polynomial.eval₂_X] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4103:4: This simp argument is unused:
+    Polynomial.eval₂_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵m̵a̵p̵_̵m̵u̵l̵,̵m̵a̵p̵_̵p̵o̵w̵,̵m̵a̵p̵_̵a̵d̵d̵,̵m̵a̵p̵_̵s̵u̵b̵,̵m̵a̵p̵_̵o̵n̵e̵,̵m̵a̵p̵_̵o̵f̵N̵a̵t̵,̵P̵o̵w̵e̵r̵S̵e̵r̵i̵e̵s̵.̵m̵a̵p̵_̵C̵,̵P̵o̵w̵e̵r̵S̵e̵r̵i̵e̵s̵.̵m̵a̵p̵_̵X̵,̵
+    ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵_̵e̵v̵a̵l̵₂̵R̵i̵n̵g̵H̵o̵m̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵a̵d̵d̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵o̵n̵e̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵m̵u̵l̵,̵
+    ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵o̵f̵N̵a̵t̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵₂̵_̵X̵]̵[̲m̲a̲p̲_̲m̲u̲l̲,̲ ̲m̲a̲p̲_̲p̲o̲w̲,̲ ̲m̲a̲p̲_̲a̲d̲d̲,̲ ̲m̲a̲p̲_̲s̲u̲b̲,̲ ̲m̲a̲p̲_̲o̲n̲e̲,̲ ̲m̲a̲p̲_̲o̲f̲N̲a̲t̲,̲ ̲P̲o̲w̲e̲r̲S̲e̲r̲i̲e̲s̲.̲m̲a̲p̲_̲C̲,̲
+    ̲ ̲ ̲ ̲ ̲P̲o̲w̲e̲r̲S̲e̲r̲i̲e̲s̲.̲m̲a̲p̲_̲X̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲c̲o̲e̲_̲e̲v̲a̲l̲₂̲R̲i̲n̲g̲H̲o̲m̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲₂̲_̲a̲d̲d̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲₂̲_̲o̲n̲e̲,̲
+    ̲ ̲ ̲ ̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲₂̲_̲m̲u̲l̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲₂̲_̲X̲]̲ at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4234:0: automatically included section variable(s) unused in theorem `ObstructionWork.small_cast`:
+    [Fact (Nat.Prime p)]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fact (Nat.Prime p)] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:4257:15: This simp argument is unused:
+    Prod.fst
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵P̵r̵o̵d̵.̵f̵s̵t̵,̵P̵r̵o̵d̵.̵s̵n̵d̵]̵[̲P̲r̲o̲d̲.̲s̲n̲d̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4257:24: This simp argument is unused:
+    Prod.snd
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Prod.fst,̵P̵r̵o̵d̵.̵s̵n̵d̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4346:2: Try `simp at hi` instead of `simpa using hi`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:4404:15: This simp argument is unused:
+    Nat.cast_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.cast_a̵d̵d̵,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵one] at hd ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4404:28: This simp argument is unused:
+    Nat.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Nat.cast_add,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵] at hd ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4411:4: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:4442:72: This simp argument is unused:
+    map_sub
+  
+  Hint: Omit it from the simp argument list.
+    simp [-ZMod.castHom_apply, m̵a̵p̵_̵m̵u̵l̵,̵m̵a̵p̵_̵a̵d̵d̵,̵m̵a̵p̵_̵s̵u̵b̵,̵m̵a̵p̵_̵o̵f̵N̵a̵t̵]̵m̲a̲p̲_̲m̲u̲l̲,̲ ̲m̲a̲p̲_̲a̲d̲d̲,̲ ̲m̲a̲p̲_̲o̲f̲N̲a̲t̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  info: run/Solution.lean:4824:80: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:4802:78: This simp argument is unused:
+    Int.cast_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [QuadraticAlgebra.re_star, ̲QuadraticAlgebra.im_star, ̲Int.cast_a̵d̵d̵a̲d̲d̲, ̲Int.cast_m̵u̵l̵,̵I̵nt̵.̵c̵a̵s̵t̵_̵n̵eg,
+          Int.cast_one, ̲one_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4803:6: This simp argument is unused:
+    Int.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵Q̵u̵a̵d̵r̵a̵t̵i̵c̵A̵l̵g̵e̵b̵r̵a̵.̵r̵e̵_̵s̵t̵a̵r̵,̵Q̵u̵a̵d̵r̵a̵t̵i̵c̵A̵l̵g̵e̵b̵r̵a̵.̵i̵m̵_̵s̵t̵a̵r̵,̵I̵n̵t̵.̵c̵a̵s̵t̵_̵a̵d̵d̵,̵I̵n̵t̵.̵c̵a̵s̵t̵_̵m̵u̵l̵,̵I̵n̵t̵.̵c̵a̵s̵t̵_̵n̵e̵g̵,̵
+    ̵ ̵ ̵ ̵ ̵ ̵ ̵I̵n̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵,̵o̵n̵e̵_̵m̵u̵l̵]̵[̲Q̲u̲a̲d̲r̲a̲t̲i̲c̲A̲l̲g̲e̲b̲r̲a̲.̲r̲e̲_̲s̲t̲a̲r̲,̲ ̲Q̲u̲a̲d̲r̲a̲t̲i̲c̲A̲l̲g̲e̲b̲r̲a̲.̲i̲m̲_̲s̲t̲a̲r̲,̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲a̲d̲d̲,̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲m̲u̲l̲,̲
+    ̲ ̲ ̲ ̲ ̲ ̲ ̲I̲n̲t̲.̲c̲a̲s̲t̲_̲n̲e̲g̲,̲ ̲o̲n̲e̲_̲m̲u̲l̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4810:78: This simp argument is unused:
+    Int.cast_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [QuadraticAlgebra.re_star, ̲QuadraticAlgebra.im_star, ̲Int.cast_a̵d̵d̵a̲d̲d̲, ̲Int.cast_m̵u̵l̵,̵I̵nt̵.̵c̵a̵s̵t̵_̵n̵eg,
+          Int.cast_one, ̲one_mul, ̲PadicInt.coe_sub, ̲PadicInt.coe_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4811:6: This simp argument is unused:
+    Int.cast_one
+  
+  Hint: Omit it from the simp argument list.
+    simp only [QuadraticAlgebra.re_star, ̲QuadraticAlgebra.im_star, ̲Int.cast_add, ̲Int.cast_mul,
+    ̲ ̲ ̲ ̲ ̲ ̲ ̲Int.cast_neg,
+    ̵  ̵ ̵ ̵ ̵ ̵I̵n̵t̵.̵c̵a̵s̵t̵_̵one,̵o̵n̵e̵_mul, ̲PadicInt.coe_sub, ̲PadicInt.coe_one]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4824:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:4824:76: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:4887:22: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:4914:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a190969_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

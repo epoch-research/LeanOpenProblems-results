@@ -1,0 +1,23 @@
+{
+  "id": "oeis_341685_conjecture_0",
+  "epoch": 1,
+  "uuid": "dDgJBAbdeAxo3MTcJiTPmm",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 4075,
+      "output_tokens": 110414,
+      "total_tokens": 144205639,
+      "input_tokens_cache_write": 4391296,
+      "input_tokens_cache_read": 139699854,
+      "reasoning_tokens": 61880,
+      "total_cost": 200.1525039999999
+    }
+  },
+  "oeis_id": "A341685"
+}

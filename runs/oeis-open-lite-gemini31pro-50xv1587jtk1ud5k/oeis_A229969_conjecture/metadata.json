@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Taking \\(n=7\\), the prescribed restriction on \\(x\\) forces \\(x\\ge 3\\); since \\(x\\le y\\le z\\), all three summands are at least \\(3\\), so their sum is at least \\(9\\), contradicting \\(x+y+z=7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let the conjecture be understood as the conjunction of the following two assertions:\n\n1. For every integer \\(n>5\\), there is at least one ordered triple \\(0<x\\le y\\le z\\) with \\(x+y+z=n\\) for which\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare all prime.\n\n2. Moreover, for every integer \\(n>6\\), such a representation can be chosen with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\n\nWe disprove the conjunction by showing that its second assertion fails already at \\(n=7\\).\n\nSuppose, for contradiction, that the conjecture were true. Since \\(7>6\\), its “moreover” clause would provide positive integers \\(x,y,z\\) such that\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\nwith\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nand with all six of the required numbers prime.\n\nEvery element of the displayed five-element set is at least \\(3\\). Indeed, this is immediate by considering its five possible values: \\(3,4,6,10,15\\). Hence \\(x\\ge3\\). From the required ordering \\(x\\le y\\), it follows that \\(y\\ge3\\). From \\(y\\le z\\), it likewise follows that \\(z\\ge3\\). Therefore\n\\[\nx+y+z\\ge 3+3+3=9.\n\\]\nBut the same triple was required to satisfy \\(x+y+z=7\\), which is impossible because \\(9>7\\).\n\nThus no ordered positive triple summing to \\(7\\) can have its first coordinate in \\(\\{3,4,6,10,15\\}\\), independently of any primality conditions. Consequently the “moreover” assertion is false at \\(n=7\\). Since the stated conjecture is the conjunction of that assertion with the positivity assertion for \\(a(n)\\), the failure of this one conjunct disproves the whole conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  }
+}

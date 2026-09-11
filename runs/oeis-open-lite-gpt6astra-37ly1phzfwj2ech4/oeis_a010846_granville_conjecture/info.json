@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a010846_granville_conjecture",
+  "epoch": 1,
+  "uuid": "YG8w6dahF9p5HLSyeG3w8f",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 27,
+      "output_tokens": 1861,
+      "total_tokens": 81757,
+      "input_tokens_cache_write": 12872,
+      "input_tokens_cache_read": 66997,
+      "reasoning_tokens": 346,
+      "total_cost": 0.321217
+    }
+  },
+  "oeis_id": "A010846"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "a_n_is_defined_for_all_n",
+  "epoch": 1,
+  "uuid": "4FhpkvB6tPNoRAEHW8wANF",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 18,
+      "output_tokens": 644,
+      "total_tokens": 30563,
+      "input_tokens_cache_write": 7183,
+      "input_tokens_cache_read": 22718,
+      "reasoning_tokens": 40,
+      "total_cost": 0.1448855
+    }
+  },
+  "oeis_id": "A117545"
+}

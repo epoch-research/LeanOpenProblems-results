@@ -1,0 +1,20 @@
+{
+  "id": "oeis_374605_conjecture_0",
+  "epoch": 1,
+  "uuid": "GLHNcNwqa6nd7qnaZ8ah2C",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 102,
+      "output_tokens": 23236,
+      "total_tokens": 1643393,
+      "input_tokens_cache_write": 76946,
+      "input_tokens_cache_read": 1543109,
+      "reasoning_tokens": 11538,
+      "total_cost": 3.6677540000000004
+    }
+  },
+  "oeis_id": "A374605"
+}

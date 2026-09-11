@@ -1,0 +1,20 @@
+{
+  "id": "oeis_340881_conjecture_0",
+  "epoch": 1,
+  "uuid": "37MUdHm4dxeFUbEV8b5N3K",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 452140,
+      "output_tokens": 43703,
+      "total_tokens": 2754848,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2259005,
+      "reasoning_tokens": 9158,
+      "total_cost": 1.8805170000000007
+    }
+  },
+  "oeis_id": "A340881"
+}

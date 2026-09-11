@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a355898_conjecture",
+  "epoch": 1,
+  "uuid": "ZMHy7S8joJy743GRM7Pt4u",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 84,
+      "output_tokens": 64366,
+      "total_tokens": 1729702,
+      "input_tokens_cache_write": 86757,
+      "input_tokens_cache_read": 1578495,
+      "reasoning_tokens": null,
+      "total_cost": 4.698226249999999
+    }
+  },
+  "oeis_id": "A355898"
+}

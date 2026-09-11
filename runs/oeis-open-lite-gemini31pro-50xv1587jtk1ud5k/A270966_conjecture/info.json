@@ -1,0 +1,23 @@
+{
+  "id": "A270966_conjecture",
+  "epoch": 1,
+  "uuid": "8vGyxr3GryYgjmBRQeHa3V",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 45791964,
+      "output_tokens": 1664521,
+      "total_tokens": 489797606,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 442341121,
+      "reasoning_tokens": 1142458,
+      "total_cost": 200.02640420000023
+    }
+  },
+  "oeis_id": "A270966"
+}

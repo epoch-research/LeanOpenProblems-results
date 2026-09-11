@@ -1,0 +1,28 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.2s)
+  warning: run/Challenge.lean:26:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:29:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_306477_conjecture_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (834s)
+  info: run/Solution.lean:1920:0: Primality certificates checked: 108905
+  info: run/Solution.lean:1920:0: Norm rows checked through 99
+  info: run/Solution.lean:1920:0: Norm rows checked through 199
+  info: run/Solution.lean:1920:0: Norm rows checked through 299
+  info: run/Solution.lean:1920:0: Norm rows checked through 399
+  info: run/Solution.lean:1920:0: Norm rows checked through 499
+  info: run/Solution.lean:1920:0: Norm rows checked through 599
+  info: run/Solution.lean:1920:0: Norm rows checked through 699
+  info: run/Solution.lean:1920:0: Norm rows checked through 799
+  info: run/Solution.lean:1920:0: Norm rows checked through 899
+  warning: run/Solution.lean:1958:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_306477_conjecture_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

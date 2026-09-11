@@ -1,0 +1,25 @@
+import FormalConjectures.Util.ProblemImports
+
+open BigOperators Int Real
+
+/--
+A071532: $a(n) = (-1) \cdot \sum_{k=1}^n (-1)^{\lfloor (3/2)^k \rfloor}$.
+The sequence is defined over $\mathbb{Z}$, and empirically non-negative.
+-/
+noncomputable def a (n : ℕ) : ℤ :=
+  -- Summing over k=1 to n is equivalent to summing over k'=0 to n-1, where term index is k'+1.
+  - Finset.sum (Finset.range n) fun k : ℕ =>
+      let k_idx : ℕ := k + 1
+      let base_real : ℝ := (3 : ℝ) / 2
+      let exponent_int : ℤ := floor (base_real ^ k_idx)
+      -- Since k ≥ 1, exponent_int is non-negative. We use Int.toNat for the exponent of Int^Nat power.
+      (-1 : ℤ) ^ exponent_int.toNat
+
+/--
+Conjecture: Asymptotically, $a(n) > \sqrt{n}$.
+Verbatim OEIS comment: "Is a(n)>0? For n large enough does a(n)>sqrt(n) always hold?"
+-/
+theorem oeis_71532_conjecture_0 : ∃ N : ℕ, ∀ n : ℕ, n ≥ N → (a n : ℝ) > sqrt (n : ℝ) := by
+  sorry
+
+theorem oeis_71532_conjecture_0.disproof : ¬ (type_of% @oeis_71532_conjecture_0) := sorry

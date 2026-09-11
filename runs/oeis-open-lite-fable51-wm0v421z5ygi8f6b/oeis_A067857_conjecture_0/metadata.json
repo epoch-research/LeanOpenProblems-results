@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "The counterexample is \\(n=8=2^3\\), for which \\(\\Omega(8)=3\\), while the Möbius sum reduces to \\(8!(H_8-H_4)=25584>0\\). Thus the proposed criterion predicts negativity at \\(8\\), contrary to the actual positive value.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_n=\\sum_{j=1}^n\\frac1j\n\\]\nbe the \\(n\\)-th harmonic number. The defining divisor relation for A067857 is\n\\[\n\\sum_{k\\mid n}\\frac{a(k)}{k!}=H_n.\n\\]\nIf we put \\(b(k)=a(k)/k!\\), this says that \\(H_n=\\sum_{k\\mid n}b(k)\\). Möbius inversion therefore gives\n\\[\nb(n)=\\sum_{d\\mid n}\\mu(n/d)H_d,\n\\]\nand hence, for every positive integer \\(n\\),\n\\[\na(n)=n!\\sum_{d\\mid n}\\mu(n/d)H_d.\n\\]\nHere \\(\\mu\\) is the ordinary Möbius function.\n\nWe disprove the proposed equivalence by taking \\(n=8\\).\n\nFirst consider the claimed condition on the number of prime factors. Since\n\\[\n8=2^3,\n\\]\nand \\(2\\) is prime, the total number of prime factors of \\(8\\), counted with multiplicity, is\n\\[\n\\Omega(8)=3.\n\\]\nThus \\(\\Omega(8)\\) is odd and is at least \\(3\\). Consequently, the right-hand side of the conjectured equivalence is true at \\(n=8\\).\n\nIt remains to compute the sign of \\(a(8)\\). The positive divisors of \\(8\\) are\n\\[\n1,2,4,8.\n\\]\nTherefore the Möbius-transform formula specializes to\n\\[\n\\begin{aligned}\na(8)\n&=8!\\sum_{d\\mid 8}\\mu(8/d)H_d\\\\\n&=8!\\bigl(\\mu(8)H_1+\\mu(4)H_2+\\mu(2)H_4+\\mu(1)H_8\\bigr).\n\\end{aligned}\n\\]\nThe relevant Möbius values follow directly from their definition. A number divisible by the square of a prime has Möbius value zero, so\n\\[\n\\mu(8)=\\mu(2^3)=0,\n\\qquad\n\\mu(4)=\\mu(2^2)=0.\n\\]\nFor a prime the Möbius value is \\(-1\\), and \\(\\mu(1)=1\\), so\n\\[\n\\mu(2)=-1,\n\\qquad\n\\mu(1)=1.\n\\]\nSubstitution leaves only two terms:\n\\[\na(8)=8!\\bigl(H_8-H_4\\bigr).\n\\]\nNow\n\\[\nH_8-H_4=\\frac15+\\frac16+\\frac17+\\frac18.\n\\]\nUsing the common denominator \\(840\\), this is\n\\[\n\\frac{168+140+120+105}{840}=\\frac{533}{840}.\n\\]\nIn particular this difference is positive. More explicitly, since \\(8!=40320=48\\cdot840\\),\n\\[\na(8)=40320\\cdot\\frac{533}{840}=48\\cdot533=25584>0.\n\\]\n(Equivalently, one may separately compute \\(H_4=25/12\\) and \\(H_8=761/280\\), whose difference is \\(533/840\\).)\n\nThus at \\(n=8\\) we have\n\\[\n\\Omega(8)=3,\n\\]\nwhich is odd and at least \\(3\\), but\n\\[\na(8)=25584>0,\n\\]\nso in particular \\(a(8)<0\\) is false. Hence the implication\n\\[\n\\bigl(\\Omega(n)\\text{ is odd and }\\Omega(n)\\ge 3\\bigr)\\Longrightarrow a(n)<0\n\\]\nalready fails for \\(n=8\\). Therefore the proposed biconditional, and thus the conjecture, is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  }
+}

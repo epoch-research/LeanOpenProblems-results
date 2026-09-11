@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228304_conjecture_0",
+  "epoch": 1,
+  "uuid": "NPcnank44ECniYneefFyVT",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 2356,
+      "output_tokens": 9453,
+      "total_tokens": 547713,
+      "input_tokens_cache_write": 45803,
+      "input_tokens_cache_read": 490101,
+      "reasoning_tokens": 1946,
+      "total_cost": 1.5588484999999999
+    }
+  },
+  "oeis_id": "A228304"
+}

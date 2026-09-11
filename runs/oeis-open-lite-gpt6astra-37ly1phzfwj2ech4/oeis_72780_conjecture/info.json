@@ -1,0 +1,20 @@
+{
+  "id": "oeis_72780_conjecture",
+  "epoch": 1,
+  "uuid": "CG7zdjaMS2pbLnAcyVR8U7",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 18,
+      "output_tokens": 464,
+      "total_tokens": 13419,
+      "input_tokens_cache_write": 1502,
+      "input_tokens_cache_read": 11435,
+      "reasoning_tokens": 35,
+      "total_cost": 0.05359
+    }
+  },
+  "oeis_id": "A072780"
+}

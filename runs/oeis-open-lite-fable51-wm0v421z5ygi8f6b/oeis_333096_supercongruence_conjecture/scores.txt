@@ -1,0 +1,88 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (5.2s)
+  warning: run/Challenge.lean:62:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:66:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333096_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (10s)
+  warning: run/Solution.lean:77:18: This simp argument is unused:
+    Ring.choose_zero_right
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵z̵e̵r̵o̵_̵r̵i̵g̵h̵t̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:163:20: This simp argument is unused:
+    Ring.choose_zero_right
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵z̵e̵r̵o̵_̵r̵i̵g̵h̵t̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:202:38: This simp argument is unused:
+    Ring.choose_zero_right
+  
+  Hint: Omit it from the simp argument list.
+    simp [T, coeff_zero_mul', e_zero,̵ ̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵z̵e̵r̵o̵_̵r̵i̵g̵h̵t̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:217:12: This simp argument is unused:
+    Ring.choose_succ_succ
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵s̵u̵c̵c̵_̵s̵u̵c̵c̵,̵ ̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵o̵n̵e̵_̵r̵i̵g̵h̵t̵]̵[̲R̲i̲n̲g̲.̲c̲h̲o̲o̲s̲e̲_̲o̲n̲e̲_̲r̲i̲g̲h̲t̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:217:35: This simp argument is unused:
+    Ring.choose_one_right
+  
+  Hint: Omit it from the simp argument list.
+    simp [Ring.choose_succ_succ,̵ ̵R̵i̵n̵g̵.̵c̵h̵o̵o̵s̵e̵_̵o̵n̵e̵_̵r̵i̵g̵h̵t̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:276:8: This simp argument is unused:
+    Nat.lt_succ_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵l̵t̵_̵s̵u̵c̵c̵_̵i̵f̵f̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:306:32: This simp argument is unused:
+    hp.ne_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp [Nat.div_eq_of_lt hp1, h̵p̵.̵n̵e̵_̵z̵e̵r̵o̵,̵ ̵hp.ne_zero.symm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:473:50: This simp argument is unused:
+    Polynomial.coeff_X
+  
+  Hint: Omit it from the simp argument list.
+    simp [Polynomial.revAt, Polynomial.coeff_one,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:474:50: This simp argument is unused:
+    Polynomial.coeff_X
+  
+  Hint: Omit it from the simp argument list.
+    simp [Polynomial.revAt, Polynomial.coeff_one,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:475:50: This simp argument is unused:
+    Polynomial.coeff_X
+  
+  Hint: Omit it from the simp argument list.
+    simp [Polynomial.revAt, Polynomial.coeff_one,̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵c̵o̵e̵f̵f̵_̵X̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:980:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333096_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

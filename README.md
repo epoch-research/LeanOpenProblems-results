@@ -26,6 +26,18 @@ language models turn into theorems?*](https://arxiv.org/pdf/2608.11941) (Adamcze
 | `oeis-lite-200usd-lit-oai-…` | Lite (100) | GPT-5.5 | literature | $200 |
 | `oeis-lite-200usd-lit-gdm-…` | Lite (100) | Gemini 3.5 Flash | literature | $200 |
 
+Later Lite runs in the paper's canonical configuration (base agent, $200 per
+attempt). Runs named `oeis-open-lite-…` were launched from the canonical
+`configs/oeis-open-lite.yaml` in `epoch-research/LeanOpenProblems`.
+
+| Run directory | Set | Model | Agent | Budget/attempt |
+|---|---|---|---|---|
+| `oeis-lite-200usd-grok46-…` | Lite (100) | Grok 4.6 | base | $200 |
+| `oeis-lite-200usd-sol-…` | Lite (100) | GPT-5.6 Sol | base | $200 |
+| `oeis-open-lite-fable51-…` | Lite (100) | Claude Fable 5.1 | base | $200 |
+| `oeis-open-lite-gemini31pro-…` | Lite (100) | Gemini 3.1 Pro | base | $200 |
+| `oeis-open-lite-gpt6astra-…` | Lite (100) | GPT-6 Astra | base | $200 |
+
 ### FrontierMath Erdős
 
 Runs for the evaluations reported in *FrontierMath Erdős* (Adamczewski and

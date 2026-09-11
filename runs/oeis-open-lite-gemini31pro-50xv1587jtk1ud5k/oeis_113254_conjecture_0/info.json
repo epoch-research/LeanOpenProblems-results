@@ -1,0 +1,20 @@
+{
+  "id": "oeis_113254_conjecture_0",
+  "epoch": 1,
+  "uuid": "nqzL3p73LH8RiH649VJCrz",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 95748,
+      "output_tokens": 29477,
+      "total_tokens": 431965,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 306740,
+      "reasoning_tokens": 13361,
+      "total_cost": 0.606568
+    }
+  },
+  "oeis_id": "A113254"
+}

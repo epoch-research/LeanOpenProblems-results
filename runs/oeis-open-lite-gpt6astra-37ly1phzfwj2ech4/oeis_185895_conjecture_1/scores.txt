@@ -1,0 +1,109 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.8s)
+  warning: run/Challenge.lean:38:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:43:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_185895_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (46s)
+  warning: run/Solution.lean:111:43: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:111:65: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:216:15: This simp argument is unused:
+    Ne.symm h
+  
+  Hint: Omit it from the simp argument list.
+    simp [h, N̵e̵.̵s̵y̵m̵m̵ ̵h̵,̵ ̵List.count_cons]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:216:26: This simp argument is unused:
+    List.count_cons
+  
+  Hint: Omit it from the simp argument list.
+    simp [h, Ne.symm h,̵ ̵L̵i̵s̵t̵.̵c̵o̵u̵n̵t̵_̵c̵o̵n̵s̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:411:29: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [ih, Nat.add_a̵s̵s̵o̵c̵,̵ ̵N̵a̵t̵.̵a̵d̵d̵_̵left_comm, Nat.add_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:674:29: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:674:41: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:674:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:735:29: This simp argument is unused:
+    Nat.add_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [List.append_assoc, N̵a̵t̵.̵a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵Nat.add_comm, Nat.add_left_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:849:24: This simp argument is unused:
+    ← mul_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [div_eq_mul_inv, ←̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵Nat.factorial_ne_zero]
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:871:8: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:871:8: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:912:17: This simp argument is unused:
+    CPart.mk.injEq
+  
+  Hint: Omit it from the simp argument list.
+    simp_all only ̵[̵C̵P̵a̵r̵t̵.̵m̵k̵.̵i̵n̵j̵E̵q̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1019:67: This simp argument is unused:
+    hr'
+  
+  Hint: Omit it from the simp argument list.
+    simp only [List.sum_append, List.range'_one, List.sum_singleton,̵ ̵h̵r̵'̵] at he'
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1063:4: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1137:20: This simp argument is unused:
+    and_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp [sizeSets, a̵n̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵and_comm, _root_.and_left_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1196:25: This simp argument is unused:
+    one_pow
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Finset.sum_range_succ, Finset.sum_range_zero, pow_zero, pow_one, one_mul,
+    ̵  ̵ ̵ ̵ ̵ ̵zero_add,
+    ̲  ̲ ̲ ̲ ̲ ̲neg_mul,̵ ̵o̵n̵e̵_̵p̵o̵w̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1333:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_185895_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

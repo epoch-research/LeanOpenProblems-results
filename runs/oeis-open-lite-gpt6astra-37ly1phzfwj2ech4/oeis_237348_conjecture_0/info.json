@@ -1,0 +1,23 @@
+{
+  "id": "oeis_237348_conjecture_0",
+  "epoch": 1,
+  "uuid": "mgqvyRVNQobi5LKxzWK5D7",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 4827,
+      "output_tokens": 90247,
+      "total_tokens": 142575481,
+      "input_tokens_cache_write": 4611385,
+      "input_tokens_cache_read": 137869022,
+      "reasoning_tokens": 39219,
+      "total_cost": 200.07195449999992
+    }
+  },
+  "oeis_id": "A237348"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a300997_finite_difference_is_one_or_two",
+  "epoch": 1,
+  "uuid": "LwuW6GbvQMXk6eUbNPmZWJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 44,
+      "output_tokens": 70422,
+      "total_tokens": 1202582,
+      "input_tokens_cache_write": 121453,
+      "input_tokens_cache_read": 1010663,
+      "reasoning_tokens": null,
+      "total_cost": 5.29236825
+    }
+  },
+  "oeis_id": "A300997"
+}

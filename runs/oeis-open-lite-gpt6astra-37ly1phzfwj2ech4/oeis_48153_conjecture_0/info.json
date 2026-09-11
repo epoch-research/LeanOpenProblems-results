@@ -1,0 +1,20 @@
+{
+  "id": "oeis_48153_conjecture_0",
+  "epoch": 1,
+  "uuid": "jXiZvopwkdDyQxXLhJsQSw",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 1194,
+      "output_tokens": 113872,
+      "total_tokens": 17095440,
+      "input_tokens_cache_write": 1667182,
+      "input_tokens_cache_read": 15313192,
+      "reasoning_tokens": 49888,
+      "total_cost": 41.85850699999999
+    }
+  },
+  "oeis_id": "A048153"
+}

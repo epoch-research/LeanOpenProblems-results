@@ -1,0 +1,23 @@
+{
+  "id": "A270966_conjecture",
+  "epoch": 1,
+  "uuid": "k5W86GwaXqZ4NvSf96oU4d",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 13942,
+      "output_tokens": 829350,
+      "total_tokens": 537912799,
+      "input_tokens_cache_write": 1975666,
+      "input_tokens_cache_read": 535093841,
+      "reasoning_tokens": null,
+      "total_cost": 200.0762052500001
+    }
+  },
+  "oeis_id": "A270966"
+}

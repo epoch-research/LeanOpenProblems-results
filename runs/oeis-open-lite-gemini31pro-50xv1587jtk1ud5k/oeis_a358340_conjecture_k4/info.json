@@ -1,0 +1,23 @@
+{
+  "id": "oeis_a358340_conjecture_k4",
+  "epoch": 1,
+  "uuid": "isLyW8PSBuoTfF2DN8eaRD",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 46610873,
+      "output_tokens": 1078985,
+      "total_tokens": 516854217,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 469164359,
+      "reasoning_tokens": 768627,
+      "total_cost": 200.00243780000017
+    }
+  },
+  "oeis_id": "A358340"
+}

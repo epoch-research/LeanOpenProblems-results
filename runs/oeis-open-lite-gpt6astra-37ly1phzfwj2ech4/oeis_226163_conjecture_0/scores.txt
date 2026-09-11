@@ -1,0 +1,95 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.3s)
+  warning: run/Challenge.lean:12:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Challenge.lean:41:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:45:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_226163_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (6.5s)
+  warning: run/Solution.lean:12:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:113:0: automatically included section variable(s) unused in theorem `A226163Proof.half_lt`:
+    [Fact (Nat.Prime p)]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fact (Nat.Prime p)] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:240:64: This simp argument is unused:
+    Matrix.neg_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [K, transpose_mul, transpose_nonsing_inv, hA, hB, Matrix.n̵e̵g̵_̵mul,̵ ̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_neg, hcomm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:245:32: This simp argument is unused:
+    diagonal_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [P, D, mul_diagonal, d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵hij, hj]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:249:32: This simp argument is unused:
+    diagonal_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [P, D, mul_diagonal, d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Matrix.one_apply, hij, hj]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:249:48: This simp argument is unused:
+    Matrix.one_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [P, D, mul_diagonal, diagonal_apply, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hij, hj]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:332:0: automatically included section variable(s) unused in theorem `A226163Proof.root_char`:
+    [NeZero m]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:337:0: automatically included section variable(s) unused in theorem `A226163Proof.neg_one_ne_one`:
+    [NeZero m]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:369:0: automatically included section variable(s) unused in theorem `A226163Proof.signed_pow`:
+    [NeZero m]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:465:0: automatically included section variable(s) unused in theorem `A226163Proof.scaled_half_injective`:
+    [NeZero m]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:470:0: automatically included section variable(s) unused in theorem `A226163Proof.scaled_half_ne_neg`:
+    [NeZero m]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:476:0: automatically included section variable(s) unused in theorem `A226163Proof.prod_scaled_half`:
+    [NeZero m]
+    hp
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [NeZero m] hp in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:557:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_226163_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

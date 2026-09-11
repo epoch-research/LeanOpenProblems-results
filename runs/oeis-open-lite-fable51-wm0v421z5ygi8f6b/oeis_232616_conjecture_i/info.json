@@ -1,0 +1,20 @@
+{
+  "id": "oeis_232616_conjecture_i",
+  "epoch": 1,
+  "uuid": "ZFtT6d6xsapGwAQo58B7UA",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 364,
+      "output_tokens": 452696,
+      "total_tokens": 25629482,
+      "input_tokens_cache_write": 944961,
+      "input_tokens_cache_read": 24231461,
+      "reasoning_tokens": null,
+      "total_cost": 40.508317749999996
+    }
+  },
+  "oeis_id": "A232616"
+}

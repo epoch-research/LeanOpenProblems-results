@@ -1,0 +1,33 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.7s)
+  warning: run/Challenge.lean:16:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:19:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a354747_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (44s)
+  warning: run/Solution.lean:64:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:70:0: automatically included section variable(s) unused in theorem `A354747Proof.natCast_M_X`:
+    [Fact (Nat.Prime q)]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fact (Nat.Prime q)] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:191:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:369:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:414:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a354747_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

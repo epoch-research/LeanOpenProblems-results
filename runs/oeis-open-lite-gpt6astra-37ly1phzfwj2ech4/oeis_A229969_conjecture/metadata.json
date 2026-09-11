@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Take \\(n=7\\). Since the prescribed choices all have \\(x\\ge 3\\), the ordering \\(x\\le y\\le z\\) forces \\(x+y+z\\ge 9\\), contradicting \\(x+y+z=7\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(a(n)\\) count the positive triples \\(x\\le y\\le z\\) with \\(x+y+z=n\\) for which\n\\[\n2x-1,\\quad 2y-1,\\quad 2z-1,\\quad 2xy-1,\\quad 2xz-1,\\quad 2yz-1\n\\]\nare all prime. The conjecture consists of two assertions for every relevant \\(n\\): first, that \\(a(n)>0\\) whenever \\(n>5\\); and second, that whenever \\(n>6\\), one can choose such a positive ordered triple with\n\\[\nx\\in\\{3,4,6,10,15\\}.\n\\]\nIt is enough to disprove the second assertion for one integer greater than \\(6\\).\n\nTake\n\\[\nn=7.\n\\]\nCertainly \\(7>6\\). Suppose, for contradiction, that the asserted representation exists. Thus there are positive integers \\(x,y,z\\) such that\n\\[\nx+y+z=7,\\qquad x\\le y\\le z,\n\\]\nand\n\\[\nx\\in\\{3,4,6,10,15\\},\n\\]\nwith the six stated numbers prime.\n\nThe primality conditions are not even needed. From the ordering \\(x\\le y\\le z\\), we have both \\(x\\le y\\) and \\(x\\le z\\). Adding these inequalities gives\n\\[\nx+x+x\\le x+y+z.\n\\]\nUsing \\(x+y+z=7\\), this becomes\n\\[\n3x\\le 7.\n\\]\nOn the other hand, membership in the displayed finite set gives the exhaustive alternatives\n\\[\nx=3,\\quad x=4,\\quad x=6,\\quad x=10,\\quad\\text{or}\\quad x=15.\n\\]\nEach alternative contradicts \\(3x\\le7\\): respectively it would imply\n\\[\n9\\le7,\\qquad 12\\le7,\\qquad 18\\le7,\\qquad 30\\le7,\\qquad\\text{or}\\qquad45\\le7.\n\\]\nEquivalently, every allowed value has \\(x\\ge3\\), so an ordered triple whose least entry is \\(x\\) must satisfy\n\\[\nx+y+z\\ge x+x+x\\ge 3+3+3=9,\n\\]\nwhich is incompatible with its sum being \\(7\\).\n\nTherefore no positive ordered triple summing to \\(7\\) can have its least entry \\(x\\) in \\(\\{3,4,6,10,15\\}\\), regardless of any primality requirements. Hence the “moreover” assertion fails at \\(n=7\\). Since the conjecture asserts both its positivity clause and this stronger representation clause for all integers in their stated ranges, failure of the latter at \\(7\\) disproves the conjunction and thus disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-08-02-00-00_summarize-proofs_hcXSPekK2Dw6Hz6eKwbby4.eval"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "oeis_264010_conjecture_i",
+  "epoch": 1,
+  "uuid": "HaofhSPTwApDJCDndwdoFt",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 3558,
+      "output_tokens": 249336,
+      "total_tokens": 143339221,
+      "input_tokens_cache_write": 3874418,
+      "input_tokens_cache_read": 139211909,
+      "reasoning_tokens": 174987,
+      "total_cost": 200.14451399999993
+    }
+  },
+  "oeis_id": "A264010"
+}

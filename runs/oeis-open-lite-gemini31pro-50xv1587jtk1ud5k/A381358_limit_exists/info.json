@@ -1,0 +1,23 @@
+{
+  "id": "A381358_limit_exists",
+  "epoch": 1,
+  "uuid": "98agi2wffPwHGXEWFWtrnA",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 37060483,
+      "output_tokens": 891197,
+      "total_tokens": 613939064,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 575987384,
+      "reasoning_tokens": 476975,
+      "total_cost": 200.01280680000013
+    }
+  },
+  "oeis_id": "A381358"
+}

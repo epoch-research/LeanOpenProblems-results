@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "4T7NXUS6KToaaXSp7eeCLN",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 894,
+      "output_tokens": 5123,
+      "total_tokens": 222977,
+      "input_tokens_cache_write": 22249,
+      "input_tokens_cache_read": 194711,
+      "reasoning_tokens": 765,
+      "total_cost": 0.7379134999999999
+    }
+  },
+  "oeis_id": "A129365"
+}

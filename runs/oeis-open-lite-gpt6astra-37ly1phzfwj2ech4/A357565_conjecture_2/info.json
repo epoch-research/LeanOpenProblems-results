@@ -1,0 +1,20 @@
+{
+  "id": "A357565_conjecture_2",
+  "epoch": 1,
+  "uuid": "VENXLEdAyzGpUsrBwoYK8P",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 9229,
+      "output_tokens": 203927,
+      "total_tokens": 16335396,
+      "input_tokens_cache_write": 1599255,
+      "input_tokens_cache_read": 14522985,
+      "reasoning_tokens": 104283,
+      "total_cost": 44.80231250000001
+    }
+  },
+  "oeis_id": "A357565"
+}

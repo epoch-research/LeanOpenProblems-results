@@ -1,0 +1,20 @@
+{
+  "id": "oeis_383327_conjecture_0",
+  "epoch": 1,
+  "uuid": "Gmv36wNrMZ55FvWMmVJJNx",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 18,
+      "output_tokens": 1429,
+      "total_tokens": 31702,
+      "input_tokens_cache_write": 6298,
+      "input_tokens_cache_read": 23957,
+      "reasoning_tokens": 424,
+      "total_cost": 0.17431200000000002
+    }
+  },
+  "oeis_id": "A383327"
+}

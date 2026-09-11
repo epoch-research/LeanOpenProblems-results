@@ -1,0 +1,17 @@
+{
+  "settlement": "proved",
+  "summary": {
+    "text": "The formal statement is simply \\(True\\), so its proof is the tautological observation that truth holds. Consequently, no mathematical argument about four-square representations or pairwise coprimality is present.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition actually stated under the name \\(\\texttt{oeis\\_271513\\_conjecture\\_3}\\) is simply\n\\[\n\\mathrm{True}.\n\\]\nHere \\(\\mathrm{True}\\) denotes the proposition that is unconditionally valid: it has a canonical direct proof and requires no hypotheses.\n\nTherefore the proof is immediate. Introduce the unique trivial witness of truth. This establishes \\(\\mathrm{True}\\), and hence proves the stated theorem.\n\nNo construction involving four-square representations, no intermediate number-theoretic result, and no case split is needed, because none of the definitions concerning \\(A271513\\), the coefficients \\(a,b,c\\), square values, or pairwise coprimality occurs in the proposition being proved.\n\nIn particular, the canonical conjecture—namely, that if positive integers \\(a,b,c\\) permit every natural number to have a representation\n\\[\nn=w^2+x^2+y^2+z^2\n\\]\nfor which\n\\[\nax^2+by^2+cz^2\n\\]\nis a square, then \\(a,b,c\\) are not pairwise coprime—is not the mathematical statement of this theorem. Consequently, the proof above proves only the tautological proposition actually stated; it does not constitute a proof of that number-theoretic conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-07-45-00-00_summarize-proofs_bKuW5aqoh5PZZLqKRZEfP3.eval"
+    }
+  }
+}

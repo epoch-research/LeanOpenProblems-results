@@ -1,0 +1,23 @@
+{
+  "id": "A273110_conjecture",
+  "epoch": 1,
+  "uuid": "jRRDR5AxVHUWhUbj6PWiJ6",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 62438877,
+      "output_tokens": 1873744,
+      "total_tokens": 327603219,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 263290598,
+      "reasoning_tokens": 1173753,
+      "total_cost": 200.02080160000025
+    }
+  },
+  "oeis_id": "A273110"
+}

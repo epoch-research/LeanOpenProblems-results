@@ -1,0 +1,68 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:40:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:44:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A271510_conjecture_i_positive, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ✖ [8000/8001] Building Solution (3.8s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/run/Solution.lean -o /workspace/leanproject/.lake/build/lib/lean/Solution.olean -i /workspace/leanproject/.lake/build/lib/lean/Solution.ilean -c /workspace/leanproject/.lake/build/ir/Solution.c --setup /workspace/leanproject/.lake/build/ir/Solution.setup.json --json
+  warning: run/Solution.lean:18:8: declaration uses 'sorry'
+  error: run/Solution.lean:27:106: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    a
+  in the application
+    cast sorry True.intro
+  error: run/Solution.lean:27:175: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    b
+  in the application
+    cast sorry True.intro
+  error: run/Solution.lean:28:106: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    a
+  in the application
+    cast sorry True.intro
+  error: run/Solution.lean:28:175: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    b
+  in the application
+    cast sorry True.intro
+  error: run/Solution.lean:29:108: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    a
+  in the application
+    cast sorry True.intro
+  error: run/Solution.lean:29:177: Application type mismatch: The argument
+    True.intro
+  has type
+    True
+  but is expected to have type
+    b
+  in the application
+    cast sorry True.intro
+  error: Lean exited with code 1
+  Some required targets logged failures:
+  - Solution
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

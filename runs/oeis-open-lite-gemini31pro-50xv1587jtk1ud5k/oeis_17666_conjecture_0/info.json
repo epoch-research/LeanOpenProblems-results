@@ -1,0 +1,20 @@
+{
+  "id": "oeis_17666_conjecture_0",
+  "epoch": 1,
+  "uuid": "iRP8uWHFggvaseaXKMNRar",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 165964,
+      "output_tokens": 11725,
+      "total_tokens": 304362,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 126673,
+      "reasoning_tokens": 4067,
+      "total_cost": 0.4979625999999999
+    }
+  },
+  "oeis_id": "A017666"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A078590_conjecture",
+  "epoch": 1,
+  "uuid": "MWveiZDQnPerwfRvppkZwj",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 196420,
+      "output_tokens": 11941,
+      "total_tokens": 411667,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 203306,
+      "reasoning_tokens": 6589,
+      "total_cost": 0.5767932
+    }
+  },
+  "oeis_id": "A078590"
+}

@@ -1,0 +1,17 @@
+{
+  "settlement": "proved",
+  "summary": {
+    "text": "The proved proposition is simply the tautology \\(True\\), so its proof uses no number-theoretic argument. In particular, it does not establish the asserted obstruction to pairwise coprimality.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The theorem in the accepted module has the following complete statement:\n\n\\[\n\\mathrm{True}.\n\\]\n\nHere \\(\\mathrm{True}\\) denotes the proposition that holds unconditionally. By its definition, it has a canonical proof (equivalently, it is the proposition whose sole case is the case asserting that it holds). Choosing that canonical proof establishes \\(\\mathrm{True}\\).\n\nThere are no hypotheses to use, no objects to construct, and no cases to consider. In particular, the definitions concerning four-square representations and the coefficients \\(a,b,c\\) do not occur in this theorem's statement and therefore play no role in its proof.\n\nThus the theorem as stated is proved. This argument proves only the literal accepted statement \\(\\mathrm{True}\\); it does not prove the separately supplied number-theoretic assertion that universal representability forces \\(a,b,c\\) not to be pairwise coprime, because that assertion is absent from the accepted theorem statement.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  }
+}

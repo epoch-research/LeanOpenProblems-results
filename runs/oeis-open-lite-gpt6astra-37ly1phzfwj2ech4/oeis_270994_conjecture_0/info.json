@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "DDF5hs8BUamW9RQD3VbfHH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 36,
+      "output_tokens": 4265,
+      "total_tokens": 59157,
+      "input_tokens_cache_write": 8675,
+      "input_tokens_cache_read": 46181,
+      "reasoning_tokens": 1478,
+      "total_cost": 0.36822849999999996
+    }
+  },
+  "oeis_id": "A270994"
+}

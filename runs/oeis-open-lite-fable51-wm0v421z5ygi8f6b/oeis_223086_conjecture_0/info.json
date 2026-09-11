@@ -1,0 +1,23 @@
+{
+  "id": "oeis_223086_conjecture_0",
+  "epoch": 1,
+  "uuid": "343EiFATkGJGTkyXKxYYTe",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 23714,
+      "output_tokens": 100137,
+      "total_tokens": 746859160,
+      "input_tokens_cache_write": 660914,
+      "input_tokens_cache_read": 746074395,
+      "reasoning_tokens": null,
+      "total_cost": 200.02401374999988
+    }
+  },
+  "oeis_id": "A223086"
+}

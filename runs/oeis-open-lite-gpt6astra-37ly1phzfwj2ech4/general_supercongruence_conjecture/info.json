@@ -1,0 +1,20 @@
+{
+  "id": "general_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "8QSW2e6RN7g7qBgEUxuT6L",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 1698,
+      "output_tokens": 76238,
+      "total_tokens": 6576204,
+      "input_tokens_cache_write": 365321,
+      "input_tokens_cache_read": 6132947,
+      "reasoning_tokens": 38366,
+      "total_cost": 14.528339499999996
+    }
+  },
+  "oeis_id": "A333042"
+}

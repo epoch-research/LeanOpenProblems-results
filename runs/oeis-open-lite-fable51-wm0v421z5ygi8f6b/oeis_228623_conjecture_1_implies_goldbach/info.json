@@ -1,0 +1,20 @@
+{
+  "id": "oeis_228623_conjecture_1_implies_goldbach",
+  "epoch": 1,
+  "uuid": "kBKtyURTyXfGLV2EY4SijY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 16,
+      "output_tokens": 4453,
+      "total_tokens": 48085,
+      "input_tokens_cache_write": 11756,
+      "input_tokens_cache_read": 31860,
+      "reasoning_tokens": null,
+      "total_cost": 0.37772500000000003
+    }
+  },
+  "oeis_id": "A228623"
+}

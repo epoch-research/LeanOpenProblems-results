@@ -1,0 +1,20 @@
+{
+  "id": "A306477_conjecture",
+  "epoch": 1,
+  "uuid": "NGYEYdSWeckmGnKmeKgJEe",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 508,
+      "output_tokens": 478534,
+      "total_tokens": 43945010,
+      "input_tokens_cache_write": 4326963,
+      "input_tokens_cache_read": 39139005,
+      "reasoning_tokens": null,
+      "total_cost": 87.80356875
+    }
+  },
+  "oeis_id": "A306477"
+}

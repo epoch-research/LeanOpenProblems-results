@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "For \\(n=67\\), the distinct values \\(m=147,2055,32773\\) all satisfy \\(\\sum_{k=1}^{\\lfloor\\log_2 m\\rfloor}(m\\bmod 2^k)=67\\) (their residue sums are respectively \\(1+3+3+3+19+19+19\\), \\(1+3+9\\cdot7\\), and \\(1+1+13\\cdot5\\)). Thus at least three values are counted at \\(67\\), contradicting the claimed count of one.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nT(m)=\\sum_{k=1}^{\\lfloor\\log_2 m\\rfloor}\\bigl(m\\bmod 2^k\\bigr)\n\\]\nbe the value of A049802 at the index \\(m\\). For \\(n>0\\), the definition of A383327 used in the conjecture is\n\\[\na(n)=\\#\\{m:0\\le m<2^{n+1}\\text{ and }T(m)=n\\}.\n\\]\n(The range \\(m<2^{n+1}\\) is a sufficient finite range for counting all occurrences.) We will disprove the conjecture at the listed value \\(n=67\\) by exhibiting three distinct indices in this range at which A049802 has value \\(67\\).\n\nFirst take \\(m=147\\). Since\n\\[\n2^7=128\\le 147<256=2^8,\n\\]\nwe have \\(\\lfloor\\log_2 147\\rfloor=7\\). The required remainders are\n\\[\n\\begin{array}{c|ccccccc}\nk&1&2&3&4&5&6&7\\\\ \\hline\n147\\bmod 2^k&1&3&3&3&19&19&19.\n\\end{array}\n\\]\nIndeed, \\(147=128+19\\); reducing further gives remainder \\(3\\) modulo \\(16\\), \\(8\\), and \\(4\\), and remainder \\(1\\) modulo \\(2\\). Consequently\n\\[\nT(147)=1+3+3+3+19+19+19=67.\n\\]\n\nNext take \\(m=2055=2^{11}+7\\). Because\n\\[\n2^{11}\\le2055<2^{12},\n\\]\nwe have \\(\\lfloor\\log_2 2055\\rfloor=11\\). For every \\(k\\) with \\(3\\le k\\le11\\), the number \\(2^k\\) divides \\(2^{11}\\), while \\(0\\le7<2^k\\). Hence\n\\[\n2055\\bmod 2^k=7\\qquad(3\\le k\\le11).\n\\]\nFor the two smaller powers, the remainders are\n\\[\n2055\\bmod2=1,\\qquad 2055\\bmod4=3.\n\\]\nThere are nine integers \\(k\\) from \\(3\\) through \\(11\\), so\n\\[\nT(2055)=1+3+9\\cdot7=67.\n\\]\n\nFinally take \\(m=32773=2^{15}+5\\). We have\n\\[\n2^{15}\\le32773<2^{16},\n\\]\nso \\(\\lfloor\\log_2 32773\\rfloor=15\\). For every \\(k\\) with \\(3\\le k\\le15\\), \\(2^k\\) divides \\(2^{15}\\) and \\(5<2^k\\), and therefore\n\\[\n32773\\bmod 2^k=5\\qquad(3\\le k\\le15).\n\\]\nFor \\(k=1,2\\), the remainders are both \\(1\\), since \\(32773\\) is congruent to \\(5\\) modulo \\(4\\). There are thirteen integers from \\(3\\) through \\(15\\), and thus\n\\[\nT(32773)=1+1+13\\cdot5=67.\n\\]\n\nThe three indices \\(147\\), \\(2055\\), and \\(32773\\) are pairwise distinct. They also all belong to the range used to define \\(a(67)\\): indeed,\n\\[\n147<2055<32773<2^{16}<2^{68}=2^{67+1}.\n\\]\nIt follows that the set\n\\[\nF=\\{m:0\\le m<2^{68}\\text{ and }T(m)=67\\}\n\\]\ncontains the three-element subset\n\\[\n\\{147,2055,32773\\}.\n\\]\nTherefore \\(\\#F\\ge3\\). Since \\(67\\ne0\\), the nonzero branch of the definition of \\(a\\) gives\n\\[\na(67)=\\#F\\ge3,\n\\]\nand in particular\n\\[\na(67)\\ne1.\n\\]\n\nNow let\n\\[\nS=\\{1,3,5,9,15,23,35,63,65,67\\}.\n\\]\nThe conjecture claims that every \\(n\\in S\\) satisfies \\(a(n)=1\\). But \\(67\\in S\\), so the conjecture would imply \\(a(67)=1\\), contradicting the explicit lower bound \\(a(67)\\ge3\\) above. Hence the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  }
+}

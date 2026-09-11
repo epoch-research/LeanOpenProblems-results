@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "At \\(n=140\\), adjacent-square bounds determine the needed floor terms and give \\(a(140)=471\\), \\(a(144)=484\\), \\(a(157)=528\\), and \\(a(161)=542\\). The claimed relation would therefore require \\(542=528+484-471=541\\), a contradiction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=2n+\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor+\\left\\lfloor\\frac n4\\right\\rfloor\n\\qquad(n\\geq 1).\n\\]\nWe disprove the proposed recurrence by considering its instance at \\(n=140\\). The recurrence would require\n\\[\na(161)=a(157)+a(144)-a(140).\n\\]\nWe will evaluate all four terms exactly.\n\nWe first record how the irrational floor values will be established. For positive integers \\(n\\) and nonnegative integers \\(k\\), if\n\\[\n4k^2\\leq 5n^2<4(k+1)^2,\n\\]\nthen, after division by \\(4\\),\n\\[\nk^2\\leq n^2\\frac54<(k+1)^2.\n\\]\nAll quantities involved are nonnegative, so taking square roots preserves these inequalities, with strictness preserved in the strict inequality. Since\n\\[\n\\sqrt{n^2\\frac54}=n\\sqrt{\\frac54},\n\\]\nwe obtain\n\\[\nk\\leq n\\sqrt{\\frac54}<k+1.\n\\]\nConsequently,\n\\[\n\\left\\lfloor n\\sqrt{\\frac54}\\right\\rfloor=k.\n\\]\nWe now apply this observation separately to the four needed indices.\n\nFor \\(n=140\\) and \\(k=156\\), direct integer arithmetic gives\n\\[\n4\\cdot156^2=97344<98000=5\\cdot140^2<98596=4\\cdot157^2.\n\\]\nThus\n\\[\n\\left\\lfloor140\\sqrt{\\frac54}\\right\\rfloor=156.\n\\]\nAlso \\(\\lfloor140/4\\rfloor=35\\). Hence\n\\[\na(140)=2\\cdot140+156+35=280+156+35=471.\n\\]\n\nFor \\(n=144\\) and \\(k=160\\), we have\n\\[\n4\\cdot160^2=102400<103680=5\\cdot144^2<103684=4\\cdot161^2.\n\\]\nTherefore\n\\[\n\\left\\lfloor144\\sqrt{\\frac54}\\right\\rfloor=160.\n\\]\nSince \\(\\lfloor144/4\\rfloor=36\\), it follows that\n\\[\na(144)=2\\cdot144+160+36=288+160+36=484.\n\\]\n\nFor \\(n=157\\) and \\(k=175\\), the relevant inequalities are\n\\[\n4\\cdot175^2=122500<123245=5\\cdot157^2<123904=4\\cdot176^2.\n\\]\nThey imply\n\\[\n\\left\\lfloor157\\sqrt{\\frac54}\\right\\rfloor=175.\n\\]\nMoreover, \\(157=4\\cdot39+1\\), so \\(\\lfloor157/4\\rfloor=39\\). Consequently,\n\\[\na(157)=2\\cdot157+175+39=314+175+39=528.\n\\]\n\nFinally, for \\(n=161\\) and \\(k=180\\), we have\n\\[\n4\\cdot180^2=129600<129605=5\\cdot161^2<131044=4\\cdot181^2.\n\\]\nThus\n\\[\n\\left\\lfloor161\\sqrt{\\frac54}\\right\\rfloor=180.\n\\]\nAs \\(161=4\\cdot40+1\\), we also have \\(\\lfloor161/4\\rfloor=40\\). It follows that\n\\[\na(161)=2\\cdot161+180+40=322+180+40=542.\n\\]\n\nThe right-hand side demanded by the proposed recurrence at \\(n=140\\) is instead\n\\[\na(157)+a(144)-a(140)=528+484-471=1012-471=541.\n\\]\nTherefore\n\\[\na(161)=542\\neq541=a(157)+a(144)-a(140).\n\\]\nSince \\(140\\geq1\\), this is an admissible instance of the universally quantified conjecture. Hence the claim that\n\\(a(n+21)=a(n+17)+a(n+4)-a(n)\\) for every \\(n\\geq1\\) is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-11T13-13-11-00-00_summarize-proofs_HfeFX8xFkxzDgYkq3rEypf.eval"
+    }
+  }
+}

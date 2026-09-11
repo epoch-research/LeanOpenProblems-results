@@ -1,0 +1,23 @@
+{
+  "id": "oeis_262880_conjecture_1",
+  "epoch": 1,
+  "uuid": "8s6dArAzGfEvkBZs2mNi9G",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 29356,
+      "output_tokens": 904017,
+      "total_tokens": 87221593,
+      "input_tokens_cache_write": 5944646,
+      "input_tokens_cache_read": 80343574,
+      "reasoning_tokens": 509969,
+      "total_cost": 200.14605900000046
+    }
+  },
+  "oeis_id": "A262880"
+}

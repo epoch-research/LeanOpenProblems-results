@@ -1,0 +1,20 @@
+{
+  "id": "oeis_190363_conjecture_0",
+  "epoch": 1,
+  "uuid": "PjUot4XuCLyoyWUVVUvb4y",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 42,
+      "output_tokens": 4509,
+      "total_tokens": 126667,
+      "input_tokens_cache_write": 21659,
+      "input_tokens_cache_read": 100457,
+      "reasoning_tokens": 1353,
+      "total_cost": 0.5970645000000001
+    }
+  },
+  "oeis_id": "A190363"
+}

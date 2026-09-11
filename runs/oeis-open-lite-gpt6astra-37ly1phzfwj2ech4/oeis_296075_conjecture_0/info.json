@@ -1,0 +1,20 @@
+{
+  "id": "oeis_296075_conjecture_0",
+  "epoch": 1,
+  "uuid": "99Czf57ZSTtgSH9fQiD63N",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 1369,
+      "output_tokens": 14171,
+      "total_tokens": 924543,
+      "input_tokens_cache_write": 129114,
+      "input_tokens_cache_read": 779889,
+      "reasoning_tokens": 6663,
+      "total_cost": 3.1160539999999997
+    }
+  },
+  "oeis_id": "A296075"
+}

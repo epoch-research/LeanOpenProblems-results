@@ -1,0 +1,20 @@
+{
+  "id": "oeis_53576_conjecture_0",
+  "epoch": 1,
+  "uuid": "AtDjYLajKDzkbuykxUg3Hj",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 39,
+      "output_tokens": 5216,
+      "total_tokens": 256061,
+      "input_tokens_cache_write": 28844,
+      "input_tokens_cache_read": 221962,
+      "reasoning_tokens": 1313,
+      "total_cost": 0.8437020000000001
+    }
+  },
+  "oeis_id": "A053576"
+}

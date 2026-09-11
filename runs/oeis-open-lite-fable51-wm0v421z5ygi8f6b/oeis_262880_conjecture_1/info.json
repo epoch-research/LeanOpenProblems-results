@@ -1,0 +1,23 @@
+{
+  "id": "oeis_262880_conjecture_1",
+  "epoch": 1,
+  "uuid": "CKdrUi5nas9CuMSwu2YNnh",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 200.0
+  },
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 3714,
+      "output_tokens": 203394,
+      "total_tokens": 205857907,
+      "input_tokens_cache_write": 11298044,
+      "input_tokens_cache_read": 194352755,
+      "reasoning_tokens": null,
+      "total_cost": 200.02057874999997
+    }
+  },
+  "oeis_id": "A262880"
+}

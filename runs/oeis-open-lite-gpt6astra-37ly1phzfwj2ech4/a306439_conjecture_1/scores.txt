@@ -1,0 +1,430 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:34:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:39:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, a306439_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (130s)
+  warning: run/Solution.lean:155:13: This simp argument is unused:
+    Form3.a
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a̵,̵ ̵F̵o̵r̵m̵3̵.̵b, Form3.c, Form3.d, Form3.e, Form3.f] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:155:22: This simp argument is unused:
+    Form3.b
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a, Form3.b̵,̵ ̵F̵o̵r̵m̵3̵.̵c, Form3.d, Form3.e, Form3.f] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:155:31: This simp argument is unused:
+    Form3.c
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a, Form3.b, Form3.c̵,̵ ̵F̵o̵r̵m̵3̵.̵d, Form3.e, Form3.f] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:155:40: This simp argument is unused:
+    Form3.d
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a, Form3.b, Form3.c, Form3.d̵,̵ ̵F̵o̵r̵m̵3̵.̵e, Form3.f] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:155:49: This simp argument is unused:
+    Form3.e
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a, Form3.b, Form3.c, Form3.d, Form3.e̵,̵ ̵F̵o̵r̵m̵3̵.̵f] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:155:58: This simp argument is unused:
+    Form3.f
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Form3.a, Form3.b, Form3.c, Form3.d, Form3.e,̵ ̵F̵o̵r̵m̵3̵.̵f̵] at *
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:207:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:270:56: This simp argument is unused:
+    Matrix.one_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [transform, evalV, eval, Matrix.transpose_apply,̵ ̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:298:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:425:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:533:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:583:8: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:583:8: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:726:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:965:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1013:8: Try `simp at this` instead of `simpa using this`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1019:8: Try `simp at this` instead of `simpa using this`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1025:6: Try `simp at this` instead of `simpa using this`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1039:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1067:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1091:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1104:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1105:28: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1106:39: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1112:49: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1113:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1114:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1239:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1239:45: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1242:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1242:45: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1245:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1245:45: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1283:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1383:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1514:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1524:4: This simp argument is unused:
+    Pi.single_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵e̵v̵a̵l̵V̵,̵e̵v̵a̵l̵,̵h̵e̵s̵s̵i̵a̵n̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵V̵e̵c̵,̵d̵o̵t̵P̵r̵o̵d̵u̵c̵t̵,̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵s̵u̵c̵c̵,̵
+    ̵ ̵ ̵ ̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵[̲e̲v̲a̲l̲V̲,̲ ̲e̲v̲a̲l̲,̲ ̲h̲e̲s̲s̲i̲a̲n̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲V̲e̲c̲,̲ ̲d̲o̲t̲P̲r̲o̲d̲u̲c̲t̲,̲ ̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲s̲u̲c̲c̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1547:12: This simp argument is unused:
+    Pi.single_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵w̵,̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵h̵i̵j̵]̵[̲w̲,̲ ̲h̲i̲j̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1641:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1659:10: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1659:57: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:1659:57: 'omega' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:1688:46: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1688:68: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1697:46: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1697:68: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1709:46: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1709:68: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1723:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:1769:58: `pow_eq_zero` has been deprecated: Use `eq_zero_of_pow_eq_zero` instead
+  warning: run/Solution.lean:1887:38: This simp argument is unused:
+    rat
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵a̵u̵x̵1̵,̵r̵a̵t̵,̵m̵a̵p̵]̵[̲a̲u̲x̲1̲,̲ ̲m̲a̲p̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1887:42: This simp argument is unused:
+    map
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵a̵u̵x̵1̵,̵r̵a̵t̵,̵m̵a̵p̵]̵[̲a̲u̲x̲1̲,̲ ̲r̲a̲t̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1910:38: This simp argument is unused:
+    rat
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵a̵u̵x̵3̵,̵r̵a̵t̵,̵m̵a̵p̵]̵[̲a̲u̲x̲3̲,̲ ̲m̲a̲p̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1910:42: This simp argument is unused:
+    map
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵a̵u̵x̵3̵,̵r̵a̵t̵,̵m̵a̵p̵]̵[̲a̲u̲x̲3̲,̲ ̲r̲a̲t̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1931:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2059:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2095:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2116:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2123:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2131:20: unused variable `hr7`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:2147:90: This simp argument is unused:
+    aux3
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1, a̵u̵x̵3̵,̵ ̵m, evalV,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2147:126: This simp argument is unused:
+    Nat.cast_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1, aux3, m,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲evalV, eval, N̵a̵t̵.̵c̵a̵s̵t̵_̵m̵u̵l̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵N̲a̲t̲.̲c̲a̲s̲t̲_̲m̲u̲l̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2166:103: This simp argument is unused:
+    aux3
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1,
+    ̲ a̵u̵x̵3̵,̵  ̲ ̲ ̲ ̲ ̲ ̲m, evalV, eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2166:139: This simp argument is unused:
+    Nat.cast_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲aux3, m, evalV, eval, N̵a̵t̵.̵c̵a̵s̵t̵_̵m̵u̵l̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵N̲a̲t̲.̲c̲a̲s̲t̲_̲m̲u̲l̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2174:104: This simp argument is unused:
+    aux3
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1,
+    ̲ a̵u̵x̵3̵,̵  ̲ ̲ ̲ ̲ ̲ ̲m, evalV, eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2174:140: This simp argument is unused:
+    Nat.cast_ofNat
+  
+  Hint: Omit it from the simp argument list.
+    simp only [aux1,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲aux3, m, evalV, eval, N̵a̵t̵.̵c̵a̵s̵t̵_̵m̵u̵l̵,̵ ̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵f̵N̵a̵t̵]̵N̲a̲t̲.̲c̲a̲s̲t̲_̲m̲u̲l̲]̲
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2147:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2147:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2147:69: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2147:142: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2166:50: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2166:70: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2166:82: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2166:155: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2174:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2174:71: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2174:83: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2174:156: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2183:20: unused variable `hr7`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:2194:84: This simp argument is unused:
+    aux1
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵a̵u̵x̵1̵,̵ ̵a̵u̵x̵3̵,̵[̲a̲u̲x̲3̲,̲ m, evalV,
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2221:102: This simp argument is unused:
+    aux1
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵a̵u̵x̵1̵,̵ ̵a̵u̵x̵3̵,̵[̲a̲u̲x̲3̲,̲
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲m, evalV, eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2228:98: This simp argument is unused:
+    aux1
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵a̵u̵x̵1̵,̵ ̵a̵u̵x̵3̵,̵[̲a̲u̲x̲3̲,̲
+    ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲m, evalV, eval, Nat.cast_mul, Nat.cast_ofNat]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2194:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2194:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2194:69: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2194:142: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2221:55: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2221:75: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2221:87: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2221:160: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2228:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2228:71: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2228:83: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2228:156: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2241:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2321:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2391:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2437:34: This simp argument is unused:
+    zero_sub
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵h̵7̵,̵z̵e̵r̵o̵_̵m̵u̵l̵,̵a̵d̵d̵_̵z̵e̵r̵o̵,̵z̵e̵r̵o̵_̵s̵u̵b̵]̵[̲h̲7̲,̲ ̲z̲e̲r̲o̲_̲m̲u̲l̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲ at hms hns
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2515:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2551:55: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2600:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2654:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:2733:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:8186:0: This file has more than one module docstring (`/-! ... -/`). Only the first one is treated as module documentation; convert additional ones to regular comments (`/- ... -/`).
+  
+  Note: This linter can be disabled with `set_option linter.style.moduleDocstring false`
+  warning: run/Solution.lean:8224:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, a306439_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

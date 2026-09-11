@@ -1,0 +1,640 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.2s)
+  warning: run/Challenge.lean:61:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:63:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_92243_conjecture.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Solution
+  ⚠ [8000/8001] Built Solution (72s)
+  warning: run/Solution.lean:17:72: unused variable `hC`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:128:52: unused variable `hA`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:333:11: `ZMod.eq_iff_modEq_nat` has been deprecated: Use `ZMod.natCast_eq_natCast_iff` instead
+  
+  Note: The updated constant has a different type:
+    ∀ (a b c : ℕ), ↑a = ↑b ↔ a ≡ b [MOD c]
+  instead of
+    ∀ (n : ℕ) {a b : ℕ}, ↑a = ↑b ↔ a ≡ b [MOD n]
+  warning: run/Solution.lean:339:4: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:351:16: `ZMod.eq_iff_modEq_nat` has been deprecated: Use `ZMod.natCast_eq_natCast_iff` instead
+  
+  Note: The updated constant has a different type:
+    ∀ (a b c : ℕ), ↑a = ↑b ↔ a ≡ b [MOD c]
+  instead of
+    ∀ (n : ℕ) {a b : ℕ}, ↑a = ↑b ↔ a ≡ b [MOD n]
+  warning: run/Solution.lean:354:16: `ZMod.eq_iff_modEq_nat` has been deprecated: Use `ZMod.natCast_eq_natCast_iff` instead
+  
+  Note: The updated constant has a different type:
+    ∀ (a b c : ℕ), ↑a = ↑b ↔ a ≡ b [MOD c]
+  instead of
+    ∀ (n : ℕ) {a b : ℕ}, ↑a = ↑b ↔ a ≡ b [MOD n]
+  warning: run/Solution.lean:579:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:824:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1052:59: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Pi.sub_apply, sub_self, sub_zero, zero_mul, m̵u̵l̵_̵zero,̵ ̵z̵e̵r̵o̵_sub]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1057:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1230:50: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1230:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1244:18: unused variable `hf`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1359:6: Try `simp at ha` instead of `simpa using ha`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:1546:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1546:49: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:1935:60: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hχ, if_true, if_false,̵ ̵m̵u̵l̵_̵z̵e̵r̵o̵] at hhh ⊢
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:1968:34: unused variable `hδ`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:1977:39: unused variable `hδ`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:2002:68: This simp argument is unused:
+    add_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [c, Complex.add_im, Complex.ofReal_im, Complex.mul_im, Complex.I_re,
+    ̵  ̵ ̵ ̵ ̵ ̵zero_mul,
+    ̲  ̲ ̲ ̲ ̲ ̲Complex.I_im, Complex.ofReal_re, one_mul, zero_add,̵ ̵a̵d̵d̵_̵z̵e̵r̵o̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:2437:4: Try `simp at hprod` instead of `simpa using hprod`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:2439:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:2509:2: Try `simp at hnorm` instead of `simpa using hnorm`
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:2701:79: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:3134:32: This simp argument is unused:
+    one_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Complex.add_im, Complex.ofReal_im, Complex.mul_im, Complex.ofReal_re,
+    ̵  ̵ ̵ ̵Complex.I_re,
+    ̲  ̲ ̲ ̲Complex.I_im, o̵n̵e̵_̵mul,̵ ̵m̵u̵l̵_one, zero_mul, mul_zero, add_zero, zero_add, Complex.one_im] at h₁ h₂
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3134:50: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Complex.add_im, Complex.ofReal_im, Complex.mul_im, Complex.ofReal_re,
+    ̵  ̵ ̵ ̵Complex.I_re,
+    ̲  ̲ ̲ ̲Complex.I_im, one_mul, mul_one, z̵e̵r̵o̵_̵mul,̵ ̵m̵u̵l̵_zero, add_zero, zero_add, Complex.one_im] at h₁ h₂
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3159:8: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:3218:28: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Complex.add_re, Complex.ofReal_re, Complex.mul_re, Complex.ofReal_im, Complex.I_re,
+        Complex.I_im, mul_zero, z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵sub_zero, add_zero, Complex.add_im, Complex.mul_im,
+    ̵  ̵ ̵ ̵mul_one, zero_add,
+    ̲  ̲ ̲ ̲smul_eq_mul, Complex.neg_re, Complex.neg_im, neg_zero, Complex.ofReal_neg] at hh
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:3535:33: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:3621:72: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:3866:45: unused variable `hC`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:4173:68: 'norm_num at hr' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:4420:44: This simp argument is unused:
+    zero_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [mem_reProdIm, Complex.add_re, Complex.ofReal_re, Complex.mul_re, Complex.ofReal_im,
+          Complex.I_re, Complex.I_im, mul_zero, z̵e̵r̵o̵_̵m̵u̵l̵,̵ ̵sub_zero, add_zero, Complex.add_im, ̲C̲o̲m̲p̲l̲e̲x̲.̲m̲u̲l̲_̲i̲m̲,̲
+          C̵o̵mp̵l̵e̵x̵.̵m̵ul_i̵m̵,̵ ̵m̵u̵l̵_̵one, zero_add, uIcc_of_le hab, uIcc_of_le (by linarith : -T ̲≤ ̲T)]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:4636:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5093:49: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5093:61: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5313:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5342:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5474:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.prefixBilinear_one`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:5483:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.prefixBilinear_split`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:5503:63: This simp argument is unused:
+    zero_add
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hm, if_false, hleft, if_true, hright, zero_mul, z̵e̵r̵o̵_̵a̵d̵d̵,̵ ̵mul_zero, add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:5503:73: This simp argument is unused:
+    mul_zero
+  
+  Hint: Omit it from the simp argument list.
+    simp only [hm, if_false, hleft, if_true, hright, zero_mul, zero_add, m̵u̵l̵_̵z̵e̵r̵o̵,̵ ̵add_zero]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:5679:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:5679:35: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  info: run/Solution.lean:5887:2: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: run/Solution.lean:6553:42: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:6577:83: This simp argument is unused:
+    Complex.ofReal_div
+  
+  Hint: Omit it from the simp argument list.
+    simp only [progressionError, ̲progressionSum, ̲Complex.ofReal_sub, ̲Complex.ofReal_sum,C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵d̵i̵v̵,̵
+        Complex.ofReal_natCast, ̲Complex.ofReal_mul, ̲Complex.ofReal_inv, ̲div_eq_mul_inv, ̲mul_comm]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:6851:5: unused variable `hC`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:7255:46: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:7436:37: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:7424:46: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:7436:37: 'positivity' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:7655:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:7778:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:7925:36: This simp argument is unused:
+    Nat.add_sub_assoc
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵N̵a̵t̵.̵a̵d̵d̵_̵s̵u̵b̵_̵a̵s̵s̵o̵c̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:7952:21: This simp argument is unused:
+    Nat.lt_succ_iff
+  
+  Hint: Omit it from the simp argument list.
+    simp [sievePrimes,̵ ̵N̵a̵t̵.̵l̵t̵_̵s̵u̵c̵c̵_̵i̵f̵f̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:8351:35: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: run/Solution.lean:8351:35: 'ring' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:8464:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.centeredFactor_eq`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8518:18: This simp argument is unused:
+    abs_of_nonneg (sq_nonneg (q⁻¹))
+  
+  Hint: Omit it from the simp argument list.
+    simp ̵[̵a̵b̵s̵_̵o̵f̵_̵n̵o̵n̵n̵e̵g̵ ̵(̵s̵q̵_̵n̵o̵n̵n̵e̵g̵ ̵(̵q̵⁻̵¹̵)̵)̵]̵
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:8540:41: This simp argument is unused:
+    zero_sub
+  
+  Hint: Omit it from the simp argument list.
+    simp only [sub_self, ̲sub_zero,z̵e̵r̵o̵_̵s̵u̵b̵,̵ ̲abs_zero, ̲abs_neg,
+    ̵  ̵ ̵ ̵sub_sub_cancel_left,
+    ̲ ̲ ̲ ̲ ̲abs_of_nonneg (mul_nonneg hi hj),
+    ̵  ̵ ̵ ̵abs_of_nonneg (mul_nonneg (sq_nonneg (q⁻¹)) hj)]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:8578:44: This simp argument is unused:
+    he
+  
+  Hint: Omit it from the simp argument list.
+    simp only [idealKernelTwo, if_neg hi, h̵e̵,̵ ̵Option.elim_some]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:8708:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateOption_empty`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8715:2: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: run/Solution.lean:8710:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateOption_singleton`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8717:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.encodeState_card`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8782:12: This simp argument is unused:
+    Finset.erase_eq_of_notMem h
+  
+  Hint: Omit it from the simp argument list.
+    simp [h,̵F̵i̵n̵s̵e̵t̵.̵e̵r̵a̵s̵e̵_̵e̵q̵_̵o̵f̵_̵n̵o̵t̵M̵e̵m̵ ̵h̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:8833:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.all_states_weight_sum`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8842:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.erase_eq_iff`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8901:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.mem_matrixCoords`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8905:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.mem_coordsMatrix`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:8928:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.subsetWeight_matrixCoords`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9311:41: unused variable `s`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:9401:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:9401:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:9401:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:9420:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:9445:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.encodeState_map`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9488:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrix_map_bijective`:
+    [DecidableEq ι]
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9560:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateCoefficient_empty`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9563:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateCoefficient_singleton`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9567:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateCoefficient_support`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9576:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateCoefficient_abs_le`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9612:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateFactor_encode`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9616:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateIndicator_empty`:
+    [Fintype ι]
+    [DecidableEq ι]
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9617:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateIndicator_singleton`:
+    [Fintype ι]
+    [DecidableEq ι]
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9620:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateIndicator_nonneg`:
+    [Fintype ι]
+    [DecidableEq ι]
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9624:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateIndicator_le_one`:
+    [Fintype ι]
+    [DecidableEq ι]
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9635:80: This simp argument is unused:
+    mul_ite
+  
+  Hint: Omit it from the simp argument list.
+    simp [stateFactor, ̲stateOption_empty, ̲centeredFactor, ̲stateCoefficient_empty,m̵u̵l̵_̵i̵t̵e̵,̵
+    ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲stateIndicator_empty]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:9643:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.mean_stateFactor_mul`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9651:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.conditionalMean_stateFactor_mul`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9744:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.productPolynomial_sq`:
+    [(p : π) → Fintype (α p)]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [(p : π) → Fintype (α p)] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9786:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.stateIndicator_eq_ite`:
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9856:59: This simp argument is unused:
+    and_true
+  
+  Hint: Omit it from the simp argument list.
+    simp only [stateIndicator_singleton, ̲Finset.sum_ite_eq', ̲Finset.mem_univ, ̲if_true,
+            Finset.card_singleton, ̲le_refl, ̲Finset.mem_singleton,a̵n̵d̵_̵ ̲true,̵t̵r̵u̵e̵_and, ̲hi.eq_iff]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:9908:36: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:9977:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixProduct_pos`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9982:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixProduct_mono`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:9988:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.primeSetProduct_matrixCoords`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10080:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixModulus_pos`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10087:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixModulus_le_product`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10112:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixModulus_comm`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10194:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixLocalModulus_coprime`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10220:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.prod_indicatorKernelOne`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10292:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixCondition_union`:
+    [Fintype ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10333:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixModulus_coprime`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10333:29: unused variable `hP`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:10417:40: This simp argument is unused:
+    ← Finset.sum_filter
+  
+  Hint: Omit it from the simp argument list.
+    simp [← ZMod.natCast_eq_natCast_iff,̵←̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵f̵i̵l̵t̵e̵r̵]
+  
+  Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:10538:8: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:10714:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.matrixIndicator_pair`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:10898:2: 'change (a % q).gcd q = 1 ↔ (b % q).gcd q = 1' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: run/Solution.lean:10941:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.shiftedResidues_condition`:
+    [Fintype ι]
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype ι] [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:11245:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11245:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11245:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11264:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11613:22: This simp argument is unused:
+    one_mul
+  
+  Hint: Omit it from the simp argument list.
+    simp only [̵p̵o̵w̵_̵z̵e̵r̵o̵,̵o̵n̵e̵_̵m̵u̵l̵,̵m̵u̵l̵_̵o̵n̵e̵,̵p̵o̵w̵_̵o̵n̵e̵]̵[̲p̲o̲w̲_̲z̲e̲r̲o̲,̲ ̲m̲u̲l̲_̲o̲n̲e̲,̲ ̲p̲o̲w̲_̲o̲n̲e̲]̲ at hpow
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: run/Solution.lean:11716:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.shiftedPrimeCount_le`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:11718:0: automatically included section variable(s) unused in theorem `MaynardDevelopment.vonMangoldt_sum_primeCount_bound`:
+    [DecidableEq ι]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq ι] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: run/Solution.lean:11843:63: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11874:66: unused variable `hZ`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Solution.lean:11996:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11996:39: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:11996:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12002:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  warning: run/Solution.lean:12465:8: declaration uses 'sorry'
+  info: run/Solution.lean:12470:0: 'oeis_92243_conjecture.disproof' depends on axioms: [propext, Classical.choice, Quot.sound]
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_92243_conjecture.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Solution
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

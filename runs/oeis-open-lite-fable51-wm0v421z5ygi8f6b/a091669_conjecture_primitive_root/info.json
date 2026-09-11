@@ -1,0 +1,20 @@
+{
+  "id": "a091669_conjecture_primitive_root",
+  "epoch": 1,
+  "uuid": "2AFBokrgZLfv4j45iPRNwH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 38,
+      "output_tokens": 49672,
+      "total_tokens": 830253,
+      "input_tokens_cache_write": 101602,
+      "input_tokens_cache_read": 678941,
+      "reasoning_tokens": null,
+      "total_cost": 3.923740249999999
+    }
+  },
+  "oeis_id": "A091669"
+}

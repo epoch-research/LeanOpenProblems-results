@@ -1,0 +1,20 @@
+{
+  "id": "oeis_190363_conjecture_0",
+  "epoch": 1,
+  "uuid": "e2bqwizTpSFLt6xRPLnvrP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 266113,
+      "output_tokens": 24668,
+      "total_tokens": 740242,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 449461,
+      "reasoning_tokens": 5531,
+      "total_cost": 0.9181341999999999
+    }
+  },
+  "oeis_id": "A190363"
+}

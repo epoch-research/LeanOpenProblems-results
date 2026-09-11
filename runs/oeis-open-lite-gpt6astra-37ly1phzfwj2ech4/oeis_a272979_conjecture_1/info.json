@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a272979_conjecture_1",
+  "epoch": 1,
+  "uuid": "k5K92QhSzAhyjAC4NtAbN2",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6-astra": {
+      "input_tokens": 45,
+      "output_tokens": 2503,
+      "total_tokens": 118984,
+      "input_tokens_cache_write": 15610,
+      "input_tokens_cache_read": 100826,
+      "reasoning_tokens": 730,
+      "total_cost": 0.421551
+    }
+  },
+  "oeis_id": "A272979"
+}

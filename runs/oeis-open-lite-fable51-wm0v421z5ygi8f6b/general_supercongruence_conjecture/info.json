@@ -1,0 +1,20 @@
+{
+  "id": "general_supercongruence_conjecture",
+  "epoch": 1,
+  "uuid": "9jjoZnWf6U6nbbPyNZkrpm",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-fable-5-1": {
+      "input_tokens": 324,
+      "output_tokens": 459282,
+      "total_tokens": 28232766,
+      "input_tokens_cache_write": 1102156,
+      "input_tokens_cache_read": 26671004,
+      "reasoning_tokens": null,
+      "total_cost": 43.41204099999999
+    }
+  },
+  "oeis_id": "A333042"
+}

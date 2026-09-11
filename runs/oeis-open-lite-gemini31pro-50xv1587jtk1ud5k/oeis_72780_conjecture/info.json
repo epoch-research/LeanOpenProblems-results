@@ -1,0 +1,20 @@
+{
+  "id": "oeis_72780_conjecture",
+  "epoch": 1,
+  "uuid": "6UrDndb2kaXZ4GQoTouhFW",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1822936,
+      "output_tokens": 100340,
+      "total_tokens": 13450100,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 11526824,
+      "reasoning_tokens": 32106,
+      "total_cost": 7.155316799999996
+    }
+  },
+  "oeis_id": "A072780"
+}
