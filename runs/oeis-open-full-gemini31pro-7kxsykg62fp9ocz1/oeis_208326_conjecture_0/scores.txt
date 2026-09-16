@@ -1,0 +1,18 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:54:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:64:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_208326_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8000] Built Submission.Spec (8.7s)
+  warning: Submission/Spec.lean:1052:8: declaration uses 'sorry'
+  Build completed successfully (8000 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_208326_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

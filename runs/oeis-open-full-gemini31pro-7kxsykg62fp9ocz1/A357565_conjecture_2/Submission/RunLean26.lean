@@ -1,0 +1,5 @@
+import Submission.Spec
+open Finset Nat
+
+#eval A357565 (3 ^ 3) % (3 ^ 12) == A357565 (3 ^ 2) % (3 ^ 12)
+#eval A357565 (3 ^ 4) % (3 ^ 15) == A357565 (3 ^ 3) % (3 ^ 15)

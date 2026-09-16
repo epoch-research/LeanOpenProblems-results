@@ -1,0 +1,30 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:62:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:66:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333096_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8000] Built Submission.Spec (3.7s)
+  warning: Submission/Spec.lean:33:0: using 'exit' to interrupt Lean
+  Build completed successfully (8000 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333096_supercongruence_conjecture, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  
+  PANIC at dumpConstant Export:237:48: Constant oeis_333096_supercongruence_conjecture not found in environment.
+  backtrace:
+  lean4export(+0x9bee01e) [0x55af44e0801e]
+  lean4export(lean_panic_fn+0x1c) [0x55af44e084ac]
+  lean4export(lp_lean4export_panic___at___00dumpConstant_spec__2+0x296) [0x55af3d81fd76]
+  lean4export(lp_lean4export_List_forIn_x27_loop___at___00main_spec__3___redArg+0xe7) [0x55af3d7c3ee7]
+  lean4export(lp_lean4export_main___lam__0+0x153) [0x55af3d7c4b63]
+  lean4export(lean_apply_3+0x970) [0x55af44e17950]
+  lean4export(lp_lean4export_M_run___redArg+0x1e) [0x55af3d7c67de]
+  lean4export(+0x25abf84) [0x55af3d7c5f84]
+  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x7fe19261024a]
+  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x7fe192610305]
+  lean4export(_start+0x2a) [0x55af3d7c3d6a]
+  uncaught exception: Child exited with 134
+

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_282779_conjecture_0",
+  "epoch": 1,
+  "uuid": "bPzMowJpS6TKJSY2tQwRaE",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 835409,
+      "output_tokens": 59643,
+      "total_tokens": 7243762,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 6348710,
+      "reasoning_tokens": 29238,
+      "total_cost": 3.6562759999999987
+    }
+  },
+  "oeis_id": "A282779"
+}

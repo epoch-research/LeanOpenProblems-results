@@ -1,0 +1,1994 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:22:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:28:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_248802_conjecture_4, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8002] Built Submission.Util (4.4s)
+  warning: Submission/Util.lean:232:25: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Util.lean:232:63: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Util.lean:232:101: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  ⚠ [8001/8002] Built Submission.Primes (101s)
+  warning: Submission/Primes.lean:7:25: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:7:63: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:7:101: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:20:25: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:20:63: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:20:101: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:33:25: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:33:63: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:33:101: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:46:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:46:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:46:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:59:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:59:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:59:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:72:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:72:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:72:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:85:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:85:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:85:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:98:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:98:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:98:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:111:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:111:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:111:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:124:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:124:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:124:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:137:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:137:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:137:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:150:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:150:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:150:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:163:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:163:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:163:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:176:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:176:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:176:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:189:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:189:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:189:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:202:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:202:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:202:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:215:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:215:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:215:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:228:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:228:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:244:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:244:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:244:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:257:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:257:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:257:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:270:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:270:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:270:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:283:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:283:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:283:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:296:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:296:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:296:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:309:26: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:309:64: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:309:102: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:322:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:322:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:322:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:335:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:335:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:335:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:348:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:348:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:348:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:361:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:361:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:361:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:374:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:374:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:374:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:387:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:387:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:387:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:400:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:400:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:400:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:413:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:413:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:413:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:426:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:426:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:426:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:439:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:439:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:439:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:452:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:452:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:452:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:465:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:465:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:465:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:478:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:478:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:478:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:491:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:491:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:491:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:504:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:504:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:504:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:517:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:517:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:517:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:530:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:530:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:530:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:543:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:543:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:543:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:556:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:556:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:556:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:569:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:569:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:569:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:582:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:582:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:582:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:595:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:595:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:595:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:608:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:608:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:608:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:621:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:621:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:621:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:634:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:634:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:634:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:647:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:647:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:647:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:660:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:660:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:660:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:673:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:673:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:673:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:686:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:686:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:686:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:699:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:699:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:699:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:712:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:712:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:712:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:725:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:725:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:725:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:738:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:756:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:756:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:756:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:769:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:769:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:769:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:782:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:782:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:782:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:795:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:795:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:795:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:808:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:808:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:808:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:821:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:821:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:821:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:834:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:834:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:834:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:847:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:847:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:847:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:860:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:860:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:860:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:873:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:873:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:873:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:886:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:886:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:886:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:899:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:899:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:899:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:912:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:912:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:912:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:925:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:925:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:925:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:938:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:938:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:938:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:951:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:951:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:951:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:964:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:964:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:964:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:977:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:977:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:977:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:990:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:990:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:990:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1003:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1003:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1003:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1016:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1016:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1016:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1029:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1029:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1029:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1042:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1042:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1042:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1055:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1055:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1055:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1068:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1068:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1068:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1081:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1081:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1081:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1094:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1094:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1094:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1107:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1107:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1107:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1120:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1120:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1120:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1133:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1133:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1133:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1146:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1146:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1146:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1159:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1159:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1159:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1172:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1172:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1172:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1185:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1185:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1185:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1198:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1198:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1198:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1211:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1211:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1211:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1224:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1224:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1224:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1237:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1237:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1237:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1250:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1250:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1250:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1263:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1263:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1263:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1276:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1294:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1294:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1294:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1307:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1307:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1307:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1320:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1320:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1320:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1333:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1333:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1333:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1346:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1346:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1346:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1359:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1359:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1359:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1372:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1372:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1372:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1385:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1385:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1385:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1398:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1398:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1398:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1411:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1411:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1411:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1424:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1424:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1424:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1437:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1437:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1437:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1450:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1450:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1450:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1463:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1463:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1463:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1476:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1476:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1476:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1489:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1489:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1489:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1502:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1502:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1502:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1515:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1515:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1515:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1528:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1528:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1528:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1541:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1541:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1541:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1554:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1554:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1554:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1567:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1567:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1567:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1580:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1580:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1580:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1593:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1593:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1593:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1606:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1606:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1606:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1619:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1619:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1619:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1632:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1632:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1632:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1645:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1645:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1645:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1658:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1658:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1658:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1671:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1671:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1671:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1684:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1684:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1684:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1697:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1697:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1697:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1710:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1710:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1710:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1723:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1723:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1723:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1736:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1736:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1736:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1749:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1749:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1749:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1762:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1762:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1762:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1775:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1775:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1775:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1788:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1788:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1788:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1801:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1801:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1801:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1814:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1814:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1814:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1827:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1827:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1827:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1840:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1840:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1840:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1853:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1853:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1853:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1866:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1866:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1866:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1879:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1879:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1879:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1892:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1892:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1892:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1905:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1905:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1905:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1918:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1918:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1918:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1931:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1931:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1931:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1944:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1944:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1944:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1957:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1957:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1957:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1970:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1970:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1970:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1983:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1983:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1983:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1996:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1996:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:1996:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2009:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2009:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2009:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2022:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2022:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2022:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2035:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2035:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2035:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2048:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2048:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2048:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2061:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2061:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2061:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2074:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2074:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2074:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2087:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2087:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2087:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2100:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2100:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2100:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2113:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2113:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2113:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2126:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2126:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2126:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2139:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2139:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2139:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2152:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2152:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2152:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2165:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2165:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2165:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2178:27: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2178:65: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2178:103: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2191:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2191:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2191:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2204:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2204:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2204:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2217:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2217:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2217:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2230:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2230:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2230:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2243:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2243:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2243:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2256:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2256:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2256:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2269:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2269:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2269:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2282:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2282:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2282:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2295:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2295:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2295:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2308:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2308:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2308:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2321:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2321:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2321:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2334:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2334:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2334:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2347:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2347:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2347:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2360:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2360:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2360:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2373:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2373:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2373:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2386:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2386:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2386:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2399:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2399:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2399:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2412:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2412:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2412:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2425:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2425:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2425:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2438:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2438:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2438:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2451:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2451:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2451:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2464:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2464:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2464:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2477:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2477:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2477:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2490:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2490:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2490:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2503:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2503:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2503:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2516:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2516:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2516:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2529:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2529:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2529:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2542:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2542:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2542:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2555:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2555:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2555:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2568:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2568:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2568:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2581:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2581:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2581:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2594:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2594:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2594:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2607:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2607:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2607:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2620:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2620:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2620:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2633:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2633:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2633:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2646:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2646:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2646:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2659:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2659:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2659:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2672:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2672:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2672:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2685:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2685:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2685:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2698:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2698:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2698:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2711:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2711:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2711:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2724:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2724:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2724:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2737:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2737:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2737:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2750:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2750:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2750:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2763:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2763:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2763:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2776:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2776:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2776:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2789:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2789:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2789:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2802:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2802:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2802:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2815:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2815:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2815:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2828:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2828:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2828:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2841:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2841:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2841:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2854:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2854:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2854:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2867:28: unused variable `hC1`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2867:66: unused variable `hC2`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Primes.lean:2867:104: unused variable `hC3`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  ⚠ [8002/8002] Built Submission.Spec (52s)
+  warning: Submission/Spec.lean:1706:8: declaration uses 'sorry'
+  Build completed successfully (8002 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_248802_conjecture_4, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_256012_conjecture_0",
+  "epoch": 1,
+  "uuid": "a6jrZXC5rNH5LR82E5S2xH",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 376408,
+      "output_tokens": 22375,
+      "total_tokens": 1506013,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1107230,
+      "reasoning_tokens": 7772,
+      "total_cost": 1.2427620000000004
+    }
+  },
+  "oeis_id": "A256012"
+}

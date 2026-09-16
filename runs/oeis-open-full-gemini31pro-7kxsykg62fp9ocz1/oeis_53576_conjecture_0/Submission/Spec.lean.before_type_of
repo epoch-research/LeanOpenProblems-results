@@ -1,0 +1,601 @@
+import FormalConjectures.Util.ProblemImports
+open Nat Set Finset Classical
+
+noncomputable def a (n : ℕ) : ℕ :=
+  sInf { m : ℕ | m > 0 ∧ 2 ^ n ∣ totient m }
+
+lemma a_le (N x : ℕ) (h : x > 0 ∧ 2^N ∣ x.totient) : a N ≤ x := by
+  apply Nat.sInf_le
+  exact h
+
+lemma a_mem (N : ℕ) : a N ∈ { m : ℕ | m > 0 ∧ 2 ^ N ∣ totient m } := by
+  apply Nat.sInf_mem
+  use 2^(N+1)
+  dsimp
+  constructor
+  · positivity
+  · have ht : totient (2^(N+1)) = 2^N := by
+      have : 2 - 1 = 1 := rfl
+      rw [totient_prime_pow Nat.prime_two (by omega)]
+      rw [this, mul_one]
+      have h1 : N + 1 - 1 = N := Nat.add_sub_cancel N 1
+      rw [h1]
+    rw [ht]
+
+lemma le_a (N x : ℕ) (h : ∀ m > 0, 2^N ∣ m.totient → x ≤ m) : x ≤ a N := by
+  have hm := a_mem N
+  exact h (a N) hm.1 hm.2
+
+lemma p_dvd_totient_of_sq_dvd {m p : ℕ} (hp : p.Prime) (hpm : p^2 ∣ m) : p ∣ m.totient := by
+  by_cases hm : m = 0
+  · subst hm; rw [totient_zero]; exact dvd_zero _
+  rw [Nat.totient_eq_prod_factorization hm]
+  have hpm1 : p ∣ m := dvd_trans (dvd_pow_self _ (by decide)) hpm
+  have hp_mem : p ∈ m.primeFactors := Nat.mem_primeFactors.mpr ⟨hp, hpm1, hm⟩
+  have h_fact : m.factorization p ≥ 2 := (Nat.Prime.pow_dvd_iff_le_factorization hp hm).mp hpm
+  have h_pow_dvd : p ∣ p ^ (m.factorization p - 1) := by apply dvd_pow_self _; omega
+  have h_term_dvd : p ^ (m.factorization p - 1) ∣ p ^ (m.factorization p - 1) * (p - 1) := dvd_mul_right _ _
+  have h_prod_dvd : p ^ (m.factorization p - 1) * (p - 1) ∣ ∏ i ∈ m.primeFactors, i ^ (m.factorization i - 1) * (i - 1) := Finset.dvd_prod_of_mem _ hp_mem
+  exact dvd_trans h_pow_dvd (dvd_trans h_term_dvd h_prod_dvd)
+
+lemma p_sq_not_dvd {m p N : ℕ} (hp : p.Prime) (hp2 : p > 2) (ht : m.totient = 2^N) :
+    ¬ (p^2 ∣ m) := by
+  intro h
+  have h_dvd : p ∣ m.totient := p_dvd_totient_of_sq_dvd hp h
+  rw [ht] at h_dvd
+  have h_p_pow := (Nat.dvd_prime_pow Nat.prime_two).mp h_dvd
+  rcases h_p_pow with ⟨c, _, hc⟩
+  have h_eq : p = 2^c := hc
+  have h_c_pos : c > 0 := by
+    by_cases hc0 : c = 0
+    · subst hc0; norm_num at h_eq; omega
+    · omega
+  by_cases hc1 : c = 1
+  · subst hc1; norm_num at h_eq; omega
+  · have hc_ge_2 : c ≥ 2 := by omega
+    have h_not_prime : ¬ (2^c).Prime := by
+      intro hp_prime
+      have h2_dvd : 2 ∣ 2^c := dvd_pow_self 2 (by omega)
+      have h_eq_2 := hp_prime.eq_one_or_self_of_dvd 2 h2_dvd
+      rcases h_eq_2 with h1 | h2
+      · norm_num at h1
+      · have : 2^c ≥ 2^2 := Nat.pow_le_pow_right (by decide) hc_ge_2
+        have h_2_2 : 2^2 = 4 := by norm_num
+        omega
+    rw [←h_eq] at h_not_prime
+    exact h_not_prime hp
+
+lemma fermat_prime_of_dvd {m p N : ℕ} (hp : p.Prime) (hp2 : p > 2) (hpm : p ∣ m) (ht : m.totient = 2^N) :
+    ∃ c, p = 2^(2^c) + 1 := by
+  have ht_dvd : p - 1 ∣ 2^N := by
+    have h_p_sub_1_dvd_totient : p - 1 ∣ m.totient := by
+      by_cases hm : m = 0
+      · subst hm; rw [totient_zero]; exact dvd_zero _
+      rw [Nat.totient_eq_prod_factorization hm]
+      have hp_mem : p ∈ m.primeFactors := Nat.mem_primeFactors.mpr ⟨hp, hpm, hm⟩
+      have h1 : p ^ (m.factorization p - 1) * (p - 1) ∣ ∏ i ∈ m.primeFactors, i ^ (m.factorization i - 1) * (i - 1) :=
+        Finset.dvd_prod_of_mem _ hp_mem
+      have h2 : p - 1 ∣ p ^ (m.factorization p - 1) * (p - 1) := dvd_mul_left _ _
+      exact dvd_trans h2 h1
+    rw [ht] at h_p_sub_1_dvd_totient
+    exact h_p_sub_1_dvd_totient
+  have h_p_sub_1_pow := (Nat.dvd_prime_pow Nat.prime_two).mp ht_dvd
+  rcases h_p_sub_1_pow with ⟨c, _, hc⟩
+  have hp_eq : p = 2^c + 1 := by omega
+  have h_c_pos : c > 0 := by
+    by_cases hc0 : c = 0
+    · subst hc0; norm_num at hp_eq; omega
+    · omega
+  have hP : (2^c + 1).Prime := by rwa [←hp_eq]
+  have h_c_pow := Nat.pow_of_pow_add_prime (a := 2) (n := c) (by norm_num) (by omega) hP
+  rcases h_c_pow with ⟨k, hk⟩
+  use k
+  rw [hk] at hp_eq
+  exact hp_eq
+
+lemma sum_two_pow_le (S : Finset ℕ) (m : ℕ) (h : ∀ x ∈ S, x ≤ m) :
+    ∑ x ∈ S, 2^x ≤ 2^(m+1) - 1 := by
+  induction' m with k ih generalizing S
+  · have h0 : S ⊆ {0} := by
+      intro x hx; simp; exact Nat.eq_zero_of_le_zero (h x hx)
+    have : ∑ x ∈ S, 2^x ≤ ∑ x ∈ ({0}:Finset ℕ), 2^x := Finset.sum_le_sum_of_subset_of_nonneg h0 (by intros; exact Nat.zero_le _)
+    have hs : ∑ x ∈ ({0} : Finset ℕ), 2^x = 1 := by simp
+    rw [hs] at this
+    omega
+  · have h_eq : S = (S.filter (fun x => x ≤ k)) ∪ (S.filter (fun x => x = k + 1)) := by
+      ext x
+      simp
+      constructor
+      · intro hx
+        have ht := h x hx
+        rcases lt_trichotomy x (k + 1) with hlt | heq | hgt
+        · left; exact ⟨hx, by omega⟩
+        · right; exact ⟨hx, heq⟩
+        · omega
+      · intro hx
+        rcases hx with ⟨h1, _⟩ | ⟨h1, _⟩
+        exact h1
+        exact h1
+    have h_disj : Disjoint (S.filter (fun x => x ≤ k)) (S.filter (fun x => x = k + 1)) := by
+      rw [Finset.disjoint_filter]
+      intro a ha ha2
+      omega
+    rw [h_eq, Finset.sum_union h_disj]
+    have h1 : ∑ x ∈ S.filter (fun x => x ≤ k), 2^x ≤ 2^(k+1) - 1 := by
+      apply ih
+      intro x hx
+      simp at hx
+      exact hx.2
+    have h2 : ∑ x ∈ S.filter (fun x => x = k + 1), 2^x ≤ 2^(k+1) := by
+      have : S.filter (fun x => x = k + 1) ⊆ {k + 1} := by
+        intro x hx
+        simp at hx
+        simp [hx.2]
+      have sum_le : ∑ x ∈ S.filter (fun x => x = k + 1), 2^x ≤ ∑ x ∈ ({k+1}:Finset ℕ), 2^x := Finset.sum_le_sum_of_subset_of_nonneg this (by intros; exact Nat.zero_le _)
+      have sum_eq : ∑ x ∈ ({k+1}:Finset ℕ), 2^x = 2^(k+1) := by simp
+      rw [sum_eq] at sum_le
+      exact sum_le
+    have hk1 : 2^(k+1) > 0 := by positivity
+    have hk2 : 2^(k+2) = 2^(k+1) * 2 := by ring
+    calc ∑ x ∈ filter (fun x => x ≤ k) S, 2 ^ x + ∑ x ∈ filter (fun x => x = k + 1) S, 2 ^ x
+      _ ≤ (2^(k+1) - 1) + 2^(k+1) := Nat.add_le_add h1 h2
+      _ = 2^(k+1) * 2 - 1 := by omega
+      _ = 2^(k+2) - 1 := by rw [←hk2]
+
+lemma sum_two_pow_eq (S : Finset ℕ) (N : ℕ) (h : ∑ x ∈ S, 2^x = 2^N) :
+    S = {N} := by
+  by_cases he : S = ∅
+  · subst he
+    have h_sum_empty : ∑ x ∈ (∅ : Finset ℕ), 2^x = 0 := by simp
+    rw [h_sum_empty] at h
+    have : (2:ℕ)^N > 0 := by positivity
+    omega
+  · have h_max : ∃ m ∈ S, ∀ x ∈ S, x ≤ m := ⟨S.max' (Finset.nonempty_iff_ne_empty.mpr he), Finset.max'_mem _ _, fun x hx => Finset.le_max' _ _ hx⟩
+    rcases h_max with ⟨m, hm, hle⟩
+    rcases lt_trichotomy m N with hlt | heq | hgt
+    · have : ∑ x ∈ S, 2^x ≤ 2^(m+1) - 1 := sum_two_pow_le S m hle
+      have h_pow : 2^(m+1) - 1 < 2^N := by
+        have : m + 1 ≤ N := by omega
+        have h1 : 2^(m+1) ≤ 2^N := Nat.pow_le_pow_right (by decide) this
+        have h2 : 2^(m+1) > 0 := by positivity
+        omega
+      omega
+    · subst heq
+      have h_eq : S = ({m} : Finset ℕ) ∪ (S \ {m}) := by
+        ext x
+        rw [Finset.mem_union, Finset.mem_singleton, Finset.mem_sdiff, Finset.mem_singleton]
+        constructor
+        · intro hx
+          by_cases hxm : x = m
+          · left; exact hxm
+          · right; exact ⟨hx, hxm⟩
+        · intro hx
+          rcases hx with h1 | ⟨h1, h2⟩
+          · subst h1; exact hm
+          · exact h1
+      have h_disj : Disjoint ({m}:Finset ℕ) (S \ {m}) := Finset.disjoint_sdiff
+      have h_sum : ∑ x ∈ S, 2^x = 2^m + ∑ x ∈ S \ {m}, 2^x := by
+        calc ∑ x ∈ S, 2^x = ∑ x ∈ ({m}:Finset ℕ) ∪ (S \ {m}), 2^x := by nth_rw 1 [h_eq]
+             _ = ∑ x ∈ ({m}:Finset ℕ), 2^x + ∑ x ∈ S \ {m}, 2^x := Finset.sum_union h_disj
+             _ = 2^m + ∑ x ∈ S \ {m}, 2^x := by rw [Finset.sum_singleton]
+      rw [h] at h_sum
+      have h_sum2 : ∑ x ∈ S \ {m}, 2^x = 0 := by omega
+      have h_empty : S \ {m} = ∅ := by
+        by_contra h_ne
+        rcases Finset.nonempty_iff_ne_empty.mpr h_ne with ⟨x, hx⟩
+        have h_pos : (2:ℕ)^x > 0 := by positivity
+        have h_le_sum : 2^x ≤ ∑ y ∈ S \ {m}, 2^y := Finset.single_le_sum (fun _ _ => by positivity) hx
+        rw [h_sum2] at h_le_sum
+        omega
+      rw [h_empty, Finset.union_empty] at h_eq
+      exact h_eq
+    · have h_le : 2^m ≤ ∑ x ∈ S, 2^x := Finset.single_le_sum (fun _ _ => by positivity) hm
+      rw [h] at h_le
+      have h_gt : 2^m > 2^N := Nat.pow_lt_pow_right (by decide) hgt
+      omega
+
+lemma m_eq_two_pow_mul_odd (m : ℕ) (hm : m ≠ 0) :
+    m = 2^(m.factorization 2) * ∏ p ∈ m.primeFactors \ {2}, p^(m.factorization p) := by
+  have : m = ∏ p ∈ m.primeFactors, p ^ (m.factorization p) := Nat.factorization_prod_pow_eq_self hm |>.symm
+  nth_rw 1 [this]
+  by_cases h2 : 2 ∈ m.primeFactors
+  · have h_eq : m.primeFactors = {2} ∪ (m.primeFactors \ {2}) := by
+      ext x
+      simp only [Finset.mem_union, Finset.mem_singleton, Finset.mem_sdiff]
+      constructor
+      · intro hx
+        by_cases h : x = 2
+        · left; exact h
+        · right; exact ⟨hx, h⟩
+      · intro hx
+        rcases hx with h1 | ⟨h1, h2_x⟩
+        · subst h1; exact h2
+        · exact h1
+    have h_disj : Disjoint ({2}:Finset ℕ) (m.primeFactors \ {2}) := Finset.disjoint_sdiff
+    calc ∏ p ∈ m.primeFactors, p ^ (m.factorization p)
+      _ = ∏ p ∈ ({2}:Finset ℕ) ∪ (m.primeFactors \ {2}), p ^ (m.factorization p) := by nth_rw 1 [h_eq]
+      _ = (∏ p ∈ ({2}:Finset ℕ), p ^ (m.factorization p)) * ∏ p ∈ m.primeFactors \ {2}, p ^ (m.factorization p) := Finset.prod_union h_disj
+      _ = 2^(m.factorization 2) * ∏ p ∈ m.primeFactors \ {2}, p ^ (m.factorization p) := by rw [Finset.prod_singleton]
+  · have h_fact : m.factorization 2 = 0 := by
+      by_contra h_ne
+      have : 2 ∈ m.factorization.support := Finsupp.mem_support_iff.mpr h_ne
+      exact h2 this
+    rw [h_fact, pow_zero, one_mul]
+    have h_eq : m.primeFactors \ {2} = m.primeFactors := by
+      apply Finset.sdiff_eq_self_of_disjoint
+      rw [Finset.disjoint_singleton_right]
+      exact h2
+    rw [h_eq]
+
+noncomputable def c_fun (p : ℕ) : ℕ :=
+  if h : ∃ c, p = 2^(2^c) + 1 then h.choose else 0
+
+lemma sum_c_fun_image2 (c_fun : ℕ → ℕ) (P : Finset ℕ) (hP : ∀ p ∈ P, p = 2^(2^(c_fun p)) + 1) :
+    InjOn c_fun P := by
+  intro p hp q hq h_eq
+  have hp_eq : p = 2^(2^(c_fun p)) + 1 := hP p hp
+  have hq_eq : q = 2^(2^(c_fun q)) + 1 := hP q hq
+  rw [hp_eq, hq_eq, h_eq]
+
+lemma sum_c_fun_image3 (c_fun : ℕ → ℕ) (N_idx : ℕ) (P : Finset ℕ)
+    (hc_fun : ∀ p ∈ P, p = 2^(2^(c_fun p)) + 1)
+    (h_totient : P.prod (fun p => p - 1) = 2^(2^N_idx)) :
+    P.image c_fun = {N_idx} := by
+  have H : ∏ p ∈ P, (p - 1) = 2^(∑ p ∈ P, 2^(c_fun p)) := by
+    have : ∀ p ∈ P, p - 1 = 2^(2^(c_fun p)) := by
+      intro p hp
+      have h2 := hc_fun p hp
+      nth_rw 1 [h2]
+      exact Nat.add_sub_cancel (2^(2^(c_fun p))) 1
+    have h_prod : ∏ p ∈ P, (p - 1) = ∏ p ∈ P, (2:ℕ)^(2^(c_fun p)) := Finset.prod_congr rfl (fun p hp => this p hp)
+    rw [h_prod]
+    exact (Finset.prod_pow_eq_pow_sum P (fun p => 2^(c_fun p)) (2:ℕ))
+  rw [h_totient] at H
+  have h_sum : ∑ p ∈ P, 2^(c_fun p) = 2^N_idx := by
+    have h_two_ge : (2:ℕ) ≥ 2 := by decide
+    exact Nat.pow_right_injective h_two_ge H.symm
+  have h_inj : InjOn c_fun P := sum_c_fun_image2 c_fun P hc_fun
+  have h_sum2 : ∑ x ∈ P.image c_fun, 2^x = 2^N_idx := by
+    have h_im : ∑ p ∈ P, (2:ℕ)^(c_fun p) = ∑ x ∈ P.image c_fun, (2:ℕ)^x := Finset.sum_image h_inj |>.symm
+    rw [←h_im]
+    exact h_sum
+  exact sum_two_pow_eq _ _ h_sum2
+
+lemma P_singleton (c_fun : ℕ → ℕ) (N_idx : ℕ) (P : Finset ℕ) 
+    (hc_fun : ∀ p ∈ P, p = 2^(2^(c_fun p)) + 1)
+    (h_im : P.image c_fun = {N_idx}) :
+    P = {2^(2^N_idx) + 1} := by
+  ext x
+  simp
+  constructor
+  · intro hx
+    have h_c : c_fun x = N_idx := by
+      have : c_fun x ∈ P.image c_fun := Finset.mem_image_of_mem _ hx
+      rw [h_im] at this
+      exact Finset.mem_singleton.mp this
+    have hx_eq := hc_fun x hx
+    rw [h_c] at hx_eq
+    exact hx_eq
+  · intro hx
+    subst hx
+    have h_ne : P.Nonempty := by
+      have : (P.image c_fun).Nonempty := by rw [h_im]; exact Finset.singleton_nonempty _
+      exact Finset.Nonempty.of_image this
+    rcases h_ne with ⟨y, hy⟩
+    have h_c_y : c_fun y = N_idx := by
+      have : c_fun y ∈ P.image c_fun := Finset.mem_image_of_mem _ hy
+      rw [h_im] at this
+      exact Finset.mem_singleton.mp this
+    have hy_eq := hc_fun y hy
+    rw [h_c_y] at hy_eq
+    exact hy_eq ▸ hy
+
+lemma h_lt_proof (m N : ℕ) (hm_lt : m < 2^(N+1)) (hm1 : m > 0) (hm2 : 2^N ∣ m.totient) :
+    m.totient = 2^N := by
+  have h_le1 : m.totient ≤ 2^N := by
+    have h_lt_tot : m.totient < 2^(N+1) := by
+      have h2 : m.totient ≤ m := Nat.totient_le m
+      omega
+    rcases hm2 with ⟨k, hk⟩
+    by_cases hk0 : k = 0
+    · subst hk0; rw [mul_zero] at hk; rw [hk]; positivity
+    · by_cases hk1 : k = 1
+      · subst hk1; rw [mul_one] at hk; rw [hk]
+      · have h_k_ge : k ≥ 2 := by omega
+        have hN_pos : (2:ℕ)^N > 0 := by positivity
+        have h1 : k * 2^N ≥ 2 * 2^N := Nat.mul_le_mul_right (2^N) h_k_ge
+        have h2 : 2 * 2^N = 2^(N+1) := by 
+          rw [pow_succ]
+          ring
+        have h3 : m.totient ≥ 2^(N+1) := by
+          rw [hk, mul_comm]
+          omega
+        omega
+  have h_ge1 : 2^N ≤ m.totient := Nat.le_of_dvd (Nat.totient_pos.mpr hm1) hm2
+  omega
+
+lemma h_p_eq (P : Finset ℕ) (hP : ∀ p ∈ P, ∃ c, p = 2^(2^c) + 1) (c_fun : ℕ → ℕ)
+    (hc_fun : ∀ p, c_fun p = if h : ∃ c, p = 2^(2^c) + 1 then h.choose else 0) :
+    ∀ p ∈ P, p = 2^(2^(c_fun p)) + 1 := by
+  intro p hp
+  have h := hP p hp
+  rw [hc_fun p, dif_pos h]
+  exact h.choose_spec
+
+lemma h_totient_M_proof (N_idx : ℕ) (m N : ℕ) (hN : N = 2^N_idx) (hm_ne : m ≠ 0) (hm_tot : m.totient = 2^N)
+    (hm_lt : m < 2^(N+1))
+    (P : Finset ℕ) (hP : P = m.primeFactors \ {2}) 
+    (h_sq : ∀ p ∈ P, ¬ (p^2 ∣ m)) 
+    (hc_fun : ℕ → ℕ)
+    (h_p_eq : ∀ p ∈ P, p = 2^(2^(hc_fun p)) + 1) :
+    P.prod (fun p => p - 1) = 2^(2^N_idx) := by
+  have hm_odd : m = 2^(m.factorization 2) * ∏ p ∈ P, p^(m.factorization p) := by
+    have h1 : m = ∏ p ∈ m.primeFactors, p ^ (m.factorization p) := Nat.factorization_prod_pow_eq_self hm_ne |>.symm
+    nth_rw 1 [h1]
+    by_cases h2 : 2 ∈ m.primeFactors
+    · have h_eq : m.primeFactors = {2} ∪ P := by
+        rw [hP]
+        ext x
+        simp only [Finset.mem_union, Finset.mem_singleton, Finset.mem_sdiff]
+        constructor
+        · intro hx
+          by_cases h : x = 2
+          · left; exact h
+          · right; exact ⟨hx, h⟩
+        · intro hx
+          rcases hx with h1 | ⟨h1, h2_x⟩
+          · subst h1; exact h2
+          · exact h1
+      have h_disj : Disjoint ({2}:Finset ℕ) P := by rw [hP]; exact Finset.disjoint_sdiff
+      calc ∏ p ∈ m.primeFactors, p ^ (m.factorization p)
+        _ = ∏ p ∈ ({2}:Finset ℕ) ∪ P, p ^ (m.factorization p) := by rw [h_eq]
+        _ = (∏ p ∈ ({2}:Finset ℕ), p ^ (m.factorization p)) * ∏ p ∈ P, p ^ (m.factorization p) := Finset.prod_union h_disj
+        _ = 2^(m.factorization 2) * ∏ p ∈ P, p ^ (m.factorization p) := by rw [Finset.prod_singleton]
+    · have h_fact : m.factorization 2 = 0 := by
+        by_contra h_ne
+        have : 2 ∈ m.factorization.support := Finsupp.mem_support_iff.mpr h_ne
+        exact h2 this
+      rw [h_fact, pow_zero, one_mul]
+      have h_eq : P = m.primeFactors := by
+        rw [hP]
+        apply Finset.sdiff_eq_self_of_disjoint
+        rw [Finset.disjoint_singleton_right]
+        exact h2
+      rw [h_eq]
+  
+  have hp_fact : ∀ p ∈ P, m.factorization p = 1 := by
+    intro p hp
+    have hp_in : p ∈ m.primeFactors := by
+      have : p ∈ m.primeFactors \ {2} := by rwa [←hP]
+      simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+      exact this.1
+    have h1 : m.factorization p ≥ 1 := Nat.pos_of_ne_zero (Finsupp.mem_support_iff.mp hp_in)
+    have h2 : m.factorization p < 2 := by
+      by_contra h_ge
+      push_neg at h_ge
+      have h_pow : p^2 ∣ m := (Nat.Prime.pow_dvd_iff_le_factorization (Nat.prime_of_mem_primeFactors hp_in) hm_ne).mpr h_ge
+      exact (h_sq p hp) h_pow
+    omega
+  
+  have hm_odd2 : m = 2^(m.factorization 2) * ∏ p ∈ P, p := by
+    calc m = 2^(m.factorization 2) * ∏ p ∈ P, p^(m.factorization p) := hm_odd
+         _ = 2^(m.factorization 2) * ∏ p ∈ P, p := by
+           congr 1
+           apply Finset.prod_congr rfl
+           intro p hp
+           rw [hp_fact p hp, pow_one]
+
+  have hm_tot2 : m.totient = 2^(m.factorization 2 - 1) * ∏ p ∈ P, (p - 1) := by
+    have hm_eq2 : m.totient = ∏ p ∈ m.primeFactors, p^(m.factorization p - 1) * (p - 1) := Nat.totient_eq_prod_factorization hm_ne
+    rw [hm_eq2]
+    by_cases h2 : 2 ∈ m.primeFactors
+    · have h_eq : m.primeFactors = {2} ∪ P := by
+        rw [hP]
+        ext x
+        simp only [Finset.mem_union, Finset.mem_singleton, Finset.mem_sdiff]
+        constructor
+        · intro hx
+          by_cases h : x = 2
+          · left; exact h
+          · right; exact ⟨hx, h⟩
+        · intro hx
+          rcases hx with h1 | ⟨h1, h2_x⟩
+          · subst h1; exact h2
+          · exact h1
+      have h_disj : Disjoint ({2}:Finset ℕ) P := by rw [hP]; exact Finset.disjoint_sdiff
+      calc ∏ p ∈ m.primeFactors, p ^ (m.factorization p - 1) * (p - 1)
+        _ = ∏ p ∈ ({2}:Finset ℕ) ∪ P, p ^ (m.factorization p - 1) * (p - 1) := by rw [h_eq]
+        _ = (∏ p ∈ ({2}:Finset ℕ), p ^ (m.factorization p - 1) * (p - 1)) * ∏ p ∈ P, p ^ (m.factorization p - 1) * (p - 1) := Finset.prod_union h_disj
+        _ = (2^(m.factorization 2 - 1) * (2 - 1)) * ∏ p ∈ P, p ^ (m.factorization p - 1) * (p - 1) := by 
+          rw [Finset.prod_singleton]
+        _ = (2^(m.factorization 2 - 1) * 1) * ∏ p ∈ P, p ^ (m.factorization p - 1) * (p - 1) := rfl
+        _ = 2^(m.factorization 2 - 1) * ∏ p ∈ P, p ^ (m.factorization p - 1) * (p - 1) := by rw [mul_one]
+        _ = 2^(m.factorization 2 - 1) * ∏ p ∈ P, (p - 1) := by
+          congr 1
+          apply Finset.prod_congr rfl
+          intro p hp
+          have h_fact1 : m.factorization p - 1 = 0 := by rw [hp_fact p hp]
+          rw [h_fact1, pow_zero, one_mul]
+    · have h_fact : m.factorization 2 = 0 := by
+        by_contra h_ne
+        have : 2 ∈ m.factorization.support := Finsupp.mem_support_iff.mpr h_ne
+        exact h2 this
+      have h_eq : P = m.primeFactors := by
+        rw [hP]
+        apply Finset.sdiff_eq_self_of_disjoint
+        rw [Finset.disjoint_singleton_right]
+        exact h2
+      calc ∏ p ∈ m.primeFactors, p ^ (m.factorization p - 1) * (p - 1)
+        _ = ∏ p ∈ P, p ^ (m.factorization p - 1) * (p - 1) := by rw [h_eq]
+        _ = ∏ p ∈ P, (p - 1) := by
+          apply Finset.prod_congr rfl
+          intro p hp
+          have h_fact1 : m.factorization p - 1 = 0 := by rw [hp_fact p hp]
+          rw [h_fact1, pow_zero, one_mul]
+        _ = 1 * ∏ p ∈ P, (p - 1) := by ring
+        _ = 2^(m.factorization 2 - 1) * ∏ p ∈ P, (p - 1) := by rw [h_fact]; rfl
+
+  rw [hm_tot, hN] at hm_tot2
+  have h_prod : P.prod (fun p => p - 1) = 2^(∑ p ∈ P, 2^(hc_fun p)) := by
+    have : ∀ p ∈ P, p - 1 = 2^(2^(hc_fun p)) := by
+      intro p hp
+      have h2 := h_p_eq p hp
+      nth_rw 1 [h2]
+      exact Nat.add_sub_cancel (2^(2^(hc_fun p))) 1
+    have h_prod1 : ∏ p ∈ P, (p - 1) = ∏ p ∈ P, (2:ℕ)^(2^(hc_fun p)) := Finset.prod_congr rfl (fun p hp => this p hp)
+    rw [h_prod1]
+    exact Finset.prod_pow_eq_pow_sum P (fun p => 2^(hc_fun p)) (2:ℕ)
+  
+  have h_pow_eq : 2^N_idx = m.factorization 2 - 1 + ∑ p ∈ P, 2^(hc_fun p) := by
+    have h_2 : 2^(2^N_idx) = 2^(m.factorization 2 - 1 + ∑ p ∈ P, 2^(hc_fun p)) := by
+      calc 2^(2^N_idx) = 2^(m.factorization 2 - 1) * P.prod (fun p => p - 1) := hm_tot2
+           _ = 2^(m.factorization 2 - 1) * 2^(∑ p ∈ P, 2^(hc_fun p)) := by rw [h_prod]
+           _ = 2^(m.factorization 2 - 1 + ∑ p ∈ P, 2^(hc_fun p)) := by rw [pow_add]
+    have h_two_ge : (2:ℕ) ≥ 2 := by decide
+    exact Nat.pow_right_injective h_two_ge h_2
+  
+  have h_m_gt : m ≥ 2^(m.factorization 2 + ∑ p ∈ P, 2^(hc_fun p)) := by
+    have h_p_ge : ∀ p ∈ P, p ≥ 2^(2^(hc_fun p)) := by
+      intro p hp
+      have h2 := h_p_eq p hp
+      omega
+    have h_prod_ge : ∏ p ∈ P, p ≥ ∏ p ∈ P, 2^(2^(hc_fun p)) := Finset.prod_le_prod' h_p_ge
+    have h_prod_pow : ∏ p ∈ P, (2:ℕ)^(2^(hc_fun p)) = 2^(∑ p ∈ P, 2^(hc_fun p)) := Finset.prod_pow_eq_pow_sum P (fun p => 2^(hc_fun p)) 2
+    rw [h_prod_pow] at h_prod_ge
+    have h_m_eq : m = 2^(m.factorization 2) * ∏ p ∈ P, p := hm_odd2
+    have h_ineq : 2^(m.factorization 2) * ∏ p ∈ P, p ≥ 2^(m.factorization 2) * 2^(∑ p ∈ P, 2^(hc_fun p)) := Nat.mul_le_mul_left (2^(m.factorization 2)) h_prod_ge
+    have h_pow_add : 2^(m.factorization 2) * 2^(∑ p ∈ P, 2^(hc_fun p)) = 2^(m.factorization 2 + ∑ p ∈ P, 2^(hc_fun p)) := by rw [pow_add]
+    omega
+  
+  have h_f_le_1 : m.factorization 2 - 1 = 0 := by
+    by_contra h_ne
+    have h_f_ge_2 : m.factorization 2 ≥ 2 := by omega
+    have : m.factorization 2 + ∑ p ∈ P, 2^(hc_fun p) ≥ N + 1 := by
+      rw [hN]
+      omega
+    have : 2^(m.factorization 2 + ∑ p ∈ P, 2^(hc_fun p)) ≥ 2^(N+1) := Nat.pow_le_pow_right (by decide) this
+    omega
+  
+  rw [h_f_le_1, zero_add] at h_pow_eq
+  rw [h_prod, h_pow_eq]
+
+
+theorem oeis_53576_conjecture_0 :
+    let N_idx : ℕ := 33
+    let N : ℕ := 2 ^ N_idx
+    let F33 : ℕ := Nat.fermatNumber N_idx
+    a N = if Nat.Prime F33 then F33 else 2 ^ (N + 1) := by
+  intros N_idx N F33
+  have hF33 : F33 = 2^N + 1 := rfl
+  have hN : N = 2^33 := rfl
+  by_cases hPrime : Nat.Prime F33
+  · simp [hPrime]
+    apply le_antisymm
+    · apply a_le
+      constructor
+      · rw [hF33]
+        positivity
+      · have ht : totient F33 = F33 - 1 := Nat.totient_prime hPrime
+        rw [ht, hF33]
+        have : 2^N + 1 - 1 = 2^N := Nat.add_sub_cancel (2^N) 1
+        rw [this]
+    · apply le_a
+      intro m hm1 hm2
+      by_cases h_lt : m < 2^(N+1)
+      · have hm_tot_eq : m.totient = 2^N := h_lt_proof m N h_lt hm1 hm2
+        have h2 : m.totient < m := by
+          by_cases hm : m = 1
+          · subst hm; rw [totient_one] at hm2
+            have h_le := Nat.le_of_dvd (by decide) hm2
+            have hN_ne : N ≠ 0 := by omega
+            have : (2:ℕ)^N > 1 := Nat.one_lt_two_pow hN_ne
+            omega
+          · have : m > 1 := by omega
+            have : m > 1 := by omega
+            have h_lt_tot : m.totient < m := Nat.totient_lt m this
+            omega
+        have h3 : 2^N < m := by omega
+        rw [hF33]
+        omega
+      · rw [hF33]
+        omega
+  · simp [hPrime]
+    apply le_antisymm
+    · apply a_le
+      constructor
+      · positivity
+      · have ht : totient (2^(N+1)) = 2^N := by
+          have : 2 - 1 = 1 := rfl
+          rw [totient_prime_pow Nat.prime_two (by omega)]
+          rw [this, mul_one]
+          have h1 : N + 1 - 1 = N := Nat.add_sub_cancel N 1
+          rw [h1]
+        rw [ht]
+    · apply le_a
+      intro m hm1 hm2
+      by_contra hm_lt
+      push_neg at hm_lt
+      have hm_tot : m.totient = 2^N := h_lt_proof m N hm_lt hm1 hm2
+      
+      have hm_ne : m ≠ 0 := by omega
+      
+      set P := m.primeFactors \ {2}
+      
+      have hP : ∀ p ∈ P, ∃ c, p = 2^(2^c) + 1 := by
+        intro p hp
+        have hp_in : p ∈ m.primeFactors := by
+          have : p ∈ m.primeFactors \ {2} := hp
+          simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+          exact this.1
+        have hp_prime : p.Prime := Nat.prime_of_mem_primeFactors hp_in
+        have hp_gt2 : p > 2 := by
+          have hp_ne2 : p ≠ 2 := by
+            have : p ∈ m.primeFactors \ {2} := hp
+            simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+            exact this.2
+          have : p ≥ 2 := hp_prime.two_le
+          omega
+        have hpm : p ∣ m := Nat.dvd_of_mem_primeFactors hp_in
+        exact fermat_prime_of_dvd hp_prime hp_gt2 hpm hm_tot
+      
+      have h_sq : ∀ p ∈ P, ¬ (p^2 ∣ m) := by
+        intro p hp
+        have hp_in : p ∈ m.primeFactors := by
+          have : p ∈ m.primeFactors \ {2} := hp
+          simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+          exact this.1
+        have hp_prime : p.Prime := Nat.prime_of_mem_primeFactors hp_in
+        have hp_gt2 : p > 2 := by
+          have hp_ne2 : p ≠ 2 := by
+            have : p ∈ m.primeFactors \ {2} := hp
+            simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+            exact this.2
+          have : p ≥ 2 := hp_prime.two_le
+          omega
+        exact p_sq_not_dvd hp_prime hp_gt2 hm_tot
+
+      have hm_eq := m_eq_two_pow_mul_odd m hm_ne
+      
+      set c_f := fun p => if h : ∃ c, p = 2^(2^c) + 1 then h.choose else 0
+      have hc_fun : ∀ p, c_f p = if h : ∃ c, p = 2^(2^c) + 1 then h.choose else 0 := fun p => rfl
+      have hc_fun_P : ∀ p ∈ P, p = 2^(2^(c_f p)) + 1 := h_p_eq P hP c_f hc_fun
+      
+      have h_totient_M : P.prod (fun p => p - 1) = 2^(2^N_idx) := h_totient_M_proof N_idx m N hN hm_ne hm_tot hm_lt P rfl h_sq c_f hc_fun_P
+      
+      have h_im := sum_c_fun_image3 c_f N_idx P hc_fun_P h_totient_M
+      have hP_eq := P_singleton c_f N_idx P hc_fun_P h_im
+      
+      have hF33_in : F33 ∈ P := by
+        rw [hP_eq]
+        have h1 : F33 = 2^(2^N_idx) + 1 := rfl
+        rw [←h1]
+        exact Finset.mem_singleton.mpr rfl
+      have hF33_prime : Nat.Prime F33 := by
+        have h_in : F33 ∈ m.primeFactors := by
+          have : F33 ∈ m.primeFactors \ {2} := hF33_in
+          simp only [Finset.mem_sdiff, Finset.mem_singleton] at this
+          exact this.1
+        exact Nat.prime_of_mem_primeFactors h_in
+      exact hPrime hF33_prime
+
+theorem oeis_53576_conjecture_0.disproof : ¬ (type_of% @oeis_53576_conjecture_0) := sorry

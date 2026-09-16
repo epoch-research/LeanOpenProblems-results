@@ -1,0 +1,26 @@
+--- Submission/Test.lean
++++ Submission/Test.lean
+@@ -148,13 +148,15 @@
+ lemma aR_2p_minus_1_eq_one (p : ℕ) [hp : Fact p.Prime] (hp2 : p > 2) :
+     aR (ZMod p) (2 * p - 1) = 1 := by
+   rw [aR_2p_minus_1 p hp2, aR_p p hp2, ← pow_add]
+   have h_add : p.choose 2 + p.choose 2 = p * (p - 1) := by
+-    zify
+-    have : (p.choose 2 : ℤ) * 2 = (p : ℤ) * (p - 1) := by
+-      have h := Nat.choose_two_right p
+-      zify at h
+-      -- it's not strictly needed if we just do cases on p
+-      sorry
+-    sorry
+-  rw [h_add, mul_comm, pow_mul]
++    cases p with
++    | zero => rfl
++    | succ p =>
++      cases p with
++      | zero => rfl
++      | succ p =>
++        have : (p + 2).choose 2 = (p + 2) * (p + 1) / 2 := Nat.choose_two_right _
++        -- wait, just write `rw [choose_two_succ, choose_two_succ]`?
++        sorry
++  rw [h_add, mul_comm, pow_mul]
+   have H : (2 : ZMod p) ^ (p - 1) = 1 := ZMod.pow_card_sub_one_eq_one (two_ne_zero_zmod hp2)

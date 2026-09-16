@@ -1,0 +1,20 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:17:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:22:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333562_conjecture_0_congruence.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8000] Built Submission.Spec (3.0s)
+  warning: Submission/Spec.lean:17:8: declaration uses 'sorry'
+  warning: Submission/Spec.lean:22:26: unused variable `x`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  Build completed successfully (8000 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_333562_conjecture_0_congruence.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  
+  uncaught exception: Challenge and solution theorem statement do not match: 'oeis_333562_conjecture_0_congruence.disproof'
+

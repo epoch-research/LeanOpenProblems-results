@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a129365_conjecture_C",
+  "epoch": 1,
+  "uuid": "5HvC9AkqY8hQZE8x7Af2be",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1688267,
+      "output_tokens": 127551,
+      "total_tokens": 15905714,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 14089896,
+      "reasoning_tokens": 63608,
+      "total_cost": 7.7251252000000035
+    }
+  },
+  "oeis_id": "A129365"
+}

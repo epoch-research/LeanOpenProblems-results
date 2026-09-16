@@ -1,0 +1,17 @@
+{
+  "settlement": "proved",
+  "summary": {
+    "text": "The formal statement is simply the tautology \\(\\mathrm{True}\\), proved by its immediate witness; consequently, this proof contains no mathematical argument about the claimed coprimality obstruction.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The proposition actually asserted under the name \\(\\texttt{oeis\\_271513\\_conjecture\\_3}\\) is simply\n\\[\n\\top,\n\\]\nthe always-true proposition. It contains no variables and makes no assertion about the sequence \\(A271513\\), four-square representations, or positive integers \\(a,b,c\\).\n\nProof. By definition, \\(\\top\\) is the proposition that holds unconditionally. It has a proof requiring no hypotheses, constructions, reductions, or case distinctions. Hence \\(\\top\\) is true. \\(\\square\\)\n\nIn particular, although the surrounding material defines the relevant representation-counting sequence and a predicate for refined four-square representations, none of those definitions occurs in this theorem. Therefore this argument proves only \\(\\top\\); it does not prove the intended statement that, if every natural number has a four-square representation for which \\(ax^2+by^2+cz^2\\) is a square, then the positive integers \\(a,b,c\\) are not pairwise coprime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

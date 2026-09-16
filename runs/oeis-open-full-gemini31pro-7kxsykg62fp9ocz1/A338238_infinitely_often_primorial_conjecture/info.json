@@ -1,0 +1,24 @@
+{
+  "id": "A338238_infinitely_often_primorial_conjecture",
+  "epoch": 1,
+  "uuid": "drF2EB5XCT27JPzFbUfGQE",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 10046297,
+      "output_tokens": 222464,
+      "total_tokens": 146476581,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 136207820,
+      "reasoning_tokens": 141789,
+      "total_cost": 50.00372599999991
+    }
+  },
+  "oeis_id": "A338238"
+}

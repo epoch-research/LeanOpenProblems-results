@@ -1,0 +1,20 @@
+{
+  "id": "oeis_236566_conjecture_2",
+  "epoch": 1,
+  "uuid": "HTzMbtXDFmBmdh3oBsm9hC",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 237123,
+      "output_tokens": 21250,
+      "total_tokens": 1047143,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 788770,
+      "reasoning_tokens": 11542,
+      "total_cost": 0.8869999999999998
+    }
+  },
+  "oeis_id": "A236566"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_271591_conjecture_0",
+  "epoch": 1,
+  "uuid": "BTJWiXCes358SfTpVTLvbX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 10009369,
+      "output_tokens": 515519,
+      "total_tokens": 83597370,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 73072482,
+      "reasoning_tokens": 280088,
+      "total_cost": 40.819462399999956
+    }
+  },
+  "oeis_id": "A271591"
+}

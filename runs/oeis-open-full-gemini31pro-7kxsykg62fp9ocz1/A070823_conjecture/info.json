@@ -1,0 +1,20 @@
+{
+  "id": "A070823_conjecture",
+  "epoch": 1,
+  "uuid": "g9YuQk8HPU4MURZahMTKTo",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 559168,
+      "output_tokens": 25186,
+      "total_tokens": 4095770,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3511416,
+      "reasoning_tokens": 13992,
+      "total_cost": 2.1228511999999995
+    }
+  },
+  "oeis_id": "A070823"
+}

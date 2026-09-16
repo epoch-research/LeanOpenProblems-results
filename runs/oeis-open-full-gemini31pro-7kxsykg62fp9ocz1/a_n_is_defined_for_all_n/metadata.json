@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Take \\(n=0\\). For \\(k=1\\), \\(\\Phi_1(0)=-1\\), while for every \\(k>1\\) the constant coefficient of \\(\\Phi_k\\) is \\(1\\), so in all cases \\(|\\Phi_k(0)|=1\\), which is not prime.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let \\(\\Phi_k(x)\\in\\mathbb Z[x]\\) denote the \\(k\\)-th cyclotomic polynomial. The statement under consideration is\n\\[\n  \\forall n\\in\\mathbb N\\;\\exists k\\in\\mathbb N,\n  \\qquad k>0\\quad\\text{and}\\quad |\\Phi_k(n)|\\text{ is prime}.\n\\]\nHere the absolute value is taken because \\(\\Phi_k(n)\\) is an integer. In this quantification, \\(\\mathbb N\\) includes \\(0\\).\n\nWe use the following standard constant-term property of cyclotomic polynomials:\n\\[\n \\Phi_1(0)=-1,\n \\qquad\n \\Phi_k(0)=1\\quad\\text{for every }k>1.\n\\]\nFor completeness, this follows directly from the cyclotomic product identity\n\\[\n x^m-1=\\prod_{d\\mid m}\\Phi_d(x).\n\\]\nFirst, \\(\\Phi_1(x)=x-1\\), so \\(\\Phi_1(0)=-1\\). We now prove by strong induction on \\(m>1\\) that \\(\\Phi_m(0)=1\\). Evaluating the product identity at \\(x=0\\) gives\n\\[\n -1=\\prod_{d\\mid m}\\Phi_d(0).\n\\]\nAmong the divisors of \\(m\\) are \\(1\\) and \\(m\\). Every other divisor \\(d\\) satisfies \\(1<d<m\\), so the induction hypothesis gives \\(\\Phi_d(0)=1\\). Since \\(\\Phi_1(0)=-1\\), the displayed identity therefore reduces to\n\\[\n -1=(-1)\\Phi_m(0),\n\\]\nand hence \\(\\Phi_m(0)=1\\). This proves the stated constant-term property for every positive index.\n\nNow choose the natural-number input\n\\[\n n=0.\n\\]\nWe show that no permitted index \\(k>0\\) can make \\(|\\Phi_k(0)|\\) prime. Since \\(k\\) is a positive integer, there are exactly two cases.\n\n1. If \\(k=1\\), then\n\\[\n  \\Phi_k(0)=\\Phi_1(0)=-1,\n\\]\nso\n\\[\n  |\\Phi_k(0)|=|-1|=1.\n\\]\n\n2. If \\(k>1\\), the constant-term property proved above gives\n\\[\n  \\Phi_k(0)=1,\n\\]\nso again\n\\[\n  |\\Phi_k(0)|=1.\n\\]\n\nThus for every positive \\(k\\), one has \\(|\\Phi_k(0)|=1\\). But \\(1\\) is not prime: a prime natural number must be greater than \\(1\\). Consequently there is no positive \\(k\\) for which \\(|\\Phi_k(0)|\\) is prime. The existential assertion fails at \\(n=0\\), and therefore\n\\[\n \\neg\\Bigl(\\forall n\\in\\mathbb N\\;\\exists k>0:\n        |\\Phi_k(n)|\\text{ is prime}\\Bigr).\n\\]\n\nThis counterexample depends essentially on allowing \\(n=0\\). Accordingly, it disproves the displayed all-natural-numbers formulation. If the canonical phrase “for every positive integer \\(n\\)” is instead read strictly as \\(n\\ge 1\\), then \\(0\\) is outside that domain and this argument does not disprove that positive-input conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

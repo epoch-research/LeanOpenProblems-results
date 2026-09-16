@@ -1,0 +1,30 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.3s)
+  warning: run/Challenge.lean:26:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:30:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_338483_conjecture_0.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✖ [7998/8001] Running Submission.Proof
+  error: build cycle detected:
+    formal_conjectures/+Submission.Spec:leanArts
+    formal_conjectures/+Submission.Spec:exportInfo
+    formal_conjectures/+Submission.Proof:importInfo
+    formal_conjectures/+Submission.Proof:setup
+    formal_conjectures/+Submission.Proof:leanArts
+    formal_conjectures/+Submission.Proof:exportInfo
+    formal_conjectures/+Submission.Spec:importInfo
+    formal_conjectures/+Submission.Spec:setup
+    formal_conjectures/+Submission.Spec:leanArts
+  ✖ [7999/8001] Running Submission.Spec
+  error: Submission/Spec.lean: bad import 'Submission.Proof'
+  Some required targets logged failures:
+  - Submission.Proof
+  - Submission.Spec
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

@@ -1,0 +1,24 @@
+{
+  "id": "a275298_conjecture_i_positivity",
+  "epoch": 1,
+  "uuid": "AdBYRPhB3TWHo2iokQRmx7",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 15576480,
+      "output_tokens": 502768,
+      "total_tokens": 80947452,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 64868204,
+      "reasoning_tokens": 394429,
+      "total_cost": 50.15981679999999
+    }
+  },
+  "oeis_id": "A275298"
+}

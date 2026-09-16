@@ -1,0 +1,20 @@
+{
+  "id": "a084046_conjecture_0",
+  "epoch": 1,
+  "uuid": "hH4ZUQoH6QsjH539XzUsFq",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 147734,
+      "output_tokens": 14035,
+      "total_tokens": 365324,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 203555,
+      "reasoning_tokens": 5855,
+      "total_cost": 0.5045989999999999
+    }
+  },
+  "oeis_id": "A084046"
+}

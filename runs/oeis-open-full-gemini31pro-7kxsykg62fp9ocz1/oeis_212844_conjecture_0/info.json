@@ -1,0 +1,24 @@
+{
+  "id": "oeis_212844_conjecture_0",
+  "epoch": 1,
+  "uuid": "5M3jgLJE7qNVfU9DVxvZQR",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 12481525,
+      "output_tokens": 487144,
+      "total_tokens": 110373977,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 97405308,
+      "reasoning_tokens": 336654,
+      "total_cost": 50.289839599999986
+    }
+  },
+  "oeis_id": "A212844"
+}

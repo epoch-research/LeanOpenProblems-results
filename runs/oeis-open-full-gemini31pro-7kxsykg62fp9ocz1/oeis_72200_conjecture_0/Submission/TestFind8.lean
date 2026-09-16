@@ -1,0 +1,5 @@
+import Mathlib
+
+theorem test2 : Nat.digits 10 6 = [6] := by
+  rw [Nat.digits_def', Nat.digits_def']
+  decide

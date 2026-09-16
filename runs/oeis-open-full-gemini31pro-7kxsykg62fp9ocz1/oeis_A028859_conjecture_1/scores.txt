@@ -1,0 +1,97 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.8s)
+  warning: run/Challenge.lean:38:29: `Finset.toSet` has been deprecated: Use `SetLike.coe` instead
+  
+  Note: The updated constant has a different type:
+    {A : Type u_1} → {B : outParam (Type u_2)} → [self : SetLike A B] → A → Set B
+  instead of
+    {α : Type u_1} → Finset α → Set α
+  
+  Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.toSet` to `SetLike.coe x`).
+  warning: run/Challenge.lean:22:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:41:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_A028859_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8012] Built Submission.Generator (4.2s)
+  ✔ [8001/8012] Built Submission.ProofLength (4.2s)
+  ✔ [8002/8012] Built Submission.ProofNodup (4.4s)
+  ✔ [8003/8012] Built Submission.ProofValid (4.5s)
+  ✔ [8004/8012] Built Submission.ProofNodupGen (4.3s)
+  ✔ [8005/8012] Built Submission.ProofNodupFinal (4.2s)
+  ✔ [8006/8012] Built Submission.ProofS (5.1s)
+  ✔ [8007/8012] Built Submission.ProofS2 (4.4s)
+  ✔ [8008/8012] Built Submission.ProofS3 (4.5s)
+  ✔ [8009/8012] Built Submission.ProofSurj1 (5.1s)
+  ✖ [8010/8012] Building Submission.ProofSurj (4.4s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/ProofSurj.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/ProofSurj.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/ProofSurj.ilean -c /workspace/leanproject/.lake/build/ir/Submission/ProofSurj.c --setup /workspace/leanproject/.lake/build/ir/Submission/ProofSurj.setup.json --json
+  error: Submission/ProofSurj.lean:191:18: Unknown identifier `valid2_drop_last_of_end_1_has_1`
+  error: Submission/ProofSurj.lean:198:18: Unknown identifier `valid2_drop_last_of_end_1_no_1`
+  error: Submission/ProofSurj.lean:230:98: omega could not prove the goal:
+  a possible counterexample may satisfy the constraints
+    f ≥ 0
+    e ≥ 0
+    e - f ≥ 1
+    d ≥ 1
+    0 ≤ c ≤ 2
+    b ≥ 0
+    b - e ≥ -2
+    b - f ≥ -2
+  where
+   b := ↑L
+   c := ↑(x ⟨L + 1 + 1 + 1 - 1, ⋯⟩)
+   d := ↑(x (Fin.last (L + 2)))
+   e := ↑↑(Fin.last (L + 2))
+   f := ↑↑⟨L + 1 + 1 + 1 - 1, ⋯⟩
+  error: Submission/ProofSurj.lean:239:18: Unknown identifier `valid2_drop_last_of_end_1_has_1`
+  error: Submission/ProofSurj.lean:246:18: Unknown identifier `valid2_drop_last_of_end_1_no_1`
+  error: Submission/ProofSurj.lean:258:18: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    x ⟨L + 2, ⋯⟩
+  in the target expression
+    x (Fin.last (L + 2)) = 2
+  
+  L : ℕ
+  ih : ∀ m < L + 1 + 1 + 1, ∀ (x : Fin m → ℕ), isValid2 x → m > 0 → x ∈ gen m
+  x : Fin (L + 1 + 1 + 1) → ℕ
+  hx : isValid2 x
+  hL : L + 1 + 1 + 1 > 0
+  h_gen :
+    gen (L + 3) =
+      List.map map1 (gen (L + 2)) ++ List.map map2 (gen (L + 2)) ++
+        (List.map map3 (gen (L + 1)) ++ List.map map4 (gen (L + 1)))
+  hend_le_2 : x ⟨L + 1 + 1 + 1 - 1, ⋯⟩ ≤ 2
+  hend2 : x (Fin.last (L + 2)) = 2
+  h_has_2 : ∃ i, drop_last2 x i = 2
+  h_last : Fin.last (L + 2) = ⟨L + 2, ⋯⟩
+  h_eq : x ⟨L + 2, ⋯⟩ = x (Fin.last (L + 2))
+  ⊢ x (Fin.last (L + 2)) = 2
+  error: Submission/ProofSurj.lean:275:18: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+    x ⟨L + 2, ⋯⟩
+  in the target expression
+    x (Fin.last (L + 2)) = 2
+  
+  L : ℕ
+  ih : ∀ m < L + 1 + 1 + 1, ∀ (x : Fin m → ℕ), isValid2 x → m > 0 → x ∈ gen m
+  x : Fin (L + 1 + 1 + 1) → ℕ
+  hx : isValid2 x
+  hL : L + 1 + 1 + 1 > 0
+  h_gen :
+    gen (L + 3) =
+      List.map map1 (gen (L + 2)) ++ List.map map2 (gen (L + 2)) ++
+        (List.map map3 (gen (L + 1)) ++ List.map map4 (gen (L + 1)))
+  hend_le_2 : x ⟨L + 1 + 1 + 1 - 1, ⋯⟩ ≤ 2
+  hend2 : x (Fin.last (L + 2)) = 2
+  h_has_2 : ¬∃ i, drop_last2 x i = 2
+  h_last : Fin.last (L + 2) = ⟨L + 2, ⋯⟩
+  h_eq : x ⟨L + 2, ⋯⟩ = x (Fin.last (L + 2))
+  ⊢ x (Fin.last (L + 2)) = 2
+  error: Lean exited with code 1
+  Some required targets logged failures:
+  - Submission.ProofSurj
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

@@ -1,0 +1,30 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:48:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:52:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_145062_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✖ [8000/8000] Building Submission.Spec (14s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Spec.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Spec.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Spec.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Spec.c --setup /workspace/leanproject/.lake/build/ir/Submission/Spec.setup.json --json
+  error: Submission/Spec.lean:256:248: unsolved goals
+  case h.ofNat
+  n m : ℕ
+  hz : ↑n + 100 = ↑m
+  ⊢ a n = sequence_s_int (Int.ofNat m)
+  error: Submission/Spec.lean:256:422: unsolved goals
+  case h.negSucc
+  n m : ℕ
+  hz : ↑n + 100 = -(↑m + 1)
+  ⊢ a n = sequence_s_int (Int.negSucc m)
+  warning: Submission/Spec.lean:258:8: declaration uses 'sorry'
+  error: Lean exited with code 1
+  Some required targets logged failures:
+  - Submission.Spec
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

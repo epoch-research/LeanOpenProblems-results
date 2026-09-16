@@ -1,0 +1,17 @@
+{
+  "settlement": "proved",
+  "summary": {
+    "text": "For each threshold \\(k>1\\), excluded middle is applied to the assertion that values at least \\(k\\) occur at arbitrarily large indices. If this assertion fails, its negation yields a bound \\(N\\) beyond which every value is less than \\(k\\), giving the stated finite/infinite dichotomy.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\na(n)=\\min\\{d:d\\text{ is a decimal digit occurring in }n^3\\}.\n\\]\nFor \\(n=0\\), take \\(a(0)=0\\), in agreement with the usual decimal representation. The formal statement proved is the following:\n\n> For every natural number \\(k>1\\), either there is a natural number \\(N\\) such that\n> \\[\n> n\\ge N\\implies a(n)<k,\n> \\]\n> or, for every natural number \\(M\\), there is a natural number \\(n\\ge M\\) such that\n> \\[\n> a(n)\\ge k.\n> \\]\n\nFix a natural number \\(k>1\\). Consider the proposition\n\\[\nP_k:\\qquad \\text{for every }M\\in\\mathbb N\\text{ there is an }n\\in\\mathbb N\n\\text{ such that }n\\ge M\\text{ and }a(n)\\ge k.\n\\]\nBy the law of excluded middle, either \\(P_k\\) is true or it is false.\n\nIf \\(P_k\\) is true, then its assertion is exactly the second alternative of the theorem: occurrences of values \\(a(n)\\ge k\\) can be found beyond every prescribed bound \\(M\\).\n\nNow suppose that \\(P_k\\) is false. Negating its quantified assertion gives\n\\[\n\\exists N\\in\\mathbb N\\;\\forall n\\in\\mathbb N,\n\\quad \\neg\\bigl(N\\le n\\ \\text{and}\\ k\\le a(n)\\bigr).\n\\]\nChoose such an \\(N\\). We claim that every \\(n\\ge N\\) satisfies \\(a(n)<k\\). Indeed, let \\(n\\) be any natural number with \\(N\\le n\\). If one also had \\(k\\le a(n)\\), then both parts of\n\\[\nN\\le n\\quad\\text{and}\\quad k\\le a(n)\n\\]\nwould hold, contrary to the defining property of \\(N\\). Hence \\(k\\nleq a(n)\\). Since the natural numbers are linearly ordered, \\(k\\nleq a(n)\\) is equivalent to \\(a(n)<k\\). Thus\n\\[\n\\forall n\\in\\mathbb N,\\qquad N\\le n\\implies a(n)<k,\n\\]\nwhich is exactly the first alternative.\n\nThese two cases prove the stated dichotomy for the chosen \\(k\\), and since \\(k>1\\) was arbitrary, they prove it for every natural number \\(k>1\\). Notice that neither the hypothesis \\(k>1\\) nor any special property of decimal digits or cubes is needed for this dichotomy; it holds for every natural-number-valued sequence.\n\nFor clarity about its relation to the OEIS question, taking \\(k=2\\) makes the second alternative say that for every \\(M\\) there is an \\(n\\ge M\\) with \\(a(n)\\ge2\\), equivalently that infinitely many \\(n\\) satisfy \\(a(n)>1\\). However, the proved statement does not establish that this second alternative holds: it allows instead the first alternative, namely that eventually every \\(a(n)<2\\). Thus the accepted formal statement is a bounded-versus-unbounded logical dichotomy, not by itself a resolution of the stronger conjecture that infinitely many \\(n\\) have \\(a(n)>1\\).",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

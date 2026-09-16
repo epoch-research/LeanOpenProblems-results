@@ -1,0 +1,1 @@
+#check type_of%

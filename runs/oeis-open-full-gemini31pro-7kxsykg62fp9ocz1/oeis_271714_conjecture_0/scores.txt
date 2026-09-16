@@ -1,0 +1,38 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.4s)
+  warning: run/Challenge.lean:21:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:31:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_271714_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✖ [8000/8000] Building Submission.Spec (3.6s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Spec.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Spec.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Spec.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Spec.c --setup /workspace/leanproject/.lake/build/ir/Submission/Spec.setup.json --json
+  warning: Submission/Spec.lean:21:8: declaration uses 'sorry'
+  error: Submission/Spec.lean:33:13: Invalid projection: Projections cannot be used on functions, and
+    h
+  has function type
+    ∀ (n : ℕ),
+      (n > 0 → _root_.a n > 0) ∧
+        (a n = 1 ↔
+          n > 0 ∧
+            (n ∈ {7, 9, 19, 49, 133, 589} ∨
+              (∃ k, n = 2 ^ k) ∨ (∃ k, n = 3 * 2 ^ k) ∨ ∃ k, ∃ q ∈ {14, 67, 71, 199}, n = 4 ^ k * q))
+  error: Submission/Spec.lean:31:86: unsolved goals
+  h :
+    ∀ (n : ℕ),
+      (n > 0 → _root_.a n > 0) ∧
+        (a n = 1 ↔
+          n > 0 ∧
+            (n ∈ {7, 9, 19, 49, 133, 589} ∨
+              (∃ k, n = 2 ^ k) ∨ (∃ k, n = 3 * 2 ^ k) ∨ ∃ k, ∃ q ∈ {14, 67, 71, 199}, n = 4 ^ k * q))
+  ⊢ False
+  error: Lean exited with code 1
+  Some required targets logged failures:
+  - Submission.Spec
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_357958_conjecture_02",
+  "epoch": 1,
+  "uuid": "MGFAVomZqW4RZFtfZJegXf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 117601,
+      "output_tokens": 5926,
+      "total_tokens": 256927,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 133400,
+      "reasoning_tokens": 3840,
+      "total_cost": 0.33299400000000007
+    }
+  },
+  "oeis_id": "A357958"
+}

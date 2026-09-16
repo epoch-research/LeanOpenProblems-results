@@ -1,0 +1,20 @@
+{
+  "id": "oeis_1359_conjecture_6",
+  "epoch": 1,
+  "uuid": "cLgu6GwUUXZrspuyuLHdkK",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 976398,
+      "output_tokens": 92189,
+      "total_tokens": 9550741,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 8482154,
+      "reasoning_tokens": 34915,
+      "total_cost": 4.7554948
+    }
+  },
+  "oeis_id": "A001359"
+}

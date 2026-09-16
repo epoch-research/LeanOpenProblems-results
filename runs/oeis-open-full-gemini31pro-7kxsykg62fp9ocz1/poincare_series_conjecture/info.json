@@ -1,0 +1,24 @@
+{
+  "id": "poincare_series_conjecture",
+  "epoch": 1,
+  "uuid": "26iSCW4EaGWhWwBLyWru7R",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 8630537,
+      "output_tokens": 190185,
+      "total_tokens": 161300725,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 152480003,
+      "reasoning_tokens": 53562,
+      "total_cost": 50.03929459999997
+    }
+  },
+  "oeis_id": "A097913"
+}

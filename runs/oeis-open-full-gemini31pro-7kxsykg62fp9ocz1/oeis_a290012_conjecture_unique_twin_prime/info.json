@@ -1,0 +1,24 @@
+{
+  "id": "oeis_a290012_conjecture_unique_twin_prime",
+  "epoch": 1,
+  "uuid": "mvacrTwtGZ6rojQMCSauVJ",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 13627526,
+      "output_tokens": 596216,
+      "total_tokens": 92315006,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 78091264,
+      "reasoning_tokens": 449069,
+      "total_cost": 50.02789679999995
+    }
+  },
+  "oeis_id": "A290012"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_338777_conjecture_0",
+  "epoch": 1,
+  "uuid": "2HWngmnaMJGN8f74NZweCs",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 206657,
+      "output_tokens": 21853,
+      "total_tokens": 520775,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 292265,
+      "reasoning_tokens": 7168,
+      "total_cost": 0.7340030000000001
+    }
+  },
+  "oeis_id": "A338777"
+}

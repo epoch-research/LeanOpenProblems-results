@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a179524_sun_conjecture_1",
+  "epoch": 1,
+  "uuid": "CtKg7VJPCmTWT3HNi2xKrX",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 74214,
+      "output_tokens": 10701,
+      "total_tokens": 179618,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 94703,
+      "reasoning_tokens": 3297,
+      "total_cost": 0.2957806
+    }
+  },
+  "oeis_id": "A179524"
+}

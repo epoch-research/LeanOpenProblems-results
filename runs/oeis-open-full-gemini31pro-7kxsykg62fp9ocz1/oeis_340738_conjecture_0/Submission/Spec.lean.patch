@@ -1,0 +1,22 @@
+--- /workspace/leanproject/Submission/Spec.lean
++++ /workspace/leanproject/Submission/Spec.lean
+@@ -79,15 +79,2 @@
+ theorem oeis_340738_conjecture_0.disproof : ¬ (type_of% @oeis_340738_conjecture_0) := sorry
+ 
+-#eval A340738 1
+-#eval A340738 2
+-#eval A340738 3
+-#eval A340738 4
+-#eval A340738 5
+-#eval A340738 6
+-#eval A340738 7
+-
+-#eval A340737 1
+-#eval A340737 2
+-#eval A340737 3
+-#eval A340737 4
+-#eval A340737 5
+-#eval A340737 6
+-#eval A340737 7
+-
+-#eval (Float.ofNat (A340737 14)) / (Float.ofNat (A340738 14))

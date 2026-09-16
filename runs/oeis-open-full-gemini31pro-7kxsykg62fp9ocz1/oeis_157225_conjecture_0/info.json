@@ -1,0 +1,20 @@
+{
+  "id": "oeis_157225_conjecture_0",
+  "epoch": 1,
+  "uuid": "Xeb6T3pekA2aCMTDfqxtJg",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 408883,
+      "output_tokens": 30273,
+      "total_tokens": 1921649,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1482493,
+      "reasoning_tokens": 13812,
+      "total_cost": 1.4775406
+    }
+  },
+  "oeis_id": "A157225"
+}

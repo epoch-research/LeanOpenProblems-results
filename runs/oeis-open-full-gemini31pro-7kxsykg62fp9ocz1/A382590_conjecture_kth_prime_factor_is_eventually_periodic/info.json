@@ -1,0 +1,20 @@
+{
+  "id": "A382590_conjecture_kth_prime_factor_is_eventually_periodic",
+  "epoch": 1,
+  "uuid": "nXJEcTWu8DRQNNYSHPfetP",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1064891,
+      "output_tokens": 156268,
+      "total_tokens": 12956310,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 11735151,
+      "reasoning_tokens": 45567,
+      "total_cost": 6.352028199999999
+    }
+  },
+  "oeis_id": "A382590"
+}

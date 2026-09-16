@@ -1,0 +1,20 @@
+{
+  "id": "oeis_206911_conjecture",
+  "epoch": 1,
+  "uuid": "X7dtfWBYaXNY6aZzc2ASza",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 6019154,
+      "output_tokens": 434284,
+      "total_tokens": 69534875,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 63081437,
+      "reasoning_tokens": 140650,
+      "total_cost": 29.866003399999993
+    }
+  },
+  "oeis_id": "A206911"
+}

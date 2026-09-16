@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "The formal injectivity claim includes index \\(0\\): \\(T(0)=0\\) and \\(T(1)=1\\), and both bounds have prime count \\(0\\). Thus the values at the distinct indices \\(0\\) and \\(1\\) coincide, contradicting injectivity.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nT(n)=\\frac{n(n+1)}2\n\\]\nbe the \\(n\\)-th triangular number, and let \\(\\pi(x)\\) denote the number of primes not exceeding \\(x\\). Define\n\\[\nf(n)=\\pi(T(n)).\n\\]\n\nThe formal statement under consideration asserts that \\(f:\\mathbb N\\to\\mathbb N\\) is injective. Thus it asserts that, for every pair of natural numbers \\(a,b\\), the equality \\(f(a)=f(b)\\) implies \\(a=b\\).\n\nConsider the two natural numbers \\(0\\) and \\(1\\). Their triangular numbers are\n\\[\nT(0)=\\frac{0(0+1)}2=0\n\\]\nand\n\\[\nT(1)=\\frac{1(1+1)}2=\\frac22=1.\n\\]\nThere are no primes not exceeding \\(0\\), because every prime is a positive integer greater than \\(1\\). Likewise, there are no primes not exceeding \\(1\\). Consequently,\n\\[\n\\pi(T(0))=\\pi(0)=0\n\\]\nand\n\\[\n\\pi(T(1))=\\pi(1)=0.\n\\]\nHence\n\\[\nf(0)=0=f(1).\n\\]\nBut \\(0\\ne1\\). Therefore \\(f\\) is not injective on \\(\\mathbb N\\). Equivalently, the formal assertion that all values \\(\\pi(T(n))\\), with \\(n\\) allowed to range over every natural number, are pairwise distinct is false.\n\nThere is an important domain distinction. The canonical OEIS conjecture says that the values are pairwise distinct for \\(n\\ge1\\). The counterexample above uses \\(n=0\\), so it does not disprove that restricted conjecture: among the two colliding indices, only \\(1\\) lies in its stated domain. The accepted formal statement omitted the restriction \\(n\\ge1\\) and instead required injectivity on all natural numbers. Thus the complete accepted disproof is precisely the counterexample \\(0,1\\) to that stronger, incorrectly broadened formalization; no counterexample to the canonical \\(n\\ge1\\) assertion is supplied by the argument.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

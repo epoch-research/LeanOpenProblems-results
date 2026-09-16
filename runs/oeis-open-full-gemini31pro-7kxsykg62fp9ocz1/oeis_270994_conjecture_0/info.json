@@ -1,0 +1,20 @@
+{
+  "id": "oeis_270994_conjecture_0",
+  "epoch": 1,
+  "uuid": "cVAm7F5JWpZspYpexYQQiu",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 247126,
+      "output_tokens": 24695,
+      "total_tokens": 1208647,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 936826,
+      "reasoning_tokens": 15021,
+      "total_cost": 0.9779571999999999
+    }
+  },
+  "oeis_id": "A270994"
+}

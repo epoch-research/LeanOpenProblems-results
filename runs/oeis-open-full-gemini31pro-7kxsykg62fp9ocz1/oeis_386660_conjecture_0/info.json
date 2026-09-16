@@ -1,0 +1,20 @@
+{
+  "id": "oeis_386660_conjecture_0",
+  "epoch": 1,
+  "uuid": "CsdtusoJ4S5ggSfYo8jVEc",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 9524458,
+      "output_tokens": 274113,
+      "total_tokens": 72626079,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 62827508,
+      "reasoning_tokens": 125350,
+      "total_cost": 34.903773599999994
+    }
+  },
+  "oeis_id": "A386660"
+}

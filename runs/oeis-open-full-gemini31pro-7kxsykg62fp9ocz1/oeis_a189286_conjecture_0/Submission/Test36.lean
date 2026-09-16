@@ -1,0 +1,7 @@
+import Submission.Spec
+open Nat Finset
+
+lemma factorial_lemma (k m : ℕ) :
+  (3*(k+m)).factorial * (3*k).factorial * (2*k).factorial * k.factorial * (3*m).factorial * (2*m).factorial * m.factorial * (2*(k+m)-1)
+  ∣ (6*k).factorial * (6*m).factorial * (k+m).factorial * (2*(k+m)).factorial := by
+  sorry

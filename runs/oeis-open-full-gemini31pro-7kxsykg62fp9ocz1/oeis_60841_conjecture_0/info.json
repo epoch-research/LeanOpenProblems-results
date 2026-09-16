@@ -1,0 +1,20 @@
+{
+  "id": "oeis_60841_conjecture_0",
+  "epoch": 1,
+  "uuid": "U3pMgKR69hSHyyn7cHn4Fd",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 7393608,
+      "output_tokens": 241410,
+      "total_tokens": 42132960,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 34497942,
+      "reasoning_tokens": 68671,
+      "total_cost": 24.58372439999999
+    }
+  },
+  "oeis_id": "A060841"
+}

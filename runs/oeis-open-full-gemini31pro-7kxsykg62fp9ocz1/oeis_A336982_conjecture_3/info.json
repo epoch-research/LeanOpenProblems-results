@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A336982_conjecture_3",
+  "epoch": 1,
+  "uuid": "7ji2iuMWJTwJPNQGxjbfAY",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 161299,
+      "output_tokens": 10804,
+      "total_tokens": 424280,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 252177,
+      "reasoning_tokens": 4289,
+      "total_cost": 0.5026814
+    }
+  },
+  "oeis_id": "A336982"
+}

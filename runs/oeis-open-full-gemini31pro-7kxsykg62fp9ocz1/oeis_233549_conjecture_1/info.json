@@ -1,0 +1,20 @@
+{
+  "id": "oeis_233549_conjecture_1",
+  "epoch": 1,
+  "uuid": "56HDB9HGHdQBnanRK2mbv2",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 535317,
+      "output_tokens": 44124,
+      "total_tokens": 2091191,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1511750,
+      "reasoning_tokens": 22741,
+      "total_cost": 1.902472
+    }
+  },
+  "oeis_id": "A233549"
+}

@@ -1,0 +1,4 @@
+import Submission.Spec
+import Mathlib
+
+theorem foo : 1 = 1 := rfl

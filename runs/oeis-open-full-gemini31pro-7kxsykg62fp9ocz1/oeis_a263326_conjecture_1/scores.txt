@@ -1,0 +1,24 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:9:5: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Challenge.lean:27:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:37:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a263326_conjecture_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8000] Built Submission.Spec (4.4s)
+  warning: Submission/Spec.lean:9:5: unused variable `hn`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Spec.lean:27:8: declaration uses 'sorry'
+  Build completed successfully (8000 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_a263326_conjecture_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

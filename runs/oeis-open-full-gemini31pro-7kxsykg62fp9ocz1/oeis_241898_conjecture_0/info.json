@@ -1,0 +1,20 @@
+{
+  "id": "oeis_241898_conjecture_0",
+  "epoch": 1,
+  "uuid": "aCAN3E42XSmTcaHZEwR575",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 390630,
+      "output_tokens": 36564,
+      "total_tokens": 2435914,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 2008720,
+      "reasoning_tokens": 12197,
+      "total_cost": 1.6217720000000004
+    }
+  },
+  "oeis_id": "A241898"
+}

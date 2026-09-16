@@ -1,0 +1,39 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.8s)
+  warning: run/Challenge.lean:23:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:33:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_228304_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8015] Built Submission.Defs (4.5s)
+  ✔ [8001/8015] Built Submission.DetAnti5 (4.6s)
+  ⚠ [8002/8015] Built Submission.DetAnti (4.7s)
+  warning: Submission/DetAnti.lean:31:34: unused variable `hp`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  ✔ [8003/8015] Built Submission.DetAnti4 (4.7s)
+  ✔ [8004/8015] Built Submission.DetAnti9 (4.9s)
+  ⚠ [8005/8015] Built Submission.DetAnti11 (7.6s)
+  warning: Submission/DetAnti11.lean:77:89: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  ✔ [8006/8015] Built Submission.DetAnti2 (4.6s)
+  ✔ [8007/8015] Built Submission.DetAnti10 (4.9s)
+  ✔ [8008/8015] Built Submission.DetAnti6 (6.2s)
+  ✔ [8009/8015] Built Submission.DetAnti3 (4.6s)
+  ✔ [8010/8015] Built Submission.DetAnti12 (7.1s)
+  ✔ [8011/8015] Built Submission.DetAnti7 (4.5s)
+  ✔ [8012/8015] Built Submission.DetAnti8 (7.7s)
+  ✔ [8013/8015] Built Submission.DetAnti13 (4.9s)
+  ✔ [8014/8015] Built Submission.DetAnti14 (4.9s)
+  ⚠ [8015/8015] Built Submission.Spec (4.2s)
+  warning: Submission/Spec.lean:51:8: declaration uses 'sorry'
+  Build completed successfully (8015 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_228304_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

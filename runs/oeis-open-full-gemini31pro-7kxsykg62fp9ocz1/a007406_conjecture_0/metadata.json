@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "Take \\(n=4\\): \\(\\sum_{k=1}^{3}1/k^2=49/36\\), so the relevant numerator is \\(49\\) and \\(\\gcd(4,49)=1\\). But the square root of the largest square divisor of \\(4\\) is \\(2\\), giving a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nH_m^{(2)}=\\sum_{k=1}^{m}\\frac1{k^2},\n\\]\nand let \\(a(m)\\) be the numerator of this rational number when it is written in lowest terms with positive denominator. Let \\(s(n)\\) denote the square root of the largest square divisor of \\(n\\). The conjecture asserts that for every integer \\(n>3\\),\n\\[\n\\gcd\\bigl(n,a(n-1)\\bigr)=s(n).\n\\]\n\nWe disprove this universal assertion by taking \\(n=4\\), which satisfies \\(4>3\\).\n\nFirst compute the relevant second-order harmonic number:\n\\[\nH_3^{(2)}\n =1+\\frac1{2^2}+\\frac1{3^2}\n =1+\\frac14+\\frac19\n =\\frac{36+9+4}{36}\n =\\frac{49}{36}.\n\\]\nThis fraction is already in lowest terms. Indeed, \\(49=7^2\\), while \\(36=2^2 3^2\\), so \\(49\\) and \\(36\\) have no common prime factor. Consequently,\n\\[\na(3)=49.\n\\]\nSince \\(n-1=3\\) when \\(n=4\\), the left-hand side predicted by the conjecture is therefore\n\\[\n\\gcd\\bigl(4,a(3)\\bigr)=\\gcd(4,49).\n\\]\nNow \\(49=12\\cdot4+1\\). Hence every common divisor of \\(4\\) and \\(49\\) also divides \\(49-12\\cdot4=1\\), and thus\n\\[\n\\gcd(4,49)=1.\n\\]\n\nOn the other hand, the largest square dividing \\(4\\) is \\(4\\) itself: \\(4=2^2\\) divides \\(4\\), and no larger positive square can divide \\(4\\), since any positive divisor of \\(4\\) is at most \\(4\\). Therefore the square root of the largest square divisor is\n\\[\ns(4)=\\sqrt4=2.\n\\]\n\nThus at the admissible value \\(n=4\\), the two sides of the proposed identity are\n\\[\n\\gcd\\bigl(4,a(4-1)\\bigr)=1\n\\qquad\\text{and}\\qquad\ns(4)=2.\n\\]\nBecause \\(1\\ne2\\), the asserted equality fails for \\(n=4\\). Hence it is false that the equality holds for every integer \\(n>3\\), which disproves the conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

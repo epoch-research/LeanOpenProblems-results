@@ -1,0 +1,26 @@
+import Mathlib
+
+theorem disproof : ¬ (∀ n : ℕ, 1 ≤ n → ∃ k : ℕ, 0 < k ∧ (k : ℝ) < 3 * Real.sqrt (n : ℝ) + 3 ∧ Nat.Prime (Nat.primeCounting (k * n))) := by
+  intro h
+  have h38 := h 38 (by norm_num)
+  rcases h38 with ⟨k, hk1, hk2, hk3⟩
+  have : k ≤ 21 := by
+    by_contra! h2
+    have hk : (22 : ℝ) ≤ k := by exact_mod_cast h2
+    have h3 : (19 : ℝ) ≤ k - 3 := sub_le_sub_right hk 3
+    have h4 : (19 : ℝ)^2 ≤ (k - 3)^2 := sq_le_sq.mpr (by
+      rw [abs_of_nonneg (by linarith), abs_of_nonneg (by norm_num)]
+      exact h3)
+    have h5 : (k - 3 : ℝ) < 3 * Real.sqrt 38 := by linarith
+    have hr : (0 : ℝ) ≤ 3 * Real.sqrt 38 := by positivity
+    have h6 : (k - 3 : ℝ)^2 < (3 * Real.sqrt 38)^2 := by
+      exact sq_lt_sq.mpr (by
+        rw [abs_of_nonneg (by linarith), abs_of_nonneg hr]
+        exact h5)
+    have h7 : (3 * Real.sqrt 38 : ℝ)^2 = 9 * 38 := by
+      calc (3 * Real.sqrt 38 : ℝ)^2 = 3^2 * (Real.sqrt 38)^2 := mul_pow 3 (Real.sqrt 38) 2
+        _ = 9 * 38 := by
+          rw [Real.sq_sqrt (by norm_num)]
+          norm_num
+    linarith
+  sorry

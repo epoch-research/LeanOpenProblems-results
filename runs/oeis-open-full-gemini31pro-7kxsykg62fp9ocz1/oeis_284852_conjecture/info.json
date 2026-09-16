@@ -1,0 +1,20 @@
+{
+  "id": "oeis_284852_conjecture",
+  "epoch": 1,
+  "uuid": "Y9yGrsCBGcc7Lbe6BZRByL",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 357309,
+      "output_tokens": 19865,
+      "total_tokens": 876921,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 499747,
+      "reasoning_tokens": 6618,
+      "total_cost": 1.0529474
+    }
+  },
+  "oeis_id": "A284852"
+}

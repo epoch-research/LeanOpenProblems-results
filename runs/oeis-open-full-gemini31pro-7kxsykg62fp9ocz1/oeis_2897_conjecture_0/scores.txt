@@ -1,0 +1,31 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.7s)
+  warning: run/Challenge.lean:43:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:47:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_2897_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8013] Built Submission.TestHugeSum12 (5.2s)
+  ✔ [8001/8013] Built Submission.TestHugeSum3 (5.3s)
+  ✔ [8002/8013] Built Submission.TestHugeSum7 (5.4s)
+  ✔ [8003/8013] Built Submission.TestIfEquiv (5.4s)
+  ✔ [8004/8013] Built Submission.TestHugeSum2 (6.1s)
+  ✔ [8005/8013] Built Submission.TestCommRing (6.6s)
+  ✔ [8006/8013] Built Submission.TestHugeSum14 (6.6s)
+  ✔ [8007/8013] Built Submission.TestHugeSum8 (4.6s)
+  ✔ [8008/8013] Built Submission.TestHugeSum6 (5.6s)
+  ✔ [8009/8013] Built Submission.TestHugeSum9 (15s)
+  ✔ [8010/8013] Built Submission.Proof (5.4s)
+  ✔ [8011/8013] Built Submission.Proof3 (4.9s)
+  ✔ [8012/8013] Built Submission.Proof2 (5.0s)
+  ⚠ [8013/8013] Built Submission.Spec (4.1s)
+  warning: Submission/Spec.lean:35:8: declaration uses 'sorry'
+  Build completed successfully (8013 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_2897_conjecture_0, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

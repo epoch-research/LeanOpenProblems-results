@@ -1,0 +1,4 @@
+import Submission.Spec
+open PowerSeries
+
+#check poincare_series_genus2_odd_unimodular_lattices

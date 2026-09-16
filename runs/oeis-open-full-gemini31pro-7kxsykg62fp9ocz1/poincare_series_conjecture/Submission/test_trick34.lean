@@ -1,0 +1,2 @@
+import Submission.Spec
+#print poincare_series_genus2_odd_unimodular_lattices

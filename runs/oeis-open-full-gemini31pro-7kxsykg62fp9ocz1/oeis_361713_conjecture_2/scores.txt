@@ -1,0 +1,106 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:15:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:22:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_361713_conjecture_2.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8071] Built Submission.ExactDef (3.9s)
+  ✔ [8001/8071] Built Submission.Vals (807s)
+  ✔ [8002/8071] Built Submission.Steps.Step_B_16806 (10s)
+  ✔ [8003/8071] Built Submission.Steps.Step_B_2000 (10s)
+  ✔ [8004/8071] Built Submission.Steps.Step_B_16000 (11s)
+  ✔ [8005/8071] Built Submission.Steps.Step_B_10000 (11s)
+  ✔ [8006/8071] Built Submission.Steps.Step_B_14000 (11s)
+  ✔ [8007/8071] Built Submission.Steps.Step_B_6000 (11s)
+  ✔ [8008/8071] Built Submission.Steps.Step_B_8000 (11s)
+  ✔ [8009/8071] Built Submission.Steps.Step_B_4000 (12s)
+  ✔ [8010/8071] Built Submission.Steps.Step_B_12000 (12s)
+  ✔ [8011/8071] Built Submission.Steps.Step_A_117648 (15s)
+  ✖ [8012/8071] Building Submission.Steps.Step_A_74000 (16s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_74000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_74000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_74000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_74000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_74000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8013/8071] Building Submission.Steps.Step_A_100000 (16s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_100000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_100000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_100000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_100000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_100000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8014/8071] Building Submission.Steps.Step_A_110000 (16s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_110000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_110000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_110000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_110000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_110000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8015/8071] Building Submission.Steps.Step_A_112000 (16s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_112000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_112000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_112000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_112000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_112000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8016/8071] Building Submission.Steps.Step_A_86000 (18s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_86000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_86000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_86000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_86000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_86000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8017/8071] Building Submission.Steps.Step_A_90000 (18s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_90000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_90000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_90000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_90000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_90000.setup.json --json
+  error: Lean exited with code 137
+  ✖ [8018/8071] Building Submission.Steps.Step_A_98000 (18s)
+  trace: .> LEAN_PATH=/opt/pristine/packages/Cli/.lake/build/lib/lean:/opt/pristine/packages/batteries/.lake/build/lib/lean:/opt/pristine/packages/Qq/.lake/build/lib/lean:/opt/pristine/packages/aesop/.lake/build/lib/lean:/opt/pristine/packages/proofwidgets/.lake/build/lib/lean:/opt/pristine/packages/importGraph/.lake/build/lib/lean:/opt/pristine/packages/LeanSearchClient/.lake/build/lib/lean:/opt/pristine/packages/plausible/.lake/build/lib/lean:/opt/pristine/packages/mathlib/.lake/build/lib/lean:/workspace/leanproject/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /workspace/leanproject/Submission/Steps/Step_A_98000.lean -o /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_98000.olean -i /workspace/leanproject/.lake/build/lib/lean/Submission/Steps/Step_A_98000.ilean -c /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_98000.c --setup /workspace/leanproject/.lake/build/ir/Submission/Steps/Step_A_98000.setup.json --json
+  error: Lean exited with code 137
+  ✔ [8019/8071] Built Submission.Steps.Step_A_114000 (18s)
+  ✔ [8020/8071] Built Submission.Steps.Step_A_116000 (18s)
+  ✔ [8021/8071] Built Submission.Steps.Step_A_62000 (18s)
+  ✔ [8022/8071] Built Submission.Steps.Step_A_88000 (19s)
+  ✔ [8023/8071] Built Submission.Steps.Step_A_72000 (19s)
+  ✔ [8024/8071] Built Submission.Steps.Step_A_92000 (19s)
+  ✔ [8025/8071] Built Submission.Steps.Step_A_108000 (19s)
+  ✔ [8026/8071] Built Submission.Steps.Step_A_64000 (19s)
+  ✔ [8027/8071] Built Submission.Steps.Step_A_68000 (19s)
+  ✔ [8028/8071] Built Submission.Steps.Step_A_96000 (19s)
+  ✔ [8029/8071] Built Submission.Steps.Step_A_94000 (19s)
+  ✔ [8030/8071] Built Submission.Steps.Step_A_106000 (19s)
+  ✔ [8031/8071] Built Submission.Steps.Step_A_78000 (20s)
+  ✔ [8032/8071] Built Submission.Steps.Step_A_104000 (20s)
+  ✔ [8033/8071] Built Submission.Steps.Step_A_102000 (20s)
+  ✔ [8034/8071] Built Submission.Steps.Step_A_66000 (15s)
+  ✔ [8035/8071] Built Submission.Steps.Step_A_58000 (14s)
+  ✔ [8036/8071] Built Submission.Steps.Step_A_56000 (14s)
+  ✔ [8037/8071] Built Submission.Steps.Step_A_76000 (16s)
+  ✔ [8038/8071] Built Submission.Steps.Step_A_82000 (16s)
+  ✔ [8039/8071] Built Submission.Steps.Step_A_84000 (15s)
+  ✔ [8040/8071] Built Submission.Steps.Step_A_80000 (15s)
+  ✔ [8041/8071] Built Submission.Steps.Step_A_60000 (15s)
+  ✔ [8042/8071] Built Submission.Steps.Step_A_70000 (15s)
+  ✔ [8043/8071] Built Submission.Steps.Step_A_54000 (14s)
+  ✔ [8044/8071] Built Submission.Steps.Step_A_12000 (9.8s)
+  ✔ [8045/8071] Built Submission.Steps.Step_A_50000 (13s)
+  ✔ [8046/8071] Built Submission.Steps.Step_A_10000 (9.0s)
+  ✔ [8047/8071] Built Submission.Steps.Step_A_14000 (10s)
+  ✔ [8048/8071] Built Submission.Steps.Step_A_16000 (11s)
+  ✔ [8049/8071] Built Submission.Steps.Step_A_36000 (12s)
+  ✔ [8050/8071] Built Submission.Steps.Step_A_52000 (14s)
+  ✔ [8051/8071] Built Submission.Steps.Step_A_18000 (11s)
+  ✔ [8052/8071] Built Submission.Steps.Step_A_26000 (11s)
+  ✔ [8053/8071] Built Submission.Steps.Step_A_34000 (12s)
+  ✔ [8054/8071] Built Submission.Steps.Step_A_48000 (14s)
+  ✔ [8055/8071] Built Submission.Steps.Step_A_28000 (11s)
+  ✔ [8056/8071] Built Submission.Steps.Step_A_40000 (13s)
+  ✔ [8057/8071] Built Submission.Steps.Step_A_46000 (15s)
+  ✔ [8058/8071] Built Submission.Steps.Step_A_20000 (11s)
+  ✔ [8059/8071] Built Submission.Steps.Step_A_22000 (11s)
+  ✔ [8060/8071] Built Submission.Steps.Step_A_38000 (13s)
+  ✔ [8061/8071] Built Submission.Steps.Step_A_24000 (11s)
+  ✔ [8062/8071] Built Submission.Steps.Step_A_44000 (13s)
+  ✔ [8063/8071] Built Submission.Steps.Step_A_30000 (12s)
+  ✔ [8064/8071] Built Submission.Steps.Step_A_32000 (12s)
+  ✔ [8065/8071] Built Submission.Steps.Step_A_42000 (13s)
+  ✔ [8066/8071] Built Submission.Steps.Step_A_8000 (7.4s)
+  ✔ [8067/8071] Built Submission.Steps.Step_A_2000 (6.2s)
+  ✔ [8068/8071] Built Submission.Steps.Step_A_4000 (6.3s)
+  ✔ [8069/8071] Built Submission.Steps.Step_A_6000 (6.7s)
+  Some required targets logged failures:
+  - Submission.Steps.Step_A_74000
+  - Submission.Steps.Step_A_100000
+  - Submission.Steps.Step_A_110000
+  - Submission.Steps.Step_A_112000
+  - Submission.Steps.Step_A_86000
+  - Submission.Steps.Step_A_90000
+  - Submission.Steps.Step_A_98000
+  
+  error: build failed
+  uncaught exception: Child exited with 1
+

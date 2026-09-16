@@ -1,0 +1,4 @@
+import FormalConjectures.Util.ProblemImports
+open Nat Finset
+def a (n : ℕ) : ℕ := card ((Icc 1 n).filter fun k : ℕ => Nat.Prime (k ^ 4 + (2 * n + 1 - k) ^ 4))
+theorem test1000 : a 1000 > 0 := by native_decide

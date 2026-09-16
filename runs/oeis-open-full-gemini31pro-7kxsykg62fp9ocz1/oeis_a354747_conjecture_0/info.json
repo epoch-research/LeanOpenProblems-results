@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a354747_conjecture_0",
+  "epoch": 1,
+  "uuid": "5NLKARzgGNVdWrRULoPyJ2",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 10530529,
+      "output_tokens": 369611,
+      "total_tokens": 73788561,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 62888421,
+      "reasoning_tokens": 176463,
+      "total_cost": 38.074074199999956
+    }
+  },
+  "oeis_id": "A354747"
+}

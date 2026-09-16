@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "At $n=1$, the defining sum has only its $k=0$ term, giving $a(1)=8/(2)=4$. Since $1=2^0$ but $4$ is even, this is a counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\n\\beta(k)=\\sum_{j=0}^{k}\\binom{k}{j}^{2}\\binom{k+j}{j},\n\\]\nand let \\(t(k)\\) be the coefficient of \\(x^k\\) in \\((x^2+4x-1)^k\\). Equivalently,\n\\[\nt(k)=\\sum_{i=0}^{\\lfloor k/2\\rfloor}(-1)^i\n\\binom{k}{i}\\binom{k-i}{i}4^{k-2i}.\n\\]\nFor every positive integer \\(n\\), the sequence in the conjecture is defined by\n\\[\na(n)=\\frac1{2n}\\sum_{k=0}^{n-1}(-1)^k(15k+8)\\beta(k)t(k).\n\\]\n\nWe disprove the asserted parity characterization by taking \\(n=1\\).\n\nFirst,\n\\[\n\\beta(0)=\\sum_{j=0}^{0}\\binom{0}{j}^{2}\\binom{0+j}{j}\n=\\binom00^2\\binom00=1.\n\\]\nAlso, \\((x^2+4x-1)^0=1\\), so the coefficient of \\(x^0\\) is\n\\[\nt(0)=1.\n\\]\nThe same value follows directly from the displayed finite-sum formula: its sole term is\n\\[\n(-1)^0\\binom00\\binom00 4^0=1.\n\\]\n\nThe sum defining \\(a(1)\\) contains only the term \\(k=0\\). Therefore\n\\[\n\\begin{aligned}\na(1)\n&=\\frac1{2\\cdot1}(-1)^0(15\\cdot0+8)\\beta(0)t(0)\\\\\n&=\\frac12\\cdot1\\cdot8\\cdot1\\cdot1\\\\\n&=4.\n\\end{aligned}\n\\]\nThus \\(a(1)\\) is indeed an integer, but it is even, not odd.\n\nOn the other hand, \\(1\\) is a positive power of two, since\n\\[\n1=2^0.\n\\]\nConsequently, at the positive integer \\(n=1\\), the statement “\\(n\\) is a power of two” is true while the statement “\\(a(n)\\) is odd” is false. Hence the claimed equivalence\n\\[\na(n)\\text{ is odd}\\quad\\Longleftrightarrow\\quad n\\text{ is a power of two}\n\\]\nfails for \\(n=1\\). Since the conjecture asserts the conjunction of integrality and this equivalence for every \\(n>0\\), failure of the equivalence at this single positive integer disproves the entire conjecture.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a237271_conjecture_2",
+  "epoch": 1,
+  "uuid": "4vxQz47KR46zSHiNhWADSv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 406226,
+      "output_tokens": 30948,
+      "total_tokens": 1681568,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1244394,
+      "reasoning_tokens": 7632,
+      "total_cost": 1.4327067999999996
+    }
+  },
+  "oeis_id": "A237271"
+}

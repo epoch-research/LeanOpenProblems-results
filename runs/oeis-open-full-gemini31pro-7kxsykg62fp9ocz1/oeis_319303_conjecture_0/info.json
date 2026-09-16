@@ -1,0 +1,20 @@
+{
+  "id": "oeis_319303_conjecture_0",
+  "epoch": 1,
+  "uuid": "TCZQNxzmMLzyC7mRGjzkky",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 254721,
+      "output_tokens": 39589,
+      "total_tokens": 1498723,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1204413,
+      "reasoning_tokens": 14325,
+      "total_cost": 1.2253926000000002
+    }
+  },
+  "oeis_id": "A319303"
+}

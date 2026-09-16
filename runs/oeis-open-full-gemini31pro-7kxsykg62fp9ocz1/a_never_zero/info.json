@@ -1,0 +1,24 @@
+{
+  "id": "a_never_zero",
+  "epoch": 1,
+  "uuid": "dTSjV4CvHoz8dqM7ztopmW",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 11450019,
+      "output_tokens": 311648,
+      "total_tokens": 129320840,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 117559173,
+      "reasoning_tokens": 212959,
+      "total_cost": 50.15164859999999
+    }
+  },
+  "oeis_id": "A359634"
+}

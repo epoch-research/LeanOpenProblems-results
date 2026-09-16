@@ -1,0 +1,45 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (5.6s)
+  warning: run/Challenge.lean:47:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:51:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_219055_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8027] Built Submission.Proofs.Goldbach9 (10s)
+  ✔ [8001/8027] Built Submission.Proofs.Lemoine16 (20s)
+  ✔ [8002/8027] Built Submission.Proofs.Goldbach5 (22s)
+  ✔ [8003/8027] Built Submission.Proofs.Lemoine7 (22s)
+  ✔ [8004/8027] Built Submission.Proofs.Lemoine8 (23s)
+  ✔ [8005/8027] Built Submission.Proofs.Goldbach7 (23s)
+  ✔ [8006/8027] Built Submission.Proofs.Lemoine3 (23s)
+  ✔ [8007/8027] Built Submission.Proofs.Lemoine2 (24s)
+  ✔ [8008/8027] Built Submission.Proofs.Lemoine13 (24s)
+  ✔ [8009/8027] Built Submission.Proofs.Lemoine14 (24s)
+  ✔ [8010/8027] Built Submission.Proofs.Goldbach2 (24s)
+  ✔ [8011/8027] Built Submission.Proofs.Goldbach4 (24s)
+  ✔ [8012/8027] Built Submission.Proofs.Lemoine11 (24s)
+  ✔ [8013/8027] Built Submission.Proofs.Goldbach3 (24s)
+  ✔ [8014/8027] Built Submission.Proofs.Lemoine1 (24s)
+  ✔ [8015/8027] Built Submission.Proofs.Goldbach1 (25s)
+  ✔ [8016/8027] Built Submission.Proofs.Lemoine6 (25s)
+  ✔ [8017/8027] Built Submission.Proofs.Lemoine15 (25s)
+  ✔ [8018/8027] Built Submission.Proofs.Lemoine4 (25s)
+  ✔ [8019/8027] Built Submission.Proofs.Goldbach6 (25s)
+  ✔ [8020/8027] Built Submission.Proofs.Lemoine5 (26s)
+  ✔ [8021/8027] Built Submission.Proofs.Lemoine9 (26s)
+  ✔ [8022/8027] Built Submission.Proofs.Lemoine10 (26s)
+  ✔ [8023/8027] Built Submission.Proofs.Lemoine12 (26s)
+  ✔ [8024/8027] Built Submission.Proofs.Goldbach8 (26s)
+  ✔ [8025/8027] Built Submission.Proofs.All (3.7s)
+  ✔ [8026/8027] Built Submission.Proofs.MainProofs (215s)
+  ⚠ [8027/8027] Built Submission.Spec (5.0s)
+  warning: Submission/Spec.lean:133:8: declaration uses 'sorry'
+  Build completed successfully (8027 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_219055_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

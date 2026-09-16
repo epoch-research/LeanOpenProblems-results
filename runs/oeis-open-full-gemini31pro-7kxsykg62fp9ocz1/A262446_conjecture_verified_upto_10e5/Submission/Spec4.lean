@@ -1,0 +1,2 @@
+import Submission.Spec3
+#print axioms A262446_conjecture_verified_upto_10e5

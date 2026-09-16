@@ -1,0 +1,24 @@
+{
+  "id": "A308403.conjecture_2_counterexample",
+  "epoch": 1,
+  "uuid": "oScQKBsQZXaF5jrziY2ekK",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 12579964,
+      "output_tokens": 876737,
+      "total_tokens": 85141774,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 71685073,
+      "reasoning_tokens": 749015,
+      "total_cost": 50.017786599999994
+    }
+  },
+  "oeis_id": "A308403"
+}

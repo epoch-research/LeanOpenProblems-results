@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a263326_conjecture_1",
+  "epoch": 1,
+  "uuid": "Dcw2kmua4xYNimfHKtG7Rs",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 157658,
+      "output_tokens": 13466,
+      "total_tokens": 609728,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 438604,
+      "reasoning_tokens": 8259,
+      "total_cost": 0.5646287999999999
+    }
+  },
+  "oeis_id": "A263326"
+}

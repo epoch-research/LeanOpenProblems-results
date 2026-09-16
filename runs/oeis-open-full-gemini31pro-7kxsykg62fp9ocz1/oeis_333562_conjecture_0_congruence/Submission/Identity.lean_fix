@@ -1,0 +1,5 @@
+import Mathlib
+
+lemma test (n : ℕ) : (-1 : ℤ) ^ n * (-1) ^ n = 1 := by
+  rw [← mul_pow]
+  norm_num

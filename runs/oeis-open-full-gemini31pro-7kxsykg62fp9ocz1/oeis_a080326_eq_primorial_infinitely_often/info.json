@@ -1,0 +1,24 @@
+{
+  "id": "oeis_a080326_eq_primorial_infinitely_often",
+  "epoch": 1,
+  "uuid": "B9ELd3d4dCUSK3KPbgrpqL",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 9006274,
+      "output_tokens": 275372,
+      "total_tokens": 152825396,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 143543750,
+      "reasoning_tokens": 135546,
+      "total_cost": 50.02576200000001
+    }
+  },
+  "oeis_id": "A080326"
+}

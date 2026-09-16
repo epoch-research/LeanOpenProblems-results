@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "At \\(k=2\\), the identity \\(\\binom n2=n(n-1)/2\\) shows termwise that the second summand is exactly \\(16\\) times the first. The first series converges and is strictly positive—its terms are nonnegative and its \\(n=3\\) term is \\(1/43200\\)—so the two sums cannot be equal.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "The conjecture is false already for \\(k=2\\). Since \\(2\\ge 1\\), the conjecture would in particular require\n\\[\n \\sum_{n\\ge 3}\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}\n =\n \\sum_{n\\ge 3}\\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2}.\n\\]\nWe show that the right-hand series is actually sixteen times the left-hand series, while the left-hand series is strictly positive.\n\nFor \\(n\\ge3\\), put\n\\[\n x_n=\\frac{1}{n^3(n^2-1)^2(n^2-4)^2}\n\\]\nand\n\\[\n y_n=\\frac{1}{n\\binom n2^2\\binom{n+2}2^2(n-2)^2}.\n\\]\nUsing\n\\[\n \\binom n2=\\frac{n(n-1)}2,\n \\qquad\n \\binom{n+2}2=\\frac{(n+2)(n+1)}2,\n\\]\nthe denominator of \\(y_n\\) becomes\n\\[\n\\begin{aligned}\n n\\binom n2^2\\binom{n+2}2^2(n-2)^2\n &=n\\left(\\frac{n(n-1)}2\\right)^2\n       \\left(\\frac{(n+2)(n+1)}2\\right)^2(n-2)^2\\\\\n &=\\frac1{16}n^3(n-1)^2(n+1)^2(n-2)^2(n+2)^2\\\\\n &=\\frac1{16}n^3\\bigl((n-1)(n+1)\\bigr)^2\n                    \\bigl((n-2)(n+2)\\bigr)^2\\\\\n &=\\frac1{16}n^3(n^2-1)^2(n^2-4)^2.\n\\end{aligned}\n\\]\nAll these denominators are nonzero for \\(n\\ge3\\). Taking reciprocals therefore gives the termwise identity\n\\[\n y_n=16x_n \\qquad(n\\ge3).\n\\]\n\nThe series involving the \\(x_n\\) converges. Indeed, every \\(x_n\\) is nonnegative, and for \\(n\\ge3\\),\n\\[\n (n^2-1)^2(n^2-4)^2\\ge1,\n\\]\nso\n\\[\n 0\\le x_n\\le \\frac1{n^3}.\n\\]\nThe \\(p\\)-series \\(\\sum_{n\\ge3}n^{-3}\\) converges, hence the comparison test proves that \\(\\sum_{n\\ge3}x_n\\) converges. The identity \\(y_n=16x_n\\) then also proves convergence of the second series and permits termwise extraction of the constant factor. Thus, if\n\\[\n S:=\\sum_{n\\ge3}x_n,\n\\]\nthen\n\\[\n \\sum_{n\\ge3}y_n=16S.\n\\]\n\nMoreover, \\(S\\) is strictly positive. All its terms are nonnegative, and its first term is\n\\[\n x_3\n =\\frac{1}{3^3(3^2-1)^2(3^2-2^2)^2}\n =\\frac{1}{27\\cdot64\\cdot25}\n =\\frac1{43200}>0.\n\\]\nConsequently\n\\[\n S\\ge x_3=\\frac1{43200}>0.\n\\]\n\nIf the conjectured equality of the two series held for \\(k=2\\), it would now say\n\\[\n S=16S.\n\\]\nHence \\(15S=0\\), and therefore \\(S=0\\), contradicting \\(S>0\\).\n\nThus the first asserted equality in the conjecture already fails at \\(k=2\\). Since the conjecture claims that equality, together with the equality to \\(\\zeta(3)-a(k)/A281821(k)\\), for every \\(k\\ge1\\), failure of the first equality at this admissible value of \\(k\\) disproves the entire conjecture. No assertion about the final \\(\\zeta(3)\\) expression is needed for the counterexample.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

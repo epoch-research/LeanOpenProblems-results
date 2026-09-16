@@ -1,0 +1,20 @@
+{
+  "id": "oeis_351442_conjecture_0",
+  "epoch": 1,
+  "uuid": "gp9TpZCB59Y8sCVA68EdXo",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1631135,
+      "output_tokens": 57096,
+      "total_tokens": 6556992,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 4868761,
+      "reasoning_tokens": 23141,
+      "total_cost": 4.921174199999999
+    }
+  },
+  "oeis_id": "A351442"
+}

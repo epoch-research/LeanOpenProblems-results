@@ -1,0 +1,20 @@
+{
+  "id": "oeis_93456_conjecture_0",
+  "epoch": 1,
+  "uuid": "ZqP7pTp5uaqLomXQwXALiB",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 3627247,
+      "output_tokens": 292990,
+      "total_tokens": 31319516,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 27399279,
+      "reasoning_tokens": 64675,
+      "total_cost": 16.2502298
+    }
+  },
+  "oeis_id": "A093456"
+}

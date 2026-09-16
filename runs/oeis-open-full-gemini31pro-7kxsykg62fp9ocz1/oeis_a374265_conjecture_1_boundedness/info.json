@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a374265_conjecture_1_boundedness",
+  "epoch": 1,
+  "uuid": "bqtTAQyRexGm54CExZPKgg",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 1073557,
+      "output_tokens": 209555,
+      "total_tokens": 14075116,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 12792004,
+      "reasoning_tokens": 108147,
+      "total_cost": 7.2201748000000014
+    }
+  },
+  "oeis_id": "A374265"
+}

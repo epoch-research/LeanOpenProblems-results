@@ -1,0 +1,17 @@
+{
+  "settlement": "disproved",
+  "summary": {
+    "text": "For \\(k=31\\) and \\(s=1\\), the distinct integers \\(5\\) and \\(1829=31\\cdot59\\) give the same sum: \\(1/32+1/36=1/32+1/62+1/90+1/1860=17/288\\). Thus their fractional parts coincide, contradicting pairwise distinctness.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  },
+  "full_proof": {
+    "text": "Let\n\\[\nS(n;k,s)=\\sum_{d\\mid n}\\frac{1}{(d+k)^s}.\n\\]\nThe conjecture claims, in particular, that for every pair of positive integers \\(k,s\\), the fractional parts of the numbers \\(S(n;k,s)\\), as \\(n\\) ranges over the positive integers, are pairwise distinct.\n\nWe disprove this by taking\n\\[\nk=31,\\qquad s=1,\n\\]\nand comparing the two distinct positive integers\n\\[\nn_1=5,\\qquad n_2=1829.\n\\]\n\nFirst consider \\(n_1=5\\). Since \\(5\\) is prime, its positive divisors are exactly \\(1\\) and \\(5\\). Therefore\n\\[\n\\begin{aligned}\nS(5;31,1)\n &=\\frac1{1+31}+\\frac1{5+31}\\\\\n &=\\frac1{32}+\\frac1{36}\\\\\n &=\\frac{36+32}{32\\cdot36}\\\\\n &=\\frac{68}{1152}\n =\\frac{17}{288}.\n\\end{aligned}\n\\]\n\nNow factor the second integer:\n\\[\n1829=31\\cdot59.\n\\]\nBoth factors are prime. Indeed, to check that \\(31\\) is prime it suffices to test the primes not exceeding \\(\\sqrt{31}<6\\), namely \\(2,3,5\\), none of which divides \\(31\\). Likewise, \\(\\sqrt{59}<8\\), and none of \\(2,3,5,7\\) divides \\(59\\). The primes \\(31\\) and \\(59\\) are distinct, so the positive divisors of their product are exactly\n\\[\n1,\\ 31,\\ 59,\\ 31\\cdot59=1829.\n\\]\nConsequently,\n\\[\n\\begin{aligned}\nS(1829;31,1)\n &=\\frac1{1+31}+\\frac1{31+31}\n   +\\frac1{59+31}+\\frac1{1829+31}\\\\\n &=\\frac1{32}+\\frac1{62}+\\frac1{90}+\\frac1{1860}.\n\\end{aligned}\n\\]\nA common denominator for these four fractions is\n\\[\n44640=2^5\\cdot3^2\\cdot5\\cdot31.\n\\]\nWith this denominator, the four numerators are respectively\n\\[\n\\frac{44640}{32}=1395,\n\\qquad\n\\frac{44640}{62}=720,\n\\qquad\n\\frac{44640}{90}=496,\n\\qquad\n\\frac{44640}{1860}=24.\n\\]\nTheir sum is\n\\[\n1395+720+496+24=2635.\n\\]\nThus\n\\[\nS(1829;31,1)=\\frac{2635}{44640}.\n\\]\nSince \\(44640=288\\cdot155\\) and \\(2635=17\\cdot155\\), this reduces to\n\\[\nS(1829;31,1)=\\frac{17}{288}.\n\\]\nWe have therefore obtained the exact equality\n\\[\nS(5;31,1)=S(1829;31,1)=\\frac{17}{288}.\n\\]\nIn particular, these two rational numbers have the same fractional part. More explicitly, \\(0<17/288<1\\), so each fractional part is itself equal to \\(17/288\\).\n\nBut \\(5\\) and \\(1829\\) are distinct positive integers, while \\(k=31\\) and \\(s=1\\) are both positive. Hence this equality directly contradicts the conjectured pairwise distinctness of the fractional parts for every positive \\(k,s\\). Therefore the conjecture is false.",
+    "generation": {
+      "model": "openai/gpt-5.6-sol",
+      "source_eval": "2026-09-16T09-39-14-00-00_summarize-proofs_QiLpzi4kZ7huLu6kPEPajg.eval"
+    }
+  }
+}

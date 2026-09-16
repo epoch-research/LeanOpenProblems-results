@@ -1,0 +1,5 @@
+import FormalConjectures.Util.ProblemImports
+open Rat
+
+lemma H_100 : harmonic 100 = 14466636279520351160221518043104131447711 / 2788815009188499086581352357412492142272 := by
+  sorry

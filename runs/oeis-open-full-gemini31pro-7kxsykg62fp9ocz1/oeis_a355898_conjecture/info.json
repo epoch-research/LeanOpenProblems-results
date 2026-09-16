@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a355898_conjecture",
+  "epoch": 1,
+  "uuid": "aJjreHdoAY3cTSezq7cw7y",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 10730602,
+      "output_tokens": 494242,
+      "total_tokens": 65805824,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 54580980,
+      "reasoning_tokens": 173888,
+      "total_cost": 38.30830400000001
+    }
+  },
+  "oeis_id": "A355898"
+}

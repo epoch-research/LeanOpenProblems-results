@@ -1,0 +1,24 @@
+{
+  "id": "oeis_181830_conjecture_0",
+  "epoch": 1,
+  "uuid": "gYyU6QxypX7LywNNbwbon6",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 15088127,
+      "output_tokens": 462696,
+      "total_tokens": 86921359,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 71370536,
+      "reasoning_tokens": 304092,
+      "total_cost": 50.00271319999995
+    }
+  },
+  "oeis_id": "A181830"
+}

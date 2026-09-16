@@ -1,0 +1,20 @@
+{
+  "id": "oeis_211420_conjecture_1",
+  "epoch": 1,
+  "uuid": "B72WPtNey8sJ6UQmcsUtdf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 6310980,
+      "output_tokens": 317053,
+      "total_tokens": 50923722,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 44295689,
+      "reasoning_tokens": 171219,
+      "total_cost": 25.28573379999999
+    }
+  },
+  "oeis_id": "A211420"
+}

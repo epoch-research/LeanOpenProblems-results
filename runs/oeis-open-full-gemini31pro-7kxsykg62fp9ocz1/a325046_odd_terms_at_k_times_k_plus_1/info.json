@@ -1,0 +1,20 @@
+{
+  "id": "a325046_odd_terms_at_k_times_k_plus_1",
+  "epoch": 1,
+  "uuid": "Lpesd5WK3hiEq37pigyDQv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 3830669,
+      "output_tokens": 240756,
+      "total_tokens": 27397199,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 23325774,
+      "reasoning_tokens": 67089,
+      "total_cost": 15.215564799999996
+    }
+  },
+  "oeis_id": "A325046"
+}

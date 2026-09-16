@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a303639_conjecture",
+  "epoch": 1,
+  "uuid": "FTzE6rbPtHi4hMWuSL96EJ",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 524861,
+      "output_tokens": 48370,
+      "total_tokens": 4362880,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 3789649,
+      "reasoning_tokens": 17117,
+      "total_cost": 2.388091800000001
+    }
+  },
+  "oeis_id": "A303639"
+}

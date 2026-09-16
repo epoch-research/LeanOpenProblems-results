@@ -1,0 +1,20 @@
+{
+  "id": "oeis_194806_conjecture_0",
+  "epoch": 1,
+  "uuid": "QcpcHAVEJna3tWwAWfViQe",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 2897764,
+      "output_tokens": 358469,
+      "total_tokens": 32636848,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 29380615,
+      "reasoning_tokens": 141929,
+      "total_cost": 15.973279000000002
+    }
+  },
+  "oeis_id": "A194806"
+}

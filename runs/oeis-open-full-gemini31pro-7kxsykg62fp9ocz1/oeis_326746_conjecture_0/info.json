@@ -1,0 +1,20 @@
+{
+  "id": "oeis_326746_conjecture_0",
+  "epoch": 1,
+  "uuid": "JKkLFydHFDFkMaCb76f9Vi",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 3531493,
+      "output_tokens": 332942,
+      "total_tokens": 54277745,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 50413310,
+      "reasoning_tokens": 102734,
+      "total_cost": 21.140951999999984
+    }
+  },
+  "oeis_id": "A326746"
+}

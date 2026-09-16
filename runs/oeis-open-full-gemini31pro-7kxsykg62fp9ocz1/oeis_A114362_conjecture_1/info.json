@@ -1,0 +1,20 @@
+{
+  "id": "oeis_A114362_conjecture_1",
+  "epoch": 1,
+  "uuid": "7k5jnsKGNimMBByYWm2Nqi",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 7787892,
+      "output_tokens": 367717,
+      "total_tokens": 80593701,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 72438092,
+      "reasoning_tokens": 120477,
+      "total_cost": 34.476006399999996
+    }
+  },
+  "oeis_id": "A114362"
+}

@@ -1,0 +1,15 @@
+import FormalConjectures.Util.ProblemImports
+open Int
+
+lemma gcd_div_sq (n x y : ℤ) : (gcd (n * x + y) (n * y) : ℤ) ∣ n^2 * (gcd x y : ℤ) := by
+  have h1 : (gcd (n * x + y) (n * y) : ℤ) ∣ n * (n * x + y) := dvd_mul_of_dvd_right (gcd_dvd_left _ _) n
+  have h2 : (gcd (n * x + y) (n * y) : ℤ) ∣ n * y := gcd_dvd_right _ _
+  have h3 : (gcd (n * x + y) (n * y) : ℤ) ∣ (n^2 * x) := by
+    have : n^2 * x = n * (n * x + y) - n * y := by ring
+    rw [this]
+    exact dvd_sub h1 h2
+  have h4 : (gcd (n * x + y) (n * y) : ℤ) ∣ (n^2 * y) := by
+    have : n^2 * y = n * (n * y) := by ring
+    rw [this]
+    exact dvd_mul_of_dvd_right h2 n
+  exact dvd_gcd h3 h4 -- wait, gcd of n^2*x and n^2*y is n^2 * gcd x y

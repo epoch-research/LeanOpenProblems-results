@@ -1,0 +1,3 @@
+import Submission.Vals
+set_option maxRecDepth 2000000
+theorem step_A_44000 : apply_exact 117649 2000 42000 val_A_42000 = val_A_44000 := by decide

@@ -1,0 +1,24 @@
+{
+  "id": "A230507_conjecture_part_ii",
+  "epoch": 1,
+  "uuid": "Wdh54ZBiRsCYTCYHLoKLXh",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 50.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 14682505,
+      "output_tokens": 512358,
+      "total_tokens": 88351616,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 73156753,
+      "reasoning_tokens": 405344,
+      "total_cost": 50.14465659999998
+    }
+  },
+  "oeis_id": "A230507"
+}

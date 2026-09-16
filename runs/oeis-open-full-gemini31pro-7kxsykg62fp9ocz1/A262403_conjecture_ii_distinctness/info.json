@@ -1,0 +1,20 @@
+{
+  "id": "A262403_conjecture_ii_distinctness",
+  "epoch": 1,
+  "uuid": "Xdf5EyDfagFqXBfBSmhAMr",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 101743,
+      "output_tokens": 6811,
+      "total_tokens": 147530,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 38976,
+      "reasoning_tokens": 4461,
+      "total_cost": 0.2930132
+    }
+  },
+  "oeis_id": "A262403"
+}

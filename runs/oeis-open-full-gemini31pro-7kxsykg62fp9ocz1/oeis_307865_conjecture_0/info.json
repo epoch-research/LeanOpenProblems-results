@@ -1,0 +1,20 @@
+{
+  "id": "oeis_307865_conjecture_0",
+  "epoch": 1,
+  "uuid": "iBk5G3qGy5pZatx9HauZmv",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 534467,
+      "output_tokens": 65911,
+      "total_tokens": 6496416,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 5896038,
+      "reasoning_tokens": 21335,
+      "total_cost": 3.0390736
+    }
+  },
+  "oeis_id": "A307865"
+}

@@ -1,0 +1,3 @@
+import Mathlib.Algebra.Polynomial.SpecificDegree
+
+#check Polynomial.irreducible_of_degree_le_three_of_not_isRoot

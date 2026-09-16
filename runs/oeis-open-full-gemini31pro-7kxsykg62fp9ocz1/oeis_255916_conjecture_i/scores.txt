@@ -1,0 +1,30 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.6s)
+  warning: run/Challenge.lean:47:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Challenge.lean:55:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: run/Challenge.lean:89:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:97:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_255916_conjecture_i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8000/8000] Built Submission.Spec (4.1s)
+  warning: Submission/Spec.lean:23:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Spec.lean:30:5: unused variable `h`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Spec.lean:49:8: declaration uses 'sorry'
+  warning: Submission/Spec.lean:54:8: declaration uses 'sorry'
+  Build completed successfully (8000 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_255916_conjecture_i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  
+  uncaught exception: Illegal axiom detected: 'sorryAx'
+

@@ -1,0 +1,26 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8000/8001] Built Challenge (4.5s)
+  warning: run/Challenge.lean:22:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:26:8: declaration uses 'sorry'
+  Build completed successfully (8001 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_211420_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8000/8005] Built Submission.DivIneqInt (21s)
+  ✔ [8001/8005] Built Submission.DivIneq (5.2s)
+  ✔ [8002/8005] Built Submission.Factorial (4.3s)
+  ✔ [8003/8005] Built Submission.Identity (4.2s)
+  ✔ [8004/8005] Built Submission.PolyId (4.0s)
+  ⚠ [8005/8005] Built Submission.Spec (5.1s)
+  warning: Submission/Spec.lean:63:6: 'push_cast' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: Submission/Spec.lean:109:8: declaration uses 'sorry'
+  Build completed successfully (8005 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, oeis_211420_conjecture_1, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

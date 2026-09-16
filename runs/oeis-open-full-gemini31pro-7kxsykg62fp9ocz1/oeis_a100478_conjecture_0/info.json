@@ -1,0 +1,20 @@
+{
+  "id": "oeis_a100478_conjecture_0",
+  "epoch": 1,
+  "uuid": "STKUzKLRnPUwwTDpYNrKFB",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gemini-3.1-pro-preview": {
+      "input_tokens": 406582,
+      "output_tokens": 27933,
+      "total_tokens": 1695271,
+      "input_tokens_cache_write": null,
+      "input_tokens_cache_read": 1260756,
+      "reasoning_tokens": 11213,
+      "total_cost": 1.4005111999999995
+    }
+  },
+  "oeis_id": "A100478"
+}

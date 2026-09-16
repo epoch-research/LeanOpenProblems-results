@@ -1,0 +1,3 @@
+import Submission.Spec
+
+#print axioms poincare_series_genus2_odd_unimodular_lattices
