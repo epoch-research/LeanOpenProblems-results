@@ -1,0 +1,24 @@
+{
+  "id": "Erdos30.erdos_30",
+  "epoch": 1,
+  "uuid": "Vq62YCgR8La43b2pg9nVhf",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0,
+    "reason": "Working time limit exceeded. limit: 259200 seconds"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 8214,
+      "output_tokens": 2789795,
+      "total_tokens": 571814186,
+      "input_tokens_cache_write": 10874483,
+      "input_tokens_cache_read": 558141694,
+      "reasoning_tokens": 2231836,
+      "total_cost": 166.72892429999993
+    }
+  },
+  "oeis_id": null
+}

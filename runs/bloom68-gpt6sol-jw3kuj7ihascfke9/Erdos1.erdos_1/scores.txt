@@ -1,0 +1,89 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8065/8066] Built Challenge (4.7s)
+  warning: run/Challenge.lean:29:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:43:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos1.erdos_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ✔ [8065/8071] Built Submission.Common (3.5s)
+  ⚠ [8066/8071] Built Submission.GeometryBase (6.4s)
+  warning: Submission/GeometryBase.lean:83:44: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: Submission/GeometryBase.lean:83:56: this tactic is never executed
+  
+  Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+  warning: Submission/GeometryBase.lean:83:44: 'congr 2' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: Submission/GeometryBase.lean:83:56: 'omega' tactic does nothing
+  
+  Note: This linter can be disabled with `set_option linter.unusedTactic false`
+  warning: Submission/GeometryBase.lean:246:33: try 'simp' instead of 'simpa'
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+  warning: Submission/GeometryBase.lean:379:24: This simp argument is unused:
+    Pi.single_eq_of_ne hne
+  
+  Hint: Omit it from the simp argument list.
+    simp [oddBlockWeight,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵e̵q̵_̵o̵f̵_̵n̵e̵ ̵h̵n̵e̵]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: Submission/GeometryBase.lean:638:10: This simp argument is unused:
+    hne.symm
+  
+  Hint: Omit it from the simp argument list.
+    simp [h̵n̵e̵.̵s̵y̵m̵m̵,̵ ̵pow_add, pow_mul]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  ✔ [8067/8071] Built Submission.Transfer (7.0s)
+  ⚠ [8068/8071] Built Submission.GeometryShear (5.3s)
+  warning: Submission/GeometryShear.lean:29:8: automatically included section variable(s) unused in theorem `_private.Submission.GeometryShear.0.Erdos1Aux.heightInclusion_mulVec`:
+    [Fintype α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [Fintype α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: Submission/GeometryShear.lean:50:4: This simp argument is unused:
+    heightProjection_mulVec
+  
+  Hint: Omit it from the simp argument list.
+    simp only [Pi.add_apply, Matrix.sub_mulVec, Matrix.one_mulVec, h̵e̵i̵g̵h̵t̵P̵r̵o̵j̵e̵c̵t̵i̵o̵n̵_̵m̵u̵l̵V̵e̵c̵,̵ ̵heightInclusion_mulVec,
+    ̲  ̲ ̲ ̲Pi.sub_apply]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  warning: Submission/GeometryShear.lean:66:8: automatically included section variable(s) unused in theorem `_private.Submission.GeometryShear.0.Erdos1Aux.blockDiagonal_const_mulVec`:
+    [DecidableEq α]
+  consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+    omit [DecidableEq α] in theorem ...
+  
+  Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+  warning: Submission/GeometryShear.lean:237:15: This simp argument is unused:
+    Pi.single_apply
+  
+  Hint: Omit it from the simp argument list.
+    simp [e, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hi]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  info: Submission/GeometryShear.lean:379:29: Try this:
+    [apply] ring_nf
+    
+    The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+      
+    Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+  warning: Submission/GeometryShear.lean:379:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+  
+  Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+  ✔ [8069/8071] Built Submission.GeometrySchedule (4.9s)
+  ✔ [8070/8071] Built Submission.Geometry (4.3s)
+  ⚠ [8071/8071] Built Submission.Spec (3.9s)
+  warning: Submission/Spec.lean:31:8: declaration uses 'sorry'
+  Build completed successfully (8071 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos1.erdos_1.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

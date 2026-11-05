@@ -1,0 +1,24 @@
+{
+  "id": "Erdos508.HadwigerNelsonProblem.eq5",
+  "epoch": 1,
+  "uuid": "RWhi7VVxHoqMypWoSRMXm5",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/gpt-6-sol": {
+      "input_tokens": 52704,
+      "output_tokens": 6418839,
+      "total_tokens": 918921257,
+      "input_tokens_cache_write": 23138214,
+      "input_tokens_cache_read": 889311500,
+      "reasoning_tokens": 3400625,
+      "total_cost": 300.0016329999986
+    }
+  },
+  "oeis_id": null
+}

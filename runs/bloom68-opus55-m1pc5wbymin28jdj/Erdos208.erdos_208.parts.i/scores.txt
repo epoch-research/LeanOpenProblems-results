@@ -1,0 +1,18 @@
+=== SCORES ===
+proof_scorer: I
+  stage: comparator
+  Building Challenge
+  ⚠ [8065/8066] Built Challenge (77s)
+  warning: run/Challenge.lean:21:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:26:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos208.erdos_208.parts.i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8065/8065] Built Submission.Spec (3.9s)
+  warning: Submission/Spec.lean:21:8: declaration uses 'sorry'
+  warning: Submission/Spec.lean:26:8: declaration uses 'sorry'
+  Build completed successfully (8065 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos208.erdos_208.parts.i, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  
+  uncaught exception: Illegal axiom detected: 'sorryAx'
+

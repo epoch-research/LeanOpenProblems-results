@@ -1,0 +1,24 @@
+{
+  "id": "Erdos595.erdos_595",
+  "epoch": 1,
+  "uuid": "nHGEgvEN5Qwk7rdujrPMNF",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "custom",
+    "limit": 100.0,
+    "reason": "Unproductive loop limit reached: 100 consecutive turns without a tool call other than resources; limit: 100"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 2726,
+      "output_tokens": 16642526,
+      "total_tokens": 171961414,
+      "input_tokens_cache_write": 42134877,
+      "input_tokens_cache_read": 113181285,
+      "reasoning_tokens": 15926200,
+      "total_cost": 294.40416149999976
+    }
+  },
+  "oeis_id": null
+}

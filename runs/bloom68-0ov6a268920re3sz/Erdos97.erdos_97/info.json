@@ -1,0 +1,24 @@
+{
+  "id": "Erdos97.erdos_97",
+  "epoch": 1,
+  "uuid": "Kk3iSabkHBNu4tBJAkCmGn",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "custom",
+    "limit": 30.0,
+    "reason": "Repeated text limit reached: 30 consecutive turns with no tool call and identical text; limit: 30"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 5858,
+      "output_tokens": 10280252,
+      "total_tokens": 455587602,
+      "input_tokens_cache_write": 45779254,
+      "input_tokens_cache_read": 399522238,
+      "reasoning_tokens": 8973007,
+      "total_cost": 297.1668186
+    }
+  },
+  "oeis_id": null
+}

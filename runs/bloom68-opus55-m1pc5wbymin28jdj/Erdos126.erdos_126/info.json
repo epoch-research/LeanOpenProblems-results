@@ -1,0 +1,20 @@
+{
+  "id": "Erdos126.erdos_126",
+  "epoch": 1,
+  "uuid": "QyKBFTAywFMAa2DDtSk97k",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-opus-5-5": {
+      "input_tokens": 506,
+      "output_tokens": 1171525,
+      "total_tokens": 38404497,
+      "input_tokens_cache_write": 5396254,
+      "input_tokens_cache_read": 31836212,
+      "reasoning_tokens": 417745,
+      "total_cost": 56.78103640000001
+    }
+  },
+  "oeis_id": null
+}

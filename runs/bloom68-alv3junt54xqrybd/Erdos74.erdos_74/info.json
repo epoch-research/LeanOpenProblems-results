@@ -1,0 +1,20 @@
+{
+  "id": "Erdos74.erdos_74",
+  "epoch": 1,
+  "uuid": "kkBUuBsfdWPhf75uEqKVKf",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/gpt-6.1-sol": {
+      "input_tokens": 162187,
+      "output_tokens": 2507975,
+      "total_tokens": 89093316,
+      "input_tokens_cache_write": 7020857,
+      "input_tokens_cache_read": 79402297,
+      "reasoning_tokens": 1840981,
+      "total_cost": 50.896496199999994
+    }
+  },
+  "oeis_id": null
+}

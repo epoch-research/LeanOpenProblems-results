@@ -1,0 +1,20 @@
+{
+  "id": "Erdos126.erdos_126",
+  "epoch": 1,
+  "uuid": "TVRhECnVS37scCxJAheTU3",
+  "target": "",
+  "error": null,
+  "limit": null,
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 462,
+      "output_tokens": 1919352,
+      "total_tokens": 28457081,
+      "input_tokens_cache_write": 6018755,
+      "input_tokens_cache_read": 20518512,
+      "reasoning_tokens": 1762952,
+      "total_cost": 38.345033900000004
+    }
+  },
+  "oeis_id": null
+}

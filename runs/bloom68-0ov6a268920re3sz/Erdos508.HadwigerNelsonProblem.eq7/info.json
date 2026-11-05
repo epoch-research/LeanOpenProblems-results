@@ -1,0 +1,24 @@
+{
+  "id": "Erdos508.HadwigerNelsonProblem.eq7",
+  "epoch": 1,
+  "uuid": "TfbVqMKhXDCSHWtjCGJXGC",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0,
+    "reason": "Working time limit exceeded. limit: 259200 seconds"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 3728,
+      "output_tokens": 3328804,
+      "total_tokens": 353931864,
+      "input_tokens_cache_write": 15251787,
+      "input_tokens_cache_read": 335347545,
+      "reasoning_tokens": 2921591,
+      "total_cost": 138.49447249999977
+    }
+  },
+  "oeis_id": null
+}

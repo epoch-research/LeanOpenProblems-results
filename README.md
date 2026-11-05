@@ -56,6 +56,10 @@ hours of working time per attempt. GPT-6 Astra is a pre-release model, named
 | `bloom68-ultima-e1dhs43ykrmakree` | `ultima-alpha` | default | 3: Erdos1 (disproof), Erdos74 (disproof), Erdos126 (proof) |
 | `bloom68-vega-hxlmrsfzzg3h01o7` | `vega-alpha` | default | 2: Erdos74 (disproof), Erdos126 (proof) |
 | `bloom68-vega-roe-7avcuzc2f4e865lf` | `vega-alpha` | default (relaunch with retry-on-error) | 2: Erdos74 (disproof), Erdos126 (proof) |
+| `bloom68-opus55-m1pc5wbymin28jdj` | `claude-opus-5-5` | default | 2: Erdos74 (disproof), Erdos126 (proof) |
+| `bloom68-0ov6a268920re3sz` | `claude-sonnet-5-5` | default | 2: Erdos74 (disproof), Erdos126 (proof) |
+| `bloom68-gpt6sol-jw3kuj7ihascfke9` | `gpt-6-sol` | default | 1: Erdos1 (disproof) |
+| `bloom68-alv3junt54xqrybd` | `gpt-6.1-sol` | default (incomplete log: 46 of 50 samples recorded) | 3: Erdos1 (disproof), Erdos74 (disproof), Erdos126 (proof) |
 | `erdos-ultima-alpha-1000usd-t4aijzkukl7718bm` | `ultima-alpha` | non-systematic: ReAct agent, no literature snapshot, $1,000 and 96 hours per attempt, an earlier 67-statement version of the problem set, SafeVerify checker | 3: Erdos74 (disproof), Erdos126 (proof), Erdos548 (proof) |
 | `erdos-ultima-alpha-1000usd-t4aijzkukl7718bm-reruns` | `ultima-alpha` | second attempts of the above | 3: Erdos1 (disproof), Erdos74 (disproof), Erdos571 (proof) |
 

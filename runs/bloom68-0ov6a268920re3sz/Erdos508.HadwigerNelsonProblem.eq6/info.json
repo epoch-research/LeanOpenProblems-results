@@ -1,0 +1,24 @@
+{
+  "id": "Erdos508.HadwigerNelsonProblem.eq6",
+  "epoch": 1,
+  "uuid": "A3kcsUJMuZp9255zUkXir7",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "custom",
+    "limit": 100.0,
+    "reason": "Unproductive loop limit reached: 100 consecutive turns without a tool call other than resources; limit: 100"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 1280,
+      "output_tokens": 1555201,
+      "total_tokens": 98013705,
+      "input_tokens_cache_write": 4624973,
+      "input_tokens_cache_read": 91832251,
+      "reasoning_tokens": 1397314,
+      "total_cost": 45.4834527
+    }
+  },
+  "oeis_id": null
+}

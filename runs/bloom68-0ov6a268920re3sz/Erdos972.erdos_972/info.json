@@ -1,0 +1,24 @@
+{
+  "id": "Erdos972.erdos_972",
+  "epoch": 1,
+  "uuid": "JCB5ZpkvcpWFAXmmkHuheq",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "cost",
+    "limit": 300.0,
+    "reason": "Cost limit exceeded. value: $300.0187; limit: $300.0000"
+  },
+  "model_usage": {
+    "epoch/claude-sonnet-5-5": {
+      "input_tokens": 12494,
+      "output_tokens": 7213386,
+      "total_tokens": 934020650,
+      "input_tokens_cache_write": 18478670,
+      "input_tokens_cache_read": 908316100,
+      "reasoning_tokens": 6229483,
+      "total_cost": 300.01874300000014
+    }
+  },
+  "oeis_id": null
+}

@@ -1,0 +1,24 @@
+{
+  "id": "Erdos364.erdos_364",
+  "epoch": 1,
+  "uuid": "k8C6hQ9E9PfpUQMsSZpjKS",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0,
+    "reason": null
+  },
+  "model_usage": {
+    "epoch/claude-opus-5-5": {
+      "input_tokens": 3060,
+      "output_tokens": 1521127,
+      "total_tokens": 183846607,
+      "input_tokens_cache_write": 14881653,
+      "input_tokens_cache_read": 167440767,
+      "reasoning_tokens": 444045,
+      "total_cost": 138.3311984000001
+    }
+  },
+  "oeis_id": null
+}

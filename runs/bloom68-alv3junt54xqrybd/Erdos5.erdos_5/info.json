@@ -1,0 +1,24 @@
+{
+  "id": "Erdos5.erdos_5",
+  "epoch": 1,
+  "uuid": "hjWvTgY8pFf6k3AVSVjqvK",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0,
+    "reason": "Working time limit exceeded. limit: 259200 seconds"
+  },
+  "model_usage": {
+    "epoch/gpt-6.1-sol": {
+      "input_tokens": 528303,
+      "output_tokens": 10117948,
+      "total_tokens": 422044226,
+      "input_tokens_cache_write": 32417957,
+      "input_tokens_cache_read": 378980018,
+      "reasoning_tokens": 6451527,
+      "total_cost": 221.17898030000012
+    }
+  },
+  "oeis_id": null
+}

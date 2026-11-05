@@ -1,0 +1,35 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8065/8066] Built Challenge (4.7s)
+  warning: run/Challenge.lean:62:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:71:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos74.erdos_74.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8065/8072] Built Submission.Net (4.3s)
+  warning: Submission/Net.lean:34:12: This simp argument is unused:
+    Finset.mem_product
+  
+  Hint: Omit it from the simp argument list.
+    simp [̵F̵i̵n̵s̵e̵t̵.̵m̵e̵m̵_̵p̵r̵o̵d̵u̵c̵t̵,̵ ̵t̵h̵i̵s̵.̵1̵,̵[̲t̲h̲i̲s̲.̲1̲,̲ this.2.1]
+  
+  Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+  ✔ [8066/8072] Built Submission.Basic (4.6s)
+  ✔ [8067/8072] Built Submission.Cap1 (3.9s)
+  ✔ [8068/8072] Built Submission.Cap2 (6.5s)
+  ⚠ [8069/8072] Built Submission.Cap3 (4.3s)
+  warning: Submission/Cap3.lean:60:13: unused variable `hd`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  ✔ [8070/8072] Built Submission.Main (5.4s)
+  ✔ [8071/8072] Built Submission.Final (4.0s)
+  ⚠ [8072/8072] Built Submission.Spec (3.9s)
+  warning: Submission/Spec.lean:63:8: declaration uses 'sorry'
+  Build completed successfully (8072 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos74.erdos_74.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

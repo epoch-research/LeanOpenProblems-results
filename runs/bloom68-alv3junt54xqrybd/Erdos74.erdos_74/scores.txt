@@ -1,0 +1,30 @@
+=== SCORES ===
+proof_scorer: C
+  stage: comparator
+  Building Challenge
+  ⚠ [8065/8066] Built Challenge (4.5s)
+  warning: run/Challenge.lean:62:8: declaration uses 'sorry'
+  warning: run/Challenge.lean:71:8: declaration uses 'sorry'
+  Build completed successfully (8066 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos74.erdos_74.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Challenge
+  Building Submission.Spec
+  ⚠ [8065/8071] Built Submission.Basic (3.8s)
+  warning: Submission/Basic.lean:14:39: unused variable `x`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  warning: Submission/Basic.lean:14:41: unused variable `y`
+  
+  Note: This linter can be disabled with `set_option linter.unusedVariables false`
+  ✔ [8066/8071] Built Submission.Clusters (5.0s)
+  ✔ [8067/8071] Built Submission.Phase (5.1s)
+  ✔ [8068/8071] Built Submission.Certificate (5.0s)
+  ✔ [8069/8071] Built Submission.Pressure (4.7s)
+  ✔ [8070/8071] Built Submission.Budget (3.8s)
+  ⚠ [8071/8071] Built Submission.Spec (3.9s)
+  warning: Submission/Spec.lean:64:8: declaration uses 'sorry'
+  Build completed successfully (8071 jobs).
+  Exporting #[Nat, String, String.mk, Char, Quot, Quot.mk, Quot.lift, Quot.ind, Erdos74.erdos_74.disproof, propext, Classical.choice, Quot.sound, Nat.add, Nat.sub, Nat.mul, Nat.pow, Nat.gcd, Nat.div, Nat.mod, Nat.beq, Nat.ble, Nat.land, Nat.lor, Nat.xor, Nat.shiftLeft, Nat.shiftRight, String.ofList, Char.ofNat, List, eagerReduce] from Submission.Spec
+  Running Lean default kernel on solution.
+  Lean default kernel accepts the solution
+  Your solution is okay!
+

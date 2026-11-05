@@ -1,0 +1,24 @@
+{
+  "id": "Erdos508.HadwigerNelsonProblem.eq7",
+  "epoch": 1,
+  "uuid": "DznyXp8XhposV2miDxNR7u",
+  "target": "",
+  "error": null,
+  "limit": {
+    "type": "working",
+    "limit": 259200.0,
+    "reason": "Working time limit exceeded. limit: 259200 seconds"
+  },
+  "model_usage": {
+    "epoch/gpt-6.1-sol": {
+      "input_tokens": 223554,
+      "output_tokens": 8111632,
+      "total_tokens": 341497201,
+      "input_tokens_cache_write": 22878395,
+      "input_tokens_cache_read": 310283620,
+      "reasoning_tokens": 5159703,
+      "total_cost": 169.7877775000002
+    }
+  },
+  "oeis_id": null
+}
